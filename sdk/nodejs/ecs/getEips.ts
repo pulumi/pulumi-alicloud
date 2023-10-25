@@ -10,16 +10,6 @@ import * as utilities from "../utilities";
  * > **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
  *
  * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const eipsDs = alicloud.ecs.getEips({});
- * export const firstEipId = eipsDs.then(eipsDs => eipsDs.eips?.[0]?.id);
- * ```
  */
 /** @deprecated This function has been deprecated in favour of the getEipAddresses function */
 export function getEips(args?: GetEipsArgs, opts?: pulumi.InvokeOptions): Promise<GetEipsResult> {
@@ -153,16 +143,6 @@ export interface GetEipsResult {
  * > **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
  *
  * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const eipsDs = alicloud.ecs.getEips({});
- * export const firstEipId = eipsDs.then(eipsDs => eipsDs.eips?.[0]?.id);
- * ```
  */
 /** @deprecated This function has been deprecated in favour of the getEipAddresses function */
 export function getEipsOutput(args?: GetEipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEipsResult> {

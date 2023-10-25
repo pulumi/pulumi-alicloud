@@ -126,18 +126,6 @@ def get_private_zones(cen_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.88.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    this = alicloud.cen.get_private_zones(cen_id="cen-o40h17ll9w********",
-        ids=["cn-hangzhou"],
-        status="Active")
-    pulumi.export("firstCenPrivateZonesId", this.zones[0].id)
-    ```
-
 
     :param str cen_id: The ID of the CEN instance.
     :param str host_region_id: The service region. The service region is the target region of the PrivateZone service accessed through CEN.
@@ -177,18 +165,6 @@ def get_private_zones_output(cen_id: Optional[pulumi.Input[str]] = None,
     This data source provides CEN Private Zones available to the user.
 
     > **NOTE:** Available in v1.88.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    this = alicloud.cen.get_private_zones(cen_id="cen-o40h17ll9w********",
-        ids=["cn-hangzhou"],
-        status="Active")
-    pulumi.export("firstCenPrivateZonesId", this.zones[0].id)
-    ```
 
 
     :param str cen_id: The ID of the CEN instance.

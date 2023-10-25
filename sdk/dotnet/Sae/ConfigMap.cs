@@ -16,59 +16,6 @@ namespace Pulumi.AliCloud.Sae
     /// 
     /// &gt; **NOTE:** Available since v1.130.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
-    ///     {
-    ///         Current = true,
-    ///     });
-    /// 
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
-    ///     {
-    ///         Max = 99999,
-    ///         Min = 10000,
-    ///     });
-    /// 
-    ///     var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new()
-    ///     {
-    ///         NamespaceId = Output.Tuple(defaultRegions, defaultRandomInteger.Result).Apply(values =&gt;
-    ///         {
-    ///             var defaultRegions = values.Item1;
-    ///             var result = values.Item2;
-    ///             return $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example{result}";
-    ///         }),
-    ///         NamespaceName = name,
-    ///         NamespaceDescription = name,
-    ///         EnableMicroRegistration = false,
-    ///     });
-    /// 
-    ///     var defaultConfigMap = new AliCloud.Sae.ConfigMap("defaultConfigMap", new()
-    ///     {
-    ///         Data = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///         {
-    ///             ["env.home"] = "/root",
-    ///             ["env.shell"] = "/bin/sh",
-    ///         }),
-    ///         NamespaceId = defaultNamespace.NamespaceId,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Serverless App Engine (SAE) Config Map can be imported using the id, e.g.

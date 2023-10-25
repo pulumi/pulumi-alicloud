@@ -19,53 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.196.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/servicecatalog"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-testAccServiceCatalogProvisionedProduct"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := servicecatalog.NewProvisionedProduct(ctx, "default", &servicecatalog.ProvisionedProductArgs{
-//				ProvisionedProductName: pulumi.String(name),
-//				StackRegionId:          pulumi.String("cn-hangzhou"),
-//				ProductVersionId:       pulumi.String("pv-bp1d7dxy2pcc1g"),
-//				ProductId:              pulumi.String("prod-bp1u3dkc282cwd"),
-//				PortfolioId:            pulumi.String("port-bp119dvn27jccw"),
-//				Tags: pulumi.AnyMap{
-//					"v1": pulumi.Any("tf-test"),
-//				},
-//				Parameters: servicecatalog.ProvisionedProductParameterArray{
-//					&servicecatalog.ProvisionedProductParameterArgs{
-//						ParameterKey:   pulumi.String("role_name"),
-//						ParameterValue: pulumi.String(name),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Service Catalog Provisioned Product can be imported using the id, e.g.

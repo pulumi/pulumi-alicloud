@@ -119,24 +119,6 @@ def get_ipa_domains(domain_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.158.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dcdn.get_ipa_domains(domain_name="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("dcdnIpaDomainId1", ids.domains[0].id)
-    status = alicloud.dcdn.get_ipa_domains(status="online")
-    pulumi.export("dcdnIpaDomainId2", status.domains[0].id)
-    ```
-
 
     :param str domain_name: The accelerated domain names.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -175,24 +157,6 @@ def get_ipa_domains_output(domain_name: Optional[pulumi.Input[Optional[str]]] = 
     This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.158.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dcdn.get_ipa_domains(domain_name="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("dcdnIpaDomainId1", ids.domains[0].id)
-    status = alicloud.dcdn.get_ipa_domains(status="online")
-    pulumi.export("dcdnIpaDomainId2", status.domains[0].id)
-    ```
 
 
     :param str domain_name: The accelerated domain names.

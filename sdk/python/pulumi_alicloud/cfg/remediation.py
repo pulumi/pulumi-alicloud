@@ -43,23 +43,33 @@ class RemediationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config_rule_id: pulumi.Input[str],
-             invoke_type: pulumi.Input[str],
-             params: pulumi.Input[str],
-             remediation_template_id: pulumi.Input[str],
-             remediation_type: pulumi.Input[str],
+             config_rule_id: Optional[pulumi.Input[str]] = None,
+             invoke_type: Optional[pulumi.Input[str]] = None,
+             params: Optional[pulumi.Input[str]] = None,
+             remediation_template_id: Optional[pulumi.Input[str]] = None,
+             remediation_type: Optional[pulumi.Input[str]] = None,
              remediation_source_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configRuleId' in kwargs:
+        if config_rule_id is None and 'configRuleId' in kwargs:
             config_rule_id = kwargs['configRuleId']
-        if 'invokeType' in kwargs:
+        if config_rule_id is None:
+            raise TypeError("Missing 'config_rule_id' argument")
+        if invoke_type is None and 'invokeType' in kwargs:
             invoke_type = kwargs['invokeType']
-        if 'remediationTemplateId' in kwargs:
+        if invoke_type is None:
+            raise TypeError("Missing 'invoke_type' argument")
+        if params is None:
+            raise TypeError("Missing 'params' argument")
+        if remediation_template_id is None and 'remediationTemplateId' in kwargs:
             remediation_template_id = kwargs['remediationTemplateId']
-        if 'remediationType' in kwargs:
+        if remediation_template_id is None:
+            raise TypeError("Missing 'remediation_template_id' argument")
+        if remediation_type is None and 'remediationType' in kwargs:
             remediation_type = kwargs['remediationType']
-        if 'remediationSourceType' in kwargs:
+        if remediation_type is None:
+            raise TypeError("Missing 'remediation_type' argument")
+        if remediation_source_type is None and 'remediationSourceType' in kwargs:
             remediation_source_type = kwargs['remediationSourceType']
 
         _setter("config_rule_id", config_rule_id)
@@ -187,19 +197,19 @@ class _RemediationState:
              remediation_source_type: Optional[pulumi.Input[str]] = None,
              remediation_template_id: Optional[pulumi.Input[str]] = None,
              remediation_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configRuleId' in kwargs:
+        if config_rule_id is None and 'configRuleId' in kwargs:
             config_rule_id = kwargs['configRuleId']
-        if 'invokeType' in kwargs:
+        if invoke_type is None and 'invokeType' in kwargs:
             invoke_type = kwargs['invokeType']
-        if 'remediationId' in kwargs:
+        if remediation_id is None and 'remediationId' in kwargs:
             remediation_id = kwargs['remediationId']
-        if 'remediationSourceType' in kwargs:
+        if remediation_source_type is None and 'remediationSourceType' in kwargs:
             remediation_source_type = kwargs['remediationSourceType']
-        if 'remediationTemplateId' in kwargs:
+        if remediation_template_id is None and 'remediationTemplateId' in kwargs:
             remediation_template_id = kwargs['remediationTemplateId']
-        if 'remediationType' in kwargs:
+        if remediation_type is None and 'remediationType' in kwargs:
             remediation_type = kwargs['remediationType']
 
         if config_rule_id is not None:
@@ -323,45 +333,6 @@ class Remediation(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.204.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example-oss"
-        default_regions = alicloud.get_regions(current=True)
-        default_bucket = alicloud.oss.Bucket("defaultBucket",
-            bucket=name,
-            acl="public-read",
-            tags={
-                "For": "example",
-            })
-        default_rule = alicloud.cfg.Rule("defaultRule",
-            description="If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
-            source_owner="ALIYUN",
-            source_identifier="oss-bucket-public-read-prohibited",
-            risk_level=1,
-            tag_key_scope="For",
-            tag_value_scope="example",
-            region_ids_scope=default_regions.regions[0].id,
-            config_rule_trigger_types="ConfigurationItemChangeNotification",
-            resource_types_scopes=["ACS::OSS::Bucket"],
-            rule_name="oss-bucket-public-read-prohibited")
-        default_remediation = alicloud.cfg.Remediation("defaultRemediation",
-            config_rule_id=default_rule.config_rule_id,
-            remediation_template_id="ACS-OSS-PutBucketAcl",
-            remediation_source_type="ALIYUN",
-            invoke_type="MANUAL_EXECUTION",
-            params=default_bucket.bucket.apply(lambda bucket: f"{{\\"bucketName\\": \\"{bucket}\\", \\"regionId\\": \\"{default_regions.regions[0].id}\\", \\"permissionName\\": \\"private\\"}}"),
-            remediation_type="OOS")
-        ```
-
         ## Import
 
         Config Remediation can be imported using the id, e.g.
@@ -393,45 +364,6 @@ class Remediation(pulumi.CustomResource):
         For information about Config Remediation and how to use it, see [What is Remediation](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createremediation).
 
         > **NOTE:** Available since v1.204.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example-oss"
-        default_regions = alicloud.get_regions(current=True)
-        default_bucket = alicloud.oss.Bucket("defaultBucket",
-            bucket=name,
-            acl="public-read",
-            tags={
-                "For": "example",
-            })
-        default_rule = alicloud.cfg.Rule("defaultRule",
-            description="If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
-            source_owner="ALIYUN",
-            source_identifier="oss-bucket-public-read-prohibited",
-            risk_level=1,
-            tag_key_scope="For",
-            tag_value_scope="example",
-            region_ids_scope=default_regions.regions[0].id,
-            config_rule_trigger_types="ConfigurationItemChangeNotification",
-            resource_types_scopes=["ACS::OSS::Bucket"],
-            rule_name="oss-bucket-public-read-prohibited")
-        default_remediation = alicloud.cfg.Remediation("defaultRemediation",
-            config_rule_id=default_rule.config_rule_id,
-            remediation_template_id="ACS-OSS-PutBucketAcl",
-            remediation_source_type="ALIYUN",
-            invoke_type="MANUAL_EXECUTION",
-            params=default_bucket.bucket.apply(lambda bucket: f"{{\\"bucketName\\": \\"{bucket}\\", \\"regionId\\": \\"{default_regions.regions[0].id}\\", \\"permissionName\\": \\"private\\"}}"),
-            remediation_type="OOS")
-        ```
 
         ## Import
 

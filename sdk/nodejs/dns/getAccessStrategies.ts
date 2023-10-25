@@ -10,26 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Alidns Access Strategies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.152.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dns.getAccessStrategies({
- *     instanceId: "example_value",
- *     strategyMode: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- *     nameRegex: "the_resource_name",
- * });
- * export const alidnsAccessStrategyId1 = ids.then(ids => ids.strategies?.[0]?.id);
- * ```
  */
 export function getAccessStrategies(args: GetAccessStrategiesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessStrategiesResult> {
 
@@ -101,26 +81,6 @@ export interface GetAccessStrategiesResult {
  * This data source provides the Alidns Access Strategies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.152.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dns.getAccessStrategies({
- *     instanceId: "example_value",
- *     strategyMode: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- *     nameRegex: "the_resource_name",
- * });
- * export const alidnsAccessStrategyId1 = ids.then(ids => ids.strategies?.[0]?.id);
- * ```
  */
 export function getAccessStrategiesOutput(args: GetAccessStrategiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessStrategiesResult> {
     return pulumi.output(args).apply((a: any) => getAccessStrategies(a, opts))

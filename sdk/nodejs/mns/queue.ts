@@ -5,23 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const queue = new alicloud.mns.Queue("queue", {
- *     delaySeconds: 0,
- *     maximumMessageSize: 65536,
- *     messageRetentionPeriod: 345600,
- *     pollingWaitSeconds: 0,
- *     visibilityTimeout: 30,
- * });
- * ```
- *
  * ## Import
  *
  * MNS QUEUE can be imported using the id or name, e.g.

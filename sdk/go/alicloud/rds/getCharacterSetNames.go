@@ -15,33 +15,6 @@ import (
 // This data source is the character set supported by querying RDS instances.
 //
 // > **NOTE:** Available in v1.198.0+.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			names, err := rds.GetCharacterSetNames(ctx, &rds.GetCharacterSetNamesArgs{
-//				Engine: "MySQL",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstRdsCharacterSetNames", names.Names[0])
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetCharacterSetNames(ctx *pulumi.Context, args *GetCharacterSetNamesArgs, opts ...pulumi.InvokeOption) (*GetCharacterSetNamesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCharacterSetNamesResult

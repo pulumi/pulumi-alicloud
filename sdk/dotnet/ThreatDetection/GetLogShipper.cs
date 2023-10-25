@@ -17,30 +17,6 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyopenlogshipper).
         /// 
         /// &gt; **NOTE:** Available in v1.195.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var open = AliCloud.ThreatDetection.GetLogShipper.Invoke(new()
-        ///     {
-        ///         Enable = "On",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLogShipperResult> InvokeAsync(GetLogShipperArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogShipperResult>("alicloud:threatdetection/getLogShipper:getLogShipper", args ?? new GetLogShipperArgs(), options.WithDefaults());
@@ -51,30 +27,6 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyopenlogshipper).
         /// 
         /// &gt; **NOTE:** Available in v1.195.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var open = AliCloud.ThreatDetection.GetLogShipper.Invoke(new()
-        ///     {
-        ///         Enable = "On",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetLogShipperResult> Invoke(GetLogShipperInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogShipperResult>("alicloud:threatdetection/getLogShipper:getLogShipper", args ?? new GetLogShipperInvokeArgs(), options.WithDefaults());

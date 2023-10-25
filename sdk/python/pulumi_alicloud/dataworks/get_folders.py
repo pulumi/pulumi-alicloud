@@ -100,23 +100,6 @@ def get_folders(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.131.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.dataworks.Folder("default",
-        project_id="xxxx",
-        folder_path="Business Flow/tfTestAcc/folderDi")
-    ids = pulumi.Output.all(default.folder_id, default.project_id).apply(lambda folder_id, project_id: alicloud.dataworks.get_folders_output(ids=[folder_id],
-        project_id=project_id,
-        parent_folder_path="Business Flow/tfTestAcc/folderDi"))
-    pulumi.export("dataWorksFolderId1", ids.folders[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Folder IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -150,23 +133,6 @@ def get_folders_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     This data source provides the Data Works Folders of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.131.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.dataworks.Folder("default",
-        project_id="xxxx",
-        folder_path="Business Flow/tfTestAcc/folderDi")
-    ids = pulumi.Output.all(default.folder_id, default.project_id).apply(lambda folder_id, project_id: alicloud.dataworks.get_folders_output(ids=[folder_id],
-        project_id=project_id,
-        parent_folder_path="Business Flow/tfTestAcc/folderDi"))
-    pulumi.export("dataWorksFolderId1", ids.folders[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Folder IDs.

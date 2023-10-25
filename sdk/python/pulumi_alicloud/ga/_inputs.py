@@ -44,9 +44,9 @@ class AclAclEntryArgs:
              _setter: Callable[[Any, Any], None],
              entry: Optional[pulumi.Input[str]] = None,
              entry_description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'entryDescription' in kwargs:
+        if entry_description is None and 'entryDescription' in kwargs:
             entry_description = kwargs['entryDescription']
 
         if entry is not None:
@@ -98,11 +98,11 @@ class CustomRoutingEndpointTrafficPolicyPortRangeArgs:
              _setter: Callable[[Any, Any], None],
              from_port: Optional[pulumi.Input[int]] = None,
              to_port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fromPort' in kwargs:
+        if from_port is None and 'fromPort' in kwargs:
             from_port = kwargs['fromPort']
-        if 'toPort' in kwargs:
+        if to_port is None and 'toPort' in kwargs:
             to_port = kwargs['toPort']
 
         if from_port is not None:
@@ -162,16 +162,22 @@ class EndpointGroupEndpointConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: pulumi.Input[str],
-             type: pulumi.Input[str],
-             weight: pulumi.Input[int],
+             endpoint: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
              enable_clientip_preservation: Optional[pulumi.Input[bool]] = None,
              enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'enableClientipPreservation' in kwargs:
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
+        if enable_clientip_preservation is None and 'enableClientipPreservation' in kwargs:
             enable_clientip_preservation = kwargs['enableClientipPreservation']
-        if 'enableProxyProtocol' in kwargs:
+        if enable_proxy_protocol is None and 'enableProxyProtocol' in kwargs:
             enable_proxy_protocol = kwargs['enableProxyProtocol']
 
         _setter("endpoint", endpoint)
@@ -263,11 +269,11 @@ class EndpointGroupPortOverridesArgs:
              _setter: Callable[[Any, Any], None],
              endpoint_port: Optional[pulumi.Input[int]] = None,
              listener_port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endpointPort' in kwargs:
+        if endpoint_port is None and 'endpointPort' in kwargs:
             endpoint_port = kwargs['endpointPort']
-        if 'listenerPort' in kwargs:
+        if listener_port is None and 'listenerPort' in kwargs:
             listener_port = kwargs['listenerPort']
 
         if endpoint_port is not None:
@@ -324,17 +330,21 @@ class ForwardingRuleRuleActionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             order: pulumi.Input[int],
-             rule_action_type: pulumi.Input[str],
+             order: Optional[pulumi.Input[int]] = None,
+             rule_action_type: Optional[pulumi.Input[str]] = None,
              forward_group_config: Optional[pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigArgs']] = None,
              rule_action_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ruleActionType' in kwargs:
+        if order is None:
+            raise TypeError("Missing 'order' argument")
+        if rule_action_type is None and 'ruleActionType' in kwargs:
             rule_action_type = kwargs['ruleActionType']
-        if 'forwardGroupConfig' in kwargs:
+        if rule_action_type is None:
+            raise TypeError("Missing 'rule_action_type' argument")
+        if forward_group_config is None and 'forwardGroupConfig' in kwargs:
             forward_group_config = kwargs['forwardGroupConfig']
-        if 'ruleActionValue' in kwargs:
+        if rule_action_value is None and 'ruleActionValue' in kwargs:
             rule_action_value = kwargs['ruleActionValue']
 
         _setter("order", order)
@@ -408,11 +418,13 @@ class ForwardingRuleRuleActionForwardGroupConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_group_tuples: pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             server_group_tuples: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupTuples' in kwargs:
+        if server_group_tuples is None and 'serverGroupTuples' in kwargs:
             server_group_tuples = kwargs['serverGroupTuples']
+        if server_group_tuples is None:
+            raise TypeError("Missing 'server_group_tuples' argument")
 
         _setter("server_group_tuples", server_group_tuples)
 
@@ -443,11 +455,13 @@ class ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint_group_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             endpoint_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endpointGroupId' in kwargs:
+        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
             endpoint_group_id = kwargs['endpointGroupId']
+        if endpoint_group_id is None:
+            raise TypeError("Missing 'endpoint_group_id' argument")
 
         _setter("endpoint_group_id", endpoint_group_id)
 
@@ -484,16 +498,18 @@ class ForwardingRuleRuleConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             rule_condition_type: pulumi.Input[str],
+             rule_condition_type: Optional[pulumi.Input[str]] = None,
              host_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgs']]]] = None,
              path_config: Optional[pulumi.Input['ForwardingRuleRuleConditionPathConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ruleConditionType' in kwargs:
+        if rule_condition_type is None and 'ruleConditionType' in kwargs:
             rule_condition_type = kwargs['ruleConditionType']
-        if 'hostConfigs' in kwargs:
+        if rule_condition_type is None:
+            raise TypeError("Missing 'rule_condition_type' argument")
+        if host_configs is None and 'hostConfigs' in kwargs:
             host_configs = kwargs['hostConfigs']
-        if 'pathConfig' in kwargs:
+        if path_config is None and 'pathConfig' in kwargs:
             path_config = kwargs['pathConfig']
 
         _setter("rule_condition_type", rule_condition_type)
@@ -554,7 +570,7 @@ class ForwardingRuleRuleConditionHostConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if values is not None:
@@ -588,7 +604,7 @@ class ForwardingRuleRuleConditionPathConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if values is not None:
@@ -622,7 +638,7 @@ class ListenerCertificateArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if id is not None:
@@ -672,17 +688,17 @@ class ListenerForwardedForConfigArgs:
              forwarded_for_port_enabled: Optional[pulumi.Input[bool]] = None,
              forwarded_for_proto_enabled: Optional[pulumi.Input[bool]] = None,
              real_ip_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'forwardedForGaApEnabled' in kwargs:
+        if forwarded_for_ga_ap_enabled is None and 'forwardedForGaApEnabled' in kwargs:
             forwarded_for_ga_ap_enabled = kwargs['forwardedForGaApEnabled']
-        if 'forwardedForGaIdEnabled' in kwargs:
+        if forwarded_for_ga_id_enabled is None and 'forwardedForGaIdEnabled' in kwargs:
             forwarded_for_ga_id_enabled = kwargs['forwardedForGaIdEnabled']
-        if 'forwardedForPortEnabled' in kwargs:
+        if forwarded_for_port_enabled is None and 'forwardedForPortEnabled' in kwargs:
             forwarded_for_port_enabled = kwargs['forwardedForPortEnabled']
-        if 'forwardedForProtoEnabled' in kwargs:
+        if forwarded_for_proto_enabled is None and 'forwardedForProtoEnabled' in kwargs:
             forwarded_for_proto_enabled = kwargs['forwardedForProtoEnabled']
-        if 'realIpEnabled' in kwargs:
+        if real_ip_enabled is None and 'realIpEnabled' in kwargs:
             real_ip_enabled = kwargs['realIpEnabled']
 
         if forwarded_for_ga_ap_enabled is not None:
@@ -774,14 +790,18 @@ class ListenerPortRangeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             from_port: pulumi.Input[int],
-             to_port: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             from_port: Optional[pulumi.Input[int]] = None,
+             to_port: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fromPort' in kwargs:
+        if from_port is None and 'fromPort' in kwargs:
             from_port = kwargs['fromPort']
-        if 'toPort' in kwargs:
+        if from_port is None:
+            raise TypeError("Missing 'from_port' argument")
+        if to_port is None and 'toPort' in kwargs:
             to_port = kwargs['toPort']
+        if to_port is None:
+            raise TypeError("Missing 'to_port' argument")
 
         _setter("from_port", from_port)
         _setter("to_port", to_port)

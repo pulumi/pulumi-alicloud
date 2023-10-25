@@ -29,14 +29,18 @@ class RouteTableAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             route_table_id: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             route_table_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'routeTableId' in kwargs:
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
-        if 'vswitchId' in kwargs:
+        if route_table_id is None:
+            raise TypeError("Missing 'route_table_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("route_table_id", route_table_id)
         _setter("vswitch_id", vswitch_id)
@@ -90,11 +94,11 @@ class _RouteTableAttachmentState:
              route_table_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'routeTableId' in kwargs:
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if route_table_id is not None:
@@ -156,33 +160,6 @@ class RouteTableAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
-        default = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vpc_id=foo_network.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default.zones[0].id)
-        foo_route_table = alicloud.vpc.RouteTable("fooRouteTable",
-            vpc_id=foo_network.id,
-            route_table_name=name,
-            description="route_table_attachment")
-        foo_route_table_attachment = alicloud.vpc.RouteTableAttachment("fooRouteTableAttachment",
-            vswitch_id=foo_switch.id,
-            route_table_id=foo_route_table.id)
-        ```
-
         ## Import
 
         VPC Route Table Attachment can be imported using the id, e.g.
@@ -208,33 +185,6 @@ class RouteTableAttachment(pulumi.CustomResource):
         For information about VPC Route Table Attachment and how to use it, see [What is Route Table Attachment](https://www.alibabacloud.com/help/doc-detail/174112.htm).
 
         > **NOTE:** Available since v1.194.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
-        default = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vpc_id=foo_network.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default.zones[0].id)
-        foo_route_table = alicloud.vpc.RouteTable("fooRouteTable",
-            vpc_id=foo_network.id,
-            route_table_name=name,
-            description="route_table_attachment")
-        foo_route_table_attachment = alicloud.vpc.RouteTableAttachment("fooRouteTableAttachment",
-            vswitch_id=foo_switch.id,
-            route_table_id=foo_route_table.id)
-        ```
 
         ## Import
 

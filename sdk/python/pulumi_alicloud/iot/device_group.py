@@ -35,19 +35,21 @@ class DeviceGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_name: pulumi.Input[str],
+             group_name: Optional[pulumi.Input[str]] = None,
              group_desc: Optional[pulumi.Input[str]] = None,
              iot_instance_id: Optional[pulumi.Input[str]] = None,
              super_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'groupDesc' in kwargs:
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if group_desc is None and 'groupDesc' in kwargs:
             group_desc = kwargs['groupDesc']
-        if 'iotInstanceId' in kwargs:
+        if iot_instance_id is None and 'iotInstanceId' in kwargs:
             iot_instance_id = kwargs['iotInstanceId']
-        if 'superGroupId' in kwargs:
+        if super_group_id is None and 'superGroupId' in kwargs:
             super_group_id = kwargs['superGroupId']
 
         _setter("group_name", group_name)
@@ -135,15 +137,15 @@ class _DeviceGroupState:
              group_name: Optional[pulumi.Input[str]] = None,
              iot_instance_id: Optional[pulumi.Input[str]] = None,
              super_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupDesc' in kwargs:
+        if group_desc is None and 'groupDesc' in kwargs:
             group_desc = kwargs['groupDesc']
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'iotInstanceId' in kwargs:
+        if iot_instance_id is None and 'iotInstanceId' in kwargs:
             iot_instance_id = kwargs['iotInstanceId']
-        if 'superGroupId' in kwargs:
+        if super_group_id is None and 'superGroupId' in kwargs:
             super_group_id = kwargs['superGroupId']
 
         if group_desc is not None:
@@ -221,21 +223,6 @@ class DeviceGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        example = alicloud.iot.DeviceGroup("example", group_name=name)
-        ```
-
         ## Import
 
         Iot Device Group can be imported using the id, e.g.
@@ -263,21 +250,6 @@ class DeviceGroup(pulumi.CustomResource):
         For information about Iot Device Group and how to use it, see [What is Device Group](https://www.alibabacloud.com/help/product/30520.htm).
 
         > **NOTE:** Available since v1.134.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        example = alicloud.iot.DeviceGroup("example", group_name=name)
-        ```
 
         ## Import
 

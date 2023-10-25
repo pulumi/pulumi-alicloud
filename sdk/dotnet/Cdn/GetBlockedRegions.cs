@@ -15,30 +15,6 @@ namespace Pulumi.AliCloud.Cdn
         /// This data source provides the Cdn blocked regions.
         /// 
         /// &gt; **NOTE:** Available in v1.173.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Cdn.GetBlockedRegions.Invoke(new()
-        ///     {
-        ///         Language = "zh",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBlockedRegionsResult> InvokeAsync(GetBlockedRegionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBlockedRegionsResult>("alicloud:cdn/getBlockedRegions:getBlockedRegions", args ?? new GetBlockedRegionsArgs(), options.WithDefaults());
@@ -47,30 +23,6 @@ namespace Pulumi.AliCloud.Cdn
         /// This data source provides the Cdn blocked regions.
         /// 
         /// &gt; **NOTE:** Available in v1.173.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Cdn.GetBlockedRegions.Invoke(new()
-        ///     {
-        ///         Language = "zh",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBlockedRegionsResult> Invoke(GetBlockedRegionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBlockedRegionsResult>("alicloud:cdn/getBlockedRegions:getBlockedRegions", args ?? new GetBlockedRegionsInvokeArgs(), options.WithDefaults());

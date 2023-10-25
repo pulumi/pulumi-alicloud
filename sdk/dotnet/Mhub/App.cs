@@ -18,36 +18,6 @@ namespace Pulumi.AliCloud.Mhub
     /// 
     /// &gt; **NOTE:** At present, the resource only supports cn-shanghai region.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "example_value";
-    ///     var defaultProduct = new AliCloud.Mhub.Product("defaultProduct", new()
-    ///     {
-    ///         ProductName = name,
-    ///     });
-    /// 
-    ///     var defaultApp = new AliCloud.Mhub.App("defaultApp", new()
-    ///     {
-    ///         AppName = name,
-    ///         ProductId = defaultProduct.Id,
-    ///         PackageName = "com.test.android",
-    ///         Type = "Android",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// MHUB App can be imported using the id, e.g.

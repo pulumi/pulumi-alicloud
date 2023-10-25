@@ -104,14 +104,18 @@ class DomainConfigFunctionArg(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             arg_name: str,
-             arg_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             arg_name: Optional[str] = None,
+             arg_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'argName' in kwargs:
+        if arg_name is None and 'argName' in kwargs:
             arg_name = kwargs['argName']
-        if 'argValue' in kwargs:
+        if arg_name is None:
+            raise TypeError("Missing 'arg_name' argument")
+        if arg_value is None and 'argValue' in kwargs:
             arg_value = kwargs['argValue']
+        if arg_value is None:
+            raise TypeError("Missing 'arg_value' argument")
 
         _setter("arg_name", arg_name)
         _setter("arg_value", arg_value)
@@ -162,13 +166,17 @@ class DomainSource(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: str,
-             type: str,
+             content: Optional[str] = None,
+             type: Optional[str] = None,
              port: Optional[int] = None,
              priority: Optional[str] = None,
              weight: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("content", content)
         _setter("type", type)
@@ -467,77 +475,77 @@ class ErEnvConf(dict):
              preset_canary_zhejiang: Optional['outputs.ErEnvConfPresetCanaryZhejiang'] = None,
              production: Optional['outputs.ErEnvConfProduction'] = None,
              staging: Optional['outputs.ErEnvConfStaging'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'presetCanaryAnhui' in kwargs:
+        if preset_canary_anhui is None and 'presetCanaryAnhui' in kwargs:
             preset_canary_anhui = kwargs['presetCanaryAnhui']
-        if 'presetCanaryBeijing' in kwargs:
+        if preset_canary_beijing is None and 'presetCanaryBeijing' in kwargs:
             preset_canary_beijing = kwargs['presetCanaryBeijing']
-        if 'presetCanaryChongqing' in kwargs:
+        if preset_canary_chongqing is None and 'presetCanaryChongqing' in kwargs:
             preset_canary_chongqing = kwargs['presetCanaryChongqing']
-        if 'presetCanaryFujian' in kwargs:
+        if preset_canary_fujian is None and 'presetCanaryFujian' in kwargs:
             preset_canary_fujian = kwargs['presetCanaryFujian']
-        if 'presetCanaryGansu' in kwargs:
+        if preset_canary_gansu is None and 'presetCanaryGansu' in kwargs:
             preset_canary_gansu = kwargs['presetCanaryGansu']
-        if 'presetCanaryGuangdong' in kwargs:
+        if preset_canary_guangdong is None and 'presetCanaryGuangdong' in kwargs:
             preset_canary_guangdong = kwargs['presetCanaryGuangdong']
-        if 'presetCanaryGuangxi' in kwargs:
+        if preset_canary_guangxi is None and 'presetCanaryGuangxi' in kwargs:
             preset_canary_guangxi = kwargs['presetCanaryGuangxi']
-        if 'presetCanaryGuizhou' in kwargs:
+        if preset_canary_guizhou is None and 'presetCanaryGuizhou' in kwargs:
             preset_canary_guizhou = kwargs['presetCanaryGuizhou']
-        if 'presetCanaryHainan' in kwargs:
+        if preset_canary_hainan is None and 'presetCanaryHainan' in kwargs:
             preset_canary_hainan = kwargs['presetCanaryHainan']
-        if 'presetCanaryHebei' in kwargs:
+        if preset_canary_hebei is None and 'presetCanaryHebei' in kwargs:
             preset_canary_hebei = kwargs['presetCanaryHebei']
-        if 'presetCanaryHeilongjiang' in kwargs:
+        if preset_canary_heilongjiang is None and 'presetCanaryHeilongjiang' in kwargs:
             preset_canary_heilongjiang = kwargs['presetCanaryHeilongjiang']
-        if 'presetCanaryHenan' in kwargs:
+        if preset_canary_henan is None and 'presetCanaryHenan' in kwargs:
             preset_canary_henan = kwargs['presetCanaryHenan']
-        if 'presetCanaryHongKong' in kwargs:
+        if preset_canary_hong_kong is None and 'presetCanaryHongKong' in kwargs:
             preset_canary_hong_kong = kwargs['presetCanaryHongKong']
-        if 'presetCanaryHubei' in kwargs:
+        if preset_canary_hubei is None and 'presetCanaryHubei' in kwargs:
             preset_canary_hubei = kwargs['presetCanaryHubei']
-        if 'presetCanaryHunan' in kwargs:
+        if preset_canary_hunan is None and 'presetCanaryHunan' in kwargs:
             preset_canary_hunan = kwargs['presetCanaryHunan']
-        if 'presetCanaryJiangsu' in kwargs:
+        if preset_canary_jiangsu is None and 'presetCanaryJiangsu' in kwargs:
             preset_canary_jiangsu = kwargs['presetCanaryJiangsu']
-        if 'presetCanaryJiangxi' in kwargs:
+        if preset_canary_jiangxi is None and 'presetCanaryJiangxi' in kwargs:
             preset_canary_jiangxi = kwargs['presetCanaryJiangxi']
-        if 'presetCanaryJilin' in kwargs:
+        if preset_canary_jilin is None and 'presetCanaryJilin' in kwargs:
             preset_canary_jilin = kwargs['presetCanaryJilin']
-        if 'presetCanaryLiaoning' in kwargs:
+        if preset_canary_liaoning is None and 'presetCanaryLiaoning' in kwargs:
             preset_canary_liaoning = kwargs['presetCanaryLiaoning']
-        if 'presetCanaryMacau' in kwargs:
+        if preset_canary_macau is None and 'presetCanaryMacau' in kwargs:
             preset_canary_macau = kwargs['presetCanaryMacau']
-        if 'presetCanaryNeimenggu' in kwargs:
+        if preset_canary_neimenggu is None and 'presetCanaryNeimenggu' in kwargs:
             preset_canary_neimenggu = kwargs['presetCanaryNeimenggu']
-        if 'presetCanaryNingxia' in kwargs:
+        if preset_canary_ningxia is None and 'presetCanaryNingxia' in kwargs:
             preset_canary_ningxia = kwargs['presetCanaryNingxia']
-        if 'presetCanaryOverseas' in kwargs:
+        if preset_canary_overseas is None and 'presetCanaryOverseas' in kwargs:
             preset_canary_overseas = kwargs['presetCanaryOverseas']
-        if 'presetCanaryQinghai' in kwargs:
+        if preset_canary_qinghai is None and 'presetCanaryQinghai' in kwargs:
             preset_canary_qinghai = kwargs['presetCanaryQinghai']
-        if 'presetCanaryShaanxi' in kwargs:
+        if preset_canary_shaanxi is None and 'presetCanaryShaanxi' in kwargs:
             preset_canary_shaanxi = kwargs['presetCanaryShaanxi']
-        if 'presetCanaryShandong' in kwargs:
+        if preset_canary_shandong is None and 'presetCanaryShandong' in kwargs:
             preset_canary_shandong = kwargs['presetCanaryShandong']
-        if 'presetCanaryShanghai' in kwargs:
+        if preset_canary_shanghai is None and 'presetCanaryShanghai' in kwargs:
             preset_canary_shanghai = kwargs['presetCanaryShanghai']
-        if 'presetCanaryShanxi' in kwargs:
+        if preset_canary_shanxi is None and 'presetCanaryShanxi' in kwargs:
             preset_canary_shanxi = kwargs['presetCanaryShanxi']
-        if 'presetCanarySichuan' in kwargs:
+        if preset_canary_sichuan is None and 'presetCanarySichuan' in kwargs:
             preset_canary_sichuan = kwargs['presetCanarySichuan']
-        if 'presetCanaryTaiwan' in kwargs:
+        if preset_canary_taiwan is None and 'presetCanaryTaiwan' in kwargs:
             preset_canary_taiwan = kwargs['presetCanaryTaiwan']
-        if 'presetCanaryTianjin' in kwargs:
+        if preset_canary_tianjin is None and 'presetCanaryTianjin' in kwargs:
             preset_canary_tianjin = kwargs['presetCanaryTianjin']
-        if 'presetCanaryXinjiang' in kwargs:
+        if preset_canary_xinjiang is None and 'presetCanaryXinjiang' in kwargs:
             preset_canary_xinjiang = kwargs['presetCanaryXinjiang']
-        if 'presetCanaryXizang' in kwargs:
+        if preset_canary_xizang is None and 'presetCanaryXizang' in kwargs:
             preset_canary_xizang = kwargs['presetCanaryXizang']
-        if 'presetCanaryYunnan' in kwargs:
+        if preset_canary_yunnan is None and 'presetCanaryYunnan' in kwargs:
             preset_canary_yunnan = kwargs['presetCanaryYunnan']
-        if 'presetCanaryZhejiang' in kwargs:
+        if preset_canary_zhejiang is None and 'presetCanaryZhejiang' in kwargs:
             preset_canary_zhejiang = kwargs['presetCanaryZhejiang']
 
         if preset_canary_anhui is not None:
@@ -956,13 +964,13 @@ class ErEnvConfPresetCanaryAnhui(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -1041,13 +1049,13 @@ class ErEnvConfPresetCanaryBeijing(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -1126,13 +1134,13 @@ class ErEnvConfPresetCanaryChongqing(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -1211,13 +1219,13 @@ class ErEnvConfPresetCanaryFujian(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -1296,13 +1304,13 @@ class ErEnvConfPresetCanaryGansu(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -1381,13 +1389,13 @@ class ErEnvConfPresetCanaryGuangdong(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -1466,13 +1474,13 @@ class ErEnvConfPresetCanaryGuangxi(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -1551,13 +1559,13 @@ class ErEnvConfPresetCanaryGuizhou(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -1636,13 +1644,13 @@ class ErEnvConfPresetCanaryHainan(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -1721,13 +1729,13 @@ class ErEnvConfPresetCanaryHebei(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -1806,13 +1814,13 @@ class ErEnvConfPresetCanaryHeilongjiang(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -1891,13 +1899,13 @@ class ErEnvConfPresetCanaryHenan(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -1976,13 +1984,13 @@ class ErEnvConfPresetCanaryHongKong(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -2061,13 +2069,13 @@ class ErEnvConfPresetCanaryHubei(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -2146,13 +2154,13 @@ class ErEnvConfPresetCanaryHunan(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -2231,13 +2239,13 @@ class ErEnvConfPresetCanaryJiangsu(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -2316,13 +2324,13 @@ class ErEnvConfPresetCanaryJiangxi(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -2401,13 +2409,13 @@ class ErEnvConfPresetCanaryJilin(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -2486,13 +2494,13 @@ class ErEnvConfPresetCanaryLiaoning(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -2571,13 +2579,13 @@ class ErEnvConfPresetCanaryMacau(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -2656,13 +2664,13 @@ class ErEnvConfPresetCanaryNeimenggu(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -2741,13 +2749,13 @@ class ErEnvConfPresetCanaryNingxia(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -2826,13 +2834,13 @@ class ErEnvConfPresetCanaryOverseas(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -2911,13 +2919,13 @@ class ErEnvConfPresetCanaryQinghai(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -2996,13 +3004,13 @@ class ErEnvConfPresetCanaryShaanxi(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -3081,13 +3089,13 @@ class ErEnvConfPresetCanaryShandong(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -3166,13 +3174,13 @@ class ErEnvConfPresetCanaryShanghai(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -3251,13 +3259,13 @@ class ErEnvConfPresetCanaryShanxi(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -3336,13 +3344,13 @@ class ErEnvConfPresetCanarySichuan(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -3421,13 +3429,13 @@ class ErEnvConfPresetCanaryTaiwan(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -3506,13 +3514,13 @@ class ErEnvConfPresetCanaryTianjin(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -3591,13 +3599,13 @@ class ErEnvConfPresetCanaryXinjiang(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -3676,13 +3684,13 @@ class ErEnvConfPresetCanaryXizang(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -3761,13 +3769,13 @@ class ErEnvConfPresetCanaryYunnan(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -3846,13 +3854,13 @@ class ErEnvConfPresetCanaryZhejiang(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -3931,13 +3939,13 @@ class ErEnvConfProduction(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -4016,13 +4024,13 @@ class ErEnvConfStaging(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedHosts' in kwargs:
+        if allowed_hosts is None and 'allowedHosts' in kwargs:
             allowed_hosts = kwargs['allowedHosts']
-        if 'codeRev' in kwargs:
+        if code_rev is None and 'codeRev' in kwargs:
             code_rev = kwargs['codeRev']
-        if 'specName' in kwargs:
+        if spec_name is None and 'specName' in kwargs:
             spec_name = kwargs['specName']
 
         if allowed_hosts is not None:
@@ -4083,13 +4091,23 @@ class IpaDomainSource(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: str,
-             port: int,
-             priority: str,
-             type: str,
-             weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             content: Optional[str] = None,
+             port: Optional[int] = None,
+             priority: Optional[str] = None,
+             type: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
 
         _setter("content", content)
         _setter("port", port)
@@ -4180,15 +4198,19 @@ class WafRuleCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             op_value: str,
+             key: Optional[str] = None,
+             op_value: Optional[str] = None,
              sub_key: Optional[str] = None,
              values: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'opValue' in kwargs:
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if op_value is None and 'opValue' in kwargs:
             op_value = kwargs['opValue']
-        if 'subKey' in kwargs:
+        if op_value is None:
+            raise TypeError("Missing 'op_value' argument")
+        if sub_key is None and 'subKey' in kwargs:
             sub_key = kwargs['subKey']
 
         _setter("key", key)
@@ -4283,9 +4305,9 @@ class WafRuleRateLimit(dict):
              target: Optional[str] = None,
              threshold: Optional[int] = None,
              ttl: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'subKey' in kwargs:
+        if sub_key is None and 'subKey' in kwargs:
             sub_key = kwargs['subKey']
 
         if interval is not None:
@@ -4373,7 +4395,7 @@ class WafRuleRateLimitStatus(dict):
              code: Optional[str] = None,
              count: Optional[int] = None,
              ratio: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if code is not None:
@@ -4455,32 +4477,56 @@ class GetDomainsDomainResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert_name: str,
-             cname: str,
-             description: str,
-             domain_name: str,
-             gmt_modified: str,
-             id: str,
-             resource_group_id: str,
-             scope: str,
-             sources: Sequence['outputs.GetDomainsDomainSourceResult'],
-             ssl_protocol: str,
-             ssl_pub: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cert_name: Optional[str] = None,
+             cname: Optional[str] = None,
+             description: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             gmt_modified: Optional[str] = None,
+             id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             scope: Optional[str] = None,
+             sources: Optional[Sequence['outputs.GetDomainsDomainSourceResult']] = None,
+             ssl_protocol: Optional[str] = None,
+             ssl_pub: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certName' in kwargs:
+        if cert_name is None and 'certName' in kwargs:
             cert_name = kwargs['certName']
-        if 'domainName' in kwargs:
+        if cert_name is None:
+            raise TypeError("Missing 'cert_name' argument")
+        if cname is None:
+            raise TypeError("Missing 'cname' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'gmtModified' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if gmt_modified is None and 'gmtModified' in kwargs:
             gmt_modified = kwargs['gmtModified']
-        if 'resourceGroupId' in kwargs:
+        if gmt_modified is None:
+            raise TypeError("Missing 'gmt_modified' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'sslProtocol' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if scope is None:
+            raise TypeError("Missing 'scope' argument")
+        if sources is None:
+            raise TypeError("Missing 'sources' argument")
+        if ssl_protocol is None and 'sslProtocol' in kwargs:
             ssl_protocol = kwargs['sslProtocol']
-        if 'sslPub' in kwargs:
+        if ssl_protocol is None:
+            raise TypeError("Missing 'ssl_protocol' argument")
+        if ssl_pub is None and 'sslPub' in kwargs:
             ssl_pub = kwargs['sslPub']
+        if ssl_pub is None:
+            raise TypeError("Missing 'ssl_pub' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("cert_name", cert_name)
         _setter("cname", cname)
@@ -4621,14 +4667,26 @@ class GetDomainsDomainSourceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: str,
-             enabled: str,
-             port: int,
-             priority: str,
-             type: str,
-             weight: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             content: Optional[str] = None,
+             enabled: Optional[str] = None,
+             port: Optional[int] = None,
+             priority: Optional[str] = None,
+             type: Optional[str] = None,
+             weight: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
 
         _setter("content", content)
         _setter("enabled", enabled)
@@ -4733,32 +4791,56 @@ class GetIpaDomainsDomainResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert_name: str,
-             cname: str,
-             create_time: str,
-             description: str,
-             domain_name: str,
-             id: str,
-             resource_group_id: str,
-             scope: str,
-             sources: Sequence['outputs.GetIpaDomainsDomainSourceResult'],
-             ssl_protocol: str,
-             ssl_pub: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cert_name: Optional[str] = None,
+             cname: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             scope: Optional[str] = None,
+             sources: Optional[Sequence['outputs.GetIpaDomainsDomainSourceResult']] = None,
+             ssl_protocol: Optional[str] = None,
+             ssl_pub: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certName' in kwargs:
+        if cert_name is None and 'certName' in kwargs:
             cert_name = kwargs['certName']
-        if 'createTime' in kwargs:
+        if cert_name is None:
+            raise TypeError("Missing 'cert_name' argument")
+        if cname is None:
+            raise TypeError("Missing 'cname' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'domainName' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'resourceGroupId' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'sslProtocol' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if scope is None:
+            raise TypeError("Missing 'scope' argument")
+        if sources is None:
+            raise TypeError("Missing 'sources' argument")
+        if ssl_protocol is None and 'sslProtocol' in kwargs:
             ssl_protocol = kwargs['sslProtocol']
-        if 'sslPub' in kwargs:
+        if ssl_protocol is None:
+            raise TypeError("Missing 'ssl_protocol' argument")
+        if ssl_pub is None and 'sslPub' in kwargs:
             ssl_pub = kwargs['sslPub']
+        if ssl_pub is None:
+            raise TypeError("Missing 'ssl_pub' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("cert_name", cert_name)
         _setter("cname", cname)
@@ -4896,13 +4978,23 @@ class GetIpaDomainsDomainSourceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: str,
-             port: int,
-             priority: str,
-             type: str,
-             weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             content: Optional[str] = None,
+             port: Optional[int] = None,
+             priority: Optional[str] = None,
+             type: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
 
         _setter("content", content)
         _setter("port", port)
@@ -4974,18 +5066,26 @@ class GetWafDomainsDomainResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_ip_tag: str,
-             defense_scenes: Sequence['outputs.GetWafDomainsDomainDefenseSceneResult'],
-             domain_name: str,
-             id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             client_ip_tag: Optional[str] = None,
+             defense_scenes: Optional[Sequence['outputs.GetWafDomainsDomainDefenseSceneResult']] = None,
+             domain_name: Optional[str] = None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientIpTag' in kwargs:
+        if client_ip_tag is None and 'clientIpTag' in kwargs:
             client_ip_tag = kwargs['clientIpTag']
-        if 'defenseScenes' in kwargs:
+        if client_ip_tag is None:
+            raise TypeError("Missing 'client_ip_tag' argument")
+        if defense_scenes is None and 'defenseScenes' in kwargs:
             defense_scenes = kwargs['defenseScenes']
-        if 'domainName' in kwargs:
+        if defense_scenes is None:
+            raise TypeError("Missing 'defense_scenes' argument")
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
 
         _setter("client_ip_tag", client_ip_tag)
         _setter("defense_scenes", defense_scenes)
@@ -5042,14 +5142,18 @@ class GetWafDomainsDomainDefenseSceneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             defense_scene: str,
-             policy_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             defense_scene: Optional[str] = None,
+             policy_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defenseScene' in kwargs:
+        if defense_scene is None and 'defenseScene' in kwargs:
             defense_scene = kwargs['defenseScene']
-        if 'policyId' in kwargs:
+        if defense_scene is None:
+            raise TypeError("Missing 'defense_scene' argument")
+        if policy_id is None and 'policyId' in kwargs:
             policy_id = kwargs['policyId']
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
 
         _setter("defense_scene", defense_scene)
         _setter("policy_id", policy_id)
@@ -5109,31 +5213,49 @@ class GetWafPoliciesPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dcdn_waf_policy_id: str,
-             defense_scene: str,
-             domain_count: int,
-             gmt_modified: str,
-             id: str,
-             policy_name: str,
-             policy_type: str,
-             rule_count: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             dcdn_waf_policy_id: Optional[str] = None,
+             defense_scene: Optional[str] = None,
+             domain_count: Optional[int] = None,
+             gmt_modified: Optional[str] = None,
+             id: Optional[str] = None,
+             policy_name: Optional[str] = None,
+             policy_type: Optional[str] = None,
+             rule_count: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dcdnWafPolicyId' in kwargs:
+        if dcdn_waf_policy_id is None and 'dcdnWafPolicyId' in kwargs:
             dcdn_waf_policy_id = kwargs['dcdnWafPolicyId']
-        if 'defenseScene' in kwargs:
+        if dcdn_waf_policy_id is None:
+            raise TypeError("Missing 'dcdn_waf_policy_id' argument")
+        if defense_scene is None and 'defenseScene' in kwargs:
             defense_scene = kwargs['defenseScene']
-        if 'domainCount' in kwargs:
+        if defense_scene is None:
+            raise TypeError("Missing 'defense_scene' argument")
+        if domain_count is None and 'domainCount' in kwargs:
             domain_count = kwargs['domainCount']
-        if 'gmtModified' in kwargs:
+        if domain_count is None:
+            raise TypeError("Missing 'domain_count' argument")
+        if gmt_modified is None and 'gmtModified' in kwargs:
             gmt_modified = kwargs['gmtModified']
-        if 'policyName' in kwargs:
+        if gmt_modified is None:
+            raise TypeError("Missing 'gmt_modified' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'policyType' in kwargs:
+        if policy_name is None:
+            raise TypeError("Missing 'policy_name' argument")
+        if policy_type is None and 'policyType' in kwargs:
             policy_type = kwargs['policyType']
-        if 'ruleCount' in kwargs:
+        if policy_type is None:
+            raise TypeError("Missing 'policy_type' argument")
+        if rule_count is None and 'ruleCount' in kwargs:
             rule_count = kwargs['ruleCount']
+        if rule_count is None:
+            raise TypeError("Missing 'rule_count' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("dcdn_waf_policy_id", dcdn_waf_policy_id)
         _setter("defense_scene", defense_scene)
@@ -5286,53 +5408,91 @@ class GetWafRulesWafRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: str,
-             cc_status: str,
-             cn_region_list: str,
-             conditions: Sequence['outputs.GetWafRulesWafRuleConditionResult'],
-             defense_scene: str,
-             effect: str,
-             gmt_modified: str,
-             id: str,
-             other_region_list: str,
-             policy_id: str,
-             rate_limits: Sequence['outputs.GetWafRulesWafRuleRateLimitResult'],
-             regular_rules: Sequence[str],
-             regular_types: Sequence[str],
-             remote_addrs: Sequence[str],
-             rule_name: str,
-             scenes: Sequence[str],
-             status: str,
-             waf_group_ids: str,
-             waf_rule_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             action: Optional[str] = None,
+             cc_status: Optional[str] = None,
+             cn_region_list: Optional[str] = None,
+             conditions: Optional[Sequence['outputs.GetWafRulesWafRuleConditionResult']] = None,
+             defense_scene: Optional[str] = None,
+             effect: Optional[str] = None,
+             gmt_modified: Optional[str] = None,
+             id: Optional[str] = None,
+             other_region_list: Optional[str] = None,
+             policy_id: Optional[str] = None,
+             rate_limits: Optional[Sequence['outputs.GetWafRulesWafRuleRateLimitResult']] = None,
+             regular_rules: Optional[Sequence[str]] = None,
+             regular_types: Optional[Sequence[str]] = None,
+             remote_addrs: Optional[Sequence[str]] = None,
+             rule_name: Optional[str] = None,
+             scenes: Optional[Sequence[str]] = None,
+             status: Optional[str] = None,
+             waf_group_ids: Optional[str] = None,
+             waf_rule_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ccStatus' in kwargs:
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if cc_status is None and 'ccStatus' in kwargs:
             cc_status = kwargs['ccStatus']
-        if 'cnRegionList' in kwargs:
+        if cc_status is None:
+            raise TypeError("Missing 'cc_status' argument")
+        if cn_region_list is None and 'cnRegionList' in kwargs:
             cn_region_list = kwargs['cnRegionList']
-        if 'defenseScene' in kwargs:
+        if cn_region_list is None:
+            raise TypeError("Missing 'cn_region_list' argument")
+        if conditions is None:
+            raise TypeError("Missing 'conditions' argument")
+        if defense_scene is None and 'defenseScene' in kwargs:
             defense_scene = kwargs['defenseScene']
-        if 'gmtModified' in kwargs:
+        if defense_scene is None:
+            raise TypeError("Missing 'defense_scene' argument")
+        if effect is None:
+            raise TypeError("Missing 'effect' argument")
+        if gmt_modified is None and 'gmtModified' in kwargs:
             gmt_modified = kwargs['gmtModified']
-        if 'otherRegionList' in kwargs:
+        if gmt_modified is None:
+            raise TypeError("Missing 'gmt_modified' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if other_region_list is None and 'otherRegionList' in kwargs:
             other_region_list = kwargs['otherRegionList']
-        if 'policyId' in kwargs:
+        if other_region_list is None:
+            raise TypeError("Missing 'other_region_list' argument")
+        if policy_id is None and 'policyId' in kwargs:
             policy_id = kwargs['policyId']
-        if 'rateLimits' in kwargs:
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+        if rate_limits is None and 'rateLimits' in kwargs:
             rate_limits = kwargs['rateLimits']
-        if 'regularRules' in kwargs:
+        if rate_limits is None:
+            raise TypeError("Missing 'rate_limits' argument")
+        if regular_rules is None and 'regularRules' in kwargs:
             regular_rules = kwargs['regularRules']
-        if 'regularTypes' in kwargs:
+        if regular_rules is None:
+            raise TypeError("Missing 'regular_rules' argument")
+        if regular_types is None and 'regularTypes' in kwargs:
             regular_types = kwargs['regularTypes']
-        if 'remoteAddrs' in kwargs:
+        if regular_types is None:
+            raise TypeError("Missing 'regular_types' argument")
+        if remote_addrs is None and 'remoteAddrs' in kwargs:
             remote_addrs = kwargs['remoteAddrs']
-        if 'ruleName' in kwargs:
+        if remote_addrs is None:
+            raise TypeError("Missing 'remote_addrs' argument")
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
-        if 'wafGroupIds' in kwargs:
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
+        if scenes is None:
+            raise TypeError("Missing 'scenes' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if waf_group_ids is None and 'wafGroupIds' in kwargs:
             waf_group_ids = kwargs['wafGroupIds']
-        if 'wafRuleId' in kwargs:
+        if waf_group_ids is None:
+            raise TypeError("Missing 'waf_group_ids' argument")
+        if waf_rule_id is None and 'wafRuleId' in kwargs:
             waf_rule_id = kwargs['wafRuleId']
+        if waf_rule_id is None:
+            raise TypeError("Missing 'waf_rule_id' argument")
 
         _setter("action", action)
         _setter("cc_status", cc_status)
@@ -5530,16 +5690,24 @@ class GetWafRulesWafRuleConditionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             op_value: str,
-             sub_key: str,
-             values: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[str] = None,
+             op_value: Optional[str] = None,
+             sub_key: Optional[str] = None,
+             values: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'opValue' in kwargs:
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if op_value is None and 'opValue' in kwargs:
             op_value = kwargs['opValue']
-        if 'subKey' in kwargs:
+        if op_value is None:
+            raise TypeError("Missing 'op_value' argument")
+        if sub_key is None and 'subKey' in kwargs:
             sub_key = kwargs['subKey']
+        if sub_key is None:
+            raise TypeError("Missing 'sub_key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("key", key)
         _setter("op_value", op_value)
@@ -5608,16 +5776,28 @@ class GetWafRulesWafRuleRateLimitResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             interval: int,
-             statuses: Sequence['outputs.GetWafRulesWafRuleRateLimitStatusResult'],
-             sub_key: str,
-             target: str,
-             threshold: int,
-             ttl: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             interval: Optional[int] = None,
+             statuses: Optional[Sequence['outputs.GetWafRulesWafRuleRateLimitStatusResult']] = None,
+             sub_key: Optional[str] = None,
+             target: Optional[str] = None,
+             threshold: Optional[int] = None,
+             ttl: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'subKey' in kwargs:
+        if interval is None:
+            raise TypeError("Missing 'interval' argument")
+        if statuses is None:
+            raise TypeError("Missing 'statuses' argument")
+        if sub_key is None and 'subKey' in kwargs:
             sub_key = kwargs['subKey']
+        if sub_key is None:
+            raise TypeError("Missing 'sub_key' argument")
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if threshold is None:
+            raise TypeError("Missing 'threshold' argument")
+        if ttl is None:
+            raise TypeError("Missing 'ttl' argument")
 
         _setter("interval", interval)
         _setter("statuses", statuses)
@@ -5695,11 +5875,17 @@ class GetWafRulesWafRuleRateLimitStatusResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             code: str,
-             count: int,
-             ratio: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             code: Optional[str] = None,
+             count: Optional[int] = None,
+             ratio: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if code is None:
+            raise TypeError("Missing 'code' argument")
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if ratio is None:
+            raise TypeError("Missing 'ratio' argument")
 
         _setter("code", code)
         _setter("count", count)

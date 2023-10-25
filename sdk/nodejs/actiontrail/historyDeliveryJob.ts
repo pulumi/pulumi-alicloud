@@ -17,28 +17,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** An Alibaba cloud account can only have one running delivery history job at the same time.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tfexample";
- * const exampleRegions = alicloud.getRegions({
- *     current: true,
- * });
- * const exampleAccount = alicloud.getAccount({});
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "tf actiontrail example"});
- * const exampleTrail = new alicloud.actiontrail.Trail("exampleTrail", {
- *     trailName: name,
- *     slsProjectArn: pulumi.all([exampleRegions, exampleAccount, exampleProject.name]).apply(([exampleRegions, exampleAccount, name]) => `acs:log:${exampleRegions.regions?.[0]?.id}:${exampleAccount.id}:project/${name}`),
- * });
- * const exampleHistoryDeliveryJob = new alicloud.actiontrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", {trailName: exampleTrail.id});
- * ```
- *
  * ## Import
  *
  * Actiontrail History Delivery Job can be imported using the id, e.g.

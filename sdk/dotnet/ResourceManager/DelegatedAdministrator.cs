@@ -16,41 +16,6 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// &gt; **NOTE:** Available since v1.181.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var displayName = config.Get("displayName") ?? "EAccount";
-    ///     var exampleFolder = new AliCloud.ResourceManager.Folder("exampleFolder", new()
-    ///     {
-    ///         FolderName = name,
-    ///     });
-    /// 
-    ///     var exampleAccount = new AliCloud.ResourceManager.Account("exampleAccount", new()
-    ///     {
-    ///         DisplayName = displayName,
-    ///         FolderId = exampleFolder.Id,
-    ///     });
-    /// 
-    ///     var exampleDelegatedAdministrator = new AliCloud.ResourceManager.DelegatedAdministrator("exampleDelegatedAdministrator", new()
-    ///     {
-    ///         AccountId = exampleAccount.Id,
-    ///         ServicePrincipal = "cloudfw.aliyuncs.com",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Resource Manager Delegated Administrator can be imported using the id, e.g.

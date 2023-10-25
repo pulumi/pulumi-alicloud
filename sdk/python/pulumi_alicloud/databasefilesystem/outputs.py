@@ -50,9 +50,9 @@ class InstanceEcsList(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              ecs_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ecsId' in kwargs:
+        if ecs_id is None and 'ecsId' in kwargs:
             ecs_id = kwargs['ecsId']
 
         if ecs_id is not None:
@@ -111,37 +111,59 @@ class GetAutoSnapShotPoliciesAutoSnapShotPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             applied_dbfs_number: int,
-             create_time: str,
-             id: str,
-             last_modified: str,
-             policy_id: str,
-             policy_name: str,
-             repeat_weekdays: Sequence[str],
-             retention_days: int,
-             status: str,
-             status_detail: str,
-             time_points: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             applied_dbfs_number: Optional[int] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             last_modified: Optional[str] = None,
+             policy_id: Optional[str] = None,
+             policy_name: Optional[str] = None,
+             repeat_weekdays: Optional[Sequence[str]] = None,
+             retention_days: Optional[int] = None,
+             status: Optional[str] = None,
+             status_detail: Optional[str] = None,
+             time_points: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appliedDbfsNumber' in kwargs:
+        if applied_dbfs_number is None and 'appliedDbfsNumber' in kwargs:
             applied_dbfs_number = kwargs['appliedDbfsNumber']
-        if 'createTime' in kwargs:
+        if applied_dbfs_number is None:
+            raise TypeError("Missing 'applied_dbfs_number' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'lastModified' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if last_modified is None and 'lastModified' in kwargs:
             last_modified = kwargs['lastModified']
-        if 'policyId' in kwargs:
+        if last_modified is None:
+            raise TypeError("Missing 'last_modified' argument")
+        if policy_id is None and 'policyId' in kwargs:
             policy_id = kwargs['policyId']
-        if 'policyName' in kwargs:
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'repeatWeekdays' in kwargs:
+        if policy_name is None:
+            raise TypeError("Missing 'policy_name' argument")
+        if repeat_weekdays is None and 'repeatWeekdays' in kwargs:
             repeat_weekdays = kwargs['repeatWeekdays']
-        if 'retentionDays' in kwargs:
+        if repeat_weekdays is None:
+            raise TypeError("Missing 'repeat_weekdays' argument")
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'statusDetail' in kwargs:
+        if retention_days is None:
+            raise TypeError("Missing 'retention_days' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if status_detail is None and 'statusDetail' in kwargs:
             status_detail = kwargs['statusDetail']
-        if 'timePoints' in kwargs:
+        if status_detail is None:
+            raise TypeError("Missing 'status_detail' argument")
+        if time_points is None and 'timePoints' in kwargs:
             time_points = kwargs['timePoints']
+        if time_points is None:
+            raise TypeError("Missing 'time_points' argument")
 
         _setter("applied_dbfs_number", applied_dbfs_number)
         _setter("create_time", create_time)
@@ -306,49 +328,83 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attach_node_number: int,
-             category: str,
-             create_time: str,
-             dbfs_cluster_id: str,
-             ecs_lists: Sequence['outputs.GetInstancesInstanceEcsListResult'],
-             enable_raid: bool,
-             encryption: bool,
-             id: str,
-             instance_id: str,
-             instance_name: str,
-             kms_key_id: str,
-             payment_type: str,
-             performance_level: str,
-             raid_stripe_unit_number: str,
-             size: int,
-             status: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             attach_node_number: Optional[int] = None,
+             category: Optional[str] = None,
+             create_time: Optional[str] = None,
+             dbfs_cluster_id: Optional[str] = None,
+             ecs_lists: Optional[Sequence['outputs.GetInstancesInstanceEcsListResult']] = None,
+             enable_raid: Optional[bool] = None,
+             encryption: Optional[bool] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             kms_key_id: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             raid_stripe_unit_number: Optional[str] = None,
+             size: Optional[int] = None,
+             status: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'attachNodeNumber' in kwargs:
+        if attach_node_number is None and 'attachNodeNumber' in kwargs:
             attach_node_number = kwargs['attachNodeNumber']
-        if 'createTime' in kwargs:
+        if attach_node_number is None:
+            raise TypeError("Missing 'attach_node_number' argument")
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dbfsClusterId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if dbfs_cluster_id is None and 'dbfsClusterId' in kwargs:
             dbfs_cluster_id = kwargs['dbfsClusterId']
-        if 'ecsLists' in kwargs:
+        if dbfs_cluster_id is None:
+            raise TypeError("Missing 'dbfs_cluster_id' argument")
+        if ecs_lists is None and 'ecsLists' in kwargs:
             ecs_lists = kwargs['ecsLists']
-        if 'enableRaid' in kwargs:
+        if ecs_lists is None:
+            raise TypeError("Missing 'ecs_lists' argument")
+        if enable_raid is None and 'enableRaid' in kwargs:
             enable_raid = kwargs['enableRaid']
-        if 'instanceId' in kwargs:
+        if enable_raid is None:
+            raise TypeError("Missing 'enable_raid' argument")
+        if encryption is None:
+            raise TypeError("Missing 'encryption' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'kmsKeyId' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'paymentType' in kwargs:
+        if kms_key_id is None:
+            raise TypeError("Missing 'kms_key_id' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'performanceLevel' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'raidStripeUnitNumber' in kwargs:
+        if performance_level is None:
+            raise TypeError("Missing 'performance_level' argument")
+        if raid_stripe_unit_number is None and 'raidStripeUnitNumber' in kwargs:
             raid_stripe_unit_number = kwargs['raidStripeUnitNumber']
-        if 'zoneId' in kwargs:
+        if raid_stripe_unit_number is None:
+            raise TypeError("Missing 'raid_stripe_unit_number' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("attach_node_number", attach_node_number)
         _setter("category", category)
@@ -519,11 +575,13 @@ class GetInstancesInstanceEcsListResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ecs_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ecs_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ecsId' in kwargs:
+        if ecs_id is None and 'ecsId' in kwargs:
             ecs_id = kwargs['ecsId']
+        if ecs_id is None:
+            raise TypeError("Missing 'ecs_id' argument")
 
         _setter("ecs_id", ecs_id)
 
@@ -589,40 +647,68 @@ class GetSnapshotsSnapshotResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: str,
-             create_time: str,
-             description: str,
-             id: str,
-             instance_id: str,
-             last_modified_time: str,
-             progress: str,
-             remain_time: int,
-             retention_days: int,
-             snapshot_id: str,
-             snapshot_name: str,
-             snapshot_type: str,
-             source_fs_size: int,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             category: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             last_modified_time: Optional[str] = None,
+             progress: Optional[str] = None,
+             remain_time: Optional[int] = None,
+             retention_days: Optional[int] = None,
+             snapshot_id: Optional[str] = None,
+             snapshot_name: Optional[str] = None,
+             snapshot_type: Optional[str] = None,
+             source_fs_size: Optional[int] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'instanceId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'lastModifiedTime' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
             last_modified_time = kwargs['lastModifiedTime']
-        if 'remainTime' in kwargs:
+        if last_modified_time is None:
+            raise TypeError("Missing 'last_modified_time' argument")
+        if progress is None:
+            raise TypeError("Missing 'progress' argument")
+        if remain_time is None and 'remainTime' in kwargs:
             remain_time = kwargs['remainTime']
-        if 'retentionDays' in kwargs:
+        if remain_time is None:
+            raise TypeError("Missing 'remain_time' argument")
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'snapshotId' in kwargs:
+        if retention_days is None:
+            raise TypeError("Missing 'retention_days' argument")
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
-        if 'snapshotName' in kwargs:
+        if snapshot_id is None:
+            raise TypeError("Missing 'snapshot_id' argument")
+        if snapshot_name is None and 'snapshotName' in kwargs:
             snapshot_name = kwargs['snapshotName']
-        if 'snapshotType' in kwargs:
+        if snapshot_name is None:
+            raise TypeError("Missing 'snapshot_name' argument")
+        if snapshot_type is None and 'snapshotType' in kwargs:
             snapshot_type = kwargs['snapshotType']
-        if 'sourceFsSize' in kwargs:
+        if snapshot_type is None:
+            raise TypeError("Missing 'snapshot_type' argument")
+        if source_fs_size is None and 'sourceFsSize' in kwargs:
             source_fs_size = kwargs['sourceFsSize']
+        if source_fs_size is None:
+            raise TypeError("Missing 'source_fs_size' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("category", category)
         _setter("create_time", create_time)

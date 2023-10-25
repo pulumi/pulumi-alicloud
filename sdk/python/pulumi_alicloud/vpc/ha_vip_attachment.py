@@ -43,20 +43,22 @@ class HAVipAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
              force: Optional[pulumi.Input[bool]] = None,
              ha_vip_id: Optional[pulumi.Input[str]] = None,
              havip_id: Optional[pulumi.Input[str]] = None,
              instance_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'haVipId' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if ha_vip_id is None and 'haVipId' in kwargs:
             ha_vip_id = kwargs['haVipId']
-        if 'havipId' in kwargs:
+        if havip_id is None and 'havipId' in kwargs:
             havip_id = kwargs['havipId']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
 
         _setter("instance_id", instance_id)
@@ -182,15 +184,15 @@ class _HAVipAttachmentState:
              instance_id: Optional[pulumi.Input[str]] = None,
              instance_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'haVipId' in kwargs:
+        if ha_vip_id is None and 'haVipId' in kwargs:
             ha_vip_id = kwargs['haVipId']
-        if 'havipId' in kwargs:
+        if havip_id is None and 'havipId' in kwargs:
             havip_id = kwargs['havipId']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
 
         if force is not None:
@@ -302,54 +304,6 @@ class HAVipAttachment(pulumi.CustomResource):
                  instance_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=example_network.id,
-            zone_id=default.zones[0].id)
-        example_ha_vip = alicloud.vpc.HAVip("exampleHAVip",
-            vswitch_id=example_switch.id,
-            description=name)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup",
-            description=name,
-            vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            availability_zone=default.zones[0].id,
-            vswitch_id=example_switch.id,
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            system_disk_category="cloud_efficiency",
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=5,
-            security_groups=[example_security_group.id],
-            instance_name=name,
-            user_data="echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf")
-        example_ha_vip_attachment = alicloud.vpc.HAVipAttachment("exampleHAVipAttachment",
-            havip_id=example_ha_vip.id,
-            instance_id=example_instance.id)
-        ```
-
         ## Import
 
         VPC Ha Vip Attachment can be imported using the id, e.g.
@@ -378,54 +332,6 @@ class HAVipAttachment(pulumi.CustomResource):
                  args: HAVipAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=example_network.id,
-            zone_id=default.zones[0].id)
-        example_ha_vip = alicloud.vpc.HAVip("exampleHAVip",
-            vswitch_id=example_switch.id,
-            description=name)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup",
-            description=name,
-            vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            availability_zone=default.zones[0].id,
-            vswitch_id=example_switch.id,
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            system_disk_category="cloud_efficiency",
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=5,
-            security_groups=[example_security_group.id],
-            instance_name=name,
-            user_data="echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf")
-        example_ha_vip_attachment = alicloud.vpc.HAVipAttachment("exampleHAVipAttachment",
-            havip_id=example_ha_vip.id,
-            instance_id=example_instance.id)
-        ```
-
         ## Import
 
         VPC Ha Vip Attachment can be imported using the id, e.g.

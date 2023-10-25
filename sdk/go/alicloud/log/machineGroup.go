@@ -17,53 +17,6 @@ import (
 //
 //	[Refer to details](https://www.alibabacloud.com/help/doc-detail/28966.htm)
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
-//				Description: pulumi.String("terraform-example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = log.NewMachineGroup(ctx, "exampleMachineGroup", &log.MachineGroupArgs{
-//				Project:      exampleProject.Name,
-//				IdentifyType: pulumi.String("ip"),
-//				Topic:        pulumi.String("terraform"),
-//				IdentifyLists: pulumi.StringArray{
-//					pulumi.String("10.0.0.1"),
-//					pulumi.String("10.0.0.2"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Module Support
 //
 // You can use the existing sls-logtail module

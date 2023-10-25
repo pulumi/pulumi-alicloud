@@ -56,23 +56,37 @@ class GetAccessGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_group_name: str,
-             access_group_type: str,
-             description: str,
-             id: str,
-             mount_target_count: int,
-             rule_count: int,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_group_name: Optional[str] = None,
+             access_group_type: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             mount_target_count: Optional[int] = None,
+             rule_count: Optional[int] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessGroupName' in kwargs:
+        if access_group_name is None and 'accessGroupName' in kwargs:
             access_group_name = kwargs['accessGroupName']
-        if 'accessGroupType' in kwargs:
+        if access_group_name is None:
+            raise TypeError("Missing 'access_group_name' argument")
+        if access_group_type is None and 'accessGroupType' in kwargs:
             access_group_type = kwargs['accessGroupType']
-        if 'mountTargetCount' in kwargs:
+        if access_group_type is None:
+            raise TypeError("Missing 'access_group_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if mount_target_count is None and 'mountTargetCount' in kwargs:
             mount_target_count = kwargs['mountTargetCount']
-        if 'ruleCount' in kwargs:
+        if mount_target_count is None:
+            raise TypeError("Missing 'mount_target_count' argument")
+        if rule_count is None and 'ruleCount' in kwargs:
             rule_count = kwargs['ruleCount']
+        if rule_count is None:
+            raise TypeError("Missing 'rule_count' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("access_group_name", access_group_name)
         _setter("access_group_type", access_group_type)
@@ -165,21 +179,31 @@ class GetAccessRulesRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_rule_id: str,
-             priority: int,
-             rw_access: str,
-             source_cidr_ip: str,
-             user_access: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_rule_id: Optional[str] = None,
+             priority: Optional[int] = None,
+             rw_access: Optional[str] = None,
+             source_cidr_ip: Optional[str] = None,
+             user_access: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessRuleId' in kwargs:
+        if access_rule_id is None and 'accessRuleId' in kwargs:
             access_rule_id = kwargs['accessRuleId']
-        if 'rwAccess' in kwargs:
+        if access_rule_id is None:
+            raise TypeError("Missing 'access_rule_id' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if rw_access is None and 'rwAccess' in kwargs:
             rw_access = kwargs['rwAccess']
-        if 'sourceCidrIp' in kwargs:
+        if rw_access is None:
+            raise TypeError("Missing 'rw_access' argument")
+        if source_cidr_ip is None and 'sourceCidrIp' in kwargs:
             source_cidr_ip = kwargs['sourceCidrIp']
-        if 'userAccess' in kwargs:
+        if source_cidr_ip is None:
+            raise TypeError("Missing 'source_cidr_ip' argument")
+        if user_access is None and 'userAccess' in kwargs:
             user_access = kwargs['userAccess']
+        if user_access is None:
+            raise TypeError("Missing 'user_access' argument")
 
         _setter("access_rule_id", access_rule_id)
         _setter("priority", priority)
@@ -266,31 +290,49 @@ class GetAutoSnapshotPoliciesPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_snapshot_policy_id: str,
-             auto_snapshot_policy_name: str,
-             create_time: str,
-             file_system_nums: int,
-             id: str,
-             repeat_weekdays: Sequence[str],
-             retention_days: int,
-             status: str,
-             time_points: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auto_snapshot_policy_id: Optional[str] = None,
+             auto_snapshot_policy_name: Optional[str] = None,
+             create_time: Optional[str] = None,
+             file_system_nums: Optional[int] = None,
+             id: Optional[str] = None,
+             repeat_weekdays: Optional[Sequence[str]] = None,
+             retention_days: Optional[int] = None,
+             status: Optional[str] = None,
+             time_points: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoSnapshotPolicyId' in kwargs:
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
             auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if 'autoSnapshotPolicyName' in kwargs:
+        if auto_snapshot_policy_id is None:
+            raise TypeError("Missing 'auto_snapshot_policy_id' argument")
+        if auto_snapshot_policy_name is None and 'autoSnapshotPolicyName' in kwargs:
             auto_snapshot_policy_name = kwargs['autoSnapshotPolicyName']
-        if 'createTime' in kwargs:
+        if auto_snapshot_policy_name is None:
+            raise TypeError("Missing 'auto_snapshot_policy_name' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'fileSystemNums' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if file_system_nums is None and 'fileSystemNums' in kwargs:
             file_system_nums = kwargs['fileSystemNums']
-        if 'repeatWeekdays' in kwargs:
+        if file_system_nums is None:
+            raise TypeError("Missing 'file_system_nums' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if repeat_weekdays is None and 'repeatWeekdays' in kwargs:
             repeat_weekdays = kwargs['repeatWeekdays']
-        if 'retentionDays' in kwargs:
+        if repeat_weekdays is None:
+            raise TypeError("Missing 'repeat_weekdays' argument")
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'timePoints' in kwargs:
+        if retention_days is None:
+            raise TypeError("Missing 'retention_days' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if time_points is None and 'timePoints' in kwargs:
             time_points = kwargs['timePoints']
+        if time_points is None:
+            raise TypeError("Missing 'time_points' argument")
 
         _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         _setter("auto_snapshot_policy_name", auto_snapshot_policy_name)
@@ -425,39 +467,65 @@ class GetDataFlowsFlowResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             data_flow_id: str,
-             description: str,
-             error_message: str,
-             file_system_id: str,
-             file_system_path: str,
-             fset_description: str,
-             fset_id: str,
-             id: str,
-             source_security_type: str,
-             source_storage: str,
-             status: str,
-             throughput: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             data_flow_id: Optional[str] = None,
+             description: Optional[str] = None,
+             error_message: Optional[str] = None,
+             file_system_id: Optional[str] = None,
+             file_system_path: Optional[str] = None,
+             fset_description: Optional[str] = None,
+             fset_id: Optional[str] = None,
+             id: Optional[str] = None,
+             source_security_type: Optional[str] = None,
+             source_storage: Optional[str] = None,
+             status: Optional[str] = None,
+             throughput: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dataFlowId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if data_flow_id is None and 'dataFlowId' in kwargs:
             data_flow_id = kwargs['dataFlowId']
-        if 'errorMessage' in kwargs:
+        if data_flow_id is None:
+            raise TypeError("Missing 'data_flow_id' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if error_message is None and 'errorMessage' in kwargs:
             error_message = kwargs['errorMessage']
-        if 'fileSystemId' in kwargs:
+        if error_message is None:
+            raise TypeError("Missing 'error_message' argument")
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'fileSystemPath' in kwargs:
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if file_system_path is None and 'fileSystemPath' in kwargs:
             file_system_path = kwargs['fileSystemPath']
-        if 'fsetDescription' in kwargs:
+        if file_system_path is None:
+            raise TypeError("Missing 'file_system_path' argument")
+        if fset_description is None and 'fsetDescription' in kwargs:
             fset_description = kwargs['fsetDescription']
-        if 'fsetId' in kwargs:
+        if fset_description is None:
+            raise TypeError("Missing 'fset_description' argument")
+        if fset_id is None and 'fsetId' in kwargs:
             fset_id = kwargs['fsetId']
-        if 'sourceSecurityType' in kwargs:
+        if fset_id is None:
+            raise TypeError("Missing 'fset_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if source_security_type is None and 'sourceSecurityType' in kwargs:
             source_security_type = kwargs['sourceSecurityType']
-        if 'sourceStorage' in kwargs:
+        if source_security_type is None:
+            raise TypeError("Missing 'source_security_type' argument")
+        if source_storage is None and 'sourceStorage' in kwargs:
             source_storage = kwargs['sourceStorage']
+        if source_storage is None:
+            raise TypeError("Missing 'source_storage' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if throughput is None:
+            raise TypeError("Missing 'throughput' argument")
 
         _setter("create_time", create_time)
         _setter("data_flow_id", data_flow_id)
@@ -633,38 +701,62 @@ class GetFileSystemsSystemResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             capacity: int,
-             create_time: str,
-             description: str,
-             encrypt_type: int,
-             file_system_type: str,
-             id: str,
-             kms_key_id: str,
-             metered_size: int,
-             protocol_type: str,
-             region_id: str,
-             storage_type: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             capacity: Optional[int] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             encrypt_type: Optional[int] = None,
+             file_system_type: Optional[str] = None,
+             id: Optional[str] = None,
+             kms_key_id: Optional[str] = None,
+             metered_size: Optional[int] = None,
+             protocol_type: Optional[str] = None,
+             region_id: Optional[str] = None,
+             storage_type: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if capacity is None:
+            raise TypeError("Missing 'capacity' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'encryptType' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if encrypt_type is None and 'encryptType' in kwargs:
             encrypt_type = kwargs['encryptType']
-        if 'fileSystemType' in kwargs:
+        if encrypt_type is None:
+            raise TypeError("Missing 'encrypt_type' argument")
+        if file_system_type is None and 'fileSystemType' in kwargs:
             file_system_type = kwargs['fileSystemType']
-        if 'kmsKeyId' in kwargs:
+        if file_system_type is None:
+            raise TypeError("Missing 'file_system_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'meteredSize' in kwargs:
+        if kms_key_id is None:
+            raise TypeError("Missing 'kms_key_id' argument")
+        if metered_size is None and 'meteredSize' in kwargs:
             metered_size = kwargs['meteredSize']
-        if 'protocolType' in kwargs:
+        if metered_size is None:
+            raise TypeError("Missing 'metered_size' argument")
+        if protocol_type is None and 'protocolType' in kwargs:
             protocol_type = kwargs['protocolType']
-        if 'regionId' in kwargs:
+        if protocol_type is None:
+            raise TypeError("Missing 'protocol_type' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'storageType' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
-        if 'zoneId' in kwargs:
+        if storage_type is None:
+            raise TypeError("Missing 'storage_type' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("capacity", capacity)
         _setter("create_time", create_time)
@@ -819,26 +911,42 @@ class GetFilesetsFilesetResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             description: str,
-             file_system_id: str,
-             file_system_path: str,
-             fileset_id: str,
-             id: str,
-             status: str,
-             update_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             file_system_id: Optional[str] = None,
+             file_system_path: Optional[str] = None,
+             fileset_id: Optional[str] = None,
+             id: Optional[str] = None,
+             status: Optional[str] = None,
+             update_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'fileSystemId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'fileSystemPath' in kwargs:
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if file_system_path is None and 'fileSystemPath' in kwargs:
             file_system_path = kwargs['fileSystemPath']
-        if 'filesetId' in kwargs:
+        if file_system_path is None:
+            raise TypeError("Missing 'file_system_path' argument")
+        if fileset_id is None and 'filesetId' in kwargs:
             fileset_id = kwargs['filesetId']
-        if 'updateTime' in kwargs:
+        if fileset_id is None:
+            raise TypeError("Missing 'fileset_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
+        if update_time is None:
+            raise TypeError("Missing 'update_time' argument")
 
         _setter("create_time", create_time)
         _setter("description", description)
@@ -946,25 +1054,39 @@ class GetLifecyclePoliciesPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             file_system_id: str,
-             id: str,
-             lifecycle_policy_name: str,
-             lifecycle_rule_name: str,
-             paths: Sequence[str],
-             storage_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             file_system_id: Optional[str] = None,
+             id: Optional[str] = None,
+             lifecycle_policy_name: Optional[str] = None,
+             lifecycle_rule_name: Optional[str] = None,
+             paths: Optional[Sequence[str]] = None,
+             storage_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'fileSystemId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'lifecyclePolicyName' in kwargs:
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if lifecycle_policy_name is None and 'lifecyclePolicyName' in kwargs:
             lifecycle_policy_name = kwargs['lifecyclePolicyName']
-        if 'lifecycleRuleName' in kwargs:
+        if lifecycle_policy_name is None:
+            raise TypeError("Missing 'lifecycle_policy_name' argument")
+        if lifecycle_rule_name is None and 'lifecycleRuleName' in kwargs:
             lifecycle_rule_name = kwargs['lifecycleRuleName']
-        if 'storageType' in kwargs:
+        if lifecycle_rule_name is None:
+            raise TypeError("Missing 'lifecycle_rule_name' argument")
+        if paths is None:
+            raise TypeError("Missing 'paths' argument")
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
+        if storage_type is None:
+            raise TypeError("Missing 'storage_type' argument")
 
         _setter("create_time", create_time)
         _setter("file_system_id", file_system_id)
@@ -1066,26 +1188,42 @@ class GetMountTargetsTargetResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_group_name: str,
-             id: str,
-             mount_target_domain: str,
-             network_type: str,
-             status: str,
-             type: str,
-             vpc_id: str,
-             vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_group_name: Optional[str] = None,
+             id: Optional[str] = None,
+             mount_target_domain: Optional[str] = None,
+             network_type: Optional[str] = None,
+             status: Optional[str] = None,
+             type: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessGroupName' in kwargs:
+        if access_group_name is None and 'accessGroupName' in kwargs:
             access_group_name = kwargs['accessGroupName']
-        if 'mountTargetDomain' in kwargs:
+        if access_group_name is None:
+            raise TypeError("Missing 'access_group_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if mount_target_domain is None and 'mountTargetDomain' in kwargs:
             mount_target_domain = kwargs['mountTargetDomain']
-        if 'networkType' in kwargs:
+        if mount_target_domain is None:
+            raise TypeError("Missing 'mount_target_domain' argument")
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'vpcId' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("access_group_name", access_group_name)
         _setter("id", id)
@@ -1211,39 +1349,65 @@ class GetSnapshotsSnapshotResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             description: str,
-             encrypt_type: int,
-             id: str,
-             progress: str,
-             remain_time: int,
-             retention_days: int,
-             snapshot_id: str,
-             snapshot_name: str,
-             source_file_system_id: str,
-             source_file_system_size: str,
-             source_file_system_version: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             encrypt_type: Optional[int] = None,
+             id: Optional[str] = None,
+             progress: Optional[str] = None,
+             remain_time: Optional[int] = None,
+             retention_days: Optional[int] = None,
+             snapshot_id: Optional[str] = None,
+             snapshot_name: Optional[str] = None,
+             source_file_system_id: Optional[str] = None,
+             source_file_system_size: Optional[str] = None,
+             source_file_system_version: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'encryptType' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if encrypt_type is None and 'encryptType' in kwargs:
             encrypt_type = kwargs['encryptType']
-        if 'remainTime' in kwargs:
+        if encrypt_type is None:
+            raise TypeError("Missing 'encrypt_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if progress is None:
+            raise TypeError("Missing 'progress' argument")
+        if remain_time is None and 'remainTime' in kwargs:
             remain_time = kwargs['remainTime']
-        if 'retentionDays' in kwargs:
+        if remain_time is None:
+            raise TypeError("Missing 'remain_time' argument")
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'snapshotId' in kwargs:
+        if retention_days is None:
+            raise TypeError("Missing 'retention_days' argument")
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
-        if 'snapshotName' in kwargs:
+        if snapshot_id is None:
+            raise TypeError("Missing 'snapshot_id' argument")
+        if snapshot_name is None and 'snapshotName' in kwargs:
             snapshot_name = kwargs['snapshotName']
-        if 'sourceFileSystemId' in kwargs:
+        if snapshot_name is None:
+            raise TypeError("Missing 'snapshot_name' argument")
+        if source_file_system_id is None and 'sourceFileSystemId' in kwargs:
             source_file_system_id = kwargs['sourceFileSystemId']
-        if 'sourceFileSystemSize' in kwargs:
+        if source_file_system_id is None:
+            raise TypeError("Missing 'source_file_system_id' argument")
+        if source_file_system_size is None and 'sourceFileSystemSize' in kwargs:
             source_file_system_size = kwargs['sourceFileSystemSize']
-        if 'sourceFileSystemVersion' in kwargs:
+        if source_file_system_size is None:
+            raise TypeError("Missing 'source_file_system_size' argument")
+        if source_file_system_version is None and 'sourceFileSystemVersion' in kwargs:
             source_file_system_version = kwargs['sourceFileSystemVersion']
+        if source_file_system_version is None:
+            raise TypeError("Missing 'source_file_system_version' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("create_time", create_time)
         _setter("description", description)
@@ -1381,14 +1545,18 @@ class GetZonesZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_types: Sequence['outputs.GetZonesZoneInstanceTypeResult'],
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             instance_types: Optional[Sequence['outputs.GetZonesZoneInstanceTypeResult']] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceTypes' in kwargs:
+        if instance_types is None and 'instanceTypes' in kwargs:
             instance_types = kwargs['instanceTypes']
-        if 'zoneId' in kwargs:
+        if instance_types is None:
+            raise TypeError("Missing 'instance_types' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("instance_types", instance_types)
         _setter("zone_id", zone_id)
@@ -1427,14 +1595,18 @@ class GetZonesZoneInstanceTypeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             protocol_type: str,
-             storage_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             protocol_type: Optional[str] = None,
+             storage_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'protocolType' in kwargs:
+        if protocol_type is None and 'protocolType' in kwargs:
             protocol_type = kwargs['protocolType']
-        if 'storageType' in kwargs:
+        if protocol_type is None:
+            raise TypeError("Missing 'protocol_type' argument")
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
+        if storage_type is None:
+            raise TypeError("Missing 'storage_type' argument")
 
         _setter("protocol_type", protocol_type)
         _setter("storage_type", storage_type)

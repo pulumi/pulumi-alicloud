@@ -9,23 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.76.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.kms.Secret("default", {
- *     description: "from terraform",
- *     forceDeleteWithoutRecovery: true,
- *     secretData: "Secret data.",
- *     secretName: "secret-foo",
- *     versionId: "000000000001",
- * });
- * ```
- *
  * ## Import
  *
  * KMS secret can be imported using the id, e.g.

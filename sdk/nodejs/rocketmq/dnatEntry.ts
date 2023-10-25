@@ -13,27 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const sagId = config.get("sagId") || "sag-9bifkfaz***";
- * const _default = new alicloud.rocketmq.DnatEntry("default", {
- *     sagId: sagId,
- *     type: "Intranet",
- *     ipProtocol: "any",
- *     externalIp: "172.32.0.2",
- *     externalPort: "any",
- *     internalIp: "172.16.0.4",
- *     internalPort: "any",
- * });
- * ```
- *
  * ## Import
  *
  * The Sag DnatEntry can be imported using the id, e.g.

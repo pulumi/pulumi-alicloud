@@ -106,16 +106,6 @@ def get_groups(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the api groups of the current Alibaba Cloud user.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    data_apigatway = alicloud.apigateway.get_groups(output_file="outgroups")
-    pulumi.export("firstGroupId", data_apigatway.groups[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of api group IDs.
     :param str name_regex: A regex string to filter api gateway groups by name.
@@ -144,16 +134,6 @@ def get_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
     """
     This data source provides the api groups of the current Alibaba Cloud user.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    data_apigatway = alicloud.apigateway.get_groups(output_file="outgroups")
-    pulumi.export("firstGroupId", data_apigatway.groups[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of api group IDs.

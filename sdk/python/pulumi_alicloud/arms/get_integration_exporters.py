@@ -109,20 +109,6 @@ def get_integration_exporters(cluster_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.203.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.arms.get_integration_exporters(ids=["example_id"],
-        cluster_id="your_cluster_id",
-        integration_type="kafka")
-    pulumi.export("armsIntegrationExportersId1", ids.integration_exporters[0].id)
-    ```
-
 
     :param str cluster_id: The ID of the Prometheus instance.
     :param Sequence[str] ids: A list of Integration Exporter IDs.
@@ -156,20 +142,6 @@ def get_integration_exporters_output(cluster_id: Optional[pulumi.Input[str]] = N
     This data source provides the Arms Integration Exporters of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.203.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.arms.get_integration_exporters(ids=["example_id"],
-        cluster_id="your_cluster_id",
-        integration_type="kafka")
-    pulumi.export("armsIntegrationExportersId1", ids.integration_exporters[0].id)
-    ```
 
 
     :param str cluster_id: The ID of the Prometheus instance.

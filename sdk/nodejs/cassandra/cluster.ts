@@ -17,30 +17,6 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
  *
  * ## Example Usage
- * ### Create a cassandra cluster
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.cassandra.Cluster("default", {
- *     autoRenew: false,
- *     clusterName: "cassandra-cluster-name-tf",
- *     dataCenterName: "dc-1",
- *     diskSize: 160,
- *     diskType: "cloud_ssd",
- *     instanceType: "cassandra.c.large",
- *     ipWhite: "127.0.0.1",
- *     maintainEndTime: "20:00Z",
- *     maintainStartTime: "18:00Z",
- *     majorVersion: "3.11",
- *     nodeCount: 2,
- *     payType: "PayAsYouGo",
- *     vswitchId: "vsw-xxxx",
- * });
- * ```
- *
- * This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
  *
  * ## Import
  *

@@ -109,20 +109,6 @@ def get_access_points(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.132.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.expressconnect.get_access_points(ids=["ap-cn-hangzhou-yh-C"])
-    pulumi.export("expressConnectAccessPointId1", ids.points[0].id)
-    name_regex = alicloud.expressconnect.get_access_points(name_regex="^杭州-")
-    pulumi.export("expressConnectAccessPointId2", name_regex.points[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Access Point IDs.
     :param str name_regex: A regex string to filter results by Access Point name.
@@ -157,20 +143,6 @@ def get_access_points_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.132.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.expressconnect.get_access_points(ids=["ap-cn-hangzhou-yh-C"])
-    pulumi.export("expressConnectAccessPointId1", ids.points[0].id)
-    name_regex = alicloud.expressconnect.get_access_points(name_regex="^杭州-")
-    pulumi.export("expressConnectAccessPointId2", name_regex.points[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Access Point IDs.

@@ -32,14 +32,18 @@ class EnterpriseLogicDatabaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alias: pulumi.Input[str],
-             database_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             alias: Optional[pulumi.Input[str]] = None,
+             database_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              logic_database_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'databaseIds' in kwargs:
+        if alias is None:
+            raise TypeError("Missing 'alias' argument")
+        if database_ids is None and 'databaseIds' in kwargs:
             database_ids = kwargs['databaseIds']
-        if 'logicDatabaseId' in kwargs:
+        if database_ids is None:
+            raise TypeError("Missing 'database_ids' argument")
+        if logic_database_id is None and 'logicDatabaseId' in kwargs:
             logic_database_id = kwargs['logicDatabaseId']
 
         _setter("alias", alias)
@@ -136,23 +140,23 @@ class _EnterpriseLogicDatabaseState:
              owner_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              schema_name: Optional[pulumi.Input[str]] = None,
              search_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'databaseIds' in kwargs:
+        if database_ids is None and 'databaseIds' in kwargs:
             database_ids = kwargs['databaseIds']
-        if 'dbType' in kwargs:
+        if db_type is None and 'dbType' in kwargs:
             db_type = kwargs['dbType']
-        if 'envType' in kwargs:
+        if env_type is None and 'envType' in kwargs:
             env_type = kwargs['envType']
-        if 'logicDatabaseId' in kwargs:
+        if logic_database_id is None and 'logicDatabaseId' in kwargs:
             logic_database_id = kwargs['logicDatabaseId']
-        if 'ownerIdLists' in kwargs:
+        if owner_id_lists is None and 'ownerIdLists' in kwargs:
             owner_id_lists = kwargs['ownerIdLists']
-        if 'ownerNameLists' in kwargs:
+        if owner_name_lists is None and 'ownerNameLists' in kwargs:
             owner_name_lists = kwargs['ownerNameLists']
-        if 'schemaName' in kwargs:
+        if schema_name is None and 'schemaName' in kwargs:
             schema_name = kwargs['schemaName']
-        if 'searchName' in kwargs:
+        if search_name is None and 'searchName' in kwargs:
             search_name = kwargs['searchName']
 
         if alias is not None:
@@ -313,22 +317,6 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.195.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.dms.EnterpriseLogicDatabase("default",
-            alias="TF_logic_db_test",
-            database_ids=[
-                "35617919",
-                "35617920",
-            ])
-        ```
-
         ## Import
 
         DMS Enterprise Logic Database can be imported using the id, e.g.
@@ -355,22 +343,6 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
         For information about DMS Enterprise Logic Database and how to use it, see [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
 
         > **NOTE:** Available in v1.195.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.dms.EnterpriseLogicDatabase("default",
-            alias="TF_logic_db_test",
-            database_ids=[
-                "35617919",
-                "35617920",
-            ])
-        ```
 
         ## Import
 

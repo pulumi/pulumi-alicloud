@@ -16,35 +16,6 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// &gt; **NOTE:** Available since v1.151.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Dns.CustomLine("default", new()
-    ///     {
-    ///         CustomLineName = "tf-example",
-    ///         DomainName = "alicloud-provider.com",
-    ///         IpSegmentLists = new[]
-    ///         {
-    ///             new AliCloud.Dns.Inputs.CustomLineIpSegmentListArgs
-    ///             {
-    ///                 EndIp = "192.0.2.125",
-    ///                 StartIp = "192.0.2.123",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Alidns Custom Line can be imported using the id, e.g.

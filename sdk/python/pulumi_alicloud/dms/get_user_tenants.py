@@ -111,16 +111,6 @@ def get_user_tenants(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.161.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.dms.get_user_tenants(status="ACTIVE")
-    pulumi.export("tid", default.ids[0])
-    ```
-
 
     :param Sequence[str] ids: A list of DMS User Tenant IDs (TID).
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -151,16 +141,6 @@ def get_user_tenants_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     This data source provides a list of DMS User Tenants in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in 1.161.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.dms.get_user_tenants(status="ACTIVE")
-    pulumi.export("tid", default.ids[0])
-    ```
 
 
     :param Sequence[str] ids: A list of DMS User Tenant IDs (TID).

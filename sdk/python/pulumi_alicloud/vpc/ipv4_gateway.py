@@ -44,24 +44,26 @@ class Ipv4GatewayArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vpc_id: pulumi.Input[str],
+             vpc_id: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              ipv4_gateway_description: Optional[pulumi.Input[str]] = None,
              ipv4_gateway_name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'dryRun' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'ipv4GatewayDescription' in kwargs:
+        if ipv4_gateway_description is None and 'ipv4GatewayDescription' in kwargs:
             ipv4_gateway_description = kwargs['ipv4GatewayDescription']
-        if 'ipv4GatewayName' in kwargs:
+        if ipv4_gateway_name is None and 'ipv4GatewayName' in kwargs:
             ipv4_gateway_name = kwargs['ipv4GatewayName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("vpc_id", vpc_id)
@@ -219,23 +221,23 @@ class _Ipv4GatewayState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'ipv4GatewayDescription' in kwargs:
+        if ipv4_gateway_description is None and 'ipv4GatewayDescription' in kwargs:
             ipv4_gateway_description = kwargs['ipv4GatewayDescription']
-        if 'ipv4GatewayId' in kwargs:
+        if ipv4_gateway_id is None and 'ipv4GatewayId' in kwargs:
             ipv4_gateway_id = kwargs['ipv4GatewayId']
-        if 'ipv4GatewayName' in kwargs:
+        if ipv4_gateway_name is None and 'ipv4GatewayName' in kwargs:
             ipv4_gateway_name = kwargs['ipv4GatewayName']
-        if 'ipv4GatewayRouteTableId' in kwargs:
+        if ipv4_gateway_route_table_id is None and 'ipv4GatewayRouteTableId' in kwargs:
             ipv4_gateway_route_table_id = kwargs['ipv4GatewayRouteTableId']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if create_time is not None:
@@ -414,34 +416,6 @@ class Ipv4Gateway(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.181.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testacc-example"
-        default_resource_group = alicloud.resourcemanager.ResourceGroup("defaultResourceGroup",
-            display_name="tf-testAcc-rg665",
-            resource_group_name=name)
-        modify = alicloud.resourcemanager.ResourceGroup("modify",
-            display_name="tf-testAcc-rg298",
-            resource_group_name=f"{name}1")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=f"{name}2",
-            cidr_block="10.0.0.0/8")
-        default_ipv4_gateway = alicloud.vpc.Ipv4Gateway("defaultIpv4Gateway",
-            ipv4_gateway_name=name,
-            ipv4_gateway_description="tf-testAcc-Ipv4Gateway",
-            resource_group_id=default_resource_group.id,
-            vpc_id=default_network.id)
-        ```
-
         ## Import
 
         Vpc Ipv4 Gateway can be imported using the id, e.g.
@@ -472,34 +446,6 @@ class Ipv4Gateway(pulumi.CustomResource):
         For information about Vpc Ipv4 Gateway and how to use it, see [What is Ipv4 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv4gateway).
 
         > **NOTE:** Available in v1.181.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testacc-example"
-        default_resource_group = alicloud.resourcemanager.ResourceGroup("defaultResourceGroup",
-            display_name="tf-testAcc-rg665",
-            resource_group_name=name)
-        modify = alicloud.resourcemanager.ResourceGroup("modify",
-            display_name="tf-testAcc-rg298",
-            resource_group_name=f"{name}1")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=f"{name}2",
-            cidr_block="10.0.0.0/8")
-        default_ipv4_gateway = alicloud.vpc.Ipv4Gateway("defaultIpv4Gateway",
-            ipv4_gateway_name=name,
-            ipv4_gateway_description="tf-testAcc-Ipv4Gateway",
-            resource_group_id=default_resource_group.id,
-            vpc_id=default_network.id)
-        ```
 
         ## Import
 

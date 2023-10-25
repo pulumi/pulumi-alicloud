@@ -32,16 +32,18 @@ class PublishTaskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             biz_type: pulumi.Input[str],
+             biz_type: Optional[pulumi.Input[str]] = None,
              agent_key: Optional[pulumi.Input[str]] = None,
              data_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bizType' in kwargs:
+        if biz_type is None and 'bizType' in kwargs:
             biz_type = kwargs['bizType']
-        if 'agentKey' in kwargs:
+        if biz_type is None:
+            raise TypeError("Missing 'biz_type' argument")
+        if agent_key is None and 'agentKey' in kwargs:
             agent_key = kwargs['agentKey']
-        if 'dataIdLists' in kwargs:
+        if data_id_lists is None and 'dataIdLists' in kwargs:
             data_id_lists = kwargs['dataIdLists']
 
         _setter("biz_type", biz_type)
@@ -123,17 +125,17 @@ class _PublishTaskState:
              data_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              modify_time: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'agentKey' in kwargs:
+        if agent_key is None and 'agentKey' in kwargs:
             agent_key = kwargs['agentKey']
-        if 'bizType' in kwargs:
+        if biz_type is None and 'bizType' in kwargs:
             biz_type = kwargs['bizType']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dataIdLists' in kwargs:
+        if data_id_lists is None and 'dataIdLists' in kwargs:
             data_id_lists = kwargs['dataIdLists']
-        if 'modifyTime' in kwargs:
+        if modify_time is None and 'modifyTime' in kwargs:
             modify_time = kwargs['modifyTime']
 
         if agent_key is not None:
@@ -238,20 +240,6 @@ class PublishTask(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.203.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_agents = alicloud.chatbot.get_agents()
-        default_publish_task = alicloud.chatbot.PublishTask("defaultPublishTask",
-            biz_type="faq",
-            agent_key=default_agents.agents[0].agent_key)
-        ```
-
         ## Import
 
         Chatbot Publish Task can be imported using the id, e.g.
@@ -278,20 +266,6 @@ class PublishTask(pulumi.CustomResource):
         For information about Chatbot Publish Task and how to use it, see [What is Publish Task](https://help.aliyun.com/document_detail/433996.html).
 
         > **NOTE:** Available in v1.203.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_agents = alicloud.chatbot.get_agents()
-        default_publish_task = alicloud.chatbot.PublishTask("defaultPublishTask",
-            biz_type="faq",
-            agent_key=default_agents.agents[0].agent_key)
-        ```
 
         ## Import
 

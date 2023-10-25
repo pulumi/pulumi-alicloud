@@ -109,17 +109,6 @@ def get_resource_groups(db_cluster_id: Optional[str] = None,
 
     > **NOTE:** Available since v1.195.0.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.adb.get_resource_groups(db_cluster_id="am-bp1a16357gty69185",
-        group_name="TESTOPENAPI")
-    pulumi.export("alicloudAdbResourceGroupExampleId", default.groups[0].id)
-    ```
-
 
     :param str db_cluster_id: DBClusterId
     :param str group_name: The name of the resource pool, which cannot exceed 64 bytes in length.
@@ -153,17 +142,6 @@ def get_resource_groups_output(db_cluster_id: Optional[pulumi.Input[str]] = None
     This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describedbresourcegroup)
 
     > **NOTE:** Available since v1.195.0.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.adb.get_resource_groups(db_cluster_id="am-bp1a16357gty69185",
-        group_name="TESTOPENAPI")
-    pulumi.export("alicloudAdbResourceGroupExampleId", default.groups[0].id)
-    ```
 
 
     :param str db_cluster_id: DBClusterId

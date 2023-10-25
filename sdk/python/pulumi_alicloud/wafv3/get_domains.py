@@ -146,23 +146,6 @@ def get_domains(backend: Optional[str] = None,
 
     > **NOTE:** Available since v1.200.0.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_instances = alicloud.wafv3.get_instances()
-    ids = alicloud.wafv3.get_domains(instance_id=default_instances.ids[0],
-        ids=["example_id"])
-    pulumi.export("wafv3DomainsId1", ids.domains[0].id)
-    default_domains = alicloud.wafv3.get_domains(instance_id=default_instances.ids[0],
-        domain="zctest12.wafqax.top")
-    pulumi.export("wafv3DomainsId2", default_domains.domains[0].id)
-    ```
-
 
     :param str backend: The address type of the origin server. The address can be an IP address or a domain name. You can specify only one type of address.
     :param str domain: The name of the domain name to query.
@@ -210,23 +193,6 @@ def get_domains_output(backend: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
 
     > **NOTE:** Available since v1.200.0.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_instances = alicloud.wafv3.get_instances()
-    ids = alicloud.wafv3.get_domains(instance_id=default_instances.ids[0],
-        ids=["example_id"])
-    pulumi.export("wafv3DomainsId1", ids.domains[0].id)
-    default_domains = alicloud.wafv3.get_domains(instance_id=default_instances.ids[0],
-        domain="zctest12.wafqax.top")
-    pulumi.export("wafv3DomainsId2", default_domains.domains[0].id)
-    ```
 
 
     :param str backend: The address type of the origin server. The address can be an IP address or a domain name. You can specify only one type of address.

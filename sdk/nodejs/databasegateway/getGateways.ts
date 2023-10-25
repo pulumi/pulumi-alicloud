@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.135.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.databasegateway.getGateways({
- *     ids: ["example_id"],
- * });
- * export const databaseGatewayGatewayId1 = ids.then(ids => ids.gateways?.[0]?.id);
- * const nameRegex = alicloud.databasegateway.getGateways({
- *     nameRegex: "^my-Gateway",
- * });
- * export const databaseGatewayGatewayId2 = nameRegex.then(nameRegex => nameRegex.gateways?.[0]?.id);
- * ```
  */
 export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
     args = args || {};
@@ -94,24 +76,6 @@ export interface GetGatewaysResult {
  * This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.135.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.databasegateway.getGateways({
- *     ids: ["example_id"],
- * });
- * export const databaseGatewayGatewayId1 = ids.then(ids => ids.gateways?.[0]?.id);
- * const nameRegex = alicloud.databasegateway.getGateways({
- *     nameRegex: "^my-Gateway",
- * });
- * export const databaseGatewayGatewayId2 = nameRegex.then(nameRegex => nameRegex.gateways?.[0]?.id);
- * ```
  */
 export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
     return pulumi.output(args).apply((a: any) => getGateways(a, opts))

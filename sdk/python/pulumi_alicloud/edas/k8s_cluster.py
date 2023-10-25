@@ -29,13 +29,15 @@ class K8sClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cs_cluster_id: pulumi.Input[str],
+             cs_cluster_id: Optional[pulumi.Input[str]] = None,
              namespace_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'csClusterId' in kwargs:
+        if cs_cluster_id is None and 'csClusterId' in kwargs:
             cs_cluster_id = kwargs['csClusterId']
-        if 'namespaceId' in kwargs:
+        if cs_cluster_id is None:
+            raise TypeError("Missing 'cs_cluster_id' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
 
         _setter("cs_cluster_id", cs_cluster_id)
@@ -111,21 +113,21 @@ class _K8sClusterState:
              namespace_id: Optional[pulumi.Input[str]] = None,
              network_mode: Optional[pulumi.Input[int]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterImportStatus' in kwargs:
+        if cluster_import_status is None and 'clusterImportStatus' in kwargs:
             cluster_import_status = kwargs['clusterImportStatus']
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'clusterType' in kwargs:
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'csClusterId' in kwargs:
+        if cs_cluster_id is None and 'csClusterId' in kwargs:
             cs_cluster_id = kwargs['csClusterId']
-        if 'namespaceId' in kwargs:
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
-        if 'networkMode' in kwargs:
+        if network_mode is None and 'networkMode' in kwargs:
             network_mode = kwargs['networkMode']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if cluster_import_status is not None:

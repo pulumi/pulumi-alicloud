@@ -57,31 +57,41 @@ class TrafficMirrorFilterEgressRuleInitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination_cidr_block: pulumi.Input[str],
-             priority: pulumi.Input[int],
-             protocol: pulumi.Input[str],
-             source_cidr_block: pulumi.Input[str],
-             traffic_mirror_filter_id: pulumi.Input[str],
+             destination_cidr_block: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             source_cidr_block: Optional[pulumi.Input[str]] = None,
+             traffic_mirror_filter_id: Optional[pulumi.Input[str]] = None,
              action: Optional[pulumi.Input[str]] = None,
              destination_port_range: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              rule_action: Optional[pulumi.Input[str]] = None,
              source_port_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationCidrBlock' in kwargs:
+        if destination_cidr_block is None and 'destinationCidrBlock' in kwargs:
             destination_cidr_block = kwargs['destinationCidrBlock']
-        if 'sourceCidrBlock' in kwargs:
+        if destination_cidr_block is None:
+            raise TypeError("Missing 'destination_cidr_block' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if source_cidr_block is None and 'sourceCidrBlock' in kwargs:
             source_cidr_block = kwargs['sourceCidrBlock']
-        if 'trafficMirrorFilterId' in kwargs:
+        if source_cidr_block is None:
+            raise TypeError("Missing 'source_cidr_block' argument")
+        if traffic_mirror_filter_id is None and 'trafficMirrorFilterId' in kwargs:
             traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
-        if 'destinationPortRange' in kwargs:
+        if traffic_mirror_filter_id is None:
+            raise TypeError("Missing 'traffic_mirror_filter_id' argument")
+        if destination_port_range is None and 'destinationPortRange' in kwargs:
             destination_port_range = kwargs['destinationPortRange']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'ruleAction' in kwargs:
+        if rule_action is None and 'ruleAction' in kwargs:
             rule_action = kwargs['ruleAction']
-        if 'sourcePortRange' in kwargs:
+        if source_port_range is None and 'sourcePortRange' in kwargs:
             source_port_range = kwargs['sourcePortRange']
 
         _setter("destination_cidr_block", destination_cidr_block)
@@ -295,23 +305,23 @@ class _TrafficMirrorFilterEgressRuleState:
              status: Optional[pulumi.Input[str]] = None,
              traffic_mirror_filter_egress_rule_id: Optional[pulumi.Input[str]] = None,
              traffic_mirror_filter_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationCidrBlock' in kwargs:
+        if destination_cidr_block is None and 'destinationCidrBlock' in kwargs:
             destination_cidr_block = kwargs['destinationCidrBlock']
-        if 'destinationPortRange' in kwargs:
+        if destination_port_range is None and 'destinationPortRange' in kwargs:
             destination_port_range = kwargs['destinationPortRange']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'ruleAction' in kwargs:
+        if rule_action is None and 'ruleAction' in kwargs:
             rule_action = kwargs['ruleAction']
-        if 'sourceCidrBlock' in kwargs:
+        if source_cidr_block is None and 'sourceCidrBlock' in kwargs:
             source_cidr_block = kwargs['sourceCidrBlock']
-        if 'sourcePortRange' in kwargs:
+        if source_port_range is None and 'sourcePortRange' in kwargs:
             source_port_range = kwargs['sourcePortRange']
-        if 'trafficMirrorFilterEgressRuleId' in kwargs:
+        if traffic_mirror_filter_egress_rule_id is None and 'trafficMirrorFilterEgressRuleId' in kwargs:
             traffic_mirror_filter_egress_rule_id = kwargs['trafficMirrorFilterEgressRuleId']
-        if 'trafficMirrorFilterId' in kwargs:
+        if traffic_mirror_filter_id is None and 'trafficMirrorFilterId' in kwargs:
             traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
 
         if action is not None:
@@ -517,24 +527,6 @@ class TrafficMirrorFilterEgressRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.140.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.vpc.TrafficMirrorFilter("example", traffic_mirror_filter_name="example_value")
-        default = alicloud.vpc.TrafficMirrorFilterEgressRule("default",
-            action="drop",
-            priority=2,
-            source_cidr_block="10.0.0.0/11",
-            destination_cidr_block="10.0.0.0/12",
-            traffic_mirror_filter_id=example.id,
-            protocol="ALL")
-        ```
-
         ## Import
 
         VPC Traffic Mirror Filter Egress Rule can be imported using the id, e.g.
@@ -572,24 +564,6 @@ class TrafficMirrorFilterEgressRule(pulumi.CustomResource):
         For information about VPC Traffic Mirror Filter Egress Rule and how to use it, see [What is Traffic Mirror Filter Egress Rule](https://www.alibabacloud.com/help/doc-detail/261357.htm).
 
         > **NOTE:** Available since v1.140.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.vpc.TrafficMirrorFilter("example", traffic_mirror_filter_name="example_value")
-        default = alicloud.vpc.TrafficMirrorFilterEgressRule("default",
-            action="drop",
-            priority=2,
-            source_cidr_block="10.0.0.0/11",
-            destination_cidr_block="10.0.0.0/12",
-            traffic_mirror_filter_id=example.id,
-            protocol="ALL")
-        ```
 
         ## Import
 

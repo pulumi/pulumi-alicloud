@@ -118,8 +118,8 @@ class K8sApplicationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_name: pulumi.Input[str],
-             cluster_id: pulumi.Input[str],
+             application_name: Optional[pulumi.Input[str]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
              application_descriotion: Optional[pulumi.Input[str]] = None,
              command: Optional[pulumi.Input[str]] = None,
              command_args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -149,55 +149,59 @@ class K8sApplicationArgs:
              requests_m_cpu: Optional[pulumi.Input[int]] = None,
              requests_mem: Optional[pulumi.Input[int]] = None,
              web_container: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationName' in kwargs:
+        if application_name is None and 'applicationName' in kwargs:
             application_name = kwargs['applicationName']
-        if 'clusterId' in kwargs:
+        if application_name is None:
+            raise TypeError("Missing 'application_name' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'applicationDescriotion' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if application_descriotion is None and 'applicationDescriotion' in kwargs:
             application_descriotion = kwargs['applicationDescriotion']
-        if 'commandArgs' in kwargs:
+        if command_args is None and 'commandArgs' in kwargs:
             command_args = kwargs['commandArgs']
-        if 'edasContainerVersion' in kwargs:
+        if edas_container_version is None and 'edasContainerVersion' in kwargs:
             edas_container_version = kwargs['edasContainerVersion']
-        if 'imageUrl' in kwargs:
+        if image_url is None and 'imageUrl' in kwargs:
             image_url = kwargs['imageUrl']
-        if 'internetSlbId' in kwargs:
+        if internet_slb_id is None and 'internetSlbId' in kwargs:
             internet_slb_id = kwargs['internetSlbId']
-        if 'internetSlbPort' in kwargs:
+        if internet_slb_port is None and 'internetSlbPort' in kwargs:
             internet_slb_port = kwargs['internetSlbPort']
-        if 'internetSlbProtocol' in kwargs:
+        if internet_slb_protocol is None and 'internetSlbProtocol' in kwargs:
             internet_slb_protocol = kwargs['internetSlbProtocol']
-        if 'internetTargetPort' in kwargs:
+        if internet_target_port is None and 'internetTargetPort' in kwargs:
             internet_target_port = kwargs['internetTargetPort']
-        if 'limitMCpu' in kwargs:
+        if limit_m_cpu is None and 'limitMCpu' in kwargs:
             limit_m_cpu = kwargs['limitMCpu']
-        if 'limitMem' in kwargs:
+        if limit_mem is None and 'limitMem' in kwargs:
             limit_mem = kwargs['limitMem']
-        if 'localVolume' in kwargs:
+        if local_volume is None and 'localVolume' in kwargs:
             local_volume = kwargs['localVolume']
-        if 'logicalRegionId' in kwargs:
+        if logical_region_id is None and 'logicalRegionId' in kwargs:
             logical_region_id = kwargs['logicalRegionId']
-        if 'mountDescs' in kwargs:
+        if mount_descs is None and 'mountDescs' in kwargs:
             mount_descs = kwargs['mountDescs']
-        if 'nasId' in kwargs:
+        if nas_id is None and 'nasId' in kwargs:
             nas_id = kwargs['nasId']
-        if 'packageType' in kwargs:
+        if package_type is None and 'packageType' in kwargs:
             package_type = kwargs['packageType']
-        if 'packageUrl' in kwargs:
+        if package_url is None and 'packageUrl' in kwargs:
             package_url = kwargs['packageUrl']
-        if 'packageVersion' in kwargs:
+        if package_version is None and 'packageVersion' in kwargs:
             package_version = kwargs['packageVersion']
-        if 'postStart' in kwargs:
+        if post_start is None and 'postStart' in kwargs:
             post_start = kwargs['postStart']
-        if 'preStop' in kwargs:
+        if pre_stop is None and 'preStop' in kwargs:
             pre_stop = kwargs['preStop']
-        if 'requestsMCpu' in kwargs:
+        if requests_m_cpu is None and 'requestsMCpu' in kwargs:
             requests_m_cpu = kwargs['requestsMCpu']
-        if 'requestsMem' in kwargs:
+        if requests_mem is None and 'requestsMem' in kwargs:
             requests_mem = kwargs['requestsMem']
-        if 'webContainer' in kwargs:
+        if web_container is None and 'webContainer' in kwargs:
             web_container = kwargs['webContainer']
 
         _setter("application_name", application_name)
@@ -798,55 +802,55 @@ class _K8sApplicationState:
              requests_m_cpu: Optional[pulumi.Input[int]] = None,
              requests_mem: Optional[pulumi.Input[int]] = None,
              web_container: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationDescriotion' in kwargs:
+        if application_descriotion is None and 'applicationDescriotion' in kwargs:
             application_descriotion = kwargs['applicationDescriotion']
-        if 'applicationName' in kwargs:
+        if application_name is None and 'applicationName' in kwargs:
             application_name = kwargs['applicationName']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'commandArgs' in kwargs:
+        if command_args is None and 'commandArgs' in kwargs:
             command_args = kwargs['commandArgs']
-        if 'edasContainerVersion' in kwargs:
+        if edas_container_version is None and 'edasContainerVersion' in kwargs:
             edas_container_version = kwargs['edasContainerVersion']
-        if 'imageUrl' in kwargs:
+        if image_url is None and 'imageUrl' in kwargs:
             image_url = kwargs['imageUrl']
-        if 'internetSlbId' in kwargs:
+        if internet_slb_id is None and 'internetSlbId' in kwargs:
             internet_slb_id = kwargs['internetSlbId']
-        if 'internetSlbPort' in kwargs:
+        if internet_slb_port is None and 'internetSlbPort' in kwargs:
             internet_slb_port = kwargs['internetSlbPort']
-        if 'internetSlbProtocol' in kwargs:
+        if internet_slb_protocol is None and 'internetSlbProtocol' in kwargs:
             internet_slb_protocol = kwargs['internetSlbProtocol']
-        if 'internetTargetPort' in kwargs:
+        if internet_target_port is None and 'internetTargetPort' in kwargs:
             internet_target_port = kwargs['internetTargetPort']
-        if 'limitMCpu' in kwargs:
+        if limit_m_cpu is None and 'limitMCpu' in kwargs:
             limit_m_cpu = kwargs['limitMCpu']
-        if 'limitMem' in kwargs:
+        if limit_mem is None and 'limitMem' in kwargs:
             limit_mem = kwargs['limitMem']
-        if 'localVolume' in kwargs:
+        if local_volume is None and 'localVolume' in kwargs:
             local_volume = kwargs['localVolume']
-        if 'logicalRegionId' in kwargs:
+        if logical_region_id is None and 'logicalRegionId' in kwargs:
             logical_region_id = kwargs['logicalRegionId']
-        if 'mountDescs' in kwargs:
+        if mount_descs is None and 'mountDescs' in kwargs:
             mount_descs = kwargs['mountDescs']
-        if 'nasId' in kwargs:
+        if nas_id is None and 'nasId' in kwargs:
             nas_id = kwargs['nasId']
-        if 'packageType' in kwargs:
+        if package_type is None and 'packageType' in kwargs:
             package_type = kwargs['packageType']
-        if 'packageUrl' in kwargs:
+        if package_url is None and 'packageUrl' in kwargs:
             package_url = kwargs['packageUrl']
-        if 'packageVersion' in kwargs:
+        if package_version is None and 'packageVersion' in kwargs:
             package_version = kwargs['packageVersion']
-        if 'postStart' in kwargs:
+        if post_start is None and 'postStart' in kwargs:
             post_start = kwargs['postStart']
-        if 'preStop' in kwargs:
+        if pre_stop is None and 'preStop' in kwargs:
             pre_stop = kwargs['preStop']
-        if 'requestsMCpu' in kwargs:
+        if requests_m_cpu is None and 'requestsMCpu' in kwargs:
             requests_m_cpu = kwargs['requestsMCpu']
-        if 'requestsMem' in kwargs:
+        if requests_mem is None and 'requestsMem' in kwargs:
             requests_mem = kwargs['requestsMem']
-        if 'webContainer' in kwargs:
+        if web_container is None and 'webContainer' in kwargs:
             web_container = kwargs['webContainer']
 
         if application_descriotion is not None:

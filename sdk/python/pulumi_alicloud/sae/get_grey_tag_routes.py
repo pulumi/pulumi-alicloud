@@ -109,19 +109,6 @@ def get_grey_tag_routes(app_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.160.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    name_regex = alicloud.sae.get_grey_tag_routes(app_id="example_id",
-        name_regex="^my-GreyTagRoute")
-    pulumi.export("saeGreyTagRoutesId", name_regex.routes[0].id)
-    ```
-
 
     :param str app_id: The ID  of the SAE Application.
     :param Sequence[str] ids: A list of GreyTagRoute IDs.
@@ -156,19 +143,6 @@ def get_grey_tag_routes_output(app_id: Optional[pulumi.Input[str]] = None,
     This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.160.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    name_regex = alicloud.sae.get_grey_tag_routes(app_id="example_id",
-        name_regex="^my-GreyTagRoute")
-    pulumi.export("saeGreyTagRoutesId", name_regex.routes[0].id)
-    ```
 
 
     :param str app_id: The ID  of the SAE Application.

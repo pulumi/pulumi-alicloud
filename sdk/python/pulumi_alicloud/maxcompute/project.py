@@ -46,24 +46,26 @@ class ProjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_name: pulumi.Input[str],
+             project_name: Optional[pulumi.Input[str]] = None,
              comment: Optional[pulumi.Input[str]] = None,
              default_quota: Optional[pulumi.Input[str]] = None,
              ip_white_list: Optional[pulumi.Input['ProjectIpWhiteListArgs']] = None,
              product_type: Optional[pulumi.Input[str]] = None,
              properties: Optional[pulumi.Input['ProjectPropertiesArgs']] = None,
              security_properties: Optional[pulumi.Input['ProjectSecurityPropertiesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'projectName' in kwargs:
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'defaultQuota' in kwargs:
+        if project_name is None:
+            raise TypeError("Missing 'project_name' argument")
+        if default_quota is None and 'defaultQuota' in kwargs:
             default_quota = kwargs['defaultQuota']
-        if 'ipWhiteList' in kwargs:
+        if ip_white_list is None and 'ipWhiteList' in kwargs:
             ip_white_list = kwargs['ipWhiteList']
-        if 'productType' in kwargs:
+        if product_type is None and 'productType' in kwargs:
             product_type = kwargs['productType']
-        if 'securityProperties' in kwargs:
+        if security_properties is None and 'securityProperties' in kwargs:
             security_properties = kwargs['securityProperties']
 
         _setter("project_name", project_name)
@@ -217,17 +219,17 @@ class _ProjectState:
              security_properties: Optional[pulumi.Input['ProjectSecurityPropertiesArgs']] = None,
              status: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultQuota' in kwargs:
+        if default_quota is None and 'defaultQuota' in kwargs:
             default_quota = kwargs['defaultQuota']
-        if 'ipWhiteList' in kwargs:
+        if ip_white_list is None and 'ipWhiteList' in kwargs:
             ip_white_list = kwargs['ipWhiteList']
-        if 'productType' in kwargs:
+        if product_type is None and 'productType' in kwargs:
             product_type = kwargs['productType']
-        if 'projectName' in kwargs:
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'securityProperties' in kwargs:
+        if security_properties is None and 'securityProperties' in kwargs:
             security_properties = kwargs['securityProperties']
 
         if comment is not None:
@@ -392,25 +394,6 @@ class Project(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.77.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default = alicloud.maxcompute.Project("default",
-            default_quota="默认后付费Quota",
-            project_name=name,
-            comment=name,
-            product_type="PayAsYouGo")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comments of project
@@ -433,25 +416,6 @@ class Project(pulumi.CustomResource):
         For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute).
 
         > **NOTE:** Available since v1.77.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default = alicloud.maxcompute.Project("default",
-            default_quota="默认后付费Quota",
-            project_name=name,
-            comment=name,
-            product_type="PayAsYouGo")
-        ```
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.
@@ -490,27 +454,15 @@ class Project(pulumi.CustomResource):
 
             __props__.__dict__["comment"] = comment
             __props__.__dict__["default_quota"] = default_quota
-            if ip_white_list is not None and not isinstance(ip_white_list, ProjectIpWhiteListArgs):
-                ip_white_list = ip_white_list or {}
-                def _setter(key, value):
-                    ip_white_list[key] = value
-                ProjectIpWhiteListArgs._configure(_setter, **ip_white_list)
+            ip_white_list = _utilities.configure(ip_white_list, ProjectIpWhiteListArgs, True)
             __props__.__dict__["ip_white_list"] = ip_white_list
             __props__.__dict__["product_type"] = product_type
             if project_name is None and not opts.urn:
                 raise TypeError("Missing required property 'project_name'")
             __props__.__dict__["project_name"] = project_name
-            if properties is not None and not isinstance(properties, ProjectPropertiesArgs):
-                properties = properties or {}
-                def _setter(key, value):
-                    properties[key] = value
-                ProjectPropertiesArgs._configure(_setter, **properties)
+            properties = _utilities.configure(properties, ProjectPropertiesArgs, True)
             __props__.__dict__["properties"] = properties
-            if security_properties is not None and not isinstance(security_properties, ProjectSecurityPropertiesArgs):
-                security_properties = security_properties or {}
-                def _setter(key, value):
-                    security_properties[key] = value
-                ProjectSecurityPropertiesArgs._configure(_setter, **security_properties)
+            security_properties = _utilities.configure(security_properties, ProjectSecurityPropertiesArgs, True)
             __props__.__dict__["security_properties"] = security_properties
             __props__.__dict__["owner"] = None
             __props__.__dict__["status"] = None

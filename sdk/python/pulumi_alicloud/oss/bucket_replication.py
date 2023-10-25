@@ -52,8 +52,8 @@ class BucketReplicationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             destination: pulumi.Input['BucketReplicationDestinationArgs'],
+             bucket: Optional[pulumi.Input[str]] = None,
+             destination: Optional[pulumi.Input['BucketReplicationDestinationArgs']] = None,
              action: Optional[pulumi.Input[str]] = None,
              encryption_configuration: Optional[pulumi.Input['BucketReplicationEncryptionConfigurationArgs']] = None,
              historical_object_replication: Optional[pulumi.Input[str]] = None,
@@ -61,17 +61,21 @@ class BucketReplicationArgs:
              progress: Optional[pulumi.Input['BucketReplicationProgressArgs']] = None,
              source_selection_criteria: Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs']] = None,
              sync_role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'encryptionConfiguration' in kwargs:
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+        if encryption_configuration is None and 'encryptionConfiguration' in kwargs:
             encryption_configuration = kwargs['encryptionConfiguration']
-        if 'historicalObjectReplication' in kwargs:
+        if historical_object_replication is None and 'historicalObjectReplication' in kwargs:
             historical_object_replication = kwargs['historicalObjectReplication']
-        if 'prefixSet' in kwargs:
+        if prefix_set is None and 'prefixSet' in kwargs:
             prefix_set = kwargs['prefixSet']
-        if 'sourceSelectionCriteria' in kwargs:
+        if source_selection_criteria is None and 'sourceSelectionCriteria' in kwargs:
             source_selection_criteria = kwargs['sourceSelectionCriteria']
-        if 'syncRole' in kwargs:
+        if sync_role is None and 'syncRole' in kwargs:
             sync_role = kwargs['syncRole']
 
         _setter("bucket", bucket)
@@ -256,19 +260,19 @@ class _BucketReplicationState:
              source_selection_criteria: Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs']] = None,
              status: Optional[pulumi.Input[str]] = None,
              sync_role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'encryptionConfiguration' in kwargs:
+        if encryption_configuration is None and 'encryptionConfiguration' in kwargs:
             encryption_configuration = kwargs['encryptionConfiguration']
-        if 'historicalObjectReplication' in kwargs:
+        if historical_object_replication is None and 'historicalObjectReplication' in kwargs:
             historical_object_replication = kwargs['historicalObjectReplication']
-        if 'prefixSet' in kwargs:
+        if prefix_set is None and 'prefixSet' in kwargs:
             prefix_set = kwargs['prefixSet']
-        if 'ruleId' in kwargs:
+        if rule_id is None and 'ruleId' in kwargs:
             rule_id = kwargs['ruleId']
-        if 'sourceSelectionCriteria' in kwargs:
+        if source_selection_criteria is None and 'sourceSelectionCriteria' in kwargs:
             source_selection_criteria = kwargs['sourceSelectionCriteria']
-        if 'syncRole' in kwargs:
+        if sync_role is None and 'syncRole' in kwargs:
             sync_role = kwargs['syncRole']
 
         if action is not None:
@@ -449,90 +453,6 @@ class BucketReplication(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.161.0+.
 
-        ## Example Usage
-
-        Set bucket replication configuration
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        bucket_src = alicloud.oss.Bucket("bucketSrc", bucket=default.result.apply(lambda result: f"example-src-{result}"))
-        bucket_dest = alicloud.oss.Bucket("bucketDest", bucket=default.result.apply(lambda result: f"example-dest-{result}"))
-        role = alicloud.ram.Role("role",
-            document=\"\"\"		{
-        		  "Statement": [
-        			{
-        			  "Action": "sts:AssumeRole",
-        			  "Effect": "Allow",
-        			  "Principal": {
-        				"Service": [
-        				  "oss.aliyuncs.com"
-        				]
-        			  }
-        			}
-        		  ],
-        		  "Version": "1"
-        		}
-        \"\"\",
-            description="this is a test",
-            force=True)
-        policy = alicloud.ram.Policy("policy",
-            policy_name=default.result.apply(lambda result: f"example-policy-{result}"),
-            policy_document=\"\"\"		{
-        		  "Statement": [
-        			{
-        			  "Action": [
-        				"*"
-        			  ],
-        			  "Effect": "Allow",
-        			  "Resource": [
-        				"*"
-        			  ]
-        			}
-        		  ],
-        			"Version": "1"
-        		}
-        \"\"\",
-            description="this is a policy test",
-            force=True)
-        attach = alicloud.ram.RolePolicyAttachment("attach",
-            policy_name=policy.name,
-            policy_type=policy.type,
-            role_name=role.name)
-        key = alicloud.kms.Key("key",
-            description="Hello KMS",
-            pending_window_in_days=7,
-            status="Enabled")
-        cross_region_replication = alicloud.oss.BucketReplication("cross-region-replication",
-            bucket=bucket_src.id,
-            action="PUT,DELETE",
-            historical_object_replication="enabled",
-            prefix_set=alicloud.oss.BucketReplicationPrefixSetArgs(
-                prefixes=[
-                    "prefix1/",
-                    "prefix2/",
-                ],
-            ),
-            destination=alicloud.oss.BucketReplicationDestinationArgs(
-                bucket=bucket_dest.id,
-                location=bucket_dest.location,
-            ),
-            sync_role=role.name,
-            encryption_configuration=alicloud.oss.BucketReplicationEncryptionConfigurationArgs(
-                replica_kms_key_id=key.id,
-            ),
-            source_selection_criteria=alicloud.oss.BucketReplicationSourceSelectionCriteriaArgs(
-                sse_kms_encrypted_objects=alicloud.oss.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs(
-                    status="Enabled",
-                ),
-            ))
-        ```
-
         ## Import
 
         ### Timeouts The `timeouts` block allows you to specify timeouts for certain actions* `delete` - (Defaults to 30 mins) Used when delete a data replication rule (until the data replication task is cleared).
@@ -561,90 +481,6 @@ class BucketReplication(pulumi.CustomResource):
         For information about OSS replication and how to use it, see [What is cross-region replication](https://www.alibabacloud.com/help/doc-detail/31864.html) and [What is same-region replication](https://www.alibabacloud.com/help/doc-detail/254865.html).
 
         > **NOTE:** Available in v1.161.0+.
-
-        ## Example Usage
-
-        Set bucket replication configuration
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        bucket_src = alicloud.oss.Bucket("bucketSrc", bucket=default.result.apply(lambda result: f"example-src-{result}"))
-        bucket_dest = alicloud.oss.Bucket("bucketDest", bucket=default.result.apply(lambda result: f"example-dest-{result}"))
-        role = alicloud.ram.Role("role",
-            document=\"\"\"		{
-        		  "Statement": [
-        			{
-        			  "Action": "sts:AssumeRole",
-        			  "Effect": "Allow",
-        			  "Principal": {
-        				"Service": [
-        				  "oss.aliyuncs.com"
-        				]
-        			  }
-        			}
-        		  ],
-        		  "Version": "1"
-        		}
-        \"\"\",
-            description="this is a test",
-            force=True)
-        policy = alicloud.ram.Policy("policy",
-            policy_name=default.result.apply(lambda result: f"example-policy-{result}"),
-            policy_document=\"\"\"		{
-        		  "Statement": [
-        			{
-        			  "Action": [
-        				"*"
-        			  ],
-        			  "Effect": "Allow",
-        			  "Resource": [
-        				"*"
-        			  ]
-        			}
-        		  ],
-        			"Version": "1"
-        		}
-        \"\"\",
-            description="this is a policy test",
-            force=True)
-        attach = alicloud.ram.RolePolicyAttachment("attach",
-            policy_name=policy.name,
-            policy_type=policy.type,
-            role_name=role.name)
-        key = alicloud.kms.Key("key",
-            description="Hello KMS",
-            pending_window_in_days=7,
-            status="Enabled")
-        cross_region_replication = alicloud.oss.BucketReplication("cross-region-replication",
-            bucket=bucket_src.id,
-            action="PUT,DELETE",
-            historical_object_replication="enabled",
-            prefix_set=alicloud.oss.BucketReplicationPrefixSetArgs(
-                prefixes=[
-                    "prefix1/",
-                    "prefix2/",
-                ],
-            ),
-            destination=alicloud.oss.BucketReplicationDestinationArgs(
-                bucket=bucket_dest.id,
-                location=bucket_dest.location,
-            ),
-            sync_role=role.name,
-            encryption_configuration=alicloud.oss.BucketReplicationEncryptionConfigurationArgs(
-                replica_kms_key_id=key.id,
-            ),
-            source_selection_criteria=alicloud.oss.BucketReplicationSourceSelectionCriteriaArgs(
-                sse_kms_encrypted_objects=alicloud.oss.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs(
-                    status="Enabled",
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -691,38 +527,18 @@ class BucketReplication(pulumi.CustomResource):
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
             __props__.__dict__["bucket"] = bucket
-            if destination is not None and not isinstance(destination, BucketReplicationDestinationArgs):
-                destination = destination or {}
-                def _setter(key, value):
-                    destination[key] = value
-                BucketReplicationDestinationArgs._configure(_setter, **destination)
+            destination = _utilities.configure(destination, BucketReplicationDestinationArgs, True)
             if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
             __props__.__dict__["destination"] = destination
-            if encryption_configuration is not None and not isinstance(encryption_configuration, BucketReplicationEncryptionConfigurationArgs):
-                encryption_configuration = encryption_configuration or {}
-                def _setter(key, value):
-                    encryption_configuration[key] = value
-                BucketReplicationEncryptionConfigurationArgs._configure(_setter, **encryption_configuration)
+            encryption_configuration = _utilities.configure(encryption_configuration, BucketReplicationEncryptionConfigurationArgs, True)
             __props__.__dict__["encryption_configuration"] = encryption_configuration
             __props__.__dict__["historical_object_replication"] = historical_object_replication
-            if prefix_set is not None and not isinstance(prefix_set, BucketReplicationPrefixSetArgs):
-                prefix_set = prefix_set or {}
-                def _setter(key, value):
-                    prefix_set[key] = value
-                BucketReplicationPrefixSetArgs._configure(_setter, **prefix_set)
+            prefix_set = _utilities.configure(prefix_set, BucketReplicationPrefixSetArgs, True)
             __props__.__dict__["prefix_set"] = prefix_set
-            if progress is not None and not isinstance(progress, BucketReplicationProgressArgs):
-                progress = progress or {}
-                def _setter(key, value):
-                    progress[key] = value
-                BucketReplicationProgressArgs._configure(_setter, **progress)
+            progress = _utilities.configure(progress, BucketReplicationProgressArgs, True)
             __props__.__dict__["progress"] = progress
-            if source_selection_criteria is not None and not isinstance(source_selection_criteria, BucketReplicationSourceSelectionCriteriaArgs):
-                source_selection_criteria = source_selection_criteria or {}
-                def _setter(key, value):
-                    source_selection_criteria[key] = value
-                BucketReplicationSourceSelectionCriteriaArgs._configure(_setter, **source_selection_criteria)
+            source_selection_criteria = _utilities.configure(source_selection_criteria, BucketReplicationSourceSelectionCriteriaArgs, True)
             __props__.__dict__["source_selection_criteria"] = source_selection_criteria
             __props__.__dict__["sync_role"] = sync_role
             __props__.__dict__["rule_id"] = None

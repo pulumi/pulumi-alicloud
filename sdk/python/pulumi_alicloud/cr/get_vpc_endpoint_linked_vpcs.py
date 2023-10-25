@@ -122,20 +122,6 @@ def get_vpc_endpoint_linked_vpcs(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.199.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cr.get_vpc_endpoint_linked_vpcs(ids=["example_id"],
-        instance_id="your_cr_instance_id",
-        module_name="Registry")
-    pulumi.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.vpc_endpoint_linked_vpcs[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of CR Vpc Endpoint Linked Vpc IDs.
     :param str instance_id: The ID of the instance.
@@ -173,20 +159,6 @@ def get_vpc_endpoint_linked_vpcs_output(ids: Optional[pulumi.Input[Optional[Sequ
     This data source provides the CR Vpc Endpoint Linked Vpcs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.199.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cr.get_vpc_endpoint_linked_vpcs(ids=["example_id"],
-        instance_id="your_cr_instance_id",
-        module_name="Registry")
-    pulumi.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.vpc_endpoint_linked_vpcs[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of CR Vpc Endpoint Linked Vpc IDs.

@@ -15,33 +15,6 @@ import (
 // This data source provides the Actiontrail Global Events Storage Region of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.201.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := actiontrail.LookupGlobalEventsStorageRegion(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("alicloudActiontrailGlobalEventsStorageRegion1", _default.StorageRegion)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupGlobalEventsStorageRegion(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupGlobalEventsStorageRegionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlobalEventsStorageRegionResult

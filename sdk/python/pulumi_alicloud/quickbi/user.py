@@ -41,25 +41,35 @@ class UserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: pulumi.Input[str],
-             admin_user: pulumi.Input[bool],
-             auth_admin_user: pulumi.Input[bool],
-             nick_name: pulumi.Input[str],
-             user_type: pulumi.Input[str],
+             account_name: Optional[pulumi.Input[str]] = None,
+             admin_user: Optional[pulumi.Input[bool]] = None,
+             auth_admin_user: Optional[pulumi.Input[bool]] = None,
+             nick_name: Optional[pulumi.Input[str]] = None,
+             user_type: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'adminUser' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if admin_user is None and 'adminUser' in kwargs:
             admin_user = kwargs['adminUser']
-        if 'authAdminUser' in kwargs:
+        if admin_user is None:
+            raise TypeError("Missing 'admin_user' argument")
+        if auth_admin_user is None and 'authAdminUser' in kwargs:
             auth_admin_user = kwargs['authAdminUser']
-        if 'nickName' in kwargs:
+        if auth_admin_user is None:
+            raise TypeError("Missing 'auth_admin_user' argument")
+        if nick_name is None and 'nickName' in kwargs:
             nick_name = kwargs['nickName']
-        if 'userType' in kwargs:
+        if nick_name is None:
+            raise TypeError("Missing 'nick_name' argument")
+        if user_type is None and 'userType' in kwargs:
             user_type = kwargs['userType']
-        if 'accountId' in kwargs:
+        if user_type is None:
+            raise TypeError("Missing 'user_type' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
 
         _setter("account_name", account_name)
@@ -179,19 +189,19 @@ class _UserState:
              auth_admin_user: Optional[pulumi.Input[bool]] = None,
              nick_name: Optional[pulumi.Input[str]] = None,
              user_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'adminUser' in kwargs:
+        if admin_user is None and 'adminUser' in kwargs:
             admin_user = kwargs['adminUser']
-        if 'authAdminUser' in kwargs:
+        if auth_admin_user is None and 'authAdminUser' in kwargs:
             auth_admin_user = kwargs['authAdminUser']
-        if 'nickName' in kwargs:
+        if nick_name is None and 'nickName' in kwargs:
             nick_name = kwargs['nickName']
-        if 'userType' in kwargs:
+        if user_type is None and 'userType' in kwargs:
             user_type = kwargs['userType']
 
         if account_id is not None:
@@ -299,22 +309,6 @@ class User(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.136.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.quickbi.User("example",
-            account_name="example_value",
-            admin_user=False,
-            auth_admin_user=False,
-            nick_name="example_value",
-            user_type="Analyst")
-        ```
-
         ## Import
 
         Quick BI User can be imported using the id, e.g.
@@ -344,22 +338,6 @@ class User(pulumi.CustomResource):
         For information about Quick BI User and how to use it, see [What is User](https://www.alibabacloud.com/help/doc-detail/33813.htm).
 
         > **NOTE:** Available in v1.136.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.quickbi.User("example",
-            account_name="example_value",
-            admin_user=False,
-            auth_admin_user=False,
-            nick_name="example_value",
-            user_type="Analyst")
-        ```
 
         ## Import
 

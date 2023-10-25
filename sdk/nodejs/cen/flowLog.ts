@@ -13,33 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.73.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * // Create a cen flowlog resource and use it to publish a route entry pointing to an ECS.
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {});
- * const defaultProject = new alicloud.log.Project("defaultProject", {description: "create by terraform"});
- * const defaultStore = new alicloud.log.Store("defaultStore", {
- *     project: defaultProject.name,
- *     retentionPeriod: 3650,
- *     shardCount: 3,
- *     autoSplit: true,
- *     maxSplitShardCount: 60,
- *     appendMeta: true,
- * });
- * const defaultFlowLog = new alicloud.cen.FlowLog("defaultFlowLog", {
- *     flowLogName: "my-flowlog",
- *     cenId: defaultInstance.id,
- *     projectName: defaultProject.name,
- *     logStoreName: defaultStore.name,
- * });
- * ```
- *
  * ## Import
  *
  * CEN flowlog can be imported using the id, e.g.

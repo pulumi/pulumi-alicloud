@@ -32,11 +32,17 @@ class KvArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             namespace: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("namespace", namespace)
@@ -103,7 +109,7 @@ class _KvState:
              key: Optional[pulumi.Input[str]] = None,
              namespace: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -166,27 +172,6 @@ class Kv(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.198.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_kv_namespace = alicloud.dcdn.KvNamespace("defaultKvNamespace",
-            description=name,
-            namespace=name)
-        default_kv = alicloud.dcdn.Kv("defaultKv",
-            value="example-value",
-            key=name,
-            namespace=default_kv_namespace.namespace)
-        ```
-
         ## Import
 
         Dcdn Kv can be imported using the id, e.g.
@@ -213,27 +198,6 @@ class Kv(pulumi.CustomResource):
         For information about Dcdn Kv and how to use it, see [What is Kv](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-putdcdnkv).
 
         > **NOTE:** Available since v1.198.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_kv_namespace = alicloud.dcdn.KvNamespace("defaultKvNamespace",
-            description=name,
-            namespace=name)
-        default_kv = alicloud.dcdn.Kv("defaultKv",
-            value="example-value",
-            key=name,
-            namespace=default_kv_namespace.namespace)
-        ```
 
         ## Import
 

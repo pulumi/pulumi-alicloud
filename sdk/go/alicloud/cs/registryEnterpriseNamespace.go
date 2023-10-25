@@ -21,54 +21,6 @@ import (
 //
 // > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example-name"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			exampleRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "exampleRegistryEnterpriseInstance", &cr.RegistryEnterpriseInstanceArgs{
-//				PaymentType:   pulumi.String("Subscription"),
-//				Period:        pulumi.Int(1),
-//				RenewPeriod:   pulumi.Int(0),
-//				RenewalStatus: pulumi.String("ManualRenewal"),
-//				InstanceType:  pulumi.String("Advanced"),
-//				InstanceName:  pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cs.NewRegistryEnterpriseNamespace(ctx, "exampleRegistryEnterpriseNamespace", &cs.RegistryEnterpriseNamespaceArgs{
-//				InstanceId:        exampleRegistryEnterpriseInstance.ID(),
-//				AutoCreate:        pulumi.Bool(false),
-//				DefaultVisibility: pulumi.String("PUBLIC"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Container Registry Enterprise Edition namespace can be imported using the `{instance_id}:{namespace}`, e.g.

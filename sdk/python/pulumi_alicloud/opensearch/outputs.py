@@ -59,11 +59,11 @@ class AppGroupOrder(dict):
              auto_renew: Optional[bool] = None,
              duration: Optional[int] = None,
              pricing_cycle: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'pricingCycle' in kwargs:
+        if pricing_cycle is None and 'pricingCycle' in kwargs:
             pricing_cycle = kwargs['pricingCycle']
 
         if auto_renew is not None:
@@ -147,16 +147,22 @@ class AppGroupQuota(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compute_resource: int,
-             doc_size: int,
-             spec: str,
+             compute_resource: Optional[int] = None,
+             doc_size: Optional[int] = None,
+             spec: Optional[str] = None,
              qps: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'computeResource' in kwargs:
+        if compute_resource is None and 'computeResource' in kwargs:
             compute_resource = kwargs['computeResource']
-        if 'docSize' in kwargs:
+        if compute_resource is None:
+            raise TypeError("Missing 'compute_resource' argument")
+        if doc_size is None and 'docSize' in kwargs:
             doc_size = kwargs['docSize']
+        if doc_size is None:
+            raise TypeError("Missing 'doc_size' argument")
+        if spec is None:
+            raise TypeError("Missing 'spec' argument")
 
         _setter("compute_resource", compute_resource)
         _setter("doc_size", doc_size)
@@ -292,72 +298,124 @@ class GetAppGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_group_id: str,
-             app_group_name: str,
-             charge_way: int,
-             commodity_code: str,
-             create_time: int,
-             current_version: str,
-             description: str,
-             domain: str,
-             expire_on: str,
-             first_rank_algo_deployment_id: int,
-             has_pending_quota_review_task: int,
-             id: str,
-             instance_id: str,
-             lock_mode: str,
-             locked_by_expiration: int,
-             payment_type: str,
-             pending_second_rank_algo_deployment_id: int,
-             processing_order_id: str,
-             produced: int,
-             project_id: str,
-             quotas: Sequence['outputs.GetAppGroupsGroupQuotaResult'],
-             resource_group_id: str,
-             second_rank_algo_deployment_id: int,
-             status: str,
-             switched_time: int,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             app_group_id: Optional[str] = None,
+             app_group_name: Optional[str] = None,
+             charge_way: Optional[int] = None,
+             commodity_code: Optional[str] = None,
+             create_time: Optional[int] = None,
+             current_version: Optional[str] = None,
+             description: Optional[str] = None,
+             domain: Optional[str] = None,
+             expire_on: Optional[str] = None,
+             first_rank_algo_deployment_id: Optional[int] = None,
+             has_pending_quota_review_task: Optional[int] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             lock_mode: Optional[str] = None,
+             locked_by_expiration: Optional[int] = None,
+             payment_type: Optional[str] = None,
+             pending_second_rank_algo_deployment_id: Optional[int] = None,
+             processing_order_id: Optional[str] = None,
+             produced: Optional[int] = None,
+             project_id: Optional[str] = None,
+             quotas: Optional[Sequence['outputs.GetAppGroupsGroupQuotaResult']] = None,
+             resource_group_id: Optional[str] = None,
+             second_rank_algo_deployment_id: Optional[int] = None,
+             status: Optional[str] = None,
+             switched_time: Optional[int] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appGroupId' in kwargs:
+        if app_group_id is None and 'appGroupId' in kwargs:
             app_group_id = kwargs['appGroupId']
-        if 'appGroupName' in kwargs:
+        if app_group_id is None:
+            raise TypeError("Missing 'app_group_id' argument")
+        if app_group_name is None and 'appGroupName' in kwargs:
             app_group_name = kwargs['appGroupName']
-        if 'chargeWay' in kwargs:
+        if app_group_name is None:
+            raise TypeError("Missing 'app_group_name' argument")
+        if charge_way is None and 'chargeWay' in kwargs:
             charge_way = kwargs['chargeWay']
-        if 'commodityCode' in kwargs:
+        if charge_way is None:
+            raise TypeError("Missing 'charge_way' argument")
+        if commodity_code is None and 'commodityCode' in kwargs:
             commodity_code = kwargs['commodityCode']
-        if 'createTime' in kwargs:
+        if commodity_code is None:
+            raise TypeError("Missing 'commodity_code' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'currentVersion' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if current_version is None and 'currentVersion' in kwargs:
             current_version = kwargs['currentVersion']
-        if 'expireOn' in kwargs:
+        if current_version is None:
+            raise TypeError("Missing 'current_version' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if expire_on is None and 'expireOn' in kwargs:
             expire_on = kwargs['expireOn']
-        if 'firstRankAlgoDeploymentId' in kwargs:
+        if expire_on is None:
+            raise TypeError("Missing 'expire_on' argument")
+        if first_rank_algo_deployment_id is None and 'firstRankAlgoDeploymentId' in kwargs:
             first_rank_algo_deployment_id = kwargs['firstRankAlgoDeploymentId']
-        if 'hasPendingQuotaReviewTask' in kwargs:
+        if first_rank_algo_deployment_id is None:
+            raise TypeError("Missing 'first_rank_algo_deployment_id' argument")
+        if has_pending_quota_review_task is None and 'hasPendingQuotaReviewTask' in kwargs:
             has_pending_quota_review_task = kwargs['hasPendingQuotaReviewTask']
-        if 'instanceId' in kwargs:
+        if has_pending_quota_review_task is None:
+            raise TypeError("Missing 'has_pending_quota_review_task' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'lockMode' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if lock_mode is None and 'lockMode' in kwargs:
             lock_mode = kwargs['lockMode']
-        if 'lockedByExpiration' in kwargs:
+        if lock_mode is None:
+            raise TypeError("Missing 'lock_mode' argument")
+        if locked_by_expiration is None and 'lockedByExpiration' in kwargs:
             locked_by_expiration = kwargs['lockedByExpiration']
-        if 'paymentType' in kwargs:
+        if locked_by_expiration is None:
+            raise TypeError("Missing 'locked_by_expiration' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'pendingSecondRankAlgoDeploymentId' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if pending_second_rank_algo_deployment_id is None and 'pendingSecondRankAlgoDeploymentId' in kwargs:
             pending_second_rank_algo_deployment_id = kwargs['pendingSecondRankAlgoDeploymentId']
-        if 'processingOrderId' in kwargs:
+        if pending_second_rank_algo_deployment_id is None:
+            raise TypeError("Missing 'pending_second_rank_algo_deployment_id' argument")
+        if processing_order_id is None and 'processingOrderId' in kwargs:
             processing_order_id = kwargs['processingOrderId']
-        if 'projectId' in kwargs:
+        if processing_order_id is None:
+            raise TypeError("Missing 'processing_order_id' argument")
+        if produced is None:
+            raise TypeError("Missing 'produced' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'resourceGroupId' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if quotas is None:
+            raise TypeError("Missing 'quotas' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'secondRankAlgoDeploymentId' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if second_rank_algo_deployment_id is None and 'secondRankAlgoDeploymentId' in kwargs:
             second_rank_algo_deployment_id = kwargs['secondRankAlgoDeploymentId']
-        if 'switchedTime' in kwargs:
+        if second_rank_algo_deployment_id is None:
+            raise TypeError("Missing 'second_rank_algo_deployment_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if switched_time is None and 'switchedTime' in kwargs:
             switched_time = kwargs['switchedTime']
+        if switched_time is None:
+            raise TypeError("Missing 'switched_time' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("app_group_id", app_group_id)
         _setter("app_group_name", app_group_name)
@@ -619,15 +677,21 @@ class GetAppGroupsGroupQuotaResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compute_resource: str,
-             doc_size: str,
-             spec: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             compute_resource: Optional[str] = None,
+             doc_size: Optional[str] = None,
+             spec: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'computeResource' in kwargs:
+        if compute_resource is None and 'computeResource' in kwargs:
             compute_resource = kwargs['computeResource']
-        if 'docSize' in kwargs:
+        if compute_resource is None:
+            raise TypeError("Missing 'compute_resource' argument")
+        if doc_size is None and 'docSize' in kwargs:
             doc_size = kwargs['docSize']
+        if doc_size is None:
+            raise TypeError("Missing 'doc_size' argument")
+        if spec is None:
+            raise TypeError("Missing 'spec' argument")
 
         _setter("compute_resource", compute_resource)
         _setter("doc_size", doc_size)

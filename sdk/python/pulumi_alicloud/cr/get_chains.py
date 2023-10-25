@@ -153,25 +153,6 @@ def get_chains(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.161.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cr.get_chains(instance_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("crChainId1", ids.chains[0].id)
-    name_regex = alicloud.cr.get_chains(instance_id="example_value",
-        name_regex="^my-Chain")
-    pulumi.export("crChainId2", name_regex.chains[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Chain IDs.
     :param str instance_id: The ID of CR Enterprise Edition instance.
@@ -219,25 +200,6 @@ def get_chains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
     For information about CR Chains and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/doc-detail/357821.html).
 
     > **NOTE:** Available in v1.161.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cr.get_chains(instance_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("crChainId1", ids.chains[0].id)
-    name_regex = alicloud.cr.get_chains(instance_id="example_value",
-        name_regex="^my-Chain")
-    pulumi.export("crChainId2", name_regex.chains[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Chain IDs.

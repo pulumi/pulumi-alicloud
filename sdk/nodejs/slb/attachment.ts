@@ -9,57 +9,6 @@ import * as utilities from "../utilities";
  *
  * Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "slbattachmenttest";
- * const defaultZones = alicloud.getZones({
- *     availableDiskCategory: "cloud_efficiency",
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
- *     cpuCoreCount: 1,
- *     memorySize: 2,
- * }));
- * const defaultImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_18.*64",
- *     mostRecent: true,
- *     owners: "system",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/16",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: name,
- * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
- *     internetChargeType: "PayByTraffic",
- *     internetMaxBandwidthOut: 5,
- *     systemDiskCategory: "cloud_efficiency",
- *     securityGroups: [defaultSecurityGroup.id],
- *     instanceName: name,
- *     vswitchId: defaultSwitch.id,
- * });
- * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
- *     loadBalancerName: name,
- *     vswitchId: defaultSwitch.id,
- * });
- * const defaultAttachment = new alicloud.slb.Attachment("defaultAttachment", {
- *     loadBalancerId: defaultApplicationLoadBalancer.id,
- *     instanceIds: [defaultInstance.id],
- *     weight: 90,
- * });
- * ```
- *
  * ## Import
  *
  * Load balancer attachment can be imported using the id or load balancer id, e.g.

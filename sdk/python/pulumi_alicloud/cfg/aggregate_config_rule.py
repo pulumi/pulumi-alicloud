@@ -71,13 +71,13 @@ class AggregateConfigRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aggregate_config_rule_name: pulumi.Input[str],
-             aggregator_id: pulumi.Input[str],
-             config_rule_trigger_types: pulumi.Input[str],
-             resource_types_scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
-             risk_level: pulumi.Input[int],
-             source_identifier: pulumi.Input[str],
-             source_owner: pulumi.Input[str],
+             aggregate_config_rule_name: Optional[pulumi.Input[str]] = None,
+             aggregator_id: Optional[pulumi.Input[str]] = None,
+             config_rule_trigger_types: Optional[pulumi.Input[str]] = None,
+             resource_types_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             risk_level: Optional[pulumi.Input[int]] = None,
+             source_identifier: Optional[pulumi.Input[str]] = None,
+             source_owner: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
              input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -87,35 +87,49 @@ class AggregateConfigRuleArgs:
              status: Optional[pulumi.Input[str]] = None,
              tag_key_scope: Optional[pulumi.Input[str]] = None,
              tag_value_scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aggregateConfigRuleName' in kwargs:
+        if aggregate_config_rule_name is None and 'aggregateConfigRuleName' in kwargs:
             aggregate_config_rule_name = kwargs['aggregateConfigRuleName']
-        if 'aggregatorId' in kwargs:
+        if aggregate_config_rule_name is None:
+            raise TypeError("Missing 'aggregate_config_rule_name' argument")
+        if aggregator_id is None and 'aggregatorId' in kwargs:
             aggregator_id = kwargs['aggregatorId']
-        if 'configRuleTriggerTypes' in kwargs:
+        if aggregator_id is None:
+            raise TypeError("Missing 'aggregator_id' argument")
+        if config_rule_trigger_types is None and 'configRuleTriggerTypes' in kwargs:
             config_rule_trigger_types = kwargs['configRuleTriggerTypes']
-        if 'resourceTypesScopes' in kwargs:
+        if config_rule_trigger_types is None:
+            raise TypeError("Missing 'config_rule_trigger_types' argument")
+        if resource_types_scopes is None and 'resourceTypesScopes' in kwargs:
             resource_types_scopes = kwargs['resourceTypesScopes']
-        if 'riskLevel' in kwargs:
+        if resource_types_scopes is None:
+            raise TypeError("Missing 'resource_types_scopes' argument")
+        if risk_level is None and 'riskLevel' in kwargs:
             risk_level = kwargs['riskLevel']
-        if 'sourceIdentifier' in kwargs:
+        if risk_level is None:
+            raise TypeError("Missing 'risk_level' argument")
+        if source_identifier is None and 'sourceIdentifier' in kwargs:
             source_identifier = kwargs['sourceIdentifier']
-        if 'sourceOwner' in kwargs:
+        if source_identifier is None:
+            raise TypeError("Missing 'source_identifier' argument")
+        if source_owner is None and 'sourceOwner' in kwargs:
             source_owner = kwargs['sourceOwner']
-        if 'excludeResourceIdsScope' in kwargs:
+        if source_owner is None:
+            raise TypeError("Missing 'source_owner' argument")
+        if exclude_resource_ids_scope is None and 'excludeResourceIdsScope' in kwargs:
             exclude_resource_ids_scope = kwargs['excludeResourceIdsScope']
-        if 'inputParameters' in kwargs:
+        if input_parameters is None and 'inputParameters' in kwargs:
             input_parameters = kwargs['inputParameters']
-        if 'maximumExecutionFrequency' in kwargs:
+        if maximum_execution_frequency is None and 'maximumExecutionFrequency' in kwargs:
             maximum_execution_frequency = kwargs['maximumExecutionFrequency']
-        if 'regionIdsScope' in kwargs:
+        if region_ids_scope is None and 'regionIdsScope' in kwargs:
             region_ids_scope = kwargs['regionIdsScope']
-        if 'resourceGroupIdsScope' in kwargs:
+        if resource_group_ids_scope is None and 'resourceGroupIdsScope' in kwargs:
             resource_group_ids_scope = kwargs['resourceGroupIdsScope']
-        if 'tagKeyScope' in kwargs:
+        if tag_key_scope is None and 'tagKeyScope' in kwargs:
             tag_key_scope = kwargs['tagKeyScope']
-        if 'tagValueScope' in kwargs:
+        if tag_value_scope is None and 'tagValueScope' in kwargs:
             tag_value_scope = kwargs['tagValueScope']
 
         _setter("aggregate_config_rule_name", aggregate_config_rule_name)
@@ -417,37 +431,37 @@ class _AggregateConfigRuleState:
              status: Optional[pulumi.Input[str]] = None,
              tag_key_scope: Optional[pulumi.Input[str]] = None,
              tag_value_scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aggregateConfigRuleName' in kwargs:
+        if aggregate_config_rule_name is None and 'aggregateConfigRuleName' in kwargs:
             aggregate_config_rule_name = kwargs['aggregateConfigRuleName']
-        if 'aggregatorId' in kwargs:
+        if aggregator_id is None and 'aggregatorId' in kwargs:
             aggregator_id = kwargs['aggregatorId']
-        if 'configRuleId' in kwargs:
+        if config_rule_id is None and 'configRuleId' in kwargs:
             config_rule_id = kwargs['configRuleId']
-        if 'configRuleTriggerTypes' in kwargs:
+        if config_rule_trigger_types is None and 'configRuleTriggerTypes' in kwargs:
             config_rule_trigger_types = kwargs['configRuleTriggerTypes']
-        if 'excludeResourceIdsScope' in kwargs:
+        if exclude_resource_ids_scope is None and 'excludeResourceIdsScope' in kwargs:
             exclude_resource_ids_scope = kwargs['excludeResourceIdsScope']
-        if 'inputParameters' in kwargs:
+        if input_parameters is None and 'inputParameters' in kwargs:
             input_parameters = kwargs['inputParameters']
-        if 'maximumExecutionFrequency' in kwargs:
+        if maximum_execution_frequency is None and 'maximumExecutionFrequency' in kwargs:
             maximum_execution_frequency = kwargs['maximumExecutionFrequency']
-        if 'regionIdsScope' in kwargs:
+        if region_ids_scope is None and 'regionIdsScope' in kwargs:
             region_ids_scope = kwargs['regionIdsScope']
-        if 'resourceGroupIdsScope' in kwargs:
+        if resource_group_ids_scope is None and 'resourceGroupIdsScope' in kwargs:
             resource_group_ids_scope = kwargs['resourceGroupIdsScope']
-        if 'resourceTypesScopes' in kwargs:
+        if resource_types_scopes is None and 'resourceTypesScopes' in kwargs:
             resource_types_scopes = kwargs['resourceTypesScopes']
-        if 'riskLevel' in kwargs:
+        if risk_level is None and 'riskLevel' in kwargs:
             risk_level = kwargs['riskLevel']
-        if 'sourceIdentifier' in kwargs:
+        if source_identifier is None and 'sourceIdentifier' in kwargs:
             source_identifier = kwargs['sourceIdentifier']
-        if 'sourceOwner' in kwargs:
+        if source_owner is None and 'sourceOwner' in kwargs:
             source_owner = kwargs['sourceOwner']
-        if 'tagKeyScope' in kwargs:
+        if tag_key_scope is None and 'tagKeyScope' in kwargs:
             tag_key_scope = kwargs['tagKeyScope']
-        if 'tagValueScope' in kwargs:
+        if tag_value_scope is None and 'tagValueScope' in kwargs:
             tag_value_scope = kwargs['tagValueScope']
 
         if aggregate_config_rule_name is not None:
@@ -719,42 +733,6 @@ class AggregateConfigRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.124.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_accounts = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
-        default_aggregator = alicloud.cfg.Aggregator("defaultAggregator",
-            aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
-                account_id=default_accounts.accounts[0].account_id,
-                account_name=default_accounts.accounts[0].display_name,
-                account_type="ResourceDirectory",
-            )],
-            aggregator_name=name,
-            description=name,
-            aggregator_type="CUSTOM")
-        default_aggregate_config_rule = alicloud.cfg.AggregateConfigRule("defaultAggregateConfigRule",
-            aggregate_config_rule_name="contains-tag",
-            aggregator_id=default_aggregator.id,
-            config_rule_trigger_types="ConfigurationItemChangeNotification",
-            source_owner="ALIYUN",
-            source_identifier="contains-tag",
-            risk_level=1,
-            resource_types_scopes=["ACS::ECS::Instance"],
-            input_parameters={
-                "key": "example",
-                "value": "example",
-            })
-        ```
-
         ## Import
 
         Cloud Config Aggregate Config Rule can be imported using the id, e.g.
@@ -794,42 +772,6 @@ class AggregateConfigRule(pulumi.CustomResource):
         For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregateconfigrule).
 
         > **NOTE:** Available since v1.124.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_accounts = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
-        default_aggregator = alicloud.cfg.Aggregator("defaultAggregator",
-            aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
-                account_id=default_accounts.accounts[0].account_id,
-                account_name=default_accounts.accounts[0].display_name,
-                account_type="ResourceDirectory",
-            )],
-            aggregator_name=name,
-            description=name,
-            aggregator_type="CUSTOM")
-        default_aggregate_config_rule = alicloud.cfg.AggregateConfigRule("defaultAggregateConfigRule",
-            aggregate_config_rule_name="contains-tag",
-            aggregator_id=default_aggregator.id,
-            config_rule_trigger_types="ConfigurationItemChangeNotification",
-            source_owner="ALIYUN",
-            source_identifier="contains-tag",
-            risk_level=1,
-            resource_types_scopes=["ACS::ECS::Instance"],
-            input_parameters={
-                "key": "example",
-                "value": "example",
-            })
-        ```
 
         ## Import
 

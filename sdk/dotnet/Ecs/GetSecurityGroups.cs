@@ -13,82 +13,12 @@ namespace Pulumi.AliCloud.Ecs
     {
         /// <summary>
         /// This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var secGroupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
-        ///     {
-        ///         NameRegex = "^web-",
-        ///         OutputFile = "web_access.json",
-        ///     });
-        /// 
-        ///     // In conjunction with a VPC
-        ///     var primaryVpcDs = new AliCloud.Vpc.Network("primaryVpcDs");
-        /// 
-        ///     var primarySecGroupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
-        ///     {
-        ///         VpcId = primaryVpcDs.Id,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstGroupId"] = primarySecGroupsDs.Apply(getSecurityGroupsResult =&gt; getSecurityGroupsResult.Groups[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecurityGroupsResult> InvokeAsync(GetSecurityGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupsResult>("alicloud:ecs/getSecurityGroups:getSecurityGroups", args ?? new GetSecurityGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var secGroupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
-        ///     {
-        ///         NameRegex = "^web-",
-        ///         OutputFile = "web_access.json",
-        ///     });
-        /// 
-        ///     // In conjunction with a VPC
-        ///     var primaryVpcDs = new AliCloud.Vpc.Network("primaryVpcDs");
-        /// 
-        ///     var primarySecGroupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
-        ///     {
-        ///         VpcId = primaryVpcDs.Id,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstGroupId"] = primarySecGroupsDs.Apply(getSecurityGroupsResult =&gt; getSecurityGroupsResult.Groups[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetSecurityGroupsResult> Invoke(GetSecurityGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecurityGroupsResult>("alicloud:ecs/getSecurityGroups:getSecurityGroups", args ?? new GetSecurityGroupsInvokeArgs(), options.WithDefaults());
@@ -141,25 +71,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A map of tags assigned to the ECS instances. It must be in the format:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var taggedSecurityGroups = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
-        ///     {
-        ///         Tags = 
-        ///         {
-        ///             { "tagKey1", "tagValue1" },
-        ///             { "tagKey2", "tagValue2" },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public Dictionary<string, object> Tags
         {
@@ -225,25 +136,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A map of tags assigned to the ECS instances. It must be in the format:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var taggedSecurityGroups = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
-        ///     {
-        ///         Tags = 
-        ///         {
-        ///             { "tagKey1", "tagValue1" },
-        ///             { "tagKey2", "tagValue2" },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public InputMap<object> Tags
         {

@@ -41,18 +41,24 @@ class AccountPrivilegeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: pulumi.Input[str],
-             db_names: pulumi.Input[Sequence[pulumi.Input[str]]],
-             instance_id: pulumi.Input[str],
+             account_name: Optional[pulumi.Input[str]] = None,
+             db_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
              privilege: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'dbNames' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if db_names is None and 'dbNames' in kwargs:
             db_names = kwargs['dbNames']
-        if 'instanceId' in kwargs:
+        if db_names is None:
+            raise TypeError("Missing 'db_names' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
 
         _setter("account_name", account_name)
         _setter("db_names", db_names)
@@ -149,13 +155,13 @@ class _AccountPrivilegeState:
              db_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              privilege: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'dbNames' in kwargs:
+        if db_names is None and 'dbNames' in kwargs:
             db_names = kwargs['dbNames']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
 
         if account_name is not None:
@@ -239,50 +245,6 @@ class AccountPrivilege(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.5.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="5.6")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        instance = alicloud.rds.Instance("instance",
-            engine="MySQL",
-            engine_version="5.6",
-            instance_type="rds.mysql.s1.small",
-            instance_storage=10,
-            vswitch_id=default_switch.id,
-            instance_name=name)
-        db = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            db.append(alicloud.rds.Database(f"db-{range['value']}",
-                instance_id=instance.id,
-                description="from terraform"))
-        account = alicloud.rds.Account("account",
-            db_instance_id=instance.id,
-            account_name="tfexample",
-            account_password="Example12345",
-            account_description="from terraform")
-        privilege = alicloud.rds.AccountPrivilege("privilege",
-            instance_id=instance.id,
-            account_name=account.name,
-            privilege="ReadOnly",
-            db_names=[__item.name for __item in db])
-        ```
-
         ## Import
 
         RDS account privilege can be imported using the id, e.g.
@@ -316,50 +278,6 @@ class AccountPrivilege(pulumi.CustomResource):
         > **NOTE:** At present, a database can only have one database owner.
 
         > **NOTE:** Available since v1.5.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="5.6")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        instance = alicloud.rds.Instance("instance",
-            engine="MySQL",
-            engine_version="5.6",
-            instance_type="rds.mysql.s1.small",
-            instance_storage=10,
-            vswitch_id=default_switch.id,
-            instance_name=name)
-        db = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            db.append(alicloud.rds.Database(f"db-{range['value']}",
-                instance_id=instance.id,
-                description="from terraform"))
-        account = alicloud.rds.Account("account",
-            db_instance_id=instance.id,
-            account_name="tfexample",
-            account_password="Example12345",
-            account_description="from terraform")
-        privilege = alicloud.rds.AccountPrivilege("privilege",
-            instance_id=instance.id,
-            account_name=account.name,
-            privilege="ReadOnly",
-            db_names=[__item.name for __item in db])
-        ```
 
         ## Import
 

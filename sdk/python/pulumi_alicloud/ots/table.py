@@ -52,34 +52,44 @@ class TableArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_name: pulumi.Input[str],
-             max_version: pulumi.Input[int],
-             primary_keys: pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]],
-             table_name: pulumi.Input[str],
-             time_to_live: pulumi.Input[int],
+             instance_name: Optional[pulumi.Input[str]] = None,
+             max_version: Optional[pulumi.Input[int]] = None,
+             primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]]] = None,
+             table_name: Optional[pulumi.Input[str]] = None,
+             time_to_live: Optional[pulumi.Input[int]] = None,
              defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]] = None,
              deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
              enable_sse: Optional[pulumi.Input[bool]] = None,
              sse_key_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'maxVersion' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if max_version is None and 'maxVersion' in kwargs:
             max_version = kwargs['maxVersion']
-        if 'primaryKeys' in kwargs:
+        if max_version is None:
+            raise TypeError("Missing 'max_version' argument")
+        if primary_keys is None and 'primaryKeys' in kwargs:
             primary_keys = kwargs['primaryKeys']
-        if 'tableName' in kwargs:
+        if primary_keys is None:
+            raise TypeError("Missing 'primary_keys' argument")
+        if table_name is None and 'tableName' in kwargs:
             table_name = kwargs['tableName']
-        if 'timeToLive' in kwargs:
+        if table_name is None:
+            raise TypeError("Missing 'table_name' argument")
+        if time_to_live is None and 'timeToLive' in kwargs:
             time_to_live = kwargs['timeToLive']
-        if 'definedColumns' in kwargs:
+        if time_to_live is None:
+            raise TypeError("Missing 'time_to_live' argument")
+        if defined_columns is None and 'definedColumns' in kwargs:
             defined_columns = kwargs['definedColumns']
-        if 'deviationCellVersionInSec' in kwargs:
+        if deviation_cell_version_in_sec is None and 'deviationCellVersionInSec' in kwargs:
             deviation_cell_version_in_sec = kwargs['deviationCellVersionInSec']
-        if 'enableSse' in kwargs:
+        if enable_sse is None and 'enableSse' in kwargs:
             enable_sse = kwargs['enableSse']
-        if 'sseKeyType' in kwargs:
+        if sse_key_type is None and 'sseKeyType' in kwargs:
             sse_key_type = kwargs['sseKeyType']
 
         _setter("instance_name", instance_name)
@@ -253,25 +263,25 @@ class _TableState:
              sse_key_type: Optional[pulumi.Input[str]] = None,
              table_name: Optional[pulumi.Input[str]] = None,
              time_to_live: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'definedColumns' in kwargs:
+        if defined_columns is None and 'definedColumns' in kwargs:
             defined_columns = kwargs['definedColumns']
-        if 'deviationCellVersionInSec' in kwargs:
+        if deviation_cell_version_in_sec is None and 'deviationCellVersionInSec' in kwargs:
             deviation_cell_version_in_sec = kwargs['deviationCellVersionInSec']
-        if 'enableSse' in kwargs:
+        if enable_sse is None and 'enableSse' in kwargs:
             enable_sse = kwargs['enableSse']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'maxVersion' in kwargs:
+        if max_version is None and 'maxVersion' in kwargs:
             max_version = kwargs['maxVersion']
-        if 'primaryKeys' in kwargs:
+        if primary_keys is None and 'primaryKeys' in kwargs:
             primary_keys = kwargs['primaryKeys']
-        if 'sseKeyType' in kwargs:
+        if sse_key_type is None and 'sseKeyType' in kwargs:
             sse_key_type = kwargs['sseKeyType']
-        if 'tableName' in kwargs:
+        if table_name is None and 'tableName' in kwargs:
             table_name = kwargs['tableName']
-        if 'timeToLive' in kwargs:
+        if time_to_live is None and 'timeToLive' in kwargs:
             time_to_live = kwargs['timeToLive']
 
         if defined_columns is not None:
@@ -425,60 +435,6 @@ class Table(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.9.2.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_instance = alicloud.ots.Instance("defaultInstance",
-            description=name,
-            accessed_by="Any",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_table = alicloud.ots.Table("defaultTable",
-            instance_name=default_instance.name,
-            table_name="tf_example",
-            time_to_live=-1,
-            max_version=1,
-            enable_sse=True,
-            sse_key_type="SSE_KMS_SERVICE",
-            primary_keys=[
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk1",
-                    type="Integer",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk2",
-                    type="String",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk3",
-                    type="Binary",
-                ),
-            ],
-            defined_columns=[
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col1",
-                    type="Integer",
-                ),
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col2",
-                    type="String",
-                ),
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col3",
-                    type="Binary",
-                ),
-            ])
-        ```
-
         ## Import
 
         OTS table can be imported using id, e.g.
@@ -512,60 +468,6 @@ class Table(pulumi.CustomResource):
         you should use resource alicloud_ots_table's new field 'instance_name' and 'table_name' to re-import this resource.
 
         > **NOTE:** Available since v1.9.2.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_instance = alicloud.ots.Instance("defaultInstance",
-            description=name,
-            accessed_by="Any",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_table = alicloud.ots.Table("defaultTable",
-            instance_name=default_instance.name,
-            table_name="tf_example",
-            time_to_live=-1,
-            max_version=1,
-            enable_sse=True,
-            sse_key_type="SSE_KMS_SERVICE",
-            primary_keys=[
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk1",
-                    type="Integer",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk2",
-                    type="String",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk3",
-                    type="Binary",
-                ),
-            ],
-            defined_columns=[
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col1",
-                    type="Integer",
-                ),
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col2",
-                    type="String",
-                ),
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col3",
-                    type="Binary",
-                ),
-            ])
-        ```
 
         ## Import
 

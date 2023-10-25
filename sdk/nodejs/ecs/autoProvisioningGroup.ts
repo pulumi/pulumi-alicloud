@@ -11,53 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.79.0+
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "auto_provisioning_group";
- * const defaultZones = alicloud.getZones({
- *     availableDiskCategory: "cloud_efficiency",
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: name,
- * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_18.*64",
- *     mostRecent: true,
- *     owners: "system",
- * });
- * const template = new alicloud.ecs.EcsLaunchTemplate("template", {
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
- *     instanceType: "ecs.n1.tiny",
- *     securityGroupId: defaultSecurityGroup.id,
- * });
- * const defaultAutoProvisioningGroup = new alicloud.ecs.AutoProvisioningGroup("defaultAutoProvisioningGroup", {
- *     launchTemplateId: template.id,
- *     totalTargetCapacity: "4",
- *     payAsYouGoTargetCapacity: "1",
- *     spotTargetCapacity: "2",
- *     launchTemplateConfigs: [{
- *         instanceType: "ecs.n1.small",
- *         vswitchId: defaultSwitch.id,
- *         weightedCapacity: "2",
- *         maxPrice: "2",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * ECS auto provisioning group can be imported using the id, e.g.

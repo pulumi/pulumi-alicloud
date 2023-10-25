@@ -37,14 +37,22 @@ class RealTimeLogDeliveryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: pulumi.Input[str],
-             logstore: pulumi.Input[str],
-             project: pulumi.Input[str],
-             sls_region: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             domain: Optional[pulumi.Input[str]] = None,
+             logstore: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             sls_region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'slsRegion' in kwargs:
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if logstore is None:
+            raise TypeError("Missing 'logstore' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if sls_region is None and 'slsRegion' in kwargs:
             sls_region = kwargs['slsRegion']
+        if sls_region is None:
+            raise TypeError("Missing 'sls_region' argument")
 
         _setter("domain", domain)
         _setter("logstore", logstore)
@@ -136,9 +144,9 @@ class _RealTimeLogDeliveryState:
              project: Optional[pulumi.Input[str]] = None,
              sls_region: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'slsRegion' in kwargs:
+        if sls_region is None and 'slsRegion' in kwargs:
             sls_region = kwargs['slsRegion']
 
         if domain is not None:
@@ -232,44 +240,6 @@ class RealTimeLogDelivery(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_domain_new = alicloud.cdn.DomainNew("defaultDomainNew",
-            scope="overseas",
-            domain_name="mycdndomain.alicloud-provider.cn",
-            cdn_type="web",
-            sources=[alicloud.cdn.DomainNewSourceArgs(
-                type="ipaddr",
-                content="1.1.3.1",
-                priority=20,
-                port=80,
-                weight=15,
-            )])
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_project = alicloud.log.Project("defaultProject", description="terraform-example")
-        default_store = alicloud.log.Store("defaultStore",
-            project=default_project.name,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        default_regions = alicloud.get_regions(current=True)
-        default_real_time_log_delivery = alicloud.cdn.RealTimeLogDelivery("defaultRealTimeLogDelivery",
-            domain=default_domain_new.domain_name,
-            logstore=default_project.name,
-            project=default_store.name,
-            sls_region=default_regions.regions[0].id)
-        ```
-
         ## Import
 
         CDN Real Time Log Delivery can be imported using the id, e.g.
@@ -299,44 +269,6 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         For information about CDN Real Time Log Delivery and how to use it, see [What is Real Time Log Delivery](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-createrealtimelogdelivery).
 
         > **NOTE:** Available since v1.134.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_domain_new = alicloud.cdn.DomainNew("defaultDomainNew",
-            scope="overseas",
-            domain_name="mycdndomain.alicloud-provider.cn",
-            cdn_type="web",
-            sources=[alicloud.cdn.DomainNewSourceArgs(
-                type="ipaddr",
-                content="1.1.3.1",
-                priority=20,
-                port=80,
-                weight=15,
-            )])
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_project = alicloud.log.Project("defaultProject", description="terraform-example")
-        default_store = alicloud.log.Store("defaultStore",
-            project=default_project.name,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        default_regions = alicloud.get_regions(current=True)
-        default_real_time_log_delivery = alicloud.cdn.RealTimeLogDelivery("defaultRealTimeLogDelivery",
-            domain=default_domain_new.domain_name,
-            logstore=default_project.name,
-            project=default_store.name,
-            sls_region=default_regions.regions[0].id)
-        ```
 
         ## Import
 

@@ -209,20 +209,6 @@ def get_load_balancers(address_ip_version: Optional[str] = None,
 
     > **NOTE:** Available in v1.191.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.nlb.get_load_balancers(ids=["example_id"])
-    pulumi.export("nlbLoadBalancerId1", ids.balancers[0].id)
-    name_regex = alicloud.nlb.get_load_balancers(name_regex="^my-LoadBalancer")
-    pulumi.export("nlbLoadBalancerId2", name_regex.balancers[0].id)
-    ```
-
 
     :param str address_ip_version: The IP version.
     :param str address_type: The type of IPv4 address used by the NLB instance.
@@ -297,20 +283,6 @@ def get_load_balancers_output(address_ip_version: Optional[pulumi.Input[Optional
     This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.191.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.nlb.get_load_balancers(ids=["example_id"])
-    pulumi.export("nlbLoadBalancerId1", ids.balancers[0].id)
-    name_regex = alicloud.nlb.get_load_balancers(name_regex="^my-LoadBalancer")
-    pulumi.export("nlbLoadBalancerId2", name_regex.balancers[0].id)
-    ```
 
 
     :param str address_ip_version: The IP version.

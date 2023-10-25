@@ -13,49 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.140.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const default3iXhoa = new alicloud.resourcemanager.ResourceGroup("default3iXhoa", {
- *     displayName: "testname03",
- *     resourceGroupName: name,
- * });
- * const defaultdNz2qk = new alicloud.resourcemanager.ResourceGroup("defaultdNz2qk", {
- *     displayName: "testname04",
- *     resourceGroupName: `${name}1`,
- * });
- * const _default = new alicloud.vpc.TrafficMirrorFilter("default", {
- *     trafficMirrorFilterDescription: "test",
- *     trafficMirrorFilterName: name,
- *     resourceGroupId: default3iXhoa.id,
- *     egressRules: [{
- *         priority: 1,
- *         protocol: "TCP",
- *         action: "accept",
- *         destinationCidrBlock: "32.0.0.0/4",
- *         destinationPortRange: "80/80",
- *         sourceCidrBlock: "16.0.0.0/4",
- *         sourcePortRange: "80/80",
- *     }],
- *     ingressRules: [{
- *         priority: 1,
- *         protocol: "TCP",
- *         action: "accept",
- *         destinationCidrBlock: "10.64.0.0/10",
- *         destinationPortRange: "80/80",
- *         sourceCidrBlock: "10.0.0.0/8",
- *         sourcePortRange: "80/80",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * VPC Traffic Mirror Filter can be imported using the id, e.g.

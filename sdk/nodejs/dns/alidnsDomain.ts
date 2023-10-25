@@ -11,23 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.95.0.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultDomainGroup = new alicloud.dns.DomainGroup("defaultDomainGroup", {domainGroupName: "tf-example"});
- * const defaultAlidnsDomain = new alicloud.dns.AlidnsDomain("defaultAlidnsDomain", {
- *     domainName: "starmove.com",
- *     groupId: defaultDomainGroup.id,
- *     tags: {
- *         Created: "TF",
- *         For: "example",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Alidns domain can be imported using the id or domain name, e.g.

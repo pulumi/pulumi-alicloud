@@ -8,42 +8,6 @@ import * as utilities from "../utilities";
  * This resource will help you to bind a VPC to an OTS instance.
  *
  * > **NOTE:** Available since v1.10.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultInstance = new alicloud.ots.Instance("defaultInstance", {
- *     description: name,
- *     accessedBy: "Vpc",
- *     tags: {
- *         Created: "TF",
- *         For: "example",
- *     },
- * });
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "10.4.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vswitchName: name,
- *     cidrBlock: "10.4.0.0/24",
- *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- * });
- * const defaultInstanceAttachment = new alicloud.ots.InstanceAttachment("defaultInstanceAttachment", {
- *     instanceName: defaultInstance.name,
- *     vpcName: "examplename",
- *     vswitchId: defaultSwitch.id,
- * });
- * ```
  */
 export class InstanceAttachment extends pulumi.CustomResource {
     /**

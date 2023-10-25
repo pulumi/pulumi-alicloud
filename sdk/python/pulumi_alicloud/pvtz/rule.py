@@ -40,21 +40,29 @@ class RuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint_id: pulumi.Input[str],
-             forward_ips: pulumi.Input[Sequence[pulumi.Input['RuleForwardIpArgs']]],
-             rule_name: pulumi.Input[str],
-             zone_name: pulumi.Input[str],
+             endpoint_id: Optional[pulumi.Input[str]] = None,
+             forward_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RuleForwardIpArgs']]]] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
+             zone_name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endpointId' in kwargs:
+        if endpoint_id is None and 'endpointId' in kwargs:
             endpoint_id = kwargs['endpointId']
-        if 'forwardIps' in kwargs:
+        if endpoint_id is None:
+            raise TypeError("Missing 'endpoint_id' argument")
+        if forward_ips is None and 'forwardIps' in kwargs:
             forward_ips = kwargs['forwardIps']
-        if 'ruleName' in kwargs:
+        if forward_ips is None:
+            raise TypeError("Missing 'forward_ips' argument")
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
-        if 'zoneName' in kwargs:
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
+        if zone_name is None and 'zoneName' in kwargs:
             zone_name = kwargs['zoneName']
+        if zone_name is None:
+            raise TypeError("Missing 'zone_name' argument")
 
         _setter("endpoint_id", endpoint_id)
         _setter("forward_ips", forward_ips)
@@ -156,15 +164,15 @@ class _RuleState:
              rule_name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endpointId' in kwargs:
+        if endpoint_id is None and 'endpointId' in kwargs:
             endpoint_id = kwargs['endpointId']
-        if 'forwardIps' in kwargs:
+        if forward_ips is None and 'forwardIps' in kwargs:
             forward_ips = kwargs['forwardIps']
-        if 'ruleName' in kwargs:
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
-        if 'zoneName' in kwargs:
+        if zone_name is None and 'zoneName' in kwargs:
             zone_name = kwargs['zoneName']
 
         if endpoint_id is not None:

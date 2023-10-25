@@ -15,37 +15,6 @@ namespace Pulumi.AliCloud.EventBridge
         /// This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.129.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.EventBridge.GetEventBuses.Invoke();
-        /// 
-        ///     var nameRegex = AliCloud.EventBridge.GetEventBuses.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-EventBus",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["eventBridgeEventBusId1"] = ids.Apply(getEventBusesResult =&gt; getEventBusesResult.Buses[0]?.Id),
-        ///         ["eventBridgeEventBusId2"] = nameRegex.Apply(getEventBusesResult =&gt; getEventBusesResult.Buses[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEventBusesResult> InvokeAsync(GetEventBusesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEventBusesResult>("alicloud:eventbridge/getEventBuses:getEventBuses", args ?? new GetEventBusesArgs(), options.WithDefaults());
@@ -54,37 +23,6 @@ namespace Pulumi.AliCloud.EventBridge
         /// This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.129.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.EventBridge.GetEventBuses.Invoke();
-        /// 
-        ///     var nameRegex = AliCloud.EventBridge.GetEventBuses.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-EventBus",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["eventBridgeEventBusId1"] = ids.Apply(getEventBusesResult =&gt; getEventBusesResult.Buses[0]?.Id),
-        ///         ["eventBridgeEventBusId2"] = nameRegex.Apply(getEventBusesResult =&gt; getEventBusesResult.Buses[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetEventBusesResult> Invoke(GetEventBusesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEventBusesResult>("alicloud:eventbridge/getEventBuses:getEventBuses", args ?? new GetEventBusesInvokeArgs(), options.WithDefaults());

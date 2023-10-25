@@ -53,23 +53,27 @@ class EcsInvocationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             command_id: pulumi.Input[str],
-             instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             command_id: Optional[pulumi.Input[str]] = None,
+             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              frequency: Optional[pulumi.Input[str]] = None,
              parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              repeat_mode: Optional[pulumi.Input[str]] = None,
              timed: Optional[pulumi.Input[bool]] = None,
              username: Optional[pulumi.Input[str]] = None,
              windows_password_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'commandId' in kwargs:
+        if command_id is None and 'commandId' in kwargs:
             command_id = kwargs['commandId']
-        if 'instanceIds' in kwargs:
+        if command_id is None:
+            raise TypeError("Missing 'command_id' argument")
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
-        if 'repeatMode' in kwargs:
+        if instance_ids is None:
+            raise TypeError("Missing 'instance_ids' argument")
+        if repeat_mode is None and 'repeatMode' in kwargs:
             repeat_mode = kwargs['repeatMode']
-        if 'windowsPasswordName' in kwargs:
+        if windows_password_name is None and 'windowsPasswordName' in kwargs:
             windows_password_name = kwargs['windowsPasswordName']
 
         _setter("command_id", command_id)
@@ -244,15 +248,15 @@ class _EcsInvocationState:
              timed: Optional[pulumi.Input[bool]] = None,
              username: Optional[pulumi.Input[str]] = None,
              windows_password_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'commandId' in kwargs:
+        if command_id is None and 'commandId' in kwargs:
             command_id = kwargs['commandId']
-        if 'instanceIds' in kwargs:
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
-        if 'repeatMode' in kwargs:
+        if repeat_mode is None and 'repeatMode' in kwargs:
             repeat_mode = kwargs['repeatMode']
-        if 'windowsPasswordName' in kwargs:
+        if windows_password_name is None and 'windowsPasswordName' in kwargs:
             windows_password_name = kwargs['windowsPasswordName']
 
         if command_id is not None:
@@ -410,25 +414,6 @@ class EcsInvocation(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.168.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_command = alicloud.ecs.Command("defaultCommand",
-            command_content="bHMK",
-            description="terraform-example",
-            type="RunShellScript",
-            working_dir="/root")
-        default_instances = alicloud.ecs.get_instances(status="Running")
-        default_ecs_invocation = alicloud.ecs.EcsInvocation("defaultEcsInvocation",
-            command_id=default_command.id,
-            instance_ids=[default_instances.ids[0]])
-        ```
-
         ## Import
 
         ECS Invocation can be imported using the id, e.g.
@@ -466,25 +451,6 @@ class EcsInvocation(pulumi.CustomResource):
         For information about ECS Invocation and how to use it, see [What is Invocation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/invokecommand#t9958.html).
 
         > **NOTE:** Available in v1.168.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_command = alicloud.ecs.Command("defaultCommand",
-            command_content="bHMK",
-            description="terraform-example",
-            type="RunShellScript",
-            working_dir="/root")
-        default_instances = alicloud.ecs.get_instances(status="Running")
-        default_ecs_invocation = alicloud.ecs.EcsInvocation("defaultEcsInvocation",
-            command_id=default_command.id,
-            instance_ids=[default_instances.ids[0]])
-        ```
 
         ## Import
 

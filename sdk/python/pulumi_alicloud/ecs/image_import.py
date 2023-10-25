@@ -48,22 +48,24 @@ class ImageImportArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk_device_mappings: pulumi.Input[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]],
+             disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]]] = None,
              architecture: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              image_name: Optional[pulumi.Input[str]] = None,
              license_type: Optional[pulumi.Input[str]] = None,
              os_type: Optional[pulumi.Input[str]] = None,
              platform: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'diskDeviceMappings' in kwargs:
+        if disk_device_mappings is None and 'diskDeviceMappings' in kwargs:
             disk_device_mappings = kwargs['diskDeviceMappings']
-        if 'imageName' in kwargs:
+        if disk_device_mappings is None:
+            raise TypeError("Missing 'disk_device_mappings' argument")
+        if image_name is None and 'imageName' in kwargs:
             image_name = kwargs['imageName']
-        if 'licenseType' in kwargs:
+        if license_type is None and 'licenseType' in kwargs:
             license_type = kwargs['licenseType']
-        if 'osType' in kwargs:
+        if os_type is None and 'osType' in kwargs:
             os_type = kwargs['osType']
 
         _setter("disk_device_mappings", disk_device_mappings)
@@ -209,15 +211,15 @@ class _ImageImportState:
              license_type: Optional[pulumi.Input[str]] = None,
              os_type: Optional[pulumi.Input[str]] = None,
              platform: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'diskDeviceMappings' in kwargs:
+        if disk_device_mappings is None and 'diskDeviceMappings' in kwargs:
             disk_device_mappings = kwargs['diskDeviceMappings']
-        if 'imageName' in kwargs:
+        if image_name is None and 'imageName' in kwargs:
             image_name = kwargs['imageName']
-        if 'licenseType' in kwargs:
+        if license_type is None and 'licenseType' in kwargs:
             license_type = kwargs['licenseType']
-        if 'osType' in kwargs:
+        if os_type is None and 'osType' in kwargs:
             os_type = kwargs['osType']
 
         if architecture is not None:
@@ -344,25 +346,6 @@ class ImageImport(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.69.0+.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        this = alicloud.ecs.ImageImport("this",
-            architecture="x86_64",
-            description="test import image",
-            disk_device_mappings=[alicloud.ecs.ImageImportDiskDeviceMappingArgs(
-                disk_image_size=5,
-                oss_bucket="testimportimage",
-                oss_object="root.img",
-            )],
-            image_name="test-import-image",
-            license_type="Auto",
-            os_type="linux",
-            platform="Ubuntu")
-        ```
         ## Attributes Reference0
 
          The following attributes are exported:
@@ -404,25 +387,6 @@ class ImageImport(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.69.0+.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        this = alicloud.ecs.ImageImport("this",
-            architecture="x86_64",
-            description="test import image",
-            disk_device_mappings=[alicloud.ecs.ImageImportDiskDeviceMappingArgs(
-                disk_image_size=5,
-                oss_bucket="testimportimage",
-                oss_object="root.img",
-            )],
-            image_name="test-import-image",
-            license_type="Auto",
-            os_type="linux",
-            platform="Ubuntu")
-        ```
         ## Attributes Reference0
 
          The following attributes are exported:

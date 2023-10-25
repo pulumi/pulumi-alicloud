@@ -31,12 +31,16 @@ class MonitorGroupInstancesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_id: pulumi.Input[str],
-             instances: pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             instances: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if instances is None:
+            raise TypeError("Missing 'instances' argument")
 
         _setter("group_id", group_id)
         _setter("instances", instances)
@@ -86,9 +90,9 @@ class _MonitorGroupInstancesState:
              _setter: Callable[[Any, Any], None],
              group_id: Optional[pulumi.Input[str]] = None,
              instances: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
 
         if group_id is not None:
@@ -136,33 +140,6 @@ class MonitorGroupInstances(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.115.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="192.168.0.0/16")
-        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup", monitor_group_name=name)
-        default_regions = alicloud.get_regions(current=True)
-        example = alicloud.cms.MonitorGroupInstances("example",
-            group_id=default_monitor_group.id,
-            instances=[alicloud.cms.MonitorGroupInstancesInstanceArgs(
-                instance_id=default_network.id,
-                instance_name=name,
-                region_id=default_regions.regions[0].id,
-                category="vpc",
-            )])
-        ```
-
         ## Import
 
         Cloud Monitor Service Monitor Group Instances can be imported using the id, e.g.
@@ -188,33 +165,6 @@ class MonitorGroupInstances(pulumi.CustomResource):
         For information about Cloud Monitor Service Monitor Group Instances and how to use it, see [What is Monitor Group Instances](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmonitorgroupinstances).
 
         > **NOTE:** Available since v1.115.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="192.168.0.0/16")
-        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup", monitor_group_name=name)
-        default_regions = alicloud.get_regions(current=True)
-        example = alicloud.cms.MonitorGroupInstances("example",
-            group_id=default_monitor_group.id,
-            instances=[alicloud.cms.MonitorGroupInstancesInstanceArgs(
-                instance_id=default_network.id,
-                instance_name=name,
-                region_id=default_regions.regions[0].id,
-                category="vpc",
-            )])
-        ```
 
         ## Import
 

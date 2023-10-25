@@ -19,58 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.130.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mns"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			exampleEventBus, err := eventbridge.NewEventBus(ctx, "exampleEventBus", &eventbridge.EventBusArgs{
-//				EventBusName: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleQueue, err := mns.NewQueue(ctx, "exampleQueue", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = eventbridge.NewEventSource(ctx, "exampleEventSource", &eventbridge.EventSourceArgs{
-//				EventBusName:         exampleEventBus.EventBusName,
-//				EventSourceName:      pulumi.String(name),
-//				Description:          pulumi.String(name),
-//				LinkedExternalSource: pulumi.Bool(true),
-//				ExternalSourceType:   pulumi.String("MNS"),
-//				ExternalSourceConfig: pulumi.AnyMap{
-//					"QueueName": exampleQueue.Name,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Event Bridge Event Source can be imported using the id, e.g.

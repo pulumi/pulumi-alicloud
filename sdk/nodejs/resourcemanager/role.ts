@@ -10,35 +10,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.82.0.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tfexample";
- * const default = alicloud.getAccount({});
- * const example = new alicloud.resourcemanager.Role("example", {
- *     roleName: name,
- *     assumeRolePolicyDocument: _default.then(_default => `     {
- *           "Statement": [
- *                {
- *                     "Action": "sts:AssumeRole",
- *                     "Effect": "Allow",
- *                     "Principal": {
- *                         "RAM":[
- *                                 "acs:ram::${_default.id}:root"
- *                         ]
- *                     }
- *                 }
- *           ],
- *           "Version": "1"
- *      }
- * `),
- * });
- * ```
- *
  * ## Import
  *
  * Resource Manager can be imported using the id or role_name, e.g.

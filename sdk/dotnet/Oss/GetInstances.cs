@@ -14,66 +14,12 @@ namespace Pulumi.AliCloud.Oss
     {
         /// <summary>
         /// This data source provides the ots instances of the current Alibaba Cloud user.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var instancesDs = AliCloud.Ots.GetInstances.Invoke(new()
-        ///     {
-        ///         NameRegex = "sample-instance",
-        ///         OutputFile = "instances.txt",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstInstanceId"] = instancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:oss/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the ots instances of the current Alibaba Cloud user.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var instancesDs = AliCloud.Ots.GetInstances.Invoke(new()
-        ///     {
-        ///         NameRegex = "sample-instance",
-        ///         OutputFile = "instances.txt",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstInstanceId"] = instancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:oss/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
@@ -111,25 +57,6 @@ namespace Pulumi.AliCloud.Oss
 
         /// <summary>
         /// A map of tags assigned to the instance. It must be in the format:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var instancesDs = AliCloud.Ots.GetInstances.Invoke(new()
-        ///     {
-        ///         Tags = 
-        ///         {
-        ///             { "tagKey1", "tagValue1" },
-        ///             { "tagKey2", "tagValue2" },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public Dictionary<string, object> Tags
         {
@@ -174,25 +101,6 @@ namespace Pulumi.AliCloud.Oss
 
         /// <summary>
         /// A map of tags assigned to the instance. It must be in the format:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var instancesDs = AliCloud.Ots.GetInstances.Invoke(new()
-        ///     {
-        ///         Tags = 
-        ///         {
-        ///             { "tagKey1", "tagValue1" },
-        ///             { "tagKey2", "tagValue2" },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public InputMap<object> Tags
         {

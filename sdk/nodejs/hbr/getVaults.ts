@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Hbr Vaults of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.129.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.hbr.getVaults({
- *     nameRegex: "^my-Vault",
- * });
- * export const hbrVaultId1 = ids.then(ids => ids.vaults?.[0]?.id);
- * ```
  */
 export function getVaults(args?: GetVaultsArgs, opts?: pulumi.InvokeOptions): Promise<GetVaultsResult> {
     args = args || {};
@@ -84,20 +70,6 @@ export interface GetVaultsResult {
  * This data source provides the Hbr Vaults of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.129.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.hbr.getVaults({
- *     nameRegex: "^my-Vault",
- * });
- * export const hbrVaultId1 = ids.then(ids => ids.vaults?.[0]?.id);
- * ```
  */
 export function getVaultsOutput(args?: GetVaultsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVaultsResult> {
     return pulumi.output(args).apply((a: any) => getVaults(a, opts))

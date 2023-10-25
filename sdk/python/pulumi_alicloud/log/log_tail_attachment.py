@@ -32,15 +32,21 @@ class LogTailAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             logtail_config_name: pulumi.Input[str],
-             machine_group_name: pulumi.Input[str],
-             project: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             logtail_config_name: Optional[pulumi.Input[str]] = None,
+             machine_group_name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'logtailConfigName' in kwargs:
+        if logtail_config_name is None and 'logtailConfigName' in kwargs:
             logtail_config_name = kwargs['logtailConfigName']
-        if 'machineGroupName' in kwargs:
+        if logtail_config_name is None:
+            raise TypeError("Missing 'logtail_config_name' argument")
+        if machine_group_name is None and 'machineGroupName' in kwargs:
             machine_group_name = kwargs['machineGroupName']
+        if machine_group_name is None:
+            raise TypeError("Missing 'machine_group_name' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
 
         _setter("logtail_config_name", logtail_config_name)
         _setter("machine_group_name", machine_group_name)
@@ -107,11 +113,11 @@ class _LogTailAttachmentState:
              logtail_config_name: Optional[pulumi.Input[str]] = None,
              machine_group_name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'logtailConfigName' in kwargs:
+        if logtail_config_name is None and 'logtailConfigName' in kwargs:
             logtail_config_name = kwargs['logtailConfigName']
-        if 'machineGroupName' in kwargs:
+        if machine_group_name is None and 'machineGroupName' in kwargs:
             machine_group_name = kwargs['machineGroupName']
 
         if logtail_config_name is not None:
@@ -176,56 +182,6 @@ class LogTailAttachment(pulumi.CustomResource):
 
         > **NOTE:** One logtail configure can be attached to multiple machine groups and one machine group can attach several logtail configures.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_log_tail_config = alicloud.log.LogTailConfig("exampleLogTailConfig",
-            project=example_project.name,
-            logstore=example_store.name,
-            input_type="file",
-            output_type="LogService",
-            input_detail=\"\"\"  	{
-        		"logPath": "/logPath",
-        		"filePattern": "access.log",
-        		"logType": "json_log",
-        		"topicFormat": "default",
-        		"discardUnmatch": false,
-        		"enableRawLog": true,
-        		"fileEncoding": "gbk",
-        		"maxDepth": 10
-        	}
-        \"\"\")
-        example_machine_group = alicloud.log.MachineGroup("exampleMachineGroup",
-            project=example_project.name,
-            identify_type="ip",
-            topic="terraform",
-            identify_lists=[
-                "10.0.0.1",
-                "10.0.0.2",
-            ])
-        example_log_tail_attachment = alicloud.log.LogTailAttachment("exampleLogTailAttachment",
-            project=example_project.name,
-            logtail_config_name=example_log_tail_config.name,
-            machine_group_name=example_machine_group.name)
-        ```
-
         ## Import
 
         Logtial to machine group can be imported using the id, e.g.
@@ -254,56 +210,6 @@ class LogTailAttachment(pulumi.CustomResource):
         This resource amis to attach one logtail configure to a machine group.
 
         > **NOTE:** One logtail configure can be attached to multiple machine groups and one machine group can attach several logtail configures.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_log_tail_config = alicloud.log.LogTailConfig("exampleLogTailConfig",
-            project=example_project.name,
-            logstore=example_store.name,
-            input_type="file",
-            output_type="LogService",
-            input_detail=\"\"\"  	{
-        		"logPath": "/logPath",
-        		"filePattern": "access.log",
-        		"logType": "json_log",
-        		"topicFormat": "default",
-        		"discardUnmatch": false,
-        		"enableRawLog": true,
-        		"fileEncoding": "gbk",
-        		"maxDepth": 10
-        	}
-        \"\"\")
-        example_machine_group = alicloud.log.MachineGroup("exampleMachineGroup",
-            project=example_project.name,
-            identify_type="ip",
-            topic="terraform",
-            identify_lists=[
-                "10.0.0.1",
-                "10.0.0.2",
-            ])
-        example_log_tail_attachment = alicloud.log.LogTailAttachment("exampleLogTailAttachment",
-            project=example_project.name,
-            logtail_config_name=example_log_tail_config.name,
-            machine_group_name=example_machine_group.name)
-        ```
 
         ## Import
 

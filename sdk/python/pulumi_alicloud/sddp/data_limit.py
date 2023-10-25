@@ -53,7 +53,7 @@ class DataLimitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_type: pulumi.Input[str],
+             resource_type: Optional[pulumi.Input[str]] = None,
              audit_status: Optional[pulumi.Input[int]] = None,
              engine_type: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
@@ -63,21 +63,23 @@ class DataLimitArgs:
              port: Optional[pulumi.Input[int]] = None,
              service_region_id: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceType' in kwargs:
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'auditStatus' in kwargs:
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
+        if audit_status is None and 'auditStatus' in kwargs:
             audit_status = kwargs['auditStatus']
-        if 'engineType' in kwargs:
+        if engine_type is None and 'engineType' in kwargs:
             engine_type = kwargs['engineType']
-        if 'logStoreDay' in kwargs:
+        if log_store_day is None and 'logStoreDay' in kwargs:
             log_store_day = kwargs['logStoreDay']
-        if 'parentId' in kwargs:
+        if parent_id is None and 'parentId' in kwargs:
             parent_id = kwargs['parentId']
-        if 'serviceRegionId' in kwargs:
+        if service_region_id is None and 'serviceRegionId' in kwargs:
             service_region_id = kwargs['serviceRegionId']
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
 
         _setter("resource_type", resource_type)
@@ -273,21 +275,21 @@ class _DataLimitState:
              resource_type: Optional[pulumi.Input[str]] = None,
              service_region_id: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'auditStatus' in kwargs:
+        if audit_status is None and 'auditStatus' in kwargs:
             audit_status = kwargs['auditStatus']
-        if 'engineType' in kwargs:
+        if engine_type is None and 'engineType' in kwargs:
             engine_type = kwargs['engineType']
-        if 'logStoreDay' in kwargs:
+        if log_store_day is None and 'logStoreDay' in kwargs:
             log_store_day = kwargs['logStoreDay']
-        if 'parentId' in kwargs:
+        if parent_id is None and 'parentId' in kwargs:
             parent_id = kwargs['parentId']
-        if 'resourceType' in kwargs:
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'serviceRegionId' in kwargs:
+        if service_region_id is None and 'serviceRegionId' in kwargs:
             service_region_id = kwargs['serviceRegionId']
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
 
         if audit_status is not None:

@@ -16,26 +16,6 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// &gt; **NOTE:** Available since v1.189.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Rds.RdsServiceLinkedRole("default", new()
-    ///     {
-    ///         ServiceName = "AliyunServiceRoleForRdsPgsqlOnEcs",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// RDS Service Linked Role can be imported using the id, e.g.

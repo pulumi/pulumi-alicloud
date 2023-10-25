@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Sae Namespaces of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.129.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const nameRegex = alicloud.sae.getNamespaces({
- *     nameRegex: "^my-Namespace",
- * });
- * export const saeNamespaceId = nameRegex.then(nameRegex => nameRegex.namespaces?.[0]?.id);
- * ```
  */
 export function getNamespaces(args?: GetNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespacesResult> {
     args = args || {};
@@ -72,20 +58,6 @@ export interface GetNamespacesResult {
  * This data source provides the Sae Namespaces of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.129.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const nameRegex = alicloud.sae.getNamespaces({
- *     nameRegex: "^my-Namespace",
- * });
- * export const saeNamespaceId = nameRegex.then(nameRegex => nameRegex.namespaces?.[0]?.id);
- * ```
  */
 export function getNamespacesOutput(args?: GetNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespacesResult> {
     return pulumi.output(args).apply((a: any) => getNamespaces(a, opts))

@@ -29,14 +29,18 @@ class BasicAccelerateIpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: pulumi.Input[str],
-             ip_set_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             ip_set_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'ipSetId' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if ip_set_id is None and 'ipSetId' in kwargs:
             ip_set_id = kwargs['ipSetId']
+        if ip_set_id is None:
+            raise TypeError("Missing 'ip_set_id' argument")
 
         _setter("accelerator_id", accelerator_id)
         _setter("ip_set_id", ip_set_id)
@@ -94,13 +98,13 @@ class _BasicAccelerateIpState:
              accelerator_id: Optional[pulumi.Input[str]] = None,
              ip_set_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accelerateIpAddress' in kwargs:
+        if accelerate_ip_address is None and 'accelerateIpAddress' in kwargs:
             accelerate_ip_address = kwargs['accelerateIpAddress']
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'ipSetId' in kwargs:
+        if ip_set_id is None and 'ipSetId' in kwargs:
             ip_set_id = kwargs['ipSetId']
 
         if accelerate_ip_address is not None:
@@ -176,35 +180,6 @@ class BasicAccelerateIp(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
-            duration=1,
-            basic_accelerator_name="terraform-example",
-            description="terraform-example",
-            bandwidth_billing_type="CDT",
-            auto_use_coupon="true",
-            auto_pay=True)
-        default_basic_ip_set = alicloud.ga.BasicIpSet("defaultBasicIpSet",
-            accelerator_id=default_basic_accelerator.id,
-            accelerate_region_id=region,
-            isp_type="BGP",
-            bandwidth=5)
-        default_basic_accelerate_ip = alicloud.ga.BasicAccelerateIp("defaultBasicAccelerateIp",
-            accelerator_id=default_basic_accelerator.id,
-            ip_set_id=default_basic_ip_set.id)
-        ```
-
         ## Import
 
         Global Accelerator (GA) Basic Accelerate IP can be imported using the id, e.g.
@@ -230,35 +205,6 @@ class BasicAccelerateIp(pulumi.CustomResource):
         For information about Global Accelerator (GA) Basic Accelerate IP and how to use it, see [What is Basic Accelerate IP](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicaccelerateip).
 
         > **NOTE:** Available since v1.194.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
-            duration=1,
-            basic_accelerator_name="terraform-example",
-            description="terraform-example",
-            bandwidth_billing_type="CDT",
-            auto_use_coupon="true",
-            auto_pay=True)
-        default_basic_ip_set = alicloud.ga.BasicIpSet("defaultBasicIpSet",
-            accelerator_id=default_basic_accelerator.id,
-            accelerate_region_id=region,
-            isp_type="BGP",
-            bandwidth=5)
-        default_basic_accelerate_ip = alicloud.ga.BasicAccelerateIp("defaultBasicAccelerateIp",
-            accelerator_id=default_basic_accelerator.id,
-            ip_set_id=default_basic_ip_set.id)
-        ```
 
         ## Import
 

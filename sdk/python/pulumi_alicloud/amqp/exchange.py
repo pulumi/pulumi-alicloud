@@ -55,26 +55,38 @@ class ExchangeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_delete_state: pulumi.Input[bool],
-             exchange_name: pulumi.Input[str],
-             exchange_type: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             internal: pulumi.Input[bool],
-             virtual_host_name: pulumi.Input[str],
+             auto_delete_state: Optional[pulumi.Input[bool]] = None,
+             exchange_name: Optional[pulumi.Input[str]] = None,
+             exchange_type: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             internal: Optional[pulumi.Input[bool]] = None,
+             virtual_host_name: Optional[pulumi.Input[str]] = None,
              alternate_exchange: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoDeleteState' in kwargs:
+        if auto_delete_state is None and 'autoDeleteState' in kwargs:
             auto_delete_state = kwargs['autoDeleteState']
-        if 'exchangeName' in kwargs:
+        if auto_delete_state is None:
+            raise TypeError("Missing 'auto_delete_state' argument")
+        if exchange_name is None and 'exchangeName' in kwargs:
             exchange_name = kwargs['exchangeName']
-        if 'exchangeType' in kwargs:
+        if exchange_name is None:
+            raise TypeError("Missing 'exchange_name' argument")
+        if exchange_type is None and 'exchangeType' in kwargs:
             exchange_type = kwargs['exchangeType']
-        if 'instanceId' in kwargs:
+        if exchange_type is None:
+            raise TypeError("Missing 'exchange_type' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'virtualHostName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if internal is None:
+            raise TypeError("Missing 'internal' argument")
+        if virtual_host_name is None and 'virtualHostName' in kwargs:
             virtual_host_name = kwargs['virtualHostName']
-        if 'alternateExchange' in kwargs:
+        if virtual_host_name is None:
+            raise TypeError("Missing 'virtual_host_name' argument")
+        if alternate_exchange is None and 'alternateExchange' in kwargs:
             alternate_exchange = kwargs['alternateExchange']
 
         _setter("auto_delete_state", auto_delete_state)
@@ -233,19 +245,19 @@ class _ExchangeState:
              instance_id: Optional[pulumi.Input[str]] = None,
              internal: Optional[pulumi.Input[bool]] = None,
              virtual_host_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alternateExchange' in kwargs:
+        if alternate_exchange is None and 'alternateExchange' in kwargs:
             alternate_exchange = kwargs['alternateExchange']
-        if 'autoDeleteState' in kwargs:
+        if auto_delete_state is None and 'autoDeleteState' in kwargs:
             auto_delete_state = kwargs['autoDeleteState']
-        if 'exchangeName' in kwargs:
+        if exchange_name is None and 'exchangeName' in kwargs:
             exchange_name = kwargs['exchangeName']
-        if 'exchangeType' in kwargs:
+        if exchange_type is None and 'exchangeType' in kwargs:
             exchange_type = kwargs['exchangeType']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'virtualHostName' in kwargs:
+        if virtual_host_name is None and 'virtualHostName' in kwargs:
             virtual_host_name = kwargs['virtualHostName']
 
         if alternate_exchange is not None:
@@ -379,34 +391,6 @@ class Exchange(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.128.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_instance = alicloud.amqp.Instance("defaultInstance",
-            instance_type="professional",
-            max_tps="1000",
-            queue_capacity="50",
-            support_eip=True,
-            max_eip_tps="128",
-            payment_type="Subscription",
-            period=1)
-        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
-            instance_id=default_instance.id,
-            virtual_host_name="tf-example")
-        default_exchange = alicloud.amqp.Exchange("defaultExchange",
-            auto_delete_state=False,
-            exchange_name="tf-example",
-            exchange_type="DIRECT",
-            instance_id=default_instance.id,
-            internal=False,
-            virtual_host_name=default_virtual_host.virtual_host_name)
-        ```
-
         ## Import
 
         RabbitMQ (AMQP) Exchange can be imported using the id, e.g.
@@ -448,34 +432,6 @@ class Exchange(pulumi.CustomResource):
         For information about RabbitMQ (AMQP) Exchange and how to use it, see [What is Exchange](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createexchange).
 
         > **NOTE:** Available since v1.128.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_instance = alicloud.amqp.Instance("defaultInstance",
-            instance_type="professional",
-            max_tps="1000",
-            queue_capacity="50",
-            support_eip=True,
-            max_eip_tps="128",
-            payment_type="Subscription",
-            period=1)
-        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
-            instance_id=default_instance.id,
-            virtual_host_name="tf-example")
-        default_exchange = alicloud.amqp.Exchange("defaultExchange",
-            auto_delete_state=False,
-            exchange_name="tf-example",
-            exchange_type="DIRECT",
-            instance_id=default_instance.id,
-            internal=False,
-            virtual_host_name=default_virtual_host.virtual_host_name)
-        ```
 
         ## Import
 

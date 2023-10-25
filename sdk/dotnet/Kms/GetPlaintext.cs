@@ -11,89 +11,9 @@ namespace Pulumi.AliCloud.Kms
 {
     public static class GetPlaintext
     {
-        /// <summary>
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var key = new AliCloud.Kms.Key("key", new()
-        ///     {
-        ///         Description = "example key",
-        ///         IsEnabled = true,
-        ///     });
-        /// 
-        ///     // Encrypt plaintext 'example'
-        ///     var encrypted = new AliCloud.Kms.Ciphertext("encrypted", new()
-        ///     {
-        ///         KeyId = key.Id,
-        ///         Plaintext = "example",
-        ///     });
-        /// 
-        ///     var plaintext = AliCloud.Kms.GetPlaintext.Invoke(new()
-        ///     {
-        ///         CiphertextBlob = encrypted.CiphertextBlob,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["decrypted"] = plaintext.Apply(getPlaintextResult =&gt; getPlaintextResult.Plaintext),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetPlaintextResult> InvokeAsync(GetPlaintextArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPlaintextResult>("alicloud:kms/getPlaintext:getPlaintext", args ?? new GetPlaintextArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var key = new AliCloud.Kms.Key("key", new()
-        ///     {
-        ///         Description = "example key",
-        ///         IsEnabled = true,
-        ///     });
-        /// 
-        ///     // Encrypt plaintext 'example'
-        ///     var encrypted = new AliCloud.Kms.Ciphertext("encrypted", new()
-        ///     {
-        ///         KeyId = key.Id,
-        ///         Plaintext = "example",
-        ///     });
-        /// 
-        ///     var plaintext = AliCloud.Kms.GetPlaintext.Invoke(new()
-        ///     {
-        ///         CiphertextBlob = encrypted.CiphertextBlob,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["decrypted"] = plaintext.Apply(getPlaintextResult =&gt; getPlaintextResult.Plaintext),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Output<GetPlaintextResult> Invoke(GetPlaintextInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPlaintextResult>("alicloud:kms/getPlaintext:getPlaintext", args ?? new GetPlaintextInvokeArgs(), options.WithDefaults());
     }

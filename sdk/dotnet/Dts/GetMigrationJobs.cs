@@ -15,37 +15,6 @@ namespace Pulumi.AliCloud.Dts
         /// This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.157.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Dts.GetMigrationJobs.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "dts_job_id",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dtsMigrationJobId1"] = ids.Apply(getMigrationJobsResult =&gt; getMigrationJobsResult.Jobs[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetMigrationJobsResult> InvokeAsync(GetMigrationJobsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMigrationJobsResult>("alicloud:dts/getMigrationJobs:getMigrationJobs", args ?? new GetMigrationJobsArgs(), options.WithDefaults());
@@ -54,37 +23,6 @@ namespace Pulumi.AliCloud.Dts
         /// This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.157.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Dts.GetMigrationJobs.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "dts_job_id",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dtsMigrationJobId1"] = ids.Apply(getMigrationJobsResult =&gt; getMigrationJobsResult.Jobs[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetMigrationJobsResult> Invoke(GetMigrationJobsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMigrationJobsResult>("alicloud:dts/getMigrationJobs:getMigrationJobs", args ?? new GetMigrationJobsInvokeArgs(), options.WithDefaults());

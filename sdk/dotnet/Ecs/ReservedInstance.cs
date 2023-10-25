@@ -14,36 +14,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available in 1.65.0+
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
-    ///     {
-    ///         InstanceTypeFamily = "ecs.g6",
-    ///     });
-    /// 
-    ///     var defaultReservedInstance = new AliCloud.Ecs.ReservedInstance("defaultReservedInstance", new()
-    ///     {
-    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-    ///         InstanceAmount = 1,
-    ///         PeriodUnit = "Month",
-    ///         OfferingType = "All Upfront",
-    ///         ReservedInstanceName = "terraform-example",
-    ///         Description = "ReservedInstance",
-    ///         ZoneId = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
-    ///         Scope = "Zone",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// reservedInstance can be imported using id, e.g.

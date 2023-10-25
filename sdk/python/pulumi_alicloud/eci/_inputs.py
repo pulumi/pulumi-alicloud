@@ -67,13 +67,13 @@ class ContainerGroupAcrRegistryInfoArgs:
              instance_id: Optional[pulumi.Input[str]] = None,
              instance_name: Optional[pulumi.Input[str]] = None,
              region_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'regionId' in kwargs:
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
 
         if domains is not None:
@@ -193,8 +193,8 @@ class ContainerGroupContainerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image: pulumi.Input[str],
-             name: pulumi.Input[str],
+             image: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              cpu: Optional[pulumi.Input[float]] = None,
@@ -209,21 +209,25 @@ class ContainerGroupContainerArgs:
              restart_count: Optional[pulumi.Input[int]] = None,
              volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgs']]]] = None,
              working_dir: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'environmentVars' in kwargs:
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if environment_vars is None and 'environmentVars' in kwargs:
             environment_vars = kwargs['environmentVars']
-        if 'imagePullPolicy' in kwargs:
+        if image_pull_policy is None and 'imagePullPolicy' in kwargs:
             image_pull_policy = kwargs['imagePullPolicy']
-        if 'livenessProbes' in kwargs:
+        if liveness_probes is None and 'livenessProbes' in kwargs:
             liveness_probes = kwargs['livenessProbes']
-        if 'readinessProbes' in kwargs:
+        if readiness_probes is None and 'readinessProbes' in kwargs:
             readiness_probes = kwargs['readinessProbes']
-        if 'restartCount' in kwargs:
+        if restart_count is None and 'restartCount' in kwargs:
             restart_count = kwargs['restartCount']
-        if 'volumeMounts' in kwargs:
+        if volume_mounts is None and 'volumeMounts' in kwargs:
             volume_mounts = kwargs['volumeMounts']
-        if 'workingDir' in kwargs:
+        if working_dir is None and 'workingDir' in kwargs:
             working_dir = kwargs['workingDir']
 
         _setter("image", image)
@@ -469,7 +473,7 @@ class ContainerGroupContainerEnvironmentVarArgs:
              _setter: Callable[[Any, Any], None],
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -545,21 +549,21 @@ class ContainerGroupContainerLivenessProbeArgs:
              success_threshold: Optional[pulumi.Input[int]] = None,
              tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgs']]]] = None,
              timeout_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'failureThreshold' in kwargs:
+        if failure_threshold is None and 'failureThreshold' in kwargs:
             failure_threshold = kwargs['failureThreshold']
-        if 'httpGets' in kwargs:
+        if http_gets is None and 'httpGets' in kwargs:
             http_gets = kwargs['httpGets']
-        if 'initialDelaySeconds' in kwargs:
+        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
             initial_delay_seconds = kwargs['initialDelaySeconds']
-        if 'periodSeconds' in kwargs:
+        if period_seconds is None and 'periodSeconds' in kwargs:
             period_seconds = kwargs['periodSeconds']
-        if 'successThreshold' in kwargs:
+        if success_threshold is None and 'successThreshold' in kwargs:
             success_threshold = kwargs['successThreshold']
-        if 'tcpSockets' in kwargs:
+        if tcp_sockets is None and 'tcpSockets' in kwargs:
             tcp_sockets = kwargs['tcpSockets']
-        if 'timeoutSeconds' in kwargs:
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
             timeout_seconds = kwargs['timeoutSeconds']
 
         if execs is not None:
@@ -691,7 +695,7 @@ class ContainerGroupContainerLivenessProbeExecArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if commands is not None:
@@ -733,7 +737,7 @@ class ContainerGroupContainerLivenessProbeHttpGetArgs:
              path: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              scheme: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if path is not None:
@@ -795,7 +799,7 @@ class ContainerGroupContainerLivenessProbeTcpSocketArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if port is not None:
@@ -833,7 +837,7 @@ class ContainerGroupContainerPortArgs:
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if port is not None:
@@ -909,21 +913,21 @@ class ContainerGroupContainerReadinessProbeArgs:
              success_threshold: Optional[pulumi.Input[int]] = None,
              tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgs']]]] = None,
              timeout_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'failureThreshold' in kwargs:
+        if failure_threshold is None and 'failureThreshold' in kwargs:
             failure_threshold = kwargs['failureThreshold']
-        if 'httpGets' in kwargs:
+        if http_gets is None and 'httpGets' in kwargs:
             http_gets = kwargs['httpGets']
-        if 'initialDelaySeconds' in kwargs:
+        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
             initial_delay_seconds = kwargs['initialDelaySeconds']
-        if 'periodSeconds' in kwargs:
+        if period_seconds is None and 'periodSeconds' in kwargs:
             period_seconds = kwargs['periodSeconds']
-        if 'successThreshold' in kwargs:
+        if success_threshold is None and 'successThreshold' in kwargs:
             success_threshold = kwargs['successThreshold']
-        if 'tcpSockets' in kwargs:
+        if tcp_sockets is None and 'tcpSockets' in kwargs:
             tcp_sockets = kwargs['tcpSockets']
-        if 'timeoutSeconds' in kwargs:
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
             timeout_seconds = kwargs['timeoutSeconds']
 
         if execs is not None:
@@ -1055,7 +1059,7 @@ class ContainerGroupContainerReadinessProbeExecArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if commands is not None:
@@ -1097,7 +1101,7 @@ class ContainerGroupContainerReadinessProbeHttpGetArgs:
              path: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              scheme: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if path is not None:
@@ -1159,7 +1163,7 @@ class ContainerGroupContainerReadinessProbeTcpSocketArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if port is not None:
@@ -1201,11 +1205,11 @@ class ContainerGroupContainerVolumeMountArgs:
              mount_path: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mountPath' in kwargs:
+        if mount_path is None and 'mountPath' in kwargs:
             mount_path = kwargs['mountPath']
-        if 'readOnly' in kwargs:
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
 
         if mount_path is not None:
@@ -1275,9 +1279,9 @@ class ContainerGroupDnsConfigArgs:
              name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              options: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupDnsConfigOptionArgs']]]] = None,
              searches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nameServers' in kwargs:
+        if name_servers is None and 'nameServers' in kwargs:
             name_servers = kwargs['nameServers']
 
         if name_servers is not None:
@@ -1343,7 +1347,7 @@ class ContainerGroupDnsConfigOptionArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -1391,7 +1395,7 @@ class ContainerGroupEciSecurityContextArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              sysctls: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupEciSecurityContextSysctlArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if sysctls is not None:
@@ -1429,7 +1433,7 @@ class ContainerGroupEciSecurityContextSysctlArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -1481,7 +1485,7 @@ class ContainerGroupHostAliasArgs:
              _setter: Callable[[Any, Any], None],
              hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if hostnames is not None:
@@ -1534,13 +1538,19 @@ class ContainerGroupImageRegistryCredentialArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: pulumi.Input[str],
-             server: pulumi.Input[str],
-             user_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             password: Optional[pulumi.Input[str]] = None,
+             server: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'userName' in kwargs:
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if server is None:
+            raise TypeError("Missing 'server' argument")
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
 
         _setter("password", password)
         _setter("server", server)
@@ -1650,17 +1660,17 @@ class ContainerGroupInitContainerArgs:
              restart_count: Optional[pulumi.Input[int]] = None,
              volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgs']]]] = None,
              working_dir: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'environmentVars' in kwargs:
+        if environment_vars is None and 'environmentVars' in kwargs:
             environment_vars = kwargs['environmentVars']
-        if 'imagePullPolicy' in kwargs:
+        if image_pull_policy is None and 'imagePullPolicy' in kwargs:
             image_pull_policy = kwargs['imagePullPolicy']
-        if 'restartCount' in kwargs:
+        if restart_count is None and 'restartCount' in kwargs:
             restart_count = kwargs['restartCount']
-        if 'volumeMounts' in kwargs:
+        if volume_mounts is None and 'volumeMounts' in kwargs:
             volume_mounts = kwargs['volumeMounts']
-        if 'workingDir' in kwargs:
+        if working_dir is None and 'workingDir' in kwargs:
             working_dir = kwargs['workingDir']
 
         if args is not None:
@@ -1880,7 +1890,7 @@ class ContainerGroupInitContainerEnvironmentVarArgs:
              _setter: Callable[[Any, Any], None],
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -1932,7 +1942,7 @@ class ContainerGroupInitContainerPortArgs:
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if port is not None:
@@ -1988,11 +1998,11 @@ class ContainerGroupInitContainerVolumeMountArgs:
              mount_path: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mountPath' in kwargs:
+        if mount_path is None and 'mountPath' in kwargs:
             mount_path = kwargs['mountPath']
-        if 'readOnly' in kwargs:
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
 
         if mount_path is not None:
@@ -2095,25 +2105,25 @@ class ContainerGroupVolumeArgs:
              nfs_volume_read_only: Optional[pulumi.Input[bool]] = None,
              nfs_volume_server: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configFileVolumeConfigFileToPaths' in kwargs:
+        if config_file_volume_config_file_to_paths is None and 'configFileVolumeConfigFileToPaths' in kwargs:
             config_file_volume_config_file_to_paths = kwargs['configFileVolumeConfigFileToPaths']
-        if 'diskVolumeDiskId' in kwargs:
+        if disk_volume_disk_id is None and 'diskVolumeDiskId' in kwargs:
             disk_volume_disk_id = kwargs['diskVolumeDiskId']
-        if 'diskVolumeFsType' in kwargs:
+        if disk_volume_fs_type is None and 'diskVolumeFsType' in kwargs:
             disk_volume_fs_type = kwargs['diskVolumeFsType']
-        if 'flexVolumeDriver' in kwargs:
+        if flex_volume_driver is None and 'flexVolumeDriver' in kwargs:
             flex_volume_driver = kwargs['flexVolumeDriver']
-        if 'flexVolumeFsType' in kwargs:
+        if flex_volume_fs_type is None and 'flexVolumeFsType' in kwargs:
             flex_volume_fs_type = kwargs['flexVolumeFsType']
-        if 'flexVolumeOptions' in kwargs:
+        if flex_volume_options is None and 'flexVolumeOptions' in kwargs:
             flex_volume_options = kwargs['flexVolumeOptions']
-        if 'nfsVolumePath' in kwargs:
+        if nfs_volume_path is None and 'nfsVolumePath' in kwargs:
             nfs_volume_path = kwargs['nfsVolumePath']
-        if 'nfsVolumeReadOnly' in kwargs:
+        if nfs_volume_read_only is None and 'nfsVolumeReadOnly' in kwargs:
             nfs_volume_read_only = kwargs['nfsVolumeReadOnly']
-        if 'nfsVolumeServer' in kwargs:
+        if nfs_volume_server is None and 'nfsVolumeServer' in kwargs:
             nfs_volume_server = kwargs['nfsVolumeServer']
 
         if config_file_volume_config_file_to_paths is not None:
@@ -2292,7 +2302,7 @@ class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs:
              _setter: Callable[[Any, Any], None],
              content: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if content is not None:
@@ -2348,9 +2358,9 @@ class ImageCacheImageRegistryCredentialArgs:
              password: Optional[pulumi.Input[str]] = None,
              server: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
 
         if password is not None:
@@ -2415,9 +2425,9 @@ class OpenApiImageCacheImageRegistryCredentialArgs:
              password: Optional[pulumi.Input[str]] = None,
              server: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
 
         if password is not None:
@@ -2478,7 +2488,7 @@ class VirtualNodeTaintArgs:
              effect: Optional[pulumi.Input[str]] = None,
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if effect is not None:

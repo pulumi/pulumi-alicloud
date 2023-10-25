@@ -32,14 +32,18 @@ class VpdArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr: pulumi.Input[str],
-             vpd_name: pulumi.Input[str],
+             cidr: Optional[pulumi.Input[str]] = None,
+             vpd_name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vpdName' in kwargs:
+        if cidr is None:
+            raise TypeError("Missing 'cidr' argument")
+        if vpd_name is None and 'vpdName' in kwargs:
             vpd_name = kwargs['vpdName']
-        if 'resourceGroupId' in kwargs:
+        if vpd_name is None:
+            raise TypeError("Missing 'vpd_name' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("cidr", cidr)
@@ -120,15 +124,15 @@ class _VpdState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vpd_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'gmtModified' in kwargs:
+        if gmt_modified is None and 'gmtModified' in kwargs:
             gmt_modified = kwargs['gmtModified']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'vpdName' in kwargs:
+        if vpd_name is None and 'vpdName' in kwargs:
             vpd_name = kwargs['vpdName']
 
         if cidr is not None:
@@ -233,25 +237,6 @@ class Vpd(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.201.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_vpd = alicloud.eflo.Vpd("defaultVpd",
-            cidr="10.0.0.0/8",
-            vpd_name=name,
-            resource_group_id=default_resource_groups.groups[0].id)
-        ```
-
         ## Import
 
         Eflo Vpd can be imported using the id, e.g.
@@ -278,25 +263,6 @@ class Vpd(pulumi.CustomResource):
         For information about Eflo Vpd and how to use it, see [What is Vpd](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
 
         > **NOTE:** Available since v1.201.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_vpd = alicloud.eflo.Vpd("defaultVpd",
-            cidr="10.0.0.0/8",
-            vpd_name=name,
-            resource_group_id=default_resource_groups.groups[0].id)
-        ```
 
         ## Import
 

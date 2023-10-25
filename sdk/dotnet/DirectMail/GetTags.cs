@@ -15,43 +15,6 @@ namespace Pulumi.AliCloud.DirectMail
         /// This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.144.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.DirectMail.GetTags.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.DirectMail.GetTags.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Tag",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["directMailTagId1"] = ids.Apply(getTagsResult =&gt; getTagsResult.Tags[0]?.Id),
-        ///         ["directMailTagId2"] = nameRegex.Apply(getTagsResult =&gt; getTagsResult.Tags[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTagsResult> InvokeAsync(GetTagsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagsResult>("alicloud:directmail/getTags:getTags", args ?? new GetTagsArgs(), options.WithDefaults());
@@ -60,43 +23,6 @@ namespace Pulumi.AliCloud.DirectMail
         /// This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.144.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.DirectMail.GetTags.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.DirectMail.GetTags.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Tag",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["directMailTagId1"] = ids.Apply(getTagsResult =&gt; getTagsResult.Tags[0]?.Id),
-        ///         ["directMailTagId2"] = nameRegex.Apply(getTagsResult =&gt; getTagsResult.Tags[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTagsResult> Invoke(GetTagsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagsResult>("alicloud:directmail/getTags:getTags", args ?? new GetTagsInvokeArgs(), options.WithDefaults());

@@ -11,22 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.142.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.eds.User("default", {
- *     email: "tf.example@abc.com",
- *     endUserId: "terraform_example123",
- *     password: "Example_123",
- *     phone: "18888888888",
- * });
- * ```
- *
  * ## Import
  *
  * ECD User can be imported using the id, e.g.

@@ -15,33 +15,6 @@ namespace Pulumi.AliCloud.Kms
         /// This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.
         ///  
         /// &gt; **NOTE:** Available in v1.88.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var kmsSecretVersionsDs = AliCloud.Kms.GetSecretVersions.Invoke(new()
-        ///     {
-        ///         EnableDetails = true,
-        ///         SecretName = "secret_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstSecretData"] = kmsSecretVersionsDs.Apply(getSecretVersionsResult =&gt; getSecretVersionsResult.Versions[0]?.SecretData),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecretVersionsResult> InvokeAsync(GetSecretVersionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretVersionsResult>("alicloud:kms/getSecretVersions:getSecretVersions", args ?? new GetSecretVersionsArgs(), options.WithDefaults());
@@ -50,33 +23,6 @@ namespace Pulumi.AliCloud.Kms
         /// This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.
         ///  
         /// &gt; **NOTE:** Available in v1.88.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var kmsSecretVersionsDs = AliCloud.Kms.GetSecretVersions.Invoke(new()
-        ///     {
-        ///         EnableDetails = true,
-        ///         SecretName = "secret_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstSecretData"] = kmsSecretVersionsDs.Apply(getSecretVersionsResult =&gt; getSecretVersionsResult.Versions[0]?.SecretData),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetSecretVersionsResult> Invoke(GetSecretVersionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretVersionsResult>("alicloud:kms/getSecretVersions:getSecretVersions", args ?? new GetSecretVersionsInvokeArgs(), options.WithDefaults());

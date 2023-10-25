@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.187.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.apigateway.getPlugins({});
- * export const apiGatewayPluginId1 = ids.then(ids => ids.plugins?.[0]?.id);
- * const nameRegex = alicloud.apigateway.getPlugins({
- *     nameRegex: "^my-Plugin",
- * });
- * export const apiGatewayPluginId2 = nameRegex.then(nameRegex => nameRegex.plugins?.[0]?.id);
- * ```
  */
 export function getPlugins(args?: GetPluginsArgs, opts?: pulumi.InvokeOptions): Promise<GetPluginsResult> {
     args = args || {};
@@ -98,22 +82,6 @@ export interface GetPluginsResult {
  * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.187.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.apigateway.getPlugins({});
- * export const apiGatewayPluginId1 = ids.then(ids => ids.plugins?.[0]?.id);
- * const nameRegex = alicloud.apigateway.getPlugins({
- *     nameRegex: "^my-Plugin",
- * });
- * export const apiGatewayPluginId2 = nameRegex.then(nameRegex => nameRegex.plugins?.[0]?.id);
- * ```
  */
 export function getPluginsOutput(args?: GetPluginsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPluginsResult> {
     return pulumi.output(args).apply((a: any) => getPlugins(a, opts))

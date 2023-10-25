@@ -15,37 +15,6 @@ namespace Pulumi.AliCloud.Pvtz
         /// This data source provides the PrivateZone Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.143.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Pvtz.GetRules.Invoke();
-        /// 
-        ///     var nameRegex = AliCloud.Pvtz.GetRules.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Rule",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["pvtzRuleId1"] = ids.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
-        ///         ["pvtzRuleId2"] = nameRegex.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRulesResult> InvokeAsync(GetRulesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:pvtz/getRules:getRules", args ?? new GetRulesArgs(), options.WithDefaults());
@@ -54,37 +23,6 @@ namespace Pulumi.AliCloud.Pvtz
         /// This data source provides the PrivateZone Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.143.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Pvtz.GetRules.Invoke();
-        /// 
-        ///     var nameRegex = AliCloud.Pvtz.GetRules.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Rule",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["pvtzRuleId1"] = ids.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
-        ///         ["pvtzRuleId2"] = nameRegex.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:pvtz/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());

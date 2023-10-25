@@ -51,16 +51,18 @@ class EipSegmentAddressArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             eip_mask: pulumi.Input[str],
+             eip_mask: Optional[pulumi.Input[str]] = None,
              bandwidth: Optional[pulumi.Input[str]] = None,
              internet_charge_type: Optional[pulumi.Input[str]] = None,
              isp: Optional[pulumi.Input[str]] = None,
              netmode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eipMask' in kwargs:
+        if eip_mask is None and 'eipMask' in kwargs:
             eip_mask = kwargs['eipMask']
-        if 'internetChargeType' in kwargs:
+        if eip_mask is None:
+            raise TypeError("Missing 'eip_mask' argument")
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
 
         _setter("eip_mask", eip_mask)
@@ -200,13 +202,13 @@ class _EipSegmentAddressState:
              isp: Optional[pulumi.Input[str]] = None,
              netmode: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'eipMask' in kwargs:
+        if eip_mask is None and 'eipMask' in kwargs:
             eip_mask = kwargs['eipMask']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
 
         if bandwidth is not None:
@@ -340,26 +342,6 @@ class EipSegmentAddress(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.207.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.ecs.EipSegmentAddress("default",
-            bandwidth="5",
-            eip_mask="28",
-            internet_charge_type="PayByBandwidth",
-            isp="BGP",
-            netmode="public")
-        ```
-
         ## Import
 
         EIP Segment Address can be imported using the id, e.g.
@@ -401,26 +383,6 @@ class EipSegmentAddress(pulumi.CustomResource):
         For information about EIP Segment Address and how to use it, see [What is Segment Address](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/allocateeipsegmentaddress).
 
         > **NOTE:** Available since v1.207.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.ecs.EipSegmentAddress("default",
-            bandwidth="5",
-            eip_mask="28",
-            internet_charge_type="PayByBandwidth",
-            isp="BGP",
-            netmode="public")
-        ```
 
         ## Import
 

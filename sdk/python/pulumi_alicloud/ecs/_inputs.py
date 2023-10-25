@@ -58,20 +58,26 @@ class AutoProvisioningGroupLaunchTemplateConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_price: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
-             weighted_capacity: pulumi.Input[str],
+             max_price: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             weighted_capacity: Optional[pulumi.Input[str]] = None,
              instance_type: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxPrice' in kwargs:
+        if max_price is None and 'maxPrice' in kwargs:
             max_price = kwargs['maxPrice']
-        if 'vswitchId' in kwargs:
+        if max_price is None:
+            raise TypeError("Missing 'max_price' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'weightedCapacity' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if weighted_capacity is None and 'weightedCapacity' in kwargs:
             weighted_capacity = kwargs['weightedCapacity']
-        if 'instanceType' in kwargs:
+        if weighted_capacity is None:
+            raise TypeError("Missing 'weighted_capacity' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
 
         _setter("max_price", max_price)
@@ -162,11 +168,11 @@ class DedicatedHostNetworkAttributeArgs:
              _setter: Callable[[Any, Any], None],
              slb_udp_timeout: Optional[pulumi.Input[int]] = None,
              udp_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'slbUdpTimeout' in kwargs:
+        if slb_udp_timeout is None and 'slbUdpTimeout' in kwargs:
             slb_udp_timeout = kwargs['slbUdpTimeout']
-        if 'udpTimeout' in kwargs:
+        if udp_timeout is None and 'udpTimeout' in kwargs:
             udp_timeout = kwargs['udpTimeout']
 
         if slb_udp_timeout is not None:
@@ -241,7 +247,7 @@ class EcsInstanceSetDataDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk_size: pulumi.Input[int],
+             disk_size: Optional[pulumi.Input[int]] = None,
              auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
              disk_category: Optional[pulumi.Input[str]] = None,
              disk_description: Optional[pulumi.Input[str]] = None,
@@ -250,23 +256,25 @@ class EcsInstanceSetDataDiskArgs:
              kms_key_id: Optional[pulumi.Input[str]] = None,
              performance_level: Optional[pulumi.Input[str]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'autoSnapshotPolicyId' in kwargs:
+        if disk_size is None:
+            raise TypeError("Missing 'disk_size' argument")
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
             auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if 'diskCategory' in kwargs:
+        if disk_category is None and 'diskCategory' in kwargs:
             disk_category = kwargs['diskCategory']
-        if 'diskDescription' in kwargs:
+        if disk_description is None and 'diskDescription' in kwargs:
             disk_description = kwargs['diskDescription']
-        if 'diskName' in kwargs:
+        if disk_name is None and 'diskName' in kwargs:
             disk_name = kwargs['diskName']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         _setter("disk_size", disk_size)
@@ -417,10 +425,14 @@ class EcsInstanceSetExcludeInstanceFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("key", key)
         _setter("values", values)
@@ -476,20 +488,22 @@ class EcsInstanceSetNetworkInterfaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             security_group_id: pulumi.Input[str],
+             security_group_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              network_interface_name: Optional[pulumi.Input[str]] = None,
              primary_ip_address: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'networkInterfaceName' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if network_interface_name is None and 'networkInterfaceName' in kwargs:
             network_interface_name = kwargs['networkInterfaceName']
-        if 'primaryIpAddress' in kwargs:
+        if primary_ip_address is None and 'primaryIpAddress' in kwargs:
             primary_ip_address = kwargs['primaryIpAddress']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         _setter("security_group_id", security_group_id)
@@ -606,13 +620,13 @@ class EcsLaunchTemplateDataDiskArgs:
              performance_level: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteWithInstance' in kwargs:
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         if category is not None:
@@ -760,13 +774,13 @@ class EcsLaunchTemplateNetworkInterfacesArgs:
              primary_ip: Optional[pulumi.Input[str]] = None,
              security_group_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'primaryIp' in kwargs:
+        if primary_ip is None and 'primaryIp' in kwargs:
             primary_ip = kwargs['primaryIp']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if description is not None:
@@ -884,11 +898,11 @@ class EcsLaunchTemplateSystemDiskArgs:
              name: Optional[pulumi.Input[str]] = None,
              performance_level: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteWithInstance' in kwargs:
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
 
         if category is not None:
@@ -1030,7 +1044,7 @@ class EcsPrefixListEntryArgs:
              _setter: Callable[[Any, Any], None],
              cidr: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if cidr is not None:
@@ -1096,11 +1110,11 @@ class ImageDiskDeviceMappingArgs:
              disk_type: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'diskType' in kwargs:
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         if device is not None:
@@ -1194,13 +1208,13 @@ class ImageImportDiskDeviceMappingArgs:
              format: Optional[pulumi.Input[str]] = None,
              oss_bucket: Optional[pulumi.Input[str]] = None,
              oss_object: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'diskImageSize' in kwargs:
+        if disk_image_size is None and 'diskImageSize' in kwargs:
             disk_image_size = kwargs['diskImageSize']
-        if 'ossBucket' in kwargs:
+        if oss_bucket is None and 'ossBucket' in kwargs:
             oss_bucket = kwargs['ossBucket']
-        if 'ossObject' in kwargs:
+        if oss_object is None and 'ossObject' in kwargs:
             oss_object = kwargs['ossObject']
 
         if device is not None:
@@ -1326,7 +1340,7 @@ class InstanceDataDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             size: pulumi.Input[int],
+             size: Optional[pulumi.Input[int]] = None,
              auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
              category: Optional[pulumi.Input[str]] = None,
              delete_with_instance: Optional[pulumi.Input[bool]] = None,
@@ -1337,17 +1351,19 @@ class InstanceDataDiskArgs:
              name: Optional[pulumi.Input[str]] = None,
              performance_level: Optional[pulumi.Input[str]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoSnapshotPolicyId' in kwargs:
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
             auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if 'deleteWithInstance' in kwargs:
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         _setter("size", size)
@@ -1529,11 +1545,11 @@ class InstanceMaintenanceTimeArgs:
              _setter: Callable[[Any, Any], None],
              end_time: Optional[pulumi.Input[str]] = None,
              start_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endTime' in kwargs:
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'startTime' in kwargs:
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
 
         if end_time is not None:
@@ -1624,13 +1640,13 @@ class LaunchTemplateDataDiskArgs:
              performance_level: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteWithInstance' in kwargs:
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         if category is not None:
@@ -1791,13 +1807,13 @@ class LaunchTemplateNetworkInterfacesArgs:
              primary_ip: Optional[pulumi.Input[str]] = None,
              security_group_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'primaryIp' in kwargs:
+        if primary_ip is None and 'primaryIp' in kwargs:
             primary_ip = kwargs['primaryIp']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if description is not None:
@@ -1929,11 +1945,11 @@ class LaunchTemplateSystemDiskArgs:
              name: Optional[pulumi.Input[str]] = None,
              performance_level: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteWithInstance' in kwargs:
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
 
         if category is not None:
@@ -2075,9 +2091,9 @@ class ReservedInstanceOperationLockArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              lock_reason: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'lockReason' in kwargs:
+        if lock_reason is None and 'lockReason' in kwargs:
             lock_reason = kwargs['lockReason']
 
         if lock_reason is not None:
@@ -2111,9 +2127,9 @@ class GetDedicatedHostsOperationLockArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'lockReason' in kwargs:
+        if lock_reason is None and 'lockReason' in kwargs:
             lock_reason = kwargs['lockReason']
 
         if lock_reason is not None:
@@ -2144,9 +2160,9 @@ class GetDisksOperationLockArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'lockReason' in kwargs:
+        if lock_reason is None and 'lockReason' in kwargs:
             lock_reason = kwargs['lockReason']
 
         if lock_reason is not None:
@@ -2174,9 +2190,9 @@ class GetEcsDisksOperationLockArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'lockReason' in kwargs:
+        if lock_reason is None and 'lockReason' in kwargs:
             lock_reason = kwargs['lockReason']
 
         if lock_reason is not None:

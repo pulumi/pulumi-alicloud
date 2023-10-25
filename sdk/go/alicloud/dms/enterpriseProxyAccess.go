@@ -19,37 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.195.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dms.NewEnterpriseProxyAccess(ctx, "default", &dms.EnterpriseProxyAccessArgs{
-//				IndepAccount:  pulumi.String("dmstest"),
-//				IndepPassword: pulumi.String("PASSWORD-DEMO"),
-//				ProxyId:       pulumi.String("1881"),
-//				UserId:        pulumi.String("104442"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // DMS Enterprise Proxy Access can be imported using the id, e.g.

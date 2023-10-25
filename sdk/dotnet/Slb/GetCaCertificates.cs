@@ -13,58 +13,12 @@ namespace Pulumi.AliCloud.Slb
     {
         /// <summary>
         /// This data source provides the CA certificate list.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var sampleDs = AliCloud.Slb.GetCaCertificates.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstSlbCaCertificateId"] = sampleDs.Apply(getCaCertificatesResult =&gt; getCaCertificatesResult.Certificates[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCaCertificatesResult> InvokeAsync(GetCaCertificatesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCaCertificatesResult>("alicloud:slb/getCaCertificates:getCaCertificates", args ?? new GetCaCertificatesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the CA certificate list.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var sampleDs = AliCloud.Slb.GetCaCertificates.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstSlbCaCertificateId"] = sampleDs.Apply(getCaCertificatesResult =&gt; getCaCertificatesResult.Certificates[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetCaCertificatesResult> Invoke(GetCaCertificatesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCaCertificatesResult>("alicloud:slb/getCaCertificates:getCaCertificates", args ?? new GetCaCertificatesInvokeArgs(), options.WithDefaults());

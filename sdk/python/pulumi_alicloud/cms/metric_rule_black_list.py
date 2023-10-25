@@ -58,10 +58,10 @@ class MetricRuleBlackListArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: pulumi.Input[str],
-             instances: pulumi.Input[Sequence[pulumi.Input[str]]],
-             metric_rule_black_list_name: pulumi.Input[str],
-             namespace: pulumi.Input[str],
+             category: Optional[pulumi.Input[str]] = None,
+             instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             metric_rule_black_list_name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
              effective_time: Optional[pulumi.Input[str]] = None,
              enable_end_time: Optional[pulumi.Input[str]] = None,
              enable_start_time: Optional[pulumi.Input[str]] = None,
@@ -69,21 +69,29 @@ class MetricRuleBlackListArgs:
              metrics: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]] = None,
              scope_type: Optional[pulumi.Input[str]] = None,
              scope_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'metricRuleBlackListName' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if instances is None:
+            raise TypeError("Missing 'instances' argument")
+        if metric_rule_black_list_name is None and 'metricRuleBlackListName' in kwargs:
             metric_rule_black_list_name = kwargs['metricRuleBlackListName']
-        if 'effectiveTime' in kwargs:
+        if metric_rule_black_list_name is None:
+            raise TypeError("Missing 'metric_rule_black_list_name' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if effective_time is None and 'effectiveTime' in kwargs:
             effective_time = kwargs['effectiveTime']
-        if 'enableEndTime' in kwargs:
+        if enable_end_time is None and 'enableEndTime' in kwargs:
             enable_end_time = kwargs['enableEndTime']
-        if 'enableStartTime' in kwargs:
+        if enable_start_time is None and 'enableStartTime' in kwargs:
             enable_start_time = kwargs['enableStartTime']
-        if 'isEnable' in kwargs:
+        if is_enable is None and 'isEnable' in kwargs:
             is_enable = kwargs['isEnable']
-        if 'scopeType' in kwargs:
+        if scope_type is None and 'scopeType' in kwargs:
             scope_type = kwargs['scopeType']
-        if 'scopeValues' in kwargs:
+        if scope_values is None and 'scopeValues' in kwargs:
             scope_values = kwargs['scopeValues']
 
         _setter("category", category)
@@ -306,27 +314,27 @@ class _MetricRuleBlackListState:
              scope_type: Optional[pulumi.Input[str]] = None,
              scope_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'effectiveTime' in kwargs:
+        if effective_time is None and 'effectiveTime' in kwargs:
             effective_time = kwargs['effectiveTime']
-        if 'enableEndTime' in kwargs:
+        if enable_end_time is None and 'enableEndTime' in kwargs:
             enable_end_time = kwargs['enableEndTime']
-        if 'enableStartTime' in kwargs:
+        if enable_start_time is None and 'enableStartTime' in kwargs:
             enable_start_time = kwargs['enableStartTime']
-        if 'isEnable' in kwargs:
+        if is_enable is None and 'isEnable' in kwargs:
             is_enable = kwargs['isEnable']
-        if 'metricRuleBlackListId' in kwargs:
+        if metric_rule_black_list_id is None and 'metricRuleBlackListId' in kwargs:
             metric_rule_black_list_id = kwargs['metricRuleBlackListId']
-        if 'metricRuleBlackListName' in kwargs:
+        if metric_rule_black_list_name is None and 'metricRuleBlackListName' in kwargs:
             metric_rule_black_list_name = kwargs['metricRuleBlackListName']
-        if 'scopeType' in kwargs:
+        if scope_type is None and 'scopeType' in kwargs:
             scope_type = kwargs['scopeType']
-        if 'scopeValues' in kwargs:
+        if scope_values is None and 'scopeValues' in kwargs:
             scope_values = kwargs['scopeValues']
-        if 'updateTime' in kwargs:
+        if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
         if category is not None:
@@ -551,52 +559,6 @@ class MetricRuleBlackList(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="Instance")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            availability_zone=default_zones.zones[0].id,
-            instance_name=name,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            security_groups=[default_security_group.id],
-            vswitch_id=default_switch.id)
-        default_metric_rule_black_list = alicloud.cms.MetricRuleBlackList("defaultMetricRuleBlackList",
-            instances=[default_instance.id.apply(lambda id: f"{{\\"instancceId\\":\\"{id}\\"}}")],
-            metrics=[alicloud.cms.MetricRuleBlackListMetricArgs(
-                metric_name="disk_utilization",
-            )],
-            category="ecs",
-            enable_end_time="1799443209000",
-            namespace="acs_ecs_dashboard",
-            enable_start_time="1689243209000",
-            metric_rule_black_list_name=name)
-        ```
-
         ## Import
 
         Cloud Monitor Service Metric Rule Black List can be imported using the id, e.g.
@@ -631,52 +593,6 @@ class MetricRuleBlackList(pulumi.CustomResource):
         For information about Cloud Monitor Service Metric Rule Black List and how to use it, see [What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist).
 
         > **NOTE:** Available since v1.194.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="Instance")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            availability_zone=default_zones.zones[0].id,
-            instance_name=name,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            security_groups=[default_security_group.id],
-            vswitch_id=default_switch.id)
-        default_metric_rule_black_list = alicloud.cms.MetricRuleBlackList("defaultMetricRuleBlackList",
-            instances=[default_instance.id.apply(lambda id: f"{{\\"instancceId\\":\\"{id}\\"}}")],
-            metrics=[alicloud.cms.MetricRuleBlackListMetricArgs(
-                metric_name="disk_utilization",
-            )],
-            category="ecs",
-            enable_end_time="1799443209000",
-            namespace="acs_ecs_dashboard",
-            enable_start_time="1689243209000",
-            metric_rule_black_list_name=name)
-        ```
 
         ## Import
 

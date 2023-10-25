@@ -49,27 +49,35 @@ class ProvisionedProductArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             product_id: pulumi.Input[str],
-             product_version_id: pulumi.Input[str],
-             provisioned_product_name: pulumi.Input[str],
-             stack_region_id: pulumi.Input[str],
+             product_id: Optional[pulumi.Input[str]] = None,
+             product_version_id: Optional[pulumi.Input[str]] = None,
+             provisioned_product_name: Optional[pulumi.Input[str]] = None,
+             stack_region_id: Optional[pulumi.Input[str]] = None,
              parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]] = None,
              portfolio_id: Optional[pulumi.Input[str]] = None,
              provisioned_product_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'productId' in kwargs:
+        if product_id is None and 'productId' in kwargs:
             product_id = kwargs['productId']
-        if 'productVersionId' in kwargs:
+        if product_id is None:
+            raise TypeError("Missing 'product_id' argument")
+        if product_version_id is None and 'productVersionId' in kwargs:
             product_version_id = kwargs['productVersionId']
-        if 'provisionedProductName' in kwargs:
+        if product_version_id is None:
+            raise TypeError("Missing 'product_version_id' argument")
+        if provisioned_product_name is None and 'provisionedProductName' in kwargs:
             provisioned_product_name = kwargs['provisionedProductName']
-        if 'stackRegionId' in kwargs:
+        if provisioned_product_name is None:
+            raise TypeError("Missing 'provisioned_product_name' argument")
+        if stack_region_id is None and 'stackRegionId' in kwargs:
             stack_region_id = kwargs['stackRegionId']
-        if 'portfolioId' in kwargs:
+        if stack_region_id is None:
+            raise TypeError("Missing 'stack_region_id' argument")
+        if portfolio_id is None and 'portfolioId' in kwargs:
             portfolio_id = kwargs['portfolioId']
-        if 'provisionedProductId' in kwargs:
+        if provisioned_product_id is None and 'provisionedProductId' in kwargs:
             provisioned_product_id = kwargs['provisionedProductId']
 
         _setter("product_id", product_id)
@@ -282,43 +290,43 @@ class _ProvisionedProductState:
              status: Optional[pulumi.Input[str]] = None,
              status_message: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'lastProvisioningTaskId' in kwargs:
+        if last_provisioning_task_id is None and 'lastProvisioningTaskId' in kwargs:
             last_provisioning_task_id = kwargs['lastProvisioningTaskId']
-        if 'lastSuccessfulProvisioningTaskId' in kwargs:
+        if last_successful_provisioning_task_id is None and 'lastSuccessfulProvisioningTaskId' in kwargs:
             last_successful_provisioning_task_id = kwargs['lastSuccessfulProvisioningTaskId']
-        if 'lastTaskId' in kwargs:
+        if last_task_id is None and 'lastTaskId' in kwargs:
             last_task_id = kwargs['lastTaskId']
-        if 'ownerPrincipalId' in kwargs:
+        if owner_principal_id is None and 'ownerPrincipalId' in kwargs:
             owner_principal_id = kwargs['ownerPrincipalId']
-        if 'ownerPrincipalType' in kwargs:
+        if owner_principal_type is None and 'ownerPrincipalType' in kwargs:
             owner_principal_type = kwargs['ownerPrincipalType']
-        if 'portfolioId' in kwargs:
+        if portfolio_id is None and 'portfolioId' in kwargs:
             portfolio_id = kwargs['portfolioId']
-        if 'productId' in kwargs:
+        if product_id is None and 'productId' in kwargs:
             product_id = kwargs['productId']
-        if 'productName' in kwargs:
+        if product_name is None and 'productName' in kwargs:
             product_name = kwargs['productName']
-        if 'productVersionId' in kwargs:
+        if product_version_id is None and 'productVersionId' in kwargs:
             product_version_id = kwargs['productVersionId']
-        if 'productVersionName' in kwargs:
+        if product_version_name is None and 'productVersionName' in kwargs:
             product_version_name = kwargs['productVersionName']
-        if 'provisionedProductArn' in kwargs:
+        if provisioned_product_arn is None and 'provisionedProductArn' in kwargs:
             provisioned_product_arn = kwargs['provisionedProductArn']
-        if 'provisionedProductId' in kwargs:
+        if provisioned_product_id is None and 'provisionedProductId' in kwargs:
             provisioned_product_id = kwargs['provisionedProductId']
-        if 'provisionedProductName' in kwargs:
+        if provisioned_product_name is None and 'provisionedProductName' in kwargs:
             provisioned_product_name = kwargs['provisionedProductName']
-        if 'provisionedProductType' in kwargs:
+        if provisioned_product_type is None and 'provisionedProductType' in kwargs:
             provisioned_product_type = kwargs['provisionedProductType']
-        if 'stackId' in kwargs:
+        if stack_id is None and 'stackId' in kwargs:
             stack_id = kwargs['stackId']
-        if 'stackRegionId' in kwargs:
+        if stack_region_id is None and 'stackRegionId' in kwargs:
             stack_region_id = kwargs['stackRegionId']
-        if 'statusMessage' in kwargs:
+        if status_message is None and 'statusMessage' in kwargs:
             status_message = kwargs['statusMessage']
 
         if create_time is not None:
@@ -652,33 +660,6 @@ class ProvisionedProduct(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.196.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testAccServiceCatalogProvisionedProduct"
-        default = alicloud.servicecatalog.ProvisionedProduct("default",
-            provisioned_product_name=name,
-            stack_region_id="cn-hangzhou",
-            product_version_id="pv-bp1d7dxy2pcc1g",
-            product_id="prod-bp1u3dkc282cwd",
-            portfolio_id="port-bp119dvn27jccw",
-            tags={
-                "v1": "tf-test",
-            },
-            parameters=[alicloud.servicecatalog.ProvisionedProductParameterArgs(
-                parameter_key="role_name",
-                parameter_value=name,
-            )])
-        ```
-
         ## Import
 
         Service Catalog Provisioned Product can be imported using the id, e.g.
@@ -710,33 +691,6 @@ class ProvisionedProduct(pulumi.CustomResource):
         For information about Service Catalog Provisioned Product and how to use it, see [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct).
 
         > **NOTE:** Available in v1.196.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testAccServiceCatalogProvisionedProduct"
-        default = alicloud.servicecatalog.ProvisionedProduct("default",
-            provisioned_product_name=name,
-            stack_region_id="cn-hangzhou",
-            product_version_id="pv-bp1d7dxy2pcc1g",
-            product_id="prod-bp1u3dkc282cwd",
-            portfolio_id="port-bp119dvn27jccw",
-            tags={
-                "v1": "tf-test",
-            },
-            parameters=[alicloud.servicecatalog.ProvisionedProductParameterArgs(
-                parameter_key="role_name",
-                parameter_value=name,
-            )])
-        ```
 
         ## Import
 

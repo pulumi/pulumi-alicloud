@@ -119,18 +119,6 @@ def get_backends(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.181.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.apigateway.get_backends()
-    pulumi.export("apiGatewayBackendId1", ids.backends[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Backends IDs.
     :param str name_regex: A regex string to filter Api Gateway Backends by name.
@@ -167,18 +155,6 @@ def get_backends_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.181.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.apigateway.get_backends()
-    pulumi.export("apiGatewayBackendId1", ids.backends[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Backends IDs.

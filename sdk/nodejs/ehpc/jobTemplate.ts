@@ -11,20 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.133.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.ehpc.JobTemplate("default", {
- *     commandLine: "./LammpsTest/lammps.pbs",
- *     jobTemplateName: "example_value",
- * });
- * ```
- *
  * ## Import
  *
  * Ehpc Job Template can be imported using the id, e.g.

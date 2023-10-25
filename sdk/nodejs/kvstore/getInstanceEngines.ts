@@ -10,25 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
  *
  * > **NOTE:** Available since v1.51.0
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const resourcesZones = alicloud.getZones({
- *     availableResourceCreation: "KVStore",
- * });
- * const resourcesInstanceEngines = resourcesZones.then(resourcesZones => alicloud.kvstore.getInstanceEngines({
- *     engine: "Redis",
- *     engineVersion: "5.0",
- *     instanceChargeType: "PrePaid",
- *     outputFile: "./engines.txt",
- *     zoneId: resourcesZones.zones?.[0]?.id,
- * }));
- * export const firstKvstoreInstanceClass = resourcesInstanceEngines.then(resourcesInstanceEngines => resourcesInstanceEngines.instanceEngines?.[0]?.engine);
- * ```
  */
 export function getInstanceEngines(args: GetInstanceEnginesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceEnginesResult> {
 
@@ -99,25 +80,6 @@ export interface GetInstanceEnginesResult {
  * This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
  *
  * > **NOTE:** Available since v1.51.0
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const resourcesZones = alicloud.getZones({
- *     availableResourceCreation: "KVStore",
- * });
- * const resourcesInstanceEngines = resourcesZones.then(resourcesZones => alicloud.kvstore.getInstanceEngines({
- *     engine: "Redis",
- *     engineVersion: "5.0",
- *     instanceChargeType: "PrePaid",
- *     outputFile: "./engines.txt",
- *     zoneId: resourcesZones.zones?.[0]?.id,
- * }));
- * export const firstKvstoreInstanceClass = resourcesInstanceEngines.then(resourcesInstanceEngines => resourcesInstanceEngines.instanceEngines?.[0]?.engine);
- * ```
  */
 export function getInstanceEnginesOutput(args: GetInstanceEnginesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceEnginesResult> {
     return pulumi.output(args).apply((a: any) => getInstanceEngines(a, opts))

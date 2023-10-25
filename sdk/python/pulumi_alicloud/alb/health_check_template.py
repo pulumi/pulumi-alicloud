@@ -62,7 +62,7 @@ class HealthCheckTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             health_check_template_name: pulumi.Input[str],
+             health_check_template_name: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              health_check_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              health_check_connect_port: Optional[pulumi.Input[int]] = None,
@@ -75,33 +75,35 @@ class HealthCheckTemplateArgs:
              health_check_timeout: Optional[pulumi.Input[int]] = None,
              healthy_threshold: Optional[pulumi.Input[int]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'healthCheckTemplateName' in kwargs:
+        if health_check_template_name is None and 'healthCheckTemplateName' in kwargs:
             health_check_template_name = kwargs['healthCheckTemplateName']
-        if 'dryRun' in kwargs:
+        if health_check_template_name is None:
+            raise TypeError("Missing 'health_check_template_name' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'healthCheckCodes' in kwargs:
+        if health_check_codes is None and 'healthCheckCodes' in kwargs:
             health_check_codes = kwargs['healthCheckCodes']
-        if 'healthCheckConnectPort' in kwargs:
+        if health_check_connect_port is None and 'healthCheckConnectPort' in kwargs:
             health_check_connect_port = kwargs['healthCheckConnectPort']
-        if 'healthCheckHost' in kwargs:
+        if health_check_host is None and 'healthCheckHost' in kwargs:
             health_check_host = kwargs['healthCheckHost']
-        if 'healthCheckHttpVersion' in kwargs:
+        if health_check_http_version is None and 'healthCheckHttpVersion' in kwargs:
             health_check_http_version = kwargs['healthCheckHttpVersion']
-        if 'healthCheckInterval' in kwargs:
+        if health_check_interval is None and 'healthCheckInterval' in kwargs:
             health_check_interval = kwargs['healthCheckInterval']
-        if 'healthCheckMethod' in kwargs:
+        if health_check_method is None and 'healthCheckMethod' in kwargs:
             health_check_method = kwargs['healthCheckMethod']
-        if 'healthCheckPath' in kwargs:
+        if health_check_path is None and 'healthCheckPath' in kwargs:
             health_check_path = kwargs['healthCheckPath']
-        if 'healthCheckProtocol' in kwargs:
+        if health_check_protocol is None and 'healthCheckProtocol' in kwargs:
             health_check_protocol = kwargs['healthCheckProtocol']
-        if 'healthCheckTimeout' in kwargs:
+        if health_check_timeout is None and 'healthCheckTimeout' in kwargs:
             health_check_timeout = kwargs['healthCheckTimeout']
-        if 'healthyThreshold' in kwargs:
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
             healthy_threshold = kwargs['healthyThreshold']
-        if 'unhealthyThreshold' in kwargs:
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
             unhealthy_threshold = kwargs['unhealthyThreshold']
 
         _setter("health_check_template_name", health_check_template_name)
@@ -351,33 +353,33 @@ class _HealthCheckTemplateState:
              health_check_timeout: Optional[pulumi.Input[int]] = None,
              healthy_threshold: Optional[pulumi.Input[int]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'healthCheckCodes' in kwargs:
+        if health_check_codes is None and 'healthCheckCodes' in kwargs:
             health_check_codes = kwargs['healthCheckCodes']
-        if 'healthCheckConnectPort' in kwargs:
+        if health_check_connect_port is None and 'healthCheckConnectPort' in kwargs:
             health_check_connect_port = kwargs['healthCheckConnectPort']
-        if 'healthCheckHost' in kwargs:
+        if health_check_host is None and 'healthCheckHost' in kwargs:
             health_check_host = kwargs['healthCheckHost']
-        if 'healthCheckHttpVersion' in kwargs:
+        if health_check_http_version is None and 'healthCheckHttpVersion' in kwargs:
             health_check_http_version = kwargs['healthCheckHttpVersion']
-        if 'healthCheckInterval' in kwargs:
+        if health_check_interval is None and 'healthCheckInterval' in kwargs:
             health_check_interval = kwargs['healthCheckInterval']
-        if 'healthCheckMethod' in kwargs:
+        if health_check_method is None and 'healthCheckMethod' in kwargs:
             health_check_method = kwargs['healthCheckMethod']
-        if 'healthCheckPath' in kwargs:
+        if health_check_path is None and 'healthCheckPath' in kwargs:
             health_check_path = kwargs['healthCheckPath']
-        if 'healthCheckProtocol' in kwargs:
+        if health_check_protocol is None and 'healthCheckProtocol' in kwargs:
             health_check_protocol = kwargs['healthCheckProtocol']
-        if 'healthCheckTemplateName' in kwargs:
+        if health_check_template_name is None and 'healthCheckTemplateName' in kwargs:
             health_check_template_name = kwargs['healthCheckTemplateName']
-        if 'healthCheckTimeout' in kwargs:
+        if health_check_timeout is None and 'healthCheckTimeout' in kwargs:
             health_check_timeout = kwargs['healthCheckTimeout']
-        if 'healthyThreshold' in kwargs:
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
             healthy_threshold = kwargs['healthyThreshold']
-        if 'unhealthyThreshold' in kwargs:
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
             unhealthy_threshold = kwargs['unhealthyThreshold']
 
         if dry_run is not None:
@@ -590,17 +592,6 @@ class HealthCheckTemplate(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.alb.HealthCheckTemplate("example", health_check_template_name="example_name")
-        ```
-
         ## Import
 
         Application Load Balancer (ALB) Health Check Template can be imported using the id, e.g.
@@ -637,17 +628,6 @@ class HealthCheckTemplate(pulumi.CustomResource):
         For information about Application Load Balancer (ALB) Health Check Template and how to use it, see [What is Health Check Template](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createhealthchecktemplate).
 
         > **NOTE:** Available since v1.134.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.alb.HealthCheckTemplate("example", health_check_template_name="example_name")
-        ```
 
         ## Import
 

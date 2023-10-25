@@ -149,19 +149,6 @@ def get_commands(command_provider: Optional[str] = None,
 
     > **NOTE:** Available in v1.116.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ecs.get_commands(ids=["E2RY53-xxxx"],
-        name_regex="tf-testAcc")
-    pulumi.export("firstEcsCommandId", example.commands[0].id)
-    ```
-
 
     :param str command_provider: Public order provider.
     :param str content_encoding: The Base64-encoded content of the command.
@@ -212,19 +199,6 @@ def get_commands_output(command_provider: Optional[pulumi.Input[Optional[str]]] 
     This data source provides the Ecs Commands of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.116.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ecs.get_commands(ids=["E2RY53-xxxx"],
-        name_regex="tf-testAcc")
-    pulumi.export("firstEcsCommandId", example.commands[0].id)
-    ```
 
 
     :param str command_provider: Public order provider.

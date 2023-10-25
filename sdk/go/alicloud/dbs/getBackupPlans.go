@@ -15,40 +15,6 @@ import (
 // This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.185.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dbs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := dbs.GetBackupPlans(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dbsBackupPlanId1", ids.Plans[0].Id)
-//			nameRegex, err := dbs.GetBackupPlans(ctx, &dbs.GetBackupPlansArgs{
-//				NameRegex: pulumi.StringRef("^my-BackupPlan"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dbsBackupPlanId2", nameRegex.Plans[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetBackupPlans(ctx *pulumi.Context, args *GetBackupPlansArgs, opts ...pulumi.InvokeOption) (*GetBackupPlansResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBackupPlansResult

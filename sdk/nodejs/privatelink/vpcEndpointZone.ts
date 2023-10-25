@@ -11,59 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.111.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example";
- * const exampleZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const exampleVpcEndpointService = new alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService", {
- *     serviceDescription: name,
- *     connectBandwidth: 103,
- *     autoAcceptConnection: false,
- * });
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
- *     vpcName: name,
- *     cidrBlock: "10.0.0.0/8",
- * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
- *     vswitchName: name,
- *     cidrBlock: "10.1.0.0/16",
- *     vpcId: exampleNetwork.id,
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
- * });
- * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
- * const exampleApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("exampleApplicationLoadBalancer", {
- *     loadBalancerName: name,
- *     vswitchId: exampleSwitch.id,
- *     loadBalancerSpec: "slb.s2.small",
- *     addressType: "intranet",
- * });
- * const exampleVpcEndpointServiceResource = new alicloud.privatelink.VpcEndpointServiceResource("exampleVpcEndpointServiceResource", {
- *     serviceId: exampleVpcEndpointService.id,
- *     resourceId: exampleApplicationLoadBalancer.id,
- *     resourceType: "slb",
- * });
- * const exampleVpcEndpoint = new alicloud.privatelink.VpcEndpoint("exampleVpcEndpoint", {
- *     serviceId: exampleVpcEndpointServiceResource.serviceId,
- *     securityGroupIds: [exampleSecurityGroup.id],
- *     vpcId: exampleNetwork.id,
- *     vpcEndpointName: name,
- * });
- * const exampleVpcEndpointZone = new alicloud.privatelink.VpcEndpointZone("exampleVpcEndpointZone", {
- *     endpointId: exampleVpcEndpoint.id,
- *     vswitchId: exampleSwitch.id,
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
- * });
- * ```
- *
  * ## Import
  *
  * Private Link Vpc Endpoint Zone can be imported using the id, e.g.

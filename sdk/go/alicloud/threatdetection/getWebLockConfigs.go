@@ -15,33 +15,6 @@ import (
 // This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-describeweblockconfiglist)
 //
 // > **NOTE:** Available since v1.195.0.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := threatdetection.GetWebLockConfigs(ctx, &threatdetection.GetWebLockConfigsArgs{
-// Ids: interface{}{
-// alicloud_threat_detection_web_lock_config.Default.Id,
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudThreatDetectionWebLockConfigExampleId", _default.Configs[0].Id)
-// return nil
-// })
-// }
-// ```
 func GetWebLockConfigs(ctx *pulumi.Context, args *GetWebLockConfigsArgs, opts ...pulumi.InvokeOption) (*GetWebLockConfigsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetWebLockConfigsResult

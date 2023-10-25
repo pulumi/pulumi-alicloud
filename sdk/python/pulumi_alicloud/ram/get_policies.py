@@ -161,19 +161,6 @@ def get_policies(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available since v1.0.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    policies_ds = alicloud.ram.get_policies(group_name="group1",
-        output_file="policies.txt",
-        type="System",
-        user_name="user1")
-    pulumi.export("firstPolicyName", policies_ds.policies[0].name)
-    ```
-
 
     :param bool enable_details: Default to `true`. Set it to true can output more details.
     :param str group_name: Filter results by a specific group name. Returned policies are attached to the specified group.
@@ -224,19 +211,6 @@ def get_policies_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available since v1.0.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    policies_ds = alicloud.ram.get_policies(group_name="group1",
-        output_file="policies.txt",
-        type="System",
-        user_name="user1")
-    pulumi.export("firstPolicyName", policies_ds.policies[0].name)
-    ```
 
 
     :param bool enable_details: Default to `true`. Set it to true can output more details.

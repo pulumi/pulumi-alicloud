@@ -17,45 +17,6 @@ namespace Pulumi.AliCloud.Vpc
         /// &gt; **NOTE:** Available in v1.189.0+.
         /// 
         /// &gt; **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Vpc.GetPublicIpAddressPoolCidrBlocks.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         PublicIpAddressPoolId = "example_value",
-        ///     });
-        /// 
-        ///     var cidrBlock = AliCloud.Vpc.GetPublicIpAddressPoolCidrBlocks.Invoke(new()
-        ///     {
-        ///         PublicIpAddressPoolId = "example_value",
-        ///         CidrBlock = "example_value",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["vpcPublicIpAddressPoolCidrBlockId1"] = ids.Apply(getPublicIpAddressPoolCidrBlocksResult =&gt; getPublicIpAddressPoolCidrBlocksResult.Blocks[0]?.Id),
-        ///         ["vpcPublicIpAddressPoolCidrBlockId2"] = cidrBlock.Apply(getPublicIpAddressPoolCidrBlocksResult =&gt; getPublicIpAddressPoolCidrBlocksResult.Blocks[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPublicIpAddressPoolCidrBlocksResult> InvokeAsync(GetPublicIpAddressPoolCidrBlocksArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPublicIpAddressPoolCidrBlocksResult>("alicloud:vpc/getPublicIpAddressPoolCidrBlocks:getPublicIpAddressPoolCidrBlocks", args ?? new GetPublicIpAddressPoolCidrBlocksArgs(), options.WithDefaults());
@@ -66,45 +27,6 @@ namespace Pulumi.AliCloud.Vpc
         /// &gt; **NOTE:** Available in v1.189.0+.
         /// 
         /// &gt; **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Vpc.GetPublicIpAddressPoolCidrBlocks.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         PublicIpAddressPoolId = "example_value",
-        ///     });
-        /// 
-        ///     var cidrBlock = AliCloud.Vpc.GetPublicIpAddressPoolCidrBlocks.Invoke(new()
-        ///     {
-        ///         PublicIpAddressPoolId = "example_value",
-        ///         CidrBlock = "example_value",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["vpcPublicIpAddressPoolCidrBlockId1"] = ids.Apply(getPublicIpAddressPoolCidrBlocksResult =&gt; getPublicIpAddressPoolCidrBlocksResult.Blocks[0]?.Id),
-        ///         ["vpcPublicIpAddressPoolCidrBlockId2"] = cidrBlock.Apply(getPublicIpAddressPoolCidrBlocksResult =&gt; getPublicIpAddressPoolCidrBlocksResult.Blocks[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPublicIpAddressPoolCidrBlocksResult> Invoke(GetPublicIpAddressPoolCidrBlocksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPublicIpAddressPoolCidrBlocksResult>("alicloud:vpc/getPublicIpAddressPoolCidrBlocks:getPublicIpAddressPoolCidrBlocks", args ?? new GetPublicIpAddressPoolCidrBlocksInvokeArgs(), options.WithDefaults());

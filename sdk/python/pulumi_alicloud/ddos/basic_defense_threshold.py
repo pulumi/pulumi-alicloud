@@ -44,24 +44,30 @@ class BasicDefenseThresholdArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ddos_type: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             instance_type: pulumi.Input[str],
+             ddos_type: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
              bps: Optional[pulumi.Input[int]] = None,
              internet_ip: Optional[pulumi.Input[str]] = None,
              is_auto: Optional[pulumi.Input[bool]] = None,
              pps: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ddosType' in kwargs:
+        if ddos_type is None and 'ddosType' in kwargs:
             ddos_type = kwargs['ddosType']
-        if 'instanceId' in kwargs:
+        if ddos_type is None:
+            raise TypeError("Missing 'ddos_type' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceType' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetIp' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if internet_ip is None and 'internetIp' in kwargs:
             internet_ip = kwargs['internetIp']
-        if 'isAuto' in kwargs:
+        if is_auto is None and 'isAuto' in kwargs:
             is_auto = kwargs['isAuto']
 
         _setter("ddos_type", ddos_type)
@@ -209,21 +215,21 @@ class _BasicDefenseThresholdState:
              max_bps: Optional[pulumi.Input[int]] = None,
              max_pps: Optional[pulumi.Input[int]] = None,
              pps: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ddosType' in kwargs:
+        if ddos_type is None and 'ddosType' in kwargs:
             ddos_type = kwargs['ddosType']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetIp' in kwargs:
+        if internet_ip is None and 'internetIp' in kwargs:
             internet_ip = kwargs['internetIp']
-        if 'isAuto' in kwargs:
+        if is_auto is None and 'isAuto' in kwargs:
             is_auto = kwargs['isAuto']
-        if 'maxBps' in kwargs:
+        if max_bps is None and 'maxBps' in kwargs:
             max_bps = kwargs['maxBps']
-        if 'maxPps' in kwargs:
+        if max_pps is None and 'maxPps' in kwargs:
             max_pps = kwargs['maxPps']
 
         if bps is not None:
@@ -374,31 +380,6 @@ class BasicDefenseThreshold(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.168.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
-            address_name=name,
-            isp="BGP",
-            internet_charge_type="PayByBandwidth",
-            payment_type="PayAsYouGo")
-        default_basic_defense_threshold = alicloud.ddos.BasicDefenseThreshold("defaultBasicDefenseThreshold",
-            instance_id=default_eip_address.id,
-            ddos_type="defense",
-            instance_type="eip",
-            bps=390,
-            pps=90000)
-        ```
-
         ## Import
 
         Ddos Basic Antiddos can be imported using the id, e.g.
@@ -429,31 +410,6 @@ class BasicDefenseThreshold(pulumi.CustomResource):
         For information about Ddos Basic Antiddos and how to use it, see [What is Defense Threshold](https://www.alibabacloud.com/help/en/ddos-protection/latest/modifydefensethreshold).
 
         > **NOTE:** Available since v1.168.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
-            address_name=name,
-            isp="BGP",
-            internet_charge_type="PayByBandwidth",
-            payment_type="PayAsYouGo")
-        default_basic_defense_threshold = alicloud.ddos.BasicDefenseThreshold("defaultBasicDefenseThreshold",
-            instance_id=default_eip_address.id,
-            ddos_type="defense",
-            instance_type="eip",
-            bps=390,
-            pps=90000)
-        ```
 
         ## Import
 

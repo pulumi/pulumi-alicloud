@@ -51,7 +51,7 @@ class NetworkAclArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vpc_id: pulumi.Input[str],
+             vpc_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              egress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]]] = None,
              ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]]] = None,
@@ -59,15 +59,17 @@ class NetworkAclArgs:
              network_acl_name: Optional[pulumi.Input[str]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'egressAclEntries' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if egress_acl_entries is None and 'egressAclEntries' in kwargs:
             egress_acl_entries = kwargs['egressAclEntries']
-        if 'ingressAclEntries' in kwargs:
+        if ingress_acl_entries is None and 'ingressAclEntries' in kwargs:
             ingress_acl_entries = kwargs['ingressAclEntries']
-        if 'networkAclName' in kwargs:
+        if network_acl_name is None and 'networkAclName' in kwargs:
             network_acl_name = kwargs['networkAclName']
 
         _setter("vpc_id", vpc_id)
@@ -245,17 +247,17 @@ class _NetworkAclState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'egressAclEntries' in kwargs:
+        if egress_acl_entries is None and 'egressAclEntries' in kwargs:
             egress_acl_entries = kwargs['egressAclEntries']
-        if 'ingressAclEntries' in kwargs:
+        if ingress_acl_entries is None and 'ingressAclEntries' in kwargs:
             ingress_acl_entries = kwargs['ingressAclEntries']
-        if 'networkAclName' in kwargs:
+        if network_acl_name is None and 'networkAclName' in kwargs:
             network_acl_name = kwargs['networkAclName']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if create_time is not None:
@@ -430,53 +432,6 @@ class NetworkAcl(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.43.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=example_network.id,
-            zone_id=default.zones[0].id)
-        example_network_acl = alicloud.vpc.NetworkAcl("exampleNetworkAcl",
-            vpc_id=example_network.id,
-            network_acl_name=name,
-            description=name,
-            ingress_acl_entries=[alicloud.vpc.NetworkAclIngressAclEntryArgs(
-                description=f"{name}-ingress",
-                network_acl_entry_name=f"{name}-ingress",
-                source_cidr_ip="196.168.2.0/21",
-                policy="accept",
-                port="22/80",
-                protocol="tcp",
-            )],
-            egress_acl_entries=[alicloud.vpc.NetworkAclEgressAclEntryArgs(
-                description=f"{name}-egress",
-                network_acl_entry_name=f"{name}-egress",
-                destination_cidr_ip="0.0.0.0/0",
-                policy="accept",
-                port="-1/-1",
-                protocol="all",
-            )],
-            resources=[alicloud.vpc.NetworkAclResourceArgs(
-                resource_id=example_switch.id,
-                resource_type="VSwitch",
-            )])
-        ```
-
         ## Import
 
         VPC Network Acl can be imported using the id, e.g.
@@ -511,53 +466,6 @@ class NetworkAcl(pulumi.CustomResource):
         For information about VPC Network Acl and how to use it, see [What is Network Acl](https://www.alibabacloud.com/help/en/ens/latest/createnetworkacl).
 
         > **NOTE:** Available since v1.43.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=example_network.id,
-            zone_id=default.zones[0].id)
-        example_network_acl = alicloud.vpc.NetworkAcl("exampleNetworkAcl",
-            vpc_id=example_network.id,
-            network_acl_name=name,
-            description=name,
-            ingress_acl_entries=[alicloud.vpc.NetworkAclIngressAclEntryArgs(
-                description=f"{name}-ingress",
-                network_acl_entry_name=f"{name}-ingress",
-                source_cidr_ip="196.168.2.0/21",
-                policy="accept",
-                port="22/80",
-                protocol="tcp",
-            )],
-            egress_acl_entries=[alicloud.vpc.NetworkAclEgressAclEntryArgs(
-                description=f"{name}-egress",
-                network_acl_entry_name=f"{name}-egress",
-                destination_cidr_ip="0.0.0.0/0",
-                policy="accept",
-                port="-1/-1",
-                protocol="all",
-            )],
-            resources=[alicloud.vpc.NetworkAclResourceArgs(
-                resource_id=example_switch.id,
-                resource_type="VSwitch",
-            )])
-        ```
 
         ## Import
 

@@ -161,19 +161,6 @@ def get_transit_router_multicast_domain_associations(ids: Optional[Sequence[str]
 
     > **NOTE:** Available in v1.195.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cen.get_transit_router_multicast_domain_associations(ids=["example_id"],
-        transit_router_multicast_domain_id="your_transit_router_multicast_domain_id")
-    pulumi.export("cenTransitRouterMulticastDomainId0", ids.associations[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Transit Router Multicast Domain Association IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -223,19 +210,6 @@ def get_transit_router_multicast_domain_associations_output(ids: Optional[pulumi
     This data source provides the Cen Transit Router Multicast Domain Associations of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.195.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cen.get_transit_router_multicast_domain_associations(ids=["example_id"],
-        transit_router_multicast_domain_id="your_transit_router_multicast_domain_id")
-    pulumi.export("cenTransitRouterMulticastDomainId0", ids.associations[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Transit Router Multicast Domain Association IDs.

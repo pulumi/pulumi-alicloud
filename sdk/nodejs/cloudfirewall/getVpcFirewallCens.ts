@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
  *
  * > **NOTE:** Available in 1.194.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cloudfirewall.getVpcFirewallCens({
- *     ids: [alicloud_cloud_firewall_vpc_firewall_cen["default"].id],
- *     cenId: "cen-cjok7uyb5w2b27573v",
- *     memberUid: "1415189284827022",
- *     status: "closed",
- *     vpcFirewallName: "tf-test",
- * });
- * export const alicloudCloudFirewallVpcFirewallCenExampleId = _default.then(_default => _default.cens?.[0]?.id);
- * ```
  */
 export function getVpcFirewallCens(args?: GetVpcFirewallCensArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcFirewallCensResult> {
     args = args || {};
@@ -139,22 +123,6 @@ export interface GetVpcFirewallCensResult {
  * This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
  *
  * > **NOTE:** Available in 1.194.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cloudfirewall.getVpcFirewallCens({
- *     ids: [alicloud_cloud_firewall_vpc_firewall_cen["default"].id],
- *     cenId: "cen-cjok7uyb5w2b27573v",
- *     memberUid: "1415189284827022",
- *     status: "closed",
- *     vpcFirewallName: "tf-test",
- * });
- * export const alicloudCloudFirewallVpcFirewallCenExampleId = _default.then(_default => _default.cens?.[0]?.id);
- * ```
  */
 export function getVpcFirewallCensOutput(args?: GetVpcFirewallCensOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcFirewallCensResult> {
     return pulumi.output(args).apply((a: any) => getVpcFirewallCens(a, opts))

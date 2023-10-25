@@ -17,39 +17,6 @@ namespace Pulumi.AliCloud.CloudSso
         /// &gt; **NOTE:** Available in v1.193.0+.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.CloudSso.GetAccessAssignments.Invoke(new()
-        ///     {
-        ///         DirectoryId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cloudSsoAccessAssignmentId1"] = ids.Apply(getAccessAssignmentsResult =&gt; getAccessAssignmentsResult.Assignments[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccessAssignmentsResult> InvokeAsync(GetAccessAssignmentsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessAssignmentsResult>("alicloud:cloudsso/getAccessAssignments:getAccessAssignments", args ?? new GetAccessAssignmentsArgs(), options.WithDefaults());
@@ -60,39 +27,6 @@ namespace Pulumi.AliCloud.CloudSso
         /// &gt; **NOTE:** Available in v1.193.0+.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.CloudSso.GetAccessAssignments.Invoke(new()
-        ///     {
-        ///         DirectoryId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cloudSsoAccessAssignmentId1"] = ids.Apply(getAccessAssignmentsResult =&gt; getAccessAssignmentsResult.Assignments[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccessAssignmentsResult> Invoke(GetAccessAssignmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessAssignmentsResult>("alicloud:cloudsso/getAccessAssignments:getAccessAssignments", args ?? new GetAccessAssignmentsInvokeArgs(), options.WithDefaults());

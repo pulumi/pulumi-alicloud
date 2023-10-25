@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ddoscoo Ports of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.123.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ddos.getDdosCooPorts({
- *     instanceId: "ddoscoo-cn-6ja1rl4j****",
- *     ids: ["ddoscoo-cn-6ja1rl4j****:7001:tcp"],
- * });
- * export const firstDdoscooPortId = example.then(example => example.ports?.[0]?.id);
- * ```
  */
 export function getDdosCooPorts(args: GetDdosCooPortsArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosCooPortsResult> {
 
@@ -83,21 +68,6 @@ export interface GetDdosCooPortsResult {
  * This data source provides the Ddoscoo Ports of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.123.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ddos.getDdosCooPorts({
- *     instanceId: "ddoscoo-cn-6ja1rl4j****",
- *     ids: ["ddoscoo-cn-6ja1rl4j****:7001:tcp"],
- * });
- * export const firstDdoscooPortId = example.then(example => example.ports?.[0]?.id);
- * ```
  */
 export function getDdosCooPortsOutput(args: GetDdosCooPortsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosCooPortsResult> {
     return pulumi.output(args).apply((a: any) => getDdosCooPorts(a, opts))

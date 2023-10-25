@@ -16,38 +16,6 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// &gt; **NOTE:** Available since v1.178.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.CloudFirewall.AddressBook("example", new()
-    ///     {
-    ///         AutoAddTagEcs = 0,
-    ///         Description = "example_value",
-    ///         EcsTags = new[]
-    ///         {
-    ///             new AliCloud.CloudFirewall.Inputs.AddressBookEcsTagArgs
-    ///             {
-    ///                 TagKey = "created",
-    ///                 TagValue = "tfTestAcc0",
-    ///             },
-    ///         },
-    ///         GroupName = "example_value",
-    ///         GroupType = "tag",
-    ///         TagRelation = "and",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Cloud Firewall Address Book can be imported using the id, e.g.

@@ -16,24 +16,6 @@ namespace Pulumi.AliCloud.EventBridge
     /// 
     /// &gt; **NOTE:** Available in v1.129.0+. After the version 1.142.0, the resource is renamed as `alicloud.eventbridge.ServiceLinkedRole`.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var serviceLinkedRole = new AliCloud.EventBridge.ServiceLinkedRole("serviceLinkedRole", new()
-    ///     {
-    ///         ProductName = "AliyunServiceRoleForEventBridgeSendToMNS",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Event Bridge service-linked roles(SLR) can be imported using the id, e.g.

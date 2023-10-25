@@ -10,19 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
  *
  * > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const subscriptions = alicloud.mns.getTopicSubscriptions({
- *     namePrefix: "tf-",
- *     topicName: "topic_name",
- * });
- * export const firstTopicSubscriptionId = subscriptions.then(subscriptions => subscriptions.subscriptions?.[0]?.id);
- * ```
  */
 export function getTopicSubscriptions(args: GetTopicSubscriptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicSubscriptionsResult> {
 
@@ -79,19 +66,6 @@ export interface GetTopicSubscriptionsResult {
  * This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
  *
  * > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const subscriptions = alicloud.mns.getTopicSubscriptions({
- *     namePrefix: "tf-",
- *     topicName: "topic_name",
- * });
- * export const firstTopicSubscriptionId = subscriptions.then(subscriptions => subscriptions.subscriptions?.[0]?.id);
- * ```
  */
 export function getTopicSubscriptionsOutput(args: GetTopicSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicSubscriptionsResult> {
     return pulumi.output(args).apply((a: any) => getTopicSubscriptions(a, opts))

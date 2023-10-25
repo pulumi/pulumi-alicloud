@@ -10,19 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the CMS Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.101.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cms.getAlarmContactGroups({
- *     nameRegex: "tf-testacc",
- * });
- * ```
  */
 export function getAlarmContactGroups(args?: GetAlarmContactGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlarmContactGroupsResult> {
     args = args || {};
@@ -71,19 +58,6 @@ export interface GetAlarmContactGroupsResult {
  * This data source provides the CMS Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.101.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cms.getAlarmContactGroups({
- *     nameRegex: "tf-testacc",
- * });
- * ```
  */
 export function getAlarmContactGroupsOutput(args?: GetAlarmContactGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlarmContactGroupsResult> {
     return pulumi.output(args).apply((a: any) => getAlarmContactGroups(a, opts))

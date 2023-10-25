@@ -11,35 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.194.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
- *     cidrBlock: "172.16.0.0/12",
- *     vpcName: "terraform-example",
- * });
- * const exampleRouteTable = new alicloud.vpc.RouteTable("exampleRouteTable", {
- *     vpcId: exampleNetwork.id,
- *     routeTableName: "terraform-example",
- *     description: "terraform-example",
- *     associateType: "Gateway",
- * });
- * const exampleIpv4Gateway = new alicloud.vpc.Ipv4Gateway("exampleIpv4Gateway", {
- *     ipv4GatewayName: "terraform-example",
- *     vpcId: exampleNetwork.id,
- *     enabled: true,
- * });
- * const exampleGatewayRouteTableAttachment = new alicloud.vpc.GatewayRouteTableAttachment("exampleGatewayRouteTableAttachment", {
- *     ipv4GatewayId: exampleIpv4Gateway.id,
- *     routeTableId: exampleRouteTable.id,
- * });
- * ```
- *
  * ## Import
  *
  * VPC Gateway Route Table Attachment can be imported using the id, e.g.

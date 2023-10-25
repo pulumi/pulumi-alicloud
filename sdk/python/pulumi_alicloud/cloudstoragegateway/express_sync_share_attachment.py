@@ -32,17 +32,23 @@ class ExpressSyncShareAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             express_sync_id: pulumi.Input[str],
-             gateway_id: pulumi.Input[str],
-             share_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             express_sync_id: Optional[pulumi.Input[str]] = None,
+             gateway_id: Optional[pulumi.Input[str]] = None,
+             share_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'expressSyncId' in kwargs:
+        if express_sync_id is None and 'expressSyncId' in kwargs:
             express_sync_id = kwargs['expressSyncId']
-        if 'gatewayId' in kwargs:
+        if express_sync_id is None:
+            raise TypeError("Missing 'express_sync_id' argument")
+        if gateway_id is None and 'gatewayId' in kwargs:
             gateway_id = kwargs['gatewayId']
-        if 'shareName' in kwargs:
+        if gateway_id is None:
+            raise TypeError("Missing 'gateway_id' argument")
+        if share_name is None and 'shareName' in kwargs:
             share_name = kwargs['shareName']
+        if share_name is None:
+            raise TypeError("Missing 'share_name' argument")
 
         _setter("express_sync_id", express_sync_id)
         _setter("gateway_id", gateway_id)
@@ -109,13 +115,13 @@ class _ExpressSyncShareAttachmentState:
              express_sync_id: Optional[pulumi.Input[str]] = None,
              gateway_id: Optional[pulumi.Input[str]] = None,
              share_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'expressSyncId' in kwargs:
+        if express_sync_id is None and 'expressSyncId' in kwargs:
             express_sync_id = kwargs['expressSyncId']
-        if 'gatewayId' in kwargs:
+        if gateway_id is None and 'gatewayId' in kwargs:
             gateway_id = kwargs['gatewayId']
-        if 'shareName' in kwargs:
+        if share_name is None and 'shareName' in kwargs:
             share_name = kwargs['shareName']
 
         if express_sync_id is not None:

@@ -34,11 +34,11 @@ class CustomPropertyPropertyValueArgs:
              _setter: Callable[[Any, Any], None],
              property_value: Optional[pulumi.Input[str]] = None,
              property_value_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'propertyValue' in kwargs:
+        if property_value is None and 'propertyValue' in kwargs:
             property_value = kwargs['propertyValue']
-        if 'propertyValueId' in kwargs:
+        if property_value_id is None and 'propertyValueId' in kwargs:
             property_value_id = kwargs['propertyValueId']
 
         if property_value is not None:
@@ -90,9 +90,9 @@ class EcdPolicyGroupAuthorizeAccessPolicyRuleArgs:
              _setter: Callable[[Any, Any], None],
              cidr_ip: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrIp' in kwargs:
+        if cidr_ip is None and 'cidrIp' in kwargs:
             cidr_ip = kwargs['cidrIp']
 
         if cidr_ip is not None:
@@ -164,13 +164,13 @@ class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs:
              port_range: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrIp' in kwargs:
+        if cidr_ip is None and 'cidrIp' in kwargs:
             cidr_ip = kwargs['cidrIp']
-        if 'ipProtocol' in kwargs:
+        if ip_protocol is None and 'ipProtocol' in kwargs:
             ip_protocol = kwargs['ipProtocol']
-        if 'portRange' in kwargs:
+        if port_range is None and 'portRange' in kwargs:
             port_range = kwargs['portRange']
 
         if cidr_ip is not None:

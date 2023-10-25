@@ -19,41 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.130.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := alb.NewSecurityPolicy(ctx, "default", &alb.SecurityPolicyArgs{
-//				Ciphers: pulumi.StringArray{
-//					pulumi.String("ECDHE-ECDSA-AES128-SHA"),
-//					pulumi.String("AES256-SHA"),
-//				},
-//				SecurityPolicyName: pulumi.String("tf_example"),
-//				TlsVersions: pulumi.StringArray{
-//					pulumi.String("TLSv1.0"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ALB Security Policy can be imported using the id, e.g.

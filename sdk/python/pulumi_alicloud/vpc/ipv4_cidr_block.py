@@ -33,14 +33,18 @@ class Ipv4CidrBlockArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secondary_cidr_block: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             secondary_cidr_block: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'secondaryCidrBlock' in kwargs:
+        if secondary_cidr_block is None and 'secondaryCidrBlock' in kwargs:
             secondary_cidr_block = kwargs['secondaryCidrBlock']
-        if 'vpcId' in kwargs:
+        if secondary_cidr_block is None:
+            raise TypeError("Missing 'secondary_cidr_block' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
 
         _setter("secondary_cidr_block", secondary_cidr_block)
         _setter("vpc_id", vpc_id)
@@ -98,11 +102,11 @@ class _Ipv4CidrBlockState:
              _setter: Callable[[Any, Any], None],
              secondary_cidr_block: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'secondaryCidrBlock' in kwargs:
+        if secondary_cidr_block is None and 'secondaryCidrBlock' in kwargs:
             secondary_cidr_block = kwargs['secondaryCidrBlock']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if secondary_cidr_block is not None:
@@ -154,24 +158,6 @@ class Ipv4CidrBlock(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.185.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        defaultvpc = alicloud.vpc.Network("defaultvpc", description=name)
-        default = alicloud.vpc.Ipv4CidrBlock("default",
-            secondary_cidr_block="192.168.0.0/16",
-            vpc_id=defaultvpc.id)
-        ```
-
         ## Import
 
         VPC Ipv4 Cidr Block can be imported using the id, e.g.
@@ -201,24 +187,6 @@ class Ipv4CidrBlock(pulumi.CustomResource):
         For information about VPC Ipv4 Cidr Block and how to use it, see [What is Ipv4 Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatevpccidrblock).
 
         > **NOTE:** Available since v1.185.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        defaultvpc = alicloud.vpc.Network("defaultvpc", description=name)
-        default = alicloud.vpc.Ipv4CidrBlock("default",
-            secondary_cidr_block="192.168.0.0/16",
-            vpc_id=defaultvpc.id)
-        ```
 
         ## Import
 

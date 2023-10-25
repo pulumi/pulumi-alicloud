@@ -15,46 +15,6 @@ namespace Pulumi.AliCloud.BastionHost
         /// This data source provides the Bastionhost User Groups of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.132.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.BastionHost.GetUserGroups.Invoke(new()
-        ///     {
-        ///         InstanceId = "bastionhost-cn-xxxx",
-        ///         Ids = new[]
-        ///         {
-        ///             "1",
-        ///             "2",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.BastionHost.GetUserGroups.Invoke(new()
-        ///     {
-        ///         InstanceId = "bastionhost-cn-xxxx",
-        ///         NameRegex = "^my-UserGroup",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["bastionhostUserGroupId1"] = ids.Apply(getUserGroupsResult =&gt; getUserGroupsResult.Groups[0]?.Id),
-        ///         ["bastionhostUserGroupId2"] = nameRegex.Apply(getUserGroupsResult =&gt; getUserGroupsResult.Groups[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetUserGroupsResult> InvokeAsync(GetUserGroupsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserGroupsResult>("alicloud:bastionhost/getUserGroups:getUserGroups", args ?? new GetUserGroupsArgs(), options.WithDefaults());
@@ -63,46 +23,6 @@ namespace Pulumi.AliCloud.BastionHost
         /// This data source provides the Bastionhost User Groups of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.132.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.BastionHost.GetUserGroups.Invoke(new()
-        ///     {
-        ///         InstanceId = "bastionhost-cn-xxxx",
-        ///         Ids = new[]
-        ///         {
-        ///             "1",
-        ///             "2",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.BastionHost.GetUserGroups.Invoke(new()
-        ///     {
-        ///         InstanceId = "bastionhost-cn-xxxx",
-        ///         NameRegex = "^my-UserGroup",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["bastionhostUserGroupId1"] = ids.Apply(getUserGroupsResult =&gt; getUserGroupsResult.Groups[0]?.Id),
-        ///         ["bastionhostUserGroupId2"] = nameRegex.Apply(getUserGroupsResult =&gt; getUserGroupsResult.Groups[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetUserGroupsResult> Invoke(GetUserGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserGroupsResult>("alicloud:bastionhost/getUserGroups:getUserGroups", args ?? new GetUserGroupsInvokeArgs(), options.WithDefaults());

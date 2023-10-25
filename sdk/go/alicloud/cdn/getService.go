@@ -17,33 +17,6 @@ import (
 // For information about CDN and how to use it, see [What is CDN](https://www.alibabacloud.com/help/product/27099.htm).
 //
 // > **NOTE:** Available since v1.98.0.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cdn.GetService(ctx, &cdn.GetServiceArgs{
-//				Enable:             pulumi.StringRef("On"),
-//				InternetChargeType: pulumi.StringRef("PayByTraffic"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.InvokeOption) (*GetServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceResult

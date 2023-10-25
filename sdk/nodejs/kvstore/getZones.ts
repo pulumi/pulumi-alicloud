@@ -10,17 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
  * > **NOTE:** Available since v1.73.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const zonesIds = alicloud.kvstore.getZones({
- *     instanceChargeType: "PostPaid",
- * });
- * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
@@ -85,17 +74,6 @@ export interface GetZonesResult {
  * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
  * > **NOTE:** Available since v1.73.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const zonesIds = alicloud.kvstore.getZones({
- *     instanceChargeType: "PostPaid",
- * });
- * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
     return pulumi.output(args).apply((a: any) => getZones(a, opts))

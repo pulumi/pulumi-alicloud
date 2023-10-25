@@ -99,19 +99,6 @@ def get_event_sources(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.130.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.eventbridge.get_event_sources(ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstEventBridgeEventSourceId", example.sources[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Event Source IDs.
     :param str name_regex: A regex string to filter results by Event Source name.
@@ -142,19 +129,6 @@ def get_event_sources_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.130.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.eventbridge.get_event_sources(ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstEventBridgeEventSourceId", example.sources[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Event Source IDs.

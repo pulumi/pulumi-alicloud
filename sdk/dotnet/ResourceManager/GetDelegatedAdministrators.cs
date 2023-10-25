@@ -15,37 +15,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.181.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.ResourceManager.GetDelegatedAdministrators.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["resourceManagerDelegatedAdministratorId1"] = ids.Apply(getDelegatedAdministratorsResult =&gt; getDelegatedAdministratorsResult.Administrators[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDelegatedAdministratorsResult> InvokeAsync(GetDelegatedAdministratorsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDelegatedAdministratorsResult>("alicloud:resourcemanager/getDelegatedAdministrators:getDelegatedAdministrators", args ?? new GetDelegatedAdministratorsArgs(), options.WithDefaults());
@@ -54,37 +23,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.181.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.ResourceManager.GetDelegatedAdministrators.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["resourceManagerDelegatedAdministratorId1"] = ids.Apply(getDelegatedAdministratorsResult =&gt; getDelegatedAdministratorsResult.Administrators[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDelegatedAdministratorsResult> Invoke(GetDelegatedAdministratorsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDelegatedAdministratorsResult>("alicloud:resourcemanager/getDelegatedAdministrators:getDelegatedAdministrators", args ?? new GetDelegatedAdministratorsInvokeArgs(), options.WithDefaults());

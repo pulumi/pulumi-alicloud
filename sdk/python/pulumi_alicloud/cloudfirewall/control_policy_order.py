@@ -32,13 +32,17 @@ class ControlPolicyOrderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acl_uuid: pulumi.Input[str],
-             direction: pulumi.Input[str],
+             acl_uuid: Optional[pulumi.Input[str]] = None,
+             direction: Optional[pulumi.Input[str]] = None,
              order: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclUuid' in kwargs:
+        if acl_uuid is None and 'aclUuid' in kwargs:
             acl_uuid = kwargs['aclUuid']
+        if acl_uuid is None:
+            raise TypeError("Missing 'acl_uuid' argument")
+        if direction is None:
+            raise TypeError("Missing 'direction' argument")
 
         _setter("acl_uuid", acl_uuid)
         _setter("direction", direction)
@@ -106,9 +110,9 @@ class _ControlPolicyOrderState:
              acl_uuid: Optional[pulumi.Input[str]] = None,
              direction: Optional[pulumi.Input[str]] = None,
              order: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclUuid' in kwargs:
+        if acl_uuid is None and 'aclUuid' in kwargs:
             acl_uuid = kwargs['aclUuid']
 
         if acl_uuid is not None:
@@ -171,30 +175,6 @@ class ControlPolicyOrder(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.130.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example1 = alicloud.cloudfirewall.ControlPolicy("example1",
-            application_name="ANY",
-            acl_action="accept",
-            description="example",
-            destination_type="net",
-            destination="100.1.1.0/24",
-            direction="out",
-            proto="ANY",
-            source="1.2.3.0/24",
-            source_type="net")
-        example2 = alicloud.cloudfirewall.ControlPolicyOrder("example2",
-            acl_uuid=example1.acl_uuid,
-            direction=example1.direction,
-            order=1)
-        ```
-
         ## Import
 
         Cloud Firewall Control Policy Order can be imported using the id, e.g.
@@ -221,30 +201,6 @@ class ControlPolicyOrder(pulumi.CustomResource):
         For information about Cloud Firewall Control Policy Order and how to use it, see [What is Control Policy Order](https://www.alibabacloud.com/help/doc-detail/138867.htm).
 
         > **NOTE:** Available in v1.130.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example1 = alicloud.cloudfirewall.ControlPolicy("example1",
-            application_name="ANY",
-            acl_action="accept",
-            description="example",
-            destination_type="net",
-            destination="100.1.1.0/24",
-            direction="out",
-            proto="ANY",
-            source="1.2.3.0/24",
-            source_type="net")
-        example2 = alicloud.cloudfirewall.ControlPolicyOrder("example2",
-            acl_uuid=example1.acl_uuid,
-            direction=example1.direction,
-            order=1)
-        ```
 
         ## Import
 

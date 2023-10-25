@@ -100,18 +100,6 @@ def get_users(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.136.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.quickbi.get_users(ids=["example_id"])
-    pulumi.export("quickBiUserId1", ids.users[0].id)
-    ```
-
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of User IDs.
@@ -145,18 +133,6 @@ def get_users_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     This data source provides the Quick BI Users of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.136.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.quickbi.get_users(ids=["example_id"])
-    pulumi.export("quickBiUserId1", ids.users[0].id)
-    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

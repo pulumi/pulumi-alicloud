@@ -55,33 +55,41 @@ class IngressArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             listener_port: pulumi.Input[int],
-             namespace_id: pulumi.Input[str],
-             rules: pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]],
-             slb_id: pulumi.Input[str],
+             listener_port: Optional[pulumi.Input[int]] = None,
+             namespace_id: Optional[pulumi.Input[str]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]]] = None,
+             slb_id: Optional[pulumi.Input[str]] = None,
              cert_id: Optional[pulumi.Input[str]] = None,
              cert_ids: Optional[pulumi.Input[str]] = None,
              default_rule: Optional[pulumi.Input['IngressDefaultRuleArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              listener_protocol: Optional[pulumi.Input[str]] = None,
              load_balance_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'listenerPort' in kwargs:
+        if listener_port is None and 'listenerPort' in kwargs:
             listener_port = kwargs['listenerPort']
-        if 'namespaceId' in kwargs:
+        if listener_port is None:
+            raise TypeError("Missing 'listener_port' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
-        if 'slbId' in kwargs:
+        if namespace_id is None:
+            raise TypeError("Missing 'namespace_id' argument")
+        if rules is None:
+            raise TypeError("Missing 'rules' argument")
+        if slb_id is None and 'slbId' in kwargs:
             slb_id = kwargs['slbId']
-        if 'certId' in kwargs:
+        if slb_id is None:
+            raise TypeError("Missing 'slb_id' argument")
+        if cert_id is None and 'certId' in kwargs:
             cert_id = kwargs['certId']
-        if 'certIds' in kwargs:
+        if cert_ids is None and 'certIds' in kwargs:
             cert_ids = kwargs['certIds']
-        if 'defaultRule' in kwargs:
+        if default_rule is None and 'defaultRule' in kwargs:
             default_rule = kwargs['defaultRule']
-        if 'listenerProtocol' in kwargs:
+        if listener_protocol is None and 'listenerProtocol' in kwargs:
             listener_protocol = kwargs['listenerProtocol']
-        if 'loadBalanceType' in kwargs:
+        if load_balance_type is None and 'loadBalanceType' in kwargs:
             load_balance_type = kwargs['loadBalanceType']
 
         _setter("listener_port", listener_port)
@@ -274,23 +282,23 @@ class _IngressState:
              namespace_id: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]]] = None,
              slb_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certId' in kwargs:
+        if cert_id is None and 'certId' in kwargs:
             cert_id = kwargs['certId']
-        if 'certIds' in kwargs:
+        if cert_ids is None and 'certIds' in kwargs:
             cert_ids = kwargs['certIds']
-        if 'defaultRule' in kwargs:
+        if default_rule is None and 'defaultRule' in kwargs:
             default_rule = kwargs['defaultRule']
-        if 'listenerPort' in kwargs:
+        if listener_port is None and 'listenerPort' in kwargs:
             listener_port = kwargs['listenerPort']
-        if 'listenerProtocol' in kwargs:
+        if listener_protocol is None and 'listenerProtocol' in kwargs:
             listener_protocol = kwargs['listenerProtocol']
-        if 'loadBalanceType' in kwargs:
+        if load_balance_type is None and 'loadBalanceType' in kwargs:
             load_balance_type = kwargs['loadBalanceType']
-        if 'namespaceId' in kwargs:
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
-        if 'slbId' in kwargs:
+        if slb_id is None and 'slbId' in kwargs:
             slb_id = kwargs['slbId']
 
         if cert_id is not None:
@@ -458,73 +466,6 @@ class Ingress(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.137.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
-            namespace_name=name,
-            namespace_description=name,
-            enable_micro_registration=False)
-        default_application = alicloud.sae.Application("defaultApplication",
-            app_description=name,
-            app_name=name,
-            namespace_id=default_namespace.id,
-            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
-            package_type="Image",
-            security_group_id=default_security_group.id,
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            timezone="Asia/Beijing",
-            replicas=5,
-            cpu=500,
-            memory=2048)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
-            load_balancer_name=name,
-            vswitch_id=default_switch.id,
-            load_balancer_spec="slb.s2.small",
-            address_type="intranet")
-        default_ingress = alicloud.sae.Ingress("defaultIngress",
-            slb_id=default_application_load_balancer.id,
-            namespace_id=default_namespace.id,
-            listener_port=80,
-            rules=[alicloud.sae.IngressRuleArgs(
-                app_id=default_application.id,
-                container_port=443,
-                domain="www.alicloud.com",
-                app_name=default_application.app_name,
-                path="/",
-            )],
-            default_rule=alicloud.sae.IngressDefaultRuleArgs(
-                app_id=default_application.id,
-                container_port=443,
-            ))
-        ```
-
         ## Import
 
         Serverless App Engine (SAE) Ingress can be imported using the id, e.g.
@@ -558,73 +499,6 @@ class Ingress(pulumi.CustomResource):
         For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://www.alibabacloud.com/help/en/sae/latest/createingress).
 
         > **NOTE:** Available since v1.137.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
-            namespace_name=name,
-            namespace_description=name,
-            enable_micro_registration=False)
-        default_application = alicloud.sae.Application("defaultApplication",
-            app_description=name,
-            app_name=name,
-            namespace_id=default_namespace.id,
-            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
-            package_type="Image",
-            security_group_id=default_security_group.id,
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            timezone="Asia/Beijing",
-            replicas=5,
-            cpu=500,
-            memory=2048)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
-            load_balancer_name=name,
-            vswitch_id=default_switch.id,
-            load_balancer_spec="slb.s2.small",
-            address_type="intranet")
-        default_ingress = alicloud.sae.Ingress("defaultIngress",
-            slb_id=default_application_load_balancer.id,
-            namespace_id=default_namespace.id,
-            listener_port=80,
-            rules=[alicloud.sae.IngressRuleArgs(
-                app_id=default_application.id,
-                container_port=443,
-                domain="www.alicloud.com",
-                app_name=default_application.app_name,
-                path="/",
-            )],
-            default_rule=alicloud.sae.IngressDefaultRuleArgs(
-                app_id=default_application.id,
-                container_port=443,
-            ))
-        ```
 
         ## Import
 
@@ -674,11 +548,7 @@ class Ingress(pulumi.CustomResource):
 
             __props__.__dict__["cert_id"] = cert_id
             __props__.__dict__["cert_ids"] = cert_ids
-            if default_rule is not None and not isinstance(default_rule, IngressDefaultRuleArgs):
-                default_rule = default_rule or {}
-                def _setter(key, value):
-                    default_rule[key] = value
-                IngressDefaultRuleArgs._configure(_setter, **default_rule)
+            default_rule = _utilities.configure(default_rule, IngressDefaultRuleArgs, True)
             __props__.__dict__["default_rule"] = default_rule
             __props__.__dict__["description"] = description
             if listener_port is None and not opts.urn:

@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Hbr Hana Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.178.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.hbr.getHanaInstances({
- *     ids: ["example_id"],
- * });
- * export const hbrHanaInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
- * ```
  */
 export function getHanaInstances(args?: GetHanaInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetHanaInstancesResult> {
     args = args || {};
@@ -90,20 +76,6 @@ export interface GetHanaInstancesResult {
  * This data source provides the Hbr Hana Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.178.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.hbr.getHanaInstances({
- *     ids: ["example_id"],
- * });
- * export const hbrHanaInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
- * ```
  */
 export function getHanaInstancesOutput(args?: GetHanaInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHanaInstancesResult> {
     return pulumi.output(args).apply((a: any) => getHanaInstances(a, opts))

@@ -49,31 +49,37 @@ class ApplicationScalingRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_id: pulumi.Input[str],
-             scaling_rule_name: pulumi.Input[str],
-             scaling_rule_type: pulumi.Input[str],
+             app_id: Optional[pulumi.Input[str]] = None,
+             scaling_rule_name: Optional[pulumi.Input[str]] = None,
+             scaling_rule_type: Optional[pulumi.Input[str]] = None,
              min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
              min_ready_instances: Optional[pulumi.Input[int]] = None,
              scaling_rule_enable: Optional[pulumi.Input[bool]] = None,
              scaling_rule_metric: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricArgs']] = None,
              scaling_rule_timer: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appId' in kwargs:
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'scalingRuleName' in kwargs:
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if scaling_rule_name is None and 'scalingRuleName' in kwargs:
             scaling_rule_name = kwargs['scalingRuleName']
-        if 'scalingRuleType' in kwargs:
+        if scaling_rule_name is None:
+            raise TypeError("Missing 'scaling_rule_name' argument")
+        if scaling_rule_type is None and 'scalingRuleType' in kwargs:
             scaling_rule_type = kwargs['scalingRuleType']
-        if 'minReadyInstanceRatio' in kwargs:
+        if scaling_rule_type is None:
+            raise TypeError("Missing 'scaling_rule_type' argument")
+        if min_ready_instance_ratio is None and 'minReadyInstanceRatio' in kwargs:
             min_ready_instance_ratio = kwargs['minReadyInstanceRatio']
-        if 'minReadyInstances' in kwargs:
+        if min_ready_instances is None and 'minReadyInstances' in kwargs:
             min_ready_instances = kwargs['minReadyInstances']
-        if 'scalingRuleEnable' in kwargs:
+        if scaling_rule_enable is None and 'scalingRuleEnable' in kwargs:
             scaling_rule_enable = kwargs['scalingRuleEnable']
-        if 'scalingRuleMetric' in kwargs:
+        if scaling_rule_metric is None and 'scalingRuleMetric' in kwargs:
             scaling_rule_metric = kwargs['scalingRuleMetric']
-        if 'scalingRuleTimer' in kwargs:
+        if scaling_rule_timer is None and 'scalingRuleTimer' in kwargs:
             scaling_rule_timer = kwargs['scalingRuleTimer']
 
         _setter("app_id", app_id)
@@ -231,23 +237,23 @@ class _ApplicationScalingRuleState:
              scaling_rule_name: Optional[pulumi.Input[str]] = None,
              scaling_rule_timer: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs']] = None,
              scaling_rule_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appId' in kwargs:
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'minReadyInstanceRatio' in kwargs:
+        if min_ready_instance_ratio is None and 'minReadyInstanceRatio' in kwargs:
             min_ready_instance_ratio = kwargs['minReadyInstanceRatio']
-        if 'minReadyInstances' in kwargs:
+        if min_ready_instances is None and 'minReadyInstances' in kwargs:
             min_ready_instances = kwargs['minReadyInstances']
-        if 'scalingRuleEnable' in kwargs:
+        if scaling_rule_enable is None and 'scalingRuleEnable' in kwargs:
             scaling_rule_enable = kwargs['scalingRuleEnable']
-        if 'scalingRuleMetric' in kwargs:
+        if scaling_rule_metric is None and 'scalingRuleMetric' in kwargs:
             scaling_rule_metric = kwargs['scalingRuleMetric']
-        if 'scalingRuleName' in kwargs:
+        if scaling_rule_name is None and 'scalingRuleName' in kwargs:
             scaling_rule_name = kwargs['scalingRuleName']
-        if 'scalingRuleTimer' in kwargs:
+        if scaling_rule_timer is None and 'scalingRuleTimer' in kwargs:
             scaling_rule_timer = kwargs['scalingRuleTimer']
-        if 'scalingRuleType' in kwargs:
+        if scaling_rule_type is None and 'scalingRuleType' in kwargs:
             scaling_rule_type = kwargs['scalingRuleType']
 
         if app_id is not None:
@@ -385,103 +391,6 @@ class ApplicationScalingRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.159.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
-            namespace_name=name,
-            namespace_description=name,
-            enable_micro_registration=False)
-        default_application = alicloud.sae.Application("defaultApplication",
-            app_description=name,
-            app_name=name,
-            namespace_id=default_namespace.id,
-            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
-            package_type="Image",
-            security_group_id=default_security_group.id,
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            timezone="Asia/Beijing",
-            replicas=5,
-            cpu=500,
-            memory=2048)
-        default_application_scaling_rule = alicloud.sae.ApplicationScalingRule("defaultApplicationScalingRule",
-            app_id=default_application.id,
-            scaling_rule_name=name,
-            scaling_rule_enable=True,
-            scaling_rule_type="mix",
-            min_ready_instances=3,
-            min_ready_instance_ratio=-1,
-            scaling_rule_timer=alicloud.sae.ApplicationScalingRuleScalingRuleTimerArgs(
-                period="* * *",
-                schedules=[
-                    alicloud.sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs(
-                        at_time="08:00",
-                        max_replicas=10,
-                        min_replicas=3,
-                    ),
-                    alicloud.sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs(
-                        at_time="20:00",
-                        max_replicas=50,
-                        min_replicas=3,
-                    ),
-                ],
-            ),
-            scaling_rule_metric=alicloud.sae.ApplicationScalingRuleScalingRuleMetricArgs(
-                max_replicas=50,
-                min_replicas=3,
-                metrics=[
-                    alicloud.sae.ApplicationScalingRuleScalingRuleMetricMetricArgs(
-                        metric_type="CPU",
-                        metric_target_average_utilization=20,
-                    ),
-                    alicloud.sae.ApplicationScalingRuleScalingRuleMetricMetricArgs(
-                        metric_type="MEMORY",
-                        metric_target_average_utilization=30,
-                    ),
-                    alicloud.sae.ApplicationScalingRuleScalingRuleMetricMetricArgs(
-                        metric_type="tcpActiveConn",
-                        metric_target_average_utilization=20,
-                    ),
-                ],
-                scale_up_rules=alicloud.sae.ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs(
-                    step=10,
-                    disabled=False,
-                    stabilization_window_seconds=0,
-                ),
-                scale_down_rules=alicloud.sae.ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs(
-                    step=10,
-                    disabled=False,
-                    stabilization_window_seconds=10,
-                ),
-            ))
-        ```
-
         ## Import
 
         Serverless App Engine (SAE) Application Scaling Rule can be imported using the id, e.g.
@@ -513,103 +422,6 @@ class ApplicationScalingRule(pulumi.CustomResource):
         For information about Serverless App Engine (SAE) Application Scaling Rule and how to use it, see [What is Application Scaling Rule](https://www.alibabacloud.com/help/en/sae/latest/create-application-scaling-rule).
 
         > **NOTE:** Available since v1.159.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
-            namespace_name=name,
-            namespace_description=name,
-            enable_micro_registration=False)
-        default_application = alicloud.sae.Application("defaultApplication",
-            app_description=name,
-            app_name=name,
-            namespace_id=default_namespace.id,
-            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
-            package_type="Image",
-            security_group_id=default_security_group.id,
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            timezone="Asia/Beijing",
-            replicas=5,
-            cpu=500,
-            memory=2048)
-        default_application_scaling_rule = alicloud.sae.ApplicationScalingRule("defaultApplicationScalingRule",
-            app_id=default_application.id,
-            scaling_rule_name=name,
-            scaling_rule_enable=True,
-            scaling_rule_type="mix",
-            min_ready_instances=3,
-            min_ready_instance_ratio=-1,
-            scaling_rule_timer=alicloud.sae.ApplicationScalingRuleScalingRuleTimerArgs(
-                period="* * *",
-                schedules=[
-                    alicloud.sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs(
-                        at_time="08:00",
-                        max_replicas=10,
-                        min_replicas=3,
-                    ),
-                    alicloud.sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs(
-                        at_time="20:00",
-                        max_replicas=50,
-                        min_replicas=3,
-                    ),
-                ],
-            ),
-            scaling_rule_metric=alicloud.sae.ApplicationScalingRuleScalingRuleMetricArgs(
-                max_replicas=50,
-                min_replicas=3,
-                metrics=[
-                    alicloud.sae.ApplicationScalingRuleScalingRuleMetricMetricArgs(
-                        metric_type="CPU",
-                        metric_target_average_utilization=20,
-                    ),
-                    alicloud.sae.ApplicationScalingRuleScalingRuleMetricMetricArgs(
-                        metric_type="MEMORY",
-                        metric_target_average_utilization=30,
-                    ),
-                    alicloud.sae.ApplicationScalingRuleScalingRuleMetricMetricArgs(
-                        metric_type="tcpActiveConn",
-                        metric_target_average_utilization=20,
-                    ),
-                ],
-                scale_up_rules=alicloud.sae.ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs(
-                    step=10,
-                    disabled=False,
-                    stabilization_window_seconds=0,
-                ),
-                scale_down_rules=alicloud.sae.ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs(
-                    step=10,
-                    disabled=False,
-                    stabilization_window_seconds=10,
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -661,20 +473,12 @@ class ApplicationScalingRule(pulumi.CustomResource):
             __props__.__dict__["min_ready_instance_ratio"] = min_ready_instance_ratio
             __props__.__dict__["min_ready_instances"] = min_ready_instances
             __props__.__dict__["scaling_rule_enable"] = scaling_rule_enable
-            if scaling_rule_metric is not None and not isinstance(scaling_rule_metric, ApplicationScalingRuleScalingRuleMetricArgs):
-                scaling_rule_metric = scaling_rule_metric or {}
-                def _setter(key, value):
-                    scaling_rule_metric[key] = value
-                ApplicationScalingRuleScalingRuleMetricArgs._configure(_setter, **scaling_rule_metric)
+            scaling_rule_metric = _utilities.configure(scaling_rule_metric, ApplicationScalingRuleScalingRuleMetricArgs, True)
             __props__.__dict__["scaling_rule_metric"] = scaling_rule_metric
             if scaling_rule_name is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_rule_name'")
             __props__.__dict__["scaling_rule_name"] = scaling_rule_name
-            if scaling_rule_timer is not None and not isinstance(scaling_rule_timer, ApplicationScalingRuleScalingRuleTimerArgs):
-                scaling_rule_timer = scaling_rule_timer or {}
-                def _setter(key, value):
-                    scaling_rule_timer[key] = value
-                ApplicationScalingRuleScalingRuleTimerArgs._configure(_setter, **scaling_rule_timer)
+            scaling_rule_timer = _utilities.configure(scaling_rule_timer, ApplicationScalingRuleScalingRuleTimerArgs, True)
             __props__.__dict__["scaling_rule_timer"] = scaling_rule_timer
             if scaling_rule_type is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_rule_type'")

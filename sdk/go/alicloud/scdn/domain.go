@@ -21,43 +21,6 @@ import (
 //
 // > **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/scdn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := scdn.NewDomain(ctx, "example", &scdn.DomainArgs{
-//				DomainName: pulumi.String("my-Domain"),
-//				Sources: scdn.DomainSourceArray{
-//					&scdn.DomainSourceArgs{
-//						Content:  pulumi.String("xxx.aliyuncs.com"),
-//						Enabled:  pulumi.String("online"),
-//						Port:     pulumi.Int(80),
-//						Priority: pulumi.String("20"),
-//						Type:     pulumi.String("oss"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // SCDN Domain can be imported using the id, e.g.

@@ -129,19 +129,6 @@ def get_control_policies(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.120.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.resourcemanager.get_control_policies(ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstResourceManagerControlPolicyId", example.policies[0].id)
-    ```
-
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Control Policy IDs.
@@ -184,19 +171,6 @@ def get_control_policies_output(enable_details: Optional[pulumi.Input[Optional[b
     This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.120.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.resourcemanager.get_control_policies(ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstResourceManagerControlPolicyId", example.policies[0].id)
-    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

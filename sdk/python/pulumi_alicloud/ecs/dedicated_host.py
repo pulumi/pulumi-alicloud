@@ -85,7 +85,7 @@ class DedicatedHostArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dedicated_host_type: pulumi.Input[str],
+             dedicated_host_type: Optional[pulumi.Input[str]] = None,
              action_on_maintenance: Optional[pulumi.Input[str]] = None,
              auto_placement: Optional[pulumi.Input[str]] = None,
              auto_release_time: Optional[pulumi.Input[str]] = None,
@@ -105,43 +105,45 @@ class DedicatedHostArgs:
              sale_cycle: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dedicatedHostType' in kwargs:
+        if dedicated_host_type is None and 'dedicatedHostType' in kwargs:
             dedicated_host_type = kwargs['dedicatedHostType']
-        if 'actionOnMaintenance' in kwargs:
+        if dedicated_host_type is None:
+            raise TypeError("Missing 'dedicated_host_type' argument")
+        if action_on_maintenance is None and 'actionOnMaintenance' in kwargs:
             action_on_maintenance = kwargs['actionOnMaintenance']
-        if 'autoPlacement' in kwargs:
+        if auto_placement is None and 'autoPlacement' in kwargs:
             auto_placement = kwargs['autoPlacement']
-        if 'autoReleaseTime' in kwargs:
+        if auto_release_time is None and 'autoReleaseTime' in kwargs:
             auto_release_time = kwargs['autoReleaseTime']
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'cpuOverCommitRatio' in kwargs:
+        if cpu_over_commit_ratio is None and 'cpuOverCommitRatio' in kwargs:
             cpu_over_commit_ratio = kwargs['cpuOverCommitRatio']
-        if 'dedicatedHostClusterId' in kwargs:
+        if dedicated_host_cluster_id is None and 'dedicatedHostClusterId' in kwargs:
             dedicated_host_cluster_id = kwargs['dedicatedHostClusterId']
-        if 'dedicatedHostName' in kwargs:
+        if dedicated_host_name is None and 'dedicatedHostName' in kwargs:
             dedicated_host_name = kwargs['dedicatedHostName']
-        if 'detailFee' in kwargs:
+        if detail_fee is None and 'detailFee' in kwargs:
             detail_fee = kwargs['detailFee']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'expiredTime' in kwargs:
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'minQuantity' in kwargs:
+        if min_quantity is None and 'minQuantity' in kwargs:
             min_quantity = kwargs['minQuantity']
-        if 'networkAttributes' in kwargs:
+        if network_attributes is None and 'networkAttributes' in kwargs:
             network_attributes = kwargs['networkAttributes']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'saleCycle' in kwargs:
+        if sale_cycle is None and 'saleCycle' in kwargs:
             sale_cycle = kwargs['saleCycle']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("dedicated_host_type", dedicated_host_type)
@@ -521,43 +523,43 @@ class _DedicatedHostState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'actionOnMaintenance' in kwargs:
+        if action_on_maintenance is None and 'actionOnMaintenance' in kwargs:
             action_on_maintenance = kwargs['actionOnMaintenance']
-        if 'autoPlacement' in kwargs:
+        if auto_placement is None and 'autoPlacement' in kwargs:
             auto_placement = kwargs['autoPlacement']
-        if 'autoReleaseTime' in kwargs:
+        if auto_release_time is None and 'autoReleaseTime' in kwargs:
             auto_release_time = kwargs['autoReleaseTime']
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'cpuOverCommitRatio' in kwargs:
+        if cpu_over_commit_ratio is None and 'cpuOverCommitRatio' in kwargs:
             cpu_over_commit_ratio = kwargs['cpuOverCommitRatio']
-        if 'dedicatedHostClusterId' in kwargs:
+        if dedicated_host_cluster_id is None and 'dedicatedHostClusterId' in kwargs:
             dedicated_host_cluster_id = kwargs['dedicatedHostClusterId']
-        if 'dedicatedHostName' in kwargs:
+        if dedicated_host_name is None and 'dedicatedHostName' in kwargs:
             dedicated_host_name = kwargs['dedicatedHostName']
-        if 'dedicatedHostType' in kwargs:
+        if dedicated_host_type is None and 'dedicatedHostType' in kwargs:
             dedicated_host_type = kwargs['dedicatedHostType']
-        if 'detailFee' in kwargs:
+        if detail_fee is None and 'detailFee' in kwargs:
             detail_fee = kwargs['detailFee']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'expiredTime' in kwargs:
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'minQuantity' in kwargs:
+        if min_quantity is None and 'minQuantity' in kwargs:
             min_quantity = kwargs['minQuantity']
-        if 'networkAttributes' in kwargs:
+        if network_attributes is None and 'networkAttributes' in kwargs:
             network_attributes = kwargs['networkAttributes']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'saleCycle' in kwargs:
+        if sale_cycle is None and 'saleCycle' in kwargs:
             sale_cycle = kwargs['saleCycle']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if action_on_maintenance is not None:

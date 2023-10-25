@@ -32,16 +32,20 @@ class DhcpOptionsSetAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dhcp_options_set_id: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
+             dhcp_options_set_id: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dhcpOptionsSetId' in kwargs:
+        if dhcp_options_set_id is None and 'dhcpOptionsSetId' in kwargs:
             dhcp_options_set_id = kwargs['dhcpOptionsSetId']
-        if 'vpcId' in kwargs:
+        if dhcp_options_set_id is None:
+            raise TypeError("Missing 'dhcp_options_set_id' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'dryRun' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
 
         _setter("dhcp_options_set_id", dhcp_options_set_id)
@@ -114,13 +118,13 @@ class _DhcpOptionsSetAttachmentState:
              dry_run: Optional[pulumi.Input[bool]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dhcpOptionsSetId' in kwargs:
+        if dhcp_options_set_id is None and 'dhcpOptionsSetId' in kwargs:
             dhcp_options_set_id = kwargs['dhcpOptionsSetId']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if dhcp_options_set_id is not None:
@@ -197,31 +201,6 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.153.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        example_dhcp_options_set = alicloud.vpc.DhcpOptionsSet("exampleDhcpOptionsSet",
-            dhcp_options_set_name=name,
-            dhcp_options_set_description=name,
-            domain_name="example.com",
-            domain_name_servers="100.100.2.136")
-        example_dhcp_options_set_attachment = alicloud.vpc.DhcpOptionsSetAttachment("exampleDhcpOptionsSetAttachment",
-            vpc_id=example_network.id,
-            dhcp_options_set_id=example_dhcp_options_set.id)
-        ```
-
         ## Import
 
         VPC Dhcp Options Set Attachment can be imported using the id, e.g.
@@ -248,31 +227,6 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
         For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/doc-detail/174112.htm).
 
         > **NOTE:** Available since v1.153.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        example_dhcp_options_set = alicloud.vpc.DhcpOptionsSet("exampleDhcpOptionsSet",
-            dhcp_options_set_name=name,
-            dhcp_options_set_description=name,
-            domain_name="example.com",
-            domain_name_servers="100.100.2.136")
-        example_dhcp_options_set_attachment = alicloud.vpc.DhcpOptionsSetAttachment("exampleDhcpOptionsSetAttachment",
-            vpc_id=example_network.id,
-            dhcp_options_set_id=example_dhcp_options_set.id)
-        ```
 
         ## Import
 

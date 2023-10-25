@@ -16,40 +16,6 @@ namespace Pulumi.AliCloud.Oos
     /// 
     /// &gt; **NOTE:** Available in v1.147.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testaccoossetting";
-    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
-    ///     {
-    ///         BucketName = name,
-    ///         Acl = "public-read-write",
-    ///     });
-    /// 
-    ///     var defaultProject = new AliCloud.Log.Project("defaultProject");
-    /// 
-    ///     var defaultServiceSetting = new AliCloud.Oos.ServiceSetting("defaultServiceSetting", new()
-    ///     {
-    ///         DeliveryOssEnabled = true,
-    ///         DeliveryOssKeyPrefix = "path1/",
-    ///         DeliveryOssBucketName = defaultBucket.BucketName,
-    ///         DeliverySlsEnabled = true,
-    ///         DeliverySlsProjectName = defaultProject.Name,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// OOS Service Setting can be imported using the id, e.g.

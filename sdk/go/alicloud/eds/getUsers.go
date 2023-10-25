@@ -15,42 +15,6 @@ import (
 // This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.142.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := eds.NewUser(ctx, "default", &eds.UserArgs{
-//				EndUserId: pulumi.String("example_value"),
-//				Email:     pulumi.String("your_email"),
-//				Phone:     pulumi.String("your_phone"),
-//				Password:  pulumi.String("your_password"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ids, err := eds.GetUsers(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ecdUserId1", ids.Users[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUsersResult

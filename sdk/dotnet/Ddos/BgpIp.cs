@@ -16,47 +16,6 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// &gt; **NOTE:** Available since v1.180.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
-    /// 
-    ///     var instance = new AliCloud.Ddos.DdosBgpInstance("instance", new()
-    ///     {
-    ///         BaseBandwidth = 20,
-    ///         Bandwidth = -1,
-    ///         IpCount = 100,
-    ///         IpType = "IPv4",
-    ///         NormalBandwidth = 100,
-    ///         Type = "Enterprise",
-    ///     });
-    /// 
-    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
-    ///     {
-    ///         AddressName = name,
-    ///     });
-    /// 
-    ///     var defaultBgpIp = new AliCloud.Ddos.BgpIp("defaultBgpIp", new()
-    ///     {
-    ///         InstanceId = instance.Id,
-    ///         Ip = defaultEipAddress.IpAddress,
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Ddos Bgp Ip can be imported using the id, e.g.

@@ -37,11 +37,11 @@ class ProvisionedProductOutputArgs:
              description: Optional[pulumi.Input[str]] = None,
              output_key: Optional[pulumi.Input[str]] = None,
              output_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'outputKey' in kwargs:
+        if output_key is None and 'outputKey' in kwargs:
             output_key = kwargs['outputKey']
-        if 'outputValue' in kwargs:
+        if output_value is None and 'outputValue' in kwargs:
             output_value = kwargs['outputValue']
 
         if description is not None:
@@ -107,11 +107,11 @@ class ProvisionedProductParameterArgs:
              _setter: Callable[[Any, Any], None],
              parameter_key: Optional[pulumi.Input[str]] = None,
              parameter_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterKey' in kwargs:
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
-        if 'parameterValue' in kwargs:
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
 
         if parameter_key is not None:

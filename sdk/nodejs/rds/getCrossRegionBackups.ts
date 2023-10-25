@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.196.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const backups = alicloud.rds.getCrossRegionBackups({
- *     dbInstanceId: "example_value",
- *     startTime: "2022-12-01T00:00:00Z",
- *     endTime: "2022-12-16T00:00:00Z",
- * });
- * export const firstRdsCrossRegionBackups = backups.then(backups => backups.backups?.[0]?.id);
- * ```
  */
 export function getCrossRegionBackups(args: GetCrossRegionBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetCrossRegionBackupsResult> {
 
@@ -108,22 +92,6 @@ export interface GetCrossRegionBackupsResult {
  * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.196.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const backups = alicloud.rds.getCrossRegionBackups({
- *     dbInstanceId: "example_value",
- *     startTime: "2022-12-01T00:00:00Z",
- *     endTime: "2022-12-16T00:00:00Z",
- * });
- * export const firstRdsCrossRegionBackups = backups.then(backups => backups.backups?.[0]?.id);
- * ```
  */
 export function getCrossRegionBackupsOutput(args: GetCrossRegionBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCrossRegionBackupsResult> {
     return pulumi.output(args).apply((a: any) => getCrossRegionBackups(a, opts))

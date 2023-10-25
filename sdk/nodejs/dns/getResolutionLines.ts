@@ -10,19 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.60.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const resolutionLinesDs = alicloud.dns.getResolutionLines({
- *     lineCodes: ["cn_unicom_shanxi"],
- *     outputFile: "support_lines.txt",
- * });
- * export const firstLineCode = resolutionLinesDs.then(resolutionLinesDs => resolutionLinesDs.lines?.[0]?.lineCode);
- * ```
  */
 export function getResolutionLines(args?: GetResolutionLinesArgs, opts?: pulumi.InvokeOptions): Promise<GetResolutionLinesResult> {
     args = args || {};
@@ -100,19 +87,6 @@ export interface GetResolutionLinesResult {
  * This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.60.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const resolutionLinesDs = alicloud.dns.getResolutionLines({
- *     lineCodes: ["cn_unicom_shanxi"],
- *     outputFile: "support_lines.txt",
- * });
- * export const firstLineCode = resolutionLinesDs.then(resolutionLinesDs => resolutionLinesDs.lines?.[0]?.lineCode);
- * ```
  */
 export function getResolutionLinesOutput(args?: GetResolutionLinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResolutionLinesResult> {
     return pulumi.output(args).apply((a: any) => getResolutionLines(a, opts))

@@ -16,39 +16,6 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// &gt; **NOTE:** Available in v1.153.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new()
-    ///     {
-    ///         ProtocolType = "NFS",
-    ///         StorageType = "Capacity",
-    ///     });
-    /// 
-    ///     var exampleLifecyclePolicy = new AliCloud.Nas.LifecyclePolicy("exampleLifecyclePolicy", new()
-    ///     {
-    ///         FileSystemId = exampleFileSystem.Id,
-    ///         LifecyclePolicyName = "terraform-example",
-    ///         LifecycleRuleName = "DEFAULT_ATIME_14",
-    ///         StorageType = "InfrequentAccess",
-    ///         Paths = new[]
-    ///         {
-    ///             "/",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Network Attached Storage (NAS) Lifecycle Policy can be imported using the id, e.g.

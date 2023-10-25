@@ -13,27 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.37.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const _default = new alicloud.ddos.DdosCooInstance("default", {
- *     bandwidth: "30",
- *     baseBandwidth: "30",
- *     serviceBandwidth: "100",
- *     portCount: "50",
- *     domainCount: "50",
- *     period: 1,
- *     productType: "ddoscoo",
- * });
- * ```
- *
  * ## Import
  *
  * Ddoscoo instance can be imported using the id, e.g.

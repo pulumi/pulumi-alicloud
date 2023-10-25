@@ -10,23 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
  *
  * > **NOTE:** Available since v1.196.0.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultEndUserProducts = alicloud.servicecatalog.getEndUserProducts({
- *     nameRegex: "ram模板创建",
- * });
- * const defaultLaunchOptions = alicloud.servicecatalog.getLaunchOptions({
- *     productId: "data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id",
- * });
- * export const alicloudServiceCatalogLaunchOptionExampleId = defaultLaunchOptions.then(defaultLaunchOptions => defaultLaunchOptions.launchOptions?.[0]?.id);
- * ```
  */
 export function getLaunchOptions(args: GetLaunchOptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetLaunchOptionsResult> {
 
@@ -88,23 +71,6 @@ export interface GetLaunchOptionsResult {
  * This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
  *
  * > **NOTE:** Available since v1.196.0.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultEndUserProducts = alicloud.servicecatalog.getEndUserProducts({
- *     nameRegex: "ram模板创建",
- * });
- * const defaultLaunchOptions = alicloud.servicecatalog.getLaunchOptions({
- *     productId: "data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id",
- * });
- * export const alicloudServiceCatalogLaunchOptionExampleId = defaultLaunchOptions.then(defaultLaunchOptions => defaultLaunchOptions.launchOptions?.[0]?.id);
- * ```
  */
 export function getLaunchOptionsOutput(args: GetLaunchOptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLaunchOptionsResult> {
     return pulumi.output(args).apply((a: any) => getLaunchOptions(a, opts))

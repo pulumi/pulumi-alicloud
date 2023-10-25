@@ -17,57 +17,6 @@ import (
 //
 // > **NOTE:** Available since v1.86.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := ddos.NewSchedulerRule(ctx, "example", &ddos.SchedulerRuleArgs{
-//				RuleName: pulumi.String(name),
-//				RuleType: pulumi.Int(3),
-//				Rules: ddos.SchedulerRuleRuleArray{
-//					&ddos.SchedulerRuleRuleArgs{
-//						Priority:  pulumi.Int(100),
-//						RegionId:  pulumi.String("cn-hangzhou"),
-//						Type:      pulumi.String("A"),
-//						Value:     pulumi.String("127.0.0.1"),
-//						ValueType: pulumi.Int(3),
-//					},
-//					&ddos.SchedulerRuleRuleArgs{
-//						Priority:  pulumi.Int(50),
-//						RegionId:  pulumi.String("cn-hangzhou"),
-//						Type:      pulumi.String("A"),
-//						Value:     pulumi.String("127.0.0.0"),
-//						ValueType: pulumi.Int(1),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // DdosCoo Scheduler Rule can be imported using the id or the rule name, e.g.

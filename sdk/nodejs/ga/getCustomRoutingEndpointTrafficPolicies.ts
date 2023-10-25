@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Traffic Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in 1.197.0+
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ga.getCustomRoutingEndpointTrafficPolicies({
- *     ids: ["example_id"],
- *     acceleratorId: "your_accelerator_id",
- * });
- * export const gaCustomRoutingEndpointTrafficPoliciesId1 = ids.then(ids => ids.customRoutingEndpointTrafficPolicies?.[0]?.id);
- * ```
  */
 export function getCustomRoutingEndpointTrafficPolicies(args: GetCustomRoutingEndpointTrafficPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomRoutingEndpointTrafficPoliciesResult> {
 
@@ -119,21 +104,6 @@ export interface GetCustomRoutingEndpointTrafficPoliciesResult {
  * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Traffic Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in 1.197.0+
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ga.getCustomRoutingEndpointTrafficPolicies({
- *     ids: ["example_id"],
- *     acceleratorId: "your_accelerator_id",
- * });
- * export const gaCustomRoutingEndpointTrafficPoliciesId1 = ids.then(ids => ids.customRoutingEndpointTrafficPolicies?.[0]?.id);
- * ```
  */
 export function getCustomRoutingEndpointTrafficPoliciesOutput(args: GetCustomRoutingEndpointTrafficPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomRoutingEndpointTrafficPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getCustomRoutingEndpointTrafficPolicies(a, opts))

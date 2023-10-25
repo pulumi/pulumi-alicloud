@@ -92,31 +92,39 @@ class ClusterApplicationConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_name: str,
-             config_file_name: str,
-             config_item_key: str,
-             config_item_value: str,
+             application_name: Optional[str] = None,
+             config_file_name: Optional[str] = None,
+             config_item_key: Optional[str] = None,
+             config_item_value: Optional[str] = None,
              config_description: Optional[str] = None,
              config_scope: Optional[str] = None,
              node_group_id: Optional[str] = None,
              node_group_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationName' in kwargs:
+        if application_name is None and 'applicationName' in kwargs:
             application_name = kwargs['applicationName']
-        if 'configFileName' in kwargs:
+        if application_name is None:
+            raise TypeError("Missing 'application_name' argument")
+        if config_file_name is None and 'configFileName' in kwargs:
             config_file_name = kwargs['configFileName']
-        if 'configItemKey' in kwargs:
+        if config_file_name is None:
+            raise TypeError("Missing 'config_file_name' argument")
+        if config_item_key is None and 'configItemKey' in kwargs:
             config_item_key = kwargs['configItemKey']
-        if 'configItemValue' in kwargs:
+        if config_item_key is None:
+            raise TypeError("Missing 'config_item_key' argument")
+        if config_item_value is None and 'configItemValue' in kwargs:
             config_item_value = kwargs['configItemValue']
-        if 'configDescription' in kwargs:
+        if config_item_value is None:
+            raise TypeError("Missing 'config_item_value' argument")
+        if config_description is None and 'configDescription' in kwargs:
             config_description = kwargs['configDescription']
-        if 'configScope' in kwargs:
+        if config_scope is None and 'configScope' in kwargs:
             config_scope = kwargs['configScope']
-        if 'nodeGroupId' in kwargs:
+        if node_group_id is None and 'nodeGroupId' in kwargs:
             node_group_id = kwargs['nodeGroupId']
-        if 'nodeGroupName' in kwargs:
+        if node_group_name is None and 'nodeGroupName' in kwargs:
             node_group_name = kwargs['nodeGroupName']
 
         _setter("application_name", application_name)
@@ -256,27 +264,39 @@ class ClusterBootstrapScript(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             execution_fail_strategy: str,
-             execution_moment: str,
-             node_selector: 'outputs.ClusterBootstrapScriptNodeSelector',
-             script_args: str,
-             script_name: str,
-             script_path: str,
+             execution_fail_strategy: Optional[str] = None,
+             execution_moment: Optional[str] = None,
+             node_selector: Optional['outputs.ClusterBootstrapScriptNodeSelector'] = None,
+             script_args: Optional[str] = None,
+             script_name: Optional[str] = None,
+             script_path: Optional[str] = None,
              priority: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'executionFailStrategy' in kwargs:
+        if execution_fail_strategy is None and 'executionFailStrategy' in kwargs:
             execution_fail_strategy = kwargs['executionFailStrategy']
-        if 'executionMoment' in kwargs:
+        if execution_fail_strategy is None:
+            raise TypeError("Missing 'execution_fail_strategy' argument")
+        if execution_moment is None and 'executionMoment' in kwargs:
             execution_moment = kwargs['executionMoment']
-        if 'nodeSelector' in kwargs:
+        if execution_moment is None:
+            raise TypeError("Missing 'execution_moment' argument")
+        if node_selector is None and 'nodeSelector' in kwargs:
             node_selector = kwargs['nodeSelector']
-        if 'scriptArgs' in kwargs:
+        if node_selector is None:
+            raise TypeError("Missing 'node_selector' argument")
+        if script_args is None and 'scriptArgs' in kwargs:
             script_args = kwargs['scriptArgs']
-        if 'scriptName' in kwargs:
+        if script_args is None:
+            raise TypeError("Missing 'script_args' argument")
+        if script_name is None and 'scriptName' in kwargs:
             script_name = kwargs['scriptName']
-        if 'scriptPath' in kwargs:
+        if script_name is None:
+            raise TypeError("Missing 'script_name' argument")
+        if script_path is None and 'scriptPath' in kwargs:
             script_path = kwargs['scriptPath']
+        if script_path is None:
+            raise TypeError("Missing 'script_path' argument")
 
         _setter("execution_fail_strategy", execution_fail_strategy)
         _setter("execution_moment", execution_moment)
@@ -395,22 +415,24 @@ class ClusterBootstrapScriptNodeSelector(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_select_type: str,
+             node_select_type: Optional[str] = None,
              node_group_id: Optional[str] = None,
              node_group_name: Optional[str] = None,
              node_group_types: Optional[Sequence[str]] = None,
              node_names: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeSelectType' in kwargs:
+        if node_select_type is None and 'nodeSelectType' in kwargs:
             node_select_type = kwargs['nodeSelectType']
-        if 'nodeGroupId' in kwargs:
+        if node_select_type is None:
+            raise TypeError("Missing 'node_select_type' argument")
+        if node_group_id is None and 'nodeGroupId' in kwargs:
             node_group_id = kwargs['nodeGroupId']
-        if 'nodeGroupName' in kwargs:
+        if node_group_name is None and 'nodeGroupName' in kwargs:
             node_group_name = kwargs['nodeGroupName']
-        if 'nodeGroupTypes' in kwargs:
+        if node_group_types is None and 'nodeGroupTypes' in kwargs:
             node_group_types = kwargs['nodeGroupTypes']
-        if 'nodeNames' in kwargs:
+        if node_names is None and 'nodeNames' in kwargs:
             node_names = kwargs['nodeNames']
 
         _setter("node_select_type", node_select_type)
@@ -525,28 +547,38 @@ class ClusterNodeAttribute(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key_pair_name: str,
-             ram_role: str,
-             security_group_id: str,
-             vpc_id: str,
-             zone_id: str,
+             key_pair_name: Optional[str] = None,
+             ram_role: Optional[str] = None,
+             security_group_id: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
              data_disk_encrypted: Optional[bool] = None,
              data_disk_kms_key_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'ramRole' in kwargs:
+        if key_pair_name is None:
+            raise TypeError("Missing 'key_pair_name' argument")
+        if ram_role is None and 'ramRole' in kwargs:
             ram_role = kwargs['ramRole']
-        if 'securityGroupId' in kwargs:
+        if ram_role is None:
+            raise TypeError("Missing 'ram_role' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vpcId' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'zoneId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'dataDiskEncrypted' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if data_disk_encrypted is None and 'dataDiskEncrypted' in kwargs:
             data_disk_encrypted = kwargs['dataDiskEncrypted']
-        if 'dataDiskKmsKeyId' in kwargs:
+        if data_disk_kms_key_id is None and 'dataDiskKmsKeyId' in kwargs:
             data_disk_kms_key_id = kwargs['dataDiskKmsKeyId']
 
         _setter("key_pair_name", key_pair_name)
@@ -717,12 +749,12 @@ class ClusterNodeGroup(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_disks: Sequence['outputs.ClusterNodeGroupDataDisk'],
-             instance_types: Sequence[str],
-             node_count: int,
-             node_group_name: str,
-             node_group_type: str,
-             system_disk: 'outputs.ClusterNodeGroupSystemDisk',
+             data_disks: Optional[Sequence['outputs.ClusterNodeGroupDataDisk']] = None,
+             instance_types: Optional[Sequence[str]] = None,
+             node_count: Optional[int] = None,
+             node_group_name: Optional[str] = None,
+             node_group_type: Optional[str] = None,
+             system_disk: Optional['outputs.ClusterNodeGroupSystemDisk'] = None,
              additional_security_group_ids: Optional[Sequence[str]] = None,
              cost_optimized_config: Optional['outputs.ClusterNodeGroupCostOptimizedConfig'] = None,
              graceful_shutdown: Optional[bool] = None,
@@ -732,37 +764,49 @@ class ClusterNodeGroup(dict):
              subscription_config: Optional['outputs.ClusterNodeGroupSubscriptionConfig'] = None,
              vswitch_ids: Optional[Sequence[str]] = None,
              with_public_ip: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dataDisks' in kwargs:
+        if data_disks is None and 'dataDisks' in kwargs:
             data_disks = kwargs['dataDisks']
-        if 'instanceTypes' in kwargs:
+        if data_disks is None:
+            raise TypeError("Missing 'data_disks' argument")
+        if instance_types is None and 'instanceTypes' in kwargs:
             instance_types = kwargs['instanceTypes']
-        if 'nodeCount' in kwargs:
+        if instance_types is None:
+            raise TypeError("Missing 'instance_types' argument")
+        if node_count is None and 'nodeCount' in kwargs:
             node_count = kwargs['nodeCount']
-        if 'nodeGroupName' in kwargs:
+        if node_count is None:
+            raise TypeError("Missing 'node_count' argument")
+        if node_group_name is None and 'nodeGroupName' in kwargs:
             node_group_name = kwargs['nodeGroupName']
-        if 'nodeGroupType' in kwargs:
+        if node_group_name is None:
+            raise TypeError("Missing 'node_group_name' argument")
+        if node_group_type is None and 'nodeGroupType' in kwargs:
             node_group_type = kwargs['nodeGroupType']
-        if 'systemDisk' in kwargs:
+        if node_group_type is None:
+            raise TypeError("Missing 'node_group_type' argument")
+        if system_disk is None and 'systemDisk' in kwargs:
             system_disk = kwargs['systemDisk']
-        if 'additionalSecurityGroupIds' in kwargs:
+        if system_disk is None:
+            raise TypeError("Missing 'system_disk' argument")
+        if additional_security_group_ids is None and 'additionalSecurityGroupIds' in kwargs:
             additional_security_group_ids = kwargs['additionalSecurityGroupIds']
-        if 'costOptimizedConfig' in kwargs:
+        if cost_optimized_config is None and 'costOptimizedConfig' in kwargs:
             cost_optimized_config = kwargs['costOptimizedConfig']
-        if 'gracefulShutdown' in kwargs:
+        if graceful_shutdown is None and 'gracefulShutdown' in kwargs:
             graceful_shutdown = kwargs['gracefulShutdown']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'spotBidPrices' in kwargs:
+        if spot_bid_prices is None and 'spotBidPrices' in kwargs:
             spot_bid_prices = kwargs['spotBidPrices']
-        if 'spotInstanceRemedy' in kwargs:
+        if spot_instance_remedy is None and 'spotInstanceRemedy' in kwargs:
             spot_instance_remedy = kwargs['spotInstanceRemedy']
-        if 'subscriptionConfig' in kwargs:
+        if subscription_config is None and 'subscriptionConfig' in kwargs:
             subscription_config = kwargs['subscriptionConfig']
-        if 'vswitchIds' in kwargs:
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
-        if 'withPublicIp' in kwargs:
+        if with_public_ip is None and 'withPublicIp' in kwargs:
             with_public_ip = kwargs['withPublicIp']
 
         _setter("data_disks", data_disks)
@@ -952,17 +996,23 @@ class ClusterNodeGroupCostOptimizedConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             on_demand_base_capacity: int,
-             on_demand_percentage_above_base_capacity: int,
-             spot_instance_pools: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             on_demand_base_capacity: Optional[int] = None,
+             on_demand_percentage_above_base_capacity: Optional[int] = None,
+             spot_instance_pools: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'onDemandBaseCapacity' in kwargs:
+        if on_demand_base_capacity is None and 'onDemandBaseCapacity' in kwargs:
             on_demand_base_capacity = kwargs['onDemandBaseCapacity']
-        if 'onDemandPercentageAboveBaseCapacity' in kwargs:
+        if on_demand_base_capacity is None:
+            raise TypeError("Missing 'on_demand_base_capacity' argument")
+        if on_demand_percentage_above_base_capacity is None and 'onDemandPercentageAboveBaseCapacity' in kwargs:
             on_demand_percentage_above_base_capacity = kwargs['onDemandPercentageAboveBaseCapacity']
-        if 'spotInstancePools' in kwargs:
+        if on_demand_percentage_above_base_capacity is None:
+            raise TypeError("Missing 'on_demand_percentage_above_base_capacity' argument")
+        if spot_instance_pools is None and 'spotInstancePools' in kwargs:
             spot_instance_pools = kwargs['spotInstancePools']
+        if spot_instance_pools is None:
+            raise TypeError("Missing 'spot_instance_pools' argument")
 
         _setter("on_demand_base_capacity", on_demand_base_capacity)
         _setter("on_demand_percentage_above_base_capacity", on_demand_percentage_above_base_capacity)
@@ -1033,13 +1083,17 @@ class ClusterNodeGroupDataDisk(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: str,
-             size: int,
+             category: Optional[str] = None,
+             size: Optional[int] = None,
              count: Optional[int] = None,
              performance_level: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'performanceLevel' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
 
         _setter("category", category)
@@ -1118,14 +1172,18 @@ class ClusterNodeGroupSpotBidPrice(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bid_price: int,
-             instance_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bid_price: Optional[int] = None,
+             instance_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bidPrice' in kwargs:
+        if bid_price is None and 'bidPrice' in kwargs:
             bid_price = kwargs['bidPrice']
-        if 'instanceType' in kwargs:
+        if bid_price is None:
+            raise TypeError("Missing 'bid_price' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
 
         _setter("bid_price", bid_price)
         _setter("instance_type", instance_type)
@@ -1198,22 +1256,26 @@ class ClusterNodeGroupSubscriptionConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             payment_duration: int,
-             payment_duration_unit: str,
+             payment_duration: Optional[int] = None,
+             payment_duration_unit: Optional[str] = None,
              auto_renew: Optional[bool] = None,
              auto_renew_duration: Optional[int] = None,
              auto_renew_duration_unit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'paymentDuration' in kwargs:
+        if payment_duration is None and 'paymentDuration' in kwargs:
             payment_duration = kwargs['paymentDuration']
-        if 'paymentDurationUnit' in kwargs:
+        if payment_duration is None:
+            raise TypeError("Missing 'payment_duration' argument")
+        if payment_duration_unit is None and 'paymentDurationUnit' in kwargs:
             payment_duration_unit = kwargs['paymentDurationUnit']
-        if 'autoRenew' in kwargs:
+        if payment_duration_unit is None:
+            raise TypeError("Missing 'payment_duration_unit' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewDuration' in kwargs:
+        if auto_renew_duration is None and 'autoRenewDuration' in kwargs:
             auto_renew_duration = kwargs['autoRenewDuration']
-        if 'autoRenewDurationUnit' in kwargs:
+        if auto_renew_duration_unit is None and 'autoRenewDurationUnit' in kwargs:
             auto_renew_duration_unit = kwargs['autoRenewDurationUnit']
 
         _setter("payment_duration", payment_duration)
@@ -1306,13 +1368,17 @@ class ClusterNodeGroupSystemDisk(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: str,
-             size: int,
+             category: Optional[str] = None,
+             size: Optional[int] = None,
              count: Optional[int] = None,
              performance_level: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'performanceLevel' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
 
         _setter("category", category)
@@ -1406,22 +1472,26 @@ class ClusterSubscriptionConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             payment_duration: int,
-             payment_duration_unit: str,
+             payment_duration: Optional[int] = None,
+             payment_duration_unit: Optional[str] = None,
              auto_renew: Optional[bool] = None,
              auto_renew_duration: Optional[int] = None,
              auto_renew_duration_unit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'paymentDuration' in kwargs:
+        if payment_duration is None and 'paymentDuration' in kwargs:
             payment_duration = kwargs['paymentDuration']
-        if 'paymentDurationUnit' in kwargs:
+        if payment_duration is None:
+            raise TypeError("Missing 'payment_duration' argument")
+        if payment_duration_unit is None and 'paymentDurationUnit' in kwargs:
             payment_duration_unit = kwargs['paymentDurationUnit']
-        if 'autoRenew' in kwargs:
+        if payment_duration_unit is None:
+            raise TypeError("Missing 'payment_duration_unit' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewDuration' in kwargs:
+        if auto_renew_duration is None and 'autoRenewDuration' in kwargs:
             auto_renew_duration = kwargs['autoRenewDuration']
-        if 'autoRenewDurationUnit' in kwargs:
+        if auto_renew_duration_unit is None and 'autoRenewDurationUnit' in kwargs:
             auto_renew_duration_unit = kwargs['autoRenewDurationUnit']
 
         _setter("payment_duration", payment_duration)
@@ -1527,48 +1597,76 @@ class GetClustersClusterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: str,
-             cluster_name: str,
-             cluster_state: str,
-             cluster_type: str,
-             create_time: str,
-             emr_default_role: str,
-             end_time: str,
-             expire_time: str,
-             payment_type: str,
-             ready_time: str,
-             release_version: str,
-             resource_group_id: str,
-             state_change_reason: Mapping[str, Any],
-             tags: Sequence['outputs.GetClustersClusterTagResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cluster_id: Optional[str] = None,
+             cluster_name: Optional[str] = None,
+             cluster_state: Optional[str] = None,
+             cluster_type: Optional[str] = None,
+             create_time: Optional[str] = None,
+             emr_default_role: Optional[str] = None,
+             end_time: Optional[str] = None,
+             expire_time: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             ready_time: Optional[str] = None,
+             release_version: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             state_change_reason: Optional[Mapping[str, Any]] = None,
+             tags: Optional[Sequence['outputs.GetClustersClusterTagResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'clusterName' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'clusterState' in kwargs:
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if cluster_state is None and 'clusterState' in kwargs:
             cluster_state = kwargs['clusterState']
-        if 'clusterType' in kwargs:
+        if cluster_state is None:
+            raise TypeError("Missing 'cluster_state' argument")
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'createTime' in kwargs:
+        if cluster_type is None:
+            raise TypeError("Missing 'cluster_type' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'emrDefaultRole' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if emr_default_role is None and 'emrDefaultRole' in kwargs:
             emr_default_role = kwargs['emrDefaultRole']
-        if 'endTime' in kwargs:
+        if emr_default_role is None:
+            raise TypeError("Missing 'emr_default_role' argument")
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'expireTime' in kwargs:
+        if end_time is None:
+            raise TypeError("Missing 'end_time' argument")
+        if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
-        if 'paymentType' in kwargs:
+        if expire_time is None:
+            raise TypeError("Missing 'expire_time' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'readyTime' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if ready_time is None and 'readyTime' in kwargs:
             ready_time = kwargs['readyTime']
-        if 'releaseVersion' in kwargs:
+        if ready_time is None:
+            raise TypeError("Missing 'ready_time' argument")
+        if release_version is None and 'releaseVersion' in kwargs:
             release_version = kwargs['releaseVersion']
-        if 'resourceGroupId' in kwargs:
+        if release_version is None:
+            raise TypeError("Missing 'release_version' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'stateChangeReason' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if state_change_reason is None and 'stateChangeReason' in kwargs:
             state_change_reason = kwargs['stateChangeReason']
+        if state_change_reason is None:
+            raise TypeError("Missing 'state_change_reason' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
 
         _setter("cluster_id", cluster_id)
         _setter("cluster_name", cluster_name)
@@ -1711,10 +1809,14 @@ class GetClustersClusterTagResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("value", value)

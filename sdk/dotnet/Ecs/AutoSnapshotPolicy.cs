@@ -16,38 +16,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available in v1.117.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Ecs.AutoSnapshotPolicy("example", new()
-    ///     {
-    ///         RepeatWeekdays = new[]
-    ///         {
-    ///             "1",
-    ///             "2",
-    ///             "3",
-    ///         },
-    ///         RetentionDays = -1,
-    ///         TimePoints = new[]
-    ///         {
-    ///             "1",
-    ///             "22",
-    ///             "23",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ECS Auto Snapshot Policy can be imported using the id, e.g.

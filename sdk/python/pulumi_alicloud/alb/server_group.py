@@ -69,21 +69,21 @@ class ServerGroupArgs:
              sticky_session_config: Optional[pulumi.Input['ServerGroupStickySessionConfigArgs']] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'healthCheckConfig' in kwargs:
+        if health_check_config is None and 'healthCheckConfig' in kwargs:
             health_check_config = kwargs['healthCheckConfig']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'serverGroupName' in kwargs:
+        if server_group_name is None and 'serverGroupName' in kwargs:
             server_group_name = kwargs['serverGroupName']
-        if 'serverGroupType' in kwargs:
+        if server_group_type is None and 'serverGroupType' in kwargs:
             server_group_type = kwargs['serverGroupType']
-        if 'stickySessionConfig' in kwargs:
+        if sticky_session_config is None and 'stickySessionConfig' in kwargs:
             sticky_session_config = kwargs['stickySessionConfig']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if dry_run is not None:
@@ -302,21 +302,21 @@ class _ServerGroupState:
              sticky_session_config: Optional[pulumi.Input['ServerGroupStickySessionConfigArgs']] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'healthCheckConfig' in kwargs:
+        if health_check_config is None and 'healthCheckConfig' in kwargs:
             health_check_config = kwargs['healthCheckConfig']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'serverGroupName' in kwargs:
+        if server_group_name is None and 'serverGroupName' in kwargs:
             server_group_name = kwargs['serverGroupName']
-        if 'serverGroupType' in kwargs:
+        if server_group_type is None and 'serverGroupType' in kwargs:
             server_group_type = kwargs['serverGroupType']
-        if 'stickySessionConfig' in kwargs:
+        if sticky_session_config is None and 'stickySessionConfig' in kwargs:
             sticky_session_config = kwargs['stickySessionConfig']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if dry_run is not None:
@@ -514,84 +514,6 @@ class ServerGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.131.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/16",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup",
-            description=name,
-            vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            availability_zone=example_zones.zones[0].id,
-            instance_name=name,
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            security_groups=[example_security_group.id],
-            vswitch_id=example_switch.id)
-        example_server_group = alicloud.alb.ServerGroup("exampleServerGroup",
-            protocol="HTTP",
-            vpc_id=example_network.id,
-            server_group_name=name,
-            resource_group_id=example_resource_groups.groups[0].id,
-            health_check_config=alicloud.alb.ServerGroupHealthCheckConfigArgs(
-                health_check_connect_port=46325,
-                health_check_enabled=True,
-                health_check_host="tf-example.com",
-                health_check_codes=[
-                    "http_2xx",
-                    "http_3xx",
-                    "http_4xx",
-                ],
-                health_check_http_version="HTTP1.1",
-                health_check_interval=2,
-                health_check_method="HEAD",
-                health_check_path="/tf-example",
-                health_check_protocol="HTTP",
-                health_check_timeout=5,
-                healthy_threshold=3,
-                unhealthy_threshold=3,
-            ),
-            sticky_session_config=alicloud.alb.ServerGroupStickySessionConfigArgs(
-                sticky_session_enabled=True,
-                cookie="tf-example",
-                sticky_session_type="Server",
-            ),
-            tags={
-                "Created": "TF",
-            },
-            servers=[alicloud.alb.ServerGroupServerArgs(
-                description=name,
-                port=80,
-                server_id=example_instance.id,
-                server_ip=example_instance.private_ip,
-                server_type="Ecs",
-                weight=10,
-            )])
-        ```
-
         ## Import
 
         ALB Server Group can be imported using the id, e.g.
@@ -627,84 +549,6 @@ class ServerGroup(pulumi.CustomResource):
         see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
 
         > **NOTE:** Available since v1.131.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/16",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup",
-            description=name,
-            vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            availability_zone=example_zones.zones[0].id,
-            instance_name=name,
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            security_groups=[example_security_group.id],
-            vswitch_id=example_switch.id)
-        example_server_group = alicloud.alb.ServerGroup("exampleServerGroup",
-            protocol="HTTP",
-            vpc_id=example_network.id,
-            server_group_name=name,
-            resource_group_id=example_resource_groups.groups[0].id,
-            health_check_config=alicloud.alb.ServerGroupHealthCheckConfigArgs(
-                health_check_connect_port=46325,
-                health_check_enabled=True,
-                health_check_host="tf-example.com",
-                health_check_codes=[
-                    "http_2xx",
-                    "http_3xx",
-                    "http_4xx",
-                ],
-                health_check_http_version="HTTP1.1",
-                health_check_interval=2,
-                health_check_method="HEAD",
-                health_check_path="/tf-example",
-                health_check_protocol="HTTP",
-                health_check_timeout=5,
-                healthy_threshold=3,
-                unhealthy_threshold=3,
-            ),
-            sticky_session_config=alicloud.alb.ServerGroupStickySessionConfigArgs(
-                sticky_session_enabled=True,
-                cookie="tf-example",
-                sticky_session_type="Server",
-            ),
-            tags={
-                "Created": "TF",
-            },
-            servers=[alicloud.alb.ServerGroupServerArgs(
-                description=name,
-                port=80,
-                server_id=example_instance.id,
-                server_ip=example_instance.private_ip,
-                server_type="Ecs",
-                weight=10,
-            )])
-        ```
 
         ## Import
 
@@ -754,11 +598,7 @@ class ServerGroup(pulumi.CustomResource):
             __props__ = ServerGroupArgs.__new__(ServerGroupArgs)
 
             __props__.__dict__["dry_run"] = dry_run
-            if health_check_config is not None and not isinstance(health_check_config, ServerGroupHealthCheckConfigArgs):
-                health_check_config = health_check_config or {}
-                def _setter(key, value):
-                    health_check_config[key] = value
-                ServerGroupHealthCheckConfigArgs._configure(_setter, **health_check_config)
+            health_check_config = _utilities.configure(health_check_config, ServerGroupHealthCheckConfigArgs, True)
             __props__.__dict__["health_check_config"] = health_check_config
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["resource_group_id"] = resource_group_id
@@ -766,11 +606,7 @@ class ServerGroup(pulumi.CustomResource):
             __props__.__dict__["server_group_name"] = server_group_name
             __props__.__dict__["server_group_type"] = server_group_type
             __props__.__dict__["servers"] = servers
-            if sticky_session_config is not None and not isinstance(sticky_session_config, ServerGroupStickySessionConfigArgs):
-                sticky_session_config = sticky_session_config or {}
-                def _setter(key, value):
-                    sticky_session_config[key] = value
-                ServerGroupStickySessionConfigArgs._configure(_setter, **sticky_session_config)
+            sticky_session_config = _utilities.configure(sticky_session_config, ServerGroupStickySessionConfigArgs, True)
             __props__.__dict__["sticky_session_config"] = sticky_session_config
             __props__.__dict__["tags"] = tags
             __props__.__dict__["vpc_id"] = vpc_id

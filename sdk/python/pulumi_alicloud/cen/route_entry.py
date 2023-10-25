@@ -36,17 +36,23 @@ class RouteEntryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             route_table_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             route_table_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'instanceId' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'routeTableId' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
+        if route_table_id is None:
+            raise TypeError("Missing 'route_table_id' argument")
 
         _setter("cidr_block", cidr_block)
         _setter("instance_id", instance_id)
@@ -121,13 +127,13 @@ class _RouteEntryState:
              cidr_block: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              route_table_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'routeTableId' in kwargs:
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
 
         if cidr_block is not None:
@@ -194,57 +200,6 @@ class RouteEntry(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.20.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.get_regions(current=True)
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            availability_zone=example_zones.zones[0].id,
-            instance_name="terraform-example",
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            security_groups=[example_security_group.id],
-            vswitch_id=example_switch.id,
-            internet_max_bandwidth_out=5)
-        example_cen_instance_instance = alicloud.cen.Instance("exampleCen/instanceInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
-            instance_id=example_cen / instance_instance["id"],
-            child_instance_id=example_network.id,
-            child_instance_type="VPC",
-            child_instance_region_id=default.regions[0].id)
-        example_route_entry = alicloud.vpc.RouteEntry("exampleRouteEntry",
-            route_table_id=example_network.route_table_id,
-            destination_cidrblock="11.0.0.0/16",
-            nexthop_type="Instance",
-            nexthop_id=example_instance.id)
-        example_cen_route_entry_route_entry = alicloud.cen.RouteEntry("exampleCen/routeEntryRouteEntry",
-            instance_id=example_instance_attachment.instance_id,
-            route_table_id=example_network.route_table_id,
-            cidr_block=example_route_entry.destination_cidrblock)
-        ```
-
         ## Import
 
         CEN instance can be imported using the id, e.g.
@@ -275,57 +230,6 @@ class RouteEntry(pulumi.CustomResource):
         For information about CEN route entries publishment and how to use it, see [Manage network routes](https://www.alibabacloud.com/help/doc-detail/86980.htm).
 
         > **NOTE:** Available since v1.20.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.get_regions(current=True)
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            availability_zone=example_zones.zones[0].id,
-            instance_name="terraform-example",
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            security_groups=[example_security_group.id],
-            vswitch_id=example_switch.id,
-            internet_max_bandwidth_out=5)
-        example_cen_instance_instance = alicloud.cen.Instance("exampleCen/instanceInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
-            instance_id=example_cen / instance_instance["id"],
-            child_instance_id=example_network.id,
-            child_instance_type="VPC",
-            child_instance_region_id=default.regions[0].id)
-        example_route_entry = alicloud.vpc.RouteEntry("exampleRouteEntry",
-            route_table_id=example_network.route_table_id,
-            destination_cidrblock="11.0.0.0/16",
-            nexthop_type="Instance",
-            nexthop_id=example_instance.id)
-        example_cen_route_entry_route_entry = alicloud.cen.RouteEntry("exampleCen/routeEntryRouteEntry",
-            instance_id=example_instance_attachment.instance_id,
-            route_table_id=example_network.route_table_id,
-            cidr_block=example_route_entry.destination_cidrblock)
-        ```
 
         ## Import
 

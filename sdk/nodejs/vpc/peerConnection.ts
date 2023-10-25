@@ -11,43 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.186.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultAccount = alicloud.getAccount({});
- * const config = new pulumi.Config();
- * const acceptingRegion = config.get("acceptingRegion") || "cn-beijing";
- * const local = new alicloud.Provider("local", {region: "cn-hangzhou"});
- * const accepting = new alicloud.Provider("accepting", {region: acceptingRegion});
- * const localVpc = new alicloud.vpc.Network("localVpc", {
- *     vpcName: "terraform-example",
- *     cidrBlock: "172.17.3.0/24",
- * }, {
- *     provider: alicloud.local,
- * });
- * const acceptingVpc = new alicloud.vpc.Network("acceptingVpc", {
- *     vpcName: "terraform-example",
- *     cidrBlock: "172.17.3.0/24",
- * }, {
- *     provider: alicloud.accepting,
- * });
- * const defaultPeerConnection = new alicloud.vpc.PeerConnection("defaultPeerConnection", {
- *     peerConnectionName: "terraform-example",
- *     vpcId: localVpc.id,
- *     acceptingAliUid: defaultAccount.then(defaultAccount => defaultAccount.id),
- *     acceptingRegionId: acceptingRegion,
- *     acceptingVpcId: acceptingVpc.id,
- *     description: "terraform-example",
- * }, {
- *     provider: alicloud.local,
- * });
- * ```
- *
  * ## Import
  *
  * VPC Peer Connection can be imported using the id, e.g.

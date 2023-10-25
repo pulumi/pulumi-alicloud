@@ -15,38 +15,6 @@ import (
 // This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
 //
 // > **NOTE:** Available in 1.194.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := cloudfirewall.GetVpcFirewalls(ctx, &cloudfirewall.GetVpcFirewallsArgs{
-//				Ids: []string{
-//					"id-example",
-//				},
-//				MemberUid:       pulumi.StringRef("1415189284827022"),
-//				Status:          pulumi.StringRef("closed"),
-//				VpcFirewallName: pulumi.StringRef("tf-test"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("alicloudCfwVpcFirewallExampleId", _default.Firewalls[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetVpcFirewalls(ctx *pulumi.Context, args *GetVpcFirewallsArgs, opts ...pulumi.InvokeOption) (*GetVpcFirewallsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpcFirewallsResult

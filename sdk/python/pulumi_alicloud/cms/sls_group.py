@@ -34,16 +34,20 @@ class SlsGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sls_group_configs: pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]],
-             sls_group_name: pulumi.Input[str],
+             sls_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]]] = None,
+             sls_group_name: Optional[pulumi.Input[str]] = None,
              sls_group_description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'slsGroupConfigs' in kwargs:
+        if sls_group_configs is None and 'slsGroupConfigs' in kwargs:
             sls_group_configs = kwargs['slsGroupConfigs']
-        if 'slsGroupName' in kwargs:
+        if sls_group_configs is None:
+            raise TypeError("Missing 'sls_group_configs' argument")
+        if sls_group_name is None and 'slsGroupName' in kwargs:
             sls_group_name = kwargs['slsGroupName']
-        if 'slsGroupDescription' in kwargs:
+        if sls_group_name is None:
+            raise TypeError("Missing 'sls_group_name' argument")
+        if sls_group_description is None and 'slsGroupDescription' in kwargs:
             sls_group_description = kwargs['slsGroupDescription']
 
         _setter("sls_group_configs", sls_group_configs)
@@ -112,13 +116,13 @@ class _SlsGroupState:
              sls_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]]] = None,
              sls_group_description: Optional[pulumi.Input[str]] = None,
              sls_group_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'slsGroupConfigs' in kwargs:
+        if sls_group_configs is None and 'slsGroupConfigs' in kwargs:
             sls_group_configs = kwargs['slsGroupConfigs']
-        if 'slsGroupDescription' in kwargs:
+        if sls_group_description is None and 'slsGroupDescription' in kwargs:
             sls_group_description = kwargs['slsGroupDescription']
-        if 'slsGroupName' in kwargs:
+        if sls_group_name is None and 'slsGroupName' in kwargs:
             sls_group_name = kwargs['slsGroupName']
 
         if sls_group_configs is not None:

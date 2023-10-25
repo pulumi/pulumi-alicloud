@@ -16,45 +16,6 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available since v1.208.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var domain = config.Get("domain") ?? "com.aliyun.cn-hangzhou.oss";
-    ///     var defaultVpc = new AliCloud.Vpc.Network("defaultVpc", new()
-    ///     {
-    ///         Description = "tf-example",
-    ///     });
-    /// 
-    ///     var defaultRg = new AliCloud.ResourceManager.ResourceGroup("defaultRg", new()
-    ///     {
-    ///         DisplayName = "tf-example-497",
-    ///         ResourceGroupName = name,
-    ///     });
-    /// 
-    ///     var @default = new AliCloud.Vpc.GatewayEndpoint("default", new()
-    ///     {
-    ///         GatewayEndpointDescrption = "test-gateway-endpoint",
-    ///         GatewayEndpointName = name,
-    ///         VpcId = defaultVpc.Id,
-    ///         ResourceGroupId = defaultRg.Id,
-    ///         ServiceName = domain,
-    ///         PolicyDocument = "{ \"Version\" : \"1\", \"Statement\" : [ { \"Effect\" : \"Allow\", \"Resource\" : [ \"*\" ], \"Action\" : [ \"*\" ], \"Principal\" : [ \"*\" ] } ] }",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// VPC Gateway Endpoint can be imported using the id, e.g.

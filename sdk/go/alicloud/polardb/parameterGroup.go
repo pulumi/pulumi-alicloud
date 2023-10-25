@@ -19,42 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.183.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := polardb.NewParameterGroup(ctx, "example", &polardb.ParameterGroupArgs{
-//				DbType:      pulumi.String("MySQL"),
-//				DbVersion:   pulumi.String("8.0"),
-//				Description: pulumi.String("example_value"),
-//				Parameters: polardb.ParameterGroupParameterArray{
-//					&polardb.ParameterGroupParameterArgs{
-//						ParamName:  pulumi.String("wait_timeout"),
-//						ParamValue: pulumi.String("86400"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // PolarDB Parameter Group can be imported using the id, e.g.

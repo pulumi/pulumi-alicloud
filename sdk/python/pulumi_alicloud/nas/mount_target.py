@@ -44,26 +44,28 @@ class MountTargetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             file_system_id: pulumi.Input[str],
+             file_system_id: Optional[pulumi.Input[str]] = None,
              access_group_name: Optional[pulumi.Input[str]] = None,
              network_type: Optional[pulumi.Input[str]] = None,
              security_group_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fileSystemId' in kwargs:
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'accessGroupName' in kwargs:
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if access_group_name is None and 'accessGroupName' in kwargs:
             access_group_name = kwargs['accessGroupName']
-        if 'networkType' in kwargs:
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         _setter("file_system_id", file_system_id)
@@ -209,21 +211,21 @@ class _MountTargetState:
              status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessGroupName' in kwargs:
+        if access_group_name is None and 'accessGroupName' in kwargs:
             access_group_name = kwargs['accessGroupName']
-        if 'fileSystemId' in kwargs:
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'mountTargetDomain' in kwargs:
+        if mount_target_domain is None and 'mountTargetDomain' in kwargs:
             mount_target_domain = kwargs['mountTargetDomain']
-        if 'networkType' in kwargs:
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if access_group_name is not None:

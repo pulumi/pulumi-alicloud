@@ -122,21 +122,6 @@ def get_instance_engines(engine: Optional[str] = None,
 
     > **NOTE:** Available since v1.51.0
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    resources_zones = alicloud.get_zones(available_resource_creation="KVStore")
-    resources_instance_engines = alicloud.kvstore.get_instance_engines(engine="Redis",
-        engine_version="5.0",
-        instance_charge_type="PrePaid",
-        output_file="./engines.txt",
-        zone_id=resources_zones.zones[0].id)
-    pulumi.export("firstKvstoreInstanceClass", resources_instance_engines.instance_engines[0].engine)
-    ```
-
 
     :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
     :param str engine_version: Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
@@ -174,21 +159,6 @@ def get_instance_engines_output(engine: Optional[pulumi.Input[Optional[str]]] = 
     This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
 
     > **NOTE:** Available since v1.51.0
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    resources_zones = alicloud.get_zones(available_resource_creation="KVStore")
-    resources_instance_engines = alicloud.kvstore.get_instance_engines(engine="Redis",
-        engine_version="5.0",
-        instance_charge_type="PrePaid",
-        output_file="./engines.txt",
-        zone_id=resources_zones.zones[0].id)
-    pulumi.export("firstKvstoreInstanceClass", resources_instance_engines.instance_engines[0].engine)
-    ```
 
 
     :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.

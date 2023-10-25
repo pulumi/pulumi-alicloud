@@ -129,20 +129,6 @@ def get_snapshots(file_system_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.152.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.nas.get_snapshots()
-    pulumi.export("nasSnapshotId1", ids.snapshots[0].id)
-    name_regex = alicloud.nas.get_snapshots(name_regex="^my-Snapshot")
-    pulumi.export("nasSnapshotId2", name_regex.snapshots[0].id)
-    ```
-
 
     :param str file_system_id: The ID of the file system.
     :param Sequence[str] ids: A list of Snapshot IDs.
@@ -185,20 +171,6 @@ def get_snapshots_output(file_system_id: Optional[pulumi.Input[Optional[str]]] =
     This data source provides the Nas Snapshots of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.152.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.nas.get_snapshots()
-    pulumi.export("nasSnapshotId1", ids.snapshots[0].id)
-    name_regex = alicloud.nas.get_snapshots(name_regex="^my-Snapshot")
-    pulumi.export("nasSnapshotId2", name_regex.snapshots[0].id)
-    ```
 
 
     :param str file_system_id: The ID of the file system.

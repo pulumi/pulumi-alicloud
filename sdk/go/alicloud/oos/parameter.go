@@ -19,47 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.147.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = oos.NewParameter(ctx, "example", &oos.ParameterArgs{
-//				ParameterName: pulumi.String("my-Parameter"),
-//				Type:          pulumi.String("String"),
-//				Value:         pulumi.String("example_value"),
-//				Description:   pulumi.String("example_value"),
-//				Tags: pulumi.AnyMap{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("OosParameter"),
-//				},
-//				ResourceGroupId: *pulumi.String(_default.Groups[0].Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // OOS Parameter can be imported using the id, e.g.

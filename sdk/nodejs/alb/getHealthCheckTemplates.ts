@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Alb Health Check Templates of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.alb.getHealthCheckTemplates({
- *     ids: ["example_id"],
- * });
- * export const albHealthCheckTemplateId1 = ids.then(ids => ids.templates?.[0]?.id);
- * const nameRegex = alicloud.alb.getHealthCheckTemplates({
- *     nameRegex: "^my-HealthCheckTemplate",
- * });
- * export const albHealthCheckTemplateId2 = nameRegex.then(nameRegex => nameRegex.templates?.[0]?.id);
- * ```
  */
 export function getHealthCheckTemplates(args?: GetHealthCheckTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetHealthCheckTemplatesResult> {
     args = args || {};
@@ -88,24 +70,6 @@ export interface GetHealthCheckTemplatesResult {
  * This data source provides the Alb Health Check Templates of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.alb.getHealthCheckTemplates({
- *     ids: ["example_id"],
- * });
- * export const albHealthCheckTemplateId1 = ids.then(ids => ids.templates?.[0]?.id);
- * const nameRegex = alicloud.alb.getHealthCheckTemplates({
- *     nameRegex: "^my-HealthCheckTemplate",
- * });
- * export const albHealthCheckTemplateId2 = nameRegex.then(nameRegex => nameRegex.templates?.[0]?.id);
- * ```
  */
 export function getHealthCheckTemplatesOutput(args?: GetHealthCheckTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHealthCheckTemplatesResult> {
     return pulumi.output(args).apply((a: any) => getHealthCheckTemplates(a, opts))

@@ -35,18 +35,24 @@ class RegistryEnterpriseNamespaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_create: pulumi.Input[bool],
-             default_visibility: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
+             auto_create: Optional[pulumi.Input[bool]] = None,
+             default_visibility: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoCreate' in kwargs:
+        if auto_create is None and 'autoCreate' in kwargs:
             auto_create = kwargs['autoCreate']
-        if 'defaultVisibility' in kwargs:
+        if auto_create is None:
+            raise TypeError("Missing 'auto_create' argument")
+        if default_visibility is None and 'defaultVisibility' in kwargs:
             default_visibility = kwargs['defaultVisibility']
-        if 'instanceId' in kwargs:
+        if default_visibility is None:
+            raise TypeError("Missing 'default_visibility' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
 
         _setter("auto_create", auto_create)
         _setter("default_visibility", default_visibility)
@@ -131,13 +137,13 @@ class _RegistryEnterpriseNamespaceState:
              default_visibility: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoCreate' in kwargs:
+        if auto_create is None and 'autoCreate' in kwargs:
             auto_create = kwargs['autoCreate']
-        if 'defaultVisibility' in kwargs:
+        if default_visibility is None and 'defaultVisibility' in kwargs:
             default_visibility = kwargs['defaultVisibility']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
 
         if auto_create is not None:
@@ -217,31 +223,6 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
 
         > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example-name"
-        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
-            payment_type="Subscription",
-            period=1,
-            renew_period=0,
-            renewal_status="ManualRenewal",
-            instance_type="Advanced",
-            instance_name=name)
-        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace",
-            instance_id=example_registry_enterprise_instance.id,
-            auto_create=False,
-            default_visibility="PUBLIC")
-        ```
-
         ## Import
 
         Container Registry Enterprise Edition namespace can be imported using the `{instance_id}:{namespace}`, e.g.
@@ -271,31 +252,6 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         > **NOTE:** Available since v1.86.0.
 
         > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example-name"
-        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
-            payment_type="Subscription",
-            period=1,
-            renew_period=0,
-            renewal_status="ManualRenewal",
-            instance_type="Advanced",
-            instance_name=name)
-        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace",
-            instance_id=example_registry_enterprise_instance.id,
-            auto_create=False,
-            default_visibility="PUBLIC")
-        ```
 
         ## Import
 

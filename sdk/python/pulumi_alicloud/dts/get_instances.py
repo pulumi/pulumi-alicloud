@@ -141,17 +141,6 @@ def get_instances(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.198.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.dts.get_instances(ids=[alicloud_dts_instance["default"]["id"]],
-        resource_group_id="example_value")
-    pulumi.export("alicloudDtsInstanceExampleId", default.instances[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Instance IDs.
     :param str name_regex: A regex string to filter results by trail name.
@@ -192,17 +181,6 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
 
     > **NOTE:** Available in 1.198.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.dts.get_instances(ids=[alicloud_dts_instance["default"]["id"]],
-        resource_group_id="example_value")
-    pulumi.export("alicloudDtsInstanceExampleId", default.instances[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Instance IDs.

@@ -16,52 +16,6 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// &gt; **NOTE:** Available since v1.170.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultImages = AliCloud.Eds.GetImages.Invoke(new()
-    ///     {
-    ///         ImageType = "SYSTEM",
-    ///         OsType = "Windows",
-    ///         DesktopInstanceType = "eds.hf.4c8g",
-    ///     });
-    /// 
-    ///     var defaultDesktopTypes = AliCloud.Eds.GetDesktopTypes.Invoke(new()
-    ///     {
-    ///         InstanceTypeFamily = "eds.hf",
-    ///         CpuCount = 4,
-    ///         MemorySize = 8192,
-    ///     });
-    /// 
-    ///     var defaultBundle = new AliCloud.Eds.Bundle("defaultBundle", new()
-    ///     {
-    ///         Description = name,
-    ///         DesktopType = defaultDesktopTypes.Apply(getDesktopTypesResult =&gt; getDesktopTypesResult.Ids[0]),
-    ///         BundleName = name,
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
-    ///         UserDiskSizeGibs = new[]
-    ///         {
-    ///             70,
-    ///         },
-    ///         RootDiskSizeGib = 80,
-    ///         RootDiskPerformanceLevel = "PL1",
-    ///         UserDiskPerformanceLevel = "PL1",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ECD Bundle can be imported using the id, e.g.

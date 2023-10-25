@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
  *
  * > **NOTE:** Available in 1.204.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.eflo.getSubnets({
- *     nameRegex: alicloud_eflo_subnet["default"].name,
- *     subnetName: "SubnetTestForTerraform",
- *     vpdId: _var.vpdId,
- *     zoneId: _var.zoneId,
- * });
- * export const alicloudEfloSubnetExampleId = _default.then(_default => _default.subnets?.[0]?.id);
- * ```
  */
 export function getSubnets(args?: GetSubnetsArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetsResult> {
     args = args || {};
@@ -148,21 +133,6 @@ export interface GetSubnetsResult {
  * This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
  *
  * > **NOTE:** Available in 1.204.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.eflo.getSubnets({
- *     nameRegex: alicloud_eflo_subnet["default"].name,
- *     subnetName: "SubnetTestForTerraform",
- *     vpdId: _var.vpdId,
- *     zoneId: _var.zoneId,
- * });
- * export const alicloudEfloSubnetExampleId = _default.then(_default => _default.subnets?.[0]?.id);
- * ```
  */
 export function getSubnetsOutput(args?: GetSubnetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetsResult> {
     return pulumi.output(args).apply((a: any) => getSubnets(a, opts))

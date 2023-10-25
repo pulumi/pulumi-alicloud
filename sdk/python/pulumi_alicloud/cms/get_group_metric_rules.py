@@ -169,19 +169,6 @@ def get_group_metric_rules(dimensions: Optional[str] = None,
 
     > **NOTE:** Available in v1.104.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.cms.get_group_metric_rules(ids=["4a9a8978-a9cc-55ca-aa7c-530ccd91ae57"],
-        name_regex="the_resource_name")
-    pulumi.export("firstCmsGroupMetricRuleId", example.rules[0].id)
-    ```
-
 
     :param str dimensions: The dimensions that specify the resources to be associated with the alert rule.
     :param bool enable_state: Indicates whether the alert rule is enabled.
@@ -240,19 +227,6 @@ def get_group_metric_rules_output(dimensions: Optional[pulumi.Input[Optional[str
     This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.104.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.cms.get_group_metric_rules(ids=["4a9a8978-a9cc-55ca-aa7c-530ccd91ae57"],
-        name_regex="the_resource_name")
-    pulumi.export("firstCmsGroupMetricRuleId", example.rules[0].id)
-    ```
 
 
     :param str dimensions: The dimensions that specify the resources to be associated with the alert rule.

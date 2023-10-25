@@ -11,46 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.199.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "10.4.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vswitchName: name,
- *     cidrBlock: "10.4.0.0/24",
- *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- * });
- * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", {
- *     paymentType: "Subscription",
- *     period: 1,
- *     renewPeriod: 0,
- *     renewalStatus: "ManualRenewal",
- *     instanceType: "Advanced",
- *     instanceName: name,
- * });
- * const defaultVpcEndpointLinkedVpc = new alicloud.cr.VpcEndpointLinkedVpc("defaultVpcEndpointLinkedVpc", {
- *     instanceId: defaultRegistryEnterpriseInstance.id,
- *     vpcId: defaultNetwork.id,
- *     vswitchId: defaultSwitch.id,
- *     moduleName: "Registry",
- *     enableCreateDnsRecordInPvzt: true,
- * });
- * ```
- *
  * ## Import
  *
  * CR Vpc Endpoint Linked Vpc can be imported using the id, e.g.

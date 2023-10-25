@@ -11,52 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.135.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultInstance = new alicloud.amqp.Instance("defaultInstance", {
- *     instanceType: "enterprise",
- *     maxTps: "3000",
- *     queueCapacity: "200",
- *     storageSize: "700",
- *     supportEip: false,
- *     maxEipTps: "128",
- *     paymentType: "Subscription",
- *     period: 1,
- * });
- * const defaultVirtualHost = new alicloud.amqp.VirtualHost("defaultVirtualHost", {
- *     instanceId: defaultInstance.id,
- *     virtualHostName: "tf-example",
- * });
- * const defaultExchange = new alicloud.amqp.Exchange("defaultExchange", {
- *     autoDeleteState: false,
- *     exchangeName: "tf-example",
- *     exchangeType: "DIRECT",
- *     instanceId: defaultInstance.id,
- *     internal: false,
- *     virtualHostName: defaultVirtualHost.virtualHostName,
- * });
- * const defaultQueue = new alicloud.amqp.Queue("defaultQueue", {
- *     instanceId: defaultInstance.id,
- *     queueName: "tf-example",
- *     virtualHostName: defaultVirtualHost.virtualHostName,
- * });
- * const defaultBinding = new alicloud.amqp.Binding("defaultBinding", {
- *     argument: "x-match:all",
- *     bindingKey: defaultQueue.queueName,
- *     bindingType: "QUEUE",
- *     destinationName: "tf-example",
- *     instanceId: defaultInstance.id,
- *     sourceExchange: defaultExchange.exchangeName,
- *     virtualHostName: defaultVirtualHost.virtualHostName,
- * });
- * ```
- *
  * ## Import
  *
  * RabbitMQ (AMQP) Binding can be imported using the id, e.g.

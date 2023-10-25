@@ -106,9 +106,9 @@ class ClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_type: pulumi.Input[str],
-             emr_ver: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             cluster_type: Optional[pulumi.Input[str]] = None,
+             emr_ver: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              bootstrap_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]] = None,
              charge_type: Optional[pulumi.Input[str]] = None,
              configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterConfigArgs']]]] = None,
@@ -133,53 +133,59 @@ class ClusterArgs:
              use_local_metadb: Optional[pulumi.Input[bool]] = None,
              user_defined_emr_ecs_role: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterType' in kwargs:
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'emrVer' in kwargs:
+        if cluster_type is None:
+            raise TypeError("Missing 'cluster_type' argument")
+        if emr_ver is None and 'emrVer' in kwargs:
             emr_ver = kwargs['emrVer']
-        if 'zoneId' in kwargs:
+        if emr_ver is None:
+            raise TypeError("Missing 'emr_ver' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'bootstrapActions' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if bootstrap_actions is None and 'bootstrapActions' in kwargs:
             bootstrap_actions = kwargs['bootstrapActions']
-        if 'chargeType' in kwargs:
+        if charge_type is None and 'chargeType' in kwargs:
             charge_type = kwargs['chargeType']
-        if 'depositType' in kwargs:
+        if deposit_type is None and 'depositType' in kwargs:
             deposit_type = kwargs['depositType']
-        if 'easEnable' in kwargs:
+        if eas_enable is None and 'easEnable' in kwargs:
             eas_enable = kwargs['easEnable']
-        if 'highAvailabilityEnable' in kwargs:
+        if high_availability_enable is None and 'highAvailabilityEnable' in kwargs:
             high_availability_enable = kwargs['highAvailabilityEnable']
-        if 'hostGroups' in kwargs:
+        if host_groups is None and 'hostGroups' in kwargs:
             host_groups = kwargs['hostGroups']
-        if 'isOpenPublicIp' in kwargs:
+        if is_open_public_ip is None and 'isOpenPublicIp' in kwargs:
             is_open_public_ip = kwargs['isOpenPublicIp']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'masterPwd' in kwargs:
+        if master_pwd is None and 'masterPwd' in kwargs:
             master_pwd = kwargs['masterPwd']
-        if 'metaStoreConf' in kwargs:
+        if meta_store_conf is None and 'metaStoreConf' in kwargs:
             meta_store_conf = kwargs['metaStoreConf']
-        if 'metaStoreType' in kwargs:
+        if meta_store_type is None and 'metaStoreType' in kwargs:
             meta_store_type = kwargs['metaStoreType']
-        if 'modifyClusterServiceConfig' in kwargs:
+        if modify_cluster_service_config is None and 'modifyClusterServiceConfig' in kwargs:
             modify_cluster_service_config = kwargs['modifyClusterServiceConfig']
-        if 'optionSoftwareLists' in kwargs:
+        if option_software_lists is None and 'optionSoftwareLists' in kwargs:
             option_software_lists = kwargs['optionSoftwareLists']
-        if 'relatedClusterId' in kwargs:
+        if related_cluster_id is None and 'relatedClusterId' in kwargs:
             related_cluster_id = kwargs['relatedClusterId']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'sshEnable' in kwargs:
+        if ssh_enable is None and 'sshEnable' in kwargs:
             ssh_enable = kwargs['sshEnable']
-        if 'useLocalMetadb' in kwargs:
+        if use_local_metadb is None and 'useLocalMetadb' in kwargs:
             use_local_metadb = kwargs['useLocalMetadb']
-        if 'userDefinedEmrEcsRole' in kwargs:
+        if user_defined_emr_ecs_role is None and 'userDefinedEmrEcsRole' in kwargs:
             user_defined_emr_ecs_role = kwargs['userDefinedEmrEcsRole']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         _setter("cluster_type", cluster_type)
@@ -679,53 +685,53 @@ class _ClusterState:
              user_defined_emr_ecs_role: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bootstrapActions' in kwargs:
+        if bootstrap_actions is None and 'bootstrapActions' in kwargs:
             bootstrap_actions = kwargs['bootstrapActions']
-        if 'chargeType' in kwargs:
+        if charge_type is None and 'chargeType' in kwargs:
             charge_type = kwargs['chargeType']
-        if 'clusterType' in kwargs:
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'depositType' in kwargs:
+        if deposit_type is None and 'depositType' in kwargs:
             deposit_type = kwargs['depositType']
-        if 'easEnable' in kwargs:
+        if eas_enable is None and 'easEnable' in kwargs:
             eas_enable = kwargs['easEnable']
-        if 'emrVer' in kwargs:
+        if emr_ver is None and 'emrVer' in kwargs:
             emr_ver = kwargs['emrVer']
-        if 'highAvailabilityEnable' in kwargs:
+        if high_availability_enable is None and 'highAvailabilityEnable' in kwargs:
             high_availability_enable = kwargs['highAvailabilityEnable']
-        if 'hostGroups' in kwargs:
+        if host_groups is None and 'hostGroups' in kwargs:
             host_groups = kwargs['hostGroups']
-        if 'isOpenPublicIp' in kwargs:
+        if is_open_public_ip is None and 'isOpenPublicIp' in kwargs:
             is_open_public_ip = kwargs['isOpenPublicIp']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'masterPwd' in kwargs:
+        if master_pwd is None and 'masterPwd' in kwargs:
             master_pwd = kwargs['masterPwd']
-        if 'metaStoreConf' in kwargs:
+        if meta_store_conf is None and 'metaStoreConf' in kwargs:
             meta_store_conf = kwargs['metaStoreConf']
-        if 'metaStoreType' in kwargs:
+        if meta_store_type is None and 'metaStoreType' in kwargs:
             meta_store_type = kwargs['metaStoreType']
-        if 'modifyClusterServiceConfig' in kwargs:
+        if modify_cluster_service_config is None and 'modifyClusterServiceConfig' in kwargs:
             modify_cluster_service_config = kwargs['modifyClusterServiceConfig']
-        if 'optionSoftwareLists' in kwargs:
+        if option_software_lists is None and 'optionSoftwareLists' in kwargs:
             option_software_lists = kwargs['optionSoftwareLists']
-        if 'relatedClusterId' in kwargs:
+        if related_cluster_id is None and 'relatedClusterId' in kwargs:
             related_cluster_id = kwargs['relatedClusterId']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'sshEnable' in kwargs:
+        if ssh_enable is None and 'sshEnable' in kwargs:
             ssh_enable = kwargs['sshEnable']
-        if 'useLocalMetadb' in kwargs:
+        if use_local_metadb is None and 'useLocalMetadb' in kwargs:
             use_local_metadb = kwargs['useLocalMetadb']
-        if 'userDefinedEmrEcsRole' in kwargs:
+        if user_defined_emr_ecs_role is None and 'userDefinedEmrEcsRole' in kwargs:
             user_defined_emr_ecs_role = kwargs['userDefinedEmrEcsRole']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if bootstrap_actions is not None:
@@ -1282,18 +1288,10 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["is_open_public_ip"] = is_open_public_ip
             __props__.__dict__["key_pair_name"] = key_pair_name
             __props__.__dict__["master_pwd"] = master_pwd
-            if meta_store_conf is not None and not isinstance(meta_store_conf, ClusterMetaStoreConfArgs):
-                meta_store_conf = meta_store_conf or {}
-                def _setter(key, value):
-                    meta_store_conf[key] = value
-                ClusterMetaStoreConfArgs._configure(_setter, **meta_store_conf)
+            meta_store_conf = _utilities.configure(meta_store_conf, ClusterMetaStoreConfArgs, True)
             __props__.__dict__["meta_store_conf"] = meta_store_conf
             __props__.__dict__["meta_store_type"] = meta_store_type
-            if modify_cluster_service_config is not None and not isinstance(modify_cluster_service_config, ClusterModifyClusterServiceConfigArgs):
-                modify_cluster_service_config = modify_cluster_service_config or {}
-                def _setter(key, value):
-                    modify_cluster_service_config[key] = value
-                ClusterModifyClusterServiceConfigArgs._configure(_setter, **modify_cluster_service_config)
+            modify_cluster_service_config = _utilities.configure(modify_cluster_service_config, ClusterModifyClusterServiceConfigArgs, True)
             __props__.__dict__["modify_cluster_service_config"] = modify_cluster_service_config
             __props__.__dict__["name"] = name
             __props__.__dict__["option_software_lists"] = option_software_lists

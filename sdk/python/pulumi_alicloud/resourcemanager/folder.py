@@ -29,13 +29,15 @@ class FolderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             folder_name: pulumi.Input[str],
+             folder_name: Optional[pulumi.Input[str]] = None,
              parent_folder_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'folderName' in kwargs:
+        if folder_name is None and 'folderName' in kwargs:
             folder_name = kwargs['folderName']
-        if 'parentFolderId' in kwargs:
+        if folder_name is None:
+            raise TypeError("Missing 'folder_name' argument")
+        if parent_folder_id is None and 'parentFolderId' in kwargs:
             parent_folder_id = kwargs['parentFolderId']
 
         _setter("folder_name", folder_name)
@@ -87,11 +89,11 @@ class _FolderState:
              _setter: Callable[[Any, Any], None],
              folder_name: Optional[pulumi.Input[str]] = None,
              parent_folder_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'folderName' in kwargs:
+        if folder_name is None and 'folderName' in kwargs:
             folder_name = kwargs['folderName']
-        if 'parentFolderId' in kwargs:
+        if parent_folder_id is None and 'parentFolderId' in kwargs:
             parent_folder_id = kwargs['parentFolderId']
 
         if folder_name is not None:
@@ -140,21 +142,6 @@ class Folder(pulumi.CustomResource):
 
         > **NOTE:** A maximum of five levels of folders can be created under the root folder.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example = alicloud.resourcemanager.Folder("example", folder_name=name)
-        ```
-
         ## Import
 
         Resource Manager Folder can be imported using the id, e.g.
@@ -181,21 +168,6 @@ class Folder(pulumi.CustomResource):
         > **NOTE:** Available since v1.82.0.
 
         > **NOTE:** A maximum of five levels of folders can be created under the root folder.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example = alicloud.resourcemanager.Folder("example", folder_name=name)
-        ```
 
         ## Import
 

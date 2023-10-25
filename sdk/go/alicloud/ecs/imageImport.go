@@ -21,43 +21,6 @@ import (
 //
 // > **NOTE:** Available in 1.69.0+.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.NewImageImport(ctx, "this", &ecs.ImageImportArgs{
-//				Architecture: pulumi.String("x86_64"),
-//				Description:  pulumi.String("test import image"),
-//				DiskDeviceMappings: ecs.ImageImportDiskDeviceMappingArray{
-//					&ecs.ImageImportDiskDeviceMappingArgs{
-//						DiskImageSize: pulumi.Int(5),
-//						OssBucket:     pulumi.String("testimportimage"),
-//						OssObject:     pulumi.String("root.img"),
-//					},
-//				},
-//				ImageName:   pulumi.String("test-import-image"),
-//				LicenseType: pulumi.String("Auto"),
-//				OsType:      pulumi.String("linux"),
-//				Platform:    pulumi.String("Ubuntu"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Attributes Reference0
 //
 //	The following attributes are exported:

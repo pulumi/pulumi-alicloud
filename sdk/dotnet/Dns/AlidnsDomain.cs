@@ -16,35 +16,6 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// &gt; **NOTE:** Available since v1.95.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultDomainGroup = new AliCloud.Dns.DomainGroup("defaultDomainGroup", new()
-    ///     {
-    ///         DomainGroupName = "tf-example",
-    ///     });
-    /// 
-    ///     var defaultAlidnsDomain = new AliCloud.Dns.AlidnsDomain("defaultAlidnsDomain", new()
-    ///     {
-    ///         DomainName = "starmove.com",
-    ///         GroupId = defaultDomainGroup.Id,
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "TF" },
-    ///             { "For", "example" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Alidns domain can be imported using the id or domain name, e.g.

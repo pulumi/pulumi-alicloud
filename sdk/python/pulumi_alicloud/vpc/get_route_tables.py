@@ -225,27 +225,6 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.36.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    name = config.get("name")
-    if name is None:
-        name = "route-tables-datasource-example-name"
-    foo_network = alicloud.vpc.Network("fooNetwork",
-        cidr_block="172.16.0.0/12",
-        vpc_name=name)
-    foo_route_table = alicloud.vpc.RouteTable("fooRouteTable",
-        description=name,
-        route_table_name=name,
-        vpc_id=foo_network.id)
-    foo_route_tables = alicloud.vpc.get_route_tables_output(ids=[foo_route_table.id])
-    pulumi.export("routeTableIds", foo_route_tables.ids)
-    ```
-
 
     :param Sequence[str] ids: A list of Route Tables IDs.
     :param str name_regex: A regex string to filter route tables by name.
@@ -311,27 +290,6 @@ def get_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     This data source provides a list of Route Tables owned by an Alibaba Cloud account.
 
     > **NOTE:** Available in 1.36.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    name = config.get("name")
-    if name is None:
-        name = "route-tables-datasource-example-name"
-    foo_network = alicloud.vpc.Network("fooNetwork",
-        cidr_block="172.16.0.0/12",
-        vpc_name=name)
-    foo_route_table = alicloud.vpc.RouteTable("fooRouteTable",
-        description=name,
-        route_table_name=name,
-        vpc_id=foo_network.id)
-    foo_route_tables = alicloud.vpc.get_route_tables_output(ids=[foo_route_table.id])
-    pulumi.export("routeTableIds", foo_route_tables.ids)
-    ```
 
 
     :param Sequence[str] ids: A list of Route Tables IDs.

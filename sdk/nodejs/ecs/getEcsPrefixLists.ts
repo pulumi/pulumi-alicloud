@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.152.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ecs.getEcsPrefixLists({
- *     ids: ["E2RY53-xxxx"],
- *     nameRegex: "tf-testAcc",
- * });
- * export const outputId = example.then(example => example.lists?.[0]?.id);
- * ```
  */
 export function getEcsPrefixLists(args?: GetEcsPrefixListsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsPrefixListsResult> {
     args = args || {};
@@ -82,21 +67,6 @@ export interface GetEcsPrefixListsResult {
  * This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.152.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ecs.getEcsPrefixLists({
- *     ids: ["E2RY53-xxxx"],
- *     nameRegex: "tf-testAcc",
- * });
- * export const outputId = example.then(example => example.lists?.[0]?.id);
- * ```
  */
 export function getEcsPrefixListsOutput(args?: GetEcsPrefixListsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsPrefixListsResult> {
     return pulumi.output(args).apply((a: any) => getEcsPrefixLists(a, opts))

@@ -128,18 +128,6 @@ def get_alarm_contacts(chanel_type: Optional[str] = None,
 
     > **NOTE:** Available in v1.99.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.cms.get_alarm_contacts(ids=["tf-testAccCmsAlarmContact"])
-    pulumi.export("first-contact", data["alicloud_cms_alarm_contacts"]["this"]["contacts"])
-    ```
-
 
     :param str chanel_type: The alarm notification method. Alarm notifications can be sent by using `Email` or `DingWebHook`.
     :param str chanel_value: The alarm notification target.
@@ -180,18 +168,6 @@ def get_alarm_contacts_output(chanel_type: Optional[pulumi.Input[Optional[str]]]
     Provides a list of alarm contact owned by an Alibaba Cloud account.
 
     > **NOTE:** Available in v1.99.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.cms.get_alarm_contacts(ids=["tf-testAccCmsAlarmContact"])
-    pulumi.export("first-contact", data["alicloud_cms_alarm_contacts"]["this"]["contacts"])
-    ```
 
 
     :param str chanel_type: The alarm notification method. Alarm notifications can be sent by using `Email` or `DingWebHook`.

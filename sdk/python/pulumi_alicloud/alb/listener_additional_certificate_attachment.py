@@ -29,14 +29,18 @@ class ListenerAdditionalCertificateAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificate_id: pulumi.Input[str],
-             listener_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             certificate_id: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certificateId' in kwargs:
+        if certificate_id is None and 'certificateId' in kwargs:
             certificate_id = kwargs['certificateId']
-        if 'listenerId' in kwargs:
+        if certificate_id is None:
+            raise TypeError("Missing 'certificate_id' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
 
         _setter("certificate_id", certificate_id)
         _setter("listener_id", listener_id)
@@ -94,13 +98,13 @@ class _ListenerAdditionalCertificateAttachmentState:
              certificate_type: Optional[pulumi.Input[str]] = None,
              listener_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certificateId' in kwargs:
+        if certificate_id is None and 'certificateId' in kwargs:
             certificate_id = kwargs['certificateId']
-        if 'certificateType' in kwargs:
+        if certificate_type is None and 'certificateType' in kwargs:
             certificate_type = kwargs['certificateType']
-        if 'listenerId' in kwargs:
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
 
         if certificate_id is not None:

@@ -15,38 +15,6 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN flow logs available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.78.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.Cen.GetFlowlogs.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "flowlog-tig1xxxxx",
-        ///         },
-        ///         NameRegex = "^foo",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstCenFlowlogId"] = data.Alicloud_cen_instances.Default.Flowlogs[0].Id,
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFlowlogsResult> InvokeAsync(GetFlowlogsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlowlogsResult>("alicloud:cen/getFlowlogs:getFlowlogs", args ?? new GetFlowlogsArgs(), options.WithDefaults());
@@ -55,38 +23,6 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN flow logs available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.78.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.Cen.GetFlowlogs.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "flowlog-tig1xxxxx",
-        ///         },
-        ///         NameRegex = "^foo",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstCenFlowlogId"] = data.Alicloud_cen_instances.Default.Flowlogs[0].Id,
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetFlowlogsResult> Invoke(GetFlowlogsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlowlogsResult>("alicloud:cen/getFlowlogs:getFlowlogs", args ?? new GetFlowlogsInvokeArgs(), options.WithDefaults());

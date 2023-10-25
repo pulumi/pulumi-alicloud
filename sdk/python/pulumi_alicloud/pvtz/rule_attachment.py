@@ -31,12 +31,16 @@ class RuleAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             rule_id: pulumi.Input[str],
-             vpcs: pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             rule_id: Optional[pulumi.Input[str]] = None,
+             vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ruleId' in kwargs:
+        if rule_id is None and 'ruleId' in kwargs:
             rule_id = kwargs['ruleId']
+        if rule_id is None:
+            raise TypeError("Missing 'rule_id' argument")
+        if vpcs is None:
+            raise TypeError("Missing 'vpcs' argument")
 
         _setter("rule_id", rule_id)
         _setter("vpcs", vpcs)
@@ -86,9 +90,9 @@ class _RuleAttachmentState:
              _setter: Callable[[Any, Any], None],
              rule_id: Optional[pulumi.Input[str]] = None,
              vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ruleId' in kwargs:
+        if rule_id is None and 'ruleId' in kwargs:
             rule_id = kwargs['ruleId']
 
         if rule_id is not None:

@@ -14,28 +14,6 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the acls in the region.
         /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var sampleDs = AliCloud.Slb.GetAcls.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstSlbAclId"] = sampleDs.Apply(getAclsResult =&gt; getAclsResult.Acls[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// ## Entry Block
         /// 
         /// The entry mapping supports the following:
@@ -58,28 +36,6 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the acls in the region.
         /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var sampleDs = AliCloud.Slb.GetAcls.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstSlbAclId"] = sampleDs.Apply(getAclsResult =&gt; getAclsResult.Acls[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// ## Entry Block
         /// 
         /// The entry mapping supports the following:

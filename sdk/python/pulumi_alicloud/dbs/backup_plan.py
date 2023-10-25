@@ -137,11 +137,11 @@ class BackupPlanArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_method: pulumi.Input[str],
-             backup_plan_name: pulumi.Input[str],
-             database_type: pulumi.Input[str],
-             instance_class: pulumi.Input[str],
-             source_endpoint_instance_type: pulumi.Input[str],
+             backup_method: Optional[pulumi.Input[str]] = None,
+             backup_plan_name: Optional[pulumi.Input[str]] = None,
+             database_type: Optional[pulumi.Input[str]] = None,
+             instance_class: Optional[pulumi.Input[str]] = None,
+             source_endpoint_instance_type: Optional[pulumi.Input[str]] = None,
              backup_gateway_id: Optional[pulumi.Input[str]] = None,
              backup_log_interval_seconds: Optional[pulumi.Input[int]] = None,
              backup_objects: Optional[pulumi.Input[str]] = None,
@@ -175,79 +175,89 @@ class BackupPlanArgs:
              status: Optional[pulumi.Input[str]] = None,
              storage_region: Optional[pulumi.Input[str]] = None,
              used_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupMethod' in kwargs:
+        if backup_method is None and 'backupMethod' in kwargs:
             backup_method = kwargs['backupMethod']
-        if 'backupPlanName' in kwargs:
+        if backup_method is None:
+            raise TypeError("Missing 'backup_method' argument")
+        if backup_plan_name is None and 'backupPlanName' in kwargs:
             backup_plan_name = kwargs['backupPlanName']
-        if 'databaseType' in kwargs:
+        if backup_plan_name is None:
+            raise TypeError("Missing 'backup_plan_name' argument")
+        if database_type is None and 'databaseType' in kwargs:
             database_type = kwargs['databaseType']
-        if 'instanceClass' in kwargs:
+        if database_type is None:
+            raise TypeError("Missing 'database_type' argument")
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'sourceEndpointInstanceType' in kwargs:
+        if instance_class is None:
+            raise TypeError("Missing 'instance_class' argument")
+        if source_endpoint_instance_type is None and 'sourceEndpointInstanceType' in kwargs:
             source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
-        if 'backupGatewayId' in kwargs:
+        if source_endpoint_instance_type is None:
+            raise TypeError("Missing 'source_endpoint_instance_type' argument")
+        if backup_gateway_id is None and 'backupGatewayId' in kwargs:
             backup_gateway_id = kwargs['backupGatewayId']
-        if 'backupLogIntervalSeconds' in kwargs:
+        if backup_log_interval_seconds is None and 'backupLogIntervalSeconds' in kwargs:
             backup_log_interval_seconds = kwargs['backupLogIntervalSeconds']
-        if 'backupObjects' in kwargs:
+        if backup_objects is None and 'backupObjects' in kwargs:
             backup_objects = kwargs['backupObjects']
-        if 'backupPeriod' in kwargs:
+        if backup_period is None and 'backupPeriod' in kwargs:
             backup_period = kwargs['backupPeriod']
-        if 'backupRateLimit' in kwargs:
+        if backup_rate_limit is None and 'backupRateLimit' in kwargs:
             backup_rate_limit = kwargs['backupRateLimit']
-        if 'backupRetentionPeriod' in kwargs:
+        if backup_retention_period is None and 'backupRetentionPeriod' in kwargs:
             backup_retention_period = kwargs['backupRetentionPeriod']
-        if 'backupSpeedLimit' in kwargs:
+        if backup_speed_limit is None and 'backupSpeedLimit' in kwargs:
             backup_speed_limit = kwargs['backupSpeedLimit']
-        if 'backupStartTime' in kwargs:
+        if backup_start_time is None and 'backupStartTime' in kwargs:
             backup_start_time = kwargs['backupStartTime']
-        if 'backupStorageType' in kwargs:
+        if backup_storage_type is None and 'backupStorageType' in kwargs:
             backup_storage_type = kwargs['backupStorageType']
-        if 'backupStrategyType' in kwargs:
+        if backup_strategy_type is None and 'backupStrategyType' in kwargs:
             backup_strategy_type = kwargs['backupStrategyType']
-        if 'crossAliyunId' in kwargs:
+        if cross_aliyun_id is None and 'crossAliyunId' in kwargs:
             cross_aliyun_id = kwargs['crossAliyunId']
-        if 'crossRoleName' in kwargs:
+        if cross_role_name is None and 'crossRoleName' in kwargs:
             cross_role_name = kwargs['crossRoleName']
-        if 'databaseRegion' in kwargs:
+        if database_region is None and 'databaseRegion' in kwargs:
             database_region = kwargs['databaseRegion']
-        if 'duplicationArchivePeriod' in kwargs:
+        if duplication_archive_period is None and 'duplicationArchivePeriod' in kwargs:
             duplication_archive_period = kwargs['duplicationArchivePeriod']
-        if 'duplicationInfrequentAccessPeriod' in kwargs:
+        if duplication_infrequent_access_period is None and 'duplicationInfrequentAccessPeriod' in kwargs:
             duplication_infrequent_access_period = kwargs['duplicationInfrequentAccessPeriod']
-        if 'enableBackupLog' in kwargs:
+        if enable_backup_log is None and 'enableBackupLog' in kwargs:
             enable_backup_log = kwargs['enableBackupLog']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'ossBucketName' in kwargs:
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'sourceEndpointDatabaseName' in kwargs:
+        if source_endpoint_database_name is None and 'sourceEndpointDatabaseName' in kwargs:
             source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
-        if 'sourceEndpointInstanceId' in kwargs:
+        if source_endpoint_instance_id is None and 'sourceEndpointInstanceId' in kwargs:
             source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
-        if 'sourceEndpointIp' in kwargs:
+        if source_endpoint_ip is None and 'sourceEndpointIp' in kwargs:
             source_endpoint_ip = kwargs['sourceEndpointIp']
-        if 'sourceEndpointOracleSid' in kwargs:
+        if source_endpoint_oracle_sid is None and 'sourceEndpointOracleSid' in kwargs:
             source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
-        if 'sourceEndpointPassword' in kwargs:
+        if source_endpoint_password is None and 'sourceEndpointPassword' in kwargs:
             source_endpoint_password = kwargs['sourceEndpointPassword']
-        if 'sourceEndpointPort' in kwargs:
+        if source_endpoint_port is None and 'sourceEndpointPort' in kwargs:
             source_endpoint_port = kwargs['sourceEndpointPort']
-        if 'sourceEndpointRegion' in kwargs:
+        if source_endpoint_region is None and 'sourceEndpointRegion' in kwargs:
             source_endpoint_region = kwargs['sourceEndpointRegion']
-        if 'sourceEndpointSid' in kwargs:
+        if source_endpoint_sid is None and 'sourceEndpointSid' in kwargs:
             source_endpoint_sid = kwargs['sourceEndpointSid']
-        if 'sourceEndpointUserName' in kwargs:
+        if source_endpoint_user_name is None and 'sourceEndpointUserName' in kwargs:
             source_endpoint_user_name = kwargs['sourceEndpointUserName']
-        if 'storageRegion' in kwargs:
+        if storage_region is None and 'storageRegion' in kwargs:
             storage_region = kwargs['storageRegion']
-        if 'usedTime' in kwargs:
+        if used_time is None and 'usedTime' in kwargs:
             used_time = kwargs['usedTime']
 
         _setter("backup_method", backup_method)
@@ -943,79 +953,79 @@ class _BackupPlanState:
              status: Optional[pulumi.Input[str]] = None,
              storage_region: Optional[pulumi.Input[str]] = None,
              used_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupGatewayId' in kwargs:
+        if backup_gateway_id is None and 'backupGatewayId' in kwargs:
             backup_gateway_id = kwargs['backupGatewayId']
-        if 'backupLogIntervalSeconds' in kwargs:
+        if backup_log_interval_seconds is None and 'backupLogIntervalSeconds' in kwargs:
             backup_log_interval_seconds = kwargs['backupLogIntervalSeconds']
-        if 'backupMethod' in kwargs:
+        if backup_method is None and 'backupMethod' in kwargs:
             backup_method = kwargs['backupMethod']
-        if 'backupObjects' in kwargs:
+        if backup_objects is None and 'backupObjects' in kwargs:
             backup_objects = kwargs['backupObjects']
-        if 'backupPeriod' in kwargs:
+        if backup_period is None and 'backupPeriod' in kwargs:
             backup_period = kwargs['backupPeriod']
-        if 'backupPlanName' in kwargs:
+        if backup_plan_name is None and 'backupPlanName' in kwargs:
             backup_plan_name = kwargs['backupPlanName']
-        if 'backupRateLimit' in kwargs:
+        if backup_rate_limit is None and 'backupRateLimit' in kwargs:
             backup_rate_limit = kwargs['backupRateLimit']
-        if 'backupRetentionPeriod' in kwargs:
+        if backup_retention_period is None and 'backupRetentionPeriod' in kwargs:
             backup_retention_period = kwargs['backupRetentionPeriod']
-        if 'backupSpeedLimit' in kwargs:
+        if backup_speed_limit is None and 'backupSpeedLimit' in kwargs:
             backup_speed_limit = kwargs['backupSpeedLimit']
-        if 'backupStartTime' in kwargs:
+        if backup_start_time is None and 'backupStartTime' in kwargs:
             backup_start_time = kwargs['backupStartTime']
-        if 'backupStorageType' in kwargs:
+        if backup_storage_type is None and 'backupStorageType' in kwargs:
             backup_storage_type = kwargs['backupStorageType']
-        if 'backupStrategyType' in kwargs:
+        if backup_strategy_type is None and 'backupStrategyType' in kwargs:
             backup_strategy_type = kwargs['backupStrategyType']
-        if 'crossAliyunId' in kwargs:
+        if cross_aliyun_id is None and 'crossAliyunId' in kwargs:
             cross_aliyun_id = kwargs['crossAliyunId']
-        if 'crossRoleName' in kwargs:
+        if cross_role_name is None and 'crossRoleName' in kwargs:
             cross_role_name = kwargs['crossRoleName']
-        if 'databaseRegion' in kwargs:
+        if database_region is None and 'databaseRegion' in kwargs:
             database_region = kwargs['databaseRegion']
-        if 'databaseType' in kwargs:
+        if database_type is None and 'databaseType' in kwargs:
             database_type = kwargs['databaseType']
-        if 'duplicationArchivePeriod' in kwargs:
+        if duplication_archive_period is None and 'duplicationArchivePeriod' in kwargs:
             duplication_archive_period = kwargs['duplicationArchivePeriod']
-        if 'duplicationInfrequentAccessPeriod' in kwargs:
+        if duplication_infrequent_access_period is None and 'duplicationInfrequentAccessPeriod' in kwargs:
             duplication_infrequent_access_period = kwargs['duplicationInfrequentAccessPeriod']
-        if 'enableBackupLog' in kwargs:
+        if enable_backup_log is None and 'enableBackupLog' in kwargs:
             enable_backup_log = kwargs['enableBackupLog']
-        if 'instanceClass' in kwargs:
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'ossBucketName' in kwargs:
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'sourceEndpointDatabaseName' in kwargs:
+        if source_endpoint_database_name is None and 'sourceEndpointDatabaseName' in kwargs:
             source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
-        if 'sourceEndpointInstanceId' in kwargs:
+        if source_endpoint_instance_id is None and 'sourceEndpointInstanceId' in kwargs:
             source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
-        if 'sourceEndpointInstanceType' in kwargs:
+        if source_endpoint_instance_type is None and 'sourceEndpointInstanceType' in kwargs:
             source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
-        if 'sourceEndpointIp' in kwargs:
+        if source_endpoint_ip is None and 'sourceEndpointIp' in kwargs:
             source_endpoint_ip = kwargs['sourceEndpointIp']
-        if 'sourceEndpointOracleSid' in kwargs:
+        if source_endpoint_oracle_sid is None and 'sourceEndpointOracleSid' in kwargs:
             source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
-        if 'sourceEndpointPassword' in kwargs:
+        if source_endpoint_password is None and 'sourceEndpointPassword' in kwargs:
             source_endpoint_password = kwargs['sourceEndpointPassword']
-        if 'sourceEndpointPort' in kwargs:
+        if source_endpoint_port is None and 'sourceEndpointPort' in kwargs:
             source_endpoint_port = kwargs['sourceEndpointPort']
-        if 'sourceEndpointRegion' in kwargs:
+        if source_endpoint_region is None and 'sourceEndpointRegion' in kwargs:
             source_endpoint_region = kwargs['sourceEndpointRegion']
-        if 'sourceEndpointSid' in kwargs:
+        if source_endpoint_sid is None and 'sourceEndpointSid' in kwargs:
             source_endpoint_sid = kwargs['sourceEndpointSid']
-        if 'sourceEndpointUserName' in kwargs:
+        if source_endpoint_user_name is None and 'sourceEndpointUserName' in kwargs:
             source_endpoint_user_name = kwargs['sourceEndpointUserName']
-        if 'storageRegion' in kwargs:
+        if storage_region is None and 'storageRegion' in kwargs:
             storage_region = kwargs['storageRegion']
-        if 'usedTime' in kwargs:
+        if used_time is None and 'usedTime' in kwargs:
             used_time = kwargs['usedTime']
 
         if backup_gateway_id is not None:

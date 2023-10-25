@@ -15,51 +15,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// This data source provides the Cloud Storage Gateway Gateway Cache Disks of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.144.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.CloudStorageGateway.GetGatewayCacheDisks.Invoke(new()
-        ///     {
-        ///         GatewayId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     var status = AliCloud.CloudStorageGateway.GetGatewayCacheDisks.Invoke(new()
-        ///     {
-        ///         GatewayId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///         Status = 0,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cloudStorageGatewayGatewayCacheDiskId1"] = ids.Apply(getGatewayCacheDisksResult =&gt; getGatewayCacheDisksResult.Disks[0]?.Id),
-        ///         ["cloudStorageGatewayGatewayCacheDiskId2"] = status.Apply(getGatewayCacheDisksResult =&gt; getGatewayCacheDisksResult.Disks[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGatewayCacheDisksResult> InvokeAsync(GetGatewayCacheDisksArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewayCacheDisksResult>("alicloud:cloudstoragegateway/getGatewayCacheDisks:getGatewayCacheDisks", args ?? new GetGatewayCacheDisksArgs(), options.WithDefaults());
@@ -68,51 +23,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// This data source provides the Cloud Storage Gateway Gateway Cache Disks of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.144.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.CloudStorageGateway.GetGatewayCacheDisks.Invoke(new()
-        ///     {
-        ///         GatewayId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     var status = AliCloud.CloudStorageGateway.GetGatewayCacheDisks.Invoke(new()
-        ///     {
-        ///         GatewayId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///         Status = 0,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cloudStorageGatewayGatewayCacheDiskId1"] = ids.Apply(getGatewayCacheDisksResult =&gt; getGatewayCacheDisksResult.Disks[0]?.Id),
-        ///         ["cloudStorageGatewayGatewayCacheDiskId2"] = status.Apply(getGatewayCacheDisksResult =&gt; getGatewayCacheDisksResult.Disks[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGatewayCacheDisksResult> Invoke(GetGatewayCacheDisksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayCacheDisksResult>("alicloud:cloudstoragegateway/getGatewayCacheDisks:getGatewayCacheDisks", args ?? new GetGatewayCacheDisksInvokeArgs(), options.WithDefaults());

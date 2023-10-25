@@ -35,18 +35,26 @@ class GetFoldersFolderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             folder_id: str,
-             folder_path: str,
-             id: str,
-             project_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             folder_id: Optional[str] = None,
+             folder_path: Optional[str] = None,
+             id: Optional[str] = None,
+             project_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'folderId' in kwargs:
+        if folder_id is None and 'folderId' in kwargs:
             folder_id = kwargs['folderId']
-        if 'folderPath' in kwargs:
+        if folder_id is None:
+            raise TypeError("Missing 'folder_id' argument")
+        if folder_path is None and 'folderPath' in kwargs:
             folder_path = kwargs['folderPath']
-        if 'projectId' in kwargs:
+        if folder_path is None:
+            raise TypeError("Missing 'folder_path' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
 
         _setter("folder_id", folder_id)
         _setter("folder_path", folder_path)

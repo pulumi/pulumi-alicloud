@@ -15,39 +15,6 @@ namespace Pulumi.AliCloud.FNF
         /// This data source provides the FnF Executions of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.149.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.FNF.GetExecutions.Invoke(new()
-        ///     {
-        ///         FlowName = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "my-Execution-1",
-        ///             "my-Execution-2",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["fnfExecutionId1"] = data.Alicloud_fn_f_executions.Ids.Executions[0].Id,
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetExecutionsResult> InvokeAsync(GetExecutionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExecutionsResult>("alicloud:fnf/getExecutions:getExecutions", args ?? new GetExecutionsArgs(), options.WithDefaults());
@@ -56,39 +23,6 @@ namespace Pulumi.AliCloud.FNF
         /// This data source provides the FnF Executions of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.149.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.FNF.GetExecutions.Invoke(new()
-        ///     {
-        ///         FlowName = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "my-Execution-1",
-        ///             "my-Execution-2",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["fnfExecutionId1"] = data.Alicloud_fn_f_executions.Ids.Executions[0].Id,
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetExecutionsResult> Invoke(GetExecutionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExecutionsResult>("alicloud:fnf/getExecutions:getExecutions", args ?? new GetExecutionsInvokeArgs(), options.WithDefaults());

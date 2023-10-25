@@ -35,16 +35,22 @@ class FirewallRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
-             port: pulumi.Input[str],
-             rule_protocol: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             rule_protocol: Optional[pulumi.Input[str]] = None,
              remark: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'ruleProtocol' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if rule_protocol is None and 'ruleProtocol' in kwargs:
             rule_protocol = kwargs['ruleProtocol']
+        if rule_protocol is None:
+            raise TypeError("Missing 'rule_protocol' argument")
 
         _setter("instance_id", instance_id)
         _setter("port", port)
@@ -133,13 +139,13 @@ class _FirewallRuleState:
              port: Optional[pulumi.Input[str]] = None,
              remark: Optional[pulumi.Input[str]] = None,
              rule_protocol: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'firewallRuleId' in kwargs:
+        if firewall_rule_id is None and 'firewallRuleId' in kwargs:
             firewall_rule_id = kwargs['firewallRuleId']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'ruleProtocol' in kwargs:
+        if rule_protocol is None and 'ruleProtocol' in kwargs:
             rule_protocol = kwargs['ruleProtocol']
 
         if firewall_rule_id is not None:
@@ -231,34 +237,6 @@ class FirewallRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.143.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_images = alicloud.simpleapplicationserver.get_images()
-        default_server_plans = alicloud.simpleapplicationserver.get_server_plans()
-        default_instance = alicloud.simpleapplicationserver.Instance("defaultInstance",
-            payment_type="Subscription",
-            plan_id=default_server_plans.plans[0].id,
-            instance_name=name,
-            image_id=default_images.images[0].id,
-            period=1,
-            data_disk_size=100)
-        default_firewall_rule = alicloud.simpleapplicationserver.FirewallRule("defaultFirewallRule",
-            instance_id=default_instance.id,
-            rule_protocol="Tcp",
-            port="9999",
-            remark=name)
-        ```
-
         ## Import
 
         Simple Application Server Firewall Rule can be imported using the id, e.g.
@@ -286,34 +264,6 @@ class FirewallRule(pulumi.CustomResource):
         For information about Simple Application Server Firewall Rule and how to use it, see [What is Firewall Rule](https://www.alibabacloud.com/help/doc-detail/190449.htm).
 
         > **NOTE:** Available since v1.143.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_images = alicloud.simpleapplicationserver.get_images()
-        default_server_plans = alicloud.simpleapplicationserver.get_server_plans()
-        default_instance = alicloud.simpleapplicationserver.Instance("defaultInstance",
-            payment_type="Subscription",
-            plan_id=default_server_plans.plans[0].id,
-            instance_name=name,
-            image_id=default_images.images[0].id,
-            period=1,
-            data_disk_size=100)
-        default_firewall_rule = alicloud.simpleapplicationserver.FirewallRule("defaultFirewallRule",
-            instance_id=default_instance.id,
-            rule_protocol="Tcp",
-            port="9999",
-            remark=name)
-        ```
 
         ## Import
 

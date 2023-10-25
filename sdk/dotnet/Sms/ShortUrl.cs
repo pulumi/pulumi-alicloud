@@ -16,28 +16,6 @@ namespace Pulumi.AliCloud.Sms
     /// 
     /// &gt; **NOTE:** Available in v1.178.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Sms.ShortUrl("example", new()
-    ///     {
-    ///         EffectiveDays = 30,
-    ///         ShortUrlName = "example_value",
-    ///         SourceUrl = "example_value",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// SMS Short Url can be imported using the id, e.g.

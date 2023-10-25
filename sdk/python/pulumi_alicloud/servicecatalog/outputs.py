@@ -72,11 +72,11 @@ class ProvisionedProductOutput(dict):
              description: Optional[str] = None,
              output_key: Optional[str] = None,
              output_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'outputKey' in kwargs:
+        if output_key is None and 'outputKey' in kwargs:
             output_key = kwargs['outputKey']
-        if 'outputValue' in kwargs:
+        if output_value is None and 'outputValue' in kwargs:
             output_value = kwargs['outputValue']
 
         if description is not None:
@@ -149,11 +149,11 @@ class ProvisionedProductParameter(dict):
              _setter: Callable[[Any, Any], None],
              parameter_key: Optional[str] = None,
              parameter_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterKey' in kwargs:
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
-        if 'parameterValue' in kwargs:
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
 
         if parameter_key is not None:
@@ -216,31 +216,49 @@ class GetEndUserProductsEndUserProductResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             description: str,
-             has_default_launch_option: bool,
-             id: str,
-             product_arn: str,
-             product_id: str,
-             product_name: str,
-             product_type: str,
-             provider_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             has_default_launch_option: Optional[bool] = None,
+             id: Optional[str] = None,
+             product_arn: Optional[str] = None,
+             product_id: Optional[str] = None,
+             product_name: Optional[str] = None,
+             product_type: Optional[str] = None,
+             provider_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'hasDefaultLaunchOption' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if has_default_launch_option is None and 'hasDefaultLaunchOption' in kwargs:
             has_default_launch_option = kwargs['hasDefaultLaunchOption']
-        if 'productArn' in kwargs:
+        if has_default_launch_option is None:
+            raise TypeError("Missing 'has_default_launch_option' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if product_arn is None and 'productArn' in kwargs:
             product_arn = kwargs['productArn']
-        if 'productId' in kwargs:
+        if product_arn is None:
+            raise TypeError("Missing 'product_arn' argument")
+        if product_id is None and 'productId' in kwargs:
             product_id = kwargs['productId']
-        if 'productName' in kwargs:
+        if product_id is None:
+            raise TypeError("Missing 'product_id' argument")
+        if product_name is None and 'productName' in kwargs:
             product_name = kwargs['productName']
-        if 'productType' in kwargs:
+        if product_name is None:
+            raise TypeError("Missing 'product_name' argument")
+        if product_type is None and 'productType' in kwargs:
             product_type = kwargs['productType']
-        if 'providerName' in kwargs:
+        if product_type is None:
+            raise TypeError("Missing 'product_type' argument")
+        if provider_name is None and 'providerName' in kwargs:
             provider_name = kwargs['providerName']
+        if provider_name is None:
+            raise TypeError("Missing 'provider_name' argument")
 
         _setter("create_time", create_time)
         _setter("description", description)
@@ -348,18 +366,26 @@ class GetLaunchOptionsLaunchOptionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             constraint_summaries: Sequence['outputs.GetLaunchOptionsLaunchOptionConstraintSummaryResult'],
-             id: str,
-             portfolio_id: str,
-             portfolio_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             constraint_summaries: Optional[Sequence['outputs.GetLaunchOptionsLaunchOptionConstraintSummaryResult']] = None,
+             id: Optional[str] = None,
+             portfolio_id: Optional[str] = None,
+             portfolio_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'constraintSummaries' in kwargs:
+        if constraint_summaries is None and 'constraintSummaries' in kwargs:
             constraint_summaries = kwargs['constraintSummaries']
-        if 'portfolioId' in kwargs:
+        if constraint_summaries is None:
+            raise TypeError("Missing 'constraint_summaries' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if portfolio_id is None and 'portfolioId' in kwargs:
             portfolio_id = kwargs['portfolioId']
-        if 'portfolioName' in kwargs:
+        if portfolio_id is None:
+            raise TypeError("Missing 'portfolio_id' argument")
+        if portfolio_name is None and 'portfolioName' in kwargs:
             portfolio_name = kwargs['portfolioName']
+        if portfolio_name is None:
+            raise TypeError("Missing 'portfolio_name' argument")
 
         _setter("constraint_summaries", constraint_summaries)
         _setter("id", id)
@@ -416,12 +442,16 @@ class GetLaunchOptionsLaunchOptionConstraintSummaryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             constraint_type: str,
-             description: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             constraint_type: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'constraintType' in kwargs:
+        if constraint_type is None and 'constraintType' in kwargs:
             constraint_type = kwargs['constraintType']
+        if constraint_type is None:
+            raise TypeError("Missing 'constraint_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
 
         _setter("constraint_type", constraint_type)
         _setter("description", description)
@@ -466,18 +496,26 @@ class GetLaunchOptionsOptionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             constraint_summaries: Sequence['outputs.GetLaunchOptionsOptionConstraintSummaryResult'],
-             id: str,
-             portfolio_id: str,
-             portfolio_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             constraint_summaries: Optional[Sequence['outputs.GetLaunchOptionsOptionConstraintSummaryResult']] = None,
+             id: Optional[str] = None,
+             portfolio_id: Optional[str] = None,
+             portfolio_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'constraintSummaries' in kwargs:
+        if constraint_summaries is None and 'constraintSummaries' in kwargs:
             constraint_summaries = kwargs['constraintSummaries']
-        if 'portfolioId' in kwargs:
+        if constraint_summaries is None:
+            raise TypeError("Missing 'constraint_summaries' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if portfolio_id is None and 'portfolioId' in kwargs:
             portfolio_id = kwargs['portfolioId']
-        if 'portfolioName' in kwargs:
+        if portfolio_id is None:
+            raise TypeError("Missing 'portfolio_id' argument")
+        if portfolio_name is None and 'portfolioName' in kwargs:
             portfolio_name = kwargs['portfolioName']
+        if portfolio_name is None:
+            raise TypeError("Missing 'portfolio_name' argument")
 
         _setter("constraint_summaries", constraint_summaries)
         _setter("id", id)
@@ -534,12 +572,16 @@ class GetLaunchOptionsOptionConstraintSummaryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             constraint_type: str,
-             description: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             constraint_type: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'constraintType' in kwargs:
+        if constraint_type is None and 'constraintType' in kwargs:
             constraint_type = kwargs['constraintType']
+        if constraint_type is None:
+            raise TypeError("Missing 'constraint_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
 
         _setter("constraint_type", constraint_type)
         _setter("description", description)
@@ -593,25 +635,39 @@ class GetPortfoliosPortfolioResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             description: str,
-             id: str,
-             portfolio_arn: str,
-             portfolio_id: str,
-             portfolio_name: str,
-             provider_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             portfolio_arn: Optional[str] = None,
+             portfolio_id: Optional[str] = None,
+             portfolio_name: Optional[str] = None,
+             provider_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'portfolioArn' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if portfolio_arn is None and 'portfolioArn' in kwargs:
             portfolio_arn = kwargs['portfolioArn']
-        if 'portfolioId' in kwargs:
+        if portfolio_arn is None:
+            raise TypeError("Missing 'portfolio_arn' argument")
+        if portfolio_id is None and 'portfolioId' in kwargs:
             portfolio_id = kwargs['portfolioId']
-        if 'portfolioName' in kwargs:
+        if portfolio_id is None:
+            raise TypeError("Missing 'portfolio_id' argument")
+        if portfolio_name is None and 'portfolioName' in kwargs:
             portfolio_name = kwargs['portfolioName']
-        if 'providerName' in kwargs:
+        if portfolio_name is None:
+            raise TypeError("Missing 'portfolio_name' argument")
+        if provider_name is None and 'providerName' in kwargs:
             provider_name = kwargs['providerName']
+        if provider_name is None:
+            raise TypeError("Missing 'provider_name' argument")
 
         _setter("create_time", create_time)
         _setter("description", description)
@@ -716,31 +772,49 @@ class GetProductAsEndUsersUserResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             description: str,
-             has_default_launch_option: bool,
-             id: str,
-             product_arn: str,
-             product_id: str,
-             product_name: str,
-             product_type: str,
-             provider_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             has_default_launch_option: Optional[bool] = None,
+             id: Optional[str] = None,
+             product_arn: Optional[str] = None,
+             product_id: Optional[str] = None,
+             product_name: Optional[str] = None,
+             product_type: Optional[str] = None,
+             provider_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'hasDefaultLaunchOption' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if has_default_launch_option is None and 'hasDefaultLaunchOption' in kwargs:
             has_default_launch_option = kwargs['hasDefaultLaunchOption']
-        if 'productArn' in kwargs:
+        if has_default_launch_option is None:
+            raise TypeError("Missing 'has_default_launch_option' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if product_arn is None and 'productArn' in kwargs:
             product_arn = kwargs['productArn']
-        if 'productId' in kwargs:
+        if product_arn is None:
+            raise TypeError("Missing 'product_arn' argument")
+        if product_id is None and 'productId' in kwargs:
             product_id = kwargs['productId']
-        if 'productName' in kwargs:
+        if product_id is None:
+            raise TypeError("Missing 'product_id' argument")
+        if product_name is None and 'productName' in kwargs:
             product_name = kwargs['productName']
-        if 'productType' in kwargs:
+        if product_name is None:
+            raise TypeError("Missing 'product_name' argument")
+        if product_type is None and 'productType' in kwargs:
             product_type = kwargs['productType']
-        if 'providerName' in kwargs:
+        if product_type is None:
+            raise TypeError("Missing 'product_type' argument")
+        if provider_name is None and 'providerName' in kwargs:
             provider_name = kwargs['providerName']
+        if provider_name is None:
+            raise TypeError("Missing 'provider_name' argument")
 
         _setter("create_time", create_time)
         _setter("description", description)
@@ -866,30 +940,50 @@ class GetProductVersionsProductVersionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             active: bool,
-             create_time: str,
-             description: str,
-             guidance: str,
-             id: str,
-             product_id: str,
-             product_version_id: str,
-             product_version_name: str,
-             template_type: str,
-             template_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             active: Optional[bool] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             guidance: Optional[str] = None,
+             id: Optional[str] = None,
+             product_id: Optional[str] = None,
+             product_version_id: Optional[str] = None,
+             product_version_name: Optional[str] = None,
+             template_type: Optional[str] = None,
+             template_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if active is None:
+            raise TypeError("Missing 'active' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'productId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if guidance is None:
+            raise TypeError("Missing 'guidance' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if product_id is None and 'productId' in kwargs:
             product_id = kwargs['productId']
-        if 'productVersionId' in kwargs:
+        if product_id is None:
+            raise TypeError("Missing 'product_id' argument")
+        if product_version_id is None and 'productVersionId' in kwargs:
             product_version_id = kwargs['productVersionId']
-        if 'productVersionName' in kwargs:
+        if product_version_id is None:
+            raise TypeError("Missing 'product_version_id' argument")
+        if product_version_name is None and 'productVersionName' in kwargs:
             product_version_name = kwargs['productVersionName']
-        if 'templateType' in kwargs:
+        if product_version_name is None:
+            raise TypeError("Missing 'product_version_name' argument")
+        if template_type is None and 'templateType' in kwargs:
             template_type = kwargs['templateType']
-        if 'templateUrl' in kwargs:
+        if template_type is None:
+            raise TypeError("Missing 'template_type' argument")
+        if template_url is None and 'templateUrl' in kwargs:
             template_url = kwargs['templateUrl']
+        if template_url is None:
+            raise TypeError("Missing 'template_url' argument")
 
         _setter("active", active)
         _setter("create_time", create_time)
@@ -1024,30 +1118,50 @@ class GetProductVersionsVersionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             active: bool,
-             create_time: str,
-             description: str,
-             guidance: str,
-             id: str,
-             product_id: str,
-             product_version_id: str,
-             product_version_name: str,
-             template_type: str,
-             template_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             active: Optional[bool] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             guidance: Optional[str] = None,
+             id: Optional[str] = None,
+             product_id: Optional[str] = None,
+             product_version_id: Optional[str] = None,
+             product_version_name: Optional[str] = None,
+             template_type: Optional[str] = None,
+             template_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if active is None:
+            raise TypeError("Missing 'active' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'productId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if guidance is None:
+            raise TypeError("Missing 'guidance' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if product_id is None and 'productId' in kwargs:
             product_id = kwargs['productId']
-        if 'productVersionId' in kwargs:
+        if product_id is None:
+            raise TypeError("Missing 'product_id' argument")
+        if product_version_id is None and 'productVersionId' in kwargs:
             product_version_id = kwargs['productVersionId']
-        if 'productVersionName' in kwargs:
+        if product_version_id is None:
+            raise TypeError("Missing 'product_version_id' argument")
+        if product_version_name is None and 'productVersionName' in kwargs:
             product_version_name = kwargs['productVersionName']
-        if 'templateType' in kwargs:
+        if product_version_name is None:
+            raise TypeError("Missing 'product_version_name' argument")
+        if template_type is None and 'templateType' in kwargs:
             template_type = kwargs['templateType']
-        if 'templateUrl' in kwargs:
+        if template_type is None:
+            raise TypeError("Missing 'template_type' argument")
+        if template_url is None and 'templateUrl' in kwargs:
             template_url = kwargs['templateUrl']
+        if template_url is None:
+            raise TypeError("Missing 'template_url' argument")
 
         _setter("active", active)
         _setter("create_time", create_time)
@@ -1217,67 +1331,111 @@ class GetProvisionedProductsProductResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             id: str,
-             last_provisioning_task_id: str,
-             last_successful_provisioning_task_id: str,
-             last_task_id: str,
-             outputs: Sequence['outputs.GetProvisionedProductsProductOutputResult'],
-             owner_principal_id: str,
-             owner_principal_type: str,
-             parameters: Sequence['outputs.GetProvisionedProductsProductParameterResult'],
-             portfolio_id: str,
-             product_id: str,
-             product_name: str,
-             product_version_id: str,
-             product_version_name: str,
-             provisioned_product_arn: str,
-             provisioned_product_id: str,
-             provisioned_product_name: str,
-             provisioned_product_type: str,
-             stack_id: str,
-             stack_region_id: str,
-             status: str,
-             status_message: str,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             last_provisioning_task_id: Optional[str] = None,
+             last_successful_provisioning_task_id: Optional[str] = None,
+             last_task_id: Optional[str] = None,
+             outputs: Optional[Sequence['outputs.GetProvisionedProductsProductOutputResult']] = None,
+             owner_principal_id: Optional[str] = None,
+             owner_principal_type: Optional[str] = None,
+             parameters: Optional[Sequence['outputs.GetProvisionedProductsProductParameterResult']] = None,
+             portfolio_id: Optional[str] = None,
+             product_id: Optional[str] = None,
+             product_name: Optional[str] = None,
+             product_version_id: Optional[str] = None,
+             product_version_name: Optional[str] = None,
+             provisioned_product_arn: Optional[str] = None,
+             provisioned_product_id: Optional[str] = None,
+             provisioned_product_name: Optional[str] = None,
+             provisioned_product_type: Optional[str] = None,
+             stack_id: Optional[str] = None,
+             stack_region_id: Optional[str] = None,
+             status: Optional[str] = None,
+             status_message: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'lastProvisioningTaskId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if last_provisioning_task_id is None and 'lastProvisioningTaskId' in kwargs:
             last_provisioning_task_id = kwargs['lastProvisioningTaskId']
-        if 'lastSuccessfulProvisioningTaskId' in kwargs:
+        if last_provisioning_task_id is None:
+            raise TypeError("Missing 'last_provisioning_task_id' argument")
+        if last_successful_provisioning_task_id is None and 'lastSuccessfulProvisioningTaskId' in kwargs:
             last_successful_provisioning_task_id = kwargs['lastSuccessfulProvisioningTaskId']
-        if 'lastTaskId' in kwargs:
+        if last_successful_provisioning_task_id is None:
+            raise TypeError("Missing 'last_successful_provisioning_task_id' argument")
+        if last_task_id is None and 'lastTaskId' in kwargs:
             last_task_id = kwargs['lastTaskId']
-        if 'ownerPrincipalId' in kwargs:
+        if last_task_id is None:
+            raise TypeError("Missing 'last_task_id' argument")
+        if outputs is None:
+            raise TypeError("Missing 'outputs' argument")
+        if owner_principal_id is None and 'ownerPrincipalId' in kwargs:
             owner_principal_id = kwargs['ownerPrincipalId']
-        if 'ownerPrincipalType' in kwargs:
+        if owner_principal_id is None:
+            raise TypeError("Missing 'owner_principal_id' argument")
+        if owner_principal_type is None and 'ownerPrincipalType' in kwargs:
             owner_principal_type = kwargs['ownerPrincipalType']
-        if 'portfolioId' in kwargs:
+        if owner_principal_type is None:
+            raise TypeError("Missing 'owner_principal_type' argument")
+        if parameters is None:
+            raise TypeError("Missing 'parameters' argument")
+        if portfolio_id is None and 'portfolioId' in kwargs:
             portfolio_id = kwargs['portfolioId']
-        if 'productId' in kwargs:
+        if portfolio_id is None:
+            raise TypeError("Missing 'portfolio_id' argument")
+        if product_id is None and 'productId' in kwargs:
             product_id = kwargs['productId']
-        if 'productName' in kwargs:
+        if product_id is None:
+            raise TypeError("Missing 'product_id' argument")
+        if product_name is None and 'productName' in kwargs:
             product_name = kwargs['productName']
-        if 'productVersionId' in kwargs:
+        if product_name is None:
+            raise TypeError("Missing 'product_name' argument")
+        if product_version_id is None and 'productVersionId' in kwargs:
             product_version_id = kwargs['productVersionId']
-        if 'productVersionName' in kwargs:
+        if product_version_id is None:
+            raise TypeError("Missing 'product_version_id' argument")
+        if product_version_name is None and 'productVersionName' in kwargs:
             product_version_name = kwargs['productVersionName']
-        if 'provisionedProductArn' in kwargs:
+        if product_version_name is None:
+            raise TypeError("Missing 'product_version_name' argument")
+        if provisioned_product_arn is None and 'provisionedProductArn' in kwargs:
             provisioned_product_arn = kwargs['provisionedProductArn']
-        if 'provisionedProductId' in kwargs:
+        if provisioned_product_arn is None:
+            raise TypeError("Missing 'provisioned_product_arn' argument")
+        if provisioned_product_id is None and 'provisionedProductId' in kwargs:
             provisioned_product_id = kwargs['provisionedProductId']
-        if 'provisionedProductName' in kwargs:
+        if provisioned_product_id is None:
+            raise TypeError("Missing 'provisioned_product_id' argument")
+        if provisioned_product_name is None and 'provisionedProductName' in kwargs:
             provisioned_product_name = kwargs['provisionedProductName']
-        if 'provisionedProductType' in kwargs:
+        if provisioned_product_name is None:
+            raise TypeError("Missing 'provisioned_product_name' argument")
+        if provisioned_product_type is None and 'provisionedProductType' in kwargs:
             provisioned_product_type = kwargs['provisionedProductType']
-        if 'stackId' in kwargs:
+        if provisioned_product_type is None:
+            raise TypeError("Missing 'provisioned_product_type' argument")
+        if stack_id is None and 'stackId' in kwargs:
             stack_id = kwargs['stackId']
-        if 'stackRegionId' in kwargs:
+        if stack_id is None:
+            raise TypeError("Missing 'stack_id' argument")
+        if stack_region_id is None and 'stackRegionId' in kwargs:
             stack_region_id = kwargs['stackRegionId']
-        if 'statusMessage' in kwargs:
+        if stack_region_id is None:
+            raise TypeError("Missing 'stack_region_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if status_message is None and 'statusMessage' in kwargs:
             status_message = kwargs['statusMessage']
+        if status_message is None:
+            raise TypeError("Missing 'status_message' argument")
 
         _setter("create_time", create_time)
         _setter("id", id)
@@ -1492,15 +1650,21 @@ class GetProvisionedProductsProductOutputResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             output_key: str,
-             output_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             output_key: Optional[str] = None,
+             output_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'outputKey' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if output_key is None and 'outputKey' in kwargs:
             output_key = kwargs['outputKey']
-        if 'outputValue' in kwargs:
+        if output_key is None:
+            raise TypeError("Missing 'output_key' argument")
+        if output_value is None and 'outputValue' in kwargs:
             output_value = kwargs['outputValue']
+        if output_value is None:
+            raise TypeError("Missing 'output_value' argument")
 
         _setter("description", description)
         _setter("output_key", output_key)
@@ -1535,14 +1699,18 @@ class GetProvisionedProductsProductParameterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parameter_key: str,
-             parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             parameter_key: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterKey' in kwargs:
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
-        if 'parameterValue' in kwargs:
+        if parameter_key is None:
+            raise TypeError("Missing 'parameter_key' argument")
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
+        if parameter_value is None:
+            raise TypeError("Missing 'parameter_value' argument")
 
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
@@ -1634,67 +1802,111 @@ class GetProvisionedProductsProvisionedProductResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             id: str,
-             last_provisioning_task_id: str,
-             last_successful_provisioning_task_id: str,
-             last_task_id: str,
-             outputs: Sequence['outputs.GetProvisionedProductsProvisionedProductOutputResult'],
-             owner_principal_id: str,
-             owner_principal_type: str,
-             parameters: Sequence['outputs.GetProvisionedProductsProvisionedProductParameterResult'],
-             portfolio_id: str,
-             product_id: str,
-             product_name: str,
-             product_version_id: str,
-             product_version_name: str,
-             provisioned_product_arn: str,
-             provisioned_product_id: str,
-             provisioned_product_name: str,
-             provisioned_product_type: str,
-             stack_id: str,
-             stack_region_id: str,
-             status: str,
-             status_message: str,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             last_provisioning_task_id: Optional[str] = None,
+             last_successful_provisioning_task_id: Optional[str] = None,
+             last_task_id: Optional[str] = None,
+             outputs: Optional[Sequence['outputs.GetProvisionedProductsProvisionedProductOutputResult']] = None,
+             owner_principal_id: Optional[str] = None,
+             owner_principal_type: Optional[str] = None,
+             parameters: Optional[Sequence['outputs.GetProvisionedProductsProvisionedProductParameterResult']] = None,
+             portfolio_id: Optional[str] = None,
+             product_id: Optional[str] = None,
+             product_name: Optional[str] = None,
+             product_version_id: Optional[str] = None,
+             product_version_name: Optional[str] = None,
+             provisioned_product_arn: Optional[str] = None,
+             provisioned_product_id: Optional[str] = None,
+             provisioned_product_name: Optional[str] = None,
+             provisioned_product_type: Optional[str] = None,
+             stack_id: Optional[str] = None,
+             stack_region_id: Optional[str] = None,
+             status: Optional[str] = None,
+             status_message: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'lastProvisioningTaskId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if last_provisioning_task_id is None and 'lastProvisioningTaskId' in kwargs:
             last_provisioning_task_id = kwargs['lastProvisioningTaskId']
-        if 'lastSuccessfulProvisioningTaskId' in kwargs:
+        if last_provisioning_task_id is None:
+            raise TypeError("Missing 'last_provisioning_task_id' argument")
+        if last_successful_provisioning_task_id is None and 'lastSuccessfulProvisioningTaskId' in kwargs:
             last_successful_provisioning_task_id = kwargs['lastSuccessfulProvisioningTaskId']
-        if 'lastTaskId' in kwargs:
+        if last_successful_provisioning_task_id is None:
+            raise TypeError("Missing 'last_successful_provisioning_task_id' argument")
+        if last_task_id is None and 'lastTaskId' in kwargs:
             last_task_id = kwargs['lastTaskId']
-        if 'ownerPrincipalId' in kwargs:
+        if last_task_id is None:
+            raise TypeError("Missing 'last_task_id' argument")
+        if outputs is None:
+            raise TypeError("Missing 'outputs' argument")
+        if owner_principal_id is None and 'ownerPrincipalId' in kwargs:
             owner_principal_id = kwargs['ownerPrincipalId']
-        if 'ownerPrincipalType' in kwargs:
+        if owner_principal_id is None:
+            raise TypeError("Missing 'owner_principal_id' argument")
+        if owner_principal_type is None and 'ownerPrincipalType' in kwargs:
             owner_principal_type = kwargs['ownerPrincipalType']
-        if 'portfolioId' in kwargs:
+        if owner_principal_type is None:
+            raise TypeError("Missing 'owner_principal_type' argument")
+        if parameters is None:
+            raise TypeError("Missing 'parameters' argument")
+        if portfolio_id is None and 'portfolioId' in kwargs:
             portfolio_id = kwargs['portfolioId']
-        if 'productId' in kwargs:
+        if portfolio_id is None:
+            raise TypeError("Missing 'portfolio_id' argument")
+        if product_id is None and 'productId' in kwargs:
             product_id = kwargs['productId']
-        if 'productName' in kwargs:
+        if product_id is None:
+            raise TypeError("Missing 'product_id' argument")
+        if product_name is None and 'productName' in kwargs:
             product_name = kwargs['productName']
-        if 'productVersionId' in kwargs:
+        if product_name is None:
+            raise TypeError("Missing 'product_name' argument")
+        if product_version_id is None and 'productVersionId' in kwargs:
             product_version_id = kwargs['productVersionId']
-        if 'productVersionName' in kwargs:
+        if product_version_id is None:
+            raise TypeError("Missing 'product_version_id' argument")
+        if product_version_name is None and 'productVersionName' in kwargs:
             product_version_name = kwargs['productVersionName']
-        if 'provisionedProductArn' in kwargs:
+        if product_version_name is None:
+            raise TypeError("Missing 'product_version_name' argument")
+        if provisioned_product_arn is None and 'provisionedProductArn' in kwargs:
             provisioned_product_arn = kwargs['provisionedProductArn']
-        if 'provisionedProductId' in kwargs:
+        if provisioned_product_arn is None:
+            raise TypeError("Missing 'provisioned_product_arn' argument")
+        if provisioned_product_id is None and 'provisionedProductId' in kwargs:
             provisioned_product_id = kwargs['provisionedProductId']
-        if 'provisionedProductName' in kwargs:
+        if provisioned_product_id is None:
+            raise TypeError("Missing 'provisioned_product_id' argument")
+        if provisioned_product_name is None and 'provisionedProductName' in kwargs:
             provisioned_product_name = kwargs['provisionedProductName']
-        if 'provisionedProductType' in kwargs:
+        if provisioned_product_name is None:
+            raise TypeError("Missing 'provisioned_product_name' argument")
+        if provisioned_product_type is None and 'provisionedProductType' in kwargs:
             provisioned_product_type = kwargs['provisionedProductType']
-        if 'stackId' in kwargs:
+        if provisioned_product_type is None:
+            raise TypeError("Missing 'provisioned_product_type' argument")
+        if stack_id is None and 'stackId' in kwargs:
             stack_id = kwargs['stackId']
-        if 'stackRegionId' in kwargs:
+        if stack_id is None:
+            raise TypeError("Missing 'stack_id' argument")
+        if stack_region_id is None and 'stackRegionId' in kwargs:
             stack_region_id = kwargs['stackRegionId']
-        if 'statusMessage' in kwargs:
+        if stack_region_id is None:
+            raise TypeError("Missing 'stack_region_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if status_message is None and 'statusMessage' in kwargs:
             status_message = kwargs['statusMessage']
+        if status_message is None:
+            raise TypeError("Missing 'status_message' argument")
 
         _setter("create_time", create_time)
         _setter("id", id)
@@ -1909,15 +2121,21 @@ class GetProvisionedProductsProvisionedProductOutputResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             output_key: str,
-             output_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             output_key: Optional[str] = None,
+             output_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'outputKey' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if output_key is None and 'outputKey' in kwargs:
             output_key = kwargs['outputKey']
-        if 'outputValue' in kwargs:
+        if output_key is None:
+            raise TypeError("Missing 'output_key' argument")
+        if output_value is None and 'outputValue' in kwargs:
             output_value = kwargs['outputValue']
+        if output_value is None:
+            raise TypeError("Missing 'output_value' argument")
 
         _setter("description", description)
         _setter("output_key", output_key)
@@ -1952,14 +2170,18 @@ class GetProvisionedProductsProvisionedProductParameterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parameter_key: str,
-             parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             parameter_key: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterKey' in kwargs:
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
-        if 'parameterValue' in kwargs:
+        if parameter_key is None:
+            raise TypeError("Missing 'parameter_key' argument")
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
+        if parameter_value is None:
+            raise TypeError("Missing 'parameter_value' argument")
 
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)

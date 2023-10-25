@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * For information on RDS class details and how to use it, please refer to [What is RDS class details](https://www.alibabacloud.com/help/zh/apsaradb-for-rds/latest/api-rds-2014-08-15-describeclassdetails).
  *
  * > **NOTE:** Available since v1.209.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.rds.getClassDetails({
- *     classCode: "mysql.n4.medium.2c",
- *     commodityCode: "bards",
- *     engine: "MySQL",
- *     engineVersion: "8.0",
- * });
- * ```
  */
 export function getClassDetails(args: GetClassDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetClassDetailsResult> {
 
@@ -138,20 +124,6 @@ export interface GetClassDetailsResult {
  * For information on RDS class details and how to use it, please refer to [What is RDS class details](https://www.alibabacloud.com/help/zh/apsaradb-for-rds/latest/api-rds-2014-08-15-describeclassdetails).
  *
  * > **NOTE:** Available since v1.209.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.rds.getClassDetails({
- *     classCode: "mysql.n4.medium.2c",
- *     commodityCode: "bards",
- *     engine: "MySQL",
- *     engineVersion: "8.0",
- * });
- * ```
  */
 export function getClassDetailsOutput(args: GetClassDetailsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClassDetailsResult> {
     return pulumi.output(args).apply((a: any) => getClassDetails(a, opts))

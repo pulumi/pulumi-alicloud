@@ -13,44 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.194.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const current = alicloud.getAccount({});
- * const _default = new alicloud.cloudfirewall.FirewallVpcFirewall("default", {
- *     vpcFirewallName: "tf-example",
- *     memberUid: current.then(current => current.id),
- *     localVpc: {
- *         vpcId: "vpc-bp1d065m6hzn1xbw8ibfd",
- *         regionNo: "cn-hangzhou",
- *         localVpcCidrTableLists: [{
- *             localRouteTableId: "vtb-bp1lj0ddg846856chpzrv",
- *             localRouteEntryLists: [{
- *                 localNextHopInstanceId: "ri-bp1uobww3aputjlwwkyrh",
- *                 localDestinationCidr: "10.1.0.0/16",
- *             }],
- *         }],
- *     },
- *     peerVpc: {
- *         vpcId: "vpc-bp1gcmm64o3caox84v0nz",
- *         regionNo: "cn-hangzhou",
- *         peerVpcCidrTableLists: [{
- *             peerRouteTableId: "vtb-bp1f516f2hh4sok1ig9b5",
- *             peerRouteEntryLists: [{
- *                 peerDestinationCidr: "10.0.0.0/16",
- *                 peerNextHopInstanceId: "ri-bp1thhtgf6ydr2or52l3n",
- *             }],
- *         }],
- *     },
- *     status: "open",
- * });
- * ```
- *
  * ## Import
  *
  * Cloud Firewall Vpc Firewall can be imported using the id, e.g.

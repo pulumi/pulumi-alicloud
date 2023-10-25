@@ -15,48 +15,6 @@ import (
 // This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.195.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := cen.GetInterRegionTrafficQosPolicies(ctx, &cen.GetInterRegionTrafficQosPoliciesArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//				TransitRouterId:           "your_transit_router_id",
-//				TransitRouterAttachmentId: "your_transit_router_attachment_id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("cenInterRegionTrafficQosPolicyId0", ids.Policies[0].Id)
-//			nameRegex, err := cen.GetInterRegionTrafficQosPolicies(ctx, &cen.GetInterRegionTrafficQosPoliciesArgs{
-//				NameRegex:                 pulumi.StringRef("^my-name"),
-//				TransitRouterId:           "your_transit_router_id",
-//				TransitRouterAttachmentId: "your_transit_router_attachment_id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("cenInterRegionTrafficQosPolicyId1", nameRegex.Policies[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetInterRegionTrafficQosPolicies(ctx *pulumi.Context, args *GetInterRegionTrafficQosPoliciesArgs, opts ...pulumi.InvokeOption) (*GetInterRegionTrafficQosPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInterRegionTrafficQosPoliciesResult

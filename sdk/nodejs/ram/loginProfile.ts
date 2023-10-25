@@ -9,25 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.0.0+.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const user = new alicloud.ram.User("user", {
- *     displayName: "terraform_example",
- *     mobile: "86-18688888888",
- *     email: "hello.uuu@aaa.com",
- *     comments: "terraform_example",
- *     force: true,
- * });
- * const profile = new alicloud.ram.LoginProfile("profile", {
- *     userName: user.name,
- *     password: "Example_1234",
- * });
- * ```
- *
  * ## Import
  *
  * RAM login profile can be imported using the id or user name, e.g.

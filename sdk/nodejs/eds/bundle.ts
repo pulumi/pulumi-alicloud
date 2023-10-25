@@ -11,38 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.170.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const defaultImages = alicloud.eds.getImages({
- *     imageType: "SYSTEM",
- *     osType: "Windows",
- *     desktopInstanceType: "eds.hf.4c8g",
- * });
- * const defaultDesktopTypes = alicloud.eds.getDesktopTypes({
- *     instanceTypeFamily: "eds.hf",
- *     cpuCount: 4,
- *     memorySize: 8192,
- * });
- * const defaultBundle = new alicloud.eds.Bundle("defaultBundle", {
- *     description: name,
- *     desktopType: defaultDesktopTypes.then(defaultDesktopTypes => defaultDesktopTypes.ids?.[0]),
- *     bundleName: name,
- *     imageId: defaultImages.then(defaultImages => defaultImages.ids?.[0]),
- *     userDiskSizeGibs: [70],
- *     rootDiskSizeGib: 80,
- *     rootDiskPerformanceLevel: "PL1",
- *     userDiskPerformanceLevel: "PL1",
- * });
- * ```
- *
  * ## Import
  *
  * ECD Bundle can be imported using the id, e.g.

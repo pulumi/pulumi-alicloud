@@ -104,13 +104,15 @@ class DhcpOptionsSetAssociateVpc(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vpc_id: str,
+             vpc_id: Optional[str] = None,
              associate_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'associateStatus' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if associate_status is None and 'associateStatus' in kwargs:
             associate_status = kwargs['associateStatus']
 
         _setter("vpc_id", vpc_id)
@@ -170,14 +172,18 @@ class NetworkAclAttachmentResource(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_id: str,
-             resource_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             resource_id: Optional[str] = None,
+             resource_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceId' in kwargs:
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceType' in kwargs:
+        if resource_id is None:
+            raise TypeError("Missing 'resource_id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
 
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
@@ -260,11 +266,11 @@ class NetworkAclEgressAclEntry(dict):
              policy: Optional[str] = None,
              port: Optional[str] = None,
              protocol: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationCidrIp' in kwargs:
+        if destination_cidr_ip is None and 'destinationCidrIp' in kwargs:
             destination_cidr_ip = kwargs['destinationCidrIp']
-        if 'networkAclEntryName' in kwargs:
+        if network_acl_entry_name is None and 'networkAclEntryName' in kwargs:
             network_acl_entry_name = kwargs['networkAclEntryName']
 
         if description is not None:
@@ -394,11 +400,11 @@ class NetworkAclEntriesEgress(dict):
              policy: Optional[str] = None,
              port: Optional[str] = None,
              protocol: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationCidrIp' in kwargs:
+        if destination_cidr_ip is None and 'destinationCidrIp' in kwargs:
             destination_cidr_ip = kwargs['destinationCidrIp']
-        if 'entryType' in kwargs:
+        if entry_type is None and 'entryType' in kwargs:
             entry_type = kwargs['entryType']
 
         if description is not None:
@@ -531,11 +537,11 @@ class NetworkAclEntriesIngress(dict):
              port: Optional[str] = None,
              protocol: Optional[str] = None,
              source_cidr_ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'entryType' in kwargs:
+        if entry_type is None and 'entryType' in kwargs:
             entry_type = kwargs['entryType']
-        if 'sourceCidrIp' in kwargs:
+        if source_cidr_ip is None and 'sourceCidrIp' in kwargs:
             source_cidr_ip = kwargs['sourceCidrIp']
 
         if description is not None:
@@ -671,11 +677,11 @@ class NetworkAclIngressAclEntry(dict):
              port: Optional[str] = None,
              protocol: Optional[str] = None,
              source_cidr_ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'networkAclEntryName' in kwargs:
+        if network_acl_entry_name is None and 'networkAclEntryName' in kwargs:
             network_acl_entry_name = kwargs['networkAclEntryName']
-        if 'sourceCidrIp' in kwargs:
+        if source_cidr_ip is None and 'sourceCidrIp' in kwargs:
             source_cidr_ip = kwargs['sourceCidrIp']
 
         if description is not None:
@@ -786,15 +792,19 @@ class NetworkAclResource(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_id: str,
-             resource_type: str,
+             resource_id: Optional[str] = None,
+             resource_type: Optional[str] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceId' in kwargs:
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceType' in kwargs:
+        if resource_id is None:
+            raise TypeError("Missing 'resource_id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
 
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
@@ -869,11 +879,11 @@ class NetworkIpv6CidrBlock(dict):
              _setter: Callable[[Any, Any], None],
              ipv6_cidr_block: Optional[str] = None,
              ipv6_isp: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipv6CidrBlock' in kwargs:
+        if ipv6_cidr_block is None and 'ipv6CidrBlock' in kwargs:
             ipv6_cidr_block = kwargs['ipv6CidrBlock']
-        if 'ipv6Isp' in kwargs:
+        if ipv6_isp is None and 'ipv6Isp' in kwargs:
             ipv6_isp = kwargs['ipv6Isp']
 
         if ipv6_cidr_block is not None:
@@ -922,7 +932,7 @@ class PrefixListEntry(dict):
              _setter: Callable[[Any, Any], None],
              cidr: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if cidr is not None:
@@ -1017,19 +1027,19 @@ class PrefixListPrefixListAssociation(dict):
              resource_type: Optional[str] = None,
              resource_uid: Optional[str] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ownerId' in kwargs:
+        if owner_id is None and 'ownerId' in kwargs:
             owner_id = kwargs['ownerId']
-        if 'prefixListId' in kwargs:
+        if prefix_list_id is None and 'prefixListId' in kwargs:
             prefix_list_id = kwargs['prefixListId']
-        if 'regionId' in kwargs:
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'resourceId' in kwargs:
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceType' in kwargs:
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'resourceUid' in kwargs:
+        if resource_uid is None and 'resourceUid' in kwargs:
             resource_uid = kwargs['resourceUid']
 
         if owner_id is not None:
@@ -1181,25 +1191,29 @@ class TrafficMirrorFilterEgressRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: str,
-             protocol: str,
+             action: Optional[str] = None,
+             protocol: Optional[str] = None,
              destination_cidr_block: Optional[str] = None,
              destination_port_range: Optional[str] = None,
              priority: Optional[int] = None,
              source_cidr_block: Optional[str] = None,
              source_port_range: Optional[str] = None,
              traffic_mirror_filter_rule_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationCidrBlock' in kwargs:
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if destination_cidr_block is None and 'destinationCidrBlock' in kwargs:
             destination_cidr_block = kwargs['destinationCidrBlock']
-        if 'destinationPortRange' in kwargs:
+        if destination_port_range is None and 'destinationPortRange' in kwargs:
             destination_port_range = kwargs['destinationPortRange']
-        if 'sourceCidrBlock' in kwargs:
+        if source_cidr_block is None and 'sourceCidrBlock' in kwargs:
             source_cidr_block = kwargs['sourceCidrBlock']
-        if 'sourcePortRange' in kwargs:
+        if source_port_range is None and 'sourcePortRange' in kwargs:
             source_port_range = kwargs['sourcePortRange']
-        if 'trafficMirrorFilterRuleStatus' in kwargs:
+        if traffic_mirror_filter_rule_status is None and 'trafficMirrorFilterRuleStatus' in kwargs:
             traffic_mirror_filter_rule_status = kwargs['trafficMirrorFilterRuleStatus']
 
         _setter("action", action)
@@ -1354,25 +1368,29 @@ class TrafficMirrorFilterIngressRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: str,
-             protocol: str,
+             action: Optional[str] = None,
+             protocol: Optional[str] = None,
              destination_cidr_block: Optional[str] = None,
              destination_port_range: Optional[str] = None,
              priority: Optional[int] = None,
              source_cidr_block: Optional[str] = None,
              source_port_range: Optional[str] = None,
              traffic_mirror_filter_rule_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationCidrBlock' in kwargs:
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if destination_cidr_block is None and 'destinationCidrBlock' in kwargs:
             destination_cidr_block = kwargs['destinationCidrBlock']
-        if 'destinationPortRange' in kwargs:
+        if destination_port_range is None and 'destinationPortRange' in kwargs:
             destination_port_range = kwargs['destinationPortRange']
-        if 'sourceCidrBlock' in kwargs:
+        if source_cidr_block is None and 'sourceCidrBlock' in kwargs:
             source_cidr_block = kwargs['sourceCidrBlock']
-        if 'sourcePortRange' in kwargs:
+        if source_port_range is None and 'sourcePortRange' in kwargs:
             source_port_range = kwargs['sourcePortRange']
-        if 'trafficMirrorFilterRuleStatus' in kwargs:
+        if traffic_mirror_filter_rule_status is None and 'trafficMirrorFilterRuleStatus' in kwargs:
             traffic_mirror_filter_rule_status = kwargs['trafficMirrorFilterRuleStatus']
 
         _setter("action", action)
@@ -1510,37 +1528,63 @@ class GetBgpGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auth_key: str,
-             bgp_group_name: str,
-             description: str,
-             hold: str,
-             id: str,
-             ip_version: str,
-             is_fake_asn: bool,
-             keepalive: str,
-             local_asn: int,
-             peer_asn: int,
-             route_limit: str,
-             router_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auth_key: Optional[str] = None,
+             bgp_group_name: Optional[str] = None,
+             description: Optional[str] = None,
+             hold: Optional[str] = None,
+             id: Optional[str] = None,
+             ip_version: Optional[str] = None,
+             is_fake_asn: Optional[bool] = None,
+             keepalive: Optional[str] = None,
+             local_asn: Optional[int] = None,
+             peer_asn: Optional[int] = None,
+             route_limit: Optional[str] = None,
+             router_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authKey' in kwargs:
+        if auth_key is None and 'authKey' in kwargs:
             auth_key = kwargs['authKey']
-        if 'bgpGroupName' in kwargs:
+        if auth_key is None:
+            raise TypeError("Missing 'auth_key' argument")
+        if bgp_group_name is None and 'bgpGroupName' in kwargs:
             bgp_group_name = kwargs['bgpGroupName']
-        if 'ipVersion' in kwargs:
+        if bgp_group_name is None:
+            raise TypeError("Missing 'bgp_group_name' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if hold is None:
+            raise TypeError("Missing 'hold' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'isFakeAsn' in kwargs:
+        if ip_version is None:
+            raise TypeError("Missing 'ip_version' argument")
+        if is_fake_asn is None and 'isFakeAsn' in kwargs:
             is_fake_asn = kwargs['isFakeAsn']
-        if 'localAsn' in kwargs:
+        if is_fake_asn is None:
+            raise TypeError("Missing 'is_fake_asn' argument")
+        if keepalive is None:
+            raise TypeError("Missing 'keepalive' argument")
+        if local_asn is None and 'localAsn' in kwargs:
             local_asn = kwargs['localAsn']
-        if 'peerAsn' in kwargs:
+        if local_asn is None:
+            raise TypeError("Missing 'local_asn' argument")
+        if peer_asn is None and 'peerAsn' in kwargs:
             peer_asn = kwargs['peerAsn']
-        if 'routeLimit' in kwargs:
+        if peer_asn is None:
+            raise TypeError("Missing 'peer_asn' argument")
+        if route_limit is None and 'routeLimit' in kwargs:
             route_limit = kwargs['routeLimit']
-        if 'routerId' in kwargs:
+        if route_limit is None:
+            raise TypeError("Missing 'route_limit' argument")
+        if router_id is None and 'routerId' in kwargs:
             router_id = kwargs['routerId']
+        if router_id is None:
+            raise TypeError("Missing 'router_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("auth_key", auth_key)
         _setter("bgp_group_name", bgp_group_name)
@@ -1684,16 +1728,24 @@ class GetBgpNetworksNetworkResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dst_cidr_block: str,
-             id: str,
-             router_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             dst_cidr_block: Optional[str] = None,
+             id: Optional[str] = None,
+             router_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dstCidrBlock' in kwargs:
+        if dst_cidr_block is None and 'dstCidrBlock' in kwargs:
             dst_cidr_block = kwargs['dstCidrBlock']
-        if 'routerId' in kwargs:
+        if dst_cidr_block is None:
+            raise TypeError("Missing 'dst_cidr_block' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if router_id is None and 'routerId' in kwargs:
             router_id = kwargs['routerId']
+        if router_id is None:
+            raise TypeError("Missing 'router_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("dst_cidr_block", dst_cidr_block)
         _setter("id", id)
@@ -1801,55 +1853,93 @@ class GetBgpPeersPeerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auth_key: str,
-             bfd_multi_hop: int,
-             bgp_group_id: str,
-             bgp_peer_id: str,
-             bgp_peer_name: str,
-             bgp_status: str,
-             description: str,
-             enable_bfd: bool,
-             hold: str,
-             id: str,
-             ip_version: str,
-             is_fake: bool,
-             keepalive: str,
-             local_asn: str,
-             peer_asn: str,
-             peer_ip_address: str,
-             route_limit: str,
-             router_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auth_key: Optional[str] = None,
+             bfd_multi_hop: Optional[int] = None,
+             bgp_group_id: Optional[str] = None,
+             bgp_peer_id: Optional[str] = None,
+             bgp_peer_name: Optional[str] = None,
+             bgp_status: Optional[str] = None,
+             description: Optional[str] = None,
+             enable_bfd: Optional[bool] = None,
+             hold: Optional[str] = None,
+             id: Optional[str] = None,
+             ip_version: Optional[str] = None,
+             is_fake: Optional[bool] = None,
+             keepalive: Optional[str] = None,
+             local_asn: Optional[str] = None,
+             peer_asn: Optional[str] = None,
+             peer_ip_address: Optional[str] = None,
+             route_limit: Optional[str] = None,
+             router_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authKey' in kwargs:
+        if auth_key is None and 'authKey' in kwargs:
             auth_key = kwargs['authKey']
-        if 'bfdMultiHop' in kwargs:
+        if auth_key is None:
+            raise TypeError("Missing 'auth_key' argument")
+        if bfd_multi_hop is None and 'bfdMultiHop' in kwargs:
             bfd_multi_hop = kwargs['bfdMultiHop']
-        if 'bgpGroupId' in kwargs:
+        if bfd_multi_hop is None:
+            raise TypeError("Missing 'bfd_multi_hop' argument")
+        if bgp_group_id is None and 'bgpGroupId' in kwargs:
             bgp_group_id = kwargs['bgpGroupId']
-        if 'bgpPeerId' in kwargs:
+        if bgp_group_id is None:
+            raise TypeError("Missing 'bgp_group_id' argument")
+        if bgp_peer_id is None and 'bgpPeerId' in kwargs:
             bgp_peer_id = kwargs['bgpPeerId']
-        if 'bgpPeerName' in kwargs:
+        if bgp_peer_id is None:
+            raise TypeError("Missing 'bgp_peer_id' argument")
+        if bgp_peer_name is None and 'bgpPeerName' in kwargs:
             bgp_peer_name = kwargs['bgpPeerName']
-        if 'bgpStatus' in kwargs:
+        if bgp_peer_name is None:
+            raise TypeError("Missing 'bgp_peer_name' argument")
+        if bgp_status is None and 'bgpStatus' in kwargs:
             bgp_status = kwargs['bgpStatus']
-        if 'enableBfd' in kwargs:
+        if bgp_status is None:
+            raise TypeError("Missing 'bgp_status' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if enable_bfd is None and 'enableBfd' in kwargs:
             enable_bfd = kwargs['enableBfd']
-        if 'ipVersion' in kwargs:
+        if enable_bfd is None:
+            raise TypeError("Missing 'enable_bfd' argument")
+        if hold is None:
+            raise TypeError("Missing 'hold' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'isFake' in kwargs:
+        if ip_version is None:
+            raise TypeError("Missing 'ip_version' argument")
+        if is_fake is None and 'isFake' in kwargs:
             is_fake = kwargs['isFake']
-        if 'localAsn' in kwargs:
+        if is_fake is None:
+            raise TypeError("Missing 'is_fake' argument")
+        if keepalive is None:
+            raise TypeError("Missing 'keepalive' argument")
+        if local_asn is None and 'localAsn' in kwargs:
             local_asn = kwargs['localAsn']
-        if 'peerAsn' in kwargs:
+        if local_asn is None:
+            raise TypeError("Missing 'local_asn' argument")
+        if peer_asn is None and 'peerAsn' in kwargs:
             peer_asn = kwargs['peerAsn']
-        if 'peerIpAddress' in kwargs:
+        if peer_asn is None:
+            raise TypeError("Missing 'peer_asn' argument")
+        if peer_ip_address is None and 'peerIpAddress' in kwargs:
             peer_ip_address = kwargs['peerIpAddress']
-        if 'routeLimit' in kwargs:
+        if peer_ip_address is None:
+            raise TypeError("Missing 'peer_ip_address' argument")
+        if route_limit is None and 'routeLimit' in kwargs:
             route_limit = kwargs['routeLimit']
-        if 'routerId' in kwargs:
+        if route_limit is None:
+            raise TypeError("Missing 'route_limit' argument")
+        if router_id is None and 'routerId' in kwargs:
             router_id = kwargs['routerId']
+        if router_id is None:
+            raise TypeError("Missing 'router_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("auth_key", auth_key)
         _setter("bfd_multi_hop", bfd_multi_hop)
@@ -2101,60 +2191,104 @@ class GetCommonBandwidthPackagesPackageResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: str,
-             bandwidth_package_id: str,
-             bandwidth_package_name: str,
-             business_status: str,
-             deletion_protection: bool,
-             description: str,
-             expired_time: str,
-             has_reservation_data: bool,
-             id: str,
-             internet_charge_type: str,
-             isp: str,
-             name: str,
-             payment_type: str,
-             public_ip_addresses: Sequence['outputs.GetCommonBandwidthPackagesPackagePublicIpAddressResult'],
-             ratio: int,
-             reservation_active_time: str,
-             reservation_bandwidth: str,
-             reservation_internet_charge_type: str,
-             reservation_order_type: str,
-             resource_group_id: str,
-             service_managed: int,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth: Optional[str] = None,
+             bandwidth_package_id: Optional[str] = None,
+             bandwidth_package_name: Optional[str] = None,
+             business_status: Optional[str] = None,
+             deletion_protection: Optional[bool] = None,
+             description: Optional[str] = None,
+             expired_time: Optional[str] = None,
+             has_reservation_data: Optional[bool] = None,
+             id: Optional[str] = None,
+             internet_charge_type: Optional[str] = None,
+             isp: Optional[str] = None,
+             name: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             public_ip_addresses: Optional[Sequence['outputs.GetCommonBandwidthPackagesPackagePublicIpAddressResult']] = None,
+             ratio: Optional[int] = None,
+             reservation_active_time: Optional[str] = None,
+             reservation_bandwidth: Optional[str] = None,
+             reservation_internet_charge_type: Optional[str] = None,
+             reservation_order_type: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             service_managed: Optional[int] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bandwidthPackageId' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
             bandwidth_package_id = kwargs['bandwidthPackageId']
-        if 'bandwidthPackageName' in kwargs:
+        if bandwidth_package_id is None:
+            raise TypeError("Missing 'bandwidth_package_id' argument")
+        if bandwidth_package_name is None and 'bandwidthPackageName' in kwargs:
             bandwidth_package_name = kwargs['bandwidthPackageName']
-        if 'businessStatus' in kwargs:
+        if bandwidth_package_name is None:
+            raise TypeError("Missing 'bandwidth_package_name' argument")
+        if business_status is None and 'businessStatus' in kwargs:
             business_status = kwargs['businessStatus']
-        if 'deletionProtection' in kwargs:
+        if business_status is None:
+            raise TypeError("Missing 'business_status' argument")
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'expiredTime' in kwargs:
+        if deletion_protection is None:
+            raise TypeError("Missing 'deletion_protection' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'hasReservationData' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if has_reservation_data is None and 'hasReservationData' in kwargs:
             has_reservation_data = kwargs['hasReservationData']
-        if 'internetChargeType' in kwargs:
+        if has_reservation_data is None:
+            raise TypeError("Missing 'has_reservation_data' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'paymentType' in kwargs:
+        if internet_charge_type is None:
+            raise TypeError("Missing 'internet_charge_type' argument")
+        if isp is None:
+            raise TypeError("Missing 'isp' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'publicIpAddresses' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if public_ip_addresses is None and 'publicIpAddresses' in kwargs:
             public_ip_addresses = kwargs['publicIpAddresses']
-        if 'reservationActiveTime' in kwargs:
+        if public_ip_addresses is None:
+            raise TypeError("Missing 'public_ip_addresses' argument")
+        if ratio is None:
+            raise TypeError("Missing 'ratio' argument")
+        if reservation_active_time is None and 'reservationActiveTime' in kwargs:
             reservation_active_time = kwargs['reservationActiveTime']
-        if 'reservationBandwidth' in kwargs:
+        if reservation_active_time is None:
+            raise TypeError("Missing 'reservation_active_time' argument")
+        if reservation_bandwidth is None and 'reservationBandwidth' in kwargs:
             reservation_bandwidth = kwargs['reservationBandwidth']
-        if 'reservationInternetChargeType' in kwargs:
+        if reservation_bandwidth is None:
+            raise TypeError("Missing 'reservation_bandwidth' argument")
+        if reservation_internet_charge_type is None and 'reservationInternetChargeType' in kwargs:
             reservation_internet_charge_type = kwargs['reservationInternetChargeType']
-        if 'reservationOrderType' in kwargs:
+        if reservation_internet_charge_type is None:
+            raise TypeError("Missing 'reservation_internet_charge_type' argument")
+        if reservation_order_type is None and 'reservationOrderType' in kwargs:
             reservation_order_type = kwargs['reservationOrderType']
-        if 'resourceGroupId' in kwargs:
+        if reservation_order_type is None:
+            raise TypeError("Missing 'reservation_order_type' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'serviceManaged' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if service_managed is None and 'serviceManaged' in kwargs:
             service_managed = kwargs['serviceManaged']
+        if service_managed is None:
+            raise TypeError("Missing 'service_managed' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("bandwidth", bandwidth)
         _setter("bandwidth_package_id", bandwidth_package_id)
@@ -2371,17 +2505,23 @@ class GetCommonBandwidthPackagesPackagePublicIpAddressResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allocation_id: str,
-             bandwidth_package_ip_relation_status: str,
-             ip_address: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             allocation_id: Optional[str] = None,
+             bandwidth_package_ip_relation_status: Optional[str] = None,
+             ip_address: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allocationId' in kwargs:
+        if allocation_id is None and 'allocationId' in kwargs:
             allocation_id = kwargs['allocationId']
-        if 'bandwidthPackageIpRelationStatus' in kwargs:
+        if allocation_id is None:
+            raise TypeError("Missing 'allocation_id' argument")
+        if bandwidth_package_ip_relation_status is None and 'bandwidthPackageIpRelationStatus' in kwargs:
             bandwidth_package_ip_relation_status = kwargs['bandwidthPackageIpRelationStatus']
-        if 'ipAddress' in kwargs:
+        if bandwidth_package_ip_relation_status is None:
+            raise TypeError("Missing 'bandwidth_package_ip_relation_status' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
 
         _setter("allocation_id", allocation_id)
         _setter("bandwidth_package_ip_relation_status", bandwidth_package_ip_relation_status)
@@ -2445,31 +2585,49 @@ class GetDhcpOptionsSetsSetResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             associate_vpc_count: int,
-             dhcp_options_set_description: str,
-             dhcp_options_set_id: str,
-             dhcp_options_set_name: str,
-             domain_name: str,
-             domain_name_servers: str,
-             id: str,
-             owner_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             associate_vpc_count: Optional[int] = None,
+             dhcp_options_set_description: Optional[str] = None,
+             dhcp_options_set_id: Optional[str] = None,
+             dhcp_options_set_name: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             domain_name_servers: Optional[str] = None,
+             id: Optional[str] = None,
+             owner_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'associateVpcCount' in kwargs:
+        if associate_vpc_count is None and 'associateVpcCount' in kwargs:
             associate_vpc_count = kwargs['associateVpcCount']
-        if 'dhcpOptionsSetDescription' in kwargs:
+        if associate_vpc_count is None:
+            raise TypeError("Missing 'associate_vpc_count' argument")
+        if dhcp_options_set_description is None and 'dhcpOptionsSetDescription' in kwargs:
             dhcp_options_set_description = kwargs['dhcpOptionsSetDescription']
-        if 'dhcpOptionsSetId' in kwargs:
+        if dhcp_options_set_description is None:
+            raise TypeError("Missing 'dhcp_options_set_description' argument")
+        if dhcp_options_set_id is None and 'dhcpOptionsSetId' in kwargs:
             dhcp_options_set_id = kwargs['dhcpOptionsSetId']
-        if 'dhcpOptionsSetName' in kwargs:
+        if dhcp_options_set_id is None:
+            raise TypeError("Missing 'dhcp_options_set_id' argument")
+        if dhcp_options_set_name is None and 'dhcpOptionsSetName' in kwargs:
             dhcp_options_set_name = kwargs['dhcpOptionsSetName']
-        if 'domainName' in kwargs:
+        if dhcp_options_set_name is None:
+            raise TypeError("Missing 'dhcp_options_set_name' argument")
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'domainNameServers' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if domain_name_servers is None and 'domainNameServers' in kwargs:
             domain_name_servers = kwargs['domainNameServers']
-        if 'ownerId' in kwargs:
+        if domain_name_servers is None:
+            raise TypeError("Missing 'domain_name_servers' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if owner_id is None and 'ownerId' in kwargs:
             owner_id = kwargs['ownerId']
+        if owner_id is None:
+            raise TypeError("Missing 'owner_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("associate_vpc_count", associate_vpc_count)
         _setter("dhcp_options_set_description", dhcp_options_set_description)
@@ -2567,14 +2725,18 @@ class GetEnhancedNatAvailableZonesZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_name: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             local_name: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'localName' in kwargs:
+        if local_name is None and 'localName' in kwargs:
             local_name = kwargs['localName']
-        if 'zoneId' in kwargs:
+        if local_name is None:
+            raise TypeError("Missing 'local_name' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("local_name", local_name)
         _setter("zone_id", zone_id)
@@ -2631,32 +2793,52 @@ class GetForwardEntriesEntryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             external_ip: str,
-             external_port: str,
-             forward_entry_id: str,
-             forward_entry_name: str,
-             id: str,
-             internal_ip: str,
-             internal_port: str,
-             ip_protocol: str,
-             name: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             external_ip: Optional[str] = None,
+             external_port: Optional[str] = None,
+             forward_entry_id: Optional[str] = None,
+             forward_entry_name: Optional[str] = None,
+             id: Optional[str] = None,
+             internal_ip: Optional[str] = None,
+             internal_port: Optional[str] = None,
+             ip_protocol: Optional[str] = None,
+             name: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'externalIp' in kwargs:
+        if external_ip is None and 'externalIp' in kwargs:
             external_ip = kwargs['externalIp']
-        if 'externalPort' in kwargs:
+        if external_ip is None:
+            raise TypeError("Missing 'external_ip' argument")
+        if external_port is None and 'externalPort' in kwargs:
             external_port = kwargs['externalPort']
-        if 'forwardEntryId' in kwargs:
+        if external_port is None:
+            raise TypeError("Missing 'external_port' argument")
+        if forward_entry_id is None and 'forwardEntryId' in kwargs:
             forward_entry_id = kwargs['forwardEntryId']
-        if 'forwardEntryName' in kwargs:
+        if forward_entry_id is None:
+            raise TypeError("Missing 'forward_entry_id' argument")
+        if forward_entry_name is None and 'forwardEntryName' in kwargs:
             forward_entry_name = kwargs['forwardEntryName']
-        if 'internalIp' in kwargs:
+        if forward_entry_name is None:
+            raise TypeError("Missing 'forward_entry_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if internal_ip is None and 'internalIp' in kwargs:
             internal_ip = kwargs['internalIp']
-        if 'internalPort' in kwargs:
+        if internal_ip is None:
+            raise TypeError("Missing 'internal_ip' argument")
+        if internal_port is None and 'internalPort' in kwargs:
             internal_port = kwargs['internalPort']
-        if 'ipProtocol' in kwargs:
+        if internal_port is None:
+            raise TypeError("Missing 'internal_port' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
             ip_protocol = kwargs['ipProtocol']
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("external_ip", external_ip)
         _setter("external_port", external_port)
@@ -2794,35 +2976,57 @@ class GetHavipsHavipResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             associated_eip_addresses: Sequence[str],
-             associated_instances: Sequence[str],
-             description: str,
-             havip_id: str,
-             havip_name: str,
-             id: str,
-             ip_address: str,
-             master_instance_id: str,
-             status: str,
-             vpc_id: str,
-             vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             associated_eip_addresses: Optional[Sequence[str]] = None,
+             associated_instances: Optional[Sequence[str]] = None,
+             description: Optional[str] = None,
+             havip_id: Optional[str] = None,
+             havip_name: Optional[str] = None,
+             id: Optional[str] = None,
+             ip_address: Optional[str] = None,
+             master_instance_id: Optional[str] = None,
+             status: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'associatedEipAddresses' in kwargs:
+        if associated_eip_addresses is None and 'associatedEipAddresses' in kwargs:
             associated_eip_addresses = kwargs['associatedEipAddresses']
-        if 'associatedInstances' in kwargs:
+        if associated_eip_addresses is None:
+            raise TypeError("Missing 'associated_eip_addresses' argument")
+        if associated_instances is None and 'associatedInstances' in kwargs:
             associated_instances = kwargs['associatedInstances']
-        if 'havipId' in kwargs:
+        if associated_instances is None:
+            raise TypeError("Missing 'associated_instances' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if havip_id is None and 'havipId' in kwargs:
             havip_id = kwargs['havipId']
-        if 'havipName' in kwargs:
+        if havip_id is None:
+            raise TypeError("Missing 'havip_id' argument")
+        if havip_name is None and 'havipName' in kwargs:
             havip_name = kwargs['havipName']
-        if 'ipAddress' in kwargs:
+        if havip_name is None:
+            raise TypeError("Missing 'havip_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
-        if 'masterInstanceId' in kwargs:
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if master_instance_id is None and 'masterInstanceId' in kwargs:
             master_instance_id = kwargs['masterInstanceId']
-        if 'vpcId' in kwargs:
+        if master_instance_id is None:
+            raise TypeError("Missing 'master_instance_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("associated_eip_addresses", associated_eip_addresses)
         _setter("associated_instances", associated_instances)
@@ -2987,55 +3191,89 @@ class GetIpsecServersServerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_ip_pool: str,
-             create_time: str,
-             effect_immediately: bool,
-             id: str,
-             idaas_instance_id: str,
-             ike_configs: Sequence['outputs.GetIpsecServersServerIkeConfigResult'],
-             internet_ip: str,
-             ipsec_configs: Sequence['outputs.GetIpsecServersServerIpsecConfigResult'],
-             ipsec_server_id: str,
-             ipsec_server_name: str,
-             local_subnet: str,
-             max_connections: int,
-             multi_factor_auth_enabled: bool,
-             online_client_count: int,
-             psk: str,
-             psk_enabled: bool,
-             vpn_gateway_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             client_ip_pool: Optional[str] = None,
+             create_time: Optional[str] = None,
+             effect_immediately: Optional[bool] = None,
+             id: Optional[str] = None,
+             idaas_instance_id: Optional[str] = None,
+             ike_configs: Optional[Sequence['outputs.GetIpsecServersServerIkeConfigResult']] = None,
+             internet_ip: Optional[str] = None,
+             ipsec_configs: Optional[Sequence['outputs.GetIpsecServersServerIpsecConfigResult']] = None,
+             ipsec_server_id: Optional[str] = None,
+             ipsec_server_name: Optional[str] = None,
+             local_subnet: Optional[str] = None,
+             max_connections: Optional[int] = None,
+             multi_factor_auth_enabled: Optional[bool] = None,
+             online_client_count: Optional[int] = None,
+             psk: Optional[str] = None,
+             psk_enabled: Optional[bool] = None,
+             vpn_gateway_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientIpPool' in kwargs:
+        if client_ip_pool is None and 'clientIpPool' in kwargs:
             client_ip_pool = kwargs['clientIpPool']
-        if 'createTime' in kwargs:
+        if client_ip_pool is None:
+            raise TypeError("Missing 'client_ip_pool' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'effectImmediately' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if effect_immediately is None and 'effectImmediately' in kwargs:
             effect_immediately = kwargs['effectImmediately']
-        if 'idaasInstanceId' in kwargs:
+        if effect_immediately is None:
+            raise TypeError("Missing 'effect_immediately' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if idaas_instance_id is None and 'idaasInstanceId' in kwargs:
             idaas_instance_id = kwargs['idaasInstanceId']
-        if 'ikeConfigs' in kwargs:
+        if idaas_instance_id is None:
+            raise TypeError("Missing 'idaas_instance_id' argument")
+        if ike_configs is None and 'ikeConfigs' in kwargs:
             ike_configs = kwargs['ikeConfigs']
-        if 'internetIp' in kwargs:
+        if ike_configs is None:
+            raise TypeError("Missing 'ike_configs' argument")
+        if internet_ip is None and 'internetIp' in kwargs:
             internet_ip = kwargs['internetIp']
-        if 'ipsecConfigs' in kwargs:
+        if internet_ip is None:
+            raise TypeError("Missing 'internet_ip' argument")
+        if ipsec_configs is None and 'ipsecConfigs' in kwargs:
             ipsec_configs = kwargs['ipsecConfigs']
-        if 'ipsecServerId' in kwargs:
+        if ipsec_configs is None:
+            raise TypeError("Missing 'ipsec_configs' argument")
+        if ipsec_server_id is None and 'ipsecServerId' in kwargs:
             ipsec_server_id = kwargs['ipsecServerId']
-        if 'ipsecServerName' in kwargs:
+        if ipsec_server_id is None:
+            raise TypeError("Missing 'ipsec_server_id' argument")
+        if ipsec_server_name is None and 'ipsecServerName' in kwargs:
             ipsec_server_name = kwargs['ipsecServerName']
-        if 'localSubnet' in kwargs:
+        if ipsec_server_name is None:
+            raise TypeError("Missing 'ipsec_server_name' argument")
+        if local_subnet is None and 'localSubnet' in kwargs:
             local_subnet = kwargs['localSubnet']
-        if 'maxConnections' in kwargs:
+        if local_subnet is None:
+            raise TypeError("Missing 'local_subnet' argument")
+        if max_connections is None and 'maxConnections' in kwargs:
             max_connections = kwargs['maxConnections']
-        if 'multiFactorAuthEnabled' in kwargs:
+        if max_connections is None:
+            raise TypeError("Missing 'max_connections' argument")
+        if multi_factor_auth_enabled is None and 'multiFactorAuthEnabled' in kwargs:
             multi_factor_auth_enabled = kwargs['multiFactorAuthEnabled']
-        if 'onlineClientCount' in kwargs:
+        if multi_factor_auth_enabled is None:
+            raise TypeError("Missing 'multi_factor_auth_enabled' argument")
+        if online_client_count is None and 'onlineClientCount' in kwargs:
             online_client_count = kwargs['onlineClientCount']
-        if 'pskEnabled' in kwargs:
+        if online_client_count is None:
+            raise TypeError("Missing 'online_client_count' argument")
+        if psk is None:
+            raise TypeError("Missing 'psk' argument")
+        if psk_enabled is None and 'pskEnabled' in kwargs:
             psk_enabled = kwargs['pskEnabled']
-        if 'vpnGatewayId' in kwargs:
+        if psk_enabled is None:
+            raise TypeError("Missing 'psk_enabled' argument")
+        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
             vpn_gateway_id = kwargs['vpnGatewayId']
+        if vpn_gateway_id is None:
+            raise TypeError("Missing 'vpn_gateway_id' argument")
 
         _setter("client_ip_pool", client_ip_pool)
         _setter("create_time", create_time)
@@ -3227,32 +3465,48 @@ class GetIpsecServersServerIkeConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ike_auth_alg: str,
-             ike_enc_alg: str,
-             ike_lifetime: int,
-             ike_mode: str,
-             ike_pfs: str,
-             ike_version: str,
-             local_id: str,
-             remote_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ike_auth_alg: Optional[str] = None,
+             ike_enc_alg: Optional[str] = None,
+             ike_lifetime: Optional[int] = None,
+             ike_mode: Optional[str] = None,
+             ike_pfs: Optional[str] = None,
+             ike_version: Optional[str] = None,
+             local_id: Optional[str] = None,
+             remote_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ikeAuthAlg' in kwargs:
+        if ike_auth_alg is None and 'ikeAuthAlg' in kwargs:
             ike_auth_alg = kwargs['ikeAuthAlg']
-        if 'ikeEncAlg' in kwargs:
+        if ike_auth_alg is None:
+            raise TypeError("Missing 'ike_auth_alg' argument")
+        if ike_enc_alg is None and 'ikeEncAlg' in kwargs:
             ike_enc_alg = kwargs['ikeEncAlg']
-        if 'ikeLifetime' in kwargs:
+        if ike_enc_alg is None:
+            raise TypeError("Missing 'ike_enc_alg' argument")
+        if ike_lifetime is None and 'ikeLifetime' in kwargs:
             ike_lifetime = kwargs['ikeLifetime']
-        if 'ikeMode' in kwargs:
+        if ike_lifetime is None:
+            raise TypeError("Missing 'ike_lifetime' argument")
+        if ike_mode is None and 'ikeMode' in kwargs:
             ike_mode = kwargs['ikeMode']
-        if 'ikePfs' in kwargs:
+        if ike_mode is None:
+            raise TypeError("Missing 'ike_mode' argument")
+        if ike_pfs is None and 'ikePfs' in kwargs:
             ike_pfs = kwargs['ikePfs']
-        if 'ikeVersion' in kwargs:
+        if ike_pfs is None:
+            raise TypeError("Missing 'ike_pfs' argument")
+        if ike_version is None and 'ikeVersion' in kwargs:
             ike_version = kwargs['ikeVersion']
-        if 'localId' in kwargs:
+        if ike_version is None:
+            raise TypeError("Missing 'ike_version' argument")
+        if local_id is None and 'localId' in kwargs:
             local_id = kwargs['localId']
-        if 'remoteId' in kwargs:
+        if local_id is None:
+            raise TypeError("Missing 'local_id' argument")
+        if remote_id is None and 'remoteId' in kwargs:
             remote_id = kwargs['remoteId']
+        if remote_id is None:
+            raise TypeError("Missing 'remote_id' argument")
 
         _setter("ike_auth_alg", ike_auth_alg)
         _setter("ike_enc_alg", ike_enc_alg)
@@ -3351,20 +3605,28 @@ class GetIpsecServersServerIpsecConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ipsec_auth_alg: str,
-             ipsec_enc_alg: str,
-             ipsec_lifetime: int,
-             ipsec_pfs: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ipsec_auth_alg: Optional[str] = None,
+             ipsec_enc_alg: Optional[str] = None,
+             ipsec_lifetime: Optional[int] = None,
+             ipsec_pfs: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipsecAuthAlg' in kwargs:
+        if ipsec_auth_alg is None and 'ipsecAuthAlg' in kwargs:
             ipsec_auth_alg = kwargs['ipsecAuthAlg']
-        if 'ipsecEncAlg' in kwargs:
+        if ipsec_auth_alg is None:
+            raise TypeError("Missing 'ipsec_auth_alg' argument")
+        if ipsec_enc_alg is None and 'ipsecEncAlg' in kwargs:
             ipsec_enc_alg = kwargs['ipsecEncAlg']
-        if 'ipsecLifetime' in kwargs:
+        if ipsec_enc_alg is None:
+            raise TypeError("Missing 'ipsec_enc_alg' argument")
+        if ipsec_lifetime is None and 'ipsecLifetime' in kwargs:
             ipsec_lifetime = kwargs['ipsecLifetime']
-        if 'ipsecPfs' in kwargs:
+        if ipsec_lifetime is None:
+            raise TypeError("Missing 'ipsec_lifetime' argument")
+        if ipsec_pfs is None and 'ipsecPfs' in kwargs:
             ipsec_pfs = kwargs['ipsecPfs']
+        if ipsec_pfs is None:
+            raise TypeError("Missing 'ipsec_pfs' argument")
 
         _setter("ipsec_auth_alg", ipsec_auth_alg)
         _setter("ipsec_enc_alg", ipsec_enc_alg)
@@ -3442,29 +3704,47 @@ class GetIpv4GatewaysGatewayResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             enabled: bool,
-             id: str,
-             ipv4_gateway_description: str,
-             ipv4_gateway_id: str,
-             ipv4_gateway_name: str,
-             ipv4_gateway_route_table_id: str,
-             status: str,
-             vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             enabled: Optional[bool] = None,
+             id: Optional[str] = None,
+             ipv4_gateway_description: Optional[str] = None,
+             ipv4_gateway_id: Optional[str] = None,
+             ipv4_gateway_name: Optional[str] = None,
+             ipv4_gateway_route_table_id: Optional[str] = None,
+             status: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'ipv4GatewayDescription' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ipv4_gateway_description is None and 'ipv4GatewayDescription' in kwargs:
             ipv4_gateway_description = kwargs['ipv4GatewayDescription']
-        if 'ipv4GatewayId' in kwargs:
+        if ipv4_gateway_description is None:
+            raise TypeError("Missing 'ipv4_gateway_description' argument")
+        if ipv4_gateway_id is None and 'ipv4GatewayId' in kwargs:
             ipv4_gateway_id = kwargs['ipv4GatewayId']
-        if 'ipv4GatewayName' in kwargs:
+        if ipv4_gateway_id is None:
+            raise TypeError("Missing 'ipv4_gateway_id' argument")
+        if ipv4_gateway_name is None and 'ipv4GatewayName' in kwargs:
             ipv4_gateway_name = kwargs['ipv4GatewayName']
-        if 'ipv4GatewayRouteTableId' in kwargs:
+        if ipv4_gateway_name is None:
+            raise TypeError("Missing 'ipv4_gateway_name' argument")
+        if ipv4_gateway_route_table_id is None and 'ipv4GatewayRouteTableId' in kwargs:
             ipv4_gateway_route_table_id = kwargs['ipv4GatewayRouteTableId']
-        if 'vpcId' in kwargs:
+        if ipv4_gateway_route_table_id is None:
+            raise TypeError("Missing 'ipv4_gateway_route_table_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
 
         _setter("create_time", create_time)
         _setter("enabled", enabled)
@@ -3596,40 +3876,64 @@ class GetIpv6AddressesAddressResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             associated_instance_id: str,
-             associated_instance_type: str,
-             create_time: str,
-             id: str,
-             ipv6_address: str,
-             ipv6_address_id: str,
-             ipv6_address_name: str,
-             ipv6_gateway_id: str,
-             network_type: str,
-             status: str,
-             vpc_id: str,
-             vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             associated_instance_id: Optional[str] = None,
+             associated_instance_type: Optional[str] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             ipv6_address: Optional[str] = None,
+             ipv6_address_id: Optional[str] = None,
+             ipv6_address_name: Optional[str] = None,
+             ipv6_gateway_id: Optional[str] = None,
+             network_type: Optional[str] = None,
+             status: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'associatedInstanceId' in kwargs:
+        if associated_instance_id is None and 'associatedInstanceId' in kwargs:
             associated_instance_id = kwargs['associatedInstanceId']
-        if 'associatedInstanceType' in kwargs:
+        if associated_instance_id is None:
+            raise TypeError("Missing 'associated_instance_id' argument")
+        if associated_instance_type is None and 'associatedInstanceType' in kwargs:
             associated_instance_type = kwargs['associatedInstanceType']
-        if 'createTime' in kwargs:
+        if associated_instance_type is None:
+            raise TypeError("Missing 'associated_instance_type' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'ipv6Address' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ipv6_address is None and 'ipv6Address' in kwargs:
             ipv6_address = kwargs['ipv6Address']
-        if 'ipv6AddressId' in kwargs:
+        if ipv6_address is None:
+            raise TypeError("Missing 'ipv6_address' argument")
+        if ipv6_address_id is None and 'ipv6AddressId' in kwargs:
             ipv6_address_id = kwargs['ipv6AddressId']
-        if 'ipv6AddressName' in kwargs:
+        if ipv6_address_id is None:
+            raise TypeError("Missing 'ipv6_address_id' argument")
+        if ipv6_address_name is None and 'ipv6AddressName' in kwargs:
             ipv6_address_name = kwargs['ipv6AddressName']
-        if 'ipv6GatewayId' in kwargs:
+        if ipv6_address_name is None:
+            raise TypeError("Missing 'ipv6_address_name' argument")
+        if ipv6_gateway_id is None and 'ipv6GatewayId' in kwargs:
             ipv6_gateway_id = kwargs['ipv6GatewayId']
-        if 'networkType' in kwargs:
+        if ipv6_gateway_id is None:
+            raise TypeError("Missing 'ipv6_gateway_id' argument")
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'vpcId' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("associated_instance_id", associated_instance_id)
         _setter("associated_instance_type", associated_instance_type)
@@ -3776,26 +4080,42 @@ class GetIpv6EgressRulesRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             id: str,
-             instance_id: str,
-             instance_type: str,
-             ipv6_egress_rule_id: str,
-             ipv6_egress_rule_name: str,
-             ipv6_gateway_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             ipv6_egress_rule_id: Optional[str] = None,
+             ipv6_egress_rule_name: Optional[str] = None,
+             ipv6_gateway_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceType' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'ipv6EgressRuleId' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if ipv6_egress_rule_id is None and 'ipv6EgressRuleId' in kwargs:
             ipv6_egress_rule_id = kwargs['ipv6EgressRuleId']
-        if 'ipv6EgressRuleName' in kwargs:
+        if ipv6_egress_rule_id is None:
+            raise TypeError("Missing 'ipv6_egress_rule_id' argument")
+        if ipv6_egress_rule_name is None and 'ipv6EgressRuleName' in kwargs:
             ipv6_egress_rule_name = kwargs['ipv6EgressRuleName']
-        if 'ipv6GatewayId' in kwargs:
+        if ipv6_egress_rule_name is None:
+            raise TypeError("Missing 'ipv6_egress_rule_name' argument")
+        if ipv6_gateway_id is None and 'ipv6GatewayId' in kwargs:
             ipv6_gateway_id = kwargs['ipv6GatewayId']
+        if ipv6_gateway_id is None:
+            raise TypeError("Missing 'ipv6_gateway_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("description", description)
         _setter("id", id)
@@ -3915,33 +4235,55 @@ class GetIpv6GatewaysGatewayResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             business_status: str,
-             create_time: str,
-             description: str,
-             expired_time: str,
-             id: str,
-             instance_charge_type: str,
-             ipv6_gateway_id: str,
-             ipv6_gateway_name: str,
-             spec: str,
-             status: str,
-             vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             business_status: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             expired_time: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_charge_type: Optional[str] = None,
+             ipv6_gateway_id: Optional[str] = None,
+             ipv6_gateway_name: Optional[str] = None,
+             spec: Optional[str] = None,
+             status: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'businessStatus' in kwargs:
+        if business_status is None and 'businessStatus' in kwargs:
             business_status = kwargs['businessStatus']
-        if 'createTime' in kwargs:
+        if business_status is None:
+            raise TypeError("Missing 'business_status' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'expiredTime' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'instanceChargeType' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'ipv6GatewayId' in kwargs:
+        if instance_charge_type is None:
+            raise TypeError("Missing 'instance_charge_type' argument")
+        if ipv6_gateway_id is None and 'ipv6GatewayId' in kwargs:
             ipv6_gateway_id = kwargs['ipv6GatewayId']
-        if 'ipv6GatewayName' in kwargs:
+        if ipv6_gateway_id is None:
+            raise TypeError("Missing 'ipv6_gateway_id' argument")
+        if ipv6_gateway_name is None and 'ipv6GatewayName' in kwargs:
             ipv6_gateway_name = kwargs['ipv6GatewayName']
-        if 'vpcId' in kwargs:
+        if ipv6_gateway_name is None:
+            raise TypeError("Missing 'ipv6_gateway_name' argument")
+        if spec is None:
+            raise TypeError("Missing 'spec' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
 
         _setter("business_status", business_status)
         _setter("create_time", create_time)
@@ -4079,26 +4421,42 @@ class GetIpv6InternetBandwidthsBandwidthResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: int,
-             id: str,
-             internet_charge_type: str,
-             ipv6_address_id: str,
-             ipv6_gateway_id: str,
-             ipv6_internet_bandwidth_id: str,
-             payment_type: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth: Optional[int] = None,
+             id: Optional[str] = None,
+             internet_charge_type: Optional[str] = None,
+             ipv6_address_id: Optional[str] = None,
+             ipv6_gateway_id: Optional[str] = None,
+             ipv6_internet_bandwidth_id: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'internetChargeType' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'ipv6AddressId' in kwargs:
+        if internet_charge_type is None:
+            raise TypeError("Missing 'internet_charge_type' argument")
+        if ipv6_address_id is None and 'ipv6AddressId' in kwargs:
             ipv6_address_id = kwargs['ipv6AddressId']
-        if 'ipv6GatewayId' in kwargs:
+        if ipv6_address_id is None:
+            raise TypeError("Missing 'ipv6_address_id' argument")
+        if ipv6_gateway_id is None and 'ipv6GatewayId' in kwargs:
             ipv6_gateway_id = kwargs['ipv6GatewayId']
-        if 'ipv6InternetBandwidthId' in kwargs:
+        if ipv6_gateway_id is None:
+            raise TypeError("Missing 'ipv6_gateway_id' argument")
+        if ipv6_internet_bandwidth_id is None and 'ipv6InternetBandwidthId' in kwargs:
             ipv6_internet_bandwidth_id = kwargs['ipv6InternetBandwidthId']
-        if 'paymentType' in kwargs:
+        if ipv6_internet_bandwidth_id is None:
+            raise TypeError("Missing 'ipv6_internet_bandwidth_id' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("bandwidth", bandwidth)
         _setter("id", id)
@@ -4254,63 +4612,109 @@ class GetNatGatewaysGatewayResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             business_status: str,
-             deletion_protection: bool,
-             description: str,
-             ecs_metric_enabled: bool,
-             expired_time: str,
-             forward_table_ids: Sequence[str],
-             id: str,
-             internet_charge_type: str,
-             ip_lists: Sequence[str],
-             name: str,
-             nat_gateway_id: str,
-             nat_gateway_name: str,
-             nat_type: str,
-             network_type: str,
-             payment_type: str,
-             resource_group_id: str,
-             snat_table_ids: Sequence[str],
-             spec: str,
-             specification: str,
-             status: str,
-             tags: Mapping[str, Any],
-             vpc_id: str,
-             vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             business_status: Optional[str] = None,
+             deletion_protection: Optional[bool] = None,
+             description: Optional[str] = None,
+             ecs_metric_enabled: Optional[bool] = None,
+             expired_time: Optional[str] = None,
+             forward_table_ids: Optional[Sequence[str]] = None,
+             id: Optional[str] = None,
+             internet_charge_type: Optional[str] = None,
+             ip_lists: Optional[Sequence[str]] = None,
+             name: Optional[str] = None,
+             nat_gateway_id: Optional[str] = None,
+             nat_gateway_name: Optional[str] = None,
+             nat_type: Optional[str] = None,
+             network_type: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             snat_table_ids: Optional[Sequence[str]] = None,
+             spec: Optional[str] = None,
+             specification: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'businessStatus' in kwargs:
+        if business_status is None and 'businessStatus' in kwargs:
             business_status = kwargs['businessStatus']
-        if 'deletionProtection' in kwargs:
+        if business_status is None:
+            raise TypeError("Missing 'business_status' argument")
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'ecsMetricEnabled' in kwargs:
+        if deletion_protection is None:
+            raise TypeError("Missing 'deletion_protection' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if ecs_metric_enabled is None and 'ecsMetricEnabled' in kwargs:
             ecs_metric_enabled = kwargs['ecsMetricEnabled']
-        if 'expiredTime' in kwargs:
+        if ecs_metric_enabled is None:
+            raise TypeError("Missing 'ecs_metric_enabled' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'forwardTableIds' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if forward_table_ids is None and 'forwardTableIds' in kwargs:
             forward_table_ids = kwargs['forwardTableIds']
-        if 'internetChargeType' in kwargs:
+        if forward_table_ids is None:
+            raise TypeError("Missing 'forward_table_ids' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'ipLists' in kwargs:
+        if internet_charge_type is None:
+            raise TypeError("Missing 'internet_charge_type' argument")
+        if ip_lists is None and 'ipLists' in kwargs:
             ip_lists = kwargs['ipLists']
-        if 'natGatewayId' in kwargs:
+        if ip_lists is None:
+            raise TypeError("Missing 'ip_lists' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if nat_gateway_id is None and 'natGatewayId' in kwargs:
             nat_gateway_id = kwargs['natGatewayId']
-        if 'natGatewayName' in kwargs:
+        if nat_gateway_id is None:
+            raise TypeError("Missing 'nat_gateway_id' argument")
+        if nat_gateway_name is None and 'natGatewayName' in kwargs:
             nat_gateway_name = kwargs['natGatewayName']
-        if 'natType' in kwargs:
+        if nat_gateway_name is None:
+            raise TypeError("Missing 'nat_gateway_name' argument")
+        if nat_type is None and 'natType' in kwargs:
             nat_type = kwargs['natType']
-        if 'networkType' in kwargs:
+        if nat_type is None:
+            raise TypeError("Missing 'nat_type' argument")
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'paymentType' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'snatTableIds' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if snat_table_ids is None and 'snatTableIds' in kwargs:
             snat_table_ids = kwargs['snatTableIds']
-        if 'vpcId' in kwargs:
+        if snat_table_ids is None:
+            raise TypeError("Missing 'snat_table_ids' argument")
+        if spec is None:
+            raise TypeError("Missing 'spec' argument")
+        if specification is None:
+            raise TypeError("Missing 'specification' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("business_status", business_status)
         _setter("deletion_protection", deletion_protection)
@@ -4559,31 +4963,49 @@ class GetNatIpCidrsCidrResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             id: str,
-             is_default: bool,
-             nat_gateway_id: str,
-             nat_ip_cidr: str,
-             nat_ip_cidr_description: str,
-             nat_ip_cidr_id: str,
-             nat_ip_cidr_name: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             is_default: Optional[bool] = None,
+             nat_gateway_id: Optional[str] = None,
+             nat_ip_cidr: Optional[str] = None,
+             nat_ip_cidr_description: Optional[str] = None,
+             nat_ip_cidr_id: Optional[str] = None,
+             nat_ip_cidr_name: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'isDefault' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_default is None and 'isDefault' in kwargs:
             is_default = kwargs['isDefault']
-        if 'natGatewayId' in kwargs:
+        if is_default is None:
+            raise TypeError("Missing 'is_default' argument")
+        if nat_gateway_id is None and 'natGatewayId' in kwargs:
             nat_gateway_id = kwargs['natGatewayId']
-        if 'natIpCidr' in kwargs:
+        if nat_gateway_id is None:
+            raise TypeError("Missing 'nat_gateway_id' argument")
+        if nat_ip_cidr is None and 'natIpCidr' in kwargs:
             nat_ip_cidr = kwargs['natIpCidr']
-        if 'natIpCidrDescription' in kwargs:
+        if nat_ip_cidr is None:
+            raise TypeError("Missing 'nat_ip_cidr' argument")
+        if nat_ip_cidr_description is None and 'natIpCidrDescription' in kwargs:
             nat_ip_cidr_description = kwargs['natIpCidrDescription']
-        if 'natIpCidrId' in kwargs:
+        if nat_ip_cidr_description is None:
+            raise TypeError("Missing 'nat_ip_cidr_description' argument")
+        if nat_ip_cidr_id is None and 'natIpCidrId' in kwargs:
             nat_ip_cidr_id = kwargs['natIpCidrId']
-        if 'natIpCidrName' in kwargs:
+        if nat_ip_cidr_id is None:
+            raise TypeError("Missing 'nat_ip_cidr_id' argument")
+        if nat_ip_cidr_name is None and 'natIpCidrName' in kwargs:
             nat_ip_cidr_name = kwargs['natIpCidrName']
+        if nat_ip_cidr_name is None:
+            raise TypeError("Missing 'nat_ip_cidr_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("create_time", create_time)
         _setter("id", id)
@@ -4706,31 +5128,49 @@ class GetNatIpsIpResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             is_default: bool,
-             nat_gateway_id: str,
-             nat_ip: str,
-             nat_ip_cidr: str,
-             nat_ip_description: str,
-             nat_ip_id: str,
-             nat_ip_name: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             is_default: Optional[bool] = None,
+             nat_gateway_id: Optional[str] = None,
+             nat_ip: Optional[str] = None,
+             nat_ip_cidr: Optional[str] = None,
+             nat_ip_description: Optional[str] = None,
+             nat_ip_id: Optional[str] = None,
+             nat_ip_name: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'isDefault' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_default is None and 'isDefault' in kwargs:
             is_default = kwargs['isDefault']
-        if 'natGatewayId' in kwargs:
+        if is_default is None:
+            raise TypeError("Missing 'is_default' argument")
+        if nat_gateway_id is None and 'natGatewayId' in kwargs:
             nat_gateway_id = kwargs['natGatewayId']
-        if 'natIp' in kwargs:
+        if nat_gateway_id is None:
+            raise TypeError("Missing 'nat_gateway_id' argument")
+        if nat_ip is None and 'natIp' in kwargs:
             nat_ip = kwargs['natIp']
-        if 'natIpCidr' in kwargs:
+        if nat_ip is None:
+            raise TypeError("Missing 'nat_ip' argument")
+        if nat_ip_cidr is None and 'natIpCidr' in kwargs:
             nat_ip_cidr = kwargs['natIpCidr']
-        if 'natIpDescription' in kwargs:
+        if nat_ip_cidr is None:
+            raise TypeError("Missing 'nat_ip_cidr' argument")
+        if nat_ip_description is None and 'natIpDescription' in kwargs:
             nat_ip_description = kwargs['natIpDescription']
-        if 'natIpId' in kwargs:
+        if nat_ip_description is None:
+            raise TypeError("Missing 'nat_ip_description' argument")
+        if nat_ip_id is None and 'natIpId' in kwargs:
             nat_ip_id = kwargs['natIpId']
-        if 'natIpName' in kwargs:
+        if nat_ip_id is None:
+            raise TypeError("Missing 'nat_ip_id' argument")
+        if nat_ip_name is None and 'natIpName' in kwargs:
             nat_ip_name = kwargs['natIpName']
+        if nat_ip_name is None:
+            raise TypeError("Missing 'nat_ip_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("id", id)
         _setter("is_default", is_default)
@@ -4853,27 +5293,45 @@ class GetNetworkAclsAclResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             egress_acl_entries: Sequence['outputs.GetNetworkAclsAclEgressAclEntryResult'],
-             id: str,
-             ingress_acl_entries: Sequence['outputs.GetNetworkAclsAclIngressAclEntryResult'],
-             network_acl_id: str,
-             network_acl_name: str,
-             resources: Sequence['outputs.GetNetworkAclsAclResourceResult'],
-             status: str,
-             vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             egress_acl_entries: Optional[Sequence['outputs.GetNetworkAclsAclEgressAclEntryResult']] = None,
+             id: Optional[str] = None,
+             ingress_acl_entries: Optional[Sequence['outputs.GetNetworkAclsAclIngressAclEntryResult']] = None,
+             network_acl_id: Optional[str] = None,
+             network_acl_name: Optional[str] = None,
+             resources: Optional[Sequence['outputs.GetNetworkAclsAclResourceResult']] = None,
+             status: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'egressAclEntries' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if egress_acl_entries is None and 'egressAclEntries' in kwargs:
             egress_acl_entries = kwargs['egressAclEntries']
-        if 'ingressAclEntries' in kwargs:
+        if egress_acl_entries is None:
+            raise TypeError("Missing 'egress_acl_entries' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ingress_acl_entries is None and 'ingressAclEntries' in kwargs:
             ingress_acl_entries = kwargs['ingressAclEntries']
-        if 'networkAclId' in kwargs:
+        if ingress_acl_entries is None:
+            raise TypeError("Missing 'ingress_acl_entries' argument")
+        if network_acl_id is None and 'networkAclId' in kwargs:
             network_acl_id = kwargs['networkAclId']
-        if 'networkAclName' in kwargs:
+        if network_acl_id is None:
+            raise TypeError("Missing 'network_acl_id' argument")
+        if network_acl_name is None and 'networkAclName' in kwargs:
             network_acl_name = kwargs['networkAclName']
-        if 'vpcId' in kwargs:
+        if network_acl_name is None:
+            raise TypeError("Missing 'network_acl_name' argument")
+        if resources is None:
+            raise TypeError("Missing 'resources' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
 
         _setter("description", description)
         _setter("egress_acl_entries", egress_acl_entries)
@@ -4987,18 +5445,30 @@ class GetNetworkAclsAclEgressAclEntryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             destination_cidr_ip: str,
-             network_acl_entry_name: str,
-             policy: str,
-             port: str,
-             protocol: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             destination_cidr_ip: Optional[str] = None,
+             network_acl_entry_name: Optional[str] = None,
+             policy: Optional[str] = None,
+             port: Optional[str] = None,
+             protocol: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationCidrIp' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if destination_cidr_ip is None and 'destinationCidrIp' in kwargs:
             destination_cidr_ip = kwargs['destinationCidrIp']
-        if 'networkAclEntryName' in kwargs:
+        if destination_cidr_ip is None:
+            raise TypeError("Missing 'destination_cidr_ip' argument")
+        if network_acl_entry_name is None and 'networkAclEntryName' in kwargs:
             network_acl_entry_name = kwargs['networkAclEntryName']
+        if network_acl_entry_name is None:
+            raise TypeError("Missing 'network_acl_entry_name' argument")
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
 
         _setter("description", description)
         _setter("destination_cidr_ip", destination_cidr_ip)
@@ -5085,18 +5555,30 @@ class GetNetworkAclsAclIngressAclEntryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             network_acl_entry_name: str,
-             policy: str,
-             port: str,
-             protocol: str,
-             source_cidr_ip: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             network_acl_entry_name: Optional[str] = None,
+             policy: Optional[str] = None,
+             port: Optional[str] = None,
+             protocol: Optional[str] = None,
+             source_cidr_ip: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'networkAclEntryName' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if network_acl_entry_name is None and 'networkAclEntryName' in kwargs:
             network_acl_entry_name = kwargs['networkAclEntryName']
-        if 'sourceCidrIp' in kwargs:
+        if network_acl_entry_name is None:
+            raise TypeError("Missing 'network_acl_entry_name' argument")
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if source_cidr_ip is None and 'sourceCidrIp' in kwargs:
             source_cidr_ip = kwargs['sourceCidrIp']
+        if source_cidr_ip is None:
+            raise TypeError("Missing 'source_cidr_ip' argument")
 
         _setter("description", description)
         _setter("network_acl_entry_name", network_acl_entry_name)
@@ -5174,15 +5656,21 @@ class GetNetworkAclsAclResourceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_id: str,
-             resource_type: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             resource_id: Optional[str] = None,
+             resource_type: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceId' in kwargs:
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceType' in kwargs:
+        if resource_id is None:
+            raise TypeError("Missing 'resource_id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
@@ -5278,54 +5766,90 @@ class GetNetworksVpcResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: str,
-             creation_time: str,
-             description: str,
-             id: str,
-             ipv6_cidr_block: str,
-             is_default: bool,
-             region_id: str,
-             resource_group_id: str,
-             route_table_id: str,
-             router_id: str,
-             secondary_cidr_blocks: Sequence[str],
-             status: str,
-             tags: Mapping[str, Any],
-             user_cidrs: Sequence[str],
-             vpc_id: str,
-             vpc_name: str,
-             vrouter_id: str,
-             vswitch_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cidr_block: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             ipv6_cidr_block: Optional[str] = None,
+             is_default: Optional[bool] = None,
+             region_id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             route_table_id: Optional[str] = None,
+             router_id: Optional[str] = None,
+             secondary_cidr_blocks: Optional[Sequence[str]] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             user_cidrs: Optional[Sequence[str]] = None,
+             vpc_id: Optional[str] = None,
+             vpc_name: Optional[str] = None,
+             vrouter_id: Optional[str] = None,
+             vswitch_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'creationTime' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'ipv6CidrBlock' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ipv6_cidr_block is None and 'ipv6CidrBlock' in kwargs:
             ipv6_cidr_block = kwargs['ipv6CidrBlock']
-        if 'isDefault' in kwargs:
+        if ipv6_cidr_block is None:
+            raise TypeError("Missing 'ipv6_cidr_block' argument")
+        if is_default is None and 'isDefault' in kwargs:
             is_default = kwargs['isDefault']
-        if 'regionId' in kwargs:
+        if is_default is None:
+            raise TypeError("Missing 'is_default' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'resourceGroupId' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'routeTableId' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
-        if 'routerId' in kwargs:
+        if route_table_id is None:
+            raise TypeError("Missing 'route_table_id' argument")
+        if router_id is None and 'routerId' in kwargs:
             router_id = kwargs['routerId']
-        if 'secondaryCidrBlocks' in kwargs:
+        if router_id is None:
+            raise TypeError("Missing 'router_id' argument")
+        if secondary_cidr_blocks is None and 'secondaryCidrBlocks' in kwargs:
             secondary_cidr_blocks = kwargs['secondaryCidrBlocks']
-        if 'userCidrs' in kwargs:
+        if secondary_cidr_blocks is None:
+            raise TypeError("Missing 'secondary_cidr_blocks' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if user_cidrs is None and 'userCidrs' in kwargs:
             user_cidrs = kwargs['userCidrs']
-        if 'vpcId' in kwargs:
+        if user_cidrs is None:
+            raise TypeError("Missing 'user_cidrs' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vpcName' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vpc_name is None and 'vpcName' in kwargs:
             vpc_name = kwargs['vpcName']
-        if 'vrouterId' in kwargs:
+        if vpc_name is None:
+            raise TypeError("Missing 'vpc_name' argument")
+        if vrouter_id is None and 'vrouterId' in kwargs:
             vrouter_id = kwargs['vrouterId']
-        if 'vswitchIds' in kwargs:
+        if vrouter_id is None:
+            raise TypeError("Missing 'vrouter_id' argument")
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
+        if vswitch_ids is None:
+            raise TypeError("Missing 'vswitch_ids' argument")
 
         _setter("cidr_block", cidr_block)
         _setter("creation_time", creation_time)
@@ -5526,26 +6050,42 @@ class GetPbrRouteEntriesEntryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             id: str,
-             next_hop: str,
-             route_dest: str,
-             route_source: str,
-             status: str,
-             vpn_gateway_id: str,
-             weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             next_hop: Optional[str] = None,
+             route_dest: Optional[str] = None,
+             route_source: Optional[str] = None,
+             status: Optional[str] = None,
+             vpn_gateway_id: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'nextHop' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if next_hop is None and 'nextHop' in kwargs:
             next_hop = kwargs['nextHop']
-        if 'routeDest' in kwargs:
+        if next_hop is None:
+            raise TypeError("Missing 'next_hop' argument")
+        if route_dest is None and 'routeDest' in kwargs:
             route_dest = kwargs['routeDest']
-        if 'routeSource' in kwargs:
+        if route_dest is None:
+            raise TypeError("Missing 'route_dest' argument")
+        if route_source is None and 'routeSource' in kwargs:
             route_source = kwargs['routeSource']
-        if 'vpnGatewayId' in kwargs:
+        if route_source is None:
+            raise TypeError("Missing 'route_source' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
             vpn_gateway_id = kwargs['vpnGatewayId']
+        if vpn_gateway_id is None:
+            raise TypeError("Missing 'vpn_gateway_id' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
 
         _setter("create_time", create_time)
         _setter("id", id)
@@ -5665,33 +6205,55 @@ class GetPeerConnectionsConnectionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accepting_ali_uid: int,
-             accepting_region_id: str,
-             accepting_vpc_id: str,
-             bandwidth: int,
-             create_time: str,
-             description: str,
-             id: str,
-             peer_connection_id: str,
-             peer_connection_name: str,
-             status: str,
-             vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accepting_ali_uid: Optional[int] = None,
+             accepting_region_id: Optional[str] = None,
+             accepting_vpc_id: Optional[str] = None,
+             bandwidth: Optional[int] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             peer_connection_id: Optional[str] = None,
+             peer_connection_name: Optional[str] = None,
+             status: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceptingAliUid' in kwargs:
+        if accepting_ali_uid is None and 'acceptingAliUid' in kwargs:
             accepting_ali_uid = kwargs['acceptingAliUid']
-        if 'acceptingRegionId' in kwargs:
+        if accepting_ali_uid is None:
+            raise TypeError("Missing 'accepting_ali_uid' argument")
+        if accepting_region_id is None and 'acceptingRegionId' in kwargs:
             accepting_region_id = kwargs['acceptingRegionId']
-        if 'acceptingVpcId' in kwargs:
+        if accepting_region_id is None:
+            raise TypeError("Missing 'accepting_region_id' argument")
+        if accepting_vpc_id is None and 'acceptingVpcId' in kwargs:
             accepting_vpc_id = kwargs['acceptingVpcId']
-        if 'createTime' in kwargs:
+        if accepting_vpc_id is None:
+            raise TypeError("Missing 'accepting_vpc_id' argument")
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'peerConnectionId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if peer_connection_id is None and 'peerConnectionId' in kwargs:
             peer_connection_id = kwargs['peerConnectionId']
-        if 'peerConnectionName' in kwargs:
+        if peer_connection_id is None:
+            raise TypeError("Missing 'peer_connection_id' argument")
+        if peer_connection_name is None and 'peerConnectionName' in kwargs:
             peer_connection_name = kwargs['peerConnectionName']
-        if 'vpcId' in kwargs:
+        if peer_connection_name is None:
+            raise TypeError("Missing 'peer_connection_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
 
         _setter("accepting_ali_uid", accepting_ali_uid)
         _setter("accepting_region_id", accepting_region_id)
@@ -5832,31 +6394,49 @@ class GetPrefixListsListResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             entrys: Sequence['outputs.GetPrefixListsListEntryResult'],
-             id: str,
-             ip_version: str,
-             max_entries: int,
-             prefix_list_description: str,
-             prefix_list_id: str,
-             prefix_list_name: str,
-             share_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             entrys: Optional[Sequence['outputs.GetPrefixListsListEntryResult']] = None,
+             id: Optional[str] = None,
+             ip_version: Optional[str] = None,
+             max_entries: Optional[int] = None,
+             prefix_list_description: Optional[str] = None,
+             prefix_list_id: Optional[str] = None,
+             prefix_list_name: Optional[str] = None,
+             share_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'ipVersion' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if entrys is None:
+            raise TypeError("Missing 'entrys' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'maxEntries' in kwargs:
+        if ip_version is None:
+            raise TypeError("Missing 'ip_version' argument")
+        if max_entries is None and 'maxEntries' in kwargs:
             max_entries = kwargs['maxEntries']
-        if 'prefixListDescription' in kwargs:
+        if max_entries is None:
+            raise TypeError("Missing 'max_entries' argument")
+        if prefix_list_description is None and 'prefixListDescription' in kwargs:
             prefix_list_description = kwargs['prefixListDescription']
-        if 'prefixListId' in kwargs:
+        if prefix_list_description is None:
+            raise TypeError("Missing 'prefix_list_description' argument")
+        if prefix_list_id is None and 'prefixListId' in kwargs:
             prefix_list_id = kwargs['prefixListId']
-        if 'prefixListName' in kwargs:
+        if prefix_list_id is None:
+            raise TypeError("Missing 'prefix_list_id' argument")
+        if prefix_list_name is None and 'prefixListName' in kwargs:
             prefix_list_name = kwargs['prefixListName']
-        if 'shareType' in kwargs:
+        if prefix_list_name is None:
+            raise TypeError("Missing 'prefix_list_name' argument")
+        if share_type is None and 'shareType' in kwargs:
             share_type = kwargs['shareType']
+        if share_type is None:
+            raise TypeError("Missing 'share_type' argument")
 
         _setter("create_time", create_time)
         _setter("entrys", entrys)
@@ -5958,10 +6538,14 @@ class GetPrefixListsListEntryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr: str,
-             description: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cidr: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if cidr is None:
+            raise TypeError("Missing 'cidr' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
 
         _setter("cidr", cidr)
         _setter("description", description)
@@ -6015,25 +6599,39 @@ class GetPublicIpAddressPoolCidrBlocksBlockResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: str,
-             create_time: str,
-             id: str,
-             public_ip_address_pool_id: str,
-             status: str,
-             total_ip_num: int,
-             used_ip_num: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cidr_block: Optional[str] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             public_ip_address_pool_id: Optional[str] = None,
+             status: Optional[str] = None,
+             total_ip_num: Optional[int] = None,
+             used_ip_num: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'createTime' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'publicIpAddressPoolId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if public_ip_address_pool_id is None and 'publicIpAddressPoolId' in kwargs:
             public_ip_address_pool_id = kwargs['publicIpAddressPoolId']
-        if 'totalIpNum' in kwargs:
+        if public_ip_address_pool_id is None:
+            raise TypeError("Missing 'public_ip_address_pool_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if total_ip_num is None and 'totalIpNum' in kwargs:
             total_ip_num = kwargs['totalIpNum']
-        if 'usedIpNum' in kwargs:
+        if total_ip_num is None:
+            raise TypeError("Missing 'total_ip_num' argument")
+        if used_ip_num is None and 'usedIpNum' in kwargs:
             used_ip_num = kwargs['usedIpNum']
+        if used_ip_num is None:
+            raise TypeError("Missing 'used_ip_num' argument")
 
         _setter("cidr_block", cidr_block)
         _setter("create_time", create_time)
@@ -6147,36 +6745,60 @@ class GetPublicIpAddressPoolsPoolResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             description: str,
-             id: str,
-             ip_address_remaining: bool,
-             isp: str,
-             public_ip_address_pool_id: str,
-             public_ip_address_pool_name: str,
-             region_id: str,
-             status: str,
-             total_ip_num: int,
-             used_ip_num: int,
-             user_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             ip_address_remaining: Optional[bool] = None,
+             isp: Optional[str] = None,
+             public_ip_address_pool_id: Optional[str] = None,
+             public_ip_address_pool_name: Optional[str] = None,
+             region_id: Optional[str] = None,
+             status: Optional[str] = None,
+             total_ip_num: Optional[int] = None,
+             used_ip_num: Optional[int] = None,
+             user_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'ipAddressRemaining' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ip_address_remaining is None and 'ipAddressRemaining' in kwargs:
             ip_address_remaining = kwargs['ipAddressRemaining']
-        if 'publicIpAddressPoolId' in kwargs:
+        if ip_address_remaining is None:
+            raise TypeError("Missing 'ip_address_remaining' argument")
+        if isp is None:
+            raise TypeError("Missing 'isp' argument")
+        if public_ip_address_pool_id is None and 'publicIpAddressPoolId' in kwargs:
             public_ip_address_pool_id = kwargs['publicIpAddressPoolId']
-        if 'publicIpAddressPoolName' in kwargs:
+        if public_ip_address_pool_id is None:
+            raise TypeError("Missing 'public_ip_address_pool_id' argument")
+        if public_ip_address_pool_name is None and 'publicIpAddressPoolName' in kwargs:
             public_ip_address_pool_name = kwargs['publicIpAddressPoolName']
-        if 'regionId' in kwargs:
+        if public_ip_address_pool_name is None:
+            raise TypeError("Missing 'public_ip_address_pool_name' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'totalIpNum' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if total_ip_num is None and 'totalIpNum' in kwargs:
             total_ip_num = kwargs['totalIpNum']
-        if 'usedIpNum' in kwargs:
+        if total_ip_num is None:
+            raise TypeError("Missing 'total_ip_num' argument")
+        if used_ip_num is None and 'usedIpNum' in kwargs:
             used_ip_num = kwargs['usedIpNum']
-        if 'userType' in kwargs:
+        if used_ip_num is None:
+            raise TypeError("Missing 'used_ip_num' argument")
+        if user_type is None and 'userType' in kwargs:
             user_type = kwargs['userType']
+        if user_type is None:
+            raise TypeError("Missing 'user_type' argument")
 
         _setter("create_time", create_time)
         _setter("description", description)
@@ -6317,22 +6939,34 @@ class GetRouteEntriesEntryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: str,
-             instance_id: str,
-             next_hop_type: str,
-             route_table_id: str,
-             status: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cidr_block: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             next_hop_type: Optional[str] = None,
+             route_table_id: Optional[str] = None,
+             status: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'instanceId' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'nextHopType' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if next_hop_type is None and 'nextHopType' in kwargs:
             next_hop_type = kwargs['nextHopType']
-        if 'routeTableId' in kwargs:
+        if next_hop_type is None:
+            raise TypeError("Missing 'next_hop_type' argument")
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
+        if route_table_id is None:
+            raise TypeError("Missing 'route_table_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("cidr_block", cidr_block)
         _setter("instance_id", instance_id)
@@ -6440,37 +7074,63 @@ class GetRouteTablesTableResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             id: str,
-             name: str,
-             resource_group_id: str,
-             route_table_id: str,
-             route_table_name: str,
-             route_table_type: str,
-             router_id: str,
-             router_type: str,
-             status: str,
-             tags: Mapping[str, Any],
-             vpc_id: str,
-             vswitch_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             route_table_id: Optional[str] = None,
+             route_table_name: Optional[str] = None,
+             route_table_type: Optional[str] = None,
+             router_id: Optional[str] = None,
+             router_type: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceGroupId' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'routeTableId' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
-        if 'routeTableName' in kwargs:
+        if route_table_id is None:
+            raise TypeError("Missing 'route_table_id' argument")
+        if route_table_name is None and 'routeTableName' in kwargs:
             route_table_name = kwargs['routeTableName']
-        if 'routeTableType' in kwargs:
+        if route_table_name is None:
+            raise TypeError("Missing 'route_table_name' argument")
+        if route_table_type is None and 'routeTableType' in kwargs:
             route_table_type = kwargs['routeTableType']
-        if 'routerId' in kwargs:
+        if route_table_type is None:
+            raise TypeError("Missing 'route_table_type' argument")
+        if router_id is None and 'routerId' in kwargs:
             router_id = kwargs['routerId']
-        if 'routerType' in kwargs:
+        if router_id is None:
+            raise TypeError("Missing 'router_id' argument")
+        if router_type is None and 'routerType' in kwargs:
             router_type = kwargs['routerType']
-        if 'vpcId' in kwargs:
+        if router_type is None:
+            raise TypeError("Missing 'router_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchIds' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
+        if vswitch_ids is None:
+            raise TypeError("Missing 'vswitch_ids' argument")
 
         _setter("description", description)
         _setter("id", id)
@@ -6657,50 +7317,86 @@ class GetRouterInterfacesInterfaceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_point_id: str,
-             creation_time: str,
-             description: str,
-             health_check_source_ip: str,
-             health_check_target_ip: str,
-             id: str,
-             name: str,
-             opposite_interface_id: str,
-             opposite_interface_owner_id: str,
-             opposite_region_id: str,
-             opposite_router_id: str,
-             opposite_router_type: str,
-             role: str,
-             router_id: str,
-             router_type: str,
-             specification: str,
-             status: str,
-             vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_point_id: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             description: Optional[str] = None,
+             health_check_source_ip: Optional[str] = None,
+             health_check_target_ip: Optional[str] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             opposite_interface_id: Optional[str] = None,
+             opposite_interface_owner_id: Optional[str] = None,
+             opposite_region_id: Optional[str] = None,
+             opposite_router_id: Optional[str] = None,
+             opposite_router_type: Optional[str] = None,
+             role: Optional[str] = None,
+             router_id: Optional[str] = None,
+             router_type: Optional[str] = None,
+             specification: Optional[str] = None,
+             status: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessPointId' in kwargs:
+        if access_point_id is None and 'accessPointId' in kwargs:
             access_point_id = kwargs['accessPointId']
-        if 'creationTime' in kwargs:
+        if access_point_id is None:
+            raise TypeError("Missing 'access_point_id' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'healthCheckSourceIp' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if health_check_source_ip is None and 'healthCheckSourceIp' in kwargs:
             health_check_source_ip = kwargs['healthCheckSourceIp']
-        if 'healthCheckTargetIp' in kwargs:
+        if health_check_source_ip is None:
+            raise TypeError("Missing 'health_check_source_ip' argument")
+        if health_check_target_ip is None and 'healthCheckTargetIp' in kwargs:
             health_check_target_ip = kwargs['healthCheckTargetIp']
-        if 'oppositeInterfaceId' in kwargs:
+        if health_check_target_ip is None:
+            raise TypeError("Missing 'health_check_target_ip' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if opposite_interface_id is None and 'oppositeInterfaceId' in kwargs:
             opposite_interface_id = kwargs['oppositeInterfaceId']
-        if 'oppositeInterfaceOwnerId' in kwargs:
+        if opposite_interface_id is None:
+            raise TypeError("Missing 'opposite_interface_id' argument")
+        if opposite_interface_owner_id is None and 'oppositeInterfaceOwnerId' in kwargs:
             opposite_interface_owner_id = kwargs['oppositeInterfaceOwnerId']
-        if 'oppositeRegionId' in kwargs:
+        if opposite_interface_owner_id is None:
+            raise TypeError("Missing 'opposite_interface_owner_id' argument")
+        if opposite_region_id is None and 'oppositeRegionId' in kwargs:
             opposite_region_id = kwargs['oppositeRegionId']
-        if 'oppositeRouterId' in kwargs:
+        if opposite_region_id is None:
+            raise TypeError("Missing 'opposite_region_id' argument")
+        if opposite_router_id is None and 'oppositeRouterId' in kwargs:
             opposite_router_id = kwargs['oppositeRouterId']
-        if 'oppositeRouterType' in kwargs:
+        if opposite_router_id is None:
+            raise TypeError("Missing 'opposite_router_id' argument")
+        if opposite_router_type is None and 'oppositeRouterType' in kwargs:
             opposite_router_type = kwargs['oppositeRouterType']
-        if 'routerId' in kwargs:
+        if opposite_router_type is None:
+            raise TypeError("Missing 'opposite_router_type' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if router_id is None and 'routerId' in kwargs:
             router_id = kwargs['routerId']
-        if 'routerType' in kwargs:
+        if router_id is None:
+            raise TypeError("Missing 'router_id' argument")
+        if router_type is None and 'routerType' in kwargs:
             router_type = kwargs['routerType']
-        if 'vpcId' in kwargs:
+        if router_type is None:
+            raise TypeError("Missing 'router_type' argument")
+        if specification is None:
+            raise TypeError("Missing 'specification' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
 
         _setter("access_point_id", access_point_id)
         _setter("creation_time", creation_time)
@@ -6899,25 +7595,39 @@ class GetSnatEntriesEntryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             snat_entry_id: str,
-             snat_entry_name: str,
-             snat_ip: str,
-             source_cidr: str,
-             source_vswitch_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             snat_entry_id: Optional[str] = None,
+             snat_entry_name: Optional[str] = None,
+             snat_ip: Optional[str] = None,
+             source_cidr: Optional[str] = None,
+             source_vswitch_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'snatEntryId' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if snat_entry_id is None and 'snatEntryId' in kwargs:
             snat_entry_id = kwargs['snatEntryId']
-        if 'snatEntryName' in kwargs:
+        if snat_entry_id is None:
+            raise TypeError("Missing 'snat_entry_id' argument")
+        if snat_entry_name is None and 'snatEntryName' in kwargs:
             snat_entry_name = kwargs['snatEntryName']
-        if 'snatIp' in kwargs:
+        if snat_entry_name is None:
+            raise TypeError("Missing 'snat_entry_name' argument")
+        if snat_ip is None and 'snatIp' in kwargs:
             snat_ip = kwargs['snatIp']
-        if 'sourceCidr' in kwargs:
+        if snat_ip is None:
+            raise TypeError("Missing 'snat_ip' argument")
+        if source_cidr is None and 'sourceCidr' in kwargs:
             source_cidr = kwargs['sourceCidr']
-        if 'sourceVswitchId' in kwargs:
+        if source_cidr is None:
+            raise TypeError("Missing 'source_cidr' argument")
+        if source_vswitch_id is None and 'sourceVswitchId' in kwargs:
             source_vswitch_id = kwargs['sourceVswitchId']
+        if source_vswitch_id is None:
+            raise TypeError("Missing 'source_vswitch_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("id", id)
         _setter("snat_entry_id", snat_entry_id)
@@ -7013,20 +7723,32 @@ class GetSslVpnClientCertsCertResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             end_time: int,
-             id: str,
-             name: str,
-             ssl_vpn_server_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             end_time: Optional[int] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             ssl_vpn_server_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'endTime' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'sslVpnServerId' in kwargs:
+        if end_time is None:
+            raise TypeError("Missing 'end_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if ssl_vpn_server_id is None and 'sslVpnServerId' in kwargs:
             ssl_vpn_server_id = kwargs['sslVpnServerId']
+        if ssl_vpn_server_id is None:
+            raise TypeError("Missing 'ssl_vpn_server_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("create_time", create_time)
         _setter("end_time", end_time)
@@ -7134,33 +7856,59 @@ class GetSslVpnServersServerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cipher: str,
-             client_ip_pool: str,
-             compress: bool,
-             connections: int,
-             create_time: str,
-             id: str,
-             internet_ip: str,
-             local_subnet: str,
-             max_connections: int,
-             name: str,
-             port: int,
-             proto: str,
-             vpn_gateway_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cipher: Optional[str] = None,
+             client_ip_pool: Optional[str] = None,
+             compress: Optional[bool] = None,
+             connections: Optional[int] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             internet_ip: Optional[str] = None,
+             local_subnet: Optional[str] = None,
+             max_connections: Optional[int] = None,
+             name: Optional[str] = None,
+             port: Optional[int] = None,
+             proto: Optional[str] = None,
+             vpn_gateway_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientIpPool' in kwargs:
+        if cipher is None:
+            raise TypeError("Missing 'cipher' argument")
+        if client_ip_pool is None and 'clientIpPool' in kwargs:
             client_ip_pool = kwargs['clientIpPool']
-        if 'createTime' in kwargs:
+        if client_ip_pool is None:
+            raise TypeError("Missing 'client_ip_pool' argument")
+        if compress is None:
+            raise TypeError("Missing 'compress' argument")
+        if connections is None:
+            raise TypeError("Missing 'connections' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'internetIp' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if internet_ip is None and 'internetIp' in kwargs:
             internet_ip = kwargs['internetIp']
-        if 'localSubnet' in kwargs:
+        if internet_ip is None:
+            raise TypeError("Missing 'internet_ip' argument")
+        if local_subnet is None and 'localSubnet' in kwargs:
             local_subnet = kwargs['localSubnet']
-        if 'maxConnections' in kwargs:
+        if local_subnet is None:
+            raise TypeError("Missing 'local_subnet' argument")
+        if max_connections is None and 'maxConnections' in kwargs:
             max_connections = kwargs['maxConnections']
-        if 'vpnGatewayId' in kwargs:
+        if max_connections is None:
+            raise TypeError("Missing 'max_connections' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if proto is None:
+            raise TypeError("Missing 'proto' argument")
+        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
             vpn_gateway_id = kwargs['vpnGatewayId']
+        if vpn_gateway_id is None:
+            raise TypeError("Missing 'vpn_gateway_id' argument")
 
         _setter("cipher", cipher)
         _setter("client_ip_pool", client_ip_pool)
@@ -7340,46 +8088,78 @@ class GetSwitchesVswitchResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             available_ip_address_count: int,
-             cidr_block: str,
-             creation_time: str,
-             description: str,
-             id: str,
-             ipv6_cidr_block: str,
-             is_default: bool,
-             name: str,
-             resource_group_id: str,
-             route_table_id: str,
-             status: str,
-             tags: Mapping[str, Any],
-             vpc_id: str,
-             vswitch_id: str,
-             vswitch_name: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             available_ip_address_count: Optional[int] = None,
+             cidr_block: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             ipv6_cidr_block: Optional[str] = None,
+             is_default: Optional[bool] = None,
+             name: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             route_table_id: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             vswitch_name: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availableIpAddressCount' in kwargs:
+        if available_ip_address_count is None and 'availableIpAddressCount' in kwargs:
             available_ip_address_count = kwargs['availableIpAddressCount']
-        if 'cidrBlock' in kwargs:
+        if available_ip_address_count is None:
+            raise TypeError("Missing 'available_ip_address_count' argument")
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'creationTime' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'ipv6CidrBlock' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ipv6_cidr_block is None and 'ipv6CidrBlock' in kwargs:
             ipv6_cidr_block = kwargs['ipv6CidrBlock']
-        if 'isDefault' in kwargs:
+        if ipv6_cidr_block is None:
+            raise TypeError("Missing 'ipv6_cidr_block' argument")
+        if is_default is None and 'isDefault' in kwargs:
             is_default = kwargs['isDefault']
-        if 'resourceGroupId' in kwargs:
+        if is_default is None:
+            raise TypeError("Missing 'is_default' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'routeTableId' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
-        if 'vpcId' in kwargs:
+        if route_table_id is None:
+            raise TypeError("Missing 'route_table_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'vswitchName' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if vswitch_name is None and 'vswitchName' in kwargs:
             vswitch_name = kwargs['vswitchName']
-        if 'zoneId' in kwargs:
+        if vswitch_name is None:
+            raise TypeError("Missing 'vswitch_name' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("available_ip_address_count", available_ip_address_count)
         _setter("cidr_block", cidr_block)
@@ -7571,33 +8351,55 @@ class GetTrafficMirrorFilterEgressRulesRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination_cidr_block: str,
-             destination_port_range: str,
-             id: str,
-             priority: int,
-             protocol: str,
-             rule_action: str,
-             source_cidr_block: str,
-             source_port_range: str,
-             status: str,
-             traffic_mirror_filter_id: str,
-             traffic_mirror_filter_rule_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             destination_cidr_block: Optional[str] = None,
+             destination_port_range: Optional[str] = None,
+             id: Optional[str] = None,
+             priority: Optional[int] = None,
+             protocol: Optional[str] = None,
+             rule_action: Optional[str] = None,
+             source_cidr_block: Optional[str] = None,
+             source_port_range: Optional[str] = None,
+             status: Optional[str] = None,
+             traffic_mirror_filter_id: Optional[str] = None,
+             traffic_mirror_filter_rule_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationCidrBlock' in kwargs:
+        if destination_cidr_block is None and 'destinationCidrBlock' in kwargs:
             destination_cidr_block = kwargs['destinationCidrBlock']
-        if 'destinationPortRange' in kwargs:
+        if destination_cidr_block is None:
+            raise TypeError("Missing 'destination_cidr_block' argument")
+        if destination_port_range is None and 'destinationPortRange' in kwargs:
             destination_port_range = kwargs['destinationPortRange']
-        if 'ruleAction' in kwargs:
+        if destination_port_range is None:
+            raise TypeError("Missing 'destination_port_range' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if rule_action is None and 'ruleAction' in kwargs:
             rule_action = kwargs['ruleAction']
-        if 'sourceCidrBlock' in kwargs:
+        if rule_action is None:
+            raise TypeError("Missing 'rule_action' argument")
+        if source_cidr_block is None and 'sourceCidrBlock' in kwargs:
             source_cidr_block = kwargs['sourceCidrBlock']
-        if 'sourcePortRange' in kwargs:
+        if source_cidr_block is None:
+            raise TypeError("Missing 'source_cidr_block' argument")
+        if source_port_range is None and 'sourcePortRange' in kwargs:
             source_port_range = kwargs['sourcePortRange']
-        if 'trafficMirrorFilterId' in kwargs:
+        if source_port_range is None:
+            raise TypeError("Missing 'source_port_range' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if traffic_mirror_filter_id is None and 'trafficMirrorFilterId' in kwargs:
             traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
-        if 'trafficMirrorFilterRuleId' in kwargs:
+        if traffic_mirror_filter_id is None:
+            raise TypeError("Missing 'traffic_mirror_filter_id' argument")
+        if traffic_mirror_filter_rule_id is None and 'trafficMirrorFilterRuleId' in kwargs:
             traffic_mirror_filter_rule_id = kwargs['trafficMirrorFilterRuleId']
+        if traffic_mirror_filter_rule_id is None:
+            raise TypeError("Missing 'traffic_mirror_filter_rule_id' argument")
 
         _setter("destination_cidr_block", destination_cidr_block)
         _setter("destination_port_range", destination_port_range)
@@ -7744,33 +8546,55 @@ class GetTrafficMirrorFilterIngressRulesRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination_cidr_block: str,
-             destination_port_range: str,
-             id: str,
-             priority: int,
-             protocol: str,
-             rule_action: str,
-             source_cidr_block: str,
-             source_port_range: str,
-             status: str,
-             traffic_mirror_filter_id: str,
-             traffic_mirror_filter_rule_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             destination_cidr_block: Optional[str] = None,
+             destination_port_range: Optional[str] = None,
+             id: Optional[str] = None,
+             priority: Optional[int] = None,
+             protocol: Optional[str] = None,
+             rule_action: Optional[str] = None,
+             source_cidr_block: Optional[str] = None,
+             source_port_range: Optional[str] = None,
+             status: Optional[str] = None,
+             traffic_mirror_filter_id: Optional[str] = None,
+             traffic_mirror_filter_rule_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationCidrBlock' in kwargs:
+        if destination_cidr_block is None and 'destinationCidrBlock' in kwargs:
             destination_cidr_block = kwargs['destinationCidrBlock']
-        if 'destinationPortRange' in kwargs:
+        if destination_cidr_block is None:
+            raise TypeError("Missing 'destination_cidr_block' argument")
+        if destination_port_range is None and 'destinationPortRange' in kwargs:
             destination_port_range = kwargs['destinationPortRange']
-        if 'ruleAction' in kwargs:
+        if destination_port_range is None:
+            raise TypeError("Missing 'destination_port_range' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if rule_action is None and 'ruleAction' in kwargs:
             rule_action = kwargs['ruleAction']
-        if 'sourceCidrBlock' in kwargs:
+        if rule_action is None:
+            raise TypeError("Missing 'rule_action' argument")
+        if source_cidr_block is None and 'sourceCidrBlock' in kwargs:
             source_cidr_block = kwargs['sourceCidrBlock']
-        if 'sourcePortRange' in kwargs:
+        if source_cidr_block is None:
+            raise TypeError("Missing 'source_cidr_block' argument")
+        if source_port_range is None and 'sourcePortRange' in kwargs:
             source_port_range = kwargs['sourcePortRange']
-        if 'trafficMirrorFilterId' in kwargs:
+        if source_port_range is None:
+            raise TypeError("Missing 'source_port_range' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if traffic_mirror_filter_id is None and 'trafficMirrorFilterId' in kwargs:
             traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
-        if 'trafficMirrorFilterRuleId' in kwargs:
+        if traffic_mirror_filter_id is None:
+            raise TypeError("Missing 'traffic_mirror_filter_id' argument")
+        if traffic_mirror_filter_rule_id is None and 'trafficMirrorFilterRuleId' in kwargs:
             traffic_mirror_filter_rule_id = kwargs['trafficMirrorFilterRuleId']
+        if traffic_mirror_filter_rule_id is None:
+            raise TypeError("Missing 'traffic_mirror_filter_rule_id' argument")
 
         _setter("destination_cidr_block", destination_cidr_block)
         _setter("destination_port_range", destination_port_range)
@@ -7899,19 +8723,29 @@ class GetTrafficMirrorFiltersFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             status: str,
-             traffic_mirror_filter_description: str,
-             traffic_mirror_filter_id: str,
-             traffic_mirror_filter_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             status: Optional[str] = None,
+             traffic_mirror_filter_description: Optional[str] = None,
+             traffic_mirror_filter_id: Optional[str] = None,
+             traffic_mirror_filter_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'trafficMirrorFilterDescription' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if traffic_mirror_filter_description is None and 'trafficMirrorFilterDescription' in kwargs:
             traffic_mirror_filter_description = kwargs['trafficMirrorFilterDescription']
-        if 'trafficMirrorFilterId' in kwargs:
+        if traffic_mirror_filter_description is None:
+            raise TypeError("Missing 'traffic_mirror_filter_description' argument")
+        if traffic_mirror_filter_id is None and 'trafficMirrorFilterId' in kwargs:
             traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
-        if 'trafficMirrorFilterName' in kwargs:
+        if traffic_mirror_filter_id is None:
+            raise TypeError("Missing 'traffic_mirror_filter_id' argument")
+        if traffic_mirror_filter_name is None and 'trafficMirrorFilterName' in kwargs:
             traffic_mirror_filter_name = kwargs['trafficMirrorFilterName']
+        if traffic_mirror_filter_name is None:
+            raise TypeError("Missing 'traffic_mirror_filter_name' argument")
 
         _setter("id", id)
         _setter("status", status)
@@ -8013,42 +8847,70 @@ class GetTrafficMirrorSessionsSessionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             id: str,
-             packet_length: int,
-             priority: int,
-             status: str,
-             traffic_mirror_filter_id: str,
-             traffic_mirror_session_business_status: str,
-             traffic_mirror_session_description: str,
-             traffic_mirror_session_id: str,
-             traffic_mirror_session_name: str,
-             traffic_mirror_source_ids: Sequence[str],
-             traffic_mirror_target_id: str,
-             traffic_mirror_target_type: str,
-             virtual_network_id: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             enabled: Optional[bool] = None,
+             id: Optional[str] = None,
+             packet_length: Optional[int] = None,
+             priority: Optional[int] = None,
+             status: Optional[str] = None,
+             traffic_mirror_filter_id: Optional[str] = None,
+             traffic_mirror_session_business_status: Optional[str] = None,
+             traffic_mirror_session_description: Optional[str] = None,
+             traffic_mirror_session_id: Optional[str] = None,
+             traffic_mirror_session_name: Optional[str] = None,
+             traffic_mirror_source_ids: Optional[Sequence[str]] = None,
+             traffic_mirror_target_id: Optional[str] = None,
+             traffic_mirror_target_type: Optional[str] = None,
+             virtual_network_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'packetLength' in kwargs:
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if packet_length is None and 'packetLength' in kwargs:
             packet_length = kwargs['packetLength']
-        if 'trafficMirrorFilterId' in kwargs:
+        if packet_length is None:
+            raise TypeError("Missing 'packet_length' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if traffic_mirror_filter_id is None and 'trafficMirrorFilterId' in kwargs:
             traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
-        if 'trafficMirrorSessionBusinessStatus' in kwargs:
+        if traffic_mirror_filter_id is None:
+            raise TypeError("Missing 'traffic_mirror_filter_id' argument")
+        if traffic_mirror_session_business_status is None and 'trafficMirrorSessionBusinessStatus' in kwargs:
             traffic_mirror_session_business_status = kwargs['trafficMirrorSessionBusinessStatus']
-        if 'trafficMirrorSessionDescription' in kwargs:
+        if traffic_mirror_session_business_status is None:
+            raise TypeError("Missing 'traffic_mirror_session_business_status' argument")
+        if traffic_mirror_session_description is None and 'trafficMirrorSessionDescription' in kwargs:
             traffic_mirror_session_description = kwargs['trafficMirrorSessionDescription']
-        if 'trafficMirrorSessionId' in kwargs:
+        if traffic_mirror_session_description is None:
+            raise TypeError("Missing 'traffic_mirror_session_description' argument")
+        if traffic_mirror_session_id is None and 'trafficMirrorSessionId' in kwargs:
             traffic_mirror_session_id = kwargs['trafficMirrorSessionId']
-        if 'trafficMirrorSessionName' in kwargs:
+        if traffic_mirror_session_id is None:
+            raise TypeError("Missing 'traffic_mirror_session_id' argument")
+        if traffic_mirror_session_name is None and 'trafficMirrorSessionName' in kwargs:
             traffic_mirror_session_name = kwargs['trafficMirrorSessionName']
-        if 'trafficMirrorSourceIds' in kwargs:
+        if traffic_mirror_session_name is None:
+            raise TypeError("Missing 'traffic_mirror_session_name' argument")
+        if traffic_mirror_source_ids is None and 'trafficMirrorSourceIds' in kwargs:
             traffic_mirror_source_ids = kwargs['trafficMirrorSourceIds']
-        if 'trafficMirrorTargetId' in kwargs:
+        if traffic_mirror_source_ids is None:
+            raise TypeError("Missing 'traffic_mirror_source_ids' argument")
+        if traffic_mirror_target_id is None and 'trafficMirrorTargetId' in kwargs:
             traffic_mirror_target_id = kwargs['trafficMirrorTargetId']
-        if 'trafficMirrorTargetType' in kwargs:
+        if traffic_mirror_target_id is None:
+            raise TypeError("Missing 'traffic_mirror_target_id' argument")
+        if traffic_mirror_target_type is None and 'trafficMirrorTargetType' in kwargs:
             traffic_mirror_target_type = kwargs['trafficMirrorTargetType']
-        if 'virtualNetworkId' in kwargs:
+        if traffic_mirror_target_type is None:
+            raise TypeError("Missing 'traffic_mirror_target_type' argument")
+        if virtual_network_id is None and 'virtualNetworkId' in kwargs:
             virtual_network_id = kwargs['virtualNetworkId']
+        if virtual_network_id is None:
+            raise TypeError("Missing 'virtual_network_id' argument")
 
         _setter("enabled", enabled)
         _setter("id", id)
@@ -8219,32 +9081,52 @@ class GetVpcFlowLogsLogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             flow_log_id: str,
-             flow_log_name: str,
-             id: str,
-             log_store_name: str,
-             project_name: str,
-             resource_id: str,
-             resource_type: str,
-             status: str,
-             traffic_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             flow_log_id: Optional[str] = None,
+             flow_log_name: Optional[str] = None,
+             id: Optional[str] = None,
+             log_store_name: Optional[str] = None,
+             project_name: Optional[str] = None,
+             resource_id: Optional[str] = None,
+             resource_type: Optional[str] = None,
+             status: Optional[str] = None,
+             traffic_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'flowLogId' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if flow_log_id is None and 'flowLogId' in kwargs:
             flow_log_id = kwargs['flowLogId']
-        if 'flowLogName' in kwargs:
+        if flow_log_id is None:
+            raise TypeError("Missing 'flow_log_id' argument")
+        if flow_log_name is None and 'flowLogName' in kwargs:
             flow_log_name = kwargs['flowLogName']
-        if 'logStoreName' in kwargs:
+        if flow_log_name is None:
+            raise TypeError("Missing 'flow_log_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if log_store_name is None and 'logStoreName' in kwargs:
             log_store_name = kwargs['logStoreName']
-        if 'projectName' in kwargs:
+        if log_store_name is None:
+            raise TypeError("Missing 'log_store_name' argument")
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'resourceId' in kwargs:
+        if project_name is None:
+            raise TypeError("Missing 'project_name' argument")
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceType' in kwargs:
+        if resource_id is None:
+            raise TypeError("Missing 'resource_id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'trafficType' in kwargs:
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if traffic_type is None and 'trafficType' in kwargs:
             traffic_type = kwargs['trafficType']
+        if traffic_type is None:
+            raise TypeError("Missing 'traffic_type' argument")
 
         _setter("description", description)
         _setter("flow_log_id", flow_log_id)

@@ -40,16 +40,24 @@ class DomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             listen: pulumi.Input['DomainListenArgs'],
-             redirect: pulumi.Input['DomainRedirectArgs'],
+             domain: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             listen: Optional[pulumi.Input['DomainListenArgs']] = None,
+             redirect: Optional[pulumi.Input['DomainRedirectArgs']] = None,
              access_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'accessType' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if listen is None:
+            raise TypeError("Missing 'listen' argument")
+        if redirect is None:
+            raise TypeError("Missing 'redirect' argument")
+        if access_type is None and 'accessType' in kwargs:
             access_type = kwargs['accessType']
 
         _setter("domain", domain)
@@ -160,13 +168,13 @@ class _DomainState:
              redirect: Optional[pulumi.Input['DomainRedirectArgs']] = None,
              resource_manager_resource_group_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessType' in kwargs:
+        if access_type is None and 'accessType' in kwargs:
             access_type = kwargs['accessType']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'resourceManagerResourceGroupId' in kwargs:
+        if resource_manager_resource_group_id is None and 'resourceManagerResourceGroupId' in kwargs:
             resource_manager_resource_group_id = kwargs['resourceManagerResourceGroupId']
 
         if access_type is not None:
@@ -364,19 +372,11 @@ class Domain(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
-            if listen is not None and not isinstance(listen, DomainListenArgs):
-                listen = listen or {}
-                def _setter(key, value):
-                    listen[key] = value
-                DomainListenArgs._configure(_setter, **listen)
+            listen = _utilities.configure(listen, DomainListenArgs, True)
             if listen is None and not opts.urn:
                 raise TypeError("Missing required property 'listen'")
             __props__.__dict__["listen"] = listen
-            if redirect is not None and not isinstance(redirect, DomainRedirectArgs):
-                redirect = redirect or {}
-                def _setter(key, value):
-                    redirect[key] = value
-                DomainRedirectArgs._configure(_setter, **redirect)
+            redirect = _utilities.configure(redirect, DomainRedirectArgs, True)
             if redirect is None and not opts.urn:
                 raise TypeError("Missing required property 'redirect'")
             __props__.__dict__["redirect"] = redirect

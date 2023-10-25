@@ -15,46 +15,6 @@ import (
 // This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.135.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/videosurveillance"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultSystemGroup, err := videosurveillance.NewSystemGroup(ctx, "defaultSystemGroup", &videosurveillance.SystemGroupArgs{
-//				GroupName:   pulumi.String("groupname"),
-//				InProtocol:  pulumi.String("rtmp"),
-//				OutProtocol: pulumi.String("flv"),
-//				PlayDomain:  pulumi.String("your_plan_domain"),
-//				PushDomain:  pulumi.String("your_push_domain"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSystemGroups := videosurveillance.GetSystemGroupsOutput(ctx, videosurveillance.GetSystemGroupsOutputArgs{
-//				Ids: pulumi.StringArray{
-//					defaultSystemGroup.ID(),
-//				},
-//			}, nil)
-//			ctx.Export("vsGroup", defaultSystemGroups.ApplyT(func(defaultSystemGroups videosurveillance.GetSystemGroupsResult) (*string, error) {
-//				return &defaultSystemGroups.Ids[0], nil
-//			}).(pulumi.StringPtrOutput))
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetSystemGroups(ctx *pulumi.Context, args *GetSystemGroupsArgs, opts ...pulumi.InvokeOption) (*GetSystemGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSystemGroupsResult

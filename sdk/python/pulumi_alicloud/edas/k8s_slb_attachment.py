@@ -31,13 +31,15 @@ class K8sSlbAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_id: pulumi.Input[str],
+             app_id: Optional[pulumi.Input[str]] = None,
              slb_configs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appId' in kwargs:
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'slbConfigs' in kwargs:
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if slb_configs is None and 'slbConfigs' in kwargs:
             slb_configs = kwargs['slbConfigs']
 
         _setter("app_id", app_id)
@@ -89,11 +91,11 @@ class _K8sSlbAttachmentState:
              _setter: Callable[[Any, Any], None],
              app_id: Optional[pulumi.Input[str]] = None,
              slb_configs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appId' in kwargs:
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'slbConfigs' in kwargs:
+        if slb_configs is None and 'slbConfigs' in kwargs:
             slb_configs = kwargs['slbConfigs']
 
         if app_id is not None:

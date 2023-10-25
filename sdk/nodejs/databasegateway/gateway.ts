@@ -11,17 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.135.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.databasegateway.Gateway("example", {gatewayName: "example_value"});
- * ```
- *
  * ## Import
  *
  * Database Gateway Gateway can be imported using the id, e.g.

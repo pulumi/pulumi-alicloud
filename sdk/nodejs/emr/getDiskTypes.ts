@@ -11,22 +11,6 @@ import * as utilities from "../utilities";
  * system disk types available in Alibaba Cloud account when create a emr cluster.
  *
  * > **NOTE:** Available in 1.60.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.emr.getDiskTypes({
- *     clusterType: "HADOOP",
- *     destinationResource: "DataDisk",
- *     instanceChargeType: "PostPaid",
- *     instanceType: "ecs.g5.xlarge",
- *     zoneId: "cn-huhehaote-a",
- * });
- * export const dataDiskType = _default.then(_default => _default.types?.[0]?.value);
- * ```
  */
 export function getDiskTypes(args: GetDiskTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskTypesResult> {
 
@@ -99,22 +83,6 @@ export interface GetDiskTypesResult {
  * system disk types available in Alibaba Cloud account when create a emr cluster.
  *
  * > **NOTE:** Available in 1.60.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.emr.getDiskTypes({
- *     clusterType: "HADOOP",
- *     destinationResource: "DataDisk",
- *     instanceChargeType: "PostPaid",
- *     instanceType: "ecs.g5.xlarge",
- *     zoneId: "cn-huhehaote-a",
- * });
- * export const dataDiskType = _default.then(_default => _default.types?.[0]?.value);
- * ```
  */
 export function getDiskTypesOutput(args: GetDiskTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskTypesResult> {
     return pulumi.output(args).apply((a: any) => getDiskTypes(a, opts))

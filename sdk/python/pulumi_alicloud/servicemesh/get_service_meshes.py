@@ -128,23 +128,6 @@ def get_service_meshes(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.138.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.servicemesh.get_service_meshes(ids=["example_id"])
-    pulumi.export("serviceMeshServiceMeshId1", ids.meshes[0].id)
-    name_regex = alicloud.servicemesh.get_service_meshes(name_regex="^my-ServiceMesh")
-    pulumi.export("serviceMeshServiceMeshId2", name_regex.meshes[0].id)
-    status = alicloud.servicemesh.get_service_meshes(ids=["example_id"],
-        status="running")
-    pulumi.export("serviceMeshServiceMeshId3", status.meshes[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Service Mesh IDs.
     :param str name_regex: A regex string to filter results by Service Mesh name.
@@ -182,23 +165,6 @@ def get_service_meshes_output(enable_details: Optional[pulumi.Input[Optional[boo
     This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.138.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.servicemesh.get_service_meshes(ids=["example_id"])
-    pulumi.export("serviceMeshServiceMeshId1", ids.meshes[0].id)
-    name_regex = alicloud.servicemesh.get_service_meshes(name_regex="^my-ServiceMesh")
-    pulumi.export("serviceMeshServiceMeshId2", name_regex.meshes[0].id)
-    status = alicloud.servicemesh.get_service_meshes(ids=["example_id"],
-        status="running")
-    pulumi.export("serviceMeshServiceMeshId3", status.meshes[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Service Mesh IDs.

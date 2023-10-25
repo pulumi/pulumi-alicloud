@@ -9,59 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.0.0+.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * // Create a RAM Role Policy attachment.
- * const role = new alicloud.ram.Role("role", {
- *     document: `    {
- *       "Statement": [
- *         {
- *           "Action": "sts:AssumeRole",
- *           "Effect": "Allow",
- *           "Principal": {
- *             "Service": [
- *               "apigateway.aliyuncs.com", 
- *               "ecs.aliyuncs.com"
- *             ]
- *           }
- *         }
- *       ],
- *       "Version": "1"
- *     }
- * `,
- *     description: "this is a role test.",
- * });
- * const policy = new alicloud.ram.Policy("policy", {
- *     document: `  {
- *     "Statement": [
- *       {
- *         "Action": [
- *           "oss:ListObjects",
- *           "oss:GetObject"
- *         ],
- *         "Effect": "Allow",
- *         "Resource": [
- *           "acs:oss:*:*:mybucket",
- *           "acs:oss:*:*:mybucket/*"
- *         ]
- *       }
- *     ],
- *       "Version": "1"
- *   }
- * `,
- *     description: "this is a policy test",
- * });
- * const attach = new alicloud.ram.RolePolicyAttachment("attach", {
- *     policyName: policy.name,
- *     policyType: policy.type,
- *     roleName: role.name,
- * });
- * ```
- *
  * ## Import
  *
  * RAM Role Policy attachment can be imported using the id, e.g.

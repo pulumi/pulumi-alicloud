@@ -43,23 +43,29 @@ class CompliancePackArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compliance_pack_name: pulumi.Input[str],
-             description: pulumi.Input[str],
-             risk_level: pulumi.Input[int],
+             compliance_pack_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             risk_level: Optional[pulumi.Input[int]] = None,
              compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
              config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]] = None,
              config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'compliancePackName' in kwargs:
+        if compliance_pack_name is None and 'compliancePackName' in kwargs:
             compliance_pack_name = kwargs['compliancePackName']
-        if 'riskLevel' in kwargs:
+        if compliance_pack_name is None:
+            raise TypeError("Missing 'compliance_pack_name' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if risk_level is None and 'riskLevel' in kwargs:
             risk_level = kwargs['riskLevel']
-        if 'compliancePackTemplateId' in kwargs:
+        if risk_level is None:
+            raise TypeError("Missing 'risk_level' argument")
+        if compliance_pack_template_id is None and 'compliancePackTemplateId' in kwargs:
             compliance_pack_template_id = kwargs['compliancePackTemplateId']
-        if 'configRuleIds' in kwargs:
+        if config_rule_ids is None and 'configRuleIds' in kwargs:
             config_rule_ids = kwargs['configRuleIds']
-        if 'configRules' in kwargs:
+        if config_rules is None and 'configRules' in kwargs:
             config_rules = kwargs['configRules']
 
         _setter("compliance_pack_name", compliance_pack_name)
@@ -191,17 +197,17 @@ class _CompliancePackState:
              description: Optional[pulumi.Input[str]] = None,
              risk_level: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'compliancePackName' in kwargs:
+        if compliance_pack_name is None and 'compliancePackName' in kwargs:
             compliance_pack_name = kwargs['compliancePackName']
-        if 'compliancePackTemplateId' in kwargs:
+        if compliance_pack_template_id is None and 'compliancePackTemplateId' in kwargs:
             compliance_pack_template_id = kwargs['compliancePackTemplateId']
-        if 'configRuleIds' in kwargs:
+        if config_rule_ids is None and 'configRuleIds' in kwargs:
             config_rule_ids = kwargs['configRuleIds']
-        if 'configRules' in kwargs:
+        if config_rules is None and 'configRules' in kwargs:
             config_rules = kwargs['configRules']
-        if 'riskLevel' in kwargs:
+        if risk_level is None and 'riskLevel' in kwargs:
             risk_level = kwargs['riskLevel']
 
         if compliance_pack_name is not None:
@@ -329,58 +335,6 @@ class CompliancePack(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.124.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example-config-name"
-        default_regions = alicloud.get_regions(current=True)
-        rule1 = alicloud.cfg.Rule("rule1",
-            description=name,
-            source_owner="ALIYUN",
-            source_identifier="ram-user-ak-create-date-expired-check",
-            risk_level=1,
-            maximum_execution_frequency="TwentyFour_Hours",
-            region_ids_scope=default_regions.regions[0].id,
-            config_rule_trigger_types="ScheduledNotification",
-            resource_types_scopes=["ACS::RAM::User"],
-            rule_name="ciscompliancecheck_ram-user-ak-create-date-expired-check",
-            input_parameters={
-                "days": "90",
-            })
-        rule2 = alicloud.cfg.Rule("rule2",
-            description=name,
-            source_owner="ALIYUN",
-            source_identifier="adb-cluster-maintain-time-check",
-            risk_level=2,
-            region_ids_scope=default_regions.regions[0].id,
-            config_rule_trigger_types="ScheduledNotification",
-            resource_types_scopes=["ACS::ADB::DBCluster"],
-            rule_name="governance-evaluation-adb-cluster-maintain-time-check",
-            input_parameters={
-                "maintainTimes": "02:00-04:00,06:00-08:00,12:00-13:00",
-            })
-        default_compliance_pack = alicloud.cfg.CompliancePack("defaultCompliancePack",
-            compliance_pack_name=name,
-            description="CloudGovernanceCenter evaluation",
-            risk_level=2,
-            config_rule_ids=[
-                alicloud.cfg.CompliancePackConfigRuleIdArgs(
-                    config_rule_id=rule1.id,
-                ),
-                alicloud.cfg.CompliancePackConfigRuleIdArgs(
-                    config_rule_id=rule2.id,
-                ),
-            ])
-        ```
-
         ## Import
 
         Cloud Config Compliance Pack can be imported using the id, e.g.
@@ -410,58 +364,6 @@ class CompliancePack(pulumi.CustomResource):
         For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createcompliancepack).
 
         > **NOTE:** Available since v1.124.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example-config-name"
-        default_regions = alicloud.get_regions(current=True)
-        rule1 = alicloud.cfg.Rule("rule1",
-            description=name,
-            source_owner="ALIYUN",
-            source_identifier="ram-user-ak-create-date-expired-check",
-            risk_level=1,
-            maximum_execution_frequency="TwentyFour_Hours",
-            region_ids_scope=default_regions.regions[0].id,
-            config_rule_trigger_types="ScheduledNotification",
-            resource_types_scopes=["ACS::RAM::User"],
-            rule_name="ciscompliancecheck_ram-user-ak-create-date-expired-check",
-            input_parameters={
-                "days": "90",
-            })
-        rule2 = alicloud.cfg.Rule("rule2",
-            description=name,
-            source_owner="ALIYUN",
-            source_identifier="adb-cluster-maintain-time-check",
-            risk_level=2,
-            region_ids_scope=default_regions.regions[0].id,
-            config_rule_trigger_types="ScheduledNotification",
-            resource_types_scopes=["ACS::ADB::DBCluster"],
-            rule_name="governance-evaluation-adb-cluster-maintain-time-check",
-            input_parameters={
-                "maintainTimes": "02:00-04:00,06:00-08:00,12:00-13:00",
-            })
-        default_compliance_pack = alicloud.cfg.CompliancePack("defaultCompliancePack",
-            compliance_pack_name=name,
-            description="CloudGovernanceCenter evaluation",
-            risk_level=2,
-            config_rule_ids=[
-                alicloud.cfg.CompliancePackConfigRuleIdArgs(
-                    config_rule_id=rule1.id,
-                ),
-                alicloud.cfg.CompliancePackConfigRuleIdArgs(
-                    config_rule_id=rule2.id,
-                ),
-            ])
-        ```
 
         ## Import
 

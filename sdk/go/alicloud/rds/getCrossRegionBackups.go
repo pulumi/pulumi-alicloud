@@ -15,37 +15,6 @@ import (
 // This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.196.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			backups, err := rds.GetCrossRegionBackups(ctx, &rds.GetCrossRegionBackupsArgs{
-//				DbInstanceId: "example_value",
-//				StartTime:    pulumi.StringRef("2022-12-01T00:00:00Z"),
-//				EndTime:      pulumi.StringRef("2022-12-16T00:00:00Z"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstRdsCrossRegionBackups", backups.Backups[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetCrossRegionBackups(ctx *pulumi.Context, args *GetCrossRegionBackupsArgs, opts ...pulumi.InvokeOption) (*GetCrossRegionBackupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCrossRegionBackupsResult

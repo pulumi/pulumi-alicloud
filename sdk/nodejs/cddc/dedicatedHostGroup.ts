@@ -11,32 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.132.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "10.4.0.0/16",
- * });
- * const defaultDedicatedHostGroup = new alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup", {
- *     engine: "MySQL",
- *     vpcId: defaultNetwork.id,
- *     cpuAllocationRatio: 101,
- *     memAllocationRatio: 50,
- *     diskAllocationRatio: 200,
- *     allocationPolicy: "Evenly",
- *     hostReplacePolicy: "Manual",
- *     dedicatedHostGroupDesc: name,
- * });
- * ```
- *
  * ## Import
  *
  * ApsaraDB for MyBase Dedicated Host Group can be imported using the id, e.g.

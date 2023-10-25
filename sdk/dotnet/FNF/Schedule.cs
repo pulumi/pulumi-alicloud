@@ -16,43 +16,6 @@ namespace Pulumi.AliCloud.FNF
     /// 
     /// &gt; **NOTE:** Available in v1.105.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleFlow = new AliCloud.FNF.Flow("exampleFlow", new()
-    ///     {
-    ///         Definition = @"  version: v1beta1
-    ///   type: flow
-    ///   steps:
-    ///     - type: pass
-    ///       name: helloworld
-    /// ",
-    ///         Description = "tf-testaccFnFFlow983041",
-    ///         Type = "FDL",
-    ///     });
-    /// 
-    ///     var exampleSchedule = new AliCloud.FNF.Schedule("exampleSchedule", new()
-    ///     {
-    ///         CronExpression = "30 9 * * * *",
-    ///         Description = "tf-testaccFnFSchedule983041",
-    ///         Enable = true,
-    ///         FlowName = exampleFlow.Name,
-    ///         Payload = "{\"tf-test\": \"test success\"}",
-    ///         ScheduleName = "tf-testaccFnFSchedule983041",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Serverless Workflow Schedule can be imported using the id, e.g.

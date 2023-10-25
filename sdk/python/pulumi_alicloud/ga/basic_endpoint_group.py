@@ -44,26 +44,30 @@ class BasicEndpointGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: pulumi.Input[str],
-             endpoint_group_region: pulumi.Input[str],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             endpoint_group_region: Optional[pulumi.Input[str]] = None,
              basic_endpoint_group_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              endpoint_address: Optional[pulumi.Input[str]] = None,
              endpoint_sub_address: Optional[pulumi.Input[str]] = None,
              endpoint_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'endpointGroupRegion' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if endpoint_group_region is None and 'endpointGroupRegion' in kwargs:
             endpoint_group_region = kwargs['endpointGroupRegion']
-        if 'basicEndpointGroupName' in kwargs:
+        if endpoint_group_region is None:
+            raise TypeError("Missing 'endpoint_group_region' argument")
+        if basic_endpoint_group_name is None and 'basicEndpointGroupName' in kwargs:
             basic_endpoint_group_name = kwargs['basicEndpointGroupName']
-        if 'endpointAddress' in kwargs:
+        if endpoint_address is None and 'endpointAddress' in kwargs:
             endpoint_address = kwargs['endpointAddress']
-        if 'endpointSubAddress' in kwargs:
+        if endpoint_sub_address is None and 'endpointSubAddress' in kwargs:
             endpoint_sub_address = kwargs['endpointSubAddress']
-        if 'endpointType' in kwargs:
+        if endpoint_type is None and 'endpointType' in kwargs:
             endpoint_type = kwargs['endpointType']
 
         _setter("accelerator_id", accelerator_id)
@@ -208,19 +212,19 @@ class _BasicEndpointGroupState:
              endpoint_sub_address: Optional[pulumi.Input[str]] = None,
              endpoint_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'basicEndpointGroupName' in kwargs:
+        if basic_endpoint_group_name is None and 'basicEndpointGroupName' in kwargs:
             basic_endpoint_group_name = kwargs['basicEndpointGroupName']
-        if 'endpointAddress' in kwargs:
+        if endpoint_address is None and 'endpointAddress' in kwargs:
             endpoint_address = kwargs['endpointAddress']
-        if 'endpointGroupRegion' in kwargs:
+        if endpoint_group_region is None and 'endpointGroupRegion' in kwargs:
             endpoint_group_region = kwargs['endpointGroupRegion']
-        if 'endpointSubAddress' in kwargs:
+        if endpoint_sub_address is None and 'endpointSubAddress' in kwargs:
             endpoint_sub_address = kwargs['endpointSubAddress']
-        if 'endpointType' in kwargs:
+        if endpoint_type is None and 'endpointType' in kwargs:
             endpoint_type = kwargs['endpointType']
 
         if accelerator_id is not None:
@@ -357,52 +361,6 @@ class BasicEndpointGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        endpoint_group_region = config.get("endpointGroupRegion")
-        if endpoint_group_region is None:
-            endpoint_group_region = "cn-beijing"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
-            load_balancer_name="terraform-example",
-            vswitch_id=default_switch.id,
-            load_balancer_spec="slb.s2.small",
-            address_type="intranet")
-        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
-            duration=1,
-            basic_accelerator_name="terraform-example",
-            description="terraform-example",
-            bandwidth_billing_type="CDT",
-            auto_use_coupon="true",
-            auto_pay=True)
-        default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup",
-            accelerator_id=default_basic_accelerator.id,
-            endpoint_group_region=endpoint_group_region,
-            endpoint_type="SLB",
-            endpoint_address=default_application_load_balancer.id,
-            endpoint_sub_address="192.168.0.1",
-            basic_endpoint_group_name="terraform-example",
-            description="terraform-example")
-        ```
-
         ## Import
 
         Global Accelerator (GA) Basic Endpoint Group can be imported using the id, e.g.
@@ -433,52 +391,6 @@ class BasicEndpointGroup(pulumi.CustomResource):
         For information about Global Accelerator (GA) Basic Endpoint Group and how to use it, see [What is Basic Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicendpointgroup).
 
         > **NOTE:** Available since v1.194.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        endpoint_group_region = config.get("endpointGroupRegion")
-        if endpoint_group_region is None:
-            endpoint_group_region = "cn-beijing"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
-            load_balancer_name="terraform-example",
-            vswitch_id=default_switch.id,
-            load_balancer_spec="slb.s2.small",
-            address_type="intranet")
-        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
-            duration=1,
-            basic_accelerator_name="terraform-example",
-            description="terraform-example",
-            bandwidth_billing_type="CDT",
-            auto_use_coupon="true",
-            auto_pay=True)
-        default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup",
-            accelerator_id=default_basic_accelerator.id,
-            endpoint_group_region=endpoint_group_region,
-            endpoint_type="SLB",
-            endpoint_address=default_application_load_balancer.id,
-            endpoint_sub_address="192.168.0.1",
-            basic_endpoint_group_name="terraform-example",
-            description="terraform-example")
-        ```
 
         ## Import
 

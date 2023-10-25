@@ -65,8 +65,8 @@ class BucketObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             key: pulumi.Input[str],
+             bucket: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
              acl: Optional[pulumi.Input[str]] = None,
              cache_control: Optional[pulumi.Input[str]] = None,
              content: Optional[pulumi.Input[str]] = None,
@@ -78,21 +78,25 @@ class BucketObjectArgs:
              kms_key_id: Optional[pulumi.Input[str]] = None,
              server_side_encryption: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cacheControl' in kwargs:
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if cache_control is None and 'cacheControl' in kwargs:
             cache_control = kwargs['cacheControl']
-        if 'contentDisposition' in kwargs:
+        if content_disposition is None and 'contentDisposition' in kwargs:
             content_disposition = kwargs['contentDisposition']
-        if 'contentEncoding' in kwargs:
+        if content_encoding is None and 'contentEncoding' in kwargs:
             content_encoding = kwargs['contentEncoding']
-        if 'contentMd5' in kwargs:
+        if content_md5 is None and 'contentMd5' in kwargs:
             content_md5 = kwargs['contentMd5']
-        if 'contentType' in kwargs:
+        if content_type is None and 'contentType' in kwargs:
             content_type = kwargs['contentType']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'serverSideEncryption' in kwargs:
+        if server_side_encryption is None and 'serverSideEncryption' in kwargs:
             server_side_encryption = kwargs['serverSideEncryption']
 
         _setter("bucket", bucket)
@@ -359,25 +363,25 @@ class _BucketObjectState:
              server_side_encryption: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cacheControl' in kwargs:
+        if cache_control is None and 'cacheControl' in kwargs:
             cache_control = kwargs['cacheControl']
-        if 'contentDisposition' in kwargs:
+        if content_disposition is None and 'contentDisposition' in kwargs:
             content_disposition = kwargs['contentDisposition']
-        if 'contentEncoding' in kwargs:
+        if content_encoding is None and 'contentEncoding' in kwargs:
             content_encoding = kwargs['contentEncoding']
-        if 'contentLength' in kwargs:
+        if content_length is None and 'contentLength' in kwargs:
             content_length = kwargs['contentLength']
-        if 'contentMd5' in kwargs:
+        if content_md5 is None and 'contentMd5' in kwargs:
             content_md5 = kwargs['contentMd5']
-        if 'contentType' in kwargs:
+        if content_type is None and 'contentType' in kwargs:
             content_type = kwargs['contentType']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'serverSideEncryption' in kwargs:
+        if server_side_encryption is None and 'serverSideEncryption' in kwargs:
             server_side_encryption = kwargs['serverSideEncryption']
-        if 'versionId' in kwargs:
+        if version_id is None and 'versionId' in kwargs:
             version_id = kwargs['versionId']
 
         if acl is not None:
@@ -632,42 +636,6 @@ class BucketObject(pulumi.CustomResource):
         Provides a resource to put a object(content or file) to a oss bucket.
 
         ## Example Usage
-        ### Uploading a file to a bucket
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_bucket = alicloud.oss.Bucket("defaultBucket",
-            bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
-            acl="private")
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
-            bucket=default_bucket.bucket,
-            key="example_key",
-            source="./main.tf")
-        ```
-        ### Uploading a content to a bucket
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_bucket = alicloud.oss.Bucket("defaultBucket",
-            bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
-            acl="private")
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
-            bucket=default_bucket.bucket,
-            key="example_key",
-            content="the content that you want to upload.")
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -698,42 +666,6 @@ class BucketObject(pulumi.CustomResource):
         Provides a resource to put a object(content or file) to a oss bucket.
 
         ## Example Usage
-        ### Uploading a file to a bucket
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_bucket = alicloud.oss.Bucket("defaultBucket",
-            bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
-            acl="private")
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
-            bucket=default_bucket.bucket,
-            key="example_key",
-            source="./main.tf")
-        ```
-        ### Uploading a content to a bucket
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_bucket = alicloud.oss.Bucket("defaultBucket",
-            bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
-            acl="private")
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
-            bucket=default_bucket.bucket,
-            key="example_key",
-            content="the content that you want to upload.")
-        ```
 
         :param str resource_name: The name of the resource.
         :param BucketObjectArgs args: The arguments to use to populate this resource's properties.

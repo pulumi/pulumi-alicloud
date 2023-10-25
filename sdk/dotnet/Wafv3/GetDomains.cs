@@ -15,47 +15,6 @@ namespace Pulumi.AliCloud.Wafv3
         /// This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available since v1.200.0.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var defaultInstances = AliCloud.Wafv3.GetInstances.Invoke();
-        /// 
-        ///     var ids = AliCloud.Wafv3.GetDomains.Invoke(new()
-        ///     {
-        ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var defaultDomains = AliCloud.Wafv3.GetDomains.Invoke(new()
-        ///     {
-        ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
-        ///         Domain = "zctest12.wafqax.top",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["wafv3DomainsId1"] = ids.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///         ["wafv3DomainsId2"] = defaultDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:wafv3/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
@@ -64,47 +23,6 @@ namespace Pulumi.AliCloud.Wafv3
         /// This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available since v1.200.0.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var defaultInstances = AliCloud.Wafv3.GetInstances.Invoke();
-        /// 
-        ///     var ids = AliCloud.Wafv3.GetDomains.Invoke(new()
-        ///     {
-        ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var defaultDomains = AliCloud.Wafv3.GetDomains.Invoke(new()
-        ///     {
-        ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
-        ///         Domain = "zctest12.wafqax.top",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["wafv3DomainsId1"] = ids.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///         ["wafv3DomainsId2"] = defaultDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:wafv3/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());

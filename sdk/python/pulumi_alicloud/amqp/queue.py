@@ -69,9 +69,9 @@ class QueueArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
-             queue_name: pulumi.Input[str],
-             virtual_host_name: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             queue_name: Optional[pulumi.Input[str]] = None,
+             virtual_host_name: Optional[pulumi.Input[str]] = None,
              auto_delete_state: Optional[pulumi.Input[bool]] = None,
              auto_expire_state: Optional[pulumi.Input[str]] = None,
              dead_letter_exchange: Optional[pulumi.Input[str]] = None,
@@ -80,29 +80,35 @@ class QueueArgs:
              max_length: Optional[pulumi.Input[str]] = None,
              maximum_priority: Optional[pulumi.Input[int]] = None,
              message_ttl: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'queueName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if queue_name is None and 'queueName' in kwargs:
             queue_name = kwargs['queueName']
-        if 'virtualHostName' in kwargs:
+        if queue_name is None:
+            raise TypeError("Missing 'queue_name' argument")
+        if virtual_host_name is None and 'virtualHostName' in kwargs:
             virtual_host_name = kwargs['virtualHostName']
-        if 'autoDeleteState' in kwargs:
+        if virtual_host_name is None:
+            raise TypeError("Missing 'virtual_host_name' argument")
+        if auto_delete_state is None and 'autoDeleteState' in kwargs:
             auto_delete_state = kwargs['autoDeleteState']
-        if 'autoExpireState' in kwargs:
+        if auto_expire_state is None and 'autoExpireState' in kwargs:
             auto_expire_state = kwargs['autoExpireState']
-        if 'deadLetterExchange' in kwargs:
+        if dead_letter_exchange is None and 'deadLetterExchange' in kwargs:
             dead_letter_exchange = kwargs['deadLetterExchange']
-        if 'deadLetterRoutingKey' in kwargs:
+        if dead_letter_routing_key is None and 'deadLetterRoutingKey' in kwargs:
             dead_letter_routing_key = kwargs['deadLetterRoutingKey']
-        if 'exclusiveState' in kwargs:
+        if exclusive_state is None and 'exclusiveState' in kwargs:
             exclusive_state = kwargs['exclusiveState']
-        if 'maxLength' in kwargs:
+        if max_length is None and 'maxLength' in kwargs:
             max_length = kwargs['maxLength']
-        if 'maximumPriority' in kwargs:
+        if maximum_priority is None and 'maximumPriority' in kwargs:
             maximum_priority = kwargs['maximumPriority']
-        if 'messageTtl' in kwargs:
+        if message_ttl is None and 'messageTtl' in kwargs:
             message_ttl = kwargs['messageTtl']
 
         _setter("instance_id", instance_id)
@@ -340,29 +346,29 @@ class _QueueState:
              message_ttl: Optional[pulumi.Input[str]] = None,
              queue_name: Optional[pulumi.Input[str]] = None,
              virtual_host_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoDeleteState' in kwargs:
+        if auto_delete_state is None and 'autoDeleteState' in kwargs:
             auto_delete_state = kwargs['autoDeleteState']
-        if 'autoExpireState' in kwargs:
+        if auto_expire_state is None and 'autoExpireState' in kwargs:
             auto_expire_state = kwargs['autoExpireState']
-        if 'deadLetterExchange' in kwargs:
+        if dead_letter_exchange is None and 'deadLetterExchange' in kwargs:
             dead_letter_exchange = kwargs['deadLetterExchange']
-        if 'deadLetterRoutingKey' in kwargs:
+        if dead_letter_routing_key is None and 'deadLetterRoutingKey' in kwargs:
             dead_letter_routing_key = kwargs['deadLetterRoutingKey']
-        if 'exclusiveState' in kwargs:
+        if exclusive_state is None and 'exclusiveState' in kwargs:
             exclusive_state = kwargs['exclusiveState']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'maxLength' in kwargs:
+        if max_length is None and 'maxLength' in kwargs:
             max_length = kwargs['maxLength']
-        if 'maximumPriority' in kwargs:
+        if maximum_priority is None and 'maximumPriority' in kwargs:
             maximum_priority = kwargs['maximumPriority']
-        if 'messageTtl' in kwargs:
+        if message_ttl is None and 'messageTtl' in kwargs:
             message_ttl = kwargs['messageTtl']
-        if 'queueName' in kwargs:
+        if queue_name is None and 'queueName' in kwargs:
             queue_name = kwargs['queueName']
-        if 'virtualHostName' in kwargs:
+        if virtual_host_name is None and 'virtualHostName' in kwargs:
             virtual_host_name = kwargs['virtualHostName']
 
         if auto_delete_state is not None:
@@ -558,39 +564,6 @@ class Queue(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.127.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_instance = alicloud.amqp.Instance("defaultInstance",
-            instance_type="enterprise",
-            max_tps="3000",
-            queue_capacity="200",
-            storage_size="700",
-            support_eip=False,
-            max_eip_tps="128",
-            payment_type="Subscription",
-            period=1)
-        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
-            instance_id=default_instance.id,
-            virtual_host_name="tf-example")
-        default_exchange = alicloud.amqp.Exchange("defaultExchange",
-            auto_delete_state=False,
-            exchange_name="tf-example",
-            exchange_type="DIRECT",
-            instance_id=default_instance.id,
-            internal=False,
-            virtual_host_name=default_virtual_host.virtual_host_name)
-        example = alicloud.amqp.Queue("example",
-            instance_id=default_instance.id,
-            queue_name="tf-example",
-            virtual_host_name=default_virtual_host.virtual_host_name)
-        ```
-
         ## Import
 
         RabbitMQ (AMQP) Queue can be imported using the id, e.g.
@@ -638,39 +611,6 @@ class Queue(pulumi.CustomResource):
         For information about RabbitMQ (AMQP) Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createqueue).
 
         > **NOTE:** Available since v1.127.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_instance = alicloud.amqp.Instance("defaultInstance",
-            instance_type="enterprise",
-            max_tps="3000",
-            queue_capacity="200",
-            storage_size="700",
-            support_eip=False,
-            max_eip_tps="128",
-            payment_type="Subscription",
-            period=1)
-        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
-            instance_id=default_instance.id,
-            virtual_host_name="tf-example")
-        default_exchange = alicloud.amqp.Exchange("defaultExchange",
-            auto_delete_state=False,
-            exchange_name="tf-example",
-            exchange_type="DIRECT",
-            instance_id=default_instance.id,
-            internal=False,
-            virtual_host_name=default_virtual_host.virtual_host_name)
-        example = alicloud.amqp.Queue("example",
-            instance_id=default_instance.id,
-            queue_name="tf-example",
-            virtual_host_name=default_virtual_host.virtual_host_name)
-        ```
 
         ## Import
 

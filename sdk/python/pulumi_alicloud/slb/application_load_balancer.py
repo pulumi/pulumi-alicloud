@@ -110,35 +110,35 @@ class ApplicationLoadBalancerArgs:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addressIpVersion' in kwargs:
+        if address_ip_version is None and 'addressIpVersion' in kwargs:
             address_ip_version = kwargs['addressIpVersion']
-        if 'addressType' in kwargs:
+        if address_type is None and 'addressType' in kwargs:
             address_type = kwargs['addressType']
-        if 'deleteProtection' in kwargs:
+        if delete_protection is None and 'deleteProtection' in kwargs:
             delete_protection = kwargs['deleteProtection']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'loadBalancerName' in kwargs:
+        if load_balancer_name is None and 'loadBalancerName' in kwargs:
             load_balancer_name = kwargs['loadBalancerName']
-        if 'loadBalancerSpec' in kwargs:
+        if load_balancer_spec is None and 'loadBalancerSpec' in kwargs:
             load_balancer_spec = kwargs['loadBalancerSpec']
-        if 'masterZoneId' in kwargs:
+        if master_zone_id is None and 'masterZoneId' in kwargs:
             master_zone_id = kwargs['masterZoneId']
-        if 'modificationProtectionReason' in kwargs:
+        if modification_protection_reason is None and 'modificationProtectionReason' in kwargs:
             modification_protection_reason = kwargs['modificationProtectionReason']
-        if 'modificationProtectionStatus' in kwargs:
+        if modification_protection_status is None and 'modificationProtectionStatus' in kwargs:
             modification_protection_status = kwargs['modificationProtectionStatus']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'slaveZoneId' in kwargs:
+        if slave_zone_id is None and 'slaveZoneId' in kwargs:
             slave_zone_id = kwargs['slaveZoneId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if address is not None:
@@ -549,35 +549,35 @@ class _ApplicationLoadBalancerState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addressIpVersion' in kwargs:
+        if address_ip_version is None and 'addressIpVersion' in kwargs:
             address_ip_version = kwargs['addressIpVersion']
-        if 'addressType' in kwargs:
+        if address_type is None and 'addressType' in kwargs:
             address_type = kwargs['addressType']
-        if 'deleteProtection' in kwargs:
+        if delete_protection is None and 'deleteProtection' in kwargs:
             delete_protection = kwargs['deleteProtection']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'loadBalancerName' in kwargs:
+        if load_balancer_name is None and 'loadBalancerName' in kwargs:
             load_balancer_name = kwargs['loadBalancerName']
-        if 'loadBalancerSpec' in kwargs:
+        if load_balancer_spec is None and 'loadBalancerSpec' in kwargs:
             load_balancer_spec = kwargs['loadBalancerSpec']
-        if 'masterZoneId' in kwargs:
+        if master_zone_id is None and 'masterZoneId' in kwargs:
             master_zone_id = kwargs['masterZoneId']
-        if 'modificationProtectionReason' in kwargs:
+        if modification_protection_reason is None and 'modificationProtectionReason' in kwargs:
             modification_protection_reason = kwargs['modificationProtectionReason']
-        if 'modificationProtectionStatus' in kwargs:
+        if modification_protection_status is None and 'modificationProtectionStatus' in kwargs:
             modification_protection_status = kwargs['modificationProtectionStatus']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'slaveZoneId' in kwargs:
+        if slave_zone_id is None and 'slaveZoneId' in kwargs:
             slave_zone_id = kwargs['slaveZoneId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if address is not None:

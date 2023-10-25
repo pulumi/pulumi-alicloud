@@ -84,13 +84,13 @@ class ConnectionBgpConfig(dict):
              local_asn: Optional[str] = None,
              local_bgp_ip: Optional[str] = None,
              tunnel_cidr: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'localAsn' in kwargs:
+        if local_asn is None and 'localAsn' in kwargs:
             local_asn = kwargs['localAsn']
-        if 'localBgpIp' in kwargs:
+        if local_bgp_ip is None and 'localBgpIp' in kwargs:
             local_bgp_ip = kwargs['localBgpIp']
-        if 'tunnelCidr' in kwargs:
+        if tunnel_cidr is None and 'tunnelCidr' in kwargs:
             tunnel_cidr = kwargs['tunnelCidr']
 
         if enable is not None:
@@ -166,7 +166,7 @@ class ConnectionHealthCheckConfig(dict):
              interval: Optional[int] = None,
              retry: Optional[int] = None,
              sip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if dip is not None:
@@ -299,23 +299,23 @@ class ConnectionIkeConfig(dict):
              ike_remote_id: Optional[str] = None,
              ike_version: Optional[str] = None,
              psk: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ikeAuthAlg' in kwargs:
+        if ike_auth_alg is None and 'ikeAuthAlg' in kwargs:
             ike_auth_alg = kwargs['ikeAuthAlg']
-        if 'ikeEncAlg' in kwargs:
+        if ike_enc_alg is None and 'ikeEncAlg' in kwargs:
             ike_enc_alg = kwargs['ikeEncAlg']
-        if 'ikeLifetime' in kwargs:
+        if ike_lifetime is None and 'ikeLifetime' in kwargs:
             ike_lifetime = kwargs['ikeLifetime']
-        if 'ikeLocalId' in kwargs:
+        if ike_local_id is None and 'ikeLocalId' in kwargs:
             ike_local_id = kwargs['ikeLocalId']
-        if 'ikeMode' in kwargs:
+        if ike_mode is None and 'ikeMode' in kwargs:
             ike_mode = kwargs['ikeMode']
-        if 'ikePfs' in kwargs:
+        if ike_pfs is None and 'ikePfs' in kwargs:
             ike_pfs = kwargs['ikePfs']
-        if 'ikeRemoteId' in kwargs:
+        if ike_remote_id is None and 'ikeRemoteId' in kwargs:
             ike_remote_id = kwargs['ikeRemoteId']
-        if 'ikeVersion' in kwargs:
+        if ike_version is None and 'ikeVersion' in kwargs:
             ike_version = kwargs['ikeVersion']
 
         if ike_auth_alg is not None:
@@ -460,15 +460,15 @@ class ConnectionIpsecConfig(dict):
              ipsec_enc_alg: Optional[str] = None,
              ipsec_lifetime: Optional[int] = None,
              ipsec_pfs: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipsecAuthAlg' in kwargs:
+        if ipsec_auth_alg is None and 'ipsecAuthAlg' in kwargs:
             ipsec_auth_alg = kwargs['ipsecAuthAlg']
-        if 'ipsecEncAlg' in kwargs:
+        if ipsec_enc_alg is None and 'ipsecEncAlg' in kwargs:
             ipsec_enc_alg = kwargs['ipsecEncAlg']
-        if 'ipsecLifetime' in kwargs:
+        if ipsec_lifetime is None and 'ipsecLifetime' in kwargs:
             ipsec_lifetime = kwargs['ipsecLifetime']
-        if 'ipsecPfs' in kwargs:
+        if ipsec_pfs is None and 'ipsecPfs' in kwargs:
             ipsec_pfs = kwargs['ipsecPfs']
 
         if ipsec_auth_alg is not None:
@@ -561,13 +561,13 @@ class GatewayVpnAttachmentBgpConfig(dict):
              local_asn: Optional[int] = None,
              local_bgp_ip: Optional[str] = None,
              tunnel_cidr: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'localAsn' in kwargs:
+        if local_asn is None and 'localAsn' in kwargs:
             local_asn = kwargs['localAsn']
-        if 'localBgpIp' in kwargs:
+        if local_bgp_ip is None and 'localBgpIp' in kwargs:
             local_bgp_ip = kwargs['localBgpIp']
-        if 'tunnelCidr' in kwargs:
+        if tunnel_cidr is None and 'tunnelCidr' in kwargs:
             tunnel_cidr = kwargs['tunnelCidr']
 
         if enable is not None:
@@ -647,7 +647,7 @@ class GatewayVpnAttachmentHealthCheckConfig(dict):
              policy: Optional[str] = None,
              retry: Optional[int] = None,
              sip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if dip is not None:
@@ -790,23 +790,23 @@ class GatewayVpnAttachmentIkeConfig(dict):
              local_id: Optional[str] = None,
              psk: Optional[str] = None,
              remote_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ikeAuthAlg' in kwargs:
+        if ike_auth_alg is None and 'ikeAuthAlg' in kwargs:
             ike_auth_alg = kwargs['ikeAuthAlg']
-        if 'ikeEncAlg' in kwargs:
+        if ike_enc_alg is None and 'ikeEncAlg' in kwargs:
             ike_enc_alg = kwargs['ikeEncAlg']
-        if 'ikeLifetime' in kwargs:
+        if ike_lifetime is None and 'ikeLifetime' in kwargs:
             ike_lifetime = kwargs['ikeLifetime']
-        if 'ikeMode' in kwargs:
+        if ike_mode is None and 'ikeMode' in kwargs:
             ike_mode = kwargs['ikeMode']
-        if 'ikePfs' in kwargs:
+        if ike_pfs is None and 'ikePfs' in kwargs:
             ike_pfs = kwargs['ikePfs']
-        if 'ikeVersion' in kwargs:
+        if ike_version is None and 'ikeVersion' in kwargs:
             ike_version = kwargs['ikeVersion']
-        if 'localId' in kwargs:
+        if local_id is None and 'localId' in kwargs:
             local_id = kwargs['localId']
-        if 'remoteId' in kwargs:
+        if remote_id is None and 'remoteId' in kwargs:
             remote_id = kwargs['remoteId']
 
         if ike_auth_alg is not None:
@@ -951,15 +951,15 @@ class GatewayVpnAttachmentIpsecConfig(dict):
              ipsec_enc_alg: Optional[str] = None,
              ipsec_lifetime: Optional[int] = None,
              ipsec_pfs: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipsecAuthAlg' in kwargs:
+        if ipsec_auth_alg is None and 'ipsecAuthAlg' in kwargs:
             ipsec_auth_alg = kwargs['ipsecAuthAlg']
-        if 'ipsecEncAlg' in kwargs:
+        if ipsec_enc_alg is None and 'ipsecEncAlg' in kwargs:
             ipsec_enc_alg = kwargs['ipsecEncAlg']
-        if 'ipsecLifetime' in kwargs:
+        if ipsec_lifetime is None and 'ipsecLifetime' in kwargs:
             ipsec_lifetime = kwargs['ipsecLifetime']
-        if 'ipsecPfs' in kwargs:
+        if ipsec_pfs is None and 'ipsecPfs' in kwargs:
             ipsec_pfs = kwargs['ipsecPfs']
 
         if ipsec_auth_alg is not None:
@@ -1078,23 +1078,23 @@ class IpsecServerIkeConfig(dict):
              ike_version: Optional[str] = None,
              local_id: Optional[str] = None,
              remote_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ikeAuthAlg' in kwargs:
+        if ike_auth_alg is None and 'ikeAuthAlg' in kwargs:
             ike_auth_alg = kwargs['ikeAuthAlg']
-        if 'ikeEncAlg' in kwargs:
+        if ike_enc_alg is None and 'ikeEncAlg' in kwargs:
             ike_enc_alg = kwargs['ikeEncAlg']
-        if 'ikeLifetime' in kwargs:
+        if ike_lifetime is None and 'ikeLifetime' in kwargs:
             ike_lifetime = kwargs['ikeLifetime']
-        if 'ikeMode' in kwargs:
+        if ike_mode is None and 'ikeMode' in kwargs:
             ike_mode = kwargs['ikeMode']
-        if 'ikePfs' in kwargs:
+        if ike_pfs is None and 'ikePfs' in kwargs:
             ike_pfs = kwargs['ikePfs']
-        if 'ikeVersion' in kwargs:
+        if ike_version is None and 'ikeVersion' in kwargs:
             ike_version = kwargs['ikeVersion']
-        if 'localId' in kwargs:
+        if local_id is None and 'localId' in kwargs:
             local_id = kwargs['localId']
-        if 'remoteId' in kwargs:
+        if remote_id is None and 'remoteId' in kwargs:
             remote_id = kwargs['remoteId']
 
         if ike_auth_alg is not None:
@@ -1229,15 +1229,15 @@ class IpsecServerIpsecConfig(dict):
              ipsec_enc_alg: Optional[str] = None,
              ipsec_lifetime: Optional[int] = None,
              ipsec_pfs: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipsecAuthAlg' in kwargs:
+        if ipsec_auth_alg is None and 'ipsecAuthAlg' in kwargs:
             ipsec_auth_alg = kwargs['ipsecAuthAlg']
-        if 'ipsecEncAlg' in kwargs:
+        if ipsec_enc_alg is None and 'ipsecEncAlg' in kwargs:
             ipsec_enc_alg = kwargs['ipsecEncAlg']
-        if 'ipsecLifetime' in kwargs:
+        if ipsec_lifetime is None and 'ipsecLifetime' in kwargs:
             ipsec_lifetime = kwargs['ipsecLifetime']
-        if 'ipsecPfs' in kwargs:
+        if ipsec_pfs is None and 'ipsecPfs' in kwargs:
             ipsec_pfs = kwargs['ipsecPfs']
 
         if ipsec_auth_alg is not None:
@@ -1335,46 +1335,68 @@ class GetConnectionsConnectionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             customer_gateway_id: str,
-             effect_immediately: bool,
-             enable_dpd: bool,
-             enable_nat_traversal: bool,
-             id: str,
-             local_subnet: str,
-             name: str,
-             remote_subnet: str,
-             status: str,
-             vpn_gateway_id: str,
+             create_time: Optional[str] = None,
+             customer_gateway_id: Optional[str] = None,
+             effect_immediately: Optional[bool] = None,
+             enable_dpd: Optional[bool] = None,
+             enable_nat_traversal: Optional[bool] = None,
+             id: Optional[str] = None,
+             local_subnet: Optional[str] = None,
+             name: Optional[str] = None,
+             remote_subnet: Optional[str] = None,
+             status: Optional[str] = None,
+             vpn_gateway_id: Optional[str] = None,
              ike_configs: Optional[Sequence['outputs.GetConnectionsConnectionIkeConfigResult']] = None,
              ipsec_configs: Optional[Sequence['outputs.GetConnectionsConnectionIpsecConfigResult']] = None,
              vco_health_checks: Optional[Sequence['outputs.GetConnectionsConnectionVcoHealthCheckResult']] = None,
              vpn_bgp_configs: Optional[Sequence['outputs.GetConnectionsConnectionVpnBgpConfigResult']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'customerGatewayId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if customer_gateway_id is None and 'customerGatewayId' in kwargs:
             customer_gateway_id = kwargs['customerGatewayId']
-        if 'effectImmediately' in kwargs:
+        if customer_gateway_id is None:
+            raise TypeError("Missing 'customer_gateway_id' argument")
+        if effect_immediately is None and 'effectImmediately' in kwargs:
             effect_immediately = kwargs['effectImmediately']
-        if 'enableDpd' in kwargs:
+        if effect_immediately is None:
+            raise TypeError("Missing 'effect_immediately' argument")
+        if enable_dpd is None and 'enableDpd' in kwargs:
             enable_dpd = kwargs['enableDpd']
-        if 'enableNatTraversal' in kwargs:
+        if enable_dpd is None:
+            raise TypeError("Missing 'enable_dpd' argument")
+        if enable_nat_traversal is None and 'enableNatTraversal' in kwargs:
             enable_nat_traversal = kwargs['enableNatTraversal']
-        if 'localSubnet' in kwargs:
+        if enable_nat_traversal is None:
+            raise TypeError("Missing 'enable_nat_traversal' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if local_subnet is None and 'localSubnet' in kwargs:
             local_subnet = kwargs['localSubnet']
-        if 'remoteSubnet' in kwargs:
+        if local_subnet is None:
+            raise TypeError("Missing 'local_subnet' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if remote_subnet is None and 'remoteSubnet' in kwargs:
             remote_subnet = kwargs['remoteSubnet']
-        if 'vpnGatewayId' in kwargs:
+        if remote_subnet is None:
+            raise TypeError("Missing 'remote_subnet' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
             vpn_gateway_id = kwargs['vpnGatewayId']
-        if 'ikeConfigs' in kwargs:
+        if vpn_gateway_id is None:
+            raise TypeError("Missing 'vpn_gateway_id' argument")
+        if ike_configs is None and 'ikeConfigs' in kwargs:
             ike_configs = kwargs['ikeConfigs']
-        if 'ipsecConfigs' in kwargs:
+        if ipsec_configs is None and 'ipsecConfigs' in kwargs:
             ipsec_configs = kwargs['ipsecConfigs']
-        if 'vcoHealthChecks' in kwargs:
+        if vco_health_checks is None and 'vcoHealthChecks' in kwargs:
             vco_health_checks = kwargs['vcoHealthChecks']
-        if 'vpnBgpConfigs' in kwargs:
+        if vpn_bgp_configs is None and 'vpnBgpConfigs' in kwargs:
             vpn_bgp_configs = kwargs['vpnBgpConfigs']
 
         _setter("create_time", create_time)
@@ -1556,23 +1578,23 @@ class GetConnectionsConnectionIkeConfigResult(dict):
              ike_remote_id: Optional[str] = None,
              ike_version: Optional[str] = None,
              psk: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ikeAuthAlg' in kwargs:
+        if ike_auth_alg is None and 'ikeAuthAlg' in kwargs:
             ike_auth_alg = kwargs['ikeAuthAlg']
-        if 'ikeEncAlg' in kwargs:
+        if ike_enc_alg is None and 'ikeEncAlg' in kwargs:
             ike_enc_alg = kwargs['ikeEncAlg']
-        if 'ikeLifetime' in kwargs:
+        if ike_lifetime is None and 'ikeLifetime' in kwargs:
             ike_lifetime = kwargs['ikeLifetime']
-        if 'ikeLocalId' in kwargs:
+        if ike_local_id is None and 'ikeLocalId' in kwargs:
             ike_local_id = kwargs['ikeLocalId']
-        if 'ikeMode' in kwargs:
+        if ike_mode is None and 'ikeMode' in kwargs:
             ike_mode = kwargs['ikeMode']
-        if 'ikePfs' in kwargs:
+        if ike_pfs is None and 'ikePfs' in kwargs:
             ike_pfs = kwargs['ikePfs']
-        if 'ikeRemoteId' in kwargs:
+        if ike_remote_id is None and 'ikeRemoteId' in kwargs:
             ike_remote_id = kwargs['ikeRemoteId']
-        if 'ikeVersion' in kwargs:
+        if ike_version is None and 'ikeVersion' in kwargs:
             ike_version = kwargs['ikeVersion']
 
         if ike_auth_alg is not None:
@@ -1694,15 +1716,15 @@ class GetConnectionsConnectionIpsecConfigResult(dict):
              ipsec_enc_alg: Optional[str] = None,
              ipsec_lifetime: Optional[int] = None,
              ipsec_pfs: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipsecAuthAlg' in kwargs:
+        if ipsec_auth_alg is None and 'ipsecAuthAlg' in kwargs:
             ipsec_auth_alg = kwargs['ipsecAuthAlg']
-        if 'ipsecEncAlg' in kwargs:
+        if ipsec_enc_alg is None and 'ipsecEncAlg' in kwargs:
             ipsec_enc_alg = kwargs['ipsecEncAlg']
-        if 'ipsecLifetime' in kwargs:
+        if ipsec_lifetime is None and 'ipsecLifetime' in kwargs:
             ipsec_lifetime = kwargs['ipsecLifetime']
-        if 'ipsecPfs' in kwargs:
+        if ipsec_pfs is None and 'ipsecPfs' in kwargs:
             ipsec_pfs = kwargs['ipsecPfs']
 
         if ipsec_auth_alg is not None:
@@ -1782,7 +1804,7 @@ class GetConnectionsConnectionVcoHealthCheckResult(dict):
              retry: Optional[int] = None,
              sip: Optional[str] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if dip is not None:
@@ -1886,19 +1908,19 @@ class GetConnectionsConnectionVpnBgpConfigResult(dict):
              peer_bgp_ip: Optional[str] = None,
              status: Optional[str] = None,
              tunnel_cidr: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authKey' in kwargs:
+        if auth_key is None and 'authKey' in kwargs:
             auth_key = kwargs['authKey']
-        if 'localAsn' in kwargs:
+        if local_asn is None and 'localAsn' in kwargs:
             local_asn = kwargs['localAsn']
-        if 'localBgpIp' in kwargs:
+        if local_bgp_ip is None and 'localBgpIp' in kwargs:
             local_bgp_ip = kwargs['localBgpIp']
-        if 'peerAsn' in kwargs:
+        if peer_asn is None and 'peerAsn' in kwargs:
             peer_asn = kwargs['peerAsn']
-        if 'peerBgpIp' in kwargs:
+        if peer_bgp_ip is None and 'peerBgpIp' in kwargs:
             peer_bgp_ip = kwargs['peerBgpIp']
-        if 'tunnelCidr' in kwargs:
+        if tunnel_cidr is None and 'tunnelCidr' in kwargs:
             tunnel_cidr = kwargs['tunnelCidr']
 
         if auth_key is not None:
@@ -2002,18 +2024,30 @@ class GetCustomerGatewaysGatewayResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             asn: int,
-             create_time: str,
-             description: str,
-             id: str,
-             ip_address: str,
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             asn: Optional[int] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             ip_address: Optional[str] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if asn is None:
+            raise TypeError("Missing 'asn' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'ipAddress' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("asn", asn)
         _setter("create_time", create_time)
@@ -2109,27 +2143,45 @@ class GetGatewayVcoRoutesRouteResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             as_path: str,
-             create_time: str,
-             id: str,
-             next_hop: str,
-             route_dest: str,
-             source: str,
-             status: str,
-             vpn_connection_id: str,
-             weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             as_path: Optional[str] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             next_hop: Optional[str] = None,
+             route_dest: Optional[str] = None,
+             source: Optional[str] = None,
+             status: Optional[str] = None,
+             vpn_connection_id: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'asPath' in kwargs:
+        if as_path is None and 'asPath' in kwargs:
             as_path = kwargs['asPath']
-        if 'createTime' in kwargs:
+        if as_path is None:
+            raise TypeError("Missing 'as_path' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'nextHop' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if next_hop is None and 'nextHop' in kwargs:
             next_hop = kwargs['nextHop']
-        if 'routeDest' in kwargs:
+        if next_hop is None:
+            raise TypeError("Missing 'next_hop' argument")
+        if route_dest is None and 'routeDest' in kwargs:
             route_dest = kwargs['routeDest']
-        if 'vpnConnectionId' in kwargs:
+        if route_dest is None:
+            raise TypeError("Missing 'route_dest' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpn_connection_id is None and 'vpnConnectionId' in kwargs:
             vpn_connection_id = kwargs['vpnConnectionId']
+        if vpn_connection_id is None:
+            raise TypeError("Missing 'vpn_connection_id' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
 
         _setter("as_path", as_path)
         _setter("create_time", create_time)
@@ -2273,52 +2325,84 @@ class GetGatewayVpnAttachmentsAttachmentResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bgp_configs: Sequence['outputs.GetGatewayVpnAttachmentsAttachmentBgpConfigResult'],
-             connection_status: str,
-             create_time: str,
-             customer_gateway_id: str,
-             effect_immediately: bool,
-             health_check_configs: Sequence['outputs.GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult'],
-             id: str,
-             ike_configs: Sequence['outputs.GetGatewayVpnAttachmentsAttachmentIkeConfigResult'],
-             internet_ip: str,
-             ipsec_configs: Sequence['outputs.GetGatewayVpnAttachmentsAttachmentIpsecConfigResult'],
-             local_subnet: str,
-             network_type: str,
-             remote_subnet: str,
-             status: str,
-             vpn_attachment_name: str,
-             vpn_connection_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bgp_configs: Optional[Sequence['outputs.GetGatewayVpnAttachmentsAttachmentBgpConfigResult']] = None,
+             connection_status: Optional[str] = None,
+             create_time: Optional[str] = None,
+             customer_gateway_id: Optional[str] = None,
+             effect_immediately: Optional[bool] = None,
+             health_check_configs: Optional[Sequence['outputs.GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult']] = None,
+             id: Optional[str] = None,
+             ike_configs: Optional[Sequence['outputs.GetGatewayVpnAttachmentsAttachmentIkeConfigResult']] = None,
+             internet_ip: Optional[str] = None,
+             ipsec_configs: Optional[Sequence['outputs.GetGatewayVpnAttachmentsAttachmentIpsecConfigResult']] = None,
+             local_subnet: Optional[str] = None,
+             network_type: Optional[str] = None,
+             remote_subnet: Optional[str] = None,
+             status: Optional[str] = None,
+             vpn_attachment_name: Optional[str] = None,
+             vpn_connection_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bgpConfigs' in kwargs:
+        if bgp_configs is None and 'bgpConfigs' in kwargs:
             bgp_configs = kwargs['bgpConfigs']
-        if 'connectionStatus' in kwargs:
+        if bgp_configs is None:
+            raise TypeError("Missing 'bgp_configs' argument")
+        if connection_status is None and 'connectionStatus' in kwargs:
             connection_status = kwargs['connectionStatus']
-        if 'createTime' in kwargs:
+        if connection_status is None:
+            raise TypeError("Missing 'connection_status' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'customerGatewayId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if customer_gateway_id is None and 'customerGatewayId' in kwargs:
             customer_gateway_id = kwargs['customerGatewayId']
-        if 'effectImmediately' in kwargs:
+        if customer_gateway_id is None:
+            raise TypeError("Missing 'customer_gateway_id' argument")
+        if effect_immediately is None and 'effectImmediately' in kwargs:
             effect_immediately = kwargs['effectImmediately']
-        if 'healthCheckConfigs' in kwargs:
+        if effect_immediately is None:
+            raise TypeError("Missing 'effect_immediately' argument")
+        if health_check_configs is None and 'healthCheckConfigs' in kwargs:
             health_check_configs = kwargs['healthCheckConfigs']
-        if 'ikeConfigs' in kwargs:
+        if health_check_configs is None:
+            raise TypeError("Missing 'health_check_configs' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ike_configs is None and 'ikeConfigs' in kwargs:
             ike_configs = kwargs['ikeConfigs']
-        if 'internetIp' in kwargs:
+        if ike_configs is None:
+            raise TypeError("Missing 'ike_configs' argument")
+        if internet_ip is None and 'internetIp' in kwargs:
             internet_ip = kwargs['internetIp']
-        if 'ipsecConfigs' in kwargs:
+        if internet_ip is None:
+            raise TypeError("Missing 'internet_ip' argument")
+        if ipsec_configs is None and 'ipsecConfigs' in kwargs:
             ipsec_configs = kwargs['ipsecConfigs']
-        if 'localSubnet' in kwargs:
+        if ipsec_configs is None:
+            raise TypeError("Missing 'ipsec_configs' argument")
+        if local_subnet is None and 'localSubnet' in kwargs:
             local_subnet = kwargs['localSubnet']
-        if 'networkType' in kwargs:
+        if local_subnet is None:
+            raise TypeError("Missing 'local_subnet' argument")
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'remoteSubnet' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if remote_subnet is None and 'remoteSubnet' in kwargs:
             remote_subnet = kwargs['remoteSubnet']
-        if 'vpnAttachmentName' in kwargs:
+        if remote_subnet is None:
+            raise TypeError("Missing 'remote_subnet' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpn_attachment_name is None and 'vpnAttachmentName' in kwargs:
             vpn_attachment_name = kwargs['vpnAttachmentName']
-        if 'vpnConnectionId' in kwargs:
+        if vpn_attachment_name is None:
+            raise TypeError("Missing 'vpn_attachment_name' argument")
+        if vpn_connection_id is None and 'vpnConnectionId' in kwargs:
             vpn_connection_id = kwargs['vpnConnectionId']
+        if vpn_connection_id is None:
+            raise TypeError("Missing 'vpn_connection_id' argument")
 
         _setter("bgp_configs", bgp_configs)
         _setter("connection_status", connection_status)
@@ -2489,18 +2573,26 @@ class GetGatewayVpnAttachmentsAttachmentBgpConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_asn: str,
-             local_bgp_ip: str,
-             status: str,
-             tunnel_cidr: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             local_asn: Optional[str] = None,
+             local_bgp_ip: Optional[str] = None,
+             status: Optional[str] = None,
+             tunnel_cidr: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'localAsn' in kwargs:
+        if local_asn is None and 'localAsn' in kwargs:
             local_asn = kwargs['localAsn']
-        if 'localBgpIp' in kwargs:
+        if local_asn is None:
+            raise TypeError("Missing 'local_asn' argument")
+        if local_bgp_ip is None and 'localBgpIp' in kwargs:
             local_bgp_ip = kwargs['localBgpIp']
-        if 'tunnelCidr' in kwargs:
+        if local_bgp_ip is None:
+            raise TypeError("Missing 'local_bgp_ip' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tunnel_cidr is None and 'tunnelCidr' in kwargs:
             tunnel_cidr = kwargs['tunnelCidr']
+        if tunnel_cidr is None:
+            raise TypeError("Missing 'tunnel_cidr' argument")
 
         _setter("local_asn", local_asn)
         _setter("local_bgp_ip", local_bgp_ip)
@@ -2572,15 +2664,29 @@ class GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dip: str,
-             enable: bool,
-             interval: int,
-             policy: str,
-             retry: int,
-             sip: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             dip: Optional[str] = None,
+             enable: Optional[bool] = None,
+             interval: Optional[int] = None,
+             policy: Optional[str] = None,
+             retry: Optional[int] = None,
+             sip: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if dip is None:
+            raise TypeError("Missing 'dip' argument")
+        if enable is None:
+            raise TypeError("Missing 'enable' argument")
+        if interval is None:
+            raise TypeError("Missing 'interval' argument")
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if retry is None:
+            raise TypeError("Missing 'retry' argument")
+        if sip is None:
+            raise TypeError("Missing 'sip' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("dip", dip)
         _setter("enable", enable)
@@ -2685,33 +2791,51 @@ class GetGatewayVpnAttachmentsAttachmentIkeConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ike_auth_alg: str,
-             ike_enc_alg: str,
-             ike_lifetime: str,
-             ike_mode: str,
-             ike_pfs: str,
-             ike_version: str,
-             local_id: str,
-             psk: str,
-             remote_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ike_auth_alg: Optional[str] = None,
+             ike_enc_alg: Optional[str] = None,
+             ike_lifetime: Optional[str] = None,
+             ike_mode: Optional[str] = None,
+             ike_pfs: Optional[str] = None,
+             ike_version: Optional[str] = None,
+             local_id: Optional[str] = None,
+             psk: Optional[str] = None,
+             remote_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ikeAuthAlg' in kwargs:
+        if ike_auth_alg is None and 'ikeAuthAlg' in kwargs:
             ike_auth_alg = kwargs['ikeAuthAlg']
-        if 'ikeEncAlg' in kwargs:
+        if ike_auth_alg is None:
+            raise TypeError("Missing 'ike_auth_alg' argument")
+        if ike_enc_alg is None and 'ikeEncAlg' in kwargs:
             ike_enc_alg = kwargs['ikeEncAlg']
-        if 'ikeLifetime' in kwargs:
+        if ike_enc_alg is None:
+            raise TypeError("Missing 'ike_enc_alg' argument")
+        if ike_lifetime is None and 'ikeLifetime' in kwargs:
             ike_lifetime = kwargs['ikeLifetime']
-        if 'ikeMode' in kwargs:
+        if ike_lifetime is None:
+            raise TypeError("Missing 'ike_lifetime' argument")
+        if ike_mode is None and 'ikeMode' in kwargs:
             ike_mode = kwargs['ikeMode']
-        if 'ikePfs' in kwargs:
+        if ike_mode is None:
+            raise TypeError("Missing 'ike_mode' argument")
+        if ike_pfs is None and 'ikePfs' in kwargs:
             ike_pfs = kwargs['ikePfs']
-        if 'ikeVersion' in kwargs:
+        if ike_pfs is None:
+            raise TypeError("Missing 'ike_pfs' argument")
+        if ike_version is None and 'ikeVersion' in kwargs:
             ike_version = kwargs['ikeVersion']
-        if 'localId' in kwargs:
+        if ike_version is None:
+            raise TypeError("Missing 'ike_version' argument")
+        if local_id is None and 'localId' in kwargs:
             local_id = kwargs['localId']
-        if 'remoteId' in kwargs:
+        if local_id is None:
+            raise TypeError("Missing 'local_id' argument")
+        if psk is None:
+            raise TypeError("Missing 'psk' argument")
+        if remote_id is None and 'remoteId' in kwargs:
             remote_id = kwargs['remoteId']
+        if remote_id is None:
+            raise TypeError("Missing 'remote_id' argument")
 
         _setter("ike_auth_alg", ike_auth_alg)
         _setter("ike_enc_alg", ike_enc_alg)
@@ -2819,20 +2943,28 @@ class GetGatewayVpnAttachmentsAttachmentIpsecConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ipsec_auth_alg: str,
-             ipsec_enc_alg: str,
-             ipsec_lifetime: str,
-             ipsec_pfs: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ipsec_auth_alg: Optional[str] = None,
+             ipsec_enc_alg: Optional[str] = None,
+             ipsec_lifetime: Optional[str] = None,
+             ipsec_pfs: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipsecAuthAlg' in kwargs:
+        if ipsec_auth_alg is None and 'ipsecAuthAlg' in kwargs:
             ipsec_auth_alg = kwargs['ipsecAuthAlg']
-        if 'ipsecEncAlg' in kwargs:
+        if ipsec_auth_alg is None:
+            raise TypeError("Missing 'ipsec_auth_alg' argument")
+        if ipsec_enc_alg is None and 'ipsecEncAlg' in kwargs:
             ipsec_enc_alg = kwargs['ipsecEncAlg']
-        if 'ipsecLifetime' in kwargs:
+        if ipsec_enc_alg is None:
+            raise TypeError("Missing 'ipsec_enc_alg' argument")
+        if ipsec_lifetime is None and 'ipsecLifetime' in kwargs:
             ipsec_lifetime = kwargs['ipsecLifetime']
-        if 'ipsecPfs' in kwargs:
+        if ipsec_lifetime is None:
+            raise TypeError("Missing 'ipsec_lifetime' argument")
+        if ipsec_pfs is None and 'ipsecPfs' in kwargs:
             ipsec_pfs = kwargs['ipsecPfs']
+        if ipsec_pfs is None:
+            raise TypeError("Missing 'ipsec_pfs' argument")
 
         _setter("ipsec_auth_alg", ipsec_auth_alg)
         _setter("ipsec_enc_alg", ipsec_enc_alg)
@@ -2931,46 +3063,78 @@ class GetGatewaysGatewayResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_propagate: str,
-             business_status: str,
-             create_time: str,
-             description: str,
-             enable_ipsec: str,
-             enable_ssl: str,
-             end_time: str,
-             id: str,
-             instance_charge_type: str,
-             internet_ip: str,
-             name: str,
-             network_type: str,
-             specification: str,
-             ssl_connections: int,
-             status: str,
-             vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auto_propagate: Optional[str] = None,
+             business_status: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             enable_ipsec: Optional[str] = None,
+             enable_ssl: Optional[str] = None,
+             end_time: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_charge_type: Optional[str] = None,
+             internet_ip: Optional[str] = None,
+             name: Optional[str] = None,
+             network_type: Optional[str] = None,
+             specification: Optional[str] = None,
+             ssl_connections: Optional[int] = None,
+             status: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoPropagate' in kwargs:
+        if auto_propagate is None and 'autoPropagate' in kwargs:
             auto_propagate = kwargs['autoPropagate']
-        if 'businessStatus' in kwargs:
+        if auto_propagate is None:
+            raise TypeError("Missing 'auto_propagate' argument")
+        if business_status is None and 'businessStatus' in kwargs:
             business_status = kwargs['businessStatus']
-        if 'createTime' in kwargs:
+        if business_status is None:
+            raise TypeError("Missing 'business_status' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'enableIpsec' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if enable_ipsec is None and 'enableIpsec' in kwargs:
             enable_ipsec = kwargs['enableIpsec']
-        if 'enableSsl' in kwargs:
+        if enable_ipsec is None:
+            raise TypeError("Missing 'enable_ipsec' argument")
+        if enable_ssl is None and 'enableSsl' in kwargs:
             enable_ssl = kwargs['enableSsl']
-        if 'endTime' in kwargs:
+        if enable_ssl is None:
+            raise TypeError("Missing 'enable_ssl' argument")
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'instanceChargeType' in kwargs:
+        if end_time is None:
+            raise TypeError("Missing 'end_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'internetIp' in kwargs:
+        if instance_charge_type is None:
+            raise TypeError("Missing 'instance_charge_type' argument")
+        if internet_ip is None and 'internetIp' in kwargs:
             internet_ip = kwargs['internetIp']
-        if 'networkType' in kwargs:
+        if internet_ip is None:
+            raise TypeError("Missing 'internet_ip' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'sslConnections' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if specification is None:
+            raise TypeError("Missing 'specification' argument")
+        if ssl_connections is None and 'sslConnections' in kwargs:
             ssl_connections = kwargs['sslConnections']
-        if 'vpcId' in kwargs:
+        if ssl_connections is None:
+            raise TypeError("Missing 'ssl_connections' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
 
         _setter("auto_propagate", auto_propagate)
         _setter("business_status", business_status)

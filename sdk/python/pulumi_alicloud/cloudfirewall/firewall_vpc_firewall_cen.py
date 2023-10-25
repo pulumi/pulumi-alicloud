@@ -46,24 +46,34 @@ class FirewallVpcFirewallCenArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cen_id: pulumi.Input[str],
-             local_vpc: pulumi.Input['FirewallVpcFirewallCenLocalVpcArgs'],
-             status: pulumi.Input[str],
-             vpc_firewall_name: pulumi.Input[str],
-             vpc_region: pulumi.Input[str],
+             cen_id: Optional[pulumi.Input[str]] = None,
+             local_vpc: Optional[pulumi.Input['FirewallVpcFirewallCenLocalVpcArgs']] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vpc_firewall_name: Optional[pulumi.Input[str]] = None,
+             vpc_region: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              member_uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'localVpc' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if local_vpc is None and 'localVpc' in kwargs:
             local_vpc = kwargs['localVpc']
-        if 'vpcFirewallName' in kwargs:
+        if local_vpc is None:
+            raise TypeError("Missing 'local_vpc' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_firewall_name is None and 'vpcFirewallName' in kwargs:
             vpc_firewall_name = kwargs['vpcFirewallName']
-        if 'vpcRegion' in kwargs:
+        if vpc_firewall_name is None:
+            raise TypeError("Missing 'vpc_firewall_name' argument")
+        if vpc_region is None and 'vpcRegion' in kwargs:
             vpc_region = kwargs['vpcRegion']
-        if 'memberUid' in kwargs:
+        if vpc_region is None:
+            raise TypeError("Missing 'vpc_region' argument")
+        if member_uid is None and 'memberUid' in kwargs:
             member_uid = kwargs['memberUid']
 
         _setter("cen_id", cen_id)
@@ -209,21 +219,21 @@ class _FirewallVpcFirewallCenState:
              vpc_firewall_id: Optional[pulumi.Input[str]] = None,
              vpc_firewall_name: Optional[pulumi.Input[str]] = None,
              vpc_region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'connectType' in kwargs:
+        if connect_type is None and 'connectType' in kwargs:
             connect_type = kwargs['connectType']
-        if 'localVpc' in kwargs:
+        if local_vpc is None and 'localVpc' in kwargs:
             local_vpc = kwargs['localVpc']
-        if 'memberUid' in kwargs:
+        if member_uid is None and 'memberUid' in kwargs:
             member_uid = kwargs['memberUid']
-        if 'vpcFirewallId' in kwargs:
+        if vpc_firewall_id is None and 'vpcFirewallId' in kwargs:
             vpc_firewall_id = kwargs['vpcFirewallId']
-        if 'vpcFirewallName' in kwargs:
+        if vpc_firewall_name is None and 'vpcFirewallName' in kwargs:
             vpc_firewall_name = kwargs['vpcFirewallName']
-        if 'vpcRegion' in kwargs:
+        if vpc_region is None and 'vpcRegion' in kwargs:
             vpc_region = kwargs['vpcRegion']
 
         if cen_id is not None:
@@ -374,25 +384,6 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.cloudfirewall.FirewallVpcFirewallCen("default",
-            cen_id="cen-cjok7uyb5w2b27573v",
-            local_vpc=alicloud.cloudfirewall.FirewallVpcFirewallCenLocalVpcArgs(
-                network_instance_id="vpc-a2d4wzzfuumzuq6uog5w4",
-            ),
-            member_uid="1415189284827022",
-            status="open",
-            vpc_firewall_name="tf-vpc-firewall-name",
-            vpc_region="ap-south-1")
-        ```
-
         ## Import
 
         Cloud Firewall Vpc Firewall Cen can be imported using the id, e.g.
@@ -423,25 +414,6 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
         For information about Cloud Firewall Vpc Firewall Cen and how to use it, see [What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcenconfigure).
 
         > **NOTE:** Available since v1.194.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.cloudfirewall.FirewallVpcFirewallCen("default",
-            cen_id="cen-cjok7uyb5w2b27573v",
-            local_vpc=alicloud.cloudfirewall.FirewallVpcFirewallCenLocalVpcArgs(
-                network_instance_id="vpc-a2d4wzzfuumzuq6uog5w4",
-            ),
-            member_uid="1415189284827022",
-            status="open",
-            vpc_firewall_name="tf-vpc-firewall-name",
-            vpc_region="ap-south-1")
-        ```
 
         ## Import
 
@@ -490,11 +462,7 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cen_id'")
             __props__.__dict__["cen_id"] = cen_id
             __props__.__dict__["lang"] = lang
-            if local_vpc is not None and not isinstance(local_vpc, FirewallVpcFirewallCenLocalVpcArgs):
-                local_vpc = local_vpc or {}
-                def _setter(key, value):
-                    local_vpc[key] = value
-                FirewallVpcFirewallCenLocalVpcArgs._configure(_setter, **local_vpc)
+            local_vpc = _utilities.configure(local_vpc, FirewallVpcFirewallCenLocalVpcArgs, True)
             if local_vpc is None and not opts.urn:
                 raise TypeError("Missing required property 'local_vpc'")
             __props__.__dict__["local_vpc"] = local_vpc

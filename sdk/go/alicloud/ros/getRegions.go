@@ -15,33 +15,6 @@ import (
 // This data source provides the Ros Regions of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.145.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := ros.GetRegions(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("rosRegionRegionId1", all.Regions[0].RegionId)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.InvokeOption) (*GetRegionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionsResult

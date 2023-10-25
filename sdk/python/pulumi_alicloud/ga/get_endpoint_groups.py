@@ -139,20 +139,6 @@ def get_endpoint_groups(accelerator_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.113.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ga.get_endpoint_groups(accelerator_id="example_value",
-        ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstGaEndpointGroupId", example.groups[0].id)
-    ```
-
 
     :param str accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
     :param str endpoint_group_type: The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
@@ -199,20 +185,6 @@ def get_endpoint_groups_output(accelerator_id: Optional[pulumi.Input[str]] = Non
     This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.113.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ga.get_endpoint_groups(accelerator_id="example_value",
-        ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstGaEndpointGroupId", example.groups[0].id)
-    ```
 
 
     :param str accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.

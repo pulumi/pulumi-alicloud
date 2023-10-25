@@ -15,38 +15,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// This data source provides the Express Connect Grant Rule To Cens of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.196.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.ExpressConnect.GetGrantRuleToCens.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         InstanceId = "your_vbr_instance_id",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["expressConnectGrantRuleToCenId0"] = ids.Apply(getGrantRuleToCensResult =&gt; getGrantRuleToCensResult.Cens[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGrantRuleToCensResult> InvokeAsync(GetGrantRuleToCensArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGrantRuleToCensResult>("alicloud:expressconnect/getGrantRuleToCens:getGrantRuleToCens", args ?? new GetGrantRuleToCensArgs(), options.WithDefaults());
@@ -55,38 +23,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// This data source provides the Express Connect Grant Rule To Cens of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.196.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.ExpressConnect.GetGrantRuleToCens.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         InstanceId = "your_vbr_instance_id",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["expressConnectGrantRuleToCenId0"] = ids.Apply(getGrantRuleToCensResult =&gt; getGrantRuleToCensResult.Cens[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGrantRuleToCensResult> Invoke(GetGrantRuleToCensInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGrantRuleToCensResult>("alicloud:expressconnect/getGrantRuleToCens:getGrantRuleToCens", args ?? new GetGrantRuleToCensInvokeArgs(), options.WithDefaults());

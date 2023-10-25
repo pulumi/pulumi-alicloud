@@ -75,7 +75,7 @@ class ReservedInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_type: pulumi.Input[str],
+             instance_type: Optional[pulumi.Input[str]] = None,
              auto_renew_period: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              instance_amount: Optional[pulumi.Input[int]] = None,
@@ -90,25 +90,27 @@ class ReservedInstanceArgs:
              scope: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'autoRenewPeriod' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'instanceAmount' in kwargs:
+        if instance_amount is None and 'instanceAmount' in kwargs:
             instance_amount = kwargs['instanceAmount']
-        if 'offeringType' in kwargs:
+        if offering_type is None and 'offeringType' in kwargs:
             offering_type = kwargs['offeringType']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'reservedInstanceName' in kwargs:
+        if reserved_instance_name is None and 'reservedInstanceName' in kwargs:
             reserved_instance_name = kwargs['reservedInstanceName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("instance_type", instance_type)
@@ -434,35 +436,35 @@ class _ReservedInstanceState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allocationStatus' in kwargs:
+        if allocation_status is None and 'allocationStatus' in kwargs:
             allocation_status = kwargs['allocationStatus']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'expiredTime' in kwargs:
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'instanceAmount' in kwargs:
+        if instance_amount is None and 'instanceAmount' in kwargs:
             instance_amount = kwargs['instanceAmount']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'offeringType' in kwargs:
+        if offering_type is None and 'offeringType' in kwargs:
             offering_type = kwargs['offeringType']
-        if 'operationLocks' in kwargs:
+        if operation_locks is None and 'operationLocks' in kwargs:
             operation_locks = kwargs['operationLocks']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'reservedInstanceName' in kwargs:
+        if reserved_instance_name is None and 'reservedInstanceName' in kwargs:
             reserved_instance_name = kwargs['reservedInstanceName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'startTime' in kwargs:
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if allocation_status is not None:
@@ -798,24 +800,6 @@ class ReservedInstance(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.65.0+
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.g6")
-        default_reserved_instance = alicloud.ecs.ReservedInstance("defaultReservedInstance",
-            instance_type=default_instance_types.instance_types[0].id,
-            instance_amount=1,
-            period_unit="Month",
-            offering_type="All Upfront",
-            reserved_instance_name="terraform-example",
-            description="ReservedInstance",
-            zone_id=default_instance_types.instance_types[0].availability_zones[0],
-            scope="Zone")
-        ```
-
         ## Import
 
         reservedInstance can be imported using id, e.g.
@@ -857,24 +841,6 @@ class ReservedInstance(pulumi.CustomResource):
         Provides an Reserved Instance resource.
 
         > **NOTE:** Available in 1.65.0+
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.g6")
-        default_reserved_instance = alicloud.ecs.ReservedInstance("defaultReservedInstance",
-            instance_type=default_instance_types.instance_types[0].id,
-            instance_amount=1,
-            period_unit="Month",
-            offering_type="All Upfront",
-            reserved_instance_name="terraform-example",
-            description="ReservedInstance",
-            zone_id=default_instance_types.instance_types[0].availability_zones[0],
-            scope="Zone")
-        ```
 
         ## Import
 

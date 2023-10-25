@@ -61,34 +61,54 @@ class GetApplicationGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_group_name: str,
-             application_name: str,
-             cms_group_id: str,
-             create_time: str,
-             deploy_region_id: str,
-             description: str,
-             id: str,
-             import_tag_key: str,
-             import_tag_value: str,
-             update_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             application_group_name: Optional[str] = None,
+             application_name: Optional[str] = None,
+             cms_group_id: Optional[str] = None,
+             create_time: Optional[str] = None,
+             deploy_region_id: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             import_tag_key: Optional[str] = None,
+             import_tag_value: Optional[str] = None,
+             update_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationGroupName' in kwargs:
+        if application_group_name is None and 'applicationGroupName' in kwargs:
             application_group_name = kwargs['applicationGroupName']
-        if 'applicationName' in kwargs:
+        if application_group_name is None:
+            raise TypeError("Missing 'application_group_name' argument")
+        if application_name is None and 'applicationName' in kwargs:
             application_name = kwargs['applicationName']
-        if 'cmsGroupId' in kwargs:
+        if application_name is None:
+            raise TypeError("Missing 'application_name' argument")
+        if cms_group_id is None and 'cmsGroupId' in kwargs:
             cms_group_id = kwargs['cmsGroupId']
-        if 'createTime' in kwargs:
+        if cms_group_id is None:
+            raise TypeError("Missing 'cms_group_id' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'deployRegionId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if deploy_region_id is None and 'deployRegionId' in kwargs:
             deploy_region_id = kwargs['deployRegionId']
-        if 'importTagKey' in kwargs:
+        if deploy_region_id is None:
+            raise TypeError("Missing 'deploy_region_id' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if import_tag_key is None and 'importTagKey' in kwargs:
             import_tag_key = kwargs['importTagKey']
-        if 'importTagValue' in kwargs:
+        if import_tag_key is None:
+            raise TypeError("Missing 'import_tag_key' argument")
+        if import_tag_value is None and 'importTagValue' in kwargs:
             import_tag_value = kwargs['importTagValue']
-        if 'updateTime' in kwargs:
+        if import_tag_value is None:
+            raise TypeError("Missing 'import_tag_value' argument")
+        if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
+        if update_time is None:
+            raise TypeError("Missing 'update_time' argument")
 
         _setter("application_group_name", application_group_name)
         _setter("application_name", application_name)
@@ -214,23 +234,37 @@ class GetApplicationsApplicationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_name: str,
-             create_time: str,
-             description: str,
-             id: str,
-             resource_group_id: str,
-             tags: Mapping[str, Any],
-             update_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             application_name: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             update_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationName' in kwargs:
+        if application_name is None and 'applicationName' in kwargs:
             application_name = kwargs['applicationName']
-        if 'createTime' in kwargs:
+        if application_name is None:
+            raise TypeError("Missing 'application_name' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'resourceGroupId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'updateTime' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
+        if update_time is None:
+            raise TypeError("Missing 'update_time' argument")
 
         _setter("application_name", application_name)
         _setter("create_time", create_time)
@@ -371,57 +405,99 @@ class GetExecutionsExecutionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: str,
-             counters: str,
-             create_date: str,
-             end_date: str,
-             executed_by: str,
-             execution_id: str,
-             id: str,
-             is_parent: bool,
-             mode: str,
-             outputs: str,
-             parameters: str,
-             parent_execution_id: str,
-             ram_role: str,
-             start_date: str,
-             status: str,
-             status_message: str,
-             status_reason: str,
-             template_id: str,
-             template_name: str,
-             template_version: str,
-             update_date: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             category: Optional[str] = None,
+             counters: Optional[str] = None,
+             create_date: Optional[str] = None,
+             end_date: Optional[str] = None,
+             executed_by: Optional[str] = None,
+             execution_id: Optional[str] = None,
+             id: Optional[str] = None,
+             is_parent: Optional[bool] = None,
+             mode: Optional[str] = None,
+             outputs: Optional[str] = None,
+             parameters: Optional[str] = None,
+             parent_execution_id: Optional[str] = None,
+             ram_role: Optional[str] = None,
+             start_date: Optional[str] = None,
+             status: Optional[str] = None,
+             status_message: Optional[str] = None,
+             status_reason: Optional[str] = None,
+             template_id: Optional[str] = None,
+             template_name: Optional[str] = None,
+             template_version: Optional[str] = None,
+             update_date: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createDate' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if counters is None:
+            raise TypeError("Missing 'counters' argument")
+        if create_date is None and 'createDate' in kwargs:
             create_date = kwargs['createDate']
-        if 'endDate' in kwargs:
+        if create_date is None:
+            raise TypeError("Missing 'create_date' argument")
+        if end_date is None and 'endDate' in kwargs:
             end_date = kwargs['endDate']
-        if 'executedBy' in kwargs:
+        if end_date is None:
+            raise TypeError("Missing 'end_date' argument")
+        if executed_by is None and 'executedBy' in kwargs:
             executed_by = kwargs['executedBy']
-        if 'executionId' in kwargs:
+        if executed_by is None:
+            raise TypeError("Missing 'executed_by' argument")
+        if execution_id is None and 'executionId' in kwargs:
             execution_id = kwargs['executionId']
-        if 'isParent' in kwargs:
+        if execution_id is None:
+            raise TypeError("Missing 'execution_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_parent is None and 'isParent' in kwargs:
             is_parent = kwargs['isParent']
-        if 'parentExecutionId' in kwargs:
+        if is_parent is None:
+            raise TypeError("Missing 'is_parent' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if outputs is None:
+            raise TypeError("Missing 'outputs' argument")
+        if parameters is None:
+            raise TypeError("Missing 'parameters' argument")
+        if parent_execution_id is None and 'parentExecutionId' in kwargs:
             parent_execution_id = kwargs['parentExecutionId']
-        if 'ramRole' in kwargs:
+        if parent_execution_id is None:
+            raise TypeError("Missing 'parent_execution_id' argument")
+        if ram_role is None and 'ramRole' in kwargs:
             ram_role = kwargs['ramRole']
-        if 'startDate' in kwargs:
+        if ram_role is None:
+            raise TypeError("Missing 'ram_role' argument")
+        if start_date is None and 'startDate' in kwargs:
             start_date = kwargs['startDate']
-        if 'statusMessage' in kwargs:
+        if start_date is None:
+            raise TypeError("Missing 'start_date' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if status_message is None and 'statusMessage' in kwargs:
             status_message = kwargs['statusMessage']
-        if 'statusReason' in kwargs:
+        if status_message is None:
+            raise TypeError("Missing 'status_message' argument")
+        if status_reason is None and 'statusReason' in kwargs:
             status_reason = kwargs['statusReason']
-        if 'templateId' in kwargs:
+        if status_reason is None:
+            raise TypeError("Missing 'status_reason' argument")
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
-        if 'templateName' in kwargs:
+        if template_id is None:
+            raise TypeError("Missing 'template_id' argument")
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
-        if 'templateVersion' in kwargs:
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
+        if template_version is None and 'templateVersion' in kwargs:
             template_version = kwargs['templateVersion']
-        if 'updateDate' in kwargs:
+        if template_version is None:
+            raise TypeError("Missing 'template_version' argument")
+        if update_date is None and 'updateDate' in kwargs:
             update_date = kwargs['updateDate']
+        if update_date is None:
+            raise TypeError("Missing 'update_date' argument")
 
         _setter("category", category)
         _setter("counters", counters)
@@ -670,41 +746,71 @@ class GetParametersParameterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             constraints: str,
-             create_time: str,
-             created_by: str,
-             description: str,
-             id: str,
-             parameter_id: str,
-             parameter_name: str,
-             parameter_version: int,
-             resource_group_id: str,
-             share_type: str,
-             tags: Mapping[str, Any],
-             type: str,
-             updated_by: str,
-             updated_date: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             constraints: Optional[str] = None,
+             create_time: Optional[str] = None,
+             created_by: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             parameter_id: Optional[str] = None,
+             parameter_name: Optional[str] = None,
+             parameter_version: Optional[int] = None,
+             resource_group_id: Optional[str] = None,
+             share_type: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             type: Optional[str] = None,
+             updated_by: Optional[str] = None,
+             updated_date: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if constraints is None:
+            raise TypeError("Missing 'constraints' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'createdBy' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'parameterId' in kwargs:
+        if created_by is None:
+            raise TypeError("Missing 'created_by' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if parameter_id is None and 'parameterId' in kwargs:
             parameter_id = kwargs['parameterId']
-        if 'parameterName' in kwargs:
+        if parameter_id is None:
+            raise TypeError("Missing 'parameter_id' argument")
+        if parameter_name is None and 'parameterName' in kwargs:
             parameter_name = kwargs['parameterName']
-        if 'parameterVersion' in kwargs:
+        if parameter_name is None:
+            raise TypeError("Missing 'parameter_name' argument")
+        if parameter_version is None and 'parameterVersion' in kwargs:
             parameter_version = kwargs['parameterVersion']
-        if 'resourceGroupId' in kwargs:
+        if parameter_version is None:
+            raise TypeError("Missing 'parameter_version' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'shareType' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if share_type is None and 'shareType' in kwargs:
             share_type = kwargs['shareType']
-        if 'updatedBy' in kwargs:
+        if share_type is None:
+            raise TypeError("Missing 'share_type' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedDate' in kwargs:
+        if updated_by is None:
+            raise TypeError("Missing 'updated_by' argument")
+        if updated_date is None and 'updatedDate' in kwargs:
             updated_date = kwargs['updatedDate']
+        if updated_date is None:
+            raise TypeError("Missing 'updated_date' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("constraints", constraints)
         _setter("create_time", create_time)
@@ -890,40 +996,64 @@ class GetPatchBaselinesBaselineResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             approval_rules: str,
-             create_time: str,
-             created_by: str,
-             description: str,
-             id: str,
-             is_default: bool,
-             operation_system: str,
-             patch_baseline_id: str,
-             patch_baseline_name: str,
-             share_type: str,
-             updated_by: str,
-             updated_date: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             approval_rules: Optional[str] = None,
+             create_time: Optional[str] = None,
+             created_by: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             is_default: Optional[bool] = None,
+             operation_system: Optional[str] = None,
+             patch_baseline_id: Optional[str] = None,
+             patch_baseline_name: Optional[str] = None,
+             share_type: Optional[str] = None,
+             updated_by: Optional[str] = None,
+             updated_date: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'approvalRules' in kwargs:
+        if approval_rules is None and 'approvalRules' in kwargs:
             approval_rules = kwargs['approvalRules']
-        if 'createTime' in kwargs:
+        if approval_rules is None:
+            raise TypeError("Missing 'approval_rules' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'createdBy' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'isDefault' in kwargs:
+        if created_by is None:
+            raise TypeError("Missing 'created_by' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_default is None and 'isDefault' in kwargs:
             is_default = kwargs['isDefault']
-        if 'operationSystem' in kwargs:
+        if is_default is None:
+            raise TypeError("Missing 'is_default' argument")
+        if operation_system is None and 'operationSystem' in kwargs:
             operation_system = kwargs['operationSystem']
-        if 'patchBaselineId' in kwargs:
+        if operation_system is None:
+            raise TypeError("Missing 'operation_system' argument")
+        if patch_baseline_id is None and 'patchBaselineId' in kwargs:
             patch_baseline_id = kwargs['patchBaselineId']
-        if 'patchBaselineName' in kwargs:
+        if patch_baseline_id is None:
+            raise TypeError("Missing 'patch_baseline_id' argument")
+        if patch_baseline_name is None and 'patchBaselineName' in kwargs:
             patch_baseline_name = kwargs['patchBaselineName']
-        if 'shareType' in kwargs:
+        if patch_baseline_name is None:
+            raise TypeError("Missing 'patch_baseline_name' argument")
+        if share_type is None and 'shareType' in kwargs:
             share_type = kwargs['shareType']
-        if 'updatedBy' in kwargs:
+        if share_type is None:
+            raise TypeError("Missing 'share_type' argument")
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedDate' in kwargs:
+        if updated_by is None:
+            raise TypeError("Missing 'updated_by' argument")
+        if updated_date is None and 'updatedDate' in kwargs:
             updated_date = kwargs['updatedDate']
+        if updated_date is None:
+            raise TypeError("Missing 'updated_date' argument")
 
         _setter("approval_rules", approval_rules)
         _setter("create_time", create_time)
@@ -1091,43 +1221,73 @@ class GetSecretParametersParameterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             constraints: str,
-             create_time: str,
-             created_by: str,
-             description: str,
-             id: str,
-             key_id: str,
-             parameter_version: int,
-             resource_group_id: str,
-             secret_parameter_id: str,
-             secret_parameter_name: str,
-             share_type: str,
-             tags: Mapping[str, Any],
-             type: str,
-             updated_by: str,
-             updated_date: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             constraints: Optional[str] = None,
+             create_time: Optional[str] = None,
+             created_by: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             key_id: Optional[str] = None,
+             parameter_version: Optional[int] = None,
+             resource_group_id: Optional[str] = None,
+             secret_parameter_id: Optional[str] = None,
+             secret_parameter_name: Optional[str] = None,
+             share_type: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             type: Optional[str] = None,
+             updated_by: Optional[str] = None,
+             updated_date: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if constraints is None:
+            raise TypeError("Missing 'constraints' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'createdBy' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'keyId' in kwargs:
+        if created_by is None:
+            raise TypeError("Missing 'created_by' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if key_id is None and 'keyId' in kwargs:
             key_id = kwargs['keyId']
-        if 'parameterVersion' in kwargs:
+        if key_id is None:
+            raise TypeError("Missing 'key_id' argument")
+        if parameter_version is None and 'parameterVersion' in kwargs:
             parameter_version = kwargs['parameterVersion']
-        if 'resourceGroupId' in kwargs:
+        if parameter_version is None:
+            raise TypeError("Missing 'parameter_version' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'secretParameterId' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if secret_parameter_id is None and 'secretParameterId' in kwargs:
             secret_parameter_id = kwargs['secretParameterId']
-        if 'secretParameterName' in kwargs:
+        if secret_parameter_id is None:
+            raise TypeError("Missing 'secret_parameter_id' argument")
+        if secret_parameter_name is None and 'secretParameterName' in kwargs:
             secret_parameter_name = kwargs['secretParameterName']
-        if 'shareType' in kwargs:
+        if secret_parameter_name is None:
+            raise TypeError("Missing 'secret_parameter_name' argument")
+        if share_type is None and 'shareType' in kwargs:
             share_type = kwargs['shareType']
-        if 'updatedBy' in kwargs:
+        if share_type is None:
+            raise TypeError("Missing 'share_type' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedDate' in kwargs:
+        if updated_by is None:
+            raise TypeError("Missing 'updated_by' argument")
+        if updated_date is None and 'updatedDate' in kwargs:
             updated_date = kwargs['updatedDate']
+        if updated_date is None:
+            raise TypeError("Missing 'updated_date' argument")
 
         _setter("constraints", constraints)
         _setter("create_time", create_time)
@@ -1322,43 +1482,73 @@ class GetStateConfigurationsConfigurationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             configure_mode: str,
-             create_time: str,
-             description: str,
-             id: str,
-             parameters: str,
-             resource_group_id: str,
-             schedule_expression: str,
-             schedule_type: str,
-             state_configuration_id: str,
-             tags: Mapping[str, Any],
-             targets: str,
-             template_id: str,
-             template_name: str,
-             template_version: str,
-             update_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             configure_mode: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             parameters: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             schedule_expression: Optional[str] = None,
+             schedule_type: Optional[str] = None,
+             state_configuration_id: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             targets: Optional[str] = None,
+             template_id: Optional[str] = None,
+             template_name: Optional[str] = None,
+             template_version: Optional[str] = None,
+             update_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configureMode' in kwargs:
+        if configure_mode is None and 'configureMode' in kwargs:
             configure_mode = kwargs['configureMode']
-        if 'createTime' in kwargs:
+        if configure_mode is None:
+            raise TypeError("Missing 'configure_mode' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'resourceGroupId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if parameters is None:
+            raise TypeError("Missing 'parameters' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'scheduleExpression' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if schedule_expression is None and 'scheduleExpression' in kwargs:
             schedule_expression = kwargs['scheduleExpression']
-        if 'scheduleType' in kwargs:
+        if schedule_expression is None:
+            raise TypeError("Missing 'schedule_expression' argument")
+        if schedule_type is None and 'scheduleType' in kwargs:
             schedule_type = kwargs['scheduleType']
-        if 'stateConfigurationId' in kwargs:
+        if schedule_type is None:
+            raise TypeError("Missing 'schedule_type' argument")
+        if state_configuration_id is None and 'stateConfigurationId' in kwargs:
             state_configuration_id = kwargs['stateConfigurationId']
-        if 'templateId' in kwargs:
+        if state_configuration_id is None:
+            raise TypeError("Missing 'state_configuration_id' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if targets is None:
+            raise TypeError("Missing 'targets' argument")
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
-        if 'templateName' in kwargs:
+        if template_id is None:
+            raise TypeError("Missing 'template_id' argument")
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
-        if 'templateVersion' in kwargs:
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
+        if template_version is None and 'templateVersion' in kwargs:
             template_version = kwargs['templateVersion']
-        if 'updateTime' in kwargs:
+        if template_version is None:
+            raise TypeError("Missing 'template_version' argument")
+        if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
+        if update_time is None:
+            raise TypeError("Missing 'update_time' argument")
 
         _setter("configure_mode", configure_mode)
         _setter("create_time", create_time)
@@ -1553,45 +1743,75 @@ class GetTemplatesTemplateResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: str,
-             created_by: str,
-             created_date: str,
-             description: str,
-             has_trigger: bool,
-             id: str,
-             share_type: str,
-             tags: Mapping[str, Any],
-             template_format: str,
-             template_id: str,
-             template_name: str,
-             template_type: str,
-             template_version: str,
-             updated_by: str,
-             updated_date: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             category: Optional[str] = None,
+             created_by: Optional[str] = None,
+             created_date: Optional[str] = None,
+             description: Optional[str] = None,
+             has_trigger: Optional[bool] = None,
+             id: Optional[str] = None,
+             share_type: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             template_format: Optional[str] = None,
+             template_id: Optional[str] = None,
+             template_name: Optional[str] = None,
+             template_type: Optional[str] = None,
+             template_version: Optional[str] = None,
+             updated_by: Optional[str] = None,
+             updated_date: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createdBy' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'createdDate' in kwargs:
+        if created_by is None:
+            raise TypeError("Missing 'created_by' argument")
+        if created_date is None and 'createdDate' in kwargs:
             created_date = kwargs['createdDate']
-        if 'hasTrigger' in kwargs:
+        if created_date is None:
+            raise TypeError("Missing 'created_date' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if has_trigger is None and 'hasTrigger' in kwargs:
             has_trigger = kwargs['hasTrigger']
-        if 'shareType' in kwargs:
+        if has_trigger is None:
+            raise TypeError("Missing 'has_trigger' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if share_type is None and 'shareType' in kwargs:
             share_type = kwargs['shareType']
-        if 'templateFormat' in kwargs:
+        if share_type is None:
+            raise TypeError("Missing 'share_type' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if template_format is None and 'templateFormat' in kwargs:
             template_format = kwargs['templateFormat']
-        if 'templateId' in kwargs:
+        if template_format is None:
+            raise TypeError("Missing 'template_format' argument")
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
-        if 'templateName' in kwargs:
+        if template_id is None:
+            raise TypeError("Missing 'template_id' argument")
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
-        if 'templateType' in kwargs:
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
+        if template_type is None and 'templateType' in kwargs:
             template_type = kwargs['templateType']
-        if 'templateVersion' in kwargs:
+        if template_type is None:
+            raise TypeError("Missing 'template_type' argument")
+        if template_version is None and 'templateVersion' in kwargs:
             template_version = kwargs['templateVersion']
-        if 'updatedBy' in kwargs:
+        if template_version is None:
+            raise TypeError("Missing 'template_version' argument")
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedDate' in kwargs:
+        if updated_by is None:
+            raise TypeError("Missing 'updated_by' argument")
+        if updated_date is None and 'updatedDate' in kwargs:
             updated_date = kwargs['updatedDate']
+        if updated_date is None:
+            raise TypeError("Missing 'updated_date' argument")
 
         _setter("category", category)
         _setter("created_by", created_by)

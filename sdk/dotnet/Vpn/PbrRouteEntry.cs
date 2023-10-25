@@ -16,54 +16,6 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     /// For information about VPN Pbr Route Entry and how to use it, see [What is VPN Pbr Route Entry](https://www.alibabacloud.com/help/en/doc-detail/127248.html).
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tfacc";
-    ///     var defaultGateways = AliCloud.Vpn.GetGateways.Invoke();
-    /// 
-    ///     var defaultCustomerGateway = new AliCloud.Vpn.CustomerGateway("defaultCustomerGateway", new()
-    ///     {
-    ///         IpAddress = "192.168.1.1",
-    ///     });
-    /// 
-    ///     var defaultConnection = new AliCloud.Vpn.Connection("defaultConnection", new()
-    ///     {
-    ///         CustomerGatewayId = defaultCustomerGateway.Id,
-    ///         VpnGatewayId = defaultGateways.Apply(getGatewaysResult =&gt; getGatewaysResult.Ids[0]),
-    ///         LocalSubnets = new[]
-    ///         {
-    ///             "192.168.2.0/24",
-    ///         },
-    ///         RemoteSubnets = new[]
-    ///         {
-    ///             "192.168.3.0/24",
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultPbrRouteEntry = new AliCloud.Vpn.PbrRouteEntry("defaultPbrRouteEntry", new()
-    ///     {
-    ///         VpnGatewayId = defaultGateways.Apply(getGatewaysResult =&gt; getGatewaysResult.Ids[0]),
-    ///         RouteSource = "192.168.1.0/24",
-    ///         RouteDest = "10.0.0.0/24",
-    ///         NextHop = defaultConnection.Id,
-    ///         Weight = 0,
-    ///         PublishVpc = false,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// VPN Pbr route entry can be imported using the id, e.g.

@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.173.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ehpc.getClusters({
- *     ids: ["example_id"],
- * });
- * export const ehpcClusterId1 = ids.then(ids => ids.clusters?.[0]?.id);
- * const nameRegex = alicloud.ehpc.getClusters({
- *     nameRegex: "^my-Cluster",
- * });
- * export const ehpcClusterId2 = nameRegex.then(nameRegex => nameRegex.clusters?.[0]?.id);
- * ```
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};
@@ -88,24 +70,6 @@ export interface GetClustersResult {
  * This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.173.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ehpc.getClusters({
- *     ids: ["example_id"],
- * });
- * export const ehpcClusterId1 = ids.then(ids => ids.clusters?.[0]?.id);
- * const nameRegex = alicloud.ehpc.getClusters({
- *     nameRegex: "^my-Cluster",
- * });
- * export const ehpcClusterId2 = nameRegex.then(nameRegex => nameRegex.clusters?.[0]?.id);
- * ```
  */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
     return pulumi.output(args).apply((a: any) => getClusters(a, opts))

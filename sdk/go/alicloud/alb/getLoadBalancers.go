@@ -15,40 +15,6 @@ import (
 // This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.132.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := alb.GetLoadBalancers(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("albLoadBalancerId1", ids.Balancers[0].Id)
-//			nameRegex, err := alb.GetLoadBalancers(ctx, &alb.GetLoadBalancersArgs{
-//				NameRegex: pulumi.StringRef("^my-LoadBalancer"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("albLoadBalancerId2", nameRegex.Balancers[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetLoadBalancers(ctx *pulumi.Context, args *GetLoadBalancersArgs, opts ...pulumi.InvokeOption) (*GetLoadBalancersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLoadBalancersResult

@@ -32,16 +32,20 @@ class GatewayRouteTableAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ipv4_gateway_id: pulumi.Input[str],
-             route_table_id: pulumi.Input[str],
+             ipv4_gateway_id: Optional[pulumi.Input[str]] = None,
+             route_table_id: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipv4GatewayId' in kwargs:
+        if ipv4_gateway_id is None and 'ipv4GatewayId' in kwargs:
             ipv4_gateway_id = kwargs['ipv4GatewayId']
-        if 'routeTableId' in kwargs:
+        if ipv4_gateway_id is None:
+            raise TypeError("Missing 'ipv4_gateway_id' argument")
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
-        if 'dryRun' in kwargs:
+        if route_table_id is None:
+            raise TypeError("Missing 'route_table_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
 
         _setter("ipv4_gateway_id", ipv4_gateway_id)
@@ -124,15 +128,15 @@ class _GatewayRouteTableAttachmentState:
              ipv4_gateway_id: Optional[pulumi.Input[str]] = None,
              route_table_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'ipv4GatewayId' in kwargs:
+        if ipv4_gateway_id is None and 'ipv4GatewayId' in kwargs:
             ipv4_gateway_id = kwargs['ipv4GatewayId']
-        if 'routeTableId' in kwargs:
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
 
         if create_time is not None:
@@ -229,31 +233,6 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.194.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            cidr_block="172.16.0.0/12",
-            vpc_name="terraform-example")
-        example_route_table = alicloud.vpc.RouteTable("exampleRouteTable",
-            vpc_id=example_network.id,
-            route_table_name="terraform-example",
-            description="terraform-example",
-            associate_type="Gateway")
-        example_ipv4_gateway = alicloud.vpc.Ipv4Gateway("exampleIpv4Gateway",
-            ipv4_gateway_name="terraform-example",
-            vpc_id=example_network.id,
-            enabled=True)
-        example_gateway_route_table_attachment = alicloud.vpc.GatewayRouteTableAttachment("exampleGatewayRouteTableAttachment",
-            ipv4_gateway_id=example_ipv4_gateway.id,
-            route_table_id=example_route_table.id)
-        ```
-
         ## Import
 
         VPC Gateway Route Table Attachment can be imported using the id, e.g.
@@ -280,31 +259,6 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
         For information about VPC Gateway Route Table Attachment and how to use it, see [What is Gateway Route Table Attachment](https://www.alibabacloud.com/help/doc-detail/174112.htm).
 
         > **NOTE:** Available in v1.194.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            cidr_block="172.16.0.0/12",
-            vpc_name="terraform-example")
-        example_route_table = alicloud.vpc.RouteTable("exampleRouteTable",
-            vpc_id=example_network.id,
-            route_table_name="terraform-example",
-            description="terraform-example",
-            associate_type="Gateway")
-        example_ipv4_gateway = alicloud.vpc.Ipv4Gateway("exampleIpv4Gateway",
-            ipv4_gateway_name="terraform-example",
-            vpc_id=example_network.id,
-            enabled=True)
-        example_gateway_route_table_attachment = alicloud.vpc.GatewayRouteTableAttachment("exampleGatewayRouteTableAttachment",
-            ipv4_gateway_id=example_ipv4_gateway.id,
-            route_table_id=example_route_table.id)
-        ```
 
         ## Import
 

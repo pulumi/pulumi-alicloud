@@ -16,37 +16,6 @@ namespace Pulumi.AliCloud.Waf
     /// 
     /// &gt; **NOTE:** Available in v1.135.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Waf.Certificate("default", new()
-    ///     {
-    ///         CertificateContents = "your_certificate",
-    ///         CertificateName = "your_certificate_name",
-    ///         Domain = "your_domain_name",
-    ///         InstanceId = "your_instance_id",
-    ///         PrivateKey = "your_private_key",
-    ///     });
-    /// 
-    ///     var default2 = new AliCloud.Waf.Certificate("default2", new()
-    ///     {
-    ///         CertificateId = "your_certificate_id",
-    ///         Domain = "your_domain_name",
-    ///         InstanceId = "your_instance_id",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// WAF Certificate can be imported using the id, e.g.

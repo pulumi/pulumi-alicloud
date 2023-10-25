@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ecs Activations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.177.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ecs.getActivations({});
- * export const ecsActivationId1 = ids.then(ids => ids.activations?.[0]?.id);
- * ```
  */
 export function getActivations(args?: GetActivationsArgs, opts?: pulumi.InvokeOptions): Promise<GetActivationsResult> {
     args = args || {};
@@ -76,18 +64,6 @@ export interface GetActivationsResult {
  * This data source provides the Ecs Activations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.177.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ecs.getActivations({});
- * export const ecsActivationId1 = ids.then(ids => ids.activations?.[0]?.id);
- * ```
  */
 export function getActivationsOutput(args?: GetActivationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetActivationsResult> {
     return pulumi.output(args).apply((a: any) => getActivations(a, opts))

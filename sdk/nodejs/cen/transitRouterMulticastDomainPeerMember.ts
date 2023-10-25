@@ -11,51 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.195.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example";
- * const defaultRegion = config.get("defaultRegion") || "cn-hangzhou";
- * const peerRegion = config.get("peerRegion") || "cn-beijing";
- * const hz = new alicloud.Provider("hz", {region: defaultRegion});
- * const bj = new alicloud.Provider("bj", {region: peerRegion});
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {
- *     cenInstanceName: name,
- *     protectionLevel: "REDUCED",
- * });
- * const defaultTransitRouter = new alicloud.cen.TransitRouter("defaultTransitRouter", {cenId: defaultInstance.id}, {
- *     provider: alicloud.hz,
- * });
- * const peerTransitRouter = new alicloud.cen.TransitRouter("peerTransitRouter", {cenId: defaultTransitRouter.cenId}, {
- *     provider: alicloud.bj,
- * });
- * const defaultTransitRouterMulticastDomain = new alicloud.cen.TransitRouterMulticastDomain("defaultTransitRouterMulticastDomain", {
- *     transitRouterId: defaultTransitRouter.transitRouterId,
- *     transitRouterMulticastDomainName: name,
- * }, {
- *     provider: alicloud.hz,
- * });
- * const peerTransitRouterMulticastDomain = new alicloud.cen.TransitRouterMulticastDomain("peerTransitRouterMulticastDomain", {
- *     transitRouterId: peerTransitRouter.transitRouterId,
- *     transitRouterMulticastDomainName: name,
- * }, {
- *     provider: alicloud.bj,
- * });
- * const defaultTransitRouterMulticastDomainPeerMember = new alicloud.cen.TransitRouterMulticastDomainPeerMember("defaultTransitRouterMulticastDomainPeerMember", {
- *     peerTransitRouterMulticastDomainId: peerTransitRouterMulticastDomain.id,
- *     transitRouterMulticastDomainId: defaultTransitRouterMulticastDomain.id,
- *     groupIpAddress: "239.1.1.1",
- * }, {
- *     provider: alicloud.hz,
- * });
- * ```
- *
  * ## Import
  *
  * Cen Transit Router Multicast Domain Peer Member can be imported using the id, e.g.

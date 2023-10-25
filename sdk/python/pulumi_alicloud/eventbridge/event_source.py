@@ -54,23 +54,27 @@ class EventSourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             event_bus_name: pulumi.Input[str],
-             event_source_name: pulumi.Input[str],
+             event_bus_name: Optional[pulumi.Input[str]] = None,
+             event_source_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              external_source_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              external_source_type: Optional[pulumi.Input[str]] = None,
              linked_external_source: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventBusName' in kwargs:
+        if event_bus_name is None and 'eventBusName' in kwargs:
             event_bus_name = kwargs['eventBusName']
-        if 'eventSourceName' in kwargs:
+        if event_bus_name is None:
+            raise TypeError("Missing 'event_bus_name' argument")
+        if event_source_name is None and 'eventSourceName' in kwargs:
             event_source_name = kwargs['eventSourceName']
-        if 'externalSourceConfig' in kwargs:
+        if event_source_name is None:
+            raise TypeError("Missing 'event_source_name' argument")
+        if external_source_config is None and 'externalSourceConfig' in kwargs:
             external_source_config = kwargs['externalSourceConfig']
-        if 'externalSourceType' in kwargs:
+        if external_source_type is None and 'externalSourceType' in kwargs:
             external_source_type = kwargs['externalSourceType']
-        if 'linkedExternalSource' in kwargs:
+        if linked_external_source is None and 'linkedExternalSource' in kwargs:
             linked_external_source = kwargs['linkedExternalSource']
 
         _setter("event_bus_name", event_bus_name)
@@ -219,17 +223,17 @@ class _EventSourceState:
              external_source_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              external_source_type: Optional[pulumi.Input[str]] = None,
              linked_external_source: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventBusName' in kwargs:
+        if event_bus_name is None and 'eventBusName' in kwargs:
             event_bus_name = kwargs['eventBusName']
-        if 'eventSourceName' in kwargs:
+        if event_source_name is None and 'eventSourceName' in kwargs:
             event_source_name = kwargs['eventSourceName']
-        if 'externalSourceConfig' in kwargs:
+        if external_source_config is None and 'externalSourceConfig' in kwargs:
             external_source_config = kwargs['externalSourceConfig']
-        if 'externalSourceType' in kwargs:
+        if external_source_type is None and 'externalSourceType' in kwargs:
             external_source_type = kwargs['externalSourceType']
-        if 'linkedExternalSource' in kwargs:
+        if linked_external_source is None and 'linkedExternalSource' in kwargs:
             linked_external_source = kwargs['linkedExternalSource']
 
         if description is not None:
@@ -350,31 +354,6 @@ class EventSource(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.130.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_event_bus = alicloud.eventbridge.EventBus("exampleEventBus", event_bus_name=name)
-        example_queue = alicloud.mns.Queue("exampleQueue")
-        example_event_source = alicloud.eventbridge.EventSource("exampleEventSource",
-            event_bus_name=example_event_bus.event_bus_name,
-            event_source_name=name,
-            description=name,
-            linked_external_source=True,
-            external_source_type="MNS",
-            external_source_config={
-                "QueueName": example_queue.name,
-            })
-        ```
-
         ## Import
 
         Event Bridge Event Source can be imported using the id, e.g.
@@ -417,31 +396,6 @@ class EventSource(pulumi.CustomResource):
         For information about Event Bridge Event Source and how to use it, see [What is Event Source](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createeventsource).
 
         > **NOTE:** Available since v1.130.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_event_bus = alicloud.eventbridge.EventBus("exampleEventBus", event_bus_name=name)
-        example_queue = alicloud.mns.Queue("exampleQueue")
-        example_event_source = alicloud.eventbridge.EventSource("exampleEventSource",
-            event_bus_name=example_event_bus.event_bus_name,
-            event_source_name=name,
-            description=name,
-            linked_external_source=True,
-            external_source_type="MNS",
-            external_source_config={
-                "QueueName": example_queue.name,
-            })
-        ```
 
         ## Import
 

@@ -136,20 +136,6 @@ def get_disk_types(cluster_type: Optional[str] = None,
 
     > **NOTE:** Available in 1.60.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.emr.get_disk_types(cluster_type="HADOOP",
-        destination_resource="DataDisk",
-        instance_charge_type="PostPaid",
-        instance_type="ecs.g5.xlarge",
-        zone_id="cn-huhehaote-a")
-    pulumi.export("dataDiskType", default.types[0].value)
-    ```
-
 
     :param str cluster_type: The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
     :param str destination_resource: The destination resource of emr cluster instance
@@ -193,20 +179,6 @@ def get_disk_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
     system disk types available in Alibaba Cloud account when create a emr cluster.
 
     > **NOTE:** Available in 1.60.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.emr.get_disk_types(cluster_type="HADOOP",
-        destination_resource="DataDisk",
-        instance_charge_type="PostPaid",
-        instance_type="ecs.g5.xlarge",
-        zone_id="cn-huhehaote-a")
-    pulumi.export("dataDiskType", default.types[0].value)
-    ```
 
 
     :param str cluster_type: The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.

@@ -21,7 +21,7 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         pass
 
@@ -51,11 +51,11 @@ class _InstanceState:
              create_time: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
 
         if create_time is not None:
@@ -115,17 +115,6 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.200.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.wafv3.Instance("default")
-        ```
-
         ## Import
 
         Wafv3 Instance can be imported using the id, e.g.
@@ -149,17 +138,6 @@ class Instance(pulumi.CustomResource):
         For information about Wafv3 Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf).
 
         > **NOTE:** Available in v1.200.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.wafv3.Instance("default")
-        ```
 
         ## Import
 

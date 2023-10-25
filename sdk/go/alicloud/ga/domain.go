@@ -19,43 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.197.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAccelerator, err := ga.NewAccelerator(ctx, "defaultAccelerator", &ga.AcceleratorArgs{
-//				Duration:      pulumi.Int(1),
-//				AutoUseCoupon: pulumi.Bool(true),
-//				Spec:          pulumi.String("1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ga.NewDomain(ctx, "defaultDomain", &ga.DomainArgs{
-//				Domain:        pulumi.String("changes.com.cn"),
-//				AcceleratorId: defaultAccelerator.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Ga Domain can be imported using the id, e.g.

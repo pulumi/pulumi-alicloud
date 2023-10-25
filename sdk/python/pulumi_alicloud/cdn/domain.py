@@ -61,8 +61,8 @@ class DomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cdn_type: pulumi.Input[str],
-             domain_name: pulumi.Input[str],
+             cdn_type: Optional[pulumi.Input[str]] = None,
+             domain_name: Optional[pulumi.Input[str]] = None,
              auth_config: Optional[pulumi.Input['DomainAuthConfigArgs']] = None,
              block_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              cache_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DomainCacheConfigArgs']]]] = None,
@@ -79,39 +79,43 @@ class DomainArgs:
              source_type: Optional[pulumi.Input[str]] = None,
              sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              video_seek_enable: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cdnType' in kwargs:
+        if cdn_type is None and 'cdnType' in kwargs:
             cdn_type = kwargs['cdnType']
-        if 'domainName' in kwargs:
+        if cdn_type is None:
+            raise TypeError("Missing 'cdn_type' argument")
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'authConfig' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if auth_config is None and 'authConfig' in kwargs:
             auth_config = kwargs['authConfig']
-        if 'blockIps' in kwargs:
+        if block_ips is None and 'blockIps' in kwargs:
             block_ips = kwargs['blockIps']
-        if 'cacheConfigs' in kwargs:
+        if cache_configs is None and 'cacheConfigs' in kwargs:
             cache_configs = kwargs['cacheConfigs']
-        if 'certificateConfig' in kwargs:
+        if certificate_config is None and 'certificateConfig' in kwargs:
             certificate_config = kwargs['certificateConfig']
-        if 'httpHeaderConfigs' in kwargs:
+        if http_header_configs is None and 'httpHeaderConfigs' in kwargs:
             http_header_configs = kwargs['httpHeaderConfigs']
-        if 'optimizeEnable' in kwargs:
+        if optimize_enable is None and 'optimizeEnable' in kwargs:
             optimize_enable = kwargs['optimizeEnable']
-        if 'page404Config' in kwargs:
+        if page404_config is None and 'page404Config' in kwargs:
             page404_config = kwargs['page404Config']
-        if 'pageCompressEnable' in kwargs:
+        if page_compress_enable is None and 'pageCompressEnable' in kwargs:
             page_compress_enable = kwargs['pageCompressEnable']
-        if 'parameterFilterConfig' in kwargs:
+        if parameter_filter_config is None and 'parameterFilterConfig' in kwargs:
             parameter_filter_config = kwargs['parameterFilterConfig']
-        if 'rangeEnable' in kwargs:
+        if range_enable is None and 'rangeEnable' in kwargs:
             range_enable = kwargs['rangeEnable']
-        if 'referConfig' in kwargs:
+        if refer_config is None and 'referConfig' in kwargs:
             refer_config = kwargs['referConfig']
-        if 'sourcePort' in kwargs:
+        if source_port is None and 'sourcePort' in kwargs:
             source_port = kwargs['sourcePort']
-        if 'sourceType' in kwargs:
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
-        if 'videoSeekEnable' in kwargs:
+        if video_seek_enable is None and 'videoSeekEnable' in kwargs:
             video_seek_enable = kwargs['videoSeekEnable']
 
         _setter("cdn_type", cdn_type)
@@ -468,39 +472,39 @@ class _DomainState:
              source_type: Optional[pulumi.Input[str]] = None,
              sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              video_seek_enable: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authConfig' in kwargs:
+        if auth_config is None and 'authConfig' in kwargs:
             auth_config = kwargs['authConfig']
-        if 'blockIps' in kwargs:
+        if block_ips is None and 'blockIps' in kwargs:
             block_ips = kwargs['blockIps']
-        if 'cacheConfigs' in kwargs:
+        if cache_configs is None and 'cacheConfigs' in kwargs:
             cache_configs = kwargs['cacheConfigs']
-        if 'cdnType' in kwargs:
+        if cdn_type is None and 'cdnType' in kwargs:
             cdn_type = kwargs['cdnType']
-        if 'certificateConfig' in kwargs:
+        if certificate_config is None and 'certificateConfig' in kwargs:
             certificate_config = kwargs['certificateConfig']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'httpHeaderConfigs' in kwargs:
+        if http_header_configs is None and 'httpHeaderConfigs' in kwargs:
             http_header_configs = kwargs['httpHeaderConfigs']
-        if 'optimizeEnable' in kwargs:
+        if optimize_enable is None and 'optimizeEnable' in kwargs:
             optimize_enable = kwargs['optimizeEnable']
-        if 'page404Config' in kwargs:
+        if page404_config is None and 'page404Config' in kwargs:
             page404_config = kwargs['page404Config']
-        if 'pageCompressEnable' in kwargs:
+        if page_compress_enable is None and 'pageCompressEnable' in kwargs:
             page_compress_enable = kwargs['pageCompressEnable']
-        if 'parameterFilterConfig' in kwargs:
+        if parameter_filter_config is None and 'parameterFilterConfig' in kwargs:
             parameter_filter_config = kwargs['parameterFilterConfig']
-        if 'rangeEnable' in kwargs:
+        if range_enable is None and 'rangeEnable' in kwargs:
             range_enable = kwargs['rangeEnable']
-        if 'referConfig' in kwargs:
+        if refer_config is None and 'referConfig' in kwargs:
             refer_config = kwargs['referConfig']
-        if 'sourcePort' in kwargs:
+        if source_port is None and 'sourcePort' in kwargs:
             source_port = kwargs['sourcePort']
-        if 'sourceType' in kwargs:
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
-        if 'videoSeekEnable' in kwargs:
+        if video_seek_enable is None and 'videoSeekEnable' in kwargs:
             video_seek_enable = kwargs['videoSeekEnable']
 
         if auth_config is not None:
@@ -876,47 +880,27 @@ class Domain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DomainArgs.__new__(DomainArgs)
 
-            if auth_config is not None and not isinstance(auth_config, DomainAuthConfigArgs):
-                auth_config = auth_config or {}
-                def _setter(key, value):
-                    auth_config[key] = value
-                DomainAuthConfigArgs._configure(_setter, **auth_config)
+            auth_config = _utilities.configure(auth_config, DomainAuthConfigArgs, True)
             __props__.__dict__["auth_config"] = auth_config
             __props__.__dict__["block_ips"] = block_ips
             __props__.__dict__["cache_configs"] = cache_configs
             if cdn_type is None and not opts.urn:
                 raise TypeError("Missing required property 'cdn_type'")
             __props__.__dict__["cdn_type"] = cdn_type
-            if certificate_config is not None and not isinstance(certificate_config, DomainCertificateConfigArgs):
-                certificate_config = certificate_config or {}
-                def _setter(key, value):
-                    certificate_config[key] = value
-                DomainCertificateConfigArgs._configure(_setter, **certificate_config)
+            certificate_config = _utilities.configure(certificate_config, DomainCertificateConfigArgs, True)
             __props__.__dict__["certificate_config"] = certificate_config
             if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")
             __props__.__dict__["domain_name"] = domain_name
             __props__.__dict__["http_header_configs"] = http_header_configs
             __props__.__dict__["optimize_enable"] = optimize_enable
-            if page404_config is not None and not isinstance(page404_config, DomainPage404ConfigArgs):
-                page404_config = page404_config or {}
-                def _setter(key, value):
-                    page404_config[key] = value
-                DomainPage404ConfigArgs._configure(_setter, **page404_config)
+            page404_config = _utilities.configure(page404_config, DomainPage404ConfigArgs, True)
             __props__.__dict__["page404_config"] = page404_config
             __props__.__dict__["page_compress_enable"] = page_compress_enable
-            if parameter_filter_config is not None and not isinstance(parameter_filter_config, DomainParameterFilterConfigArgs):
-                parameter_filter_config = parameter_filter_config or {}
-                def _setter(key, value):
-                    parameter_filter_config[key] = value
-                DomainParameterFilterConfigArgs._configure(_setter, **parameter_filter_config)
+            parameter_filter_config = _utilities.configure(parameter_filter_config, DomainParameterFilterConfigArgs, True)
             __props__.__dict__["parameter_filter_config"] = parameter_filter_config
             __props__.__dict__["range_enable"] = range_enable
-            if refer_config is not None and not isinstance(refer_config, DomainReferConfigArgs):
-                refer_config = refer_config or {}
-                def _setter(key, value):
-                    refer_config[key] = value
-                DomainReferConfigArgs._configure(_setter, **refer_config)
+            refer_config = _utilities.configure(refer_config, DomainReferConfigArgs, True)
             __props__.__dict__["refer_config"] = refer_config
             __props__.__dict__["scope"] = scope
             __props__.__dict__["source_port"] = source_port

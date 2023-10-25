@@ -50,7 +50,7 @@ class ExecutionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             template_name: pulumi.Input[str],
+             template_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              loop_mode: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[str]] = None,
@@ -59,19 +59,21 @@ class ExecutionArgs:
              safety_check: Optional[pulumi.Input[str]] = None,
              template_content: Optional[pulumi.Input[str]] = None,
              template_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'templateName' in kwargs:
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
-        if 'loopMode' in kwargs:
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
+        if loop_mode is None and 'loopMode' in kwargs:
             loop_mode = kwargs['loopMode']
-        if 'parentExecutionId' in kwargs:
+        if parent_execution_id is None and 'parentExecutionId' in kwargs:
             parent_execution_id = kwargs['parentExecutionId']
-        if 'safetyCheck' in kwargs:
+        if safety_check is None and 'safetyCheck' in kwargs:
             safety_check = kwargs['safetyCheck']
-        if 'templateContent' in kwargs:
+        if template_content is None and 'templateContent' in kwargs:
             template_content = kwargs['templateContent']
-        if 'templateVersion' in kwargs:
+        if template_version is None and 'templateVersion' in kwargs:
             template_version = kwargs['templateVersion']
 
         _setter("template_name", template_name)
@@ -297,37 +299,37 @@ class _ExecutionState:
              template_name: Optional[pulumi.Input[str]] = None,
              template_version: Optional[pulumi.Input[str]] = None,
              update_date: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createDate' in kwargs:
+        if create_date is None and 'createDate' in kwargs:
             create_date = kwargs['createDate']
-        if 'endDate' in kwargs:
+        if end_date is None and 'endDate' in kwargs:
             end_date = kwargs['endDate']
-        if 'executedBy' in kwargs:
+        if executed_by is None and 'executedBy' in kwargs:
             executed_by = kwargs['executedBy']
-        if 'isParent' in kwargs:
+        if is_parent is None and 'isParent' in kwargs:
             is_parent = kwargs['isParent']
-        if 'loopMode' in kwargs:
+        if loop_mode is None and 'loopMode' in kwargs:
             loop_mode = kwargs['loopMode']
-        if 'parentExecutionId' in kwargs:
+        if parent_execution_id is None and 'parentExecutionId' in kwargs:
             parent_execution_id = kwargs['parentExecutionId']
-        if 'ramRole' in kwargs:
+        if ram_role is None and 'ramRole' in kwargs:
             ram_role = kwargs['ramRole']
-        if 'safetyCheck' in kwargs:
+        if safety_check is None and 'safetyCheck' in kwargs:
             safety_check = kwargs['safetyCheck']
-        if 'startDate' in kwargs:
+        if start_date is None and 'startDate' in kwargs:
             start_date = kwargs['startDate']
-        if 'statusMessage' in kwargs:
+        if status_message is None and 'statusMessage' in kwargs:
             status_message = kwargs['statusMessage']
-        if 'templateContent' in kwargs:
+        if template_content is None and 'templateContent' in kwargs:
             template_content = kwargs['templateContent']
-        if 'templateId' in kwargs:
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
-        if 'templateName' in kwargs:
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
-        if 'templateVersion' in kwargs:
+        if template_version is None and 'templateVersion' in kwargs:
             template_version = kwargs['templateVersion']
-        if 'updateDate' in kwargs:
+        if update_date is None and 'updateDate' in kwargs:
             update_date = kwargs['updateDate']
 
         if counters is not None:
@@ -646,48 +648,6 @@ class Execution(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.93.0+.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.oos.Template("default",
-            content=\"\"\"  {
-            "FormatVersion": "OOS-2019-06-01",
-            "Description": "Update Describe instances of given status",
-            "Parameters":{
-              "Status":{
-                "Type": "String",
-                "Description": "(Required) The status of the Ecs instance."
-              }
-            },
-            "Tasks": [
-              {
-                "Properties" :{
-                  "Parameters":{
-                    "Status": "{{ Status }}"
-                  },
-                  "API": "DescribeInstances",
-                  "Service": "Ecs"
-                },
-                "Name": "foo",
-                "Action": "ACS::ExecuteApi"
-              }]
-          }
-        \"\"\",
-            template_name="test-name",
-            version_name="test",
-            tags={
-                "Created": "TF",
-                "For": "acceptance Test",
-            })
-        example = alicloud.oos.Execution("example",
-            template_name=default.template_name,
-            description="From TF Test",
-            parameters="				{\\"Status\\":\\"Running\\"}\\n")
-        ```
-
         ## Import
 
         OOS Execution can be imported using the id, e.g.
@@ -718,48 +678,6 @@ class Execution(pulumi.CustomResource):
         Provides a OOS Execution resource. For information about Alicloud OOS Execution and how to use it, see [What is Resource Alicloud OOS Execution](https://www.alibabacloud.com/help/doc-detail/120771.htm).
 
         > **NOTE:** Available in 1.93.0+.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.oos.Template("default",
-            content=\"\"\"  {
-            "FormatVersion": "OOS-2019-06-01",
-            "Description": "Update Describe instances of given status",
-            "Parameters":{
-              "Status":{
-                "Type": "String",
-                "Description": "(Required) The status of the Ecs instance."
-              }
-            },
-            "Tasks": [
-              {
-                "Properties" :{
-                  "Parameters":{
-                    "Status": "{{ Status }}"
-                  },
-                  "API": "DescribeInstances",
-                  "Service": "Ecs"
-                },
-                "Name": "foo",
-                "Action": "ACS::ExecuteApi"
-              }]
-          }
-        \"\"\",
-            template_name="test-name",
-            version_name="test",
-            tags={
-                "Created": "TF",
-                "For": "acceptance Test",
-            })
-        example = alicloud.oos.Execution("example",
-            template_name=default.template_name,
-            description="From TF Test",
-            parameters="				{\\"Status\\":\\"Running\\"}\\n")
-        ```
 
         ## Import
 

@@ -119,20 +119,6 @@ def get_ipsec_servers(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.161.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpc.get_ipsec_servers(ids=["example_id"])
-    pulumi.export("vpnIpsecServerId1", ids.servers[0].id)
-    name_regex = alicloud.vpc.get_ipsec_servers(name_regex="^my-IpsecServer")
-    pulumi.export("vpnIpsecServerId2", name_regex.servers[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Ipsec Server IDs.
     :param str ipsec_server_name: The name of the IPsec server.
@@ -171,20 +157,6 @@ def get_ipsec_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.161.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpc.get_ipsec_servers(ids=["example_id"])
-    pulumi.export("vpnIpsecServerId1", ids.servers[0].id)
-    name_regex = alicloud.vpc.get_ipsec_servers(name_regex="^my-IpsecServer")
-    pulumi.export("vpnIpsecServerId2", name_regex.servers[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Ipsec Server IDs.

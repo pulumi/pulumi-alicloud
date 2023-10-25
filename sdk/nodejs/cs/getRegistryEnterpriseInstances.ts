@@ -10,19 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.86.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const myInstances = alicloud.cs.getRegistryEnterpriseInstances({
- *     nameRegex: "my-instances",
- *     outputFile: "my-instances-json",
- * });
- * export const output = myInstances.then(myInstances => myInstances.instances);
- * ```
  */
 export function getRegistryEnterpriseInstances(args?: GetRegistryEnterpriseInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseInstancesResult> {
     args = args || {};
@@ -86,19 +73,6 @@ export interface GetRegistryEnterpriseInstancesResult {
  * This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.86.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const myInstances = alicloud.cs.getRegistryEnterpriseInstances({
- *     nameRegex: "my-instances",
- *     outputFile: "my-instances-json",
- * });
- * export const output = myInstances.then(myInstances => myInstances.instances);
- * ```
  */
 export function getRegistryEnterpriseInstancesOutput(args?: GetRegistryEnterpriseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseInstancesResult> {
     return pulumi.output(args).apply((a: any) => getRegistryEnterpriseInstances(a, opts))

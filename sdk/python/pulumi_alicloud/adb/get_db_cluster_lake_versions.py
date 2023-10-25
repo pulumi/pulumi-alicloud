@@ -130,18 +130,6 @@ def get_db_cluster_lake_versions(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.190.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.adb.get_db_cluster_lake_versions(ids=["example_id"])
-    pulumi.export("adbDbClusterLakeVersionId1", ids.versions[0].id)
-    ```
-
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of DBCluster IDs.
@@ -185,18 +173,6 @@ def get_db_cluster_lake_versions_output(enable_details: Optional[pulumi.Input[Op
     This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.190.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.adb.get_db_cluster_lake_versions(ids=["example_id"])
-    pulumi.export("adbDbClusterLakeVersionId1", ids.versions[0].id)
-    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

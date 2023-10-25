@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
  *
  * > **NOTE:** Available in 1.195.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.bss.getOpenApiPricingModules({
- *     nameRegex: "国内月均日峰值带宽",
- *     productCode: "cdn",
- *     productType: "CDN",
- *     subscriptionType: "PayAsYouGo",
- * });
- * export const alicloudBssOpenapiPricingModuleExampleId = _default.then(_default => _default.modules?.[0]?.code);
- * ```
  */
 export function getOpenApiPricingModules(args: GetOpenApiPricingModulesArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenApiPricingModulesResult> {
 
@@ -95,21 +80,6 @@ export interface GetOpenApiPricingModulesResult {
  * This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
  *
  * > **NOTE:** Available in 1.195.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.bss.getOpenApiPricingModules({
- *     nameRegex: "国内月均日峰值带宽",
- *     productCode: "cdn",
- *     productType: "CDN",
- *     subscriptionType: "PayAsYouGo",
- * });
- * export const alicloudBssOpenapiPricingModuleExampleId = _default.then(_default => _default.modules?.[0]?.code);
- * ```
  */
 export function getOpenApiPricingModulesOutput(args: GetOpenApiPricingModulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenApiPricingModulesResult> {
     return pulumi.output(args).apply((a: any) => getOpenApiPricingModules(a, opts))

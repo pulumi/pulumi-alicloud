@@ -19,41 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.133.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ens"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := ens.NewKeyPair(ctx, "example", &ens.KeyPairArgs{
-//				KeyPairName: pulumi.String(name),
-//				Version:     pulumi.String("2017-11-10"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ENS Key Pair can be imported using the id, e.g.

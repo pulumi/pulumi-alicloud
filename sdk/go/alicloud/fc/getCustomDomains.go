@@ -15,33 +15,6 @@ import (
 // This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in 1.98.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fc.GetCustomDomains(ctx, &fc.GetCustomDomainsArgs{
-//				NameRegex: pulumi.StringRef("sample_fc_custom_domain"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstFcCustomDomainName", data.Alicloud_fc_custom_domains.Fc_domains_ds.Domains[0].Domain_name)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetCustomDomains(ctx *pulumi.Context, args *GetCustomDomainsArgs, opts ...pulumi.InvokeOption) (*GetCustomDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCustomDomainsResult

@@ -33,11 +33,11 @@ class ConfigurationRecorderArgs:
              _setter: Callable[[Any, Any], None],
              enterprise_edition: Optional[pulumi.Input[bool]] = None,
              resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'enterpriseEdition' in kwargs:
+        if enterprise_edition is None and 'enterpriseEdition' in kwargs:
             enterprise_edition = kwargs['enterpriseEdition']
-        if 'resourceTypes' in kwargs:
+        if resource_types is None and 'resourceTypes' in kwargs:
             resource_types = kwargs['resourceTypes']
 
         if enterprise_edition is not None:
@@ -106,15 +106,15 @@ class _ConfigurationRecorderState:
              organization_master_id: Optional[pulumi.Input[int]] = None,
              resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'enterpriseEdition' in kwargs:
+        if enterprise_edition is None and 'enterpriseEdition' in kwargs:
             enterprise_edition = kwargs['enterpriseEdition']
-        if 'organizationEnableStatus' in kwargs:
+        if organization_enable_status is None and 'organizationEnableStatus' in kwargs:
             organization_enable_status = kwargs['organizationEnableStatus']
-        if 'organizationMasterId' in kwargs:
+        if organization_master_id is None and 'organizationMasterId' in kwargs:
             organization_master_id = kwargs['organizationMasterId']
-        if 'resourceTypes' in kwargs:
+        if resource_types is None and 'resourceTypes' in kwargs:
             resource_types = kwargs['resourceTypes']
 
         if enterprise_edition is not None:
@@ -207,18 +207,6 @@ class ConfigurationRecorder(pulumi.CustomResource):
 
         > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cfg.ConfigurationRecorder("example", resource_types=[
-            "ACS::ECS::Instance",
-            "ACS::ECS::Disk",
-        ])
-        ```
-
         ## Import
 
         Alicloud Config Configuration Recorder can be imported using the id, e.g.
@@ -247,18 +235,6 @@ class ConfigurationRecorder(pulumi.CustomResource):
         > **NOTE:** Available since v1.99.0.
 
         > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cfg.ConfigurationRecorder("example", resource_types=[
-            "ACS::ECS::Instance",
-            "ACS::ECS::Disk",
-        ])
-        ```
 
         ## Import
 

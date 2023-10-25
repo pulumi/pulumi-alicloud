@@ -38,11 +38,13 @@ class NamespaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespace: pulumi.Input[str],
+             namespace: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              specification: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
 
         _setter("namespace", namespace)
         if description is not None:
@@ -123,7 +125,7 @@ class _NamespaceState:
              description: Optional[pulumi.Input[str]] = None,
              namespace: Optional[pulumi.Input[str]] = None,
              specification: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if description is not None:
@@ -192,19 +194,6 @@ class Namespace(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.171.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cms.Namespace("example",
-            namespace="tf_example",
-            specification="cms.s1.large")
-        ```
-
         ## Import
 
         Cloud Monitor Service Namespace can be imported using the id, e.g.
@@ -237,19 +226,6 @@ class Namespace(pulumi.CustomResource):
         For information about Cloud Monitor Service Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitornamespace).
 
         > **NOTE:** Available since v1.171.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cms.Namespace("example",
-            namespace="tf_example",
-            specification="cms.s1.large")
-        ```
 
         ## Import
 

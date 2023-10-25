@@ -15,46 +15,6 @@ import (
 // This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.204.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := arms.GetRemoteWrites(ctx, &arms.GetRemoteWritesArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//				ClusterId: "your_cluster_id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("armsRemoteWritesId1", ids.RemoteWrites[0].Id)
-//			nameRegex, err := arms.GetRemoteWrites(ctx, &arms.GetRemoteWritesArgs{
-//				NameRegex: pulumi.StringRef("tf-example"),
-//				ClusterId: "your_cluster_id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("armsRemoteWritesId2", nameRegex.RemoteWrites[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetRemoteWrites(ctx *pulumi.Context, args *GetRemoteWritesArgs, opts ...pulumi.InvokeOption) (*GetRemoteWritesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRemoteWritesResult

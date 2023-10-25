@@ -15,34 +15,6 @@ namespace Pulumi.AliCloud.Nas
         /// This data source provides user-available access groups. Use when you can create mount points
         /// 
         /// &gt; NOTE: Available in 1.35.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Nas.GetAccessGroups.Invoke(new()
-        ///     {
-        ///         NameRegex = "^foo",
-        ///         AccessGroupType = "Classic",
-        ///         Description = "tf-testAccAccessGroupsdatasource",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudNasAccessGroupsId"] = example.Apply(getAccessGroupsResult =&gt; getAccessGroupsResult.Groups[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccessGroupsResult> InvokeAsync(GetAccessGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessGroupsResult>("alicloud:nas/getAccessGroups:getAccessGroups", args ?? new GetAccessGroupsArgs(), options.WithDefaults());
@@ -51,34 +23,6 @@ namespace Pulumi.AliCloud.Nas
         /// This data source provides user-available access groups. Use when you can create mount points
         /// 
         /// &gt; NOTE: Available in 1.35.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Nas.GetAccessGroups.Invoke(new()
-        ///     {
-        ///         NameRegex = "^foo",
-        ///         AccessGroupType = "Classic",
-        ///         Description = "tf-testAccAccessGroupsdatasource",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudNasAccessGroupsId"] = example.Apply(getAccessGroupsResult =&gt; getAccessGroupsResult.Groups[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccessGroupsResult> Invoke(GetAccessGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessGroupsResult>("alicloud:nas/getAccessGroups:getAccessGroups", args ?? new GetAccessGroupsInvokeArgs(), options.WithDefaults());

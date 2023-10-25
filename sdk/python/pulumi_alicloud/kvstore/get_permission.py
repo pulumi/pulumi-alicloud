@@ -76,15 +76,6 @@ def get_permission(enable: Optional[str] = None,
 
     > **NOTE:** Available since v1.128.0
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    open = alicloud.kvstore.get_permission(enable="On")
-    ```
-
 
     :param str enable: Setting the value to `On` to assigns a RAM role to ApsaraDB for Redis. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
     """
@@ -110,15 +101,6 @@ def get_permission_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
     For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
 
     > **NOTE:** Available since v1.128.0
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    open = alicloud.kvstore.get_permission(enable="On")
-    ```
 
 
     :param str enable: Setting the value to `On` to assigns a RAM role to ApsaraDB for Redis. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".

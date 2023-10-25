@@ -88,14 +88,14 @@ class OssShipperArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             buffer_interval: pulumi.Input[int],
-             buffer_size: pulumi.Input[int],
-             format: pulumi.Input[str],
-             logstore_name: pulumi.Input[str],
-             oss_bucket: pulumi.Input[str],
-             path_format: pulumi.Input[str],
-             project_name: pulumi.Input[str],
-             shipper_name: pulumi.Input[str],
+             buffer_interval: Optional[pulumi.Input[int]] = None,
+             buffer_size: Optional[pulumi.Input[int]] = None,
+             format: Optional[pulumi.Input[str]] = None,
+             logstore_name: Optional[pulumi.Input[str]] = None,
+             oss_bucket: Optional[pulumi.Input[str]] = None,
+             path_format: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
+             shipper_name: Optional[pulumi.Input[str]] = None,
              compress_type: Optional[pulumi.Input[str]] = None,
              csv_config_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              csv_config_delimiter: Optional[pulumi.Input[str]] = None,
@@ -107,43 +107,59 @@ class OssShipperArgs:
              oss_prefix: Optional[pulumi.Input[str]] = None,
              parquet_configs: Optional[pulumi.Input[Sequence[pulumi.Input['OssShipperParquetConfigArgs']]]] = None,
              role_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bufferInterval' in kwargs:
+        if buffer_interval is None and 'bufferInterval' in kwargs:
             buffer_interval = kwargs['bufferInterval']
-        if 'bufferSize' in kwargs:
+        if buffer_interval is None:
+            raise TypeError("Missing 'buffer_interval' argument")
+        if buffer_size is None and 'bufferSize' in kwargs:
             buffer_size = kwargs['bufferSize']
-        if 'logstoreName' in kwargs:
+        if buffer_size is None:
+            raise TypeError("Missing 'buffer_size' argument")
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+        if logstore_name is None and 'logstoreName' in kwargs:
             logstore_name = kwargs['logstoreName']
-        if 'ossBucket' in kwargs:
+        if logstore_name is None:
+            raise TypeError("Missing 'logstore_name' argument")
+        if oss_bucket is None and 'ossBucket' in kwargs:
             oss_bucket = kwargs['ossBucket']
-        if 'pathFormat' in kwargs:
+        if oss_bucket is None:
+            raise TypeError("Missing 'oss_bucket' argument")
+        if path_format is None and 'pathFormat' in kwargs:
             path_format = kwargs['pathFormat']
-        if 'projectName' in kwargs:
+        if path_format is None:
+            raise TypeError("Missing 'path_format' argument")
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'shipperName' in kwargs:
+        if project_name is None:
+            raise TypeError("Missing 'project_name' argument")
+        if shipper_name is None and 'shipperName' in kwargs:
             shipper_name = kwargs['shipperName']
-        if 'compressType' in kwargs:
+        if shipper_name is None:
+            raise TypeError("Missing 'shipper_name' argument")
+        if compress_type is None and 'compressType' in kwargs:
             compress_type = kwargs['compressType']
-        if 'csvConfigColumns' in kwargs:
+        if csv_config_columns is None and 'csvConfigColumns' in kwargs:
             csv_config_columns = kwargs['csvConfigColumns']
-        if 'csvConfigDelimiter' in kwargs:
+        if csv_config_delimiter is None and 'csvConfigDelimiter' in kwargs:
             csv_config_delimiter = kwargs['csvConfigDelimiter']
-        if 'csvConfigHeader' in kwargs:
+        if csv_config_header is None and 'csvConfigHeader' in kwargs:
             csv_config_header = kwargs['csvConfigHeader']
-        if 'csvConfigLinefeed' in kwargs:
+        if csv_config_linefeed is None and 'csvConfigLinefeed' in kwargs:
             csv_config_linefeed = kwargs['csvConfigLinefeed']
-        if 'csvConfigNullidentifier' in kwargs:
+        if csv_config_nullidentifier is None and 'csvConfigNullidentifier' in kwargs:
             csv_config_nullidentifier = kwargs['csvConfigNullidentifier']
-        if 'csvConfigQuote' in kwargs:
+        if csv_config_quote is None and 'csvConfigQuote' in kwargs:
             csv_config_quote = kwargs['csvConfigQuote']
-        if 'jsonEnableTag' in kwargs:
+        if json_enable_tag is None and 'jsonEnableTag' in kwargs:
             json_enable_tag = kwargs['jsonEnableTag']
-        if 'ossPrefix' in kwargs:
+        if oss_prefix is None and 'ossPrefix' in kwargs:
             oss_prefix = kwargs['ossPrefix']
-        if 'parquetConfigs' in kwargs:
+        if parquet_configs is None and 'parquetConfigs' in kwargs:
             parquet_configs = kwargs['parquetConfigs']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
 
         _setter("buffer_interval", buffer_interval)
@@ -490,43 +506,43 @@ class _OssShipperState:
              project_name: Optional[pulumi.Input[str]] = None,
              role_arn: Optional[pulumi.Input[str]] = None,
              shipper_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bufferInterval' in kwargs:
+        if buffer_interval is None and 'bufferInterval' in kwargs:
             buffer_interval = kwargs['bufferInterval']
-        if 'bufferSize' in kwargs:
+        if buffer_size is None and 'bufferSize' in kwargs:
             buffer_size = kwargs['bufferSize']
-        if 'compressType' in kwargs:
+        if compress_type is None and 'compressType' in kwargs:
             compress_type = kwargs['compressType']
-        if 'csvConfigColumns' in kwargs:
+        if csv_config_columns is None and 'csvConfigColumns' in kwargs:
             csv_config_columns = kwargs['csvConfigColumns']
-        if 'csvConfigDelimiter' in kwargs:
+        if csv_config_delimiter is None and 'csvConfigDelimiter' in kwargs:
             csv_config_delimiter = kwargs['csvConfigDelimiter']
-        if 'csvConfigHeader' in kwargs:
+        if csv_config_header is None and 'csvConfigHeader' in kwargs:
             csv_config_header = kwargs['csvConfigHeader']
-        if 'csvConfigLinefeed' in kwargs:
+        if csv_config_linefeed is None and 'csvConfigLinefeed' in kwargs:
             csv_config_linefeed = kwargs['csvConfigLinefeed']
-        if 'csvConfigNullidentifier' in kwargs:
+        if csv_config_nullidentifier is None and 'csvConfigNullidentifier' in kwargs:
             csv_config_nullidentifier = kwargs['csvConfigNullidentifier']
-        if 'csvConfigQuote' in kwargs:
+        if csv_config_quote is None and 'csvConfigQuote' in kwargs:
             csv_config_quote = kwargs['csvConfigQuote']
-        if 'jsonEnableTag' in kwargs:
+        if json_enable_tag is None and 'jsonEnableTag' in kwargs:
             json_enable_tag = kwargs['jsonEnableTag']
-        if 'logstoreName' in kwargs:
+        if logstore_name is None and 'logstoreName' in kwargs:
             logstore_name = kwargs['logstoreName']
-        if 'ossBucket' in kwargs:
+        if oss_bucket is None and 'ossBucket' in kwargs:
             oss_bucket = kwargs['ossBucket']
-        if 'ossPrefix' in kwargs:
+        if oss_prefix is None and 'ossPrefix' in kwargs:
             oss_prefix = kwargs['ossPrefix']
-        if 'parquetConfigs' in kwargs:
+        if parquet_configs is None and 'parquetConfigs' in kwargs:
             parquet_configs = kwargs['parquetConfigs']
-        if 'pathFormat' in kwargs:
+        if path_format is None and 'pathFormat' in kwargs:
             path_format = kwargs['pathFormat']
-        if 'projectName' in kwargs:
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'shipperName' in kwargs:
+        if shipper_name is None and 'shipperName' in kwargs:
             shipper_name = kwargs['shipperName']
 
         if buffer_interval is not None:
@@ -818,44 +834,6 @@ class OssShipper(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.121.0+
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject",
-            description="terraform-example",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_oss_shipper = alicloud.log.OssShipper("exampleOssShipper",
-            project_name=example_project.name,
-            logstore_name=example_store.name,
-            shipper_name="terraform-example",
-            oss_bucket="example_bucket",
-            oss_prefix="root",
-            buffer_interval=300,
-            buffer_size=250,
-            compress_type="none",
-            path_format="%Y/%m/%d/%H/%M",
-            format="json",
-            json_enable_tag=True)
-        ```
-
         ## Import
 
         Log oss shipper can be imported using the id or name, e.g.
@@ -903,44 +881,6 @@ class OssShipper(pulumi.CustomResource):
         [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/43724.htm).
 
         > **NOTE:** Available in 1.121.0+
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject",
-            description="terraform-example",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_oss_shipper = alicloud.log.OssShipper("exampleOssShipper",
-            project_name=example_project.name,
-            logstore_name=example_store.name,
-            shipper_name="terraform-example",
-            oss_bucket="example_bucket",
-            oss_prefix="root",
-            buffer_interval=300,
-            buffer_size=250,
-            compress_type="none",
-            path_format="%Y/%m/%d/%H/%M",
-            format="json",
-            json_enable_tag=True)
-        ```
 
         ## Import
 

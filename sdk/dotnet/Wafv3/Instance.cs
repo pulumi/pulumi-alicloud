@@ -16,23 +16,6 @@ namespace Pulumi.AliCloud.Wafv3
     /// 
     /// &gt; **NOTE:** Available in v1.200.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Wafv3.Instance("default");
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Wafv3 Instance can be imported using the id, e.g.

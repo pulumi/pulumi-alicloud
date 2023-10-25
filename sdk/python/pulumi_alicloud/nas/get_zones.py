@@ -83,16 +83,6 @@ def get_zones(file_system_type: Optional[str] = None,
 
     > **NOTE:** Available in v1.140.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.nas.get_zones()
-    pulumi.export("alicloudNasZonesId", default.zones[0].zone_id)
-    ```
-
 
     :param str file_system_type: The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -118,16 +108,6 @@ def get_zones_output(file_system_type: Optional[pulumi.Input[Optional[str]]] = N
     Provide  a data source to retrieve the type of zone used to create NAS file system.
 
     > **NOTE:** Available in v1.140.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.nas.get_zones()
-    pulumi.export("alicloudNasZonesId", default.zones[0].zone_id)
-    ```
 
 
     :param str file_system_type: The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.

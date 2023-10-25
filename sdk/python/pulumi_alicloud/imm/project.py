@@ -29,11 +29,13 @@ class ProjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
              service_role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serviceRole' in kwargs:
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_role is None and 'serviceRole' in kwargs:
             service_role = kwargs['serviceRole']
 
         _setter("project", project)
@@ -85,9 +87,9 @@ class _ProjectState:
              _setter: Callable[[Any, Any], None],
              project: Optional[pulumi.Input[str]] = None,
              service_role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serviceRole' in kwargs:
+        if service_role is None and 'serviceRole' in kwargs:
             service_role = kwargs['serviceRole']
 
         if project is not None:
@@ -135,41 +137,6 @@ class Project(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        role = alicloud.ram.Role("role",
-            document=\"\"\"  {
-            "Statement": [
-              {
-                "Action": "sts:AssumeRole",
-                "Effect": "Allow",
-                "Principal": {
-                  "Service": [
-                    "imm.aliyuncs.com"
-                  ]
-                }
-              }
-            ],
-            "Version": "1"
-          }
-        \"\"\",
-            description="this is a role test.",
-            force=True)
-        example = alicloud.imm.Project("example",
-            project=name,
-            service_role=role.name)
-        ```
-
         ## Import
 
         Intelligent Media Management Project can be imported using the id, e.g.
@@ -195,41 +162,6 @@ class Project(pulumi.CustomResource):
         For information about Intelligent Media Management Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/network-intelligence-service/latest/user-overview).
 
         > **NOTE:** Available since v1.134.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        role = alicloud.ram.Role("role",
-            document=\"\"\"  {
-            "Statement": [
-              {
-                "Action": "sts:AssumeRole",
-                "Effect": "Allow",
-                "Principal": {
-                  "Service": [
-                    "imm.aliyuncs.com"
-                  ]
-                }
-              }
-            ],
-            "Version": "1"
-          }
-        \"\"\",
-            description="this is a role test.",
-            force=True)
-        example = alicloud.imm.Project("example",
-            project=name,
-            service_role=role.name)
-        ```
 
         ## Import
 

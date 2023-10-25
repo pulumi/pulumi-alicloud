@@ -32,15 +32,19 @@ class SubscriptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_name: pulumi.Input[str],
-             topic_name: pulumi.Input[str],
+             project_name: Optional[pulumi.Input[str]] = None,
+             topic_name: Optional[pulumi.Input[str]] = None,
              comment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'projectName' in kwargs:
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'topicName' in kwargs:
+        if project_name is None:
+            raise TypeError("Missing 'project_name' argument")
+        if topic_name is None and 'topicName' in kwargs:
             topic_name = kwargs['topicName']
+        if topic_name is None:
+            raise TypeError("Missing 'topic_name' argument")
 
         _setter("project_name", project_name)
         _setter("topic_name", topic_name)
@@ -120,17 +124,17 @@ class _SubscriptionState:
              project_name: Optional[pulumi.Input[str]] = None,
              sub_id: Optional[pulumi.Input[str]] = None,
              topic_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'lastModifyTime' in kwargs:
+        if last_modify_time is None and 'lastModifyTime' in kwargs:
             last_modify_time = kwargs['lastModifyTime']
-        if 'projectName' in kwargs:
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'subId' in kwargs:
+        if sub_id is None and 'subId' in kwargs:
             sub_id = kwargs['subId']
-        if 'topicName' in kwargs:
+        if topic_name is None and 'topicName' in kwargs:
             topic_name = kwargs['topicName']
 
         if comment is not None:
@@ -233,31 +237,6 @@ class Subscription(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.19.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform_example"
-        example_project = alicloud.datahub.Project("exampleProject", comment="created by terraform")
-        example_topic = alicloud.datahub.Topic("exampleTopic",
-            project_name=example_project.name,
-            record_type="BLOB",
-            shard_count=3,
-            life_cycle=7,
-            comment="created by terraform")
-        example_subscription = alicloud.datahub.Subscription("exampleSubscription",
-            project_name=example_project.name,
-            topic_name=example_topic.name,
-            comment="created by terraform")
-        ```
-
         ## Import
 
         Datahub subscription can be imported using the ID, e.g.
@@ -282,31 +261,6 @@ class Subscription(pulumi.CustomResource):
         The subscription is the basic unit of resource usage in Datahub Service under Publish/Subscribe model. You can manage the relationships between user and topics by using subscriptions. [Refer to details](https://www.alibabacloud.com/help/en/datahub/latest/nerbcz).
 
         > **NOTE:** Available since v1.19.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform_example"
-        example_project = alicloud.datahub.Project("exampleProject", comment="created by terraform")
-        example_topic = alicloud.datahub.Topic("exampleTopic",
-            project_name=example_project.name,
-            record_type="BLOB",
-            shard_count=3,
-            life_cycle=7,
-            comment="created by terraform")
-        example_subscription = alicloud.datahub.Subscription("exampleSubscription",
-            project_name=example_project.name,
-            topic_name=example_topic.name,
-            comment="created by terraform")
-        ```
 
         ## Import
 

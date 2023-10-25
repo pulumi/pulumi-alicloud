@@ -46,26 +46,30 @@ class FunctionAsyncInvokeConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             function_name: pulumi.Input[str],
-             service_name: pulumi.Input[str],
+             function_name: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
              destination_config: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs']] = None,
              maximum_event_age_in_seconds: Optional[pulumi.Input[int]] = None,
              maximum_retry_attempts: Optional[pulumi.Input[int]] = None,
              qualifier: Optional[pulumi.Input[str]] = None,
              stateful_invocation: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'functionName' in kwargs:
+        if function_name is None and 'functionName' in kwargs:
             function_name = kwargs['functionName']
-        if 'serviceName' in kwargs:
+        if function_name is None:
+            raise TypeError("Missing 'function_name' argument")
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
-        if 'destinationConfig' in kwargs:
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if destination_config is None and 'destinationConfig' in kwargs:
             destination_config = kwargs['destinationConfig']
-        if 'maximumEventAgeInSeconds' in kwargs:
+        if maximum_event_age_in_seconds is None and 'maximumEventAgeInSeconds' in kwargs:
             maximum_event_age_in_seconds = kwargs['maximumEventAgeInSeconds']
-        if 'maximumRetryAttempts' in kwargs:
+        if maximum_retry_attempts is None and 'maximumRetryAttempts' in kwargs:
             maximum_retry_attempts = kwargs['maximumRetryAttempts']
-        if 'statefulInvocation' in kwargs:
+        if stateful_invocation is None and 'statefulInvocation' in kwargs:
             stateful_invocation = kwargs['statefulInvocation']
 
         _setter("function_name", function_name)
@@ -214,23 +218,23 @@ class _FunctionAsyncInvokeConfigState:
              qualifier: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              stateful_invocation: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createdTime' in kwargs:
+        if created_time is None and 'createdTime' in kwargs:
             created_time = kwargs['createdTime']
-        if 'destinationConfig' in kwargs:
+        if destination_config is None and 'destinationConfig' in kwargs:
             destination_config = kwargs['destinationConfig']
-        if 'functionName' in kwargs:
+        if function_name is None and 'functionName' in kwargs:
             function_name = kwargs['functionName']
-        if 'lastModifiedTime' in kwargs:
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
             last_modified_time = kwargs['lastModifiedTime']
-        if 'maximumEventAgeInSeconds' in kwargs:
+        if maximum_event_age_in_seconds is None and 'maximumEventAgeInSeconds' in kwargs:
             maximum_event_age_in_seconds = kwargs['maximumEventAgeInSeconds']
-        if 'maximumRetryAttempts' in kwargs:
+        if maximum_retry_attempts is None and 'maximumRetryAttempts' in kwargs:
             maximum_retry_attempts = kwargs['maximumRetryAttempts']
-        if 'serviceName' in kwargs:
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
-        if 'statefulInvocation' in kwargs:
+        if stateful_invocation is None and 'statefulInvocation' in kwargs:
             stateful_invocation = kwargs['statefulInvocation']
 
         if created_time is not None:
@@ -381,95 +385,6 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         > **NOTE:** Available since v1.100.0.
 
         ## Example Usage
-        ### Destination Configuration
-
-        > **NOTE** Ensure the FC Function RAM Role has necessary permissions for the destination, such as `mns:SendMessage`, `mns:PublishMessage` or `fc:InvokeFunction`, otherwise the API will return a generic error.
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_account = alicloud.get_account()
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_role = alicloud.ram.Role("defaultRole",
-            document=\"\"\"	{
-        		"Statement": [
-        		  {
-        			"Action": "sts:AssumeRole",
-        			"Effect": "Allow",
-        			"Principal": {
-        			  "Service": [
-        				"fc.aliyuncs.com"
-        			  ]
-        			}
-        		  }
-        		],
-        		"Version": "1"
-        	}
-        \"\"\",
-            description="this is a example",
-            force=True)
-        default_policy = alicloud.ram.Policy("defaultPolicy",
-            policy_name=default_random_integer.result.apply(lambda result: f"examplepolicy{result}"),
-            policy_document=\"\"\"	{
-        		"Version": "1",
-        		"Statement": [
-        		  {
-        			"Action": "mns:*",
-        			"Resource": "*",
-        			"Effect": "Allow"
-        		  }
-        		]
-        	  }
-        \"\"\")
-        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
-            role_name=default_role.name,
-            policy_name=default_policy.name,
-            policy_type="Custom")
-        default_service = alicloud.fc.Service("defaultService",
-            description="example-value",
-            role=default_role.arn,
-            internet_access=False)
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
-        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
-            bucket=default_bucket.id,
-            key="index.py",
-            content=\"\"\"import logging 
-        def handler(event, context): 
-        logger = logging.getLogger() 
-        logger.info('hello world') 
-        return 'hello world'\"\"\")
-        default_function = alicloud.fc.Function("defaultFunction",
-            service=default_service.name,
-            description="example",
-            oss_bucket=default_bucket.id,
-            oss_key=default_bucket_object.key,
-            memory_size=512,
-            runtime="python3.10",
-            handler="hello.handler")
-        default_queue = alicloud.mns.Queue("defaultQueue")
-        default_topic = alicloud.mns.Topic("defaultTopic")
-        default_function_async_invoke_config = alicloud.fc.FunctionAsyncInvokeConfig("defaultFunctionAsyncInvokeConfig",
-            service_name=default_service.name,
-            function_name=default_function.name,
-            destination_config=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigArgs(
-                on_failure=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs(
-                    destination=default_queue.name.apply(lambda name: f"acs:mns:{default_regions.regions[0].id}:{default_account.id}:/queues/{name}/messages"),
-                ),
-                on_success=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs(
-                    destination=default_topic.name.apply(lambda name: f"acs:mns:{default_regions.regions[0].id}:{default_account.id}:/topics/{name}/messages"),
-                ),
-            ),
-            maximum_event_age_in_seconds=60,
-            maximum_retry_attempts=0,
-            stateful_invocation=True,
-            qualifier="LATEST")
-        ```
 
         ## Import
 
@@ -502,95 +417,6 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         > **NOTE:** Available since v1.100.0.
 
         ## Example Usage
-        ### Destination Configuration
-
-        > **NOTE** Ensure the FC Function RAM Role has necessary permissions for the destination, such as `mns:SendMessage`, `mns:PublishMessage` or `fc:InvokeFunction`, otherwise the API will return a generic error.
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_account = alicloud.get_account()
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_role = alicloud.ram.Role("defaultRole",
-            document=\"\"\"	{
-        		"Statement": [
-        		  {
-        			"Action": "sts:AssumeRole",
-        			"Effect": "Allow",
-        			"Principal": {
-        			  "Service": [
-        				"fc.aliyuncs.com"
-        			  ]
-        			}
-        		  }
-        		],
-        		"Version": "1"
-        	}
-        \"\"\",
-            description="this is a example",
-            force=True)
-        default_policy = alicloud.ram.Policy("defaultPolicy",
-            policy_name=default_random_integer.result.apply(lambda result: f"examplepolicy{result}"),
-            policy_document=\"\"\"	{
-        		"Version": "1",
-        		"Statement": [
-        		  {
-        			"Action": "mns:*",
-        			"Resource": "*",
-        			"Effect": "Allow"
-        		  }
-        		]
-        	  }
-        \"\"\")
-        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
-            role_name=default_role.name,
-            policy_name=default_policy.name,
-            policy_type="Custom")
-        default_service = alicloud.fc.Service("defaultService",
-            description="example-value",
-            role=default_role.arn,
-            internet_access=False)
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
-        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
-            bucket=default_bucket.id,
-            key="index.py",
-            content=\"\"\"import logging 
-        def handler(event, context): 
-        logger = logging.getLogger() 
-        logger.info('hello world') 
-        return 'hello world'\"\"\")
-        default_function = alicloud.fc.Function("defaultFunction",
-            service=default_service.name,
-            description="example",
-            oss_bucket=default_bucket.id,
-            oss_key=default_bucket_object.key,
-            memory_size=512,
-            runtime="python3.10",
-            handler="hello.handler")
-        default_queue = alicloud.mns.Queue("defaultQueue")
-        default_topic = alicloud.mns.Topic("defaultTopic")
-        default_function_async_invoke_config = alicloud.fc.FunctionAsyncInvokeConfig("defaultFunctionAsyncInvokeConfig",
-            service_name=default_service.name,
-            function_name=default_function.name,
-            destination_config=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigArgs(
-                on_failure=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs(
-                    destination=default_queue.name.apply(lambda name: f"acs:mns:{default_regions.regions[0].id}:{default_account.id}:/queues/{name}/messages"),
-                ),
-                on_success=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs(
-                    destination=default_topic.name.apply(lambda name: f"acs:mns:{default_regions.regions[0].id}:{default_account.id}:/topics/{name}/messages"),
-                ),
-            ),
-            maximum_event_age_in_seconds=60,
-            maximum_retry_attempts=0,
-            stateful_invocation=True,
-            qualifier="LATEST")
-        ```
 
         ## Import
 
@@ -635,11 +461,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FunctionAsyncInvokeConfigArgs.__new__(FunctionAsyncInvokeConfigArgs)
 
-            if destination_config is not None and not isinstance(destination_config, FunctionAsyncInvokeConfigDestinationConfigArgs):
-                destination_config = destination_config or {}
-                def _setter(key, value):
-                    destination_config[key] = value
-                FunctionAsyncInvokeConfigDestinationConfigArgs._configure(_setter, **destination_config)
+            destination_config = _utilities.configure(destination_config, FunctionAsyncInvokeConfigDestinationConfigArgs, True)
             __props__.__dict__["destination_config"] = destination_config
             if function_name is None and not opts.urn:
                 raise TypeError("Missing required property 'function_name'")

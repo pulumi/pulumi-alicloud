@@ -29,13 +29,15 @@ class PeerConnectionAccepterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'dryRun' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
 
         _setter("instance_id", instance_id)
@@ -119,21 +121,21 @@ class _PeerConnectionAccepterState:
              peer_connection_accepter_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceptingOwnerUid' in kwargs:
+        if accepting_owner_uid is None and 'acceptingOwnerUid' in kwargs:
             accepting_owner_uid = kwargs['acceptingOwnerUid']
-        if 'acceptingRegionId' in kwargs:
+        if accepting_region_id is None and 'acceptingRegionId' in kwargs:
             accepting_region_id = kwargs['acceptingRegionId']
-        if 'acceptingVpcId' in kwargs:
+        if accepting_vpc_id is None and 'acceptingVpcId' in kwargs:
             accepting_vpc_id = kwargs['acceptingVpcId']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'peerConnectionAccepterName' in kwargs:
+        if peer_connection_accepter_name is None and 'peerConnectionAccepterName' in kwargs:
             peer_connection_accepter_name = kwargs['peerConnectionAccepterName']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if accepting_owner_uid is not None:
@@ -293,59 +295,6 @@ class PeerConnectionAccepter(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.196.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        accepting_region = config.get("acceptingRegion")
-        if accepting_region is None:
-            accepting_region = "cn-beijing"
-        accept_uid = config.get("acceptUid")
-        if accept_uid is None:
-            accept_uid = "xxxx"
-        # Method 1: Use assume_role to operate resources in the target account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
-        accepting = alicloud.Provider("accepting",
-            region=accepting_region,
-            assume_role=alicloud.ProviderAssumeRoleArgs(
-                role_arn=f"acs:ram::{accept_uid}:role/terraform-example-assume-role",
-            ))
-        # Method 2: Use the target account's access_key, secret_key
-        # provider "alicloud" {
-        #   region     = "cn-hangzhou"
-        #   access_key = "access_key"
-        #   secret_key = "secret_key"
-        #   alias      = "accepting"
-        # }
-        local = alicloud.Provider("local", region="cn-hangzhou")
-        local_network = alicloud.vpc.Network("localNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16",
-            opts=pulumi.ResourceOptions(provider=alicloud["local"]))
-        accepting_network = alicloud.vpc.Network("acceptingNetwork",
-            vpc_name=name,
-            cidr_block="192.168.0.0/16",
-            opts=pulumi.ResourceOptions(provider=alicloud["accepting"]))
-        accepting_account = alicloud.get_account()
-        default_peer_connection = alicloud.vpc.PeerConnection("defaultPeerConnection",
-            peer_connection_name=name,
-            vpc_id=local_network.id,
-            accepting_ali_uid=accepting_account.id,
-            accepting_region_id=accepting_region,
-            accepting_vpc_id=accepting_network.id,
-            description=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["local"]))
-        default_peer_connection_accepter = alicloud.vpc.PeerConnectionAccepter("defaultPeerConnectionAccepter", instance_id=default_peer_connection.id,
-        opts=pulumi.ResourceOptions(provider=alicloud["accepting"]))
-        ```
-
         ## Import
 
         Vpc Peer Connection Accepter can be imported using the id, e.g.
@@ -371,59 +320,6 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         For information about Vpc Peer Connection Accepter and how to use it, see [What is Peer Connection Accepter](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/AcceptVpcPeerConnection).
 
         > **NOTE:** Available since v1.196.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        accepting_region = config.get("acceptingRegion")
-        if accepting_region is None:
-            accepting_region = "cn-beijing"
-        accept_uid = config.get("acceptUid")
-        if accept_uid is None:
-            accept_uid = "xxxx"
-        # Method 1: Use assume_role to operate resources in the target account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
-        accepting = alicloud.Provider("accepting",
-            region=accepting_region,
-            assume_role=alicloud.ProviderAssumeRoleArgs(
-                role_arn=f"acs:ram::{accept_uid}:role/terraform-example-assume-role",
-            ))
-        # Method 2: Use the target account's access_key, secret_key
-        # provider "alicloud" {
-        #   region     = "cn-hangzhou"
-        #   access_key = "access_key"
-        #   secret_key = "secret_key"
-        #   alias      = "accepting"
-        # }
-        local = alicloud.Provider("local", region="cn-hangzhou")
-        local_network = alicloud.vpc.Network("localNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16",
-            opts=pulumi.ResourceOptions(provider=alicloud["local"]))
-        accepting_network = alicloud.vpc.Network("acceptingNetwork",
-            vpc_name=name,
-            cidr_block="192.168.0.0/16",
-            opts=pulumi.ResourceOptions(provider=alicloud["accepting"]))
-        accepting_account = alicloud.get_account()
-        default_peer_connection = alicloud.vpc.PeerConnection("defaultPeerConnection",
-            peer_connection_name=name,
-            vpc_id=local_network.id,
-            accepting_ali_uid=accepting_account.id,
-            accepting_region_id=accepting_region,
-            accepting_vpc_id=accepting_network.id,
-            description=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["local"]))
-        default_peer_connection_accepter = alicloud.vpc.PeerConnectionAccepter("defaultPeerConnectionAccepter", instance_id=default_peer_connection.id,
-        opts=pulumi.ResourceOptions(provider=alicloud["accepting"]))
-        ```
 
         ## Import
 

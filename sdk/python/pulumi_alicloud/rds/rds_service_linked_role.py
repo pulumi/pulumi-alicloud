@@ -26,11 +26,13 @@ class RdsServiceLinkedRoleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serviceName' in kwargs:
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
 
         _setter("service_name", service_name)
 
@@ -75,13 +77,13 @@ class _RdsServiceLinkedRoleState:
              role_id: Optional[pulumi.Input[str]] = None,
              role_name: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'roleId' in kwargs:
+        if role_id is None and 'roleId' in kwargs:
             role_id = kwargs['roleId']
-        if 'roleName' in kwargs:
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
-        if 'serviceName' in kwargs:
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
 
         if arn is not None:
@@ -156,17 +158,6 @@ class RdsServiceLinkedRole(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.189.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.rds.RdsServiceLinkedRole("default", service_name="AliyunServiceRoleForRdsPgsqlOnEcs")
-        ```
-
         ## Import
 
         RDS Service Linked Role can be imported using the id, e.g.
@@ -191,17 +182,6 @@ class RdsServiceLinkedRole(pulumi.CustomResource):
         For information about RDS Service Linked Role and how to use it, see [What is Service Linked Role.](https://www.alibabacloud.com/help/en/doc-detail/171226.htm).
 
         > **NOTE:** Available since v1.189.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.rds.RdsServiceLinkedRole("default", service_name="AliyunServiceRoleForRdsPgsqlOnEcs")
-        ```
 
         ## Import
 

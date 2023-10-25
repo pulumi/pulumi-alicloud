@@ -71,8 +71,8 @@ class PhysicalConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_point_id: pulumi.Input[str],
-             line_operator: pulumi.Input[str],
+             access_point_id: Optional[pulumi.Input[str]] = None,
+             line_operator: Optional[pulumi.Input[str]] = None,
              bandwidth: Optional[pulumi.Input[str]] = None,
              circuit_code: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -82,21 +82,25 @@ class PhysicalConnectionArgs:
              redundant_physical_connection_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessPointId' in kwargs:
+        if access_point_id is None and 'accessPointId' in kwargs:
             access_point_id = kwargs['accessPointId']
-        if 'lineOperator' in kwargs:
+        if access_point_id is None:
+            raise TypeError("Missing 'access_point_id' argument")
+        if line_operator is None and 'lineOperator' in kwargs:
             line_operator = kwargs['lineOperator']
-        if 'circuitCode' in kwargs:
+        if line_operator is None:
+            raise TypeError("Missing 'line_operator' argument")
+        if circuit_code is None and 'circuitCode' in kwargs:
             circuit_code = kwargs['circuitCode']
-        if 'peerLocation' in kwargs:
+        if peer_location is None and 'peerLocation' in kwargs:
             peer_location = kwargs['peerLocation']
-        if 'physicalConnectionName' in kwargs:
+        if physical_connection_name is None and 'physicalConnectionName' in kwargs:
             physical_connection_name = kwargs['physicalConnectionName']
-        if 'portType' in kwargs:
+        if port_type is None and 'portType' in kwargs:
             port_type = kwargs['portType']
-        if 'redundantPhysicalConnectionId' in kwargs:
+        if redundant_physical_connection_id is None and 'redundantPhysicalConnectionId' in kwargs:
             redundant_physical_connection_id = kwargs['redundantPhysicalConnectionId']
 
         _setter("access_point_id", access_point_id)
@@ -339,21 +343,21 @@ class _PhysicalConnectionState:
              redundant_physical_connection_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessPointId' in kwargs:
+        if access_point_id is None and 'accessPointId' in kwargs:
             access_point_id = kwargs['accessPointId']
-        if 'circuitCode' in kwargs:
+        if circuit_code is None and 'circuitCode' in kwargs:
             circuit_code = kwargs['circuitCode']
-        if 'lineOperator' in kwargs:
+        if line_operator is None and 'lineOperator' in kwargs:
             line_operator = kwargs['lineOperator']
-        if 'peerLocation' in kwargs:
+        if peer_location is None and 'peerLocation' in kwargs:
             peer_location = kwargs['peerLocation']
-        if 'physicalConnectionName' in kwargs:
+        if physical_connection_name is None and 'physicalConnectionName' in kwargs:
             physical_connection_name = kwargs['physicalConnectionName']
-        if 'portType' in kwargs:
+        if port_type is None and 'portType' in kwargs:
             port_type = kwargs['portType']
-        if 'redundantPhysicalConnectionId' in kwargs:
+        if redundant_physical_connection_id is None and 'redundantPhysicalConnectionId' in kwargs:
             redundant_physical_connection_id = kwargs['redundantPhysicalConnectionId']
 
         if access_point_id is not None:
@@ -551,34 +555,6 @@ class PhysicalConnection(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.132.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        domestic = alicloud.expressconnect.PhysicalConnection("domestic",
-            access_point_id="ap-cn-hangzhou-yh-B",
-            bandwidth="100",
-            description="my domestic connection",
-            line_operator="CT",
-            peer_location="example_value",
-            physical_connection_name="example_value",
-            port_type="1000Base-LX",
-            type="VPC")
-        international = alicloud.expressconnect.PhysicalConnection("international",
-            access_point_id="ap-sg-singpore-A",
-            bandwidth="100",
-            description="my domestic connection",
-            line_operator="Other",
-            peer_location="example_value",
-            physical_connection_name="example_value",
-            port_type="1000Base-LX",
-            type="VPC")
-        ```
-
         ## Import
 
         Express Connect Physical Connection can be imported using the id, e.g.
@@ -628,34 +604,6 @@ class PhysicalConnection(pulumi.CustomResource):
         For information about Express Connect Physical Connection and how to use it, see [What is Physical Connection](https://www.alibabacloud.com/help/doc-detail/44852.htm).
 
         > **NOTE:** Available since v1.132.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        domestic = alicloud.expressconnect.PhysicalConnection("domestic",
-            access_point_id="ap-cn-hangzhou-yh-B",
-            bandwidth="100",
-            description="my domestic connection",
-            line_operator="CT",
-            peer_location="example_value",
-            physical_connection_name="example_value",
-            port_type="1000Base-LX",
-            type="VPC")
-        international = alicloud.expressconnect.PhysicalConnection("international",
-            access_point_id="ap-sg-singpore-A",
-            bandwidth="100",
-            description="my domestic connection",
-            line_operator="Other",
-            peer_location="example_value",
-            physical_connection_name="example_value",
-            port_type="1000Base-LX",
-            type="VPC")
-        ```
 
         ## Import
 

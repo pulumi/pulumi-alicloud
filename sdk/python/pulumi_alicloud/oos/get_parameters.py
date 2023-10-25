@@ -169,29 +169,6 @@ def get_parameters(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.147.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.oos.get_parameters(ids=["my-Parameter"])
-    pulumi.export("oosParameterId1", ids.parameters[0].id)
-    name_regex = alicloud.oos.get_parameters(name_regex="^my-Parameter")
-    pulumi.export("oosParameterId2", name_regex.parameters[0].id)
-    resource_group_id = alicloud.oos.get_parameters(ids=["my-Parameter"],
-        resource_group_id="example_value")
-    pulumi.export("oosParameterId3", resource_group_id.parameters[0].id)
-    tags = alicloud.oos.get_parameters(ids=["my-Parameter"],
-        tags={
-            "Created": "TF",
-            "For": "OosParameter",
-        })
-    pulumi.export("oosParameterId4", tags.parameters[0].id)
-    ```
-
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Parameter IDs. Its element value is same as Parameter Name.
@@ -248,29 +225,6 @@ def get_parameters_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
     This data source provides the Oos Parameters of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.147.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.oos.get_parameters(ids=["my-Parameter"])
-    pulumi.export("oosParameterId1", ids.parameters[0].id)
-    name_regex = alicloud.oos.get_parameters(name_regex="^my-Parameter")
-    pulumi.export("oosParameterId2", name_regex.parameters[0].id)
-    resource_group_id = alicloud.oos.get_parameters(ids=["my-Parameter"],
-        resource_group_id="example_value")
-    pulumi.export("oosParameterId3", resource_group_id.parameters[0].id)
-    tags = alicloud.oos.get_parameters(ids=["my-Parameter"],
-        tags={
-            "Created": "TF",
-            "For": "OosParameter",
-        })
-    pulumi.export("oosParameterId4", tags.parameters[0].id)
-    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

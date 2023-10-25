@@ -200,17 +200,6 @@ def get_router_interfaces(ids: Optional[Sequence[str]] = None,
 
     > **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    router_interfaces_ds = alicloud.vpc.get_router_interfaces(name_regex="^testenv",
-        status="Active")
-    pulumi.export("firstRouterInterfaceId", router_interfaces_ds.interfaces[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of router interface IDs.
     :param str name_regex: A regex string used to filter by router interface name.
@@ -271,17 +260,6 @@ def get_router_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     that connect VPCs together.
 
     > **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    router_interfaces_ds = alicloud.vpc.get_router_interfaces(name_regex="^testenv",
-        status="Active")
-    pulumi.export("firstRouterInterfaceId", router_interfaces_ds.interfaces[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of router interface IDs.

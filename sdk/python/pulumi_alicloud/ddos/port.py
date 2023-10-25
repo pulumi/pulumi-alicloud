@@ -38,22 +38,30 @@ class PortArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             frontend_port: pulumi.Input[str],
-             frontend_protocol: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             real_servers: pulumi.Input[Sequence[pulumi.Input[str]]],
+             frontend_port: Optional[pulumi.Input[str]] = None,
+             frontend_protocol: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              backend_port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'frontendPort' in kwargs:
+        if frontend_port is None and 'frontendPort' in kwargs:
             frontend_port = kwargs['frontendPort']
-        if 'frontendProtocol' in kwargs:
+        if frontend_port is None:
+            raise TypeError("Missing 'frontend_port' argument")
+        if frontend_protocol is None and 'frontendProtocol' in kwargs:
             frontend_protocol = kwargs['frontendProtocol']
-        if 'instanceId' in kwargs:
+        if frontend_protocol is None:
+            raise TypeError("Missing 'frontend_protocol' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'realServers' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if real_servers is None and 'realServers' in kwargs:
             real_servers = kwargs['realServers']
-        if 'backendPort' in kwargs:
+        if real_servers is None:
+            raise TypeError("Missing 'real_servers' argument")
+        if backend_port is None and 'backendPort' in kwargs:
             backend_port = kwargs['backendPort']
 
         _setter("frontend_port", frontend_port)
@@ -156,17 +164,17 @@ class _PortState:
              frontend_protocol: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backendPort' in kwargs:
+        if backend_port is None and 'backendPort' in kwargs:
             backend_port = kwargs['backendPort']
-        if 'frontendPort' in kwargs:
+        if frontend_port is None and 'frontendPort' in kwargs:
             frontend_port = kwargs['frontendPort']
-        if 'frontendProtocol' in kwargs:
+        if frontend_protocol is None and 'frontendProtocol' in kwargs:
             frontend_protocol = kwargs['frontendProtocol']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'realServers' in kwargs:
+        if real_servers is None and 'realServers' in kwargs:
             real_servers = kwargs['realServers']
 
         if backend_port is not None:
@@ -259,37 +267,6 @@ class Port(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.123.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_ddos_coo_instance = alicloud.ddos.DdosCooInstance("defaultDdosCooInstance",
-            bandwidth="30",
-            base_bandwidth="30",
-            service_bandwidth="100",
-            port_count="50",
-            domain_count="50",
-            period=1,
-            product_type="ddoscoo")
-        default_port = alicloud.ddos.Port("defaultPort",
-            instance_id=default_ddos_coo_instance.id,
-            frontend_port="7001",
-            backend_port="7002",
-            frontend_protocol="tcp",
-            real_servers=[
-                "1.1.1.1",
-                "2.2.2.2",
-            ])
-        ```
-
         ## Import
 
         Anti-DDoS Pro Port can be imported using the id, e.g.
@@ -318,37 +295,6 @@ class Port(pulumi.CustomResource):
         For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createport).
 
         > **NOTE:** Available since v1.123.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_ddos_coo_instance = alicloud.ddos.DdosCooInstance("defaultDdosCooInstance",
-            bandwidth="30",
-            base_bandwidth="30",
-            service_bandwidth="100",
-            port_count="50",
-            domain_count="50",
-            period=1,
-            product_type="ddoscoo")
-        default_port = alicloud.ddos.Port("defaultPort",
-            instance_id=default_ddos_coo_instance.id,
-            frontend_port="7001",
-            backend_port="7002",
-            frontend_protocol="tcp",
-            real_servers=[
-                "1.1.1.1",
-                "2.2.2.2",
-            ])
-        ```
 
         ## Import
 

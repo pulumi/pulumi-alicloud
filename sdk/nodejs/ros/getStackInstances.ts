@@ -10,43 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.145.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ros.getStackInstances({
- *     stackGroupName: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- *     enableDetails: true,
- * });
- * export const rosStackInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
- * const status = alicloud.ros.getStackInstances({
- *     stackGroupName: "example_value",
- *     status: "CURRENT",
- *     enableDetails: true,
- * });
- * export const rosStackInstanceId2 = status.then(status => status.instances?.[0]?.id);
- * const regionId = alicloud.ros.getStackInstances({
- *     stackGroupName: "example_value",
- *     stackInstanceRegionId: "example_value",
- *     enableDetails: true,
- * });
- * export const rosStackInstanceId3 = regionId.then(regionId => regionId.instances?.[0]?.id);
- * const accountId = alicloud.ros.getStackInstances({
- *     stackGroupName: "example_value",
- *     stackInstanceAccountId: "example_value",
- *     enableDetails: true,
- * });
- * export const rosStackInstanceId4 = accountId.then(accountId => accountId.instances?.[0]?.id);
- * ```
  */
 export function getStackInstances(args: GetStackInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetStackInstancesResult> {
 
@@ -117,43 +80,6 @@ export interface GetStackInstancesResult {
  * This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.145.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ros.getStackInstances({
- *     stackGroupName: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- *     enableDetails: true,
- * });
- * export const rosStackInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
- * const status = alicloud.ros.getStackInstances({
- *     stackGroupName: "example_value",
- *     status: "CURRENT",
- *     enableDetails: true,
- * });
- * export const rosStackInstanceId2 = status.then(status => status.instances?.[0]?.id);
- * const regionId = alicloud.ros.getStackInstances({
- *     stackGroupName: "example_value",
- *     stackInstanceRegionId: "example_value",
- *     enableDetails: true,
- * });
- * export const rosStackInstanceId3 = regionId.then(regionId => regionId.instances?.[0]?.id);
- * const accountId = alicloud.ros.getStackInstances({
- *     stackGroupName: "example_value",
- *     stackInstanceAccountId: "example_value",
- *     enableDetails: true,
- * });
- * export const rosStackInstanceId4 = accountId.then(accountId => accountId.instances?.[0]?.id);
- * ```
  */
 export function getStackInstancesOutput(args: GetStackInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStackInstancesResult> {
     return pulumi.output(args).apply((a: any) => getStackInstances(a, opts))

@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.120.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ecs.getEcsSnapshots({
- *     ids: ["s-bp1fvuxxxxxxxx"],
- *     nameRegex: "tf-test",
- * });
- * export const firstEcsSnapshotId = example.then(example => example.snapshots?.[0]?.id);
- * ```
  */
 export function getEcsSnapshots(args?: GetEcsSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsSnapshotsResult> {
     args = args || {};
@@ -148,21 +133,6 @@ export interface GetEcsSnapshotsResult {
  * This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.120.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ecs.getEcsSnapshots({
- *     ids: ["s-bp1fvuxxxxxxxx"],
- *     nameRegex: "tf-test",
- * });
- * export const firstEcsSnapshotId = example.then(example => example.snapshots?.[0]?.id);
- * ```
  */
 export function getEcsSnapshotsOutput(args?: GetEcsSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsSnapshotsResult> {
     return pulumi.output(args).apply((a: any) => getEcsSnapshots(a, opts))

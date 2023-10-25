@@ -11,19 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.111.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tfexample";
- * const example = new alicloud.resourcemanager.ResourceShare("example", {resourceShareName: name});
- * ```
- *
  * ## Import
  *
  * Resource Manager Resource Share can be imported using the id, e.g.

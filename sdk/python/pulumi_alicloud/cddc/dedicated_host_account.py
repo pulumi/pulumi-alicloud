@@ -35,19 +35,25 @@ class DedicatedHostAccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: pulumi.Input[str],
-             account_password: pulumi.Input[str],
-             dedicated_host_id: pulumi.Input[str],
+             account_name: Optional[pulumi.Input[str]] = None,
+             account_password: Optional[pulumi.Input[str]] = None,
+             dedicated_host_id: Optional[pulumi.Input[str]] = None,
              account_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountPassword' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_password is None and 'accountPassword' in kwargs:
             account_password = kwargs['accountPassword']
-        if 'dedicatedHostId' in kwargs:
+        if account_password is None:
+            raise TypeError("Missing 'account_password' argument")
+        if dedicated_host_id is None and 'dedicatedHostId' in kwargs:
             dedicated_host_id = kwargs['dedicatedHostId']
-        if 'accountType' in kwargs:
+        if dedicated_host_id is None:
+            raise TypeError("Missing 'dedicated_host_id' argument")
+        if account_type is None and 'accountType' in kwargs:
             account_type = kwargs['accountType']
 
         _setter("account_name", account_name)
@@ -133,15 +139,15 @@ class _DedicatedHostAccountState:
              account_password: Optional[pulumi.Input[str]] = None,
              account_type: Optional[pulumi.Input[str]] = None,
              dedicated_host_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountPassword' in kwargs:
+        if account_password is None and 'accountPassword' in kwargs:
             account_password = kwargs['accountPassword']
-        if 'accountType' in kwargs:
+        if account_type is None and 'accountType' in kwargs:
             account_type = kwargs['accountType']
-        if 'dedicatedHostId' in kwargs:
+        if dedicated_host_id is None and 'dedicatedHostId' in kwargs:
             dedicated_host_id = kwargs['dedicatedHostId']
 
         if account_name is not None:
@@ -221,58 +227,6 @@ class DedicatedHostAccount(pulumi.CustomResource):
 
         > **NOTE:** Each Dedicated host can have only one account. Before you create an account for a host, make sure that the existing account is deleted.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.cddc.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.ids[0])
-        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup",
-            engine="MySQL",
-            vpc_id=default_network.id,
-            cpu_allocation_ratio=101,
-            mem_allocation_ratio=50,
-            disk_allocation_ratio=200,
-            allocation_policy="Evenly",
-            host_replace_policy="Manual",
-            dedicated_host_group_desc=name,
-            open_permission=True)
-        default_host_ecs_level_infos = alicloud.cddc.get_host_ecs_level_infos(db_type="mysql",
-            zone_id=default_zones.ids[0],
-            storage_type="cloud_essd")
-        default_dedicated_host = alicloud.cddc.DedicatedHost("defaultDedicatedHost",
-            host_name=name,
-            dedicated_host_group_id=default_dedicated_host_group.id,
-            host_class=default_host_ecs_level_infos.infos[0].res_class_code,
-            zone_id=default_zones.ids[0],
-            vswitch_id=default_switch.id,
-            payment_type="Subscription",
-            tags={
-                "Created": "TF",
-                "For": "CDDC_DEDICATED",
-            })
-        default_dedicated_host_account = alicloud.cddc.DedicatedHostAccount("defaultDedicatedHostAccount",
-            account_name=name,
-            account_password="Password1234",
-            dedicated_host_id=default_dedicated_host.dedicated_host_id,
-            account_type="Normal")
-        ```
-
         ## Import
 
         ApsaraDB for MyBase Dedicated Host Account can be imported using the id, e.g.
@@ -302,58 +256,6 @@ class DedicatedHostAccount(pulumi.CustomResource):
         > **NOTE:** Available since v1.148.0.
 
         > **NOTE:** Each Dedicated host can have only one account. Before you create an account for a host, make sure that the existing account is deleted.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.cddc.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.ids[0])
-        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup",
-            engine="MySQL",
-            vpc_id=default_network.id,
-            cpu_allocation_ratio=101,
-            mem_allocation_ratio=50,
-            disk_allocation_ratio=200,
-            allocation_policy="Evenly",
-            host_replace_policy="Manual",
-            dedicated_host_group_desc=name,
-            open_permission=True)
-        default_host_ecs_level_infos = alicloud.cddc.get_host_ecs_level_infos(db_type="mysql",
-            zone_id=default_zones.ids[0],
-            storage_type="cloud_essd")
-        default_dedicated_host = alicloud.cddc.DedicatedHost("defaultDedicatedHost",
-            host_name=name,
-            dedicated_host_group_id=default_dedicated_host_group.id,
-            host_class=default_host_ecs_level_infos.infos[0].res_class_code,
-            zone_id=default_zones.ids[0],
-            vswitch_id=default_switch.id,
-            payment_type="Subscription",
-            tags={
-                "Created": "TF",
-                "For": "CDDC_DEDICATED",
-            })
-        default_dedicated_host_account = alicloud.cddc.DedicatedHostAccount("defaultDedicatedHostAccount",
-            account_name=name,
-            account_password="Password1234",
-            dedicated_host_id=default_dedicated_host.dedicated_host_id,
-            account_type="Normal")
-        ```
 
         ## Import
 

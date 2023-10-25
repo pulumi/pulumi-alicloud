@@ -169,41 +169,6 @@ def get_traffic_mirror_sessions(enabled: Optional[bool] = None,
 
     > **NOTE:** Available in v1.142.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpc.get_traffic_mirror_sessions(ids=["example_id"])
-    pulumi.export("vpcTrafficMirrorSessionId1", ids.sessions[0].id)
-    name_regex = alicloud.vpc.get_traffic_mirror_sessions(name_regex="^my-TrafficMirrorSession")
-    pulumi.export("vpcTrafficMirrorSessionId2", name_regex.sessions[0].id)
-    enabled = alicloud.vpc.get_traffic_mirror_sessions(ids=["example_id"],
-        enabled=False)
-    pulumi.export("vpcTrafficMirrorSessionId3", enabled.sessions[0].id)
-    priority = alicloud.vpc.get_traffic_mirror_sessions(ids=["example_id"],
-        priority=1)
-    pulumi.export("vpcTrafficMirrorSessionId4", priority.sessions[0].id)
-    filter_id = alicloud.vpc.get_traffic_mirror_sessions(ids=["example_id"],
-        traffic_mirror_filter_id="example_value")
-    pulumi.export("vpcTrafficMirrorSessionId5", filter_id.sessions[0].id)
-    session_name = alicloud.vpc.get_traffic_mirror_sessions(ids=["example_id"],
-        traffic_mirror_session_name="example_value")
-    pulumi.export("vpcTrafficMirrorSessionId6", session_name.sessions[0].id)
-    source_id = alicloud.vpc.get_traffic_mirror_sessions(ids=["example_id"],
-        traffic_mirror_source_id="example_value")
-    pulumi.export("vpcTrafficMirrorSessionId7", source_id.sessions[0].id)
-    target_id = alicloud.vpc.get_traffic_mirror_sessions(ids=["example_id"],
-        traffic_mirror_target_id="example_value")
-    pulumi.export("vpcTrafficMirrorSessionId8", target_id.sessions[0].id)
-    status = alicloud.vpc.get_traffic_mirror_sessions(ids=["example_id"],
-        status="Created")
-    pulumi.export("vpcTrafficMirrorSessionId9", status.sessions[0].id)
-    ```
-
 
     :param bool enabled: Indicates whether traffic mirror sessions are enabled. default to `false`.
     :param Sequence[str] ids: A list of Traffic Mirror Session IDs.
@@ -262,41 +227,6 @@ def get_traffic_mirror_sessions_output(enabled: Optional[pulumi.Input[Optional[b
     This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.142.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpc.get_traffic_mirror_sessions(ids=["example_id"])
-    pulumi.export("vpcTrafficMirrorSessionId1", ids.sessions[0].id)
-    name_regex = alicloud.vpc.get_traffic_mirror_sessions(name_regex="^my-TrafficMirrorSession")
-    pulumi.export("vpcTrafficMirrorSessionId2", name_regex.sessions[0].id)
-    enabled = alicloud.vpc.get_traffic_mirror_sessions(ids=["example_id"],
-        enabled=False)
-    pulumi.export("vpcTrafficMirrorSessionId3", enabled.sessions[0].id)
-    priority = alicloud.vpc.get_traffic_mirror_sessions(ids=["example_id"],
-        priority=1)
-    pulumi.export("vpcTrafficMirrorSessionId4", priority.sessions[0].id)
-    filter_id = alicloud.vpc.get_traffic_mirror_sessions(ids=["example_id"],
-        traffic_mirror_filter_id="example_value")
-    pulumi.export("vpcTrafficMirrorSessionId5", filter_id.sessions[0].id)
-    session_name = alicloud.vpc.get_traffic_mirror_sessions(ids=["example_id"],
-        traffic_mirror_session_name="example_value")
-    pulumi.export("vpcTrafficMirrorSessionId6", session_name.sessions[0].id)
-    source_id = alicloud.vpc.get_traffic_mirror_sessions(ids=["example_id"],
-        traffic_mirror_source_id="example_value")
-    pulumi.export("vpcTrafficMirrorSessionId7", source_id.sessions[0].id)
-    target_id = alicloud.vpc.get_traffic_mirror_sessions(ids=["example_id"],
-        traffic_mirror_target_id="example_value")
-    pulumi.export("vpcTrafficMirrorSessionId8", target_id.sessions[0].id)
-    status = alicloud.vpc.get_traffic_mirror_sessions(ids=["example_id"],
-        status="Created")
-    pulumi.export("vpcTrafficMirrorSessionId9", status.sessions[0].id)
-    ```
 
 
     :param bool enabled: Indicates whether traffic mirror sessions are enabled. default to `false`.

@@ -32,17 +32,23 @@ class SnatEntryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: pulumi.Input[str],
-             sag_id: pulumi.Input[str],
-             snat_ip: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             sag_id: Optional[pulumi.Input[str]] = None,
+             snat_ip: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'sagId' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if sag_id is None and 'sagId' in kwargs:
             sag_id = kwargs['sagId']
-        if 'snatIp' in kwargs:
+        if sag_id is None:
+            raise TypeError("Missing 'sag_id' argument")
+        if snat_ip is None and 'snatIp' in kwargs:
             snat_ip = kwargs['snatIp']
+        if snat_ip is None:
+            raise TypeError("Missing 'snat_ip' argument")
 
         _setter("cidr_block", cidr_block)
         _setter("sag_id", sag_id)
@@ -109,13 +115,13 @@ class _SnatEntryState:
              cidr_block: Optional[pulumi.Input[str]] = None,
              sag_id: Optional[pulumi.Input[str]] = None,
              snat_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'sagId' in kwargs:
+        if sag_id is None and 'sagId' in kwargs:
             sag_id = kwargs['sagId']
-        if 'snatIp' in kwargs:
+        if snat_ip is None and 'snatIp' in kwargs:
             snat_ip = kwargs['snatIp']
 
         if cidr_block is not None:
@@ -180,24 +186,6 @@ class SnatEntry(pulumi.CustomResource):
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        sag_id = config.get("sagId")
-        if sag_id is None:
-            sag_id = "sag-9bifk***"
-        default = alicloud.rocketmq.SnatEntry("default",
-            sag_id=sag_id,
-            cidr_block="192.168.7.0/24",
-            snat_ip="192.0.0.2")
-        ```
-
         ## Import
 
         The Sag SnatEntry can be imported using the id, e.g.
@@ -226,24 +214,6 @@ class SnatEntry(pulumi.CustomResource):
         > **NOTE:** Available since v1.61.0.
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        sag_id = config.get("sagId")
-        if sag_id is None:
-            sag_id = "sag-9bifk***"
-        default = alicloud.rocketmq.SnatEntry("default",
-            sag_id=sag_id,
-            cidr_block="192.168.7.0/24",
-            snat_ip="192.0.0.2")
-        ```
 
         ## Import
 

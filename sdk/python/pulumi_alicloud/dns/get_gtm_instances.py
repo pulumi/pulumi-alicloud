@@ -99,18 +99,6 @@ def get_gtm_instances(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.151.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dns.get_gtm_instances()
-    pulumi.export("alidnsGtmInstanceId1", ids.instances[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Gtm Instance IDs.
     :param str lang: The lang.
@@ -141,18 +129,6 @@ def get_gtm_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     This data source provides the Alidns Gtm Instances of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.151.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dns.get_gtm_instances()
-    pulumi.export("alidnsGtmInstanceId1", ids.instances[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Gtm Instance IDs.

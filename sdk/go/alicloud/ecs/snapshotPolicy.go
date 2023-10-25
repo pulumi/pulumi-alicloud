@@ -21,42 +21,6 @@ import (
 //
 // > **NOTE:** Available in 1.42.0+.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.NewSnapshotPolicy(ctx, "sp", &ecs.SnapshotPolicyArgs{
-//				RepeatWeekdays: pulumi.StringArray{
-//					pulumi.String("1"),
-//					pulumi.String("2"),
-//					pulumi.String("3"),
-//				},
-//				RetentionDays: -1,
-//				TimePoints: pulumi.StringArray{
-//					pulumi.String("1"),
-//					pulumi.String("22"),
-//					pulumi.String("23"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Snapshot can be imported using the id, e.g.

@@ -52,26 +52,36 @@ class ServerBackupPlanArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             details: pulumi.Input[Sequence[pulumi.Input['ServerBackupPlanDetailArgs']]],
-             ecs_server_backup_plan_name: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             retention: pulumi.Input[int],
-             schedule: pulumi.Input[str],
+             details: Optional[pulumi.Input[Sequence[pulumi.Input['ServerBackupPlanDetailArgs']]]] = None,
+             ecs_server_backup_plan_name: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             retention: Optional[pulumi.Input[int]] = None,
+             schedule: Optional[pulumi.Input[str]] = None,
              cross_account_role_name: Optional[pulumi.Input[str]] = None,
              cross_account_type: Optional[pulumi.Input[str]] = None,
              cross_account_user_id: Optional[pulumi.Input[int]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ecsServerBackupPlanName' in kwargs:
+        if details is None:
+            raise TypeError("Missing 'details' argument")
+        if ecs_server_backup_plan_name is None and 'ecsServerBackupPlanName' in kwargs:
             ecs_server_backup_plan_name = kwargs['ecsServerBackupPlanName']
-        if 'instanceId' in kwargs:
+        if ecs_server_backup_plan_name is None:
+            raise TypeError("Missing 'ecs_server_backup_plan_name' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'crossAccountRoleName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if retention is None:
+            raise TypeError("Missing 'retention' argument")
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
             cross_account_role_name = kwargs['crossAccountRoleName']
-        if 'crossAccountType' in kwargs:
+        if cross_account_type is None and 'crossAccountType' in kwargs:
             cross_account_type = kwargs['crossAccountType']
-        if 'crossAccountUserId' in kwargs:
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
             cross_account_user_id = kwargs['crossAccountUserId']
 
         _setter("details", details)
@@ -245,17 +255,17 @@ class _ServerBackupPlanState:
              instance_id: Optional[pulumi.Input[str]] = None,
              retention: Optional[pulumi.Input[int]] = None,
              schedule: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'crossAccountRoleName' in kwargs:
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
             cross_account_role_name = kwargs['crossAccountRoleName']
-        if 'crossAccountType' in kwargs:
+        if cross_account_type is None and 'crossAccountType' in kwargs:
             cross_account_type = kwargs['crossAccountType']
-        if 'crossAccountUserId' in kwargs:
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
             cross_account_user_id = kwargs['crossAccountUserId']
-        if 'ecsServerBackupPlanName' in kwargs:
+        if ecs_server_backup_plan_name is None and 'ecsServerBackupPlanName' in kwargs:
             ecs_server_backup_plan_name = kwargs['ecsServerBackupPlanName']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
 
         if cross_account_role_name is not None:
@@ -408,49 +418,6 @@ class ServerBackupPlan(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.142.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            availability_zone=example_zones.zones[0].id,
-            security_groups=[example_security_group.id],
-            instance_name="terraform-example",
-            internet_charge_type="PayByBandwidth",
-            vswitch_id=example_switch.id)
-        example_server_backup_plan = alicloud.hbr.ServerBackupPlan("exampleServerBackupPlan",
-            ecs_server_backup_plan_name="terraform-example",
-            instance_id=example_instance.id,
-            schedule="I|1602673264|PT2H",
-            retention=1,
-            details=[alicloud.hbr.ServerBackupPlanDetailArgs(
-                app_consistent=True,
-                snapshot_group=True,
-            )],
-            disabled=False)
-        ```
-
         ## Import
 
         Hybrid Backup Recovery (HBR) Server Backup Plan can be imported using the id, e.g.
@@ -483,49 +450,6 @@ class ServerBackupPlan(pulumi.CustomResource):
         For information about Hybrid Backup Recovery (HBR) Server Backup Plan and how to use it, see [What is Server Backup Plan](https://www.alibabacloud.com/help/doc-detail/211140.htm).
 
         > **NOTE:** Available in v1.142.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            availability_zone=example_zones.zones[0].id,
-            security_groups=[example_security_group.id],
-            instance_name="terraform-example",
-            internet_charge_type="PayByBandwidth",
-            vswitch_id=example_switch.id)
-        example_server_backup_plan = alicloud.hbr.ServerBackupPlan("exampleServerBackupPlan",
-            ecs_server_backup_plan_name="terraform-example",
-            instance_id=example_instance.id,
-            schedule="I|1602673264|PT2H",
-            retention=1,
-            details=[alicloud.hbr.ServerBackupPlanDetailArgs(
-                app_consistent=True,
-                snapshot_group=True,
-            )],
-            disabled=False)
-        ```
 
         ## Import
 

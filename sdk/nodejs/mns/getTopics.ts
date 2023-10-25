@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
  *
  * > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const topics = alicloud.mns.getTopics({
- *     namePrefix: "tf-",
- * });
- * export const firstTopicId = topics.then(topics => topics.topics?.[0]?.id);
- * ```
  */
 export function getTopics(args?: GetTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicsResult> {
     args = args || {};
@@ -70,18 +58,6 @@ export interface GetTopicsResult {
  * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
  *
  * > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const topics = alicloud.mns.getTopics({
- *     namePrefix: "tf-",
- * });
- * export const firstTopicId = topics.then(topics => topics.topics?.[0]?.id);
- * ```
  */
 export function getTopicsOutput(args?: GetTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicsResult> {
     return pulumi.output(args).apply((a: any) => getTopics(a, opts))

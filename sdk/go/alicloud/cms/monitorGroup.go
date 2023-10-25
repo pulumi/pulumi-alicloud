@@ -18,48 +18,6 @@ import (
 //
 // > **NOTE:** Available since v1.113.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cms.NewMonitorGroup(ctx, "example", &cms.MonitorGroupArgs{
-//				MonitorGroupName: pulumi.String("tf-example-accmonitorgroup"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cms.NewMonitorGroup(ctx, "default2", &cms.MonitorGroupArgs{
-//				ContactGroups: pulumi.StringArray{
-//					pulumi.String("your_contact_groups"),
-//				},
-//				ResourceGroupId:   pulumi.String("your_resource_group_id"),
-//				ResourceGroupName: pulumi.String("resource_group_name"),
-//				Tags: pulumi.AnyMap{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("Acceptance-example"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Cloud Monitor Service Monitor Group can be imported using the id, e.g.

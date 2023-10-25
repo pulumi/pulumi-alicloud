@@ -35,7 +35,7 @@ class GroupArgs:
              comments: Optional[pulumi.Input[str]] = None,
              force: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if comments is not None:
@@ -106,7 +106,7 @@ class _GroupState:
              comments: Optional[pulumi.Input[str]] = None,
              force: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if comments is not None:
@@ -169,16 +169,6 @@ class Group(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0+.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new RAM Group.
-        group = alicloud.ram.Group("group", comments="this is a group comments.")
-        ```
-
         ## Import
 
         RAM group can be imported using the id or name, e.g.
@@ -205,16 +195,6 @@ class Group(pulumi.CustomResource):
         > **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
 
         > **NOTE:** Available since v1.0.0+.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new RAM Group.
-        group = alicloud.ram.Group("group", comments="this is a group comments.")
-        ```
 
         ## Import
 

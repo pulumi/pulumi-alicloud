@@ -15,35 +15,6 @@ import (
 // This data source provides the Privatelink Vpc Endpoint Service Resources of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.110.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := privatelink.GetVpcEndpointServiceResources(ctx, &privatelink.GetVpcEndpointServiceResourcesArgs{
-//				ServiceId: "epsrv-gw8ii1xxxx",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstPrivatelinkVpcEndpointServiceResourceId", example.Resources[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetVpcEndpointServiceResources(ctx *pulumi.Context, args *GetVpcEndpointServiceResourcesArgs, opts ...pulumi.InvokeOption) (*GetVpcEndpointServiceResourcesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpcEndpointServiceResourcesResult

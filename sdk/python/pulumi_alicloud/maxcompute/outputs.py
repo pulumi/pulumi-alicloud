@@ -64,11 +64,11 @@ class ProjectIpWhiteList(dict):
              _setter: Callable[[Any, Any], None],
              ip_list: Optional[str] = None,
              vpc_ip_list: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipList' in kwargs:
+        if ip_list is None and 'ipList' in kwargs:
             ip_list = kwargs['ipList']
-        if 'vpcIpList' in kwargs:
+        if vpc_ip_list is None and 'vpcIpList' in kwargs:
             vpc_ip_list = kwargs['vpcIpList']
 
         if ip_list is not None:
@@ -163,19 +163,19 @@ class ProjectProperties(dict):
              table_lifecycle: Optional['outputs.ProjectPropertiesTableLifecycle'] = None,
              timezone: Optional[str] = None,
              type_system: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowFullScan' in kwargs:
+        if allow_full_scan is None and 'allowFullScan' in kwargs:
             allow_full_scan = kwargs['allowFullScan']
-        if 'enableDecimal2' in kwargs:
+        if enable_decimal2 is None and 'enableDecimal2' in kwargs:
             enable_decimal2 = kwargs['enableDecimal2']
-        if 'retentionDays' in kwargs:
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'sqlMeteringMax' in kwargs:
+        if sql_metering_max is None and 'sqlMeteringMax' in kwargs:
             sql_metering_max = kwargs['sqlMeteringMax']
-        if 'tableLifecycle' in kwargs:
+        if table_lifecycle is None and 'tableLifecycle' in kwargs:
             table_lifecycle = kwargs['tableLifecycle']
-        if 'typeSystem' in kwargs:
+        if type_system is None and 'typeSystem' in kwargs:
             type_system = kwargs['typeSystem']
 
         if allow_full_scan is not None:
@@ -283,7 +283,7 @@ class ProjectPropertiesEncryption(dict):
              algorithm: Optional[str] = None,
              enable: Optional[bool] = None,
              key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if algorithm is not None:
@@ -337,7 +337,7 @@ class ProjectPropertiesTableLifecycle(dict):
              _setter: Callable[[Any, Any], None],
              type: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if type is not None:
@@ -430,21 +430,21 @@ class ProjectSecurityProperties(dict):
              project_protection: Optional['outputs.ProjectSecurityPropertiesProjectProtection'] = None,
              using_acl: Optional[bool] = None,
              using_policy: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'enableDownloadPrivilege' in kwargs:
+        if enable_download_privilege is None and 'enableDownloadPrivilege' in kwargs:
             enable_download_privilege = kwargs['enableDownloadPrivilege']
-        if 'labelSecurity' in kwargs:
+        if label_security is None and 'labelSecurity' in kwargs:
             label_security = kwargs['labelSecurity']
-        if 'objectCreatorHasAccessPermission' in kwargs:
+        if object_creator_has_access_permission is None and 'objectCreatorHasAccessPermission' in kwargs:
             object_creator_has_access_permission = kwargs['objectCreatorHasAccessPermission']
-        if 'objectCreatorHasGrantPermission' in kwargs:
+        if object_creator_has_grant_permission is None and 'objectCreatorHasGrantPermission' in kwargs:
             object_creator_has_grant_permission = kwargs['objectCreatorHasGrantPermission']
-        if 'projectProtection' in kwargs:
+        if project_protection is None and 'projectProtection' in kwargs:
             project_protection = kwargs['projectProtection']
-        if 'usingAcl' in kwargs:
+        if using_acl is None and 'usingAcl' in kwargs:
             using_acl = kwargs['usingAcl']
-        if 'usingPolicy' in kwargs:
+        if using_policy is None and 'usingPolicy' in kwargs:
             using_policy = kwargs['usingPolicy']
 
         if enable_download_privilege is not None:
@@ -555,9 +555,9 @@ class ProjectSecurityPropertiesProjectProtection(dict):
              _setter: Callable[[Any, Any], None],
              exception_policy: Optional[str] = None,
              protected: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'exceptionPolicy' in kwargs:
+        if exception_policy is None and 'exceptionPolicy' in kwargs:
             exception_policy = kwargs['exceptionPolicy']
 
         if exception_policy is not None:
@@ -622,26 +622,46 @@ class GetProjectsProjectResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             comment: str,
-             default_quota: str,
-             id: str,
-             ip_white_list: 'outputs.GetProjectsProjectIpWhiteListResult',
-             owner: str,
-             project_name: str,
-             properties: 'outputs.GetProjectsProjectPropertiesResult',
-             security_properties: 'outputs.GetProjectsProjectSecurityPropertiesResult',
-             status: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             comment: Optional[str] = None,
+             default_quota: Optional[str] = None,
+             id: Optional[str] = None,
+             ip_white_list: Optional['outputs.GetProjectsProjectIpWhiteListResult'] = None,
+             owner: Optional[str] = None,
+             project_name: Optional[str] = None,
+             properties: Optional['outputs.GetProjectsProjectPropertiesResult'] = None,
+             security_properties: Optional['outputs.GetProjectsProjectSecurityPropertiesResult'] = None,
+             status: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultQuota' in kwargs:
+        if comment is None:
+            raise TypeError("Missing 'comment' argument")
+        if default_quota is None and 'defaultQuota' in kwargs:
             default_quota = kwargs['defaultQuota']
-        if 'ipWhiteList' in kwargs:
+        if default_quota is None:
+            raise TypeError("Missing 'default_quota' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ip_white_list is None and 'ipWhiteList' in kwargs:
             ip_white_list = kwargs['ipWhiteList']
-        if 'projectName' in kwargs:
+        if ip_white_list is None:
+            raise TypeError("Missing 'ip_white_list' argument")
+        if owner is None:
+            raise TypeError("Missing 'owner' argument")
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'securityProperties' in kwargs:
+        if project_name is None:
+            raise TypeError("Missing 'project_name' argument")
+        if properties is None:
+            raise TypeError("Missing 'properties' argument")
+        if security_properties is None and 'securityProperties' in kwargs:
             security_properties = kwargs['securityProperties']
+        if security_properties is None:
+            raise TypeError("Missing 'security_properties' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("comment", comment)
         _setter("default_quota", default_quota)
@@ -749,14 +769,18 @@ class GetProjectsProjectIpWhiteListResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_list: str,
-             vpc_ip_list: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ip_list: Optional[str] = None,
+             vpc_ip_list: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipList' in kwargs:
+        if ip_list is None and 'ipList' in kwargs:
             ip_list = kwargs['ipList']
-        if 'vpcIpList' in kwargs:
+        if ip_list is None:
+            raise TypeError("Missing 'ip_list' argument")
+        if vpc_ip_list is None and 'vpcIpList' in kwargs:
             vpc_ip_list = kwargs['vpcIpList']
+        if vpc_ip_list is None:
+            raise TypeError("Missing 'vpc_ip_list' argument")
 
         _setter("ip_list", ip_list)
         _setter("vpc_ip_list", vpc_ip_list)
@@ -813,28 +837,44 @@ class GetProjectsProjectPropertiesResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allow_full_scan: bool,
-             enable_decimal2: bool,
-             encryption: 'outputs.GetProjectsProjectPropertiesEncryptionResult',
-             retention_days: str,
-             sql_metering_max: str,
-             table_lifecycle: 'outputs.GetProjectsProjectPropertiesTableLifecycleResult',
-             timezone: str,
-             type_system: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             allow_full_scan: Optional[bool] = None,
+             enable_decimal2: Optional[bool] = None,
+             encryption: Optional['outputs.GetProjectsProjectPropertiesEncryptionResult'] = None,
+             retention_days: Optional[str] = None,
+             sql_metering_max: Optional[str] = None,
+             table_lifecycle: Optional['outputs.GetProjectsProjectPropertiesTableLifecycleResult'] = None,
+             timezone: Optional[str] = None,
+             type_system: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowFullScan' in kwargs:
+        if allow_full_scan is None and 'allowFullScan' in kwargs:
             allow_full_scan = kwargs['allowFullScan']
-        if 'enableDecimal2' in kwargs:
+        if allow_full_scan is None:
+            raise TypeError("Missing 'allow_full_scan' argument")
+        if enable_decimal2 is None and 'enableDecimal2' in kwargs:
             enable_decimal2 = kwargs['enableDecimal2']
-        if 'retentionDays' in kwargs:
+        if enable_decimal2 is None:
+            raise TypeError("Missing 'enable_decimal2' argument")
+        if encryption is None:
+            raise TypeError("Missing 'encryption' argument")
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'sqlMeteringMax' in kwargs:
+        if retention_days is None:
+            raise TypeError("Missing 'retention_days' argument")
+        if sql_metering_max is None and 'sqlMeteringMax' in kwargs:
             sql_metering_max = kwargs['sqlMeteringMax']
-        if 'tableLifecycle' in kwargs:
+        if sql_metering_max is None:
+            raise TypeError("Missing 'sql_metering_max' argument")
+        if table_lifecycle is None and 'tableLifecycle' in kwargs:
             table_lifecycle = kwargs['tableLifecycle']
-        if 'typeSystem' in kwargs:
+        if table_lifecycle is None:
+            raise TypeError("Missing 'table_lifecycle' argument")
+        if timezone is None:
+            raise TypeError("Missing 'timezone' argument")
+        if type_system is None and 'typeSystem' in kwargs:
             type_system = kwargs['typeSystem']
+        if type_system is None:
+            raise TypeError("Missing 'type_system' argument")
 
         _setter("allow_full_scan", allow_full_scan)
         _setter("enable_decimal2", enable_decimal2)
@@ -930,11 +970,17 @@ class GetProjectsProjectPropertiesEncryptionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             algorithm: str,
-             enable: bool,
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             algorithm: Optional[str] = None,
+             enable: Optional[bool] = None,
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if algorithm is None:
+            raise TypeError("Missing 'algorithm' argument")
+        if enable is None:
+            raise TypeError("Missing 'enable' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
 
         _setter("algorithm", algorithm)
         _setter("enable", enable)
@@ -982,10 +1028,14 @@ class GetProjectsProjectPropertiesTableLifecycleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             type: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("type", type)
         _setter("value", value)
@@ -1039,29 +1089,43 @@ class GetProjectsProjectSecurityPropertiesResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable_download_privilege: bool,
-             label_security: bool,
-             object_creator_has_access_permission: bool,
-             object_creator_has_grant_permission: bool,
-             project_protection: 'outputs.GetProjectsProjectSecurityPropertiesProjectProtectionResult',
-             using_acl: bool,
-             using_policy: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             enable_download_privilege: Optional[bool] = None,
+             label_security: Optional[bool] = None,
+             object_creator_has_access_permission: Optional[bool] = None,
+             object_creator_has_grant_permission: Optional[bool] = None,
+             project_protection: Optional['outputs.GetProjectsProjectSecurityPropertiesProjectProtectionResult'] = None,
+             using_acl: Optional[bool] = None,
+             using_policy: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'enableDownloadPrivilege' in kwargs:
+        if enable_download_privilege is None and 'enableDownloadPrivilege' in kwargs:
             enable_download_privilege = kwargs['enableDownloadPrivilege']
-        if 'labelSecurity' in kwargs:
+        if enable_download_privilege is None:
+            raise TypeError("Missing 'enable_download_privilege' argument")
+        if label_security is None and 'labelSecurity' in kwargs:
             label_security = kwargs['labelSecurity']
-        if 'objectCreatorHasAccessPermission' in kwargs:
+        if label_security is None:
+            raise TypeError("Missing 'label_security' argument")
+        if object_creator_has_access_permission is None and 'objectCreatorHasAccessPermission' in kwargs:
             object_creator_has_access_permission = kwargs['objectCreatorHasAccessPermission']
-        if 'objectCreatorHasGrantPermission' in kwargs:
+        if object_creator_has_access_permission is None:
+            raise TypeError("Missing 'object_creator_has_access_permission' argument")
+        if object_creator_has_grant_permission is None and 'objectCreatorHasGrantPermission' in kwargs:
             object_creator_has_grant_permission = kwargs['objectCreatorHasGrantPermission']
-        if 'projectProtection' in kwargs:
+        if object_creator_has_grant_permission is None:
+            raise TypeError("Missing 'object_creator_has_grant_permission' argument")
+        if project_protection is None and 'projectProtection' in kwargs:
             project_protection = kwargs['projectProtection']
-        if 'usingAcl' in kwargs:
+        if project_protection is None:
+            raise TypeError("Missing 'project_protection' argument")
+        if using_acl is None and 'usingAcl' in kwargs:
             using_acl = kwargs['usingAcl']
-        if 'usingPolicy' in kwargs:
+        if using_acl is None:
+            raise TypeError("Missing 'using_acl' argument")
+        if using_policy is None and 'usingPolicy' in kwargs:
             using_policy = kwargs['usingPolicy']
+        if using_policy is None:
+            raise TypeError("Missing 'using_policy' argument")
 
         _setter("enable_download_privilege", enable_download_privilege)
         _setter("label_security", label_security)
@@ -1145,12 +1209,16 @@ class GetProjectsProjectSecurityPropertiesProjectProtectionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             exception_policy: str,
-             protected: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             exception_policy: Optional[str] = None,
+             protected: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'exceptionPolicy' in kwargs:
+        if exception_policy is None and 'exceptionPolicy' in kwargs:
             exception_policy = kwargs['exceptionPolicy']
+        if exception_policy is None:
+            raise TypeError("Missing 'exception_policy' argument")
+        if protected is None:
+            raise TypeError("Missing 'protected' argument")
 
         _setter("exception_policy", exception_policy)
         _setter("protected", protected)

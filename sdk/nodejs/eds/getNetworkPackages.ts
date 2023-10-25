@@ -10,29 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
- *     cidrBlock: "172.16.0.0/12",
- *     desktopAccessType: "Internet",
- *     officeSiteName: "example_value",
- * });
- * const defaultNetworkPackage = new alicloud.eds.NetworkPackage("defaultNetworkPackage", {
- *     bandwidth: 10,
- *     officeSiteId: defaultSimpleOfficeSite.id,
- * });
- * const defaultNetworkPackages = alicloud.eds.getNetworkPackagesOutput({
- *     ids: [defaultNetworkPackage.id],
- * });
- * export const ecdNetworkPackageId1 = defaultNetworkPackages.apply(defaultNetworkPackages => defaultNetworkPackages.packages?.[0]?.id);
- * ```
  */
 export function getNetworkPackages(args?: GetNetworkPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkPackagesResult> {
     args = args || {};
@@ -80,29 +57,6 @@ export interface GetNetworkPackagesResult {
  * This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
- *     cidrBlock: "172.16.0.0/12",
- *     desktopAccessType: "Internet",
- *     officeSiteName: "example_value",
- * });
- * const defaultNetworkPackage = new alicloud.eds.NetworkPackage("defaultNetworkPackage", {
- *     bandwidth: 10,
- *     officeSiteId: defaultSimpleOfficeSite.id,
- * });
- * const defaultNetworkPackages = alicloud.eds.getNetworkPackagesOutput({
- *     ids: [defaultNetworkPackage.id],
- * });
- * export const ecdNetworkPackageId1 = defaultNetworkPackages.apply(defaultNetworkPackages => defaultNetworkPackages.packages?.[0]?.id);
- * ```
  */
 export function getNetworkPackagesOutput(args?: GetNetworkPackagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkPackagesResult> {
     return pulumi.output(args).apply((a: any) => getNetworkPackages(a, opts))

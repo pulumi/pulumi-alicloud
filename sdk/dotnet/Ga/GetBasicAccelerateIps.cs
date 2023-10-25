@@ -15,38 +15,6 @@ namespace Pulumi.AliCloud.Ga
         /// This data source provides the Global Accelerator (GA) Basic Accelerate IPs of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.194.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Ga.GetBasicAccelerateIps.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         IpSetId = "example_ip_set_id",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["gaBasicAccelerateIpId1"] = ids.Apply(getBasicAccelerateIpsResult =&gt; getBasicAccelerateIpsResult.Ips[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBasicAccelerateIpsResult> InvokeAsync(GetBasicAccelerateIpsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBasicAccelerateIpsResult>("alicloud:ga/getBasicAccelerateIps:getBasicAccelerateIps", args ?? new GetBasicAccelerateIpsArgs(), options.WithDefaults());
@@ -55,38 +23,6 @@ namespace Pulumi.AliCloud.Ga
         /// This data source provides the Global Accelerator (GA) Basic Accelerate IPs of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.194.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Ga.GetBasicAccelerateIps.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         IpSetId = "example_ip_set_id",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["gaBasicAccelerateIpId1"] = ids.Apply(getBasicAccelerateIpsResult =&gt; getBasicAccelerateIpsResult.Ips[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBasicAccelerateIpsResult> Invoke(GetBasicAccelerateIpsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBasicAccelerateIpsResult>("alicloud:ga/getBasicAccelerateIps:getBasicAccelerateIps", args ?? new GetBasicAccelerateIpsInvokeArgs(), options.WithDefaults());

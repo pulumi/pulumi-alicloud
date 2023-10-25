@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.140.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dfs.getMountPoints({
- *     fileSystemId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const dfsMountPointId1 = ids.then(ids => ids.points?.[0]?.id);
- * ```
  */
 export function getMountPoints(args: GetMountPointsArgs, opts?: pulumi.InvokeOptions): Promise<GetMountPointsResult> {
 
@@ -80,24 +62,6 @@ export interface GetMountPointsResult {
  * This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.140.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dfs.getMountPoints({
- *     fileSystemId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const dfsMountPointId1 = ids.then(ids => ids.points?.[0]?.id);
- * ```
  */
 export function getMountPointsOutput(args: GetMountPointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMountPointsResult> {
     return pulumi.output(args).apply((a: any) => getMountPoints(a, opts))

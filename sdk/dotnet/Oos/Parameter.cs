@@ -16,37 +16,6 @@ namespace Pulumi.AliCloud.Oos
     /// 
     /// &gt; **NOTE:** Available in v1.147.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
-    /// 
-    ///     var example = new AliCloud.Oos.Parameter("example", new()
-    ///     {
-    ///         ParameterName = "my-Parameter",
-    ///         Type = "String",
-    ///         Value = "example_value",
-    ///         Description = "example_value",
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "TF" },
-    ///             { "For", "OosParameter" },
-    ///         },
-    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// OOS Parameter can be imported using the id, e.g.

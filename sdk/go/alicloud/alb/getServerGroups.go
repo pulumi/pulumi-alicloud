@@ -15,40 +15,6 @@ import (
 // This data source provides the Alb Server Groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available since v1.131.0.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := alb.GetServerGroups(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("albServerGroupId1", ids.Groups[0].Id)
-//			nameRegex, err := alb.GetServerGroups(ctx, &alb.GetServerGroupsArgs{
-//				NameRegex: pulumi.StringRef("^my-ServerGroup"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("albServerGroupId2", nameRegex.Groups[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetServerGroups(ctx *pulumi.Context, args *GetServerGroupsArgs, opts ...pulumi.InvokeOption) (*GetServerGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerGroupsResult

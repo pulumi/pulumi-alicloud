@@ -13,24 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.151.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.dns.CustomLine("default", {
- *     customLineName: "tf-example",
- *     domainName: "alicloud-provider.com",
- *     ipSegmentLists: [{
- *         endIp: "192.0.2.125",
- *         startIp: "192.0.2.123",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * Alidns Custom Line can be imported using the id, e.g.

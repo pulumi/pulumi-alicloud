@@ -13,58 +13,6 @@ import (
 )
 
 // This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
-//				LoadBalancerName: pulumi.String("tf-testAccSlbListenertcp"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = slb.NewListener(ctx, "tcp", &slb.ListenerArgs{
-//				LoadBalancerId:         _default.ID(),
-//				BackendPort:            pulumi.Int(22),
-//				FrontendPort:           pulumi.Int(22),
-//				Protocol:               pulumi.String("tcp"),
-//				Bandwidth:              pulumi.Int(10),
-//				HealthCheckType:        pulumi.String("tcp"),
-//				PersistenceTimeout:     pulumi.Int(3600),
-//				HealthyThreshold:       pulumi.Int(8),
-//				UnhealthyThreshold:     pulumi.Int(8),
-//				HealthCheckTimeout:     pulumi.Int(8),
-//				HealthCheckInterval:    pulumi.Int(5),
-//				HealthCheckHttpCode:    pulumi.String("http_2xx"),
-//				HealthCheckConnectPort: pulumi.Int(20),
-//				HealthCheckUri:         pulumi.String("/console"),
-//				EstablishedTimeout:     pulumi.Int(600),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			sampleDs := slb.GetListenersOutput(ctx, slb.GetListenersOutputArgs{
-//				LoadBalancerId: _default.ID(),
-//			}, nil)
-//			ctx.Export("firstSlbListenerProtocol", sampleDs.ApplyT(func(sampleDs slb.GetListenersResult) (*string, error) {
-//				return &sampleDs.SlbListeners[0].Protocol, nil
-//			}).(pulumi.StringPtrOutput))
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetListeners(ctx *pulumi.Context, args *GetListenersArgs, opts ...pulumi.InvokeOption) (*GetListenersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetListenersResult

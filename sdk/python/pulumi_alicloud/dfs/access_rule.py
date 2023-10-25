@@ -38,19 +38,27 @@ class AccessRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_group_id: pulumi.Input[str],
-             network_segment: pulumi.Input[str],
-             priority: pulumi.Input[int],
-             rw_access_type: pulumi.Input[str],
+             access_group_id: Optional[pulumi.Input[str]] = None,
+             network_segment: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             rw_access_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessGroupId' in kwargs:
+        if access_group_id is None and 'accessGroupId' in kwargs:
             access_group_id = kwargs['accessGroupId']
-        if 'networkSegment' in kwargs:
+        if access_group_id is None:
+            raise TypeError("Missing 'access_group_id' argument")
+        if network_segment is None and 'networkSegment' in kwargs:
             network_segment = kwargs['networkSegment']
-        if 'rwAccessType' in kwargs:
+        if network_segment is None:
+            raise TypeError("Missing 'network_segment' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if rw_access_type is None and 'rwAccessType' in kwargs:
             rw_access_type = kwargs['rwAccessType']
+        if rw_access_type is None:
+            raise TypeError("Missing 'rw_access_type' argument")
 
         _setter("access_group_id", access_group_id)
         _setter("network_segment", network_segment)
@@ -156,15 +164,15 @@ class _AccessRuleState:
              network_segment: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              rw_access_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessGroupId' in kwargs:
+        if access_group_id is None and 'accessGroupId' in kwargs:
             access_group_id = kwargs['accessGroupId']
-        if 'accessRuleId' in kwargs:
+        if access_rule_id is None and 'accessRuleId' in kwargs:
             access_rule_id = kwargs['accessRuleId']
-        if 'networkSegment' in kwargs:
+        if network_segment is None and 'networkSegment' in kwargs:
             network_segment = kwargs['networkSegment']
-        if 'rwAccessType' in kwargs:
+        if rw_access_type is None and 'rwAccessType' in kwargs:
             rw_access_type = kwargs['rwAccessType']
 
         if access_group_id is not None:
@@ -271,30 +279,6 @@ class AccessRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.140.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "example_name"
-        default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
-            network_type="VPC",
-            access_group_name=name,
-            description=name)
-        default_access_rule = alicloud.dfs.AccessRule("defaultAccessRule",
-            network_segment="192.0.2.0/24",
-            access_group_id=default_access_group.id,
-            description=name,
-            rw_access_type="RDWR",
-            priority=10)
-        ```
-
         ## Import
 
         DFS Access Rule can be imported using the id, e.g.
@@ -323,30 +307,6 @@ class AccessRule(pulumi.CustomResource):
         For information about DFS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/doc-detail/207144.htm).
 
         > **NOTE:** Available since v1.140.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "example_name"
-        default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
-            network_type="VPC",
-            access_group_name=name,
-            description=name)
-        default_access_rule = alicloud.dfs.AccessRule("defaultAccessRule",
-            network_segment="192.0.2.0/24",
-            access_group_id=default_access_group.id,
-            description=name,
-            rw_access_type="RDWR",
-            priority=10)
-        ```
 
         ## Import
 

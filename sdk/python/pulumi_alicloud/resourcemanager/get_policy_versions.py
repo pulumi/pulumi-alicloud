@@ -116,17 +116,6 @@ def get_policy_versions(enable_details: Optional[bool] = None,
 
     > **NOTE:**  Available in 1.85.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.resourcemanager.get_policy_versions(policy_name="tftest",
-        policy_type="Custom")
-    pulumi.export("firstPolicyVersionId", default.versions[0].id)
-    ```
-
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of policy version IDs.
@@ -164,17 +153,6 @@ def get_policy_versions_output(enable_details: Optional[pulumi.Input[Optional[bo
     This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
 
     > **NOTE:**  Available in 1.85.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.resourcemanager.get_policy_versions(policy_name="tftest",
-        policy_type="Custom")
-    pulumi.export("firstPolicyVersionId", default.versions[0].id)
-    ```
 
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.

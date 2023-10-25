@@ -116,16 +116,6 @@ def get_instance_members(current_page: Optional[str] = None,
 
     > **NOTE:** Available in 1.194.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.cloudfirewall.get_instance_members(ids=[alicloud_cloud_firewall_instance_member["default"]["id"]])
-    pulumi.export("alicloudCloudFirewallInstanceMemberExampleId", default.members[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Instance Member IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -160,16 +150,6 @@ def get_instance_members_output(current_page: Optional[pulumi.Input[Optional[str
     This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
 
     > **NOTE:** Available in 1.194.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.cloudfirewall.get_instance_members(ids=[alicloud_cloud_firewall_instance_member["default"]["id"]])
-    pulumi.export("alicloudCloudFirewallInstanceMemberExampleId", default.members[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Instance Member IDs.

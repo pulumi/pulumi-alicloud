@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
  *
  * > **NOTE:** Available in v1.139.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cr.getEndpointAclService({
- *     enable: true,
- *     endpointType: "internet",
- *     instanceId: "example_id",
- *     moduleName: "Registry",
- * });
- * ```
  */
 export function getEndpointAclService(args: GetEndpointAclServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointAclServiceResult> {
 
@@ -84,22 +68,6 @@ export interface GetEndpointAclServiceResult {
  * For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
  *
  * > **NOTE:** Available in v1.139.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cr.getEndpointAclService({
- *     enable: true,
- *     endpointType: "internet",
- *     instanceId: "example_id",
- *     moduleName: "Registry",
- * });
- * ```
  */
 export function getEndpointAclServiceOutput(args: GetEndpointAclServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointAclServiceResult> {
     return pulumi.output(args).apply((a: any) => getEndpointAclService(a, opts))

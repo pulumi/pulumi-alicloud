@@ -15,36 +15,6 @@ import (
 // This data source provides Ecs Capacity Reservation available to the user.
 //
 // > **NOTE:** Available in 1.195.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := ecs.GetCapacityReservations(ctx, &ecs.GetCapacityReservationsArgs{
-// Ids: interface{}{
-// alicloud_ecs_capacity_reservation.Default.Id,
-// },
-// NameRegex: pulumi.StringRef(alicloud_ecs_capacity_reservation.Default.Name),
-// InstanceType: pulumi.StringRef("ecs.c6.large"),
-// Platform: pulumi.StringRef("linux"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudEcsCapacityReservationExampleId", _default.Reservations[0].Id)
-// return nil
-// })
-// }
-// ```
 func GetCapacityReservations(ctx *pulumi.Context, args *GetCapacityReservationsArgs, opts ...pulumi.InvokeOption) (*GetCapacityReservationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCapacityReservationsResult

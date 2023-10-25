@@ -35,18 +35,24 @@ class GatewayLoggingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gateway_id: pulumi.Input[str],
-             sls_logstore: pulumi.Input[str],
-             sls_project: pulumi.Input[str],
+             gateway_id: Optional[pulumi.Input[str]] = None,
+             sls_logstore: Optional[pulumi.Input[str]] = None,
+             sls_project: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'gatewayId' in kwargs:
+        if gateway_id is None and 'gatewayId' in kwargs:
             gateway_id = kwargs['gatewayId']
-        if 'slsLogstore' in kwargs:
+        if gateway_id is None:
+            raise TypeError("Missing 'gateway_id' argument")
+        if sls_logstore is None and 'slsLogstore' in kwargs:
             sls_logstore = kwargs['slsLogstore']
-        if 'slsProject' in kwargs:
+        if sls_logstore is None:
+            raise TypeError("Missing 'sls_logstore' argument")
+        if sls_project is None and 'slsProject' in kwargs:
             sls_project = kwargs['slsProject']
+        if sls_project is None:
+            raise TypeError("Missing 'sls_project' argument")
 
         _setter("gateway_id", gateway_id)
         _setter("sls_logstore", sls_logstore)
@@ -131,13 +137,13 @@ class _GatewayLoggingState:
              sls_logstore: Optional[pulumi.Input[str]] = None,
              sls_project: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'gatewayId' in kwargs:
+        if gateway_id is None and 'gatewayId' in kwargs:
             gateway_id = kwargs['gatewayId']
-        if 'slsLogstore' in kwargs:
+        if sls_logstore is None and 'slsLogstore' in kwargs:
             sls_logstore = kwargs['slsLogstore']
-        if 'slsProject' in kwargs:
+        if sls_project is None and 'slsProject' in kwargs:
             sls_project = kwargs['slsProject']
 
         if gateway_id is not None:

@@ -16,31 +16,6 @@ namespace Pulumi.AliCloud.Ros
     /// 
     /// &gt; **NOTE:** Available in v1.107.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Ros.StackGroup("example", new()
-    ///     {
-    ///         StackGroupName = "example_value",
-    ///         TemplateBody = @"    {
-    ///     	""ROSTemplateFormatVersion"": ""2015-09-01""
-    ///     }
-    ///     
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ROS Stack Group can be imported using the id, e.g.

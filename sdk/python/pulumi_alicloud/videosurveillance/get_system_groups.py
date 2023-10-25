@@ -129,24 +129,6 @@ def get_system_groups(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.135.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_system_group = alicloud.videosurveillance.SystemGroup("defaultSystemGroup",
-        group_name="groupname",
-        in_protocol="rtmp",
-        out_protocol="flv",
-        play_domain="your_plan_domain",
-        push_domain="your_push_domain")
-    default_system_groups = alicloud.videosurveillance.get_system_groups_output(ids=[default_system_group.id])
-    pulumi.export("vsGroup", default_system_groups.ids[0])
-    ```
-
 
     :param Sequence[str] ids: A list of Group IDs.
     :param str in_protocol: The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
@@ -189,24 +171,6 @@ def get_system_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.135.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_system_group = alicloud.videosurveillance.SystemGroup("defaultSystemGroup",
-        group_name="groupname",
-        in_protocol="rtmp",
-        out_protocol="flv",
-        play_domain="your_plan_domain",
-        push_domain="your_push_domain")
-    default_system_groups = alicloud.videosurveillance.get_system_groups_output(ids=[default_system_group.id])
-    pulumi.export("vsGroup", default_system_groups.ids[0])
-    ```
 
 
     :param Sequence[str] ids: A list of Group IDs.

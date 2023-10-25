@@ -19,51 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.34.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			domainName := "mycdndomain.alicloud-provider.cn"
-//			if param := cfg.Get("domainName"); param != "" {
-//				domainName = param
-//			}
-//			_, err := cdn.NewDomainNew(ctx, "default", &cdn.DomainNewArgs{
-//				Scope:      pulumi.String("overseas"),
-//				DomainName: pulumi.String(domainName),
-//				CdnType:    pulumi.String("web"),
-//				Sources: cdn.DomainNewSourceArray{
-//					&cdn.DomainNewSourceArgs{
-//						Type:     pulumi.String("ipaddr"),
-//						Content:  pulumi.String("1.1.1.1"),
-//						Priority: pulumi.Int(20),
-//						Port:     pulumi.Int(80),
-//						Weight:   pulumi.Int(15),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // CDN Domain can be imported using the id, e.g.

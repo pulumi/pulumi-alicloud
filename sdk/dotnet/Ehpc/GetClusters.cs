@@ -15,43 +15,6 @@ namespace Pulumi.AliCloud.Ehpc
         /// This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.173.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Ehpc.GetClusters.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Ehpc.GetClusters.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Cluster",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["ehpcClusterId1"] = ids.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
-        ///         ["ehpcClusterId2"] = nameRegex.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:ehpc/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
@@ -60,43 +23,6 @@ namespace Pulumi.AliCloud.Ehpc
         /// This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.173.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Ehpc.GetClusters.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Ehpc.GetClusters.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Cluster",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["ehpcClusterId1"] = ids.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
-        ///         ["ehpcClusterId2"] = nameRegex.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:ehpc/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());

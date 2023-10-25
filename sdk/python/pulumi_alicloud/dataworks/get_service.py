@@ -74,15 +74,6 @@ def get_service(enable: Optional[str] = None,
 
     > **NOTE:** Available in v1.118.0+. After the version 1.141.0, the data source is renamed as `dataworks_get_service`.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    open = alicloud.dataworks.get_service(enable="On")
-    ```
-
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
            
@@ -108,15 +99,6 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
     For information about DataWorks and how to use it, see [What is DataWorks](https://www.alibabacloud.com/help/en/product/72772.htm).
 
     > **NOTE:** Available in v1.118.0+. After the version 1.141.0, the data source is renamed as `dataworks_get_service`.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    open = alicloud.dataworks.get_service(enable="On")
-    ```
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.

@@ -207,18 +207,6 @@ def get_dedicated_hosts(dedicated_host_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.91.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    dedicated_hosts_ds = alicloud.ecs.get_dedicated_hosts(dedicated_host_type="ddh.g5",
-        name_regex="tf-testAcc",
-        status="Available")
-    pulumi.export("firstDedicatedHostsId", dedicated_hosts_ds.hosts[0].id)
-    ```
-
 
     :param str dedicated_host_id: The ID of ECS Dedicated Host.
     :param str dedicated_host_name: The name of ECS Dedicated Host.
@@ -281,18 +269,6 @@ def get_dedicated_hosts_output(dedicated_host_id: Optional[pulumi.Input[Optional
     This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in v1.91.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    dedicated_hosts_ds = alicloud.ecs.get_dedicated_hosts(dedicated_host_type="ddh.g5",
-        name_regex="tf-testAcc",
-        status="Available")
-    pulumi.export("firstDedicatedHostsId", dedicated_hosts_ds.hosts[0].id)
-    ```
 
 
     :param str dedicated_host_id: The ID of ECS Dedicated Host.

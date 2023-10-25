@@ -50,25 +50,35 @@ class DdosCooInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: pulumi.Input[str],
-             base_bandwidth: pulumi.Input[str],
-             domain_count: pulumi.Input[str],
-             port_count: pulumi.Input[str],
-             service_bandwidth: pulumi.Input[str],
+             bandwidth: Optional[pulumi.Input[str]] = None,
+             base_bandwidth: Optional[pulumi.Input[str]] = None,
+             domain_count: Optional[pulumi.Input[str]] = None,
+             port_count: Optional[pulumi.Input[str]] = None,
+             service_bandwidth: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              period: Optional[pulumi.Input[int]] = None,
              product_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'baseBandwidth' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if base_bandwidth is None and 'baseBandwidth' in kwargs:
             base_bandwidth = kwargs['baseBandwidth']
-        if 'domainCount' in kwargs:
+        if base_bandwidth is None:
+            raise TypeError("Missing 'base_bandwidth' argument")
+        if domain_count is None and 'domainCount' in kwargs:
             domain_count = kwargs['domainCount']
-        if 'portCount' in kwargs:
+        if domain_count is None:
+            raise TypeError("Missing 'domain_count' argument")
+        if port_count is None and 'portCount' in kwargs:
             port_count = kwargs['portCount']
-        if 'serviceBandwidth' in kwargs:
+        if port_count is None:
+            raise TypeError("Missing 'port_count' argument")
+        if service_bandwidth is None and 'serviceBandwidth' in kwargs:
             service_bandwidth = kwargs['serviceBandwidth']
-        if 'productType' in kwargs:
+        if service_bandwidth is None:
+            raise TypeError("Missing 'service_bandwidth' argument")
+        if product_type is None and 'productType' in kwargs:
             product_type = kwargs['productType']
 
         _setter("bandwidth", bandwidth)
@@ -230,17 +240,17 @@ class _DdosCooInstanceState:
              port_count: Optional[pulumi.Input[str]] = None,
              product_type: Optional[pulumi.Input[str]] = None,
              service_bandwidth: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'baseBandwidth' in kwargs:
+        if base_bandwidth is None and 'baseBandwidth' in kwargs:
             base_bandwidth = kwargs['baseBandwidth']
-        if 'domainCount' in kwargs:
+        if domain_count is None and 'domainCount' in kwargs:
             domain_count = kwargs['domainCount']
-        if 'portCount' in kwargs:
+        if port_count is None and 'portCount' in kwargs:
             port_count = kwargs['portCount']
-        if 'productType' in kwargs:
+        if product_type is None and 'productType' in kwargs:
             product_type = kwargs['productType']
-        if 'serviceBandwidth' in kwargs:
+        if service_bandwidth is None and 'serviceBandwidth' in kwargs:
             service_bandwidth = kwargs['serviceBandwidth']
 
         if bandwidth is not None:
@@ -383,28 +393,6 @@ class DdosCooInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.37.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.ddos.DdosCooInstance("default",
-            bandwidth="30",
-            base_bandwidth="30",
-            service_bandwidth="100",
-            port_count="50",
-            domain_count="50",
-            period=1,
-            product_type="ddoscoo")
-        ```
-
         ## Import
 
         Ddoscoo instance can be imported using the id, e.g.
@@ -441,28 +429,6 @@ class DdosCooInstance(pulumi.CustomResource):
         > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
 
         > **NOTE:** Available since v1.37.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.ddos.DdosCooInstance("default",
-            bandwidth="30",
-            base_bandwidth="30",
-            service_bandwidth="100",
-            port_count="50",
-            domain_count="50",
-            period=1,
-            product_type="ddoscoo")
-        ```
 
         ## Import
 

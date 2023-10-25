@@ -29,14 +29,18 @@ class FaceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             biz_name: pulumi.Input[str],
-             biz_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             biz_name: Optional[pulumi.Input[str]] = None,
+             biz_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bizName' in kwargs:
+        if biz_name is None and 'bizName' in kwargs:
             biz_name = kwargs['bizName']
-        if 'bizType' in kwargs:
+        if biz_name is None:
+            raise TypeError("Missing 'biz_name' argument")
+        if biz_type is None and 'bizType' in kwargs:
             biz_type = kwargs['bizType']
+        if biz_type is None:
+            raise TypeError("Missing 'biz_type' argument")
 
         _setter("biz_name", biz_name)
         _setter("biz_type", biz_type)
@@ -90,13 +94,13 @@ class _FaceConfigState:
              biz_name: Optional[pulumi.Input[str]] = None,
              biz_type: Optional[pulumi.Input[str]] = None,
              gmt_modified: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bizName' in kwargs:
+        if biz_name is None and 'bizName' in kwargs:
             biz_name = kwargs['bizName']
-        if 'bizType' in kwargs:
+        if biz_type is None and 'bizType' in kwargs:
             biz_type = kwargs['bizType']
-        if 'gmtModified' in kwargs:
+        if gmt_modified is None and 'gmtModified' in kwargs:
             gmt_modified = kwargs['gmtModified']
 
         if biz_name is not None:

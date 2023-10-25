@@ -109,34 +109,6 @@ def get_config_maps(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.130.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import json
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    config_map_name = config.get("configMapName")
-    if config_map_name is None:
-        config_map_name = "examplename"
-    example_namespace = alicloud.sae.Namespace("exampleNamespace",
-        namespace_id="cn-hangzhou:yourname",
-        namespace_name="example_value",
-        namespace_description="your_description")
-    example_config_map = alicloud.sae.ConfigMap("exampleConfigMap",
-        data=json.dumps({
-            "env.home": "/root",
-            "env.shell": "/bin/sh",
-        }),
-        namespace_id=example_namespace.namespace_id)
-    name_regex = alicloud.sae.get_config_maps_output(namespace_id=example_namespace.namespace_id,
-        name_regex="^example")
-    pulumi.export("saeConfigMapId", name_regex.maps[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Config Map IDs.
     :param str name_regex: A regex string to filter results by Config Map name.
@@ -171,34 +143,6 @@ def get_config_maps_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
     This data source provides the Sae Config Maps of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.130.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import json
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    config_map_name = config.get("configMapName")
-    if config_map_name is None:
-        config_map_name = "examplename"
-    example_namespace = alicloud.sae.Namespace("exampleNamespace",
-        namespace_id="cn-hangzhou:yourname",
-        namespace_name="example_value",
-        namespace_description="your_description")
-    example_config_map = alicloud.sae.ConfigMap("exampleConfigMap",
-        data=json.dumps({
-            "env.home": "/root",
-            "env.shell": "/bin/sh",
-        }),
-        namespace_id=example_namespace.namespace_id)
-    name_regex = alicloud.sae.get_config_maps_output(namespace_id=example_namespace.namespace_id,
-        name_regex="^example")
-    pulumi.export("saeConfigMapId", name_regex.maps[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Config Map IDs.

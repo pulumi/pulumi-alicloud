@@ -109,22 +109,6 @@ def get_chart_repositories(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.149.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cr.get_chart_repositories(instance_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("crChartRepositoryId1", data["alicloud_cr_chart_repositories"]["default"]["ids"])
-    ```
-
 
     :param Sequence[str] ids: A list of matched Container Registry Enterprise Edition repositories.
     :param str instance_id: The ID of the Container Registry instance.
@@ -159,22 +143,6 @@ def get_chart_repositories_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     This data source provides the Cr Chart Repositories of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.149.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cr.get_chart_repositories(instance_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("crChartRepositoryId1", data["alicloud_cr_chart_repositories"]["default"]["ids"])
-    ```
 
 
     :param Sequence[str] ids: A list of matched Container Registry Enterprise Edition repositories.

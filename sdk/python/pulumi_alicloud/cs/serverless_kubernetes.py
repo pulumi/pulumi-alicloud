@@ -122,7 +122,7 @@ class ServerlessKubernetesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vpc_id: pulumi.Input[str],
+             vpc_id: Optional[pulumi.Input[str]] = None,
              addons: Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]]] = None,
              client_cert: Optional[pulumi.Input[str]] = None,
              client_key: Optional[pulumi.Input[str]] = None,
@@ -153,61 +153,63 @@ class ServerlessKubernetesArgs:
              vswitch_id: Optional[pulumi.Input[str]] = None,
              vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'clientCert' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if client_cert is None and 'clientCert' in kwargs:
             client_cert = kwargs['clientCert']
-        if 'clientKey' in kwargs:
+        if client_key is None and 'clientKey' in kwargs:
             client_key = kwargs['clientKey']
-        if 'clusterCaCert' in kwargs:
+        if cluster_ca_cert is None and 'clusterCaCert' in kwargs:
             cluster_ca_cert = kwargs['clusterCaCert']
-        if 'clusterSpec' in kwargs:
+        if cluster_spec is None and 'clusterSpec' in kwargs:
             cluster_spec = kwargs['clusterSpec']
-        if 'createV2Cluster' in kwargs:
+        if create_v2_cluster is None and 'createV2Cluster' in kwargs:
             create_v2_cluster = kwargs['createV2Cluster']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'enableRrsa' in kwargs:
+        if enable_rrsa is None and 'enableRrsa' in kwargs:
             enable_rrsa = kwargs['enableRrsa']
-        if 'endpointPublicAccessEnabled' in kwargs:
+        if endpoint_public_access_enabled is None and 'endpointPublicAccessEnabled' in kwargs:
             endpoint_public_access_enabled = kwargs['endpointPublicAccessEnabled']
-        if 'forceUpdate' in kwargs:
+        if force_update is None and 'forceUpdate' in kwargs:
             force_update = kwargs['forceUpdate']
-        if 'kubeConfig' in kwargs:
+        if kube_config is None and 'kubeConfig' in kwargs:
             kube_config = kwargs['kubeConfig']
-        if 'loadBalancerSpec' in kwargs:
+        if load_balancer_spec is None and 'loadBalancerSpec' in kwargs:
             load_balancer_spec = kwargs['loadBalancerSpec']
-        if 'loggingType' in kwargs:
+        if logging_type is None and 'loggingType' in kwargs:
             logging_type = kwargs['loggingType']
-        if 'namePrefix' in kwargs:
+        if name_prefix is None and 'namePrefix' in kwargs:
             name_prefix = kwargs['namePrefix']
-        if 'newNatGateway' in kwargs:
+        if new_nat_gateway is None and 'newNatGateway' in kwargs:
             new_nat_gateway = kwargs['newNatGateway']
-        if 'privateZone' in kwargs:
+        if private_zone is None and 'privateZone' in kwargs:
             private_zone = kwargs['privateZone']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'retainResources' in kwargs:
+        if retain_resources is None and 'retainResources' in kwargs:
             retain_resources = kwargs['retainResources']
-        if 'rrsaMetadata' in kwargs:
+        if rrsa_metadata is None and 'rrsaMetadata' in kwargs:
             rrsa_metadata = kwargs['rrsaMetadata']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'serviceCidr' in kwargs:
+        if service_cidr is None and 'serviceCidr' in kwargs:
             service_cidr = kwargs['serviceCidr']
-        if 'serviceDiscoveryTypes' in kwargs:
+        if service_discovery_types is None and 'serviceDiscoveryTypes' in kwargs:
             service_discovery_types = kwargs['serviceDiscoveryTypes']
-        if 'slsProjectName' in kwargs:
+        if sls_project_name is None and 'slsProjectName' in kwargs:
             sls_project_name = kwargs['slsProjectName']
-        if 'timeZone' in kwargs:
+        if time_zone is None and 'timeZone' in kwargs:
             time_zone = kwargs['timeZone']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'vswitchIds' in kwargs:
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("vpc_id", vpc_id)
@@ -803,61 +805,61 @@ class _ServerlessKubernetesState:
              vswitch_id: Optional[pulumi.Input[str]] = None,
              vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientCert' in kwargs:
+        if client_cert is None and 'clientCert' in kwargs:
             client_cert = kwargs['clientCert']
-        if 'clientKey' in kwargs:
+        if client_key is None and 'clientKey' in kwargs:
             client_key = kwargs['clientKey']
-        if 'clusterCaCert' in kwargs:
+        if cluster_ca_cert is None and 'clusterCaCert' in kwargs:
             cluster_ca_cert = kwargs['clusterCaCert']
-        if 'clusterSpec' in kwargs:
+        if cluster_spec is None and 'clusterSpec' in kwargs:
             cluster_spec = kwargs['clusterSpec']
-        if 'createV2Cluster' in kwargs:
+        if create_v2_cluster is None and 'createV2Cluster' in kwargs:
             create_v2_cluster = kwargs['createV2Cluster']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'enableRrsa' in kwargs:
+        if enable_rrsa is None and 'enableRrsa' in kwargs:
             enable_rrsa = kwargs['enableRrsa']
-        if 'endpointPublicAccessEnabled' in kwargs:
+        if endpoint_public_access_enabled is None and 'endpointPublicAccessEnabled' in kwargs:
             endpoint_public_access_enabled = kwargs['endpointPublicAccessEnabled']
-        if 'forceUpdate' in kwargs:
+        if force_update is None and 'forceUpdate' in kwargs:
             force_update = kwargs['forceUpdate']
-        if 'kubeConfig' in kwargs:
+        if kube_config is None and 'kubeConfig' in kwargs:
             kube_config = kwargs['kubeConfig']
-        if 'loadBalancerSpec' in kwargs:
+        if load_balancer_spec is None and 'loadBalancerSpec' in kwargs:
             load_balancer_spec = kwargs['loadBalancerSpec']
-        if 'loggingType' in kwargs:
+        if logging_type is None and 'loggingType' in kwargs:
             logging_type = kwargs['loggingType']
-        if 'namePrefix' in kwargs:
+        if name_prefix is None and 'namePrefix' in kwargs:
             name_prefix = kwargs['namePrefix']
-        if 'newNatGateway' in kwargs:
+        if new_nat_gateway is None and 'newNatGateway' in kwargs:
             new_nat_gateway = kwargs['newNatGateway']
-        if 'privateZone' in kwargs:
+        if private_zone is None and 'privateZone' in kwargs:
             private_zone = kwargs['privateZone']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'retainResources' in kwargs:
+        if retain_resources is None and 'retainResources' in kwargs:
             retain_resources = kwargs['retainResources']
-        if 'rrsaMetadata' in kwargs:
+        if rrsa_metadata is None and 'rrsaMetadata' in kwargs:
             rrsa_metadata = kwargs['rrsaMetadata']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'serviceCidr' in kwargs:
+        if service_cidr is None and 'serviceCidr' in kwargs:
             service_cidr = kwargs['serviceCidr']
-        if 'serviceDiscoveryTypes' in kwargs:
+        if service_discovery_types is None and 'serviceDiscoveryTypes' in kwargs:
             service_discovery_types = kwargs['serviceDiscoveryTypes']
-        if 'slsProjectName' in kwargs:
+        if sls_project_name is None and 'slsProjectName' in kwargs:
             sls_project_name = kwargs['slsProjectName']
-        if 'timeZone' in kwargs:
+        if time_zone is None and 'timeZone' in kwargs:
             time_zone = kwargs['timeZone']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'vswitchIds' in kwargs:
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if addons is not None:
@@ -1372,56 +1374,6 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
         > **NOTE:** From version 1.162.0, support for creating professional serverless cluster.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "ask-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.1.0.0/21")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            vpc_id=default_network.id,
-            cidr_block="10.1.1.0/24",
-            zone_id=default_zones.zones[0].id)
-        serverless = alicloud.cs.ServerlessKubernetes("serverless",
-            name_prefix=name,
-            vpc_id=default_network.id,
-            vswitch_ids=[default_switch.id],
-            new_nat_gateway=True,
-            endpoint_public_access_enabled=True,
-            deletion_protection=False,
-            load_balancer_spec="slb.s2.small",
-            time_zone="Asia/Shanghai",
-            service_cidr="172.21.0.0/20",
-            service_discovery_types=["PrivateZone"],
-            logging_type="SLS",
-            tags={
-                "k-aa": "v-aa",
-                "k-bb": "v-aa",
-            },
-            addons=[
-                alicloud.cs.ServerlessKubernetesAddonArgs(
-                    name="alb-ingress-controller",
-                ),
-                alicloud.cs.ServerlessKubernetesAddonArgs(
-                    name="metrics-server",
-                ),
-                alicloud.cs.ServerlessKubernetesAddonArgs(
-                    name="knative",
-                ),
-            ])
-        ```
-
         ## Import
 
         Serverless Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -1494,56 +1446,6 @@ class ServerlessKubernetes(pulumi.CustomResource):
         Please refer to the `Authorization management` and `Cluster management` sections in the [Document Center](https://www.alibabacloud.com/help/doc-detail/86488.htm).
 
         > **NOTE:** From version 1.162.0, support for creating professional serverless cluster.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "ask-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.1.0.0/21")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            vpc_id=default_network.id,
-            cidr_block="10.1.1.0/24",
-            zone_id=default_zones.zones[0].id)
-        serverless = alicloud.cs.ServerlessKubernetes("serverless",
-            name_prefix=name,
-            vpc_id=default_network.id,
-            vswitch_ids=[default_switch.id],
-            new_nat_gateway=True,
-            endpoint_public_access_enabled=True,
-            deletion_protection=False,
-            load_balancer_spec="slb.s2.small",
-            time_zone="Asia/Shanghai",
-            service_cidr="172.21.0.0/20",
-            service_discovery_types=["PrivateZone"],
-            logging_type="SLS",
-            tags={
-                "k-aa": "v-aa",
-                "k-bb": "v-aa",
-            },
-            addons=[
-                alicloud.cs.ServerlessKubernetesAddonArgs(
-                    name="alb-ingress-controller",
-                ),
-                alicloud.cs.ServerlessKubernetesAddonArgs(
-                    name="metrics-server",
-                ),
-                alicloud.cs.ServerlessKubernetesAddonArgs(
-                    name="knative",
-                ),
-            ])
-        ```
 
         ## Import
 
@@ -1631,11 +1533,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             __props__.__dict__["private_zone"] = private_zone
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["retain_resources"] = retain_resources
-            if rrsa_metadata is not None and not isinstance(rrsa_metadata, ServerlessKubernetesRrsaMetadataArgs):
-                rrsa_metadata = rrsa_metadata or {}
-                def _setter(key, value):
-                    rrsa_metadata[key] = value
-                ServerlessKubernetesRrsaMetadataArgs._configure(_setter, **rrsa_metadata)
+            rrsa_metadata = _utilities.configure(rrsa_metadata, ServerlessKubernetesRrsaMetadataArgs, True)
             __props__.__dict__["rrsa_metadata"] = rrsa_metadata
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["service_cidr"] = service_cidr

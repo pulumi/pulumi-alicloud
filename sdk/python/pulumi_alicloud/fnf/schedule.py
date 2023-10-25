@@ -41,20 +41,26 @@ class ScheduleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cron_expression: pulumi.Input[str],
-             flow_name: pulumi.Input[str],
-             schedule_name: pulumi.Input[str],
+             cron_expression: Optional[pulumi.Input[str]] = None,
+             flow_name: Optional[pulumi.Input[str]] = None,
+             schedule_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              enable: Optional[pulumi.Input[bool]] = None,
              payload: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cronExpression' in kwargs:
+        if cron_expression is None and 'cronExpression' in kwargs:
             cron_expression = kwargs['cronExpression']
-        if 'flowName' in kwargs:
+        if cron_expression is None:
+            raise TypeError("Missing 'cron_expression' argument")
+        if flow_name is None and 'flowName' in kwargs:
             flow_name = kwargs['flowName']
-        if 'scheduleName' in kwargs:
+        if flow_name is None:
+            raise TypeError("Missing 'flow_name' argument")
+        if schedule_name is None and 'scheduleName' in kwargs:
             schedule_name = kwargs['scheduleName']
+        if schedule_name is None:
+            raise TypeError("Missing 'schedule_name' argument")
 
         _setter("cron_expression", cron_expression)
         _setter("flow_name", flow_name)
@@ -183,17 +189,17 @@ class _ScheduleState:
              payload: Optional[pulumi.Input[str]] = None,
              schedule_id: Optional[pulumi.Input[str]] = None,
              schedule_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cronExpression' in kwargs:
+        if cron_expression is None and 'cronExpression' in kwargs:
             cron_expression = kwargs['cronExpression']
-        if 'flowName' in kwargs:
+        if flow_name is None and 'flowName' in kwargs:
             flow_name = kwargs['flowName']
-        if 'lastModifiedTime' in kwargs:
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
             last_modified_time = kwargs['lastModifiedTime']
-        if 'scheduleId' in kwargs:
+        if schedule_id is None and 'scheduleId' in kwargs:
             schedule_id = kwargs['scheduleId']
-        if 'scheduleName' in kwargs:
+        if schedule_name is None and 'scheduleName' in kwargs:
             schedule_name = kwargs['scheduleName']
 
         if cron_expression is not None:
@@ -329,32 +335,6 @@ class Schedule(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.105.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_flow = alicloud.fnf.Flow("exampleFlow",
-            definition=\"\"\"  version: v1beta1
-          type: flow
-          steps:
-            - type: pass
-              name: helloworld
-        \"\"\",
-            description="tf-testaccFnFFlow983041",
-            type="FDL")
-        example_schedule = alicloud.fnf.Schedule("exampleSchedule",
-            cron_expression="30 9 * * * *",
-            description="tf-testaccFnFSchedule983041",
-            enable=True,
-            flow_name=example_flow.name,
-            payload="{\\"tf-test\\": \\"test success\\"}",
-            schedule_name="tf-testaccFnFSchedule983041")
-        ```
-
         ## Import
 
         Serverless Workflow Schedule can be imported using the id, e.g.
@@ -384,32 +364,6 @@ class Schedule(pulumi.CustomResource):
         For information about Serverless Workflow Schedule and how to use it, see [What is Schedule](https://www.alibabacloud.com/help/en/doc-detail/168934.htm).
 
         > **NOTE:** Available in v1.105.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_flow = alicloud.fnf.Flow("exampleFlow",
-            definition=\"\"\"  version: v1beta1
-          type: flow
-          steps:
-            - type: pass
-              name: helloworld
-        \"\"\",
-            description="tf-testaccFnFFlow983041",
-            type="FDL")
-        example_schedule = alicloud.fnf.Schedule("exampleSchedule",
-            cron_expression="30 9 * * * *",
-            description="tf-testaccFnFSchedule983041",
-            enable=True,
-            flow_name=example_flow.name,
-            payload="{\\"tf-test\\": \\"test success\\"}",
-            schedule_name="tf-testaccFnFSchedule983041")
-        ```
 
         ## Import
 

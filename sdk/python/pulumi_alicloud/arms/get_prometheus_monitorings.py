@@ -144,22 +144,6 @@ def get_prometheus_monitorings(cluster_id: Optional[str] = None,
 
     > **NOTE:** Available since v1.210.0.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.arms.get_prometheus_monitorings(cluster_id="your_cluster_id",
-        ids=["example_id"])
-    pulumi.export("armsPrometheusMonitoringsId1", ids.prometheus_monitorings[0].id)
-    name_regex = alicloud.arms.get_prometheus_monitorings(cluster_id="your_cluster_id",
-        name_regex="tf-example")
-    pulumi.export("armsPrometheusMonitoringsId2", name_regex.prometheus_monitorings[0].id)
-    ```
-
 
     :param str cluster_id: The ID of the Prometheus instance.
     :param Sequence[str] ids: A list of Prometheus Monitoring IDs.
@@ -202,22 +186,6 @@ def get_prometheus_monitorings_output(cluster_id: Optional[pulumi.Input[str]] = 
     This data source provides the Arms Prometheus Monitorings of the current Alibaba Cloud user.
 
     > **NOTE:** Available since v1.210.0.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.arms.get_prometheus_monitorings(cluster_id="your_cluster_id",
-        ids=["example_id"])
-    pulumi.export("armsPrometheusMonitoringsId1", ids.prometheus_monitorings[0].id)
-    name_regex = alicloud.arms.get_prometheus_monitorings(cluster_id="your_cluster_id",
-        name_regex="tf-example")
-    pulumi.export("armsPrometheusMonitoringsId2", name_regex.prometheus_monitorings[0].id)
-    ```
 
 
     :param str cluster_id: The ID of the Prometheus instance.

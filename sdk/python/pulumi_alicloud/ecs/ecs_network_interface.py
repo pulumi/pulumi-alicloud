@@ -74,7 +74,7 @@ class EcsNetworkInterfaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vswitch_id: pulumi.Input[str],
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              ipv6_address_count: Optional[pulumi.Input[int]] = None,
              ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -91,35 +91,37 @@ class EcsNetworkInterfaceArgs:
              security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'ipv6AddressCount' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if ipv6_address_count is None and 'ipv6AddressCount' in kwargs:
             ipv6_address_count = kwargs['ipv6AddressCount']
-        if 'ipv6Addresses' in kwargs:
+        if ipv6_addresses is None and 'ipv6Addresses' in kwargs:
             ipv6_addresses = kwargs['ipv6Addresses']
-        if 'networkInterfaceName' in kwargs:
+        if network_interface_name is None and 'networkInterfaceName' in kwargs:
             network_interface_name = kwargs['networkInterfaceName']
-        if 'primaryIpAddress' in kwargs:
+        if primary_ip_address is None and 'primaryIpAddress' in kwargs:
             primary_ip_address = kwargs['primaryIpAddress']
-        if 'privateIp' in kwargs:
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
-        if 'privateIpAddresses' in kwargs:
+        if private_ip_addresses is None and 'privateIpAddresses' in kwargs:
             private_ip_addresses = kwargs['privateIpAddresses']
-        if 'privateIps' in kwargs:
+        if private_ips is None and 'privateIps' in kwargs:
             private_ips = kwargs['privateIps']
-        if 'privateIpsCount' in kwargs:
+        if private_ips_count is None and 'privateIpsCount' in kwargs:
             private_ips_count = kwargs['privateIpsCount']
-        if 'queueNumber' in kwargs:
+        if queue_number is None and 'queueNumber' in kwargs:
             queue_number = kwargs['queueNumber']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'secondaryPrivateIpAddressCount' in kwargs:
+        if secondary_private_ip_address_count is None and 'secondaryPrivateIpAddressCount' in kwargs:
             secondary_private_ip_address_count = kwargs['secondaryPrivateIpAddressCount']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'securityGroups' in kwargs:
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
 
         _setter("vswitch_id", vswitch_id)
@@ -479,35 +481,35 @@ class _EcsNetworkInterfaceState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipv6AddressCount' in kwargs:
+        if ipv6_address_count is None and 'ipv6AddressCount' in kwargs:
             ipv6_address_count = kwargs['ipv6AddressCount']
-        if 'ipv6Addresses' in kwargs:
+        if ipv6_addresses is None and 'ipv6Addresses' in kwargs:
             ipv6_addresses = kwargs['ipv6Addresses']
-        if 'networkInterfaceName' in kwargs:
+        if network_interface_name is None and 'networkInterfaceName' in kwargs:
             network_interface_name = kwargs['networkInterfaceName']
-        if 'primaryIpAddress' in kwargs:
+        if primary_ip_address is None and 'primaryIpAddress' in kwargs:
             primary_ip_address = kwargs['primaryIpAddress']
-        if 'privateIp' in kwargs:
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
-        if 'privateIpAddresses' in kwargs:
+        if private_ip_addresses is None and 'privateIpAddresses' in kwargs:
             private_ip_addresses = kwargs['privateIpAddresses']
-        if 'privateIps' in kwargs:
+        if private_ips is None and 'privateIps' in kwargs:
             private_ips = kwargs['privateIps']
-        if 'privateIpsCount' in kwargs:
+        if private_ips_count is None and 'privateIpsCount' in kwargs:
             private_ips_count = kwargs['privateIpsCount']
-        if 'queueNumber' in kwargs:
+        if queue_number is None and 'queueNumber' in kwargs:
             queue_number = kwargs['queueNumber']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'secondaryPrivateIpAddressCount' in kwargs:
+        if secondary_private_ip_address_count is None and 'secondaryPrivateIpAddressCount' in kwargs:
             secondary_private_ip_address_count = kwargs['secondaryPrivateIpAddressCount']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'securityGroups' in kwargs:
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if description is not None:
@@ -840,42 +842,6 @@ class EcsNetworkInterface(pulumi.CustomResource):
 
         > **NOTE** Only one of `private_ip_addresses` or `secondary_private_ip_address_count` can be specified when assign private IPs.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testAcc"
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="192.168.0.0/24")
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="192.168.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vpc_id=default_network.id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("defaultEcsNetworkInterface",
-            network_interface_name=name,
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id],
-            description="Basic test",
-            primary_ip_address="192.168.0.2",
-            tags={
-                "Created": "TF",
-                "For": "Test",
-            },
-            resource_group_id=default_resource_groups.ids[0])
-        ```
-
         ## Import
 
         ECS Network Interface can be imported using the id, e.g.
@@ -918,42 +884,6 @@ class EcsNetworkInterface(pulumi.CustomResource):
         > **NOTE:** Available in v1.123.1+.
 
         > **NOTE** Only one of `private_ip_addresses` or `secondary_private_ip_address_count` can be specified when assign private IPs.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testAcc"
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="192.168.0.0/24")
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="192.168.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vpc_id=default_network.id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("defaultEcsNetworkInterface",
-            network_interface_name=name,
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id],
-            description="Basic test",
-            primary_ip_address="192.168.0.2",
-            tags={
-                "Created": "TF",
-                "For": "Test",
-            },
-            resource_group_id=default_resource_groups.ids[0])
-        ```
 
         ## Import
 

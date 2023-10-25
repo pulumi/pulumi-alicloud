@@ -37,17 +37,21 @@ class ConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_name: pulumi.Input[str],
-             network_parameters: pulumi.Input['ConnectionNetworkParametersArgs'],
+             connection_name: Optional[pulumi.Input[str]] = None,
+             network_parameters: Optional[pulumi.Input['ConnectionNetworkParametersArgs']] = None,
              auth_parameters: Optional[pulumi.Input['ConnectionAuthParametersArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionName' in kwargs:
+        if connection_name is None and 'connectionName' in kwargs:
             connection_name = kwargs['connectionName']
-        if 'networkParameters' in kwargs:
+        if connection_name is None:
+            raise TypeError("Missing 'connection_name' argument")
+        if network_parameters is None and 'networkParameters' in kwargs:
             network_parameters = kwargs['networkParameters']
-        if 'authParameters' in kwargs:
+        if network_parameters is None:
+            raise TypeError("Missing 'network_parameters' argument")
+        if auth_parameters is None and 'authParameters' in kwargs:
             auth_parameters = kwargs['authParameters']
 
         _setter("connection_name", connection_name)
@@ -138,15 +142,15 @@ class _ConnectionState:
              create_time: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              network_parameters: Optional[pulumi.Input['ConnectionNetworkParametersArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authParameters' in kwargs:
+        if auth_parameters is None and 'authParameters' in kwargs:
             auth_parameters = kwargs['authParameters']
-        if 'connectionName' in kwargs:
+        if connection_name is None and 'connectionName' in kwargs:
             connection_name = kwargs['connectionName']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'networkParameters' in kwargs:
+        if network_parameters is None and 'networkParameters' in kwargs:
             network_parameters = kwargs['networkParameters']
 
         if auth_parameters is not None:
@@ -238,78 +242,6 @@ class Connection(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.210.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-chengdu"
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_switch.vpc_id)
-        default_connection = alicloud.eventbridge.Connection("defaultConnection",
-            connection_name=name,
-            description="test-connection-basic-pre",
-            network_parameters=alicloud.eventbridge.ConnectionNetworkParametersArgs(
-                network_type="PublicNetwork",
-                vpc_id=default_network.id,
-                vswitche_id=default_switch.id,
-                security_group_id=default_security_group.id,
-            ),
-            auth_parameters=alicloud.eventbridge.ConnectionAuthParametersArgs(
-                authorization_type="BASIC_AUTH",
-                api_key_auth_parameters=alicloud.eventbridge.ConnectionAuthParametersApiKeyAuthParametersArgs(
-                    api_key_name="Token",
-                    api_key_value="Token-value",
-                ),
-                basic_auth_parameters=alicloud.eventbridge.ConnectionAuthParametersBasicAuthParametersArgs(
-                    username="admin",
-                    password="admin",
-                ),
-                oauth_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersArgs(
-                    authorization_endpoint="http://127.0.0.1:8080",
-                    http_method="POST",
-                    client_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersClientParametersArgs(
-                        client_id="ClientId",
-                        client_secret="ClientSecret",
-                    ),
-                    oauth_http_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersArgs(
-                        header_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs(
-                            key="name",
-                            value="name",
-                            is_value_secret="true",
-                        )],
-                        body_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs(
-                            key="name",
-                            value="name",
-                            is_value_secret="true",
-                        )],
-                        query_string_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs(
-                            key="name",
-                            value="name",
-                            is_value_secret="true",
-                        )],
-                    ),
-                ),
-            ))
-        ```
-
         ## Import
 
         Event Bridge Connection can be imported using the id, e.g.
@@ -337,78 +269,6 @@ class Connection(pulumi.CustomResource):
         For information about Event Bridge Connection and how to use it, see [What is Connection](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createconnection).
 
         > **NOTE:** Available since v1.210.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-chengdu"
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_switch.vpc_id)
-        default_connection = alicloud.eventbridge.Connection("defaultConnection",
-            connection_name=name,
-            description="test-connection-basic-pre",
-            network_parameters=alicloud.eventbridge.ConnectionNetworkParametersArgs(
-                network_type="PublicNetwork",
-                vpc_id=default_network.id,
-                vswitche_id=default_switch.id,
-                security_group_id=default_security_group.id,
-            ),
-            auth_parameters=alicloud.eventbridge.ConnectionAuthParametersArgs(
-                authorization_type="BASIC_AUTH",
-                api_key_auth_parameters=alicloud.eventbridge.ConnectionAuthParametersApiKeyAuthParametersArgs(
-                    api_key_name="Token",
-                    api_key_value="Token-value",
-                ),
-                basic_auth_parameters=alicloud.eventbridge.ConnectionAuthParametersBasicAuthParametersArgs(
-                    username="admin",
-                    password="admin",
-                ),
-                oauth_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersArgs(
-                    authorization_endpoint="http://127.0.0.1:8080",
-                    http_method="POST",
-                    client_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersClientParametersArgs(
-                        client_id="ClientId",
-                        client_secret="ClientSecret",
-                    ),
-                    oauth_http_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersArgs(
-                        header_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs(
-                            key="name",
-                            value="name",
-                            is_value_secret="true",
-                        )],
-                        body_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs(
-                            key="name",
-                            value="name",
-                            is_value_secret="true",
-                        )],
-                        query_string_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs(
-                            key="name",
-                            value="name",
-                            is_value_secret="true",
-                        )],
-                    ),
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -450,21 +310,13 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
-            if auth_parameters is not None and not isinstance(auth_parameters, ConnectionAuthParametersArgs):
-                auth_parameters = auth_parameters or {}
-                def _setter(key, value):
-                    auth_parameters[key] = value
-                ConnectionAuthParametersArgs._configure(_setter, **auth_parameters)
+            auth_parameters = _utilities.configure(auth_parameters, ConnectionAuthParametersArgs, True)
             __props__.__dict__["auth_parameters"] = auth_parameters
             if connection_name is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_name'")
             __props__.__dict__["connection_name"] = connection_name
             __props__.__dict__["description"] = description
-            if network_parameters is not None and not isinstance(network_parameters, ConnectionNetworkParametersArgs):
-                network_parameters = network_parameters or {}
-                def _setter(key, value):
-                    network_parameters[key] = value
-                ConnectionNetworkParametersArgs._configure(_setter, **network_parameters)
+            network_parameters = _utilities.configure(network_parameters, ConnectionNetworkParametersArgs, True)
             if network_parameters is None and not opts.urn:
                 raise TypeError("Missing required property 'network_parameters'")
             __props__.__dict__["network_parameters"] = network_parameters

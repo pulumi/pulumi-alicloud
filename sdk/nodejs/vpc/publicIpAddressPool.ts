@@ -11,27 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.186.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
- *     status: "OK",
- * });
- * const defaultPublicIpAddressPool = new alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool", {
- *     description: name,
- *     publicIpAddressPoolName: name,
- *     isp: "BGP",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
- * });
- * ```
- *
  * ## Import
  *
  * Vpc Public Ip Address Pool can be imported using the id, e.g.

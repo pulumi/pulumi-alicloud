@@ -29,14 +29,18 @@ class EcsAutoSnapshotPolicyAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_snapshot_policy_id: pulumi.Input[str],
-             disk_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             disk_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoSnapshotPolicyId' in kwargs:
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
             auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if 'diskId' in kwargs:
+        if auto_snapshot_policy_id is None:
+            raise TypeError("Missing 'auto_snapshot_policy_id' argument")
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
+        if disk_id is None:
+            raise TypeError("Missing 'disk_id' argument")
 
         _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         _setter("disk_id", disk_id)
@@ -86,11 +90,11 @@ class _EcsAutoSnapshotPolicyAttachmentState:
              _setter: Callable[[Any, Any], None],
              auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
              disk_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoSnapshotPolicyId' in kwargs:
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
             auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if 'diskId' in kwargs:
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
 
         if auto_snapshot_policy_id is not None:
@@ -138,47 +142,6 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.122.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_key = alicloud.kms.Key("exampleKey",
-            description="terraform-example",
-            pending_window_in_days=7,
-            status="Enabled")
-        example_auto_snapshot_policy = alicloud.ecs.AutoSnapshotPolicy("exampleAutoSnapshotPolicy",
-            repeat_weekdays=[
-                "1",
-                "2",
-                "3",
-            ],
-            retention_days=-1,
-            time_points=[
-                "1",
-                "22",
-                "23",
-            ])
-        example_ecs_disk = alicloud.ecs.EcsDisk("exampleEcsDisk",
-            zone_id=example_zones.zones[0].id,
-            disk_name="terraform-example",
-            description="Hello ecs disk.",
-            category="cloud_efficiency",
-            size=30,
-            encrypted=True,
-            kms_key_id=example_key.id,
-            tags={
-                "Name": "terraform-example",
-            })
-        example_ecs_auto_snapshot_policy_attachment = alicloud.ecs.EcsAutoSnapshotPolicyAttachment("exampleEcsAutoSnapshotPolicyAttachment",
-            auto_snapshot_policy_id=example_auto_snapshot_policy.id,
-            disk_id=example_ecs_disk.id)
-        ```
-
         ## Import
 
         ECS Auto Snapshot Policy Attachment can be imported using the id, e.g.
@@ -204,47 +167,6 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
         For information about ECS Auto Snapshot Policy Attachment and how to use it, see [What is Auto Snapshot Policy Attachment](https://www.alibabacloud.com/help/en/doc-detail/25531.htm).
 
         > **NOTE:** Available in v1.122.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_key = alicloud.kms.Key("exampleKey",
-            description="terraform-example",
-            pending_window_in_days=7,
-            status="Enabled")
-        example_auto_snapshot_policy = alicloud.ecs.AutoSnapshotPolicy("exampleAutoSnapshotPolicy",
-            repeat_weekdays=[
-                "1",
-                "2",
-                "3",
-            ],
-            retention_days=-1,
-            time_points=[
-                "1",
-                "22",
-                "23",
-            ])
-        example_ecs_disk = alicloud.ecs.EcsDisk("exampleEcsDisk",
-            zone_id=example_zones.zones[0].id,
-            disk_name="terraform-example",
-            description="Hello ecs disk.",
-            category="cloud_efficiency",
-            size=30,
-            encrypted=True,
-            kms_key_id=example_key.id,
-            tags={
-                "Name": "terraform-example",
-            })
-        example_ecs_auto_snapshot_policy_attachment = alicloud.ecs.EcsAutoSnapshotPolicyAttachment("exampleEcsAutoSnapshotPolicyAttachment",
-            auto_snapshot_policy_id=example_auto_snapshot_policy.id,
-            disk_id=example_ecs_disk.id)
-        ```
 
         ## Import
 

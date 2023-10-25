@@ -9,46 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.0.0.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * // Create a RAM User Policy attachment.
- * const user = new alicloud.ram.User("user", {
- *     displayName: "user_display_name",
- *     mobile: "86-18688888888",
- *     email: "hello.uuu@aaa.com",
- *     comments: "yoyoyo",
- * });
- * const policy = new alicloud.ram.Policy("policy", {
- *     document: `  {
- *     "Statement": [
- *       {
- *         "Action": [
- *           "oss:ListObjects",
- *           "oss:GetObject"
- *         ],
- *         "Effect": "Allow",
- *         "Resource": [
- *           "acs:oss:*:*:mybucket",
- *           "acs:oss:*:*:mybucket/*"
- *         ]
- *       }
- *     ],
- *       "Version": "1"
- *   }
- * `,
- *     description: "this is a policy test",
- * });
- * const attach = new alicloud.ram.UserPolicyAttachment("attach", {
- *     policyName: policy.name,
- *     policyType: policy.type,
- *     userName: user.name,
- * });
- * ```
- *
  * ## Import
  *
  * RAM User Policy attachment can be imported using the id, e.g.

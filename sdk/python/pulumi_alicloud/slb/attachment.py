@@ -41,23 +41,27 @@ class AttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             load_balancer_id: pulumi.Input[str],
+             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
              backend_servers: Optional[pulumi.Input[str]] = None,
              delete_protection_validation: Optional[pulumi.Input[bool]] = None,
              server_type: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceIds' in kwargs:
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
-        if 'loadBalancerId' in kwargs:
+        if instance_ids is None:
+            raise TypeError("Missing 'instance_ids' argument")
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
-        if 'backendServers' in kwargs:
+        if load_balancer_id is None:
+            raise TypeError("Missing 'load_balancer_id' argument")
+        if backend_servers is None and 'backendServers' in kwargs:
             backend_servers = kwargs['backendServers']
-        if 'deleteProtectionValidation' in kwargs:
+        if delete_protection_validation is None and 'deleteProtectionValidation' in kwargs:
             delete_protection_validation = kwargs['deleteProtectionValidation']
-        if 'serverType' in kwargs:
+        if server_type is None and 'serverType' in kwargs:
             server_type = kwargs['serverType']
 
         _setter("instance_ids", instance_ids)
@@ -180,17 +184,17 @@ class _AttachmentState:
              load_balancer_id: Optional[pulumi.Input[str]] = None,
              server_type: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backendServers' in kwargs:
+        if backend_servers is None and 'backendServers' in kwargs:
             backend_servers = kwargs['backendServers']
-        if 'deleteProtectionValidation' in kwargs:
+        if delete_protection_validation is None and 'deleteProtectionValidation' in kwargs:
             delete_protection_validation = kwargs['deleteProtectionValidation']
-        if 'instanceIds' in kwargs:
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
-        if 'loadBalancerId' in kwargs:
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
-        if 'serverType' in kwargs:
+        if server_type is None and 'serverType' in kwargs:
             server_type = kwargs['serverType']
 
         if backend_servers is not None:
@@ -296,49 +300,6 @@ class Attachment(pulumi.CustomResource):
 
         Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "slbattachmenttest"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/16",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=5,
-            system_disk_category="cloud_efficiency",
-            security_groups=[default_security_group.id],
-            instance_name=name,
-            vswitch_id=default_switch.id)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
-            load_balancer_name=name,
-            vswitch_id=default_switch.id)
-        default_attachment = alicloud.slb.Attachment("defaultAttachment",
-            load_balancer_id=default_application_load_balancer.id,
-            instance_ids=[default_instance.id],
-            weight=90)
-        ```
-
         ## Import
 
         Load balancer attachment can be imported using the id or load balancer id, e.g.
@@ -366,49 +327,6 @@ class Attachment(pulumi.CustomResource):
         > **DEPRECATED:** This resource has been deprecated from v1.153.0 and using alicloud_backend_server instead.
 
         Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "slbattachmenttest"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/16",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=5,
-            system_disk_category="cloud_efficiency",
-            security_groups=[default_security_group.id],
-            instance_name=name,
-            vswitch_id=default_switch.id)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
-            load_balancer_name=name,
-            vswitch_id=default_switch.id)
-        default_attachment = alicloud.slb.Attachment("defaultAttachment",
-            load_balancer_id=default_application_load_balancer.id,
-            instance_ids=[default_instance.id],
-            weight=90)
-        ```
 
         ## Import
 

@@ -17,46 +17,6 @@ namespace Pulumi.AliCloud.CloudSso
         /// &gt; **NOTE:** Available in v1.140.0+.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.CloudSso.GetAccessConfigurations.Invoke(new()
-        ///     {
-        ///         DirectoryId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.CloudSso.GetAccessConfigurations.Invoke(new()
-        ///     {
-        ///         DirectoryId = "example_value",
-        ///         NameRegex = "^my-AccessConfiguration",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cloudSsoAccessConfigurationId1"] = ids.Apply(getAccessConfigurationsResult =&gt; getAccessConfigurationsResult.Configurations[0]?.Id),
-        ///         ["cloudSsoAccessConfigurationId2"] = nameRegex.Apply(getAccessConfigurationsResult =&gt; getAccessConfigurationsResult.Configurations[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccessConfigurationsResult> InvokeAsync(GetAccessConfigurationsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessConfigurationsResult>("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", args ?? new GetAccessConfigurationsArgs(), options.WithDefaults());
@@ -67,46 +27,6 @@ namespace Pulumi.AliCloud.CloudSso
         /// &gt; **NOTE:** Available in v1.140.0+.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.CloudSso.GetAccessConfigurations.Invoke(new()
-        ///     {
-        ///         DirectoryId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.CloudSso.GetAccessConfigurations.Invoke(new()
-        ///     {
-        ///         DirectoryId = "example_value",
-        ///         NameRegex = "^my-AccessConfiguration",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cloudSsoAccessConfigurationId1"] = ids.Apply(getAccessConfigurationsResult =&gt; getAccessConfigurationsResult.Configurations[0]?.Id),
-        ///         ["cloudSsoAccessConfigurationId2"] = nameRegex.Apply(getAccessConfigurationsResult =&gt; getAccessConfigurationsResult.Configurations[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccessConfigurationsResult> Invoke(GetAccessConfigurationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessConfigurationsResult>("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", args ?? new GetAccessConfigurationsInvokeArgs(), options.WithDefaults());

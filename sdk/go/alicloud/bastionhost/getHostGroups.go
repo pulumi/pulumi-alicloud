@@ -15,47 +15,6 @@ import (
 // This data source provides the Bastionhost Host Groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.134.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := bastionhost.GetHostGroups(ctx, &bastionhost.GetHostGroupsArgs{
-//				InstanceId: "bastionhost-cn-tl3xxxxxxx",
-//				Ids: []string{
-//					"example_value-1",
-//					"example_value-2",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("bastionhostHostGroupId1", ids.Groups[0].Id)
-//			nameRegex, err := bastionhost.GetHostGroups(ctx, &bastionhost.GetHostGroupsArgs{
-//				InstanceId: "bastionhost-cn-tl3xxxxxxx",
-//				NameRegex:  pulumi.StringRef("^my-HostGroup"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("bastionhostHostGroupId2", nameRegex.Groups[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetHostGroups(ctx *pulumi.Context, args *GetHostGroupsArgs, opts ...pulumi.InvokeOption) (*GetHostGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHostGroupsResult

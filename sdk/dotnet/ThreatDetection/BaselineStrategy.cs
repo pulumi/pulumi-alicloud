@@ -16,32 +16,6 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// 
     /// &gt; **NOTE:** Available since v1.195.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.ThreatDetection.BaselineStrategy("default", new()
-    ///     {
-    ///         BaselineStrategyName = "apispec",
-    ///         CustomType = "custom",
-    ///         CycleDays = 3,
-    ///         EndTime = "08:00:00",
-    ///         RiskSubTypeName = "hc_exploit_redis",
-    ///         StartTime = "05:00:00",
-    ///         TargetType = "groupId",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Threat Detection Baseline Strategy can be imported using the id, e.g.

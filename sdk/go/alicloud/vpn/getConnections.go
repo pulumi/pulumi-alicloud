@@ -13,37 +13,6 @@ import (
 )
 
 // The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpn.GetConnections(ctx, &vpn.GetConnectionsArgs{
-//				CustomerGatewayId: pulumi.StringRef("fake-cgw-id"),
-//				Ids: []string{
-//					"fake-conn-id",
-//				},
-//				OutputFile:   pulumi.StringRef("/tmp/vpnconn"),
-//				VpnGatewayId: pulumi.StringRef("fake-vpn-id"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetConnections(ctx *pulumi.Context, args *GetConnectionsArgs, opts ...pulumi.InvokeOption) (*GetConnectionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetConnectionsResult

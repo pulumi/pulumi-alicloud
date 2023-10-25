@@ -46,24 +46,26 @@ class GroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
              group_id: Optional[pulumi.Input[str]] = None,
              group_name: Optional[pulumi.Input[str]] = None,
              group_type: Optional[pulumi.Input[str]] = None,
              read_enable: Optional[pulumi.Input[bool]] = None,
              remark: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'groupId' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'groupType' in kwargs:
+        if group_type is None and 'groupType' in kwargs:
             group_type = kwargs['groupType']
-        if 'readEnable' in kwargs:
+        if read_enable is None and 'readEnable' in kwargs:
             read_enable = kwargs['readEnable']
 
         _setter("instance_id", instance_id)
@@ -215,17 +217,17 @@ class _GroupState:
              read_enable: Optional[pulumi.Input[bool]] = None,
              remark: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'groupType' in kwargs:
+        if group_type is None and 'groupType' in kwargs:
             group_type = kwargs['groupType']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'readEnable' in kwargs:
+        if read_enable is None and 'readEnable' in kwargs:
             read_enable = kwargs['readEnable']
 
         if group_id is not None:
@@ -356,28 +358,6 @@ class Group(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.53.0+
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "onsInstanceName"
-        group_name = config.get("groupName")
-        if group_name is None:
-            group_name = "GID-onsGroupDatasourceName"
-        default_instance = alicloud.rocketmq.Instance("defaultInstance", remark="default_ons_instance_remark")
-        default_group = alicloud.rocketmq.Group("defaultGroup",
-            group_name=group_name,
-            instance_id=default_instance.id,
-            remark="dafault_ons_group_remark")
-        ```
-
         ## Import
 
         ONS GROUP can be imported using the id, e.g.
@@ -410,28 +390,6 @@ class Group(pulumi.CustomResource):
         For more information about how to use it, see [RocketMQ Group Management API](https://www.alibabacloud.com/help/doc-detail/29616.html).
 
         > **NOTE:** Available in 1.53.0+
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "onsInstanceName"
-        group_name = config.get("groupName")
-        if group_name is None:
-            group_name = "GID-onsGroupDatasourceName"
-        default_instance = alicloud.rocketmq.Instance("defaultInstance", remark="default_ons_instance_remark")
-        default_group = alicloud.rocketmq.Group("defaultGroup",
-            group_name=group_name,
-            instance_id=default_instance.id,
-            remark="dafault_ons_group_remark")
-        ```
 
         ## Import
 

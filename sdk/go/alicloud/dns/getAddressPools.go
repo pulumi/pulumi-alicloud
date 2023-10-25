@@ -15,47 +15,6 @@ import (
 // This data source provides the Alidns Address Pools of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.152.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := dns.GetAddressPools(ctx, &dns.GetAddressPoolsArgs{
-//				InstanceId: "example_value",
-//				Ids: []string{
-//					"example_value-1",
-//					"example_value-2",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("alidnsAddressPoolId1", ids.Pools[0].Id)
-//			nameRegex, err := dns.GetAddressPools(ctx, &dns.GetAddressPoolsArgs{
-//				InstanceId: "example_value",
-//				NameRegex:  pulumi.StringRef("^my-AddressPool"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("alidnsAddressPoolId2", nameRegex.Pools[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAddressPools(ctx *pulumi.Context, args *GetAddressPoolsArgs, opts ...pulumi.InvokeOption) (*GetAddressPoolsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAddressPoolsResult

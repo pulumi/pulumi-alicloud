@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * For information about CDN and how to use it, see [What is CDN](https://www.alibabacloud.com/help/product/27099.htm).
  *
  * > **NOTE:** Available since v1.98.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const open = alicloud.cdn.getService({
- *     enable: "On",
- *     internetChargeType: "PayByTraffic",
- * });
- * ```
  */
 export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     args = args || {};
@@ -84,18 +72,6 @@ export interface GetServiceResult {
  * For information about CDN and how to use it, see [What is CDN](https://www.alibabacloud.com/help/product/27099.htm).
  *
  * > **NOTE:** Available since v1.98.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const open = alicloud.cdn.getService({
- *     enable: "On",
- *     internetChargeType: "PayByTraffic",
- * });
- * ```
  */
 export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
     return pulumi.output(args).apply((a: any) => getService(a, opts))

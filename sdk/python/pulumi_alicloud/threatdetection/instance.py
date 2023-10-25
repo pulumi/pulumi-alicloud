@@ -91,8 +91,8 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             payment_type: pulumi.Input[str],
-             version_code: pulumi.Input[str],
+             payment_type: Optional[pulumi.Input[str]] = None,
+             version_code: Optional[pulumi.Input[str]] = None,
              buy_number: Optional[pulumi.Input[str]] = None,
              container_image_scan: Optional[pulumi.Input[str]] = None,
              honeypot: Optional[pulumi.Input[str]] = None,
@@ -113,47 +113,51 @@ class InstanceArgs:
              threat_analysis: Optional[pulumi.Input[str]] = None,
              threat_analysis_switch: Optional[pulumi.Input[str]] = None,
              v_core: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'versionCode' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if version_code is None and 'versionCode' in kwargs:
             version_code = kwargs['versionCode']
-        if 'buyNumber' in kwargs:
+        if version_code is None:
+            raise TypeError("Missing 'version_code' argument")
+        if buy_number is None and 'buyNumber' in kwargs:
             buy_number = kwargs['buyNumber']
-        if 'containerImageScan' in kwargs:
+        if container_image_scan is None and 'containerImageScan' in kwargs:
             container_image_scan = kwargs['containerImageScan']
-        if 'honeypotSwitch' in kwargs:
+        if honeypot_switch is None and 'honeypotSwitch' in kwargs:
             honeypot_switch = kwargs['honeypotSwitch']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'modifyType' in kwargs:
+        if modify_type is None and 'modifyType' in kwargs:
             modify_type = kwargs['modifyType']
-        if 'renewPeriod' in kwargs:
+        if renew_period is None and 'renewPeriod' in kwargs:
             renew_period = kwargs['renewPeriod']
-        if 'renewalPeriodUnit' in kwargs:
+        if renewal_period_unit is None and 'renewalPeriodUnit' in kwargs:
             renewal_period_unit = kwargs['renewalPeriodUnit']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'sasAntiRansomware' in kwargs:
+        if sas_anti_ransomware is None and 'sasAntiRansomware' in kwargs:
             sas_anti_ransomware = kwargs['sasAntiRansomware']
-        if 'sasSc' in kwargs:
+        if sas_sc is None and 'sasSc' in kwargs:
             sas_sc = kwargs['sasSc']
-        if 'sasSdk' in kwargs:
+        if sas_sdk is None and 'sasSdk' in kwargs:
             sas_sdk = kwargs['sasSdk']
-        if 'sasSdkSwitch' in kwargs:
+        if sas_sdk_switch is None and 'sasSdkSwitch' in kwargs:
             sas_sdk_switch = kwargs['sasSdkSwitch']
-        if 'sasSlsStorage' in kwargs:
+        if sas_sls_storage is None and 'sasSlsStorage' in kwargs:
             sas_sls_storage = kwargs['sasSlsStorage']
-        if 'sasWebguardBoolean' in kwargs:
+        if sas_webguard_boolean is None and 'sasWebguardBoolean' in kwargs:
             sas_webguard_boolean = kwargs['sasWebguardBoolean']
-        if 'sasWebguardOrderNum' in kwargs:
+        if sas_webguard_order_num is None and 'sasWebguardOrderNum' in kwargs:
             sas_webguard_order_num = kwargs['sasWebguardOrderNum']
-        if 'threatAnalysis' in kwargs:
+        if threat_analysis is None and 'threatAnalysis' in kwargs:
             threat_analysis = kwargs['threatAnalysis']
-        if 'threatAnalysisSwitch' in kwargs:
+        if threat_analysis_switch is None and 'threatAnalysisSwitch' in kwargs:
             threat_analysis_switch = kwargs['threatAnalysisSwitch']
-        if 'vCore' in kwargs:
+        if v_core is None and 'vCore' in kwargs:
             v_core = kwargs['vCore']
 
         _setter("payment_type", payment_type)
@@ -576,49 +580,49 @@ class _InstanceState:
              threat_analysis_switch: Optional[pulumi.Input[str]] = None,
              v_core: Optional[pulumi.Input[str]] = None,
              version_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'buyNumber' in kwargs:
+        if buy_number is None and 'buyNumber' in kwargs:
             buy_number = kwargs['buyNumber']
-        if 'containerImageScan' in kwargs:
+        if container_image_scan is None and 'containerImageScan' in kwargs:
             container_image_scan = kwargs['containerImageScan']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'honeypotSwitch' in kwargs:
+        if honeypot_switch is None and 'honeypotSwitch' in kwargs:
             honeypot_switch = kwargs['honeypotSwitch']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'modifyType' in kwargs:
+        if modify_type is None and 'modifyType' in kwargs:
             modify_type = kwargs['modifyType']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'renewPeriod' in kwargs:
+        if renew_period is None and 'renewPeriod' in kwargs:
             renew_period = kwargs['renewPeriod']
-        if 'renewalPeriodUnit' in kwargs:
+        if renewal_period_unit is None and 'renewalPeriodUnit' in kwargs:
             renewal_period_unit = kwargs['renewalPeriodUnit']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'sasAntiRansomware' in kwargs:
+        if sas_anti_ransomware is None and 'sasAntiRansomware' in kwargs:
             sas_anti_ransomware = kwargs['sasAntiRansomware']
-        if 'sasSc' in kwargs:
+        if sas_sc is None and 'sasSc' in kwargs:
             sas_sc = kwargs['sasSc']
-        if 'sasSdk' in kwargs:
+        if sas_sdk is None and 'sasSdk' in kwargs:
             sas_sdk = kwargs['sasSdk']
-        if 'sasSdkSwitch' in kwargs:
+        if sas_sdk_switch is None and 'sasSdkSwitch' in kwargs:
             sas_sdk_switch = kwargs['sasSdkSwitch']
-        if 'sasSlsStorage' in kwargs:
+        if sas_sls_storage is None and 'sasSlsStorage' in kwargs:
             sas_sls_storage = kwargs['sasSlsStorage']
-        if 'sasWebguardBoolean' in kwargs:
+        if sas_webguard_boolean is None and 'sasWebguardBoolean' in kwargs:
             sas_webguard_boolean = kwargs['sasWebguardBoolean']
-        if 'sasWebguardOrderNum' in kwargs:
+        if sas_webguard_order_num is None and 'sasWebguardOrderNum' in kwargs:
             sas_webguard_order_num = kwargs['sasWebguardOrderNum']
-        if 'threatAnalysis' in kwargs:
+        if threat_analysis is None and 'threatAnalysis' in kwargs:
             threat_analysis = kwargs['threatAnalysis']
-        if 'threatAnalysisSwitch' in kwargs:
+        if threat_analysis_switch is None and 'threatAnalysisSwitch' in kwargs:
             threat_analysis_switch = kwargs['threatAnalysisSwitch']
-        if 'vCore' in kwargs:
+        if v_core is None and 'vCore' in kwargs:
             v_core = kwargs['vCore']
-        if 'versionCode' in kwargs:
+        if version_code is None and 'versionCode' in kwargs:
             version_code = kwargs['versionCode']
 
         if buy_number is not None:
@@ -996,32 +1000,6 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.199.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.threatdetection.Instance("default",
-            buy_number="30",
-            container_image_scan="100",
-            honeypot="32",
-            honeypot_switch="1",
-            payment_type="Subscription",
-            period=12,
-            renewal_status="ManualRenewal",
-            sas_anti_ransomware="100",
-            sas_sc=True,
-            sas_sdk="1000",
-            sas_sdk_switch="1",
-            sas_sls_storage="100",
-            sas_webguard_order_num="100",
-            v_core="100",
-            version_code="level2")
-        ```
-
         ## Import
 
         Threat Detection Instance do not support import.
@@ -1065,32 +1043,6 @@ class Instance(pulumi.CustomResource):
         For information about Threat Detection Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center).
 
         > **NOTE:** Available in v1.199.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.threatdetection.Instance("default",
-            buy_number="30",
-            container_image_scan="100",
-            honeypot="32",
-            honeypot_switch="1",
-            payment_type="Subscription",
-            period=12,
-            renewal_status="ManualRenewal",
-            sas_anti_ransomware="100",
-            sas_sc=True,
-            sas_sdk="1000",
-            sas_sdk_switch="1",
-            sas_sls_storage="100",
-            sas_webguard_order_num="100",
-            v_core="100",
-            version_code="level2")
-        ```
 
         ## Import
 

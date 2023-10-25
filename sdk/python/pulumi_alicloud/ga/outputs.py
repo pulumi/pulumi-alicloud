@@ -98,9 +98,9 @@ class AclAclEntry(dict):
              _setter: Callable[[Any, Any], None],
              entry: Optional[str] = None,
              entry_description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'entryDescription' in kwargs:
+        if entry_description is None and 'entryDescription' in kwargs:
             entry_description = kwargs['entryDescription']
 
         if entry is not None:
@@ -163,11 +163,11 @@ class CustomRoutingEndpointTrafficPolicyPortRange(dict):
              _setter: Callable[[Any, Any], None],
              from_port: Optional[int] = None,
              to_port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fromPort' in kwargs:
+        if from_port is None and 'fromPort' in kwargs:
             from_port = kwargs['fromPort']
-        if 'toPort' in kwargs:
+        if to_port is None and 'toPort' in kwargs:
             to_port = kwargs['toPort']
 
         if from_port is not None:
@@ -238,16 +238,22 @@ class EndpointGroupEndpointConfiguration(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: str,
-             type: str,
-             weight: int,
+             endpoint: Optional[str] = None,
+             type: Optional[str] = None,
+             weight: Optional[int] = None,
              enable_clientip_preservation: Optional[bool] = None,
              enable_proxy_protocol: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'enableClientipPreservation' in kwargs:
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
+        if enable_clientip_preservation is None and 'enableClientipPreservation' in kwargs:
             enable_clientip_preservation = kwargs['enableClientipPreservation']
-        if 'enableProxyProtocol' in kwargs:
+        if enable_proxy_protocol is None and 'enableProxyProtocol' in kwargs:
             enable_proxy_protocol = kwargs['enableProxyProtocol']
 
         _setter("endpoint", endpoint)
@@ -338,11 +344,11 @@ class EndpointGroupPortOverrides(dict):
              _setter: Callable[[Any, Any], None],
              endpoint_port: Optional[int] = None,
              listener_port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endpointPort' in kwargs:
+        if endpoint_port is None and 'endpointPort' in kwargs:
             endpoint_port = kwargs['endpointPort']
-        if 'listenerPort' in kwargs:
+        if listener_port is None and 'listenerPort' in kwargs:
             listener_port = kwargs['listenerPort']
 
         if endpoint_port is not None:
@@ -412,17 +418,21 @@ class ForwardingRuleRuleAction(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             order: int,
-             rule_action_type: str,
+             order: Optional[int] = None,
+             rule_action_type: Optional[str] = None,
              forward_group_config: Optional['outputs.ForwardingRuleRuleActionForwardGroupConfig'] = None,
              rule_action_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ruleActionType' in kwargs:
+        if order is None:
+            raise TypeError("Missing 'order' argument")
+        if rule_action_type is None and 'ruleActionType' in kwargs:
             rule_action_type = kwargs['ruleActionType']
-        if 'forwardGroupConfig' in kwargs:
+        if rule_action_type is None:
+            raise TypeError("Missing 'rule_action_type' argument")
+        if forward_group_config is None and 'forwardGroupConfig' in kwargs:
             forward_group_config = kwargs['forwardGroupConfig']
-        if 'ruleActionValue' in kwargs:
+        if rule_action_value is None and 'ruleActionValue' in kwargs:
             rule_action_value = kwargs['ruleActionValue']
 
         _setter("order", order)
@@ -497,11 +507,13 @@ class ForwardingRuleRuleActionForwardGroupConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_group_tuples: Sequence['outputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             server_group_tuples: Optional[Sequence['outputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupTuples' in kwargs:
+        if server_group_tuples is None and 'serverGroupTuples' in kwargs:
             server_group_tuples = kwargs['serverGroupTuples']
+        if server_group_tuples is None:
+            raise TypeError("Missing 'server_group_tuples' argument")
 
         _setter("server_group_tuples", server_group_tuples)
 
@@ -545,11 +557,13 @@ class ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint_group_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             endpoint_group_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endpointGroupId' in kwargs:
+        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
             endpoint_group_id = kwargs['endpointGroupId']
+        if endpoint_group_id is None:
+            raise TypeError("Missing 'endpoint_group_id' argument")
 
         _setter("endpoint_group_id", endpoint_group_id)
 
@@ -603,16 +617,18 @@ class ForwardingRuleRuleCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             rule_condition_type: str,
+             rule_condition_type: Optional[str] = None,
              host_configs: Optional[Sequence['outputs.ForwardingRuleRuleConditionHostConfig']] = None,
              path_config: Optional['outputs.ForwardingRuleRuleConditionPathConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ruleConditionType' in kwargs:
+        if rule_condition_type is None and 'ruleConditionType' in kwargs:
             rule_condition_type = kwargs['ruleConditionType']
-        if 'hostConfigs' in kwargs:
+        if rule_condition_type is None:
+            raise TypeError("Missing 'rule_condition_type' argument")
+        if host_configs is None and 'hostConfigs' in kwargs:
             host_configs = kwargs['hostConfigs']
-        if 'pathConfig' in kwargs:
+        if path_config is None and 'pathConfig' in kwargs:
             path_config = kwargs['pathConfig']
 
         _setter("rule_condition_type", rule_condition_type)
@@ -661,7 +677,7 @@ class ForwardingRuleRuleConditionHostConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if values is not None:
@@ -691,7 +707,7 @@ class ForwardingRuleRuleConditionPathConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if values is not None:
@@ -721,7 +737,7 @@ class ListenerCertificate(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if id is not None:
@@ -792,17 +808,17 @@ class ListenerForwardedForConfig(dict):
              forwarded_for_port_enabled: Optional[bool] = None,
              forwarded_for_proto_enabled: Optional[bool] = None,
              real_ip_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'forwardedForGaApEnabled' in kwargs:
+        if forwarded_for_ga_ap_enabled is None and 'forwardedForGaApEnabled' in kwargs:
             forwarded_for_ga_ap_enabled = kwargs['forwardedForGaApEnabled']
-        if 'forwardedForGaIdEnabled' in kwargs:
+        if forwarded_for_ga_id_enabled is None and 'forwardedForGaIdEnabled' in kwargs:
             forwarded_for_ga_id_enabled = kwargs['forwardedForGaIdEnabled']
-        if 'forwardedForPortEnabled' in kwargs:
+        if forwarded_for_port_enabled is None and 'forwardedForPortEnabled' in kwargs:
             forwarded_for_port_enabled = kwargs['forwardedForPortEnabled']
-        if 'forwardedForProtoEnabled' in kwargs:
+        if forwarded_for_proto_enabled is None and 'forwardedForProtoEnabled' in kwargs:
             forwarded_for_proto_enabled = kwargs['forwardedForProtoEnabled']
-        if 'realIpEnabled' in kwargs:
+        if real_ip_enabled is None and 'realIpEnabled' in kwargs:
             real_ip_enabled = kwargs['realIpEnabled']
 
         if forwarded_for_ga_ap_enabled is not None:
@@ -893,14 +909,18 @@ class ListenerPortRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             from_port: int,
-             to_port: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             from_port: Optional[int] = None,
+             to_port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fromPort' in kwargs:
+        if from_port is None and 'fromPort' in kwargs:
             from_port = kwargs['fromPort']
-        if 'toPort' in kwargs:
+        if from_port is None:
+            raise TypeError("Missing 'from_port' argument")
+        if to_port is None and 'toPort' in kwargs:
             to_port = kwargs['toPort']
+        if to_port is None:
+            raise TypeError("Missing 'to_port' argument")
 
         _setter("from_port", from_port)
         _setter("to_port", to_port)
@@ -945,16 +965,24 @@ class GetAcceleratorSpareIpAttachmentsAttachmentResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: str,
-             id: str,
-             spare_ip: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerator_id: Optional[str] = None,
+             id: Optional[str] = None,
+             spare_ip: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'spareIp' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if spare_ip is None and 'spareIp' in kwargs:
             spare_ip = kwargs['spareIp']
+        if spare_ip is None:
+            raise TypeError("Missing 'spare_ip' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("accelerator_id", accelerator_id)
         _setter("id", id)
@@ -1047,42 +1075,70 @@ class GetAcceleratorsAcceleratorResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: str,
-             accelerator_name: str,
-             basic_bandwidth_packages: Sequence['outputs.GetAcceleratorsAcceleratorBasicBandwidthPackageResult'],
-             cen_id: str,
-             cross_domain_bandwidth_packages: Sequence['outputs.GetAcceleratorsAcceleratorCrossDomainBandwidthPackageResult'],
-             ddos_id: str,
-             description: str,
-             dns_name: str,
-             expired_time: int,
-             id: str,
-             payment_type: str,
-             second_dns_name: str,
-             spec: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerator_id: Optional[str] = None,
+             accelerator_name: Optional[str] = None,
+             basic_bandwidth_packages: Optional[Sequence['outputs.GetAcceleratorsAcceleratorBasicBandwidthPackageResult']] = None,
+             cen_id: Optional[str] = None,
+             cross_domain_bandwidth_packages: Optional[Sequence['outputs.GetAcceleratorsAcceleratorCrossDomainBandwidthPackageResult']] = None,
+             ddos_id: Optional[str] = None,
+             description: Optional[str] = None,
+             dns_name: Optional[str] = None,
+             expired_time: Optional[int] = None,
+             id: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             second_dns_name: Optional[str] = None,
+             spec: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'acceleratorName' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if accelerator_name is None and 'acceleratorName' in kwargs:
             accelerator_name = kwargs['acceleratorName']
-        if 'basicBandwidthPackages' in kwargs:
+        if accelerator_name is None:
+            raise TypeError("Missing 'accelerator_name' argument")
+        if basic_bandwidth_packages is None and 'basicBandwidthPackages' in kwargs:
             basic_bandwidth_packages = kwargs['basicBandwidthPackages']
-        if 'cenId' in kwargs:
+        if basic_bandwidth_packages is None:
+            raise TypeError("Missing 'basic_bandwidth_packages' argument")
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'crossDomainBandwidthPackages' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if cross_domain_bandwidth_packages is None and 'crossDomainBandwidthPackages' in kwargs:
             cross_domain_bandwidth_packages = kwargs['crossDomainBandwidthPackages']
-        if 'ddosId' in kwargs:
+        if cross_domain_bandwidth_packages is None:
+            raise TypeError("Missing 'cross_domain_bandwidth_packages' argument")
+        if ddos_id is None and 'ddosId' in kwargs:
             ddos_id = kwargs['ddosId']
-        if 'dnsName' in kwargs:
+        if ddos_id is None:
+            raise TypeError("Missing 'ddos_id' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if dns_name is None and 'dnsName' in kwargs:
             dns_name = kwargs['dnsName']
-        if 'expiredTime' in kwargs:
+        if dns_name is None:
+            raise TypeError("Missing 'dns_name' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'paymentType' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'secondDnsName' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if second_dns_name is None and 'secondDnsName' in kwargs:
             second_dns_name = kwargs['secondDnsName']
+        if second_dns_name is None:
+            raise TypeError("Missing 'second_dns_name' argument")
+        if spec is None:
+            raise TypeError("Missing 'spec' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("accelerator_id", accelerator_id)
         _setter("accelerator_name", accelerator_name)
@@ -1232,15 +1288,21 @@ class GetAcceleratorsAcceleratorBasicBandwidthPackageResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: int,
-             bandwidth_type: str,
-             instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth: Optional[int] = None,
+             bandwidth_type: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bandwidthType' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if bandwidth_type is None and 'bandwidthType' in kwargs:
             bandwidth_type = kwargs['bandwidthType']
-        if 'instanceId' in kwargs:
+        if bandwidth_type is None:
+            raise TypeError("Missing 'bandwidth_type' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
 
         _setter("bandwidth", bandwidth)
         _setter("bandwidth_type", bandwidth_type)
@@ -1288,12 +1350,16 @@ class GetAcceleratorsAcceleratorCrossDomainBandwidthPackageResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: int,
-             instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth: Optional[int] = None,
+             instance_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
 
         _setter("bandwidth", bandwidth)
         _setter("instance_id", instance_id)
@@ -1344,22 +1410,34 @@ class GetAclsAclResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acl_entries: Sequence['outputs.GetAclsAclAclEntryResult'],
-             acl_id: str,
-             acl_name: str,
-             address_ip_version: str,
-             id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             acl_entries: Optional[Sequence['outputs.GetAclsAclAclEntryResult']] = None,
+             acl_id: Optional[str] = None,
+             acl_name: Optional[str] = None,
+             address_ip_version: Optional[str] = None,
+             id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclEntries' in kwargs:
+        if acl_entries is None and 'aclEntries' in kwargs:
             acl_entries = kwargs['aclEntries']
-        if 'aclId' in kwargs:
+        if acl_entries is None:
+            raise TypeError("Missing 'acl_entries' argument")
+        if acl_id is None and 'aclId' in kwargs:
             acl_id = kwargs['aclId']
-        if 'aclName' in kwargs:
+        if acl_id is None:
+            raise TypeError("Missing 'acl_id' argument")
+        if acl_name is None and 'aclName' in kwargs:
             acl_name = kwargs['aclName']
-        if 'addressIpVersion' in kwargs:
+        if acl_name is None:
+            raise TypeError("Missing 'acl_name' argument")
+        if address_ip_version is None and 'addressIpVersion' in kwargs:
             address_ip_version = kwargs['addressIpVersion']
+        if address_ip_version is None:
+            raise TypeError("Missing 'address_ip_version' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("acl_entries", acl_entries)
         _setter("acl_id", acl_id)
@@ -1434,12 +1512,16 @@ class GetAclsAclAclEntryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entry: str,
-             entry_description: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             entry: Optional[str] = None,
+             entry_description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'entryDescription' in kwargs:
+        if entry is None:
+            raise TypeError("Missing 'entry' argument")
+        if entry_description is None and 'entryDescription' in kwargs:
             entry_description = kwargs['entryDescription']
+        if entry_description is None:
+            raise TypeError("Missing 'entry_description' argument")
 
         _setter("entry", entry)
         _setter("entry_description", entry_description)
@@ -1487,19 +1569,29 @@ class GetAdditionalCertificatesCertificateResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: str,
-             certificate_id: str,
-             domain: str,
-             id: str,
-             listener_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerator_id: Optional[str] = None,
+             certificate_id: Optional[str] = None,
+             domain: Optional[str] = None,
+             id: Optional[str] = None,
+             listener_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'certificateId' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if certificate_id is None and 'certificateId' in kwargs:
             certificate_id = kwargs['certificateId']
-        if 'listenerId' in kwargs:
+        if certificate_id is None:
+            raise TypeError("Missing 'certificate_id' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
 
         _setter("accelerator_id", accelerator_id)
         _setter("certificate_id", certificate_id)
@@ -1595,34 +1687,58 @@ class GetBandwidthPackagesPackageResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: int,
-             bandwidth_package_id: str,
-             bandwidth_package_name: str,
-             bandwidth_type: str,
-             cbn_geographic_region_ida: str,
-             cbn_geographic_region_idb: str,
-             description: str,
-             expired_time: str,
-             id: str,
-             payment_type: str,
-             status: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth: Optional[int] = None,
+             bandwidth_package_id: Optional[str] = None,
+             bandwidth_package_name: Optional[str] = None,
+             bandwidth_type: Optional[str] = None,
+             cbn_geographic_region_ida: Optional[str] = None,
+             cbn_geographic_region_idb: Optional[str] = None,
+             description: Optional[str] = None,
+             expired_time: Optional[str] = None,
+             id: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             status: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bandwidthPackageId' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
             bandwidth_package_id = kwargs['bandwidthPackageId']
-        if 'bandwidthPackageName' in kwargs:
+        if bandwidth_package_id is None:
+            raise TypeError("Missing 'bandwidth_package_id' argument")
+        if bandwidth_package_name is None and 'bandwidthPackageName' in kwargs:
             bandwidth_package_name = kwargs['bandwidthPackageName']
-        if 'bandwidthType' in kwargs:
+        if bandwidth_package_name is None:
+            raise TypeError("Missing 'bandwidth_package_name' argument")
+        if bandwidth_type is None and 'bandwidthType' in kwargs:
             bandwidth_type = kwargs['bandwidthType']
-        if 'cbnGeographicRegionIda' in kwargs:
+        if bandwidth_type is None:
+            raise TypeError("Missing 'bandwidth_type' argument")
+        if cbn_geographic_region_ida is None and 'cbnGeographicRegionIda' in kwargs:
             cbn_geographic_region_ida = kwargs['cbnGeographicRegionIda']
-        if 'cbnGeographicRegionIdb' in kwargs:
+        if cbn_geographic_region_ida is None:
+            raise TypeError("Missing 'cbn_geographic_region_ida' argument")
+        if cbn_geographic_region_idb is None and 'cbnGeographicRegionIdb' in kwargs:
             cbn_geographic_region_idb = kwargs['cbnGeographicRegionIdb']
-        if 'expiredTime' in kwargs:
+        if cbn_geographic_region_idb is None:
+            raise TypeError("Missing 'cbn_geographic_region_idb' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'paymentType' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("bandwidth", bandwidth)
         _setter("bandwidth_package_id", bandwidth_package_id)
@@ -1781,40 +1897,64 @@ class GetBasicAccelerateIpEndpointRelationsRelationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerate_ip_id: str,
-             accelerator_id: str,
-             basic_endpoint_name: str,
-             endpoint_address: str,
-             endpoint_id: str,
-             endpoint_sub_address: str,
-             endpoint_sub_address_type: str,
-             endpoint_type: str,
-             endpoint_zone_id: str,
-             id: str,
-             ip_address: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerate_ip_id: Optional[str] = None,
+             accelerator_id: Optional[str] = None,
+             basic_endpoint_name: Optional[str] = None,
+             endpoint_address: Optional[str] = None,
+             endpoint_id: Optional[str] = None,
+             endpoint_sub_address: Optional[str] = None,
+             endpoint_sub_address_type: Optional[str] = None,
+             endpoint_type: Optional[str] = None,
+             endpoint_zone_id: Optional[str] = None,
+             id: Optional[str] = None,
+             ip_address: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accelerateIpId' in kwargs:
+        if accelerate_ip_id is None and 'accelerateIpId' in kwargs:
             accelerate_ip_id = kwargs['accelerateIpId']
-        if 'acceleratorId' in kwargs:
+        if accelerate_ip_id is None:
+            raise TypeError("Missing 'accelerate_ip_id' argument")
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'basicEndpointName' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if basic_endpoint_name is None and 'basicEndpointName' in kwargs:
             basic_endpoint_name = kwargs['basicEndpointName']
-        if 'endpointAddress' in kwargs:
+        if basic_endpoint_name is None:
+            raise TypeError("Missing 'basic_endpoint_name' argument")
+        if endpoint_address is None and 'endpointAddress' in kwargs:
             endpoint_address = kwargs['endpointAddress']
-        if 'endpointId' in kwargs:
+        if endpoint_address is None:
+            raise TypeError("Missing 'endpoint_address' argument")
+        if endpoint_id is None and 'endpointId' in kwargs:
             endpoint_id = kwargs['endpointId']
-        if 'endpointSubAddress' in kwargs:
+        if endpoint_id is None:
+            raise TypeError("Missing 'endpoint_id' argument")
+        if endpoint_sub_address is None and 'endpointSubAddress' in kwargs:
             endpoint_sub_address = kwargs['endpointSubAddress']
-        if 'endpointSubAddressType' in kwargs:
+        if endpoint_sub_address is None:
+            raise TypeError("Missing 'endpoint_sub_address' argument")
+        if endpoint_sub_address_type is None and 'endpointSubAddressType' in kwargs:
             endpoint_sub_address_type = kwargs['endpointSubAddressType']
-        if 'endpointType' in kwargs:
+        if endpoint_sub_address_type is None:
+            raise TypeError("Missing 'endpoint_sub_address_type' argument")
+        if endpoint_type is None and 'endpointType' in kwargs:
             endpoint_type = kwargs['endpointType']
-        if 'endpointZoneId' in kwargs:
+        if endpoint_type is None:
+            raise TypeError("Missing 'endpoint_type' argument")
+        if endpoint_zone_id is None and 'endpointZoneId' in kwargs:
             endpoint_zone_id = kwargs['endpointZoneId']
-        if 'ipAddress' in kwargs:
+        if endpoint_zone_id is None:
+            raise TypeError("Missing 'endpoint_zone_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("accelerate_ip_id", accelerate_ip_id)
         _setter("accelerator_id", accelerator_id)
@@ -1955,22 +2095,34 @@ class GetBasicAccelerateIpsIpResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerate_ip_address: str,
-             accelerate_ip_id: str,
-             accelerator_id: str,
-             id: str,
-             ip_set_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerate_ip_address: Optional[str] = None,
+             accelerate_ip_id: Optional[str] = None,
+             accelerator_id: Optional[str] = None,
+             id: Optional[str] = None,
+             ip_set_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accelerateIpAddress' in kwargs:
+        if accelerate_ip_address is None and 'accelerateIpAddress' in kwargs:
             accelerate_ip_address = kwargs['accelerateIpAddress']
-        if 'accelerateIpId' in kwargs:
+        if accelerate_ip_address is None:
+            raise TypeError("Missing 'accelerate_ip_address' argument")
+        if accelerate_ip_id is None and 'accelerateIpId' in kwargs:
             accelerate_ip_id = kwargs['accelerateIpId']
-        if 'acceleratorId' in kwargs:
+        if accelerate_ip_id is None:
+            raise TypeError("Missing 'accelerate_ip_id' argument")
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'ipSetId' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ip_set_id is None and 'ipSetId' in kwargs:
             ip_set_id = kwargs['ipSetId']
+        if ip_set_id is None:
+            raise TypeError("Missing 'ip_set_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("accelerate_ip_address", accelerate_ip_address)
         _setter("accelerate_ip_id", accelerate_ip_id)
@@ -2081,44 +2233,72 @@ class GetBasicAcceleratorsAcceleratorResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth_billing_type: str,
-             basic_accelerator_id: str,
-             basic_accelerator_name: str,
-             basic_bandwidth_packages: Sequence['outputs.GetBasicAcceleratorsAcceleratorBasicBandwidthPackageResult'],
-             basic_endpoint_group_id: str,
-             basic_ip_set_id: str,
-             create_time: int,
-             cross_domain_bandwidth_packages: Sequence['outputs.GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageResult'],
-             description: str,
-             expired_time: int,
-             id: str,
-             instance_charge_type: str,
-             region_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth_billing_type: Optional[str] = None,
+             basic_accelerator_id: Optional[str] = None,
+             basic_accelerator_name: Optional[str] = None,
+             basic_bandwidth_packages: Optional[Sequence['outputs.GetBasicAcceleratorsAcceleratorBasicBandwidthPackageResult']] = None,
+             basic_endpoint_group_id: Optional[str] = None,
+             basic_ip_set_id: Optional[str] = None,
+             create_time: Optional[int] = None,
+             cross_domain_bandwidth_packages: Optional[Sequence['outputs.GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageResult']] = None,
+             description: Optional[str] = None,
+             expired_time: Optional[int] = None,
+             id: Optional[str] = None,
+             instance_charge_type: Optional[str] = None,
+             region_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bandwidthBillingType' in kwargs:
+        if bandwidth_billing_type is None and 'bandwidthBillingType' in kwargs:
             bandwidth_billing_type = kwargs['bandwidthBillingType']
-        if 'basicAcceleratorId' in kwargs:
+        if bandwidth_billing_type is None:
+            raise TypeError("Missing 'bandwidth_billing_type' argument")
+        if basic_accelerator_id is None and 'basicAcceleratorId' in kwargs:
             basic_accelerator_id = kwargs['basicAcceleratorId']
-        if 'basicAcceleratorName' in kwargs:
+        if basic_accelerator_id is None:
+            raise TypeError("Missing 'basic_accelerator_id' argument")
+        if basic_accelerator_name is None and 'basicAcceleratorName' in kwargs:
             basic_accelerator_name = kwargs['basicAcceleratorName']
-        if 'basicBandwidthPackages' in kwargs:
+        if basic_accelerator_name is None:
+            raise TypeError("Missing 'basic_accelerator_name' argument")
+        if basic_bandwidth_packages is None and 'basicBandwidthPackages' in kwargs:
             basic_bandwidth_packages = kwargs['basicBandwidthPackages']
-        if 'basicEndpointGroupId' in kwargs:
+        if basic_bandwidth_packages is None:
+            raise TypeError("Missing 'basic_bandwidth_packages' argument")
+        if basic_endpoint_group_id is None and 'basicEndpointGroupId' in kwargs:
             basic_endpoint_group_id = kwargs['basicEndpointGroupId']
-        if 'basicIpSetId' in kwargs:
+        if basic_endpoint_group_id is None:
+            raise TypeError("Missing 'basic_endpoint_group_id' argument")
+        if basic_ip_set_id is None and 'basicIpSetId' in kwargs:
             basic_ip_set_id = kwargs['basicIpSetId']
-        if 'createTime' in kwargs:
+        if basic_ip_set_id is None:
+            raise TypeError("Missing 'basic_ip_set_id' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'crossDomainBandwidthPackages' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if cross_domain_bandwidth_packages is None and 'crossDomainBandwidthPackages' in kwargs:
             cross_domain_bandwidth_packages = kwargs['crossDomainBandwidthPackages']
-        if 'expiredTime' in kwargs:
+        if cross_domain_bandwidth_packages is None:
+            raise TypeError("Missing 'cross_domain_bandwidth_packages' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'instanceChargeType' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'regionId' in kwargs:
+        if instance_charge_type is None:
+            raise TypeError("Missing 'instance_charge_type' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("bandwidth_billing_type", bandwidth_billing_type)
         _setter("basic_accelerator_id", basic_accelerator_id)
@@ -2268,15 +2448,21 @@ class GetBasicAcceleratorsAcceleratorBasicBandwidthPackageResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: int,
-             bandwidth_type: str,
-             instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth: Optional[int] = None,
+             bandwidth_type: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bandwidthType' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if bandwidth_type is None and 'bandwidthType' in kwargs:
             bandwidth_type = kwargs['bandwidthType']
-        if 'instanceId' in kwargs:
+        if bandwidth_type is None:
+            raise TypeError("Missing 'bandwidth_type' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
 
         _setter("bandwidth", bandwidth)
         _setter("bandwidth_type", bandwidth_type)
@@ -2324,12 +2510,16 @@ class GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: int,
-             instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth: Optional[int] = None,
+             instance_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
 
         _setter("bandwidth", bandwidth)
         _setter("instance_id", instance_id)
@@ -2395,37 +2585,59 @@ class GetBasicEndpointsEndpointResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: str,
-             basic_endpoint_name: str,
-             endpoint_address: str,
-             endpoint_group_id: str,
-             endpoint_id: str,
-             endpoint_sub_address: str,
-             endpoint_sub_address_type: str,
-             endpoint_type: str,
-             endpoint_zone_id: str,
-             id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerator_id: Optional[str] = None,
+             basic_endpoint_name: Optional[str] = None,
+             endpoint_address: Optional[str] = None,
+             endpoint_group_id: Optional[str] = None,
+             endpoint_id: Optional[str] = None,
+             endpoint_sub_address: Optional[str] = None,
+             endpoint_sub_address_type: Optional[str] = None,
+             endpoint_type: Optional[str] = None,
+             endpoint_zone_id: Optional[str] = None,
+             id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'basicEndpointName' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if basic_endpoint_name is None and 'basicEndpointName' in kwargs:
             basic_endpoint_name = kwargs['basicEndpointName']
-        if 'endpointAddress' in kwargs:
+        if basic_endpoint_name is None:
+            raise TypeError("Missing 'basic_endpoint_name' argument")
+        if endpoint_address is None and 'endpointAddress' in kwargs:
             endpoint_address = kwargs['endpointAddress']
-        if 'endpointGroupId' in kwargs:
+        if endpoint_address is None:
+            raise TypeError("Missing 'endpoint_address' argument")
+        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
             endpoint_group_id = kwargs['endpointGroupId']
-        if 'endpointId' in kwargs:
+        if endpoint_group_id is None:
+            raise TypeError("Missing 'endpoint_group_id' argument")
+        if endpoint_id is None and 'endpointId' in kwargs:
             endpoint_id = kwargs['endpointId']
-        if 'endpointSubAddress' in kwargs:
+        if endpoint_id is None:
+            raise TypeError("Missing 'endpoint_id' argument")
+        if endpoint_sub_address is None and 'endpointSubAddress' in kwargs:
             endpoint_sub_address = kwargs['endpointSubAddress']
-        if 'endpointSubAddressType' in kwargs:
+        if endpoint_sub_address is None:
+            raise TypeError("Missing 'endpoint_sub_address' argument")
+        if endpoint_sub_address_type is None and 'endpointSubAddressType' in kwargs:
             endpoint_sub_address_type = kwargs['endpointSubAddressType']
-        if 'endpointType' in kwargs:
+        if endpoint_sub_address_type is None:
+            raise TypeError("Missing 'endpoint_sub_address_type' argument")
+        if endpoint_type is None and 'endpointType' in kwargs:
             endpoint_type = kwargs['endpointType']
-        if 'endpointZoneId' in kwargs:
+        if endpoint_type is None:
+            raise TypeError("Missing 'endpoint_type' argument")
+        if endpoint_zone_id is None and 'endpointZoneId' in kwargs:
             endpoint_zone_id = kwargs['endpointZoneId']
+        if endpoint_zone_id is None:
+            raise TypeError("Missing 'endpoint_zone_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("accelerator_id", accelerator_id)
         _setter("basic_endpoint_name", basic_endpoint_name)
@@ -2563,28 +2775,44 @@ class GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestina
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: str,
-             custom_routing_endpoint_group_destination_id: str,
-             endpoint_group_id: str,
-             from_port: int,
-             id: str,
-             listener_id: str,
-             protocols: Sequence[str],
-             to_port: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerator_id: Optional[str] = None,
+             custom_routing_endpoint_group_destination_id: Optional[str] = None,
+             endpoint_group_id: Optional[str] = None,
+             from_port: Optional[int] = None,
+             id: Optional[str] = None,
+             listener_id: Optional[str] = None,
+             protocols: Optional[Sequence[str]] = None,
+             to_port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'customRoutingEndpointGroupDestinationId' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if custom_routing_endpoint_group_destination_id is None and 'customRoutingEndpointGroupDestinationId' in kwargs:
             custom_routing_endpoint_group_destination_id = kwargs['customRoutingEndpointGroupDestinationId']
-        if 'endpointGroupId' in kwargs:
+        if custom_routing_endpoint_group_destination_id is None:
+            raise TypeError("Missing 'custom_routing_endpoint_group_destination_id' argument")
+        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
             endpoint_group_id = kwargs['endpointGroupId']
-        if 'fromPort' in kwargs:
+        if endpoint_group_id is None:
+            raise TypeError("Missing 'endpoint_group_id' argument")
+        if from_port is None and 'fromPort' in kwargs:
             from_port = kwargs['fromPort']
-        if 'listenerId' in kwargs:
+        if from_port is None:
+            raise TypeError("Missing 'from_port' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'toPort' in kwargs:
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if protocols is None:
+            raise TypeError("Missing 'protocols' argument")
+        if to_port is None and 'toPort' in kwargs:
             to_port = kwargs['toPort']
+        if to_port is None:
+            raise TypeError("Missing 'to_port' argument")
 
         _setter("accelerator_id", accelerator_id)
         _setter("custom_routing_endpoint_group_destination_id", custom_routing_endpoint_group_destination_id)
@@ -2701,32 +2929,52 @@ class GetCustomRoutingEndpointGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: str,
-             custom_routing_endpoint_group_name: str,
-             description: str,
-             endpoint_group_id: str,
-             endpoint_group_ip_lists: Sequence[str],
-             endpoint_group_region: str,
-             endpoint_group_unconfirmed_ip_lists: Sequence[str],
-             id: str,
-             listener_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerator_id: Optional[str] = None,
+             custom_routing_endpoint_group_name: Optional[str] = None,
+             description: Optional[str] = None,
+             endpoint_group_id: Optional[str] = None,
+             endpoint_group_ip_lists: Optional[Sequence[str]] = None,
+             endpoint_group_region: Optional[str] = None,
+             endpoint_group_unconfirmed_ip_lists: Optional[Sequence[str]] = None,
+             id: Optional[str] = None,
+             listener_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'customRoutingEndpointGroupName' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if custom_routing_endpoint_group_name is None and 'customRoutingEndpointGroupName' in kwargs:
             custom_routing_endpoint_group_name = kwargs['customRoutingEndpointGroupName']
-        if 'endpointGroupId' in kwargs:
+        if custom_routing_endpoint_group_name is None:
+            raise TypeError("Missing 'custom_routing_endpoint_group_name' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
             endpoint_group_id = kwargs['endpointGroupId']
-        if 'endpointGroupIpLists' in kwargs:
+        if endpoint_group_id is None:
+            raise TypeError("Missing 'endpoint_group_id' argument")
+        if endpoint_group_ip_lists is None and 'endpointGroupIpLists' in kwargs:
             endpoint_group_ip_lists = kwargs['endpointGroupIpLists']
-        if 'endpointGroupRegion' in kwargs:
+        if endpoint_group_ip_lists is None:
+            raise TypeError("Missing 'endpoint_group_ip_lists' argument")
+        if endpoint_group_region is None and 'endpointGroupRegion' in kwargs:
             endpoint_group_region = kwargs['endpointGroupRegion']
-        if 'endpointGroupUnconfirmedIpLists' in kwargs:
+        if endpoint_group_region is None:
+            raise TypeError("Missing 'endpoint_group_region' argument")
+        if endpoint_group_unconfirmed_ip_lists is None and 'endpointGroupUnconfirmedIpLists' in kwargs:
             endpoint_group_unconfirmed_ip_lists = kwargs['endpointGroupUnconfirmedIpLists']
-        if 'listenerId' in kwargs:
+        if endpoint_group_unconfirmed_ip_lists is None:
+            raise TypeError("Missing 'endpoint_group_unconfirmed_ip_lists' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("accelerator_id", accelerator_id)
         _setter("custom_routing_endpoint_group_name", custom_routing_endpoint_group_name)
@@ -2855,28 +3103,44 @@ class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyR
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: str,
-             address: str,
-             custom_routing_endpoint_traffic_policy_id: str,
-             endpoint_group_id: str,
-             endpoint_id: str,
-             id: str,
-             listener_id: str,
-             port_ranges: Sequence['outputs.GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerator_id: Optional[str] = None,
+             address: Optional[str] = None,
+             custom_routing_endpoint_traffic_policy_id: Optional[str] = None,
+             endpoint_group_id: Optional[str] = None,
+             endpoint_id: Optional[str] = None,
+             id: Optional[str] = None,
+             listener_id: Optional[str] = None,
+             port_ranges: Optional[Sequence['outputs.GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'customRoutingEndpointTrafficPolicyId' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if custom_routing_endpoint_traffic_policy_id is None and 'customRoutingEndpointTrafficPolicyId' in kwargs:
             custom_routing_endpoint_traffic_policy_id = kwargs['customRoutingEndpointTrafficPolicyId']
-        if 'endpointGroupId' in kwargs:
+        if custom_routing_endpoint_traffic_policy_id is None:
+            raise TypeError("Missing 'custom_routing_endpoint_traffic_policy_id' argument")
+        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
             endpoint_group_id = kwargs['endpointGroupId']
-        if 'endpointId' in kwargs:
+        if endpoint_group_id is None:
+            raise TypeError("Missing 'endpoint_group_id' argument")
+        if endpoint_id is None and 'endpointId' in kwargs:
             endpoint_id = kwargs['endpointId']
-        if 'listenerId' in kwargs:
+        if endpoint_id is None:
+            raise TypeError("Missing 'endpoint_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'portRanges' in kwargs:
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if port_ranges is None and 'portRanges' in kwargs:
             port_ranges = kwargs['portRanges']
+        if port_ranges is None:
+            raise TypeError("Missing 'port_ranges' argument")
 
         _setter("accelerator_id", accelerator_id)
         _setter("address", address)
@@ -2969,14 +3233,18 @@ class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyP
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             from_port: int,
-             to_port: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             from_port: Optional[int] = None,
+             to_port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fromPort' in kwargs:
+        if from_port is None and 'fromPort' in kwargs:
             from_port = kwargs['fromPort']
-        if 'toPort' in kwargs:
+        if from_port is None:
+            raise TypeError("Missing 'from_port' argument")
+        if to_port is None and 'toPort' in kwargs:
             to_port = kwargs['toPort']
+        if to_port is None:
+            raise TypeError("Missing 'to_port' argument")
 
         _setter("from_port", from_port)
         _setter("to_port", to_port)
@@ -3033,26 +3301,42 @@ class GetCustomRoutingEndpointsCustomRoutingEndpointResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: str,
-             custom_routing_endpoint_id: str,
-             endpoint: str,
-             endpoint_group_id: str,
-             id: str,
-             listener_id: str,
-             traffic_to_endpoint_policy: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerator_id: Optional[str] = None,
+             custom_routing_endpoint_id: Optional[str] = None,
+             endpoint: Optional[str] = None,
+             endpoint_group_id: Optional[str] = None,
+             id: Optional[str] = None,
+             listener_id: Optional[str] = None,
+             traffic_to_endpoint_policy: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'customRoutingEndpointId' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if custom_routing_endpoint_id is None and 'customRoutingEndpointId' in kwargs:
             custom_routing_endpoint_id = kwargs['customRoutingEndpointId']
-        if 'endpointGroupId' in kwargs:
+        if custom_routing_endpoint_id is None:
+            raise TypeError("Missing 'custom_routing_endpoint_id' argument")
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
             endpoint_group_id = kwargs['endpointGroupId']
-        if 'listenerId' in kwargs:
+        if endpoint_group_id is None:
+            raise TypeError("Missing 'endpoint_group_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'trafficToEndpointPolicy' in kwargs:
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if traffic_to_endpoint_policy is None and 'trafficToEndpointPolicy' in kwargs:
             traffic_to_endpoint_policy = kwargs['trafficToEndpointPolicy']
+        if traffic_to_endpoint_policy is None:
+            raise TypeError("Missing 'traffic_to_endpoint_policy' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("accelerator_id", accelerator_id)
         _setter("custom_routing_endpoint_id", custom_routing_endpoint_id)
@@ -3169,32 +3453,52 @@ class GetCustomRoutingPortMappingsCustomRoutingPortMappingResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: str,
-             accelerator_port: int,
-             destination_socket_addresses: Sequence['outputs.GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressResult'],
-             endpoint_group_id: str,
-             endpoint_group_region: str,
-             endpoint_id: str,
-             listener_id: str,
-             protocols: Sequence[str],
-             status: str,
-             vswitch: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerator_id: Optional[str] = None,
+             accelerator_port: Optional[int] = None,
+             destination_socket_addresses: Optional[Sequence['outputs.GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressResult']] = None,
+             endpoint_group_id: Optional[str] = None,
+             endpoint_group_region: Optional[str] = None,
+             endpoint_id: Optional[str] = None,
+             listener_id: Optional[str] = None,
+             protocols: Optional[Sequence[str]] = None,
+             status: Optional[str] = None,
+             vswitch: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'acceleratorPort' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if accelerator_port is None and 'acceleratorPort' in kwargs:
             accelerator_port = kwargs['acceleratorPort']
-        if 'destinationSocketAddresses' in kwargs:
+        if accelerator_port is None:
+            raise TypeError("Missing 'accelerator_port' argument")
+        if destination_socket_addresses is None and 'destinationSocketAddresses' in kwargs:
             destination_socket_addresses = kwargs['destinationSocketAddresses']
-        if 'endpointGroupId' in kwargs:
+        if destination_socket_addresses is None:
+            raise TypeError("Missing 'destination_socket_addresses' argument")
+        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
             endpoint_group_id = kwargs['endpointGroupId']
-        if 'endpointGroupRegion' in kwargs:
+        if endpoint_group_id is None:
+            raise TypeError("Missing 'endpoint_group_id' argument")
+        if endpoint_group_region is None and 'endpointGroupRegion' in kwargs:
             endpoint_group_region = kwargs['endpointGroupRegion']
-        if 'endpointId' in kwargs:
+        if endpoint_group_region is None:
+            raise TypeError("Missing 'endpoint_group_region' argument")
+        if endpoint_id is None and 'endpointId' in kwargs:
             endpoint_id = kwargs['endpointId']
-        if 'listenerId' in kwargs:
+        if endpoint_id is None:
+            raise TypeError("Missing 'endpoint_id' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if protocols is None:
+            raise TypeError("Missing 'protocols' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vswitch is None:
+            raise TypeError("Missing 'vswitch' argument")
 
         _setter("accelerator_id", accelerator_id)
         _setter("accelerator_port", accelerator_port)
@@ -3305,12 +3609,16 @@ class GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddre
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_address: str,
-             port: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ip_address: Optional[str] = None,
+             port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipAddress' in kwargs:
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
 
         _setter("ip_address", ip_address)
         _setter("port", port)
@@ -3355,14 +3663,22 @@ class GetDomainsDomainResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: str,
-             domain: str,
-             id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerator_id: Optional[str] = None,
+             domain: Optional[str] = None,
+             id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("accelerator_id", accelerator_id)
         _setter("domain", domain)
@@ -3458,45 +3774,75 @@ class GetEndpointGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             endpoint_configurations: Sequence['outputs.GetEndpointGroupsGroupEndpointConfigurationResult'],
-             endpoint_group_id: str,
-             endpoint_group_region: str,
-             health_check_interval_seconds: int,
-             health_check_path: str,
-             health_check_port: int,
-             health_check_protocol: str,
-             id: str,
-             listener_id: str,
-             name: str,
-             port_overrides: Sequence['outputs.GetEndpointGroupsGroupPortOverrideResult'],
-             status: str,
-             threshold_count: int,
-             traffic_percentage: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             endpoint_configurations: Optional[Sequence['outputs.GetEndpointGroupsGroupEndpointConfigurationResult']] = None,
+             endpoint_group_id: Optional[str] = None,
+             endpoint_group_region: Optional[str] = None,
+             health_check_interval_seconds: Optional[int] = None,
+             health_check_path: Optional[str] = None,
+             health_check_port: Optional[int] = None,
+             health_check_protocol: Optional[str] = None,
+             id: Optional[str] = None,
+             listener_id: Optional[str] = None,
+             name: Optional[str] = None,
+             port_overrides: Optional[Sequence['outputs.GetEndpointGroupsGroupPortOverrideResult']] = None,
+             status: Optional[str] = None,
+             threshold_count: Optional[int] = None,
+             traffic_percentage: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endpointConfigurations' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if endpoint_configurations is None and 'endpointConfigurations' in kwargs:
             endpoint_configurations = kwargs['endpointConfigurations']
-        if 'endpointGroupId' in kwargs:
+        if endpoint_configurations is None:
+            raise TypeError("Missing 'endpoint_configurations' argument")
+        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
             endpoint_group_id = kwargs['endpointGroupId']
-        if 'endpointGroupRegion' in kwargs:
+        if endpoint_group_id is None:
+            raise TypeError("Missing 'endpoint_group_id' argument")
+        if endpoint_group_region is None and 'endpointGroupRegion' in kwargs:
             endpoint_group_region = kwargs['endpointGroupRegion']
-        if 'healthCheckIntervalSeconds' in kwargs:
+        if endpoint_group_region is None:
+            raise TypeError("Missing 'endpoint_group_region' argument")
+        if health_check_interval_seconds is None and 'healthCheckIntervalSeconds' in kwargs:
             health_check_interval_seconds = kwargs['healthCheckIntervalSeconds']
-        if 'healthCheckPath' in kwargs:
+        if health_check_interval_seconds is None:
+            raise TypeError("Missing 'health_check_interval_seconds' argument")
+        if health_check_path is None and 'healthCheckPath' in kwargs:
             health_check_path = kwargs['healthCheckPath']
-        if 'healthCheckPort' in kwargs:
+        if health_check_path is None:
+            raise TypeError("Missing 'health_check_path' argument")
+        if health_check_port is None and 'healthCheckPort' in kwargs:
             health_check_port = kwargs['healthCheckPort']
-        if 'healthCheckProtocol' in kwargs:
+        if health_check_port is None:
+            raise TypeError("Missing 'health_check_port' argument")
+        if health_check_protocol is None and 'healthCheckProtocol' in kwargs:
             health_check_protocol = kwargs['healthCheckProtocol']
-        if 'listenerId' in kwargs:
+        if health_check_protocol is None:
+            raise TypeError("Missing 'health_check_protocol' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'portOverrides' in kwargs:
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if port_overrides is None and 'portOverrides' in kwargs:
             port_overrides = kwargs['portOverrides']
-        if 'thresholdCount' in kwargs:
+        if port_overrides is None:
+            raise TypeError("Missing 'port_overrides' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if threshold_count is None and 'thresholdCount' in kwargs:
             threshold_count = kwargs['thresholdCount']
-        if 'trafficPercentage' in kwargs:
+        if threshold_count is None:
+            raise TypeError("Missing 'threshold_count' argument")
+        if traffic_percentage is None and 'trafficPercentage' in kwargs:
             traffic_percentage = kwargs['trafficPercentage']
+        if traffic_percentage is None:
+            raise TypeError("Missing 'traffic_percentage' argument")
 
         _setter("description", description)
         _setter("endpoint_configurations", endpoint_configurations)
@@ -3664,20 +4010,32 @@ class GetEndpointGroupsGroupEndpointConfigurationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable_clientip_preservation: bool,
-             endpoint: str,
-             probe_port: int,
-             probe_protocol: str,
-             type: str,
-             weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             enable_clientip_preservation: Optional[bool] = None,
+             endpoint: Optional[str] = None,
+             probe_port: Optional[int] = None,
+             probe_protocol: Optional[str] = None,
+             type: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'enableClientipPreservation' in kwargs:
+        if enable_clientip_preservation is None and 'enableClientipPreservation' in kwargs:
             enable_clientip_preservation = kwargs['enableClientipPreservation']
-        if 'probePort' in kwargs:
+        if enable_clientip_preservation is None:
+            raise TypeError("Missing 'enable_clientip_preservation' argument")
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if probe_port is None and 'probePort' in kwargs:
             probe_port = kwargs['probePort']
-        if 'probeProtocol' in kwargs:
+        if probe_port is None:
+            raise TypeError("Missing 'probe_port' argument")
+        if probe_protocol is None and 'probeProtocol' in kwargs:
             probe_protocol = kwargs['probeProtocol']
+        if probe_protocol is None:
+            raise TypeError("Missing 'probe_protocol' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
 
         _setter("enable_clientip_preservation", enable_clientip_preservation)
         _setter("endpoint", endpoint)
@@ -3752,14 +4110,18 @@ class GetEndpointGroupsGroupPortOverrideResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint_port: int,
-             listener_port: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             endpoint_port: Optional[int] = None,
+             listener_port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endpointPort' in kwargs:
+        if endpoint_port is None and 'endpointPort' in kwargs:
             endpoint_port = kwargs['endpointPort']
-        if 'listenerPort' in kwargs:
+        if endpoint_port is None:
+            raise TypeError("Missing 'endpoint_port' argument")
+        if listener_port is None and 'listenerPort' in kwargs:
             listener_port = kwargs['listenerPort']
+        if listener_port is None:
+            raise TypeError("Missing 'listener_port' argument")
 
         _setter("endpoint_port", endpoint_port)
         _setter("listener_port", listener_port)
@@ -3825,28 +4187,44 @@ class GetForwardingRulesForwardingRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             forwarding_rule_id: str,
-             forwarding_rule_name: str,
-             forwarding_rule_status: str,
-             id: str,
-             listener_id: str,
-             priority: int,
-             rule_actions: Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionResult'],
-             rule_conditions: Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             forwarding_rule_id: Optional[str] = None,
+             forwarding_rule_name: Optional[str] = None,
+             forwarding_rule_status: Optional[str] = None,
+             id: Optional[str] = None,
+             listener_id: Optional[str] = None,
+             priority: Optional[int] = None,
+             rule_actions: Optional[Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionResult']] = None,
+             rule_conditions: Optional[Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'forwardingRuleId' in kwargs:
+        if forwarding_rule_id is None and 'forwardingRuleId' in kwargs:
             forwarding_rule_id = kwargs['forwardingRuleId']
-        if 'forwardingRuleName' in kwargs:
+        if forwarding_rule_id is None:
+            raise TypeError("Missing 'forwarding_rule_id' argument")
+        if forwarding_rule_name is None and 'forwardingRuleName' in kwargs:
             forwarding_rule_name = kwargs['forwardingRuleName']
-        if 'forwardingRuleStatus' in kwargs:
+        if forwarding_rule_name is None:
+            raise TypeError("Missing 'forwarding_rule_name' argument")
+        if forwarding_rule_status is None and 'forwardingRuleStatus' in kwargs:
             forwarding_rule_status = kwargs['forwardingRuleStatus']
-        if 'listenerId' in kwargs:
+        if forwarding_rule_status is None:
+            raise TypeError("Missing 'forwarding_rule_status' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'ruleActions' in kwargs:
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if rule_actions is None and 'ruleActions' in kwargs:
             rule_actions = kwargs['ruleActions']
-        if 'ruleConditions' in kwargs:
+        if rule_actions is None:
+            raise TypeError("Missing 'rule_actions' argument")
+        if rule_conditions is None and 'ruleConditions' in kwargs:
             rule_conditions = kwargs['ruleConditions']
+        if rule_conditions is None:
+            raise TypeError("Missing 'rule_conditions' argument")
 
         _setter("forwarding_rule_id", forwarding_rule_id)
         _setter("forwarding_rule_name", forwarding_rule_name)
@@ -3944,15 +4322,21 @@ class GetForwardingRulesForwardingRuleRuleActionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             forward_group_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult'],
-             order: int,
-             rule_action_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             forward_group_configs: Optional[Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult']] = None,
+             order: Optional[int] = None,
+             rule_action_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'forwardGroupConfigs' in kwargs:
+        if forward_group_configs is None and 'forwardGroupConfigs' in kwargs:
             forward_group_configs = kwargs['forwardGroupConfigs']
-        if 'ruleActionType' in kwargs:
+        if forward_group_configs is None:
+            raise TypeError("Missing 'forward_group_configs' argument")
+        if order is None:
+            raise TypeError("Missing 'order' argument")
+        if rule_action_type is None and 'ruleActionType' in kwargs:
             rule_action_type = kwargs['ruleActionType']
+        if rule_action_type is None:
+            raise TypeError("Missing 'rule_action_type' argument")
 
         _setter("forward_group_configs", forward_group_configs)
         _setter("order", order)
@@ -3985,11 +4369,13 @@ class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_group_tuples: Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             server_group_tuples: Optional[Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupTuples' in kwargs:
+        if server_group_tuples is None and 'serverGroupTuples' in kwargs:
             server_group_tuples = kwargs['serverGroupTuples']
+        if server_group_tuples is None:
+            raise TypeError("Missing 'server_group_tuples' argument")
 
         _setter("server_group_tuples", server_group_tuples)
 
@@ -4010,11 +4396,13 @@ class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTup
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint_group_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             endpoint_group_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endpointGroupId' in kwargs:
+        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
             endpoint_group_id = kwargs['endpointGroupId']
+        if endpoint_group_id is None:
+            raise TypeError("Missing 'endpoint_group_id' argument")
 
         _setter("endpoint_group_id", endpoint_group_id)
 
@@ -4039,17 +4427,23 @@ class GetForwardingRulesForwardingRuleRuleConditionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionHostConfigResult'],
-             path_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionPathConfigResult'],
-             rule_condition_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             host_configs: Optional[Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionHostConfigResult']] = None,
+             path_configs: Optional[Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionPathConfigResult']] = None,
+             rule_condition_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'hostConfigs' in kwargs:
+        if host_configs is None and 'hostConfigs' in kwargs:
             host_configs = kwargs['hostConfigs']
-        if 'pathConfigs' in kwargs:
+        if host_configs is None:
+            raise TypeError("Missing 'host_configs' argument")
+        if path_configs is None and 'pathConfigs' in kwargs:
             path_configs = kwargs['pathConfigs']
-        if 'ruleConditionType' in kwargs:
+        if path_configs is None:
+            raise TypeError("Missing 'path_configs' argument")
+        if rule_condition_type is None and 'ruleConditionType' in kwargs:
             rule_condition_type = kwargs['ruleConditionType']
+        if rule_condition_type is None:
+            raise TypeError("Missing 'rule_condition_type' argument")
 
         _setter("host_configs", host_configs)
         _setter("path_configs", path_configs)
@@ -4082,9 +4476,11 @@ class GetForwardingRulesForwardingRuleRuleConditionHostConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("values", values)
 
@@ -4105,9 +4501,11 @@ class GetForwardingRulesForwardingRuleRuleConditionPathConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("values", values)
 
@@ -4149,23 +4547,37 @@ class GetIpSetsSetResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerate_region_id: str,
-             bandwidth: int,
-             id: str,
-             ip_address_lists: Sequence[str],
-             ip_set_id: str,
-             ip_version: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerate_region_id: Optional[str] = None,
+             bandwidth: Optional[int] = None,
+             id: Optional[str] = None,
+             ip_address_lists: Optional[Sequence[str]] = None,
+             ip_set_id: Optional[str] = None,
+             ip_version: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accelerateRegionId' in kwargs:
+        if accelerate_region_id is None and 'accelerateRegionId' in kwargs:
             accelerate_region_id = kwargs['accelerateRegionId']
-        if 'ipAddressLists' in kwargs:
+        if accelerate_region_id is None:
+            raise TypeError("Missing 'accelerate_region_id' argument")
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ip_address_lists is None and 'ipAddressLists' in kwargs:
             ip_address_lists = kwargs['ipAddressLists']
-        if 'ipSetId' in kwargs:
+        if ip_address_lists is None:
+            raise TypeError("Missing 'ip_address_lists' argument")
+        if ip_set_id is None and 'ipSetId' in kwargs:
             ip_set_id = kwargs['ipSetId']
-        if 'ipVersion' in kwargs:
+        if ip_set_id is None:
+            raise TypeError("Missing 'ip_set_id' argument")
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
+        if ip_version is None:
+            raise TypeError("Missing 'ip_version' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("accelerate_region_id", accelerate_region_id)
         _setter("bandwidth", bandwidth)
@@ -4270,23 +4682,41 @@ class GetListenersListenerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificates: Sequence['outputs.GetListenersListenerCertificateResult'],
-             client_affinity: str,
-             description: str,
-             id: str,
-             listener_id: str,
-             name: str,
-             port_ranges: Sequence['outputs.GetListenersListenerPortRangeResult'],
-             protocol: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             certificates: Optional[Sequence['outputs.GetListenersListenerCertificateResult']] = None,
+             client_affinity: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             listener_id: Optional[str] = None,
+             name: Optional[str] = None,
+             port_ranges: Optional[Sequence['outputs.GetListenersListenerPortRangeResult']] = None,
+             protocol: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientAffinity' in kwargs:
+        if certificates is None:
+            raise TypeError("Missing 'certificates' argument")
+        if client_affinity is None and 'clientAffinity' in kwargs:
             client_affinity = kwargs['clientAffinity']
-        if 'listenerId' in kwargs:
+        if client_affinity is None:
+            raise TypeError("Missing 'client_affinity' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'portRanges' in kwargs:
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if port_ranges is None and 'portRanges' in kwargs:
             port_ranges = kwargs['portRanges']
+        if port_ranges is None:
+            raise TypeError("Missing 'port_ranges' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("certificates", certificates)
         _setter("client_affinity", client_affinity)
@@ -4388,10 +4818,14 @@ class GetListenersListenerCertificateResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("id", id)
         _setter("type", type)
@@ -4430,14 +4864,18 @@ class GetListenersListenerPortRangeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             from_port: int,
-             to_port: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             from_port: Optional[int] = None,
+             to_port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fromPort' in kwargs:
+        if from_port is None and 'fromPort' in kwargs:
             from_port = kwargs['fromPort']
-        if 'toPort' in kwargs:
+        if from_port is None:
+            raise TypeError("Missing 'from_port' argument")
+        if to_port is None and 'toPort' in kwargs:
             to_port = kwargs['toPort']
+        if to_port is None:
+            raise TypeError("Missing 'to_port' argument")
 
         _setter("from_port", from_port)
         _setter("to_port", to_port)

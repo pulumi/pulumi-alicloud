@@ -11,25 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.132.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example_name";
- * const _default = new alicloud.sddp.Rule("default", {
- *     category: 0,
- *     content: "content",
- *     ruleName: name,
- *     riskLevelId: "4",
- *     productCode: "OSS",
- * });
- * ```
- *
  * ## Import
  *
  * Data Security Center Rule can be imported using the id, e.g.

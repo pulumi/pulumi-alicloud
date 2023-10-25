@@ -11,36 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.181.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testacc-example";
- * const defaultResourceGroup = new alicloud.resourcemanager.ResourceGroup("defaultResourceGroup", {
- *     displayName: "tf-testAcc-rg665",
- *     resourceGroupName: name,
- * });
- * const modify = new alicloud.resourcemanager.ResourceGroup("modify", {
- *     displayName: "tf-testAcc-rg298",
- *     resourceGroupName: `${name}1`,
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: `${name}2`,
- *     cidrBlock: "10.0.0.0/8",
- * });
- * const defaultIpv4Gateway = new alicloud.vpc.Ipv4Gateway("defaultIpv4Gateway", {
- *     ipv4GatewayName: name,
- *     ipv4GatewayDescription: "tf-testAcc-Ipv4Gateway",
- *     resourceGroupId: defaultResourceGroup.id,
- *     vpcId: defaultNetwork.id,
- * });
- * ```
- *
  * ## Import
  *
  * Vpc Ipv4 Gateway can be imported using the id, e.g.

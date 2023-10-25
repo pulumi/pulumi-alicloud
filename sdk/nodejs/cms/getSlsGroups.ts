@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.171.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cms.getSlsGroups({
- *     ids: ["example_id"],
- * });
- * export const cmsSlsGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
- * const nameRegex = alicloud.cms.getSlsGroups({
- *     nameRegex: "^my-SlsGroup",
- * });
- * export const cmsSlsGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
- * ```
  */
 export function getSlsGroups(args?: GetSlsGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSlsGroupsResult> {
     args = args || {};
@@ -88,24 +70,6 @@ export interface GetSlsGroupsResult {
  * This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.171.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cms.getSlsGroups({
- *     ids: ["example_id"],
- * });
- * export const cmsSlsGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
- * const nameRegex = alicloud.cms.getSlsGroups({
- *     nameRegex: "^my-SlsGroup",
- * });
- * export const cmsSlsGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
- * ```
  */
 export function getSlsGroupsOutput(args?: GetSlsGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSlsGroupsResult> {
     return pulumi.output(args).apply((a: any) => getSlsGroups(a, opts))

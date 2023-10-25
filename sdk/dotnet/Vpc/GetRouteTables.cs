@@ -15,50 +15,6 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides a list of Route Tables owned by an Alibaba Cloud account.
         /// 
         /// &gt; **NOTE:** Available in 1.36.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "route-tables-datasource-example-name";
-        ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
-        ///     {
-        ///         CidrBlock = "172.16.0.0/12",
-        ///         VpcName = name,
-        ///     });
-        /// 
-        ///     var fooRouteTable = new AliCloud.Vpc.RouteTable("fooRouteTable", new()
-        ///     {
-        ///         Description = name,
-        ///         RouteTableName = name,
-        ///         VpcId = fooNetwork.Id,
-        ///     });
-        /// 
-        ///     var fooRouteTables = AliCloud.Vpc.GetRouteTables.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             fooRouteTable.Id,
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["routeTableIds"] = fooRouteTables.Apply(getRouteTablesResult =&gt; getRouteTablesResult.Ids),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouteTablesResult> InvokeAsync(GetRouteTablesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouteTablesResult>("alicloud:vpc/getRouteTables:getRouteTables", args ?? new GetRouteTablesArgs(), options.WithDefaults());
@@ -67,50 +23,6 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides a list of Route Tables owned by an Alibaba Cloud account.
         /// 
         /// &gt; **NOTE:** Available in 1.36.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "route-tables-datasource-example-name";
-        ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
-        ///     {
-        ///         CidrBlock = "172.16.0.0/12",
-        ///         VpcName = name,
-        ///     });
-        /// 
-        ///     var fooRouteTable = new AliCloud.Vpc.RouteTable("fooRouteTable", new()
-        ///     {
-        ///         Description = name,
-        ///         RouteTableName = name,
-        ///         VpcId = fooNetwork.Id,
-        ///     });
-        /// 
-        ///     var fooRouteTables = AliCloud.Vpc.GetRouteTables.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             fooRouteTable.Id,
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["routeTableIds"] = fooRouteTables.Apply(getRouteTablesResult =&gt; getRouteTablesResult.Ids),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRouteTablesResult> Invoke(GetRouteTablesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouteTablesResult>("alicloud:vpc/getRouteTables:getRouteTables", args ?? new GetRouteTablesInvokeArgs(), options.WithDefaults());

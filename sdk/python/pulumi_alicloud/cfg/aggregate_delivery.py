@@ -61,9 +61,9 @@ class AggregateDeliveryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aggregator_id: pulumi.Input[str],
-             delivery_channel_target_arn: pulumi.Input[str],
-             delivery_channel_type: pulumi.Input[str],
+             aggregator_id: Optional[pulumi.Input[str]] = None,
+             delivery_channel_target_arn: Optional[pulumi.Input[str]] = None,
+             delivery_channel_type: Optional[pulumi.Input[str]] = None,
              configuration_item_change_notification: Optional[pulumi.Input[bool]] = None,
              configuration_snapshot: Optional[pulumi.Input[bool]] = None,
              delivery_channel_condition: Optional[pulumi.Input[str]] = None,
@@ -72,25 +72,31 @@ class AggregateDeliveryArgs:
              non_compliant_notification: Optional[pulumi.Input[bool]] = None,
              oversized_data_oss_target_arn: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aggregatorId' in kwargs:
+        if aggregator_id is None and 'aggregatorId' in kwargs:
             aggregator_id = kwargs['aggregatorId']
-        if 'deliveryChannelTargetArn' in kwargs:
+        if aggregator_id is None:
+            raise TypeError("Missing 'aggregator_id' argument")
+        if delivery_channel_target_arn is None and 'deliveryChannelTargetArn' in kwargs:
             delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
-        if 'deliveryChannelType' in kwargs:
+        if delivery_channel_target_arn is None:
+            raise TypeError("Missing 'delivery_channel_target_arn' argument")
+        if delivery_channel_type is None and 'deliveryChannelType' in kwargs:
             delivery_channel_type = kwargs['deliveryChannelType']
-        if 'configurationItemChangeNotification' in kwargs:
+        if delivery_channel_type is None:
+            raise TypeError("Missing 'delivery_channel_type' argument")
+        if configuration_item_change_notification is None and 'configurationItemChangeNotification' in kwargs:
             configuration_item_change_notification = kwargs['configurationItemChangeNotification']
-        if 'configurationSnapshot' in kwargs:
+        if configuration_snapshot is None and 'configurationSnapshot' in kwargs:
             configuration_snapshot = kwargs['configurationSnapshot']
-        if 'deliveryChannelCondition' in kwargs:
+        if delivery_channel_condition is None and 'deliveryChannelCondition' in kwargs:
             delivery_channel_condition = kwargs['deliveryChannelCondition']
-        if 'deliveryChannelName' in kwargs:
+        if delivery_channel_name is None and 'deliveryChannelName' in kwargs:
             delivery_channel_name = kwargs['deliveryChannelName']
-        if 'nonCompliantNotification' in kwargs:
+        if non_compliant_notification is None and 'nonCompliantNotification' in kwargs:
             non_compliant_notification = kwargs['nonCompliantNotification']
-        if 'oversizedDataOssTargetArn' in kwargs:
+        if oversized_data_oss_target_arn is None and 'oversizedDataOssTargetArn' in kwargs:
             oversized_data_oss_target_arn = kwargs['oversizedDataOssTargetArn']
 
         _setter("aggregator_id", aggregator_id)
@@ -316,27 +322,27 @@ class _AggregateDeliveryState:
              non_compliant_notification: Optional[pulumi.Input[bool]] = None,
              oversized_data_oss_target_arn: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aggregatorId' in kwargs:
+        if aggregator_id is None and 'aggregatorId' in kwargs:
             aggregator_id = kwargs['aggregatorId']
-        if 'configurationItemChangeNotification' in kwargs:
+        if configuration_item_change_notification is None and 'configurationItemChangeNotification' in kwargs:
             configuration_item_change_notification = kwargs['configurationItemChangeNotification']
-        if 'configurationSnapshot' in kwargs:
+        if configuration_snapshot is None and 'configurationSnapshot' in kwargs:
             configuration_snapshot = kwargs['configurationSnapshot']
-        if 'deliveryChannelCondition' in kwargs:
+        if delivery_channel_condition is None and 'deliveryChannelCondition' in kwargs:
             delivery_channel_condition = kwargs['deliveryChannelCondition']
-        if 'deliveryChannelId' in kwargs:
+        if delivery_channel_id is None and 'deliveryChannelId' in kwargs:
             delivery_channel_id = kwargs['deliveryChannelId']
-        if 'deliveryChannelName' in kwargs:
+        if delivery_channel_name is None and 'deliveryChannelName' in kwargs:
             delivery_channel_name = kwargs['deliveryChannelName']
-        if 'deliveryChannelTargetArn' in kwargs:
+        if delivery_channel_target_arn is None and 'deliveryChannelTargetArn' in kwargs:
             delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
-        if 'deliveryChannelType' in kwargs:
+        if delivery_channel_type is None and 'deliveryChannelType' in kwargs:
             delivery_channel_type = kwargs['deliveryChannelType']
-        if 'nonCompliantNotification' in kwargs:
+        if non_compliant_notification is None and 'nonCompliantNotification' in kwargs:
             non_compliant_notification = kwargs['nonCompliantNotification']
-        if 'oversizedDataOssTargetArn' in kwargs:
+        if oversized_data_oss_target_arn is None and 'oversizedDataOssTargetArn' in kwargs:
             oversized_data_oss_target_arn = kwargs['oversizedDataOssTargetArn']
 
         if aggregator_id is not None:

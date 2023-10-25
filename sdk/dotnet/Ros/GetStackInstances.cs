@@ -15,64 +15,6 @@ namespace Pulumi.AliCloud.Ros
         /// This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.145.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Ros.GetStackInstances.Invoke(new()
-        ///     {
-        ///         StackGroupName = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///         EnableDetails = true,
-        ///     });
-        /// 
-        ///     var status = AliCloud.Ros.GetStackInstances.Invoke(new()
-        ///     {
-        ///         StackGroupName = "example_value",
-        ///         Status = "CURRENT",
-        ///         EnableDetails = true,
-        ///     });
-        /// 
-        ///     var regionId = AliCloud.Ros.GetStackInstances.Invoke(new()
-        ///     {
-        ///         StackGroupName = "example_value",
-        ///         StackInstanceRegionId = "example_value",
-        ///         EnableDetails = true,
-        ///     });
-        /// 
-        ///     var accountId = AliCloud.Ros.GetStackInstances.Invoke(new()
-        ///     {
-        ///         StackGroupName = "example_value",
-        ///         StackInstanceAccountId = "example_value",
-        ///         EnableDetails = true,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["rosStackInstanceId1"] = ids.Apply(getStackInstancesResult =&gt; getStackInstancesResult.Instances[0]?.Id),
-        ///         ["rosStackInstanceId2"] = status.Apply(getStackInstancesResult =&gt; getStackInstancesResult.Instances[0]?.Id),
-        ///         ["rosStackInstanceId3"] = regionId.Apply(getStackInstancesResult =&gt; getStackInstancesResult.Instances[0]?.Id),
-        ///         ["rosStackInstanceId4"] = accountId.Apply(getStackInstancesResult =&gt; getStackInstancesResult.Instances[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetStackInstancesResult> InvokeAsync(GetStackInstancesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStackInstancesResult>("alicloud:ros/getStackInstances:getStackInstances", args ?? new GetStackInstancesArgs(), options.WithDefaults());
@@ -81,64 +23,6 @@ namespace Pulumi.AliCloud.Ros
         /// This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.145.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Ros.GetStackInstances.Invoke(new()
-        ///     {
-        ///         StackGroupName = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///         EnableDetails = true,
-        ///     });
-        /// 
-        ///     var status = AliCloud.Ros.GetStackInstances.Invoke(new()
-        ///     {
-        ///         StackGroupName = "example_value",
-        ///         Status = "CURRENT",
-        ///         EnableDetails = true,
-        ///     });
-        /// 
-        ///     var regionId = AliCloud.Ros.GetStackInstances.Invoke(new()
-        ///     {
-        ///         StackGroupName = "example_value",
-        ///         StackInstanceRegionId = "example_value",
-        ///         EnableDetails = true,
-        ///     });
-        /// 
-        ///     var accountId = AliCloud.Ros.GetStackInstances.Invoke(new()
-        ///     {
-        ///         StackGroupName = "example_value",
-        ///         StackInstanceAccountId = "example_value",
-        ///         EnableDetails = true,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["rosStackInstanceId1"] = ids.Apply(getStackInstancesResult =&gt; getStackInstancesResult.Instances[0]?.Id),
-        ///         ["rosStackInstanceId2"] = status.Apply(getStackInstancesResult =&gt; getStackInstancesResult.Instances[0]?.Id),
-        ///         ["rosStackInstanceId3"] = regionId.Apply(getStackInstancesResult =&gt; getStackInstancesResult.Instances[0]?.Id),
-        ///         ["rosStackInstanceId4"] = accountId.Apply(getStackInstancesResult =&gt; getStackInstancesResult.Instances[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetStackInstancesResult> Invoke(GetStackInstancesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStackInstancesResult>("alicloud:ros/getStackInstances:getStackInstances", args ?? new GetStackInstancesInvokeArgs(), options.WithDefaults());

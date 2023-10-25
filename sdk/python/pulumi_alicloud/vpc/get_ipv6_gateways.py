@@ -129,26 +129,6 @@ def get_ipv6_gateways(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.142.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpc.get_ipv6_gateways(ids=["example_id"])
-    pulumi.export("vpcIpv6GatewayId1", ids.gateways[0].id)
-    name_regex = alicloud.vpc.get_ipv6_gateways(name_regex="^my-Ipv6Gateway")
-    pulumi.export("vpcIpv6GatewayId2", name_regex.gateways[0].id)
-    vpc_id = alicloud.vpc.get_ipv6_gateways(ids=["example_id"],
-        vpc_id="example_value")
-    pulumi.export("vpcIpv6GatewayId3", vpc_id.gateways[0].id)
-    status = alicloud.vpc.get_ipv6_gateways(ids=["example_id"],
-        status="Available")
-    pulumi.export("vpcIpv6GatewayId4", status.gateways[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Ipv6 Gateway IDs.
     :param str ipv6_gateway_name: The name of the IPv6 gateway.
@@ -191,26 +171,6 @@ def get_ipv6_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     This data source provides the Vpc Ipv6 Gateways of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.142.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpc.get_ipv6_gateways(ids=["example_id"])
-    pulumi.export("vpcIpv6GatewayId1", ids.gateways[0].id)
-    name_regex = alicloud.vpc.get_ipv6_gateways(name_regex="^my-Ipv6Gateway")
-    pulumi.export("vpcIpv6GatewayId2", name_regex.gateways[0].id)
-    vpc_id = alicloud.vpc.get_ipv6_gateways(ids=["example_id"],
-        vpc_id="example_value")
-    pulumi.export("vpcIpv6GatewayId3", vpc_id.gateways[0].id)
-    status = alicloud.vpc.get_ipv6_gateways(ids=["example_id"],
-        status="Available")
-    pulumi.export("vpcIpv6GatewayId4", status.gateways[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Ipv6 Gateway IDs.

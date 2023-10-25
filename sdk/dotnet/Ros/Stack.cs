@@ -16,41 +16,6 @@ namespace Pulumi.AliCloud.Ros
     /// 
     /// &gt; **NOTE:** Available in v1.106.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Ros.Stack("example", new()
-    ///     {
-    ///         StackName = "tf-testaccstack",
-    ///         StackPolicyBody = @"    {
-    ///     	""Statement"": [{
-    ///     		""Action"": ""Update:Delete"",
-    ///     		""Resource"": ""*"",
-    ///     		""Effect"": ""Allow"",
-    ///     		""Principal"": ""*""
-    ///     	}]
-    ///     }
-    ///     
-    /// ",
-    ///         TemplateBody = @"    {
-    ///     	""ROSTemplateFormatVersion"": ""2015-09-01""
-    ///     }
-    ///     
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ROS Stack can be imported using the id, e.g.

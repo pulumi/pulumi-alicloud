@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.166.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.mse.getEngineNamespaces({
- *     clusterId: "example_value",
- *     ids: ["example_value"],
- * });
- * export const mseEngineNamespaceId1 = ids.then(ids => ids.namespaces?.[0]?.id);
- * ```
  */
 export function getEngineNamespaces(args: GetEngineNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineNamespacesResult> {
 
@@ -77,21 +62,6 @@ export interface GetEngineNamespacesResult {
  * This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.166.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.mse.getEngineNamespaces({
- *     clusterId: "example_value",
- *     ids: ["example_value"],
- * });
- * export const mseEngineNamespaceId1 = ids.then(ids => ids.namespaces?.[0]?.id);
- * ```
  */
 export function getEngineNamespacesOutput(args: GetEngineNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEngineNamespacesResult> {
     return pulumi.output(args).apply((a: any) => getEngineNamespaces(a, opts))

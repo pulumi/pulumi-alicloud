@@ -105,85 +105,139 @@ class GetBackupPlansPlanResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_gateway_id: str,
-             backup_method: str,
-             backup_objects: str,
-             backup_period: str,
-             backup_plan_id: str,
-             backup_plan_name: str,
-             backup_retention_period: int,
-             backup_start_time: str,
-             backup_storage_type: str,
-             cross_aliyun_id: str,
-             cross_role_name: str,
-             database_type: str,
-             duplication_archive_period: int,
-             duplication_infrequent_access_period: int,
-             enable_backup_log: bool,
-             id: str,
-             instance_class: str,
-             oss_bucket_name: str,
-             payment_type: str,
-             resource_group_id: str,
-             source_endpoint_database_name: str,
-             source_endpoint_instance_id: str,
-             source_endpoint_instance_type: str,
-             source_endpoint_region: str,
-             source_endpoint_sid: str,
-             source_endpoint_user_name: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             backup_gateway_id: Optional[str] = None,
+             backup_method: Optional[str] = None,
+             backup_objects: Optional[str] = None,
+             backup_period: Optional[str] = None,
+             backup_plan_id: Optional[str] = None,
+             backup_plan_name: Optional[str] = None,
+             backup_retention_period: Optional[int] = None,
+             backup_start_time: Optional[str] = None,
+             backup_storage_type: Optional[str] = None,
+             cross_aliyun_id: Optional[str] = None,
+             cross_role_name: Optional[str] = None,
+             database_type: Optional[str] = None,
+             duplication_archive_period: Optional[int] = None,
+             duplication_infrequent_access_period: Optional[int] = None,
+             enable_backup_log: Optional[bool] = None,
+             id: Optional[str] = None,
+             instance_class: Optional[str] = None,
+             oss_bucket_name: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             source_endpoint_database_name: Optional[str] = None,
+             source_endpoint_instance_id: Optional[str] = None,
+             source_endpoint_instance_type: Optional[str] = None,
+             source_endpoint_region: Optional[str] = None,
+             source_endpoint_sid: Optional[str] = None,
+             source_endpoint_user_name: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupGatewayId' in kwargs:
+        if backup_gateway_id is None and 'backupGatewayId' in kwargs:
             backup_gateway_id = kwargs['backupGatewayId']
-        if 'backupMethod' in kwargs:
+        if backup_gateway_id is None:
+            raise TypeError("Missing 'backup_gateway_id' argument")
+        if backup_method is None and 'backupMethod' in kwargs:
             backup_method = kwargs['backupMethod']
-        if 'backupObjects' in kwargs:
+        if backup_method is None:
+            raise TypeError("Missing 'backup_method' argument")
+        if backup_objects is None and 'backupObjects' in kwargs:
             backup_objects = kwargs['backupObjects']
-        if 'backupPeriod' in kwargs:
+        if backup_objects is None:
+            raise TypeError("Missing 'backup_objects' argument")
+        if backup_period is None and 'backupPeriod' in kwargs:
             backup_period = kwargs['backupPeriod']
-        if 'backupPlanId' in kwargs:
+        if backup_period is None:
+            raise TypeError("Missing 'backup_period' argument")
+        if backup_plan_id is None and 'backupPlanId' in kwargs:
             backup_plan_id = kwargs['backupPlanId']
-        if 'backupPlanName' in kwargs:
+        if backup_plan_id is None:
+            raise TypeError("Missing 'backup_plan_id' argument")
+        if backup_plan_name is None and 'backupPlanName' in kwargs:
             backup_plan_name = kwargs['backupPlanName']
-        if 'backupRetentionPeriod' in kwargs:
+        if backup_plan_name is None:
+            raise TypeError("Missing 'backup_plan_name' argument")
+        if backup_retention_period is None and 'backupRetentionPeriod' in kwargs:
             backup_retention_period = kwargs['backupRetentionPeriod']
-        if 'backupStartTime' in kwargs:
+        if backup_retention_period is None:
+            raise TypeError("Missing 'backup_retention_period' argument")
+        if backup_start_time is None and 'backupStartTime' in kwargs:
             backup_start_time = kwargs['backupStartTime']
-        if 'backupStorageType' in kwargs:
+        if backup_start_time is None:
+            raise TypeError("Missing 'backup_start_time' argument")
+        if backup_storage_type is None and 'backupStorageType' in kwargs:
             backup_storage_type = kwargs['backupStorageType']
-        if 'crossAliyunId' in kwargs:
+        if backup_storage_type is None:
+            raise TypeError("Missing 'backup_storage_type' argument")
+        if cross_aliyun_id is None and 'crossAliyunId' in kwargs:
             cross_aliyun_id = kwargs['crossAliyunId']
-        if 'crossRoleName' in kwargs:
+        if cross_aliyun_id is None:
+            raise TypeError("Missing 'cross_aliyun_id' argument")
+        if cross_role_name is None and 'crossRoleName' in kwargs:
             cross_role_name = kwargs['crossRoleName']
-        if 'databaseType' in kwargs:
+        if cross_role_name is None:
+            raise TypeError("Missing 'cross_role_name' argument")
+        if database_type is None and 'databaseType' in kwargs:
             database_type = kwargs['databaseType']
-        if 'duplicationArchivePeriod' in kwargs:
+        if database_type is None:
+            raise TypeError("Missing 'database_type' argument")
+        if duplication_archive_period is None and 'duplicationArchivePeriod' in kwargs:
             duplication_archive_period = kwargs['duplicationArchivePeriod']
-        if 'duplicationInfrequentAccessPeriod' in kwargs:
+        if duplication_archive_period is None:
+            raise TypeError("Missing 'duplication_archive_period' argument")
+        if duplication_infrequent_access_period is None and 'duplicationInfrequentAccessPeriod' in kwargs:
             duplication_infrequent_access_period = kwargs['duplicationInfrequentAccessPeriod']
-        if 'enableBackupLog' in kwargs:
+        if duplication_infrequent_access_period is None:
+            raise TypeError("Missing 'duplication_infrequent_access_period' argument")
+        if enable_backup_log is None and 'enableBackupLog' in kwargs:
             enable_backup_log = kwargs['enableBackupLog']
-        if 'instanceClass' in kwargs:
+        if enable_backup_log is None:
+            raise TypeError("Missing 'enable_backup_log' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'ossBucketName' in kwargs:
+        if instance_class is None:
+            raise TypeError("Missing 'instance_class' argument")
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'paymentType' in kwargs:
+        if oss_bucket_name is None:
+            raise TypeError("Missing 'oss_bucket_name' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'sourceEndpointDatabaseName' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if source_endpoint_database_name is None and 'sourceEndpointDatabaseName' in kwargs:
             source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
-        if 'sourceEndpointInstanceId' in kwargs:
+        if source_endpoint_database_name is None:
+            raise TypeError("Missing 'source_endpoint_database_name' argument")
+        if source_endpoint_instance_id is None and 'sourceEndpointInstanceId' in kwargs:
             source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
-        if 'sourceEndpointInstanceType' in kwargs:
+        if source_endpoint_instance_id is None:
+            raise TypeError("Missing 'source_endpoint_instance_id' argument")
+        if source_endpoint_instance_type is None and 'sourceEndpointInstanceType' in kwargs:
             source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
-        if 'sourceEndpointRegion' in kwargs:
+        if source_endpoint_instance_type is None:
+            raise TypeError("Missing 'source_endpoint_instance_type' argument")
+        if source_endpoint_region is None and 'sourceEndpointRegion' in kwargs:
             source_endpoint_region = kwargs['sourceEndpointRegion']
-        if 'sourceEndpointSid' in kwargs:
+        if source_endpoint_region is None:
+            raise TypeError("Missing 'source_endpoint_region' argument")
+        if source_endpoint_sid is None and 'sourceEndpointSid' in kwargs:
             source_endpoint_sid = kwargs['sourceEndpointSid']
-        if 'sourceEndpointUserName' in kwargs:
+        if source_endpoint_sid is None:
+            raise TypeError("Missing 'source_endpoint_sid' argument")
+        if source_endpoint_user_name is None and 'sourceEndpointUserName' in kwargs:
             source_endpoint_user_name = kwargs['sourceEndpointUserName']
+        if source_endpoint_user_name is None:
+            raise TypeError("Missing 'source_endpoint_user_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("backup_gateway_id", backup_gateway_id)
         _setter("backup_method", backup_method)

@@ -29,14 +29,18 @@ class RoleAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceIds' in kwargs:
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
-        if 'roleName' in kwargs:
+        if instance_ids is None:
+            raise TypeError("Missing 'instance_ids' argument")
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
+        if role_name is None:
+            raise TypeError("Missing 'role_name' argument")
 
         _setter("instance_ids", instance_ids)
         _setter("role_name", role_name)
@@ -86,11 +90,11 @@ class _RoleAttachmentState:
              _setter: Callable[[Any, Any], None],
              instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              role_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceIds' in kwargs:
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
-        if 'roleName' in kwargs:
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
 
         if instance_ids is not None:
@@ -136,75 +140,6 @@ class RoleAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0+.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=2,
-            memory_size=4)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "ecsInstanceVPCExample"
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
-            type="ingress",
-            ip_protocol="tcp",
-            nic_type="intranet",
-            policy="accept",
-            port_range="22/22",
-            priority=1,
-            security_group_id=default_security_group.id,
-            cidr_ip="172.16.0.0/24")
-        foo = alicloud.ecs.Instance("foo",
-            vswitch_id=default_switch.id,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            system_disk_category="cloud_efficiency",
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=5,
-            security_groups=[default_security_group.id],
-            instance_name=name)
-        role = alicloud.ram.Role("role",
-            document=\"\"\"  {
-            "Statement": [
-              {
-                "Action": "sts:AssumeRole",
-                "Effect": "Allow",
-                "Principal": {
-                  "Service": [
-                    "ecs.aliyuncs.com"
-                  ]
-                }
-              }
-            ],
-            "Version": "1"
-          }
-
-        \"\"\",
-            description="this is a test",
-            force=True)
-        attach = alicloud.ram.RoleAttachment("attach",
-            role_name=role.name,
-            instance_ids=[__item.id for __item in [foo]])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
@@ -220,75 +155,6 @@ class RoleAttachment(pulumi.CustomResource):
         Provides a RAM role attachment resource to bind role for several ECS instances.
 
         > **NOTE:** Available since v1.0.0+.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=2,
-            memory_size=4)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "ecsInstanceVPCExample"
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
-            type="ingress",
-            ip_protocol="tcp",
-            nic_type="intranet",
-            policy="accept",
-            port_range="22/22",
-            priority=1,
-            security_group_id=default_security_group.id,
-            cidr_ip="172.16.0.0/24")
-        foo = alicloud.ecs.Instance("foo",
-            vswitch_id=default_switch.id,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            system_disk_category="cloud_efficiency",
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=5,
-            security_groups=[default_security_group.id],
-            instance_name=name)
-        role = alicloud.ram.Role("role",
-            document=\"\"\"  {
-            "Statement": [
-              {
-                "Action": "sts:AssumeRole",
-                "Effect": "Allow",
-                "Principal": {
-                  "Service": [
-                    "ecs.aliyuncs.com"
-                  ]
-                }
-              }
-            ],
-            "Version": "1"
-          }
-
-        \"\"\",
-            description="this is a test",
-            force=True)
-        attach = alicloud.ram.RoleAttachment("attach",
-            role_name=role.name,
-            instance_ids=[__item.id for __item in [foo]])
-        ```
 
         :param str resource_name: The name of the resource.
         :param RoleAttachmentArgs args: The arguments to use to populate this resource's properties.

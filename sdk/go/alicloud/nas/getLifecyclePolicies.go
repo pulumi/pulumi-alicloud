@@ -15,47 +15,6 @@ import (
 // This data source provides the Nas Lifecycle Policies of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.153.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := nas.GetLifecyclePolicies(ctx, &nas.GetLifecyclePoliciesArgs{
-//				FileSystemId: "example_value",
-//				Ids: []string{
-//					"my-LifecyclePolicy-1",
-//					"my-LifecyclePolicy-2",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("nasLifecyclePolicyId1", ids.Policies[0].Id)
-//			nameRegex, err := nas.GetLifecyclePolicies(ctx, &nas.GetLifecyclePoliciesArgs{
-//				FileSystemId: "example_value",
-//				NameRegex:    pulumi.StringRef("^my-LifecyclePolicy"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("nasLifecyclePolicyId2", nameRegex.Policies[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetLifecyclePolicies(ctx *pulumi.Context, args *GetLifecyclePoliciesArgs, opts ...pulumi.InvokeOption) (*GetLifecyclePoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLifecyclePoliciesResult

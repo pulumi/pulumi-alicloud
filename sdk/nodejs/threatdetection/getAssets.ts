@@ -10,16 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describecloudcenterinstances)
  *
  * > **NOTE:** Available since v1.195.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.threatdetection.getAssets({});
- * export const alicloudThreatDetectionAssetExampleId = _default.then(_default => _default.assets?.[0]?.id);
- * ```
  */
 export function getAssets(args?: GetAssetsArgs, opts?: pulumi.InvokeOptions): Promise<GetAssetsResult> {
     args = args || {};
@@ -110,16 +100,6 @@ export interface GetAssetsResult {
  * This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describecloudcenterinstances)
  *
  * > **NOTE:** Available since v1.195.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.threatdetection.getAssets({});
- * export const alicloudThreatDetectionAssetExampleId = _default.then(_default => _default.assets?.[0]?.id);
- * ```
  */
 export function getAssetsOutput(args?: GetAssetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssetsResult> {
     return pulumi.output(args).apply((a: any) => getAssets(a, opts))

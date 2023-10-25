@@ -160,50 +160,6 @@ def get_dedicated_hosts(allocation_status: Optional[str] = None,
 
     > **NOTE:** Available in v1.147.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cddc.get_dedicated_hosts(dedicated_host_group_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("cddcDedicatedHostId1", ids.hosts[0].id)
-    status = alicloud.cddc.get_dedicated_hosts(dedicated_host_group_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ],
-        status="1")
-    pulumi.export("cddcDedicatedHostId2", status.hosts[0].id)
-    zone_id = alicloud.cddc.get_dedicated_hosts(dedicated_host_group_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ],
-        zone_id="example_value")
-    pulumi.export("cddcDedicatedHostId3", zone_id.hosts[0].id)
-    allocation_status = alicloud.cddc.get_dedicated_hosts(dedicated_host_group_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ],
-        allocation_status="Allocatable")
-    pulumi.export("cddcDedicatedHostId4", allocation_status.hosts[0].id)
-    host_type = alicloud.cddc.get_dedicated_hosts(dedicated_host_group_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ],
-        host_type="dhg_cloud_ssd")
-    pulumi.export("cddcDedicatedHostId5", host_type.hosts[0].id)
-    ```
-
 
     :param str allocation_status: Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
     :param str dedicated_host_group_id: The ID of the dedicated cluster in which the host is created.
@@ -261,50 +217,6 @@ def get_dedicated_hosts_output(allocation_status: Optional[pulumi.Input[Optional
     This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.147.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cddc.get_dedicated_hosts(dedicated_host_group_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("cddcDedicatedHostId1", ids.hosts[0].id)
-    status = alicloud.cddc.get_dedicated_hosts(dedicated_host_group_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ],
-        status="1")
-    pulumi.export("cddcDedicatedHostId2", status.hosts[0].id)
-    zone_id = alicloud.cddc.get_dedicated_hosts(dedicated_host_group_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ],
-        zone_id="example_value")
-    pulumi.export("cddcDedicatedHostId3", zone_id.hosts[0].id)
-    allocation_status = alicloud.cddc.get_dedicated_hosts(dedicated_host_group_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ],
-        allocation_status="Allocatable")
-    pulumi.export("cddcDedicatedHostId4", allocation_status.hosts[0].id)
-    host_type = alicloud.cddc.get_dedicated_hosts(dedicated_host_group_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ],
-        host_type="dhg_cloud_ssd")
-    pulumi.export("cddcDedicatedHostId5", host_type.hosts[0].id)
-    ```
 
 
     :param str allocation_status: Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.

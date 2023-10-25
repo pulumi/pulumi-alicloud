@@ -16,56 +16,6 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// &gt; **NOTE:** Available since v1.5.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultZones = AliCloud.Rds.GetZones.Invoke(new()
-    ///     {
-    ///         Engine = "MySQL",
-    ///         EngineVersion = "5.6",
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "172.16.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = name,
-    ///     });
-    /// 
-    ///     var instance = new AliCloud.Rds.Instance("instance", new()
-    ///     {
-    ///         Engine = "MySQL",
-    ///         EngineVersion = "5.6",
-    ///         InstanceType = "rds.mysql.s1.small",
-    ///         InstanceStorage = 10,
-    ///         VswitchId = defaultSwitch.Id,
-    ///         InstanceName = name,
-    ///     });
-    /// 
-    ///     var policy = new AliCloud.Rds.BackupPolicy("policy", new()
-    ///     {
-    ///         InstanceId = instance.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// RDS backup policy can be imported using the id or instance id, e.g.

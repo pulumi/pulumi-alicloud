@@ -13,64 +13,12 @@ namespace Pulumi.AliCloud.ApiGateway
     {
         /// <summary>
         /// This data source provides the apis of the current Alibaba Cloud user.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var dataApigatwayApis = AliCloud.ApiGateway.GetApis.Invoke(new()
-        ///     {
-        ///         OutputFile = "output_ApiGatawayApis",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstApiId"] = data.Alicloud_api_gateway_apis.Data_apigatway.Apis[0].Id,
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetApisResult> InvokeAsync(GetApisArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApisResult>("alicloud:apigateway/getApis:getApis", args ?? new GetApisArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the apis of the current Alibaba Cloud user.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var dataApigatwayApis = AliCloud.ApiGateway.GetApis.Invoke(new()
-        ///     {
-        ///         OutputFile = "output_ApiGatawayApis",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstApiId"] = data.Alicloud_api_gateway_apis.Data_apigatway.Apis[0].Id,
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetApisResult> Invoke(GetApisInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApisResult>("alicloud:apigateway/getApis:getApis", args ?? new GetApisInvokeArgs(), options.WithDefaults());

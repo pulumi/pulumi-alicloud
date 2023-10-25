@@ -129,18 +129,6 @@ def get_subscription_jobs(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.138.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dts.get_subscription_jobs()
-    pulumi.export("dtsSubscriptionJobId1", ids.jobs[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Subscription Job IDs.
     :param str name_regex: A regex string to filter results by subscription job name.
@@ -182,18 +170,6 @@ def get_subscription_jobs_output(enable_details: Optional[pulumi.Input[Optional[
     This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.138.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dts.get_subscription_jobs()
-    pulumi.export("dtsSubscriptionJobId1", ids.jobs[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Subscription Job IDs.

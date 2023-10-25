@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.129.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.eventbridge.getEventBuses({});
- * export const eventBridgeEventBusId1 = ids.then(ids => ids.buses?.[0]?.id);
- * const nameRegex = alicloud.eventbridge.getEventBuses({
- *     nameRegex: "^my-EventBus",
- * });
- * export const eventBridgeEventBusId2 = nameRegex.then(nameRegex => nameRegex.buses?.[0]?.id);
- * ```
  */
 export function getEventBuses(args?: GetEventBusesArgs, opts?: pulumi.InvokeOptions): Promise<GetEventBusesResult> {
     args = args || {};
@@ -86,22 +70,6 @@ export interface GetEventBusesResult {
  * This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.129.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.eventbridge.getEventBuses({});
- * export const eventBridgeEventBusId1 = ids.then(ids => ids.buses?.[0]?.id);
- * const nameRegex = alicloud.eventbridge.getEventBuses({
- *     nameRegex: "^my-EventBus",
- * });
- * export const eventBridgeEventBusId2 = nameRegex.then(nameRegex => nameRegex.buses?.[0]?.id);
- * ```
  */
 export function getEventBusesOutput(args?: GetEventBusesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventBusesResult> {
     return pulumi.output(args).apply((a: any) => getEventBuses(a, opts))

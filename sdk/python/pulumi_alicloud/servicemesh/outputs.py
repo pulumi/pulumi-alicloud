@@ -77,9 +77,9 @@ class ServiceMeshExtraConfiguration(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              cr_aggregation_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'crAggregationEnabled' in kwargs:
+        if cr_aggregation_enabled is None and 'crAggregationEnabled' in kwargs:
             cr_aggregation_enabled = kwargs['crAggregationEnabled']
 
         if cr_aggregation_enabled is not None:
@@ -144,15 +144,15 @@ class ServiceMeshLoadBalancer(dict):
              api_server_public_eip: Optional[bool] = None,
              pilot_public_eip: Optional[bool] = None,
              pilot_public_loadbalancer_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiServerLoadbalancerId' in kwargs:
+        if api_server_loadbalancer_id is None and 'apiServerLoadbalancerId' in kwargs:
             api_server_loadbalancer_id = kwargs['apiServerLoadbalancerId']
-        if 'apiServerPublicEip' in kwargs:
+        if api_server_public_eip is None and 'apiServerPublicEip' in kwargs:
             api_server_public_eip = kwargs['apiServerPublicEip']
-        if 'pilotPublicEip' in kwargs:
+        if pilot_public_eip is None and 'pilotPublicEip' in kwargs:
             pilot_public_eip = kwargs['pilotPublicEip']
-        if 'pilotPublicLoadbalancerId' in kwargs:
+        if pilot_public_loadbalancer_id is None and 'pilotPublicLoadbalancerId' in kwargs:
             pilot_public_loadbalancer_id = kwargs['pilotPublicLoadbalancerId']
 
         if api_server_loadbalancer_id is not None:
@@ -297,21 +297,21 @@ class ServiceMeshMeshConfig(dict):
              sidecar_injector: Optional['outputs.ServiceMeshMeshConfigSidecarInjector'] = None,
              telemetry: Optional[bool] = None,
              tracing: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessLog' in kwargs:
+        if access_log is None and 'accessLog' in kwargs:
             access_log = kwargs['accessLog']
-        if 'controlPlaneLog' in kwargs:
+        if control_plane_log is None and 'controlPlaneLog' in kwargs:
             control_plane_log = kwargs['controlPlaneLog']
-        if 'customizedZipkin' in kwargs:
+        if customized_zipkin is None and 'customizedZipkin' in kwargs:
             customized_zipkin = kwargs['customizedZipkin']
-        if 'enableLocalityLb' in kwargs:
+        if enable_locality_lb is None and 'enableLocalityLb' in kwargs:
             enable_locality_lb = kwargs['enableLocalityLb']
-        if 'includeIpRanges' in kwargs:
+        if include_ip_ranges is None and 'includeIpRanges' in kwargs:
             include_ip_ranges = kwargs['includeIpRanges']
-        if 'outboundTrafficPolicy' in kwargs:
+        if outbound_traffic_policy is None and 'outboundTrafficPolicy' in kwargs:
             outbound_traffic_policy = kwargs['outboundTrafficPolicy']
-        if 'sidecarInjector' in kwargs:
+        if sidecar_injector is None and 'sidecarInjector' in kwargs:
             sidecar_injector = kwargs['sidecarInjector']
 
         if access_log is not None:
@@ -485,7 +485,7 @@ class ServiceMeshMeshConfigAccessLog(dict):
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
              project: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if enabled is not None:
@@ -529,7 +529,7 @@ class ServiceMeshMeshConfigAudit(dict):
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
              project: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if enabled is not None:
@@ -573,7 +573,7 @@ class ServiceMeshMeshConfigControlPlaneLog(dict):
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
              project: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if enabled is not None:
@@ -617,7 +617,7 @@ class ServiceMeshMeshConfigKiali(dict):
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
              url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if enabled is not None:
@@ -702,17 +702,17 @@ class ServiceMeshMeshConfigOpa(dict):
              log_level: Optional[str] = None,
              request_cpu: Optional[str] = None,
              request_memory: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'limitCpu' in kwargs:
+        if limit_cpu is None and 'limitCpu' in kwargs:
             limit_cpu = kwargs['limitCpu']
-        if 'limitMemory' in kwargs:
+        if limit_memory is None and 'limitMemory' in kwargs:
             limit_memory = kwargs['limitMemory']
-        if 'logLevel' in kwargs:
+        if log_level is None and 'logLevel' in kwargs:
             log_level = kwargs['logLevel']
-        if 'requestCpu' in kwargs:
+        if request_cpu is None and 'requestCpu' in kwargs:
             request_cpu = kwargs['requestCpu']
-        if 'requestMemory' in kwargs:
+        if request_memory is None and 'requestMemory' in kwargs:
             request_memory = kwargs['requestMemory']
 
         if enabled is not None:
@@ -815,11 +815,11 @@ class ServiceMeshMeshConfigPilot(dict):
              _setter: Callable[[Any, Any], None],
              http10_enabled: Optional[bool] = None,
              trace_sampling: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'http10Enabled' in kwargs:
+        if http10_enabled is None and 'http10Enabled' in kwargs:
             http10_enabled = kwargs['http10Enabled']
-        if 'traceSampling' in kwargs:
+        if trace_sampling is None and 'traceSampling' in kwargs:
             trace_sampling = kwargs['traceSampling']
 
         if http10_enabled is not None:
@@ -882,11 +882,11 @@ class ServiceMeshMeshConfigPrometheus(dict):
              _setter: Callable[[Any, Any], None],
              external_url: Optional[str] = None,
              use_external: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'externalUrl' in kwargs:
+        if external_url is None and 'externalUrl' in kwargs:
             external_url = kwargs['externalUrl']
-        if 'useExternal' in kwargs:
+        if use_external is None and 'useExternal' in kwargs:
             use_external = kwargs['useExternal']
 
         if external_url is not None:
@@ -967,17 +967,17 @@ class ServiceMeshMeshConfigProxy(dict):
              limit_memory: Optional[str] = None,
              request_cpu: Optional[str] = None,
              request_memory: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterDomain' in kwargs:
+        if cluster_domain is None and 'clusterDomain' in kwargs:
             cluster_domain = kwargs['clusterDomain']
-        if 'limitCpu' in kwargs:
+        if limit_cpu is None and 'limitCpu' in kwargs:
             limit_cpu = kwargs['limitCpu']
-        if 'limitMemory' in kwargs:
+        if limit_memory is None and 'limitMemory' in kwargs:
             limit_memory = kwargs['limitMemory']
-        if 'requestCpu' in kwargs:
+        if request_cpu is None and 'requestCpu' in kwargs:
             request_cpu = kwargs['requestCpu']
-        if 'requestMemory' in kwargs:
+        if request_memory is None and 'requestMemory' in kwargs:
             request_memory = kwargs['requestMemory']
 
         if cluster_domain is not None:
@@ -1106,23 +1106,23 @@ class ServiceMeshMeshConfigSidecarInjector(dict):
              request_cpu: Optional[str] = None,
              request_memory: Optional[str] = None,
              sidecar_injector_webhook_as_yaml: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoInjectionPolicyEnabled' in kwargs:
+        if auto_injection_policy_enabled is None and 'autoInjectionPolicyEnabled' in kwargs:
             auto_injection_policy_enabled = kwargs['autoInjectionPolicyEnabled']
-        if 'enableNamespacesByDefault' in kwargs:
+        if enable_namespaces_by_default is None and 'enableNamespacesByDefault' in kwargs:
             enable_namespaces_by_default = kwargs['enableNamespacesByDefault']
-        if 'initCniConfiguration' in kwargs:
+        if init_cni_configuration is None and 'initCniConfiguration' in kwargs:
             init_cni_configuration = kwargs['initCniConfiguration']
-        if 'limitCpu' in kwargs:
+        if limit_cpu is None and 'limitCpu' in kwargs:
             limit_cpu = kwargs['limitCpu']
-        if 'limitMemory' in kwargs:
+        if limit_memory is None and 'limitMemory' in kwargs:
             limit_memory = kwargs['limitMemory']
-        if 'requestCpu' in kwargs:
+        if request_cpu is None and 'requestCpu' in kwargs:
             request_cpu = kwargs['requestCpu']
-        if 'requestMemory' in kwargs:
+        if request_memory is None and 'requestMemory' in kwargs:
             request_memory = kwargs['requestMemory']
-        if 'sidecarInjectorWebhookAsYaml' in kwargs:
+        if sidecar_injector_webhook_as_yaml is None and 'sidecarInjectorWebhookAsYaml' in kwargs:
             sidecar_injector_webhook_as_yaml = kwargs['sidecarInjectorWebhookAsYaml']
 
         if auto_injection_policy_enabled is not None:
@@ -1243,9 +1243,9 @@ class ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration(dict):
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
              exclude_namespaces: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'excludeNamespaces' in kwargs:
+        if exclude_namespaces is None and 'excludeNamespaces' in kwargs:
             exclude_namespaces = kwargs['excludeNamespaces']
 
         if enabled is not None:
@@ -1311,16 +1311,20 @@ class ServiceMeshNetwork(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vpc_id: str,
-             vswitche_list: str,
+             vpc_id: Optional[str] = None,
+             vswitche_list: Optional[str] = None,
              security_group_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitcheList' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitche_list is None and 'vswitcheList' in kwargs:
             vswitche_list = kwargs['vswitcheList']
-        if 'securityGroupId' in kwargs:
+        if vswitche_list is None:
+            raise TypeError("Missing 'vswitche_list' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
 
         _setter("vpc_id", vpc_id)
@@ -1412,17 +1416,17 @@ class UserPermissionPermission(dict):
              role_name: Optional[str] = None,
              role_type: Optional[str] = None,
              service_mesh_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'isCustom' in kwargs:
+        if is_custom is None and 'isCustom' in kwargs:
             is_custom = kwargs['isCustom']
-        if 'isRamRole' in kwargs:
+        if is_ram_role is None and 'isRamRole' in kwargs:
             is_ram_role = kwargs['isRamRole']
-        if 'roleName' in kwargs:
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
-        if 'roleType' in kwargs:
+        if role_type is None and 'roleType' in kwargs:
             role_type = kwargs['roleType']
-        if 'serviceMeshId' in kwargs:
+        if service_mesh_id is None and 'serviceMeshId' in kwargs:
             service_mesh_id = kwargs['serviceMeshId']
 
         if is_custom is not None:
@@ -1506,17 +1510,27 @@ class GetExtensionProvidersProviderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config: str,
-             extension_provider_name: str,
-             id: str,
-             service_mesh_id: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             config: Optional[str] = None,
+             extension_provider_name: Optional[str] = None,
+             id: Optional[str] = None,
+             service_mesh_id: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'extensionProviderName' in kwargs:
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if extension_provider_name is None and 'extensionProviderName' in kwargs:
             extension_provider_name = kwargs['extensionProviderName']
-        if 'serviceMeshId' in kwargs:
+        if extension_provider_name is None:
+            raise TypeError("Missing 'extension_provider_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if service_mesh_id is None and 'serviceMeshId' in kwargs:
             service_mesh_id = kwargs['serviceMeshId']
+        if service_mesh_id is None:
+            raise TypeError("Missing 'service_mesh_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("config", config)
         _setter("extension_provider_name", extension_provider_name)
@@ -1621,39 +1635,69 @@ class GetServiceMeshesMeshResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             clusters: Sequence[str],
-             create_time: str,
-             edition: str,
-             endpoints: Sequence['outputs.GetServiceMeshesMeshEndpointResult'],
-             error_message: str,
-             id: str,
-             istio_operator_version: str,
-             load_balancers: Sequence['outputs.GetServiceMeshesMeshLoadBalancerResult'],
-             mesh_configs: Sequence['outputs.GetServiceMeshesMeshMeshConfigResult'],
-             networks: Sequence['outputs.GetServiceMeshesMeshNetworkResult'],
-             service_mesh_id: str,
-             service_mesh_name: str,
-             sidecar_version: str,
-             status: str,
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             clusters: Optional[Sequence[str]] = None,
+             create_time: Optional[str] = None,
+             edition: Optional[str] = None,
+             endpoints: Optional[Sequence['outputs.GetServiceMeshesMeshEndpointResult']] = None,
+             error_message: Optional[str] = None,
+             id: Optional[str] = None,
+             istio_operator_version: Optional[str] = None,
+             load_balancers: Optional[Sequence['outputs.GetServiceMeshesMeshLoadBalancerResult']] = None,
+             mesh_configs: Optional[Sequence['outputs.GetServiceMeshesMeshMeshConfigResult']] = None,
+             networks: Optional[Sequence['outputs.GetServiceMeshesMeshNetworkResult']] = None,
+             service_mesh_id: Optional[str] = None,
+             service_mesh_name: Optional[str] = None,
+             sidecar_version: Optional[str] = None,
+             status: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if clusters is None:
+            raise TypeError("Missing 'clusters' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'errorMessage' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if edition is None:
+            raise TypeError("Missing 'edition' argument")
+        if endpoints is None:
+            raise TypeError("Missing 'endpoints' argument")
+        if error_message is None and 'errorMessage' in kwargs:
             error_message = kwargs['errorMessage']
-        if 'istioOperatorVersion' in kwargs:
+        if error_message is None:
+            raise TypeError("Missing 'error_message' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if istio_operator_version is None and 'istioOperatorVersion' in kwargs:
             istio_operator_version = kwargs['istioOperatorVersion']
-        if 'loadBalancers' in kwargs:
+        if istio_operator_version is None:
+            raise TypeError("Missing 'istio_operator_version' argument")
+        if load_balancers is None and 'loadBalancers' in kwargs:
             load_balancers = kwargs['loadBalancers']
-        if 'meshConfigs' in kwargs:
+        if load_balancers is None:
+            raise TypeError("Missing 'load_balancers' argument")
+        if mesh_configs is None and 'meshConfigs' in kwargs:
             mesh_configs = kwargs['meshConfigs']
-        if 'serviceMeshId' in kwargs:
+        if mesh_configs is None:
+            raise TypeError("Missing 'mesh_configs' argument")
+        if networks is None:
+            raise TypeError("Missing 'networks' argument")
+        if service_mesh_id is None and 'serviceMeshId' in kwargs:
             service_mesh_id = kwargs['serviceMeshId']
-        if 'serviceMeshName' in kwargs:
+        if service_mesh_id is None:
+            raise TypeError("Missing 'service_mesh_id' argument")
+        if service_mesh_name is None and 'serviceMeshName' in kwargs:
             service_mesh_name = kwargs['serviceMeshName']
-        if 'sidecarVersion' in kwargs:
+        if service_mesh_name is None:
+            raise TypeError("Missing 'service_mesh_name' argument")
+        if sidecar_version is None and 'sidecarVersion' in kwargs:
             sidecar_version = kwargs['sidecarVersion']
+        if sidecar_version is None:
+            raise TypeError("Missing 'sidecar_version' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
 
         _setter("clusters", clusters)
         _setter("create_time", create_time)
@@ -1815,20 +1859,28 @@ class GetServiceMeshesMeshEndpointResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             intranet_api_server_endpoint: str,
-             intranet_pilot_endpoint: str,
-             public_api_server_endpoint: str,
-             public_pilot_endpoint: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             intranet_api_server_endpoint: Optional[str] = None,
+             intranet_pilot_endpoint: Optional[str] = None,
+             public_api_server_endpoint: Optional[str] = None,
+             public_pilot_endpoint: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'intranetApiServerEndpoint' in kwargs:
+        if intranet_api_server_endpoint is None and 'intranetApiServerEndpoint' in kwargs:
             intranet_api_server_endpoint = kwargs['intranetApiServerEndpoint']
-        if 'intranetPilotEndpoint' in kwargs:
+        if intranet_api_server_endpoint is None:
+            raise TypeError("Missing 'intranet_api_server_endpoint' argument")
+        if intranet_pilot_endpoint is None and 'intranetPilotEndpoint' in kwargs:
             intranet_pilot_endpoint = kwargs['intranetPilotEndpoint']
-        if 'publicApiServerEndpoint' in kwargs:
+        if intranet_pilot_endpoint is None:
+            raise TypeError("Missing 'intranet_pilot_endpoint' argument")
+        if public_api_server_endpoint is None and 'publicApiServerEndpoint' in kwargs:
             public_api_server_endpoint = kwargs['publicApiServerEndpoint']
-        if 'publicPilotEndpoint' in kwargs:
+        if public_api_server_endpoint is None:
+            raise TypeError("Missing 'public_api_server_endpoint' argument")
+        if public_pilot_endpoint is None and 'publicPilotEndpoint' in kwargs:
             public_pilot_endpoint = kwargs['publicPilotEndpoint']
+        if public_pilot_endpoint is None:
+            raise TypeError("Missing 'public_pilot_endpoint' argument")
 
         _setter("intranet_api_server_endpoint", intranet_api_server_endpoint)
         _setter("intranet_pilot_endpoint", intranet_pilot_endpoint)
@@ -1891,20 +1943,28 @@ class GetServiceMeshesMeshLoadBalancerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_server_loadbalancer_id: str,
-             api_server_public_eip: bool,
-             pilot_public_eip: bool,
-             pilot_public_loadbalancer_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             api_server_loadbalancer_id: Optional[str] = None,
+             api_server_public_eip: Optional[bool] = None,
+             pilot_public_eip: Optional[bool] = None,
+             pilot_public_loadbalancer_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiServerLoadbalancerId' in kwargs:
+        if api_server_loadbalancer_id is None and 'apiServerLoadbalancerId' in kwargs:
             api_server_loadbalancer_id = kwargs['apiServerLoadbalancerId']
-        if 'apiServerPublicEip' in kwargs:
+        if api_server_loadbalancer_id is None:
+            raise TypeError("Missing 'api_server_loadbalancer_id' argument")
+        if api_server_public_eip is None and 'apiServerPublicEip' in kwargs:
             api_server_public_eip = kwargs['apiServerPublicEip']
-        if 'pilotPublicEip' in kwargs:
+        if api_server_public_eip is None:
+            raise TypeError("Missing 'api_server_public_eip' argument")
+        if pilot_public_eip is None and 'pilotPublicEip' in kwargs:
             pilot_public_eip = kwargs['pilotPublicEip']
-        if 'pilotPublicLoadbalancerId' in kwargs:
+        if pilot_public_eip is None:
+            raise TypeError("Missing 'pilot_public_eip' argument")
+        if pilot_public_loadbalancer_id is None and 'pilotPublicLoadbalancerId' in kwargs:
             pilot_public_loadbalancer_id = kwargs['pilotPublicLoadbalancerId']
+        if pilot_public_loadbalancer_id is None:
+            raise TypeError("Missing 'pilot_public_loadbalancer_id' argument")
 
         _setter("api_server_loadbalancer_id", api_server_loadbalancer_id)
         _setter("api_server_public_eip", api_server_public_eip)
@@ -2000,37 +2060,67 @@ class GetServiceMeshesMeshMeshConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_logs: Sequence['outputs.GetServiceMeshesMeshMeshConfigAccessLogResult'],
-             audits: Sequence['outputs.GetServiceMeshesMeshMeshConfigAuditResult'],
-             control_plane_logs: Sequence['outputs.GetServiceMeshesMeshMeshConfigControlPlaneLogResult'],
-             customized_zipkin: bool,
-             enable_locality_lb: bool,
-             include_ip_ranges: str,
-             kialis: Sequence['outputs.GetServiceMeshesMeshMeshConfigKialiResult'],
-             opas: Sequence['outputs.GetServiceMeshesMeshMeshConfigOpaResult'],
-             outbound_traffic_policy: str,
-             pilots: Sequence['outputs.GetServiceMeshesMeshMeshConfigPilotResult'],
-             prometheuses: Sequence['outputs.GetServiceMeshesMeshMeshConfigPrometheusResult'],
-             proxies: Sequence['outputs.GetServiceMeshesMeshMeshConfigProxyResult'],
-             sidecar_injectors: Sequence['outputs.GetServiceMeshesMeshMeshConfigSidecarInjectorResult'],
-             telemetry: bool,
-             tracing: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_logs: Optional[Sequence['outputs.GetServiceMeshesMeshMeshConfigAccessLogResult']] = None,
+             audits: Optional[Sequence['outputs.GetServiceMeshesMeshMeshConfigAuditResult']] = None,
+             control_plane_logs: Optional[Sequence['outputs.GetServiceMeshesMeshMeshConfigControlPlaneLogResult']] = None,
+             customized_zipkin: Optional[bool] = None,
+             enable_locality_lb: Optional[bool] = None,
+             include_ip_ranges: Optional[str] = None,
+             kialis: Optional[Sequence['outputs.GetServiceMeshesMeshMeshConfigKialiResult']] = None,
+             opas: Optional[Sequence['outputs.GetServiceMeshesMeshMeshConfigOpaResult']] = None,
+             outbound_traffic_policy: Optional[str] = None,
+             pilots: Optional[Sequence['outputs.GetServiceMeshesMeshMeshConfigPilotResult']] = None,
+             prometheuses: Optional[Sequence['outputs.GetServiceMeshesMeshMeshConfigPrometheusResult']] = None,
+             proxies: Optional[Sequence['outputs.GetServiceMeshesMeshMeshConfigProxyResult']] = None,
+             sidecar_injectors: Optional[Sequence['outputs.GetServiceMeshesMeshMeshConfigSidecarInjectorResult']] = None,
+             telemetry: Optional[bool] = None,
+             tracing: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessLogs' in kwargs:
+        if access_logs is None and 'accessLogs' in kwargs:
             access_logs = kwargs['accessLogs']
-        if 'controlPlaneLogs' in kwargs:
+        if access_logs is None:
+            raise TypeError("Missing 'access_logs' argument")
+        if audits is None:
+            raise TypeError("Missing 'audits' argument")
+        if control_plane_logs is None and 'controlPlaneLogs' in kwargs:
             control_plane_logs = kwargs['controlPlaneLogs']
-        if 'customizedZipkin' in kwargs:
+        if control_plane_logs is None:
+            raise TypeError("Missing 'control_plane_logs' argument")
+        if customized_zipkin is None and 'customizedZipkin' in kwargs:
             customized_zipkin = kwargs['customizedZipkin']
-        if 'enableLocalityLb' in kwargs:
+        if customized_zipkin is None:
+            raise TypeError("Missing 'customized_zipkin' argument")
+        if enable_locality_lb is None and 'enableLocalityLb' in kwargs:
             enable_locality_lb = kwargs['enableLocalityLb']
-        if 'includeIpRanges' in kwargs:
+        if enable_locality_lb is None:
+            raise TypeError("Missing 'enable_locality_lb' argument")
+        if include_ip_ranges is None and 'includeIpRanges' in kwargs:
             include_ip_ranges = kwargs['includeIpRanges']
-        if 'outboundTrafficPolicy' in kwargs:
+        if include_ip_ranges is None:
+            raise TypeError("Missing 'include_ip_ranges' argument")
+        if kialis is None:
+            raise TypeError("Missing 'kialis' argument")
+        if opas is None:
+            raise TypeError("Missing 'opas' argument")
+        if outbound_traffic_policy is None and 'outboundTrafficPolicy' in kwargs:
             outbound_traffic_policy = kwargs['outboundTrafficPolicy']
-        if 'sidecarInjectors' in kwargs:
+        if outbound_traffic_policy is None:
+            raise TypeError("Missing 'outbound_traffic_policy' argument")
+        if pilots is None:
+            raise TypeError("Missing 'pilots' argument")
+        if prometheuses is None:
+            raise TypeError("Missing 'prometheuses' argument")
+        if proxies is None:
+            raise TypeError("Missing 'proxies' argument")
+        if sidecar_injectors is None and 'sidecarInjectors' in kwargs:
             sidecar_injectors = kwargs['sidecarInjectors']
+        if sidecar_injectors is None:
+            raise TypeError("Missing 'sidecar_injectors' argument")
+        if telemetry is None:
+            raise TypeError("Missing 'telemetry' argument")
+        if tracing is None:
+            raise TypeError("Missing 'tracing' argument")
 
         _setter("access_logs", access_logs)
         _setter("audits", audits)
@@ -2186,10 +2276,14 @@ class GetServiceMeshesMeshMeshConfigAccessLogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             project: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             enabled: Optional[bool] = None,
+             project: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
 
         _setter("enabled", enabled)
         _setter("project", project)
@@ -2228,10 +2322,14 @@ class GetServiceMeshesMeshMeshConfigAuditResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             project: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             enabled: Optional[bool] = None,
+             project: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
 
         _setter("enabled", enabled)
         _setter("project", project)
@@ -2270,10 +2368,14 @@ class GetServiceMeshesMeshMeshConfigControlPlaneLogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             project: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             enabled: Optional[bool] = None,
+             project: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
 
         _setter("enabled", enabled)
         _setter("project", project)
@@ -2312,10 +2414,14 @@ class GetServiceMeshesMeshMeshConfigKialiResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             enabled: Optional[bool] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
 
         _setter("enabled", enabled)
         _setter("url", url)
@@ -2366,24 +2472,36 @@ class GetServiceMeshesMeshMeshConfigOpaResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             limit_cpu: str,
-             limit_memory: str,
-             log_level: str,
-             request_cpu: str,
-             request_memory: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             enabled: Optional[bool] = None,
+             limit_cpu: Optional[str] = None,
+             limit_memory: Optional[str] = None,
+             log_level: Optional[str] = None,
+             request_cpu: Optional[str] = None,
+             request_memory: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'limitCpu' in kwargs:
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if limit_cpu is None and 'limitCpu' in kwargs:
             limit_cpu = kwargs['limitCpu']
-        if 'limitMemory' in kwargs:
+        if limit_cpu is None:
+            raise TypeError("Missing 'limit_cpu' argument")
+        if limit_memory is None and 'limitMemory' in kwargs:
             limit_memory = kwargs['limitMemory']
-        if 'logLevel' in kwargs:
+        if limit_memory is None:
+            raise TypeError("Missing 'limit_memory' argument")
+        if log_level is None and 'logLevel' in kwargs:
             log_level = kwargs['logLevel']
-        if 'requestCpu' in kwargs:
+        if log_level is None:
+            raise TypeError("Missing 'log_level' argument")
+        if request_cpu is None and 'requestCpu' in kwargs:
             request_cpu = kwargs['requestCpu']
-        if 'requestMemory' in kwargs:
+        if request_cpu is None:
+            raise TypeError("Missing 'request_cpu' argument")
+        if request_memory is None and 'requestMemory' in kwargs:
             request_memory = kwargs['requestMemory']
+        if request_memory is None:
+            raise TypeError("Missing 'request_memory' argument")
 
         _setter("enabled", enabled)
         _setter("limit_cpu", limit_cpu)
@@ -2458,14 +2576,18 @@ class GetServiceMeshesMeshMeshConfigPilotResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             http10_enabled: bool,
-             trace_sampling: float,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             http10_enabled: Optional[bool] = None,
+             trace_sampling: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'http10Enabled' in kwargs:
+        if http10_enabled is None and 'http10Enabled' in kwargs:
             http10_enabled = kwargs['http10Enabled']
-        if 'traceSampling' in kwargs:
+        if http10_enabled is None:
+            raise TypeError("Missing 'http10_enabled' argument")
+        if trace_sampling is None and 'traceSampling' in kwargs:
             trace_sampling = kwargs['traceSampling']
+        if trace_sampling is None:
+            raise TypeError("Missing 'trace_sampling' argument")
 
         _setter("http10_enabled", http10_enabled)
         _setter("trace_sampling", trace_sampling)
@@ -2504,14 +2626,18 @@ class GetServiceMeshesMeshMeshConfigPrometheusResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             external_url: str,
-             use_external: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             external_url: Optional[str] = None,
+             use_external: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'externalUrl' in kwargs:
+        if external_url is None and 'externalUrl' in kwargs:
             external_url = kwargs['externalUrl']
-        if 'useExternal' in kwargs:
+        if external_url is None:
+            raise TypeError("Missing 'external_url' argument")
+        if use_external is None and 'useExternal' in kwargs:
             use_external = kwargs['useExternal']
+        if use_external is None:
+            raise TypeError("Missing 'use_external' argument")
 
         _setter("external_url", external_url)
         _setter("use_external", use_external)
@@ -2559,23 +2685,33 @@ class GetServiceMeshesMeshMeshConfigProxyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_domain: str,
-             limit_cpu: str,
-             limit_memory: str,
-             request_cpu: str,
-             request_memory: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cluster_domain: Optional[str] = None,
+             limit_cpu: Optional[str] = None,
+             limit_memory: Optional[str] = None,
+             request_cpu: Optional[str] = None,
+             request_memory: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterDomain' in kwargs:
+        if cluster_domain is None and 'clusterDomain' in kwargs:
             cluster_domain = kwargs['clusterDomain']
-        if 'limitCpu' in kwargs:
+        if cluster_domain is None:
+            raise TypeError("Missing 'cluster_domain' argument")
+        if limit_cpu is None and 'limitCpu' in kwargs:
             limit_cpu = kwargs['limitCpu']
-        if 'limitMemory' in kwargs:
+        if limit_cpu is None:
+            raise TypeError("Missing 'limit_cpu' argument")
+        if limit_memory is None and 'limitMemory' in kwargs:
             limit_memory = kwargs['limitMemory']
-        if 'requestCpu' in kwargs:
+        if limit_memory is None:
+            raise TypeError("Missing 'limit_memory' argument")
+        if request_cpu is None and 'requestCpu' in kwargs:
             request_cpu = kwargs['requestCpu']
-        if 'requestMemory' in kwargs:
+        if request_cpu is None:
+            raise TypeError("Missing 'request_cpu' argument")
+        if request_memory is None and 'requestMemory' in kwargs:
             request_memory = kwargs['requestMemory']
+        if request_memory is None:
+            raise TypeError("Missing 'request_memory' argument")
 
         _setter("cluster_domain", cluster_domain)
         _setter("limit_cpu", limit_cpu)
@@ -2659,32 +2795,48 @@ class GetServiceMeshesMeshMeshConfigSidecarInjectorResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_injection_policy_enabled: bool,
-             enable_namespaces_by_default: bool,
-             init_cni_configurations: Sequence['outputs.GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationResult'],
-             limit_cpu: str,
-             limit_memory: str,
-             request_cpu: str,
-             request_memory: str,
-             sidecar_injector_webhook_as_yaml: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auto_injection_policy_enabled: Optional[bool] = None,
+             enable_namespaces_by_default: Optional[bool] = None,
+             init_cni_configurations: Optional[Sequence['outputs.GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationResult']] = None,
+             limit_cpu: Optional[str] = None,
+             limit_memory: Optional[str] = None,
+             request_cpu: Optional[str] = None,
+             request_memory: Optional[str] = None,
+             sidecar_injector_webhook_as_yaml: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoInjectionPolicyEnabled' in kwargs:
+        if auto_injection_policy_enabled is None and 'autoInjectionPolicyEnabled' in kwargs:
             auto_injection_policy_enabled = kwargs['autoInjectionPolicyEnabled']
-        if 'enableNamespacesByDefault' in kwargs:
+        if auto_injection_policy_enabled is None:
+            raise TypeError("Missing 'auto_injection_policy_enabled' argument")
+        if enable_namespaces_by_default is None and 'enableNamespacesByDefault' in kwargs:
             enable_namespaces_by_default = kwargs['enableNamespacesByDefault']
-        if 'initCniConfigurations' in kwargs:
+        if enable_namespaces_by_default is None:
+            raise TypeError("Missing 'enable_namespaces_by_default' argument")
+        if init_cni_configurations is None and 'initCniConfigurations' in kwargs:
             init_cni_configurations = kwargs['initCniConfigurations']
-        if 'limitCpu' in kwargs:
+        if init_cni_configurations is None:
+            raise TypeError("Missing 'init_cni_configurations' argument")
+        if limit_cpu is None and 'limitCpu' in kwargs:
             limit_cpu = kwargs['limitCpu']
-        if 'limitMemory' in kwargs:
+        if limit_cpu is None:
+            raise TypeError("Missing 'limit_cpu' argument")
+        if limit_memory is None and 'limitMemory' in kwargs:
             limit_memory = kwargs['limitMemory']
-        if 'requestCpu' in kwargs:
+        if limit_memory is None:
+            raise TypeError("Missing 'limit_memory' argument")
+        if request_cpu is None and 'requestCpu' in kwargs:
             request_cpu = kwargs['requestCpu']
-        if 'requestMemory' in kwargs:
+        if request_cpu is None:
+            raise TypeError("Missing 'request_cpu' argument")
+        if request_memory is None and 'requestMemory' in kwargs:
             request_memory = kwargs['requestMemory']
-        if 'sidecarInjectorWebhookAsYaml' in kwargs:
+        if request_memory is None:
+            raise TypeError("Missing 'request_memory' argument")
+        if sidecar_injector_webhook_as_yaml is None and 'sidecarInjectorWebhookAsYaml' in kwargs:
             sidecar_injector_webhook_as_yaml = kwargs['sidecarInjectorWebhookAsYaml']
+        if sidecar_injector_webhook_as_yaml is None:
+            raise TypeError("Missing 'sidecar_injector_webhook_as_yaml' argument")
 
         _setter("auto_injection_policy_enabled", auto_injection_policy_enabled)
         _setter("enable_namespaces_by_default", enable_namespaces_by_default)
@@ -2777,12 +2929,16 @@ class GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationResult(di
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             exclude_namespaces: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             enabled: Optional[bool] = None,
+             exclude_namespaces: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'excludeNamespaces' in kwargs:
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if exclude_namespaces is None and 'excludeNamespaces' in kwargs:
             exclude_namespaces = kwargs['excludeNamespaces']
+        if exclude_namespaces is None:
+            raise TypeError("Missing 'exclude_namespaces' argument")
 
         _setter("enabled", enabled)
         _setter("exclude_namespaces", exclude_namespaces)
@@ -2824,17 +2980,23 @@ class GetServiceMeshesMeshNetworkResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             security_group_id: str,
-             vpc_id: str,
-             vswitche_lists: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             security_group_id: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitche_lists: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vpcId' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitcheLists' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitche_lists is None and 'vswitcheLists' in kwargs:
             vswitche_lists = kwargs['vswitcheLists']
+        if vswitche_lists is None:
+            raise TypeError("Missing 'vswitche_lists' argument")
 
         _setter("security_group_id", security_group_id)
         _setter("vpc_id", vpc_id)
@@ -2885,11 +3047,17 @@ class GetVersionsVersionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             edition: str,
-             id: str,
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             edition: Optional[str] = None,
+             id: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if edition is None:
+            raise TypeError("Missing 'edition' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
 
         _setter("edition", edition)
         _setter("id", id)

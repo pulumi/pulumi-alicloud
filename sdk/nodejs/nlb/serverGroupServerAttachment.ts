@@ -11,44 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.192.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "10.4.0.0/16",
- * });
- * const defaultServerGroup = new alicloud.nlb.ServerGroup("defaultServerGroup", {
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
- *     serverGroupName: name,
- *     serverGroupType: "Ip",
- *     vpcId: defaultNetwork.id,
- *     scheduler: "Wrr",
- *     protocol: "TCP",
- *     healthCheck: {
- *         healthCheckEnabled: false,
- *     },
- *     addressIpVersion: "Ipv4",
- * });
- * const defaultServerGroupServerAttachment = new alicloud.nlb.ServerGroupServerAttachment("defaultServerGroupServerAttachment", {
- *     serverType: "Ip",
- *     serverId: "10.0.0.0",
- *     description: name,
- *     port: 80,
- *     serverGroupId: defaultServerGroup.id,
- *     weight: 100,
- *     serverIp: "10.0.0.0",
- * });
- * ```
- *
  * ## Import
  *
  * NLB Server Group Server Attachment can be imported using the id, e.g.

@@ -43,8 +43,8 @@ class SubnetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
              availability_zone: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              enable_ipv6: Optional[pulumi.Input[bool]] = None,
@@ -53,21 +53,25 @@ class SubnetArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_name: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'vpcId' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'availabilityZone' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'enableIpv6' in kwargs:
+        if enable_ipv6 is None and 'enableIpv6' in kwargs:
             enable_ipv6 = kwargs['enableIpv6']
-        if 'ipv6CidrBlockMask' in kwargs:
+        if ipv6_cidr_block_mask is None and 'ipv6CidrBlockMask' in kwargs:
             ipv6_cidr_block_mask = kwargs['ipv6CidrBlockMask']
-        if 'vswitchName' in kwargs:
+        if vswitch_name is None and 'vswitchName' in kwargs:
             vswitch_name = kwargs['vswitchName']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("cidr_block", cidr_block)
@@ -243,25 +247,25 @@ class _SubnetState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_name: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'enableIpv6' in kwargs:
+        if enable_ipv6 is None and 'enableIpv6' in kwargs:
             enable_ipv6 = kwargs['enableIpv6']
-        if 'ipv6CidrBlock' in kwargs:
+        if ipv6_cidr_block is None and 'ipv6CidrBlock' in kwargs:
             ipv6_cidr_block = kwargs['ipv6CidrBlock']
-        if 'ipv6CidrBlockMask' in kwargs:
+        if ipv6_cidr_block_mask is None and 'ipv6CidrBlockMask' in kwargs:
             ipv6_cidr_block_mask = kwargs['ipv6CidrBlockMask']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchName' in kwargs:
+        if vswitch_name is None and 'vswitchName' in kwargs:
             vswitch_name = kwargs['vswitchName']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if availability_zone is not None:

@@ -44,17 +44,23 @@ class RecordArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host_record: pulumi.Input[str],
-             type: pulumi.Input[str],
-             value: pulumi.Input[str],
+             host_record: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              routing: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'hostRecord' in kwargs:
+        if host_record is None and 'hostRecord' in kwargs:
             host_record = kwargs['hostRecord']
+        if host_record is None:
+            raise TypeError("Missing 'host_record' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("host_record", host_record)
         _setter("type", type)
@@ -200,9 +206,9 @@ class _RecordState:
              ttl: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'hostRecord' in kwargs:
+        if host_record is None and 'hostRecord' in kwargs:
             host_record = kwargs['hostRecord']
 
         if host_record is not None:
@@ -350,19 +356,6 @@ class Record(pulumi.CustomResource):
 
         > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new Domain record
-        record = alicloud.dns.Record("record",
-            host_record="@",
-            type="A",
-            value="192.168.99.99")
-        ```
-
         ## Import
 
         RDS record can be imported using the id, e.g.
@@ -393,19 +386,6 @@ class Record(pulumi.CustomResource):
         > **DEPRECATED:**  This resource  has been deprecated from version `1.85.0`. Please use new resource alicloud_alidns_record.
 
         > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new Domain record
-        record = alicloud.dns.Record("record",
-            host_record="@",
-            type="A",
-            value="192.168.99.99")
-        ```
 
         ## Import
 

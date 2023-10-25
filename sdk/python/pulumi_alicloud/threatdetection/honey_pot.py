@@ -35,20 +35,28 @@ class HoneyPotArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             honeypot_image_id: pulumi.Input[str],
-             honeypot_image_name: pulumi.Input[str],
-             honeypot_name: pulumi.Input[str],
-             node_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             honeypot_image_id: Optional[pulumi.Input[str]] = None,
+             honeypot_image_name: Optional[pulumi.Input[str]] = None,
+             honeypot_name: Optional[pulumi.Input[str]] = None,
+             node_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'honeypotImageId' in kwargs:
+        if honeypot_image_id is None and 'honeypotImageId' in kwargs:
             honeypot_image_id = kwargs['honeypotImageId']
-        if 'honeypotImageName' in kwargs:
+        if honeypot_image_id is None:
+            raise TypeError("Missing 'honeypot_image_id' argument")
+        if honeypot_image_name is None and 'honeypotImageName' in kwargs:
             honeypot_image_name = kwargs['honeypotImageName']
-        if 'honeypotName' in kwargs:
+        if honeypot_image_name is None:
+            raise TypeError("Missing 'honeypot_image_name' argument")
+        if honeypot_name is None and 'honeypotName' in kwargs:
             honeypot_name = kwargs['honeypotName']
-        if 'nodeId' in kwargs:
+        if honeypot_name is None:
+            raise TypeError("Missing 'honeypot_name' argument")
+        if node_id is None and 'nodeId' in kwargs:
             node_id = kwargs['nodeId']
+        if node_id is None:
+            raise TypeError("Missing 'node_id' argument")
 
         _setter("honeypot_image_id", honeypot_image_id)
         _setter("honeypot_image_name", honeypot_image_name)
@@ -148,19 +156,19 @@ class _HoneyPotState:
              preset_id: Optional[pulumi.Input[str]] = None,
              states: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'honeypotId' in kwargs:
+        if honeypot_id is None and 'honeypotId' in kwargs:
             honeypot_id = kwargs['honeypotId']
-        if 'honeypotImageId' in kwargs:
+        if honeypot_image_id is None and 'honeypotImageId' in kwargs:
             honeypot_image_id = kwargs['honeypotImageId']
-        if 'honeypotImageName' in kwargs:
+        if honeypot_image_name is None and 'honeypotImageName' in kwargs:
             honeypot_image_name = kwargs['honeypotImageName']
-        if 'honeypotName' in kwargs:
+        if honeypot_name is None and 'honeypotName' in kwargs:
             honeypot_name = kwargs['honeypotName']
-        if 'nodeId' in kwargs:
+        if node_id is None and 'nodeId' in kwargs:
             node_id = kwargs['nodeId']
-        if 'presetId' in kwargs:
+        if preset_id is None and 'presetId' in kwargs:
             preset_id = kwargs['presetId']
 
         if honeypot_id is not None:
@@ -294,30 +302,6 @@ class HoneyPot(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        default_honeypot_images = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
-        default_honeypot_node = alicloud.threatdetection.HoneypotNode("defaultHoneypotNode",
-            node_name=name,
-            available_probe_num=20,
-            security_group_probe_ip_lists=["0.0.0.0/0"])
-        default_honey_pot = alicloud.threatdetection.HoneyPot("defaultHoneyPot",
-            honeypot_image_name=default_honeypot_images.images[0].honeypot_image_name,
-            honeypot_image_id=default_honeypot_images.images[0].honeypot_image_id,
-            honeypot_name=name,
-            node_id=default_honeypot_node.id)
-        ```
-
         ## Import
 
         Threat Detection Honey Pot can be imported using the id, e.g.
@@ -345,30 +329,6 @@ class HoneyPot(pulumi.CustomResource):
         For information about Threat Detection Honey Pot and how to use it, see [What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot).
 
         > **NOTE:** Available since v1.195.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        default_honeypot_images = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
-        default_honeypot_node = alicloud.threatdetection.HoneypotNode("defaultHoneypotNode",
-            node_name=name,
-            available_probe_num=20,
-            security_group_probe_ip_lists=["0.0.0.0/0"])
-        default_honey_pot = alicloud.threatdetection.HoneyPot("defaultHoneyPot",
-            honeypot_image_name=default_honeypot_images.images[0].honeypot_image_name,
-            honeypot_image_id=default_honeypot_images.images[0].honeypot_image_id,
-            honeypot_name=name,
-            node_id=default_honeypot_node.id)
-        ```
 
         ## Import
 

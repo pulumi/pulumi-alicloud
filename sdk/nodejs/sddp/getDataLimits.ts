@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.159.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.sddp.getDataLimits({});
- * export const sddpDataLimitId1 = ids.then(ids => ids.limits?.[0]?.id);
- * ```
  */
 export function getDataLimits(args?: GetDataLimitsArgs, opts?: pulumi.InvokeOptions): Promise<GetDataLimitsResult> {
     args = args || {};
@@ -75,18 +63,6 @@ export interface GetDataLimitsResult {
  * This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.159.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.sddp.getDataLimits({});
- * export const sddpDataLimitId1 = ids.then(ids => ids.limits?.[0]?.id);
- * ```
  */
 export function getDataLimitsOutput(args?: GetDataLimitsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataLimitsResult> {
     return pulumi.output(args).apply((a: any) => getDataLimits(a, opts))

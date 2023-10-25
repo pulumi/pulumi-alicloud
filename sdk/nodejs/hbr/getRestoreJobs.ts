@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Hbr Restore Jobs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.133.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultEcsBackupPlans = alicloud.hbr.getEcsBackupPlans({
- *     nameRegex: "plan-name",
- * });
- * const defaultRestoreJobs = Promise.all([defaultEcsBackupPlans, defaultEcsBackupPlans]).then(([defaultEcsBackupPlans, defaultEcsBackupPlans1]) => alicloud.hbr.getRestoreJobs({
- *     restoreType: "ECS_FILE",
- *     vaultIds: [defaultEcsBackupPlans.plans?.[0]?.vaultId],
- *     targetInstanceIds: [defaultEcsBackupPlans1.plans?.[0]?.instanceId],
- * }));
- * ```
  */
 export function getRestoreJobs(args: GetRestoreJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetRestoreJobsResult> {
 
@@ -111,24 +93,6 @@ export interface GetRestoreJobsResult {
  * This data source provides the Hbr Restore Jobs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.133.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultEcsBackupPlans = alicloud.hbr.getEcsBackupPlans({
- *     nameRegex: "plan-name",
- * });
- * const defaultRestoreJobs = Promise.all([defaultEcsBackupPlans, defaultEcsBackupPlans]).then(([defaultEcsBackupPlans, defaultEcsBackupPlans1]) => alicloud.hbr.getRestoreJobs({
- *     restoreType: "ECS_FILE",
- *     vaultIds: [defaultEcsBackupPlans.plans?.[0]?.vaultId],
- *     targetInstanceIds: [defaultEcsBackupPlans1.plans?.[0]?.instanceId],
- * }));
- * ```
  */
 export function getRestoreJobsOutput(args: GetRestoreJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRestoreJobsResult> {
     return pulumi.output(args).apply((a: any) => getRestoreJobs(a, opts))

@@ -68,9 +68,9 @@ class SecretArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secret_data: pulumi.Input[str],
-             secret_name: pulumi.Input[str],
-             version_id: pulumi.Input[str],
+             secret_data: Optional[pulumi.Input[str]] = None,
+             secret_name: Optional[pulumi.Input[str]] = None,
+             version_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dkms_instance_id: Optional[pulumi.Input[str]] = None,
              enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
@@ -83,33 +83,39 @@ class SecretArgs:
              secret_type: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'secretData' in kwargs:
+        if secret_data is None and 'secretData' in kwargs:
             secret_data = kwargs['secretData']
-        if 'secretName' in kwargs:
+        if secret_data is None:
+            raise TypeError("Missing 'secret_data' argument")
+        if secret_name is None and 'secretName' in kwargs:
             secret_name = kwargs['secretName']
-        if 'versionId' in kwargs:
+        if secret_name is None:
+            raise TypeError("Missing 'secret_name' argument")
+        if version_id is None and 'versionId' in kwargs:
             version_id = kwargs['versionId']
-        if 'dkmsInstanceId' in kwargs:
+        if version_id is None:
+            raise TypeError("Missing 'version_id' argument")
+        if dkms_instance_id is None and 'dkmsInstanceId' in kwargs:
             dkms_instance_id = kwargs['dkmsInstanceId']
-        if 'enableAutomaticRotation' in kwargs:
+        if enable_automatic_rotation is None and 'enableAutomaticRotation' in kwargs:
             enable_automatic_rotation = kwargs['enableAutomaticRotation']
-        if 'encryptionKeyId' in kwargs:
+        if encryption_key_id is None and 'encryptionKeyId' in kwargs:
             encryption_key_id = kwargs['encryptionKeyId']
-        if 'extendedConfig' in kwargs:
+        if extended_config is None and 'extendedConfig' in kwargs:
             extended_config = kwargs['extendedConfig']
-        if 'forceDeleteWithoutRecovery' in kwargs:
+        if force_delete_without_recovery is None and 'forceDeleteWithoutRecovery' in kwargs:
             force_delete_without_recovery = kwargs['forceDeleteWithoutRecovery']
-        if 'recoveryWindowInDays' in kwargs:
+        if recovery_window_in_days is None and 'recoveryWindowInDays' in kwargs:
             recovery_window_in_days = kwargs['recoveryWindowInDays']
-        if 'rotationInterval' in kwargs:
+        if rotation_interval is None and 'rotationInterval' in kwargs:
             rotation_interval = kwargs['rotationInterval']
-        if 'secretDataType' in kwargs:
+        if secret_data_type is None and 'secretDataType' in kwargs:
             secret_data_type = kwargs['secretDataType']
-        if 'secretType' in kwargs:
+        if secret_type is None and 'secretType' in kwargs:
             secret_type = kwargs['secretType']
-        if 'versionStages' in kwargs:
+        if version_stages is None and 'versionStages' in kwargs:
             version_stages = kwargs['versionStages']
 
         _setter("secret_data", secret_data)
@@ -401,35 +407,35 @@ class _SecretState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
              version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dkmsInstanceId' in kwargs:
+        if dkms_instance_id is None and 'dkmsInstanceId' in kwargs:
             dkms_instance_id = kwargs['dkmsInstanceId']
-        if 'enableAutomaticRotation' in kwargs:
+        if enable_automatic_rotation is None and 'enableAutomaticRotation' in kwargs:
             enable_automatic_rotation = kwargs['enableAutomaticRotation']
-        if 'encryptionKeyId' in kwargs:
+        if encryption_key_id is None and 'encryptionKeyId' in kwargs:
             encryption_key_id = kwargs['encryptionKeyId']
-        if 'extendedConfig' in kwargs:
+        if extended_config is None and 'extendedConfig' in kwargs:
             extended_config = kwargs['extendedConfig']
-        if 'forceDeleteWithoutRecovery' in kwargs:
+        if force_delete_without_recovery is None and 'forceDeleteWithoutRecovery' in kwargs:
             force_delete_without_recovery = kwargs['forceDeleteWithoutRecovery']
-        if 'plannedDeleteTime' in kwargs:
+        if planned_delete_time is None and 'plannedDeleteTime' in kwargs:
             planned_delete_time = kwargs['plannedDeleteTime']
-        if 'recoveryWindowInDays' in kwargs:
+        if recovery_window_in_days is None and 'recoveryWindowInDays' in kwargs:
             recovery_window_in_days = kwargs['recoveryWindowInDays']
-        if 'rotationInterval' in kwargs:
+        if rotation_interval is None and 'rotationInterval' in kwargs:
             rotation_interval = kwargs['rotationInterval']
-        if 'secretData' in kwargs:
+        if secret_data is None and 'secretData' in kwargs:
             secret_data = kwargs['secretData']
-        if 'secretDataType' in kwargs:
+        if secret_data_type is None and 'secretDataType' in kwargs:
             secret_data_type = kwargs['secretDataType']
-        if 'secretName' in kwargs:
+        if secret_name is None and 'secretName' in kwargs:
             secret_name = kwargs['secretName']
-        if 'secretType' in kwargs:
+        if secret_type is None and 'secretType' in kwargs:
             secret_type = kwargs['secretType']
-        if 'versionId' in kwargs:
+        if version_id is None and 'versionId' in kwargs:
             version_id = kwargs['versionId']
-        if 'versionStages' in kwargs:
+        if version_stages is None and 'versionStages' in kwargs:
             version_stages = kwargs['versionStages']
 
         if arn is not None:
@@ -698,22 +704,6 @@ class Secret(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.76.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.kms.Secret("default",
-            description="from terraform",
-            force_delete_without_recovery=True,
-            secret_data="Secret data.",
-            secret_name="secret-foo",
-            version_id="000000000001")
-        ```
-
         ## Import
 
         KMS secret can be imported using the id, e.g.
@@ -750,22 +740,6 @@ class Secret(pulumi.CustomResource):
         This resouce used to create a secret and store its initial version.
 
         > **NOTE:** Available in 1.76.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.kms.Secret("default",
-            description="from terraform",
-            force_delete_without_recovery=True,
-            secret_data="Secret data.",
-            secret_name="secret-foo",
-            version_id="000000000001")
-        ```
 
         ## Import
 

@@ -16,42 +16,6 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// &gt; **NOTE:** Available since v1.0.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new RAM Role.
-    ///     var role = new AliCloud.Ram.Role("role", new()
-    ///     {
-    ///         Description = "this is a role test.",
-    ///         Document = @"  {
-    ///     ""Statement"": [
-    ///       {
-    ///         ""Action"": ""sts:AssumeRole"",
-    ///         ""Effect"": ""Allow"",
-    ///         ""Principal"": {
-    ///           ""Service"": [
-    ///             ""apigateway.aliyuncs.com"", 
-    ///             ""ecs.aliyuncs.com""
-    ///           ]
-    ///         }
-    ///       }
-    ///     ],
-    ///     ""Version"": ""1""
-    ///   }
-    ///   
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// RAM role can be imported using the id or name, e.g.

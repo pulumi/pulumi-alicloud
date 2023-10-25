@@ -44,26 +44,38 @@ class DnatEntryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             external_port: pulumi.Input[str],
-             internal_ip: pulumi.Input[str],
-             internal_port: pulumi.Input[str],
-             ip_protocol: pulumi.Input[str],
-             sag_id: pulumi.Input[str],
-             type: pulumi.Input[str],
+             external_port: Optional[pulumi.Input[str]] = None,
+             internal_ip: Optional[pulumi.Input[str]] = None,
+             internal_port: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             sag_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              external_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'externalPort' in kwargs:
+        if external_port is None and 'externalPort' in kwargs:
             external_port = kwargs['externalPort']
-        if 'internalIp' in kwargs:
+        if external_port is None:
+            raise TypeError("Missing 'external_port' argument")
+        if internal_ip is None and 'internalIp' in kwargs:
             internal_ip = kwargs['internalIp']
-        if 'internalPort' in kwargs:
+        if internal_ip is None:
+            raise TypeError("Missing 'internal_ip' argument")
+        if internal_port is None and 'internalPort' in kwargs:
             internal_port = kwargs['internalPort']
-        if 'ipProtocol' in kwargs:
+        if internal_port is None:
+            raise TypeError("Missing 'internal_port' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
             ip_protocol = kwargs['ipProtocol']
-        if 'sagId' in kwargs:
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if sag_id is None and 'sagId' in kwargs:
             sag_id = kwargs['sagId']
-        if 'externalIp' in kwargs:
+        if sag_id is None:
+            raise TypeError("Missing 'sag_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if external_ip is None and 'externalIp' in kwargs:
             external_ip = kwargs['externalIp']
 
         _setter("external_port", external_port)
@@ -200,19 +212,19 @@ class _DnatEntryState:
              ip_protocol: Optional[pulumi.Input[str]] = None,
              sag_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'externalIp' in kwargs:
+        if external_ip is None and 'externalIp' in kwargs:
             external_ip = kwargs['externalIp']
-        if 'externalPort' in kwargs:
+        if external_port is None and 'externalPort' in kwargs:
             external_port = kwargs['externalPort']
-        if 'internalIp' in kwargs:
+        if internal_ip is None and 'internalIp' in kwargs:
             internal_ip = kwargs['internalIp']
-        if 'internalPort' in kwargs:
+        if internal_port is None and 'internalPort' in kwargs:
             internal_port = kwargs['internalPort']
-        if 'ipProtocol' in kwargs:
+        if ip_protocol is None and 'ipProtocol' in kwargs:
             ip_protocol = kwargs['ipProtocol']
-        if 'sagId' in kwargs:
+        if sag_id is None and 'sagId' in kwargs:
             sag_id = kwargs['sagId']
 
         if external_ip is not None:
@@ -337,28 +349,6 @@ class DnatEntry(pulumi.CustomResource):
 
         > **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        sag_id = config.get("sagId")
-        if sag_id is None:
-            sag_id = "sag-9bifkfaz***"
-        default = alicloud.rocketmq.DnatEntry("default",
-            sag_id=sag_id,
-            type="Intranet",
-            ip_protocol="any",
-            external_ip="172.32.0.2",
-            external_port="any",
-            internal_ip="172.16.0.4",
-            internal_port="any")
-        ```
-
         ## Import
 
         The Sag DnatEntry can be imported using the id, e.g.
@@ -391,28 +381,6 @@ class DnatEntry(pulumi.CustomResource):
         > **NOTE:** Available since v1.63.0.
 
         > **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        sag_id = config.get("sagId")
-        if sag_id is None:
-            sag_id = "sag-9bifkfaz***"
-        default = alicloud.rocketmq.DnatEntry("default",
-            sag_id=sag_id,
-            type="Intranet",
-            ip_protocol="any",
-            external_ip="172.32.0.2",
-            external_port="any",
-            internal_ip="172.16.0.4",
-            internal_port="any")
-        ```
 
         ## Import
 

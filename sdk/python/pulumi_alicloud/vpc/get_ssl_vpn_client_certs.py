@@ -119,18 +119,6 @@ def get_ssl_vpn_client_certs(ids: Optional[Sequence[str]] = None,
     """
     The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    foo = alicloud.vpc.get_ssl_vpn_client_certs(ids=["fake-cert-id"],
-        name_regex="^foo",
-        output_file="/tmp/clientcert",
-        ssl_vpn_server_id="fake-server-id")
-    ```
-
 
     :param Sequence[str] ids: IDs of the SSL-VPN client certificates.
     :param str name_regex: A regex string of SSL-VPN client certificate name.
@@ -163,18 +151,6 @@ def get_ssl_vpn_client_certs_output(ids: Optional[pulumi.Input[Optional[Sequence
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSslVpnClientCertsResult]:
     """
     The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    foo = alicloud.vpc.get_ssl_vpn_client_certs(ids=["fake-cert-id"],
-        name_regex="^foo",
-        output_file="/tmp/clientcert",
-        ssl_vpn_server_id="fake-server-id")
-    ```
 
 
     :param Sequence[str] ids: IDs of the SSL-VPN client certificates.

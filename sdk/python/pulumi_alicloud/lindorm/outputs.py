@@ -126,106 +126,174 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_renew: str,
-             cold_storage: int,
-             create_time: str,
-             deletion_proection: bool,
-             disk_category: str,
-             disk_usage: str,
-             disk_warning_threshold: str,
-             engine_type: int,
-             expired_time: str,
-             file_engine_node_count: int,
-             file_engine_specification: str,
-             id: str,
-             instance_id: str,
-             instance_name: str,
-             instance_storage: str,
-             ip_white_lists: Sequence[str],
-             lts_node_count: int,
-             lts_node_specification: str,
-             network_type: str,
-             payment_type: str,
-             phoenix_node_count: int,
-             phoenix_node_specification: str,
-             resource_owner_id: str,
-             search_engine_node_count: int,
-             search_engine_specification: str,
-             service_type: str,
-             status: str,
-             table_engine_node_count: int,
-             table_engine_specification: str,
-             time_series_engine_node_count: int,
-             time_serires_engine_specification: str,
-             vpc_id: str,
-             vswitch_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auto_renew: Optional[str] = None,
+             cold_storage: Optional[int] = None,
+             create_time: Optional[str] = None,
+             deletion_proection: Optional[bool] = None,
+             disk_category: Optional[str] = None,
+             disk_usage: Optional[str] = None,
+             disk_warning_threshold: Optional[str] = None,
+             engine_type: Optional[int] = None,
+             expired_time: Optional[str] = None,
+             file_engine_node_count: Optional[int] = None,
+             file_engine_specification: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             instance_storage: Optional[str] = None,
+             ip_white_lists: Optional[Sequence[str]] = None,
+             lts_node_count: Optional[int] = None,
+             lts_node_specification: Optional[str] = None,
+             network_type: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             phoenix_node_count: Optional[int] = None,
+             phoenix_node_specification: Optional[str] = None,
+             resource_owner_id: Optional[str] = None,
+             search_engine_node_count: Optional[int] = None,
+             search_engine_specification: Optional[str] = None,
+             service_type: Optional[str] = None,
+             status: Optional[str] = None,
+             table_engine_node_count: Optional[int] = None,
+             table_engine_specification: Optional[str] = None,
+             time_series_engine_node_count: Optional[int] = None,
+             time_serires_engine_specification: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'coldStorage' in kwargs:
+        if auto_renew is None:
+            raise TypeError("Missing 'auto_renew' argument")
+        if cold_storage is None and 'coldStorage' in kwargs:
             cold_storage = kwargs['coldStorage']
-        if 'createTime' in kwargs:
+        if cold_storage is None:
+            raise TypeError("Missing 'cold_storage' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'deletionProection' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if deletion_proection is None and 'deletionProection' in kwargs:
             deletion_proection = kwargs['deletionProection']
-        if 'diskCategory' in kwargs:
+        if deletion_proection is None:
+            raise TypeError("Missing 'deletion_proection' argument")
+        if disk_category is None and 'diskCategory' in kwargs:
             disk_category = kwargs['diskCategory']
-        if 'diskUsage' in kwargs:
+        if disk_category is None:
+            raise TypeError("Missing 'disk_category' argument")
+        if disk_usage is None and 'diskUsage' in kwargs:
             disk_usage = kwargs['diskUsage']
-        if 'diskWarningThreshold' in kwargs:
+        if disk_usage is None:
+            raise TypeError("Missing 'disk_usage' argument")
+        if disk_warning_threshold is None and 'diskWarningThreshold' in kwargs:
             disk_warning_threshold = kwargs['diskWarningThreshold']
-        if 'engineType' in kwargs:
+        if disk_warning_threshold is None:
+            raise TypeError("Missing 'disk_warning_threshold' argument")
+        if engine_type is None and 'engineType' in kwargs:
             engine_type = kwargs['engineType']
-        if 'expiredTime' in kwargs:
+        if engine_type is None:
+            raise TypeError("Missing 'engine_type' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'fileEngineNodeCount' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if file_engine_node_count is None and 'fileEngineNodeCount' in kwargs:
             file_engine_node_count = kwargs['fileEngineNodeCount']
-        if 'fileEngineSpecification' in kwargs:
+        if file_engine_node_count is None:
+            raise TypeError("Missing 'file_engine_node_count' argument")
+        if file_engine_specification is None and 'fileEngineSpecification' in kwargs:
             file_engine_specification = kwargs['fileEngineSpecification']
-        if 'instanceId' in kwargs:
+        if file_engine_specification is None:
+            raise TypeError("Missing 'file_engine_specification' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceStorage' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if instance_storage is None and 'instanceStorage' in kwargs:
             instance_storage = kwargs['instanceStorage']
-        if 'ipWhiteLists' in kwargs:
+        if instance_storage is None:
+            raise TypeError("Missing 'instance_storage' argument")
+        if ip_white_lists is None and 'ipWhiteLists' in kwargs:
             ip_white_lists = kwargs['ipWhiteLists']
-        if 'ltsNodeCount' in kwargs:
+        if ip_white_lists is None:
+            raise TypeError("Missing 'ip_white_lists' argument")
+        if lts_node_count is None and 'ltsNodeCount' in kwargs:
             lts_node_count = kwargs['ltsNodeCount']
-        if 'ltsNodeSpecification' in kwargs:
+        if lts_node_count is None:
+            raise TypeError("Missing 'lts_node_count' argument")
+        if lts_node_specification is None and 'ltsNodeSpecification' in kwargs:
             lts_node_specification = kwargs['ltsNodeSpecification']
-        if 'networkType' in kwargs:
+        if lts_node_specification is None:
+            raise TypeError("Missing 'lts_node_specification' argument")
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'paymentType' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'phoenixNodeCount' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if phoenix_node_count is None and 'phoenixNodeCount' in kwargs:
             phoenix_node_count = kwargs['phoenixNodeCount']
-        if 'phoenixNodeSpecification' in kwargs:
+        if phoenix_node_count is None:
+            raise TypeError("Missing 'phoenix_node_count' argument")
+        if phoenix_node_specification is None and 'phoenixNodeSpecification' in kwargs:
             phoenix_node_specification = kwargs['phoenixNodeSpecification']
-        if 'resourceOwnerId' in kwargs:
+        if phoenix_node_specification is None:
+            raise TypeError("Missing 'phoenix_node_specification' argument")
+        if resource_owner_id is None and 'resourceOwnerId' in kwargs:
             resource_owner_id = kwargs['resourceOwnerId']
-        if 'searchEngineNodeCount' in kwargs:
+        if resource_owner_id is None:
+            raise TypeError("Missing 'resource_owner_id' argument")
+        if search_engine_node_count is None and 'searchEngineNodeCount' in kwargs:
             search_engine_node_count = kwargs['searchEngineNodeCount']
-        if 'searchEngineSpecification' in kwargs:
+        if search_engine_node_count is None:
+            raise TypeError("Missing 'search_engine_node_count' argument")
+        if search_engine_specification is None and 'searchEngineSpecification' in kwargs:
             search_engine_specification = kwargs['searchEngineSpecification']
-        if 'serviceType' in kwargs:
+        if search_engine_specification is None:
+            raise TypeError("Missing 'search_engine_specification' argument")
+        if service_type is None and 'serviceType' in kwargs:
             service_type = kwargs['serviceType']
-        if 'tableEngineNodeCount' in kwargs:
+        if service_type is None:
+            raise TypeError("Missing 'service_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if table_engine_node_count is None and 'tableEngineNodeCount' in kwargs:
             table_engine_node_count = kwargs['tableEngineNodeCount']
-        if 'tableEngineSpecification' in kwargs:
+        if table_engine_node_count is None:
+            raise TypeError("Missing 'table_engine_node_count' argument")
+        if table_engine_specification is None and 'tableEngineSpecification' in kwargs:
             table_engine_specification = kwargs['tableEngineSpecification']
-        if 'timeSeriesEngineNodeCount' in kwargs:
+        if table_engine_specification is None:
+            raise TypeError("Missing 'table_engine_specification' argument")
+        if time_series_engine_node_count is None and 'timeSeriesEngineNodeCount' in kwargs:
             time_series_engine_node_count = kwargs['timeSeriesEngineNodeCount']
-        if 'timeSeriresEngineSpecification' in kwargs:
+        if time_series_engine_node_count is None:
+            raise TypeError("Missing 'time_series_engine_node_count' argument")
+        if time_serires_engine_specification is None and 'timeSeriresEngineSpecification' in kwargs:
             time_serires_engine_specification = kwargs['timeSeriresEngineSpecification']
-        if 'vpcId' in kwargs:
+        if time_serires_engine_specification is None:
+            raise TypeError("Missing 'time_serires_engine_specification' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("auto_renew", auto_renew)
         _setter("cold_storage", cold_storage)

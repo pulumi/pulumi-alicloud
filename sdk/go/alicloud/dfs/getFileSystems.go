@@ -15,44 +15,6 @@ import (
 // This data source provides the Dfs File Systems of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.140.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := dfs.GetFileSystems(ctx, &dfs.GetFileSystemsArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dfsFileSystemId1", ids.Systems[0].Id)
-//			nameRegex, err := dfs.GetFileSystems(ctx, &dfs.GetFileSystemsArgs{
-//				NameRegex: pulumi.StringRef("^my-FileSystem"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dfsFileSystemId2", nameRegex.Systems[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFileSystems(ctx *pulumi.Context, args *GetFileSystemsArgs, opts ...pulumi.InvokeOption) (*GetFileSystemsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFileSystemsResult

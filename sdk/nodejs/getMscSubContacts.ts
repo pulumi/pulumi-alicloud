@@ -10,22 +10,6 @@ import * as utilities from "./utilities";
  * This data source provides the Message Center Contacts of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.getMscSubContacts({});
- * export const mscSubContactId1 = ids.then(ids => ids.contacts?.[0]?.id);
- * const nameRegex = alicloud.getMscSubContacts({
- *     nameRegex: "^my-Contact",
- * });
- * export const mscSubContactId2 = nameRegex.then(nameRegex => nameRegex.contacts?.[0]?.id);
- * ```
  */
 export function getMscSubContacts(args?: GetMscSubContactsArgs, opts?: pulumi.InvokeOptions): Promise<GetMscSubContactsResult> {
     args = args || {};
@@ -74,22 +58,6 @@ export interface GetMscSubContactsResult {
  * This data source provides the Message Center Contacts of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.getMscSubContacts({});
- * export const mscSubContactId1 = ids.then(ids => ids.contacts?.[0]?.id);
- * const nameRegex = alicloud.getMscSubContacts({
- *     nameRegex: "^my-Contact",
- * });
- * export const mscSubContactId2 = nameRegex.then(nameRegex => nameRegex.contacts?.[0]?.id);
- * ```
  */
 export function getMscSubContactsOutput(args?: GetMscSubContactsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubContactsResult> {
     return pulumi.output(args).apply((a: any) => getMscSubContacts(a, opts))

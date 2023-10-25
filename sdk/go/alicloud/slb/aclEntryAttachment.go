@@ -19,40 +19,6 @@ import (
 //
 // For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/doc-detail/70023.html).
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			attachmentAcl, err := slb.NewAcl(ctx, "attachmentAcl", &slb.AclArgs{
-//				IpVersion: pulumi.String("ipv4"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = slb.NewAclEntryAttachment(ctx, "attachmentAclEntryAttachment", &slb.AclEntryAttachmentArgs{
-//				AclId:   attachmentAcl.ID(),
-//				Entry:   pulumi.String("168.10.10.0/24"),
-//				Comment: pulumi.String("second"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Acl entry attachment can be imported using the id, e.g.

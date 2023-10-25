@@ -19,50 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.195.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := threatdetection.NewHoneypotProbe(ctx, "default", &threatdetection.HoneypotProbeArgs{
-//				Arp:           pulumi.Bool(true),
-//				ControlNodeId: pulumi.String("a44e1ab3-6945-444c-889d-5bacee7056e8"),
-//				DisplayName:   pulumi.String("apispec"),
-//				HoneypotBindLists: threatdetection.HoneypotProbeHoneypotBindListArray{
-//					&threatdetection.HoneypotProbeHoneypotBindListArgs{
-//						BindPortLists: threatdetection.HoneypotProbeHoneypotBindListBindPortListArray{
-//							&threatdetection.HoneypotProbeHoneypotBindListBindPortListArgs{
-//								EndPort:   pulumi.Int(80),
-//								StartPort: pulumi.Int(80),
-//							},
-//						},
-//						HoneypotId: pulumi.String("ede59ccdb1b7a2e21735d4593a6eb5ed31883af320c5ab63ab33818e94307be9"),
-//					},
-//				},
-//				Ping:      pulumi.Bool(true),
-//				ProbeType: pulumi.String("host_probe"),
-//				Uuid:      pulumi.String("032b618f-b220-4a0d-bd37-fbdc6ef58b6a"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Threat Detection Honeypot Probe can be imported using the id, e.g.

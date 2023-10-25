@@ -10,29 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.138.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.servicemesh.getServiceMeshes({
- *     ids: ["example_id"],
- * });
- * export const serviceMeshServiceMeshId1 = ids.then(ids => ids.meshes?.[0]?.id);
- * const nameRegex = alicloud.servicemesh.getServiceMeshes({
- *     nameRegex: "^my-ServiceMesh",
- * });
- * export const serviceMeshServiceMeshId2 = nameRegex.then(nameRegex => nameRegex.meshes?.[0]?.id);
- * const status = alicloud.servicemesh.getServiceMeshes({
- *     ids: ["example_id"],
- *     status: "running",
- * });
- * export const serviceMeshServiceMeshId3 = status.then(status => status.meshes?.[0]?.id);
- * ```
  */
 export function getServiceMeshes(args?: GetServiceMeshesArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceMeshesResult> {
     args = args || {};
@@ -99,29 +76,6 @@ export interface GetServiceMeshesResult {
  * This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.138.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.servicemesh.getServiceMeshes({
- *     ids: ["example_id"],
- * });
- * export const serviceMeshServiceMeshId1 = ids.then(ids => ids.meshes?.[0]?.id);
- * const nameRegex = alicloud.servicemesh.getServiceMeshes({
- *     nameRegex: "^my-ServiceMesh",
- * });
- * export const serviceMeshServiceMeshId2 = nameRegex.then(nameRegex => nameRegex.meshes?.[0]?.id);
- * const status = alicloud.servicemesh.getServiceMeshes({
- *     ids: ["example_id"],
- *     status: "running",
- * });
- * export const serviceMeshServiceMeshId3 = status.then(status => status.meshes?.[0]?.id);
- * ```
  */
 export function getServiceMeshesOutput(args?: GetServiceMeshesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceMeshesResult> {
     return pulumi.output(args).apply((a: any) => getServiceMeshes(a, opts))

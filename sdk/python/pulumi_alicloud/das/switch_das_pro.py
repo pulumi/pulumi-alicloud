@@ -32,16 +32,18 @@ class SwitchDasProArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
              sql_retention: Optional[pulumi.Input[int]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'sqlRetention' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if sql_retention is None and 'sqlRetention' in kwargs:
             sql_retention = kwargs['sqlRetention']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
 
         _setter("instance_id", instance_id)
@@ -115,13 +117,13 @@ class _SwitchDasProState:
              sql_retention: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[bool]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'sqlRetention' in kwargs:
+        if sql_retention is None and 'sqlRetention' in kwargs:
             sql_retention = kwargs['sqlRetention']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
 
         if instance_id is not None:
@@ -198,50 +200,6 @@ class SwitchDasPro(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.193.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        default_account = alicloud.get_account()
-        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
-            db_version="8.0",
-            pay_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_node_classes.classes[0].zone_id,
-            vswitch_name=name)
-        default_cluster = alicloud.polardb.Cluster("defaultCluster",
-            db_type="MySQL",
-            db_version="8.0",
-            db_node_class="polar.mysql.x4.large",
-            pay_type="PostPaid",
-            vswitch_id=default_switch.id,
-            description=name,
-            db_cluster_ip_arrays=[alicloud.polardb.ClusterDbClusterIpArrayArgs(
-                db_cluster_ip_array_name="default",
-                security_ips=[
-                    "1.2.3.4",
-                    "1.2.3.5",
-                ],
-            )])
-        default_switch_das_pro = alicloud.das.SwitchDasPro("defaultSwitchDasPro",
-            instance_id=default_cluster.id,
-            sql_retention=30,
-            user_id=default_account.id)
-        ```
-
         ## Import
 
         DAS Switch Das Pro can be imported using the id, e.g.
@@ -268,50 +226,6 @@ class SwitchDasPro(pulumi.CustomResource):
         For information about DAS Switch Das Pro and how to use it, see [What is Switch Das Pro](https://www.alibabacloud.com/help/en/database-autonomy-service/latest/enabledaspro).
 
         > **NOTE:** Available since v1.193.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        default_account = alicloud.get_account()
-        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
-            db_version="8.0",
-            pay_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_node_classes.classes[0].zone_id,
-            vswitch_name=name)
-        default_cluster = alicloud.polardb.Cluster("defaultCluster",
-            db_type="MySQL",
-            db_version="8.0",
-            db_node_class="polar.mysql.x4.large",
-            pay_type="PostPaid",
-            vswitch_id=default_switch.id,
-            description=name,
-            db_cluster_ip_arrays=[alicloud.polardb.ClusterDbClusterIpArrayArgs(
-                db_cluster_ip_array_name="default",
-                security_ips=[
-                    "1.2.3.4",
-                    "1.2.3.5",
-                ],
-            )])
-        default_switch_das_pro = alicloud.das.SwitchDasPro("defaultSwitchDasPro",
-            instance_id=default_cluster.id,
-            sql_retention=30,
-            user_id=default_account.id)
-        ```
 
         ## Import
 

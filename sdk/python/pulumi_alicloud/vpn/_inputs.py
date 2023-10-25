@@ -49,13 +49,13 @@ class ConnectionBgpConfigArgs:
              local_asn: Optional[pulumi.Input[str]] = None,
              local_bgp_ip: Optional[pulumi.Input[str]] = None,
              tunnel_cidr: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'localAsn' in kwargs:
+        if local_asn is None and 'localAsn' in kwargs:
             local_asn = kwargs['localAsn']
-        if 'localBgpIp' in kwargs:
+        if local_bgp_ip is None and 'localBgpIp' in kwargs:
             local_bgp_ip = kwargs['localBgpIp']
-        if 'tunnelCidr' in kwargs:
+        if tunnel_cidr is None and 'tunnelCidr' in kwargs:
             tunnel_cidr = kwargs['tunnelCidr']
 
         if enable is not None:
@@ -147,7 +147,7 @@ class ConnectionHealthCheckConfigArgs:
              interval: Optional[pulumi.Input[int]] = None,
              retry: Optional[pulumi.Input[int]] = None,
              sip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if dip is not None:
@@ -269,23 +269,23 @@ class ConnectionIkeConfigArgs:
              ike_remote_id: Optional[pulumi.Input[str]] = None,
              ike_version: Optional[pulumi.Input[str]] = None,
              psk: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ikeAuthAlg' in kwargs:
+        if ike_auth_alg is None and 'ikeAuthAlg' in kwargs:
             ike_auth_alg = kwargs['ikeAuthAlg']
-        if 'ikeEncAlg' in kwargs:
+        if ike_enc_alg is None and 'ikeEncAlg' in kwargs:
             ike_enc_alg = kwargs['ikeEncAlg']
-        if 'ikeLifetime' in kwargs:
+        if ike_lifetime is None and 'ikeLifetime' in kwargs:
             ike_lifetime = kwargs['ikeLifetime']
-        if 'ikeLocalId' in kwargs:
+        if ike_local_id is None and 'ikeLocalId' in kwargs:
             ike_local_id = kwargs['ikeLocalId']
-        if 'ikeMode' in kwargs:
+        if ike_mode is None and 'ikeMode' in kwargs:
             ike_mode = kwargs['ikeMode']
-        if 'ikePfs' in kwargs:
+        if ike_pfs is None and 'ikePfs' in kwargs:
             ike_pfs = kwargs['ikePfs']
-        if 'ikeRemoteId' in kwargs:
+        if ike_remote_id is None and 'ikeRemoteId' in kwargs:
             ike_remote_id = kwargs['ikeRemoteId']
-        if 'ikeVersion' in kwargs:
+        if ike_version is None and 'ikeVersion' in kwargs:
             ike_version = kwargs['ikeVersion']
 
         if ike_auth_alg is not None:
@@ -443,15 +443,15 @@ class ConnectionIpsecConfigArgs:
              ipsec_enc_alg: Optional[pulumi.Input[str]] = None,
              ipsec_lifetime: Optional[pulumi.Input[int]] = None,
              ipsec_pfs: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipsecAuthAlg' in kwargs:
+        if ipsec_auth_alg is None and 'ipsecAuthAlg' in kwargs:
             ipsec_auth_alg = kwargs['ipsecAuthAlg']
-        if 'ipsecEncAlg' in kwargs:
+        if ipsec_enc_alg is None and 'ipsecEncAlg' in kwargs:
             ipsec_enc_alg = kwargs['ipsecEncAlg']
-        if 'ipsecLifetime' in kwargs:
+        if ipsec_lifetime is None and 'ipsecLifetime' in kwargs:
             ipsec_lifetime = kwargs['ipsecLifetime']
-        if 'ipsecPfs' in kwargs:
+        if ipsec_pfs is None and 'ipsecPfs' in kwargs:
             ipsec_pfs = kwargs['ipsecPfs']
 
         if ipsec_auth_alg is not None:
@@ -539,13 +539,13 @@ class GatewayVpnAttachmentBgpConfigArgs:
              local_asn: Optional[pulumi.Input[int]] = None,
              local_bgp_ip: Optional[pulumi.Input[str]] = None,
              tunnel_cidr: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'localAsn' in kwargs:
+        if local_asn is None and 'localAsn' in kwargs:
             local_asn = kwargs['localAsn']
-        if 'localBgpIp' in kwargs:
+        if local_bgp_ip is None and 'localBgpIp' in kwargs:
             local_bgp_ip = kwargs['localBgpIp']
-        if 'tunnelCidr' in kwargs:
+        if tunnel_cidr is None and 'tunnelCidr' in kwargs:
             tunnel_cidr = kwargs['tunnelCidr']
 
         if enable is not None:
@@ -641,7 +641,7 @@ class GatewayVpnAttachmentHealthCheckConfigArgs:
              policy: Optional[pulumi.Input[str]] = None,
              retry: Optional[pulumi.Input[int]] = None,
              sip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if dip is not None:
@@ -777,23 +777,23 @@ class GatewayVpnAttachmentIkeConfigArgs:
              local_id: Optional[pulumi.Input[str]] = None,
              psk: Optional[pulumi.Input[str]] = None,
              remote_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ikeAuthAlg' in kwargs:
+        if ike_auth_alg is None and 'ikeAuthAlg' in kwargs:
             ike_auth_alg = kwargs['ikeAuthAlg']
-        if 'ikeEncAlg' in kwargs:
+        if ike_enc_alg is None and 'ikeEncAlg' in kwargs:
             ike_enc_alg = kwargs['ikeEncAlg']
-        if 'ikeLifetime' in kwargs:
+        if ike_lifetime is None and 'ikeLifetime' in kwargs:
             ike_lifetime = kwargs['ikeLifetime']
-        if 'ikeMode' in kwargs:
+        if ike_mode is None and 'ikeMode' in kwargs:
             ike_mode = kwargs['ikeMode']
-        if 'ikePfs' in kwargs:
+        if ike_pfs is None and 'ikePfs' in kwargs:
             ike_pfs = kwargs['ikePfs']
-        if 'ikeVersion' in kwargs:
+        if ike_version is None and 'ikeVersion' in kwargs:
             ike_version = kwargs['ikeVersion']
-        if 'localId' in kwargs:
+        if local_id is None and 'localId' in kwargs:
             local_id = kwargs['localId']
-        if 'remoteId' in kwargs:
+        if remote_id is None and 'remoteId' in kwargs:
             remote_id = kwargs['remoteId']
 
         if ike_auth_alg is not None:
@@ -951,15 +951,15 @@ class GatewayVpnAttachmentIpsecConfigArgs:
              ipsec_enc_alg: Optional[pulumi.Input[str]] = None,
              ipsec_lifetime: Optional[pulumi.Input[int]] = None,
              ipsec_pfs: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipsecAuthAlg' in kwargs:
+        if ipsec_auth_alg is None and 'ipsecAuthAlg' in kwargs:
             ipsec_auth_alg = kwargs['ipsecAuthAlg']
-        if 'ipsecEncAlg' in kwargs:
+        if ipsec_enc_alg is None and 'ipsecEncAlg' in kwargs:
             ipsec_enc_alg = kwargs['ipsecEncAlg']
-        if 'ipsecLifetime' in kwargs:
+        if ipsec_lifetime is None and 'ipsecLifetime' in kwargs:
             ipsec_lifetime = kwargs['ipsecLifetime']
-        if 'ipsecPfs' in kwargs:
+        if ipsec_pfs is None and 'ipsecPfs' in kwargs:
             ipsec_pfs = kwargs['ipsecPfs']
 
         if ipsec_auth_alg is not None:
@@ -1063,23 +1063,23 @@ class IpsecServerIkeConfigArgs:
              ike_version: Optional[pulumi.Input[str]] = None,
              local_id: Optional[pulumi.Input[str]] = None,
              remote_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ikeAuthAlg' in kwargs:
+        if ike_auth_alg is None and 'ikeAuthAlg' in kwargs:
             ike_auth_alg = kwargs['ikeAuthAlg']
-        if 'ikeEncAlg' in kwargs:
+        if ike_enc_alg is None and 'ikeEncAlg' in kwargs:
             ike_enc_alg = kwargs['ikeEncAlg']
-        if 'ikeLifetime' in kwargs:
+        if ike_lifetime is None and 'ikeLifetime' in kwargs:
             ike_lifetime = kwargs['ikeLifetime']
-        if 'ikeMode' in kwargs:
+        if ike_mode is None and 'ikeMode' in kwargs:
             ike_mode = kwargs['ikeMode']
-        if 'ikePfs' in kwargs:
+        if ike_pfs is None and 'ikePfs' in kwargs:
             ike_pfs = kwargs['ikePfs']
-        if 'ikeVersion' in kwargs:
+        if ike_version is None and 'ikeVersion' in kwargs:
             ike_version = kwargs['ikeVersion']
-        if 'localId' in kwargs:
+        if local_id is None and 'localId' in kwargs:
             local_id = kwargs['localId']
-        if 'remoteId' in kwargs:
+        if remote_id is None and 'remoteId' in kwargs:
             remote_id = kwargs['remoteId']
 
         if ike_auth_alg is not None:
@@ -1223,15 +1223,15 @@ class IpsecServerIpsecConfigArgs:
              ipsec_enc_alg: Optional[pulumi.Input[str]] = None,
              ipsec_lifetime: Optional[pulumi.Input[int]] = None,
              ipsec_pfs: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipsecAuthAlg' in kwargs:
+        if ipsec_auth_alg is None and 'ipsecAuthAlg' in kwargs:
             ipsec_auth_alg = kwargs['ipsecAuthAlg']
-        if 'ipsecEncAlg' in kwargs:
+        if ipsec_enc_alg is None and 'ipsecEncAlg' in kwargs:
             ipsec_enc_alg = kwargs['ipsecEncAlg']
-        if 'ipsecLifetime' in kwargs:
+        if ipsec_lifetime is None and 'ipsecLifetime' in kwargs:
             ipsec_lifetime = kwargs['ipsecLifetime']
-        if 'ipsecPfs' in kwargs:
+        if ipsec_pfs is None and 'ipsecPfs' in kwargs:
             ipsec_pfs = kwargs['ipsecPfs']
 
         if ipsec_auth_alg is not None:

@@ -41,18 +41,26 @@ class RegistryEnterpriseRepoArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
-             namespace: pulumi.Input[str],
-             repo_type: pulumi.Input[str],
-             summary: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             repo_type: Optional[pulumi.Input[str]] = None,
+             summary: Optional[pulumi.Input[str]] = None,
              detail: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'repoType' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if repo_type is None and 'repoType' in kwargs:
             repo_type = kwargs['repoType']
+        if repo_type is None:
+            raise TypeError("Missing 'repo_type' argument")
+        if summary is None:
+            raise TypeError("Missing 'summary' argument")
 
         _setter("instance_id", instance_id)
         _setter("namespace", namespace)
@@ -176,13 +184,13 @@ class _RegistryEnterpriseRepoState:
              repo_id: Optional[pulumi.Input[str]] = None,
              repo_type: Optional[pulumi.Input[str]] = None,
              summary: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'repoId' in kwargs:
+        if repo_id is None and 'repoId' in kwargs:
             repo_id = kwargs['repoId']
-        if 'repoType' in kwargs:
+        if repo_type is None and 'repoType' in kwargs:
             repo_type = kwargs['repoType']
 
         if detail is not None:
@@ -306,37 +314,6 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
 
         > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
-            payment_type="Subscription",
-            period=1,
-            renew_period=0,
-            renewal_status="ManualRenewal",
-            instance_type="Advanced",
-            instance_name=name)
-        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace",
-            instance_id=example_registry_enterprise_instance.id,
-            auto_create=False,
-            default_visibility="PUBLIC")
-        example_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("exampleRegistryEnterpriseRepo",
-            instance_id=example_registry_enterprise_instance.id,
-            namespace=example_registry_enterprise_namespace.name,
-            summary="this is summary of my new repo",
-            repo_type="PUBLIC",
-            detail="this is a public repo")
-        ```
-
         ## Import
 
         Container Registry Enterprise Edition repository can be imported using the `{instance_id}:{namespace}:{repository}`, e.g.
@@ -368,37 +345,6 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         > **NOTE:** Available since v1.86.0.
 
         > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
-            payment_type="Subscription",
-            period=1,
-            renew_period=0,
-            renewal_status="ManualRenewal",
-            instance_type="Advanced",
-            instance_name=name)
-        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace",
-            instance_id=example_registry_enterprise_instance.id,
-            auto_create=False,
-            default_visibility="PUBLIC")
-        example_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("exampleRegistryEnterpriseRepo",
-            instance_id=example_registry_enterprise_instance.id,
-            namespace=example_registry_enterprise_namespace.name,
-            summary="this is summary of my new repo",
-            repo_type="PUBLIC",
-            detail="this is a public repo")
-        ```
 
         ## Import
 

@@ -32,16 +32,18 @@ class ServiceTopicArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             topic_name: pulumi.Input[str],
+             topic_name: Optional[pulumi.Input[str]] = None,
              logging_enabled: Optional[pulumi.Input[bool]] = None,
              max_message_size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'topicName' in kwargs:
+        if topic_name is None and 'topicName' in kwargs:
             topic_name = kwargs['topicName']
-        if 'loggingEnabled' in kwargs:
+        if topic_name is None:
+            raise TypeError("Missing 'topic_name' argument")
+        if logging_enabled is None and 'loggingEnabled' in kwargs:
             logging_enabled = kwargs['loggingEnabled']
-        if 'maxMessageSize' in kwargs:
+        if max_message_size is None and 'maxMessageSize' in kwargs:
             max_message_size = kwargs['maxMessageSize']
 
         _setter("topic_name", topic_name)
@@ -111,13 +113,13 @@ class _ServiceTopicState:
              logging_enabled: Optional[pulumi.Input[bool]] = None,
              max_message_size: Optional[pulumi.Input[int]] = None,
              topic_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'loggingEnabled' in kwargs:
+        if logging_enabled is None and 'loggingEnabled' in kwargs:
             logging_enabled = kwargs['loggingEnabled']
-        if 'maxMessageSize' in kwargs:
+        if max_message_size is None and 'maxMessageSize' in kwargs:
             max_message_size = kwargs['maxMessageSize']
-        if 'topicName' in kwargs:
+        if topic_name is None and 'topicName' in kwargs:
             topic_name = kwargs['topicName']
 
         if logging_enabled is not None:
@@ -180,24 +182,6 @@ class ServiceTopic(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.188.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.message.ServiceTopic("default",
-            topic_name=name,
-            max_message_size=12357,
-            logging_enabled=True)
-        ```
-
         ## Import
 
         Message Notification Service Topic can be imported using the id or topic_name, e.g.
@@ -224,24 +208,6 @@ class ServiceTopic(pulumi.CustomResource):
         For information about Message Notification Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
 
         > **NOTE:** Available since v1.188.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.message.ServiceTopic("default",
-            topic_name=name,
-            max_message_size=12357,
-            logging_enabled=True)
-        ```
 
         ## Import
 

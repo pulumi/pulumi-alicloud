@@ -188,16 +188,6 @@ def get_zones(available_disk_category: Optional[str] = None,
 
     > **NOTE:** If one zone is sold out, it will not be exported.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    zones_ds = alicloud.get_zones(available_disk_category="cloud_ssd",
-        available_instance_type="ecs.n4.large")
-    ```
-
 
     :param str available_disk_category: Filter the results by a specific disk category. Can be either `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`.
     :param str available_instance_type: Filter the results by a specific instance type.
@@ -266,16 +256,6 @@ def get_zones_output(available_disk_category: Optional[pulumi.Input[Optional[str
     This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
     > **NOTE:** If one zone is sold out, it will not be exported.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    zones_ds = alicloud.get_zones(available_disk_category="cloud_ssd",
-        available_instance_type="ecs.n4.large")
-    ```
 
 
     :param str available_disk_category: Filter the results by a specific disk category. Can be either `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`.

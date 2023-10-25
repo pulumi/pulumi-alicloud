@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.190.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.adb.getDBClusterLakeVersions({
- *     ids: ["example_id"],
- * });
- * export const adbDbClusterLakeVersionId1 = ids.then(ids => ids.versions?.[0]?.id);
- * ```
  */
 export function getDBClusterLakeVersions(args?: GetDBClusterLakeVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetDBClusterLakeVersionsResult> {
     args = args || {};
@@ -89,20 +75,6 @@ export interface GetDBClusterLakeVersionsResult {
  * This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.190.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.adb.getDBClusterLakeVersions({
- *     ids: ["example_id"],
- * });
- * export const adbDbClusterLakeVersionId1 = ids.then(ids => ids.versions?.[0]?.id);
- * ```
  */
 export function getDBClusterLakeVersionsOutput(args?: GetDBClusterLakeVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDBClusterLakeVersionsResult> {
     return pulumi.output(args).apply((a: any) => getDBClusterLakeVersions(a, opts))

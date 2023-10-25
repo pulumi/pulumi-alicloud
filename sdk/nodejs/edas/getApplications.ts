@@ -10,19 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides a list of EDAS application in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.82.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const applications = alicloud.edas.getApplications({
- *     ids: ["xxx"],
- *     outputFile: "application.txt",
- * });
- * export const firstApplicationName = applications.then(applications => applications.applications?.[0]?.appName);
- * ```
  */
 export function getApplications(args?: GetApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationsResult> {
     args = args || {};
@@ -80,19 +67,6 @@ export interface GetApplicationsResult {
  * This data source provides a list of EDAS application in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.82.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const applications = alicloud.edas.getApplications({
- *     ids: ["xxx"],
- *     outputFile: "application.txt",
- * });
- * export const firstApplicationName = applications.then(applications => applications.applications?.[0]?.appName);
- * ```
  */
 export function getApplicationsOutput(args?: GetApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationsResult> {
     return pulumi.output(args).apply((a: any) => getApplications(a, opts))

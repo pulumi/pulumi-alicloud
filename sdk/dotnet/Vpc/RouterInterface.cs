@@ -18,35 +18,6 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** The router interface is not connected when it is created. It can be connected by means of resource alicloud_router_interface_connection.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foo = new AliCloud.Vpc.Network("foo", new()
-    ///     {
-    ///         VpcName = "tf_test_foo12345",
-    ///         CidrBlock = "172.16.0.0/12",
-    ///     });
-    /// 
-    ///     var @interface = new AliCloud.Vpc.RouterInterface("interface", new()
-    ///     {
-    ///         OppositeRegion = "cn-beijing",
-    ///         RouterType = "VRouter",
-    ///         RouterId = foo.RouterId,
-    ///         Role = "InitiatingSide",
-    ///         Specification = "Large.2",
-    ///         Description = "test1",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// The router interface can be imported using the id, e.g.

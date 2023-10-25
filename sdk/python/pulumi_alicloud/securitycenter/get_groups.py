@@ -99,18 +99,6 @@ def get_groups(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.133.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    name_regex = alicloud.securitycenter.get_groups(name_regex="^my-Group")
-    pulumi.export("securityCenterGroups", name_regex.groups[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Group IDs.
     :param str name_regex: A regex string to filter results by Group name.
@@ -141,18 +129,6 @@ def get_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     This data source provides the Security Center Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.133.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    name_regex = alicloud.securitycenter.get_groups(name_regex="^my-Group")
-    pulumi.export("securityCenterGroups", name_regex.groups[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Group IDs.

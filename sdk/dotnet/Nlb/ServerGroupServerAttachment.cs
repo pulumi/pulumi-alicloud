@@ -16,57 +16,6 @@ namespace Pulumi.AliCloud.Nlb
     /// 
     /// &gt; **NOTE:** Available since v1.192.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "10.4.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultServerGroup = new AliCloud.Nlb.ServerGroup("defaultServerGroup", new()
-    ///     {
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
-    ///         ServerGroupName = name,
-    ///         ServerGroupType = "Ip",
-    ///         VpcId = defaultNetwork.Id,
-    ///         Scheduler = "Wrr",
-    ///         Protocol = "TCP",
-    ///         HealthCheck = new AliCloud.Nlb.Inputs.ServerGroupHealthCheckArgs
-    ///         {
-    ///             HealthCheckEnabled = false,
-    ///         },
-    ///         AddressIpVersion = "Ipv4",
-    ///     });
-    /// 
-    ///     var defaultServerGroupServerAttachment = new AliCloud.Nlb.ServerGroupServerAttachment("defaultServerGroupServerAttachment", new()
-    ///     {
-    ///         ServerType = "Ip",
-    ///         ServerId = "10.0.0.0",
-    ///         Description = name,
-    ///         Port = 80,
-    ///         ServerGroupId = defaultServerGroup.Id,
-    ///         Weight = 100,
-    ///         ServerIp = "10.0.0.0",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// NLB Server Group Server Attachment can be imported using the id, e.g.

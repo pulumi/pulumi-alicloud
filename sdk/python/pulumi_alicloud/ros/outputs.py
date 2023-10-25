@@ -73,14 +73,18 @@ class ChangeSetParameter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parameter_key: str,
-             parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             parameter_key: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterKey' in kwargs:
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
-        if 'parameterValue' in kwargs:
+        if parameter_key is None:
+            raise TypeError("Missing 'parameter_key' argument")
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
+        if parameter_value is None:
+            raise TypeError("Missing 'parameter_value' argument")
 
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
@@ -140,11 +144,11 @@ class StackGroupParameter(dict):
              _setter: Callable[[Any, Any], None],
              parameter_key: Optional[str] = None,
              parameter_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterKey' in kwargs:
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
-        if 'parameterValue' in kwargs:
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
 
         if parameter_key is not None:
@@ -207,11 +211,11 @@ class StackInstanceParameterOverride(dict):
              _setter: Callable[[Any, Any], None],
              parameter_key: Optional[str] = None,
              parameter_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterKey' in kwargs:
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
-        if 'parameterValue' in kwargs:
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
 
         if parameter_key is not None:
@@ -272,13 +276,15 @@ class StackParameter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parameter_value: str,
+             parameter_value: Optional[str] = None,
              parameter_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterValue' in kwargs:
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
-        if 'parameterKey' in kwargs:
+        if parameter_value is None:
+            raise TypeError("Missing 'parameter_value' argument")
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
 
         _setter("parameter_value", parameter_value)
@@ -338,14 +344,18 @@ class TemplateScratchPreferenceParameter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parameter_key: str,
-             parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             parameter_key: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterKey' in kwargs:
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
-        if 'parameterValue' in kwargs:
+        if parameter_key is None:
+            raise TypeError("Missing 'parameter_key' argument")
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
+        if parameter_value is None:
+            raise TypeError("Missing 'parameter_value' argument")
 
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
@@ -403,14 +413,18 @@ class TemplateScratchSourceResource(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_id: str,
-             resource_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             resource_id: Optional[str] = None,
+             resource_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceId' in kwargs:
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceType' in kwargs:
+        if resource_id is None:
+            raise TypeError("Missing 'resource_id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
 
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
@@ -468,13 +482,15 @@ class TemplateScratchSourceResourceGroup(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_group_id: str,
+             resource_group_id: Optional[str] = None,
              resource_type_filters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'resourceTypeFilters' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if resource_type_filters is None and 'resourceTypeFilters' in kwargs:
             resource_type_filters = kwargs['resourceTypeFilters']
 
         _setter("resource_group_id", resource_group_id)
@@ -534,13 +550,15 @@ class TemplateScratchSourceTag(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_tags: Mapping[str, Any],
+             resource_tags: Optional[Mapping[str, Any]] = None,
              resource_type_filters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceTags' in kwargs:
+        if resource_tags is None and 'resourceTags' in kwargs:
             resource_tags = kwargs['resourceTags']
-        if 'resourceTypeFilters' in kwargs:
+        if resource_tags is None:
+            raise TypeError("Missing 'resource_tags' argument")
+        if resource_type_filters is None and 'resourceTypeFilters' in kwargs:
             resource_type_filters = kwargs['resourceTypeFilters']
 
         _setter("resource_tags", resource_tags)
@@ -614,39 +632,65 @@ class GetChangeSetsSetResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             change_set_id: str,
-             change_set_name: str,
-             change_set_type: str,
-             description: str,
-             disable_rollback: bool,
-             execution_status: str,
-             id: str,
-             parameters: Sequence['outputs.GetChangeSetsSetParameterResult'],
-             stack_id: str,
-             stack_name: str,
-             status: str,
-             template_body: str,
-             timeout_in_minutes: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             change_set_id: Optional[str] = None,
+             change_set_name: Optional[str] = None,
+             change_set_type: Optional[str] = None,
+             description: Optional[str] = None,
+             disable_rollback: Optional[bool] = None,
+             execution_status: Optional[str] = None,
+             id: Optional[str] = None,
+             parameters: Optional[Sequence['outputs.GetChangeSetsSetParameterResult']] = None,
+             stack_id: Optional[str] = None,
+             stack_name: Optional[str] = None,
+             status: Optional[str] = None,
+             template_body: Optional[str] = None,
+             timeout_in_minutes: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'changeSetId' in kwargs:
+        if change_set_id is None and 'changeSetId' in kwargs:
             change_set_id = kwargs['changeSetId']
-        if 'changeSetName' in kwargs:
+        if change_set_id is None:
+            raise TypeError("Missing 'change_set_id' argument")
+        if change_set_name is None and 'changeSetName' in kwargs:
             change_set_name = kwargs['changeSetName']
-        if 'changeSetType' in kwargs:
+        if change_set_name is None:
+            raise TypeError("Missing 'change_set_name' argument")
+        if change_set_type is None and 'changeSetType' in kwargs:
             change_set_type = kwargs['changeSetType']
-        if 'disableRollback' in kwargs:
+        if change_set_type is None:
+            raise TypeError("Missing 'change_set_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if disable_rollback is None and 'disableRollback' in kwargs:
             disable_rollback = kwargs['disableRollback']
-        if 'executionStatus' in kwargs:
+        if disable_rollback is None:
+            raise TypeError("Missing 'disable_rollback' argument")
+        if execution_status is None and 'executionStatus' in kwargs:
             execution_status = kwargs['executionStatus']
-        if 'stackId' in kwargs:
+        if execution_status is None:
+            raise TypeError("Missing 'execution_status' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if parameters is None:
+            raise TypeError("Missing 'parameters' argument")
+        if stack_id is None and 'stackId' in kwargs:
             stack_id = kwargs['stackId']
-        if 'stackName' in kwargs:
+        if stack_id is None:
+            raise TypeError("Missing 'stack_id' argument")
+        if stack_name is None and 'stackName' in kwargs:
             stack_name = kwargs['stackName']
-        if 'templateBody' in kwargs:
+        if stack_name is None:
+            raise TypeError("Missing 'stack_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if template_body is None and 'templateBody' in kwargs:
             template_body = kwargs['templateBody']
-        if 'timeoutInMinutes' in kwargs:
+        if template_body is None:
+            raise TypeError("Missing 'template_body' argument")
+        if timeout_in_minutes is None and 'timeoutInMinutes' in kwargs:
             timeout_in_minutes = kwargs['timeoutInMinutes']
+        if timeout_in_minutes is None:
+            raise TypeError("Missing 'timeout_in_minutes' argument")
 
         _setter("change_set_id", change_set_id)
         _setter("change_set_name", change_set_name)
@@ -784,14 +828,18 @@ class GetChangeSetsSetParameterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parameter_key: str,
-             parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             parameter_key: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterKey' in kwargs:
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
-        if 'parameterValue' in kwargs:
+        if parameter_key is None:
+            raise TypeError("Missing 'parameter_key' argument")
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
+        if parameter_value is None:
+            raise TypeError("Missing 'parameter_value' argument")
 
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
@@ -833,17 +881,23 @@ class GetRegionsRegionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_name: str,
-             region_endpoint: str,
-             region_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             local_name: Optional[str] = None,
+             region_endpoint: Optional[str] = None,
+             region_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'localName' in kwargs:
+        if local_name is None and 'localName' in kwargs:
             local_name = kwargs['localName']
-        if 'regionEndpoint' in kwargs:
+        if local_name is None:
+            raise TypeError("Missing 'local_name' argument")
+        if region_endpoint is None and 'regionEndpoint' in kwargs:
             region_endpoint = kwargs['regionEndpoint']
-        if 'regionId' in kwargs:
+        if region_endpoint is None:
+            raise TypeError("Missing 'region_endpoint' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
 
         _setter("local_name", local_name)
         _setter("region_endpoint", region_endpoint)
@@ -912,27 +966,45 @@ class GetStackGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             administration_role_name: str,
-             description: str,
-             execution_role_name: str,
-             id: str,
-             parameters: Sequence['outputs.GetStackGroupsGroupParameterResult'],
-             stack_group_id: str,
-             stack_group_name: str,
-             status: str,
-             template_body: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             administration_role_name: Optional[str] = None,
+             description: Optional[str] = None,
+             execution_role_name: Optional[str] = None,
+             id: Optional[str] = None,
+             parameters: Optional[Sequence['outputs.GetStackGroupsGroupParameterResult']] = None,
+             stack_group_id: Optional[str] = None,
+             stack_group_name: Optional[str] = None,
+             status: Optional[str] = None,
+             template_body: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'administrationRoleName' in kwargs:
+        if administration_role_name is None and 'administrationRoleName' in kwargs:
             administration_role_name = kwargs['administrationRoleName']
-        if 'executionRoleName' in kwargs:
+        if administration_role_name is None:
+            raise TypeError("Missing 'administration_role_name' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if execution_role_name is None and 'executionRoleName' in kwargs:
             execution_role_name = kwargs['executionRoleName']
-        if 'stackGroupId' in kwargs:
+        if execution_role_name is None:
+            raise TypeError("Missing 'execution_role_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if parameters is None:
+            raise TypeError("Missing 'parameters' argument")
+        if stack_group_id is None and 'stackGroupId' in kwargs:
             stack_group_id = kwargs['stackGroupId']
-        if 'stackGroupName' in kwargs:
+        if stack_group_id is None:
+            raise TypeError("Missing 'stack_group_id' argument")
+        if stack_group_name is None and 'stackGroupName' in kwargs:
             stack_group_name = kwargs['stackGroupName']
-        if 'templateBody' in kwargs:
+        if stack_group_name is None:
+            raise TypeError("Missing 'stack_group_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if template_body is None and 'templateBody' in kwargs:
             template_body = kwargs['templateBody']
+        if template_body is None:
+            raise TypeError("Missing 'template_body' argument")
 
         _setter("administration_role_name", administration_role_name)
         _setter("description", description)
@@ -1034,14 +1106,18 @@ class GetStackGroupsGroupParameterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parameter_key: str,
-             parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             parameter_key: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterKey' in kwargs:
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
-        if 'parameterValue' in kwargs:
+        if parameter_key is None:
+            raise TypeError("Missing 'parameter_key' argument")
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
+        if parameter_value is None:
+            raise TypeError("Missing 'parameter_value' argument")
 
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
@@ -1101,31 +1177,49 @@ class GetStackInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             parameter_overrides: Sequence['outputs.GetStackInstancesInstanceParameterOverrideResult'],
-             stack_group_id: str,
-             stack_group_name: str,
-             stack_id: str,
-             stack_instance_account_id: str,
-             stack_instance_region_id: str,
-             status: str,
-             status_reason: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             parameter_overrides: Optional[Sequence['outputs.GetStackInstancesInstanceParameterOverrideResult']] = None,
+             stack_group_id: Optional[str] = None,
+             stack_group_name: Optional[str] = None,
+             stack_id: Optional[str] = None,
+             stack_instance_account_id: Optional[str] = None,
+             stack_instance_region_id: Optional[str] = None,
+             status: Optional[str] = None,
+             status_reason: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterOverrides' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if parameter_overrides is None and 'parameterOverrides' in kwargs:
             parameter_overrides = kwargs['parameterOverrides']
-        if 'stackGroupId' in kwargs:
+        if parameter_overrides is None:
+            raise TypeError("Missing 'parameter_overrides' argument")
+        if stack_group_id is None and 'stackGroupId' in kwargs:
             stack_group_id = kwargs['stackGroupId']
-        if 'stackGroupName' in kwargs:
+        if stack_group_id is None:
+            raise TypeError("Missing 'stack_group_id' argument")
+        if stack_group_name is None and 'stackGroupName' in kwargs:
             stack_group_name = kwargs['stackGroupName']
-        if 'stackId' in kwargs:
+        if stack_group_name is None:
+            raise TypeError("Missing 'stack_group_name' argument")
+        if stack_id is None and 'stackId' in kwargs:
             stack_id = kwargs['stackId']
-        if 'stackInstanceAccountId' in kwargs:
+        if stack_id is None:
+            raise TypeError("Missing 'stack_id' argument")
+        if stack_instance_account_id is None and 'stackInstanceAccountId' in kwargs:
             stack_instance_account_id = kwargs['stackInstanceAccountId']
-        if 'stackInstanceRegionId' in kwargs:
+        if stack_instance_account_id is None:
+            raise TypeError("Missing 'stack_instance_account_id' argument")
+        if stack_instance_region_id is None and 'stackInstanceRegionId' in kwargs:
             stack_instance_region_id = kwargs['stackInstanceRegionId']
-        if 'statusReason' in kwargs:
+        if stack_instance_region_id is None:
+            raise TypeError("Missing 'stack_instance_region_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if status_reason is None and 'statusReason' in kwargs:
             status_reason = kwargs['statusReason']
+        if status_reason is None:
+            raise TypeError("Missing 'status_reason' argument")
 
         _setter("id", id)
         _setter("parameter_overrides", parameter_overrides)
@@ -1227,14 +1321,18 @@ class GetStackInstancesInstanceParameterOverrideResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parameter_key: str,
-             parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             parameter_key: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterKey' in kwargs:
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
-        if 'parameterValue' in kwargs:
+        if parameter_key is None:
+            raise TypeError("Missing 'parameter_key' argument")
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
+        if parameter_value is None:
+            raise TypeError("Missing 'parameter_value' argument")
 
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
@@ -1321,52 +1419,88 @@ class GetStacksStackResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             deletion_protection: str,
-             description: str,
-             disable_rollback: bool,
-             drift_detection_time: str,
-             id: str,
-             parameters: Sequence['outputs.GetStacksStackParameterResult'],
-             parent_stack_id: str,
-             ram_role_name: str,
-             root_stack_id: str,
-             stack_drift_status: str,
-             stack_id: str,
-             stack_name: str,
-             stack_policy_body: str,
-             status: str,
-             status_reason: str,
-             tags: Mapping[str, Any],
-             template_description: str,
-             timeout_in_minutes: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             deletion_protection: Optional[str] = None,
+             description: Optional[str] = None,
+             disable_rollback: Optional[bool] = None,
+             drift_detection_time: Optional[str] = None,
+             id: Optional[str] = None,
+             parameters: Optional[Sequence['outputs.GetStacksStackParameterResult']] = None,
+             parent_stack_id: Optional[str] = None,
+             ram_role_name: Optional[str] = None,
+             root_stack_id: Optional[str] = None,
+             stack_drift_status: Optional[str] = None,
+             stack_id: Optional[str] = None,
+             stack_name: Optional[str] = None,
+             stack_policy_body: Optional[str] = None,
+             status: Optional[str] = None,
+             status_reason: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             template_description: Optional[str] = None,
+             timeout_in_minutes: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'disableRollback' in kwargs:
+        if deletion_protection is None:
+            raise TypeError("Missing 'deletion_protection' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if disable_rollback is None and 'disableRollback' in kwargs:
             disable_rollback = kwargs['disableRollback']
-        if 'driftDetectionTime' in kwargs:
+        if disable_rollback is None:
+            raise TypeError("Missing 'disable_rollback' argument")
+        if drift_detection_time is None and 'driftDetectionTime' in kwargs:
             drift_detection_time = kwargs['driftDetectionTime']
-        if 'parentStackId' in kwargs:
+        if drift_detection_time is None:
+            raise TypeError("Missing 'drift_detection_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if parameters is None:
+            raise TypeError("Missing 'parameters' argument")
+        if parent_stack_id is None and 'parentStackId' in kwargs:
             parent_stack_id = kwargs['parentStackId']
-        if 'ramRoleName' in kwargs:
+        if parent_stack_id is None:
+            raise TypeError("Missing 'parent_stack_id' argument")
+        if ram_role_name is None and 'ramRoleName' in kwargs:
             ram_role_name = kwargs['ramRoleName']
-        if 'rootStackId' in kwargs:
+        if ram_role_name is None:
+            raise TypeError("Missing 'ram_role_name' argument")
+        if root_stack_id is None and 'rootStackId' in kwargs:
             root_stack_id = kwargs['rootStackId']
-        if 'stackDriftStatus' in kwargs:
+        if root_stack_id is None:
+            raise TypeError("Missing 'root_stack_id' argument")
+        if stack_drift_status is None and 'stackDriftStatus' in kwargs:
             stack_drift_status = kwargs['stackDriftStatus']
-        if 'stackId' in kwargs:
+        if stack_drift_status is None:
+            raise TypeError("Missing 'stack_drift_status' argument")
+        if stack_id is None and 'stackId' in kwargs:
             stack_id = kwargs['stackId']
-        if 'stackName' in kwargs:
+        if stack_id is None:
+            raise TypeError("Missing 'stack_id' argument")
+        if stack_name is None and 'stackName' in kwargs:
             stack_name = kwargs['stackName']
-        if 'stackPolicyBody' in kwargs:
+        if stack_name is None:
+            raise TypeError("Missing 'stack_name' argument")
+        if stack_policy_body is None and 'stackPolicyBody' in kwargs:
             stack_policy_body = kwargs['stackPolicyBody']
-        if 'statusReason' in kwargs:
+        if stack_policy_body is None:
+            raise TypeError("Missing 'stack_policy_body' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if status_reason is None and 'statusReason' in kwargs:
             status_reason = kwargs['statusReason']
-        if 'templateDescription' in kwargs:
+        if status_reason is None:
+            raise TypeError("Missing 'status_reason' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if template_description is None and 'templateDescription' in kwargs:
             template_description = kwargs['templateDescription']
-        if 'timeoutInMinutes' in kwargs:
+        if template_description is None:
+            raise TypeError("Missing 'template_description' argument")
+        if timeout_in_minutes is None and 'timeoutInMinutes' in kwargs:
             timeout_in_minutes = kwargs['timeoutInMinutes']
+        if timeout_in_minutes is None:
+            raise TypeError("Missing 'timeout_in_minutes' argument")
 
         _setter("deletion_protection", deletion_protection)
         _setter("description", description)
@@ -1549,14 +1683,18 @@ class GetStacksStackParameterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parameter_key: str,
-             parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             parameter_key: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterKey' in kwargs:
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
-        if 'parameterValue' in kwargs:
+        if parameter_key is None:
+            raise TypeError("Missing 'parameter_key' argument")
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
+        if parameter_value is None:
+            raise TypeError("Missing 'parameter_value' argument")
 
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
@@ -1625,36 +1763,60 @@ class GetTemplateScratchesScratchResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             description: str,
-             id: str,
-             logical_id_strategy: str,
-             preference_parameters: Sequence['outputs.GetTemplateScratchesScratchPreferenceParameterResult'],
-             source_resource_groups: Sequence['outputs.GetTemplateScratchesScratchSourceResourceGroupResult'],
-             source_resources: Sequence['outputs.GetTemplateScratchesScratchSourceResourceResult'],
-             source_tags: Sequence['outputs.GetTemplateScratchesScratchSourceTagResult'],
-             stacks: Sequence['outputs.GetTemplateScratchesScratchStackResult'],
-             status: str,
-             template_scratch_id: str,
-             template_scratch_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             logical_id_strategy: Optional[str] = None,
+             preference_parameters: Optional[Sequence['outputs.GetTemplateScratchesScratchPreferenceParameterResult']] = None,
+             source_resource_groups: Optional[Sequence['outputs.GetTemplateScratchesScratchSourceResourceGroupResult']] = None,
+             source_resources: Optional[Sequence['outputs.GetTemplateScratchesScratchSourceResourceResult']] = None,
+             source_tags: Optional[Sequence['outputs.GetTemplateScratchesScratchSourceTagResult']] = None,
+             stacks: Optional[Sequence['outputs.GetTemplateScratchesScratchStackResult']] = None,
+             status: Optional[str] = None,
+             template_scratch_id: Optional[str] = None,
+             template_scratch_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'logicalIdStrategy' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if logical_id_strategy is None and 'logicalIdStrategy' in kwargs:
             logical_id_strategy = kwargs['logicalIdStrategy']
-        if 'preferenceParameters' in kwargs:
+        if logical_id_strategy is None:
+            raise TypeError("Missing 'logical_id_strategy' argument")
+        if preference_parameters is None and 'preferenceParameters' in kwargs:
             preference_parameters = kwargs['preferenceParameters']
-        if 'sourceResourceGroups' in kwargs:
+        if preference_parameters is None:
+            raise TypeError("Missing 'preference_parameters' argument")
+        if source_resource_groups is None and 'sourceResourceGroups' in kwargs:
             source_resource_groups = kwargs['sourceResourceGroups']
-        if 'sourceResources' in kwargs:
+        if source_resource_groups is None:
+            raise TypeError("Missing 'source_resource_groups' argument")
+        if source_resources is None and 'sourceResources' in kwargs:
             source_resources = kwargs['sourceResources']
-        if 'sourceTags' in kwargs:
+        if source_resources is None:
+            raise TypeError("Missing 'source_resources' argument")
+        if source_tags is None and 'sourceTags' in kwargs:
             source_tags = kwargs['sourceTags']
-        if 'templateScratchId' in kwargs:
+        if source_tags is None:
+            raise TypeError("Missing 'source_tags' argument")
+        if stacks is None:
+            raise TypeError("Missing 'stacks' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if template_scratch_id is None and 'templateScratchId' in kwargs:
             template_scratch_id = kwargs['templateScratchId']
-        if 'templateScratchType' in kwargs:
+        if template_scratch_id is None:
+            raise TypeError("Missing 'template_scratch_id' argument")
+        if template_scratch_type is None and 'templateScratchType' in kwargs:
             template_scratch_type = kwargs['templateScratchType']
+        if template_scratch_type is None:
+            raise TypeError("Missing 'template_scratch_type' argument")
 
         _setter("create_time", create_time)
         _setter("description", description)
@@ -1783,14 +1945,18 @@ class GetTemplateScratchesScratchPreferenceParameterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parameter_key: str,
-             parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             parameter_key: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterKey' in kwargs:
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
-        if 'parameterValue' in kwargs:
+        if parameter_key is None:
+            raise TypeError("Missing 'parameter_key' argument")
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
+        if parameter_value is None:
+            raise TypeError("Missing 'parameter_value' argument")
 
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
@@ -1829,14 +1995,18 @@ class GetTemplateScratchesScratchSourceResourceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_id: str,
-             resource_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             resource_id: Optional[str] = None,
+             resource_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceId' in kwargs:
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceType' in kwargs:
+        if resource_id is None:
+            raise TypeError("Missing 'resource_id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
 
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
@@ -1875,14 +2045,18 @@ class GetTemplateScratchesScratchSourceResourceGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_group_id: str,
-             resource_type_filters: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             resource_group_id: Optional[str] = None,
+             resource_type_filters: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'resourceTypeFilters' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if resource_type_filters is None and 'resourceTypeFilters' in kwargs:
             resource_type_filters = kwargs['resourceTypeFilters']
+        if resource_type_filters is None:
+            raise TypeError("Missing 'resource_type_filters' argument")
 
         _setter("resource_group_id", resource_group_id)
         _setter("resource_type_filters", resource_type_filters)
@@ -1921,14 +2095,18 @@ class GetTemplateScratchesScratchSourceTagResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_tags: Mapping[str, Any],
-             resource_type_filters: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             resource_tags: Optional[Mapping[str, Any]] = None,
+             resource_type_filters: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceTags' in kwargs:
+        if resource_tags is None and 'resourceTags' in kwargs:
             resource_tags = kwargs['resourceTags']
-        if 'resourceTypeFilters' in kwargs:
+        if resource_tags is None:
+            raise TypeError("Missing 'resource_tags' argument")
+        if resource_type_filters is None and 'resourceTypeFilters' in kwargs:
             resource_type_filters = kwargs['resourceTypeFilters']
+        if resource_type_filters is None:
+            raise TypeError("Missing 'resource_type_filters' argument")
 
         _setter("resource_tags", resource_tags)
         _setter("resource_type_filters", resource_type_filters)
@@ -1964,11 +2142,13 @@ class GetTemplateScratchesScratchStackResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             stack_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             stack_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'stackId' in kwargs:
+        if stack_id is None and 'stackId' in kwargs:
             stack_id = kwargs['stackId']
+        if stack_id is None:
+            raise TypeError("Missing 'stack_id' argument")
 
         _setter("stack_id", stack_id)
 
@@ -2025,35 +2205,57 @@ class GetTemplatesTemplateResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             change_set_id: str,
-             description: str,
-             id: str,
-             share_type: str,
-             stack_group_name: str,
-             stack_id: str,
-             tags: Mapping[str, Any],
-             template_body: str,
-             template_id: str,
-             template_name: str,
-             template_version: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             change_set_id: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             share_type: Optional[str] = None,
+             stack_group_name: Optional[str] = None,
+             stack_id: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             template_body: Optional[str] = None,
+             template_id: Optional[str] = None,
+             template_name: Optional[str] = None,
+             template_version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'changeSetId' in kwargs:
+        if change_set_id is None and 'changeSetId' in kwargs:
             change_set_id = kwargs['changeSetId']
-        if 'shareType' in kwargs:
+        if change_set_id is None:
+            raise TypeError("Missing 'change_set_id' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if share_type is None and 'shareType' in kwargs:
             share_type = kwargs['shareType']
-        if 'stackGroupName' in kwargs:
+        if share_type is None:
+            raise TypeError("Missing 'share_type' argument")
+        if stack_group_name is None and 'stackGroupName' in kwargs:
             stack_group_name = kwargs['stackGroupName']
-        if 'stackId' in kwargs:
+        if stack_group_name is None:
+            raise TypeError("Missing 'stack_group_name' argument")
+        if stack_id is None and 'stackId' in kwargs:
             stack_id = kwargs['stackId']
-        if 'templateBody' in kwargs:
+        if stack_id is None:
+            raise TypeError("Missing 'stack_id' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if template_body is None and 'templateBody' in kwargs:
             template_body = kwargs['templateBody']
-        if 'templateId' in kwargs:
+        if template_body is None:
+            raise TypeError("Missing 'template_body' argument")
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
-        if 'templateName' in kwargs:
+        if template_id is None:
+            raise TypeError("Missing 'template_id' argument")
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
-        if 'templateVersion' in kwargs:
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
+        if template_version is None and 'templateVersion' in kwargs:
             template_version = kwargs['templateVersion']
+        if template_version is None:
+            raise TypeError("Missing 'template_version' argument")
 
         _setter("change_set_id", change_set_id)
         _setter("description", description)

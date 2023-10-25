@@ -119,25 +119,6 @@ def get_application_groups(application_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.146.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.oos.get_application_groups(application_name="example_value",
-        ids=[
-            "my-ApplicationGroup-1",
-            "my-ApplicationGroup-2",
-        ])
-    pulumi.export("oosApplicationGroupId1", ids.groups[0].id)
-    name_regex = alicloud.oos.get_application_groups(application_name="example_value",
-        name_regex="^my-ApplicationGroup")
-    pulumi.export("oosApplicationGroupId2", name_regex.groups[0].id)
-    ```
-
 
     :param str application_name: The name of the Application.
     :param str deploy_region_id: The region ID of the deployment.
@@ -176,25 +157,6 @@ def get_application_groups_output(application_name: Optional[pulumi.Input[str]] 
     This data source provides the Oos Application Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.146.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.oos.get_application_groups(application_name="example_value",
-        ids=[
-            "my-ApplicationGroup-1",
-            "my-ApplicationGroup-2",
-        ])
-    pulumi.export("oosApplicationGroupId1", ids.groups[0].id)
-    name_regex = alicloud.oos.get_application_groups(application_name="example_value",
-        name_regex="^my-ApplicationGroup")
-    pulumi.export("oosApplicationGroupId2", name_regex.groups[0].id)
-    ```
 
 
     :param str application_name: The name of the Application.

@@ -264,59 +264,6 @@ def get_network_interfaces(ids: Optional[Sequence[str]] = None,
 
     For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    name = config.get("name")
-    if name is None:
-        name = "networkInterfacesName"
-    vpc = alicloud.vpc.Network("vpc",
-        cidr_block="192.168.0.0/24",
-        vpc_name=name)
-    default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-    vswitch = alicloud.vpc.Switch("vswitch",
-        availability_zone=default_zones.zones[0].id,
-        cidr_block="192.168.0.0/24",
-        vpc_id=vpc.id,
-        vswitch_name=name)
-    group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
-    interface = alicloud.vpc.NetworkInterface("interface",
-        description="Basic test",
-        private_ip="192.168.0.2",
-        security_groups=[group.id],
-        tags={
-            "TF-VER": "0.11.3",
-        },
-        vswitch_id=vswitch.id)
-    instance = alicloud.ecs.Instance("instance",
-        availability_zone=default_zones.zones[0].id,
-        image_id="centos_7_04_64_20G_alibase_201701015.vhd",
-        instance_name=name,
-        instance_type="ecs.e3.xlarge",
-        internet_max_bandwidth_out=10,
-        security_groups=[group.id],
-        system_disk_category="cloud_efficiency",
-        vswitch_id=vswitch.id)
-    attachment = alicloud.vpc.NetworkInterfaceAttachment("attachment",
-        instance_id=instance.id,
-        network_interface_id=interface.id)
-    default_network_interfaces = alicloud.ecs.get_network_interfaces_output(ids=[attachment.network_interface_id],
-        instance_id=instance.id,
-        name_regex=name,
-        private_ip="192.168.0.2",
-        security_group_id=group.id,
-        tags={
-            "TF-VER": "0.11.3",
-        },
-        type="Secondary",
-        vpc_id=vpc.id,
-        vswitch_id=vswitch.id)
-    pulumi.export("eni0Name", default_network_interfaces.interfaces[0].name)
-    ```
     ## Argument Reference
 
     The following arguments are supported:
@@ -411,59 +358,6 @@ def get_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
     For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    name = config.get("name")
-    if name is None:
-        name = "networkInterfacesName"
-    vpc = alicloud.vpc.Network("vpc",
-        cidr_block="192.168.0.0/24",
-        vpc_name=name)
-    default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-    vswitch = alicloud.vpc.Switch("vswitch",
-        availability_zone=default_zones.zones[0].id,
-        cidr_block="192.168.0.0/24",
-        vpc_id=vpc.id,
-        vswitch_name=name)
-    group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
-    interface = alicloud.vpc.NetworkInterface("interface",
-        description="Basic test",
-        private_ip="192.168.0.2",
-        security_groups=[group.id],
-        tags={
-            "TF-VER": "0.11.3",
-        },
-        vswitch_id=vswitch.id)
-    instance = alicloud.ecs.Instance("instance",
-        availability_zone=default_zones.zones[0].id,
-        image_id="centos_7_04_64_20G_alibase_201701015.vhd",
-        instance_name=name,
-        instance_type="ecs.e3.xlarge",
-        internet_max_bandwidth_out=10,
-        security_groups=[group.id],
-        system_disk_category="cloud_efficiency",
-        vswitch_id=vswitch.id)
-    attachment = alicloud.vpc.NetworkInterfaceAttachment("attachment",
-        instance_id=instance.id,
-        network_interface_id=interface.id)
-    default_network_interfaces = alicloud.ecs.get_network_interfaces_output(ids=[attachment.network_interface_id],
-        instance_id=instance.id,
-        name_regex=name,
-        private_ip="192.168.0.2",
-        security_group_id=group.id,
-        tags={
-            "TF-VER": "0.11.3",
-        },
-        type="Secondary",
-        vpc_id=vpc.id,
-        vswitch_id=vswitch.id)
-    pulumi.export("eni0Name", default_network_interfaces.interfaces[0].name)
-    ```
     ## Argument Reference
 
     The following arguments are supported:

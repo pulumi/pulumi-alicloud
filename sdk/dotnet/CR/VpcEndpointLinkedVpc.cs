@@ -16,61 +16,6 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// &gt; **NOTE:** Available since v1.199.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "10.4.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VswitchName = name,
-    ///         CidrBlock = "10.4.0.0/24",
-    ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     });
-    /// 
-    ///     var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", new()
-    ///     {
-    ///         PaymentType = "Subscription",
-    ///         Period = 1,
-    ///         RenewPeriod = 0,
-    ///         RenewalStatus = "ManualRenewal",
-    ///         InstanceType = "Advanced",
-    ///         InstanceName = name,
-    ///     });
-    /// 
-    ///     var defaultVpcEndpointLinkedVpc = new AliCloud.CR.VpcEndpointLinkedVpc("defaultVpcEndpointLinkedVpc", new()
-    ///     {
-    ///         InstanceId = defaultRegistryEnterpriseInstance.Id,
-    ///         VpcId = defaultNetwork.Id,
-    ///         VswitchId = defaultSwitch.Id,
-    ///         ModuleName = "Registry",
-    ///         EnableCreateDnsRecordInPvzt = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// CR Vpc Endpoint Linked Vpc can be imported using the id, e.g.

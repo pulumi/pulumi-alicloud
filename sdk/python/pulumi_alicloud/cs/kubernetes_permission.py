@@ -31,10 +31,12 @@ class KubernetesPermissionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             uid: pulumi.Input[str],
+             uid: Optional[pulumi.Input[str]] = None,
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if uid is None:
+            raise TypeError("Missing 'uid' argument")
 
         _setter("uid", uid)
         if permissions is not None:
@@ -85,7 +87,7 @@ class _KubernetesPermissionState:
              _setter: Callable[[Any, Any], None],
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if permissions is not None:

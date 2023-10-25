@@ -32,14 +32,18 @@ class AclEntryAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acl_id: pulumi.Input[str],
-             entry: pulumi.Input[str],
+             acl_id: Optional[pulumi.Input[str]] = None,
+             entry: Optional[pulumi.Input[str]] = None,
              entry_description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclId' in kwargs:
+        if acl_id is None and 'aclId' in kwargs:
             acl_id = kwargs['aclId']
-        if 'entryDescription' in kwargs:
+        if acl_id is None:
+            raise TypeError("Missing 'acl_id' argument")
+        if entry is None:
+            raise TypeError("Missing 'entry' argument")
+        if entry_description is None and 'entryDescription' in kwargs:
             entry_description = kwargs['entryDescription']
 
         _setter("acl_id", acl_id)
@@ -112,11 +116,11 @@ class _AclEntryAttachmentState:
              entry: Optional[pulumi.Input[str]] = None,
              entry_description: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclId' in kwargs:
+        if acl_id is None and 'aclId' in kwargs:
             acl_id = kwargs['aclId']
-        if 'entryDescription' in kwargs:
+        if entry_description is None and 'entryDescription' in kwargs:
             entry_description = kwargs['entryDescription']
 
         if acl_id is not None:
@@ -193,23 +197,6 @@ class AclEntryAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.190.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_acl = alicloud.ga.Acl("defaultAcl",
-            acl_name="tf-example-value",
-            address_ip_version="IPv4")
-        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment",
-            acl_id=default_acl.id,
-            entry="192.168.1.1/32",
-            entry_description="tf-example-value")
-        ```
-
         ## Import
 
         Global Accelerator (GA) Acl entry attachment can be imported using the id.Format to `<acl_id>:<entry>`, e.g.
@@ -236,23 +223,6 @@ class AclEntryAttachment(pulumi.CustomResource):
         For information about Global Accelerator (GA) Acl entry attachment and how to use it, see [What is Acl entry attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-addentriestoacl).
 
         > **NOTE:** Available since v1.190.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_acl = alicloud.ga.Acl("defaultAcl",
-            acl_name="tf-example-value",
-            address_ip_version="IPv4")
-        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment",
-            acl_id=default_acl.id,
-            entry="192.168.1.1/32",
-            entry_description="tf-example-value")
-        ```
 
         ## Import
 

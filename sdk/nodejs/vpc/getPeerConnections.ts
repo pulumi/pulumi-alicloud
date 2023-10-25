@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.186.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.vpc.getPeerConnections({});
- * export const vpcPeerConnectionId1 = ids.then(ids => ids.connections?.[0]?.id);
- * const nameRegex = alicloud.vpc.getPeerConnections({
- *     nameRegex: "^my-PeerConnection",
- * });
- * export const vpcPeerConnectionId2 = nameRegex.then(nameRegex => nameRegex.connections?.[0]?.id);
- * ```
  */
 export function getPeerConnections(args?: GetPeerConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetPeerConnectionsResult> {
     args = args || {};
@@ -92,22 +76,6 @@ export interface GetPeerConnectionsResult {
  * This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.186.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.vpc.getPeerConnections({});
- * export const vpcPeerConnectionId1 = ids.then(ids => ids.connections?.[0]?.id);
- * const nameRegex = alicloud.vpc.getPeerConnections({
- *     nameRegex: "^my-PeerConnection",
- * });
- * export const vpcPeerConnectionId2 = nameRegex.then(nameRegex => nameRegex.connections?.[0]?.id);
- * ```
  */
 export function getPeerConnectionsOutput(args?: GetPeerConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeerConnectionsResult> {
     return pulumi.output(args).apply((a: any) => getPeerConnections(a, opts))

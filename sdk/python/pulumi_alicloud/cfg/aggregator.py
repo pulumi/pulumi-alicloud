@@ -37,17 +37,21 @@ class AggregatorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aggregator_name: pulumi.Input[str],
-             description: pulumi.Input[str],
+             aggregator_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
              aggregator_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]]] = None,
              aggregator_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aggregatorName' in kwargs:
+        if aggregator_name is None and 'aggregatorName' in kwargs:
             aggregator_name = kwargs['aggregatorName']
-        if 'aggregatorAccounts' in kwargs:
+        if aggregator_name is None:
+            raise TypeError("Missing 'aggregator_name' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if aggregator_accounts is None and 'aggregatorAccounts' in kwargs:
             aggregator_accounts = kwargs['aggregatorAccounts']
-        if 'aggregatorType' in kwargs:
+        if aggregator_type is None and 'aggregatorType' in kwargs:
             aggregator_type = kwargs['aggregatorType']
 
         _setter("aggregator_name", aggregator_name)
@@ -138,13 +142,13 @@ class _AggregatorState:
              aggregator_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aggregatorAccounts' in kwargs:
+        if aggregator_accounts is None and 'aggregatorAccounts' in kwargs:
             aggregator_accounts = kwargs['aggregatorAccounts']
-        if 'aggregatorName' in kwargs:
+        if aggregator_name is None and 'aggregatorName' in kwargs:
             aggregator_name = kwargs['aggregatorName']
-        if 'aggregatorType' in kwargs:
+        if aggregator_type is None and 'aggregatorType' in kwargs:
             aggregator_type = kwargs['aggregatorType']
 
         if aggregator_accounts is not None:
@@ -236,30 +240,6 @@ class Aggregator(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.124.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_accounts = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
-        default_aggregator = alicloud.cfg.Aggregator("defaultAggregator",
-            aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
-                account_id=default_accounts.accounts[0].account_id,
-                account_name=default_accounts.accounts[0].display_name,
-                account_type="ResourceDirectory",
-            )],
-            aggregator_name=name,
-            description=name,
-            aggregator_type="CUSTOM")
-        ```
-
         ## Import
 
         Cloud Config Aggregator can be imported using the id, e.g.
@@ -287,30 +267,6 @@ class Aggregator(pulumi.CustomResource):
         For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregator).
 
         > **NOTE:** Available since v1.124.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_accounts = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
-        default_aggregator = alicloud.cfg.Aggregator("defaultAggregator",
-            aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
-                account_id=default_accounts.accounts[0].account_id,
-                account_name=default_accounts.accounts[0].display_name,
-                account_type="ResourceDirectory",
-            )],
-            aggregator_name=name,
-            description=name,
-            aggregator_type="CUSTOM")
-        ```
 
         ## Import
 

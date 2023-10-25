@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Threat Detection Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center)
  *
  * > **NOTE:** Available in 1.199.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.threatdetection.getInstances({
- *     ids: [alicloud_threat_detection_instance["default"].id],
- * });
- * export const alicloudThreatDetectionInstanceExampleId = _default.then(_default => _default.instances?.[0]?.id);
- * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -90,18 +78,6 @@ export interface GetInstancesResult {
  * This data source provides Threat Detection Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center)
  *
  * > **NOTE:** Available in 1.199.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.threatdetection.getInstances({
- *     ids: [alicloud_threat_detection_instance["default"].id],
- * });
- * export const alicloudThreatDetectionInstanceExampleId = _default.then(_default => _default.instances?.[0]?.id);
- * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))

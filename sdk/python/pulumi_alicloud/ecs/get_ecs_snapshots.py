@@ -229,19 +229,6 @@ def get_ecs_snapshots(category: Optional[str] = None,
 
     > **NOTE:** Available in v1.120.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ecs.get_ecs_snapshots(ids=["s-bp1fvuxxxxxxxx"],
-        name_regex="tf-test")
-    pulumi.export("firstEcsSnapshotId", example.snapshots[0].id)
-    ```
-
 
     :param str category: The category of the snapshot.
     :param bool dry_run: Specifies whether to check the validity of the request without actually making the request.
@@ -323,19 +310,6 @@ def get_ecs_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = N
     This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.120.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ecs.get_ecs_snapshots(ids=["s-bp1fvuxxxxxxxx"],
-        name_regex="tf-test")
-    pulumi.export("firstEcsSnapshotId", example.snapshots[0].id)
-    ```
 
 
     :param str category: The category of the snapshot.

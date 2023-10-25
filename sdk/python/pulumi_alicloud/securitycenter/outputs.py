@@ -36,18 +36,26 @@ class GetGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_flag: int,
-             group_id: str,
-             group_name: str,
-             id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             group_flag: Optional[int] = None,
+             group_id: Optional[str] = None,
+             group_name: Optional[str] = None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupFlag' in kwargs:
+        if group_flag is None and 'groupFlag' in kwargs:
             group_flag = kwargs['groupFlag']
-        if 'groupId' in kwargs:
+        if group_flag is None:
+            raise TypeError("Missing 'group_flag' argument")
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'groupName' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
 
         _setter("group_flag", group_flag)
         _setter("group_id", group_id)

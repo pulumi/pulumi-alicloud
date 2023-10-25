@@ -16,36 +16,6 @@ namespace Pulumi.AliCloud.Dfs
     /// 
     /// &gt; **NOTE:** Available since v1.140.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultZones = AliCloud.Dfs.GetZones.Invoke();
-    /// 
-    ///     var defaultFileSystem = new AliCloud.Dfs.FileSystem("defaultFileSystem", new()
-    ///     {
-    ///         StorageType = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Options[0]?.StorageType),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
-    ///         ProtocolType = "HDFS",
-    ///         Description = name,
-    ///         FileSystemName = name,
-    ///         ThroughputMode = "Standard",
-    ///         SpaceCapacity = 1024,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// DFS File System can be imported using the id, e.g.

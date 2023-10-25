@@ -180,30 +180,6 @@ def get_serverless_instances(db_instance_class: Optional[str] = None,
 
     > **NOTE:** Available in v1.148.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.mongodb.get_serverless_instances(ids=["example_value"],
-        db_instance_class="example_value",
-        db_instance_description="example_value",
-        network_type="VPC",
-        resource_group_id="example_value",
-        status="Running",
-        vpc_id="example_value",
-        vswitch_id="example_value",
-        zone_id="example_value",
-        tags={
-            "Created": "MongodbServerlessInstance",
-            "For": "TF",
-        })
-    pulumi.export("mongodbServerlessInstanceId1", example.instances[0].id)
-    ```
-
 
     :param str db_instance_class: The db instance class.
     :param str db_instance_description: The db instance description.
@@ -269,30 +245,6 @@ def get_serverless_instances_output(db_instance_class: Optional[pulumi.Input[Opt
     This data source provides the Mongodb Serverless Instances of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.148.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.mongodb.get_serverless_instances(ids=["example_value"],
-        db_instance_class="example_value",
-        db_instance_description="example_value",
-        network_type="VPC",
-        resource_group_id="example_value",
-        status="Running",
-        vpc_id="example_value",
-        vswitch_id="example_value",
-        zone_id="example_value",
-        tags={
-            "Created": "MongodbServerlessInstance",
-            "For": "TF",
-        })
-    pulumi.export("mongodbServerlessInstanceId1", example.instances[0].id)
-    ```
 
 
     :param str db_instance_class: The db instance class.

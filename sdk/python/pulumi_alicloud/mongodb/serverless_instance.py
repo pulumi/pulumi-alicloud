@@ -81,13 +81,13 @@ class ServerlessInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_password: pulumi.Input[str],
-             capacity_unit: pulumi.Input[int],
-             db_instance_storage: pulumi.Input[int],
-             engine_version: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             account_password: Optional[pulumi.Input[str]] = None,
+             capacity_unit: Optional[pulumi.Input[int]] = None,
+             db_instance_storage: Optional[pulumi.Input[int]] = None,
+             engine_version: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              auto_renew: Optional[pulumi.Input[bool]] = None,
              db_instance_description: Optional[pulumi.Input[str]] = None,
              engine: Optional[pulumi.Input[str]] = None,
@@ -99,37 +99,51 @@ class ServerlessInstanceArgs:
              security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]] = None,
              storage_engine: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountPassword' in kwargs:
+        if account_password is None and 'accountPassword' in kwargs:
             account_password = kwargs['accountPassword']
-        if 'capacityUnit' in kwargs:
+        if account_password is None:
+            raise TypeError("Missing 'account_password' argument")
+        if capacity_unit is None and 'capacityUnit' in kwargs:
             capacity_unit = kwargs['capacityUnit']
-        if 'dbInstanceStorage' in kwargs:
+        if capacity_unit is None:
+            raise TypeError("Missing 'capacity_unit' argument")
+        if db_instance_storage is None and 'dbInstanceStorage' in kwargs:
             db_instance_storage = kwargs['dbInstanceStorage']
-        if 'engineVersion' in kwargs:
+        if db_instance_storage is None:
+            raise TypeError("Missing 'db_instance_storage' argument")
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'vpcId' in kwargs:
+        if engine_version is None:
+            raise TypeError("Missing 'engine_version' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'autoRenew' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'dbInstanceDescription' in kwargs:
+        if db_instance_description is None and 'dbInstanceDescription' in kwargs:
             db_instance_description = kwargs['dbInstanceDescription']
-        if 'maintainEndTime' in kwargs:
+        if maintain_end_time is None and 'maintainEndTime' in kwargs:
             maintain_end_time = kwargs['maintainEndTime']
-        if 'maintainStartTime' in kwargs:
+        if maintain_start_time is None and 'maintainStartTime' in kwargs:
             maintain_start_time = kwargs['maintainStartTime']
-        if 'periodPriceType' in kwargs:
+        if period_price_type is None and 'periodPriceType' in kwargs:
             period_price_type = kwargs['periodPriceType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityIpGroups' in kwargs:
+        if security_ip_groups is None and 'securityIpGroups' in kwargs:
             security_ip_groups = kwargs['securityIpGroups']
-        if 'storageEngine' in kwargs:
+        if storage_engine is None and 'storageEngine' in kwargs:
             storage_engine = kwargs['storageEngine']
 
         _setter("account_password", account_password)
@@ -471,37 +485,37 @@ class _ServerlessInstanceState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountPassword' in kwargs:
+        if account_password is None and 'accountPassword' in kwargs:
             account_password = kwargs['accountPassword']
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'capacityUnit' in kwargs:
+        if capacity_unit is None and 'capacityUnit' in kwargs:
             capacity_unit = kwargs['capacityUnit']
-        if 'dbInstanceDescription' in kwargs:
+        if db_instance_description is None and 'dbInstanceDescription' in kwargs:
             db_instance_description = kwargs['dbInstanceDescription']
-        if 'dbInstanceStorage' in kwargs:
+        if db_instance_storage is None and 'dbInstanceStorage' in kwargs:
             db_instance_storage = kwargs['dbInstanceStorage']
-        if 'engineVersion' in kwargs:
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'maintainEndTime' in kwargs:
+        if maintain_end_time is None and 'maintainEndTime' in kwargs:
             maintain_end_time = kwargs['maintainEndTime']
-        if 'maintainStartTime' in kwargs:
+        if maintain_start_time is None and 'maintainStartTime' in kwargs:
             maintain_start_time = kwargs['maintainStartTime']
-        if 'periodPriceType' in kwargs:
+        if period_price_type is None and 'periodPriceType' in kwargs:
             period_price_type = kwargs['periodPriceType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityIpGroups' in kwargs:
+        if security_ip_groups is None and 'securityIpGroups' in kwargs:
             security_ip_groups = kwargs['securityIpGroups']
-        if 'storageEngine' in kwargs:
+        if storage_engine is None and 'storageEngine' in kwargs:
             storage_engine = kwargs['storageEngine']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_password is not None:
@@ -805,44 +819,6 @@ class ServerlessInstance(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.148.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_zones = alicloud.mongodb.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        example = alicloud.mongodb.ServerlessInstance("example",
-            account_password="Abc12345",
-            db_instance_description="example_value",
-            db_instance_storage=5,
-            storage_engine="WiredTiger",
-            capacity_unit=100,
-            engine="MongoDB",
-            resource_group_id=default_resource_groups.groups[0].id,
-            engine_version="4.2",
-            period=1,
-            period_price_type="Month",
-            vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id,
-            vswitch_id=default_switches.ids[0],
-            tags={
-                "Created": "MongodbServerlessInstance",
-                "For": "TF",
-            },
-            security_ip_groups=[alicloud.mongodb.ServerlessInstanceSecurityIpGroupArgs(
-                security_ip_group_attribute="example_value",
-                security_ip_group_name="example_value",
-                security_ip_list="192.168.0.1",
-            )])
-        ```
-
         ## Import
 
         MongoDB Serverless Instance can be imported using the id, e.g.
@@ -886,44 +862,6 @@ class ServerlessInstance(pulumi.CustomResource):
         For information about MongoDB Serverless Instance and how to use it, see [What is Serverless Instance](https://www.alibabacloud.com/help/doc-detail/26558.html).
 
         > **NOTE:** Available in v1.148.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_zones = alicloud.mongodb.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        example = alicloud.mongodb.ServerlessInstance("example",
-            account_password="Abc12345",
-            db_instance_description="example_value",
-            db_instance_storage=5,
-            storage_engine="WiredTiger",
-            capacity_unit=100,
-            engine="MongoDB",
-            resource_group_id=default_resource_groups.groups[0].id,
-            engine_version="4.2",
-            period=1,
-            period_price_type="Month",
-            vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id,
-            vswitch_id=default_switches.ids[0],
-            tags={
-                "Created": "MongodbServerlessInstance",
-                "For": "TF",
-            },
-            security_ip_groups=[alicloud.mongodb.ServerlessInstanceSecurityIpGroupArgs(
-                security_ip_group_attribute="example_value",
-                security_ip_group_name="example_value",
-                security_ip_list="192.168.0.1",
-            )])
-        ```
 
         ## Import
 

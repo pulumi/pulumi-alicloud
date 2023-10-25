@@ -18,46 +18,6 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// &gt; **NOTE:** Only Extreme NAS file systems support the snapshot feature.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "testacc";
-    ///     var defaultZones = AliCloud.Nas.GetZones.Invoke(new()
-    ///     {
-    ///         FileSystemType = "extreme",
-    ///     });
-    /// 
-    ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("defaultFileSystem", new()
-    ///     {
-    ///         FileSystemType = "extreme",
-    ///         ProtocolType = "NFS",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
-    ///         StorageType = "standard",
-    ///         Description = name,
-    ///         Capacity = 100,
-    ///     });
-    /// 
-    ///     var defaultSnapshot = new AliCloud.Nas.Snapshot("defaultSnapshot", new()
-    ///     {
-    ///         FileSystemId = defaultFileSystem.Id,
-    ///         Description = name,
-    ///         RetentionDays = 20,
-    ///         SnapshotName = name,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Network Attached Storage (NAS) Snapshot can be imported using the id, e.g.

@@ -19,44 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.117.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.NewAutoSnapshotPolicy(ctx, "example", &ecs.AutoSnapshotPolicyArgs{
-//				RepeatWeekdays: pulumi.StringArray{
-//					pulumi.String("1"),
-//					pulumi.String("2"),
-//					pulumi.String("3"),
-//				},
-//				RetentionDays: -1,
-//				TimePoints: pulumi.StringArray{
-//					pulumi.String("1"),
-//					pulumi.String("22"),
-//					pulumi.String("23"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ECS Auto Snapshot Policy can be imported using the id, e.g.

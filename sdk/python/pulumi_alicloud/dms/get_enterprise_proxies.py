@@ -90,18 +90,6 @@ def get_enterprise_proxies(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.188.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dms.get_enterprise_proxies()
-    pulumi.export("dmsEnterpriseProxyId1", ids.proxies[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Proxy IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -131,18 +119,6 @@ def get_enterprise_proxies_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     This data source provides the Dms Enterprise Proxies of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.188.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dms.get_enterprise_proxies()
-    pulumi.export("dmsEnterpriseProxyId1", ids.proxies[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Proxy IDs.

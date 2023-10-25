@@ -71,41 +71,71 @@ class GetSystemGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app: str,
-             callback: str,
-             create_time: str,
-             description: str,
-             enabled: bool,
-             gb_id: str,
-             gb_ip: str,
-             group_id: str,
-             group_name: str,
-             id: str,
-             in_protocol: str,
-             out_protocol: str,
-             play_domain: str,
-             push_domain: str,
-             stats: Sequence['outputs.GetSystemGroupsGroupStatResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             app: Optional[str] = None,
+             callback: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             enabled: Optional[bool] = None,
+             gb_id: Optional[str] = None,
+             gb_ip: Optional[str] = None,
+             group_id: Optional[str] = None,
+             group_name: Optional[str] = None,
+             id: Optional[str] = None,
+             in_protocol: Optional[str] = None,
+             out_protocol: Optional[str] = None,
+             play_domain: Optional[str] = None,
+             push_domain: Optional[str] = None,
+             stats: Optional[Sequence['outputs.GetSystemGroupsGroupStatResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if app is None:
+            raise TypeError("Missing 'app' argument")
+        if callback is None:
+            raise TypeError("Missing 'callback' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'gbId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if gb_id is None and 'gbId' in kwargs:
             gb_id = kwargs['gbId']
-        if 'gbIp' in kwargs:
+        if gb_id is None:
+            raise TypeError("Missing 'gb_id' argument")
+        if gb_ip is None and 'gbIp' in kwargs:
             gb_ip = kwargs['gbIp']
-        if 'groupId' in kwargs:
+        if gb_ip is None:
+            raise TypeError("Missing 'gb_ip' argument")
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'groupName' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'inProtocol' in kwargs:
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if in_protocol is None and 'inProtocol' in kwargs:
             in_protocol = kwargs['inProtocol']
-        if 'outProtocol' in kwargs:
+        if in_protocol is None:
+            raise TypeError("Missing 'in_protocol' argument")
+        if out_protocol is None and 'outProtocol' in kwargs:
             out_protocol = kwargs['outProtocol']
-        if 'playDomain' in kwargs:
+        if out_protocol is None:
+            raise TypeError("Missing 'out_protocol' argument")
+        if play_domain is None and 'playDomain' in kwargs:
             play_domain = kwargs['playDomain']
-        if 'pushDomain' in kwargs:
+        if play_domain is None:
+            raise TypeError("Missing 'play_domain' argument")
+        if push_domain is None and 'pushDomain' in kwargs:
             push_domain = kwargs['pushDomain']
+        if push_domain is None:
+            raise TypeError("Missing 'push_domain' argument")
+        if stats is None:
+            raise TypeError("Missing 'stats' argument")
 
         _setter("app", app)
         _setter("callback", callback)
@@ -267,20 +297,28 @@ class GetSystemGroupsGroupStatResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             device_num: str,
-             ied_num: str,
-             ipc_num: str,
-             platform_num: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             device_num: Optional[str] = None,
+             ied_num: Optional[str] = None,
+             ipc_num: Optional[str] = None,
+             platform_num: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deviceNum' in kwargs:
+        if device_num is None and 'deviceNum' in kwargs:
             device_num = kwargs['deviceNum']
-        if 'iedNum' in kwargs:
+        if device_num is None:
+            raise TypeError("Missing 'device_num' argument")
+        if ied_num is None and 'iedNum' in kwargs:
             ied_num = kwargs['iedNum']
-        if 'ipcNum' in kwargs:
+        if ied_num is None:
+            raise TypeError("Missing 'ied_num' argument")
+        if ipc_num is None and 'ipcNum' in kwargs:
             ipc_num = kwargs['ipcNum']
-        if 'platformNum' in kwargs:
+        if ipc_num is None:
+            raise TypeError("Missing 'ipc_num' argument")
+        if platform_num is None and 'platformNum' in kwargs:
             platform_num = kwargs['platformNum']
+        if platform_num is None:
+            raise TypeError("Missing 'platform_num' argument")
 
         _setter("device_num", device_num)
         _setter("ied_num", ied_num)

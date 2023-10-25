@@ -38,16 +38,20 @@ class JobMonitorRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dts_job_id: pulumi.Input[str],
-             type: pulumi.Input[str],
+             dts_job_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              delay_rule_time: Optional[pulumi.Input[str]] = None,
              phone: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dtsJobId' in kwargs:
+        if dts_job_id is None and 'dtsJobId' in kwargs:
             dts_job_id = kwargs['dtsJobId']
-        if 'delayRuleTime' in kwargs:
+        if dts_job_id is None:
+            raise TypeError("Missing 'dts_job_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if delay_rule_time is None and 'delayRuleTime' in kwargs:
             delay_rule_time = kwargs['delayRuleTime']
 
         _setter("dts_job_id", dts_job_id)
@@ -152,11 +156,11 @@ class _JobMonitorRuleState:
              phone: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'delayRuleTime' in kwargs:
+        if delay_rule_time is None and 'delayRuleTime' in kwargs:
             delay_rule_time = kwargs['delayRuleTime']
-        if 'dtsJobId' in kwargs:
+        if dts_job_id is None and 'dtsJobId' in kwargs:
             dts_job_id = kwargs['dtsJobId']
 
         if delay_rule_time is not None:

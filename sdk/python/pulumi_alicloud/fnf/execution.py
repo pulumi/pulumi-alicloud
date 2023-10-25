@@ -35,16 +35,20 @@ class ExecutionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             execution_name: pulumi.Input[str],
-             flow_name: pulumi.Input[str],
+             execution_name: Optional[pulumi.Input[str]] = None,
+             flow_name: Optional[pulumi.Input[str]] = None,
              input: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'executionName' in kwargs:
+        if execution_name is None and 'executionName' in kwargs:
             execution_name = kwargs['executionName']
-        if 'flowName' in kwargs:
+        if execution_name is None:
+            raise TypeError("Missing 'execution_name' argument")
+        if flow_name is None and 'flowName' in kwargs:
             flow_name = kwargs['flowName']
+        if flow_name is None:
+            raise TypeError("Missing 'flow_name' argument")
 
         _setter("execution_name", execution_name)
         _setter("flow_name", flow_name)
@@ -130,11 +134,11 @@ class _ExecutionState:
              flow_name: Optional[pulumi.Input[str]] = None,
              input: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'executionName' in kwargs:
+        if execution_name is None and 'executionName' in kwargs:
             execution_name = kwargs['executionName']
-        if 'flowName' in kwargs:
+        if flow_name is None and 'flowName' in kwargs:
             flow_name = kwargs['flowName']
 
         if execution_name is not None:
@@ -212,50 +216,6 @@ class Execution(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.149.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testacc-fnfflow"
-        default_role = alicloud.ram.Role("defaultRole", document=\"\"\"  {
-            "Statement": [
-              {
-                "Action": "sts:AssumeRole",
-                "Effect": "Allow",
-                "Principal": {
-                  "Service": [
-                    "fnf.aliyuncs.com"
-                  ]
-                }
-              }
-            ],
-            "Version": "1"
-          }
-        \"\"\")
-        default_flow = alicloud.fnf.Flow("defaultFlow",
-            definition=\"\"\"  version: v1beta1
-          type: flow
-          steps:
-            - type: wait
-              name: custom_wait
-              duration: $.wait
-        \"\"\",
-            role_arn=default_role.arn,
-            description="Test for terraform fnf_flow.",
-            type="FDL")
-        default_execution = alicloud.fnf.Execution("defaultExecution",
-            execution_name=name,
-            flow_name=default_flow.name,
-            input="{\\"wait\\": 600}")
-        ```
-
         ## Import
 
         Serverless Workflow Execution can be imported using the id, e.g.
@@ -283,50 +243,6 @@ class Execution(pulumi.CustomResource):
         For information about Serverless Workflow Execution and how to use it, see [What is Execution](https://www.alibabacloud.com/help/en/doc-detail/122628.html).
 
         > **NOTE:** Available in v1.149.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testacc-fnfflow"
-        default_role = alicloud.ram.Role("defaultRole", document=\"\"\"  {
-            "Statement": [
-              {
-                "Action": "sts:AssumeRole",
-                "Effect": "Allow",
-                "Principal": {
-                  "Service": [
-                    "fnf.aliyuncs.com"
-                  ]
-                }
-              }
-            ],
-            "Version": "1"
-          }
-        \"\"\")
-        default_flow = alicloud.fnf.Flow("defaultFlow",
-            definition=\"\"\"  version: v1beta1
-          type: flow
-          steps:
-            - type: wait
-              name: custom_wait
-              duration: $.wait
-        \"\"\",
-            role_arn=default_role.arn,
-            description="Test for terraform fnf_flow.",
-            type="FDL")
-        default_execution = alicloud.fnf.Execution("defaultExecution",
-            execution_name=name,
-            flow_name=default_flow.name,
-            input="{\\"wait\\": 600}")
-        ```
 
         ## Import
 

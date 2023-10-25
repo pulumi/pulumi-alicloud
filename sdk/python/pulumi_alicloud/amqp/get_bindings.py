@@ -99,18 +99,6 @@ def get_bindings(instance_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.135.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    examples = alicloud.amqp.get_bindings(instance_id="amqp-cn-xxxxx",
-        virtual_host_name="my-vh")
-    ```
-
 
     :param str instance_id: Instance Id.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -141,18 +129,6 @@ def get_bindings_output(instance_id: Optional[pulumi.Input[str]] = None,
     This data source provides the Amqp Bindings of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.135.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    examples = alicloud.amqp.get_bindings(instance_id="amqp-cn-xxxxx",
-        virtual_host_name="my-vh")
-    ```
 
 
     :param str instance_id: Instance Id.

@@ -29,14 +29,18 @@ class BandwidthPackageAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth_package_id: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth_package_id: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bandwidthPackageId' in kwargs:
+        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
             bandwidth_package_id = kwargs['bandwidthPackageId']
-        if 'instanceId' in kwargs:
+        if bandwidth_package_id is None:
+            raise TypeError("Missing 'bandwidth_package_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
 
         _setter("bandwidth_package_id", bandwidth_package_id)
         _setter("instance_id", instance_id)
@@ -86,11 +90,11 @@ class _BandwidthPackageAttachmentState:
              _setter: Callable[[Any, Any], None],
              bandwidth_package_id: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bandwidthPackageId' in kwargs:
+        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
             bandwidth_package_id = kwargs['bandwidthPackageId']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
 
         if bandwidth_package_id is not None:
@@ -136,27 +140,6 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.18.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_bandwidth_package = alicloud.cen.BandwidthPackage("exampleBandwidthPackage",
-            bandwidth=5,
-            cen_bandwidth_package_name="tf_example",
-            geographic_region_a_id="China",
-            geographic_region_b_id="China")
-        example_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            instance_id=example_instance.id,
-            bandwidth_package_id=example_bandwidth_package.id)
-        ```
-
         ## Import
 
         CEN bandwidth package attachment resource can be imported using the id, e.g.
@@ -180,27 +163,6 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         Provides a CEN bandwidth package attachment resource. The resource can be used to bind a bandwidth package to a specified CEN instance.
 
         > **NOTE:** Available since v1.18.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_bandwidth_package = alicloud.cen.BandwidthPackage("exampleBandwidthPackage",
-            bandwidth=5,
-            cen_bandwidth_package_name="tf_example",
-            geographic_region_a_id="China",
-            geographic_region_b_id="China")
-        example_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            instance_id=example_instance.id,
-            bandwidth_package_id=example_bandwidth_package.id)
-        ```
 
         ## Import
 

@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Oos State Configurations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.147.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.oos.getStateConfigurations({});
- * export const oosStateConfigurationId1 = ids.then(ids => ids.configurations?.[0]?.id);
- * ```
  */
 export function getStateConfigurations(args?: GetStateConfigurationsArgs, opts?: pulumi.InvokeOptions): Promise<GetStateConfigurationsResult> {
     args = args || {};
@@ -75,18 +63,6 @@ export interface GetStateConfigurationsResult {
  * This data source provides the Oos State Configurations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.147.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.oos.getStateConfigurations({});
- * export const oosStateConfigurationId1 = ids.then(ids => ids.configurations?.[0]?.id);
- * ```
  */
 export function getStateConfigurationsOutput(args?: GetStateConfigurationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStateConfigurationsResult> {
     return pulumi.output(args).apply((a: any) => getStateConfigurations(a, opts))

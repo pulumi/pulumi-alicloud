@@ -110,27 +110,6 @@ def get_bgp_peers(bgp_group_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.153.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpc.get_bgp_peers(ids=[
-        "example_value-1",
-        "example_value-2",
-    ])
-    pulumi.export("vpcBgpPeerId1", ids.peers[0].id)
-    bgp_group_id = alicloud.vpc.get_bgp_peers(bgp_group_id="example_value")
-    pulumi.export("vpcBgpPeerId2", bgp_group_id.peers[0].id)
-    router_id = alicloud.vpc.get_bgp_peers(router_id="example_value")
-    pulumi.export("vpcBgpPeerId3", router_id.peers[0].id)
-    status = alicloud.vpc.get_bgp_peers(status="Available")
-    pulumi.export("vpcBgpPeerId4", status.peers[0].id)
-    ```
-
 
     :param str bgp_group_id: The ID of the BGP group.
     :param Sequence[str] ids: A list of Bgp Peer IDs.
@@ -168,27 +147,6 @@ def get_bgp_peers_output(bgp_group_id: Optional[pulumi.Input[Optional[str]]] = N
     This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.153.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpc.get_bgp_peers(ids=[
-        "example_value-1",
-        "example_value-2",
-    ])
-    pulumi.export("vpcBgpPeerId1", ids.peers[0].id)
-    bgp_group_id = alicloud.vpc.get_bgp_peers(bgp_group_id="example_value")
-    pulumi.export("vpcBgpPeerId2", bgp_group_id.peers[0].id)
-    router_id = alicloud.vpc.get_bgp_peers(router_id="example_value")
-    pulumi.export("vpcBgpPeerId3", router_id.peers[0].id)
-    status = alicloud.vpc.get_bgp_peers(status="Available")
-    pulumi.export("vpcBgpPeerId4", status.peers[0].id)
-    ```
 
 
     :param str bgp_group_id: The ID of the BGP group.

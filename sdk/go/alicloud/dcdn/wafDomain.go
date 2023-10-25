@@ -19,57 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.185.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			domainName := "example.com"
-//			if param := cfg.Get("domainName"); param != "" {
-//				domainName = param
-//			}
-//			exampleDomain, err := dcdn.NewDomain(ctx, "exampleDomain", &dcdn.DomainArgs{
-//				DomainName: pulumi.String(domainName),
-//				Scope:      pulumi.String("overseas"),
-//				Sources: dcdn.DomainSourceArray{
-//					&dcdn.DomainSourceArgs{
-//						Content:  pulumi.String("1.1.1.1"),
-//						Port:     pulumi.Int(80),
-//						Priority: pulumi.String("20"),
-//						Type:     pulumi.String("ipaddr"),
-//						Weight:   pulumi.String("10"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dcdn.NewWafDomain(ctx, "exampleWafDomain", &dcdn.WafDomainArgs{
-//				DomainName:  exampleDomain.DomainName,
-//				ClientIpTag: pulumi.String("X-Forwarded-For"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // DCDN Waf Domain can be imported using the id, e.g.

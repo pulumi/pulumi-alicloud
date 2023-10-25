@@ -15,34 +15,6 @@ namespace Pulumi.AliCloud.Rds
         /// This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available in v1.196.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var resources = AliCloud.Rds.GetInstanceClassInfos.Invoke(new()
-        ///     {
-        ///         CommodityCode = "bards",
-        ///         OrderType = "BUY",
-        ///         OutputFile = "./classes.txt",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstDbInstanceClass"] = resources.Apply(getInstanceClassInfosResult =&gt; getInstanceClassInfosResult.Infos[0]),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceClassInfosResult> InvokeAsync(GetInstanceClassInfosArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceClassInfosResult>("alicloud:rds/getInstanceClassInfos:getInstanceClassInfos", args ?? new GetInstanceClassInfosArgs(), options.WithDefaults());
@@ -51,34 +23,6 @@ namespace Pulumi.AliCloud.Rds
         /// This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available in v1.196.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var resources = AliCloud.Rds.GetInstanceClassInfos.Invoke(new()
-        ///     {
-        ///         CommodityCode = "bards",
-        ///         OrderType = "BUY",
-        ///         OutputFile = "./classes.txt",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstDbInstanceClass"] = resources.Apply(getInstanceClassInfosResult =&gt; getInstanceClassInfosResult.Infos[0]),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceClassInfosResult> Invoke(GetInstanceClassInfosInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceClassInfosResult>("alicloud:rds/getInstanceClassInfos:getInstanceClassInfos", args ?? new GetInstanceClassInfosInvokeArgs(), options.WithDefaults());

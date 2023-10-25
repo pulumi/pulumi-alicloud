@@ -50,24 +50,38 @@ class IngestionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             ingestion_name: pulumi.Input[str],
-             interval: pulumi.Input[str],
-             logstore: pulumi.Input[str],
-             project: pulumi.Input[str],
-             run_immediately: pulumi.Input[bool],
-             source: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             ingestion_name: Optional[pulumi.Input[str]] = None,
+             interval: Optional[pulumi.Input[str]] = None,
+             logstore: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             run_immediately: Optional[pulumi.Input[bool]] = None,
+             source: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'ingestionName' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if ingestion_name is None and 'ingestionName' in kwargs:
             ingestion_name = kwargs['ingestionName']
-        if 'runImmediately' in kwargs:
+        if ingestion_name is None:
+            raise TypeError("Missing 'ingestion_name' argument")
+        if interval is None:
+            raise TypeError("Missing 'interval' argument")
+        if logstore is None:
+            raise TypeError("Missing 'logstore' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if run_immediately is None and 'runImmediately' in kwargs:
             run_immediately = kwargs['runImmediately']
-        if 'timeZone' in kwargs:
+        if run_immediately is None:
+            raise TypeError("Missing 'run_immediately' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if time_zone is None and 'timeZone' in kwargs:
             time_zone = kwargs['timeZone']
 
         _setter("display_name", display_name)
@@ -239,15 +253,15 @@ class _IngestionState:
              run_immediately: Optional[pulumi.Input[bool]] = None,
              source: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'ingestionName' in kwargs:
+        if ingestion_name is None and 'ingestionName' in kwargs:
             ingestion_name = kwargs['ingestionName']
-        if 'runImmediately' in kwargs:
+        if run_immediately is None and 'runImmediately' in kwargs:
             run_immediately = kwargs['runImmediately']
-        if 'timeZone' in kwargs:
+        if time_zone is None and 'timeZone' in kwargs:
             time_zone = kwargs['timeZone']
 
         if description is not None:
@@ -399,65 +413,6 @@ class Ingestion(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.161.0+
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject",
-            description="terraform-example",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_ingestion = alicloud.log.Ingestion("exampleIngestion",
-            project=example_project.name,
-            logstore=example_store.name,
-            ingestion_name="terraform-example",
-            display_name="terraform-example",
-            description="terraform-example",
-            interval="30m",
-            run_immediately=True,
-            time_zone="+0800",
-            source=\"\"\"        {
-                  "bucket": "bucket_name",
-                  "compressionCodec": "none",
-                  "encoding": "UTF-8",
-                  "endpoint": "oss-cn-hangzhou-internal.aliyuncs.com",
-                  "format": {
-                    "escapeChar": "\\\\",
-                    "fieldDelimiter": ",",
-                    "fieldNames": [],
-                    "firstRowAsHeader": true,
-                    "maxLines": 1,
-                    "quoteChar": "\\"",
-                    "skipLeadingRows": 0,
-                    "timeField": "",
-                    "type": "DelimitedText"
-                  },
-                  "pattern": "",
-                  "prefix": "test-prefix/",
-                  "restoreObjectEnabled": false,
-                  "roleARN": "acs:ram::1049446484210612:role/aliyunlogimportossrole",
-                  "type": "AliyunOSS"
-                }
-        \"\"\")
-        ```
-
         ## Import
 
         Log ingestion can be imported using the id or name, e.g.
@@ -489,65 +444,6 @@ class Ingestion(pulumi.CustomResource):
         [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
 
         > **NOTE:** Available in 1.161.0+
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject",
-            description="terraform-example",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_ingestion = alicloud.log.Ingestion("exampleIngestion",
-            project=example_project.name,
-            logstore=example_store.name,
-            ingestion_name="terraform-example",
-            display_name="terraform-example",
-            description="terraform-example",
-            interval="30m",
-            run_immediately=True,
-            time_zone="+0800",
-            source=\"\"\"        {
-                  "bucket": "bucket_name",
-                  "compressionCodec": "none",
-                  "encoding": "UTF-8",
-                  "endpoint": "oss-cn-hangzhou-internal.aliyuncs.com",
-                  "format": {
-                    "escapeChar": "\\\\",
-                    "fieldDelimiter": ",",
-                    "fieldNames": [],
-                    "firstRowAsHeader": true,
-                    "maxLines": 1,
-                    "quoteChar": "\\"",
-                    "skipLeadingRows": 0,
-                    "timeField": "",
-                    "type": "DelimitedText"
-                  },
-                  "pattern": "",
-                  "prefix": "test-prefix/",
-                  "restoreObjectEnabled": false,
-                  "roleARN": "acs:ram::1049446484210612:role/aliyunlogimportossrole",
-                  "type": "AliyunOSS"
-                }
-        \"\"\")
-        ```
 
         ## Import
 

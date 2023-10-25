@@ -118,16 +118,6 @@ def get_roles(enable_details: Optional[bool] = None,
 
     > **NOTE:**  Available in 1.86.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.resourcemanager.get_roles(name_regex="tftest")
-    pulumi.export("firstRoleId", example.roles[0].id)
-    ```
-
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of Resource Manager Role IDs.
@@ -162,16 +152,6 @@ def get_roles_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
 
     > **NOTE:**  Available in 1.86.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.resourcemanager.get_roles(name_regex="tftest")
-    pulumi.export("firstRoleId", example.roles[0].id)
-    ```
 
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.

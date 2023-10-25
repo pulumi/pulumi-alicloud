@@ -46,26 +46,30 @@ class LayerVersionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compatible_runtimes: pulumi.Input[Sequence[pulumi.Input[str]]],
-             layer_name: pulumi.Input[str],
+             compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             layer_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              oss_bucket_name: Optional[pulumi.Input[str]] = None,
              oss_object_name: Optional[pulumi.Input[str]] = None,
              skip_destroy: Optional[pulumi.Input[bool]] = None,
              zip_file: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'compatibleRuntimes' in kwargs:
+        if compatible_runtimes is None and 'compatibleRuntimes' in kwargs:
             compatible_runtimes = kwargs['compatibleRuntimes']
-        if 'layerName' in kwargs:
+        if compatible_runtimes is None:
+            raise TypeError("Missing 'compatible_runtimes' argument")
+        if layer_name is None and 'layerName' in kwargs:
             layer_name = kwargs['layerName']
-        if 'ossBucketName' in kwargs:
+        if layer_name is None:
+            raise TypeError("Missing 'layer_name' argument")
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'ossObjectName' in kwargs:
+        if oss_object_name is None and 'ossObjectName' in kwargs:
             oss_object_name = kwargs['ossObjectName']
-        if 'skipDestroy' in kwargs:
+        if skip_destroy is None and 'skipDestroy' in kwargs:
             skip_destroy = kwargs['skipDestroy']
-        if 'zipFile' in kwargs:
+        if zip_file is None and 'zipFile' in kwargs:
             zip_file = kwargs['zipFile']
 
         _setter("compatible_runtimes", compatible_runtimes)
@@ -226,21 +230,21 @@ class _LayerVersionState:
              skip_destroy: Optional[pulumi.Input[bool]] = None,
              version: Optional[pulumi.Input[str]] = None,
              zip_file: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'codeCheckSum' in kwargs:
+        if code_check_sum is None and 'codeCheckSum' in kwargs:
             code_check_sum = kwargs['codeCheckSum']
-        if 'compatibleRuntimes' in kwargs:
+        if compatible_runtimes is None and 'compatibleRuntimes' in kwargs:
             compatible_runtimes = kwargs['compatibleRuntimes']
-        if 'layerName' in kwargs:
+        if layer_name is None and 'layerName' in kwargs:
             layer_name = kwargs['layerName']
-        if 'ossBucketName' in kwargs:
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'ossObjectName' in kwargs:
+        if oss_object_name is None and 'ossObjectName' in kwargs:
             oss_object_name = kwargs['ossObjectName']
-        if 'skipDestroy' in kwargs:
+        if skip_destroy is None and 'skipDestroy' in kwargs:
             skip_destroy = kwargs['skipDestroy']
-        if 'zipFile' in kwargs:
+        if zip_file is None and 'zipFile' in kwargs:
             zip_file = kwargs['zipFile']
 
         if acl is not None:
@@ -415,35 +419,6 @@ class LayerVersion(pulumi.CustomResource):
                  zip_file: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
-        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
-            bucket=default_bucket.id,
-            key="index.py",
-            content=\"\"\"import logging 
-        def handler(event, context): 
-        logger = logging.getLogger() 
-        logger.info('hello world') 
-        return 'hello world'\"\"\")
-        example = alicloud.fc.LayerVersion("example",
-            layer_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
-            compatible_runtimes=["python2.7"],
-            oss_bucket_name=default_bucket.bucket,
-            oss_object_name=default_bucket_object.key)
-        ```
-
         ## Import
 
         Function Compute Layer Version can be imported using the id, e.g.
@@ -471,35 +446,6 @@ class LayerVersion(pulumi.CustomResource):
                  args: LayerVersionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
-        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
-            bucket=default_bucket.id,
-            key="index.py",
-            content=\"\"\"import logging 
-        def handler(event, context): 
-        logger = logging.getLogger() 
-        logger.info('hello world') 
-        return 'hello world'\"\"\")
-        example = alicloud.fc.LayerVersion("example",
-            layer_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
-            compatible_runtimes=["python2.7"],
-            oss_bucket_name=default_bucket.bucket,
-            oss_object_name=default_bucket_object.key)
-        ```
-
         ## Import
 
         Function Compute Layer Version can be imported using the id, e.g.

@@ -48,20 +48,32 @@ class GetImagesImageResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             id: str,
-             image_id: str,
-             image_name: str,
-             image_type: str,
-             platform: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             image_id: Optional[str] = None,
+             image_name: Optional[str] = None,
+             image_type: Optional[str] = None,
+             platform: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'imageId' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'imageName' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if image_name is None and 'imageName' in kwargs:
             image_name = kwargs['imageName']
-        if 'imageType' in kwargs:
+        if image_name is None:
+            raise TypeError("Missing 'image_name' argument")
+        if image_type is None and 'imageType' in kwargs:
             image_type = kwargs['imageType']
+        if image_type is None:
+            raise TypeError("Missing 'image_type' argument")
+        if platform is None:
+            raise TypeError("Missing 'platform' argument")
 
         _setter("description", description)
         _setter("id", id)
@@ -169,43 +181,69 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             business_status: str,
-             create_time: str,
-             ddos_status: str,
-             expired_time: str,
-             id: str,
-             image_id: str,
-             inner_ip_address: str,
-             instance_id: str,
-             instance_name: str,
-             payment_type: str,
-             plan_id: str,
-             public_ip_address: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             business_status: Optional[str] = None,
+             create_time: Optional[str] = None,
+             ddos_status: Optional[str] = None,
+             expired_time: Optional[str] = None,
+             id: Optional[str] = None,
+             image_id: Optional[str] = None,
+             inner_ip_address: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             plan_id: Optional[str] = None,
+             public_ip_address: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'businessStatus' in kwargs:
+        if business_status is None and 'businessStatus' in kwargs:
             business_status = kwargs['businessStatus']
-        if 'createTime' in kwargs:
+        if business_status is None:
+            raise TypeError("Missing 'business_status' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'ddosStatus' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if ddos_status is None and 'ddosStatus' in kwargs:
             ddos_status = kwargs['ddosStatus']
-        if 'expiredTime' in kwargs:
+        if ddos_status is None:
+            raise TypeError("Missing 'ddos_status' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'imageId' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'innerIpAddress' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if inner_ip_address is None and 'innerIpAddress' in kwargs:
             inner_ip_address = kwargs['innerIpAddress']
-        if 'instanceId' in kwargs:
+        if inner_ip_address is None:
+            raise TypeError("Missing 'inner_ip_address' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'paymentType' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'planId' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if plan_id is None and 'planId' in kwargs:
             plan_id = kwargs['planId']
-        if 'publicIpAddress' in kwargs:
+        if plan_id is None:
+            raise TypeError("Missing 'plan_id' argument")
+        if public_ip_address is None and 'publicIpAddress' in kwargs:
             public_ip_address = kwargs['publicIpAddress']
+        if public_ip_address is None:
+            raise TypeError("Missing 'public_ip_address' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("business_status", business_status)
         _setter("create_time", create_time)
@@ -352,17 +390,27 @@ class GetServerCustomImagesImageResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             custom_image_id: str,
-             custom_image_name: str,
-             description: str,
-             id: str,
-             platform: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             custom_image_id: Optional[str] = None,
+             custom_image_name: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             platform: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'customImageId' in kwargs:
+        if custom_image_id is None and 'customImageId' in kwargs:
             custom_image_id = kwargs['customImageId']
-        if 'customImageName' in kwargs:
+        if custom_image_id is None:
+            raise TypeError("Missing 'custom_image_id' argument")
+        if custom_image_name is None and 'customImageName' in kwargs:
             custom_image_name = kwargs['customImageName']
+        if custom_image_name is None:
+            raise TypeError("Missing 'custom_image_name' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if platform is None:
+            raise TypeError("Missing 'platform' argument")
 
         _setter("custom_image_id", custom_image_id)
         _setter("custom_image_name", custom_image_name)
@@ -455,31 +503,53 @@ class GetServerDisksDiskResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: str,
-             create_time: str,
-             device: str,
-             disk_id: str,
-             disk_name: str,
-             disk_type: str,
-             id: str,
-             instance_id: str,
-             payment_type: str,
-             size: int,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             category: Optional[str] = None,
+             create_time: Optional[str] = None,
+             device: Optional[str] = None,
+             disk_id: Optional[str] = None,
+             disk_name: Optional[str] = None,
+             disk_type: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             size: Optional[int] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'diskId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if device is None:
+            raise TypeError("Missing 'device' argument")
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
-        if 'diskName' in kwargs:
+        if disk_id is None:
+            raise TypeError("Missing 'disk_id' argument")
+        if disk_name is None and 'diskName' in kwargs:
             disk_name = kwargs['diskName']
-        if 'diskType' in kwargs:
+        if disk_name is None:
+            raise TypeError("Missing 'disk_name' argument")
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'instanceId' in kwargs:
+        if disk_type is None:
+            raise TypeError("Missing 'disk_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'paymentType' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("category", category)
         _setter("create_time", create_time)
@@ -611,20 +681,32 @@ class GetServerFirewallRulesRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             firewall_rule_id: str,
-             id: str,
-             instance_id: str,
-             port: str,
-             remark: str,
-             rule_protocol: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             firewall_rule_id: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             port: Optional[str] = None,
+             remark: Optional[str] = None,
+             rule_protocol: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'firewallRuleId' in kwargs:
+        if firewall_rule_id is None and 'firewallRuleId' in kwargs:
             firewall_rule_id = kwargs['firewallRuleId']
-        if 'instanceId' in kwargs:
+        if firewall_rule_id is None:
+            raise TypeError("Missing 'firewall_rule_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'ruleProtocol' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if remark is None:
+            raise TypeError("Missing 'remark' argument")
+        if rule_protocol is None and 'ruleProtocol' in kwargs:
             rule_protocol = kwargs['ruleProtocol']
+        if rule_protocol is None:
+            raise TypeError("Missing 'rule_protocol' argument")
 
         _setter("firewall_rule_id", firewall_rule_id)
         _setter("id", id)
@@ -717,22 +799,38 @@ class GetServerPlansPlanResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: int,
-             core: int,
-             disk_size: int,
-             flow: int,
-             id: str,
-             memory: int,
-             plan_id: str,
-             support_platform: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth: Optional[int] = None,
+             core: Optional[int] = None,
+             disk_size: Optional[int] = None,
+             flow: Optional[int] = None,
+             id: Optional[str] = None,
+             memory: Optional[int] = None,
+             plan_id: Optional[str] = None,
+             support_platform: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'diskSize' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if core is None:
+            raise TypeError("Missing 'core' argument")
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'planId' in kwargs:
+        if disk_size is None:
+            raise TypeError("Missing 'disk_size' argument")
+        if flow is None:
+            raise TypeError("Missing 'flow' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if memory is None:
+            raise TypeError("Missing 'memory' argument")
+        if plan_id is None and 'planId' in kwargs:
             plan_id = kwargs['planId']
-        if 'supportPlatform' in kwargs:
+        if plan_id is None:
+            raise TypeError("Missing 'plan_id' argument")
+        if support_platform is None and 'supportPlatform' in kwargs:
             support_platform = kwargs['supportPlatform']
+        if support_platform is None:
+            raise TypeError("Missing 'support_platform' argument")
 
         _setter("bandwidth", bandwidth)
         _setter("core", core)
@@ -846,27 +944,45 @@ class GetServerSnapshotsSnapshotResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             disk_id: str,
-             id: str,
-             progress: str,
-             remark: str,
-             snapshot_id: str,
-             snapshot_name: str,
-             source_disk_type: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             disk_id: Optional[str] = None,
+             id: Optional[str] = None,
+             progress: Optional[str] = None,
+             remark: Optional[str] = None,
+             snapshot_id: Optional[str] = None,
+             snapshot_name: Optional[str] = None,
+             source_disk_type: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'diskId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
-        if 'snapshotId' in kwargs:
+        if disk_id is None:
+            raise TypeError("Missing 'disk_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if progress is None:
+            raise TypeError("Missing 'progress' argument")
+        if remark is None:
+            raise TypeError("Missing 'remark' argument")
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
-        if 'snapshotName' in kwargs:
+        if snapshot_id is None:
+            raise TypeError("Missing 'snapshot_id' argument")
+        if snapshot_name is None and 'snapshotName' in kwargs:
             snapshot_name = kwargs['snapshotName']
-        if 'sourceDiskType' in kwargs:
+        if snapshot_name is None:
+            raise TypeError("Missing 'snapshot_name' argument")
+        if source_disk_type is None and 'sourceDiskType' in kwargs:
             source_disk_type = kwargs['sourceDiskType']
+        if source_disk_type is None:
+            raise TypeError("Missing 'source_disk_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("create_time", create_time)
         _setter("disk_id", disk_id)

@@ -12,24 +12,6 @@ import * as utilities from "../utilities";
  * For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute).
  *
  * > **NOTE:** Available since v1.77.0.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example";
- * const _default = new alicloud.maxcompute.Project("default", {
- *     defaultQuota: "默认后付费Quota",
- *     projectName: name,
- *     comment: name,
- *     productType: "PayAsYouGo",
- * });
- * ```
  */
 export class Project extends pulumi.CustomResource {
     /**

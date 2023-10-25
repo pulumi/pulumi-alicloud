@@ -10,17 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides availability zones for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
  * > **NOTE:** Available in v1.73.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const zonesIds = alicloud.hbase.getZones({});
- * const hbase = new alicloud.hbase.Instance("hbase", {zoneId: zonesIds.then(zonesIds => zonesIds.zones?.[0]?.id)});
- * // Other properties...
- * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
@@ -63,17 +52,6 @@ export interface GetZonesResult {
  * This data source provides availability zones for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
  * > **NOTE:** Available in v1.73.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const zonesIds = alicloud.hbase.getZones({});
- * const hbase = new alicloud.hbase.Instance("hbase", {zoneId: zonesIds.then(zonesIds => zonesIds.zones?.[0]?.id)});
- * // Other properties...
- * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
     return pulumi.output(args).apply((a: any) => getZones(a, opts))

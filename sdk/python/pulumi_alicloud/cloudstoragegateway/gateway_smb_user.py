@@ -32,13 +32,19 @@ class GatewaySmbUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gateway_id: pulumi.Input[str],
-             password: pulumi.Input[str],
-             username: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             gateway_id: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'gatewayId' in kwargs:
+        if gateway_id is None and 'gatewayId' in kwargs:
             gateway_id = kwargs['gatewayId']
+        if gateway_id is None:
+            raise TypeError("Missing 'gateway_id' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
 
         _setter("gateway_id", gateway_id)
         _setter("password", password)
@@ -105,9 +111,9 @@ class _GatewaySmbUserState:
              gateway_id: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'gatewayId' in kwargs:
+        if gateway_id is None and 'gatewayId' in kwargs:
             gateway_id = kwargs['gatewayId']
 
         if gateway_id is not None:

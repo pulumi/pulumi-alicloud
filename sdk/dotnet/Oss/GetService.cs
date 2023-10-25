@@ -17,28 +17,6 @@ namespace Pulumi.AliCloud.Oss
         /// For information about OSS and how to use it, see [What is OSS](https://www.alibabacloud.com/help/product/31815.htm).
         /// 
         /// &gt; **NOTE:** Available in v1.97.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var open = AliCloud.Oss.GetService.Invoke(new()
-        ///     {
-        ///         Enable = "On",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("alicloud:oss/getService:getService", args ?? new GetServiceArgs(), options.WithDefaults());
@@ -49,28 +27,6 @@ namespace Pulumi.AliCloud.Oss
         /// For information about OSS and how to use it, see [What is OSS](https://www.alibabacloud.com/help/product/31815.htm).
         /// 
         /// &gt; **NOTE:** Available in v1.97.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var open = AliCloud.Oss.GetService.Invoke(new()
-        ///     {
-        ///         Enable = "On",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:oss/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());

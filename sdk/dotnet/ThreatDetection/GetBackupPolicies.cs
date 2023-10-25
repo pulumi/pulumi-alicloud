@@ -15,43 +15,6 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.195.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.ThreatDetection.GetBackupPolicies.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.ThreatDetection.GetBackupPolicies.Invoke(new()
-        ///     {
-        ///         NameRegex = "tf-example",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["threatDetectionBackupPoliciesId1"] = ids.Apply(getBackupPoliciesResult =&gt; getBackupPoliciesResult.Policies[0]?.Id),
-        ///         ["threatDetectionBackupPoliciesId2"] = nameRegex.Apply(getBackupPoliciesResult =&gt; getBackupPoliciesResult.Policies[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackupPoliciesResult> InvokeAsync(GetBackupPoliciesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackupPoliciesResult>("alicloud:threatdetection/getBackupPolicies:getBackupPolicies", args ?? new GetBackupPoliciesArgs(), options.WithDefaults());
@@ -60,43 +23,6 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.195.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.ThreatDetection.GetBackupPolicies.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.ThreatDetection.GetBackupPolicies.Invoke(new()
-        ///     {
-        ///         NameRegex = "tf-example",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["threatDetectionBackupPoliciesId1"] = ids.Apply(getBackupPoliciesResult =&gt; getBackupPoliciesResult.Policies[0]?.Id),
-        ///         ["threatDetectionBackupPoliciesId2"] = nameRegex.Apply(getBackupPoliciesResult =&gt; getBackupPoliciesResult.Policies[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBackupPoliciesResult> Invoke(GetBackupPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackupPoliciesResult>("alicloud:threatdetection/getBackupPolicies:getBackupPolicies", args ?? new GetBackupPoliciesInvokeArgs(), options.WithDefaults());

@@ -10,39 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Vpc Ipv6 Egress Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.vpc.getIpv6EgressRules({
- *     ipv6GatewayId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const vpcIpv6EgressRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
- * const nameRegex = alicloud.vpc.getIpv6EgressRules({
- *     ipv6GatewayId: "example_value",
- *     nameRegex: "^my-Ipv6EgressRule",
- * });
- * export const vpcIpv6EgressRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
- * const status = alicloud.vpc.getIpv6EgressRules({
- *     ipv6GatewayId: "example_value",
- *     status: "Available",
- * });
- * export const vpcIpv6EgressRuleId3 = status.then(status => status.rules?.[0]?.id);
- * const ipv6EgressRuleName = alicloud.vpc.getIpv6EgressRules({
- *     ipv6GatewayId: "example_value",
- *     ipv6EgressRuleName: "example_value",
- * });
- * export const vpcIpv6EgressRuleId4 = ipv6EgressRuleName.then(ipv6EgressRuleName => ipv6EgressRuleName.rules?.[0]?.id);
- * ```
  */
 export function getIpv6EgressRules(args: GetIpv6EgressRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetIpv6EgressRulesResult> {
 
@@ -114,39 +81,6 @@ export interface GetIpv6EgressRulesResult {
  * This data source provides the Vpc Ipv6 Egress Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.vpc.getIpv6EgressRules({
- *     ipv6GatewayId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const vpcIpv6EgressRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
- * const nameRegex = alicloud.vpc.getIpv6EgressRules({
- *     ipv6GatewayId: "example_value",
- *     nameRegex: "^my-Ipv6EgressRule",
- * });
- * export const vpcIpv6EgressRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
- * const status = alicloud.vpc.getIpv6EgressRules({
- *     ipv6GatewayId: "example_value",
- *     status: "Available",
- * });
- * export const vpcIpv6EgressRuleId3 = status.then(status => status.rules?.[0]?.id);
- * const ipv6EgressRuleName = alicloud.vpc.getIpv6EgressRules({
- *     ipv6GatewayId: "example_value",
- *     ipv6EgressRuleName: "example_value",
- * });
- * export const vpcIpv6EgressRuleId4 = ipv6EgressRuleName.then(ipv6EgressRuleName => ipv6EgressRuleName.rules?.[0]?.id);
- * ```
  */
 export function getIpv6EgressRulesOutput(args: GetIpv6EgressRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6EgressRulesResult> {
     return pulumi.output(args).apply((a: any) => getIpv6EgressRules(a, opts))

@@ -38,22 +38,24 @@ class NamespaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespace_name: pulumi.Input[str],
+             namespace_name: Optional[pulumi.Input[str]] = None,
              enable_micro_registration: Optional[pulumi.Input[bool]] = None,
              namespace_description: Optional[pulumi.Input[str]] = None,
              namespace_id: Optional[pulumi.Input[str]] = None,
              namespace_short_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'namespaceName' in kwargs:
+        if namespace_name is None and 'namespaceName' in kwargs:
             namespace_name = kwargs['namespaceName']
-        if 'enableMicroRegistration' in kwargs:
+        if namespace_name is None:
+            raise TypeError("Missing 'namespace_name' argument")
+        if enable_micro_registration is None and 'enableMicroRegistration' in kwargs:
             enable_micro_registration = kwargs['enableMicroRegistration']
-        if 'namespaceDescription' in kwargs:
+        if namespace_description is None and 'namespaceDescription' in kwargs:
             namespace_description = kwargs['namespaceDescription']
-        if 'namespaceId' in kwargs:
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
-        if 'namespaceShortId' in kwargs:
+        if namespace_short_id is None and 'namespaceShortId' in kwargs:
             namespace_short_id = kwargs['namespaceShortId']
 
         _setter("namespace_name", namespace_name)
@@ -159,17 +161,17 @@ class _NamespaceState:
              namespace_id: Optional[pulumi.Input[str]] = None,
              namespace_name: Optional[pulumi.Input[str]] = None,
              namespace_short_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'enableMicroRegistration' in kwargs:
+        if enable_micro_registration is None and 'enableMicroRegistration' in kwargs:
             enable_micro_registration = kwargs['enableMicroRegistration']
-        if 'namespaceDescription' in kwargs:
+        if namespace_description is None and 'namespaceDescription' in kwargs:
             namespace_description = kwargs['namespaceDescription']
-        if 'namespaceId' in kwargs:
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
-        if 'namespaceName' in kwargs:
+        if namespace_name is None and 'namespaceName' in kwargs:
             namespace_name = kwargs['namespaceName']
-        if 'namespaceShortId' in kwargs:
+        if namespace_short_id is None and 'namespaceShortId' in kwargs:
             namespace_short_id = kwargs['namespaceShortId']
 
         if enable_micro_registration is not None:
@@ -262,30 +264,6 @@ class Namespace(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.129.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        example = alicloud.sae.Namespace("example",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
-            namespace_name=name,
-            namespace_description=name,
-            enable_micro_registration=False)
-        ```
-
         ## Import
 
         Serverless App Engine (SAE) Namespace can be imported using the id, e.g.
@@ -314,30 +292,6 @@ class Namespace(pulumi.CustomResource):
         For information about SAE Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/sae/latest/createnamespace).
 
         > **NOTE:** Available since v1.129.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        example = alicloud.sae.Namespace("example",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
-            namespace_name=name,
-            namespace_description=name,
-            enable_micro_registration=False)
-        ```
 
         ## Import
 

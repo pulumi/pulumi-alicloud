@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.alb.getLoadBalancers({});
- * export const albLoadBalancerId1 = ids.then(ids => ids.balancers?.[0]?.id);
- * const nameRegex = alicloud.alb.getLoadBalancers({
- *     nameRegex: "^my-LoadBalancer",
- * });
- * export const albLoadBalancerId2 = nameRegex.then(nameRegex => nameRegex.balancers?.[0]?.id);
- * ```
  */
 export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
     args = args || {};
@@ -151,22 +135,6 @@ export interface GetLoadBalancersResult {
  * This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.alb.getLoadBalancers({});
- * export const albLoadBalancerId1 = ids.then(ids => ids.balancers?.[0]?.id);
- * const nameRegex = alicloud.alb.getLoadBalancers({
- *     nameRegex: "^my-LoadBalancer",
- * });
- * export const albLoadBalancerId2 = nameRegex.then(nameRegex => nameRegex.balancers?.[0]?.id);
- * ```
  */
 export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancersResult> {
     return pulumi.output(args).apply((a: any) => getLoadBalancers(a, opts))

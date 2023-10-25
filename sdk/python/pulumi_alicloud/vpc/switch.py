@@ -57,8 +57,8 @@ class SwitchArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
              availability_zone: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              enable_ipv6: Optional[pulumi.Input[bool]] = None,
@@ -67,21 +67,25 @@ class SwitchArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_name: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'vpcId' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'availabilityZone' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'enableIpv6' in kwargs:
+        if enable_ipv6 is None and 'enableIpv6' in kwargs:
             enable_ipv6 = kwargs['enableIpv6']
-        if 'ipv6CidrBlockMask' in kwargs:
+        if ipv6_cidr_block_mask is None and 'ipv6CidrBlockMask' in kwargs:
             ipv6_cidr_block_mask = kwargs['ipv6CidrBlockMask']
-        if 'vswitchName' in kwargs:
+        if vswitch_name is None and 'vswitchName' in kwargs:
             vswitch_name = kwargs['vswitchName']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("cidr_block", cidr_block)
@@ -308,25 +312,25 @@ class _SwitchState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_name: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'enableIpv6' in kwargs:
+        if enable_ipv6 is None and 'enableIpv6' in kwargs:
             enable_ipv6 = kwargs['enableIpv6']
-        if 'ipv6CidrBlock' in kwargs:
+        if ipv6_cidr_block is None and 'ipv6CidrBlock' in kwargs:
             ipv6_cidr_block = kwargs['ipv6CidrBlock']
-        if 'ipv6CidrBlockMask' in kwargs:
+        if ipv6_cidr_block_mask is None and 'ipv6CidrBlockMask' in kwargs:
             ipv6_cidr_block_mask = kwargs['ipv6CidrBlockMask']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchName' in kwargs:
+        if vswitch_name is None and 'vswitchName' in kwargs:
             vswitch_name = kwargs['vswitchName']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if availability_zone is not None:
@@ -554,68 +558,6 @@ class Switch(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/12")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.16.0.0/21",
-            vpc_id=foo_network.id,
-            zone_id=foo_zones.zones[0].id)
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo = alicloud.get_zones(available_resource_creation="VSwitch")
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/12")
-        cidr_blocks = alicloud.vpc.Ipv4CidrBlock("cidrBlocks",
-            vpc_id=vpc.id,
-            secondary_cidr_block="192.163.0.0/16")
-        island_nat = alicloud.vpc.Switch("island-nat",
-            vpc_id=cidr_blocks.vpc_id,
-            cidr_block="172.16.0.0/21",
-            zone_id=foo.zones[0].id,
-            vswitch_name="terraform-example",
-            tags={
-                "BuiltBy": "example_value",
-                "cnm_version": "example_value",
-                "Environment": "example_value",
-                "ManagedBy": "example_value",
-            })
-        ```
-
-        Create a switch associated with the additional network segment
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/12")
-        foo_ipv4_cidr_block = alicloud.vpc.Ipv4CidrBlock("fooIpv4CidrBlock",
-            vpc_id=foo_network.id,
-            secondary_cidr_block="192.163.0.0/16")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vpc_id=foo_ipv4_cidr_block.vpc_id,
-            cidr_block="192.163.0.0/24",
-            zone_id=foo_zones.zones[0].id)
-        ```
-
         ## Import
 
         VPC Vswitch can be imported using the id, e.g.
@@ -655,68 +597,6 @@ class Switch(pulumi.CustomResource):
         For information about VPC Vswitch and how to use it, see [What is Vswitch](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/work-with-vswitches).
 
         > **NOTE:** Available since v1.0.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/12")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.16.0.0/21",
-            vpc_id=foo_network.id,
-            zone_id=foo_zones.zones[0].id)
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo = alicloud.get_zones(available_resource_creation="VSwitch")
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/12")
-        cidr_blocks = alicloud.vpc.Ipv4CidrBlock("cidrBlocks",
-            vpc_id=vpc.id,
-            secondary_cidr_block="192.163.0.0/16")
-        island_nat = alicloud.vpc.Switch("island-nat",
-            vpc_id=cidr_blocks.vpc_id,
-            cidr_block="172.16.0.0/21",
-            zone_id=foo.zones[0].id,
-            vswitch_name="terraform-example",
-            tags={
-                "BuiltBy": "example_value",
-                "cnm_version": "example_value",
-                "Environment": "example_value",
-                "ManagedBy": "example_value",
-            })
-        ```
-
-        Create a switch associated with the additional network segment
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/12")
-        foo_ipv4_cidr_block = alicloud.vpc.Ipv4CidrBlock("fooIpv4CidrBlock",
-            vpc_id=foo_network.id,
-            secondary_cidr_block="192.163.0.0/16")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vpc_id=foo_ipv4_cidr_block.vpc_id,
-            cidr_block="192.163.0.0/24",
-            zone_id=foo_zones.zones[0].id)
-        ```
 
         ## Import
 

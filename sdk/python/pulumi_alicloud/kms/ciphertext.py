@@ -32,14 +32,18 @@ class CiphertextArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key_id: pulumi.Input[str],
-             plaintext: pulumi.Input[str],
+             key_id: Optional[pulumi.Input[str]] = None,
+             plaintext: Optional[pulumi.Input[str]] = None,
              encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'keyId' in kwargs:
+        if key_id is None and 'keyId' in kwargs:
             key_id = kwargs['keyId']
-        if 'encryptionContext' in kwargs:
+        if key_id is None:
+            raise TypeError("Missing 'key_id' argument")
+        if plaintext is None:
+            raise TypeError("Missing 'plaintext' argument")
+        if encryption_context is None and 'encryptionContext' in kwargs:
             encryption_context = kwargs['encryptionContext']
 
         _setter("key_id", key_id)
@@ -112,13 +116,13 @@ class _CiphertextState:
              encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              key_id: Optional[pulumi.Input[str]] = None,
              plaintext: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ciphertextBlob' in kwargs:
+        if ciphertext_blob is None and 'ciphertextBlob' in kwargs:
             ciphertext_blob = kwargs['ciphertextBlob']
-        if 'encryptionContext' in kwargs:
+        if encryption_context is None and 'encryptionContext' in kwargs:
             encryption_context = kwargs['encryptionContext']
-        if 'keyId' in kwargs:
+        if key_id is None and 'keyId' in kwargs:
             key_id = kwargs['keyId']
 
         if ciphertext_blob is not None:
@@ -189,20 +193,7 @@ class Ciphertext(pulumi.CustomResource):
                  plaintext: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        key = alicloud.kms.Key("key",
-            description="example key",
-            is_enabled=True)
-        encrypted = alicloud.kms.Ciphertext("encrypted",
-            key_id=key.id,
-            plaintext="example")
-        ```
-
+        Create a Ciphertext resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_context: The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
@@ -216,20 +207,7 @@ class Ciphertext(pulumi.CustomResource):
                  args: CiphertextArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        key = alicloud.kms.Key("key",
-            description="example key",
-            is_enabled=True)
-        encrypted = alicloud.kms.Ciphertext("encrypted",
-            key_id=key.id,
-            plaintext="example")
-        ```
-
+        Create a Ciphertext resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param CiphertextArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

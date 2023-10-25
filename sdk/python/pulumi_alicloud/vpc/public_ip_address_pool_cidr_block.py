@@ -29,13 +29,15 @@ class PublicIpAddressPoolCidrBlockArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             public_ip_address_pool_id: pulumi.Input[str],
+             public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
              cidr_block: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'publicIpAddressPoolId' in kwargs:
+        if public_ip_address_pool_id is None and 'publicIpAddressPoolId' in kwargs:
             public_ip_address_pool_id = kwargs['publicIpAddressPoolId']
-        if 'cidrBlock' in kwargs:
+        if public_ip_address_pool_id is None:
+            raise TypeError("Missing 'public_ip_address_pool_id' argument")
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
 
         _setter("public_ip_address_pool_id", public_ip_address_pool_id)
@@ -95,13 +97,13 @@ class _PublicIpAddressPoolCidrBlockState:
              create_time: Optional[pulumi.Input[str]] = None,
              public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'publicIpAddressPoolId' in kwargs:
+        if public_ip_address_pool_id is None and 'publicIpAddressPoolId' in kwargs:
             public_ip_address_pool_id = kwargs['publicIpAddressPoolId']
 
         if cidr_block is not None:
@@ -178,29 +180,6 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.189.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool",
-            description=name,
-            public_ip_address_pool_name=name,
-            isp="BGP",
-            resource_group_id=default_resource_groups.ids[0])
-        default_public_ip_address_pool_cidr_block = alicloud.vpc.PublicIpAddressPoolCidrBlock("defaultPublicIpAddressPoolCidrBlock",
-            public_ip_address_pool_id=default_public_ip_address_pool.id,
-            cidr_block="47.118.126.0/25")
-        ```
-
         ## Import
 
         VPC Public Ip Address Pool Cidr Block can be imported using the id, e.g.
@@ -227,29 +206,6 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
         For information about VPC Public Ip Address Pool Cidr Block and how to use it, see [What is Public Ip Address Pool Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
 
         > **NOTE:** Available since v1.189.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool",
-            description=name,
-            public_ip_address_pool_name=name,
-            isp="BGP",
-            resource_group_id=default_resource_groups.ids[0])
-        default_public_ip_address_pool_cidr_block = alicloud.vpc.PublicIpAddressPoolCidrBlock("defaultPublicIpAddressPoolCidrBlock",
-            public_ip_address_pool_id=default_public_ip_address_pool.id,
-            cidr_block="47.118.126.0/25")
-        ```
 
         ## Import
 

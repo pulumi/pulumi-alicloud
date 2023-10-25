@@ -63,47 +63,85 @@ class GetMongoInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             availability_zone: str,
-             charge_type: str,
-             creation_time: str,
-             engine: str,
-             engine_version: str,
-             expiration_time: str,
-             id: str,
-             instance_class: str,
-             instance_type: str,
-             lock_mode: str,
-             mongos: Sequence['outputs.GetMongoInstancesInstanceMongoResult'],
-             name: str,
-             network_type: str,
-             region_id: str,
-             replication: str,
-             shards: Sequence['outputs.GetMongoInstancesInstanceShardResult'],
-             status: str,
-             storage: int,
-             tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             availability_zone: Optional[str] = None,
+             charge_type: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             engine: Optional[str] = None,
+             engine_version: Optional[str] = None,
+             expiration_time: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_class: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             lock_mode: Optional[str] = None,
+             mongos: Optional[Sequence['outputs.GetMongoInstancesInstanceMongoResult']] = None,
+             name: Optional[str] = None,
+             network_type: Optional[str] = None,
+             region_id: Optional[str] = None,
+             replication: Optional[str] = None,
+             shards: Optional[Sequence['outputs.GetMongoInstancesInstanceShardResult']] = None,
+             status: Optional[str] = None,
+             storage: Optional[int] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'chargeType' in kwargs:
+        if availability_zone is None:
+            raise TypeError("Missing 'availability_zone' argument")
+        if charge_type is None and 'chargeType' in kwargs:
             charge_type = kwargs['chargeType']
-        if 'creationTime' in kwargs:
+        if charge_type is None:
+            raise TypeError("Missing 'charge_type' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'engineVersion' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'expirationTime' in kwargs:
+        if engine_version is None:
+            raise TypeError("Missing 'engine_version' argument")
+        if expiration_time is None and 'expirationTime' in kwargs:
             expiration_time = kwargs['expirationTime']
-        if 'instanceClass' in kwargs:
+        if expiration_time is None:
+            raise TypeError("Missing 'expiration_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'instanceType' in kwargs:
+        if instance_class is None:
+            raise TypeError("Missing 'instance_class' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'lockMode' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if lock_mode is None and 'lockMode' in kwargs:
             lock_mode = kwargs['lockMode']
-        if 'networkType' in kwargs:
+        if lock_mode is None:
+            raise TypeError("Missing 'lock_mode' argument")
+        if mongos is None:
+            raise TypeError("Missing 'mongos' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'regionId' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if replication is None:
+            raise TypeError("Missing 'replication' argument")
+        if shards is None:
+            raise TypeError("Missing 'shards' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if storage is None:
+            raise TypeError("Missing 'storage' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
 
         _setter("availability_zone", availability_zone)
         _setter("charge_type", charge_type)
@@ -236,15 +274,21 @@ class GetMongoInstancesInstanceMongoResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             class_: str,
-             description: str,
-             node_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             class_: Optional[str] = None,
+             description: Optional[str] = None,
+             node_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'class' in kwargs:
+        if class_ is None and 'class' in kwargs:
             class_ = kwargs['class']
-        if 'nodeId' in kwargs:
+        if class_ is None:
+            raise TypeError("Missing 'class_' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if node_id is None and 'nodeId' in kwargs:
             node_id = kwargs['nodeId']
+        if node_id is None:
+            raise TypeError("Missing 'node_id' argument")
 
         _setter("class_", class_)
         _setter("description", description)
@@ -283,16 +327,24 @@ class GetMongoInstancesInstanceShardResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             class_: str,
-             description: str,
-             node_id: str,
-             storage: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             class_: Optional[str] = None,
+             description: Optional[str] = None,
+             node_id: Optional[str] = None,
+             storage: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'class' in kwargs:
+        if class_ is None and 'class' in kwargs:
             class_ = kwargs['class']
-        if 'nodeId' in kwargs:
+        if class_ is None:
+            raise TypeError("Missing 'class_' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if node_id is None and 'nodeId' in kwargs:
             node_id = kwargs['nodeId']
+        if node_id is None:
+            raise TypeError("Missing 'node_id' argument")
+        if storage is None:
+            raise TypeError("Missing 'storage' argument")
 
         _setter("class_", class_)
         _setter("description", description)

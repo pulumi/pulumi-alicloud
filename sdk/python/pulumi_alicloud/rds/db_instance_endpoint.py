@@ -46,26 +46,38 @@ class DbInstanceEndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_string_prefix: pulumi.Input[str],
-             db_instance_id: pulumi.Input[str],
-             node_items: pulumi.Input[Sequence[pulumi.Input['DbInstanceEndpointNodeItemArgs']]],
-             port: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             connection_string_prefix: Optional[pulumi.Input[str]] = None,
+             db_instance_id: Optional[pulumi.Input[str]] = None,
+             node_items: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceEndpointNodeItemArgs']]]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              db_instance_endpoint_description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionStringPrefix' in kwargs:
+        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
             connection_string_prefix = kwargs['connectionStringPrefix']
-        if 'dbInstanceId' in kwargs:
+        if connection_string_prefix is None:
+            raise TypeError("Missing 'connection_string_prefix' argument")
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
-        if 'nodeItems' in kwargs:
+        if db_instance_id is None:
+            raise TypeError("Missing 'db_instance_id' argument")
+        if node_items is None and 'nodeItems' in kwargs:
             node_items = kwargs['nodeItems']
-        if 'vpcId' in kwargs:
+        if node_items is None:
+            raise TypeError("Missing 'node_items' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'dbInstanceEndpointDescription' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if db_instance_endpoint_description is None and 'dbInstanceEndpointDescription' in kwargs:
             db_instance_endpoint_description = kwargs['dbInstanceEndpointDescription']
 
         _setter("connection_string_prefix", connection_string_prefix)
@@ -222,29 +234,29 @@ class _DbInstanceEndpointState:
              private_ip_address: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'connectionStringPrefix' in kwargs:
+        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
             connection_string_prefix = kwargs['connectionStringPrefix']
-        if 'dbInstanceEndpointDescription' in kwargs:
+        if db_instance_endpoint_description is None and 'dbInstanceEndpointDescription' in kwargs:
             db_instance_endpoint_description = kwargs['dbInstanceEndpointDescription']
-        if 'dbInstanceEndpointId' in kwargs:
+        if db_instance_endpoint_id is None and 'dbInstanceEndpointId' in kwargs:
             db_instance_endpoint_id = kwargs['dbInstanceEndpointId']
-        if 'dbInstanceEndpointType' in kwargs:
+        if db_instance_endpoint_type is None and 'dbInstanceEndpointType' in kwargs:
             db_instance_endpoint_type = kwargs['dbInstanceEndpointType']
-        if 'dbInstanceId' in kwargs:
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
-        if 'ipType' in kwargs:
+        if ip_type is None and 'ipType' in kwargs:
             ip_type = kwargs['ipType']
-        if 'nodeItems' in kwargs:
+        if node_items is None and 'nodeItems' in kwargs:
             node_items = kwargs['nodeItems']
-        if 'privateIpAddress' in kwargs:
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
             private_ip_address = kwargs['privateIpAddress']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if connection_string is not None:
@@ -435,66 +447,6 @@ class DbInstanceEndpoint(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.203.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="8.0",
-            instance_charge_type="PostPaid",
-            category="cluster",
-            db_instance_storage_type="cloud_essd")
-        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.ids[0],
-            engine="MySQL",
-            engine_version="8.0",
-            category="cluster",
-            db_instance_storage_type="cloud_essd",
-            instance_charge_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.ids[0],
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.rds.Instance("defaultInstance",
-            engine="MySQL",
-            engine_version="8.0",
-            instance_type=default_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
-            instance_charge_type="Postpaid",
-            instance_name=name,
-            vswitch_id=default_switch.id,
-            monitoring_period=60,
-            db_instance_storage_type="cloud_essd",
-            security_group_ids=[default_security_group.id],
-            zone_id=default_zones.ids[0],
-            zone_id_slave_a=default_zones.ids[0])
-        default_db_node = alicloud.rds.DbNode("defaultDbNode",
-            db_instance_id=default_instance.id,
-            class_code=default_instance.instance_type,
-            zone_id=default_switch.zone_id)
-        default_db_instance_endpoint = alicloud.rds.DbInstanceEndpoint("defaultDbInstanceEndpoint",
-            db_instance_id=default_db_node.db_instance_id,
-            vpc_id=default_network.id,
-            vswitch_id=default_instance.vswitch_id,
-            connection_string_prefix="example",
-            port="3306",
-            db_instance_endpoint_description=name,
-            node_items=[alicloud.rds.DbInstanceEndpointNodeItemArgs(
-                node_id=default_db_node.node_id,
-                weight=25,
-            )])
-        ```
-
         ## Import
 
         RDS database endpoint feature can be imported using the id, e.g.
@@ -523,66 +475,6 @@ class DbInstanceEndpoint(pulumi.CustomResource):
         Provide RDS cluster instance endpoint connection resources, see [What is RDS DB Instance Endpoint](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdbinstanceendpoint).
 
         > **NOTE:** Available since v1.203.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="8.0",
-            instance_charge_type="PostPaid",
-            category="cluster",
-            db_instance_storage_type="cloud_essd")
-        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.ids[0],
-            engine="MySQL",
-            engine_version="8.0",
-            category="cluster",
-            db_instance_storage_type="cloud_essd",
-            instance_charge_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.ids[0],
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.rds.Instance("defaultInstance",
-            engine="MySQL",
-            engine_version="8.0",
-            instance_type=default_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
-            instance_charge_type="Postpaid",
-            instance_name=name,
-            vswitch_id=default_switch.id,
-            monitoring_period=60,
-            db_instance_storage_type="cloud_essd",
-            security_group_ids=[default_security_group.id],
-            zone_id=default_zones.ids[0],
-            zone_id_slave_a=default_zones.ids[0])
-        default_db_node = alicloud.rds.DbNode("defaultDbNode",
-            db_instance_id=default_instance.id,
-            class_code=default_instance.instance_type,
-            zone_id=default_switch.zone_id)
-        default_db_instance_endpoint = alicloud.rds.DbInstanceEndpoint("defaultDbInstanceEndpoint",
-            db_instance_id=default_db_node.db_instance_id,
-            vpc_id=default_network.id,
-            vswitch_id=default_instance.vswitch_id,
-            connection_string_prefix="example",
-            port="3306",
-            db_instance_endpoint_description=name,
-            node_items=[alicloud.rds.DbInstanceEndpointNodeItemArgs(
-                node_id=default_db_node.node_id,
-                weight=25,
-            )])
-        ```
 
         ## Import
 

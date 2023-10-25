@@ -15,38 +15,6 @@ import (
 // This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.166.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := ecs.GetEcsNetworkInterfacePermissions(ctx, &ecs.GetEcsNetworkInterfacePermissionsArgs{
-//				Ids: []string{
-//					"example_value",
-//				},
-//				NetworkInterfaceId: "example_value",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ecsNetworkInterfacePermissionId1", ids.Permissions[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetEcsNetworkInterfacePermissions(ctx *pulumi.Context, args *GetEcsNetworkInterfacePermissionsArgs, opts ...pulumi.InvokeOption) (*GetEcsNetworkInterfacePermissionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsNetworkInterfacePermissionsResult

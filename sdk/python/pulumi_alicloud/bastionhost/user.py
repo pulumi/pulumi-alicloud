@@ -80,9 +80,9 @@ class UserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
-             source: pulumi.Input[str],
-             user_name: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
              comment: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              email: Optional[pulumi.Input[str]] = None,
@@ -91,17 +91,23 @@ class UserArgs:
              password: Optional[pulumi.Input[str]] = None,
              source_user_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'userName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
-        if 'displayName' in kwargs:
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'mobileCountryCode' in kwargs:
+        if mobile_country_code is None and 'mobileCountryCode' in kwargs:
             mobile_country_code = kwargs['mobileCountryCode']
-        if 'sourceUserId' in kwargs:
+        if source_user_id is None and 'sourceUserId' in kwargs:
             source_user_id = kwargs['sourceUserId']
 
         _setter("instance_id", instance_id)
@@ -365,19 +371,19 @@ class _UserState:
              status: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'mobileCountryCode' in kwargs:
+        if mobile_country_code is None and 'mobileCountryCode' in kwargs:
             mobile_country_code = kwargs['mobileCountryCode']
-        if 'sourceUserId' in kwargs:
+        if source_user_id is None and 'sourceUserId' in kwargs:
             source_user_id = kwargs['sourceUserId']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
 
         if comment is not None:
@@ -598,58 +604,6 @@ class User(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.133.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.bastionhost.Instance("defaultInstance",
-            description=name,
-            license_code="bhah_ent_50_asset",
-            plan_code="cloudbastion",
-            storage="5",
-            bandwidth="5",
-            period=1,
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id])
-        local_user = alicloud.bastionhost.User("localUser",
-            instance_id=default_instance.id,
-            mobile_country_code="CN",
-            mobile="13312345678",
-            password="YourPassword-123",
-            source="Local",
-            user_name=f"{name}_local_user")
-        user = alicloud.ram.User("user",
-            display_name=f"{name}_bastionhost_user",
-            mobile="86-18688888888",
-            email="hello.uuu@aaa.com",
-            comments="yoyoyo",
-            force=True)
-        default_account = alicloud.get_account()
-        ram_user = alicloud.bastionhost.User("ramUser",
-            instance_id=default_instance.id,
-            source="Ram",
-            source_user_id=default_account.id,
-            user_name=user.name)
-        ```
-
         ## Import
 
         Bastion Host User can be imported using the id, e.g.
@@ -708,58 +662,6 @@ class User(pulumi.CustomResource):
         For information about Bastion Host User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/bastion-host/latest/api-yundun-bastionhost-2019-12-09-createuser).
 
         > **NOTE:** Available since v1.133.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.bastionhost.Instance("defaultInstance",
-            description=name,
-            license_code="bhah_ent_50_asset",
-            plan_code="cloudbastion",
-            storage="5",
-            bandwidth="5",
-            period=1,
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id])
-        local_user = alicloud.bastionhost.User("localUser",
-            instance_id=default_instance.id,
-            mobile_country_code="CN",
-            mobile="13312345678",
-            password="YourPassword-123",
-            source="Local",
-            user_name=f"{name}_local_user")
-        user = alicloud.ram.User("user",
-            display_name=f"{name}_bastionhost_user",
-            mobile="86-18688888888",
-            email="hello.uuu@aaa.com",
-            comments="yoyoyo",
-            force=True)
-        default_account = alicloud.get_account()
-        ram_user = alicloud.bastionhost.User("ramUser",
-            instance_id=default_instance.id,
-            source="Ram",
-            source_user_id=default_account.id,
-            user_name=user.name)
-        ```
 
         ## Import
 

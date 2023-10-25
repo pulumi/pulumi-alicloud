@@ -15,44 +15,6 @@ import (
 // This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.194.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := ga.GetBasicAccelerators(ctx, &ga.GetBasicAcceleratorsArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("gaBasicAcceleratorId1", ids.Accelerators[0].Id)
-//			nameRegex, err := ga.GetBasicAccelerators(ctx, &ga.GetBasicAcceleratorsArgs{
-//				NameRegex: pulumi.StringRef("tf-example"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("gaBasicAcceleratorId2", nameRegex.Accelerators[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetBasicAccelerators(ctx *pulumi.Context, args *GetBasicAcceleratorsArgs, opts ...pulumi.InvokeOption) (*GetBasicAcceleratorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBasicAcceleratorsResult

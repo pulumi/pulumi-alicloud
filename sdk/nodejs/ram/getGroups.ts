@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available since v1.0.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const groupsDs = alicloud.ram.getGroups({
- *     nameRegex: "^group[0-9]*",
- *     outputFile: "groups.txt",
- *     userName: "user1",
- * });
- * export const firstGroupName = groupsDs.then(groupsDs => groupsDs.groups?.[0]?.name);
- * ```
  */
 export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     args = args || {};
@@ -90,20 +76,6 @@ export interface GetGroupsResult {
  * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available since v1.0.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const groupsDs = alicloud.ram.getGroups({
- *     nameRegex: "^group[0-9]*",
- *     outputFile: "groups.txt",
- *     userName: "user1",
- * });
- * export const firstGroupName = groupsDs.then(groupsDs => groupsDs.groups?.[0]?.name);
- * ```
  */
 export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
     return pulumi.output(args).apply((a: any) => getGroups(a, opts))

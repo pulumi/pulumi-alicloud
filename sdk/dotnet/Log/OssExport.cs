@@ -15,68 +15,6 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// &gt; **NOTE:** Available in 1.187.0+
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Random.RandomInteger("default", new()
-    ///     {
-    ///         Max = 99999,
-    ///         Min = 10000,
-    ///     });
-    /// 
-    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
-    ///     {
-    ///         Description = "terraform-example",
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "TF" },
-    ///             { "For", "example" },
-    ///         },
-    ///     });
-    /// 
-    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
-    ///     {
-    ///         Project = exampleProject.Name,
-    ///         RetentionPeriod = 3650,
-    ///         ShardCount = 3,
-    ///         AutoSplit = true,
-    ///         MaxSplitShardCount = 60,
-    ///         AppendMeta = true,
-    ///     });
-    /// 
-    ///     var exampleOssExport = new AliCloud.Log.OssExport("exampleOssExport", new()
-    ///     {
-    ///         ProjectName = exampleProject.Name,
-    ///         LogstoreName = exampleStore.Name,
-    ///         ExportName = "terraform-example",
-    ///         DisplayName = "terraform-example",
-    ///         Bucket = "example-bucket",
-    ///         Prefix = "root",
-    ///         Suffix = "",
-    ///         BufferInterval = 300,
-    ///         BufferSize = 250,
-    ///         CompressType = "none",
-    ///         PathFormat = "%Y/%m/%d/%H/%M",
-    ///         ContentType = "json",
-    ///         JsonEnableTag = true,
-    ///         RoleArn = "role_arn_for_oss_write",
-    ///         LogReadRoleArn = "role_arn_for_sls_read",
-    ///         TimeZone = "+0800",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Log oss export can be imported using the id or name, e.g.

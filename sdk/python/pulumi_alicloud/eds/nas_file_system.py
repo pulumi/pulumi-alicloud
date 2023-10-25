@@ -41,21 +41,23 @@ class NasFileSystemArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             office_site_id: pulumi.Input[str],
+             office_site_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              file_system_id: Optional[pulumi.Input[str]] = None,
              mount_target_domain: Optional[pulumi.Input[str]] = None,
              nas_file_system_name: Optional[pulumi.Input[str]] = None,
              reset: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'officeSiteId' in kwargs:
+        if office_site_id is None and 'officeSiteId' in kwargs:
             office_site_id = kwargs['officeSiteId']
-        if 'fileSystemId' in kwargs:
+        if office_site_id is None:
+            raise TypeError("Missing 'office_site_id' argument")
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'mountTargetDomain' in kwargs:
+        if mount_target_domain is None and 'mountTargetDomain' in kwargs:
             mount_target_domain = kwargs['mountTargetDomain']
-        if 'nasFileSystemName' in kwargs:
+        if nas_file_system_name is None and 'nasFileSystemName' in kwargs:
             nas_file_system_name = kwargs['nasFileSystemName']
 
         _setter("office_site_id", office_site_id)
@@ -183,15 +185,15 @@ class _NasFileSystemState:
              office_site_id: Optional[pulumi.Input[str]] = None,
              reset: Optional[pulumi.Input[bool]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fileSystemId' in kwargs:
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'mountTargetDomain' in kwargs:
+        if mount_target_domain is None and 'mountTargetDomain' in kwargs:
             mount_target_domain = kwargs['mountTargetDomain']
-        if 'nasFileSystemName' in kwargs:
+        if nas_file_system_name is None and 'nasFileSystemName' in kwargs:
             nas_file_system_name = kwargs['nasFileSystemName']
-        if 'officeSiteId' in kwargs:
+        if office_site_id is None and 'officeSiteId' in kwargs:
             office_site_id = kwargs['officeSiteId']
 
         if description is not None:
@@ -313,29 +315,6 @@ class NasFileSystem(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.141.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.eds.SimpleOfficeSite("default",
-            cidr_block="172.16.0.0/12",
-            enable_admin_access=False,
-            desktop_access_type="Internet",
-            office_site_name=name)
-        example = alicloud.eds.NasFileSystem("example",
-            nas_file_system_name=name,
-            office_site_id=default.id,
-            description=name)
-        ```
-
         ## Import
 
         ECD Nas File System can be imported using the id, e.g.
@@ -365,29 +344,6 @@ class NasFileSystem(pulumi.CustomResource):
         For information about ECD Nas File System and how to use it, see [What is Nas File System](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-reference-for-easy-use-1).
 
         > **NOTE:** Available since v1.141.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.eds.SimpleOfficeSite("default",
-            cidr_block="172.16.0.0/12",
-            enable_admin_access=False,
-            desktop_access_type="Internet",
-            office_site_name=name)
-        example = alicloud.eds.NasFileSystem("example",
-            nas_file_system_name=name,
-            office_site_id=default.id,
-            description=name)
-        ```
 
         ## Import
 

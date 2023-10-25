@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides a list of EDAS clusters in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.82.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const clusters = alicloud.edas.getClusters({
- *     logicalRegionId: "cn-shenzhen:xxx",
- *     ids: ["addfs-dfsasd"],
- *     outputFile: "clusters.txt",
- * });
- * export const firstClusterName = data.alicloud_alikafka_consumer_groups.clusters.clusters[0].cluster_name;
- * ```
  */
 export function getClusters(args: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
 
@@ -86,20 +72,6 @@ export interface GetClustersResult {
  * This data source provides a list of EDAS clusters in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.82.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const clusters = alicloud.edas.getClusters({
- *     logicalRegionId: "cn-shenzhen:xxx",
- *     ids: ["addfs-dfsasd"],
- *     outputFile: "clusters.txt",
- * });
- * export const firstClusterName = data.alicloud_alikafka_consumer_groups.clusters.clusters[0].cluster_name;
- * ```
  */
 export function getClustersOutput(args: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
     return pulumi.output(args).apply((a: any) => getClusters(a, opts))

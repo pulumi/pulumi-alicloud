@@ -14,56 +14,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.43.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const default = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
- *     vpcName: name,
- *     cidrBlock: "10.4.0.0/16",
- * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
- *     vswitchName: name,
- *     cidrBlock: "10.4.0.0/24",
- *     vpcId: exampleNetwork.id,
- *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
- * });
- * const exampleNetworkAcl = new alicloud.vpc.NetworkAcl("exampleNetworkAcl", {
- *     vpcId: exampleNetwork.id,
- *     networkAclName: name,
- *     description: name,
- *     ingressAclEntries: [{
- *         description: `${name}-ingress`,
- *         networkAclEntryName: `${name}-ingress`,
- *         sourceCidrIp: "196.168.2.0/21",
- *         policy: "accept",
- *         port: "22/80",
- *         protocol: "tcp",
- *     }],
- *     egressAclEntries: [{
- *         description: `${name}-egress`,
- *         networkAclEntryName: `${name}-egress`,
- *         destinationCidrIp: "0.0.0.0/0",
- *         policy: "accept",
- *         port: "-1/-1",
- *         protocol: "all",
- *     }],
- *     resources: [{
- *         resourceId: exampleSwitch.id,
- *         resourceType: "VSwitch",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * VPC Network Acl can be imported using the id, e.g.

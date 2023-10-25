@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.66.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const saslAclsDs = alicloud.actiontrail.getSaslAcls({
- *     aclResourceName: "testTopic",
- *     aclResourceType: "Topic",
- *     instanceId: "xxx",
- *     outputFile: "saslAcls.txt",
- *     username: "username",
- * });
- * export const firstSaslAclUsername = saslAclsDs.then(saslAclsDs => saslAclsDs.acls?.[0]?.username);
- * ```
  */
 export function getSaslAcls(args: GetSaslAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetSaslAclsResult> {
 
@@ -96,22 +80,6 @@ export interface GetSaslAclsResult {
  * This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.66.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const saslAclsDs = alicloud.actiontrail.getSaslAcls({
- *     aclResourceName: "testTopic",
- *     aclResourceType: "Topic",
- *     instanceId: "xxx",
- *     outputFile: "saslAcls.txt",
- *     username: "username",
- * });
- * export const firstSaslAclUsername = saslAclsDs.then(saslAclsDs => saslAclsDs.acls?.[0]?.username);
- * ```
  */
 export function getSaslAclsOutput(args: GetSaslAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSaslAclsResult> {
     return pulumi.output(args).apply((a: any) => getSaslAcls(a, opts))

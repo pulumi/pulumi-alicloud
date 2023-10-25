@@ -9,24 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.95.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.dns.AlidnsInstance("example", {
- *     dnsSecurity: "no",
- *     domainNumbers: "2",
- *     period: 1,
- *     renewPeriod: 1,
- *     renewalStatus: "ManualRenewal",
- *     versionCode: "version_personal",
- * });
- * ```
- *
  * ## Import
  *
  * DNS instance be imported using the id, e.g.

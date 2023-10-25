@@ -10,29 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Bastionhost Host Share Keys of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.165.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.bastionhost.getHostShareKeys({
- *     instanceId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const bastionhostHostShareKeyId1 = ids.then(ids => ids.keys?.[0]?.id);
- * const nameRegex = alicloud.bastionhost.getHostShareKeys({
- *     instanceId: "example_value",
- *     nameRegex: "^my-HostShareKey",
- * });
- * export const bastionhostHostShareKeyId2 = nameRegex.then(nameRegex => nameRegex.keys?.[0]?.id);
- * ```
  */
 export function getHostShareKeys(args: GetHostShareKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetHostShareKeysResult> {
 
@@ -92,29 +69,6 @@ export interface GetHostShareKeysResult {
  * This data source provides the Bastionhost Host Share Keys of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.165.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.bastionhost.getHostShareKeys({
- *     instanceId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const bastionhostHostShareKeyId1 = ids.then(ids => ids.keys?.[0]?.id);
- * const nameRegex = alicloud.bastionhost.getHostShareKeys({
- *     instanceId: "example_value",
- *     nameRegex: "^my-HostShareKey",
- * });
- * export const bastionhostHostShareKeyId2 = nameRegex.then(nameRegex => nameRegex.keys?.[0]?.id);
- * ```
  */
 export function getHostShareKeysOutput(args: GetHostShareKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostShareKeysResult> {
     return pulumi.output(args).apply((a: any) => getHostShareKeys(a, opts))

@@ -11,24 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.111.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tfexample";
- * const default = alicloud.resourcemanager.getAccounts({});
- * const exampleResourceShare = new alicloud.resourcemanager.ResourceShare("exampleResourceShare", {resourceShareName: name});
- * const exampleSharedTarget = new alicloud.resourcemanager.SharedTarget("exampleSharedTarget", {
- *     resourceShareId: exampleResourceShare.id,
- *     targetId: _default.then(_default => _default.ids?.[0]),
- * });
- * ```
- *
  * ## Import
  *
  * Resource Manager Shared Target can be imported using the id, e.g.

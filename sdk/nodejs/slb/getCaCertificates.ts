@@ -8,16 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the CA certificate list.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const sampleDs = alicloud.slb.getCaCertificates({});
- * export const firstSlbCaCertificateId = sampleDs.then(sampleDs => sampleDs.certificates?.[0]?.id);
- * ```
  */
 export function getCaCertificates(args?: GetCaCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCaCertificatesResult> {
     args = args || {};
@@ -91,16 +81,6 @@ export interface GetCaCertificatesResult {
 }
 /**
  * This data source provides the CA certificate list.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const sampleDs = alicloud.slb.getCaCertificates({});
- * export const firstSlbCaCertificateId = sampleDs.then(sampleDs => sampleDs.certificates?.[0]?.id);
- * ```
  */
 export function getCaCertificatesOutput(args?: GetCaCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaCertificatesResult> {
     return pulumi.output(args).apply((a: any) => getCaCertificates(a, opts))

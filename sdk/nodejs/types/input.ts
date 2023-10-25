@@ -3027,9 +3027,6 @@ export namespace cs {
          * Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
          *
          * for example:
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         weeklyPeriod: pulumi.Input<string>;
     }
@@ -3069,24 +3066,6 @@ export namespace cs {
          * The taint effect.
          *
          * The following example is the definition of taints block:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * import * as alicloud from "@pulumi/alicloud";
-         *
-         * const k8s = new alicloud.cs.ManagedKubernetes("k8s", {taints: [
-         *     {
-         *         effect: "NoSchedule",
-         *         key: "key-a",
-         *         value: "value-a",
-         *     },
-         *     {
-         *         effect: "NoSchedule",
-         *         key: "key-b",
-         *         value: "value-b",
-         *     },
-         * ]});
-         * ```
          */
         effect?: pulumi.Input<string>;
         /**
@@ -6813,9 +6792,6 @@ export namespace eventbridge {
          *
          * > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
          *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          *
          * In order to fix the diff, from version 1.160.0,
          * this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
@@ -7948,9 +7924,6 @@ export namespace log {
         encryptType?: pulumi.Input<string>;
         /**
          * User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         userCmkInfo?: pulumi.Input<inputs.log.StoreEncryptConfUserCmkInfo>;
     }

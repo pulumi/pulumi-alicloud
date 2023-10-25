@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.124.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cfg.getCompliancePacks({
- *     ids: ["cp-152a626622af00bc****"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstConfigCompliancePackId = example.then(example => example.packs?.[0]?.id);
- * ```
  */
 export function getCompliancePacks(args?: GetCompliancePacksArgs, opts?: pulumi.InvokeOptions): Promise<GetCompliancePacksResult> {
     args = args || {};
@@ -94,21 +79,6 @@ export interface GetCompliancePacksResult {
  * This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.124.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cfg.getCompliancePacks({
- *     ids: ["cp-152a626622af00bc****"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstConfigCompliancePackId = example.then(example => example.packs?.[0]?.id);
- * ```
  */
 export function getCompliancePacksOutput(args?: GetCompliancePacksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCompliancePacksResult> {
     return pulumi.output(args).apply((a: any) => getCompliancePacks(a, opts))

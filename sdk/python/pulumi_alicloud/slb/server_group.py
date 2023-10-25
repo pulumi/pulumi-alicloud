@@ -37,15 +37,17 @@ class ServerGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             load_balancer_id: pulumi.Input[str],
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
              delete_protection_validation: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              servers: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'loadBalancerId' in kwargs:
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
-        if 'deleteProtectionValidation' in kwargs:
+        if load_balancer_id is None:
+            raise TypeError("Missing 'load_balancer_id' argument")
+        if delete_protection_validation is None and 'deleteProtectionValidation' in kwargs:
             delete_protection_validation = kwargs['deleteProtectionValidation']
 
         _setter("load_balancer_id", load_balancer_id)
@@ -139,11 +141,11 @@ class _ServerGroupState:
              load_balancer_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              servers: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteProtectionValidation' in kwargs:
+        if delete_protection_validation is None and 'deleteProtectionValidation' in kwargs:
             delete_protection_validation = kwargs['deleteProtectionValidation']
-        if 'loadBalancerId' in kwargs:
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
 
         if delete_protection_validation is not None:
@@ -236,31 +238,6 @@ class ServerGroup(pulumi.CustomResource):
 
         For information about server group and how to use it, see [Configure a server group](https://www.alibabacloud.com/help/en/doc-detail/35215.html).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        slb_server_group_name = config.get("slbServerGroupName")
-        if slb_server_group_name is None:
-            slb_server_group_name = "forSlbServerGroup"
-        server_group_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        server_group_network = alicloud.vpc.Network("serverGroupNetwork",
-            vpc_name=slb_server_group_name,
-            cidr_block="172.16.0.0/16")
-        server_group_switch = alicloud.vpc.Switch("serverGroupSwitch",
-            vpc_id=server_group_network.id,
-            cidr_block="172.16.0.0/16",
-            zone_id=server_group_zones.zones[0].id,
-            vswitch_name=slb_server_group_name)
-        server_group_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("serverGroupApplicationLoadBalancer",
-            load_balancer_name=slb_server_group_name,
-            vswitch_id=server_group_switch.id,
-            instance_charge_type="PayByCLCU")
-        server_group_server_group = alicloud.slb.ServerGroup("serverGroupServerGroup", load_balancer_id=server_group_application_load_balancer.id)
-        ```
         ## Block servers
 
         The servers mapping supports the following:
@@ -307,31 +284,6 @@ class ServerGroup(pulumi.CustomResource):
 
         For information about server group and how to use it, see [Configure a server group](https://www.alibabacloud.com/help/en/doc-detail/35215.html).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        slb_server_group_name = config.get("slbServerGroupName")
-        if slb_server_group_name is None:
-            slb_server_group_name = "forSlbServerGroup"
-        server_group_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        server_group_network = alicloud.vpc.Network("serverGroupNetwork",
-            vpc_name=slb_server_group_name,
-            cidr_block="172.16.0.0/16")
-        server_group_switch = alicloud.vpc.Switch("serverGroupSwitch",
-            vpc_id=server_group_network.id,
-            cidr_block="172.16.0.0/16",
-            zone_id=server_group_zones.zones[0].id,
-            vswitch_name=slb_server_group_name)
-        server_group_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("serverGroupApplicationLoadBalancer",
-            load_balancer_name=slb_server_group_name,
-            vswitch_id=server_group_switch.id,
-            instance_charge_type="PayByCLCU")
-        server_group_server_group = alicloud.slb.ServerGroup("serverGroupServerGroup", load_balancer_id=server_group_application_load_balancer.id)
-        ```
         ## Block servers
 
         The servers mapping supports the following:

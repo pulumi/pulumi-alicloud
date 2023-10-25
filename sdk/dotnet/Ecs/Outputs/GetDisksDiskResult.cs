@@ -100,25 +100,6 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string Status;
         /// <summary>
         /// A map of tags assigned to the disks. It must be in the format:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var disksDs = AliCloud.Ecs.GetDisks.Invoke(new()
-        ///     {
-        ///         Tags = 
-        ///         {
-        ///             { "tagKey1", "tagValue1" },
-        ///             { "tagKey2", "tagValue2" },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public readonly ImmutableDictionary<string, object> Tags;
         /// <summary>

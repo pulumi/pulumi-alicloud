@@ -35,11 +35,11 @@ class DomainGroupArgs:
              domain_group_name: Optional[pulumi.Input[str]] = None,
              group_name: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainGroupName' in kwargs:
+        if domain_group_name is None and 'domainGroupName' in kwargs:
             domain_group_name = kwargs['domainGroupName']
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
 
         if domain_group_name is not None:
@@ -116,11 +116,11 @@ class _DomainGroupState:
              domain_group_name: Optional[pulumi.Input[str]] = None,
              group_name: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainGroupName' in kwargs:
+        if domain_group_name is None and 'domainGroupName' in kwargs:
             domain_group_name = kwargs['domainGroupName']
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
 
         if domain_group_name is not None:
@@ -187,15 +187,6 @@ class DomainGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.84.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.dns.DomainGroup("default", domain_group_name="tf-example")
-        ```
-
         ## Import
 
         Alidns domain group can be imported using the id, e.g.
@@ -220,15 +211,6 @@ class DomainGroup(pulumi.CustomResource):
         Provides a Alidns Domain Group resource. For information about Alidns Domain Group and how to use it, see [What is Resource Alidns Domain Group](https://www.alibabacloud.com/help/en/doc-detail/29762.htm).
 
         > **NOTE:** Available since v1.84.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.dns.DomainGroup("default", domain_group_name="tf-example")
-        ```
 
         ## Import
 

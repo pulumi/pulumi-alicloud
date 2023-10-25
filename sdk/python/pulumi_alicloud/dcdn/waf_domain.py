@@ -29,13 +29,15 @@ class WafDomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain_name: pulumi.Input[str],
+             domain_name: Optional[pulumi.Input[str]] = None,
              client_ip_tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'clientIpTag' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if client_ip_tag is None and 'clientIpTag' in kwargs:
             client_ip_tag = kwargs['clientIpTag']
 
         _setter("domain_name", domain_name)
@@ -87,11 +89,11 @@ class _WafDomainState:
              _setter: Callable[[Any, Any], None],
              client_ip_tag: Optional[pulumi.Input[str]] = None,
              domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientIpTag' in kwargs:
+        if client_ip_tag is None and 'clientIpTag' in kwargs:
             client_ip_tag = kwargs['clientIpTag']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
 
         if client_ip_tag is not None:
@@ -139,33 +141,6 @@ class WafDomain(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.185.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "example.com"
-        example_domain = alicloud.dcdn.Domain("exampleDomain",
-            domain_name=domain_name,
-            scope="overseas",
-            sources=[alicloud.dcdn.DomainSourceArgs(
-                content="1.1.1.1",
-                port=80,
-                priority="20",
-                type="ipaddr",
-                weight="10",
-            )])
-        example_waf_domain = alicloud.dcdn.WafDomain("exampleWafDomain",
-            domain_name=example_domain.domain_name,
-            client_ip_tag="X-Forwarded-For")
-        ```
-
         ## Import
 
         DCDN Waf Domain can be imported using the id, e.g.
@@ -191,33 +166,6 @@ class WafDomain(pulumi.CustomResource):
         For information about DCDN Waf Domain and how to use it, see [What is Waf Domain](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchsetdcdnwafdomainconfigs).
 
         > **NOTE:** Available since v1.185.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "example.com"
-        example_domain = alicloud.dcdn.Domain("exampleDomain",
-            domain_name=domain_name,
-            scope="overseas",
-            sources=[alicloud.dcdn.DomainSourceArgs(
-                content="1.1.1.1",
-                port=80,
-                priority="20",
-                type="ipaddr",
-                weight="10",
-            )])
-        example_waf_domain = alicloud.dcdn.WafDomain("exampleWafDomain",
-            domain_name=example_domain.domain_name,
-            client_ip_tag="X-Forwarded-For")
-        ```
 
         ## Import
 

@@ -41,23 +41,25 @@ class TransitRouterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cen_id: pulumi.Input[str],
+             cen_id: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              support_multicast: Optional[pulumi.Input[bool]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              transit_router_description: Optional[pulumi.Input[str]] = None,
              transit_router_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'dryRun' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'supportMulticast' in kwargs:
+        if support_multicast is None and 'supportMulticast' in kwargs:
             support_multicast = kwargs['supportMulticast']
-        if 'transitRouterDescription' in kwargs:
+        if transit_router_description is None and 'transitRouterDescription' in kwargs:
             transit_router_description = kwargs['transitRouterDescription']
-        if 'transitRouterName' in kwargs:
+        if transit_router_name is None and 'transitRouterName' in kwargs:
             transit_router_name = kwargs['transitRouterName']
 
         _setter("cen_id", cen_id)
@@ -193,19 +195,19 @@ class _TransitRouterState:
              transit_router_id: Optional[pulumi.Input[str]] = None,
              transit_router_name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'supportMulticast' in kwargs:
+        if support_multicast is None and 'supportMulticast' in kwargs:
             support_multicast = kwargs['supportMulticast']
-        if 'transitRouterDescription' in kwargs:
+        if transit_router_description is None and 'transitRouterDescription' in kwargs:
             transit_router_description = kwargs['transitRouterDescription']
-        if 'transitRouterId' in kwargs:
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'transitRouterName' in kwargs:
+        if transit_router_name is None and 'transitRouterName' in kwargs:
             transit_router_name = kwargs['transitRouterName']
 
         if cen_id is not None:
@@ -353,22 +355,6 @@ class TransitRouter(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.126.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        ```
-
         ## Import
 
         CEN instance can be imported using the id, e.g.
@@ -396,22 +382,6 @@ class TransitRouter(pulumi.CustomResource):
         Provides a CEN transit router resource that associate the transitRouter with the CEN instance.[What is Cen Transit Router](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouter)
 
         > **NOTE:** Available since v1.126.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        ```
 
         ## Import
 

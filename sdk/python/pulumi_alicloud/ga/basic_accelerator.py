@@ -77,27 +77,27 @@ class BasicAcceleratorArgs:
              pricing_cycle: Optional[pulumi.Input[str]] = None,
              promotion_option_no: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoPay' in kwargs:
+        if auto_pay is None and 'autoPay' in kwargs:
             auto_pay = kwargs['autoPay']
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewDuration' in kwargs:
+        if auto_renew_duration is None and 'autoRenewDuration' in kwargs:
             auto_renew_duration = kwargs['autoRenewDuration']
-        if 'autoUseCoupon' in kwargs:
+        if auto_use_coupon is None and 'autoUseCoupon' in kwargs:
             auto_use_coupon = kwargs['autoUseCoupon']
-        if 'bandwidthBillingType' in kwargs:
+        if bandwidth_billing_type is None and 'bandwidthBillingType' in kwargs:
             bandwidth_billing_type = kwargs['bandwidthBillingType']
-        if 'basicAcceleratorName' in kwargs:
+        if basic_accelerator_name is None and 'basicAcceleratorName' in kwargs:
             basic_accelerator_name = kwargs['basicAcceleratorName']
-        if 'crossBorderStatus' in kwargs:
+        if cross_border_status is None and 'crossBorderStatus' in kwargs:
             cross_border_status = kwargs['crossBorderStatus']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'pricingCycle' in kwargs:
+        if pricing_cycle is None and 'pricingCycle' in kwargs:
             pricing_cycle = kwargs['pricingCycle']
-        if 'promotionOptionNo' in kwargs:
+        if promotion_option_no is None and 'promotionOptionNo' in kwargs:
             promotion_option_no = kwargs['promotionOptionNo']
 
         if auto_pay is not None:
@@ -356,27 +356,27 @@ class _BasicAcceleratorState:
              promotion_option_no: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoPay' in kwargs:
+        if auto_pay is None and 'autoPay' in kwargs:
             auto_pay = kwargs['autoPay']
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewDuration' in kwargs:
+        if auto_renew_duration is None and 'autoRenewDuration' in kwargs:
             auto_renew_duration = kwargs['autoRenewDuration']
-        if 'autoUseCoupon' in kwargs:
+        if auto_use_coupon is None and 'autoUseCoupon' in kwargs:
             auto_use_coupon = kwargs['autoUseCoupon']
-        if 'bandwidthBillingType' in kwargs:
+        if bandwidth_billing_type is None and 'bandwidthBillingType' in kwargs:
             bandwidth_billing_type = kwargs['bandwidthBillingType']
-        if 'basicAcceleratorName' in kwargs:
+        if basic_accelerator_name is None and 'basicAcceleratorName' in kwargs:
             basic_accelerator_name = kwargs['basicAcceleratorName']
-        if 'crossBorderStatus' in kwargs:
+        if cross_border_status is None and 'crossBorderStatus' in kwargs:
             cross_border_status = kwargs['crossBorderStatus']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'pricingCycle' in kwargs:
+        if pricing_cycle is None and 'pricingCycle' in kwargs:
             pricing_cycle = kwargs['pricingCycle']
-        if 'promotionOptionNo' in kwargs:
+        if promotion_option_no is None and 'promotionOptionNo' in kwargs:
             promotion_option_no = kwargs['promotionOptionNo']
 
         if auto_pay is not None:
@@ -605,24 +605,6 @@ class BasicAccelerator(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ga.BasicAccelerator("default",
-            auto_pay=True,
-            auto_use_coupon="true",
-            bandwidth_billing_type="BandwidthPackage",
-            basic_accelerator_name="tf-example-value",
-            description="tf-example-value",
-            duration=1,
-            pricing_cycle="Month")
-        ```
-
         ## Import
 
         Global Accelerator (GA) Basic Accelerator can be imported using the id, e.g.
@@ -661,24 +643,6 @@ class BasicAccelerator(pulumi.CustomResource):
         For information about Global Accelerator (GA) Basic Accelerator and how to use it, see [What is Basic Accelerator](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicaccelerator).
 
         > **NOTE:** Available since v1.194.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ga.BasicAccelerator("default",
-            auto_pay=True,
-            auto_use_coupon="true",
-            bandwidth_billing_type="BandwidthPackage",
-            basic_accelerator_name="tf-example-value",
-            description="tf-example-value",
-            duration=1,
-            pricing_cycle="Month")
-        ```
 
         ## Import
 

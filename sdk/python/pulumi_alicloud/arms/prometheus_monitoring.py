@@ -35,16 +35,22 @@ class PrometheusMonitoringArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             config_yaml: pulumi.Input[str],
-             type: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             config_yaml: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'configYaml' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if config_yaml is None and 'configYaml' in kwargs:
             config_yaml = kwargs['configYaml']
+        if config_yaml is None:
+            raise TypeError("Missing 'config_yaml' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("cluster_id", cluster_id)
         _setter("config_yaml", config_yaml)
@@ -133,13 +139,13 @@ class _PrometheusMonitoringState:
              monitoring_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'configYaml' in kwargs:
+        if config_yaml is None and 'configYaml' in kwargs:
             config_yaml = kwargs['configYaml']
-        if 'monitoringName' in kwargs:
+        if monitoring_name is None and 'monitoringName' in kwargs:
             monitoring_name = kwargs['monitoringName']
 
         if cluster_id is not None:

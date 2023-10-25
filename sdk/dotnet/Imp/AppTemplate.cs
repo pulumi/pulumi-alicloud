@@ -16,33 +16,6 @@ namespace Pulumi.AliCloud.Imp
     /// 
     /// &gt; **NOTE:** Available in v1.137.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Imp.AppTemplate("example", new()
-    ///     {
-    ///         AppTemplateName = "example_value",
-    ///         ComponentLists = new[]
-    ///         {
-    ///             "component.live",
-    ///             "component.liveRecord",
-    ///         },
-    ///         IntegrationMode = "paasSDK",
-    ///         Scene = "business",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Apsara Agile Live (IMP) App Template can be imported using the id, e.g.

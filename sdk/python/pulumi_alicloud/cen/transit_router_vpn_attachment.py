@@ -52,30 +52,36 @@ class TransitRouterVpnAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             transit_router_id: pulumi.Input[str],
-             vpn_id: pulumi.Input[str],
-             zones: pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]],
+             transit_router_id: Optional[pulumi.Input[str]] = None,
+             vpn_id: Optional[pulumi.Input[str]] = None,
+             zones: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]] = None,
              auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
              cen_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
              transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
              vpn_owner_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'transitRouterId' in kwargs:
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'vpnId' in kwargs:
+        if transit_router_id is None:
+            raise TypeError("Missing 'transit_router_id' argument")
+        if vpn_id is None and 'vpnId' in kwargs:
             vpn_id = kwargs['vpnId']
-        if 'autoPublishRouteEnabled' in kwargs:
+        if vpn_id is None:
+            raise TypeError("Missing 'vpn_id' argument")
+        if zones is None:
+            raise TypeError("Missing 'zones' argument")
+        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
             auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'transitRouterAttachmentDescription' in kwargs:
+        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
             transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if 'transitRouterAttachmentName' in kwargs:
+        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
             transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if 'vpnOwnerId' in kwargs:
+        if vpn_owner_id is None and 'vpnOwnerId' in kwargs:
             vpn_owner_id = kwargs['vpnOwnerId']
 
         _setter("transit_router_id", transit_router_id)
@@ -255,21 +261,21 @@ class _TransitRouterVpnAttachmentState:
              vpn_id: Optional[pulumi.Input[str]] = None,
              vpn_owner_id: Optional[pulumi.Input[str]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoPublishRouteEnabled' in kwargs:
+        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
             auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'transitRouterAttachmentDescription' in kwargs:
+        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
             transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if 'transitRouterAttachmentName' in kwargs:
+        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
             transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if 'transitRouterId' in kwargs:
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'vpnId' in kwargs:
+        if vpn_id is None and 'vpnId' in kwargs:
             vpn_id = kwargs['vpnId']
-        if 'vpnOwnerId' in kwargs:
+        if vpn_owner_id is None and 'vpnOwnerId' in kwargs:
             vpn_owner_id = kwargs['vpnOwnerId']
 
         if auto_publish_route_enabled is not None:
@@ -436,86 +442,6 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.183.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default = alicloud.cen.get_transit_router_available_resources()
-        example_instance = alicloud.cen.Instance("exampleInstance", cen_instance_name=name)
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            cen_id=example_instance.id,
-            transit_router_description=name,
-            transit_router_name=name)
-        example_customer_gateway = alicloud.vpn.CustomerGateway("exampleCustomerGateway",
-            ip_address="42.104.22.210",
-            asn="45014",
-            description=name)
-        example_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("exampleGatewayVpnAttachment",
-            customer_gateway_id=example_customer_gateway.id,
-            network_type="public",
-            local_subnet="0.0.0.0/0",
-            remote_subnet="0.0.0.0/0",
-            effect_immediately=False,
-            ike_config=alicloud.vpn.GatewayVpnAttachmentIkeConfigArgs(
-                ike_auth_alg="md5",
-                ike_enc_alg="des",
-                ike_version="ikev2",
-                ike_mode="main",
-                ike_lifetime=86400,
-                psk="tf-testvpn2",
-                ike_pfs="group1",
-                remote_id="testbob2",
-                local_id="testalice2",
-            ),
-            ipsec_config=alicloud.vpn.GatewayVpnAttachmentIpsecConfigArgs(
-                ipsec_pfs="group5",
-                ipsec_enc_alg="des",
-                ipsec_auth_alg="md5",
-                ipsec_lifetime=86400,
-            ),
-            bgp_config=alicloud.vpn.GatewayVpnAttachmentBgpConfigArgs(
-                enable=True,
-                local_asn=45014,
-                tunnel_cidr="169.254.11.0/30",
-                local_bgp_ip="169.254.11.1",
-            ),
-            health_check_config=alicloud.vpn.GatewayVpnAttachmentHealthCheckConfigArgs(
-                enable=True,
-                sip="192.168.1.1",
-                dip="10.0.0.1",
-                interval=10,
-                retry=10,
-                policy="revoke_route",
-            ),
-            enable_dpd=True,
-            enable_nat_traversal=True,
-            vpn_attachment_name=name)
-        example_transit_router_cidr = alicloud.cen.TransitRouterCidr("exampleTransitRouterCidr",
-            transit_router_id=example_transit_router.transit_router_id,
-            cidr="192.168.0.0/16",
-            transit_router_cidr_name=name,
-            description=name,
-            publish_cidr_route=True)
-        example_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("exampleTransitRouterVpnAttachment",
-            auto_publish_route_enabled=False,
-            transit_router_attachment_description=name,
-            transit_router_attachment_name=name,
-            cen_id=example_transit_router.cen_id,
-            transit_router_id=example_transit_router_cidr.transit_router_id,
-            vpn_id=example_gateway_vpn_attachment.id,
-            zones=[alicloud.cen.TransitRouterVpnAttachmentZoneArgs(
-                zone_id=default.resources[0].master_zones[0],
-            )])
-        ```
-
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router Vpn Attachment can be imported using the id, e.g.
@@ -548,86 +474,6 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         For information about Cloud Enterprise Network (CEN) Transit Router Vpn Attachment and how to use it, see [What is Transit Router Vpn Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpnattachment).
 
         > **NOTE:** Available since v1.183.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default = alicloud.cen.get_transit_router_available_resources()
-        example_instance = alicloud.cen.Instance("exampleInstance", cen_instance_name=name)
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            cen_id=example_instance.id,
-            transit_router_description=name,
-            transit_router_name=name)
-        example_customer_gateway = alicloud.vpn.CustomerGateway("exampleCustomerGateway",
-            ip_address="42.104.22.210",
-            asn="45014",
-            description=name)
-        example_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("exampleGatewayVpnAttachment",
-            customer_gateway_id=example_customer_gateway.id,
-            network_type="public",
-            local_subnet="0.0.0.0/0",
-            remote_subnet="0.0.0.0/0",
-            effect_immediately=False,
-            ike_config=alicloud.vpn.GatewayVpnAttachmentIkeConfigArgs(
-                ike_auth_alg="md5",
-                ike_enc_alg="des",
-                ike_version="ikev2",
-                ike_mode="main",
-                ike_lifetime=86400,
-                psk="tf-testvpn2",
-                ike_pfs="group1",
-                remote_id="testbob2",
-                local_id="testalice2",
-            ),
-            ipsec_config=alicloud.vpn.GatewayVpnAttachmentIpsecConfigArgs(
-                ipsec_pfs="group5",
-                ipsec_enc_alg="des",
-                ipsec_auth_alg="md5",
-                ipsec_lifetime=86400,
-            ),
-            bgp_config=alicloud.vpn.GatewayVpnAttachmentBgpConfigArgs(
-                enable=True,
-                local_asn=45014,
-                tunnel_cidr="169.254.11.0/30",
-                local_bgp_ip="169.254.11.1",
-            ),
-            health_check_config=alicloud.vpn.GatewayVpnAttachmentHealthCheckConfigArgs(
-                enable=True,
-                sip="192.168.1.1",
-                dip="10.0.0.1",
-                interval=10,
-                retry=10,
-                policy="revoke_route",
-            ),
-            enable_dpd=True,
-            enable_nat_traversal=True,
-            vpn_attachment_name=name)
-        example_transit_router_cidr = alicloud.cen.TransitRouterCidr("exampleTransitRouterCidr",
-            transit_router_id=example_transit_router.transit_router_id,
-            cidr="192.168.0.0/16",
-            transit_router_cidr_name=name,
-            description=name,
-            publish_cidr_route=True)
-        example_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("exampleTransitRouterVpnAttachment",
-            auto_publish_route_enabled=False,
-            transit_router_attachment_description=name,
-            transit_router_attachment_name=name,
-            cen_id=example_transit_router.cen_id,
-            transit_router_id=example_transit_router_cidr.transit_router_id,
-            vpn_id=example_gateway_vpn_attachment.id,
-            zones=[alicloud.cen.TransitRouterVpnAttachmentZoneArgs(
-                zone_id=default.resources[0].master_zones[0],
-            )])
-        ```
 
         ## Import
 

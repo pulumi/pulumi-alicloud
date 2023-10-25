@@ -17,51 +17,6 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// &gt; **NOTE:** It is not recommended to use this resource management policy version, it is recommended to directly use the policy resource to manage your policy. Please refer to the link for usage resource_manager_policy.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tfexample";
-    ///     var examplePolicy = new AliCloud.ResourceManager.Policy("examplePolicy", new()
-    ///     {
-    ///         PolicyName = name,
-    ///         PolicyDocument = @"		{
-    /// 			""Statement"": [{
-    /// 				""Action"": [""oss:*""],
-    /// 				""Effect"": ""Allow"",
-    /// 				""Resource"": [""acs:oss:*:*:*""]
-    /// 			}],
-    /// 			""Version"": ""1""
-    /// 		}
-    /// ",
-    ///     });
-    /// 
-    ///     var examplePolicyVersion = new AliCloud.ResourceManager.PolicyVersion("examplePolicyVersion", new()
-    ///     {
-    ///         PolicyName = examplePolicy.PolicyName,
-    ///         PolicyDocument = @"		{
-    /// 			""Statement"": [{
-    /// 				""Action"": [""oss:*""],
-    /// 				""Effect"": ""Allow"",
-    /// 				""Resource"": [""acs:oss:*:*:myphotos""]
-    /// 			}],
-    /// 			""Version"": ""1""
-    /// 		}
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Resource Manager Policy Version can be imported using the id, e.g.

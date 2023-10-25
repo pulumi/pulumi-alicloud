@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.cloudstoragegateway.StorageBundle("example", {storageBundleName: "example_value"});
- * const nameRegex = alicloud.cloudstoragegateway.getGatewaysOutput({
- *     storageBundleId: example.id,
- *     nameRegex: "^my-Gateway",
- * });
- * export const cloudStorageGatewayGatewayId = nameRegex.apply(nameRegex => nameRegex.gateways?.[0]?.id);
- * ```
  */
 export function getGateways(args: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
 
@@ -92,22 +76,6 @@ export interface GetGatewaysResult {
  * This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.cloudstoragegateway.StorageBundle("example", {storageBundleName: "example_value"});
- * const nameRegex = alicloud.cloudstoragegateway.getGatewaysOutput({
- *     storageBundleId: example.id,
- *     nameRegex: "^my-Gateway",
- * });
- * export const cloudStorageGatewayGatewayId = nameRegex.apply(nameRegex => nameRegex.gateways?.[0]?.id);
- * ```
  */
 export function getGatewaysOutput(args: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
     return pulumi.output(args).apply((a: any) => getGateways(a, opts))

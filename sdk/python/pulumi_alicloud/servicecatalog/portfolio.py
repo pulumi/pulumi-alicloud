@@ -32,15 +32,19 @@ class PortfolioArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             portfolio_name: pulumi.Input[str],
-             provider_name: pulumi.Input[str],
+             portfolio_name: Optional[pulumi.Input[str]] = None,
+             provider_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'portfolioName' in kwargs:
+        if portfolio_name is None and 'portfolioName' in kwargs:
             portfolio_name = kwargs['portfolioName']
-        if 'providerName' in kwargs:
+        if portfolio_name is None:
+            raise TypeError("Missing 'portfolio_name' argument")
+        if provider_name is None and 'providerName' in kwargs:
             provider_name = kwargs['providerName']
+        if provider_name is None:
+            raise TypeError("Missing 'provider_name' argument")
 
         _setter("portfolio_name", portfolio_name)
         _setter("provider_name", provider_name)
@@ -116,15 +120,15 @@ class _PortfolioState:
              portfolio_arn: Optional[pulumi.Input[str]] = None,
              portfolio_name: Optional[pulumi.Input[str]] = None,
              provider_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'portfolioArn' in kwargs:
+        if portfolio_arn is None and 'portfolioArn' in kwargs:
             portfolio_arn = kwargs['portfolioArn']
-        if 'portfolioName' in kwargs:
+        if portfolio_name is None and 'portfolioName' in kwargs:
             portfolio_name = kwargs['portfolioName']
-        if 'providerName' in kwargs:
+        if provider_name is None and 'providerName' in kwargs:
             provider_name = kwargs['providerName']
 
         if create_time is not None:
@@ -215,23 +219,6 @@ class Portfolio(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.204.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default = alicloud.servicecatalog.Portfolio("default",
-            portfolio_name=name,
-            provider_name=name)
-        ```
-
         ## Import
 
         Service Catalog Portfolio can be imported using the id, e.g.
@@ -258,23 +245,6 @@ class Portfolio(pulumi.CustomResource):
         For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio).
 
         > **NOTE:** Available since v1.204.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default = alicloud.servicecatalog.Portfolio("default",
-            portfolio_name=name,
-            provider_name=name)
-        ```
 
         ## Import
 

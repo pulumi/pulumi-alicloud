@@ -13,66 +13,12 @@ namespace Pulumi.AliCloud.Oss
     {
         /// <summary>
         /// This data source provides the objects of an OSS bucket.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var bucketObjectsDs = AliCloud.Oss.GetBucketObjects.Invoke(new()
-        ///     {
-        ///         BucketName = "sample_bucket",
-        ///         KeyRegex = "sample/sample_object.txt",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstObjectKey"] = bucketObjectsDs.Apply(getBucketObjectsResult =&gt; getBucketObjectsResult.Objects[0]?.Key),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBucketObjectsResult> InvokeAsync(GetBucketObjectsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectsResult>("alicloud:oss/getBucketObjects:getBucketObjects", args ?? new GetBucketObjectsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the objects of an OSS bucket.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var bucketObjectsDs = AliCloud.Oss.GetBucketObjects.Invoke(new()
-        ///     {
-        ///         BucketName = "sample_bucket",
-        ///         KeyRegex = "sample/sample_object.txt",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstObjectKey"] = bucketObjectsDs.Apply(getBucketObjectsResult =&gt; getBucketObjectsResult.Objects[0]?.Key),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBucketObjectsResult> Invoke(GetBucketObjectsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBucketObjectsResult>("alicloud:oss/getBucketObjects:getBucketObjects", args ?? new GetBucketObjectsInvokeArgs(), options.WithDefaults());

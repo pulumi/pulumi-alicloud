@@ -16,39 +16,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available in v1.121.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Ecs.EcsKeyPair("example", new()
-    ///     {
-    ///         KeyPairName = "key_pair_name",
-    ///     });
-    /// 
-    ///     // Using name prefix to build key pair
-    ///     var prefix = new AliCloud.Ecs.EcsKeyPair("prefix", new()
-    ///     {
-    ///         KeyNamePrefix = "terraform-test-key-pair-prefix",
-    ///     });
-    /// 
-    ///     // Import an existing public key to build a alicloud key pair
-    ///     var publickey = new AliCloud.Ecs.EcsKeyPair("publickey", new()
-    ///     {
-    ///         KeyPairName = "my_public_key",
-    ///         PublicKey = "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ECS Key Pair can be imported using the id, e.g.

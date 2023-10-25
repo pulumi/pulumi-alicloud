@@ -15,38 +15,6 @@ import (
 // This data source provides the Config Aggregators of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.124.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := cfg.GetAggregators(ctx, &cfg.GetAggregatorsArgs{
-//				Ids: []string{
-//					"ca-3ce2626622af0005****",
-//				},
-//				NameRegex: pulumi.StringRef("the_resource_name"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstConfigAggregatorId", example.Aggregators[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAggregators(ctx *pulumi.Context, args *GetAggregatorsArgs, opts ...pulumi.InvokeOption) (*GetAggregatorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAggregatorsResult

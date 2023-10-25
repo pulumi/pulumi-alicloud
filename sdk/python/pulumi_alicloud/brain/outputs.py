@@ -54,34 +54,54 @@ class GetIndustrialPidLoopsLoopResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             pid_loop_configuration: str,
-             pid_loop_dcs_type: str,
-             pid_loop_desc: str,
-             pid_loop_id: str,
-             pid_loop_is_crucial: bool,
-             pid_loop_name: str,
-             pid_loop_type: str,
-             pid_project_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             pid_loop_configuration: Optional[str] = None,
+             pid_loop_dcs_type: Optional[str] = None,
+             pid_loop_desc: Optional[str] = None,
+             pid_loop_id: Optional[str] = None,
+             pid_loop_is_crucial: Optional[bool] = None,
+             pid_loop_name: Optional[str] = None,
+             pid_loop_type: Optional[str] = None,
+             pid_project_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'pidLoopConfiguration' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if pid_loop_configuration is None and 'pidLoopConfiguration' in kwargs:
             pid_loop_configuration = kwargs['pidLoopConfiguration']
-        if 'pidLoopDcsType' in kwargs:
+        if pid_loop_configuration is None:
+            raise TypeError("Missing 'pid_loop_configuration' argument")
+        if pid_loop_dcs_type is None and 'pidLoopDcsType' in kwargs:
             pid_loop_dcs_type = kwargs['pidLoopDcsType']
-        if 'pidLoopDesc' in kwargs:
+        if pid_loop_dcs_type is None:
+            raise TypeError("Missing 'pid_loop_dcs_type' argument")
+        if pid_loop_desc is None and 'pidLoopDesc' in kwargs:
             pid_loop_desc = kwargs['pidLoopDesc']
-        if 'pidLoopId' in kwargs:
+        if pid_loop_desc is None:
+            raise TypeError("Missing 'pid_loop_desc' argument")
+        if pid_loop_id is None and 'pidLoopId' in kwargs:
             pid_loop_id = kwargs['pidLoopId']
-        if 'pidLoopIsCrucial' in kwargs:
+        if pid_loop_id is None:
+            raise TypeError("Missing 'pid_loop_id' argument")
+        if pid_loop_is_crucial is None and 'pidLoopIsCrucial' in kwargs:
             pid_loop_is_crucial = kwargs['pidLoopIsCrucial']
-        if 'pidLoopName' in kwargs:
+        if pid_loop_is_crucial is None:
+            raise TypeError("Missing 'pid_loop_is_crucial' argument")
+        if pid_loop_name is None and 'pidLoopName' in kwargs:
             pid_loop_name = kwargs['pidLoopName']
-        if 'pidLoopType' in kwargs:
+        if pid_loop_name is None:
+            raise TypeError("Missing 'pid_loop_name' argument")
+        if pid_loop_type is None and 'pidLoopType' in kwargs:
             pid_loop_type = kwargs['pidLoopType']
-        if 'pidProjectId' in kwargs:
+        if pid_loop_type is None:
+            raise TypeError("Missing 'pid_loop_type' argument")
+        if pid_project_id is None and 'pidProjectId' in kwargs:
             pid_project_id = kwargs['pidProjectId']
+        if pid_project_id is None:
+            raise TypeError("Missing 'pid_project_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("id", id)
         _setter("pid_loop_configuration", pid_loop_configuration)
@@ -195,21 +215,31 @@ class GetIndustrialPidOrganizationsOrganizationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             parent_pid_organization_id: str,
-             pid_organization_id: str,
-             pid_organization_level: int,
-             pid_organization_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             parent_pid_organization_id: Optional[str] = None,
+             pid_organization_id: Optional[str] = None,
+             pid_organization_level: Optional[int] = None,
+             pid_organization_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parentPidOrganizationId' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if parent_pid_organization_id is None and 'parentPidOrganizationId' in kwargs:
             parent_pid_organization_id = kwargs['parentPidOrganizationId']
-        if 'pidOrganizationId' in kwargs:
+        if parent_pid_organization_id is None:
+            raise TypeError("Missing 'parent_pid_organization_id' argument")
+        if pid_organization_id is None and 'pidOrganizationId' in kwargs:
             pid_organization_id = kwargs['pidOrganizationId']
-        if 'pidOrganizationLevel' in kwargs:
+        if pid_organization_id is None:
+            raise TypeError("Missing 'pid_organization_id' argument")
+        if pid_organization_level is None and 'pidOrganizationLevel' in kwargs:
             pid_organization_level = kwargs['pidOrganizationLevel']
-        if 'pidOrganizationName' in kwargs:
+        if pid_organization_level is None:
+            raise TypeError("Missing 'pid_organization_level' argument")
+        if pid_organization_name is None and 'pidOrganizationName' in kwargs:
             pid_organization_name = kwargs['pidOrganizationName']
+        if pid_organization_name is None:
+            raise TypeError("Missing 'pid_organization_name' argument")
 
         _setter("id", id)
         _setter("parent_pid_organization_id", parent_pid_organization_id)
@@ -284,21 +314,31 @@ class GetIndustrialPidProjectsProjectResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             pid_organization_id: str,
-             pid_project_desc: str,
-             pid_project_id: str,
-             pid_project_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             pid_organization_id: Optional[str] = None,
+             pid_project_desc: Optional[str] = None,
+             pid_project_id: Optional[str] = None,
+             pid_project_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'pidOrganizationId' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if pid_organization_id is None and 'pidOrganizationId' in kwargs:
             pid_organization_id = kwargs['pidOrganizationId']
-        if 'pidProjectDesc' in kwargs:
+        if pid_organization_id is None:
+            raise TypeError("Missing 'pid_organization_id' argument")
+        if pid_project_desc is None and 'pidProjectDesc' in kwargs:
             pid_project_desc = kwargs['pidProjectDesc']
-        if 'pidProjectId' in kwargs:
+        if pid_project_desc is None:
+            raise TypeError("Missing 'pid_project_desc' argument")
+        if pid_project_id is None and 'pidProjectId' in kwargs:
             pid_project_id = kwargs['pidProjectId']
-        if 'pidProjectName' in kwargs:
+        if pid_project_id is None:
+            raise TypeError("Missing 'pid_project_id' argument")
+        if pid_project_name is None and 'pidProjectName' in kwargs:
             pid_project_name = kwargs['pidProjectName']
+        if pid_project_name is None:
+            raise TypeError("Missing 'pid_project_name' argument")
 
         _setter("id", id)
         _setter("pid_organization_id", pid_organization_id)

@@ -32,17 +32,23 @@ class BackupPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_cluster_id: pulumi.Input[str],
-             preferred_backup_periods: pulumi.Input[Sequence[pulumi.Input[str]]],
-             preferred_backup_time: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
+             preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             preferred_backup_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbClusterId' in kwargs:
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'preferredBackupPeriods' in kwargs:
+        if db_cluster_id is None:
+            raise TypeError("Missing 'db_cluster_id' argument")
+        if preferred_backup_periods is None and 'preferredBackupPeriods' in kwargs:
             preferred_backup_periods = kwargs['preferredBackupPeriods']
-        if 'preferredBackupTime' in kwargs:
+        if preferred_backup_periods is None:
+            raise TypeError("Missing 'preferred_backup_periods' argument")
+        if preferred_backup_time is None and 'preferredBackupTime' in kwargs:
             preferred_backup_time = kwargs['preferredBackupTime']
+        if preferred_backup_time is None:
+            raise TypeError("Missing 'preferred_backup_time' argument")
 
         _setter("db_cluster_id", db_cluster_id)
         _setter("preferred_backup_periods", preferred_backup_periods)
@@ -113,15 +119,15 @@ class _BackupPolicyState:
              db_cluster_id: Optional[pulumi.Input[str]] = None,
              preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              preferred_backup_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupRetentionPeriod' in kwargs:
+        if backup_retention_period is None and 'backupRetentionPeriod' in kwargs:
             backup_retention_period = kwargs['backupRetentionPeriod']
-        if 'dbClusterId' in kwargs:
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'preferredBackupPeriods' in kwargs:
+        if preferred_backup_periods is None and 'preferredBackupPeriods' in kwargs:
             preferred_backup_periods = kwargs['preferredBackupPeriods']
-        if 'preferredBackupTime' in kwargs:
+        if preferred_backup_time is None and 'preferredBackupTime' in kwargs:
             preferred_backup_time = kwargs['preferredBackupTime']
 
         if backup_retention_period is not None:

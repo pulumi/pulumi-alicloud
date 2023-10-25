@@ -19,51 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.141.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
-//				CidrBlock:         pulumi.String("172.16.0.0/12"),
-//				EnableAdminAccess: pulumi.Bool(false),
-//				DesktopAccessType: pulumi.String("Internet"),
-//				OfficeSiteName:    pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = eds.NewNasFileSystem(ctx, "example", &eds.NasFileSystemArgs{
-//				NasFileSystemName: pulumi.String(name),
-//				OfficeSiteId:      _default.ID(),
-//				Description:       pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ECD Nas File System can be imported using the id, e.g.

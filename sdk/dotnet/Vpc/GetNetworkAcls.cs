@@ -15,38 +15,6 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides the Network Acls of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.122.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Vpc.GetNetworkAcls.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///         NameRegex = "the_resource_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstNetworkAclId"] = example.Apply(getNetworkAclsResult =&gt; getNetworkAclsResult.Acls[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkAclsResult> InvokeAsync(GetNetworkAclsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkAclsResult>("alicloud:vpc/getNetworkAcls:getNetworkAcls", args ?? new GetNetworkAclsArgs(), options.WithDefaults());
@@ -55,38 +23,6 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides the Network Acls of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.122.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Vpc.GetNetworkAcls.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///         NameRegex = "the_resource_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstNetworkAclId"] = example.Apply(getNetworkAclsResult =&gt; getNetworkAclsResult.Acls[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworkAclsResult> Invoke(GetNetworkAclsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkAclsResult>("alicloud:vpc/getNetworkAcls:getNetworkAcls", args ?? new GetNetworkAclsInvokeArgs(), options.WithDefaults());

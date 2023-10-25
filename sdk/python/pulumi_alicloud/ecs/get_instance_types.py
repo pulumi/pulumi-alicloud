@@ -256,17 +256,6 @@ def get_instance_types(availability_zone: Optional[str] = None,
 
     > **NOTE:** If one instance type is sold out, it will not be exported.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    types_ds = alicloud.ecs.get_instance_types(cpu_core_count=1,
-        memory_size=2)
-    instance = alicloud.ecs.Instance("instance", instance_type=types_ds.instance_types[0].id)
-    ```
-
 
     :param str availability_zone: The zone where instance types are supported.
     :param int cpu_core_count: Filter the results to a specific number of cpu cores.
@@ -356,17 +345,6 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
     > **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
 
     > **NOTE:** If one instance type is sold out, it will not be exported.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    types_ds = alicloud.ecs.get_instance_types(cpu_core_count=1,
-        memory_size=2)
-    instance = alicloud.ecs.Instance("instance", instance_type=types_ds.instance_types[0].id)
-    ```
 
 
     :param str availability_zone: The zone where instance types are supported.

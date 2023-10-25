@@ -35,18 +35,26 @@ class AdditionalCertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: pulumi.Input[str],
-             certificate_id: pulumi.Input[str],
-             domain: pulumi.Input[str],
-             listener_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             certificate_id: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'certificateId' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if certificate_id is None and 'certificateId' in kwargs:
             certificate_id = kwargs['certificateId']
-        if 'listenerId' in kwargs:
+        if certificate_id is None:
+            raise TypeError("Missing 'certificate_id' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
 
         _setter("accelerator_id", accelerator_id)
         _setter("certificate_id", certificate_id)
@@ -130,13 +138,13 @@ class _AdditionalCertificateState:
              certificate_id: Optional[pulumi.Input[str]] = None,
              domain: Optional[pulumi.Input[str]] = None,
              listener_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'certificateId' in kwargs:
+        if certificate_id is None and 'certificateId' in kwargs:
             certificate_id = kwargs['certificateId']
-        if 'listenerId' in kwargs:
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
 
         if accelerator_id is not None:

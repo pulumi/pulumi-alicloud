@@ -10,52 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.181.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const this = alicloud.polardb.getNodeClasses({
- *     dbType: "MySQL",
- *     dbVersion: "8.0",
- *     payType: "PostPaid",
- *     category: "Normal",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: "terraform-example",
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: _this.then(_this => _this.classes?.[0]?.zoneId),
- *     vswitchName: "terraform-example",
- * });
- * const cluster = new alicloud.polardb.Cluster("cluster", {
- *     dbType: "MySQL",
- *     dbVersion: "8.0",
- *     payType: "PostPaid",
- *     dbNodeCount: 2,
- *     dbNodeClass: _this.then(_this => _this.classes?.[0]?.supportedEngines?.[0]?.availableResources?.[0]?.dbNodeClass),
- *     vswitchId: defaultSwitch.id,
- * });
- * const defaultGlobalDatabaseNetwork = new alicloud.polardb.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", {
- *     dbClusterId: cluster.id,
- *     description: cluster.id,
- * });
- * const ids = alicloud.polardb.getGlobalDatabaseNetworksOutput({
- *     ids: [defaultGlobalDatabaseNetwork.id],
- * });
- * export const polardbGlobalDatabaseNetworkId1 = ids.apply(ids => ids.networks?.[0]?.id);
- * const description = alicloud.polardb.getGlobalDatabaseNetworksOutput({
- *     description: defaultGlobalDatabaseNetwork.description,
- * });
- * export const polardbGlobalDatabaseNetworkId2 = description.apply(description => description.networks?.[0]?.id);
- * ```
  */
 export function getGlobalDatabaseNetworks(args?: GetGlobalDatabaseNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalDatabaseNetworksResult> {
     args = args || {};
@@ -142,52 +96,6 @@ export interface GetGlobalDatabaseNetworksResult {
  * This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.181.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const this = alicloud.polardb.getNodeClasses({
- *     dbType: "MySQL",
- *     dbVersion: "8.0",
- *     payType: "PostPaid",
- *     category: "Normal",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: "terraform-example",
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: _this.then(_this => _this.classes?.[0]?.zoneId),
- *     vswitchName: "terraform-example",
- * });
- * const cluster = new alicloud.polardb.Cluster("cluster", {
- *     dbType: "MySQL",
- *     dbVersion: "8.0",
- *     payType: "PostPaid",
- *     dbNodeCount: 2,
- *     dbNodeClass: _this.then(_this => _this.classes?.[0]?.supportedEngines?.[0]?.availableResources?.[0]?.dbNodeClass),
- *     vswitchId: defaultSwitch.id,
- * });
- * const defaultGlobalDatabaseNetwork = new alicloud.polardb.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", {
- *     dbClusterId: cluster.id,
- *     description: cluster.id,
- * });
- * const ids = alicloud.polardb.getGlobalDatabaseNetworksOutput({
- *     ids: [defaultGlobalDatabaseNetwork.id],
- * });
- * export const polardbGlobalDatabaseNetworkId1 = ids.apply(ids => ids.networks?.[0]?.id);
- * const description = alicloud.polardb.getGlobalDatabaseNetworksOutput({
- *     description: defaultGlobalDatabaseNetwork.description,
- * });
- * export const polardbGlobalDatabaseNetworkId2 = description.apply(description => description.networks?.[0]?.id);
- * ```
  */
 export function getGlobalDatabaseNetworksOutput(args?: GetGlobalDatabaseNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalDatabaseNetworksResult> {
     return pulumi.output(args).apply((a: any) => getGlobalDatabaseNetworks(a, opts))

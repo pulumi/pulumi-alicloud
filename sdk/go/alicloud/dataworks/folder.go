@@ -19,35 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.131.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dataworks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataworks.NewFolder(ctx, "example", &dataworks.FolderArgs{
-//				FolderPath: pulumi.String("Business Flow/tfTestAcc/folderDi/tftest1"),
-//				ProjectId:  pulumi.String("320687"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Data Works Folder can be imported using the id, e.g.

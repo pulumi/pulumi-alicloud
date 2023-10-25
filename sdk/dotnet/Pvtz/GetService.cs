@@ -17,28 +17,6 @@ namespace Pulumi.AliCloud.Pvtz
         /// For information about Priavte Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
         /// 
         /// &gt; **NOTE:** Available in v1.114.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var open = AliCloud.Pvtz.GetService.Invoke(new()
-        ///     {
-        ///         Enable = "On",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("alicloud:pvtz/getService:getService", args ?? new GetServiceArgs(), options.WithDefaults());
@@ -49,28 +27,6 @@ namespace Pulumi.AliCloud.Pvtz
         /// For information about Priavte Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
         /// 
         /// &gt; **NOTE:** Available in v1.114.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var open = AliCloud.Pvtz.GetService.Invoke(new()
-        ///     {
-        ///         Enable = "On",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:pvtz/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());

@@ -42,19 +42,27 @@ class DBAuditInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             period: pulumi.Input[int],
-             plan_code: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             plan_code: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'planCode' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if period is None:
+            raise TypeError("Missing 'period' argument")
+        if plan_code is None and 'planCode' in kwargs:
             plan_code = kwargs['planCode']
-        if 'vswitchId' in kwargs:
+        if plan_code is None:
+            raise TypeError("Missing 'plan_code' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'resourceGroupId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("description", description)
@@ -177,13 +185,13 @@ class _DBAuditInstanceState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'planCode' in kwargs:
+        if plan_code is None and 'planCode' in kwargs:
             plan_code = kwargs['planCode']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if description is not None:

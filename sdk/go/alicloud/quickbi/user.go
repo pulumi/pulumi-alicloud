@@ -19,38 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.136.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/quickbi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := quickbi.NewUser(ctx, "example", &quickbi.UserArgs{
-//				AccountName:   pulumi.String("example_value"),
-//				AdminUser:     pulumi.Bool(false),
-//				AuthAdminUser: pulumi.Bool(false),
-//				NickName:      pulumi.String("example_value"),
-//				UserType:      pulumi.String("Analyst"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Quick BI User can be imported using the id, e.g.

@@ -19,58 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.187.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := alicloud.GetAccount(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("tf_example"),
-//				CidrBlock: pulumi.String("172.17.3.0/24"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String("tf_example"),
-//				Description:     pulumi.String("an example for cen"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cen.NewTransitRouterGrantAttachment(ctx, "exampleTransitRouterGrantAttachment", &cen.TransitRouterGrantAttachmentArgs{
-//				CenId:        exampleInstance.ID(),
-//				CenOwnerId:   *pulumi.String(_default.Id),
-//				InstanceId:   exampleNetwork.ID(),
-//				InstanceType: pulumi.String("VPC"),
-//				OrderType:    pulumi.String("PayByCenOwner"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Cloud Enterprise Network (CEN) Transit Router Grant Attachment can be imported using the id, e.g.

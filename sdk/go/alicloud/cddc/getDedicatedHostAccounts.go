@@ -15,33 +15,6 @@ import (
 // This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.148.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cddc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := cddc.GetDedicatedHostAccounts(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("cddcDedicatedHostAccountId1", ids.Accounts[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDedicatedHostAccounts(ctx *pulumi.Context, args *GetDedicatedHostAccountsArgs, opts ...pulumi.InvokeOption) (*GetDedicatedHostAccountsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDedicatedHostAccountsResult

@@ -61,9 +61,9 @@ class ServerGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             health_check: pulumi.Input['ServerGroupHealthCheckArgs'],
-             server_group_name: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
+             health_check: Optional[pulumi.Input['ServerGroupHealthCheckArgs']] = None,
+             server_group_name: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
              address_ip_version: Optional[pulumi.Input[str]] = None,
              connection_drain: Optional[pulumi.Input[bool]] = None,
              connection_drain_timeout: Optional[pulumi.Input[int]] = None,
@@ -73,25 +73,31 @@ class ServerGroupArgs:
              scheduler: Optional[pulumi.Input[str]] = None,
              server_group_type: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'healthCheck' in kwargs:
+        if health_check is None and 'healthCheck' in kwargs:
             health_check = kwargs['healthCheck']
-        if 'serverGroupName' in kwargs:
+        if health_check is None:
+            raise TypeError("Missing 'health_check' argument")
+        if server_group_name is None and 'serverGroupName' in kwargs:
             server_group_name = kwargs['serverGroupName']
-        if 'vpcId' in kwargs:
+        if server_group_name is None:
+            raise TypeError("Missing 'server_group_name' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'addressIpVersion' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if address_ip_version is None and 'addressIpVersion' in kwargs:
             address_ip_version = kwargs['addressIpVersion']
-        if 'connectionDrain' in kwargs:
+        if connection_drain is None and 'connectionDrain' in kwargs:
             connection_drain = kwargs['connectionDrain']
-        if 'connectionDrainTimeout' in kwargs:
+        if connection_drain_timeout is None and 'connectionDrainTimeout' in kwargs:
             connection_drain_timeout = kwargs['connectionDrainTimeout']
-        if 'preserveClientIpEnabled' in kwargs:
+        if preserve_client_ip_enabled is None and 'preserveClientIpEnabled' in kwargs:
             preserve_client_ip_enabled = kwargs['preserveClientIpEnabled']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'serverGroupType' in kwargs:
+        if server_group_type is None and 'serverGroupType' in kwargs:
             server_group_type = kwargs['serverGroupType']
 
         _setter("health_check", health_check)
@@ -325,25 +331,25 @@ class _ServerGroupState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addressIpVersion' in kwargs:
+        if address_ip_version is None and 'addressIpVersion' in kwargs:
             address_ip_version = kwargs['addressIpVersion']
-        if 'connectionDrain' in kwargs:
+        if connection_drain is None and 'connectionDrain' in kwargs:
             connection_drain = kwargs['connectionDrain']
-        if 'connectionDrainTimeout' in kwargs:
+        if connection_drain_timeout is None and 'connectionDrainTimeout' in kwargs:
             connection_drain_timeout = kwargs['connectionDrainTimeout']
-        if 'healthCheck' in kwargs:
+        if health_check is None and 'healthCheck' in kwargs:
             health_check = kwargs['healthCheck']
-        if 'preserveClientIpEnabled' in kwargs:
+        if preserve_client_ip_enabled is None and 'preserveClientIpEnabled' in kwargs:
             preserve_client_ip_enabled = kwargs['preserveClientIpEnabled']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'serverGroupName' in kwargs:
+        if server_group_name is None and 'serverGroupName' in kwargs:
             server_group_name = kwargs['serverGroupName']
-        if 'serverGroupType' in kwargs:
+        if server_group_type is None and 'serverGroupType' in kwargs:
             server_group_type = kwargs['serverGroupType']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if address_ip_version is not None:
@@ -555,53 +561,6 @@ class ServerGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.186.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_server_group = alicloud.nlb.ServerGroup("defaultServerGroup",
-            resource_group_id=default_resource_groups.ids[0],
-            server_group_name=name,
-            server_group_type="Instance",
-            vpc_id=default_network.id,
-            scheduler="Wrr",
-            protocol="TCP",
-            connection_drain=True,
-            connection_drain_timeout=60,
-            address_ip_version="Ipv4",
-            health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
-                health_check_enabled=True,
-                health_check_type="TCP",
-                health_check_connect_port=0,
-                healthy_threshold=2,
-                unhealthy_threshold=2,
-                health_check_connect_timeout=5,
-                health_check_interval=10,
-                http_check_method="GET",
-                health_check_http_codes=[
-                    "http_2xx",
-                    "http_3xx",
-                    "http_4xx",
-                ],
-            ),
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        ```
-
         ## Import
 
         NLB Server Group can be imported using the id, e.g.
@@ -637,53 +596,6 @@ class ServerGroup(pulumi.CustomResource):
         For information about NLB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createservergroup-nlb).
 
         > **NOTE:** Available since v1.186.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_server_group = alicloud.nlb.ServerGroup("defaultServerGroup",
-            resource_group_id=default_resource_groups.ids[0],
-            server_group_name=name,
-            server_group_type="Instance",
-            vpc_id=default_network.id,
-            scheduler="Wrr",
-            protocol="TCP",
-            connection_drain=True,
-            connection_drain_timeout=60,
-            address_ip_version="Ipv4",
-            health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
-                health_check_enabled=True,
-                health_check_type="TCP",
-                health_check_connect_port=0,
-                healthy_threshold=2,
-                unhealthy_threshold=2,
-                health_check_connect_timeout=5,
-                health_check_interval=10,
-                http_check_method="GET",
-                health_check_http_codes=[
-                    "http_2xx",
-                    "http_3xx",
-                    "http_4xx",
-                ],
-            ),
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        ```
 
         ## Import
 
@@ -736,11 +648,7 @@ class ServerGroup(pulumi.CustomResource):
             __props__.__dict__["address_ip_version"] = address_ip_version
             __props__.__dict__["connection_drain"] = connection_drain
             __props__.__dict__["connection_drain_timeout"] = connection_drain_timeout
-            if health_check is not None and not isinstance(health_check, ServerGroupHealthCheckArgs):
-                health_check = health_check or {}
-                def _setter(key, value):
-                    health_check[key] = value
-                ServerGroupHealthCheckArgs._configure(_setter, **health_check)
+            health_check = _utilities.configure(health_check, ServerGroupHealthCheckArgs, True)
             if health_check is None and not opts.urn:
                 raise TypeError("Missing required property 'health_check'")
             __props__.__dict__["health_check"] = health_check

@@ -15,39 +15,6 @@ import (
 // This data source provides the FnF Executions of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.149.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fnf"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fnf.GetExecutions(ctx, &fnf.GetExecutionsArgs{
-//				FlowName: "example_value",
-//				Ids: []string{
-//					"my-Execution-1",
-//					"my-Execution-2",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("fnfExecutionId1", data.Alicloud_fn_f_executions.Ids.Executions[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetExecutions(ctx *pulumi.Context, args *GetExecutionsArgs, opts ...pulumi.InvokeOption) (*GetExecutionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetExecutionsResult

@@ -100,17 +100,6 @@ def get_ots_snapshots(end_time: Optional[str] = None,
 
     > **NOTE:** Available in v1.164.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    snapshots = alicloud.hbr.get_ots_snapshots()
-    ```
-
 
     :param str end_time: The end time of the backup. This value must be a UNIX timestamp. Unit: milliseconds
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -143,17 +132,6 @@ def get_ots_snapshots_output(end_time: Optional[pulumi.Input[Optional[str]]] = N
     This data source provides the Hbr Ots Snapshots of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.164.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    snapshots = alicloud.hbr.get_ots_snapshots()
-    ```
 
 
     :param str end_time: The end time of the backup. This value must be a UNIX timestamp. Unit: milliseconds

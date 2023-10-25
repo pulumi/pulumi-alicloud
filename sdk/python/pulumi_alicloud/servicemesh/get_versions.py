@@ -90,18 +90,6 @@ def get_versions(edition: Optional[str] = None,
 
     > **NOTE:** Available in v1.161.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.servicemesh.get_versions(edition="Default")
-    pulumi.export("serviceMeshVersion", data["alicloud_service_mesh_versions"]["versions"][0]["version"])
-    ```
-
 
     :param str edition: The edition of the ASM instance.
     :param Sequence[str] ids: A list of ASM versions. Its element formats as `<edition>:<version>`.
@@ -131,18 +119,6 @@ def get_versions_output(edition: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides ASM available versions in the specified region.
 
     > **NOTE:** Available in v1.161.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.servicemesh.get_versions(edition="Default")
-    pulumi.export("serviceMeshVersion", data["alicloud_service_mesh_versions"]["versions"][0]["version"])
-    ```
 
 
     :param str edition: The edition of the ASM instance.

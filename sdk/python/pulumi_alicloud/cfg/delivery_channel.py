@@ -47,24 +47,30 @@ class DeliveryChannelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             delivery_channel_assume_role_arn: pulumi.Input[str],
-             delivery_channel_target_arn: pulumi.Input[str],
-             delivery_channel_type: pulumi.Input[str],
+             delivery_channel_assume_role_arn: Optional[pulumi.Input[str]] = None,
+             delivery_channel_target_arn: Optional[pulumi.Input[str]] = None,
+             delivery_channel_type: Optional[pulumi.Input[str]] = None,
              delivery_channel_condition: Optional[pulumi.Input[str]] = None,
              delivery_channel_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deliveryChannelAssumeRoleArn' in kwargs:
+        if delivery_channel_assume_role_arn is None and 'deliveryChannelAssumeRoleArn' in kwargs:
             delivery_channel_assume_role_arn = kwargs['deliveryChannelAssumeRoleArn']
-        if 'deliveryChannelTargetArn' in kwargs:
+        if delivery_channel_assume_role_arn is None:
+            raise TypeError("Missing 'delivery_channel_assume_role_arn' argument")
+        if delivery_channel_target_arn is None and 'deliveryChannelTargetArn' in kwargs:
             delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
-        if 'deliveryChannelType' in kwargs:
+        if delivery_channel_target_arn is None:
+            raise TypeError("Missing 'delivery_channel_target_arn' argument")
+        if delivery_channel_type is None and 'deliveryChannelType' in kwargs:
             delivery_channel_type = kwargs['deliveryChannelType']
-        if 'deliveryChannelCondition' in kwargs:
+        if delivery_channel_type is None:
+            raise TypeError("Missing 'delivery_channel_type' argument")
+        if delivery_channel_condition is None and 'deliveryChannelCondition' in kwargs:
             delivery_channel_condition = kwargs['deliveryChannelCondition']
-        if 'deliveryChannelName' in kwargs:
+        if delivery_channel_name is None and 'deliveryChannelName' in kwargs:
             delivery_channel_name = kwargs['deliveryChannelName']
 
         _setter("delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
@@ -210,17 +216,17 @@ class _DeliveryChannelState:
              delivery_channel_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deliveryChannelAssumeRoleArn' in kwargs:
+        if delivery_channel_assume_role_arn is None and 'deliveryChannelAssumeRoleArn' in kwargs:
             delivery_channel_assume_role_arn = kwargs['deliveryChannelAssumeRoleArn']
-        if 'deliveryChannelCondition' in kwargs:
+        if delivery_channel_condition is None and 'deliveryChannelCondition' in kwargs:
             delivery_channel_condition = kwargs['deliveryChannelCondition']
-        if 'deliveryChannelName' in kwargs:
+        if delivery_channel_name is None and 'deliveryChannelName' in kwargs:
             delivery_channel_name = kwargs['deliveryChannelName']
-        if 'deliveryChannelTargetArn' in kwargs:
+        if delivery_channel_target_arn is None and 'deliveryChannelTargetArn' in kwargs:
             delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
-        if 'deliveryChannelType' in kwargs:
+        if delivery_channel_type is None and 'deliveryChannelType' in kwargs:
             delivery_channel_type = kwargs['deliveryChannelType']
 
         if delivery_channel_assume_role_arn is not None:

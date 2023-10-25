@@ -15,35 +15,6 @@ namespace Pulumi.AliCloud.Dcdn
         /// This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
         /// 
         /// &gt; **NOTE:** Available since v1.201.0.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.Dcdn.GetWafRules.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             alicloud_dcdn_waf_rule.Default.Id,
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudDcdnWafRuleExampleId"] = @default.Apply(@default =&gt; @default.Apply(getWafRulesResult =&gt; getWafRulesResult.WafRules[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetWafRulesResult> InvokeAsync(GetWafRulesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWafRulesResult>("alicloud:dcdn/getWafRules:getWafRules", args ?? new GetWafRulesArgs(), options.WithDefaults());
@@ -52,35 +23,6 @@ namespace Pulumi.AliCloud.Dcdn
         /// This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
         /// 
         /// &gt; **NOTE:** Available since v1.201.0.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.Dcdn.GetWafRules.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             alicloud_dcdn_waf_rule.Default.Id,
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudDcdnWafRuleExampleId"] = @default.Apply(@default =&gt; @default.Apply(getWafRulesResult =&gt; getWafRulesResult.WafRules[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetWafRulesResult> Invoke(GetWafRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWafRulesResult>("alicloud:dcdn/getWafRules:getWafRules", args ?? new GetWafRulesInvokeArgs(), options.WithDefaults());

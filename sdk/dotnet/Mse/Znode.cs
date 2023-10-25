@@ -16,65 +16,6 @@ namespace Pulumi.AliCloud.Mse
     /// 
     /// &gt; **NOTE:** Available in v1.162.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
-    ///     {
-    ///         VpcName = "terraform-example",
-    ///         CidrBlock = "172.17.3.0/24",
-    ///     });
-    /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
-    ///     {
-    ///         VswitchName = "terraform-example",
-    ///         CidrBlock = "172.17.3.0/24",
-    ///         VpcId = exampleNetwork.Id,
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     });
-    /// 
-    ///     var exampleCluster = new AliCloud.Mse.Cluster("exampleCluster", new()
-    ///     {
-    ///         ClusterSpecification = "MSE_SC_1_2_60_c",
-    ///         ClusterType = "ZooKeeper",
-    ///         ClusterVersion = "ZooKeeper_3_8_0",
-    ///         InstanceCount = 1,
-    ///         NetType = "privatenet",
-    ///         PubNetworkFlow = "1",
-    ///         AclEntryLists = new[]
-    ///         {
-    ///             "127.0.0.1/32",
-    ///         },
-    ///         ClusterAliasName = "terraform-example",
-    ///         MseVersion = "mse_dev",
-    ///         VswitchId = exampleSwitch.Id,
-    ///         VpcId = exampleNetwork.Id,
-    ///     });
-    /// 
-    ///     var exampleZnode = new AliCloud.Mse.Znode("exampleZnode", new()
-    ///     {
-    ///         ClusterId = exampleCluster.ClusterId,
-    ///         Data = "terraform-example",
-    ///         Path = "/example",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Microservice Engine (MSE) Znode can be imported using the id, e.g.

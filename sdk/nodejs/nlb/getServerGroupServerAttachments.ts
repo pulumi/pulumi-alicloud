@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.192.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.nlb.getServerGroupServerAttachments({
- *     ids: ["example_value"],
- * });
- * export const nlbServerGroupServerAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
- * ```
  */
 export function getServerGroupServerAttachments(args?: GetServerGroupServerAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerGroupServerAttachmentsResult> {
     args = args || {};
@@ -83,20 +69,6 @@ export interface GetServerGroupServerAttachmentsResult {
  * This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.192.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.nlb.getServerGroupServerAttachments({
- *     ids: ["example_value"],
- * });
- * export const nlbServerGroupServerAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
- * ```
  */
 export function getServerGroupServerAttachmentsOutput(args?: GetServerGroupServerAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerGroupServerAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getServerGroupServerAttachments(a, opts))

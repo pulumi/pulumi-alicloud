@@ -29,13 +29,15 @@ class InstanceMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             member_uid: pulumi.Input[str],
+             member_uid: Optional[pulumi.Input[str]] = None,
              member_desc: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'memberUid' in kwargs:
+        if member_uid is None and 'memberUid' in kwargs:
             member_uid = kwargs['memberUid']
-        if 'memberDesc' in kwargs:
+        if member_uid is None:
+            raise TypeError("Missing 'member_uid' argument")
+        if member_desc is None and 'memberDesc' in kwargs:
             member_desc = kwargs['memberDesc']
 
         _setter("member_uid", member_uid)
@@ -103,17 +105,17 @@ class _InstanceMemberState:
              member_uid: Optional[pulumi.Input[str]] = None,
              modify_time: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'memberDesc' in kwargs:
+        if member_desc is None and 'memberDesc' in kwargs:
             member_desc = kwargs['memberDesc']
-        if 'memberDisplayName' in kwargs:
+        if member_display_name is None and 'memberDisplayName' in kwargs:
             member_display_name = kwargs['memberDisplayName']
-        if 'memberUid' in kwargs:
+        if member_uid is None and 'memberUid' in kwargs:
             member_uid = kwargs['memberUid']
-        if 'modifyTime' in kwargs:
+        if modify_time is None and 'modifyTime' in kwargs:
             modify_time = kwargs['modifyTime']
 
         if create_time is not None:
@@ -217,24 +219,6 @@ class InstanceMember(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.194.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "AliyunTerraform"
-        default_account = alicloud.resourcemanager.Account("defaultAccount", display_name=name)
-        default_instance_member = alicloud.cloudfirewall.InstanceMember("defaultInstanceMember",
-            member_desc=name,
-            member_uid=default_account.id)
-        ```
-
         ## Import
 
         Cloud Firewall Instance Member can be imported using the id, e.g.
@@ -260,24 +244,6 @@ class InstanceMember(pulumi.CustomResource):
         For information about Cloud Firewall Instance Member and how to use it, see [What is Instance Member](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer).
 
         > **NOTE:** Available in v1.194.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "AliyunTerraform"
-        default_account = alicloud.resourcemanager.Account("defaultAccount", display_name=name)
-        default_instance_member = alicloud.cloudfirewall.InstanceMember("defaultInstanceMember",
-            member_desc=name,
-            member_uid=default_account.id)
-        ```
 
         ## Import
 

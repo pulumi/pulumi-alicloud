@@ -83,11 +83,11 @@ class VirtualBorderRouterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_gateway_ip: pulumi.Input[str],
-             peer_gateway_ip: pulumi.Input[str],
-             peering_subnet_mask: pulumi.Input[str],
-             physical_connection_id: pulumi.Input[str],
-             vlan_id: pulumi.Input[int],
+             local_gateway_ip: Optional[pulumi.Input[str]] = None,
+             peer_gateway_ip: Optional[pulumi.Input[str]] = None,
+             peering_subnet_mask: Optional[pulumi.Input[str]] = None,
+             physical_connection_id: Optional[pulumi.Input[str]] = None,
+             vlan_id: Optional[pulumi.Input[int]] = None,
              associated_physical_connections: Optional[pulumi.Input[str]] = None,
              bandwidth: Optional[pulumi.Input[int]] = None,
              circuit_code: Optional[pulumi.Input[str]] = None,
@@ -103,41 +103,51 @@ class VirtualBorderRouterArgs:
              status: Optional[pulumi.Input[str]] = None,
              vbr_owner_id: Optional[pulumi.Input[str]] = None,
              virtual_border_router_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'localGatewayIp' in kwargs:
+        if local_gateway_ip is None and 'localGatewayIp' in kwargs:
             local_gateway_ip = kwargs['localGatewayIp']
-        if 'peerGatewayIp' in kwargs:
+        if local_gateway_ip is None:
+            raise TypeError("Missing 'local_gateway_ip' argument")
+        if peer_gateway_ip is None and 'peerGatewayIp' in kwargs:
             peer_gateway_ip = kwargs['peerGatewayIp']
-        if 'peeringSubnetMask' in kwargs:
+        if peer_gateway_ip is None:
+            raise TypeError("Missing 'peer_gateway_ip' argument")
+        if peering_subnet_mask is None and 'peeringSubnetMask' in kwargs:
             peering_subnet_mask = kwargs['peeringSubnetMask']
-        if 'physicalConnectionId' in kwargs:
+        if peering_subnet_mask is None:
+            raise TypeError("Missing 'peering_subnet_mask' argument")
+        if physical_connection_id is None and 'physicalConnectionId' in kwargs:
             physical_connection_id = kwargs['physicalConnectionId']
-        if 'vlanId' in kwargs:
+        if physical_connection_id is None:
+            raise TypeError("Missing 'physical_connection_id' argument")
+        if vlan_id is None and 'vlanId' in kwargs:
             vlan_id = kwargs['vlanId']
-        if 'associatedPhysicalConnections' in kwargs:
+        if vlan_id is None:
+            raise TypeError("Missing 'vlan_id' argument")
+        if associated_physical_connections is None and 'associatedPhysicalConnections' in kwargs:
             associated_physical_connections = kwargs['associatedPhysicalConnections']
-        if 'circuitCode' in kwargs:
+        if circuit_code is None and 'circuitCode' in kwargs:
             circuit_code = kwargs['circuitCode']
-        if 'detectMultiplier' in kwargs:
+        if detect_multiplier is None and 'detectMultiplier' in kwargs:
             detect_multiplier = kwargs['detectMultiplier']
-        if 'enableIpv6' in kwargs:
+        if enable_ipv6 is None and 'enableIpv6' in kwargs:
             enable_ipv6 = kwargs['enableIpv6']
-        if 'includeCrossAccountVbr' in kwargs:
+        if include_cross_account_vbr is None and 'includeCrossAccountVbr' in kwargs:
             include_cross_account_vbr = kwargs['includeCrossAccountVbr']
-        if 'localIpv6GatewayIp' in kwargs:
+        if local_ipv6_gateway_ip is None and 'localIpv6GatewayIp' in kwargs:
             local_ipv6_gateway_ip = kwargs['localIpv6GatewayIp']
-        if 'minRxInterval' in kwargs:
+        if min_rx_interval is None and 'minRxInterval' in kwargs:
             min_rx_interval = kwargs['minRxInterval']
-        if 'minTxInterval' in kwargs:
+        if min_tx_interval is None and 'minTxInterval' in kwargs:
             min_tx_interval = kwargs['minTxInterval']
-        if 'peerIpv6GatewayIp' in kwargs:
+        if peer_ipv6_gateway_ip is None and 'peerIpv6GatewayIp' in kwargs:
             peer_ipv6_gateway_ip = kwargs['peerIpv6GatewayIp']
-        if 'peeringIpv6SubnetMask' in kwargs:
+        if peering_ipv6_subnet_mask is None and 'peeringIpv6SubnetMask' in kwargs:
             peering_ipv6_subnet_mask = kwargs['peeringIpv6SubnetMask']
-        if 'vbrOwnerId' in kwargs:
+        if vbr_owner_id is None and 'vbrOwnerId' in kwargs:
             vbr_owner_id = kwargs['vbrOwnerId']
-        if 'virtualBorderRouterName' in kwargs:
+        if virtual_border_router_name is None and 'virtualBorderRouterName' in kwargs:
             virtual_border_router_name = kwargs['virtualBorderRouterName']
 
         _setter("local_gateway_ip", local_gateway_ip)
@@ -513,43 +523,43 @@ class _VirtualBorderRouterState:
              vbr_owner_id: Optional[pulumi.Input[str]] = None,
              virtual_border_router_name: Optional[pulumi.Input[str]] = None,
              vlan_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'associatedPhysicalConnections' in kwargs:
+        if associated_physical_connections is None and 'associatedPhysicalConnections' in kwargs:
             associated_physical_connections = kwargs['associatedPhysicalConnections']
-        if 'circuitCode' in kwargs:
+        if circuit_code is None and 'circuitCode' in kwargs:
             circuit_code = kwargs['circuitCode']
-        if 'detectMultiplier' in kwargs:
+        if detect_multiplier is None and 'detectMultiplier' in kwargs:
             detect_multiplier = kwargs['detectMultiplier']
-        if 'enableIpv6' in kwargs:
+        if enable_ipv6 is None and 'enableIpv6' in kwargs:
             enable_ipv6 = kwargs['enableIpv6']
-        if 'includeCrossAccountVbr' in kwargs:
+        if include_cross_account_vbr is None and 'includeCrossAccountVbr' in kwargs:
             include_cross_account_vbr = kwargs['includeCrossAccountVbr']
-        if 'localGatewayIp' in kwargs:
+        if local_gateway_ip is None and 'localGatewayIp' in kwargs:
             local_gateway_ip = kwargs['localGatewayIp']
-        if 'localIpv6GatewayIp' in kwargs:
+        if local_ipv6_gateway_ip is None and 'localIpv6GatewayIp' in kwargs:
             local_ipv6_gateway_ip = kwargs['localIpv6GatewayIp']
-        if 'minRxInterval' in kwargs:
+        if min_rx_interval is None and 'minRxInterval' in kwargs:
             min_rx_interval = kwargs['minRxInterval']
-        if 'minTxInterval' in kwargs:
+        if min_tx_interval is None and 'minTxInterval' in kwargs:
             min_tx_interval = kwargs['minTxInterval']
-        if 'peerGatewayIp' in kwargs:
+        if peer_gateway_ip is None and 'peerGatewayIp' in kwargs:
             peer_gateway_ip = kwargs['peerGatewayIp']
-        if 'peerIpv6GatewayIp' in kwargs:
+        if peer_ipv6_gateway_ip is None and 'peerIpv6GatewayIp' in kwargs:
             peer_ipv6_gateway_ip = kwargs['peerIpv6GatewayIp']
-        if 'peeringIpv6SubnetMask' in kwargs:
+        if peering_ipv6_subnet_mask is None and 'peeringIpv6SubnetMask' in kwargs:
             peering_ipv6_subnet_mask = kwargs['peeringIpv6SubnetMask']
-        if 'peeringSubnetMask' in kwargs:
+        if peering_subnet_mask is None and 'peeringSubnetMask' in kwargs:
             peering_subnet_mask = kwargs['peeringSubnetMask']
-        if 'physicalConnectionId' in kwargs:
+        if physical_connection_id is None and 'physicalConnectionId' in kwargs:
             physical_connection_id = kwargs['physicalConnectionId']
-        if 'routeTableId' in kwargs:
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
-        if 'vbrOwnerId' in kwargs:
+        if vbr_owner_id is None and 'vbrOwnerId' in kwargs:
             vbr_owner_id = kwargs['vbrOwnerId']
-        if 'virtualBorderRouterName' in kwargs:
+        if virtual_border_router_name is None and 'virtualBorderRouterName' in kwargs:
             virtual_border_router_name = kwargs['virtualBorderRouterName']
-        if 'vlanId' in kwargs:
+        if vlan_id is None and 'vlanId' in kwargs:
             vlan_id = kwargs['vlanId']
 
         if associated_physical_connections is not None:
@@ -881,35 +891,6 @@ class VirtualBorderRouter(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.RandomInteger("vlanId",
-            max=2999,
-            min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
-            local_gateway_ip="10.0.0.1",
-            peer_gateway_ip="10.0.0.2",
-            peering_subnet_mask="255.255.255.252",
-            physical_connection_id=example_physical_connections.connections[0].id,
-            virtual_border_router_name=name,
-            vlan_id=vlan_id.id,
-            min_rx_interval=1000,
-            min_tx_interval=1000,
-            detect_multiplier=10)
-        ```
-
         ## Import
 
         Express Connect Virtual Border Router can be imported using the id, e.g.
@@ -953,35 +934,6 @@ class VirtualBorderRouter(pulumi.CustomResource):
         For information about Express Connect Virtual Border Router and how to use it, see [What is Virtual Border Router](https://www.alibabacloud.com/help/en/doc-detail/44854.htm).
 
         > **NOTE:** Available since v1.134.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.RandomInteger("vlanId",
-            max=2999,
-            min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
-            local_gateway_ip="10.0.0.1",
-            peer_gateway_ip="10.0.0.2",
-            peering_subnet_mask="255.255.255.252",
-            physical_connection_id=example_physical_connections.connections[0].id,
-            virtual_border_router_name=name,
-            vlan_id=vlan_id.id,
-            min_rx_interval=1000,
-            min_tx_interval=1000,
-            detect_multiplier=10)
-        ```
 
         ## Import
 

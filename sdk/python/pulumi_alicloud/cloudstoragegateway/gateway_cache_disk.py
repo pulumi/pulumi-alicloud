@@ -32,16 +32,20 @@ class GatewayCacheDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cache_disk_size_in_gb: pulumi.Input[int],
-             gateway_id: pulumi.Input[str],
+             cache_disk_size_in_gb: Optional[pulumi.Input[int]] = None,
+             gateway_id: Optional[pulumi.Input[str]] = None,
              cache_disk_category: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cacheDiskSizeInGb' in kwargs:
+        if cache_disk_size_in_gb is None and 'cacheDiskSizeInGb' in kwargs:
             cache_disk_size_in_gb = kwargs['cacheDiskSizeInGb']
-        if 'gatewayId' in kwargs:
+        if cache_disk_size_in_gb is None:
+            raise TypeError("Missing 'cache_disk_size_in_gb' argument")
+        if gateway_id is None and 'gatewayId' in kwargs:
             gateway_id = kwargs['gatewayId']
-        if 'cacheDiskCategory' in kwargs:
+        if gateway_id is None:
+            raise TypeError("Missing 'gateway_id' argument")
+        if cache_disk_category is None and 'cacheDiskCategory' in kwargs:
             cache_disk_category = kwargs['cacheDiskCategory']
 
         _setter("cache_disk_size_in_gb", cache_disk_size_in_gb)
@@ -122,17 +126,17 @@ class _GatewayCacheDiskState:
              gateway_id: Optional[pulumi.Input[str]] = None,
              local_file_path: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cacheDiskCategory' in kwargs:
+        if cache_disk_category is None and 'cacheDiskCategory' in kwargs:
             cache_disk_category = kwargs['cacheDiskCategory']
-        if 'cacheDiskSizeInGb' in kwargs:
+        if cache_disk_size_in_gb is None and 'cacheDiskSizeInGb' in kwargs:
             cache_disk_size_in_gb = kwargs['cacheDiskSizeInGb']
-        if 'cacheId' in kwargs:
+        if cache_id is None and 'cacheId' in kwargs:
             cache_id = kwargs['cacheId']
-        if 'gatewayId' in kwargs:
+        if gateway_id is None and 'gatewayId' in kwargs:
             gateway_id = kwargs['gatewayId']
-        if 'localFilePath' in kwargs:
+        if local_file_path is None and 'localFilePath' in kwargs:
             local_file_path = kwargs['localFilePath']
 
         if cache_disk_category is not None:

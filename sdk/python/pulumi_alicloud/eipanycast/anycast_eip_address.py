@@ -47,7 +47,7 @@ class AnycastEipAddressArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_location: pulumi.Input[str],
+             service_location: Optional[pulumi.Input[str]] = None,
              anycast_eip_address_name: Optional[pulumi.Input[str]] = None,
              bandwidth: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -55,17 +55,19 @@ class AnycastEipAddressArgs:
              payment_type: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serviceLocation' in kwargs:
+        if service_location is None and 'serviceLocation' in kwargs:
             service_location = kwargs['serviceLocation']
-        if 'anycastEipAddressName' in kwargs:
+        if service_location is None:
+            raise TypeError("Missing 'service_location' argument")
+        if anycast_eip_address_name is None and 'anycastEipAddressName' in kwargs:
             anycast_eip_address_name = kwargs['anycastEipAddressName']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("service_location", service_location)
@@ -233,19 +235,19 @@ class _AnycastEipAddressState:
              service_location: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'anycastEipAddressName' in kwargs:
+        if anycast_eip_address_name is None and 'anycastEipAddressName' in kwargs:
             anycast_eip_address_name = kwargs['anycastEipAddressName']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'serviceLocation' in kwargs:
+        if service_location is None and 'serviceLocation' in kwargs:
             service_location = kwargs['serviceLocation']
 
         if anycast_eip_address_name is not None:
@@ -411,27 +413,6 @@ class AnycastEipAddress(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.113.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.eipanycast.AnycastEipAddress("default",
-            anycast_eip_address_name=name,
-            description=name,
-            bandwidth=200,
-            service_location="international",
-            internet_charge_type="PayByTraffic",
-            payment_type="PayAsYouGo")
-        ```
-
         ## Import
 
         Eipanycast Anycast Eip Address can be imported using the id, e.g.
@@ -463,27 +444,6 @@ class AnycastEipAddress(pulumi.CustomResource):
         For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/anycast-eip/latest/api-eipanycast-2020-03-09-allocateanycasteipaddress).
 
         > **NOTE:** Available since v1.113.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.eipanycast.AnycastEipAddress("default",
-            anycast_eip_address_name=name,
-            description=name,
-            bandwidth=200,
-            service_location="international",
-            internet_charge_type="PayByTraffic",
-            payment_type="PayAsYouGo")
-        ```
 
         ## Import
 

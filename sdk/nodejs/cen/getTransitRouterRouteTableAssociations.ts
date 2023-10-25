@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
  *
  * > **NOTE:** Available in 1.126.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cen.getTransitRouterRouteTableAssociations({
- *     transitRouterRouteTableId: "rtb-id1",
- * });
- * export const firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = _default.then(_default => _default.associations?.[0]?.resourceType);
- * ```
  */
 export function getTransitRouterRouteTableAssociations(args?: GetTransitRouterRouteTableAssociationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterRouteTableAssociationsResult> {
     args = args || {};
@@ -108,18 +96,6 @@ export interface GetTransitRouterRouteTableAssociationsResult {
  * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
  *
  * > **NOTE:** Available in 1.126.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cen.getTransitRouterRouteTableAssociations({
- *     transitRouterRouteTableId: "rtb-id1",
- * });
- * export const firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = _default.then(_default => _default.associations?.[0]?.resourceType);
- * ```
  */
 export function getTransitRouterRouteTableAssociationsOutput(args?: GetTransitRouterRouteTableAssociationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterRouteTableAssociationsResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterRouteTableAssociations(a, opts))

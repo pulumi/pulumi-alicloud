@@ -32,17 +32,23 @@ class DbNodeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             class_code: pulumi.Input[str],
-             db_instance_id: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             class_code: Optional[pulumi.Input[str]] = None,
+             db_instance_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'classCode' in kwargs:
+        if class_code is None and 'classCode' in kwargs:
             class_code = kwargs['classCode']
-        if 'dbInstanceId' in kwargs:
+        if class_code is None:
+            raise TypeError("Missing 'class_code' argument")
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
-        if 'zoneId' in kwargs:
+        if db_instance_id is None:
+            raise TypeError("Missing 'db_instance_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("class_code", class_code)
         _setter("db_instance_id", db_instance_id)
@@ -121,19 +127,19 @@ class _DbNodeState:
              node_region_id: Optional[pulumi.Input[str]] = None,
              node_role: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'classCode' in kwargs:
+        if class_code is None and 'classCode' in kwargs:
             class_code = kwargs['classCode']
-        if 'dbInstanceId' in kwargs:
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
-        if 'nodeId' in kwargs:
+        if node_id is None and 'nodeId' in kwargs:
             node_id = kwargs['nodeId']
-        if 'nodeRegionId' in kwargs:
+        if node_region_id is None and 'nodeRegionId' in kwargs:
             node_region_id = kwargs['nodeRegionId']
-        if 'nodeRole' in kwargs:
+        if node_role is None and 'nodeRole' in kwargs:
             node_role = kwargs['nodeRole']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if class_code is not None:
@@ -236,55 +242,6 @@ class DbNode(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.202.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="8.0",
-            instance_charge_type="PostPaid",
-            category="cluster",
-            db_instance_storage_type="cloud_essd")
-        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.ids[0],
-            engine="MySQL",
-            engine_version="8.0",
-            category="cluster",
-            db_instance_storage_type="cloud_essd",
-            instance_charge_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.ids[0],
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.rds.Instance("defaultInstance",
-            engine="MySQL",
-            engine_version="8.0",
-            instance_type=default_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
-            instance_charge_type="Postpaid",
-            instance_name=name,
-            vswitch_id=default_switch.id,
-            monitoring_period=60,
-            db_instance_storage_type="cloud_essd",
-            security_group_ids=[default_security_group.id],
-            zone_id=default_zones.ids[0],
-            zone_id_slave_a=default_zones.ids[0])
-        default_db_node = alicloud.rds.DbNode("defaultDbNode",
-            db_instance_id=default_instance.id,
-            class_code=default_instance.instance_type,
-            zone_id=default_switch.zone_id)
-        ```
-
         ## Import
 
         RDS MySQL database cluster node agent function can be imported using id, e.g.
@@ -309,55 +266,6 @@ class DbNode(pulumi.CustomResource):
         Provide RDS cluster instance to increase node resources, see [What is RDS DB Node](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdbnodes).
 
         > **NOTE:** Available since v1.202.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="8.0",
-            instance_charge_type="PostPaid",
-            category="cluster",
-            db_instance_storage_type="cloud_essd")
-        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.ids[0],
-            engine="MySQL",
-            engine_version="8.0",
-            category="cluster",
-            db_instance_storage_type="cloud_essd",
-            instance_charge_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.ids[0],
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.rds.Instance("defaultInstance",
-            engine="MySQL",
-            engine_version="8.0",
-            instance_type=default_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
-            instance_charge_type="Postpaid",
-            instance_name=name,
-            vswitch_id=default_switch.id,
-            monitoring_period=60,
-            db_instance_storage_type="cloud_essd",
-            security_group_ids=[default_security_group.id],
-            zone_id=default_zones.ids[0],
-            zone_id_slave_a=default_zones.ids[0])
-        default_db_node = alicloud.rds.DbNode("defaultDbNode",
-            db_instance_id=default_instance.id,
-            class_code=default_instance.instance_type,
-            zone_id=default_switch.zone_id)
-        ```
 
         ## Import
 

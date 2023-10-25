@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Global Accelerator (GA) Custom Routing Port Mappings of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in 1.197.0+
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.ga.getCustomRoutingPortMappings({
- *     acceleratorId: "your_accelerator_id",
- * });
- * export const gaCustomRoutingPortMappingsAcceleratorId1 = _default.then(_default => _default.customRoutingPortMappings?.[0]?.acceleratorId);
- * ```
  */
 export function getCustomRoutingPortMappings(args: GetCustomRoutingPortMappingsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomRoutingPortMappingsResult> {
 
@@ -103,20 +89,6 @@ export interface GetCustomRoutingPortMappingsResult {
  * This data source provides the Global Accelerator (GA) Custom Routing Port Mappings of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in 1.197.0+
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.ga.getCustomRoutingPortMappings({
- *     acceleratorId: "your_accelerator_id",
- * });
- * export const gaCustomRoutingPortMappingsAcceleratorId1 = _default.then(_default => _default.customRoutingPortMappings?.[0]?.acceleratorId);
- * ```
  */
 export function getCustomRoutingPortMappingsOutput(args: GetCustomRoutingPortMappingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomRoutingPortMappingsResult> {
     return pulumi.output(args).apply((a: any) => getCustomRoutingPortMappings(a, opts))

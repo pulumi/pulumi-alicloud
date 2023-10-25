@@ -99,22 +99,6 @@ def get_face_configs(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.137.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_face_config = alicloud.cloudauth.FaceConfig("defaultFaceConfig",
-        biz_name="example-value",
-        biz_type="example-value")
-    default_face_configs = alicloud.cloudauth.get_face_configs_output(ids=[default_face_config.id],
-        name_regex=default_face_config.biz_name)
-    pulumi.export("faceConfig", default_face_configs.configs[0])
-    ```
-
 
     :param Sequence[str] ids: A list of Face Config IDs.
     :param str name_regex: A regex string to filter results by biz_name.
@@ -145,22 +129,6 @@ def get_face_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     This data source provides the Cloudauth Face Configs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.137.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_face_config = alicloud.cloudauth.FaceConfig("defaultFaceConfig",
-        biz_name="example-value",
-        biz_type="example-value")
-    default_face_configs = alicloud.cloudauth.get_face_configs_output(ids=[default_face_config.id],
-        name_regex=default_face_config.biz_name)
-    pulumi.export("faceConfig", default_face_configs.configs[0])
-    ```
 
 
     :param Sequence[str] ids: A list of Face Config IDs.

@@ -8,19 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const kmsKeysDs = alicloud.kms.getKeys({
- *     descriptionRegex: "Hello KMS",
- *     outputFile: "kms_keys.json",
- * });
- * export const firstKeyId = kmsKeysDs.then(kmsKeysDs => kmsKeysDs.keys?.[0]?.id);
- * ```
  */
 export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> {
     args = args || {};
@@ -91,19 +78,6 @@ export interface GetKeysResult {
 }
 /**
  * This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const kmsKeysDs = alicloud.kms.getKeys({
- *     descriptionRegex: "Hello KMS",
- *     outputFile: "kms_keys.json",
- * });
- * export const firstKeyId = kmsKeysDs.then(kmsKeysDs => kmsKeysDs.keys?.[0]?.id);
- * ```
  */
 export function getKeysOutput(args?: GetKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeysResult> {
     return pulumi.output(args).apply((a: any) => getKeys(a, opts))

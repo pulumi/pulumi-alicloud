@@ -16,61 +16,6 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// &gt; **NOTE:** Available since v1.123.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var domain = config.Get("domain") ?? "tf-example.alibaba.com";
-    ///     var defaultDdosCooInstance = new AliCloud.Ddos.DdosCooInstance("defaultDdosCooInstance", new()
-    ///     {
-    ///         Bandwidth = "30",
-    ///         BaseBandwidth = "30",
-    ///         ServiceBandwidth = "100",
-    ///         PortCount = "50",
-    ///         DomainCount = "50",
-    ///         Period = 1,
-    ///         ProductType = "ddoscoo",
-    ///     });
-    /// 
-    ///     var defaultDomainResource = new AliCloud.Ddos.DomainResource("defaultDomainResource", new()
-    ///     {
-    ///         Domain = domain,
-    ///         RsType = 0,
-    ///         InstanceIds = new[]
-    ///         {
-    ///             defaultDdosCooInstance.Id,
-    ///         },
-    ///         RealServers = new[]
-    ///         {
-    ///             "177.167.32.11",
-    ///         },
-    ///         HttpsExt = "{\"Http2\":1,\"Http2https\":0,\"Https2http\":0}",
-    ///         ProxyTypes = new[]
-    ///         {
-    ///             new AliCloud.Ddos.Inputs.DomainResourceProxyTypeArgs
-    ///             {
-    ///                 ProxyPorts = new[]
-    ///                 {
-    ///                     443,
-    ///                 },
-    ///                 ProxyType = "https",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Anti-DDoS Pro Domain Resource can be imported using the id, e.g.

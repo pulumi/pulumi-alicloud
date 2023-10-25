@@ -35,19 +35,21 @@ class HanaBackupClientArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vault_id: pulumi.Input[str],
+             vault_id: Optional[pulumi.Input[str]] = None,
              alert_setting: Optional[pulumi.Input[str]] = None,
              client_info: Optional[pulumi.Input[str]] = None,
              use_https: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vaultId' in kwargs:
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
-        if 'alertSetting' in kwargs:
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
+        if alert_setting is None and 'alertSetting' in kwargs:
             alert_setting = kwargs['alertSetting']
-        if 'clientInfo' in kwargs:
+        if client_info is None and 'clientInfo' in kwargs:
             client_info = kwargs['clientInfo']
-        if 'useHttps' in kwargs:
+        if use_https is None and 'useHttps' in kwargs:
             use_https = kwargs['useHttps']
 
         _setter("vault_id", vault_id)
@@ -151,21 +153,21 @@ class _HanaBackupClientState:
              status: Optional[pulumi.Input[str]] = None,
              use_https: Optional[pulumi.Input[bool]] = None,
              vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alertSetting' in kwargs:
+        if alert_setting is None and 'alertSetting' in kwargs:
             alert_setting = kwargs['alertSetting']
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'clientInfo' in kwargs:
+        if client_info is None and 'clientInfo' in kwargs:
             client_info = kwargs['clientInfo']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'useHttps' in kwargs:
+        if use_https is None and 'useHttps' in kwargs:
             use_https = kwargs['useHttps']
-        if 'vaultId' in kwargs:
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
 
         if alert_setting is not None:
@@ -299,58 +301,6 @@ class HanaBackupClient(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.198.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            availability_zone=example_zones.zones[0].id,
-            security_groups=[example_security_group.id],
-            instance_name="terraform-example",
-            internet_charge_type="PayByBandwidth",
-            vswitch_id=example_switch.id)
-        example_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        example_vault = alicloud.hbr.Vault("exampleVault", vault_name="terraform-example")
-        example_hana_instance = alicloud.hbr.HanaInstance("exampleHanaInstance",
-            alert_setting="INHERITED",
-            hana_name="terraform-example",
-            host="1.1.1.1",
-            instance_number=1,
-            password="YouPassword123",
-            resource_group_id=example_resource_groups.groups[0].id,
-            sid="HXE",
-            use_ssl=False,
-            user_name="admin",
-            validate_certificate=False,
-            vault_id=example_vault.id)
-        default = alicloud.hbr.HanaBackupClient("default",
-            vault_id=example_vault.id,
-            client_info=pulumi.Output.all(example_instance.id, example_hana_instance.hana_instance_id).apply(lambda id, hana_instance_id: f"[ {{ \\"instanceId\\": \\"{id}\\", \\"clusterId\\": \\"{hana_instance_id}\\", \\"sourceTypes\\": [ \\"HANA\\" ]  }}]"),
-            alert_setting="INHERITED",
-            use_https=True)
-        ```
-
         ## Import
 
         Hybrid Backup Recovery (HBR) Hana Backup Client can be imported using the id, e.g.
@@ -378,58 +328,6 @@ class HanaBackupClient(pulumi.CustomResource):
         For information about Hybrid Backup Recovery (HBR) Hana Backup Client and how to use it, see [What is Hana Backup Client](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createclients).
 
         > **NOTE:** Available in v1.198.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            availability_zone=example_zones.zones[0].id,
-            security_groups=[example_security_group.id],
-            instance_name="terraform-example",
-            internet_charge_type="PayByBandwidth",
-            vswitch_id=example_switch.id)
-        example_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        example_vault = alicloud.hbr.Vault("exampleVault", vault_name="terraform-example")
-        example_hana_instance = alicloud.hbr.HanaInstance("exampleHanaInstance",
-            alert_setting="INHERITED",
-            hana_name="terraform-example",
-            host="1.1.1.1",
-            instance_number=1,
-            password="YouPassword123",
-            resource_group_id=example_resource_groups.groups[0].id,
-            sid="HXE",
-            use_ssl=False,
-            user_name="admin",
-            validate_certificate=False,
-            vault_id=example_vault.id)
-        default = alicloud.hbr.HanaBackupClient("default",
-            vault_id=example_vault.id,
-            client_info=pulumi.Output.all(example_instance.id, example_hana_instance.hana_instance_id).apply(lambda id, hana_instance_id: f"[ {{ \\"instanceId\\": \\"{id}\\", \\"clusterId\\": \\"{hana_instance_id}\\", \\"sourceTypes\\": [ \\"HANA\\" ]  }}]"),
-            alert_setting="INHERITED",
-            use_https=True)
-        ```
 
         ## Import
 

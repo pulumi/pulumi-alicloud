@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.179.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cms.getHybridMonitorFcTasks({
- *     ids: ["example_value"],
- * });
- * export const cmsHybridMonitorFcTaskId1 = ids.then(ids => ids.tasks?.[0]?.id);
- * ```
  */
 export function getHybridMonitorFcTasks(args?: GetHybridMonitorFcTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridMonitorFcTasksResult> {
     args = args || {};
@@ -77,20 +63,6 @@ export interface GetHybridMonitorFcTasksResult {
  * This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.179.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cms.getHybridMonitorFcTasks({
- *     ids: ["example_value"],
- * });
- * export const cmsHybridMonitorFcTaskId1 = ids.then(ids => ids.tasks?.[0]?.id);
- * ```
  */
 export function getHybridMonitorFcTasksOutput(args?: GetHybridMonitorFcTasksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridMonitorFcTasksResult> {
     return pulumi.output(args).apply((a: any) => getHybridMonitorFcTasks(a, opts))

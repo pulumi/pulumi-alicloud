@@ -44,22 +44,28 @@ class TopicArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
-             remark: pulumi.Input[str],
-             topic: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             remark: Optional[pulumi.Input[str]] = None,
+             topic: Optional[pulumi.Input[str]] = None,
              compact_topic: Optional[pulumi.Input[bool]] = None,
              local_topic: Optional[pulumi.Input[bool]] = None,
              partition_num: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'compactTopic' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if remark is None:
+            raise TypeError("Missing 'remark' argument")
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
+        if compact_topic is None and 'compactTopic' in kwargs:
             compact_topic = kwargs['compactTopic']
-        if 'localTopic' in kwargs:
+        if local_topic is None and 'localTopic' in kwargs:
             local_topic = kwargs['localTopic']
-        if 'partitionNum' in kwargs:
+        if partition_num is None and 'partitionNum' in kwargs:
             partition_num = kwargs['partitionNum']
 
         _setter("instance_id", instance_id)
@@ -199,15 +205,15 @@ class _TopicState:
              remark: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'compactTopic' in kwargs:
+        if compact_topic is None and 'compactTopic' in kwargs:
             compact_topic = kwargs['compactTopic']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'localTopic' in kwargs:
+        if local_topic is None and 'localTopic' in kwargs:
             local_topic = kwargs['localTopic']
-        if 'partitionNum' in kwargs:
+        if partition_num is None and 'partitionNum' in kwargs:
             partition_num = kwargs['partitionNum']
 
         if compact_topic is not None:
@@ -331,36 +337,6 @@ class Topic(pulumi.CustomResource):
         > **NOTE:**  Only the following regions support create alikafka topic.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        default_instance = alicloud.alikafka.Instance("defaultInstance",
-            partition_num=50,
-            disk_type=1,
-            disk_size=500,
-            deploy_type=5,
-            io_max=20,
-            vswitch_id=default_switch.id)
-        default_topic = alicloud.alikafka.Topic("defaultTopic",
-            instance_id=default_instance.id,
-            topic="example-topic",
-            local_topic=False,
-            compact_topic=False,
-            partition_num=12,
-            remark="dafault_kafka_topic_remark")
-        ```
-
         ## Import
 
         ALIKAFKA TOPIC can be imported using the id, e.g.
@@ -392,36 +368,6 @@ class Topic(pulumi.CustomResource):
 
         > **NOTE:**  Only the following regions support create alikafka topic.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        default_instance = alicloud.alikafka.Instance("defaultInstance",
-            partition_num=50,
-            disk_type=1,
-            disk_size=500,
-            deploy_type=5,
-            io_max=20,
-            vswitch_id=default_switch.id)
-        default_topic = alicloud.alikafka.Topic("defaultTopic",
-            instance_id=default_instance.id,
-            topic="example-topic",
-            local_topic=False,
-            compact_topic=False,
-            partition_num=12,
-            remark="dafault_kafka_topic_remark")
-        ```
 
         ## Import
 

@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.133.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.ehpc.JobTemplate("default", {
- *     jobTemplateName: "example_value",
- *     commandLine: "./LammpsTest/lammps.pbs",
- * });
- * const ids = alicloud.ehpc.getJobTemplatesOutput({
- *     ids: [_default.id],
- * });
- * export const ehpcJobTemplateId1 = ids.apply(ids => ids.id);
- * ```
  */
 export function getJobTemplates(args?: GetJobTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetJobTemplatesResult> {
     args = args || {};
@@ -69,24 +51,6 @@ export interface GetJobTemplatesResult {
  * This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.133.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.ehpc.JobTemplate("default", {
- *     jobTemplateName: "example_value",
- *     commandLine: "./LammpsTest/lammps.pbs",
- * });
- * const ids = alicloud.ehpc.getJobTemplatesOutput({
- *     ids: [_default.id],
- * });
- * export const ehpcJobTemplateId1 = ids.apply(ids => ids.id);
- * ```
  */
 export function getJobTemplatesOutput(args?: GetJobTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobTemplatesResult> {
     return pulumi.output(args).apply((a: any) => getJobTemplates(a, opts))

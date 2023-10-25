@@ -90,18 +90,6 @@ def get_regions(current: Optional[bool] = None,
 
     > **NOTE:** Available in v1.138.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default1 = alicloud.clickhouse.get_regions(current=True)
-    default2 = alicloud.clickhouse.get_regions(region_id="cn-hangzhou")
-    ```
-
 
     :param bool current: Set to true to match only the region configured in the provider. Default value: `true`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -131,18 +119,6 @@ def get_regions_output(current: Optional[pulumi.Input[Optional[bool]]] = None,
     This data source provides the Click House Accounts of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.138.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default1 = alicloud.clickhouse.get_regions(current=True)
-    default2 = alicloud.clickhouse.get_regions(region_id="cn-hangzhou")
-    ```
 
 
     :param bool current: Set to true to match only the region configured in the provider. Default value: `true`.

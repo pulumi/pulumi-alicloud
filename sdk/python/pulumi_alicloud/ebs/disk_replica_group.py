@@ -44,24 +44,32 @@ class DiskReplicaGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination_region_id: pulumi.Input[str],
-             destination_zone_id: pulumi.Input[str],
-             source_region_id: pulumi.Input[str],
-             source_zone_id: pulumi.Input[str],
+             destination_region_id: Optional[pulumi.Input[str]] = None,
+             destination_zone_id: Optional[pulumi.Input[str]] = None,
+             source_region_id: Optional[pulumi.Input[str]] = None,
+             source_zone_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              group_name: Optional[pulumi.Input[str]] = None,
              rpo: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationRegionId' in kwargs:
+        if destination_region_id is None and 'destinationRegionId' in kwargs:
             destination_region_id = kwargs['destinationRegionId']
-        if 'destinationZoneId' in kwargs:
+        if destination_region_id is None:
+            raise TypeError("Missing 'destination_region_id' argument")
+        if destination_zone_id is None and 'destinationZoneId' in kwargs:
             destination_zone_id = kwargs['destinationZoneId']
-        if 'sourceRegionId' in kwargs:
+        if destination_zone_id is None:
+            raise TypeError("Missing 'destination_zone_id' argument")
+        if source_region_id is None and 'sourceRegionId' in kwargs:
             source_region_id = kwargs['sourceRegionId']
-        if 'sourceZoneId' in kwargs:
+        if source_region_id is None:
+            raise TypeError("Missing 'source_region_id' argument")
+        if source_zone_id is None and 'sourceZoneId' in kwargs:
             source_zone_id = kwargs['sourceZoneId']
-        if 'groupName' in kwargs:
+        if source_zone_id is None:
+            raise TypeError("Missing 'source_zone_id' argument")
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
 
         _setter("destination_region_id", destination_region_id)
@@ -204,17 +212,17 @@ class _DiskReplicaGroupState:
              source_region_id: Optional[pulumi.Input[str]] = None,
              source_zone_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationRegionId' in kwargs:
+        if destination_region_id is None and 'destinationRegionId' in kwargs:
             destination_region_id = kwargs['destinationRegionId']
-        if 'destinationZoneId' in kwargs:
+        if destination_zone_id is None and 'destinationZoneId' in kwargs:
             destination_zone_id = kwargs['destinationZoneId']
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'sourceRegionId' in kwargs:
+        if source_region_id is None and 'sourceRegionId' in kwargs:
             source_region_id = kwargs['sourceRegionId']
-        if 'sourceZoneId' in kwargs:
+        if source_zone_id is None and 'sourceZoneId' in kwargs:
             source_zone_id = kwargs['sourceZoneId']
 
         if description is not None:

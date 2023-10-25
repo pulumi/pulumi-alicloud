@@ -17,32 +17,6 @@ import (
 // For information about NAS and how to use it, see [What is NAS](https://www.alibabacloud.com/help/product/27516.htm).
 //
 // > **NOTE:** Available in v1.97.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := nas.GetService(ctx, &nas.GetServiceArgs{
-//				Enable: pulumi.StringRef("On"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.InvokeOption) (*GetServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceResult

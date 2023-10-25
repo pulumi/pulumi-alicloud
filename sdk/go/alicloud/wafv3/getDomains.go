@@ -15,50 +15,6 @@ import (
 // This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available since v1.200.0.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/wafv3"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultInstances, err := wafv3.GetInstances(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ids, err := wafv3.GetDomains(ctx, &wafv3.GetDomainsArgs{
-//				InstanceId: defaultInstances.Ids[0],
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("wafv3DomainsId1", ids.Domains[0].Id)
-//			defaultDomains, err := wafv3.GetDomains(ctx, &wafv3.GetDomainsArgs{
-//				InstanceId: defaultInstances.Ids[0],
-//				Domain:     pulumi.StringRef("zctest12.wafqax.top"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("wafv3DomainsId2", defaultDomains.Domains[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainsResult

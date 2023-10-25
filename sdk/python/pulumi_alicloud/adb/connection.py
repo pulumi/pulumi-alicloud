@@ -29,13 +29,15 @@ class ConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_cluster_id: pulumi.Input[str],
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
              connection_prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbClusterId' in kwargs:
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'connectionPrefix' in kwargs:
+        if db_cluster_id is None:
+            raise TypeError("Missing 'db_cluster_id' argument")
+        if connection_prefix is None and 'connectionPrefix' in kwargs:
             connection_prefix = kwargs['connectionPrefix']
 
         _setter("db_cluster_id", db_cluster_id)
@@ -99,15 +101,15 @@ class _ConnectionState:
              db_cluster_id: Optional[pulumi.Input[str]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionPrefix' in kwargs:
+        if connection_prefix is None and 'connectionPrefix' in kwargs:
             connection_prefix = kwargs['connectionPrefix']
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'dbClusterId' in kwargs:
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'ipAddress' in kwargs:
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
 
         if connection_prefix is not None:
@@ -198,51 +200,6 @@ class Connection(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.81.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.adb.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="10.4.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_db_cluster = alicloud.adb.DBCluster("defaultDBCluster",
-            db_cluster_category="Cluster",
-            db_node_class="C8",
-            db_node_count=4,
-            db_node_storage=400,
-            mode="reserver",
-            db_cluster_version="3.0",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            description=name,
-            maintain_time="23:00Z-00:00Z",
-            resource_group_id=default_resource_groups.ids[0],
-            security_ips=[
-                "10.168.1.12",
-                "10.168.1.11",
-            ],
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_connection = alicloud.adb.Connection("defaultConnection",
-            db_cluster_id=default_db_cluster.id,
-            connection_prefix="example")
-        ```
-
         ## Import
 
         ADB connection can be imported using the id, e.g.
@@ -269,51 +226,6 @@ class Connection(pulumi.CustomResource):
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 
         > **NOTE:** Available since v1.81.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.adb.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="10.4.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_db_cluster = alicloud.adb.DBCluster("defaultDBCluster",
-            db_cluster_category="Cluster",
-            db_node_class="C8",
-            db_node_count=4,
-            db_node_storage=400,
-            mode="reserver",
-            db_cluster_version="3.0",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            description=name,
-            maintain_time="23:00Z-00:00Z",
-            resource_group_id=default_resource_groups.ids[0],
-            security_ips=[
-                "10.168.1.12",
-                "10.168.1.11",
-            ],
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_connection = alicloud.adb.Connection("defaultConnection",
-            db_cluster_id=default_db_cluster.id,
-            connection_prefix="example")
-        ```
 
         ## Import
 

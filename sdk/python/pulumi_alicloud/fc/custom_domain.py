@@ -37,17 +37,21 @@ class CustomDomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain_name: pulumi.Input[str],
-             protocol: pulumi.Input[str],
+             domain_name: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
              cert_config: Optional[pulumi.Input['CustomDomainCertConfigArgs']] = None,
              route_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'certConfig' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if cert_config is None and 'certConfig' in kwargs:
             cert_config = kwargs['certConfig']
-        if 'routeConfigs' in kwargs:
+        if route_configs is None and 'routeConfigs' in kwargs:
             route_configs = kwargs['routeConfigs']
 
         _setter("domain_name", domain_name)
@@ -150,21 +154,21 @@ class _CustomDomainState:
              last_modified_time: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              route_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'apiVersion' in kwargs:
+        if api_version is None and 'apiVersion' in kwargs:
             api_version = kwargs['apiVersion']
-        if 'certConfig' in kwargs:
+        if cert_config is None and 'certConfig' in kwargs:
             cert_config = kwargs['certConfig']
-        if 'createdTime' in kwargs:
+        if created_time is None and 'createdTime' in kwargs:
             created_time = kwargs['createdTime']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'lastModifiedTime' in kwargs:
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
             last_modified_time = kwargs['lastModifiedTime']
-        if 'routeConfigs' in kwargs:
+        if route_configs is None and 'routeConfigs' in kwargs:
             route_configs = kwargs['routeConfigs']
 
         if account_id is not None:
@@ -297,91 +301,6 @@ class CustomDomain(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.98.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_project = alicloud.log.Project("defaultProject")
-        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
-        default_role = alicloud.ram.Role("defaultRole",
-            document=\"\"\"  {
-              "Statement": [
-                {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "fc.aliyuncs.com"
-                    ]
-                  }
-                }
-              ],
-              "Version": "1"
-          }
-        \"\"\",
-            description="this is a example",
-            force=True)
-        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
-            role_name=default_role.name,
-            policy_name="AliyunLogFullAccess",
-            policy_type="System")
-        default_service = alicloud.fc.Service("defaultService",
-            description="example-value",
-            role=default_role.arn,
-            log_config=alicloud.fc.ServiceLogConfigArgs(
-                project=default_project.name,
-                logstore=default_store.name,
-                enable_instance_metrics=True,
-                enable_request_metrics=True,
-            ))
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
-        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
-            bucket=default_bucket.id,
-            key="index.py",
-            content=\"\"\"import logging 
-        def handler(event, context): 
-        logger = logging.getLogger() 
-        logger.info('hello world') 
-        return 'hello world'\"\"\")
-        default_function = alicloud.fc.Function("defaultFunction",
-            service=default_service.name,
-            description="example",
-            oss_bucket=default_bucket.id,
-            oss_key=default_bucket_object.key,
-            memory_size=512,
-            runtime="python2.7",
-            handler="hello.handler")
-        default_custom_domain = alicloud.fc.CustomDomain("defaultCustomDomain",
-            domain_name="terraform.functioncompute.com",
-            protocol="HTTP",
-            route_configs=[alicloud.fc.CustomDomainRouteConfigArgs(
-                path="/login/*",
-                service_name=default_service.name,
-                function_name=default_function.name,
-                qualifier="?query",
-                methods=[
-                    "GET",
-                    "POST",
-                ],
-            )],
-            cert_config=alicloud.fc.CustomDomainCertConfigArgs(
-                cert_name="example",
-                certificate=\"\"\"-----BEGIN CERTIFICATE-----
-        MIICWD****-----END CERTIFICATE-----\"\"\",
-                private_key=\"\"\"-----BEGIN RSA PRIVATE KEY-----
-        MIICX****n-----END RSA PRIVATE KEY-----\"\"\",
-            ))
-        ```
-
         ## Import
 
         Function Compute custom domain can be imported using the id or the domain name, e.g.
@@ -408,91 +327,6 @@ class CustomDomain(pulumi.CustomResource):
          For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createcustomdomain).
 
         > **NOTE:** Available since v1.98.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_project = alicloud.log.Project("defaultProject")
-        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
-        default_role = alicloud.ram.Role("defaultRole",
-            document=\"\"\"  {
-              "Statement": [
-                {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "fc.aliyuncs.com"
-                    ]
-                  }
-                }
-              ],
-              "Version": "1"
-          }
-        \"\"\",
-            description="this is a example",
-            force=True)
-        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
-            role_name=default_role.name,
-            policy_name="AliyunLogFullAccess",
-            policy_type="System")
-        default_service = alicloud.fc.Service("defaultService",
-            description="example-value",
-            role=default_role.arn,
-            log_config=alicloud.fc.ServiceLogConfigArgs(
-                project=default_project.name,
-                logstore=default_store.name,
-                enable_instance_metrics=True,
-                enable_request_metrics=True,
-            ))
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
-        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
-            bucket=default_bucket.id,
-            key="index.py",
-            content=\"\"\"import logging 
-        def handler(event, context): 
-        logger = logging.getLogger() 
-        logger.info('hello world') 
-        return 'hello world'\"\"\")
-        default_function = alicloud.fc.Function("defaultFunction",
-            service=default_service.name,
-            description="example",
-            oss_bucket=default_bucket.id,
-            oss_key=default_bucket_object.key,
-            memory_size=512,
-            runtime="python2.7",
-            handler="hello.handler")
-        default_custom_domain = alicloud.fc.CustomDomain("defaultCustomDomain",
-            domain_name="terraform.functioncompute.com",
-            protocol="HTTP",
-            route_configs=[alicloud.fc.CustomDomainRouteConfigArgs(
-                path="/login/*",
-                service_name=default_service.name,
-                function_name=default_function.name,
-                qualifier="?query",
-                methods=[
-                    "GET",
-                    "POST",
-                ],
-            )],
-            cert_config=alicloud.fc.CustomDomainCertConfigArgs(
-                cert_name="example",
-                certificate=\"\"\"-----BEGIN CERTIFICATE-----
-        MIICWD****-----END CERTIFICATE-----\"\"\",
-                private_key=\"\"\"-----BEGIN RSA PRIVATE KEY-----
-        MIICX****n-----END RSA PRIVATE KEY-----\"\"\",
-            ))
-        ```
 
         ## Import
 
@@ -534,11 +368,7 @@ class CustomDomain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CustomDomainArgs.__new__(CustomDomainArgs)
 
-            if cert_config is not None and not isinstance(cert_config, CustomDomainCertConfigArgs):
-                cert_config = cert_config or {}
-                def _setter(key, value):
-                    cert_config[key] = value
-                CustomDomainCertConfigArgs._configure(_setter, **cert_config)
+            cert_config = _utilities.configure(cert_config, CustomDomainCertConfigArgs, True)
             __props__.__dict__["cert_config"] = cert_config
             if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")

@@ -16,31 +16,6 @@ import (
 //
 // This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			eipsDs, err := ecs.GetEips(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstEipId", eipsDs.Eips[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // Deprecated: This function has been deprecated in favour of the getEipAddresses function
 func GetEips(ctx *pulumi.Context, args *GetEipsArgs, opts ...pulumi.InvokeOption) (*GetEipsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

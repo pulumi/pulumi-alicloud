@@ -88,22 +88,28 @@ class DispatchRuleGroupRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_interval: int,
-             group_wait_time: int,
-             grouping_fields: Sequence[str],
+             group_interval: Optional[int] = None,
+             group_wait_time: Optional[int] = None,
+             grouping_fields: Optional[Sequence[str]] = None,
              group_id: Optional[int] = None,
              repeat_interval: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupInterval' in kwargs:
+        if group_interval is None and 'groupInterval' in kwargs:
             group_interval = kwargs['groupInterval']
-        if 'groupWaitTime' in kwargs:
+        if group_interval is None:
+            raise TypeError("Missing 'group_interval' argument")
+        if group_wait_time is None and 'groupWaitTime' in kwargs:
             group_wait_time = kwargs['groupWaitTime']
-        if 'groupingFields' in kwargs:
+        if group_wait_time is None:
+            raise TypeError("Missing 'group_wait_time' argument")
+        if grouping_fields is None and 'groupingFields' in kwargs:
             grouping_fields = kwargs['groupingFields']
-        if 'groupId' in kwargs:
+        if grouping_fields is None:
+            raise TypeError("Missing 'grouping_fields' argument")
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'repeatInterval' in kwargs:
+        if repeat_interval is None and 'repeatInterval' in kwargs:
             repeat_interval = kwargs['repeatInterval']
 
         _setter("group_interval", group_interval)
@@ -186,11 +192,13 @@ class DispatchRuleLabelMatchExpressionGrid(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             label_match_expression_groups: Sequence['outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             label_match_expression_groups: Optional[Sequence['outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'labelMatchExpressionGroups' in kwargs:
+        if label_match_expression_groups is None and 'labelMatchExpressionGroups' in kwargs:
             label_match_expression_groups = kwargs['labelMatchExpressionGroups']
+        if label_match_expression_groups is None:
+            raise TypeError("Missing 'label_match_expression_groups' argument")
 
         _setter("label_match_expression_groups", label_match_expression_groups)
 
@@ -234,11 +242,13 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             label_match_expressions: Sequence['outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             label_match_expressions: Optional[Sequence['outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'labelMatchExpressions' in kwargs:
+        if label_match_expressions is None and 'labelMatchExpressions' in kwargs:
             label_match_expressions = kwargs['labelMatchExpressions']
+        if label_match_expressions is None:
+            raise TypeError("Missing 'label_match_expressions' argument")
 
         _setter("label_match_expressions", label_match_expressions)
 
@@ -281,11 +291,17 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             operator: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[str] = None,
+             operator: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("operator", operator)
@@ -362,14 +378,18 @@ class DispatchRuleNotifyRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             notify_channels: Sequence[str],
-             notify_objects: Sequence['outputs.DispatchRuleNotifyRuleNotifyObject'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             notify_channels: Optional[Sequence[str]] = None,
+             notify_objects: Optional[Sequence['outputs.DispatchRuleNotifyRuleNotifyObject']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'notifyChannels' in kwargs:
+        if notify_channels is None and 'notifyChannels' in kwargs:
             notify_channels = kwargs['notifyChannels']
-        if 'notifyObjects' in kwargs:
+        if notify_channels is None:
+            raise TypeError("Missing 'notify_channels' argument")
+        if notify_objects is None and 'notifyObjects' in kwargs:
             notify_objects = kwargs['notifyObjects']
+        if notify_objects is None:
+            raise TypeError("Missing 'notify_objects' argument")
 
         _setter("notify_channels", notify_channels)
         _setter("notify_objects", notify_objects)
@@ -430,15 +450,21 @@ class DispatchRuleNotifyRuleNotifyObject(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             notify_object_id: str,
-             notify_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[str] = None,
+             notify_object_id: Optional[str] = None,
+             notify_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'notifyObjectId' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if notify_object_id is None and 'notifyObjectId' in kwargs:
             notify_object_id = kwargs['notifyObjectId']
-        if 'notifyType' in kwargs:
+        if notify_object_id is None:
+            raise TypeError("Missing 'notify_object_id' argument")
+        if notify_type is None and 'notifyType' in kwargs:
             notify_type = kwargs['notifyType']
+        if notify_type is None:
+            raise TypeError("Missing 'notify_type' argument")
 
         _setter("name", name)
         _setter("notify_object_id", notify_object_id)
@@ -488,7 +514,7 @@ class PrometheusAlertRuleAnnotation(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -532,7 +558,7 @@ class PrometheusAlertRuleLabel(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -583,21 +609,31 @@ class GetAlertContactGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alert_contact_group_id: str,
-             alert_contact_group_name: str,
-             contact_ids: Sequence[str],
-             create_time: str,
-             id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             alert_contact_group_id: Optional[str] = None,
+             alert_contact_group_name: Optional[str] = None,
+             contact_ids: Optional[Sequence[str]] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alertContactGroupId' in kwargs:
+        if alert_contact_group_id is None and 'alertContactGroupId' in kwargs:
             alert_contact_group_id = kwargs['alertContactGroupId']
-        if 'alertContactGroupName' in kwargs:
+        if alert_contact_group_id is None:
+            raise TypeError("Missing 'alert_contact_group_id' argument")
+        if alert_contact_group_name is None and 'alertContactGroupName' in kwargs:
             alert_contact_group_name = kwargs['alertContactGroupName']
-        if 'contactIds' in kwargs:
+        if alert_contact_group_name is None:
+            raise TypeError("Missing 'alert_contact_group_name' argument")
+        if contact_ids is None and 'contactIds' in kwargs:
             contact_ids = kwargs['contactIds']
-        if 'createTime' in kwargs:
+        if contact_ids is None:
+            raise TypeError("Missing 'contact_ids' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
 
         _setter("alert_contact_group_id", alert_contact_group_id)
         _setter("alert_contact_group_name", alert_contact_group_name)
@@ -684,29 +720,47 @@ class GetAlertContactsContactResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alert_contact_id: str,
-             alert_contact_name: str,
-             create_time: str,
-             ding_robot_webhook_url: str,
-             email: str,
-             id: str,
-             phone_num: str,
-             system_noc: bool,
-             webhook: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             alert_contact_id: Optional[str] = None,
+             alert_contact_name: Optional[str] = None,
+             create_time: Optional[str] = None,
+             ding_robot_webhook_url: Optional[str] = None,
+             email: Optional[str] = None,
+             id: Optional[str] = None,
+             phone_num: Optional[str] = None,
+             system_noc: Optional[bool] = None,
+             webhook: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alertContactId' in kwargs:
+        if alert_contact_id is None and 'alertContactId' in kwargs:
             alert_contact_id = kwargs['alertContactId']
-        if 'alertContactName' in kwargs:
+        if alert_contact_id is None:
+            raise TypeError("Missing 'alert_contact_id' argument")
+        if alert_contact_name is None and 'alertContactName' in kwargs:
             alert_contact_name = kwargs['alertContactName']
-        if 'createTime' in kwargs:
+        if alert_contact_name is None:
+            raise TypeError("Missing 'alert_contact_name' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dingRobotWebhookUrl' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if ding_robot_webhook_url is None and 'dingRobotWebhookUrl' in kwargs:
             ding_robot_webhook_url = kwargs['dingRobotWebhookUrl']
-        if 'phoneNum' in kwargs:
+        if ding_robot_webhook_url is None:
+            raise TypeError("Missing 'ding_robot_webhook_url' argument")
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if phone_num is None and 'phoneNum' in kwargs:
             phone_num = kwargs['phoneNum']
-        if 'systemNoc' in kwargs:
+        if phone_num is None:
+            raise TypeError("Missing 'phone_num' argument")
+        if system_noc is None and 'systemNoc' in kwargs:
             system_noc = kwargs['systemNoc']
+        if system_noc is None:
+            raise TypeError("Missing 'system_noc' argument")
+        if webhook is None:
+            raise TypeError("Missing 'webhook' argument")
 
         _setter("alert_contact_id", alert_contact_id)
         _setter("alert_contact_name", alert_contact_name)
@@ -825,28 +879,44 @@ class GetDispatchRulesRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dispatch_rule_id: str,
-             dispatch_rule_name: str,
-             dispatch_type: str,
-             group_rules: Sequence['outputs.GetDispatchRulesRuleGroupRuleResult'],
-             id: str,
-             label_match_expression_grids: Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridResult'],
-             notify_rules: Sequence['outputs.GetDispatchRulesRuleNotifyRuleResult'],
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             dispatch_rule_id: Optional[str] = None,
+             dispatch_rule_name: Optional[str] = None,
+             dispatch_type: Optional[str] = None,
+             group_rules: Optional[Sequence['outputs.GetDispatchRulesRuleGroupRuleResult']] = None,
+             id: Optional[str] = None,
+             label_match_expression_grids: Optional[Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridResult']] = None,
+             notify_rules: Optional[Sequence['outputs.GetDispatchRulesRuleNotifyRuleResult']] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dispatchRuleId' in kwargs:
+        if dispatch_rule_id is None and 'dispatchRuleId' in kwargs:
             dispatch_rule_id = kwargs['dispatchRuleId']
-        if 'dispatchRuleName' in kwargs:
+        if dispatch_rule_id is None:
+            raise TypeError("Missing 'dispatch_rule_id' argument")
+        if dispatch_rule_name is None and 'dispatchRuleName' in kwargs:
             dispatch_rule_name = kwargs['dispatchRuleName']
-        if 'dispatchType' in kwargs:
+        if dispatch_rule_name is None:
+            raise TypeError("Missing 'dispatch_rule_name' argument")
+        if dispatch_type is None and 'dispatchType' in kwargs:
             dispatch_type = kwargs['dispatchType']
-        if 'groupRules' in kwargs:
+        if dispatch_type is None:
+            raise TypeError("Missing 'dispatch_type' argument")
+        if group_rules is None and 'groupRules' in kwargs:
             group_rules = kwargs['groupRules']
-        if 'labelMatchExpressionGrids' in kwargs:
+        if group_rules is None:
+            raise TypeError("Missing 'group_rules' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if label_match_expression_grids is None and 'labelMatchExpressionGrids' in kwargs:
             label_match_expression_grids = kwargs['labelMatchExpressionGrids']
-        if 'notifyRules' in kwargs:
+        if label_match_expression_grids is None:
+            raise TypeError("Missing 'label_match_expression_grids' argument")
+        if notify_rules is None and 'notifyRules' in kwargs:
             notify_rules = kwargs['notifyRules']
+        if notify_rules is None:
+            raise TypeError("Missing 'notify_rules' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("dispatch_rule_id", dispatch_rule_id)
         _setter("dispatch_rule_name", dispatch_rule_name)
@@ -944,23 +1014,33 @@ class GetDispatchRulesRuleGroupRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_id: int,
-             group_interval: int,
-             group_wait_time: int,
-             grouping_fields: Sequence[str],
-             repeat_interval: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             group_id: Optional[int] = None,
+             group_interval: Optional[int] = None,
+             group_wait_time: Optional[int] = None,
+             grouping_fields: Optional[Sequence[str]] = None,
+             repeat_interval: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'groupInterval' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if group_interval is None and 'groupInterval' in kwargs:
             group_interval = kwargs['groupInterval']
-        if 'groupWaitTime' in kwargs:
+        if group_interval is None:
+            raise TypeError("Missing 'group_interval' argument")
+        if group_wait_time is None and 'groupWaitTime' in kwargs:
             group_wait_time = kwargs['groupWaitTime']
-        if 'groupingFields' in kwargs:
+        if group_wait_time is None:
+            raise TypeError("Missing 'group_wait_time' argument")
+        if grouping_fields is None and 'groupingFields' in kwargs:
             grouping_fields = kwargs['groupingFields']
-        if 'repeatInterval' in kwargs:
+        if grouping_fields is None:
+            raise TypeError("Missing 'grouping_fields' argument")
+        if repeat_interval is None and 'repeatInterval' in kwargs:
             repeat_interval = kwargs['repeatInterval']
+        if repeat_interval is None:
+            raise TypeError("Missing 'repeat_interval' argument")
 
         _setter("group_id", group_id)
         _setter("group_interval", group_interval)
@@ -1020,11 +1100,13 @@ class GetDispatchRulesRuleLabelMatchExpressionGridResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             label_match_expression_groups: Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             label_match_expression_groups: Optional[Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'labelMatchExpressionGroups' in kwargs:
+        if label_match_expression_groups is None and 'labelMatchExpressionGroups' in kwargs:
             label_match_expression_groups = kwargs['labelMatchExpressionGroups']
+        if label_match_expression_groups is None:
+            raise TypeError("Missing 'label_match_expression_groups' argument")
 
         _setter("label_match_expression_groups", label_match_expression_groups)
 
@@ -1051,11 +1133,13 @@ class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupResul
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             label_match_expressions: Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             label_match_expressions: Optional[Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'labelMatchExpressions' in kwargs:
+        if label_match_expressions is None and 'labelMatchExpressions' in kwargs:
             label_match_expressions = kwargs['labelMatchExpressions']
+        if label_match_expressions is None:
+            raise TypeError("Missing 'label_match_expressions' argument")
 
         _setter("label_match_expressions", label_match_expressions)
 
@@ -1088,11 +1172,17 @@ class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabel
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             operator: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[str] = None,
+             operator: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("operator", operator)
@@ -1140,14 +1230,18 @@ class GetDispatchRulesRuleNotifyRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             notify_channels: Sequence[str],
-             notify_objects: Sequence['outputs.GetDispatchRulesRuleNotifyRuleNotifyObjectResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             notify_channels: Optional[Sequence[str]] = None,
+             notify_objects: Optional[Sequence['outputs.GetDispatchRulesRuleNotifyRuleNotifyObjectResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'notifyChannels' in kwargs:
+        if notify_channels is None and 'notifyChannels' in kwargs:
             notify_channels = kwargs['notifyChannels']
-        if 'notifyObjects' in kwargs:
+        if notify_channels is None:
+            raise TypeError("Missing 'notify_channels' argument")
+        if notify_objects is None and 'notifyObjects' in kwargs:
             notify_objects = kwargs['notifyObjects']
+        if notify_objects is None:
+            raise TypeError("Missing 'notify_objects' argument")
 
         _setter("notify_channels", notify_channels)
         _setter("notify_objects", notify_objects)
@@ -1189,15 +1283,21 @@ class GetDispatchRulesRuleNotifyRuleNotifyObjectResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             notify_object_id: str,
-             notify_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[str] = None,
+             notify_object_id: Optional[str] = None,
+             notify_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'notifyObjectId' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if notify_object_id is None and 'notifyObjectId' in kwargs:
             notify_object_id = kwargs['notifyObjectId']
-        if 'notifyType' in kwargs:
+        if notify_object_id is None:
+            raise TypeError("Missing 'notify_object_id' argument")
+        if notify_type is None and 'notifyType' in kwargs:
             notify_type = kwargs['notifyType']
+        if notify_type is None:
+            raise TypeError("Missing 'notify_type' argument")
 
         _setter("name", name)
         _setter("notify_object_id", notify_object_id)
@@ -1266,27 +1366,45 @@ class GetIntegrationExportersIntegrationExporterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: str,
-             exporter_type: str,
-             id: str,
-             instance_id: int,
-             instance_name: str,
-             integration_type: str,
-             param: str,
-             target: str,
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cluster_id: Optional[str] = None,
+             exporter_type: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[int] = None,
+             instance_name: Optional[str] = None,
+             integration_type: Optional[str] = None,
+             param: Optional[str] = None,
+             target: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'exporterType' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if exporter_type is None and 'exporterType' in kwargs:
             exporter_type = kwargs['exporterType']
-        if 'instanceId' in kwargs:
+        if exporter_type is None:
+            raise TypeError("Missing 'exporter_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'integrationType' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if integration_type is None and 'integrationType' in kwargs:
             integration_type = kwargs['integrationType']
+        if integration_type is None:
+            raise TypeError("Missing 'integration_type' argument")
+        if param is None:
+            raise TypeError("Missing 'param' argument")
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
 
         _setter("cluster_id", cluster_id)
         _setter("exporter_type", exporter_type)
@@ -1415,37 +1533,59 @@ class GetPrometheisPrometheiResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: str,
-             cluster_name: str,
-             cluster_type: str,
-             grafana_instance_id: str,
-             id: str,
-             resource_group_id: str,
-             security_group_id: str,
-             sub_clusters_json: str,
-             tags: Mapping[str, Any],
-             vpc_id: str,
-             vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cluster_id: Optional[str] = None,
+             cluster_name: Optional[str] = None,
+             cluster_type: Optional[str] = None,
+             grafana_instance_id: Optional[str] = None,
+             id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             security_group_id: Optional[str] = None,
+             sub_clusters_json: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'clusterName' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'clusterType' in kwargs:
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'grafanaInstanceId' in kwargs:
+        if cluster_type is None:
+            raise TypeError("Missing 'cluster_type' argument")
+        if grafana_instance_id is None and 'grafanaInstanceId' in kwargs:
             grafana_instance_id = kwargs['grafanaInstanceId']
-        if 'resourceGroupId' in kwargs:
+        if grafana_instance_id is None:
+            raise TypeError("Missing 'grafana_instance_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityGroupId' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'subClustersJson' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if sub_clusters_json is None and 'subClustersJson' in kwargs:
             sub_clusters_json = kwargs['subClustersJson']
-        if 'vpcId' in kwargs:
+        if sub_clusters_json is None:
+            raise TypeError("Missing 'sub_clusters_json' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("cluster_id", cluster_id)
         _setter("cluster_name", cluster_name)
@@ -1598,31 +1738,57 @@ class GetPrometheusAlertRulesRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             annotations: Sequence['outputs.GetPrometheusAlertRulesRuleAnnotationResult'],
-             cluster_id: str,
-             dispatch_rule_id: str,
-             duration: str,
-             expression: str,
-             id: str,
-             labels: Sequence['outputs.GetPrometheusAlertRulesRuleLabelResult'],
-             message: str,
-             notify_type: str,
-             prometheus_alert_rule_id: str,
-             prometheus_alert_rule_name: str,
-             status: int,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             annotations: Optional[Sequence['outputs.GetPrometheusAlertRulesRuleAnnotationResult']] = None,
+             cluster_id: Optional[str] = None,
+             dispatch_rule_id: Optional[str] = None,
+             duration: Optional[str] = None,
+             expression: Optional[str] = None,
+             id: Optional[str] = None,
+             labels: Optional[Sequence['outputs.GetPrometheusAlertRulesRuleLabelResult']] = None,
+             message: Optional[str] = None,
+             notify_type: Optional[str] = None,
+             prometheus_alert_rule_id: Optional[str] = None,
+             prometheus_alert_rule_name: Optional[str] = None,
+             status: Optional[int] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if annotations is None:
+            raise TypeError("Missing 'annotations' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'dispatchRuleId' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if dispatch_rule_id is None and 'dispatchRuleId' in kwargs:
             dispatch_rule_id = kwargs['dispatchRuleId']
-        if 'notifyType' in kwargs:
+        if dispatch_rule_id is None:
+            raise TypeError("Missing 'dispatch_rule_id' argument")
+        if duration is None:
+            raise TypeError("Missing 'duration' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if labels is None:
+            raise TypeError("Missing 'labels' argument")
+        if message is None:
+            raise TypeError("Missing 'message' argument")
+        if notify_type is None and 'notifyType' in kwargs:
             notify_type = kwargs['notifyType']
-        if 'prometheusAlertRuleId' in kwargs:
+        if notify_type is None:
+            raise TypeError("Missing 'notify_type' argument")
+        if prometheus_alert_rule_id is None and 'prometheusAlertRuleId' in kwargs:
             prometheus_alert_rule_id = kwargs['prometheusAlertRuleId']
-        if 'prometheusAlertRuleName' in kwargs:
+        if prometheus_alert_rule_id is None:
+            raise TypeError("Missing 'prometheus_alert_rule_id' argument")
+        if prometheus_alert_rule_name is None and 'prometheusAlertRuleName' in kwargs:
             prometheus_alert_rule_name = kwargs['prometheusAlertRuleName']
+        if prometheus_alert_rule_name is None:
+            raise TypeError("Missing 'prometheus_alert_rule_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("annotations", annotations)
         _setter("cluster_id", cluster_id)
@@ -1760,10 +1926,14 @@ class GetPrometheusAlertRulesRuleAnnotationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("name", name)
         _setter("value", value)
@@ -1802,10 +1972,14 @@ class GetPrometheusAlertRulesRuleLabelResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("name", name)
         _setter("value", value)
@@ -1856,20 +2030,32 @@ class GetPrometheusMonitoringsPrometheusMonitoringResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: str,
-             config_yaml: str,
-             id: str,
-             monitoring_name: str,
-             status: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cluster_id: Optional[str] = None,
+             config_yaml: Optional[str] = None,
+             id: Optional[str] = None,
+             monitoring_name: Optional[str] = None,
+             status: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'configYaml' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if config_yaml is None and 'configYaml' in kwargs:
             config_yaml = kwargs['configYaml']
-        if 'monitoringName' in kwargs:
+        if config_yaml is None:
+            raise TypeError("Missing 'config_yaml' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if monitoring_name is None and 'monitoringName' in kwargs:
             monitoring_name = kwargs['monitoringName']
+        if monitoring_name is None:
+            raise TypeError("Missing 'monitoring_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("cluster_id", cluster_id)
         _setter("config_yaml", config_yaml)
@@ -1950,18 +2136,26 @@ class GetRemoteWritesRemoteWriteResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: str,
-             id: str,
-             remote_write_name: str,
-             remote_write_yaml: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cluster_id: Optional[str] = None,
+             id: Optional[str] = None,
+             remote_write_name: Optional[str] = None,
+             remote_write_yaml: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'remoteWriteName' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if remote_write_name is None and 'remoteWriteName' in kwargs:
             remote_write_name = kwargs['remoteWriteName']
-        if 'remoteWriteYaml' in kwargs:
+        if remote_write_name is None:
+            raise TypeError("Missing 'remote_write_name' argument")
+        if remote_write_yaml is None and 'remoteWriteYaml' in kwargs:
             remote_write_yaml = kwargs['remoteWriteYaml']
+        if remote_write_yaml is None:
+            raise TypeError("Missing 'remote_write_yaml' argument")
 
         _setter("cluster_id", cluster_id)
         _setter("id", id)

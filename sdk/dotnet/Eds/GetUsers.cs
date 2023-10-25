@@ -15,39 +15,6 @@ namespace Pulumi.AliCloud.Eds
         /// This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.142.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = new AliCloud.Eds.User("default", new()
-        ///     {
-        ///         EndUserId = "example_value",
-        ///         Email = "your_email",
-        ///         Phone = "your_phone",
-        ///         Password = "your_password",
-        ///     });
-        /// 
-        ///     var ids = AliCloud.Eds.GetUsers.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["ecdUserId1"] = ids.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("alicloud:eds/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithDefaults());
@@ -56,39 +23,6 @@ namespace Pulumi.AliCloud.Eds
         /// This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.142.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = new AliCloud.Eds.User("default", new()
-        ///     {
-        ///         EndUserId = "example_value",
-        ///         Email = "your_email",
-        ///         Phone = "your_phone",
-        ///         Password = "your_password",
-        ///     });
-        /// 
-        ///     var ids = AliCloud.Eds.GetUsers.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["ecdUserId1"] = ids.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("alicloud:eds/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());

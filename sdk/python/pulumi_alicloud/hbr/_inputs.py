@@ -33,9 +33,9 @@ class OtsBackupPlanOtsDetailArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              table_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'tableNames' in kwargs:
+        if table_names is None and 'tableNames' in kwargs:
             table_names = kwargs['tableNames']
 
         if table_names is not None:
@@ -85,11 +85,11 @@ class OtsBackupPlanRuleArgs:
              retention: Optional[pulumi.Input[str]] = None,
              rule_name: Optional[pulumi.Input[str]] = None,
              schedule: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'ruleName' in kwargs:
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
 
         if backup_type is not None:
@@ -179,9 +179,9 @@ class RestoreJobOtsDetailArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              overwrite_existing: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'overwriteExisting' in kwargs:
+        if overwrite_existing is None and 'overwriteExisting' in kwargs:
             overwrite_existing = kwargs['overwriteExisting']
 
         if overwrite_existing is not None:
@@ -241,8 +241,8 @@ class ServerBackupPlanDetailArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_consistent: pulumi.Input[bool],
-             snapshot_group: pulumi.Input[bool],
+             app_consistent: Optional[pulumi.Input[bool]] = None,
+             snapshot_group: Optional[pulumi.Input[bool]] = None,
              destination_region_id: Optional[pulumi.Input[str]] = None,
              destination_retention: Optional[pulumi.Input[int]] = None,
              disk_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -251,27 +251,31 @@ class ServerBackupPlanDetailArgs:
              post_script_path: Optional[pulumi.Input[str]] = None,
              pre_script_path: Optional[pulumi.Input[str]] = None,
              timeout_in_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appConsistent' in kwargs:
+        if app_consistent is None and 'appConsistent' in kwargs:
             app_consistent = kwargs['appConsistent']
-        if 'snapshotGroup' in kwargs:
+        if app_consistent is None:
+            raise TypeError("Missing 'app_consistent' argument")
+        if snapshot_group is None and 'snapshotGroup' in kwargs:
             snapshot_group = kwargs['snapshotGroup']
-        if 'destinationRegionId' in kwargs:
+        if snapshot_group is None:
+            raise TypeError("Missing 'snapshot_group' argument")
+        if destination_region_id is None and 'destinationRegionId' in kwargs:
             destination_region_id = kwargs['destinationRegionId']
-        if 'destinationRetention' in kwargs:
+        if destination_retention is None and 'destinationRetention' in kwargs:
             destination_retention = kwargs['destinationRetention']
-        if 'diskIdLists' in kwargs:
+        if disk_id_lists is None and 'diskIdLists' in kwargs:
             disk_id_lists = kwargs['diskIdLists']
-        if 'doCopy' in kwargs:
+        if do_copy is None and 'doCopy' in kwargs:
             do_copy = kwargs['doCopy']
-        if 'enableFsFreeze' in kwargs:
+        if enable_fs_freeze is None and 'enableFsFreeze' in kwargs:
             enable_fs_freeze = kwargs['enableFsFreeze']
-        if 'postScriptPath' in kwargs:
+        if post_script_path is None and 'postScriptPath' in kwargs:
             post_script_path = kwargs['postScriptPath']
-        if 'preScriptPath' in kwargs:
+        if pre_script_path is None and 'preScriptPath' in kwargs:
             pre_script_path = kwargs['preScriptPath']
-        if 'timeoutInSeconds' in kwargs:
+        if timeout_in_seconds is None and 'timeoutInSeconds' in kwargs:
             timeout_in_seconds = kwargs['timeoutInSeconds']
 
         _setter("app_consistent", app_consistent)
@@ -439,7 +443,7 @@ class GetBackupJobsFilterArgs:
              key: Optional[str] = None,
              operator: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -507,7 +511,7 @@ class GetServerBackupPlansFilterArgs:
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:

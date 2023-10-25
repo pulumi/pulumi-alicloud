@@ -18,31 +18,6 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// &gt; **NOTE:** Available since v1.112.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Ga.BandwidthPackage("example", new()
-    ///     {
-    ///         AutoPay = true,
-    ///         Bandwidth = 20,
-    ///         BandwidthType = "Basic",
-    ///         Duration = "1",
-    ///         Ratio = 30,
-    ///         Type = "Basic",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Ga Bandwidth Package can be imported using the id, e.g.

@@ -18,33 +18,6 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// &gt; **NOTE:** Up to 10 different attributes can be created under an alibaba cloud account. Up to 50 different attribute values can be added under an attribute.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Eds.CustomProperty("example", new()
-    ///     {
-    ///         PropertyKey = "example_key",
-    ///         PropertyValues = new[]
-    ///         {
-    ///             new AliCloud.Eds.Inputs.CustomPropertyPropertyValueArgs
-    ///             {
-    ///                 PropertyValue = "example_value",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ECD Custom Property can be imported using the id, e.g.

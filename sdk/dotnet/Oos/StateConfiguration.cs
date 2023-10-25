@@ -16,40 +16,6 @@ namespace Pulumi.AliCloud.Oos
     /// 
     /// &gt; **NOTE:** Available in v1.147.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
-    /// 
-    ///     var defaultStateConfiguration = new AliCloud.Oos.StateConfiguration("defaultStateConfiguration", new()
-    ///     {
-    ///         TemplateName = "ACS-ECS-InventoryDataCollection",
-    ///         ConfigureMode = "ApplyOnly",
-    ///         Description = "terraform-example",
-    ///         ScheduleType = "rate",
-    ///         ScheduleExpression = "1 hour",
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
-    ///         Targets = "{\"Filters\": [{\"Type\": \"All\", \"Parameters\": {\"InstanceChargeType\": \"PrePaid\"}}], \"ResourceType\": \"ALIYUN::ECS::Instance\"}",
-    ///         Parameters = "{\"policy\": {\"ACS:Application\": {\"Collection\": \"Enabled\"}}}",
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "TF" },
-    ///             { "For", "example" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// OOS State Configuration can be imported using the id, e.g.

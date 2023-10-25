@@ -15,55 +15,6 @@ import (
 // This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available since v1.178.0.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := cloudfirewall.NewAddressBook(ctx, "default", &cloudfirewall.AddressBookArgs{
-//				GroupName:     pulumi.String(name),
-//				GroupType:     pulumi.String("ip"),
-//				Description:   pulumi.String("tf-description"),
-//				AutoAddTagEcs: pulumi.Int(0),
-//				AddressLists: pulumi.StringArray{
-//					pulumi.String("10.21.0.0/16"),
-//					pulumi.String("10.168.0.0/16"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ids := cloudfirewall.GetAddressBooksOutput(ctx, cloudfirewall.GetAddressBooksOutputArgs{
-//				Ids: pulumi.StringArray{
-//					_default.ID(),
-//				},
-//			}, nil)
-//			ctx.Export("cloudFirewallAddressBookId1", ids.ApplyT(func(ids cloudfirewall.GetAddressBooksResult) (*string, error) {
-//				return &ids.Books[0].Id, nil
-//			}).(pulumi.StringPtrOutput))
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAddressBooks(ctx *pulumi.Context, args *GetAddressBooksArgs, opts ...pulumi.InvokeOption) (*GetAddressBooksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAddressBooksResult

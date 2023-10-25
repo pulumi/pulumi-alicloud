@@ -13,41 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.151.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const domainName = config.get("domainName") || "alicloud-provider.com";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {alarmContactGroupName: "tf_example"});
- * const defaultGtmInstance = new alicloud.dns.GtmInstance("defaultGtmInstance", {
- *     instanceName: "tf_example",
- *     paymentType: "Subscription",
- *     period: 1,
- *     renewalStatus: "ManualRenewal",
- *     packageEdition: "standard",
- *     healthCheckTaskCount: 100,
- *     smsNotificationCount: 1000,
- *     publicCnameMode: "SYSTEM_ASSIGN",
- *     ttl: 60,
- *     cnameType: "PUBLIC",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
- *     alertGroups: [defaultAlarmContactGroup.alarmContactGroupName],
- *     publicUserDomainName: domainName,
- *     alertConfigs: [{
- *         smsNotice: true,
- *         noticeType: "ADDR_ALERT",
- *         emailNotice: true,
- *         dingtalkNotice: true,
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * Alidns Gtm Instance can be imported using the id, e.g.

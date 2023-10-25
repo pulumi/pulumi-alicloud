@@ -61,10 +61,10 @@ class ConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             customer_gateway_id: pulumi.Input[str],
-             local_subnets: pulumi.Input[Sequence[pulumi.Input[str]]],
-             remote_subnets: pulumi.Input[Sequence[pulumi.Input[str]]],
-             vpn_gateway_id: pulumi.Input[str],
+             customer_gateway_id: Optional[pulumi.Input[str]] = None,
+             local_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vpn_gateway_id: Optional[pulumi.Input[str]] = None,
              bgp_config: Optional[pulumi.Input['ConnectionBgpConfigArgs']] = None,
              effect_immediately: Optional[pulumi.Input[bool]] = None,
              enable_dpd: Optional[pulumi.Input[bool]] = None,
@@ -73,29 +73,37 @@ class ConnectionArgs:
              ike_config: Optional[pulumi.Input['ConnectionIkeConfigArgs']] = None,
              ipsec_config: Optional[pulumi.Input['ConnectionIpsecConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'customerGatewayId' in kwargs:
+        if customer_gateway_id is None and 'customerGatewayId' in kwargs:
             customer_gateway_id = kwargs['customerGatewayId']
-        if 'localSubnets' in kwargs:
+        if customer_gateway_id is None:
+            raise TypeError("Missing 'customer_gateway_id' argument")
+        if local_subnets is None and 'localSubnets' in kwargs:
             local_subnets = kwargs['localSubnets']
-        if 'remoteSubnets' in kwargs:
+        if local_subnets is None:
+            raise TypeError("Missing 'local_subnets' argument")
+        if remote_subnets is None and 'remoteSubnets' in kwargs:
             remote_subnets = kwargs['remoteSubnets']
-        if 'vpnGatewayId' in kwargs:
+        if remote_subnets is None:
+            raise TypeError("Missing 'remote_subnets' argument")
+        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
             vpn_gateway_id = kwargs['vpnGatewayId']
-        if 'bgpConfig' in kwargs:
+        if vpn_gateway_id is None:
+            raise TypeError("Missing 'vpn_gateway_id' argument")
+        if bgp_config is None and 'bgpConfig' in kwargs:
             bgp_config = kwargs['bgpConfig']
-        if 'effectImmediately' in kwargs:
+        if effect_immediately is None and 'effectImmediately' in kwargs:
             effect_immediately = kwargs['effectImmediately']
-        if 'enableDpd' in kwargs:
+        if enable_dpd is None and 'enableDpd' in kwargs:
             enable_dpd = kwargs['enableDpd']
-        if 'enableNatTraversal' in kwargs:
+        if enable_nat_traversal is None and 'enableNatTraversal' in kwargs:
             enable_nat_traversal = kwargs['enableNatTraversal']
-        if 'healthCheckConfig' in kwargs:
+        if health_check_config is None and 'healthCheckConfig' in kwargs:
             health_check_config = kwargs['healthCheckConfig']
-        if 'ikeConfig' in kwargs:
+        if ike_config is None and 'ikeConfig' in kwargs:
             ike_config = kwargs['ikeConfig']
-        if 'ipsecConfig' in kwargs:
+        if ipsec_config is None and 'ipsecConfig' in kwargs:
             ipsec_config = kwargs['ipsecConfig']
 
         _setter("customer_gateway_id", customer_gateway_id)
@@ -328,29 +336,29 @@ class _ConnectionState:
              remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vpn_gateway_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bgpConfig' in kwargs:
+        if bgp_config is None and 'bgpConfig' in kwargs:
             bgp_config = kwargs['bgpConfig']
-        if 'customerGatewayId' in kwargs:
+        if customer_gateway_id is None and 'customerGatewayId' in kwargs:
             customer_gateway_id = kwargs['customerGatewayId']
-        if 'effectImmediately' in kwargs:
+        if effect_immediately is None and 'effectImmediately' in kwargs:
             effect_immediately = kwargs['effectImmediately']
-        if 'enableDpd' in kwargs:
+        if enable_dpd is None and 'enableDpd' in kwargs:
             enable_dpd = kwargs['enableDpd']
-        if 'enableNatTraversal' in kwargs:
+        if enable_nat_traversal is None and 'enableNatTraversal' in kwargs:
             enable_nat_traversal = kwargs['enableNatTraversal']
-        if 'healthCheckConfig' in kwargs:
+        if health_check_config is None and 'healthCheckConfig' in kwargs:
             health_check_config = kwargs['healthCheckConfig']
-        if 'ikeConfig' in kwargs:
+        if ike_config is None and 'ikeConfig' in kwargs:
             ike_config = kwargs['ikeConfig']
-        if 'ipsecConfig' in kwargs:
+        if ipsec_config is None and 'ipsecConfig' in kwargs:
             ipsec_config = kwargs['ipsecConfig']
-        if 'localSubnets' in kwargs:
+        if local_subnets is None and 'localSubnets' in kwargs:
             local_subnets = kwargs['localSubnets']
-        if 'remoteSubnets' in kwargs:
+        if remote_subnets is None and 'remoteSubnets' in kwargs:
             remote_subnets = kwargs['remoteSubnets']
-        if 'vpnGatewayId' in kwargs:
+        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
             vpn_gateway_id = kwargs['vpnGatewayId']
 
         if bgp_config is not None:
@@ -556,64 +564,6 @@ class Connection(pulumi.CustomResource):
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/12")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.16.0.0/21",
-            vpc_id=foo_network.id,
-            zone_id=foo_zones.zones[0].id)
-        foo_gateway = alicloud.vpn.Gateway("fooGateway",
-            vpc_id=foo_network.id,
-            bandwidth=10,
-            enable_ssl=True,
-            instance_charge_type="PrePaid",
-            description="test_create_description",
-            vswitch_id=foo_switch.id)
-        foo_customer_gateway = alicloud.vpn.CustomerGateway("fooCustomerGateway",
-            ip_address="42.104.22.210",
-            description="terraform-example")
-        foo_connection = alicloud.vpn.Connection("fooConnection",
-            vpn_gateway_id=foo_gateway.id,
-            customer_gateway_id=foo_customer_gateway.id,
-            local_subnets=[
-                "172.16.0.0/24",
-                "172.16.1.0/24",
-            ],
-            remote_subnets=[
-                "10.0.0.0/24",
-                "10.0.1.0/24",
-            ],
-            effect_immediately=True,
-            ike_config=alicloud.vpn.ConnectionIkeConfigArgs(
-                ike_auth_alg="md5",
-                ike_enc_alg="des",
-                ike_version="ikev2",
-                ike_mode="main",
-                ike_lifetime=86400,
-                psk="tf-testvpn2",
-                ike_pfs="group1",
-                ike_remote_id="testbob2",
-                ike_local_id="testalice2",
-            ),
-            ipsec_config=alicloud.vpn.ConnectionIpsecConfigArgs(
-                ipsec_pfs="group5",
-                ipsec_enc_alg="des",
-                ipsec_auth_alg="md5",
-                ipsec_lifetime=8640,
-            ))
-        ```
-
         ## Import
 
         VPN connection can be imported using the id, e.g.
@@ -644,64 +594,6 @@ class Connection(pulumi.CustomResource):
                  args: ConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/12")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.16.0.0/21",
-            vpc_id=foo_network.id,
-            zone_id=foo_zones.zones[0].id)
-        foo_gateway = alicloud.vpn.Gateway("fooGateway",
-            vpc_id=foo_network.id,
-            bandwidth=10,
-            enable_ssl=True,
-            instance_charge_type="PrePaid",
-            description="test_create_description",
-            vswitch_id=foo_switch.id)
-        foo_customer_gateway = alicloud.vpn.CustomerGateway("fooCustomerGateway",
-            ip_address="42.104.22.210",
-            description="terraform-example")
-        foo_connection = alicloud.vpn.Connection("fooConnection",
-            vpn_gateway_id=foo_gateway.id,
-            customer_gateway_id=foo_customer_gateway.id,
-            local_subnets=[
-                "172.16.0.0/24",
-                "172.16.1.0/24",
-            ],
-            remote_subnets=[
-                "10.0.0.0/24",
-                "10.0.1.0/24",
-            ],
-            effect_immediately=True,
-            ike_config=alicloud.vpn.ConnectionIkeConfigArgs(
-                ike_auth_alg="md5",
-                ike_enc_alg="des",
-                ike_version="ikev2",
-                ike_mode="main",
-                ike_lifetime=86400,
-                psk="tf-testvpn2",
-                ike_pfs="group1",
-                ike_remote_id="testbob2",
-                ike_local_id="testalice2",
-            ),
-            ipsec_config=alicloud.vpn.ConnectionIpsecConfigArgs(
-                ipsec_pfs="group5",
-                ipsec_enc_alg="des",
-                ipsec_auth_alg="md5",
-                ipsec_lifetime=8640,
-            ))
-        ```
-
         ## Import
 
         VPN connection can be imported using the id, e.g.
@@ -750,11 +642,7 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
-            if bgp_config is not None and not isinstance(bgp_config, ConnectionBgpConfigArgs):
-                bgp_config = bgp_config or {}
-                def _setter(key, value):
-                    bgp_config[key] = value
-                ConnectionBgpConfigArgs._configure(_setter, **bgp_config)
+            bgp_config = _utilities.configure(bgp_config, ConnectionBgpConfigArgs, True)
             __props__.__dict__["bgp_config"] = bgp_config
             if customer_gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'customer_gateway_id'")
@@ -762,23 +650,11 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["effect_immediately"] = effect_immediately
             __props__.__dict__["enable_dpd"] = enable_dpd
             __props__.__dict__["enable_nat_traversal"] = enable_nat_traversal
-            if health_check_config is not None and not isinstance(health_check_config, ConnectionHealthCheckConfigArgs):
-                health_check_config = health_check_config or {}
-                def _setter(key, value):
-                    health_check_config[key] = value
-                ConnectionHealthCheckConfigArgs._configure(_setter, **health_check_config)
+            health_check_config = _utilities.configure(health_check_config, ConnectionHealthCheckConfigArgs, True)
             __props__.__dict__["health_check_config"] = health_check_config
-            if ike_config is not None and not isinstance(ike_config, ConnectionIkeConfigArgs):
-                ike_config = ike_config or {}
-                def _setter(key, value):
-                    ike_config[key] = value
-                ConnectionIkeConfigArgs._configure(_setter, **ike_config)
+            ike_config = _utilities.configure(ike_config, ConnectionIkeConfigArgs, True)
             __props__.__dict__["ike_config"] = ike_config
-            if ipsec_config is not None and not isinstance(ipsec_config, ConnectionIpsecConfigArgs):
-                ipsec_config = ipsec_config or {}
-                def _setter(key, value):
-                    ipsec_config[key] = value
-                ConnectionIpsecConfigArgs._configure(_setter, **ipsec_config)
+            ipsec_config = _utilities.configure(ipsec_config, ConnectionIpsecConfigArgs, True)
             __props__.__dict__["ipsec_config"] = ipsec_config
             if local_subnets is None and not opts.urn:
                 raise TypeError("Missing required property 'local_subnets'")

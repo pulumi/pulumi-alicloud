@@ -13,64 +13,6 @@ namespace Pulumi.AliCloud.Log
     /// Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
     /// You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Random.RandomInteger("default", new()
-    ///     {
-    ///         Max = 99999,
-    ///         Min = 10000,
-    ///     });
-    /// 
-    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
-    ///     {
-    ///         Description = "terraform-example",
-    ///     });
-    /// 
-    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
-    ///     {
-    ///         Project = exampleProject.Name,
-    ///         ShardCount = 3,
-    ///         AutoSplit = true,
-    ///         MaxSplitShardCount = 60,
-    ///         AppendMeta = true,
-    ///     });
-    /// 
-    ///     var exampleStoreIndex = new AliCloud.Log.StoreIndex("exampleStoreIndex", new()
-    ///     {
-    ///         Project = exampleProject.Name,
-    ///         Logstore = exampleStore.Name,
-    ///         FullText = new AliCloud.Log.Inputs.StoreIndexFullTextArgs
-    ///         {
-    ///             CaseSensitive = true,
-    ///             Token = @" #$^*
-    /// 	",
-    ///         },
-    ///         FieldSearches = new[]
-    ///         {
-    ///             new AliCloud.Log.Inputs.StoreIndexFieldSearchArgs
-    ///             {
-    ///                 Name = "terraform-example",
-    ///                 EnableAnalytics = true,
-    ///                 Type = "text",
-    ///                 Token = @" #$^*
-    /// 	",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ## Module Support
     /// 
     /// You can use the existing sls module

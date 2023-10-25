@@ -35,17 +35,21 @@ class BackendArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_name: pulumi.Input[str],
-             backend_type: pulumi.Input[str],
+             backend_name: Optional[pulumi.Input[str]] = None,
+             backend_type: Optional[pulumi.Input[str]] = None,
              create_event_bridge_service_linked_role: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backendName' in kwargs:
+        if backend_name is None and 'backendName' in kwargs:
             backend_name = kwargs['backendName']
-        if 'backendType' in kwargs:
+        if backend_name is None:
+            raise TypeError("Missing 'backend_name' argument")
+        if backend_type is None and 'backendType' in kwargs:
             backend_type = kwargs['backendType']
-        if 'createEventBridgeServiceLinkedRole' in kwargs:
+        if backend_type is None:
+            raise TypeError("Missing 'backend_type' argument")
+        if create_event_bridge_service_linked_role is None and 'createEventBridgeServiceLinkedRole' in kwargs:
             create_event_bridge_service_linked_role = kwargs['createEventBridgeServiceLinkedRole']
 
         _setter("backend_name", backend_name)
@@ -132,13 +136,13 @@ class _BackendState:
              backend_type: Optional[pulumi.Input[str]] = None,
              create_event_bridge_service_linked_role: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backendName' in kwargs:
+        if backend_name is None and 'backendName' in kwargs:
             backend_name = kwargs['backendName']
-        if 'backendType' in kwargs:
+        if backend_type is None and 'backendType' in kwargs:
             backend_type = kwargs['backendType']
-        if 'createEventBridgeServiceLinkedRole' in kwargs:
+        if create_event_bridge_service_linked_role is None and 'createEventBridgeServiceLinkedRole' in kwargs:
             create_event_bridge_service_linked_role = kwargs['createEventBridgeServiceLinkedRole']
 
         if backend_name is not None:
@@ -216,24 +220,6 @@ class Backend(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.181.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default = alicloud.apigateway.Backend("default",
-            backend_name=name,
-            description=name,
-            backend_type="HTTP")
-        ```
-
         ## Import
 
         Api Gateway Backend can be imported using the id, e.g.
@@ -261,24 +247,6 @@ class Backend(pulumi.CustomResource):
         For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/en/api-gateway/developer-reference/api-cloudapi-2016-07-14-createbackend).
 
         > **NOTE:** Available since v1.181.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default = alicloud.apigateway.Backend("default",
-            backend_name=name,
-            description=name,
-            backend_type="HTTP")
-        ```
 
         ## Import
 

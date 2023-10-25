@@ -44,19 +44,25 @@ class PluginArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             plugin_data: pulumi.Input[str],
-             plugin_name: pulumi.Input[str],
-             plugin_type: pulumi.Input[str],
+             plugin_data: Optional[pulumi.Input[str]] = None,
+             plugin_name: Optional[pulumi.Input[str]] = None,
+             plugin_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'pluginData' in kwargs:
+        if plugin_data is None and 'pluginData' in kwargs:
             plugin_data = kwargs['pluginData']
-        if 'pluginName' in kwargs:
+        if plugin_data is None:
+            raise TypeError("Missing 'plugin_data' argument")
+        if plugin_name is None and 'pluginName' in kwargs:
             plugin_name = kwargs['pluginName']
-        if 'pluginType' in kwargs:
+        if plugin_name is None:
+            raise TypeError("Missing 'plugin_name' argument")
+        if plugin_type is None and 'pluginType' in kwargs:
             plugin_type = kwargs['pluginType']
+        if plugin_type is None:
+            raise TypeError("Missing 'plugin_type' argument")
 
         _setter("plugin_data", plugin_data)
         _setter("plugin_name", plugin_name)
@@ -171,13 +177,13 @@ class _PluginState:
              plugin_name: Optional[pulumi.Input[str]] = None,
              plugin_type: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'pluginData' in kwargs:
+        if plugin_data is None and 'pluginData' in kwargs:
             plugin_data = kwargs['pluginData']
-        if 'pluginName' in kwargs:
+        if plugin_name is None and 'pluginName' in kwargs:
             plugin_name = kwargs['pluginName']
-        if 'pluginType' in kwargs:
+        if plugin_type is None and 'pluginType' in kwargs:
             plugin_type = kwargs['pluginType']
 
         if description is not None:
@@ -276,25 +282,6 @@ class Plugin(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.187.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.apigateway.Plugin("default",
-            description="tf_example",
-            plugin_data="{\\"allowOrigins\\": \\"api.foo.com\\",\\"allowMethods\\": \\"GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH\\",\\"allowHeaders\\": \\"Authorization,Accept,Accept-Ranges,Cache-Control,Range,Date,Content-Type,Content-Length,Content-MD5,User-Agent,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Ca-Key,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-Stage,X-Ca-Request-Mode,x-ca-deviceid\\",\\"exposeHeaders\\": \\"Content-MD5,Server,Date,Latency,X-Ca-Request-Id,X-Ca-Error-Code,X-Ca-Error-Message\\",\\"maxAge\\": 172800,\\"allowCredentials\\": true}",
-            plugin_name="tf_example",
-            plugin_type="cors",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        ```
-
         ## Import
 
         Api Gateway Plugin can be imported using the id, e.g.
@@ -329,25 +316,6 @@ class Plugin(pulumi.CustomResource):
         For information about Api Gateway Plugin and how to use it, see [What is Plugin](https://www.alibabacloud.com/help/en/api-gateway/developer-reference/api-cloudapi-2016-07-14-createplugin).
 
         > **NOTE:** Available since v1.187.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.apigateway.Plugin("default",
-            description="tf_example",
-            plugin_data="{\\"allowOrigins\\": \\"api.foo.com\\",\\"allowMethods\\": \\"GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH\\",\\"allowHeaders\\": \\"Authorization,Accept,Accept-Ranges,Cache-Control,Range,Date,Content-Type,Content-Length,Content-MD5,User-Agent,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Ca-Key,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-Stage,X-Ca-Request-Mode,x-ca-deviceid\\",\\"exposeHeaders\\": \\"Content-MD5,Server,Date,Latency,X-Ca-Request-Id,X-Ca-Error-Code,X-Ca-Error-Message\\",\\"maxAge\\": 172800,\\"allowCredentials\\": true}",
-            plugin_name="tf_example",
-            plugin_type="cors",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        ```
 
         ## Import
 

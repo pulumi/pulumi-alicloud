@@ -149,20 +149,6 @@ def get_server_groups(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.186.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.nlb.get_server_groups()
-    pulumi.export("nlbServerGroupId1", ids.groups[0].id)
-    name_regex = alicloud.nlb.get_server_groups(name_regex="^my-ServerGroup")
-    pulumi.export("nlbServerGroupId2", name_regex.groups[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Server Group IDs.
     :param str name_regex: A regex string to filter results by Server Group name.
@@ -213,20 +199,6 @@ def get_server_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.186.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.nlb.get_server_groups()
-    pulumi.export("nlbServerGroupId1", ids.groups[0].id)
-    name_regex = alicloud.nlb.get_server_groups(name_regex="^my-ServerGroup")
-    pulumi.export("nlbServerGroupId2", name_regex.groups[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Server Group IDs.

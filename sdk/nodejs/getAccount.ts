@@ -6,16 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * This data source provides information about the current account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const current = alicloud.getAccount({});
- * export const currentAccountId = current.then(current => current.id);
- * ```
  */
 export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
 
@@ -35,16 +25,6 @@ export interface GetAccountResult {
 }
 /**
  * This data source provides information about the current account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const current = alicloud.getAccount({});
- * export const currentAccountId = current.then(current => current.id);
- * ```
  */
 export function getAccountOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
     return pulumi.output(getAccount(opts))

@@ -109,18 +109,6 @@ def get_deliveries(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.171.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cfg.get_deliveries(ids=["example_id"])
-    pulumi.export("configDeliveryId1", ids.deliveries[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Delivery IDs.
     :param str name_regex: A regex string to filter results by delivery channel name.
@@ -155,18 +143,6 @@ def get_deliveries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     This data source provides the Config Deliveries of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.171.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cfg.get_deliveries(ids=["example_id"])
-    pulumi.export("configDeliveryId1", ids.deliveries[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Delivery IDs.

@@ -22,52 +22,6 @@ import (
 //
 // > **NOTE:** Available since v1.0.0+.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-//				Description: pulumi.String("this is a policy test"),
-//				PolicyDocument: pulumi.String(`  {
-//	    "Statement": [
-//	      {
-//	        "Action": [
-//	          "oss:ListObjects",
-//	          "oss:GetObject"
-//	        ],
-//	        "Effect": "Allow",
-//	        "Resource": [
-//	          "acs:oss:*:*:mybucket",
-//	          "acs:oss:*:*:mybucket/*"
-//	        ]
-//	      }
-//	    ],
-//	      "Version": "1"
-//	  }
-//
-// `),
-//
-//				PolicyName: pulumi.String("policyName"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // RAM policy can be imported using the id or name, e.g.

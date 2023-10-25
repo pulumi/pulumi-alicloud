@@ -64,7 +64,7 @@ class ScalingRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             scaling_group_id: pulumi.Input[str],
+             scaling_group_id: Optional[pulumi.Input[str]] = None,
              adjustment_type: Optional[pulumi.Input[str]] = None,
              adjustment_value: Optional[pulumi.Input[int]] = None,
              cooldown: Optional[pulumi.Input[int]] = None,
@@ -75,27 +75,29 @@ class ScalingRuleArgs:
              scaling_rule_type: Optional[pulumi.Input[str]] = None,
              step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]] = None,
              target_value: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'scalingGroupId' in kwargs:
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
-        if 'adjustmentType' in kwargs:
+        if scaling_group_id is None:
+            raise TypeError("Missing 'scaling_group_id' argument")
+        if adjustment_type is None and 'adjustmentType' in kwargs:
             adjustment_type = kwargs['adjustmentType']
-        if 'adjustmentValue' in kwargs:
+        if adjustment_value is None and 'adjustmentValue' in kwargs:
             adjustment_value = kwargs['adjustmentValue']
-        if 'disableScaleIn' in kwargs:
+        if disable_scale_in is None and 'disableScaleIn' in kwargs:
             disable_scale_in = kwargs['disableScaleIn']
-        if 'estimatedInstanceWarmup' in kwargs:
+        if estimated_instance_warmup is None and 'estimatedInstanceWarmup' in kwargs:
             estimated_instance_warmup = kwargs['estimatedInstanceWarmup']
-        if 'metricName' in kwargs:
+        if metric_name is None and 'metricName' in kwargs:
             metric_name = kwargs['metricName']
-        if 'scalingRuleName' in kwargs:
+        if scaling_rule_name is None and 'scalingRuleName' in kwargs:
             scaling_rule_name = kwargs['scalingRuleName']
-        if 'scalingRuleType' in kwargs:
+        if scaling_rule_type is None and 'scalingRuleType' in kwargs:
             scaling_rule_type = kwargs['scalingRuleType']
-        if 'stepAdjustments' in kwargs:
+        if step_adjustments is None and 'stepAdjustments' in kwargs:
             step_adjustments = kwargs['stepAdjustments']
-        if 'targetValue' in kwargs:
+        if target_value is None and 'targetValue' in kwargs:
             target_value = kwargs['targetValue']
 
         _setter("scaling_group_id", scaling_group_id)
@@ -325,27 +327,27 @@ class _ScalingRuleState:
              scaling_rule_type: Optional[pulumi.Input[str]] = None,
              step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]] = None,
              target_value: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'adjustmentType' in kwargs:
+        if adjustment_type is None and 'adjustmentType' in kwargs:
             adjustment_type = kwargs['adjustmentType']
-        if 'adjustmentValue' in kwargs:
+        if adjustment_value is None and 'adjustmentValue' in kwargs:
             adjustment_value = kwargs['adjustmentValue']
-        if 'disableScaleIn' in kwargs:
+        if disable_scale_in is None and 'disableScaleIn' in kwargs:
             disable_scale_in = kwargs['disableScaleIn']
-        if 'estimatedInstanceWarmup' in kwargs:
+        if estimated_instance_warmup is None and 'estimatedInstanceWarmup' in kwargs:
             estimated_instance_warmup = kwargs['estimatedInstanceWarmup']
-        if 'metricName' in kwargs:
+        if metric_name is None and 'metricName' in kwargs:
             metric_name = kwargs['metricName']
-        if 'scalingGroupId' in kwargs:
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
-        if 'scalingRuleName' in kwargs:
+        if scaling_rule_name is None and 'scalingRuleName' in kwargs:
             scaling_rule_name = kwargs['scalingRuleName']
-        if 'scalingRuleType' in kwargs:
+        if scaling_rule_type is None and 'scalingRuleType' in kwargs:
             scaling_rule_type = kwargs['scalingRuleType']
-        if 'stepAdjustments' in kwargs:
+        if step_adjustments is None and 'stepAdjustments' in kwargs:
             step_adjustments = kwargs['stepAdjustments']
-        if 'targetValue' in kwargs:
+        if target_value is None and 'targetValue' in kwargs:
             target_value = kwargs['targetValue']
 
         if adjustment_type is not None:
@@ -548,60 +550,6 @@ class ScalingRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.39.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=2,
-            memory_size=4)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
-            type="ingress",
-            ip_protocol="tcp",
-            nic_type="intranet",
-            policy="accept",
-            port_range="22/22",
-            priority=1,
-            security_group_id=default_security_group.id,
-            cidr_ip="172.16.0.0/24")
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            min_size=1,
-            max_size=1,
-            scaling_group_name=name,
-            vswitch_ids=[default_switch.id],
-            removal_policies=[
-                "OldestInstance",
-                "NewestInstance",
-            ])
-        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
-            scaling_group_id=default_scaling_group.id,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            security_group_id=default_security_group.id,
-            force_delete=True)
-        default_scaling_rule = alicloud.ess.ScalingRule("defaultScalingRule",
-            scaling_group_id=default_scaling_group.id,
-            adjustment_type="TotalCapacity",
-            adjustment_value=1)
-        ```
         ## Module Support
 
         You can use to the existing autoscaling-rule module
@@ -648,60 +596,6 @@ class ScalingRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.39.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=2,
-            memory_size=4)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
-            type="ingress",
-            ip_protocol="tcp",
-            nic_type="intranet",
-            policy="accept",
-            port_range="22/22",
-            priority=1,
-            security_group_id=default_security_group.id,
-            cidr_ip="172.16.0.0/24")
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            min_size=1,
-            max_size=1,
-            scaling_group_name=name,
-            vswitch_ids=[default_switch.id],
-            removal_policies=[
-                "OldestInstance",
-                "NewestInstance",
-            ])
-        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
-            scaling_group_id=default_scaling_group.id,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            security_group_id=default_security_group.id,
-            force_delete=True)
-        default_scaling_rule = alicloud.ess.ScalingRule("defaultScalingRule",
-            scaling_group_id=default_scaling_group.id,
-            adjustment_type="TotalCapacity",
-            adjustment_value=1)
-        ```
         ## Module Support
 
         You can use to the existing autoscaling-rule module

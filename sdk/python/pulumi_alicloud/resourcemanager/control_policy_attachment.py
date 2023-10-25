@@ -29,14 +29,18 @@ class ControlPolicyAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_id: pulumi.Input[str],
-             target_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             policy_id: Optional[pulumi.Input[str]] = None,
+             target_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'policyId' in kwargs:
+        if policy_id is None and 'policyId' in kwargs:
             policy_id = kwargs['policyId']
-        if 'targetId' in kwargs:
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+        if target_id is None and 'targetId' in kwargs:
             target_id = kwargs['targetId']
+        if target_id is None:
+            raise TypeError("Missing 'target_id' argument")
 
         _setter("policy_id", policy_id)
         _setter("target_id", target_id)
@@ -86,11 +90,11 @@ class _ControlPolicyAttachmentState:
              _setter: Callable[[Any, Any], None],
              policy_id: Optional[pulumi.Input[str]] = None,
              target_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'policyId' in kwargs:
+        if policy_id is None and 'policyId' in kwargs:
             policy_id = kwargs['policyId']
-        if 'targetId' in kwargs:
+        if target_id is None and 'targetId' in kwargs:
             target_id = kwargs['targetId']
 
         if policy_id is not None:
@@ -138,44 +142,6 @@ class ControlPolicyAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.120.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_control_policy = alicloud.resourcemanager.ControlPolicy("exampleControlPolicy",
-            control_policy_name=name,
-            description=name,
-            effect_scope="RAM",
-            policy_document=\"\"\"  {
-            "Version": "1",
-            "Statement": [
-              {
-                "Effect": "Deny",
-                "Action": [
-                  "ram:UpdateRole",
-                  "ram:DeleteRole",
-                  "ram:AttachPolicyToRole",
-                  "ram:DetachPolicyFromRole"
-                ],
-                "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
-              }
-            ]
-          }
-        \"\"\")
-        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=name)
-        example_control_policy_attachment = alicloud.resourcemanager.ControlPolicyAttachment("exampleControlPolicyAttachment",
-            policy_id=example_control_policy.id,
-            target_id=example_folder.id)
-        ```
-
         ## Import
 
         Resource Manager Control Policy Attachment can be imported using the id, e.g.
@@ -201,44 +167,6 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcedirectorymaster-2022-04-19-attachcontrolpolicy).
 
         > **NOTE:** Available since v1.120.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_control_policy = alicloud.resourcemanager.ControlPolicy("exampleControlPolicy",
-            control_policy_name=name,
-            description=name,
-            effect_scope="RAM",
-            policy_document=\"\"\"  {
-            "Version": "1",
-            "Statement": [
-              {
-                "Effect": "Deny",
-                "Action": [
-                  "ram:UpdateRole",
-                  "ram:DeleteRole",
-                  "ram:AttachPolicyToRole",
-                  "ram:DetachPolicyFromRole"
-                ],
-                "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
-              }
-            ]
-          }
-        \"\"\")
-        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=name)
-        example_control_policy_attachment = alicloud.resourcemanager.ControlPolicyAttachment("exampleControlPolicyAttachment",
-            policy_id=example_control_policy.id,
-            target_id=example_folder.id)
-        ```
 
         ## Import
 

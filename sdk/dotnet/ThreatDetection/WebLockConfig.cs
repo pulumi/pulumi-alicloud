@@ -16,36 +16,6 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// 
     /// &gt; **NOTE:** Available in v1.195.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultAssets = AliCloud.ThreatDetection.GetAssets.Invoke(new()
-    ///     {
-    ///         MachineTypes = "ecs",
-    ///     });
-    /// 
-    ///     var defaultWebLockConfig = new AliCloud.ThreatDetection.WebLockConfig("defaultWebLockConfig", new()
-    ///     {
-    ///         InclusiveFileType = "php;jsp;asp;aspx;js;cgi;html;htm;xml;shtml;shtm;jpg",
-    ///         Uuid = defaultAssets.Apply(getAssetsResult =&gt; getAssetsResult.Ids[0]),
-    ///         Mode = "whitelist",
-    ///         LocalBackupDir = "/usr/local/aegis/bak",
-    ///         Dir = "/tmp/",
-    ///         DefenceMode = "audit",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Threat Detection Web Lock Config can be imported using the id, e.g.

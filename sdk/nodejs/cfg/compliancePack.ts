@@ -13,61 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.124.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example-config-name";
- * const defaultRegions = alicloud.getRegions({
- *     current: true,
- * });
- * const rule1 = new alicloud.cfg.Rule("rule1", {
- *     description: name,
- *     sourceOwner: "ALIYUN",
- *     sourceIdentifier: "ram-user-ak-create-date-expired-check",
- *     riskLevel: 1,
- *     maximumExecutionFrequency: "TwentyFour_Hours",
- *     regionIdsScope: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
- *     configRuleTriggerTypes: "ScheduledNotification",
- *     resourceTypesScopes: ["ACS::RAM::User"],
- *     ruleName: "ciscompliancecheck_ram-user-ak-create-date-expired-check",
- *     inputParameters: {
- *         days: "90",
- *     },
- * });
- * const rule2 = new alicloud.cfg.Rule("rule2", {
- *     description: name,
- *     sourceOwner: "ALIYUN",
- *     sourceIdentifier: "adb-cluster-maintain-time-check",
- *     riskLevel: 2,
- *     regionIdsScope: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
- *     configRuleTriggerTypes: "ScheduledNotification",
- *     resourceTypesScopes: ["ACS::ADB::DBCluster"],
- *     ruleName: "governance-evaluation-adb-cluster-maintain-time-check",
- *     inputParameters: {
- *         maintainTimes: "02:00-04:00,06:00-08:00,12:00-13:00",
- *     },
- * });
- * const defaultCompliancePack = new alicloud.cfg.CompliancePack("defaultCompliancePack", {
- *     compliancePackName: name,
- *     description: "CloudGovernanceCenter evaluation",
- *     riskLevel: 2,
- *     configRuleIds: [
- *         {
- *             configRuleId: rule1.id,
- *         },
- *         {
- *             configRuleId: rule2.id,
- *         },
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * Cloud Config Compliance Pack can be imported using the id, e.g.

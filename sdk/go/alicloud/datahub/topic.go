@@ -17,67 +17,6 @@ import (
 //
 // > **NOTE:** Available since v1.19.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/datahub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf_example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			example, err := datahub.NewProject(ctx, "example", &datahub.ProjectArgs{
-//				Comment: pulumi.String("created by terraform"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = datahub.NewTopic(ctx, "exampleBlob", &datahub.TopicArgs{
-//				ProjectName: example.Name,
-//				RecordType:  pulumi.String("BLOB"),
-//				ShardCount:  pulumi.Int(3),
-//				LifeCycle:   pulumi.Int(7),
-//				Comment:     pulumi.String("created by terraform"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = datahub.NewTopic(ctx, "exampleTuple", &datahub.TopicArgs{
-//				ProjectName: example.Name,
-//				RecordType:  pulumi.String("TUPLE"),
-//				RecordSchema: pulumi.AnyMap{
-//					"bigint_field":    pulumi.Any("BIGINT"),
-//					"timestamp_field": pulumi.Any("TIMESTAMP"),
-//					"string_field":    pulumi.Any("STRING"),
-//					"double_field":    pulumi.Any("DOUBLE"),
-//					"boolean_field":   pulumi.Any("BOOLEAN"),
-//				},
-//				ShardCount: pulumi.Int(3),
-//				LifeCycle:  pulumi.Int(7),
-//				Comment:    pulumi.String("created by terraform"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Datahub topic can be imported using the ID, e.g.

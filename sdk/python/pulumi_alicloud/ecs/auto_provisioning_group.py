@@ -85,9 +85,9 @@ class AutoProvisioningGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             launch_template_configs: pulumi.Input[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]],
-             launch_template_id: pulumi.Input[str],
-             total_target_capacity: pulumi.Input[str],
+             launch_template_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]]] = None,
+             launch_template_id: Optional[pulumi.Input[str]] = None,
+             total_target_capacity: Optional[pulumi.Input[str]] = None,
              auto_provisioning_group_name: Optional[pulumi.Input[str]] = None,
              auto_provisioning_group_type: Optional[pulumi.Input[str]] = None,
              default_target_capacity_type: Optional[pulumi.Input[str]] = None,
@@ -105,45 +105,51 @@ class AutoProvisioningGroupArgs:
              terminate_instances_with_expiration: Optional[pulumi.Input[bool]] = None,
              valid_from: Optional[pulumi.Input[str]] = None,
              valid_until: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'launchTemplateConfigs' in kwargs:
+        if launch_template_configs is None and 'launchTemplateConfigs' in kwargs:
             launch_template_configs = kwargs['launchTemplateConfigs']
-        if 'launchTemplateId' in kwargs:
+        if launch_template_configs is None:
+            raise TypeError("Missing 'launch_template_configs' argument")
+        if launch_template_id is None and 'launchTemplateId' in kwargs:
             launch_template_id = kwargs['launchTemplateId']
-        if 'totalTargetCapacity' in kwargs:
+        if launch_template_id is None:
+            raise TypeError("Missing 'launch_template_id' argument")
+        if total_target_capacity is None and 'totalTargetCapacity' in kwargs:
             total_target_capacity = kwargs['totalTargetCapacity']
-        if 'autoProvisioningGroupName' in kwargs:
+        if total_target_capacity is None:
+            raise TypeError("Missing 'total_target_capacity' argument")
+        if auto_provisioning_group_name is None and 'autoProvisioningGroupName' in kwargs:
             auto_provisioning_group_name = kwargs['autoProvisioningGroupName']
-        if 'autoProvisioningGroupType' in kwargs:
+        if auto_provisioning_group_type is None and 'autoProvisioningGroupType' in kwargs:
             auto_provisioning_group_type = kwargs['autoProvisioningGroupType']
-        if 'defaultTargetCapacityType' in kwargs:
+        if default_target_capacity_type is None and 'defaultTargetCapacityType' in kwargs:
             default_target_capacity_type = kwargs['defaultTargetCapacityType']
-        if 'excessCapacityTerminationPolicy' in kwargs:
+        if excess_capacity_termination_policy is None and 'excessCapacityTerminationPolicy' in kwargs:
             excess_capacity_termination_policy = kwargs['excessCapacityTerminationPolicy']
-        if 'launchTemplateVersion' in kwargs:
+        if launch_template_version is None and 'launchTemplateVersion' in kwargs:
             launch_template_version = kwargs['launchTemplateVersion']
-        if 'maxSpotPrice' in kwargs:
+        if max_spot_price is None and 'maxSpotPrice' in kwargs:
             max_spot_price = kwargs['maxSpotPrice']
-        if 'payAsYouGoAllocationStrategy' in kwargs:
+        if pay_as_you_go_allocation_strategy is None and 'payAsYouGoAllocationStrategy' in kwargs:
             pay_as_you_go_allocation_strategy = kwargs['payAsYouGoAllocationStrategy']
-        if 'payAsYouGoTargetCapacity' in kwargs:
+        if pay_as_you_go_target_capacity is None and 'payAsYouGoTargetCapacity' in kwargs:
             pay_as_you_go_target_capacity = kwargs['payAsYouGoTargetCapacity']
-        if 'spotAllocationStrategy' in kwargs:
+        if spot_allocation_strategy is None and 'spotAllocationStrategy' in kwargs:
             spot_allocation_strategy = kwargs['spotAllocationStrategy']
-        if 'spotInstanceInterruptionBehavior' in kwargs:
+        if spot_instance_interruption_behavior is None and 'spotInstanceInterruptionBehavior' in kwargs:
             spot_instance_interruption_behavior = kwargs['spotInstanceInterruptionBehavior']
-        if 'spotInstancePoolsToUseCount' in kwargs:
+        if spot_instance_pools_to_use_count is None and 'spotInstancePoolsToUseCount' in kwargs:
             spot_instance_pools_to_use_count = kwargs['spotInstancePoolsToUseCount']
-        if 'spotTargetCapacity' in kwargs:
+        if spot_target_capacity is None and 'spotTargetCapacity' in kwargs:
             spot_target_capacity = kwargs['spotTargetCapacity']
-        if 'terminateInstances' in kwargs:
+        if terminate_instances is None and 'terminateInstances' in kwargs:
             terminate_instances = kwargs['terminateInstances']
-        if 'terminateInstancesWithExpiration' in kwargs:
+        if terminate_instances_with_expiration is None and 'terminateInstancesWithExpiration' in kwargs:
             terminate_instances_with_expiration = kwargs['terminateInstancesWithExpiration']
-        if 'validFrom' in kwargs:
+        if valid_from is None and 'validFrom' in kwargs:
             valid_from = kwargs['validFrom']
-        if 'validUntil' in kwargs:
+        if valid_until is None and 'validUntil' in kwargs:
             valid_until = kwargs['validUntil']
 
         _setter("launch_template_configs", launch_template_configs)
@@ -517,45 +523,45 @@ class _AutoProvisioningGroupState:
              total_target_capacity: Optional[pulumi.Input[str]] = None,
              valid_from: Optional[pulumi.Input[str]] = None,
              valid_until: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoProvisioningGroupName' in kwargs:
+        if auto_provisioning_group_name is None and 'autoProvisioningGroupName' in kwargs:
             auto_provisioning_group_name = kwargs['autoProvisioningGroupName']
-        if 'autoProvisioningGroupType' in kwargs:
+        if auto_provisioning_group_type is None and 'autoProvisioningGroupType' in kwargs:
             auto_provisioning_group_type = kwargs['autoProvisioningGroupType']
-        if 'defaultTargetCapacityType' in kwargs:
+        if default_target_capacity_type is None and 'defaultTargetCapacityType' in kwargs:
             default_target_capacity_type = kwargs['defaultTargetCapacityType']
-        if 'excessCapacityTerminationPolicy' in kwargs:
+        if excess_capacity_termination_policy is None and 'excessCapacityTerminationPolicy' in kwargs:
             excess_capacity_termination_policy = kwargs['excessCapacityTerminationPolicy']
-        if 'launchTemplateConfigs' in kwargs:
+        if launch_template_configs is None and 'launchTemplateConfigs' in kwargs:
             launch_template_configs = kwargs['launchTemplateConfigs']
-        if 'launchTemplateId' in kwargs:
+        if launch_template_id is None and 'launchTemplateId' in kwargs:
             launch_template_id = kwargs['launchTemplateId']
-        if 'launchTemplateVersion' in kwargs:
+        if launch_template_version is None and 'launchTemplateVersion' in kwargs:
             launch_template_version = kwargs['launchTemplateVersion']
-        if 'maxSpotPrice' in kwargs:
+        if max_spot_price is None and 'maxSpotPrice' in kwargs:
             max_spot_price = kwargs['maxSpotPrice']
-        if 'payAsYouGoAllocationStrategy' in kwargs:
+        if pay_as_you_go_allocation_strategy is None and 'payAsYouGoAllocationStrategy' in kwargs:
             pay_as_you_go_allocation_strategy = kwargs['payAsYouGoAllocationStrategy']
-        if 'payAsYouGoTargetCapacity' in kwargs:
+        if pay_as_you_go_target_capacity is None and 'payAsYouGoTargetCapacity' in kwargs:
             pay_as_you_go_target_capacity = kwargs['payAsYouGoTargetCapacity']
-        if 'spotAllocationStrategy' in kwargs:
+        if spot_allocation_strategy is None and 'spotAllocationStrategy' in kwargs:
             spot_allocation_strategy = kwargs['spotAllocationStrategy']
-        if 'spotInstanceInterruptionBehavior' in kwargs:
+        if spot_instance_interruption_behavior is None and 'spotInstanceInterruptionBehavior' in kwargs:
             spot_instance_interruption_behavior = kwargs['spotInstanceInterruptionBehavior']
-        if 'spotInstancePoolsToUseCount' in kwargs:
+        if spot_instance_pools_to_use_count is None and 'spotInstancePoolsToUseCount' in kwargs:
             spot_instance_pools_to_use_count = kwargs['spotInstancePoolsToUseCount']
-        if 'spotTargetCapacity' in kwargs:
+        if spot_target_capacity is None and 'spotTargetCapacity' in kwargs:
             spot_target_capacity = kwargs['spotTargetCapacity']
-        if 'terminateInstances' in kwargs:
+        if terminate_instances is None and 'terminateInstances' in kwargs:
             terminate_instances = kwargs['terminateInstances']
-        if 'terminateInstancesWithExpiration' in kwargs:
+        if terminate_instances_with_expiration is None and 'terminateInstancesWithExpiration' in kwargs:
             terminate_instances_with_expiration = kwargs['terminateInstancesWithExpiration']
-        if 'totalTargetCapacity' in kwargs:
+        if total_target_capacity is None and 'totalTargetCapacity' in kwargs:
             total_target_capacity = kwargs['totalTargetCapacity']
-        if 'validFrom' in kwargs:
+        if valid_from is None and 'validFrom' in kwargs:
             valid_from = kwargs['validFrom']
-        if 'validUntil' in kwargs:
+        if valid_until is None and 'validUntil' in kwargs:
             valid_until = kwargs['validUntil']
 
         if auto_provisioning_group_name is not None:
@@ -871,47 +877,6 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.79.0+
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "auto_provisioning_group"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        template = alicloud.ecs.EcsLaunchTemplate("template",
-            image_id=default_images.images[0].id,
-            instance_type="ecs.n1.tiny",
-            security_group_id=default_security_group.id)
-        default_auto_provisioning_group = alicloud.ecs.AutoProvisioningGroup("defaultAutoProvisioningGroup",
-            launch_template_id=template.id,
-            total_target_capacity="4",
-            pay_as_you_go_target_capacity="1",
-            spot_target_capacity="2",
-            launch_template_configs=[alicloud.ecs.AutoProvisioningGroupLaunchTemplateConfigArgs(
-                instance_type="ecs.n1.small",
-                vswitch_id=default_switch.id,
-                weighted_capacity="2",
-                max_price="2",
-            )])
-        ```
-
         ## Import
 
         ECS auto provisioning group can be imported using the id, e.g.
@@ -953,47 +918,6 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         Provides a ECS auto provisioning group resource which is a solution that uses preemptive instances and pay_as_you_go instances to rapidly deploy clusters.
 
         > **NOTE:** Available in 1.79.0+
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "auto_provisioning_group"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        template = alicloud.ecs.EcsLaunchTemplate("template",
-            image_id=default_images.images[0].id,
-            instance_type="ecs.n1.tiny",
-            security_group_id=default_security_group.id)
-        default_auto_provisioning_group = alicloud.ecs.AutoProvisioningGroup("defaultAutoProvisioningGroup",
-            launch_template_id=template.id,
-            total_target_capacity="4",
-            pay_as_you_go_target_capacity="1",
-            spot_target_capacity="2",
-            launch_template_configs=[alicloud.ecs.AutoProvisioningGroupLaunchTemplateConfigArgs(
-                instance_type="ecs.n1.small",
-                vswitch_id=default_switch.id,
-                weighted_capacity="2",
-                max_price="2",
-            )])
-        ```
 
         ## Import
 

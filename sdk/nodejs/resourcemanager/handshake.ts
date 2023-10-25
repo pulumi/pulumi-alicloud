@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.82.0+.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * // Add a Resource Manager handshake.
- * const example = new alicloud.resourcemanager.Handshake("example", {
- *     note: "test resource manager handshake",
- *     targetEntity: "1182775234******",
- *     targetType: "Account",
- * });
- * ```
- *
  * ## Import
  *
  * Resource Manager handshake can be imported using the id, e.g.

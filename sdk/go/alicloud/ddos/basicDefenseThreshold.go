@@ -19,54 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.168.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
-//				AddressName:        pulumi.String(name),
-//				Isp:                pulumi.String("BGP"),
-//				InternetChargeType: pulumi.String("PayByBandwidth"),
-//				PaymentType:        pulumi.String("PayAsYouGo"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ddos.NewBasicDefenseThreshold(ctx, "defaultBasicDefenseThreshold", &ddos.BasicDefenseThresholdArgs{
-//				InstanceId:   defaultEipAddress.ID(),
-//				DdosType:     pulumi.String("defense"),
-//				InstanceType: pulumi.String("eip"),
-//				Bps:          pulumi.Int(390),
-//				Pps:          pulumi.Int(90000),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Ddos Basic Antiddos can be imported using the id, e.g.

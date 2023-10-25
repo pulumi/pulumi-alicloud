@@ -16,37 +16,6 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// 
     /// &gt; **NOTE:** Available in v1.195.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultAssets = AliCloud.ThreatDetection.GetAssets.Invoke(new()
-    ///     {
-    ///         MachineTypes = "ecs",
-    ///     });
-    /// 
-    ///     var defaultBackupPolicy = new AliCloud.ThreatDetection.BackupPolicy("defaultBackupPolicy", new()
-    ///     {
-    ///         BackupPolicyName = "tf-example-name",
-    ///         Policy = "{\"Exclude\":[\"/bin/\",\"/usr/bin/\",\"/sbin/\",\"/boot/\",\"/proc/\",\"/sys/\",\"/srv/\",\"/lib/\",\"/selinux/\",\"/usr/sbin/\",\"/run/\",\"/lib32/\",\"/lib64/\",\"/lost+found/\",\"/var/lib/kubelet/\",\"/var/lib/ntp/proc\",\"/var/lib/container\"],\"ExcludeSystemPath\":true,\"Include\":[],\"IsDefault\":1,\"Retention\":7,\"Schedule\":\"I|1668703620|PT24H\",\"Source\":[],\"SpeedLimiter\":\"\",\"UseVss\":true}",
-    ///         PolicyVersion = "2.0.0",
-    ///         UuidLists = new[]
-    ///         {
-    ///             defaultAssets.Apply(getAssetsResult =&gt; getAssetsResult.Ids[0]),
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Threat Detection Backup Policy can be imported using the id, e.g.

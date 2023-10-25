@@ -16,42 +16,6 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// &gt; **NOTE:** Available since v1.210.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var aAP0 = new AliCloud.Kms.ApplicationAccessPoint("aAP0", new()
-    ///     {
-    ///         Policies = new[]
-    ///         {
-    ///             "aa",
-    ///         },
-    ///         Description = "aa",
-    ///         ApplicationAccessPointName = name,
-    ///     });
-    /// 
-    ///     var @default = new AliCloud.Kms.ClientKey("default", new()
-    ///     {
-    ///         AapName = aAP0.ApplicationAccessPointName,
-    ///         Password = "YouPassword123!",
-    ///         NotBefore = "2023-09-01T14:11:22Z",
-    ///         NotAfter = "2028-09-01T14:11:22Z",
-    ///         PrivateKeyDataFile = "./private_key_data_file.txt",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// KMS Client Key can be imported using the id, e.g.

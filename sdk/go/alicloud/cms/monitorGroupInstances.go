@@ -19,69 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.115.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf_example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("192.168.0.0/16"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultMonitorGroup, err := cms.NewMonitorGroup(ctx, "defaultMonitorGroup", &cms.MonitorGroupArgs{
-//				MonitorGroupName: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
-//				Current: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cms.NewMonitorGroupInstances(ctx, "example", &cms.MonitorGroupInstancesArgs{
-//				GroupId: defaultMonitorGroup.ID(),
-//				Instances: cms.MonitorGroupInstancesInstanceArray{
-//					&cms.MonitorGroupInstancesInstanceArgs{
-//						InstanceId:   defaultNetwork.ID(),
-//						InstanceName: pulumi.String(name),
-//						RegionId:     *pulumi.String(defaultRegions.Regions[0].Id),
-//						Category:     pulumi.String("vpc"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Cloud Monitor Service Monitor Group Instances can be imported using the id, e.g.

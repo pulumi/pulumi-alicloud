@@ -237,9 +237,9 @@ class ApplicationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_name: pulumi.Input[str],
-             package_type: pulumi.Input[str],
-             replicas: pulumi.Input[int],
+             app_name: Optional[pulumi.Input[str]] = None,
+             package_type: Optional[pulumi.Input[str]] = None,
+             replicas: Optional[pulumi.Input[int]] = None,
              acr_assume_role_arn: Optional[pulumi.Input[str]] = None,
              acr_instance_id: Optional[pulumi.Input[str]] = None,
              app_description: Optional[pulumi.Input[str]] = None,
@@ -306,119 +306,125 @@ class ApplicationArgs:
              vswitch_id: Optional[pulumi.Input[str]] = None,
              war_start_options: Optional[pulumi.Input[str]] = None,
              web_container: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appName' in kwargs:
+        if app_name is None and 'appName' in kwargs:
             app_name = kwargs['appName']
-        if 'packageType' in kwargs:
+        if app_name is None:
+            raise TypeError("Missing 'app_name' argument")
+        if package_type is None and 'packageType' in kwargs:
             package_type = kwargs['packageType']
-        if 'acrAssumeRoleArn' in kwargs:
+        if package_type is None:
+            raise TypeError("Missing 'package_type' argument")
+        if replicas is None:
+            raise TypeError("Missing 'replicas' argument")
+        if acr_assume_role_arn is None and 'acrAssumeRoleArn' in kwargs:
             acr_assume_role_arn = kwargs['acrAssumeRoleArn']
-        if 'acrInstanceId' in kwargs:
+        if acr_instance_id is None and 'acrInstanceId' in kwargs:
             acr_instance_id = kwargs['acrInstanceId']
-        if 'appDescription' in kwargs:
+        if app_description is None and 'appDescription' in kwargs:
             app_description = kwargs['appDescription']
-        if 'autoConfig' in kwargs:
+        if auto_config is None and 'autoConfig' in kwargs:
             auto_config = kwargs['autoConfig']
-        if 'autoEnableApplicationScalingRule' in kwargs:
+        if auto_enable_application_scaling_rule is None and 'autoEnableApplicationScalingRule' in kwargs:
             auto_enable_application_scaling_rule = kwargs['autoEnableApplicationScalingRule']
-        if 'batchWaitTime' in kwargs:
+        if batch_wait_time is None and 'batchWaitTime' in kwargs:
             batch_wait_time = kwargs['batchWaitTime']
-        if 'changeOrderDesc' in kwargs:
+        if change_order_desc is None and 'changeOrderDesc' in kwargs:
             change_order_desc = kwargs['changeOrderDesc']
-        if 'commandArgs' in kwargs:
+        if command_args is None and 'commandArgs' in kwargs:
             command_args = kwargs['commandArgs']
-        if 'commandArgsV2s' in kwargs:
+        if command_args_v2s is None and 'commandArgsV2s' in kwargs:
             command_args_v2s = kwargs['commandArgsV2s']
-        if 'configMapMountDesc' in kwargs:
+        if config_map_mount_desc is None and 'configMapMountDesc' in kwargs:
             config_map_mount_desc = kwargs['configMapMountDesc']
-        if 'configMapMountDescV2s' in kwargs:
+        if config_map_mount_desc_v2s is None and 'configMapMountDescV2s' in kwargs:
             config_map_mount_desc_v2s = kwargs['configMapMountDescV2s']
-        if 'customHostAlias' in kwargs:
+        if custom_host_alias is None and 'customHostAlias' in kwargs:
             custom_host_alias = kwargs['customHostAlias']
-        if 'customHostAliasV2s' in kwargs:
+        if custom_host_alias_v2s is None and 'customHostAliasV2s' in kwargs:
             custom_host_alias_v2s = kwargs['customHostAliasV2s']
-        if 'edasContainerVersion' in kwargs:
+        if edas_container_version is None and 'edasContainerVersion' in kwargs:
             edas_container_version = kwargs['edasContainerVersion']
-        if 'enableAhas' in kwargs:
+        if enable_ahas is None and 'enableAhas' in kwargs:
             enable_ahas = kwargs['enableAhas']
-        if 'enableGreyTagRoute' in kwargs:
+        if enable_grey_tag_route is None and 'enableGreyTagRoute' in kwargs:
             enable_grey_tag_route = kwargs['enableGreyTagRoute']
-        if 'imagePullSecrets' in kwargs:
+        if image_pull_secrets is None and 'imagePullSecrets' in kwargs:
             image_pull_secrets = kwargs['imagePullSecrets']
-        if 'imageUrl' in kwargs:
+        if image_url is None and 'imageUrl' in kwargs:
             image_url = kwargs['imageUrl']
-        if 'jarStartArgs' in kwargs:
+        if jar_start_args is None and 'jarStartArgs' in kwargs:
             jar_start_args = kwargs['jarStartArgs']
-        if 'jarStartOptions' in kwargs:
+        if jar_start_options is None and 'jarStartOptions' in kwargs:
             jar_start_options = kwargs['jarStartOptions']
-        if 'kafkaConfigs' in kwargs:
+        if kafka_configs is None and 'kafkaConfigs' in kwargs:
             kafka_configs = kwargs['kafkaConfigs']
-        if 'livenessV2' in kwargs:
+        if liveness_v2 is None and 'livenessV2' in kwargs:
             liveness_v2 = kwargs['livenessV2']
-        if 'microRegistration' in kwargs:
+        if micro_registration is None and 'microRegistration' in kwargs:
             micro_registration = kwargs['microRegistration']
-        if 'minReadyInstanceRatio' in kwargs:
+        if min_ready_instance_ratio is None and 'minReadyInstanceRatio' in kwargs:
             min_ready_instance_ratio = kwargs['minReadyInstanceRatio']
-        if 'minReadyInstances' in kwargs:
+        if min_ready_instances is None and 'minReadyInstances' in kwargs:
             min_ready_instances = kwargs['minReadyInstances']
-        if 'namespaceId' in kwargs:
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
-        if 'nasConfigs' in kwargs:
+        if nas_configs is None and 'nasConfigs' in kwargs:
             nas_configs = kwargs['nasConfigs']
-        if 'ossAkId' in kwargs:
+        if oss_ak_id is None and 'ossAkId' in kwargs:
             oss_ak_id = kwargs['ossAkId']
-        if 'ossAkSecret' in kwargs:
+        if oss_ak_secret is None and 'ossAkSecret' in kwargs:
             oss_ak_secret = kwargs['ossAkSecret']
-        if 'ossMountDescs' in kwargs:
+        if oss_mount_descs is None and 'ossMountDescs' in kwargs:
             oss_mount_descs = kwargs['ossMountDescs']
-        if 'ossMountDescsV2s' in kwargs:
+        if oss_mount_descs_v2s is None and 'ossMountDescsV2s' in kwargs:
             oss_mount_descs_v2s = kwargs['ossMountDescsV2s']
-        if 'packageUrl' in kwargs:
+        if package_url is None and 'packageUrl' in kwargs:
             package_url = kwargs['packageUrl']
-        if 'packageVersion' in kwargs:
+        if package_version is None and 'packageVersion' in kwargs:
             package_version = kwargs['packageVersion']
-        if 'phpArmsConfigLocation' in kwargs:
+        if php_arms_config_location is None and 'phpArmsConfigLocation' in kwargs:
             php_arms_config_location = kwargs['phpArmsConfigLocation']
-        if 'phpConfig' in kwargs:
+        if php_config is None and 'phpConfig' in kwargs:
             php_config = kwargs['phpConfig']
-        if 'phpConfigLocation' in kwargs:
+        if php_config_location is None and 'phpConfigLocation' in kwargs:
             php_config_location = kwargs['phpConfigLocation']
-        if 'postStart' in kwargs:
+        if post_start is None and 'postStart' in kwargs:
             post_start = kwargs['postStart']
-        if 'postStartV2' in kwargs:
+        if post_start_v2 is None and 'postStartV2' in kwargs:
             post_start_v2 = kwargs['postStartV2']
-        if 'preStop' in kwargs:
+        if pre_stop is None and 'preStop' in kwargs:
             pre_stop = kwargs['preStop']
-        if 'preStopV2' in kwargs:
+        if pre_stop_v2 is None and 'preStopV2' in kwargs:
             pre_stop_v2 = kwargs['preStopV2']
-        if 'programmingLanguage' in kwargs:
+        if programming_language is None and 'programmingLanguage' in kwargs:
             programming_language = kwargs['programmingLanguage']
-        if 'pvtzDiscoverySvc' in kwargs:
+        if pvtz_discovery_svc is None and 'pvtzDiscoverySvc' in kwargs:
             pvtz_discovery_svc = kwargs['pvtzDiscoverySvc']
-        if 'readinessV2' in kwargs:
+        if readiness_v2 is None and 'readinessV2' in kwargs:
             readiness_v2 = kwargs['readinessV2']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'slsConfigs' in kwargs:
+        if sls_configs is None and 'slsConfigs' in kwargs:
             sls_configs = kwargs['slsConfigs']
-        if 'terminationGracePeriodSeconds' in kwargs:
+        if termination_grace_period_seconds is None and 'terminationGracePeriodSeconds' in kwargs:
             termination_grace_period_seconds = kwargs['terminationGracePeriodSeconds']
-        if 'tomcatConfig' in kwargs:
+        if tomcat_config is None and 'tomcatConfig' in kwargs:
             tomcat_config = kwargs['tomcatConfig']
-        if 'tomcatConfigV2' in kwargs:
+        if tomcat_config_v2 is None and 'tomcatConfigV2' in kwargs:
             tomcat_config_v2 = kwargs['tomcatConfigV2']
-        if 'updateStrategy' in kwargs:
+        if update_strategy is None and 'updateStrategy' in kwargs:
             update_strategy = kwargs['updateStrategy']
-        if 'updateStrategyV2' in kwargs:
+        if update_strategy_v2 is None and 'updateStrategyV2' in kwargs:
             update_strategy_v2 = kwargs['updateStrategyV2']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'warStartOptions' in kwargs:
+        if war_start_options is None and 'warStartOptions' in kwargs:
             war_start_options = kwargs['warStartOptions']
-        if 'webContainer' in kwargs:
+        if web_container is None and 'webContainer' in kwargs:
             web_container = kwargs['webContainer']
 
         _setter("app_name", app_name)
@@ -1744,119 +1750,119 @@ class _ApplicationState:
              vswitch_id: Optional[pulumi.Input[str]] = None,
              war_start_options: Optional[pulumi.Input[str]] = None,
              web_container: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acrAssumeRoleArn' in kwargs:
+        if acr_assume_role_arn is None and 'acrAssumeRoleArn' in kwargs:
             acr_assume_role_arn = kwargs['acrAssumeRoleArn']
-        if 'acrInstanceId' in kwargs:
+        if acr_instance_id is None and 'acrInstanceId' in kwargs:
             acr_instance_id = kwargs['acrInstanceId']
-        if 'appDescription' in kwargs:
+        if app_description is None and 'appDescription' in kwargs:
             app_description = kwargs['appDescription']
-        if 'appName' in kwargs:
+        if app_name is None and 'appName' in kwargs:
             app_name = kwargs['appName']
-        if 'autoConfig' in kwargs:
+        if auto_config is None and 'autoConfig' in kwargs:
             auto_config = kwargs['autoConfig']
-        if 'autoEnableApplicationScalingRule' in kwargs:
+        if auto_enable_application_scaling_rule is None and 'autoEnableApplicationScalingRule' in kwargs:
             auto_enable_application_scaling_rule = kwargs['autoEnableApplicationScalingRule']
-        if 'batchWaitTime' in kwargs:
+        if batch_wait_time is None and 'batchWaitTime' in kwargs:
             batch_wait_time = kwargs['batchWaitTime']
-        if 'changeOrderDesc' in kwargs:
+        if change_order_desc is None and 'changeOrderDesc' in kwargs:
             change_order_desc = kwargs['changeOrderDesc']
-        if 'commandArgs' in kwargs:
+        if command_args is None and 'commandArgs' in kwargs:
             command_args = kwargs['commandArgs']
-        if 'commandArgsV2s' in kwargs:
+        if command_args_v2s is None and 'commandArgsV2s' in kwargs:
             command_args_v2s = kwargs['commandArgsV2s']
-        if 'configMapMountDesc' in kwargs:
+        if config_map_mount_desc is None and 'configMapMountDesc' in kwargs:
             config_map_mount_desc = kwargs['configMapMountDesc']
-        if 'configMapMountDescV2s' in kwargs:
+        if config_map_mount_desc_v2s is None and 'configMapMountDescV2s' in kwargs:
             config_map_mount_desc_v2s = kwargs['configMapMountDescV2s']
-        if 'customHostAlias' in kwargs:
+        if custom_host_alias is None and 'customHostAlias' in kwargs:
             custom_host_alias = kwargs['customHostAlias']
-        if 'customHostAliasV2s' in kwargs:
+        if custom_host_alias_v2s is None and 'customHostAliasV2s' in kwargs:
             custom_host_alias_v2s = kwargs['customHostAliasV2s']
-        if 'edasContainerVersion' in kwargs:
+        if edas_container_version is None and 'edasContainerVersion' in kwargs:
             edas_container_version = kwargs['edasContainerVersion']
-        if 'enableAhas' in kwargs:
+        if enable_ahas is None and 'enableAhas' in kwargs:
             enable_ahas = kwargs['enableAhas']
-        if 'enableGreyTagRoute' in kwargs:
+        if enable_grey_tag_route is None and 'enableGreyTagRoute' in kwargs:
             enable_grey_tag_route = kwargs['enableGreyTagRoute']
-        if 'imagePullSecrets' in kwargs:
+        if image_pull_secrets is None and 'imagePullSecrets' in kwargs:
             image_pull_secrets = kwargs['imagePullSecrets']
-        if 'imageUrl' in kwargs:
+        if image_url is None and 'imageUrl' in kwargs:
             image_url = kwargs['imageUrl']
-        if 'jarStartArgs' in kwargs:
+        if jar_start_args is None and 'jarStartArgs' in kwargs:
             jar_start_args = kwargs['jarStartArgs']
-        if 'jarStartOptions' in kwargs:
+        if jar_start_options is None and 'jarStartOptions' in kwargs:
             jar_start_options = kwargs['jarStartOptions']
-        if 'kafkaConfigs' in kwargs:
+        if kafka_configs is None and 'kafkaConfigs' in kwargs:
             kafka_configs = kwargs['kafkaConfigs']
-        if 'livenessV2' in kwargs:
+        if liveness_v2 is None and 'livenessV2' in kwargs:
             liveness_v2 = kwargs['livenessV2']
-        if 'microRegistration' in kwargs:
+        if micro_registration is None and 'microRegistration' in kwargs:
             micro_registration = kwargs['microRegistration']
-        if 'minReadyInstanceRatio' in kwargs:
+        if min_ready_instance_ratio is None and 'minReadyInstanceRatio' in kwargs:
             min_ready_instance_ratio = kwargs['minReadyInstanceRatio']
-        if 'minReadyInstances' in kwargs:
+        if min_ready_instances is None and 'minReadyInstances' in kwargs:
             min_ready_instances = kwargs['minReadyInstances']
-        if 'namespaceId' in kwargs:
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
-        if 'nasConfigs' in kwargs:
+        if nas_configs is None and 'nasConfigs' in kwargs:
             nas_configs = kwargs['nasConfigs']
-        if 'ossAkId' in kwargs:
+        if oss_ak_id is None and 'ossAkId' in kwargs:
             oss_ak_id = kwargs['ossAkId']
-        if 'ossAkSecret' in kwargs:
+        if oss_ak_secret is None and 'ossAkSecret' in kwargs:
             oss_ak_secret = kwargs['ossAkSecret']
-        if 'ossMountDescs' in kwargs:
+        if oss_mount_descs is None and 'ossMountDescs' in kwargs:
             oss_mount_descs = kwargs['ossMountDescs']
-        if 'ossMountDescsV2s' in kwargs:
+        if oss_mount_descs_v2s is None and 'ossMountDescsV2s' in kwargs:
             oss_mount_descs_v2s = kwargs['ossMountDescsV2s']
-        if 'packageType' in kwargs:
+        if package_type is None and 'packageType' in kwargs:
             package_type = kwargs['packageType']
-        if 'packageUrl' in kwargs:
+        if package_url is None and 'packageUrl' in kwargs:
             package_url = kwargs['packageUrl']
-        if 'packageVersion' in kwargs:
+        if package_version is None and 'packageVersion' in kwargs:
             package_version = kwargs['packageVersion']
-        if 'phpArmsConfigLocation' in kwargs:
+        if php_arms_config_location is None and 'phpArmsConfigLocation' in kwargs:
             php_arms_config_location = kwargs['phpArmsConfigLocation']
-        if 'phpConfig' in kwargs:
+        if php_config is None and 'phpConfig' in kwargs:
             php_config = kwargs['phpConfig']
-        if 'phpConfigLocation' in kwargs:
+        if php_config_location is None and 'phpConfigLocation' in kwargs:
             php_config_location = kwargs['phpConfigLocation']
-        if 'postStart' in kwargs:
+        if post_start is None and 'postStart' in kwargs:
             post_start = kwargs['postStart']
-        if 'postStartV2' in kwargs:
+        if post_start_v2 is None and 'postStartV2' in kwargs:
             post_start_v2 = kwargs['postStartV2']
-        if 'preStop' in kwargs:
+        if pre_stop is None and 'preStop' in kwargs:
             pre_stop = kwargs['preStop']
-        if 'preStopV2' in kwargs:
+        if pre_stop_v2 is None and 'preStopV2' in kwargs:
             pre_stop_v2 = kwargs['preStopV2']
-        if 'programmingLanguage' in kwargs:
+        if programming_language is None and 'programmingLanguage' in kwargs:
             programming_language = kwargs['programmingLanguage']
-        if 'pvtzDiscoverySvc' in kwargs:
+        if pvtz_discovery_svc is None and 'pvtzDiscoverySvc' in kwargs:
             pvtz_discovery_svc = kwargs['pvtzDiscoverySvc']
-        if 'readinessV2' in kwargs:
+        if readiness_v2 is None and 'readinessV2' in kwargs:
             readiness_v2 = kwargs['readinessV2']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'slsConfigs' in kwargs:
+        if sls_configs is None and 'slsConfigs' in kwargs:
             sls_configs = kwargs['slsConfigs']
-        if 'terminationGracePeriodSeconds' in kwargs:
+        if termination_grace_period_seconds is None and 'terminationGracePeriodSeconds' in kwargs:
             termination_grace_period_seconds = kwargs['terminationGracePeriodSeconds']
-        if 'tomcatConfig' in kwargs:
+        if tomcat_config is None and 'tomcatConfig' in kwargs:
             tomcat_config = kwargs['tomcatConfig']
-        if 'tomcatConfigV2' in kwargs:
+        if tomcat_config_v2 is None and 'tomcatConfigV2' in kwargs:
             tomcat_config_v2 = kwargs['tomcatConfigV2']
-        if 'updateStrategy' in kwargs:
+        if update_strategy is None and 'updateStrategy' in kwargs:
             update_strategy = kwargs['updateStrategy']
-        if 'updateStrategyV2' in kwargs:
+        if update_strategy_v2 is None and 'updateStrategyV2' in kwargs:
             update_strategy_v2 = kwargs['updateStrategyV2']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'warStartOptions' in kwargs:
+        if war_start_options is None and 'warStartOptions' in kwargs:
             war_start_options = kwargs['warStartOptions']
-        if 'webContainer' in kwargs:
+        if web_container is None and 'webContainer' in kwargs:
             web_container = kwargs['webContainer']
 
         if acr_assume_role_arn is not None:
@@ -2974,52 +2980,6 @@ class Application(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.161.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=f"{default_regions.regions[0].id}:example",
-            namespace_name=name,
-            namespace_description=name,
-            enable_micro_registration=False)
-        default_application = alicloud.sae.Application("defaultApplication",
-            app_description=name,
-            app_name=name,
-            namespace_id=default_namespace.id,
-            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
-            package_type="Image",
-            security_group_id=default_security_group.id,
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            timezone="Asia/Beijing",
-            replicas=5,
-            cpu=500,
-            memory=2048)
-        ```
-
         ## Import
 
         Serverless App Engine (SAE) Application can be imported using the id, e.g.
@@ -3117,52 +3077,6 @@ class Application(pulumi.CustomResource):
         For information about Serverless App Engine (SAE) Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/sae/latest/createapplication).
 
         > **NOTE:** Available since v1.161.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=f"{default_regions.regions[0].id}:example",
-            namespace_name=name,
-            namespace_description=name,
-            enable_micro_registration=False)
-        default_application = alicloud.sae.Application("defaultApplication",
-            app_description=name,
-            app_name=name,
-            namespace_id=default_namespace.id,
-            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
-            package_type="Image",
-            security_group_id=default_security_group.id,
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            timezone="Asia/Beijing",
-            replicas=5,
-            cpu=500,
-            memory=2048)
-        ```
 
         ## Import
 
@@ -3297,18 +3211,10 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["jar_start_args"] = jar_start_args
             __props__.__dict__["jar_start_options"] = jar_start_options
             __props__.__dict__["jdk"] = jdk
-            if kafka_configs is not None and not isinstance(kafka_configs, ApplicationKafkaConfigsArgs):
-                kafka_configs = kafka_configs or {}
-                def _setter(key, value):
-                    kafka_configs[key] = value
-                ApplicationKafkaConfigsArgs._configure(_setter, **kafka_configs)
+            kafka_configs = _utilities.configure(kafka_configs, ApplicationKafkaConfigsArgs, True)
             __props__.__dict__["kafka_configs"] = kafka_configs
             __props__.__dict__["liveness"] = liveness
-            if liveness_v2 is not None and not isinstance(liveness_v2, ApplicationLivenessV2Args):
-                liveness_v2 = liveness_v2 or {}
-                def _setter(key, value):
-                    liveness_v2[key] = value
-                ApplicationLivenessV2Args._configure(_setter, **liveness_v2)
+            liveness_v2 = _utilities.configure(liveness_v2, ApplicationLivenessV2Args, True)
             __props__.__dict__["liveness_v2"] = liveness_v2
             __props__.__dict__["memory"] = memory
             __props__.__dict__["micro_registration"] = micro_registration
@@ -3330,32 +3236,16 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["php_config"] = php_config
             __props__.__dict__["php_config_location"] = php_config_location
             __props__.__dict__["post_start"] = post_start
-            if post_start_v2 is not None and not isinstance(post_start_v2, ApplicationPostStartV2Args):
-                post_start_v2 = post_start_v2 or {}
-                def _setter(key, value):
-                    post_start_v2[key] = value
-                ApplicationPostStartV2Args._configure(_setter, **post_start_v2)
+            post_start_v2 = _utilities.configure(post_start_v2, ApplicationPostStartV2Args, True)
             __props__.__dict__["post_start_v2"] = post_start_v2
             __props__.__dict__["pre_stop"] = pre_stop
-            if pre_stop_v2 is not None and not isinstance(pre_stop_v2, ApplicationPreStopV2Args):
-                pre_stop_v2 = pre_stop_v2 or {}
-                def _setter(key, value):
-                    pre_stop_v2[key] = value
-                ApplicationPreStopV2Args._configure(_setter, **pre_stop_v2)
+            pre_stop_v2 = _utilities.configure(pre_stop_v2, ApplicationPreStopV2Args, True)
             __props__.__dict__["pre_stop_v2"] = pre_stop_v2
             __props__.__dict__["programming_language"] = programming_language
-            if pvtz_discovery_svc is not None and not isinstance(pvtz_discovery_svc, ApplicationPvtzDiscoverySvcArgs):
-                pvtz_discovery_svc = pvtz_discovery_svc or {}
-                def _setter(key, value):
-                    pvtz_discovery_svc[key] = value
-                ApplicationPvtzDiscoverySvcArgs._configure(_setter, **pvtz_discovery_svc)
+            pvtz_discovery_svc = _utilities.configure(pvtz_discovery_svc, ApplicationPvtzDiscoverySvcArgs, True)
             __props__.__dict__["pvtz_discovery_svc"] = pvtz_discovery_svc
             __props__.__dict__["readiness"] = readiness
-            if readiness_v2 is not None and not isinstance(readiness_v2, ApplicationReadinessV2Args):
-                readiness_v2 = readiness_v2 or {}
-                def _setter(key, value):
-                    readiness_v2[key] = value
-                ApplicationReadinessV2Args._configure(_setter, **readiness_v2)
+            readiness_v2 = _utilities.configure(readiness_v2, ApplicationReadinessV2Args, True)
             __props__.__dict__["readiness_v2"] = readiness_v2
             if replicas is None and not opts.urn:
                 raise TypeError("Missing required property 'replicas'")
@@ -3367,18 +3257,10 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["termination_grace_period_seconds"] = termination_grace_period_seconds
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["tomcat_config"] = tomcat_config
-            if tomcat_config_v2 is not None and not isinstance(tomcat_config_v2, ApplicationTomcatConfigV2Args):
-                tomcat_config_v2 = tomcat_config_v2 or {}
-                def _setter(key, value):
-                    tomcat_config_v2[key] = value
-                ApplicationTomcatConfigV2Args._configure(_setter, **tomcat_config_v2)
+            tomcat_config_v2 = _utilities.configure(tomcat_config_v2, ApplicationTomcatConfigV2Args, True)
             __props__.__dict__["tomcat_config_v2"] = tomcat_config_v2
             __props__.__dict__["update_strategy"] = update_strategy
-            if update_strategy_v2 is not None and not isinstance(update_strategy_v2, ApplicationUpdateStrategyV2Args):
-                update_strategy_v2 = update_strategy_v2 or {}
-                def _setter(key, value):
-                    update_strategy_v2[key] = value
-                ApplicationUpdateStrategyV2Args._configure(_setter, **update_strategy_v2)
+            update_strategy_v2 = _utilities.configure(update_strategy_v2, ApplicationUpdateStrategyV2Args, True)
             __props__.__dict__["update_strategy_v2"] = update_strategy_v2
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id

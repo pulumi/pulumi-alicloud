@@ -28,9 +28,9 @@ class InstanceEcsListArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              ecs_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ecsId' in kwargs:
+        if ecs_id is None and 'ecsId' in kwargs:
             ecs_id = kwargs['ecsId']
 
         if ecs_id is not None:

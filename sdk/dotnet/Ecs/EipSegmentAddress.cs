@@ -16,32 +16,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available since v1.207.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = new AliCloud.Ecs.EipSegmentAddress("default", new()
-    ///     {
-    ///         Bandwidth = "5",
-    ///         EipMask = "28",
-    ///         InternetChargeType = "PayByBandwidth",
-    ///         Isp = "BGP",
-    ///         Netmode = "public",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// EIP Segment Address can be imported using the id, e.g.

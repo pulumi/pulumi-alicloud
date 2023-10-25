@@ -11,54 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.193.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tfexample";
- * const defaultAccount = alicloud.getAccount({});
- * const defaultNodeClasses = alicloud.polardb.getNodeClasses({
- *     dbType: "MySQL",
- *     dbVersion: "8.0",
- *     payType: "PostPaid",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultNodeClasses.then(defaultNodeClasses => defaultNodeClasses.classes?.[0]?.zoneId),
- *     vswitchName: name,
- * });
- * const defaultCluster = new alicloud.polardb.Cluster("defaultCluster", {
- *     dbType: "MySQL",
- *     dbVersion: "8.0",
- *     dbNodeClass: "polar.mysql.x4.large",
- *     payType: "PostPaid",
- *     vswitchId: defaultSwitch.id,
- *     description: name,
- *     dbClusterIpArrays: [{
- *         dbClusterIpArrayName: "default",
- *         securityIps: [
- *             "1.2.3.4",
- *             "1.2.3.5",
- *         ],
- *     }],
- * });
- * const defaultSwitchDasPro = new alicloud.das.SwitchDasPro("defaultSwitchDasPro", {
- *     instanceId: defaultCluster.id,
- *     sqlRetention: 30,
- *     userId: defaultAccount.then(defaultAccount => defaultAccount.id),
- * });
- * ```
- *
  * ## Import
  *
  * DAS Switch Das Pro can be imported using the id, e.g.

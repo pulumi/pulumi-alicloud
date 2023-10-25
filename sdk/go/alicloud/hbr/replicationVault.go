@@ -19,67 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.152.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			sourceRegion := "cn-hangzhou"
-//			if param := cfg.Get("sourceRegion"); param != "" {
-//				sourceRegion = param
-//			}
-//			_, err := alicloud.NewProvider(ctx, "source", &alicloud.ProviderArgs{
-//				Region: pulumi.String(sourceRegion),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultReplicationVaultRegions, err := hbr.GetReplicationVaultRegions(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alicloud.NewProvider(ctx, "replication", &alicloud.ProviderArgs{
-//				Region: *pulumi.String(defaultReplicationVaultRegions.Regions[0].ReplicationRegionId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
-//				VaultName: pulumi.String("terraform-example"),
-//			}, pulumi.Provider(alicloud.Source))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = hbr.NewReplicationVault(ctx, "defaultReplicationVault", &hbr.ReplicationVaultArgs{
-//				ReplicationSourceRegionId: pulumi.String(sourceRegion),
-//				ReplicationSourceVaultId:  defaultVault.ID(),
-//				VaultName:                 pulumi.String("terraform-example"),
-//				VaultStorageClass:         pulumi.String("STANDARD"),
-//				Description:               pulumi.String("terraform-example"),
-//			}, pulumi.Provider(alicloud.Replication))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Hybrid Backup Recovery (HBR) Replication Vault can be imported using the id, e.g.

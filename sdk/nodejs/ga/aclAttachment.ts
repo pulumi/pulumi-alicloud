@@ -11,54 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.150.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
- *     duration: 1,
- *     autoUseCoupon: true,
- *     spec: "1",
- * });
- * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
- *     bandwidth: 100,
- *     type: "Basic",
- *     bandwidthType: "Basic",
- *     paymentType: "PayAsYouGo",
- *     billingType: "PayBy95",
- *     ratio: 30,
- * });
- * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
- *     acceleratorId: defaultAccelerator.id,
- *     bandwidthPackageId: defaultBandwidthPackage.id,
- * });
- * const defaultListener = new alicloud.ga.Listener("defaultListener", {
- *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
- *     portRanges: [{
- *         fromPort: 80,
- *         toPort: 80,
- *     }],
- * });
- * const defaultAcl = new alicloud.ga.Acl("defaultAcl", {
- *     aclName: "terraform-example",
- *     addressIpVersion: "IPv4",
- * });
- * const defaultAclEntryAttachment = new alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment", {
- *     aclId: defaultAcl.id,
- *     entry: "192.168.1.1/32",
- *     entryDescription: "terraform-example",
- * });
- * const defaultAclAttachment = new alicloud.ga.AclAttachment("defaultAclAttachment", {
- *     listenerId: defaultListener.id,
- *     aclId: defaultAcl.id,
- *     aclType: "white",
- * });
- * ```
- *
  * ## Import
  *
  * Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.

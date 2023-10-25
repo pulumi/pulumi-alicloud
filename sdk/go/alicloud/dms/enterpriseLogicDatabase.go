@@ -19,38 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.195.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dms.NewEnterpriseLogicDatabase(ctx, "default", &dms.EnterpriseLogicDatabaseArgs{
-//				Alias: pulumi.String("TF_logic_db_test"),
-//				DatabaseIds: pulumi.StringArray{
-//					pulumi.String("35617919"),
-//					pulumi.String("35617920"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // DMS Enterprise Logic Database can be imported using the id, e.g.

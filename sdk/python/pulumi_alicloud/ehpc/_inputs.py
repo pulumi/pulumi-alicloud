@@ -67,23 +67,23 @@ class ClusterAdditionalVolumeArgs:
              volume_mountpoint: Optional[pulumi.Input[str]] = None,
              volume_protocol: Optional[pulumi.Input[str]] = None,
              volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'jobQueue' in kwargs:
+        if job_queue is None and 'jobQueue' in kwargs:
             job_queue = kwargs['jobQueue']
-        if 'localDirectory' in kwargs:
+        if local_directory is None and 'localDirectory' in kwargs:
             local_directory = kwargs['localDirectory']
-        if 'remoteDirectory' in kwargs:
+        if remote_directory is None and 'remoteDirectory' in kwargs:
             remote_directory = kwargs['remoteDirectory']
-        if 'volumeId' in kwargs:
+        if volume_id is None and 'volumeId' in kwargs:
             volume_id = kwargs['volumeId']
-        if 'volumeMountOption' in kwargs:
+        if volume_mount_option is None and 'volumeMountOption' in kwargs:
             volume_mount_option = kwargs['volumeMountOption']
-        if 'volumeMountpoint' in kwargs:
+        if volume_mountpoint is None and 'volumeMountpoint' in kwargs:
             volume_mountpoint = kwargs['volumeMountpoint']
-        if 'volumeProtocol' in kwargs:
+        if volume_protocol is None and 'volumeProtocol' in kwargs:
             volume_protocol = kwargs['volumeProtocol']
-        if 'volumeType' in kwargs:
+        if volume_type is None and 'volumeType' in kwargs:
             volume_type = kwargs['volumeType']
 
         if job_queue is not None:
@@ -243,7 +243,7 @@ class ClusterAdditionalVolumeRoleArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -277,7 +277,7 @@ class ClusterApplicationArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if tag is not None:
@@ -315,7 +315,7 @@ class ClusterPostInstallScriptArgs:
              _setter: Callable[[Any, Any], None],
              args: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if args is not None:

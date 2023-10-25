@@ -16,28 +16,6 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// 
     /// &gt; **NOTE:** Available in v1.195.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.ThreatDetection.VulWhitelist("default", new()
-    ///     {
-    ///         Reason = "tf-example-reason",
-    ///         TargetInfo = "{\"type\":\"GroupId\",\"uuids\":[],\"groupIds\":[10782678]}",
-    ///         Whitelist = "[{\"aliasName\":\"RHSA-2021:2260: libwebp 安全更新\",\"name\":\"RHSA-2021:2260: libwebp 安全更新\",\"type\":\"cve\"}]",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Threat Detection Vul Whitelist can be imported using the id, e.g.

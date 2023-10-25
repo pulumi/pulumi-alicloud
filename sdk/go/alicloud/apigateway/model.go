@@ -19,43 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.187.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultGroup, err := apigateway.NewGroup(ctx, "defaultGroup", &apigateway.GroupArgs{
-//				Description: pulumi.String("example_value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = apigateway.NewModel(ctx, "defaultModel", &apigateway.ModelArgs{
-//				GroupId:     defaultGroup.ID(),
-//				ModelName:   pulumi.String("example_value"),
-//				Schema:      pulumi.String("{\"type\":\"object\",\"properties\":{\"id\":{\"format\":\"int64\",\"maximum\":100,\"exclusiveMaximum\":true,\"type\":\"integer\"},\"name\":{\"maxLength\":10,\"type\":\"string\"}}}"),
-//				Description: pulumi.String("example_value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Api Gateway Model can be imported using the id, e.g.

@@ -15,38 +15,6 @@ import (
 // This data source provides the Vpc Flow Logs of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.122.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := vpc.GetVpcFlowLogs(ctx, &vpc.GetVpcFlowLogsArgs{
-//				Ids: []string{
-//					"example_value",
-//				},
-//				NameRegex: pulumi.StringRef("the_resource_name"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstVpcFlowLogId", example.Logs[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetVpcFlowLogs(ctx *pulumi.Context, args *GetVpcFlowLogsArgs, opts ...pulumi.InvokeOption) (*GetVpcFlowLogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpcFlowLogsResult

@@ -129,24 +129,6 @@ def get_domains(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.134.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.directmail.get_domains(ids=["example_id"])
-    pulumi.export("directMailDomainId1", ids.domains[0].id)
-    name_regex = alicloud.directmail.get_domains(name_regex="^my-Domain")
-    pulumi.export("directMailDomainId2", name_regex.domains[0].id)
-    example = alicloud.directmail.get_domains(status="1",
-        key_word="^my-Domain",
-        ids=["example_id"])
-    pulumi.export("directMailDomainId3", example.domains[0].id)
-    ```
-
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Domain IDs.
@@ -189,24 +171,6 @@ def get_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
     This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.134.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.directmail.get_domains(ids=["example_id"])
-    pulumi.export("directMailDomainId1", ids.domains[0].id)
-    name_regex = alicloud.directmail.get_domains(name_regex="^my-Domain")
-    pulumi.export("directMailDomainId2", name_regex.domains[0].id)
-    example = alicloud.directmail.get_domains(status="1",
-        key_word="^my-Domain",
-        ids=["example_id"])
-    pulumi.export("directMailDomainId3", example.domains[0].id)
-    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

@@ -40,20 +40,24 @@ class GreyTagRouteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_id: pulumi.Input[str],
-             grey_tag_route_name: pulumi.Input[str],
+             app_id: Optional[pulumi.Input[str]] = None,
+             grey_tag_route_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dubbo_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]] = None,
              sc_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appId' in kwargs:
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'greyTagRouteName' in kwargs:
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if grey_tag_route_name is None and 'greyTagRouteName' in kwargs:
             grey_tag_route_name = kwargs['greyTagRouteName']
-        if 'dubboRules' in kwargs:
+        if grey_tag_route_name is None:
+            raise TypeError("Missing 'grey_tag_route_name' argument")
+        if dubbo_rules is None and 'dubboRules' in kwargs:
             dubbo_rules = kwargs['dubboRules']
-        if 'scRules' in kwargs:
+        if sc_rules is None and 'scRules' in kwargs:
             sc_rules = kwargs['scRules']
 
         _setter("app_id", app_id)
@@ -158,15 +162,15 @@ class _GreyTagRouteState:
              dubbo_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]] = None,
              grey_tag_route_name: Optional[pulumi.Input[str]] = None,
              sc_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appId' in kwargs:
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'dubboRules' in kwargs:
+        if dubbo_rules is None and 'dubboRules' in kwargs:
             dubbo_rules = kwargs['dubboRules']
-        if 'greyTagRouteName' in kwargs:
+        if grey_tag_route_name is None and 'greyTagRouteName' in kwargs:
             grey_tag_route_name = kwargs['greyTagRouteName']
-        if 'scRules' in kwargs:
+        if sc_rules is None and 'scRules' in kwargs:
             sc_rules = kwargs['scRules']
 
         if app_id is not None:
@@ -259,78 +263,6 @@ class GreyTagRoute(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.160.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=f"{default_regions.regions[0].id}:example",
-            namespace_name=name,
-            namespace_description=name,
-            enable_micro_registration=False)
-        default_application = alicloud.sae.Application("defaultApplication",
-            app_description=name,
-            app_name=name,
-            namespace_id=default_namespace.id,
-            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
-            package_type="Image",
-            security_group_id=default_security_group.id,
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            timezone="Asia/Beijing",
-            replicas=5,
-            cpu=500,
-            memory=2048)
-        default_grey_tag_route = alicloud.sae.GreyTagRoute("defaultGreyTagRoute",
-            grey_tag_route_name=name,
-            description=name,
-            app_id=default_application.id,
-            sc_rules=[alicloud.sae.GreyTagRouteScRuleArgs(
-                items=[alicloud.sae.GreyTagRouteScRuleItemArgs(
-                    type="param",
-                    name="tfexample",
-                    operator="rawvalue",
-                    value="example",
-                    cond="==",
-                )],
-                path="/tf/example",
-                condition="AND",
-            )],
-            dubbo_rules=[alicloud.sae.GreyTagRouteDubboRuleArgs(
-                items=[alicloud.sae.GreyTagRouteDubboRuleItemArgs(
-                    cond="==",
-                    expr=".key1",
-                    index=1,
-                    operator="rawvalue",
-                    value="value1",
-                )],
-                condition="OR",
-                group="DUBBO",
-                method_name="example",
-                service_name="com.example.service",
-                version="1.0.0",
-            )])
-        ```
-
         ## Import
 
         Serverless App Engine (SAE) GreyTagRoute can be imported using the id, e.g.
@@ -359,78 +291,6 @@ class GreyTagRoute(pulumi.CustomResource):
         For information about Serverless App Engine (SAE) GreyTagRoute and how to use it, see [What is GreyTagRoute](https://www.alibabacloud.com/help/en/sae/latest/create-grey-tag-route).
 
         > **NOTE:** Available since v1.160.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=f"{default_regions.regions[0].id}:example",
-            namespace_name=name,
-            namespace_description=name,
-            enable_micro_registration=False)
-        default_application = alicloud.sae.Application("defaultApplication",
-            app_description=name,
-            app_name=name,
-            namespace_id=default_namespace.id,
-            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
-            package_type="Image",
-            security_group_id=default_security_group.id,
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            timezone="Asia/Beijing",
-            replicas=5,
-            cpu=500,
-            memory=2048)
-        default_grey_tag_route = alicloud.sae.GreyTagRoute("defaultGreyTagRoute",
-            grey_tag_route_name=name,
-            description=name,
-            app_id=default_application.id,
-            sc_rules=[alicloud.sae.GreyTagRouteScRuleArgs(
-                items=[alicloud.sae.GreyTagRouteScRuleItemArgs(
-                    type="param",
-                    name="tfexample",
-                    operator="rawvalue",
-                    value="example",
-                    cond="==",
-                )],
-                path="/tf/example",
-                condition="AND",
-            )],
-            dubbo_rules=[alicloud.sae.GreyTagRouteDubboRuleArgs(
-                items=[alicloud.sae.GreyTagRouteDubboRuleItemArgs(
-                    cond="==",
-                    expr=".key1",
-                    index=1,
-                    operator="rawvalue",
-                    value="value1",
-                )],
-                condition="OR",
-                group="DUBBO",
-                method_name="example",
-                service_name="com.example.service",
-                version="1.0.0",
-            )])
-        ```
 
         ## Import
 

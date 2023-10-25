@@ -29,12 +29,14 @@ class NamespaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespace_name: pulumi.Input[str],
+             namespace_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'namespaceName' in kwargs:
+        if namespace_name is None and 'namespaceName' in kwargs:
             namespace_name = kwargs['namespaceName']
+        if namespace_name is None:
+            raise TypeError("Missing 'namespace_name' argument")
 
         _setter("namespace_name", namespace_name)
         if description is not None:
@@ -85,9 +87,9 @@ class _NamespaceState:
              _setter: Callable[[Any, Any], None],
              description: Optional[pulumi.Input[str]] = None,
              namespace_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'namespaceName' in kwargs:
+        if namespace_name is None and 'namespaceName' in kwargs:
             namespace_name = kwargs['namespaceName']
 
         if description is not None:
@@ -135,17 +137,6 @@ class Namespace(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.173.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.schedulerx.Namespace("example", namespace_name="example_value")
-        ```
-
         ## Import
 
         Schedulerx Namespace can be imported using the id, e.g.
@@ -171,17 +162,6 @@ class Namespace(pulumi.CustomResource):
         For information about Schedulerx Namespace and how to use it, see [What is Namespace](https://help.aliyun.com/document_detail/206088.html).
 
         > **NOTE:** Available in v1.173.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.schedulerx.Namespace("example", namespace_name="example_value")
-        ```
 
         ## Import
 

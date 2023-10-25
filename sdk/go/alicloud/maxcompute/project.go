@@ -18,43 +18,6 @@ import (
 // For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute).
 //
 // > **NOTE:** Available since v1.77.0.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/maxcompute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf_example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := maxcompute.NewProject(ctx, "default", &maxcompute.ProjectArgs{
-//				DefaultQuota: pulumi.String("默认后付费Quota"),
-//				ProjectName:  pulumi.String(name),
-//				Comment:      pulumi.String(name),
-//				ProductType:  pulumi.String("PayAsYouGo"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Project struct {
 	pulumi.CustomResourceState
 

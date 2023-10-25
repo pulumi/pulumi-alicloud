@@ -13,64 +13,12 @@ namespace Pulumi.AliCloud.Oss
     {
         /// <summary>
         /// This data source provides the OSS buckets of the current Alibaba Cloud user.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ossBucketsDs = AliCloud.Oss.GetBuckets.Invoke(new()
-        ///     {
-        ///         NameRegex = "sample_oss_bucket",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstOssBucketName"] = ossBucketsDs.Apply(getBucketsResult =&gt; getBucketsResult.Buckets[0]?.Name),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBucketsResult> InvokeAsync(GetBucketsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBucketsResult>("alicloud:oss/getBuckets:getBuckets", args ?? new GetBucketsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the OSS buckets of the current Alibaba Cloud user.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ossBucketsDs = AliCloud.Oss.GetBuckets.Invoke(new()
-        ///     {
-        ///         NameRegex = "sample_oss_bucket",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstOssBucketName"] = ossBucketsDs.Apply(getBucketsResult =&gt; getBucketsResult.Buckets[0]?.Name),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBucketsResult> Invoke(GetBucketsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBucketsResult>("alicloud:oss/getBuckets:getBuckets", args ?? new GetBucketsInvokeArgs(), options.WithDefaults());

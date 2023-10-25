@@ -12,54 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
  *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultZones = alicloud.gpdb.getZones({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "10.4.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vswitchName: name,
- *     cidrBlock: "10.4.0.0/24",
- *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
- * });
- * const defaultInstance = new alicloud.gpdb.Instance("defaultInstance", {
- *     dbInstanceCategory: "HighAvailability",
- *     dbInstanceClass: "gpdb.group.segsdx1",
- *     dbInstanceMode: "StorageElastic",
- *     description: name,
- *     engine: "gpdb",
- *     engineVersion: "6.0",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
- *     instanceNetworkType: "VPC",
- *     instanceSpec: "2C16G",
- *     masterNodeNum: 1,
- *     paymentType: "PayAsYouGo",
- *     privateIpAddress: "1.1.1.1",
- *     segStorageType: "cloud_essd",
- *     segNodeNum: 4,
- *     storageSize: 50,
- *     vpcId: defaultNetwork.id,
- *     vswitchId: defaultSwitch.id,
- *     ipWhitelists: [{
- *         securityIpList: "127.0.0.1",
- *     }],
- * });
- * const defaultConnection = new alicloud.gpdb.Connection("defaultConnection", {
- *     instanceId: defaultInstance.id,
- *     connectionPrefix: "exampelcon",
- * });
- * ```
- *
  * ## Import
  *
  * AnalyticDB for PostgreSQL's connection can be imported using the id, e.g.

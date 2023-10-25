@@ -120,18 +120,6 @@ def get_hybrid_monitor_sls_tasks(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.179.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cms.get_hybrid_monitor_sls_tasks(ids=["example_value"])
-    pulumi.export("cmsHybridMonitorSlsTaskId1", ids.tasks[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Hybrid Monitor Sls Task IDs.
     :param str keyword: The keyword that is used to search for metric import tasks.
@@ -171,18 +159,6 @@ def get_hybrid_monitor_sls_tasks_output(ids: Optional[pulumi.Input[Optional[Sequ
     This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.179.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cms.get_hybrid_monitor_sls_tasks(ids=["example_value"])
-    pulumi.export("cmsHybridMonitorSlsTaskId1", ids.tasks[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Hybrid Monitor Sls Task IDs.

@@ -70,17 +70,6 @@ def get_blocked_regions(language: Optional[str] = None,
 
     > **NOTE:** Available in v1.173.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.cdn.get_blocked_regions(language="zh")
-    ```
-
 
     :param str language: The language. Valid values: `zh`, `en`, `jp`.
     """
@@ -102,17 +91,6 @@ def get_blocked_regions_output(language: Optional[pulumi.Input[str]] = None,
     This data source provides the Cdn blocked regions.
 
     > **NOTE:** Available in v1.173.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.cdn.get_blocked_regions(language="zh")
-    ```
 
 
     :param str language: The language. Valid values: `zh`, `en`, `jp`.

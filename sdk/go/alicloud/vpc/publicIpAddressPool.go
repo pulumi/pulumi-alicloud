@@ -18,50 +18,6 @@ import (
 //
 // > **NOTE:** Available since v1.186.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-//				Status: pulumi.StringRef("OK"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpc.NewPublicIpAddressPool(ctx, "defaultPublicIpAddressPool", &vpc.PublicIpAddressPoolArgs{
-//				Description:             pulumi.String(name),
-//				PublicIpAddressPoolName: pulumi.String(name),
-//				Isp:                     pulumi.String("BGP"),
-//				ResourceGroupId:         *pulumi.String(defaultResourceGroups.Ids[0]),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Vpc Public Ip Address Pool can be imported using the id, e.g.

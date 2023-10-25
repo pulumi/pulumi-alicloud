@@ -15,57 +15,6 @@ import (
 // This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.136.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/graphdatabase"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := graphdatabase.GetDbInstances(ctx, &graphdatabase.GetDbInstancesArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("graphDatabaseDbInstanceId1", ids.Instances[0].Id)
-//			status, err := graphdatabase.GetDbInstances(ctx, &graphdatabase.GetDbInstancesArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//				Status: pulumi.StringRef("Running"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("graphDatabaseDbInstanceId2", status.Instances[0].Id)
-//			description, err := graphdatabase.GetDbInstances(ctx, &graphdatabase.GetDbInstancesArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//				DbInstanceDescription: pulumi.StringRef("example_value"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("graphDatabaseDbInstanceId3", description.Instances[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDbInstances(ctx *pulumi.Context, args *GetDbInstancesArgs, opts ...pulumi.InvokeOption) (*GetDbInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDbInstancesResult

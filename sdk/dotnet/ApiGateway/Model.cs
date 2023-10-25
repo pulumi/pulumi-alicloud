@@ -16,34 +16,6 @@ namespace Pulumi.AliCloud.ApiGateway
     /// 
     /// &gt; **NOTE:** Available since v1.187.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultGroup = new AliCloud.ApiGateway.Group("defaultGroup", new()
-    ///     {
-    ///         Description = "example_value",
-    ///     });
-    /// 
-    ///     var defaultModel = new AliCloud.ApiGateway.Model("defaultModel", new()
-    ///     {
-    ///         GroupId = defaultGroup.Id,
-    ///         ModelName = "example_value",
-    ///         Schema = "{\"type\":\"object\",\"properties\":{\"id\":{\"format\":\"int64\",\"maximum\":100,\"exclusiveMaximum\":true,\"type\":\"integer\"},\"name\":{\"maxLength\":10,\"type\":\"string\"}}}",
-    ///         Description = "example_value",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Api Gateway Model can be imported using the id, e.g.

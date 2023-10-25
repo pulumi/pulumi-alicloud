@@ -43,11 +43,11 @@ class PublicIpAddressPoolArgs:
              public_ip_address_pool_name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'publicIpAddressPoolName' in kwargs:
+        if public_ip_address_pool_name is None and 'publicIpAddressPoolName' in kwargs:
             public_ip_address_pool_name = kwargs['publicIpAddressPoolName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         if description is not None:
@@ -177,21 +177,21 @@ class _PublicIpAddressPoolState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              total_ip_num: Optional[pulumi.Input[int]] = None,
              used_ip_num: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'ipAddressRemaining' in kwargs:
+        if ip_address_remaining is None and 'ipAddressRemaining' in kwargs:
             ip_address_remaining = kwargs['ipAddressRemaining']
-        if 'publicIpAddressPoolId' in kwargs:
+        if public_ip_address_pool_id is None and 'publicIpAddressPoolId' in kwargs:
             public_ip_address_pool_id = kwargs['publicIpAddressPoolId']
-        if 'publicIpAddressPoolName' in kwargs:
+        if public_ip_address_pool_name is None and 'publicIpAddressPoolName' in kwargs:
             public_ip_address_pool_name = kwargs['publicIpAddressPoolName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'totalIpNum' in kwargs:
+        if total_ip_num is None and 'totalIpNum' in kwargs:
             total_ip_num = kwargs['totalIpNum']
-        if 'usedIpNum' in kwargs:
+        if used_ip_num is None and 'usedIpNum' in kwargs:
             used_ip_num = kwargs['usedIpNum']
 
         if create_time is not None:
@@ -365,26 +365,6 @@ class PublicIpAddressPool(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.186.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool",
-            description=name,
-            public_ip_address_pool_name=name,
-            isp="BGP",
-            resource_group_id=default_resource_groups.ids[0])
-        ```
-
         ## Import
 
         Vpc Public Ip Address Pool can be imported using the id, e.g.
@@ -413,26 +393,6 @@ class PublicIpAddressPool(pulumi.CustomResource):
         For information about Vpc Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
 
         > **NOTE:** Available since v1.186.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool",
-            description=name,
-            public_ip_address_pool_name=name,
-            isp="BGP",
-            resource_group_id=default_resource_groups.ids[0])
-        ```
 
         ## Import
 

@@ -15,38 +15,6 @@ namespace Pulumi.AliCloud.Mse
         /// This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.166.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Mse.GetEngineNamespaces.Invoke(new()
-        ///     {
-        ///         ClusterId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["mseEngineNamespaceId1"] = ids.Apply(getEngineNamespacesResult =&gt; getEngineNamespacesResult.Namespaces[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEngineNamespacesResult> InvokeAsync(GetEngineNamespacesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEngineNamespacesResult>("alicloud:mse/getEngineNamespaces:getEngineNamespaces", args ?? new GetEngineNamespacesArgs(), options.WithDefaults());
@@ -55,38 +23,6 @@ namespace Pulumi.AliCloud.Mse
         /// This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.166.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Mse.GetEngineNamespaces.Invoke(new()
-        ///     {
-        ///         ClusterId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["mseEngineNamespaceId1"] = ids.Apply(getEngineNamespacesResult =&gt; getEngineNamespacesResult.Namespaces[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetEngineNamespacesResult> Invoke(GetEngineNamespacesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEngineNamespacesResult>("alicloud:mse/getEngineNamespaces:getEngineNamespaces", args ?? new GetEngineNamespacesInvokeArgs(), options.WithDefaults());

@@ -129,9 +129,9 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_instance_class: pulumi.Input[str],
-             db_instance_storage: pulumi.Input[int],
-             engine_version: pulumi.Input[str],
+             db_instance_class: Optional[pulumi.Input[str]] = None,
+             db_instance_storage: Optional[pulumi.Input[int]] = None,
+             engine_version: Optional[pulumi.Input[str]] = None,
              account_password: Optional[pulumi.Input[str]] = None,
              auto_renew: Optional[pulumi.Input[bool]] = None,
              backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -161,63 +161,69 @@ class InstanceArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbInstanceClass' in kwargs:
+        if db_instance_class is None and 'dbInstanceClass' in kwargs:
             db_instance_class = kwargs['dbInstanceClass']
-        if 'dbInstanceStorage' in kwargs:
+        if db_instance_class is None:
+            raise TypeError("Missing 'db_instance_class' argument")
+        if db_instance_storage is None and 'dbInstanceStorage' in kwargs:
             db_instance_storage = kwargs['dbInstanceStorage']
-        if 'engineVersion' in kwargs:
+        if db_instance_storage is None:
+            raise TypeError("Missing 'db_instance_storage' argument")
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'accountPassword' in kwargs:
+        if engine_version is None:
+            raise TypeError("Missing 'engine_version' argument")
+        if account_password is None and 'accountPassword' in kwargs:
             account_password = kwargs['accountPassword']
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'backupPeriods' in kwargs:
+        if backup_periods is None and 'backupPeriods' in kwargs:
             backup_periods = kwargs['backupPeriods']
-        if 'backupTime' in kwargs:
+        if backup_time is None and 'backupTime' in kwargs:
             backup_time = kwargs['backupTime']
-        if 'hiddenZoneId' in kwargs:
+        if hidden_zone_id is None and 'hiddenZoneId' in kwargs:
             hidden_zone_id = kwargs['hiddenZoneId']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'kmsEncryptedPassword' in kwargs:
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
             kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if 'kmsEncryptionContext' in kwargs:
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
             kms_encryption_context = kwargs['kmsEncryptionContext']
-        if 'maintainEndTime' in kwargs:
+        if maintain_end_time is None and 'maintainEndTime' in kwargs:
             maintain_end_time = kwargs['maintainEndTime']
-        if 'maintainStartTime' in kwargs:
+        if maintain_start_time is None and 'maintainStartTime' in kwargs:
             maintain_start_time = kwargs['maintainStartTime']
-        if 'networkType' in kwargs:
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'orderType' in kwargs:
+        if order_type is None and 'orderType' in kwargs:
             order_type = kwargs['orderType']
-        if 'readonlyReplicas' in kwargs:
+        if readonly_replicas is None and 'readonlyReplicas' in kwargs:
             readonly_replicas = kwargs['readonlyReplicas']
-        if 'replicationFactor' in kwargs:
+        if replication_factor is None and 'replicationFactor' in kwargs:
             replication_factor = kwargs['replicationFactor']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'secondaryZoneId' in kwargs:
+        if secondary_zone_id is None and 'secondaryZoneId' in kwargs:
             secondary_zone_id = kwargs['secondaryZoneId']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'securityIpLists' in kwargs:
+        if security_ip_lists is None and 'securityIpLists' in kwargs:
             security_ip_lists = kwargs['securityIpLists']
-        if 'sslAction' in kwargs:
+        if ssl_action is None and 'sslAction' in kwargs:
             ssl_action = kwargs['sslAction']
-        if 'storageEngine' in kwargs:
+        if storage_engine is None and 'storageEngine' in kwargs:
             storage_engine = kwargs['storageEngine']
-        if 'storageType' in kwargs:
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
-        if 'tdeStatus' in kwargs:
+        if tde_status is None and 'tdeStatus' in kwargs:
             tde_status = kwargs['tdeStatus']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("db_instance_class", db_instance_class)
@@ -839,71 +845,71 @@ class _InstanceState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountPassword' in kwargs:
+        if account_password is None and 'accountPassword' in kwargs:
             account_password = kwargs['accountPassword']
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'backupPeriods' in kwargs:
+        if backup_periods is None and 'backupPeriods' in kwargs:
             backup_periods = kwargs['backupPeriods']
-        if 'backupTime' in kwargs:
+        if backup_time is None and 'backupTime' in kwargs:
             backup_time = kwargs['backupTime']
-        if 'dbInstanceClass' in kwargs:
+        if db_instance_class is None and 'dbInstanceClass' in kwargs:
             db_instance_class = kwargs['dbInstanceClass']
-        if 'dbInstanceStorage' in kwargs:
+        if db_instance_storage is None and 'dbInstanceStorage' in kwargs:
             db_instance_storage = kwargs['dbInstanceStorage']
-        if 'engineVersion' in kwargs:
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'hiddenZoneId' in kwargs:
+        if hidden_zone_id is None and 'hiddenZoneId' in kwargs:
             hidden_zone_id = kwargs['hiddenZoneId']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'kmsEncryptedPassword' in kwargs:
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
             kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if 'kmsEncryptionContext' in kwargs:
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
             kms_encryption_context = kwargs['kmsEncryptionContext']
-        if 'maintainEndTime' in kwargs:
+        if maintain_end_time is None and 'maintainEndTime' in kwargs:
             maintain_end_time = kwargs['maintainEndTime']
-        if 'maintainStartTime' in kwargs:
+        if maintain_start_time is None and 'maintainStartTime' in kwargs:
             maintain_start_time = kwargs['maintainStartTime']
-        if 'networkType' in kwargs:
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'orderType' in kwargs:
+        if order_type is None and 'orderType' in kwargs:
             order_type = kwargs['orderType']
-        if 'readonlyReplicas' in kwargs:
+        if readonly_replicas is None and 'readonlyReplicas' in kwargs:
             readonly_replicas = kwargs['readonlyReplicas']
-        if 'replicaSetName' in kwargs:
+        if replica_set_name is None and 'replicaSetName' in kwargs:
             replica_set_name = kwargs['replicaSetName']
-        if 'replicaSets' in kwargs:
+        if replica_sets is None and 'replicaSets' in kwargs:
             replica_sets = kwargs['replicaSets']
-        if 'replicationFactor' in kwargs:
+        if replication_factor is None and 'replicationFactor' in kwargs:
             replication_factor = kwargs['replicationFactor']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'retentionPeriod' in kwargs:
+        if retention_period is None and 'retentionPeriod' in kwargs:
             retention_period = kwargs['retentionPeriod']
-        if 'secondaryZoneId' in kwargs:
+        if secondary_zone_id is None and 'secondaryZoneId' in kwargs:
             secondary_zone_id = kwargs['secondaryZoneId']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'securityIpLists' in kwargs:
+        if security_ip_lists is None and 'securityIpLists' in kwargs:
             security_ip_lists = kwargs['securityIpLists']
-        if 'sslAction' in kwargs:
+        if ssl_action is None and 'sslAction' in kwargs:
             ssl_action = kwargs['sslAction']
-        if 'sslStatus' in kwargs:
+        if ssl_status is None and 'sslStatus' in kwargs:
             ssl_status = kwargs['sslStatus']
-        if 'storageEngine' in kwargs:
+        if storage_engine is None and 'storageEngine' in kwargs:
             storage_engine = kwargs['storageEngine']
-        if 'storageType' in kwargs:
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
-        if 'tdeStatus' in kwargs:
+        if tde_status is None and 'tdeStatus' in kwargs:
             tde_status = kwargs['tdeStatus']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_password is not None:
@@ -1471,41 +1477,6 @@ class Instance(pulumi.CustomResource):
         > **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
 
         ## Example Usage
-        ### Create a Mongodb instance
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.mongodb.get_zones()
-        index = len(default_zones.zones) - 1
-        zone_id = default_zones.zones[index].id
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=zone_id)
-        default_instance = alicloud.mongodb.Instance("defaultInstance",
-            engine_version="4.2",
-            db_instance_class="dds.mongo.mid",
-            db_instance_storage=10,
-            vswitch_id=default_switch.id,
-            security_ip_lists=[
-                "10.168.1.12",
-                "100.69.7.112",
-            ],
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        ```
         ## Module Support
 
         You can use to the existing mongodb module
@@ -1581,41 +1552,6 @@ class Instance(pulumi.CustomResource):
         > **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
 
         ## Example Usage
-        ### Create a Mongodb instance
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.mongodb.get_zones()
-        index = len(default_zones.zones) - 1
-        zone_id = default_zones.zones[index].id
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=zone_id)
-        default_instance = alicloud.mongodb.Instance("defaultInstance",
-            engine_version="4.2",
-            db_instance_class="dds.mongo.mid",
-            db_instance_storage=10,
-            vswitch_id=default_switch.id,
-            security_ip_lists=[
-                "10.168.1.12",
-                "100.69.7.112",
-            ],
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        ```
         ## Module Support
 
         You can use to the existing mongodb module

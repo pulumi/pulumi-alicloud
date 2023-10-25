@@ -110,41 +110,41 @@ class DiskArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'advancedFeatures' in kwargs:
+        if advanced_features is None and 'advancedFeatures' in kwargs:
             advanced_features = kwargs['advancedFeatures']
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'deleteAutoSnapshot' in kwargs:
+        if delete_auto_snapshot is None and 'deleteAutoSnapshot' in kwargs:
             delete_auto_snapshot = kwargs['deleteAutoSnapshot']
-        if 'deleteWithInstance' in kwargs:
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'diskName' in kwargs:
+        if disk_name is None and 'diskName' in kwargs:
             disk_name = kwargs['diskName']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'enableAutoSnapshot' in kwargs:
+        if enable_auto_snapshot is None and 'enableAutoSnapshot' in kwargs:
             enable_auto_snapshot = kwargs['enableAutoSnapshot']
-        if 'encryptAlgorithm' in kwargs:
+        if encrypt_algorithm is None and 'encryptAlgorithm' in kwargs:
             encrypt_algorithm = kwargs['encryptAlgorithm']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
-        if 'storageSetId' in kwargs:
+        if storage_set_id is None and 'storageSetId' in kwargs:
             storage_set_id = kwargs['storageSetId']
-        if 'storageSetPartitionNumber' in kwargs:
+        if storage_set_partition_number is None and 'storageSetPartitionNumber' in kwargs:
             storage_set_partition_number = kwargs['storageSetPartitionNumber']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if advanced_features is not None:
@@ -571,41 +571,41 @@ class _DiskState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'advancedFeatures' in kwargs:
+        if advanced_features is None and 'advancedFeatures' in kwargs:
             advanced_features = kwargs['advancedFeatures']
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'deleteAutoSnapshot' in kwargs:
+        if delete_auto_snapshot is None and 'deleteAutoSnapshot' in kwargs:
             delete_auto_snapshot = kwargs['deleteAutoSnapshot']
-        if 'deleteWithInstance' in kwargs:
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'diskName' in kwargs:
+        if disk_name is None and 'diskName' in kwargs:
             disk_name = kwargs['diskName']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'enableAutoSnapshot' in kwargs:
+        if enable_auto_snapshot is None and 'enableAutoSnapshot' in kwargs:
             enable_auto_snapshot = kwargs['enableAutoSnapshot']
-        if 'encryptAlgorithm' in kwargs:
+        if encrypt_algorithm is None and 'encryptAlgorithm' in kwargs:
             encrypt_algorithm = kwargs['encryptAlgorithm']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
-        if 'storageSetId' in kwargs:
+        if storage_set_id is None and 'storageSetId' in kwargs:
             storage_set_id = kwargs['storageSetId']
-        if 'storageSetPartitionNumber' in kwargs:
+        if storage_set_partition_number is None and 'storageSetPartitionNumber' in kwargs:
             storage_set_partition_number = kwargs['storageSetPartitionNumber']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if advanced_features is not None:
@@ -980,25 +980,6 @@ class Disk(pulumi.CustomResource):
 
         > **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `ecs.Disk` doesn't resize disk.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new ECS disk.
-        ecs_disk = alicloud.ecs.Disk("ecsDisk",
-            availability_zone="cn-beijing-b",
-            category="cloud_efficiency",
-            description="Hello ecs disk.",
-            encrypted=True,
-            kms_key_id="2a6767f0-a16c-4679-a60f-13bf*****",
-            size=30,
-            tags={
-                "Name": "TerraformTest",
-            })
-        ```
-
         ## Import
 
         Cloud disk can be imported using the id, e.g.
@@ -1037,25 +1018,6 @@ class Disk(pulumi.CustomResource):
         > **DEPRECATED:** This resource has been renamed to ecs.EcsDisk from version 1.122.0.
 
         > **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `ecs.Disk` doesn't resize disk.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new ECS disk.
-        ecs_disk = alicloud.ecs.Disk("ecsDisk",
-            availability_zone="cn-beijing-b",
-            category="cloud_efficiency",
-            description="Hello ecs disk.",
-            encrypted=True,
-            kms_key_id="2a6767f0-a16c-4679-a60f-13bf*****",
-            size=30,
-            tags={
-                "Name": "TerraformTest",
-            })
-        ```
 
         ## Import
 

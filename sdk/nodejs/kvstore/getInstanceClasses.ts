@@ -10,25 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
  *
  * > **NOTE:** Available since v1.49.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const resourcesZones = alicloud.getZones({
- *     availableResourceCreation: "KVStore",
- * });
- * const resourcesInstanceClasses = resourcesZones.then(resourcesZones => alicloud.kvstore.getInstanceClasses({
- *     engine: "Redis",
- *     engineVersion: "5.0",
- *     instanceChargeType: "PrePaid",
- *     outputFile: "./classes.txt",
- *     zoneId: resourcesZones.zones?.[0]?.id,
- * }));
- * export const firstKvstoreInstanceClass = resourcesInstanceClasses.then(resourcesInstanceClasses => resourcesInstanceClasses.instanceClasses);
- * ```
  */
 export function getInstanceClasses(args: GetInstanceClassesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceClassesResult> {
 
@@ -166,25 +147,6 @@ export interface GetInstanceClassesResult {
  * This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
  *
  * > **NOTE:** Available since v1.49.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const resourcesZones = alicloud.getZones({
- *     availableResourceCreation: "KVStore",
- * });
- * const resourcesInstanceClasses = resourcesZones.then(resourcesZones => alicloud.kvstore.getInstanceClasses({
- *     engine: "Redis",
- *     engineVersion: "5.0",
- *     instanceChargeType: "PrePaid",
- *     outputFile: "./classes.txt",
- *     zoneId: resourcesZones.zones?.[0]?.id,
- * }));
- * export const firstKvstoreInstanceClass = resourcesInstanceClasses.then(resourcesInstanceClasses => resourcesInstanceClasses.instanceClasses);
- * ```
  */
 export function getInstanceClassesOutput(args: GetInstanceClassesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceClassesResult> {
     return pulumi.output(args).apply((a: any) => getInstanceClasses(a, opts))

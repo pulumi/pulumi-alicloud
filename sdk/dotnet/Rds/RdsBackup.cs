@@ -16,36 +16,6 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// &gt; **NOTE:** Available since v1.149.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new()
-    ///     {
-    ///         Engine = "MySQL",
-    ///         EngineVersion = "5.6",
-    ///         InstanceType = "rds.mysql.t1.small",
-    ///         InstanceStorage = 30,
-    ///         InstanceChargeType = "Postpaid",
-    ///         DbInstanceStorageType = "local_ssd",
-    ///     });
-    /// 
-    ///     var exampleRdsBackup = new AliCloud.Rds.RdsBackup("exampleRdsBackup", new()
-    ///     {
-    ///         DbInstanceId = exampleInstance.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// RDS Backup can be imported using the id, e.g.

@@ -44,20 +44,24 @@ class CommandArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             command_content: pulumi.Input[str],
-             type: pulumi.Input[str],
+             command_content: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              enable_parameter: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
              working_dir: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'commandContent' in kwargs:
+        if command_content is None and 'commandContent' in kwargs:
             command_content = kwargs['commandContent']
-        if 'enableParameter' in kwargs:
+        if command_content is None:
+            raise TypeError("Missing 'command_content' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if enable_parameter is None and 'enableParameter' in kwargs:
             enable_parameter = kwargs['enableParameter']
-        if 'workingDir' in kwargs:
+        if working_dir is None and 'workingDir' in kwargs:
             working_dir = kwargs['workingDir']
 
         _setter("command_content", command_content)
@@ -198,13 +202,13 @@ class _CommandState:
              timeout: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
              working_dir: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'commandContent' in kwargs:
+        if command_content is None and 'commandContent' in kwargs:
             command_content = kwargs['commandContent']
-        if 'enableParameter' in kwargs:
+        if enable_parameter is None and 'enableParameter' in kwargs:
             enable_parameter = kwargs['enableParameter']
-        if 'workingDir' in kwargs:
+        if working_dir is None and 'workingDir' in kwargs:
             working_dir = kwargs['workingDir']
 
         if command_content is not None:
@@ -327,21 +331,6 @@ class Command(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.116.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ecs.Command("example",
-            command_content="bHMK",
-            description="For Terraform Test",
-            type="RunShellScript",
-            working_dir="/root")
-        ```
-
         ## Import
 
         ECS Command can be imported using the id, e.g.
@@ -372,21 +361,6 @@ class Command(pulumi.CustomResource):
         For information about ECS Command and how to use it, see [What is Command](https://www.alibabacloud.com/help/en/doc-detail/64844.htm).
 
         > **NOTE:** Available in v1.116.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ecs.Command("example",
-            command_content="bHMK",
-            description="For Terraform Test",
-            type="RunShellScript",
-            working_dir="/root")
-        ```
 
         ## Import
 

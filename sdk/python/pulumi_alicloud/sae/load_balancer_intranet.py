@@ -34,14 +34,18 @@ class LoadBalancerIntranetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_id: pulumi.Input[str],
-             intranets: pulumi.Input[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]],
+             app_id: Optional[pulumi.Input[str]] = None,
+             intranets: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]]] = None,
              intranet_slb_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appId' in kwargs:
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'intranetSlbId' in kwargs:
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if intranets is None:
+            raise TypeError("Missing 'intranets' argument")
+        if intranet_slb_id is None and 'intranetSlbId' in kwargs:
             intranet_slb_id = kwargs['intranetSlbId']
 
         _setter("app_id", app_id)
@@ -114,13 +118,13 @@ class _LoadBalancerIntranetState:
              intranet_ip: Optional[pulumi.Input[str]] = None,
              intranet_slb_id: Optional[pulumi.Input[str]] = None,
              intranets: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appId' in kwargs:
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'intranetIp' in kwargs:
+        if intranet_ip is None and 'intranetIp' in kwargs:
             intranet_ip = kwargs['intranetIp']
-        if 'intranetSlbId' in kwargs:
+        if intranet_slb_id is None and 'intranetSlbId' in kwargs:
             intranet_slb_id = kwargs['intranetSlbId']
 
         if app_id is not None:
@@ -197,67 +201,6 @@ class LoadBalancerIntranet(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.165.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
-            namespace_name=name,
-            namespace_description=name,
-            enable_micro_registration=False)
-        default_application = alicloud.sae.Application("defaultApplication",
-            app_description=name,
-            app_name=name,
-            namespace_id=default_namespace.id,
-            image_url="registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
-            package_type="Image",
-            jdk="Open JDK 8",
-            security_group_id=default_security_group.id,
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            timezone="Asia/Beijing",
-            replicas=5,
-            cpu=500,
-            memory=2048)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
-            load_balancer_name=name,
-            vswitch_id=default_switch.id,
-            load_balancer_spec="slb.s2.small",
-            address_type="intranet")
-        default_load_balancer_intranet = alicloud.sae.LoadBalancerIntranet("defaultLoadBalancerIntranet",
-            app_id=default_application.id,
-            intranet_slb_id=default_application_load_balancer.id,
-            intranets=[alicloud.sae.LoadBalancerIntranetIntranetArgs(
-                protocol="TCP",
-                port=80,
-                target_port=8080,
-            )])
-        ```
-
         ## Import
 
         The resource can be imported using the id, e.g.
@@ -284,67 +227,6 @@ class LoadBalancerIntranet(pulumi.CustomResource):
         For information about Serverless App Engine (SAE) Load Balancer Intranet Attachment and how to use it, see [sae.LoadBalancerIntranet](https://www.alibabacloud.com/help/en/sae/latest/bindslb).
 
         > **NOTE:** Available since v1.165.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
-            namespace_name=name,
-            namespace_description=name,
-            enable_micro_registration=False)
-        default_application = alicloud.sae.Application("defaultApplication",
-            app_description=name,
-            app_name=name,
-            namespace_id=default_namespace.id,
-            image_url="registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
-            package_type="Image",
-            jdk="Open JDK 8",
-            security_group_id=default_security_group.id,
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            timezone="Asia/Beijing",
-            replicas=5,
-            cpu=500,
-            memory=2048)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
-            load_balancer_name=name,
-            vswitch_id=default_switch.id,
-            load_balancer_spec="slb.s2.small",
-            address_type="intranet")
-        default_load_balancer_intranet = alicloud.sae.LoadBalancerIntranet("defaultLoadBalancerIntranet",
-            app_id=default_application.id,
-            intranet_slb_id=default_application_load_balancer.id,
-            intranets=[alicloud.sae.LoadBalancerIntranetIntranetArgs(
-                protocol="TCP",
-                port=80,
-                target_port=8080,
-            )])
-        ```
 
         ## Import
 

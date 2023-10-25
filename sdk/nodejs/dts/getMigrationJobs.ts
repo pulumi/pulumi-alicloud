@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.157.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dts.getMigrationJobs({
- *     ids: ["dts_job_id"],
- * });
- * export const dtsMigrationJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
- * ```
  */
 export function getMigrationJobs(args?: GetMigrationJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetMigrationJobsResult> {
     args = args || {};
@@ -78,20 +64,6 @@ export interface GetMigrationJobsResult {
  * This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.157.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dts.getMigrationJobs({
- *     ids: ["dts_job_id"],
- * });
- * export const dtsMigrationJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
- * ```
  */
 export function getMigrationJobsOutput(args?: GetMigrationJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMigrationJobsResult> {
     return pulumi.output(args).apply((a: any) => getMigrationJobs(a, opts))

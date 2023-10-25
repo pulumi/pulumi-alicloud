@@ -31,10 +31,14 @@ class GetAclsAclResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("id", id)
         _setter("name", name)
@@ -115,50 +119,82 @@ class GetSmartagFlowLogsLogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             active_aging: int,
-             description: str,
-             flow_log_id: str,
-             flow_log_name: str,
-             id: str,
-             inactive_aging: int,
-             logstore_name: str,
-             netflow_server_ip: str,
-             netflow_server_port: int,
-             netflow_version: str,
-             output_type: str,
-             project_name: str,
-             resource_group_id: str,
-             sls_region_id: str,
-             status: str,
-             total_sag_num: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             active_aging: Optional[int] = None,
+             description: Optional[str] = None,
+             flow_log_id: Optional[str] = None,
+             flow_log_name: Optional[str] = None,
+             id: Optional[str] = None,
+             inactive_aging: Optional[int] = None,
+             logstore_name: Optional[str] = None,
+             netflow_server_ip: Optional[str] = None,
+             netflow_server_port: Optional[int] = None,
+             netflow_version: Optional[str] = None,
+             output_type: Optional[str] = None,
+             project_name: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             sls_region_id: Optional[str] = None,
+             status: Optional[str] = None,
+             total_sag_num: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'activeAging' in kwargs:
+        if active_aging is None and 'activeAging' in kwargs:
             active_aging = kwargs['activeAging']
-        if 'flowLogId' in kwargs:
+        if active_aging is None:
+            raise TypeError("Missing 'active_aging' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if flow_log_id is None and 'flowLogId' in kwargs:
             flow_log_id = kwargs['flowLogId']
-        if 'flowLogName' in kwargs:
+        if flow_log_id is None:
+            raise TypeError("Missing 'flow_log_id' argument")
+        if flow_log_name is None and 'flowLogName' in kwargs:
             flow_log_name = kwargs['flowLogName']
-        if 'inactiveAging' in kwargs:
+        if flow_log_name is None:
+            raise TypeError("Missing 'flow_log_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if inactive_aging is None and 'inactiveAging' in kwargs:
             inactive_aging = kwargs['inactiveAging']
-        if 'logstoreName' in kwargs:
+        if inactive_aging is None:
+            raise TypeError("Missing 'inactive_aging' argument")
+        if logstore_name is None and 'logstoreName' in kwargs:
             logstore_name = kwargs['logstoreName']
-        if 'netflowServerIp' in kwargs:
+        if logstore_name is None:
+            raise TypeError("Missing 'logstore_name' argument")
+        if netflow_server_ip is None and 'netflowServerIp' in kwargs:
             netflow_server_ip = kwargs['netflowServerIp']
-        if 'netflowServerPort' in kwargs:
+        if netflow_server_ip is None:
+            raise TypeError("Missing 'netflow_server_ip' argument")
+        if netflow_server_port is None and 'netflowServerPort' in kwargs:
             netflow_server_port = kwargs['netflowServerPort']
-        if 'netflowVersion' in kwargs:
+        if netflow_server_port is None:
+            raise TypeError("Missing 'netflow_server_port' argument")
+        if netflow_version is None and 'netflowVersion' in kwargs:
             netflow_version = kwargs['netflowVersion']
-        if 'outputType' in kwargs:
+        if netflow_version is None:
+            raise TypeError("Missing 'netflow_version' argument")
+        if output_type is None and 'outputType' in kwargs:
             output_type = kwargs['outputType']
-        if 'projectName' in kwargs:
+        if output_type is None:
+            raise TypeError("Missing 'output_type' argument")
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'resourceGroupId' in kwargs:
+        if project_name is None:
+            raise TypeError("Missing 'project_name' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'slsRegionId' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if sls_region_id is None and 'slsRegionId' in kwargs:
             sls_region_id = kwargs['slsRegionId']
-        if 'totalSagNum' in kwargs:
+        if sls_region_id is None:
+            raise TypeError("Missing 'sls_region_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if total_sag_num is None and 'totalSagNum' in kwargs:
             total_sag_num = kwargs['totalSagNum']
+        if total_sag_num is None:
+            raise TypeError("Missing 'total_sag_num' argument")
 
         _setter("active_aging", active_aging)
         _setter("description", description)

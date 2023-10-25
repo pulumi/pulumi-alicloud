@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Config Deliveries of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.171.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cfg.getDeliveries({
- *     ids: ["example_id"],
- * });
- * export const configDeliveryId1 = ids.then(ids => ids.deliveries?.[0]?.id);
- * ```
  */
 export function getDeliveries(args?: GetDeliveriesArgs, opts?: pulumi.InvokeOptions): Promise<GetDeliveriesResult> {
     args = args || {};
@@ -78,20 +64,6 @@ export interface GetDeliveriesResult {
  * This data source provides the Config Deliveries of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.171.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cfg.getDeliveries({
- *     ids: ["example_id"],
- * });
- * export const configDeliveryId1 = ids.then(ids => ids.deliveries?.[0]?.id);
- * ```
  */
 export function getDeliveriesOutput(args?: GetDeliveriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeliveriesResult> {
     return pulumi.output(args).apply((a: any) => getDeliveries(a, opts))

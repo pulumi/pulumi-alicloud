@@ -17,29 +17,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** If the origin content is not saved on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be completed by the next working day after you submit the application.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const domainName = config.get("domainName") || "example.com";
- * const example = new alicloud.dcdn.Domain("example", {
- *     domainName: domainName,
- *     scope: "overseas",
- *     sources: [{
- *         content: "1.1.1.1",
- *         port: 80,
- *         priority: "20",
- *         type: "ipaddr",
- *         weight: "10",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * DCDN Domain can be imported using the id or DCDN Domain name, e.g.

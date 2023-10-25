@@ -20,44 +20,6 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// &gt; **NOTE:** Available since v1.0.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new RAM Policy.
-    ///     var policy = new AliCloud.Ram.Policy("policy", new()
-    ///     {
-    ///         Description = "this is a policy test",
-    ///         PolicyDocument = @"  {
-    ///     ""Statement"": [
-    ///       {
-    ///         ""Action"": [
-    ///           ""oss:ListObjects"",
-    ///           ""oss:GetObject""
-    ///         ],
-    ///         ""Effect"": ""Allow"",
-    ///         ""Resource"": [
-    ///           ""acs:oss:*:*:mybucket"",
-    ///           ""acs:oss:*:*:mybucket/*""
-    ///         ]
-    ///       }
-    ///     ],
-    ///       ""Version"": ""1""
-    ///   }
-    ///   
-    /// ",
-    ///         PolicyName = "policyName",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// RAM policy can be imported using the id or name, e.g.

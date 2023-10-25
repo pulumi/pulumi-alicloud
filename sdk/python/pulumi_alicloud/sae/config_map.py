@@ -35,14 +35,18 @@ class ConfigMapArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data: pulumi.Input[str],
-             namespace_id: pulumi.Input[str],
+             data: Optional[pulumi.Input[str]] = None,
+             namespace_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'namespaceId' in kwargs:
+        if data is None:
+            raise TypeError("Missing 'data' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
+        if namespace_id is None:
+            raise TypeError("Missing 'namespace_id' argument")
 
         _setter("data", data)
         _setter("namespace_id", namespace_id)
@@ -128,9 +132,9 @@ class _ConfigMapState:
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              namespace_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'namespaceId' in kwargs:
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
 
         if data is not None:
@@ -208,37 +212,6 @@ class ConfigMap(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.130.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
-            namespace_name=name,
-            namespace_description=name,
-            enable_micro_registration=False)
-        default_config_map = alicloud.sae.ConfigMap("defaultConfigMap",
-            data=json.dumps({
-                "env.home": "/root",
-                "env.shell": "/bin/sh",
-            }),
-            namespace_id=default_namespace.namespace_id)
-        ```
-
         ## Import
 
         Serverless App Engine (SAE) Config Map can be imported using the id, e.g.
@@ -266,37 +239,6 @@ class ConfigMap(pulumi.CustomResource):
         For information about Serverless App Engine (SAE) Config Map and how to use it, see [What is Config Map](https://www.alibabacloud.com/help/en/sae/latest/create-configmap).
 
         > **NOTE:** Available since v1.130.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
-            namespace_name=name,
-            namespace_description=name,
-            enable_micro_registration=False)
-        default_config_map = alicloud.sae.ConfigMap("defaultConfigMap",
-            data=json.dumps({
-                "env.home": "/root",
-                "env.shell": "/bin/sh",
-            }),
-            namespace_id=default_namespace.namespace_id)
-        ```
 
         ## Import
 

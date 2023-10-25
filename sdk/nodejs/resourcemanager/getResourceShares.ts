@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.111.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.resourcemanager.getResourceShares({
- *     resourceShareOwner: "Self",
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstResourceManagerResourceShareId = example.then(example => example.shares?.[0]?.id);
- * ```
  */
 export function getResourceShares(args: GetResourceSharesArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceSharesResult> {
 
@@ -91,22 +75,6 @@ export interface GetResourceSharesResult {
  * This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.111.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.resourcemanager.getResourceShares({
- *     resourceShareOwner: "Self",
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstResourceManagerResourceShareId = example.then(example => example.shares?.[0]?.id);
- * ```
  */
 export function getResourceSharesOutput(args: GetResourceSharesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceSharesResult> {
     return pulumi.output(args).apply((a: any) => getResourceShares(a, opts))

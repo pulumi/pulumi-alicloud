@@ -53,30 +53,46 @@ class AclRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acl_id: pulumi.Input[str],
-             dest_cidr: pulumi.Input[str],
-             dest_port_range: pulumi.Input[str],
-             direction: pulumi.Input[str],
-             ip_protocol: pulumi.Input[str],
-             policy: pulumi.Input[str],
-             source_cidr: pulumi.Input[str],
-             source_port_range: pulumi.Input[str],
+             acl_id: Optional[pulumi.Input[str]] = None,
+             dest_cidr: Optional[pulumi.Input[str]] = None,
+             dest_port_range: Optional[pulumi.Input[str]] = None,
+             direction: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             policy: Optional[pulumi.Input[str]] = None,
+             source_cidr: Optional[pulumi.Input[str]] = None,
+             source_port_range: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclId' in kwargs:
+        if acl_id is None and 'aclId' in kwargs:
             acl_id = kwargs['aclId']
-        if 'destCidr' in kwargs:
+        if acl_id is None:
+            raise TypeError("Missing 'acl_id' argument")
+        if dest_cidr is None and 'destCidr' in kwargs:
             dest_cidr = kwargs['destCidr']
-        if 'destPortRange' in kwargs:
+        if dest_cidr is None:
+            raise TypeError("Missing 'dest_cidr' argument")
+        if dest_port_range is None and 'destPortRange' in kwargs:
             dest_port_range = kwargs['destPortRange']
-        if 'ipProtocol' in kwargs:
+        if dest_port_range is None:
+            raise TypeError("Missing 'dest_port_range' argument")
+        if direction is None:
+            raise TypeError("Missing 'direction' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
             ip_protocol = kwargs['ipProtocol']
-        if 'sourceCidr' in kwargs:
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if source_cidr is None and 'sourceCidr' in kwargs:
             source_cidr = kwargs['sourceCidr']
-        if 'sourcePortRange' in kwargs:
+        if source_cidr is None:
+            raise TypeError("Missing 'source_cidr' argument")
+        if source_port_range is None and 'sourcePortRange' in kwargs:
             source_port_range = kwargs['sourcePortRange']
+        if source_port_range is None:
+            raise TypeError("Missing 'source_port_range' argument")
 
         _setter("acl_id", acl_id)
         _setter("dest_cidr", dest_cidr)
@@ -264,19 +280,19 @@ class _AclRuleState:
              priority: Optional[pulumi.Input[int]] = None,
              source_cidr: Optional[pulumi.Input[str]] = None,
              source_port_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclId' in kwargs:
+        if acl_id is None and 'aclId' in kwargs:
             acl_id = kwargs['aclId']
-        if 'destCidr' in kwargs:
+        if dest_cidr is None and 'destCidr' in kwargs:
             dest_cidr = kwargs['destCidr']
-        if 'destPortRange' in kwargs:
+        if dest_port_range is None and 'destPortRange' in kwargs:
             dest_port_range = kwargs['destPortRange']
-        if 'ipProtocol' in kwargs:
+        if ip_protocol is None and 'ipProtocol' in kwargs:
             ip_protocol = kwargs['ipProtocol']
-        if 'sourceCidr' in kwargs:
+        if source_cidr is None and 'sourceCidr' in kwargs:
             source_cidr = kwargs['sourceCidr']
-        if 'sourcePortRange' in kwargs:
+        if source_port_range is None and 'sourcePortRange' in kwargs:
             source_port_range = kwargs['sourcePortRange']
 
         if acl_id is not None:
@@ -446,32 +462,6 @@ class AclRule(pulumi.CustomResource):
 
         > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_acl = alicloud.rocketmq.Acl("defaultAcl")
-        default_acl_rule = alicloud.rocketmq.AclRule("defaultAclRule",
-            acl_id=default_acl.id,
-            description=name,
-            policy="accept",
-            ip_protocol="ALL",
-            direction="in",
-            source_cidr="10.10.1.0/24",
-            source_port_range="-1/-1",
-            dest_cidr="192.168.1.0/24",
-            dest_port_range="-1/-1",
-            priority=1)
-        ```
-
         ## Import
 
         The Sag Acl Rule can be imported using the id, e.g.
@@ -507,32 +497,6 @@ class AclRule(pulumi.CustomResource):
         > **NOTE:** Available since v1.60.0.
 
         > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_acl = alicloud.rocketmq.Acl("defaultAcl")
-        default_acl_rule = alicloud.rocketmq.AclRule("defaultAclRule",
-            acl_id=default_acl.id,
-            description=name,
-            policy="accept",
-            ip_protocol="ALL",
-            direction="in",
-            source_cidr="10.10.1.0/24",
-            source_port_range="-1/-1",
-            dest_cidr="192.168.1.0/24",
-            dest_port_range="-1/-1",
-            priority=1)
-        ```
 
         ## Import
 

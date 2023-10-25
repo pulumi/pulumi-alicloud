@@ -11,36 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.196.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const examplePhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
- *     nameRegex: "^preserved-NODELETING",
- * });
- * const vlanId = new random.RandomInteger("vlanId", {
- *     max: 2999,
- *     min: 1,
- * });
- * const default = alicloud.getAccount({});
- * const exampleVirtualPhysicalConnection = new alicloud.expressconnect.VirtualPhysicalConnection("exampleVirtualPhysicalConnection", {
- *     virtualPhysicalConnectionName: name,
- *     description: name,
- *     orderMode: "PayByPhysicalConnectionOwner",
- *     parentPhysicalConnectionId: examplePhysicalConnections.then(examplePhysicalConnections => examplePhysicalConnections.ids?.[0]),
- *     spec: "50M",
- *     vlanId: vlanId.id,
- *     vpconnAliUid: _default.then(_default => _default.id),
- * });
- * ```
- *
  * ## Import
  *
  * Express Connect Virtual Physical Connection can be imported using the id, e.g.

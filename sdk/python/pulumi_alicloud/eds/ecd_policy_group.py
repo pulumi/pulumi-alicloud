@@ -101,39 +101,39 @@ class EcdPolicyGroupArgs:
              watermark: Optional[pulumi.Input[str]] = None,
              watermark_transparency: Optional[pulumi.Input[str]] = None,
              watermark_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authorizeAccessPolicyRules' in kwargs:
+        if authorize_access_policy_rules is None and 'authorizeAccessPolicyRules' in kwargs:
             authorize_access_policy_rules = kwargs['authorizeAccessPolicyRules']
-        if 'authorizeSecurityPolicyRules' in kwargs:
+        if authorize_security_policy_rules is None and 'authorizeSecurityPolicyRules' in kwargs:
             authorize_security_policy_rules = kwargs['authorizeSecurityPolicyRules']
-        if 'cameraRedirect' in kwargs:
+        if camera_redirect is None and 'cameraRedirect' in kwargs:
             camera_redirect = kwargs['cameraRedirect']
-        if 'domainList' in kwargs:
+        if domain_list is None and 'domainList' in kwargs:
             domain_list = kwargs['domainList']
-        if 'htmlAccess' in kwargs:
+        if html_access is None and 'htmlAccess' in kwargs:
             html_access = kwargs['htmlAccess']
-        if 'htmlFileTransfer' in kwargs:
+        if html_file_transfer is None and 'htmlFileTransfer' in kwargs:
             html_file_transfer = kwargs['htmlFileTransfer']
-        if 'localDrive' in kwargs:
+        if local_drive is None and 'localDrive' in kwargs:
             local_drive = kwargs['localDrive']
-        if 'policyGroupName' in kwargs:
+        if policy_group_name is None and 'policyGroupName' in kwargs:
             policy_group_name = kwargs['policyGroupName']
-        if 'recordingEndTime' in kwargs:
+        if recording_end_time is None and 'recordingEndTime' in kwargs:
             recording_end_time = kwargs['recordingEndTime']
-        if 'recordingExpires' in kwargs:
+        if recording_expires is None and 'recordingExpires' in kwargs:
             recording_expires = kwargs['recordingExpires']
-        if 'recordingFps' in kwargs:
+        if recording_fps is None and 'recordingFps' in kwargs:
             recording_fps = kwargs['recordingFps']
-        if 'recordingStartTime' in kwargs:
+        if recording_start_time is None and 'recordingStartTime' in kwargs:
             recording_start_time = kwargs['recordingStartTime']
-        if 'usbRedirect' in kwargs:
+        if usb_redirect is None and 'usbRedirect' in kwargs:
             usb_redirect = kwargs['usbRedirect']
-        if 'visualQuality' in kwargs:
+        if visual_quality is None and 'visualQuality' in kwargs:
             visual_quality = kwargs['visualQuality']
-        if 'watermarkTransparency' in kwargs:
+        if watermark_transparency is None and 'watermarkTransparency' in kwargs:
             watermark_transparency = kwargs['watermarkTransparency']
-        if 'watermarkType' in kwargs:
+        if watermark_type is None and 'watermarkType' in kwargs:
             watermark_type = kwargs['watermarkType']
 
         if authorize_access_policy_rules is not None:
@@ -496,39 +496,39 @@ class _EcdPolicyGroupState:
              watermark: Optional[pulumi.Input[str]] = None,
              watermark_transparency: Optional[pulumi.Input[str]] = None,
              watermark_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authorizeAccessPolicyRules' in kwargs:
+        if authorize_access_policy_rules is None and 'authorizeAccessPolicyRules' in kwargs:
             authorize_access_policy_rules = kwargs['authorizeAccessPolicyRules']
-        if 'authorizeSecurityPolicyRules' in kwargs:
+        if authorize_security_policy_rules is None and 'authorizeSecurityPolicyRules' in kwargs:
             authorize_security_policy_rules = kwargs['authorizeSecurityPolicyRules']
-        if 'cameraRedirect' in kwargs:
+        if camera_redirect is None and 'cameraRedirect' in kwargs:
             camera_redirect = kwargs['cameraRedirect']
-        if 'domainList' in kwargs:
+        if domain_list is None and 'domainList' in kwargs:
             domain_list = kwargs['domainList']
-        if 'htmlAccess' in kwargs:
+        if html_access is None and 'htmlAccess' in kwargs:
             html_access = kwargs['htmlAccess']
-        if 'htmlFileTransfer' in kwargs:
+        if html_file_transfer is None and 'htmlFileTransfer' in kwargs:
             html_file_transfer = kwargs['htmlFileTransfer']
-        if 'localDrive' in kwargs:
+        if local_drive is None and 'localDrive' in kwargs:
             local_drive = kwargs['localDrive']
-        if 'policyGroupName' in kwargs:
+        if policy_group_name is None and 'policyGroupName' in kwargs:
             policy_group_name = kwargs['policyGroupName']
-        if 'recordingEndTime' in kwargs:
+        if recording_end_time is None and 'recordingEndTime' in kwargs:
             recording_end_time = kwargs['recordingEndTime']
-        if 'recordingExpires' in kwargs:
+        if recording_expires is None and 'recordingExpires' in kwargs:
             recording_expires = kwargs['recordingExpires']
-        if 'recordingFps' in kwargs:
+        if recording_fps is None and 'recordingFps' in kwargs:
             recording_fps = kwargs['recordingFps']
-        if 'recordingStartTime' in kwargs:
+        if recording_start_time is None and 'recordingStartTime' in kwargs:
             recording_start_time = kwargs['recordingStartTime']
-        if 'usbRedirect' in kwargs:
+        if usb_redirect is None and 'usbRedirect' in kwargs:
             usb_redirect = kwargs['usbRedirect']
-        if 'visualQuality' in kwargs:
+        if visual_quality is None and 'visualQuality' in kwargs:
             visual_quality = kwargs['visualQuality']
-        if 'watermarkTransparency' in kwargs:
+        if watermark_transparency is None and 'watermarkTransparency' in kwargs:
             watermark_transparency = kwargs['watermarkTransparency']
-        if 'watermarkType' in kwargs:
+        if watermark_type is None and 'watermarkType' in kwargs:
             watermark_type = kwargs['watermarkType']
 
         if authorize_access_policy_rules is not None:
@@ -845,35 +845,6 @@ class EcdPolicyGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.130.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.eds.EcdPolicyGroup("default",
-            authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-                cidr_ip="1.2.3.45/24",
-                description="terraform-example",
-            )],
-            authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-                cidr_ip="1.2.3.4/24",
-                description="terraform-example",
-                ip_protocol="TCP",
-                policy="accept",
-                port_range="80/80",
-                priority="1",
-                type="inflow",
-            )],
-            clipboard="read",
-            local_drive="read",
-            policy_group_name="terraform-example",
-            usb_redirect="off",
-            watermark="off")
-        ```
-
         ## Import
 
         Elastic Desktop Service (ECD) Policy Group can be imported using the id, e.g.
@@ -916,35 +887,6 @@ class EcdPolicyGroup(pulumi.CustomResource):
         For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createpolicygroup).
 
         > **NOTE:** Available since v1.130.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.eds.EcdPolicyGroup("default",
-            authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-                cidr_ip="1.2.3.45/24",
-                description="terraform-example",
-            )],
-            authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-                cidr_ip="1.2.3.4/24",
-                description="terraform-example",
-                ip_protocol="TCP",
-                policy="accept",
-                port_range="80/80",
-                priority="1",
-                type="inflow",
-            )],
-            clipboard="read",
-            local_drive="read",
-            policy_group_name="terraform-example",
-            usb_redirect="off",
-            watermark="off")
-        ```
 
         ## Import
 

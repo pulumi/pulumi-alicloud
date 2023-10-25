@@ -103,16 +103,6 @@ def get_regions(current: Optional[bool] = None,
     """
     This data source provides Alibaba Cloud regions.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    current_region_ds = alicloud.get_regions(current=True)
-    pulumi.export("currentRegionId", current_region_ds.regions[0].id)
-    ```
-
 
     :param bool current: Set to true to match only the region configured in the provider.
     :param str name: The name of the region to select, such as `eu-central-1`.
@@ -144,16 +134,6 @@ def get_regions_output(current: Optional[pulumi.Input[Optional[bool]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionsResult]:
     """
     This data source provides Alibaba Cloud regions.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    current_region_ds = alicloud.get_regions(current=True)
-    pulumi.export("currentRegionId", current_region_ds.regions[0].id)
-    ```
 
 
     :param bool current: Set to true to match only the region configured in the provider.

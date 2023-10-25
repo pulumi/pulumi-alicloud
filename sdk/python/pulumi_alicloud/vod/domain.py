@@ -43,19 +43,23 @@ class DomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain_name: pulumi.Input[str],
-             sources: pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]],
+             domain_name: Optional[pulumi.Input[str]] = None,
+             sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]] = None,
              check_url: Optional[pulumi.Input[str]] = None,
              scope: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              top_level_domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'checkUrl' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if sources is None:
+            raise TypeError("Missing 'sources' argument")
+        if check_url is None and 'checkUrl' in kwargs:
             check_url = kwargs['checkUrl']
-        if 'topLevelDomain' in kwargs:
+        if top_level_domain is None and 'topLevelDomain' in kwargs:
             top_level_domain = kwargs['topLevelDomain']
 
         _setter("domain_name", domain_name)
@@ -214,23 +218,23 @@ class _DomainState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              top_level_domain: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certName' in kwargs:
+        if cert_name is None and 'certName' in kwargs:
             cert_name = kwargs['certName']
-        if 'checkUrl' in kwargs:
+        if check_url is None and 'checkUrl' in kwargs:
             check_url = kwargs['checkUrl']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'gmtCreated' in kwargs:
+        if gmt_created is None and 'gmtCreated' in kwargs:
             gmt_created = kwargs['gmtCreated']
-        if 'gmtModified' in kwargs:
+        if gmt_modified is None and 'gmtModified' in kwargs:
             gmt_modified = kwargs['gmtModified']
-        if 'sslProtocol' in kwargs:
+        if ssl_protocol is None and 'sslProtocol' in kwargs:
             ssl_protocol = kwargs['sslProtocol']
-        if 'sslPub' in kwargs:
+        if ssl_pub is None and 'sslPub' in kwargs:
             ssl_pub = kwargs['sslPub']
-        if 'topLevelDomain' in kwargs:
+        if top_level_domain is None and 'topLevelDomain' in kwargs:
             top_level_domain = kwargs['topLevelDomain']
 
         if cert_name is not None:
@@ -464,28 +468,6 @@ class Domain(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.136.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.vod.Domain("default",
-            domain_name="your_domain_name",
-            scope="domestic",
-            sources=[alicloud.vod.DomainSourceArgs(
-                source_content="your_source_content",
-                source_port="80",
-                source_type="domain",
-            )],
-            tags={
-                "key1": "value1",
-                "key2": "value2",
-            })
-        ```
-
         ## Import
 
         VOD Domain can be imported using the id, e.g.
@@ -515,28 +497,6 @@ class Domain(pulumi.CustomResource):
         For information about VOD Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/product/29932.html).
 
         > **NOTE:** Available in v1.136.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.vod.Domain("default",
-            domain_name="your_domain_name",
-            scope="domestic",
-            sources=[alicloud.vod.DomainSourceArgs(
-                source_content="your_source_content",
-                source_port="80",
-                source_type="domain",
-            )],
-            tags={
-                "key1": "value1",
-                "key2": "value2",
-            })
-        ```
 
         ## Import
 

@@ -38,18 +38,20 @@ class TemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             template_name: pulumi.Input[str],
+             template_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              template_body: Optional[pulumi.Input[str]] = None,
              template_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'templateName' in kwargs:
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
-        if 'templateBody' in kwargs:
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
+        if template_body is None and 'templateBody' in kwargs:
             template_body = kwargs['templateBody']
-        if 'templateUrl' in kwargs:
+        if template_url is None and 'templateUrl' in kwargs:
             template_url = kwargs['templateUrl']
 
         _setter("template_name", template_name)
@@ -155,13 +157,13 @@ class _TemplateState:
              template_body: Optional[pulumi.Input[str]] = None,
              template_name: Optional[pulumi.Input[str]] = None,
              template_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'templateBody' in kwargs:
+        if template_body is None and 'templateBody' in kwargs:
             template_body = kwargs['templateBody']
-        if 'templateName' in kwargs:
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
-        if 'templateUrl' in kwargs:
+        if template_url is None and 'templateUrl' in kwargs:
             template_url = kwargs['templateUrl']
 
         if description is not None:
@@ -254,23 +256,6 @@ class Template(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.108.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ros.Template("example",
-            template_body=\"\"\"    {
-            	"ROSTemplateFormatVersion": "2015-09-01"
-            }
-            
-        \"\"\",
-            template_name="example_value")
-        ```
-
         ## Import
 
         ROS Template can be imported using the id, e.g.
@@ -299,23 +284,6 @@ class Template(pulumi.CustomResource):
         For information about ROS Template and how to use it, see [What is Template](https://www.alibabacloud.com/help/en/doc-detail/141851.htm).
 
         > **NOTE:** Available in v1.108.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ros.Template("example",
-            template_body=\"\"\"    {
-            	"ROSTemplateFormatVersion": "2015-09-01"
-            }
-            
-        \"\"\",
-            template_name="example_value")
-        ```
 
         ## Import
 

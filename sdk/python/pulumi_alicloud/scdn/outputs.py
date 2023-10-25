@@ -78,17 +78,17 @@ class DomainCertInfo(dict):
              ssl_pri: Optional[str] = None,
              ssl_protocol: Optional[str] = None,
              ssl_pub: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certName' in kwargs:
+        if cert_name is None and 'certName' in kwargs:
             cert_name = kwargs['certName']
-        if 'certType' in kwargs:
+        if cert_type is None and 'certType' in kwargs:
             cert_type = kwargs['certType']
-        if 'sslPri' in kwargs:
+        if ssl_pri is None and 'sslPri' in kwargs:
             ssl_pri = kwargs['sslPri']
-        if 'sslProtocol' in kwargs:
+        if ssl_protocol is None and 'sslProtocol' in kwargs:
             ssl_protocol = kwargs['sslProtocol']
-        if 'sslPub' in kwargs:
+        if ssl_pub is None and 'sslPub' in kwargs:
             ssl_pub = kwargs['sslPub']
 
         if cert_name is not None:
@@ -182,14 +182,18 @@ class DomainConfigFunctionArg(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             arg_name: str,
-             arg_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             arg_name: Optional[str] = None,
+             arg_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'argName' in kwargs:
+        if arg_name is None and 'argName' in kwargs:
             arg_name = kwargs['argName']
-        if 'argValue' in kwargs:
+        if arg_name is None:
+            raise TypeError("Missing 'arg_name' argument")
+        if arg_value is None and 'argValue' in kwargs:
             arg_value = kwargs['argValue']
+        if arg_value is None:
+            raise TypeError("Missing 'arg_value' argument")
 
         _setter("arg_name", arg_name)
         _setter("arg_value", arg_value)
@@ -240,13 +244,21 @@ class DomainSource(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: str,
-             port: int,
-             priority: str,
-             type: str,
+             content: Optional[str] = None,
+             port: Optional[int] = None,
+             priority: Optional[str] = None,
+             type: Optional[str] = None,
              enabled: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("content", content)
         _setter("port", port)
@@ -340,28 +352,48 @@ class GetDomainsDomainResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert_infos: Sequence['outputs.GetDomainsDomainCertInfoResult'],
-             cname: str,
-             create_time: str,
-             description: str,
-             domain_name: str,
-             gmt_modified: str,
-             id: str,
-             resource_group_id: str,
-             sources: Sequence['outputs.GetDomainsDomainSourceResult'],
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cert_infos: Optional[Sequence['outputs.GetDomainsDomainCertInfoResult']] = None,
+             cname: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             gmt_modified: Optional[str] = None,
+             id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             sources: Optional[Sequence['outputs.GetDomainsDomainSourceResult']] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certInfos' in kwargs:
+        if cert_infos is None and 'certInfos' in kwargs:
             cert_infos = kwargs['certInfos']
-        if 'createTime' in kwargs:
+        if cert_infos is None:
+            raise TypeError("Missing 'cert_infos' argument")
+        if cname is None:
+            raise TypeError("Missing 'cname' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'domainName' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'gmtModified' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if gmt_modified is None and 'gmtModified' in kwargs:
             gmt_modified = kwargs['gmtModified']
-        if 'resourceGroupId' in kwargs:
+        if gmt_modified is None:
+            raise TypeError("Missing 'gmt_modified' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if sources is None:
+            raise TypeError("Missing 'sources' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("cert_infos", cert_infos)
         _setter("cname", cname)
@@ -478,20 +510,28 @@ class GetDomainsDomainCertInfoResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert_name: str,
-             cert_type: str,
-             ssl_protocol: str,
-             ssl_pub: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cert_name: Optional[str] = None,
+             cert_type: Optional[str] = None,
+             ssl_protocol: Optional[str] = None,
+             ssl_pub: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certName' in kwargs:
+        if cert_name is None and 'certName' in kwargs:
             cert_name = kwargs['certName']
-        if 'certType' in kwargs:
+        if cert_name is None:
+            raise TypeError("Missing 'cert_name' argument")
+        if cert_type is None and 'certType' in kwargs:
             cert_type = kwargs['certType']
-        if 'sslProtocol' in kwargs:
+        if cert_type is None:
+            raise TypeError("Missing 'cert_type' argument")
+        if ssl_protocol is None and 'sslProtocol' in kwargs:
             ssl_protocol = kwargs['sslProtocol']
-        if 'sslPub' in kwargs:
+        if ssl_protocol is None:
+            raise TypeError("Missing 'ssl_protocol' argument")
+        if ssl_pub is None and 'sslPub' in kwargs:
             ssl_pub = kwargs['sslPub']
+        if ssl_pub is None:
+            raise TypeError("Missing 'ssl_pub' argument")
 
         _setter("cert_name", cert_name)
         _setter("cert_type", cert_type)
@@ -557,13 +597,23 @@ class GetDomainsDomainSourceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: str,
-             enabled: str,
-             port: int,
-             priority: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             content: Optional[str] = None,
+             enabled: Optional[str] = None,
+             port: Optional[int] = None,
+             priority: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("content", content)
         _setter("enabled", enabled)

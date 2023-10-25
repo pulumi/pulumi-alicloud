@@ -44,22 +44,32 @@ class LogTailConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             input_detail: pulumi.Input[str],
-             input_type: pulumi.Input[str],
-             logstore: pulumi.Input[str],
-             output_type: pulumi.Input[str],
-             project: pulumi.Input[str],
+             input_detail: Optional[pulumi.Input[str]] = None,
+             input_type: Optional[pulumi.Input[str]] = None,
+             logstore: Optional[pulumi.Input[str]] = None,
+             output_type: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              log_sample: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'inputDetail' in kwargs:
+        if input_detail is None and 'inputDetail' in kwargs:
             input_detail = kwargs['inputDetail']
-        if 'inputType' in kwargs:
+        if input_detail is None:
+            raise TypeError("Missing 'input_detail' argument")
+        if input_type is None and 'inputType' in kwargs:
             input_type = kwargs['inputType']
-        if 'outputType' in kwargs:
+        if input_type is None:
+            raise TypeError("Missing 'input_type' argument")
+        if logstore is None:
+            raise TypeError("Missing 'logstore' argument")
+        if output_type is None and 'outputType' in kwargs:
             output_type = kwargs['outputType']
-        if 'logSample' in kwargs:
+        if output_type is None:
+            raise TypeError("Missing 'output_type' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if log_sample is None and 'logSample' in kwargs:
             log_sample = kwargs['logSample']
 
         _setter("input_detail", input_detail)
@@ -197,15 +207,15 @@ class _LogTailConfigState:
              name: Optional[pulumi.Input[str]] = None,
              output_type: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'inputDetail' in kwargs:
+        if input_detail is None and 'inputDetail' in kwargs:
             input_detail = kwargs['inputDetail']
-        if 'inputType' in kwargs:
+        if input_type is None and 'inputType' in kwargs:
             input_type = kwargs['inputType']
-        if 'logSample' in kwargs:
+        if log_sample is None and 'logSample' in kwargs:
             log_sample = kwargs['logSample']
-        if 'outputType' in kwargs:
+        if output_type is None and 'outputType' in kwargs:
             output_type = kwargs['outputType']
 
         if input_detail is not None:
@@ -326,43 +336,6 @@ class LogTailConfig(pulumi.CustomResource):
         You can use Logtail to collect logs from servers such as Alibaba Cloud Elastic
         Compute Service (ECS) instances in real time in the Log Service console. [Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm)
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_log_tail_config = alicloud.log.LogTailConfig("exampleLogTailConfig",
-            project=example_project.name,
-            logstore=example_store.name,
-            input_type="file",
-            output_type="LogService",
-            input_detail=\"\"\"  	{
-        		"logPath": "/logPath",
-        		"filePattern": "access.log",
-        		"logType": "json_log",
-        		"topicFormat": "default",
-        		"discardUnmatch": false,
-        		"enableRawLog": true,
-        		"fileEncoding": "gbk",
-        		"maxDepth": 10
-        	}
-        \"\"\")
-        ```
         ## Module Support
 
         You can use the existing sls-logtail module
@@ -397,43 +370,6 @@ class LogTailConfig(pulumi.CustomResource):
         You can use Logtail to collect logs from servers such as Alibaba Cloud Elastic
         Compute Service (ECS) instances in real time in the Log Service console. [Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm)
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_log_tail_config = alicloud.log.LogTailConfig("exampleLogTailConfig",
-            project=example_project.name,
-            logstore=example_store.name,
-            input_type="file",
-            output_type="LogService",
-            input_detail=\"\"\"  	{
-        		"logPath": "/logPath",
-        		"filePattern": "access.log",
-        		"logType": "json_log",
-        		"topicFormat": "default",
-        		"discardUnmatch": false,
-        		"enableRawLog": true,
-        		"fileEncoding": "gbk",
-        		"maxDepth": 10
-        	}
-        \"\"\")
-        ```
         ## Module Support
 
         You can use the existing sls-logtail module

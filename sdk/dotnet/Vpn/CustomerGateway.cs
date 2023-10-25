@@ -10,27 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpn
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foo = new AliCloud.Vpn.CustomerGateway("foo", new()
-    ///     {
-    ///         Description = "vpnCgwDescriptionExample",
-    ///         IpAddress = "43.104.22.228",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// VPN customer gateway can be imported using the id, e.g.

@@ -90,16 +90,6 @@ def get_backend_servers(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.53.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    sample_ds = alicloud.slb.get_backend_servers(load_balancer_id=alicloud_slb_load_balancer["sample_slb"]["id"])
-    pulumi.export("firstSlbBackendServerId", sample_ds.backend_servers[0].id)
-    ```
-
 
     :param Sequence[str] ids: List of attached ECS instance IDs.
     :param str load_balancer_id: ID of the SLB with attachments.
@@ -129,16 +119,6 @@ def get_backend_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     This data source provides the server load balancer backend servers related to a server load balancer..
 
     > **NOTE:** Available in 1.53.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    sample_ds = alicloud.slb.get_backend_servers(load_balancer_id=alicloud_slb_load_balancer["sample_slb"]["id"])
-    pulumi.export("firstSlbBackendServerId", sample_ds.backend_servers[0].id)
-    ```
 
 
     :param Sequence[str] ids: List of attached ECS instance IDs.

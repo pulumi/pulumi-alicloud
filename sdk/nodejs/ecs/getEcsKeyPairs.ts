@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.121.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ecs.getEcsKeyPairs({
- *     ids: ["key_pair_name"],
- *     nameRegex: "key_pair_name",
- * });
- * export const firstEcsKeyPairId = example.then(example => example.pairs?.[0]?.id);
- * ```
  */
 export function getEcsKeyPairs(args?: GetEcsKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsKeyPairsResult> {
     args = args || {};
@@ -95,21 +80,6 @@ export interface GetEcsKeyPairsResult {
  * This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.121.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ecs.getEcsKeyPairs({
- *     ids: ["key_pair_name"],
- *     nameRegex: "key_pair_name",
- * });
- * export const firstEcsKeyPairId = example.then(example => example.pairs?.[0]?.id);
- * ```
  */
 export function getEcsKeyPairsOutput(args?: GetEcsKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsKeyPairsResult> {
     return pulumi.output(args).apply((a: any) => getEcsKeyPairs(a, opts))

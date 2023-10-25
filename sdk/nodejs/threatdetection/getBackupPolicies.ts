@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.195.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.threatdetection.getBackupPolicies({
- *     ids: ["example_id"],
- * });
- * export const threatDetectionBackupPoliciesId1 = ids.then(ids => ids.policies?.[0]?.id);
- * const nameRegex = alicloud.threatdetection.getBackupPolicies({
- *     nameRegex: "tf-example",
- * });
- * export const threatDetectionBackupPoliciesId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
- * ```
  */
 export function getBackupPolicies(args?: GetBackupPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupPoliciesResult> {
     args = args || {};
@@ -109,24 +91,6 @@ export interface GetBackupPoliciesResult {
  * This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.195.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.threatdetection.getBackupPolicies({
- *     ids: ["example_id"],
- * });
- * export const threatDetectionBackupPoliciesId1 = ids.then(ids => ids.policies?.[0]?.id);
- * const nameRegex = alicloud.threatdetection.getBackupPolicies({
- *     nameRegex: "tf-example",
- * });
- * export const threatDetectionBackupPoliciesId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
- * ```
  */
 export function getBackupPoliciesOutput(args?: GetBackupPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getBackupPolicies(a, opts))

@@ -13,37 +13,6 @@ import (
 )
 
 // This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ddos.GetDdosCooInstances(ctx, &ddos.GetDdosCooInstancesArgs{
-//				NameRegex: pulumi.StringRef("^ddoscoo"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var splat0 []interface{}
-//			for _, val0 := range alicloud_ddoscoo_instances.Instance {
-//				splat0 = append(splat0, val0.Id)
-//			}
-//			ctx.Export("instance", splat0)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDdosCooInstances(ctx *pulumi.Context, args *GetDdosCooInstancesArgs, opts ...pulumi.InvokeOption) (*GetDdosCooInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDdosCooInstancesResult

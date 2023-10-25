@@ -58,7 +58,7 @@ class ChainChainConfig(dict):
              _setter: Callable[[Any, Any], None],
              nodes: Optional[Sequence['outputs.ChainChainConfigNode']] = None,
              routers: Optional[Sequence['outputs.ChainChainConfigRouter']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if nodes is not None:
@@ -127,11 +127,11 @@ class ChainChainConfigNode(dict):
              enable: Optional[bool] = None,
              node_configs: Optional[Sequence['outputs.ChainChainConfigNodeNodeConfig']] = None,
              node_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeConfigs' in kwargs:
+        if node_configs is None and 'nodeConfigs' in kwargs:
             node_configs = kwargs['nodeConfigs']
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
 
         if enable is not None:
@@ -198,9 +198,9 @@ class ChainChainConfigNodeNodeConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              deny_policies: Optional[Sequence['outputs.ChainChainConfigNodeNodeConfigDenyPolicy']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'denyPolicies' in kwargs:
+        if deny_policies is None and 'denyPolicies' in kwargs:
             deny_policies = kwargs['denyPolicies']
 
         if deny_policies is not None:
@@ -261,11 +261,11 @@ class ChainChainConfigNodeNodeConfigDenyPolicy(dict):
              issue_count: Optional[str] = None,
              issue_level: Optional[str] = None,
              logic: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'issueCount' in kwargs:
+        if issue_count is None and 'issueCount' in kwargs:
             issue_count = kwargs['issueCount']
-        if 'issueLevel' in kwargs:
+        if issue_level is None and 'issueLevel' in kwargs:
             issue_level = kwargs['issueLevel']
 
         if action is not None:
@@ -329,7 +329,7 @@ class ChainChainConfigRouter(dict):
              _setter: Callable[[Any, Any], None],
              froms: Optional[Sequence['outputs.ChainChainConfigRouterFrom']] = None,
              tos: Optional[Sequence['outputs.ChainChainConfigRouterTo']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if froms is not None:
@@ -386,9 +386,9 @@ class ChainChainConfigRouterFrom(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              node_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
 
         if node_name is not None:
@@ -435,9 +435,9 @@ class ChainChainConfigRouterTo(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              node_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
 
         if node_name is not None:
@@ -475,7 +475,7 @@ class RepoDomainList(dict):
              internal: Optional[str] = None,
              public: Optional[str] = None,
              vpc: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if internal is not None:
@@ -551,34 +551,54 @@ class GetChainsChainResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             chain_configs: Sequence['outputs.GetChainsChainChainConfigResult'],
-             chain_id: str,
-             chain_name: str,
-             create_time: str,
-             description: str,
-             id: str,
-             instance_id: str,
-             modified_time: str,
-             scope_id: str,
-             scope_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             chain_configs: Optional[Sequence['outputs.GetChainsChainChainConfigResult']] = None,
+             chain_id: Optional[str] = None,
+             chain_name: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             modified_time: Optional[str] = None,
+             scope_id: Optional[str] = None,
+             scope_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'chainConfigs' in kwargs:
+        if chain_configs is None and 'chainConfigs' in kwargs:
             chain_configs = kwargs['chainConfigs']
-        if 'chainId' in kwargs:
+        if chain_configs is None:
+            raise TypeError("Missing 'chain_configs' argument")
+        if chain_id is None and 'chainId' in kwargs:
             chain_id = kwargs['chainId']
-        if 'chainName' in kwargs:
+        if chain_id is None:
+            raise TypeError("Missing 'chain_id' argument")
+        if chain_name is None and 'chainName' in kwargs:
             chain_name = kwargs['chainName']
-        if 'createTime' in kwargs:
+        if chain_name is None:
+            raise TypeError("Missing 'chain_name' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'instanceId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'modifiedTime' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if modified_time is None and 'modifiedTime' in kwargs:
             modified_time = kwargs['modifiedTime']
-        if 'scopeId' in kwargs:
+        if modified_time is None:
+            raise TypeError("Missing 'modified_time' argument")
+        if scope_id is None and 'scopeId' in kwargs:
             scope_id = kwargs['scopeId']
-        if 'scopeType' in kwargs:
+        if scope_id is None:
+            raise TypeError("Missing 'scope_id' argument")
+        if scope_type is None and 'scopeType' in kwargs:
             scope_type = kwargs['scopeType']
+        if scope_type is None:
+            raise TypeError("Missing 'scope_type' argument")
 
         _setter("chain_configs", chain_configs)
         _setter("chain_id", chain_id)
@@ -689,10 +709,14 @@ class GetChainsChainChainConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             nodes: Sequence['outputs.GetChainsChainChainConfigNodeResult'],
-             routers: Sequence['outputs.GetChainsChainChainConfigRouterResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             nodes: Optional[Sequence['outputs.GetChainsChainChainConfigNodeResult']] = None,
+             routers: Optional[Sequence['outputs.GetChainsChainChainConfigRouterResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if nodes is None:
+            raise TypeError("Missing 'nodes' argument")
+        if routers is None:
+            raise TypeError("Missing 'routers' argument")
 
         _setter("nodes", nodes)
         _setter("routers", routers)
@@ -734,15 +758,21 @@ class GetChainsChainChainConfigNodeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable: bool,
-             node_configs: Sequence['outputs.GetChainsChainChainConfigNodeNodeConfigResult'],
-             node_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             enable: Optional[bool] = None,
+             node_configs: Optional[Sequence['outputs.GetChainsChainChainConfigNodeNodeConfigResult']] = None,
+             node_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeConfigs' in kwargs:
+        if enable is None:
+            raise TypeError("Missing 'enable' argument")
+        if node_configs is None and 'nodeConfigs' in kwargs:
             node_configs = kwargs['nodeConfigs']
-        if 'nodeName' in kwargs:
+        if node_configs is None:
+            raise TypeError("Missing 'node_configs' argument")
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
+        if node_name is None:
+            raise TypeError("Missing 'node_name' argument")
 
         _setter("enable", enable)
         _setter("node_configs", node_configs)
@@ -787,11 +817,13 @@ class GetChainsChainChainConfigNodeNodeConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             deny_policies: Sequence['outputs.GetChainsChainChainConfigNodeNodeConfigDenyPolicyResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             deny_policies: Optional[Sequence['outputs.GetChainsChainChainConfigNodeNodeConfigDenyPolicyResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'denyPolicies' in kwargs:
+        if deny_policies is None and 'denyPolicies' in kwargs:
             deny_policies = kwargs['denyPolicies']
+        if deny_policies is None:
+            raise TypeError("Missing 'deny_policies' argument")
 
         _setter("deny_policies", deny_policies)
 
@@ -827,16 +859,22 @@ class GetChainsChainChainConfigNodeNodeConfigDenyPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             issue_count: str,
-             issue_level: str,
-             logic: str,
+             issue_count: Optional[str] = None,
+             issue_level: Optional[str] = None,
+             logic: Optional[str] = None,
              action: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'issueCount' in kwargs:
+        if issue_count is None and 'issueCount' in kwargs:
             issue_count = kwargs['issueCount']
-        if 'issueLevel' in kwargs:
+        if issue_count is None:
+            raise TypeError("Missing 'issue_count' argument")
+        if issue_level is None and 'issueLevel' in kwargs:
             issue_level = kwargs['issueLevel']
+        if issue_level is None:
+            raise TypeError("Missing 'issue_level' argument")
+        if logic is None:
+            raise TypeError("Missing 'logic' argument")
 
         _setter("issue_count", issue_count)
         _setter("issue_level", issue_level)
@@ -894,10 +932,14 @@ class GetChainsChainChainConfigRouterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             froms: Sequence['outputs.GetChainsChainChainConfigRouterFromResult'],
-             tos: Sequence['outputs.GetChainsChainChainConfigRouterToResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             froms: Optional[Sequence['outputs.GetChainsChainChainConfigRouterFromResult']] = None,
+             tos: Optional[Sequence['outputs.GetChainsChainChainConfigRouterToResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if froms is None:
+            raise TypeError("Missing 'froms' argument")
+        if tos is None:
+            raise TypeError("Missing 'tos' argument")
 
         _setter("froms", froms)
         _setter("tos", tos)
@@ -933,11 +975,13 @@ class GetChainsChainChainConfigRouterFromResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             node_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
+        if node_name is None:
+            raise TypeError("Missing 'node_name' argument")
 
         _setter("node_name", node_name)
 
@@ -964,11 +1008,13 @@ class GetChainsChainChainConfigRouterToResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             node_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
+        if node_name is None:
+            raise TypeError("Missing 'node_name' argument")
 
         _setter("node_name", node_name)
 
@@ -1010,24 +1056,36 @@ class GetChartNamespacesNamespaceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_create_repo: bool,
-             chart_namespace_id: str,
-             default_repo_type: str,
-             id: str,
-             instance_id: str,
-             namespace_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auto_create_repo: Optional[bool] = None,
+             chart_namespace_id: Optional[str] = None,
+             default_repo_type: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             namespace_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoCreateRepo' in kwargs:
+        if auto_create_repo is None and 'autoCreateRepo' in kwargs:
             auto_create_repo = kwargs['autoCreateRepo']
-        if 'chartNamespaceId' in kwargs:
+        if auto_create_repo is None:
+            raise TypeError("Missing 'auto_create_repo' argument")
+        if chart_namespace_id is None and 'chartNamespaceId' in kwargs:
             chart_namespace_id = kwargs['chartNamespaceId']
-        if 'defaultRepoType' in kwargs:
+        if chart_namespace_id is None:
+            raise TypeError("Missing 'chart_namespace_id' argument")
+        if default_repo_type is None and 'defaultRepoType' in kwargs:
             default_repo_type = kwargs['defaultRepoType']
-        if 'instanceId' in kwargs:
+        if default_repo_type is None:
+            raise TypeError("Missing 'default_repo_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'namespaceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if namespace_name is None and 'namespaceName' in kwargs:
             namespace_name = kwargs['namespaceName']
+        if namespace_name is None:
+            raise TypeError("Missing 'namespace_name' argument")
 
         _setter("auto_create_repo", auto_create_repo)
         _setter("chart_namespace_id", chart_namespace_id)
@@ -1120,28 +1178,44 @@ class GetChartRepositoriesRepositoryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             chart_repository_id: str,
-             create_time: str,
-             id: str,
-             instance_id: str,
-             repo_name: str,
-             repo_namespace_name: str,
-             repo_type: str,
-             summary: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             chart_repository_id: Optional[str] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             repo_name: Optional[str] = None,
+             repo_namespace_name: Optional[str] = None,
+             repo_type: Optional[str] = None,
+             summary: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'chartRepositoryId' in kwargs:
+        if chart_repository_id is None and 'chartRepositoryId' in kwargs:
             chart_repository_id = kwargs['chartRepositoryId']
-        if 'createTime' in kwargs:
+        if chart_repository_id is None:
+            raise TypeError("Missing 'chart_repository_id' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'instanceId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'repoName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if repo_name is None and 'repoName' in kwargs:
             repo_name = kwargs['repoName']
-        if 'repoNamespaceName' in kwargs:
+        if repo_name is None:
+            raise TypeError("Missing 'repo_name' argument")
+        if repo_namespace_name is None and 'repoNamespaceName' in kwargs:
             repo_namespace_name = kwargs['repoNamespaceName']
-        if 'repoType' in kwargs:
+        if repo_namespace_name is None:
+            raise TypeError("Missing 'repo_namespace_name' argument")
+        if repo_type is None and 'repoType' in kwargs:
             repo_type = kwargs['repoType']
+        if repo_type is None:
+            raise TypeError("Missing 'repo_type' argument")
+        if summary is None:
+            raise TypeError("Missing 'summary' argument")
 
         _setter("chart_repository_id", chart_repository_id)
         _setter("create_time", create_time)
@@ -1243,17 +1317,27 @@ class GetEndpointAclPoliciesPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             endpoint_type: str,
-             entry: str,
-             id: str,
-             instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             endpoint_type: Optional[str] = None,
+             entry: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endpointType' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if endpoint_type is None and 'endpointType' in kwargs:
             endpoint_type = kwargs['endpointType']
-        if 'instanceId' in kwargs:
+        if endpoint_type is None:
+            raise TypeError("Missing 'endpoint_type' argument")
+        if entry is None:
+            raise TypeError("Missing 'entry' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
 
         _setter("description", description)
         _setter("endpoint_type", endpoint_type)
@@ -1322,15 +1406,21 @@ class GetNamespacesNamespaceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_create: bool,
-             default_visibility: str,
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auto_create: Optional[bool] = None,
+             default_visibility: Optional[str] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoCreate' in kwargs:
+        if auto_create is None and 'autoCreate' in kwargs:
             auto_create = kwargs['autoCreate']
-        if 'defaultVisibility' in kwargs:
+        if auto_create is None:
+            raise TypeError("Missing 'auto_create' argument")
+        if default_visibility is None and 'defaultVisibility' in kwargs:
             default_visibility = kwargs['defaultVisibility']
+        if default_visibility is None:
+            raise TypeError("Missing 'default_visibility' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("auto_create", auto_create)
         _setter("default_visibility", default_visibility)
@@ -1390,18 +1480,30 @@ class GetReposRepoResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain_list: 'outputs.GetReposRepoDomainListResult',
-             name: str,
-             namespace: str,
-             repo_type: str,
-             summary: str,
-             tags: Sequence['outputs.GetReposRepoTagResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             domain_list: Optional['outputs.GetReposRepoDomainListResult'] = None,
+             name: Optional[str] = None,
+             namespace: Optional[str] = None,
+             repo_type: Optional[str] = None,
+             summary: Optional[str] = None,
+             tags: Optional[Sequence['outputs.GetReposRepoTagResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainList' in kwargs:
+        if domain_list is None and 'domainList' in kwargs:
             domain_list = kwargs['domainList']
-        if 'repoType' in kwargs:
+        if domain_list is None:
+            raise TypeError("Missing 'domain_list' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if repo_type is None and 'repoType' in kwargs:
             repo_type = kwargs['repoType']
+        if repo_type is None:
+            raise TypeError("Missing 'repo_type' argument")
+        if summary is None:
+            raise TypeError("Missing 'summary' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
 
         _setter("domain_list", domain_list)
         _setter("name", name)
@@ -1479,11 +1581,17 @@ class GetReposRepoDomainListResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             internal: str,
-             public: str,
-             vpc: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             internal: Optional[str] = None,
+             public: Optional[str] = None,
+             vpc: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if internal is None:
+            raise TypeError("Missing 'internal' argument")
+        if public is None:
+            raise TypeError("Missing 'public' argument")
+        if vpc is None:
+            raise TypeError("Missing 'vpc' argument")
 
         _setter("internal", internal)
         _setter("public", public)
@@ -1546,23 +1654,37 @@ class GetReposRepoTagResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             digest: str,
-             image_create: int,
-             image_id: str,
-             image_size: int,
-             image_update: int,
-             status: str,
-             tag: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             digest: Optional[str] = None,
+             image_create: Optional[int] = None,
+             image_id: Optional[str] = None,
+             image_size: Optional[int] = None,
+             image_update: Optional[int] = None,
+             status: Optional[str] = None,
+             tag: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'imageCreate' in kwargs:
+        if digest is None:
+            raise TypeError("Missing 'digest' argument")
+        if image_create is None and 'imageCreate' in kwargs:
             image_create = kwargs['imageCreate']
-        if 'imageId' in kwargs:
+        if image_create is None:
+            raise TypeError("Missing 'image_create' argument")
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'imageSize' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if image_size is None and 'imageSize' in kwargs:
             image_size = kwargs['imageSize']
-        if 'imageUpdate' in kwargs:
+        if image_size is None:
+            raise TypeError("Missing 'image_size' argument")
+        if image_update is None and 'imageUpdate' in kwargs:
             image_update = kwargs['imageUpdate']
+        if image_update is None:
+            raise TypeError("Missing 'image_update' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tag is None:
+            raise TypeError("Missing 'tag' argument")
 
         _setter("digest", digest)
         _setter("image_create", image_create)
@@ -1664,26 +1786,42 @@ class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default_access: bool,
-             id: str,
-             instance_id: str,
-             ip: str,
-             module_name: str,
-             status: str,
-             vpc_id: str,
-             vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             default_access: Optional[bool] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             ip: Optional[str] = None,
+             module_name: Optional[str] = None,
+             status: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultAccess' in kwargs:
+        if default_access is None and 'defaultAccess' in kwargs:
             default_access = kwargs['defaultAccess']
-        if 'instanceId' in kwargs:
+        if default_access is None:
+            raise TypeError("Missing 'default_access' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'moduleName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if ip is None:
+            raise TypeError("Missing 'ip' argument")
+        if module_name is None and 'moduleName' in kwargs:
             module_name = kwargs['moduleName']
-        if 'vpcId' in kwargs:
+        if module_name is None:
+            raise TypeError("Missing 'module_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("default_access", default_access)
         _setter("id", id)

@@ -15,38 +15,6 @@ namespace Pulumi.AliCloud.Ga
         /// This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.111.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Ga.GetAccelerators.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///         NameRegex = "the_resource_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstGaAcceleratorId"] = example.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAcceleratorsResult> InvokeAsync(GetAcceleratorsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAcceleratorsResult>("alicloud:ga/getAccelerators:getAccelerators", args ?? new GetAcceleratorsArgs(), options.WithDefaults());
@@ -55,38 +23,6 @@ namespace Pulumi.AliCloud.Ga
         /// This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.111.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Ga.GetAccelerators.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///         NameRegex = "the_resource_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstGaAcceleratorId"] = example.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAcceleratorsResult> Invoke(GetAcceleratorsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAcceleratorsResult>("alicloud:ga/getAccelerators:getAccelerators", args ?? new GetAcceleratorsInvokeArgs(), options.WithDefaults());

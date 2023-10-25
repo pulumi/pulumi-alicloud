@@ -15,39 +15,6 @@ import (
 // This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.140.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := dfs.GetAccessRules(ctx, &dfs.GetAccessRulesArgs{
-//				AccessGroupId: "example_value",
-//				Ids: []string{
-//					"example_value-1",
-//					"example_value-2",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dfsAccessRuleId1", ids.Rules[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAccessRules(ctx *pulumi.Context, args *GetAccessRulesArgs, opts ...pulumi.InvokeOption) (*GetAccessRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccessRulesResult

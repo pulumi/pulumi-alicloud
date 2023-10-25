@@ -55,33 +55,41 @@ class GatewayArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             replica: pulumi.Input[int],
-             spec: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             replica: Optional[pulumi.Input[int]] = None,
+             spec: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              backup_vswitch_id: Optional[pulumi.Input[str]] = None,
              delete_slb: Optional[pulumi.Input[bool]] = None,
              enterprise_security_group: Optional[pulumi.Input[bool]] = None,
              gateway_name: Optional[pulumi.Input[str]] = None,
              internet_slb_spec: Optional[pulumi.Input[str]] = None,
              slb_spec: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vpcId' in kwargs:
+        if replica is None:
+            raise TypeError("Missing 'replica' argument")
+        if spec is None:
+            raise TypeError("Missing 'spec' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'backupVswitchId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if backup_vswitch_id is None and 'backupVswitchId' in kwargs:
             backup_vswitch_id = kwargs['backupVswitchId']
-        if 'deleteSlb' in kwargs:
+        if delete_slb is None and 'deleteSlb' in kwargs:
             delete_slb = kwargs['deleteSlb']
-        if 'enterpriseSecurityGroup' in kwargs:
+        if enterprise_security_group is None and 'enterpriseSecurityGroup' in kwargs:
             enterprise_security_group = kwargs['enterpriseSecurityGroup']
-        if 'gatewayName' in kwargs:
+        if gateway_name is None and 'gatewayName' in kwargs:
             gateway_name = kwargs['gatewayName']
-        if 'internetSlbSpec' in kwargs:
+        if internet_slb_spec is None and 'internetSlbSpec' in kwargs:
             internet_slb_spec = kwargs['internetSlbSpec']
-        if 'slbSpec' in kwargs:
+        if slb_spec is None and 'slbSpec' in kwargs:
             slb_spec = kwargs['slbSpec']
 
         _setter("replica", replica)
@@ -282,25 +290,25 @@ class _GatewayState:
              status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupVswitchId' in kwargs:
+        if backup_vswitch_id is None and 'backupVswitchId' in kwargs:
             backup_vswitch_id = kwargs['backupVswitchId']
-        if 'deleteSlb' in kwargs:
+        if delete_slb is None and 'deleteSlb' in kwargs:
             delete_slb = kwargs['deleteSlb']
-        if 'enterpriseSecurityGroup' in kwargs:
+        if enterprise_security_group is None and 'enterpriseSecurityGroup' in kwargs:
             enterprise_security_group = kwargs['enterpriseSecurityGroup']
-        if 'gatewayName' in kwargs:
+        if gateway_name is None and 'gatewayName' in kwargs:
             gateway_name = kwargs['gatewayName']
-        if 'internetSlbSpec' in kwargs:
+        if internet_slb_spec is None and 'internetSlbSpec' in kwargs:
             internet_slb_spec = kwargs['internetSlbSpec']
-        if 'slbLists' in kwargs:
+        if slb_lists is None and 'slbLists' in kwargs:
             slb_lists = kwargs['slbLists']
-        if 'slbSpec' in kwargs:
+        if slb_spec is None and 'slbSpec' in kwargs:
             slb_spec = kwargs['slbSpec']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if backup_vswitch_id is not None:

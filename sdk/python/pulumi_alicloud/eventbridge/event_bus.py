@@ -29,12 +29,14 @@ class EventBusArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             event_bus_name: pulumi.Input[str],
+             event_bus_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventBusName' in kwargs:
+        if event_bus_name is None and 'eventBusName' in kwargs:
             event_bus_name = kwargs['eventBusName']
+        if event_bus_name is None:
+            raise TypeError("Missing 'event_bus_name' argument")
 
         _setter("event_bus_name", event_bus_name)
         if description is not None:
@@ -85,9 +87,9 @@ class _EventBusState:
              _setter: Callable[[Any, Any], None],
              description: Optional[pulumi.Input[str]] = None,
              event_bus_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventBusName' in kwargs:
+        if event_bus_name is None and 'eventBusName' in kwargs:
             event_bus_name = kwargs['eventBusName']
 
         if description is not None:
@@ -135,21 +137,6 @@ class EventBus(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.129.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example = alicloud.eventbridge.EventBus("example", event_bus_name=name)
-        ```
-
         ## Import
 
         Event Bridge Event Bus can be imported using the id, e.g.
@@ -175,21 +162,6 @@ class EventBus(pulumi.CustomResource):
         For information about Event Bridge Event Bus and how to use it, see [What is Event Bus](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createeventbus).
 
         > **NOTE:** Available since v1.129.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example = alicloud.eventbridge.EventBus("example", event_bus_name=name)
-        ```
 
         ## Import
 

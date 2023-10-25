@@ -65,9 +65,9 @@ class SecurityGroupRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_protocol: pulumi.Input[str],
-             security_group_id: pulumi.Input[str],
-             type: pulumi.Input[str],
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              cidr_ip: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              ipv6_cidr_ip: Optional[pulumi.Input[str]] = None,
@@ -78,25 +78,31 @@ class SecurityGroupRuleArgs:
              priority: Optional[pulumi.Input[int]] = None,
              source_group_owner_account: Optional[pulumi.Input[str]] = None,
              source_security_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipProtocol' in kwargs:
+        if ip_protocol is None and 'ipProtocol' in kwargs:
             ip_protocol = kwargs['ipProtocol']
-        if 'securityGroupId' in kwargs:
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'cidrIp' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if cidr_ip is None and 'cidrIp' in kwargs:
             cidr_ip = kwargs['cidrIp']
-        if 'ipv6CidrIp' in kwargs:
+        if ipv6_cidr_ip is None and 'ipv6CidrIp' in kwargs:
             ipv6_cidr_ip = kwargs['ipv6CidrIp']
-        if 'nicType' in kwargs:
+        if nic_type is None and 'nicType' in kwargs:
             nic_type = kwargs['nicType']
-        if 'portRange' in kwargs:
+        if port_range is None and 'portRange' in kwargs:
             port_range = kwargs['portRange']
-        if 'prefixListId' in kwargs:
+        if prefix_list_id is None and 'prefixListId' in kwargs:
             prefix_list_id = kwargs['prefixListId']
-        if 'sourceGroupOwnerAccount' in kwargs:
+        if source_group_owner_account is None and 'sourceGroupOwnerAccount' in kwargs:
             source_group_owner_account = kwargs['sourceGroupOwnerAccount']
-        if 'sourceSecurityGroupId' in kwargs:
+        if source_security_group_id is None and 'sourceSecurityGroupId' in kwargs:
             source_security_group_id = kwargs['sourceSecurityGroupId']
 
         _setter("ip_protocol", ip_protocol)
@@ -350,25 +356,25 @@ class _SecurityGroupRuleState:
              source_group_owner_account: Optional[pulumi.Input[str]] = None,
              source_security_group_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrIp' in kwargs:
+        if cidr_ip is None and 'cidrIp' in kwargs:
             cidr_ip = kwargs['cidrIp']
-        if 'ipProtocol' in kwargs:
+        if ip_protocol is None and 'ipProtocol' in kwargs:
             ip_protocol = kwargs['ipProtocol']
-        if 'ipv6CidrIp' in kwargs:
+        if ipv6_cidr_ip is None and 'ipv6CidrIp' in kwargs:
             ipv6_cidr_ip = kwargs['ipv6CidrIp']
-        if 'nicType' in kwargs:
+        if nic_type is None and 'nicType' in kwargs:
             nic_type = kwargs['nicType']
-        if 'portRange' in kwargs:
+        if port_range is None and 'portRange' in kwargs:
             port_range = kwargs['portRange']
-        if 'prefixListId' in kwargs:
+        if prefix_list_id is None and 'prefixListId' in kwargs:
             prefix_list_id = kwargs['prefixListId']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'sourceGroupOwnerAccount' in kwargs:
+        if source_group_owner_account is None and 'sourceGroupOwnerAccount' in kwargs:
             source_group_owner_account = kwargs['sourceGroupOwnerAccount']
-        if 'sourceSecurityGroupId' in kwargs:
+        if source_security_group_id is None and 'sourceSecurityGroupId' in kwargs:
             source_security_group_id = kwargs['sourceSecurityGroupId']
 
         if cidr_ip is not None:
@@ -583,25 +589,6 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         > **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ecs.SecurityGroup("default")
-        allow_all_tcp = alicloud.ecs.SecurityGroupRule("allowAllTcp",
-            type="ingress",
-            ip_protocol="tcp",
-            nic_type="internet",
-            policy="accept",
-            port_range="1/65535",
-            priority=1,
-            security_group_id=default.id,
-            cidr_ip="0.0.0.0/0")
-        ```
         ## Module Support
 
         You can use the existing security-group module
@@ -638,25 +625,6 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         > **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ecs.SecurityGroup("default")
-        allow_all_tcp = alicloud.ecs.SecurityGroupRule("allowAllTcp",
-            type="ingress",
-            ip_protocol="tcp",
-            nic_type="internet",
-            policy="accept",
-            port_range="1/65535",
-            priority=1,
-            security_group_id=default.id,
-            cidr_ip="0.0.0.0/0")
-        ```
         ## Module Support
 
         You can use the existing security-group module

@@ -15,49 +15,6 @@ import (
 // This data source provides the Vpc Traffic Mirror Filter Egress Rules of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.140.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := vpc.GetTrafficMirrorFilterEgressRules(ctx, &vpc.GetTrafficMirrorFilterEgressRulesArgs{
-//				TrafficMirrorFilterId: "example_traffic_mirror_filter_id",
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("vpcTrafficMirrorFilterEgressRuleId1", ids.Rules[0].Id)
-//			status, err := vpc.GetTrafficMirrorFilterEgressRules(ctx, &vpc.GetTrafficMirrorFilterEgressRulesArgs{
-//				TrafficMirrorFilterId: "example_traffic_mirror_filter_id",
-//				Ids: []string{
-//					"example_id",
-//				},
-//				Status: pulumi.StringRef("Created"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("vpcTrafficMirrorFilterEgressRuleId2", status.Rules[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetTrafficMirrorFilterEgressRules(ctx *pulumi.Context, args *GetTrafficMirrorFilterEgressRulesArgs, opts ...pulumi.InvokeOption) (*GetTrafficMirrorFilterEgressRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTrafficMirrorFilterEgressRulesResult

@@ -171,39 +171,39 @@ class InstanceArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              used_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoPay' in kwargs:
+        if auto_pay is None and 'autoPay' in kwargs:
             auto_pay = kwargs['autoPay']
-        if 'autoStart' in kwargs:
+        if auto_start is None and 'autoStart' in kwargs:
             auto_start = kwargs['autoStart']
-        if 'computeUnit' in kwargs:
+        if compute_unit is None and 'computeUnit' in kwargs:
             compute_unit = kwargs['computeUnit']
-        if 'databaseCount' in kwargs:
+        if database_count is None and 'databaseCount' in kwargs:
             database_count = kwargs['databaseCount']
-        if 'destinationEndpointEngineName' in kwargs:
+        if destination_endpoint_engine_name is None and 'destinationEndpointEngineName' in kwargs:
             destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
-        if 'destinationRegion' in kwargs:
+        if destination_region is None and 'destinationRegion' in kwargs:
             destination_region = kwargs['destinationRegion']
-        if 'feeType' in kwargs:
+        if fee_type is None and 'feeType' in kwargs:
             fee_type = kwargs['feeType']
-        if 'instanceClass' in kwargs:
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'jobId' in kwargs:
+        if job_id is None and 'jobId' in kwargs:
             job_id = kwargs['jobId']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'sourceEndpointEngineName' in kwargs:
+        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
             source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if 'sourceRegion' in kwargs:
+        if source_region is None and 'sourceRegion' in kwargs:
             source_region = kwargs['sourceRegion']
-        if 'syncArchitecture' in kwargs:
+        if sync_architecture is None and 'syncArchitecture' in kwargs:
             sync_architecture = kwargs['syncArchitecture']
-        if 'synchronizationDirection' in kwargs:
+        if synchronization_direction is None and 'synchronizationDirection' in kwargs:
             synchronization_direction = kwargs['synchronizationDirection']
-        if 'usedTime' in kwargs:
+        if used_time is None and 'usedTime' in kwargs:
             used_time = kwargs['usedTime']
 
         if auto_pay is not None:
@@ -732,45 +732,45 @@ class _InstanceState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              used_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoPay' in kwargs:
+        if auto_pay is None and 'autoPay' in kwargs:
             auto_pay = kwargs['autoPay']
-        if 'autoStart' in kwargs:
+        if auto_start is None and 'autoStart' in kwargs:
             auto_start = kwargs['autoStart']
-        if 'computeUnit' in kwargs:
+        if compute_unit is None and 'computeUnit' in kwargs:
             compute_unit = kwargs['computeUnit']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'databaseCount' in kwargs:
+        if database_count is None and 'databaseCount' in kwargs:
             database_count = kwargs['databaseCount']
-        if 'destinationEndpointEngineName' in kwargs:
+        if destination_endpoint_engine_name is None and 'destinationEndpointEngineName' in kwargs:
             destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
-        if 'destinationRegion' in kwargs:
+        if destination_region is None and 'destinationRegion' in kwargs:
             destination_region = kwargs['destinationRegion']
-        if 'dtsInstanceId' in kwargs:
+        if dts_instance_id is None and 'dtsInstanceId' in kwargs:
             dts_instance_id = kwargs['dtsInstanceId']
-        if 'feeType' in kwargs:
+        if fee_type is None and 'feeType' in kwargs:
             fee_type = kwargs['feeType']
-        if 'instanceClass' in kwargs:
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'jobId' in kwargs:
+        if job_id is None and 'jobId' in kwargs:
             job_id = kwargs['jobId']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'sourceEndpointEngineName' in kwargs:
+        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
             source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if 'sourceRegion' in kwargs:
+        if source_region is None and 'sourceRegion' in kwargs:
             source_region = kwargs['sourceRegion']
-        if 'syncArchitecture' in kwargs:
+        if sync_architecture is None and 'syncArchitecture' in kwargs:
             sync_architecture = kwargs['syncArchitecture']
-        if 'synchronizationDirection' in kwargs:
+        if synchronization_direction is None and 'synchronizationDirection' in kwargs:
             synchronization_direction = kwargs['synchronizationDirection']
-        if 'usedTime' in kwargs:
+        if used_time is None and 'usedTime' in kwargs:
             used_time = kwargs['usedTime']
 
         if auto_pay is not None:
@@ -1212,27 +1212,6 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.198.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_regions = alicloud.get_regions(current=True)
-        default_instance = alicloud.dts.Instance("defaultInstance",
-            type="sync",
-            resource_group_id=default_resource_groups.ids[0],
-            payment_type="Subscription",
-            instance_class="large",
-            source_endpoint_engine_name="MySQL",
-            source_region=default_regions.regions[0].id,
-            destination_endpoint_engine_name="MySQL",
-            destination_region=default_regions.regions[0].id)
-        ```
-
         ## Import
 
         Dts Instance can be imported using the id, e.g.
@@ -1344,27 +1323,6 @@ class Instance(pulumi.CustomResource):
         For information about Dts Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance).
 
         > **NOTE:** Available since v1.198.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_regions = alicloud.get_regions(current=True)
-        default_instance = alicloud.dts.Instance("defaultInstance",
-            type="sync",
-            resource_group_id=default_resource_groups.ids[0],
-            payment_type="Subscription",
-            instance_class="large",
-            source_endpoint_engine_name="MySQL",
-            source_region=default_regions.regions[0].id,
-            destination_endpoint_engine_name="MySQL",
-            destination_region=default_regions.regions[0].id)
-        ```
 
         ## Import
 

@@ -39,13 +39,13 @@ class AccessKeyArgs:
              secret_file: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'pgpKey' in kwargs:
+        if pgp_key is None and 'pgpKey' in kwargs:
             pgp_key = kwargs['pgpKey']
-        if 'secretFile' in kwargs:
+        if secret_file is None and 'secretFile' in kwargs:
             secret_file = kwargs['secretFile']
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
 
         if pgp_key is not None:
@@ -148,17 +148,17 @@ class _AccessKeyState:
              secret_file: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'encryptedSecret' in kwargs:
+        if encrypted_secret is None and 'encryptedSecret' in kwargs:
             encrypted_secret = kwargs['encryptedSecret']
-        if 'keyFingerprint' in kwargs:
+        if key_fingerprint is None and 'keyFingerprint' in kwargs:
             key_fingerprint = kwargs['keyFingerprint']
-        if 'pgpKey' in kwargs:
+        if pgp_key is None and 'pgpKey' in kwargs:
             pgp_key = kwargs['pgpKey']
-        if 'secretFile' in kwargs:
+        if secret_file is None and 'secretFile' in kwargs:
             secret_file = kwargs['secretFile']
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
 
         if encrypted_secret is not None:
@@ -280,43 +280,6 @@ class AccessKey(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0+.
 
-        ## Example Usage
-
-        Output the secret to a file.
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new RAM access key for user.
-        user = alicloud.ram.User("user",
-            display_name="user_display_name",
-            mobile="86-18688888888",
-            email="hello.uuu@aaa.com",
-            comments="yoyoyo",
-            force=True)
-        ak = alicloud.ram.AccessKey("ak",
-            user_name=user.name,
-            secret_file="/xxx/xxx/xxx.txt")
-        ```
-
-        Using `pgp_key` to encrypt the secret.
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new RAM access key for user.
-        user = alicloud.ram.User("user",
-            display_name="user_display_name",
-            mobile="86-18688888888",
-            email="hello.uuu@aaa.com",
-            comments="yoyoyo",
-            force=True)
-        encrypt = alicloud.ram.AccessKey("encrypt",
-            user_name=user.name,
-            pgp_key="keybase:some_person_that_exists")
-        pulumi.export("secret", encrypt.encrypted_secret)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
@@ -338,43 +301,6 @@ class AccessKey(pulumi.CustomResource):
         > **NOTE:**  From version 1.98.0, if not set `pgp_key`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
 
         > **NOTE:** Available since v1.0.0+.
-
-        ## Example Usage
-
-        Output the secret to a file.
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new RAM access key for user.
-        user = alicloud.ram.User("user",
-            display_name="user_display_name",
-            mobile="86-18688888888",
-            email="hello.uuu@aaa.com",
-            comments="yoyoyo",
-            force=True)
-        ak = alicloud.ram.AccessKey("ak",
-            user_name=user.name,
-            secret_file="/xxx/xxx/xxx.txt")
-        ```
-
-        Using `pgp_key` to encrypt the secret.
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new RAM access key for user.
-        user = alicloud.ram.User("user",
-            display_name="user_display_name",
-            mobile="86-18688888888",
-            email="hello.uuu@aaa.com",
-            comments="yoyoyo",
-            force=True)
-        encrypt = alicloud.ram.AccessKey("encrypt",
-            user_name=user.name,
-            pgp_key="keybase:some_person_that_exists")
-        pulumi.export("secret", encrypt.encrypted_secret)
-        ```
 
         :param str resource_name: The name of the resource.
         :param AccessKeyArgs args: The arguments to use to populate this resource's properties.

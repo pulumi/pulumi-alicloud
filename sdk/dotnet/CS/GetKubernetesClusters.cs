@@ -17,34 +17,6 @@ namespace Pulumi.AliCloud.CS
         /// &gt; **NOTE:** Available in v1.34.0+.
         /// 
         /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var k8sClusters = AliCloud.CS.GetKubernetesClusters.Invoke(new()
-        ///     {
-        ///         KubeConfigFilePrefix = "~/.kube/k8s",
-        ///         NameRegex = "my-first-k8s",
-        ///         OutputFile = "my-first-k8s-json",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["output"] = k8sClusters.Apply(getKubernetesClustersResult =&gt; getKubernetesClustersResult.Clusters),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubernetesClustersResult> InvokeAsync(GetKubernetesClustersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesClustersResult>("alicloud:cs/getKubernetesClusters:getKubernetesClusters", args ?? new GetKubernetesClustersArgs(), options.WithDefaults());
@@ -55,34 +27,6 @@ namespace Pulumi.AliCloud.CS
         /// &gt; **NOTE:** Available in v1.34.0+.
         /// 
         /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var k8sClusters = AliCloud.CS.GetKubernetesClusters.Invoke(new()
-        ///     {
-        ///         KubeConfigFilePrefix = "~/.kube/k8s",
-        ///         NameRegex = "my-first-k8s",
-        ///         OutputFile = "my-first-k8s-json",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["output"] = k8sClusters.Apply(getKubernetesClustersResult =&gt; getKubernetesClustersResult.Clusters),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKubernetesClustersResult> Invoke(GetKubernetesClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesClustersResult>("alicloud:cs/getKubernetesClusters:getKubernetesClusters", args ?? new GetKubernetesClustersInvokeArgs(), options.WithDefaults());

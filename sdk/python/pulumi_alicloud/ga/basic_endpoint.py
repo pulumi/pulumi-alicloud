@@ -47,31 +47,39 @@ class BasicEndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: pulumi.Input[str],
-             endpoint_address: pulumi.Input[str],
-             endpoint_group_id: pulumi.Input[str],
-             endpoint_type: pulumi.Input[str],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             endpoint_address: Optional[pulumi.Input[str]] = None,
+             endpoint_group_id: Optional[pulumi.Input[str]] = None,
+             endpoint_type: Optional[pulumi.Input[str]] = None,
              basic_endpoint_name: Optional[pulumi.Input[str]] = None,
              endpoint_sub_address: Optional[pulumi.Input[str]] = None,
              endpoint_sub_address_type: Optional[pulumi.Input[str]] = None,
              endpoint_zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'endpointAddress' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if endpoint_address is None and 'endpointAddress' in kwargs:
             endpoint_address = kwargs['endpointAddress']
-        if 'endpointGroupId' in kwargs:
+        if endpoint_address is None:
+            raise TypeError("Missing 'endpoint_address' argument")
+        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
             endpoint_group_id = kwargs['endpointGroupId']
-        if 'endpointType' in kwargs:
+        if endpoint_group_id is None:
+            raise TypeError("Missing 'endpoint_group_id' argument")
+        if endpoint_type is None and 'endpointType' in kwargs:
             endpoint_type = kwargs['endpointType']
-        if 'basicEndpointName' in kwargs:
+        if endpoint_type is None:
+            raise TypeError("Missing 'endpoint_type' argument")
+        if basic_endpoint_name is None and 'basicEndpointName' in kwargs:
             basic_endpoint_name = kwargs['basicEndpointName']
-        if 'endpointSubAddress' in kwargs:
+        if endpoint_sub_address is None and 'endpointSubAddress' in kwargs:
             endpoint_sub_address = kwargs['endpointSubAddress']
-        if 'endpointSubAddressType' in kwargs:
+        if endpoint_sub_address_type is None and 'endpointSubAddressType' in kwargs:
             endpoint_sub_address_type = kwargs['endpointSubAddressType']
-        if 'endpointZoneId' in kwargs:
+        if endpoint_zone_id is None and 'endpointZoneId' in kwargs:
             endpoint_zone_id = kwargs['endpointZoneId']
 
         _setter("accelerator_id", accelerator_id)
@@ -236,25 +244,25 @@ class _BasicEndpointState:
              endpoint_type: Optional[pulumi.Input[str]] = None,
              endpoint_zone_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'basicEndpointName' in kwargs:
+        if basic_endpoint_name is None and 'basicEndpointName' in kwargs:
             basic_endpoint_name = kwargs['basicEndpointName']
-        if 'endpointAddress' in kwargs:
+        if endpoint_address is None and 'endpointAddress' in kwargs:
             endpoint_address = kwargs['endpointAddress']
-        if 'endpointGroupId' in kwargs:
+        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
             endpoint_group_id = kwargs['endpointGroupId']
-        if 'endpointId' in kwargs:
+        if endpoint_id is None and 'endpointId' in kwargs:
             endpoint_id = kwargs['endpointId']
-        if 'endpointSubAddress' in kwargs:
+        if endpoint_sub_address is None and 'endpointSubAddress' in kwargs:
             endpoint_sub_address = kwargs['endpointSubAddress']
-        if 'endpointSubAddressType' in kwargs:
+        if endpoint_sub_address_type is None and 'endpointSubAddressType' in kwargs:
             endpoint_sub_address_type = kwargs['endpointSubAddressType']
-        if 'endpointType' in kwargs:
+        if endpoint_type is None and 'endpointType' in kwargs:
             endpoint_type = kwargs['endpointType']
-        if 'endpointZoneId' in kwargs:
+        if endpoint_zone_id is None and 'endpointZoneId' in kwargs:
             endpoint_zone_id = kwargs['endpointZoneId']
 
         if accelerator_id is not None:
@@ -420,63 +428,6 @@ class BasicEndpoint(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-shenzhen"
-        endpoint_region = config.get("endpointRegion")
-        if endpoint_region is None:
-            endpoint_region = "cn-hangzhou"
-        sz = alicloud.Provider("sz", region=region)
-        hz = alicloud.Provider("hz", region=endpoint_region)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id,
-            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id,
-        opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
-        default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("defaultEcsNetworkInterface",
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id],
-            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
-        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
-            duration=1,
-            basic_accelerator_name="terraform-example",
-            description="terraform-example",
-            bandwidth_billing_type="CDT",
-            auto_use_coupon="true",
-            auto_pay=True)
-        default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup",
-            accelerator_id=default_basic_accelerator.id,
-            endpoint_group_region=region,
-            basic_endpoint_group_name="terraform-example",
-            description="terraform-example")
-        default_basic_endpoint = alicloud.ga.BasicEndpoint("defaultBasicEndpoint",
-            accelerator_id=default_basic_accelerator.id,
-            endpoint_group_id=default_basic_endpoint_group.id,
-            endpoint_type="ENI",
-            endpoint_address=default_ecs_network_interface.id,
-            endpoint_sub_address_type="secondary",
-            endpoint_sub_address="192.168.0.1",
-            basic_endpoint_name="terraform-example",
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        ```
-
         ## Import
 
         Global Accelerator (GA) Basic Endpoint can be imported using the id, e.g.
@@ -508,63 +459,6 @@ class BasicEndpoint(pulumi.CustomResource):
         For information about Global Accelerator (GA) Basic Endpoint and how to use it, see [What is Basic Endpoint](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicendpoint).
 
         > **NOTE:** Available since v1.194.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-shenzhen"
-        endpoint_region = config.get("endpointRegion")
-        if endpoint_region is None:
-            endpoint_region = "cn-hangzhou"
-        sz = alicloud.Provider("sz", region=region)
-        hz = alicloud.Provider("hz", region=endpoint_region)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id,
-            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id,
-        opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
-        default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("defaultEcsNetworkInterface",
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id],
-            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
-        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
-            duration=1,
-            basic_accelerator_name="terraform-example",
-            description="terraform-example",
-            bandwidth_billing_type="CDT",
-            auto_use_coupon="true",
-            auto_pay=True)
-        default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup",
-            accelerator_id=default_basic_accelerator.id,
-            endpoint_group_region=region,
-            basic_endpoint_group_name="terraform-example",
-            description="terraform-example")
-        default_basic_endpoint = alicloud.ga.BasicEndpoint("defaultBasicEndpoint",
-            accelerator_id=default_basic_accelerator.id,
-            endpoint_group_id=default_basic_endpoint_group.id,
-            endpoint_type="ENI",
-            endpoint_address=default_ecs_network_interface.id,
-            endpoint_sub_address_type="secondary",
-            endpoint_sub_address="192.168.0.1",
-            basic_endpoint_name="terraform-example",
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        ```
 
         ## Import
 

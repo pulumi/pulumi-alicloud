@@ -47,16 +47,6 @@ class AwaitableGetAccountResult(GetAccountResult):
 def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
     This data source provides information about the current account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    current = alicloud.get_account()
-    pulumi.export("currentAccountId", current.id)
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -70,15 +60,5 @@ def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcco
 def get_account_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
     """
     This data source provides information about the current account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    current = alicloud.get_account()
-    pulumi.export("currentAccountId", current.id)
-    ```
     """
     ...

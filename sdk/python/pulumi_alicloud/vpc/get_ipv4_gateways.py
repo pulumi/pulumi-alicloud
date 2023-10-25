@@ -129,20 +129,6 @@ def get_ipv4_gateways(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.181.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpc.get_ipv4_gateways()
-    pulumi.export("vpcIpv4GatewayId1", ids.gateways[0].id)
-    name_regex = alicloud.vpc.get_ipv4_gateways(name_regex="^my-Ipv4Gateway")
-    pulumi.export("vpcIpv4GatewayId2", name_regex.gateways[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Ipv4 Gateway IDs.
     :param str ipv4_gateway_name: The name of the IPv4 gateway.
@@ -185,20 +171,6 @@ def get_ipv4_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     This data source provides the Vpc Ipv4 Gateways of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.181.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpc.get_ipv4_gateways()
-    pulumi.export("vpcIpv4GatewayId1", ids.gateways[0].id)
-    name_regex = alicloud.vpc.get_ipv4_gateways(name_regex="^my-Ipv4Gateway")
-    pulumi.export("vpcIpv4GatewayId2", name_regex.gateways[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Ipv4 Gateway IDs.

@@ -43,22 +43,32 @@ class RouteServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_region_id: pulumi.Input[str],
-             cen_id: pulumi.Input[str],
-             host: pulumi.Input[str],
-             host_region_id: pulumi.Input[str],
-             host_vpc_id: pulumi.Input[str],
+             access_region_id: Optional[pulumi.Input[str]] = None,
+             cen_id: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             host_region_id: Optional[pulumi.Input[str]] = None,
+             host_vpc_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessRegionId' in kwargs:
+        if access_region_id is None and 'accessRegionId' in kwargs:
             access_region_id = kwargs['accessRegionId']
-        if 'cenId' in kwargs:
+        if access_region_id is None:
+            raise TypeError("Missing 'access_region_id' argument")
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'hostRegionId' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if host_region_id is None and 'hostRegionId' in kwargs:
             host_region_id = kwargs['hostRegionId']
-        if 'hostVpcId' in kwargs:
+        if host_region_id is None:
+            raise TypeError("Missing 'host_region_id' argument")
+        if host_vpc_id is None and 'hostVpcId' in kwargs:
             host_vpc_id = kwargs['hostVpcId']
+        if host_vpc_id is None:
+            raise TypeError("Missing 'host_vpc_id' argument")
 
         _setter("access_region_id", access_region_id)
         _setter("cen_id", cen_id)
@@ -185,15 +195,15 @@ class _RouteServiceState:
              host_region_id: Optional[pulumi.Input[str]] = None,
              host_vpc_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessRegionId' in kwargs:
+        if access_region_id is None and 'accessRegionId' in kwargs:
             access_region_id = kwargs['accessRegionId']
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'hostRegionId' in kwargs:
+        if host_region_id is None and 'hostRegionId' in kwargs:
             host_region_id = kwargs['hostRegionId']
-        if 'hostVpcId' in kwargs:
+        if host_vpc_id is None and 'hostVpcId' in kwargs:
             host_vpc_id = kwargs['hostVpcId']
 
         if access_region_id is not None:
@@ -319,34 +329,6 @@ class RouteService(pulumi.CustomResource):
 
         > **NOTE:** Ensure that at least one VPC in the selected region is attached to the CEN instance.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.get_regions(current=True)
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="tf_example",
-            cidr_block="172.17.3.0/24")
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
-            instance_id=example_instance.id,
-            child_instance_id=example_network.id,
-            child_instance_type="VPC",
-            child_instance_region_id=default.regions[0].id)
-        example_route_service = alicloud.cen.RouteService("exampleRouteService",
-            access_region_id=default.regions[0].id,
-            host_region_id=default.regions[0].id,
-            host_vpc_id=example_network.id,
-            cen_id=example_instance_attachment.instance_id,
-            host="100.118.28.52/32")
-        ```
-
         ## Import
 
         CEN Route Service can be imported using the id, e.g.
@@ -380,34 +362,6 @@ class RouteService(pulumi.CustomResource):
         > **NOTE:** Available since v1.99.0.
 
         > **NOTE:** Ensure that at least one VPC in the selected region is attached to the CEN instance.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.get_regions(current=True)
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="tf_example",
-            cidr_block="172.17.3.0/24")
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
-            instance_id=example_instance.id,
-            child_instance_id=example_network.id,
-            child_instance_type="VPC",
-            child_instance_region_id=default.regions[0].id)
-        example_route_service = alicloud.cen.RouteService("exampleRouteService",
-            access_region_id=default.regions[0].id,
-            host_region_id=default.regions[0].id,
-            host_vpc_id=example_network.id,
-            cen_id=example_instance_attachment.instance_id,
-            host="100.118.28.52/32")
-        ```
 
         ## Import
 

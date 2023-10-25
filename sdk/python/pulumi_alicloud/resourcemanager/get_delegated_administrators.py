@@ -110,18 +110,6 @@ def get_delegated_administrators(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.181.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.resourcemanager.get_delegated_administrators(ids=["example_value"])
-    pulumi.export("resourceManagerDelegatedAdministratorId1", ids.administrators[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Delegated Administrator IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -157,18 +145,6 @@ def get_delegated_administrators_output(ids: Optional[pulumi.Input[Optional[Sequ
     This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.181.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.resourcemanager.get_delegated_administrators(ids=["example_value"])
-    pulumi.export("resourceManagerDelegatedAdministratorId1", ids.administrators[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Delegated Administrator IDs.

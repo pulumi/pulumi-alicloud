@@ -43,15 +43,15 @@ class AlertContactArgs:
              email: Optional[pulumi.Input[str]] = None,
              phone_num: Optional[pulumi.Input[str]] = None,
              system_noc: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alertContactName' in kwargs:
+        if alert_contact_name is None and 'alertContactName' in kwargs:
             alert_contact_name = kwargs['alertContactName']
-        if 'dingRobotWebhookUrl' in kwargs:
+        if ding_robot_webhook_url is None and 'dingRobotWebhookUrl' in kwargs:
             ding_robot_webhook_url = kwargs['dingRobotWebhookUrl']
-        if 'phoneNum' in kwargs:
+        if phone_num is None and 'phoneNum' in kwargs:
             phone_num = kwargs['phoneNum']
-        if 'systemNoc' in kwargs:
+        if system_noc is None and 'systemNoc' in kwargs:
             system_noc = kwargs['systemNoc']
 
         if alert_contact_name is not None:
@@ -158,15 +158,15 @@ class _AlertContactState:
              email: Optional[pulumi.Input[str]] = None,
              phone_num: Optional[pulumi.Input[str]] = None,
              system_noc: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alertContactName' in kwargs:
+        if alert_contact_name is None and 'alertContactName' in kwargs:
             alert_contact_name = kwargs['alertContactName']
-        if 'dingRobotWebhookUrl' in kwargs:
+        if ding_robot_webhook_url is None and 'dingRobotWebhookUrl' in kwargs:
             ding_robot_webhook_url = kwargs['dingRobotWebhookUrl']
-        if 'phoneNum' in kwargs:
+        if phone_num is None and 'phoneNum' in kwargs:
             phone_num = kwargs['phoneNum']
-        if 'systemNoc' in kwargs:
+        if system_noc is None and 'systemNoc' in kwargs:
             system_noc = kwargs['systemNoc']
 
         if alert_contact_name is not None:
@@ -259,21 +259,6 @@ class AlertContact(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.129.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.arms.AlertContact("example",
-            alert_contact_name="example_value",
-            ding_robot_webhook_url="https://oapi.dingtalk.com/robot/send?access_token=91f2f6****",
-            email="someone@example.com",
-            phone_num="1381111****")
-        ```
-
         ## Import
 
         Application Real-Time Monitoring Service (ARMS) Alert Contact can be imported using the id, e.g.
@@ -302,21 +287,6 @@ class AlertContact(pulumi.CustomResource):
         For information about Application Real-Time Monitoring Service (ARMS) Alert Contact and how to use it, see [What is Alert Contact](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/createalertcontact).
 
         > **NOTE:** Available since v1.129.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.arms.AlertContact("example",
-            alert_contact_name="example_value",
-            ding_robot_webhook_url="https://oapi.dingtalk.com/robot/send?access_token=91f2f6****",
-            email="someone@example.com",
-            phone_num="1381111****")
-        ```
 
         ## Import
 

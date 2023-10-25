@@ -11,20 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.148.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.ecs.EcsSessionManagerStatus("default", {
- *     sessionManagerStatusName: "sessionManagerStatus",
- *     status: "Disabled",
- * });
- * ```
- *
  * ## Import
  *
  * ECS Session Manager Status can be imported using the id, e.g.

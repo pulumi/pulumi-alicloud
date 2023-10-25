@@ -41,25 +41,33 @@ class TransitRouterPrefixListAssociationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             next_hop: pulumi.Input[str],
-             prefix_list_id: pulumi.Input[str],
-             transit_router_id: pulumi.Input[str],
-             transit_router_table_id: pulumi.Input[str],
+             next_hop: Optional[pulumi.Input[str]] = None,
+             prefix_list_id: Optional[pulumi.Input[str]] = None,
+             transit_router_id: Optional[pulumi.Input[str]] = None,
+             transit_router_table_id: Optional[pulumi.Input[str]] = None,
              next_hop_type: Optional[pulumi.Input[str]] = None,
              owner_uid: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nextHop' in kwargs:
+        if next_hop is None and 'nextHop' in kwargs:
             next_hop = kwargs['nextHop']
-        if 'prefixListId' in kwargs:
+        if next_hop is None:
+            raise TypeError("Missing 'next_hop' argument")
+        if prefix_list_id is None and 'prefixListId' in kwargs:
             prefix_list_id = kwargs['prefixListId']
-        if 'transitRouterId' in kwargs:
+        if prefix_list_id is None:
+            raise TypeError("Missing 'prefix_list_id' argument")
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'transitRouterTableId' in kwargs:
+        if transit_router_id is None:
+            raise TypeError("Missing 'transit_router_id' argument")
+        if transit_router_table_id is None and 'transitRouterTableId' in kwargs:
             transit_router_table_id = kwargs['transitRouterTableId']
-        if 'nextHopType' in kwargs:
+        if transit_router_table_id is None:
+            raise TypeError("Missing 'transit_router_table_id' argument")
+        if next_hop_type is None and 'nextHopType' in kwargs:
             next_hop_type = kwargs['nextHopType']
-        if 'ownerUid' in kwargs:
+        if owner_uid is None and 'ownerUid' in kwargs:
             owner_uid = kwargs['ownerUid']
 
         _setter("next_hop", next_hop)
@@ -184,19 +192,19 @@ class _TransitRouterPrefixListAssociationState:
              status: Optional[pulumi.Input[str]] = None,
              transit_router_id: Optional[pulumi.Input[str]] = None,
              transit_router_table_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nextHop' in kwargs:
+        if next_hop is None and 'nextHop' in kwargs:
             next_hop = kwargs['nextHop']
-        if 'nextHopType' in kwargs:
+        if next_hop_type is None and 'nextHopType' in kwargs:
             next_hop_type = kwargs['nextHopType']
-        if 'ownerUid' in kwargs:
+        if owner_uid is None and 'ownerUid' in kwargs:
             owner_uid = kwargs['ownerUid']
-        if 'prefixListId' in kwargs:
+        if prefix_list_id is None and 'prefixListId' in kwargs:
             prefix_list_id = kwargs['prefixListId']
-        if 'transitRouterId' in kwargs:
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'transitRouterTableId' in kwargs:
+        if transit_router_table_id is None and 'transitRouterTableId' in kwargs:
             transit_router_table_id = kwargs['transitRouterTableId']
 
         if next_hop is not None:
@@ -318,34 +326,6 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.188.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.get_account()
-        example_prefix_list = alicloud.vpc.PrefixList("examplePrefixList", entrys=[alicloud.vpc.PrefixListEntryArgs(
-            cidr="192.168.0.0/16",
-        )])
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
-        example_transit_router_prefix_list_association = alicloud.cen.TransitRouterPrefixListAssociation("exampleTransitRouterPrefixListAssociation",
-            prefix_list_id=example_prefix_list.id,
-            transit_router_id=example_transit_router.transit_router_id,
-            transit_router_table_id=example_transit_router_route_table.transit_router_route_table_id,
-            next_hop="BlackHole",
-            next_hop_type="BlackHole",
-            owner_uid=default.id)
-        ```
-
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router Prefix List Association can be imported using the id, e.g.
@@ -375,34 +355,6 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
         For information about Cloud Enterprise Network (CEN) Transit Router Prefix List Association and how to use it, see [What is Transit Router Prefix List Association](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitrouterprefixlistassociation).
 
         > **NOTE:** Available since v1.188.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.get_account()
-        example_prefix_list = alicloud.vpc.PrefixList("examplePrefixList", entrys=[alicloud.vpc.PrefixListEntryArgs(
-            cidr="192.168.0.0/16",
-        )])
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
-        example_transit_router_prefix_list_association = alicloud.cen.TransitRouterPrefixListAssociation("exampleTransitRouterPrefixListAssociation",
-            prefix_list_id=example_prefix_list.id,
-            transit_router_id=example_transit_router.transit_router_id,
-            transit_router_table_id=example_transit_router_route_table.transit_router_route_table_id,
-            next_hop="BlackHole",
-            next_hop_type="BlackHole",
-            owner_uid=default.id)
-        ```
 
         ## Import
 

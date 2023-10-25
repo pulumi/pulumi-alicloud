@@ -129,16 +129,6 @@ def get_instances(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.199.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.threatdetection.get_instances(ids=[alicloud_threat_detection_instance["default"]["id"]])
-    pulumi.export("alicloudThreatDetectionInstanceExampleId", default.instances[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Instance IDs.
     :param str instance_id: The first ID of the resource
@@ -178,16 +168,6 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     This data source provides Threat Detection Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center)
 
     > **NOTE:** Available in 1.199.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.threatdetection.get_instances(ids=[alicloud_threat_detection_instance["default"]["id"]])
-    pulumi.export("alicloudThreatDetectionInstanceExampleId", default.instances[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Instance IDs.

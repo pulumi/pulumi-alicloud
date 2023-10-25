@@ -13,35 +13,6 @@ import (
 )
 
 // This data source provides the Function Compute triggers of the current Alibaba Cloud user.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fcTriggersDs, err := fc.GetTriggers(ctx, &fc.GetTriggersArgs{
-//				FunctionName: "sample_function",
-//				NameRegex:    pulumi.StringRef("sample_fc_trigger"),
-//				ServiceName:  "sample_service",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstFcTriggerName", fcTriggersDs.Triggers[0].Name)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetTriggers(ctx *pulumi.Context, args *GetTriggersArgs, opts ...pulumi.InvokeOption) (*GetTriggersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTriggersResult

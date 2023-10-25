@@ -74,17 +74,6 @@ def get_flow_log_service(enable: Optional[str] = None,
 
     > **NOTE:** Available since v1.209.0.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.vpc.get_flow_log_service(enable="On")
-    ```
-
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
            
@@ -110,17 +99,6 @@ def get_flow_log_service_output(enable: Optional[pulumi.Input[Optional[str]]] = 
     For information about Vpc Flow Log and how to use it, see [What is Vpc Flow Log](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-openflowlog).
 
     > **NOTE:** Available since v1.209.0.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.vpc.get_flow_log_service(enable="On")
-    ```
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.

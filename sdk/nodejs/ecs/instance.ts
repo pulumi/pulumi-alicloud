@@ -11,60 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.0.0
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * // Create a new ECS instance for VPC
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/16",
- * });
- * // Create a new ECS instance for a VPC
- * const group = new alicloud.ecs.SecurityGroup("group", {
- *     description: "foo",
- *     vpcId: vpc.id,
- * });
- * const key = new alicloud.kms.Key("key", {
- *     description: "Hello KMS",
- *     pendingWindowInDays: 7,
- *     status: "Enabled",
- * });
- * const default = alicloud.getZones({
- *     availableDiskCategory: "cloud_efficiency",
- *     availableResourceCreation: "VSwitch",
- * });
- * const vswitch = new alicloud.vpc.Switch("vswitch", {
- *     vpcId: vpc.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
- *     vswitchName: name,
- * });
- * const instance = new alicloud.ecs.Instance("instance", {
- *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
- *     securityGroups: [group].map(__item => __item.id),
- *     instanceType: "ecs.n4.large",
- *     systemDiskCategory: "cloud_efficiency",
- *     systemDiskName: name,
- *     systemDiskDescription: "test_foo_system_disk_description",
- *     imageId: "ubuntu_18_04_64_20G_alibase_20190624.vhd",
- *     instanceName: name,
- *     vswitchId: vswitch.id,
- *     internetMaxBandwidthOut: 10,
- *     dataDisks: [{
- *         name: "disk2",
- *         size: 20,
- *         category: "cloud_efficiency",
- *         description: "disk2",
- *         encrypted: true,
- *         kmsKeyId: key.id,
- *     }],
- * });
- * ```
  * ## Module Support
  *
  * You can use the existing ecs-instance module

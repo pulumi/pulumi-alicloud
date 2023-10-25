@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
  *
  * > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const queues = alicloud.mns.getQueues({
- *     namePrefix: "tf-",
- * });
- * export const firstQueueId = queues.then(queues => queues.queues?.[0]?.id);
- * ```
  */
 export function getQueues(args?: GetQueuesArgs, opts?: pulumi.InvokeOptions): Promise<GetQueuesResult> {
     args = args || {};
@@ -70,18 +58,6 @@ export interface GetQueuesResult {
  * This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
  *
  * > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const queues = alicloud.mns.getQueues({
- *     namePrefix: "tf-",
- * });
- * export const firstQueueId = queues.then(queues => queues.queues?.[0]?.id);
- * ```
  */
 export function getQueuesOutput(args?: GetQueuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueuesResult> {
     return pulumi.output(args).apply((a: any) => getQueues(a, opts))

@@ -15,35 +15,6 @@ import (
 // This data source provides the Security Center Groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.133.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/securitycenter"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			nameRegex, err := securitycenter.GetGroups(ctx, &securitycenter.GetGroupsArgs{
-//				NameRegex: pulumi.StringRef("^my-Group"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("securityCenterGroups", nameRegex.Groups[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOption) (*GetGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupsResult

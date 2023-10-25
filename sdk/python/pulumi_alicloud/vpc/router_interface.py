@@ -61,10 +61,10 @@ class RouterInterfaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opposite_region: pulumi.Input[str],
-             role: pulumi.Input[str],
-             router_id: pulumi.Input[str],
-             router_type: pulumi.Input[str],
+             opposite_region: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             router_id: Optional[pulumi.Input[str]] = None,
+             router_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              health_check_source_ip: Optional[pulumi.Input[str]] = None,
              health_check_target_ip: Optional[pulumi.Input[str]] = None,
@@ -73,21 +73,29 @@ class RouterInterfaceArgs:
              opposite_access_point_id: Optional[pulumi.Input[str]] = None,
              period: Optional[pulumi.Input[int]] = None,
              specification: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'oppositeRegion' in kwargs:
+        if opposite_region is None and 'oppositeRegion' in kwargs:
             opposite_region = kwargs['oppositeRegion']
-        if 'routerId' in kwargs:
+        if opposite_region is None:
+            raise TypeError("Missing 'opposite_region' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if router_id is None and 'routerId' in kwargs:
             router_id = kwargs['routerId']
-        if 'routerType' in kwargs:
+        if router_id is None:
+            raise TypeError("Missing 'router_id' argument")
+        if router_type is None and 'routerType' in kwargs:
             router_type = kwargs['routerType']
-        if 'healthCheckSourceIp' in kwargs:
+        if router_type is None:
+            raise TypeError("Missing 'router_type' argument")
+        if health_check_source_ip is None and 'healthCheckSourceIp' in kwargs:
             health_check_source_ip = kwargs['healthCheckSourceIp']
-        if 'healthCheckTargetIp' in kwargs:
+        if health_check_target_ip is None and 'healthCheckTargetIp' in kwargs:
             health_check_target_ip = kwargs['healthCheckTargetIp']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'oppositeAccessPointId' in kwargs:
+        if opposite_access_point_id is None and 'oppositeAccessPointId' in kwargs:
             opposite_access_point_id = kwargs['oppositeAccessPointId']
 
         _setter("opposite_region", opposite_region)
@@ -346,31 +354,31 @@ class _RouterInterfaceState:
              router_id: Optional[pulumi.Input[str]] = None,
              router_type: Optional[pulumi.Input[str]] = None,
              specification: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessPointId' in kwargs:
+        if access_point_id is None and 'accessPointId' in kwargs:
             access_point_id = kwargs['accessPointId']
-        if 'healthCheckSourceIp' in kwargs:
+        if health_check_source_ip is None and 'healthCheckSourceIp' in kwargs:
             health_check_source_ip = kwargs['healthCheckSourceIp']
-        if 'healthCheckTargetIp' in kwargs:
+        if health_check_target_ip is None and 'healthCheckTargetIp' in kwargs:
             health_check_target_ip = kwargs['healthCheckTargetIp']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'oppositeAccessPointId' in kwargs:
+        if opposite_access_point_id is None and 'oppositeAccessPointId' in kwargs:
             opposite_access_point_id = kwargs['oppositeAccessPointId']
-        if 'oppositeInterfaceId' in kwargs:
+        if opposite_interface_id is None and 'oppositeInterfaceId' in kwargs:
             opposite_interface_id = kwargs['oppositeInterfaceId']
-        if 'oppositeInterfaceOwnerId' in kwargs:
+        if opposite_interface_owner_id is None and 'oppositeInterfaceOwnerId' in kwargs:
             opposite_interface_owner_id = kwargs['oppositeInterfaceOwnerId']
-        if 'oppositeRegion' in kwargs:
+        if opposite_region is None and 'oppositeRegion' in kwargs:
             opposite_region = kwargs['oppositeRegion']
-        if 'oppositeRouterId' in kwargs:
+        if opposite_router_id is None and 'oppositeRouterId' in kwargs:
             opposite_router_id = kwargs['oppositeRouterId']
-        if 'oppositeRouterType' in kwargs:
+        if opposite_router_type is None and 'oppositeRouterType' in kwargs:
             opposite_router_type = kwargs['oppositeRouterType']
-        if 'routerId' in kwargs:
+        if router_id is None and 'routerId' in kwargs:
             router_id = kwargs['routerId']
-        if 'routerType' in kwargs:
+        if router_type is None and 'routerType' in kwargs:
             router_type = kwargs['routerType']
 
         if access_point_id is not None:
@@ -678,24 +686,6 @@ class RouterInterface(pulumi.CustomResource):
 
         > **NOTE:** The router interface is not connected when it is created. It can be connected by means of resource alicloud_router_interface_connection.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo = alicloud.vpc.Network("foo",
-            vpc_name="tf_test_foo12345",
-            cidr_block="172.16.0.0/12")
-        interface = alicloud.vpc.RouterInterface("interface",
-            opposite_region="cn-beijing",
-            router_type="VRouter",
-            router_id=foo.router_id,
-            role="InitiatingSide",
-            specification="Large.2",
-            description="test1")
-        ```
-
         ## Import
 
         The router interface can be imported using the id, e.g.
@@ -735,24 +725,6 @@ class RouterInterface(pulumi.CustomResource):
         > **NOTE:** Only one pair of connected router interfaces can exist between two routers. Up to 5 router interfaces can be created for each router and each account.
 
         > **NOTE:** The router interface is not connected when it is created. It can be connected by means of resource alicloud_router_interface_connection.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo = alicloud.vpc.Network("foo",
-            vpc_name="tf_test_foo12345",
-            cidr_block="172.16.0.0/12")
-        interface = alicloud.vpc.RouterInterface("interface",
-            opposite_region="cn-beijing",
-            router_type="VRouter",
-            router_id=foo.router_id,
-            role="InitiatingSide",
-            specification="Large.2",
-            description="test1")
-        ```
 
         ## Import
 

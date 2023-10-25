@@ -151,21 +151,6 @@ def get_secrets(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.86.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    kms_secrets_ds = alicloud.kms.get_secrets(fetch_tags=True,
-        name_regex="name_regex",
-        tags={
-            "k-aa": "v-aa",
-            "k-bb": "v-bb",
-        })
-    pulumi.export("firstSecretId", kms_secrets_ds.secrets[0].id)
-    ```
-
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param bool fetch_tags: Whether to include the predetermined resource tag in the return value. Default to `false`.
@@ -213,21 +198,6 @@ def get_secrets_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
     This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in v1.86.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    kms_secrets_ds = alicloud.kms.get_secrets(fetch_tags=True,
-        name_regex="name_regex",
-        tags={
-            "k-aa": "v-aa",
-            "k-bb": "v-bb",
-        })
-    pulumi.export("firstSecretId", kms_secrets_ds.secrets[0].id)
-    ```
 
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.

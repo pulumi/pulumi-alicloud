@@ -16,45 +16,6 @@ namespace Pulumi.AliCloud.Ros
     /// 
     /// &gt; **NOTE:** Available in v1.151.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
-    /// 
-    ///     var example = new AliCloud.Ros.TemplateScratch("example", new()
-    ///     {
-    ///         Description = "tf_testacc",
-    ///         TemplateScratchType = "ResourceImport",
-    ///         PreferenceParameters = new[]
-    ///         {
-    ///             new AliCloud.Ros.Inputs.TemplateScratchPreferenceParameterArgs
-    ///             {
-    ///                 ParameterKey = "DeletionPolicy",
-    ///                 ParameterValue = "Retain",
-    ///             },
-    ///         },
-    ///         SourceResourceGroup = new AliCloud.Ros.Inputs.TemplateScratchSourceResourceGroupArgs
-    ///         {
-    ///             ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
-    ///             ResourceTypeFilters = new[]
-    ///             {
-    ///                 "ALIYUN::ECS::VPC",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ROS Template Scratch can be imported using the id, e.g.

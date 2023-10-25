@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.168.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.sag.getSmartagFlowLogs({
- *     ids: ["example_id"],
- * });
- * export const smartagFlowLogId1 = ids.then(ids => ids.logs?.[0]?.id);
- * const nameRegex = alicloud.sag.getSmartagFlowLogs({
- *     nameRegex: "^my-FlowLog",
- * });
- * export const smartagFlowLogId2 = nameRegex.then(nameRegex => nameRegex.logs?.[0]?.id);
- * ```
  */
 export function getSmartagFlowLogs(args?: GetSmartagFlowLogsArgs, opts?: pulumi.InvokeOptions): Promise<GetSmartagFlowLogsResult> {
     args = args || {};
@@ -94,24 +76,6 @@ export interface GetSmartagFlowLogsResult {
  * This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.168.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.sag.getSmartagFlowLogs({
- *     ids: ["example_id"],
- * });
- * export const smartagFlowLogId1 = ids.then(ids => ids.logs?.[0]?.id);
- * const nameRegex = alicloud.sag.getSmartagFlowLogs({
- *     nameRegex: "^my-FlowLog",
- * });
- * export const smartagFlowLogId2 = nameRegex.then(nameRegex => nameRegex.logs?.[0]?.id);
- * ```
  */
 export function getSmartagFlowLogsOutput(args?: GetSmartagFlowLogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSmartagFlowLogsResult> {
     return pulumi.output(args).apply((a: any) => getSmartagFlowLogs(a, opts))

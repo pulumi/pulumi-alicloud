@@ -50,25 +50,33 @@ class DataFlowArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             file_system_id: pulumi.Input[str],
-             fset_id: pulumi.Input[str],
-             source_storage: pulumi.Input[str],
-             throughput: pulumi.Input[int],
+             file_system_id: Optional[pulumi.Input[str]] = None,
+             fset_id: Optional[pulumi.Input[str]] = None,
+             source_storage: Optional[pulumi.Input[str]] = None,
+             throughput: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              source_security_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fileSystemId' in kwargs:
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'fsetId' in kwargs:
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if fset_id is None and 'fsetId' in kwargs:
             fset_id = kwargs['fsetId']
-        if 'sourceStorage' in kwargs:
+        if fset_id is None:
+            raise TypeError("Missing 'fset_id' argument")
+        if source_storage is None and 'sourceStorage' in kwargs:
             source_storage = kwargs['sourceStorage']
-        if 'dryRun' in kwargs:
+        if source_storage is None:
+            raise TypeError("Missing 'source_storage' argument")
+        if throughput is None:
+            raise TypeError("Missing 'throughput' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'sourceSecurityType' in kwargs:
+        if source_security_type is None and 'sourceSecurityType' in kwargs:
             source_security_type = kwargs['sourceSecurityType']
 
         _setter("file_system_id", file_system_id)
@@ -235,19 +243,19 @@ class _DataFlowState:
              source_storage: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              throughput: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dataFlowId' in kwargs:
+        if data_flow_id is None and 'dataFlowId' in kwargs:
             data_flow_id = kwargs['dataFlowId']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'fileSystemId' in kwargs:
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'fsetId' in kwargs:
+        if fset_id is None and 'fsetId' in kwargs:
             fset_id = kwargs['fsetId']
-        if 'sourceSecurityType' in kwargs:
+        if source_security_type is None and 'sourceSecurityType' in kwargs:
             source_security_type = kwargs['sourceSecurityType']
-        if 'sourceStorage' in kwargs:
+        if source_storage is None and 'sourceStorage' in kwargs:
             source_storage = kwargs['sourceStorage']
 
         if data_flow_id is not None:

@@ -10,42 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Click House Accounts of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "testaccountname";
- * const pwd = config.get("pwd") || "Tf-testpwd";
- * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
- *     dbClusterVersion: "20.3.10.75",
- *     category: "Basic",
- *     dbClusterClass: "S8",
- *     dbClusterNetworkType: "vpc",
- *     dbClusterDescription: name,
- *     dbNodeGroupCount: 1,
- *     paymentType: "PayAsYouGo",
- *     dbNodeStorage: "500",
- *     storageType: "cloud_essd",
- *     vswitchId: "your_vswitch_id",
- * });
- * const defaultAccount = new alicloud.clickhouse.Account("defaultAccount", {
- *     dbClusterId: defaultDbCluster.id,
- *     accountDescription: "your_description",
- *     accountName: name,
- *     accountPassword: pwd,
- * });
- * const defaultAccounts = alicloud.clickhouse.getAccountsOutput({
- *     ids: [defaultAccount.id],
- *     dbClusterId: defaultDbCluster.id,
- * });
- * export const accountId = defaultAccounts.apply(defaultAccounts => defaultAccounts.ids?.[0]);
- * ```
  */
 export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountsResult> {
 
@@ -105,42 +69,6 @@ export interface GetAccountsResult {
  * This data source provides the Click House Accounts of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "testaccountname";
- * const pwd = config.get("pwd") || "Tf-testpwd";
- * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
- *     dbClusterVersion: "20.3.10.75",
- *     category: "Basic",
- *     dbClusterClass: "S8",
- *     dbClusterNetworkType: "vpc",
- *     dbClusterDescription: name,
- *     dbNodeGroupCount: 1,
- *     paymentType: "PayAsYouGo",
- *     dbNodeStorage: "500",
- *     storageType: "cloud_essd",
- *     vswitchId: "your_vswitch_id",
- * });
- * const defaultAccount = new alicloud.clickhouse.Account("defaultAccount", {
- *     dbClusterId: defaultDbCluster.id,
- *     accountDescription: "your_description",
- *     accountName: name,
- *     accountPassword: pwd,
- * });
- * const defaultAccounts = alicloud.clickhouse.getAccountsOutput({
- *     ids: [defaultAccount.id],
- *     dbClusterId: defaultDbCluster.id,
- * });
- * export const accountId = defaultAccounts.apply(defaultAccounts => defaultAccounts.ids?.[0]);
- * ```
  */
 export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
     return pulumi.output(args).apply((a: any) => getAccounts(a, opts))

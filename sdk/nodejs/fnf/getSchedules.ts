@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Fnf Schedules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.105.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.fnf.getSchedules({
- *     flowName: "example_value",
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstFnfScheduleId = example.then(example => example.schedules?.[0]?.id);
- * ```
  */
 export function getSchedules(args: GetSchedulesArgs, opts?: pulumi.InvokeOptions): Promise<GetSchedulesResult> {
 
@@ -85,22 +69,6 @@ export interface GetSchedulesResult {
  * This data source provides the Fnf Schedules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.105.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.fnf.getSchedules({
- *     flowName: "example_value",
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstFnfScheduleId = example.then(example => example.schedules?.[0]?.id);
- * ```
  */
 export function getSchedulesOutput(args: GetSchedulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSchedulesResult> {
     return pulumi.output(args).apply((a: any) => getSchedules(a, opts))

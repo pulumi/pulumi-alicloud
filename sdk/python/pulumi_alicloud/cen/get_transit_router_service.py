@@ -74,15 +74,6 @@ def get_transit_router_service(enable: Optional[str] = None,
 
     > **NOTE:** Available in v1.139.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    open = alicloud.cen.get_transit_router_service(enable="On")
-    ```
-
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
            
@@ -108,15 +99,6 @@ def get_transit_router_service_output(enable: Optional[pulumi.Input[Optional[str
     For information about CEN and how to use it, see [What is CEN](https://www.alibabacloud.com/help/en/doc-detail/59870.htm).
 
     > **NOTE:** Available in v1.139.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    open = alicloud.cen.get_transit_router_service(enable="On")
-    ```
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.

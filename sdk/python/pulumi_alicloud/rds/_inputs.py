@@ -46,12 +46,16 @@ class DbInstanceEndpointNodeItemArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_id: pulumi.Input[str],
-             weight: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             node_id: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeId' in kwargs:
+        if node_id is None and 'nodeId' in kwargs:
             node_id = kwargs['nodeId']
+        if node_id is None:
+            raise TypeError("Missing 'node_id' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
 
         _setter("node_id", node_id)
         _setter("weight", weight)
@@ -98,10 +102,14 @@ class DdrInstanceParameterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("name", name)
         _setter("value", value)
@@ -171,18 +179,30 @@ class DdrInstancePgHbaConfArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
-             database: pulumi.Input[str],
-             method: pulumi.Input[str],
-             priority_id: pulumi.Input[int],
-             type: pulumi.Input[str],
-             user: pulumi.Input[str],
+             address: Optional[pulumi.Input[str]] = None,
+             database: Optional[pulumi.Input[str]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             priority_id: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
              mask: Optional[pulumi.Input[str]] = None,
              option: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'priorityId' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if database is None:
+            raise TypeError("Missing 'database' argument")
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if priority_id is None and 'priorityId' in kwargs:
             priority_id = kwargs['priorityId']
+        if priority_id is None:
+            raise TypeError("Missing 'priority_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
 
         _setter("address", address)
         _setter("database", database)
@@ -320,20 +340,28 @@ class InstanceBabelfishConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             babelfish_enabled: pulumi.Input[str],
-             master_user_password: pulumi.Input[str],
-             master_username: pulumi.Input[str],
-             migration_mode: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             babelfish_enabled: Optional[pulumi.Input[str]] = None,
+             master_user_password: Optional[pulumi.Input[str]] = None,
+             master_username: Optional[pulumi.Input[str]] = None,
+             migration_mode: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'babelfishEnabled' in kwargs:
+        if babelfish_enabled is None and 'babelfishEnabled' in kwargs:
             babelfish_enabled = kwargs['babelfishEnabled']
-        if 'masterUserPassword' in kwargs:
+        if babelfish_enabled is None:
+            raise TypeError("Missing 'babelfish_enabled' argument")
+        if master_user_password is None and 'masterUserPassword' in kwargs:
             master_user_password = kwargs['masterUserPassword']
-        if 'masterUsername' in kwargs:
+        if master_user_password is None:
+            raise TypeError("Missing 'master_user_password' argument")
+        if master_username is None and 'masterUsername' in kwargs:
             master_username = kwargs['masterUsername']
-        if 'migrationMode' in kwargs:
+        if master_username is None:
+            raise TypeError("Missing 'master_username' argument")
+        if migration_mode is None and 'migrationMode' in kwargs:
             migration_mode = kwargs['migrationMode']
+        if migration_mode is None:
+            raise TypeError("Missing 'migration_mode' argument")
 
         _setter("babelfish_enabled", babelfish_enabled)
         _setter("master_user_password", master_user_password)
@@ -406,10 +434,14 @@ class InstanceParameterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("name", name)
         _setter("value", value)
@@ -479,18 +511,30 @@ class InstancePgHbaConfArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
-             database: pulumi.Input[str],
-             method: pulumi.Input[str],
-             priority_id: pulumi.Input[int],
-             type: pulumi.Input[str],
-             user: pulumi.Input[str],
+             address: Optional[pulumi.Input[str]] = None,
+             database: Optional[pulumi.Input[str]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             priority_id: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
              mask: Optional[pulumi.Input[str]] = None,
              option: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'priorityId' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if database is None:
+            raise TypeError("Missing 'database' argument")
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if priority_id is None and 'priorityId' in kwargs:
             priority_id = kwargs['priorityId']
+        if priority_id is None:
+            raise TypeError("Missing 'priority_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
 
         _setter("address", address)
         _setter("database", database)
@@ -641,19 +685,23 @@ class InstanceServerlessConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_capacity: pulumi.Input[float],
-             min_capacity: pulumi.Input[float],
+             max_capacity: Optional[pulumi.Input[float]] = None,
+             min_capacity: Optional[pulumi.Input[float]] = None,
              auto_pause: Optional[pulumi.Input[bool]] = None,
              switch_force: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxCapacity' in kwargs:
+        if max_capacity is None and 'maxCapacity' in kwargs:
             max_capacity = kwargs['maxCapacity']
-        if 'minCapacity' in kwargs:
+        if max_capacity is None:
+            raise TypeError("Missing 'max_capacity' argument")
+        if min_capacity is None and 'minCapacity' in kwargs:
             min_capacity = kwargs['minCapacity']
-        if 'autoPause' in kwargs:
+        if min_capacity is None:
+            raise TypeError("Missing 'min_capacity' argument")
+        if auto_pause is None and 'autoPause' in kwargs:
             auto_pause = kwargs['autoPause']
-        if 'switchForce' in kwargs:
+        if switch_force is None and 'switchForce' in kwargs:
             switch_force = kwargs['switchForce']
 
         _setter("max_capacity", max_capacity)
@@ -742,10 +790,14 @@ class RdsCloneDbInstanceParameterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("name", name)
         _setter("value", value)
@@ -815,18 +867,30 @@ class RdsCloneDbInstancePgHbaConfArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
-             database: pulumi.Input[str],
-             method: pulumi.Input[str],
-             priority_id: pulumi.Input[int],
-             type: pulumi.Input[str],
-             user: pulumi.Input[str],
+             address: Optional[pulumi.Input[str]] = None,
+             database: Optional[pulumi.Input[str]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             priority_id: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
              mask: Optional[pulumi.Input[str]] = None,
              option: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'priorityId' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if database is None:
+            raise TypeError("Missing 'database' argument")
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if priority_id is None and 'priorityId' in kwargs:
             priority_id = kwargs['priorityId']
+        if priority_id is None:
+            raise TypeError("Missing 'priority_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
 
         _setter("address", address)
         _setter("database", database)
@@ -977,19 +1041,23 @@ class RdsCloneDbInstanceServerlessConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_capacity: pulumi.Input[float],
-             min_capacity: pulumi.Input[float],
+             max_capacity: Optional[pulumi.Input[float]] = None,
+             min_capacity: Optional[pulumi.Input[float]] = None,
              auto_pause: Optional[pulumi.Input[bool]] = None,
              switch_force: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxCapacity' in kwargs:
+        if max_capacity is None and 'maxCapacity' in kwargs:
             max_capacity = kwargs['maxCapacity']
-        if 'minCapacity' in kwargs:
+        if max_capacity is None:
+            raise TypeError("Missing 'max_capacity' argument")
+        if min_capacity is None and 'minCapacity' in kwargs:
             min_capacity = kwargs['minCapacity']
-        if 'autoPause' in kwargs:
+        if min_capacity is None:
+            raise TypeError("Missing 'min_capacity' argument")
+        if auto_pause is None and 'autoPause' in kwargs:
             auto_pause = kwargs['autoPause']
-        if 'switchForce' in kwargs:
+        if switch_force is None and 'switchForce' in kwargs:
             switch_force = kwargs['switchForce']
 
         _setter("max_capacity", max_capacity)
@@ -1078,12 +1146,16 @@ class RdsDbProxyReadOnlyInstanceWeightArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
-             weight: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
 
         _setter("instance_id", instance_id)
         _setter("weight", weight)
@@ -1130,14 +1202,18 @@ class RdsParameterGroupParamDetailArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             param_name: pulumi.Input[str],
-             param_value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             param_name: Optional[pulumi.Input[str]] = None,
+             param_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'paramName' in kwargs:
+        if param_name is None and 'paramName' in kwargs:
             param_name = kwargs['paramName']
-        if 'paramValue' in kwargs:
+        if param_name is None:
+            raise TypeError("Missing 'param_name' argument")
+        if param_value is None and 'paramValue' in kwargs:
             param_value = kwargs['paramValue']
+        if param_value is None:
+            raise TypeError("Missing 'param_value' argument")
 
         _setter("param_name", param_name)
         _setter("param_value", param_value)
@@ -1184,10 +1260,14 @@ class RdsUpgradeDbInstanceParameterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("name", name)
         _setter("value", value)
@@ -1257,18 +1337,30 @@ class RdsUpgradeDbInstancePgHbaConfArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
-             database: pulumi.Input[str],
-             method: pulumi.Input[str],
-             priority_id: pulumi.Input[int],
-             type: pulumi.Input[str],
-             user: pulumi.Input[str],
+             address: Optional[pulumi.Input[str]] = None,
+             database: Optional[pulumi.Input[str]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             priority_id: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
              mask: Optional[pulumi.Input[str]] = None,
              option: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'priorityId' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if database is None:
+            raise TypeError("Missing 'database' argument")
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if priority_id is None and 'priorityId' in kwargs:
             priority_id = kwargs['priorityId']
+        if priority_id is None:
+            raise TypeError("Missing 'priority_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
 
         _setter("address", address)
         _setter("database", database)
@@ -1400,10 +1492,14 @@ class ReadOnlyInstanceParameterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("name", name)
         _setter("value", value)
@@ -1456,11 +1552,11 @@ class GetCollationTimeZonesCollationTimeZoneArgs:
              description: Optional[str] = None,
              standard_time_offset: Optional[str] = None,
              time_zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'standardTimeOffset' in kwargs:
+        if standard_time_offset is None and 'standardTimeOffset' in kwargs:
             standard_time_offset = kwargs['standardTimeOffset']
-        if 'timeZone' in kwargs:
+        if time_zone is None and 'timeZone' in kwargs:
             time_zone = kwargs['timeZone']
 
         if description is not None:
@@ -1554,23 +1650,23 @@ class GetInstanceClassInfosInfoArgs:
              max_iops: Optional[str] = None,
              memory_class: Optional[str] = None,
              reference_price: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'classCode' in kwargs:
+        if class_code is None and 'classCode' in kwargs:
             class_code = kwargs['classCode']
-        if 'classGroup' in kwargs:
+        if class_group is None and 'classGroup' in kwargs:
             class_group = kwargs['classGroup']
-        if 'instructionSetArch' in kwargs:
+        if instruction_set_arch is None and 'instructionSetArch' in kwargs:
             instruction_set_arch = kwargs['instructionSetArch']
-        if 'maxConnections' in kwargs:
+        if max_connections is None and 'maxConnections' in kwargs:
             max_connections = kwargs['maxConnections']
-        if 'maxIombps' in kwargs:
+        if max_iombps is None and 'maxIombps' in kwargs:
             max_iombps = kwargs['maxIombps']
-        if 'maxIops' in kwargs:
+        if max_iops is None and 'maxIops' in kwargs:
             max_iops = kwargs['maxIops']
-        if 'memoryClass' in kwargs:
+        if memory_class is None and 'memoryClass' in kwargs:
             memory_class = kwargs['memoryClass']
-        if 'referencePrice' in kwargs:
+        if reference_price is None and 'referencePrice' in kwargs:
             reference_price = kwargs['referencePrice']
 
         if class_code is not None:

@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the CR Vpc Endpoint Linked Vpcs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.199.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cr.getVpcEndpointLinkedVpcs({
- *     ids: ["example_id"],
- *     instanceId: "your_cr_instance_id",
- *     moduleName: "Registry",
- * });
- * export const alicloudCrVpcEndpointLinkedVpcsId1 = ids.then(ids => ids.vpcEndpointLinkedVpcs?.[0]?.id);
- * ```
  */
 export function getVpcEndpointLinkedVpcs(args: GetVpcEndpointLinkedVpcsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointLinkedVpcsResult> {
 
@@ -96,22 +80,6 @@ export interface GetVpcEndpointLinkedVpcsResult {
  * This data source provides the CR Vpc Endpoint Linked Vpcs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.199.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cr.getVpcEndpointLinkedVpcs({
- *     ids: ["example_id"],
- *     instanceId: "your_cr_instance_id",
- *     moduleName: "Registry",
- * });
- * export const alicloudCrVpcEndpointLinkedVpcsId1 = ids.then(ids => ids.vpcEndpointLinkedVpcs?.[0]?.id);
- * ```
  */
 export function getVpcEndpointLinkedVpcsOutput(args: GetVpcEndpointLinkedVpcsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointLinkedVpcsResult> {
     return pulumi.output(args).apply((a: any) => getVpcEndpointLinkedVpcs(a, opts))

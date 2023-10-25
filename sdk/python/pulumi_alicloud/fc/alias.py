@@ -40,20 +40,26 @@ class AliasArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alias_name: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             service_version: pulumi.Input[str],
+             alias_name: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             service_version: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              routing_config: Optional[pulumi.Input['AliasRoutingConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aliasName' in kwargs:
+        if alias_name is None and 'aliasName' in kwargs:
             alias_name = kwargs['aliasName']
-        if 'serviceName' in kwargs:
+        if alias_name is None:
+            raise TypeError("Missing 'alias_name' argument")
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
-        if 'serviceVersion' in kwargs:
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if service_version is None and 'serviceVersion' in kwargs:
             service_version = kwargs['serviceVersion']
-        if 'routingConfig' in kwargs:
+        if service_version is None:
+            raise TypeError("Missing 'service_version' argument")
+        if routing_config is None and 'routingConfig' in kwargs:
             routing_config = kwargs['routingConfig']
 
         _setter("alias_name", alias_name)
@@ -157,15 +163,15 @@ class _AliasState:
              routing_config: Optional[pulumi.Input['AliasRoutingConfigArgs']] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              service_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aliasName' in kwargs:
+        if alias_name is None and 'aliasName' in kwargs:
             alias_name = kwargs['aliasName']
-        if 'routingConfig' in kwargs:
+        if routing_config is None and 'routingConfig' in kwargs:
             routing_config = kwargs['routingConfig']
-        if 'serviceName' in kwargs:
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
-        if 'serviceVersion' in kwargs:
+        if service_version is None and 'serviceVersion' in kwargs:
             service_version = kwargs['serviceVersion']
 
         if alias_name is not None:
@@ -257,28 +263,6 @@ class Alias(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.104.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_service = alicloud.fc.Service("defaultService",
-            description="example-value",
-            publish=True)
-        example = alicloud.fc.Alias("example",
-            alias_name="example-value",
-            description="example-value",
-            service_name=default_service.name,
-            service_version="1")
-        ```
-
         ## Import
 
         Function Compute alias can be imported using the id, e.g.
@@ -306,28 +290,6 @@ class Alias(pulumi.CustomResource):
          For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-createalias).
 
         > **NOTE:** Available since v1.104.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_service = alicloud.fc.Service("defaultService",
-            description="example-value",
-            publish=True)
-        example = alicloud.fc.Alias("example",
-            alias_name="example-value",
-            description="example-value",
-            service_name=default_service.name,
-            service_version="1")
-        ```
 
         ## Import
 
@@ -374,11 +336,7 @@ class Alias(pulumi.CustomResource):
                 raise TypeError("Missing required property 'alias_name'")
             __props__.__dict__["alias_name"] = alias_name
             __props__.__dict__["description"] = description
-            if routing_config is not None and not isinstance(routing_config, AliasRoutingConfigArgs):
-                routing_config = routing_config or {}
-                def _setter(key, value):
-                    routing_config[key] = value
-                AliasRoutingConfigArgs._configure(_setter, **routing_config)
+            routing_config = _utilities.configure(routing_config, AliasRoutingConfigArgs, True)
             __props__.__dict__["routing_config"] = routing_config
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")

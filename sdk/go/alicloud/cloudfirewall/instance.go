@@ -19,40 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.139.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudfirewall.NewInstance(ctx, "example", &cloudfirewall.InstanceArgs{
-//				BandWidth:     pulumi.Int(10),
-//				CfwLog:        pulumi.Bool(true),
-//				CfwLogStorage: pulumi.Int(1000),
-//				IpNumber:      pulumi.Int(20),
-//				PaymentType:   pulumi.String("Subscription"),
-//				Period:        pulumi.Int(1),
-//				Spec:          pulumi.String("premium_version"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Cloud Firewall Instance can be imported using the id, e.g.

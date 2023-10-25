@@ -16,49 +16,6 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// &gt; **NOTE:** Available in v1.131.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
-    ///     {
-    ///         Max = 99999,
-    ///         Min = 10000,
-    ///     });
-    /// 
-    ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
-    ///     {
-    ///         VaultName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
-    ///     });
-    /// 
-    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
-    ///     {
-    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
-    ///     });
-    /// 
-    ///     var defaultOssBackupPlan = new AliCloud.Hbr.OssBackupPlan("defaultOssBackupPlan", new()
-    ///     {
-    ///         OssBackupPlanName = "terraform-example",
-    ///         Prefix = "/",
-    ///         Bucket = defaultBucket.BucketName,
-    ///         VaultId = defaultVault.Id,
-    ///         Schedule = "I|1602673264|PT2H",
-    ///         BackupType = "COMPLETE",
-    ///         Retention = "2",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// HBR Oss Backup Plan can be imported using the id, e.g.

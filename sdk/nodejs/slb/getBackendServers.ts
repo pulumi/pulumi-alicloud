@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the server load balancer backend servers related to a server load balancer..
  *
  * > **NOTE:** Available in 1.53.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const sampleDs = alicloud.slb.getBackendServers({
- *     loadBalancerId: alicloud_slb_load_balancer.sample_slb.id,
- * });
- * export const firstSlbBackendServerId = sampleDs.then(sampleDs => sampleDs.backendServers?.[0]?.id);
- * ```
  */
 export function getBackendServers(args: GetBackendServersArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServersResult> {
 
@@ -68,18 +56,6 @@ export interface GetBackendServersResult {
  * This data source provides the server load balancer backend servers related to a server load balancer..
  *
  * > **NOTE:** Available in 1.53.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const sampleDs = alicloud.slb.getBackendServers({
- *     loadBalancerId: alicloud_slb_load_balancer.sample_slb.id,
- * });
- * export const firstSlbBackendServerId = sampleDs.then(sampleDs => sampleDs.backendServers?.[0]?.id);
- * ```
  */
 export function getBackendServersOutput(args: GetBackendServersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendServersResult> {
     return pulumi.output(args).apply((a: any) => getBackendServers(a, opts))

@@ -110,24 +110,6 @@ def get_db_instances(db_instance_description: Optional[str] = None,
 
     > **NOTE:** Available in v1.136.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.graphdatabase.get_db_instances(ids=["example_id"])
-    pulumi.export("graphDatabaseDbInstanceId1", ids.instances[0].id)
-    status = alicloud.graphdatabase.get_db_instances(ids=["example_id"],
-        status="Running")
-    pulumi.export("graphDatabaseDbInstanceId2", status.instances[0].id)
-    description = alicloud.graphdatabase.get_db_instances(ids=["example_id"],
-        db_instance_description="example_value")
-    pulumi.export("graphDatabaseDbInstanceId3", description.instances[0].id)
-    ```
-
 
     :param str db_instance_description: According to the practical example or notes.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -165,24 +147,6 @@ def get_db_instances_output(db_instance_description: Optional[pulumi.Input[Optio
     This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.136.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.graphdatabase.get_db_instances(ids=["example_id"])
-    pulumi.export("graphDatabaseDbInstanceId1", ids.instances[0].id)
-    status = alicloud.graphdatabase.get_db_instances(ids=["example_id"],
-        status="Running")
-    pulumi.export("graphDatabaseDbInstanceId2", status.instances[0].id)
-    description = alicloud.graphdatabase.get_db_instances(ids=["example_id"],
-        db_instance_description="example_value")
-    pulumi.export("graphDatabaseDbInstanceId3", description.instances[0].id)
-    ```
 
 
     :param str db_instance_description: According to the practical example or notes.

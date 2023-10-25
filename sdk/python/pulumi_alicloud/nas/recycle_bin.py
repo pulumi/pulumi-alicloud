@@ -29,13 +29,15 @@ class RecycleBinArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             file_system_id: pulumi.Input[str],
+             file_system_id: Optional[pulumi.Input[str]] = None,
              reserved_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fileSystemId' in kwargs:
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'reservedDays' in kwargs:
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if reserved_days is None and 'reservedDays' in kwargs:
             reserved_days = kwargs['reservedDays']
 
         _setter("file_system_id", file_system_id)
@@ -91,11 +93,11 @@ class _RecycleBinState:
              file_system_id: Optional[pulumi.Input[str]] = None,
              reserved_days: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fileSystemId' in kwargs:
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'reservedDays' in kwargs:
+        if reserved_days is None and 'reservedDays' in kwargs:
             reserved_days = kwargs['reservedDays']
 
         if file_system_id is not None:
@@ -157,26 +159,6 @@ class RecycleBin(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.155.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.nas.get_zones(file_system_type="standard")
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
-            protocol_type="NFS",
-            storage_type="Performance",
-            description="terraform-example",
-            encrypt_type=1,
-            zone_id=example_zones.zones[0].zone_id)
-        example_recycle_bin = alicloud.nas.RecycleBin("exampleRecycleBin",
-            file_system_id=example_file_system.id,
-            reserved_days=3)
-        ```
-
         ## Import
 
         Network Attached Storage (NAS) Recycle Bin can be imported using the id, e.g.
@@ -202,26 +184,6 @@ class RecycleBin(pulumi.CustomResource):
         For information about Network Attached Storage (NAS) Recycle Bin and how to use it, see [What is Recycle Bin](https://www.alibabacloud.com/help/en/doc-detail/264185.html).
 
         > **NOTE:** Available in v1.155.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.nas.get_zones(file_system_type="standard")
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
-            protocol_type="NFS",
-            storage_type="Performance",
-            description="terraform-example",
-            encrypt_type=1,
-            zone_id=example_zones.zones[0].zone_id)
-        example_recycle_bin = alicloud.nas.RecycleBin("exampleRecycleBin",
-            file_system_id=example_file_system.id,
-            reserved_days=3)
-        ```
 
         ## Import
 

@@ -11,40 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.122.0+.
  *
- * ## Example Usage
- *
- * Basic usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * // Create a new ECS disk-attachment and use it attach one disk to a new instance.
- * const ecsSg = new alicloud.ecs.SecurityGroup("ecsSg", {description: "New security group"});
- * const ecsDisk = new alicloud.ecs.EcsDisk("ecsDisk", {
- *     zoneId: "cn-beijing-a",
- *     size: 50,
- *     tags: {
- *         Name: "TerraformTest-disk",
- *     },
- * });
- * const ecsInstance = new alicloud.ecs.Instance("ecsInstance", {
- *     imageId: "ubuntu_18_04_64_20G_alibase_20190624.vhd",
- *     instanceType: "ecs.n4.small",
- *     availabilityZone: "cn-beijing-a",
- *     securityGroups: [ecsSg.id],
- *     instanceName: "Hello",
- *     internetChargeType: "PayByBandwidth",
- *     tags: {
- *         Name: "TerraformTest-instance",
- *     },
- * });
- * const ecsDiskAtt = new alicloud.ecs.EcsDiskAttachment("ecsDiskAtt", {
- *     diskId: ecsDisk.id,
- *     instanceId: ecsInstance.id,
- * });
- * ```
- *
  * ## Import
  *
  * The disk attachment can be imported using the id, e.g.

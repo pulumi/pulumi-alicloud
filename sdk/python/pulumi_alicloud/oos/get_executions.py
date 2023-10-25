@@ -236,18 +236,6 @@ def get_executions(category: Optional[str] = None,
 
     > **NOTE:** Available in v1.93.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.oos.get_executions(ids=["execution_id"],
-        status="Success",
-        template_name="name")
-    pulumi.export("firstExecutionId", example.executions[0].id)
-    ```
-
 
     :param str category: The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
     :param str end_date: The time when the execution was ended.
@@ -333,18 +321,6 @@ def get_executions_output(category: Optional[pulumi.Input[Optional[str]]] = None
     This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in v1.93.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.oos.get_executions(ids=["execution_id"],
-        status="Success",
-        template_name="name")
-    pulumi.export("firstExecutionId", example.executions[0].id)
-    ```
 
 
     :param str category: The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.

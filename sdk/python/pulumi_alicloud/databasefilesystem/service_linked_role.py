@@ -26,11 +26,13 @@ class ServiceLinkedRoleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             product_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             product_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'productName' in kwargs:
+        if product_name is None and 'productName' in kwargs:
             product_name = kwargs['productName']
+        if product_name is None:
+            raise TypeError("Missing 'product_name' argument")
 
         _setter("product_name", product_name)
 
@@ -67,9 +69,9 @@ class _ServiceLinkedRoleState:
              _setter: Callable[[Any, Any], None],
              product_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'productName' in kwargs:
+        if product_name is None and 'productName' in kwargs:
             product_name = kwargs['productName']
 
         if product_name is not None:
@@ -116,15 +118,6 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.157.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        service_linked_role = alicloud.databasefilesystem.ServiceLinkedRole("serviceLinkedRole", product_name="AliyunServiceRoleForDbfs")
-        ```
-
         ## Import
 
         Dbfs service-linked roles(SLR) can be imported using the id, e.g.
@@ -149,15 +142,6 @@ class ServiceLinkedRole(pulumi.CustomResource):
         For information about Dbfs service-linked roles(SLR) and how to use it, see [What is service-linked roles](https://www.alibabacloud.com/help/doc-detail/181425.htm).
 
         > **NOTE:** Available since v1.157.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        service_linked_role = alicloud.databasefilesystem.ServiceLinkedRole("serviceLinkedRole", product_name="AliyunServiceRoleForDbfs")
-        ```
 
         ## Import
 

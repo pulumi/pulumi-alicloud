@@ -61,13 +61,13 @@ class PolicyArgs:
              rotate_strategy: Optional[pulumi.Input[str]] = None,
              statements: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyStatementArgs']]]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'policyDocument' in kwargs:
+        if policy_document is None and 'policyDocument' in kwargs:
             policy_document = kwargs['policyDocument']
-        if 'policyName' in kwargs:
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'rotateStrategy' in kwargs:
+        if rotate_strategy is None and 'rotateStrategy' in kwargs:
             rotate_strategy = kwargs['rotateStrategy']
 
         if description is not None:
@@ -286,19 +286,19 @@ class _PolicyState:
              type: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'attachmentCount' in kwargs:
+        if attachment_count is None and 'attachmentCount' in kwargs:
             attachment_count = kwargs['attachmentCount']
-        if 'defaultVersion' in kwargs:
+        if default_version is None and 'defaultVersion' in kwargs:
             default_version = kwargs['defaultVersion']
-        if 'policyDocument' in kwargs:
+        if policy_document is None and 'policyDocument' in kwargs:
             policy_document = kwargs['policyDocument']
-        if 'policyName' in kwargs:
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'rotateStrategy' in kwargs:
+        if rotate_strategy is None and 'rotateStrategy' in kwargs:
             rotate_strategy = kwargs['rotateStrategy']
-        if 'versionId' in kwargs:
+        if version_id is None and 'versionId' in kwargs:
             version_id = kwargs['versionId']
 
         if attachment_count is not None:
@@ -535,36 +535,6 @@ class Policy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0+.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new RAM Policy.
-        policy = alicloud.ram.Policy("policy",
-            description="this is a policy test",
-            policy_document=\"\"\"  {
-            "Statement": [
-              {
-                "Action": [
-                  "oss:ListObjects",
-                  "oss:GetObject"
-                ],
-                "Effect": "Allow",
-                "Resource": [
-                  "acs:oss:*:*:mybucket",
-                  "acs:oss:*:*:mybucket/*"
-                ]
-              }
-            ],
-              "Version": "1"
-          }
-          
-        \"\"\",
-            policy_name="policyName")
-        ```
-
         ## Import
 
         RAM policy can be imported using the id or name, e.g.
@@ -601,36 +571,6 @@ class Policy(pulumi.CustomResource):
         > **NOTE:** If the policy has multiple versions, all non-default versions will be deleted first when deleting policy.
 
         > **NOTE:** Available since v1.0.0+.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new RAM Policy.
-        policy = alicloud.ram.Policy("policy",
-            description="this is a policy test",
-            policy_document=\"\"\"  {
-            "Statement": [
-              {
-                "Action": [
-                  "oss:ListObjects",
-                  "oss:GetObject"
-                ],
-                "Effect": "Allow",
-                "Resource": [
-                  "acs:oss:*:*:mybucket",
-                  "acs:oss:*:*:mybucket/*"
-                ]
-              }
-            ],
-              "Version": "1"
-          }
-          
-        \"\"\",
-            policy_name="policyName")
-        ```
 
         ## Import
 

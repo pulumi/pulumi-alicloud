@@ -32,14 +32,16 @@ class SamlProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             saml_provider_name: pulumi.Input[str],
+             saml_provider_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              encodedsaml_metadata_document: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'samlProviderName' in kwargs:
+        if saml_provider_name is None and 'samlProviderName' in kwargs:
             saml_provider_name = kwargs['samlProviderName']
-        if 'encodedsamlMetadataDocument' in kwargs:
+        if saml_provider_name is None:
+            raise TypeError("Missing 'saml_provider_name' argument")
+        if encodedsaml_metadata_document is None and 'encodedsamlMetadataDocument' in kwargs:
             encodedsaml_metadata_document = kwargs['encodedsamlMetadataDocument']
 
         _setter("saml_provider_name", saml_provider_name)
@@ -117,13 +119,13 @@ class _SamlProviderState:
              encodedsaml_metadata_document: Optional[pulumi.Input[str]] = None,
              saml_provider_name: Optional[pulumi.Input[str]] = None,
              update_date: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'encodedsamlMetadataDocument' in kwargs:
+        if encodedsaml_metadata_document is None and 'encodedsamlMetadataDocument' in kwargs:
             encodedsaml_metadata_document = kwargs['encodedsamlMetadataDocument']
-        if 'samlProviderName' in kwargs:
+        if saml_provider_name is None and 'samlProviderName' in kwargs:
             saml_provider_name = kwargs['samlProviderName']
-        if 'updateDate' in kwargs:
+        if update_date is None and 'updateDate' in kwargs:
             update_date = kwargs['updateDate']
 
         if arn is not None:
@@ -214,20 +216,6 @@ class SamlProvider(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.114.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ram.SamlProvider("example",
-            description="For Terraform Test",
-            encodedsaml_metadata_document="your encodedsaml metadata document",
-            saml_provider_name="terraform-example")
-        ```
-
         ## Import
 
         RAM SAML Provider can be imported using the id, e.g.
@@ -254,20 +242,6 @@ class SamlProvider(pulumi.CustomResource):
         For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/doc-detail/186846.htm).
 
         > **NOTE:** Available since v1.114.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ram.SamlProvider("example",
-            description="For Terraform Test",
-            encodedsaml_metadata_document="your encodedsaml metadata document",
-            saml_provider_name="terraform-example")
-        ```
 
         ## Import
 

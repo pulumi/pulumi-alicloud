@@ -37,18 +37,26 @@ class HoneypotPresetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             honeypot_image_name: pulumi.Input[str],
-             meta: pulumi.Input['HoneypotPresetMetaArgs'],
-             node_id: pulumi.Input[str],
-             preset_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             honeypot_image_name: Optional[pulumi.Input[str]] = None,
+             meta: Optional[pulumi.Input['HoneypotPresetMetaArgs']] = None,
+             node_id: Optional[pulumi.Input[str]] = None,
+             preset_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'honeypotImageName' in kwargs:
+        if honeypot_image_name is None and 'honeypotImageName' in kwargs:
             honeypot_image_name = kwargs['honeypotImageName']
-        if 'nodeId' in kwargs:
+        if honeypot_image_name is None:
+            raise TypeError("Missing 'honeypot_image_name' argument")
+        if meta is None:
+            raise TypeError("Missing 'meta' argument")
+        if node_id is None and 'nodeId' in kwargs:
             node_id = kwargs['nodeId']
-        if 'presetName' in kwargs:
+        if node_id is None:
+            raise TypeError("Missing 'node_id' argument")
+        if preset_name is None and 'presetName' in kwargs:
             preset_name = kwargs['presetName']
+        if preset_name is None:
+            raise TypeError("Missing 'preset_name' argument")
 
         _setter("honeypot_image_name", honeypot_image_name)
         _setter("meta", meta)
@@ -136,15 +144,15 @@ class _HoneypotPresetState:
              meta: Optional[pulumi.Input['HoneypotPresetMetaArgs']] = None,
              node_id: Optional[pulumi.Input[str]] = None,
              preset_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'honeypotImageName' in kwargs:
+        if honeypot_image_name is None and 'honeypotImageName' in kwargs:
             honeypot_image_name = kwargs['honeypotImageName']
-        if 'honeypotPresetId' in kwargs:
+        if honeypot_preset_id is None and 'honeypotPresetId' in kwargs:
             honeypot_preset_id = kwargs['honeypotPresetId']
-        if 'nodeId' in kwargs:
+        if node_id is None and 'nodeId' in kwargs:
             node_id = kwargs['nodeId']
-        if 'presetName' in kwargs:
+        if preset_name is None and 'presetName' in kwargs:
             preset_name = kwargs['presetName']
 
         if honeypot_image_name is not None:
@@ -236,33 +244,6 @@ class HoneypotPreset(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        default_honeypot_images = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
-        default_honeypot_node = alicloud.threatdetection.HoneypotNode("defaultHoneypotNode",
-            node_name=name,
-            available_probe_num=20,
-            security_group_probe_ip_lists=["0.0.0.0/0"])
-        default_honeypot_preset = alicloud.threatdetection.HoneypotPreset("defaultHoneypotPreset",
-            preset_name=name,
-            node_id=default_honeypot_node.id,
-            honeypot_image_name=default_honeypot_images.images[0].honeypot_image_name,
-            meta=alicloud.threatdetection.HoneypotPresetMetaArgs(
-                portrait_option=True,
-                burp="open",
-            ))
-        ```
-
         ## Import
 
         Threat Detection Honeypot Preset can be imported using the id, e.g.
@@ -290,33 +271,6 @@ class HoneypotPreset(pulumi.CustomResource):
         For information about Threat Detection Honeypot Preset and how to use it, see [What is Honeypot Preset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotpreset).
 
         > **NOTE:** Available since v1.195.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        default_honeypot_images = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
-        default_honeypot_node = alicloud.threatdetection.HoneypotNode("defaultHoneypotNode",
-            node_name=name,
-            available_probe_num=20,
-            security_group_probe_ip_lists=["0.0.0.0/0"])
-        default_honeypot_preset = alicloud.threatdetection.HoneypotPreset("defaultHoneypotPreset",
-            preset_name=name,
-            node_id=default_honeypot_node.id,
-            honeypot_image_name=default_honeypot_images.images[0].honeypot_image_name,
-            meta=alicloud.threatdetection.HoneypotPresetMetaArgs(
-                portrait_option=True,
-                burp="open",
-            ))
-        ```
 
         ## Import
 
@@ -361,11 +315,7 @@ class HoneypotPreset(pulumi.CustomResource):
             if honeypot_image_name is None and not opts.urn:
                 raise TypeError("Missing required property 'honeypot_image_name'")
             __props__.__dict__["honeypot_image_name"] = honeypot_image_name
-            if meta is not None and not isinstance(meta, HoneypotPresetMetaArgs):
-                meta = meta or {}
-                def _setter(key, value):
-                    meta[key] = value
-                HoneypotPresetMetaArgs._configure(_setter, **meta)
+            meta = _utilities.configure(meta, HoneypotPresetMetaArgs, True)
             if meta is None and not opts.urn:
                 raise TypeError("Missing required property 'meta'")
             __props__.__dict__["meta"] = meta

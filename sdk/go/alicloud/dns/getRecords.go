@@ -15,37 +15,6 @@ import (
 // This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available since v1.0.0.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			recordsDs, err := dns.GetRecords(ctx, &dns.GetRecordsArgs{
-//				DomainName:      "xiaozhu.top",
-//				HostRecordRegex: pulumi.StringRef("^@"),
-//				IsLocked:        pulumi.BoolRef(false),
-//				OutputFile:      pulumi.StringRef("records.txt"),
-//				Type:            pulumi.StringRef("A"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstRecordId", recordsDs.Records[0].RecordId)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetRecords(ctx *pulumi.Context, args *GetRecordsArgs, opts ...pulumi.InvokeOption) (*GetRecordsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRecordsResult

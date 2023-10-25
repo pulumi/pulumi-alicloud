@@ -50,7 +50,7 @@ class BucketAccessMonitorArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if status is not None:
@@ -95,22 +95,26 @@ class BucketCorsRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_methods: pulumi.Input[Sequence[pulumi.Input[str]]],
-             allowed_origins: pulumi.Input[Sequence[pulumi.Input[str]]],
+             allowed_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              allowed_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              max_age_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedMethods' in kwargs:
+        if allowed_methods is None and 'allowedMethods' in kwargs:
             allowed_methods = kwargs['allowedMethods']
-        if 'allowedOrigins' in kwargs:
+        if allowed_methods is None:
+            raise TypeError("Missing 'allowed_methods' argument")
+        if allowed_origins is None and 'allowedOrigins' in kwargs:
             allowed_origins = kwargs['allowedOrigins']
-        if 'allowedHeaders' in kwargs:
+        if allowed_origins is None:
+            raise TypeError("Missing 'allowed_origins' argument")
+        if allowed_headers is None and 'allowedHeaders' in kwargs:
             allowed_headers = kwargs['allowedHeaders']
-        if 'exposeHeaders' in kwargs:
+        if expose_headers is None and 'exposeHeaders' in kwargs:
             expose_headers = kwargs['exposeHeaders']
-        if 'maxAgeSeconds' in kwargs:
+        if max_age_seconds is None and 'maxAgeSeconds' in kwargs:
             max_age_seconds = kwargs['maxAgeSeconds']
 
         _setter("allowed_methods", allowed_methods)
@@ -226,7 +230,7 @@ class BucketLifecycleRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
+             enabled: Optional[pulumi.Input[bool]] = None,
              abort_multipart_uploads: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleAbortMultipartUploadArgs']]]] = None,
              expirations: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleExpirationArgs']]]] = None,
              filter: Optional[pulumi.Input['BucketLifecycleRuleFilterArgs']] = None,
@@ -236,13 +240,15 @@ class BucketLifecycleRuleArgs:
              prefix: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              transitions: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'abortMultipartUploads' in kwargs:
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if abort_multipart_uploads is None and 'abortMultipartUploads' in kwargs:
             abort_multipart_uploads = kwargs['abortMultipartUploads']
-        if 'noncurrentVersionExpirations' in kwargs:
+        if noncurrent_version_expirations is None and 'noncurrentVersionExpirations' in kwargs:
             noncurrent_version_expirations = kwargs['noncurrentVersionExpirations']
-        if 'noncurrentVersionTransitions' in kwargs:
+        if noncurrent_version_transitions is None and 'noncurrentVersionTransitions' in kwargs:
             noncurrent_version_transitions = kwargs['noncurrentVersionTransitions']
 
         _setter("enabled", enabled)
@@ -407,9 +413,9 @@ class BucketLifecycleRuleAbortMultipartUploadArgs:
              _setter: Callable[[Any, Any], None],
              created_before_date: Optional[pulumi.Input[str]] = None,
              days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createdBeforeDate' in kwargs:
+        if created_before_date is None and 'createdBeforeDate' in kwargs:
             created_before_date = kwargs['createdBeforeDate']
 
         if created_before_date is not None:
@@ -471,11 +477,11 @@ class BucketLifecycleRuleExpirationArgs:
              date: Optional[pulumi.Input[str]] = None,
              days: Optional[pulumi.Input[int]] = None,
              expired_object_delete_marker: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createdBeforeDate' in kwargs:
+        if created_before_date is None and 'createdBeforeDate' in kwargs:
             created_before_date = kwargs['createdBeforeDate']
-        if 'expiredObjectDeleteMarker' in kwargs:
+        if expired_object_delete_marker is None and 'expiredObjectDeleteMarker' in kwargs:
             expired_object_delete_marker = kwargs['expiredObjectDeleteMarker']
 
         if created_before_date is not None:
@@ -561,13 +567,13 @@ class BucketLifecycleRuleFilterArgs:
              not_: Optional[pulumi.Input['BucketLifecycleRuleFilterNotArgs']] = None,
              object_size_greater_than: Optional[pulumi.Input[int]] = None,
              object_size_less_than: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'not' in kwargs:
+        if not_ is None and 'not' in kwargs:
             not_ = kwargs['not']
-        if 'objectSizeGreaterThan' in kwargs:
+        if object_size_greater_than is None and 'objectSizeGreaterThan' in kwargs:
             object_size_greater_than = kwargs['objectSizeGreaterThan']
-        if 'objectSizeLessThan' in kwargs:
+        if object_size_less_than is None and 'objectSizeLessThan' in kwargs:
             object_size_less_than = kwargs['objectSizeLessThan']
 
         if not_ is not None:
@@ -633,7 +639,7 @@ class BucketLifecycleRuleFilterNotArgs:
              _setter: Callable[[Any, Any], None],
              prefix: Optional[pulumi.Input[str]] = None,
              tag: Optional[pulumi.Input['BucketLifecycleRuleFilterNotTagArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if prefix is not None:
@@ -683,10 +689,14 @@ class BucketLifecycleRuleFilterNotTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("value", value)
@@ -730,9 +740,11 @@ class BucketLifecycleRuleNoncurrentVersionExpirationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             days: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             days: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if days is None:
+            raise TypeError("Missing 'days' argument")
 
         _setter("days", days)
 
@@ -772,17 +784,21 @@ class BucketLifecycleRuleNoncurrentVersionTransitionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             days: pulumi.Input[int],
-             storage_class: pulumi.Input[str],
+             days: Optional[pulumi.Input[int]] = None,
+             storage_class: Optional[pulumi.Input[str]] = None,
              is_access_time: Optional[pulumi.Input[bool]] = None,
              return_to_std_when_visit: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'storageClass' in kwargs:
+        if days is None:
+            raise TypeError("Missing 'days' argument")
+        if storage_class is None and 'storageClass' in kwargs:
             storage_class = kwargs['storageClass']
-        if 'isAccessTime' in kwargs:
+        if storage_class is None:
+            raise TypeError("Missing 'storage_class' argument")
+        if is_access_time is None and 'isAccessTime' in kwargs:
             is_access_time = kwargs['isAccessTime']
-        if 'returnToStdWhenVisit' in kwargs:
+        if return_to_std_when_visit is None and 'returnToStdWhenVisit' in kwargs:
             return_to_std_when_visit = kwargs['returnToStdWhenVisit']
 
         _setter("days", days)
@@ -867,20 +883,22 @@ class BucketLifecycleRuleTransitionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             storage_class: pulumi.Input[str],
+             storage_class: Optional[pulumi.Input[str]] = None,
              created_before_date: Optional[pulumi.Input[str]] = None,
              days: Optional[pulumi.Input[int]] = None,
              is_access_time: Optional[pulumi.Input[bool]] = None,
              return_to_std_when_visit: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'storageClass' in kwargs:
+        if storage_class is None and 'storageClass' in kwargs:
             storage_class = kwargs['storageClass']
-        if 'createdBeforeDate' in kwargs:
+        if storage_class is None:
+            raise TypeError("Missing 'storage_class' argument")
+        if created_before_date is None and 'createdBeforeDate' in kwargs:
             created_before_date = kwargs['createdBeforeDate']
-        if 'isAccessTime' in kwargs:
+        if is_access_time is None and 'isAccessTime' in kwargs:
             is_access_time = kwargs['isAccessTime']
-        if 'returnToStdWhenVisit' in kwargs:
+        if return_to_std_when_visit is None and 'returnToStdWhenVisit' in kwargs:
             return_to_std_when_visit = kwargs['returnToStdWhenVisit']
 
         _setter("storage_class", storage_class)
@@ -971,13 +989,15 @@ class BucketLoggingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target_bucket: pulumi.Input[str],
+             target_bucket: Optional[pulumi.Input[str]] = None,
              target_prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'targetBucket' in kwargs:
+        if target_bucket is None and 'targetBucket' in kwargs:
             target_bucket = kwargs['targetBucket']
-        if 'targetPrefix' in kwargs:
+        if target_bucket is None:
+            raise TypeError("Missing 'target_bucket' argument")
+        if target_prefix is None and 'targetPrefix' in kwargs:
             target_prefix = kwargs['targetPrefix']
 
         _setter("target_bucket", target_bucket)
@@ -1026,11 +1046,13 @@ class BucketRefererConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             referers: pulumi.Input[Sequence[pulumi.Input[str]]],
+             referers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              allow_empty: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowEmpty' in kwargs:
+        if referers is None:
+            raise TypeError("Missing 'referers' argument")
+        if allow_empty is None and 'allowEmpty' in kwargs:
             allow_empty = kwargs['allowEmpty']
 
         _setter("referers", referers)
@@ -1083,12 +1105,16 @@ class BucketReplicationDestinationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             location: pulumi.Input[str],
+             bucket: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              transfer_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'transferType' in kwargs:
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if transfer_type is None and 'transferType' in kwargs:
             transfer_type = kwargs['transferType']
 
         _setter("bucket", bucket)
@@ -1148,11 +1174,13 @@ class BucketReplicationEncryptionConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             replica_kms_key_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             replica_kms_key_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'replicaKmsKeyId' in kwargs:
+        if replica_kms_key_id is None and 'replicaKmsKeyId' in kwargs:
             replica_kms_key_id = kwargs['replicaKmsKeyId']
+        if replica_kms_key_id is None:
+            raise TypeError("Missing 'replica_kms_key_id' argument")
 
         _setter("replica_kms_key_id", replica_kms_key_id)
 
@@ -1187,9 +1215,11 @@ class BucketReplicationPrefixSetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             prefixes: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if prefixes is None:
+            raise TypeError("Missing 'prefixes' argument")
 
         _setter("prefixes", prefixes)
 
@@ -1227,11 +1257,11 @@ class BucketReplicationProgressArgs:
              _setter: Callable[[Any, Any], None],
              historical_object: Optional[pulumi.Input[str]] = None,
              new_object: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'historicalObject' in kwargs:
+        if historical_object is None and 'historicalObject' in kwargs:
             historical_object = kwargs['historicalObject']
-        if 'newObject' in kwargs:
+        if new_object is None and 'newObject' in kwargs:
             new_object = kwargs['newObject']
 
         if historical_object is not None:
@@ -1279,9 +1309,9 @@ class BucketReplicationSourceSelectionCriteriaArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              sse_kms_encrypted_objects: Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sseKmsEncryptedObjects' in kwargs:
+        if sse_kms_encrypted_objects is None and 'sseKmsEncryptedObjects' in kwargs:
             sse_kms_encrypted_objects = kwargs['sseKmsEncryptedObjects']
 
         if sse_kms_encrypted_objects is not None:
@@ -1315,7 +1345,7 @@ class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if status is not None:
@@ -1351,13 +1381,15 @@ class BucketServerSideEncryptionRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sse_algorithm: pulumi.Input[str],
+             sse_algorithm: Optional[pulumi.Input[str]] = None,
              kms_master_key_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sseAlgorithm' in kwargs:
+        if sse_algorithm is None and 'sseAlgorithm' in kwargs:
             sse_algorithm = kwargs['sseAlgorithm']
-        if 'kmsMasterKeyId' in kwargs:
+        if sse_algorithm is None:
+            raise TypeError("Missing 'sse_algorithm' argument")
+        if kms_master_key_id is None and 'kmsMasterKeyId' in kwargs:
             kms_master_key_id = kwargs['kmsMasterKeyId']
 
         _setter("sse_algorithm", sse_algorithm)
@@ -1403,9 +1435,11 @@ class BucketTransferAccelerationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
 
         _setter("enabled", enabled)
 
@@ -1436,9 +1470,11 @@ class BucketVersioningArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             status: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("status", status)
 
@@ -1472,13 +1508,15 @@ class BucketWebsiteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             index_document: pulumi.Input[str],
+             index_document: Optional[pulumi.Input[str]] = None,
              error_document: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'indexDocument' in kwargs:
+        if index_document is None and 'indexDocument' in kwargs:
             index_document = kwargs['indexDocument']
-        if 'errorDocument' in kwargs:
+        if index_document is None:
+            raise TypeError("Missing 'index_document' argument")
+        if error_document is None and 'errorDocument' in kwargs:
             error_document = kwargs['errorDocument']
 
         _setter("index_document", index_document)

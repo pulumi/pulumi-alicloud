@@ -134,17 +134,6 @@ def get_file_systems(description_regex: Optional[str] = None,
 
     > **NOTE**: Available in 1.35.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    fs = alicloud.nas.get_file_systems(description_regex=alicloud_nas_file_system["foo"]["description"],
-        protocol_type="NFS")
-    pulumi.export("alicloudNasFileSystemsId", fs.systems[0].id)
-    ```
-
 
     :param str description_regex: A regex string to filter the results by the ：FileSystem description.
     :param Sequence[str] ids: A list of FileSystemId.
@@ -187,17 +176,6 @@ def get_file_systems_output(description_regex: Optional[pulumi.Input[Optional[st
     This data source provides FileSystems available to the user.
 
     > **NOTE**: Available in 1.35.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    fs = alicloud.nas.get_file_systems(description_regex=alicloud_nas_file_system["foo"]["description"],
-        protocol_type="NFS")
-    pulumi.export("alicloudNasFileSystemsId", fs.systems[0].id)
-    ```
 
 
     :param str description_regex: A regex string to filter the results by the ：FileSystem description.

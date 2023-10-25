@@ -8,17 +8,6 @@ import * as utilities from "../utilities";
  * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
  *
  * > **NOTE:** Available since v1.198.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const status = alicloud.dcdn.getKvAccount({
- *     status: "online",
- * });
- * ```
  */
 export function getKvAccount(args?: GetKvAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetKvAccountResult> {
     args = args || {};
@@ -56,17 +45,6 @@ export interface GetKvAccountResult {
  * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
  *
  * > **NOTE:** Available since v1.198.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const status = alicloud.dcdn.getKvAccount({
- *     status: "online",
- * });
- * ```
  */
 export function getKvAccountOutput(args?: GetKvAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKvAccountResult> {
     return pulumi.output(args).apply((a: any) => getKvAccount(a, opts))

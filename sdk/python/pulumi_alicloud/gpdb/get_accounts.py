@@ -119,25 +119,6 @@ def get_accounts(db_instance_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.142.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.gpdb.get_accounts(db_instance_id="example_value",
-        ids=[
-            "my-Account-1",
-            "my-Account-2",
-        ])
-    pulumi.export("gpdbAccountId1", ids.accounts[0].id)
-    name_regex = alicloud.gpdb.get_accounts(db_instance_id="example_value",
-        name_regex="^my-Account")
-    pulumi.export("gpdbAccountId2", name_regex.accounts[0].id)
-    ```
-
 
     :param str db_instance_id: The ID of the instance.
     :param Sequence[str] ids: A list of Account IDs. Its element value is same as Account Name.
@@ -176,25 +157,6 @@ def get_accounts_output(db_instance_id: Optional[pulumi.Input[str]] = None,
     This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.142.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.gpdb.get_accounts(db_instance_id="example_value",
-        ids=[
-            "my-Account-1",
-            "my-Account-2",
-        ])
-    pulumi.export("gpdbAccountId1", ids.accounts[0].id)
-    name_regex = alicloud.gpdb.get_accounts(db_instance_id="example_value",
-        name_regex="^my-Account")
-    pulumi.export("gpdbAccountId2", name_regex.accounts[0].id)
-    ```
 
 
     :param str db_instance_id: The ID of the instance.

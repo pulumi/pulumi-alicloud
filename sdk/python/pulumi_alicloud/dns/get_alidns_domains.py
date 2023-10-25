@@ -243,17 +243,6 @@ def get_alidns_domains(ali_domain: Optional[bool] = None,
 
     > **NOTE:**  Available in 1.95.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    domains_ds = alicloud.dns.get_alidns_domains(domain_name_regex="^hegu",
-        output_file="domains.txt")
-    pulumi.export("firstDomainId", domains_ds.domains[0].domain_id)
-    ```
-
 
     :param bool ali_domain: Specifies whether the domain is from Alibaba Cloud or not.
     :param str domain_name_regex: A regex string to filter results by the domain name.
@@ -331,17 +320,6 @@ def get_alidns_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]]
     This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:**  Available in 1.95.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    domains_ds = alicloud.dns.get_alidns_domains(domain_name_regex="^hegu",
-        output_file="domains.txt")
-    pulumi.export("firstDomainId", domains_ds.domains[0].domain_id)
-    ```
 
 
     :param bool ali_domain: Specifies whether the domain is from Alibaba Cloud or not.

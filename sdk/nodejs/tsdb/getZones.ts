@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the available zones with the Time Series Database (TSDB) Instance of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.112.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.tsdb.getZones({});
- * export const firstTsdbZonesId = example.then(example => example.zones?.[0]?.zoneId);
- * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
@@ -58,18 +46,6 @@ export interface GetZonesResult {
  * This data source provides the available zones with the Time Series Database (TSDB) Instance of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.112.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.tsdb.getZones({});
- * export const firstTsdbZonesId = example.then(example => example.zones?.[0]?.zoneId);
- * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
     return pulumi.output(args).apply((a: any) => getZones(a, opts))

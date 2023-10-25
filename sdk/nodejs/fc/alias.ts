@@ -12,31 +12,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.104.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
- *
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
- *     max: 99999,
- *     min: 10000,
- * });
- * const defaultService = new alicloud.fc.Service("defaultService", {
- *     description: "example-value",
- *     publish: true,
- * });
- * const example = new alicloud.fc.Alias("example", {
- *     aliasName: "example-value",
- *     description: "example-value",
- *     serviceName: defaultService.name,
- *     serviceVersion: "1",
- * });
- * ```
- *
  * ## Import
  *
  * Function Compute alias can be imported using the id, e.g.

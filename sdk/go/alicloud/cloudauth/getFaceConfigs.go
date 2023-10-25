@@ -15,44 +15,6 @@ import (
 // This data source provides the Cloudauth Face Configs of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.137.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudauth"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultFaceConfig, err := cloudauth.NewFaceConfig(ctx, "defaultFaceConfig", &cloudauth.FaceConfigArgs{
-//				BizName: pulumi.String("example-value"),
-//				BizType: pulumi.String("example-value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultFaceConfigs := cloudauth.GetFaceConfigsOutput(ctx, cloudauth.GetFaceConfigsOutputArgs{
-//				Ids: pulumi.StringArray{
-//					defaultFaceConfig.ID(),
-//				},
-//				NameRegex: defaultFaceConfig.BizName,
-//			}, nil)
-//			ctx.Export("faceConfig", defaultFaceConfigs.ApplyT(func(defaultFaceConfigs cloudauth.GetFaceConfigsResult) (cloudauth.GetFaceConfigsConfig, error) {
-//				return defaultFaceConfigs.Configs[0], nil
-//			}).(cloudauth.GetFaceConfigsConfigOutput))
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFaceConfigs(ctx *pulumi.Context, args *GetFaceConfigsArgs, opts ...pulumi.InvokeOption) (*GetFaceConfigsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFaceConfigsResult

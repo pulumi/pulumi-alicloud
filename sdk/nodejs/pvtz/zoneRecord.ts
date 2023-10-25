@@ -5,24 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const zone = new alicloud.pvtz.Zone("zone", {});
- * const foo = new alicloud.pvtz.ZoneRecord("foo", {
- *     zoneId: zone.id,
- *     rr: "www",
- *     type: "CNAME",
- *     value: "bbb.test.com",
- *     ttl: 60,
- * });
- * ```
- *
  * ## Import
  *
  * Private Zone Record can be imported using the id, e.g.

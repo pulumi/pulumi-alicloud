@@ -8,19 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the ots instances of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const instancesDs = alicloud.ots.getInstances({
- *     nameRegex: "sample-instance",
- *     outputFile: "instances.txt",
- * });
- * export const firstInstanceId = instancesDs.then(instancesDs => instancesDs.instances?.[0]?.id);
- * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -52,17 +39,6 @@ export interface GetInstancesArgs {
     outputFile?: string;
     /**
      * A map of tags assigned to the instance. It must be in the format:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as alicloud from "@pulumi/alicloud";
-     *
-     * const instancesDs = alicloud.ots.getInstances({
-     *     tags: {
-     *         tagKey1: "tagValue1",
-     *         tagKey2: "tagValue2",
-     *     },
-     * });
-     * ```
      */
     tags?: {[key: string]: any};
 }
@@ -96,19 +72,6 @@ export interface GetInstancesResult {
 }
 /**
  * This data source provides the ots instances of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const instancesDs = alicloud.ots.getInstances({
- *     nameRegex: "sample-instance",
- *     outputFile: "instances.txt",
- * });
- * export const firstInstanceId = instancesDs.then(instancesDs => instancesDs.instances?.[0]?.id);
- * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))
@@ -132,17 +95,6 @@ export interface GetInstancesOutputArgs {
     outputFile?: pulumi.Input<string>;
     /**
      * A map of tags assigned to the instance. It must be in the format:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as alicloud from "@pulumi/alicloud";
-     *
-     * const instancesDs = alicloud.ots.getInstances({
-     *     tags: {
-     *         tagKey1: "tagValue1",
-     *         tagKey2: "tagValue2",
-     *     },
-     * });
-     * ```
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

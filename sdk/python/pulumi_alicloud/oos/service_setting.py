@@ -43,17 +43,17 @@ class ServiceSettingArgs:
              delivery_oss_key_prefix: Optional[pulumi.Input[str]] = None,
              delivery_sls_enabled: Optional[pulumi.Input[bool]] = None,
              delivery_sls_project_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deliveryOssBucketName' in kwargs:
+        if delivery_oss_bucket_name is None and 'deliveryOssBucketName' in kwargs:
             delivery_oss_bucket_name = kwargs['deliveryOssBucketName']
-        if 'deliveryOssEnabled' in kwargs:
+        if delivery_oss_enabled is None and 'deliveryOssEnabled' in kwargs:
             delivery_oss_enabled = kwargs['deliveryOssEnabled']
-        if 'deliveryOssKeyPrefix' in kwargs:
+        if delivery_oss_key_prefix is None and 'deliveryOssKeyPrefix' in kwargs:
             delivery_oss_key_prefix = kwargs['deliveryOssKeyPrefix']
-        if 'deliverySlsEnabled' in kwargs:
+        if delivery_sls_enabled is None and 'deliverySlsEnabled' in kwargs:
             delivery_sls_enabled = kwargs['deliverySlsEnabled']
-        if 'deliverySlsProjectName' in kwargs:
+        if delivery_sls_project_name is None and 'deliverySlsProjectName' in kwargs:
             delivery_sls_project_name = kwargs['deliverySlsProjectName']
 
         if delivery_oss_bucket_name is not None:
@@ -160,17 +160,17 @@ class _ServiceSettingState:
              delivery_oss_key_prefix: Optional[pulumi.Input[str]] = None,
              delivery_sls_enabled: Optional[pulumi.Input[bool]] = None,
              delivery_sls_project_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deliveryOssBucketName' in kwargs:
+        if delivery_oss_bucket_name is None and 'deliveryOssBucketName' in kwargs:
             delivery_oss_bucket_name = kwargs['deliveryOssBucketName']
-        if 'deliveryOssEnabled' in kwargs:
+        if delivery_oss_enabled is None and 'deliveryOssEnabled' in kwargs:
             delivery_oss_enabled = kwargs['deliveryOssEnabled']
-        if 'deliveryOssKeyPrefix' in kwargs:
+        if delivery_oss_key_prefix is None and 'deliveryOssKeyPrefix' in kwargs:
             delivery_oss_key_prefix = kwargs['deliveryOssKeyPrefix']
-        if 'deliverySlsEnabled' in kwargs:
+        if delivery_sls_enabled is None and 'deliverySlsEnabled' in kwargs:
             delivery_sls_enabled = kwargs['deliverySlsEnabled']
-        if 'deliverySlsProjectName' in kwargs:
+        if delivery_sls_project_name is None and 'deliverySlsProjectName' in kwargs:
             delivery_sls_project_name = kwargs['deliverySlsProjectName']
 
         if delivery_oss_bucket_name is not None:
@@ -263,30 +263,6 @@ class ServiceSetting(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.147.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testaccoossetting"
-        default_bucket = alicloud.oss.Bucket("defaultBucket",
-            bucket=name,
-            acl="public-read-write")
-        default_project = alicloud.log.Project("defaultProject")
-        default_service_setting = alicloud.oos.ServiceSetting("defaultServiceSetting",
-            delivery_oss_enabled=True,
-            delivery_oss_key_prefix="path1/",
-            delivery_oss_bucket_name=default_bucket.bucket,
-            delivery_sls_enabled=True,
-            delivery_sls_project_name=default_project.name)
-        ```
-
         ## Import
 
         OOS Service Setting can be imported using the id, e.g.
@@ -315,30 +291,6 @@ class ServiceSetting(pulumi.CustomResource):
         For information about OOS Service Setting and how to use it, see [What is Service Setting](https://www.alibabacloud.com/help/en/doc-detail/268700.html).
 
         > **NOTE:** Available in v1.147.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testaccoossetting"
-        default_bucket = alicloud.oss.Bucket("defaultBucket",
-            bucket=name,
-            acl="public-read-write")
-        default_project = alicloud.log.Project("defaultProject")
-        default_service_setting = alicloud.oos.ServiceSetting("defaultServiceSetting",
-            delivery_oss_enabled=True,
-            delivery_oss_key_prefix="path1/",
-            delivery_oss_bucket_name=default_bucket.bucket,
-            delivery_sls_enabled=True,
-            delivery_sls_project_name=default_project.name)
-        ```
 
         ## Import
 

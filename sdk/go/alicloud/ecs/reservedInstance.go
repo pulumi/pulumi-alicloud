@@ -17,45 +17,6 @@ import (
 //
 // > **NOTE:** Available in 1.65.0+
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				InstanceTypeFamily: pulumi.StringRef("ecs.g6"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ecs.NewReservedInstance(ctx, "defaultReservedInstance", &ecs.ReservedInstanceArgs{
-//				InstanceType:         *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
-//				InstanceAmount:       pulumi.Int(1),
-//				PeriodUnit:           pulumi.String("Month"),
-//				OfferingType:         pulumi.String("All Upfront"),
-//				ReservedInstanceName: pulumi.String("terraform-example"),
-//				Description:          pulumi.String("ReservedInstance"),
-//				ZoneId:               *pulumi.String(defaultInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
-//				Scope:                pulumi.String("Zone"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // reservedInstance can be imported using id, e.g.

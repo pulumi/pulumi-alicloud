@@ -58,40 +58,56 @@ class PolardbxInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cn_class: pulumi.Input[str],
-             cn_node_count: pulumi.Input[int],
-             dn_class: pulumi.Input[str],
-             dn_node_count: pulumi.Input[int],
-             primary_zone: pulumi.Input[str],
-             topology_type: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             cn_class: Optional[pulumi.Input[str]] = None,
+             cn_node_count: Optional[pulumi.Input[int]] = None,
+             dn_class: Optional[pulumi.Input[str]] = None,
+             dn_node_count: Optional[pulumi.Input[int]] = None,
+             primary_zone: Optional[pulumi.Input[str]] = None,
+             topology_type: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              secondary_zone: Optional[pulumi.Input[str]] = None,
              tertiary_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cnClass' in kwargs:
+        if cn_class is None and 'cnClass' in kwargs:
             cn_class = kwargs['cnClass']
-        if 'cnNodeCount' in kwargs:
+        if cn_class is None:
+            raise TypeError("Missing 'cn_class' argument")
+        if cn_node_count is None and 'cnNodeCount' in kwargs:
             cn_node_count = kwargs['cnNodeCount']
-        if 'dnClass' in kwargs:
+        if cn_node_count is None:
+            raise TypeError("Missing 'cn_node_count' argument")
+        if dn_class is None and 'dnClass' in kwargs:
             dn_class = kwargs['dnClass']
-        if 'dnNodeCount' in kwargs:
+        if dn_class is None:
+            raise TypeError("Missing 'dn_class' argument")
+        if dn_node_count is None and 'dnNodeCount' in kwargs:
             dn_node_count = kwargs['dnNodeCount']
-        if 'primaryZone' in kwargs:
+        if dn_node_count is None:
+            raise TypeError("Missing 'dn_node_count' argument")
+        if primary_zone is None and 'primaryZone' in kwargs:
             primary_zone = kwargs['primaryZone']
-        if 'topologyType' in kwargs:
+        if primary_zone is None:
+            raise TypeError("Missing 'primary_zone' argument")
+        if topology_type is None and 'topologyType' in kwargs:
             topology_type = kwargs['topologyType']
-        if 'vpcId' in kwargs:
+        if topology_type is None:
+            raise TypeError("Missing 'topology_type' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'resourceGroupId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'secondaryZone' in kwargs:
+        if secondary_zone is None and 'secondaryZone' in kwargs:
             secondary_zone = kwargs['secondaryZone']
-        if 'tertiaryZone' in kwargs:
+        if tertiary_zone is None and 'tertiaryZone' in kwargs:
             tertiary_zone = kwargs['tertiaryZone']
 
         _setter("cn_class", cn_class)
@@ -310,31 +326,31 @@ class _PolardbxInstanceState:
              topology_type: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cnClass' in kwargs:
+        if cn_class is None and 'cnClass' in kwargs:
             cn_class = kwargs['cnClass']
-        if 'cnNodeCount' in kwargs:
+        if cn_node_count is None and 'cnNodeCount' in kwargs:
             cn_node_count = kwargs['cnNodeCount']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dnClass' in kwargs:
+        if dn_class is None and 'dnClass' in kwargs:
             dn_class = kwargs['dnClass']
-        if 'dnNodeCount' in kwargs:
+        if dn_node_count is None and 'dnNodeCount' in kwargs:
             dn_node_count = kwargs['dnNodeCount']
-        if 'primaryZone' in kwargs:
+        if primary_zone is None and 'primaryZone' in kwargs:
             primary_zone = kwargs['primaryZone']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'secondaryZone' in kwargs:
+        if secondary_zone is None and 'secondaryZone' in kwargs:
             secondary_zone = kwargs['secondaryZone']
-        if 'tertiaryZone' in kwargs:
+        if tertiary_zone is None and 'tertiaryZone' in kwargs:
             tertiary_zone = kwargs['tertiaryZone']
-        if 'topologyType' in kwargs:
+        if topology_type is None and 'topologyType' in kwargs:
             topology_type = kwargs['topologyType']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if cn_class is not None:
@@ -547,38 +563,6 @@ class PolardbxInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.211.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork", vpc_name=name)
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vpc_id=example_network.id,
-            zone_id=default_zones.zones[0].id,
-            cidr_block="172.16.0.0/24",
-            vswitch_name=name)
-        default_polardbx_instance = alicloud.drds.PolardbxInstance("defaultPolardbxInstance",
-            topology_type="3azones",
-            vswitch_id=example_switch.id,
-            primary_zone="ap-southeast-1a",
-            cn_node_count=2,
-            dn_class="mysql.n4.medium.25",
-            cn_class="polarx.x4.medium.2e",
-            dn_node_count=2,
-            secondary_zone="ap-southeast-1b",
-            tertiary_zone="ap-southeast-1c",
-            vpc_id=example_network.id)
-        ```
-
         ## Import
 
         DRDS Polardb X Instance can be imported using the id, e.g.
@@ -615,38 +599,6 @@ class PolardbxInstance(pulumi.CustomResource):
         For information about DRDS Polardb X Instance and how to use it, see [What is Polardb X Instance](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1).
 
         > **NOTE:** Available since v1.211.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork", vpc_name=name)
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vpc_id=example_network.id,
-            zone_id=default_zones.zones[0].id,
-            cidr_block="172.16.0.0/24",
-            vswitch_name=name)
-        default_polardbx_instance = alicloud.drds.PolardbxInstance("defaultPolardbxInstance",
-            topology_type="3azones",
-            vswitch_id=example_switch.id,
-            primary_zone="ap-southeast-1a",
-            cn_node_count=2,
-            dn_class="mysql.n4.medium.25",
-            cn_class="polarx.x4.medium.2e",
-            dn_node_count=2,
-            secondary_zone="ap-southeast-1b",
-            tertiary_zone="ap-southeast-1c",
-            vpc_id=example_network.id)
-        ```
 
         ## Import
 

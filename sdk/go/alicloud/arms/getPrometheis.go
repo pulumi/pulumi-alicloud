@@ -15,44 +15,6 @@ import (
 // This data source provides the Arms Prometheis of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.203.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := arms.GetPrometheis(ctx, &arms.GetPrometheisArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("armsPrometheisId1", ids.Prometheis[0].Id)
-//			nameRegex, err := arms.GetPrometheis(ctx, &arms.GetPrometheisArgs{
-//				NameRegex: pulumi.StringRef("tf-example"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("armsPrometheisId2", nameRegex.Prometheis[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetPrometheis(ctx *pulumi.Context, args *GetPrometheisArgs, opts ...pulumi.InvokeOption) (*GetPrometheisResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrometheisResult

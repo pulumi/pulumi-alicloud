@@ -10,19 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenchildinstancerouteentrytoattachment)
  *
  * > **NOTE:** Available in 1.195.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cen.getChildInstanceRouteEntryToAttachments({
- *     childInstanceRouteTableId: "vtb-t4nt0z5xxbti85c78nkzy",
- *     transitRouterAttachmentId: "tr-attach-f1fd1y50rql00emvej",
- * });
- * export const alicloudCenChildInstanceRouteEntryToAttachmentExampleId = _default.then(_default => _default.attachments?.[0]?.id);
- * ```
  */
 export function getChildInstanceRouteEntryToAttachments(args: GetChildInstanceRouteEntryToAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetChildInstanceRouteEntryToAttachmentsResult> {
 
@@ -105,19 +92,6 @@ export interface GetChildInstanceRouteEntryToAttachmentsResult {
  * This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenchildinstancerouteentrytoattachment)
  *
  * > **NOTE:** Available in 1.195.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cen.getChildInstanceRouteEntryToAttachments({
- *     childInstanceRouteTableId: "vtb-t4nt0z5xxbti85c78nkzy",
- *     transitRouterAttachmentId: "tr-attach-f1fd1y50rql00emvej",
- * });
- * export const alicloudCenChildInstanceRouteEntryToAttachmentExampleId = _default.then(_default => _default.attachments?.[0]?.id);
- * ```
  */
 export function getChildInstanceRouteEntryToAttachmentsOutput(args: GetChildInstanceRouteEntryToAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChildInstanceRouteEntryToAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getChildInstanceRouteEntryToAttachments(a, opts))

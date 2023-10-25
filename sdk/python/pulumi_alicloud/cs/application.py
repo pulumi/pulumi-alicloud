@@ -43,8 +43,8 @@ class ApplicationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_name: pulumi.Input[str],
-             template: pulumi.Input[str],
+             cluster_name: Optional[pulumi.Input[str]] = None,
+             template: Optional[pulumi.Input[str]] = None,
              blue_green: Optional[pulumi.Input[bool]] = None,
              blue_green_confirm: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -52,15 +52,19 @@ class ApplicationArgs:
              latest_image: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'blueGreen' in kwargs:
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if template is None:
+            raise TypeError("Missing 'template' argument")
+        if blue_green is None and 'blueGreen' in kwargs:
             blue_green = kwargs['blueGreen']
-        if 'blueGreenConfirm' in kwargs:
+        if blue_green_confirm is None and 'blueGreenConfirm' in kwargs:
             blue_green_confirm = kwargs['blueGreenConfirm']
-        if 'latestImage' in kwargs:
+        if latest_image is None and 'latestImage' in kwargs:
             latest_image = kwargs['latestImage']
 
         _setter("cluster_name", cluster_name)
@@ -207,17 +211,17 @@ class _ApplicationState:
              services: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationServiceArgs']]]] = None,
              template: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'blueGreen' in kwargs:
+        if blue_green is None and 'blueGreen' in kwargs:
             blue_green = kwargs['blueGreen']
-        if 'blueGreenConfirm' in kwargs:
+        if blue_green_confirm is None and 'blueGreenConfirm' in kwargs:
             blue_green_confirm = kwargs['blueGreenConfirm']
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'defaultDomain' in kwargs:
+        if default_domain is None and 'defaultDomain' in kwargs:
             default_domain = kwargs['defaultDomain']
-        if 'latestImage' in kwargs:
+        if latest_image is None and 'latestImage' in kwargs:
             latest_image = kwargs['latestImage']
 
         if blue_green is not None:

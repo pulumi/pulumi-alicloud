@@ -119,18 +119,6 @@ def get_snapshots(desktop_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.169.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.eds.get_snapshots()
-    pulumi.export("ecdSnapshotId1", ids.snapshots[0].id)
-    ```
-
 
     :param str desktop_id: The ID of the cloud desktop to which the snapshot belongs.
     :param Sequence[str] ids: A list of Snapshot IDs.
@@ -169,18 +157,6 @@ def get_snapshots_output(desktop_id: Optional[pulumi.Input[Optional[str]]] = Non
     This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.169.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.eds.get_snapshots()
-    pulumi.export("ecdSnapshotId1", ids.snapshots[0].id)
-    ```
 
 
     :param str desktop_id: The ID of the cloud desktop to which the snapshot belongs.

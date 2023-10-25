@@ -10,26 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.189.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.gpdb.getDbInstancePlans({
- *     dbInstanceId: "example_value",
- *     ids: ["example_value"],
- * });
- * export const gpdbDbInstancePlanId1 = ids.then(ids => ids.plans?.[0]?.id);
- * const nameRegex = alicloud.gpdb.getDbInstancePlans({
- *     dbInstanceId: "example_value",
- *     nameRegex: "^my-DBInstancePlan",
- * });
- * export const gpdbDbInstancePlanId2 = nameRegex.then(nameRegex => nameRegex.plans?.[0]?.id);
- * ```
  */
 export function getDbInstancePlans(args: GetDbInstancePlansArgs, opts?: pulumi.InvokeOptions): Promise<GetDbInstancePlansResult> {
 
@@ -101,26 +81,6 @@ export interface GetDbInstancePlansResult {
  * This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.189.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.gpdb.getDbInstancePlans({
- *     dbInstanceId: "example_value",
- *     ids: ["example_value"],
- * });
- * export const gpdbDbInstancePlanId1 = ids.then(ids => ids.plans?.[0]?.id);
- * const nameRegex = alicloud.gpdb.getDbInstancePlans({
- *     dbInstanceId: "example_value",
- *     nameRegex: "^my-DBInstancePlan",
- * });
- * export const gpdbDbInstancePlanId2 = nameRegex.then(nameRegex => nameRegex.plans?.[0]?.id);
- * ```
  */
 export function getDbInstancePlansOutput(args: GetDbInstancePlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbInstancePlansResult> {
     return pulumi.output(args).apply((a: any) => getDbInstancePlans(a, opts))

@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.181.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.vpn.getGatewayVpnAttachments({});
- * export const vpnGatewayVpnAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
- * const nameRegex = alicloud.vpn.getGatewayVpnAttachments({
- *     nameRegex: "^my-VpnAttachment",
- * });
- * export const vpnGatewayVpnAttachmentId2 = nameRegex.then(nameRegex => nameRegex.attachments?.[0]?.id);
- * export const localId = data.alicloud_vpn_gateway_vpn_attachments.vpn_attachments.attachments[0].ike_config[0].local_id;
- * export const internetIp = data.alicloud_vpn_gateway_vpn_attachments.vpn_attachments.attachments[0].internet_ip;
- * ```
  */
 export function getGatewayVpnAttachments(args?: GetGatewayVpnAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayVpnAttachmentsResult> {
     args = args || {};
@@ -99,24 +81,6 @@ export interface GetGatewayVpnAttachmentsResult {
  * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.181.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.vpn.getGatewayVpnAttachments({});
- * export const vpnGatewayVpnAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
- * const nameRegex = alicloud.vpn.getGatewayVpnAttachments({
- *     nameRegex: "^my-VpnAttachment",
- * });
- * export const vpnGatewayVpnAttachmentId2 = nameRegex.then(nameRegex => nameRegex.attachments?.[0]?.id);
- * export const localId = data.alicloud_vpn_gateway_vpn_attachments.vpn_attachments.attachments[0].ike_config[0].local_id;
- * export const internetIp = data.alicloud_vpn_gateway_vpn_attachments.vpn_attachments.attachments[0].internet_ip;
- * ```
  */
 export function getGatewayVpnAttachmentsOutput(args?: GetGatewayVpnAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayVpnAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getGatewayVpnAttachments(a, opts))

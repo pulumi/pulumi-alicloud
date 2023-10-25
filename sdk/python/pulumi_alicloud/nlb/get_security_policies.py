@@ -139,20 +139,6 @@ def get_security_policies(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.187.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.nlb.get_security_policies()
-    pulumi.export("nlbSecurityPolicyId1", ids.policies[0].id)
-    name_regex = alicloud.nlb.get_security_policies(name_regex="^my-SecurityPolicy")
-    pulumi.export("nlbSecurityPolicyId2", name_regex.policies[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Security Policy IDs.
     :param str name_regex: A regex string to filter results by Security Policy name.
@@ -199,20 +185,6 @@ def get_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.187.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.nlb.get_security_policies()
-    pulumi.export("nlbSecurityPolicyId1", ids.policies[0].id)
-    name_regex = alicloud.nlb.get_security_policies(name_regex="^my-SecurityPolicy")
-    pulumi.export("nlbSecurityPolicyId2", name_regex.policies[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Security Policy IDs.

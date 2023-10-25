@@ -17,32 +17,6 @@ namespace Pulumi.AliCloud.Tag
     /// 
     /// &gt; **NOTE:** Available since v1.203.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var example = new AliCloud.Tag.Policy("example", new()
-    ///     {
-    ///         PolicyName = name,
-    ///         PolicyDesc = name,
-    ///         UserType = "USER",
-    ///         PolicyContent = @"		{""tags"":{""CostCenter"":{""tag_value"":{""@@assign"":[""Beijing"",""Shanghai""]},""tag_key"":{""@@assign"":""CostCenter""}}}}
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Tag Policy can be imported using the id, e.g.

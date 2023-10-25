@@ -70,8 +70,8 @@ class WafRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_id: pulumi.Input[str],
-             rule_name: pulumi.Input[str],
+             policy_id: Optional[pulumi.Input[str]] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
              action: Optional[pulumi.Input[str]] = None,
              cc_status: Optional[pulumi.Input[str]] = None,
              cn_region_list: Optional[pulumi.Input[str]] = None,
@@ -85,27 +85,31 @@ class WafRuleArgs:
              scenes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              status: Optional[pulumi.Input[str]] = None,
              waf_group_ids: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'policyId' in kwargs:
+        if policy_id is None and 'policyId' in kwargs:
             policy_id = kwargs['policyId']
-        if 'ruleName' in kwargs:
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
-        if 'ccStatus' in kwargs:
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
+        if cc_status is None and 'ccStatus' in kwargs:
             cc_status = kwargs['ccStatus']
-        if 'cnRegionList' in kwargs:
+        if cn_region_list is None and 'cnRegionList' in kwargs:
             cn_region_list = kwargs['cnRegionList']
-        if 'otherRegionList' in kwargs:
+        if other_region_list is None and 'otherRegionList' in kwargs:
             other_region_list = kwargs['otherRegionList']
-        if 'rateLimit' in kwargs:
+        if rate_limit is None and 'rateLimit' in kwargs:
             rate_limit = kwargs['rateLimit']
-        if 'regularRules' in kwargs:
+        if regular_rules is None and 'regularRules' in kwargs:
             regular_rules = kwargs['regularRules']
-        if 'regularTypes' in kwargs:
+        if regular_types is None and 'regularTypes' in kwargs:
             regular_types = kwargs['regularTypes']
-        if 'remoteAddrs' in kwargs:
+        if remote_addrs is None and 'remoteAddrs' in kwargs:
             remote_addrs = kwargs['remoteAddrs']
-        if 'wafGroupIds' in kwargs:
+        if waf_group_ids is None and 'wafGroupIds' in kwargs:
             waf_group_ids = kwargs['wafGroupIds']
 
         _setter("policy_id", policy_id)
@@ -398,31 +402,31 @@ class _WafRuleState:
              scenes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              status: Optional[pulumi.Input[str]] = None,
              waf_group_ids: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ccStatus' in kwargs:
+        if cc_status is None and 'ccStatus' in kwargs:
             cc_status = kwargs['ccStatus']
-        if 'cnRegionList' in kwargs:
+        if cn_region_list is None and 'cnRegionList' in kwargs:
             cn_region_list = kwargs['cnRegionList']
-        if 'defenseScene' in kwargs:
+        if defense_scene is None and 'defenseScene' in kwargs:
             defense_scene = kwargs['defenseScene']
-        if 'gmtModified' in kwargs:
+        if gmt_modified is None and 'gmtModified' in kwargs:
             gmt_modified = kwargs['gmtModified']
-        if 'otherRegionList' in kwargs:
+        if other_region_list is None and 'otherRegionList' in kwargs:
             other_region_list = kwargs['otherRegionList']
-        if 'policyId' in kwargs:
+        if policy_id is None and 'policyId' in kwargs:
             policy_id = kwargs['policyId']
-        if 'rateLimit' in kwargs:
+        if rate_limit is None and 'rateLimit' in kwargs:
             rate_limit = kwargs['rateLimit']
-        if 'regularRules' in kwargs:
+        if regular_rules is None and 'regularRules' in kwargs:
             regular_rules = kwargs['regularRules']
-        if 'regularTypes' in kwargs:
+        if regular_types is None and 'regularTypes' in kwargs:
             regular_types = kwargs['regularTypes']
-        if 'remoteAddrs' in kwargs:
+        if remote_addrs is None and 'remoteAddrs' in kwargs:
             remote_addrs = kwargs['remoteAddrs']
-        if 'ruleName' in kwargs:
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
-        if 'wafGroupIds' in kwargs:
+        if waf_group_ids is None and 'wafGroupIds' in kwargs:
             waf_group_ids = kwargs['wafGroupIds']
 
         if action is not None:
@@ -693,55 +697,6 @@ class WafRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.201.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        example_waf_policy = alicloud.dcdn.WafPolicy("exampleWafPolicy",
-            defense_scene="waf_group",
-            policy_name=name,
-            policy_type="custom",
-            status="on")
-        example_waf_rule = alicloud.dcdn.WafRule("exampleWafRule",
-            policy_id=example_waf_policy.id,
-            rule_name=name,
-            conditions=[
-                alicloud.dcdn.WafRuleConditionArgs(
-                    key="URI",
-                    op_value="ne",
-                    values="/login.php",
-                ),
-                alicloud.dcdn.WafRuleConditionArgs(
-                    key="Header",
-                    sub_key="a",
-                    op_value="eq",
-                    values="b",
-                ),
-            ],
-            status="on",
-            cc_status="on",
-            action="monitor",
-            effect="rule",
-            rate_limit=alicloud.dcdn.WafRuleRateLimitArgs(
-                target="IP",
-                interval=5,
-                threshold=5,
-                ttl=1800,
-                status=alicloud.dcdn.WafRuleRateLimitStatusArgs(
-                    code="200",
-                    ratio=60,
-                ),
-            ))
-        ```
-
         ## Import
 
         Dcdn Waf Rule can be imported using the id, e.g.
@@ -780,55 +735,6 @@ class WafRule(pulumi.CustomResource):
         For information about Dcdn Waf Rule and how to use it, see [What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules).
 
         > **NOTE:** Available since v1.201.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        example_waf_policy = alicloud.dcdn.WafPolicy("exampleWafPolicy",
-            defense_scene="waf_group",
-            policy_name=name,
-            policy_type="custom",
-            status="on")
-        example_waf_rule = alicloud.dcdn.WafRule("exampleWafRule",
-            policy_id=example_waf_policy.id,
-            rule_name=name,
-            conditions=[
-                alicloud.dcdn.WafRuleConditionArgs(
-                    key="URI",
-                    op_value="ne",
-                    values="/login.php",
-                ),
-                alicloud.dcdn.WafRuleConditionArgs(
-                    key="Header",
-                    sub_key="a",
-                    op_value="eq",
-                    values="b",
-                ),
-            ],
-            status="on",
-            cc_status="on",
-            action="monitor",
-            effect="rule",
-            rate_limit=alicloud.dcdn.WafRuleRateLimitArgs(
-                target="IP",
-                interval=5,
-                threshold=5,
-                ttl=1800,
-                status=alicloud.dcdn.WafRuleRateLimitStatusArgs(
-                    code="200",
-                    ratio=60,
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -890,11 +796,7 @@ class WafRule(pulumi.CustomResource):
             if policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_id'")
             __props__.__dict__["policy_id"] = policy_id
-            if rate_limit is not None and not isinstance(rate_limit, WafRuleRateLimitArgs):
-                rate_limit = rate_limit or {}
-                def _setter(key, value):
-                    rate_limit[key] = value
-                WafRuleRateLimitArgs._configure(_setter, **rate_limit)
+            rate_limit = _utilities.configure(rate_limit, WafRuleRateLimitArgs, True)
             __props__.__dict__["rate_limit"] = rate_limit
             __props__.__dict__["regular_rules"] = regular_rules
             __props__.__dict__["regular_types"] = regular_types

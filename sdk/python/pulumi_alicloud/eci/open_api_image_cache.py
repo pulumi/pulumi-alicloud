@@ -45,35 +45,43 @@ class OpenApiImageCacheArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image_cache_name: pulumi.Input[str],
-             images: pulumi.Input[Sequence[pulumi.Input[str]]],
-             security_group_id: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             image_cache_name: Optional[pulumi.Input[str]] = None,
+             images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              eip_instance_id: Optional[pulumi.Input[str]] = None,
              image_cache_size: Optional[pulumi.Input[int]] = None,
              image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiImageCacheImageRegistryCredentialArgs']]]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              retention_days: Optional[pulumi.Input[int]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'imageCacheName' in kwargs:
+        if image_cache_name is None and 'imageCacheName' in kwargs:
             image_cache_name = kwargs['imageCacheName']
-        if 'securityGroupId' in kwargs:
+        if image_cache_name is None:
+            raise TypeError("Missing 'image_cache_name' argument")
+        if images is None:
+            raise TypeError("Missing 'images' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vswitchId' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'eipInstanceId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if eip_instance_id is None and 'eipInstanceId' in kwargs:
             eip_instance_id = kwargs['eipInstanceId']
-        if 'imageCacheSize' in kwargs:
+        if image_cache_size is None and 'imageCacheSize' in kwargs:
             image_cache_size = kwargs['imageCacheSize']
-        if 'imageRegistryCredentials' in kwargs:
+        if image_registry_credentials is None and 'imageRegistryCredentials' in kwargs:
             image_registry_credentials = kwargs['imageRegistryCredentials']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'retentionDays' in kwargs:
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("image_cache_name", image_cache_name)
@@ -232,27 +240,27 @@ class _OpenApiImageCacheState:
              status: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'containerGroupId' in kwargs:
+        if container_group_id is None and 'containerGroupId' in kwargs:
             container_group_id = kwargs['containerGroupId']
-        if 'eipInstanceId' in kwargs:
+        if eip_instance_id is None and 'eipInstanceId' in kwargs:
             eip_instance_id = kwargs['eipInstanceId']
-        if 'imageCacheName' in kwargs:
+        if image_cache_name is None and 'imageCacheName' in kwargs:
             image_cache_name = kwargs['imageCacheName']
-        if 'imageCacheSize' in kwargs:
+        if image_cache_size is None and 'imageCacheSize' in kwargs:
             image_cache_size = kwargs['imageCacheSize']
-        if 'imageRegistryCredentials' in kwargs:
+        if image_registry_credentials is None and 'imageRegistryCredentials' in kwargs:
             image_registry_credentials = kwargs['imageRegistryCredentials']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'retentionDays' in kwargs:
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if container_group_id is not None:

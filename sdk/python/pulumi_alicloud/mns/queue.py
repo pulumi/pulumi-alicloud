@@ -47,17 +47,17 @@ class QueueArgs:
              name: Optional[pulumi.Input[str]] = None,
              polling_wait_seconds: Optional[pulumi.Input[int]] = None,
              visibility_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'delaySeconds' in kwargs:
+        if delay_seconds is None and 'delaySeconds' in kwargs:
             delay_seconds = kwargs['delaySeconds']
-        if 'maximumMessageSize' in kwargs:
+        if maximum_message_size is None and 'maximumMessageSize' in kwargs:
             maximum_message_size = kwargs['maximumMessageSize']
-        if 'messageRetentionPeriod' in kwargs:
+        if message_retention_period is None and 'messageRetentionPeriod' in kwargs:
             message_retention_period = kwargs['messageRetentionPeriod']
-        if 'pollingWaitSeconds' in kwargs:
+        if polling_wait_seconds is None and 'pollingWaitSeconds' in kwargs:
             polling_wait_seconds = kwargs['pollingWaitSeconds']
-        if 'visibilityTimeout' in kwargs:
+        if visibility_timeout is None and 'visibilityTimeout' in kwargs:
             visibility_timeout = kwargs['visibilityTimeout']
 
         if delay_seconds is not None:
@@ -182,17 +182,17 @@ class _QueueState:
              name: Optional[pulumi.Input[str]] = None,
              polling_wait_seconds: Optional[pulumi.Input[int]] = None,
              visibility_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'delaySeconds' in kwargs:
+        if delay_seconds is None and 'delaySeconds' in kwargs:
             delay_seconds = kwargs['delaySeconds']
-        if 'maximumMessageSize' in kwargs:
+        if maximum_message_size is None and 'maximumMessageSize' in kwargs:
             maximum_message_size = kwargs['maximumMessageSize']
-        if 'messageRetentionPeriod' in kwargs:
+        if message_retention_period is None and 'messageRetentionPeriod' in kwargs:
             message_retention_period = kwargs['messageRetentionPeriod']
-        if 'pollingWaitSeconds' in kwargs:
+        if polling_wait_seconds is None and 'pollingWaitSeconds' in kwargs:
             polling_wait_seconds = kwargs['pollingWaitSeconds']
-        if 'visibilityTimeout' in kwargs:
+        if visibility_timeout is None and 'visibilityTimeout' in kwargs:
             visibility_timeout = kwargs['visibilityTimeout']
 
         if delay_seconds is not None:
@@ -294,22 +294,6 @@ class Queue(pulumi.CustomResource):
                  visibility_timeout: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        queue = alicloud.mns.Queue("queue",
-            delay_seconds=0,
-            maximum_message_size=65536,
-            message_retention_period=345600,
-            polling_wait_seconds=0,
-            visibility_timeout=30)
-        ```
-
         ## Import
 
         MNS QUEUE can be imported using the id or name, e.g.
@@ -334,22 +318,6 @@ class Queue(pulumi.CustomResource):
                  args: Optional[QueueArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        queue = alicloud.mns.Queue("queue",
-            delay_seconds=0,
-            maximum_message_size=65536,
-            message_retention_period=345600,
-            polling_wait_seconds=0,
-            visibility_timeout=30)
-        ```
-
         ## Import
 
         MNS QUEUE can be imported using the id or name, e.g.

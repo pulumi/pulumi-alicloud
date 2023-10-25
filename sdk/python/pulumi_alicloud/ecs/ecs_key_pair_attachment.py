@@ -34,17 +34,19 @@ class EcsKeyPairAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              force: Optional[pulumi.Input[bool]] = None,
              key_name: Optional[pulumi.Input[str]] = None,
              key_pair_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceIds' in kwargs:
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
-        if 'keyName' in kwargs:
+        if instance_ids is None:
+            raise TypeError("Missing 'instance_ids' argument")
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
 
         _setter("instance_ids", instance_ids)
@@ -134,13 +136,13 @@ class _EcsKeyPairAttachmentState:
              instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              key_name: Optional[pulumi.Input[str]] = None,
              key_pair_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceIds' in kwargs:
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
 
         if force is not None:
@@ -221,43 +223,6 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.121.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            availability_zone=example_zones.zones[0].id,
-            security_groups=[example_security_group.id],
-            instance_name="terraform-example",
-            internet_charge_type="PayByBandwidth",
-            vswitch_id=example_switch.id)
-        example_ecs_key_pair = alicloud.ecs.EcsKeyPair("exampleEcsKeyPair", key_pair_name="terraform-example")
-        example_ecs_key_pair_attachment = alicloud.ecs.EcsKeyPairAttachment("exampleEcsKeyPairAttachment",
-            key_pair_name=example_ecs_key_pair.key_pair_name,
-            instance_ids=[example_instance.id])
-        ```
-
         ## Import
 
         ECS Key Pair Attachment can be imported using the id, e.g.
@@ -284,43 +249,6 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
         For information about ECS Key Pair Attachment and how to use it, see [What is Key Pair Attachment](https://www.alibabacloud.com/help/en/doc-detail/51775.htm).
 
         > **NOTE:** Available in v1.121.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            availability_zone=example_zones.zones[0].id,
-            security_groups=[example_security_group.id],
-            instance_name="terraform-example",
-            internet_charge_type="PayByBandwidth",
-            vswitch_id=example_switch.id)
-        example_ecs_key_pair = alicloud.ecs.EcsKeyPair("exampleEcsKeyPair", key_pair_name="terraform-example")
-        example_ecs_key_pair_attachment = alicloud.ecs.EcsKeyPairAttachment("exampleEcsKeyPairAttachment",
-            key_pair_name=example_ecs_key_pair.key_pair_name,
-            instance_ids=[example_instance.id])
-        ```
 
         ## Import
 

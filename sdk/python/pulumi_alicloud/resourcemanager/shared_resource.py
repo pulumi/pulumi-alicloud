@@ -32,17 +32,23 @@ class SharedResourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_id: pulumi.Input[str],
-             resource_share_id: pulumi.Input[str],
-             resource_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             resource_id: Optional[pulumi.Input[str]] = None,
+             resource_share_id: Optional[pulumi.Input[str]] = None,
+             resource_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceId' in kwargs:
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceShareId' in kwargs:
+        if resource_id is None:
+            raise TypeError("Missing 'resource_id' argument")
+        if resource_share_id is None and 'resourceShareId' in kwargs:
             resource_share_id = kwargs['resourceShareId']
-        if 'resourceType' in kwargs:
+        if resource_share_id is None:
+            raise TypeError("Missing 'resource_share_id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
 
         _setter("resource_id", resource_id)
         _setter("resource_share_id", resource_share_id)
@@ -113,13 +119,13 @@ class _SharedResourceState:
              resource_share_id: Optional[pulumi.Input[str]] = None,
              resource_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceId' in kwargs:
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceShareId' in kwargs:
+        if resource_share_id is None and 'resourceShareId' in kwargs:
             resource_share_id = kwargs['resourceShareId']
-        if 'resourceType' in kwargs:
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
 
         if resource_id is not None:
@@ -196,34 +202,6 @@ class SharedResource(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.111.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="192.168.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            zone_id=example_zones.zones[0].id,
-            cidr_block="192.168.0.0/16",
-            vpc_id=example_network.id,
-            vswitch_name=name)
-        example_resource_share = alicloud.resourcemanager.ResourceShare("exampleResourceShare", resource_share_name=name)
-        example_shared_resource = alicloud.resourcemanager.SharedResource("exampleSharedResource",
-            resource_id=example_switch.id,
-            resource_share_id=example_resource_share.id,
-            resource_type="VSwitch")
-        ```
-
         ## Import
 
         Resource Manager Shared Resource can be imported using the id, e.g.
@@ -250,34 +228,6 @@ class SharedResource(pulumi.CustomResource):
         For information about Resource Manager Shared Resource and how to use it, see [What is Shared Resource](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcesharing-2020-01-10-associateresourceshare).
 
         > **NOTE:** Available since v1.111.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="192.168.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            zone_id=example_zones.zones[0].id,
-            cidr_block="192.168.0.0/16",
-            vpc_id=example_network.id,
-            vswitch_name=name)
-        example_resource_share = alicloud.resourcemanager.ResourceShare("exampleResourceShare", resource_share_name=name)
-        example_shared_resource = alicloud.resourcemanager.SharedResource("exampleSharedResource",
-            resource_id=example_switch.id,
-            resource_share_id=example_resource_share.id,
-            resource_type="VSwitch")
-        ```
 
         ## Import
 

@@ -19,32 +19,6 @@ import (
 // > **NOTE:** Available in v1.116.0+
 //
 // > **NOTE:** The Video Surveillance System service is not support in the international site.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/videosurveillance"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := videosurveillance.GetService(ctx, &videosurveillance.GetServiceArgs{
-//				Enable: pulumi.StringRef("On"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.InvokeOption) (*GetServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceResult

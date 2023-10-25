@@ -118,16 +118,6 @@ def get_instances(domain_type: Optional[str] = None,
 
     > **NOTE:**  Available in 1.84.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.dns.get_instances(ids=["dns-cn-oew1npk****"])
-    pulumi.export("firstInstanceId", example.instances[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of instance IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -164,16 +154,6 @@ def get_instances_output(domain_type: Optional[pulumi.Input[Optional[str]]] = No
     This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:**  Available in 1.84.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.dns.get_instances(ids=["dns-cn-oew1npk****"])
-    pulumi.export("firstInstanceId", example.instances[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of instance IDs.

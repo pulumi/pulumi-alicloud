@@ -15,31 +15,6 @@ namespace Pulumi.AliCloud.Dcdn
         /// This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.185.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Dcdn.GetWafDomains.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dcdnWafDomainId1"] = ids.Apply(getWafDomainsResult =&gt; getWafDomainsResult.Domains[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetWafDomainsResult> InvokeAsync(GetWafDomainsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWafDomainsResult>("alicloud:dcdn/getWafDomains:getWafDomains", args ?? new GetWafDomainsArgs(), options.WithDefaults());
@@ -48,31 +23,6 @@ namespace Pulumi.AliCloud.Dcdn
         /// This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.185.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Dcdn.GetWafDomains.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dcdnWafDomainId1"] = ids.Apply(getWafDomainsResult =&gt; getWafDomainsResult.Domains[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetWafDomainsResult> Invoke(GetWafDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWafDomainsResult>("alicloud:dcdn/getWafDomains:getWafDomains", args ?? new GetWafDomainsInvokeArgs(), options.WithDefaults());

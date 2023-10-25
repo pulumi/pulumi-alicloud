@@ -13,29 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.136.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.vod.Domain("default", {
- *     domainName: "your_domain_name",
- *     scope: "domestic",
- *     sources: [{
- *         sourceContent: "your_source_content",
- *         sourcePort: "80",
- *         sourceType: "domain",
- *     }],
- *     tags: {
- *         key1: "value1",
- *         key2: "value2",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * VOD Domain can be imported using the id, e.g.

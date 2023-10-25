@@ -8,18 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the apis of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const dataApigatwayApis = alicloud.apigateway.getApis({
- *     outputFile: "output_ApiGatawayApis",
- * });
- * export const firstApiId = data.alicloud_api_gateway_apis.data_apigatway.apis[0].id;
- * ```
  */
 export function getApis(args?: GetApisArgs, opts?: pulumi.InvokeOptions): Promise<GetApisResult> {
     args = args || {};
@@ -95,18 +83,6 @@ export interface GetApisResult {
 }
 /**
  * This data source provides the apis of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const dataApigatwayApis = alicloud.apigateway.getApis({
- *     outputFile: "output_ApiGatawayApis",
- * });
- * export const firstApiId = data.alicloud_api_gateway_apis.data_apigatway.apis[0].id;
- * ```
  */
 export function getApisOutput(args?: GetApisOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApisResult> {
     return pulumi.output(args).apply((a: any) => getApis(a, opts))

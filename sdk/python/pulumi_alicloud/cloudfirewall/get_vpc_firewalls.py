@@ -196,19 +196,6 @@ def get_vpc_firewalls(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.194.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.cloudfirewall.get_vpc_firewalls(ids=["id-example"],
-        member_uid="1415189284827022",
-        status="closed",
-        vpc_firewall_name="tf-test")
-    pulumi.export("alicloudCfwVpcFirewallExampleId", default.firewalls[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Vpc Firewall IDs.
     :param str lang: The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
@@ -267,19 +254,6 @@ def get_vpc_firewalls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
 
     > **NOTE:** Available in 1.194.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.cloudfirewall.get_vpc_firewalls(ids=["id-example"],
-        member_uid="1415189284827022",
-        status="closed",
-        vpc_firewall_name="tf-test")
-    pulumi.export("alicloudCfwVpcFirewallExampleId", default.firewalls[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Vpc Firewall IDs.

@@ -15,38 +15,6 @@ namespace Pulumi.AliCloud.Ram
         /// This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available since v1.114.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Ram.GetSamlProviders.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "samlProviderName",
-        ///         },
-        ///         NameRegex = "tf-testAcc",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstRamSamlProviderId"] = example.Apply(getSamlProvidersResult =&gt; getSamlProvidersResult.Providers[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSamlProvidersResult> InvokeAsync(GetSamlProvidersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSamlProvidersResult>("alicloud:ram/getSamlProviders:getSamlProviders", args ?? new GetSamlProvidersArgs(), options.WithDefaults());
@@ -55,38 +23,6 @@ namespace Pulumi.AliCloud.Ram
         /// This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available since v1.114.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Ram.GetSamlProviders.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "samlProviderName",
-        ///         },
-        ///         NameRegex = "tf-testAcc",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstRamSamlProviderId"] = example.Apply(getSamlProvidersResult =&gt; getSamlProvidersResult.Providers[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetSamlProvidersResult> Invoke(GetSamlProvidersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSamlProvidersResult>("alicloud:ram/getSamlProviders:getSamlProviders", args ?? new GetSamlProvidersInvokeArgs(), options.WithDefaults());

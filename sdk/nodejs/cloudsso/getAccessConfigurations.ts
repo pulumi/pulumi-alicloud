@@ -12,29 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.140.0+.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cloudsso.getAccessConfigurations({
- *     directoryId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const cloudSsoAccessConfigurationId1 = ids.then(ids => ids.configurations?.[0]?.id);
- * const nameRegex = alicloud.cloudsso.getAccessConfigurations({
- *     directoryId: "example_value",
- *     nameRegex: "^my-AccessConfiguration",
- * });
- * export const cloudSsoAccessConfigurationId2 = nameRegex.then(nameRegex => nameRegex.configurations?.[0]?.id);
- * ```
  */
 export function getAccessConfigurations(args: GetAccessConfigurationsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessConfigurationsResult> {
 
@@ -96,29 +73,6 @@ export interface GetAccessConfigurationsResult {
  * > **NOTE:** Available in v1.140.0+.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cloudsso.getAccessConfigurations({
- *     directoryId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const cloudSsoAccessConfigurationId1 = ids.then(ids => ids.configurations?.[0]?.id);
- * const nameRegex = alicloud.cloudsso.getAccessConfigurations({
- *     directoryId: "example_value",
- *     nameRegex: "^my-AccessConfiguration",
- * });
- * export const cloudSsoAccessConfigurationId2 = nameRegex.then(nameRegex => nameRegex.configurations?.[0]?.id);
- * ```
  */
 export function getAccessConfigurationsOutput(args: GetAccessConfigurationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessConfigurationsResult> {
     return pulumi.output(args).apply((a: any) => getAccessConfigurations(a, opts))

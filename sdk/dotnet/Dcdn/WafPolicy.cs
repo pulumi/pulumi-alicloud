@@ -16,31 +16,6 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// &gt; **NOTE:** Available since v1.184.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf_example";
-    ///     var example = new AliCloud.Dcdn.WafPolicy("example", new()
-    ///     {
-    ///         DefenseScene = "waf_group",
-    ///         PolicyName = name,
-    ///         PolicyType = "custom",
-    ///         Status = "on",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// DCDN Waf Policy can be imported using the id, e.g.

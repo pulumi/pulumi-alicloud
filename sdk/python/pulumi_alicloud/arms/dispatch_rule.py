@@ -43,25 +43,33 @@ class DispatchRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dispatch_rule_name: pulumi.Input[str],
-             group_rules: pulumi.Input[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]],
-             label_match_expression_grids: pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]],
-             notify_rules: pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]],
+             dispatch_rule_name: Optional[pulumi.Input[str]] = None,
+             group_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]]] = None,
+             label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]]] = None,
+             notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]]] = None,
              dispatch_type: Optional[pulumi.Input[str]] = None,
              is_recover: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dispatchRuleName' in kwargs:
+        if dispatch_rule_name is None and 'dispatchRuleName' in kwargs:
             dispatch_rule_name = kwargs['dispatchRuleName']
-        if 'groupRules' in kwargs:
+        if dispatch_rule_name is None:
+            raise TypeError("Missing 'dispatch_rule_name' argument")
+        if group_rules is None and 'groupRules' in kwargs:
             group_rules = kwargs['groupRules']
-        if 'labelMatchExpressionGrids' in kwargs:
+        if group_rules is None:
+            raise TypeError("Missing 'group_rules' argument")
+        if label_match_expression_grids is None and 'labelMatchExpressionGrids' in kwargs:
             label_match_expression_grids = kwargs['labelMatchExpressionGrids']
-        if 'notifyRules' in kwargs:
+        if label_match_expression_grids is None:
+            raise TypeError("Missing 'label_match_expression_grids' argument")
+        if notify_rules is None and 'notifyRules' in kwargs:
             notify_rules = kwargs['notifyRules']
-        if 'dispatchType' in kwargs:
+        if notify_rules is None:
+            raise TypeError("Missing 'notify_rules' argument")
+        if dispatch_type is None and 'dispatchType' in kwargs:
             dispatch_type = kwargs['dispatchType']
-        if 'isRecover' in kwargs:
+        if is_recover is None and 'isRecover' in kwargs:
             is_recover = kwargs['isRecover']
 
         _setter("dispatch_rule_name", dispatch_rule_name)
@@ -186,19 +194,19 @@ class _DispatchRuleState:
              label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]]] = None,
              notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dispatchRuleName' in kwargs:
+        if dispatch_rule_name is None and 'dispatchRuleName' in kwargs:
             dispatch_rule_name = kwargs['dispatchRuleName']
-        if 'dispatchType' in kwargs:
+        if dispatch_type is None and 'dispatchType' in kwargs:
             dispatch_type = kwargs['dispatchType']
-        if 'groupRules' in kwargs:
+        if group_rules is None and 'groupRules' in kwargs:
             group_rules = kwargs['groupRules']
-        if 'isRecover' in kwargs:
+        if is_recover is None and 'isRecover' in kwargs:
             is_recover = kwargs['isRecover']
-        if 'labelMatchExpressionGrids' in kwargs:
+        if label_match_expression_grids is None and 'labelMatchExpressionGrids' in kwargs:
             label_match_expression_grids = kwargs['labelMatchExpressionGrids']
-        if 'notifyRules' in kwargs:
+        if notify_rules is None and 'notifyRules' in kwargs:
             notify_rules = kwargs['notifyRules']
 
         if dispatch_rule_name is not None:
@@ -320,58 +328,6 @@ class DispatchRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.136.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_alert_contact = alicloud.arms.AlertContact("defaultAlertContact",
-            alert_contact_name="example_value",
-            email="example_value@aaa.com")
-        default_alert_contact_group = alicloud.arms.AlertContactGroup("defaultAlertContactGroup",
-            alert_contact_group_name="example_value",
-            contact_ids=[default_alert_contact.id])
-        default_dispatch_rule = alicloud.arms.DispatchRule("defaultDispatchRule",
-            dispatch_rule_name="example_value",
-            dispatch_type="CREATE_ALERT",
-            group_rules=[alicloud.arms.DispatchRuleGroupRuleArgs(
-                group_wait_time=5,
-                group_interval=15,
-                repeat_interval=100,
-                grouping_fields=["alertname"],
-            )],
-            label_match_expression_grids=[alicloud.arms.DispatchRuleLabelMatchExpressionGridArgs(
-                label_match_expression_groups=[alicloud.arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs(
-                    label_match_expressions=[alicloud.arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs(
-                        key="_aliyun_arms_involvedObject_kind",
-                        value="app",
-                        operator="eq",
-                    )],
-                )],
-            )],
-            notify_rules=[alicloud.arms.DispatchRuleNotifyRuleArgs(
-                notify_objects=[
-                    alicloud.arms.DispatchRuleNotifyRuleNotifyObjectArgs(
-                        notify_object_id=default_alert_contact.id,
-                        notify_type="ARMS_CONTACT",
-                        name="example_value",
-                    ),
-                    alicloud.arms.DispatchRuleNotifyRuleNotifyObjectArgs(
-                        notify_object_id=default_alert_contact_group.id,
-                        notify_type="ARMS_CONTACT_GROUP",
-                        name="example_value",
-                    ),
-                ],
-                notify_channels=[
-                    "dingTalk",
-                    "wechat",
-                ],
-            )])
-        ```
-
         ## Import
 
         Application Real-Time Monitoring Service (ARMS) Alert Contact can be imported using the id, e.g.
@@ -401,58 +357,6 @@ class DispatchRule(pulumi.CustomResource):
         For information about Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule and how to use it, see [What is Alert Dispatch_Rule](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/CreateDispatchRule).
 
         > **NOTE:** Available since v1.136.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_alert_contact = alicloud.arms.AlertContact("defaultAlertContact",
-            alert_contact_name="example_value",
-            email="example_value@aaa.com")
-        default_alert_contact_group = alicloud.arms.AlertContactGroup("defaultAlertContactGroup",
-            alert_contact_group_name="example_value",
-            contact_ids=[default_alert_contact.id])
-        default_dispatch_rule = alicloud.arms.DispatchRule("defaultDispatchRule",
-            dispatch_rule_name="example_value",
-            dispatch_type="CREATE_ALERT",
-            group_rules=[alicloud.arms.DispatchRuleGroupRuleArgs(
-                group_wait_time=5,
-                group_interval=15,
-                repeat_interval=100,
-                grouping_fields=["alertname"],
-            )],
-            label_match_expression_grids=[alicloud.arms.DispatchRuleLabelMatchExpressionGridArgs(
-                label_match_expression_groups=[alicloud.arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs(
-                    label_match_expressions=[alicloud.arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs(
-                        key="_aliyun_arms_involvedObject_kind",
-                        value="app",
-                        operator="eq",
-                    )],
-                )],
-            )],
-            notify_rules=[alicloud.arms.DispatchRuleNotifyRuleArgs(
-                notify_objects=[
-                    alicloud.arms.DispatchRuleNotifyRuleNotifyObjectArgs(
-                        notify_object_id=default_alert_contact.id,
-                        notify_type="ARMS_CONTACT",
-                        name="example_value",
-                    ),
-                    alicloud.arms.DispatchRuleNotifyRuleNotifyObjectArgs(
-                        notify_object_id=default_alert_contact_group.id,
-                        notify_type="ARMS_CONTACT_GROUP",
-                        name="example_value",
-                    ),
-                ],
-                notify_channels=[
-                    "dingTalk",
-                    "wechat",
-                ],
-            )])
-        ```
 
         ## Import
 

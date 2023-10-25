@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.113.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.brain.getIndustrialPidProjects({
- *     ids: ["3e74e684-cbb5-xxxx"],
- *     nameRegex: "tf-testAcc",
- * });
- * export const firstBrainIndustrialPidProjectId = example.then(example => example.projects?.[0]?.id);
- * ```
  */
 export function getIndustrialPidProjects(args?: GetIndustrialPidProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetIndustrialPidProjectsResult> {
     args = args || {};
@@ -85,21 +70,6 @@ export interface GetIndustrialPidProjectsResult {
  * This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.113.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.brain.getIndustrialPidProjects({
- *     ids: ["3e74e684-cbb5-xxxx"],
- *     nameRegex: "tf-testAcc",
- * });
- * export const firstBrainIndustrialPidProjectId = example.then(example => example.projects?.[0]?.id);
- * ```
  */
 export function getIndustrialPidProjectsOutput(args?: GetIndustrialPidProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndustrialPidProjectsResult> {
     return pulumi.output(args).apply((a: any) => getIndustrialPidProjects(a, opts))

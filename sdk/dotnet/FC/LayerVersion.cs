@@ -10,56 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.FC
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
-    ///     {
-    ///         Max = 99999,
-    ///         Min = 10000,
-    ///     });
-    /// 
-    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
-    ///     {
-    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
-    ///     });
-    /// 
-    ///     // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("defaultBucketObject", new()
-    ///     {
-    ///         Bucket = defaultBucket.Id,
-    ///         Key = "index.py",
-    ///         Content = @"import logging 
-    /// def handler(event, context): 
-    /// logger = logging.getLogger() 
-    /// logger.info('hello world') 
-    /// return 'hello world'",
-    ///     });
-    /// 
-    ///     var example = new AliCloud.FC.LayerVersion("example", new()
-    ///     {
-    ///         LayerName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
-    ///         CompatibleRuntimes = new[]
-    ///         {
-    ///             "python2.7",
-    ///         },
-    ///         OssBucketName = defaultBucket.BucketName,
-    ///         OssObjectName = defaultBucketObject.Key,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Function Compute Layer Version can be imported using the id, e.g.

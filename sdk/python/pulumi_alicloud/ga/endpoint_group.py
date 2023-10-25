@@ -76,10 +76,10 @@ class EndpointGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: pulumi.Input[str],
-             endpoint_configurations: pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]],
-             endpoint_group_region: pulumi.Input[str],
-             listener_id: pulumi.Input[str],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             endpoint_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]]] = None,
+             endpoint_group_region: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              endpoint_group_type: Optional[pulumi.Input[str]] = None,
              endpoint_request_protocol: Optional[pulumi.Input[str]] = None,
@@ -92,33 +92,41 @@ class EndpointGroupArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              threshold_count: Optional[pulumi.Input[int]] = None,
              traffic_percentage: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'endpointConfigurations' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if endpoint_configurations is None and 'endpointConfigurations' in kwargs:
             endpoint_configurations = kwargs['endpointConfigurations']
-        if 'endpointGroupRegion' in kwargs:
+        if endpoint_configurations is None:
+            raise TypeError("Missing 'endpoint_configurations' argument")
+        if endpoint_group_region is None and 'endpointGroupRegion' in kwargs:
             endpoint_group_region = kwargs['endpointGroupRegion']
-        if 'listenerId' in kwargs:
+        if endpoint_group_region is None:
+            raise TypeError("Missing 'endpoint_group_region' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'endpointGroupType' in kwargs:
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if endpoint_group_type is None and 'endpointGroupType' in kwargs:
             endpoint_group_type = kwargs['endpointGroupType']
-        if 'endpointRequestProtocol' in kwargs:
+        if endpoint_request_protocol is None and 'endpointRequestProtocol' in kwargs:
             endpoint_request_protocol = kwargs['endpointRequestProtocol']
-        if 'healthCheckIntervalSeconds' in kwargs:
+        if health_check_interval_seconds is None and 'healthCheckIntervalSeconds' in kwargs:
             health_check_interval_seconds = kwargs['healthCheckIntervalSeconds']
-        if 'healthCheckPath' in kwargs:
+        if health_check_path is None and 'healthCheckPath' in kwargs:
             health_check_path = kwargs['healthCheckPath']
-        if 'healthCheckPort' in kwargs:
+        if health_check_port is None and 'healthCheckPort' in kwargs:
             health_check_port = kwargs['healthCheckPort']
-        if 'healthCheckProtocol' in kwargs:
+        if health_check_protocol is None and 'healthCheckProtocol' in kwargs:
             health_check_protocol = kwargs['healthCheckProtocol']
-        if 'portOverrides' in kwargs:
+        if port_overrides is None and 'portOverrides' in kwargs:
             port_overrides = kwargs['portOverrides']
-        if 'thresholdCount' in kwargs:
+        if threshold_count is None and 'thresholdCount' in kwargs:
             threshold_count = kwargs['thresholdCount']
-        if 'trafficPercentage' in kwargs:
+        if traffic_percentage is None and 'trafficPercentage' in kwargs:
             traffic_percentage = kwargs['trafficPercentage']
 
         _setter("accelerator_id", accelerator_id)
@@ -429,33 +437,33 @@ class _EndpointGroupState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              threshold_count: Optional[pulumi.Input[int]] = None,
              traffic_percentage: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'endpointConfigurations' in kwargs:
+        if endpoint_configurations is None and 'endpointConfigurations' in kwargs:
             endpoint_configurations = kwargs['endpointConfigurations']
-        if 'endpointGroupRegion' in kwargs:
+        if endpoint_group_region is None and 'endpointGroupRegion' in kwargs:
             endpoint_group_region = kwargs['endpointGroupRegion']
-        if 'endpointGroupType' in kwargs:
+        if endpoint_group_type is None and 'endpointGroupType' in kwargs:
             endpoint_group_type = kwargs['endpointGroupType']
-        if 'endpointRequestProtocol' in kwargs:
+        if endpoint_request_protocol is None and 'endpointRequestProtocol' in kwargs:
             endpoint_request_protocol = kwargs['endpointRequestProtocol']
-        if 'healthCheckIntervalSeconds' in kwargs:
+        if health_check_interval_seconds is None and 'healthCheckIntervalSeconds' in kwargs:
             health_check_interval_seconds = kwargs['healthCheckIntervalSeconds']
-        if 'healthCheckPath' in kwargs:
+        if health_check_path is None and 'healthCheckPath' in kwargs:
             health_check_path = kwargs['healthCheckPath']
-        if 'healthCheckPort' in kwargs:
+        if health_check_port is None and 'healthCheckPort' in kwargs:
             health_check_port = kwargs['healthCheckPort']
-        if 'healthCheckProtocol' in kwargs:
+        if health_check_protocol is None and 'healthCheckProtocol' in kwargs:
             health_check_protocol = kwargs['healthCheckProtocol']
-        if 'listenerId' in kwargs:
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'portOverrides' in kwargs:
+        if port_overrides is None and 'portOverrides' in kwargs:
             port_overrides = kwargs['portOverrides']
-        if 'thresholdCount' in kwargs:
+        if threshold_count is None and 'thresholdCount' in kwargs:
             threshold_count = kwargs['thresholdCount']
-        if 'trafficPercentage' in kwargs:
+        if traffic_percentage is None and 'trafficPercentage' in kwargs:
             traffic_percentage = kwargs['trafficPercentage']
 
         if accelerator_id is not None:
@@ -738,64 +746,6 @@ class EndpointGroup(pulumi.CustomResource):
           * A virtual endpoint group refers to the endpoint group that you can create on the Endpoint Group page after you create a listener.
         * After you create a virtual endpoint group for an HTTP or HTTPS listener, you can create a forwarding rule and associate the forwarding rule with the virtual endpoint group. Then, the HTTP or HTTPS listener forwards requests with different destination domain names or paths to the default or virtual endpoint group based on the forwarding rule. This way, you can use one Global Accelerator (GA) instance to accelerate access to multiple domain names or paths. For more information about how to create a forwarding rule, see [Manage forwarding rules](https://www.alibabacloud.com/help/en/doc-detail/204224.htm).
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
-            bandwidth=100,
-            type="Basic",
-            bandwidth_type="Basic",
-            payment_type="PayAsYouGo",
-            billing_type="PayBy95",
-            ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
-            bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
-            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=60,
-                to_port=70,
-            )],
-            client_affinity="SOURCE_IP",
-            protocol="UDP")
-        default_eip_address = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_eip_address.append(alicloud.ecs.EipAddress(f"defaultEipAddress-{range['value']}",
-                bandwidth="10",
-                internet_charge_type="PayByBandwidth",
-                address_name="terraform-example"))
-        default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
-            accelerator_id=default_accelerator.id,
-            endpoint_configurations=[
-                alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                    endpoint=default_eip_address[0].ip_address,
-                    type="PublicIp",
-                    weight=20,
-                ),
-                alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                    endpoint=default_eip_address[1].ip_address,
-                    type="PublicIp",
-                    weight=20,
-                ),
-            ],
-            endpoint_group_region=region,
-            listener_id=default_listener.id)
-        ```
-
         ## Import
 
         Ga Endpoint Group can be imported using the id, e.g.
@@ -846,64 +796,6 @@ class EndpointGroup(pulumi.CustomResource):
           * A default endpoint group refers to the endpoint group that you configure when you create an HTTP or HTTPS listener.
           * A virtual endpoint group refers to the endpoint group that you can create on the Endpoint Group page after you create a listener.
         * After you create a virtual endpoint group for an HTTP or HTTPS listener, you can create a forwarding rule and associate the forwarding rule with the virtual endpoint group. Then, the HTTP or HTTPS listener forwards requests with different destination domain names or paths to the default or virtual endpoint group based on the forwarding rule. This way, you can use one Global Accelerator (GA) instance to accelerate access to multiple domain names or paths. For more information about how to create a forwarding rule, see [Manage forwarding rules](https://www.alibabacloud.com/help/en/doc-detail/204224.htm).
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
-            bandwidth=100,
-            type="Basic",
-            bandwidth_type="Basic",
-            payment_type="PayAsYouGo",
-            billing_type="PayBy95",
-            ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
-            bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
-            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=60,
-                to_port=70,
-            )],
-            client_affinity="SOURCE_IP",
-            protocol="UDP")
-        default_eip_address = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_eip_address.append(alicloud.ecs.EipAddress(f"defaultEipAddress-{range['value']}",
-                bandwidth="10",
-                internet_charge_type="PayByBandwidth",
-                address_name="terraform-example"))
-        default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
-            accelerator_id=default_accelerator.id,
-            endpoint_configurations=[
-                alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                    endpoint=default_eip_address[0].ip_address,
-                    type="PublicIp",
-                    weight=20,
-                ),
-                alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                    endpoint=default_eip_address[1].ip_address,
-                    type="PublicIp",
-                    weight=20,
-                ),
-            ],
-            endpoint_group_region=region,
-            listener_id=default_listener.id)
-        ```
 
         ## Import
 
@@ -977,11 +869,7 @@ class EndpointGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'listener_id'")
             __props__.__dict__["listener_id"] = listener_id
             __props__.__dict__["name"] = name
-            if port_overrides is not None and not isinstance(port_overrides, EndpointGroupPortOverridesArgs):
-                port_overrides = port_overrides or {}
-                def _setter(key, value):
-                    port_overrides[key] = value
-                EndpointGroupPortOverridesArgs._configure(_setter, **port_overrides)
+            port_overrides = _utilities.configure(port_overrides, EndpointGroupPortOverridesArgs, True)
             __props__.__dict__["port_overrides"] = port_overrides
             __props__.__dict__["tags"] = tags
             __props__.__dict__["threshold_count"] = threshold_count

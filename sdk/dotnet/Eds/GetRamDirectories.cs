@@ -15,43 +15,6 @@ namespace Pulumi.AliCloud.Eds
         /// This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.174.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Eds.GetRamDirectories.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Eds.GetRamDirectories.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-RamDirectory",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["ecdRamDirectoryId1"] = ids.Apply(getRamDirectoriesResult =&gt; getRamDirectoriesResult.Directories[0]?.Id),
-        ///         ["ecdRamDirectoryId2"] = nameRegex.Apply(getRamDirectoriesResult =&gt; getRamDirectoriesResult.Directories[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRamDirectoriesResult> InvokeAsync(GetRamDirectoriesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRamDirectoriesResult>("alicloud:eds/getRamDirectories:getRamDirectories", args ?? new GetRamDirectoriesArgs(), options.WithDefaults());
@@ -60,43 +23,6 @@ namespace Pulumi.AliCloud.Eds
         /// This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.174.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Eds.GetRamDirectories.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Eds.GetRamDirectories.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-RamDirectory",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["ecdRamDirectoryId1"] = ids.Apply(getRamDirectoriesResult =&gt; getRamDirectoriesResult.Directories[0]?.Id),
-        ///         ["ecdRamDirectoryId2"] = nameRegex.Apply(getRamDirectoriesResult =&gt; getRamDirectoriesResult.Directories[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRamDirectoriesResult> Invoke(GetRamDirectoriesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRamDirectoriesResult>("alicloud:eds/getRamDirectories:getRamDirectories", args ?? new GetRamDirectoriesInvokeArgs(), options.WithDefaults());

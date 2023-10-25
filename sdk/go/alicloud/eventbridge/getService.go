@@ -19,32 +19,6 @@ import (
 // > **NOTE:** Available in v1.126.0+
 //
 // > **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := eventbridge.GetService(ctx, &eventbridge.GetServiceArgs{
-//				Enable: pulumi.StringRef("On"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.InvokeOption) (*GetServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceResult

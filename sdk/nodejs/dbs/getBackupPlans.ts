@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.185.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dbs.getBackupPlans({});
- * export const dbsBackupPlanId1 = ids.then(ids => ids.plans?.[0]?.id);
- * const nameRegex = alicloud.dbs.getBackupPlans({
- *     nameRegex: "^my-BackupPlan",
- * });
- * export const dbsBackupPlanId2 = nameRegex.then(nameRegex => nameRegex.plans?.[0]?.id);
- * ```
  */
 export function getBackupPlans(args?: GetBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupPlansResult> {
     args = args || {};
@@ -98,22 +82,6 @@ export interface GetBackupPlansResult {
  * This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.185.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dbs.getBackupPlans({});
- * export const dbsBackupPlanId1 = ids.then(ids => ids.plans?.[0]?.id);
- * const nameRegex = alicloud.dbs.getBackupPlans({
- *     nameRegex: "^my-BackupPlan",
- * });
- * export const dbsBackupPlanId2 = nameRegex.then(nameRegex => nameRegex.plans?.[0]?.id);
- * ```
  */
 export function getBackupPlansOutput(args?: GetBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPlansResult> {
     return pulumi.output(args).apply((a: any) => getBackupPlans(a, opts))

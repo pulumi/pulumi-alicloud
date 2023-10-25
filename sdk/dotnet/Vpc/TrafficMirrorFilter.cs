@@ -16,68 +16,6 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available in v1.140.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var default3iXhoa = new AliCloud.ResourceManager.ResourceGroup("default3iXhoa", new()
-    ///     {
-    ///         DisplayName = "testname03",
-    ///         ResourceGroupName = name,
-    ///     });
-    /// 
-    ///     var defaultdNz2qk = new AliCloud.ResourceManager.ResourceGroup("defaultdNz2qk", new()
-    ///     {
-    ///         DisplayName = "testname04",
-    ///         ResourceGroupName = $"{name}1",
-    ///     });
-    /// 
-    ///     var @default = new AliCloud.Vpc.TrafficMirrorFilter("default", new()
-    ///     {
-    ///         TrafficMirrorFilterDescription = "test",
-    ///         TrafficMirrorFilterName = name,
-    ///         ResourceGroupId = default3iXhoa.Id,
-    ///         EgressRules = new[]
-    ///         {
-    ///             new AliCloud.Vpc.Inputs.TrafficMirrorFilterEgressRuleArgs
-    ///             {
-    ///                 Priority = 1,
-    ///                 Protocol = "TCP",
-    ///                 Action = "accept",
-    ///                 DestinationCidrBlock = "32.0.0.0/4",
-    ///                 DestinationPortRange = "80/80",
-    ///                 SourceCidrBlock = "16.0.0.0/4",
-    ///                 SourcePortRange = "80/80",
-    ///             },
-    ///         },
-    ///         IngressRules = new[]
-    ///         {
-    ///             new AliCloud.Vpc.Inputs.TrafficMirrorFilterIngressRuleArgs
-    ///             {
-    ///                 Priority = 1,
-    ///                 Protocol = "TCP",
-    ///                 Action = "accept",
-    ///                 DestinationCidrBlock = "10.64.0.0/10",
-    ///                 DestinationPortRange = "80/80",
-    ///                 SourceCidrBlock = "10.0.0.0/8",
-    ///                 SourcePortRange = "80/80",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// VPC Traffic Mirror Filter can be imported using the id, e.g.

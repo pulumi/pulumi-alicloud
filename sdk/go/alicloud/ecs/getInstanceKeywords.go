@@ -15,34 +15,6 @@ import (
 // Operation to query the reserved keywords of an ApsaraDB RDS instance. The reserved keywords cannot be used for the usernames of accounts or the names of databases.
 //
 // > **NOTE:** Available in v1.196.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			resources, err := ecs.GetInstanceKeywords(ctx, &ecs.GetInstanceKeywordsArgs{
-//				Key:        "account",
-//				OutputFile: pulumi.StringRef("./classes.txt"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("accountKeywords", resources.Keywords[0])
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetInstanceKeywords(ctx *pulumi.Context, args *GetInstanceKeywordsArgs, opts ...pulumi.InvokeOption) (*GetInstanceKeywordsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceKeywordsResult

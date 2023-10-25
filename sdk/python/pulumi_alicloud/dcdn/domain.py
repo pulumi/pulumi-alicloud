@@ -73,8 +73,8 @@ class DomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain_name: pulumi.Input[str],
-             sources: pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]],
+             domain_name: Optional[pulumi.Input[str]] = None,
+             sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]] = None,
              cert_name: Optional[pulumi.Input[str]] = None,
              cert_type: Optional[pulumi.Input[str]] = None,
              check_url: Optional[pulumi.Input[str]] = None,
@@ -88,29 +88,33 @@ class DomainArgs:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              top_level_domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'certName' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if sources is None:
+            raise TypeError("Missing 'sources' argument")
+        if cert_name is None and 'certName' in kwargs:
             cert_name = kwargs['certName']
-        if 'certType' in kwargs:
+        if cert_type is None and 'certType' in kwargs:
             cert_type = kwargs['certType']
-        if 'checkUrl' in kwargs:
+        if check_url is None and 'checkUrl' in kwargs:
             check_url = kwargs['checkUrl']
-        if 'forceSet' in kwargs:
+        if force_set is None and 'forceSet' in kwargs:
             force_set = kwargs['forceSet']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityToken' in kwargs:
+        if security_token is None and 'securityToken' in kwargs:
             security_token = kwargs['securityToken']
-        if 'sslPri' in kwargs:
+        if ssl_pri is None and 'sslPri' in kwargs:
             ssl_pri = kwargs['sslPri']
-        if 'sslProtocol' in kwargs:
+        if ssl_protocol is None and 'sslProtocol' in kwargs:
             ssl_protocol = kwargs['sslProtocol']
-        if 'sslPub' in kwargs:
+        if ssl_pub is None and 'sslPub' in kwargs:
             ssl_pub = kwargs['sslPub']
-        if 'topLevelDomain' in kwargs:
+        if top_level_domain is None and 'topLevelDomain' in kwargs:
             top_level_domain = kwargs['topLevelDomain']
 
         _setter("domain_name", domain_name)
@@ -405,29 +409,29 @@ class _DomainState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              top_level_domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certName' in kwargs:
+        if cert_name is None and 'certName' in kwargs:
             cert_name = kwargs['certName']
-        if 'certType' in kwargs:
+        if cert_type is None and 'certType' in kwargs:
             cert_type = kwargs['certType']
-        if 'checkUrl' in kwargs:
+        if check_url is None and 'checkUrl' in kwargs:
             check_url = kwargs['checkUrl']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'forceSet' in kwargs:
+        if force_set is None and 'forceSet' in kwargs:
             force_set = kwargs['forceSet']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityToken' in kwargs:
+        if security_token is None and 'securityToken' in kwargs:
             security_token = kwargs['securityToken']
-        if 'sslPri' in kwargs:
+        if ssl_pri is None and 'sslPri' in kwargs:
             ssl_pri = kwargs['sslPri']
-        if 'sslProtocol' in kwargs:
+        if ssl_protocol is None and 'sslProtocol' in kwargs:
             ssl_protocol = kwargs['sslProtocol']
-        if 'sslPub' in kwargs:
+        if ssl_pub is None and 'sslPub' in kwargs:
             ssl_pub = kwargs['sslPub']
-        if 'topLevelDomain' in kwargs:
+        if top_level_domain is None and 'topLevelDomain' in kwargs:
             top_level_domain = kwargs['topLevelDomain']
 
         if cert_name is not None:
@@ -691,30 +695,6 @@ class Domain(pulumi.CustomResource):
 
         > **NOTE:** If the origin content is not saved on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be completed by the next working day after you submit the application.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "example.com"
-        example = alicloud.dcdn.Domain("example",
-            domain_name=domain_name,
-            scope="overseas",
-            sources=[alicloud.dcdn.DomainSourceArgs(
-                content="1.1.1.1",
-                port=80,
-                priority="20",
-                type="ipaddr",
-                weight="10",
-            )])
-        ```
-
         ## Import
 
         DCDN Domain can be imported using the id or DCDN Domain name, e.g.
@@ -760,30 +740,6 @@ class Domain(pulumi.CustomResource):
         > **NOTE:** Make sure that you have obtained an Internet content provider (ICP) filling for the accelerated domain.
 
         > **NOTE:** If the origin content is not saved on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be completed by the next working day after you submit the application.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "example.com"
-        example = alicloud.dcdn.Domain("example",
-            domain_name=domain_name,
-            scope="overseas",
-            sources=[alicloud.dcdn.DomainSourceArgs(
-                content="1.1.1.1",
-                port=80,
-                priority="20",
-                type="ipaddr",
-                weight="10",
-            )])
-        ```
 
         ## Import
 

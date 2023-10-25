@@ -15,50 +15,6 @@ namespace Pulumi.AliCloud.MongoDB
         /// This data source provides the Mongodb Serverless Instances of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.148.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.MongoDB.GetServerlessInstances.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///         DbInstanceClass = "example_value",
-        ///         DbInstanceDescription = "example_value",
-        ///         NetworkType = "VPC",
-        ///         ResourceGroupId = "example_value",
-        ///         Status = "Running",
-        ///         VpcId = "example_value",
-        ///         VswitchId = "example_value",
-        ///         ZoneId = "example_value",
-        ///         Tags = 
-        ///         {
-        ///             { "Created", "MongodbServerlessInstance" },
-        ///             { "For", "TF" },
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["mongodbServerlessInstanceId1"] = example.Apply(getServerlessInstancesResult =&gt; getServerlessInstancesResult.Instances[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerlessInstancesResult> InvokeAsync(GetServerlessInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerlessInstancesResult>("alicloud:mongodb/getServerlessInstances:getServerlessInstances", args ?? new GetServerlessInstancesArgs(), options.WithDefaults());
@@ -67,50 +23,6 @@ namespace Pulumi.AliCloud.MongoDB
         /// This data source provides the Mongodb Serverless Instances of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.148.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.MongoDB.GetServerlessInstances.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///         DbInstanceClass = "example_value",
-        ///         DbInstanceDescription = "example_value",
-        ///         NetworkType = "VPC",
-        ///         ResourceGroupId = "example_value",
-        ///         Status = "Running",
-        ///         VpcId = "example_value",
-        ///         VswitchId = "example_value",
-        ///         ZoneId = "example_value",
-        ///         Tags = 
-        ///         {
-        ///             { "Created", "MongodbServerlessInstance" },
-        ///             { "For", "TF" },
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["mongodbServerlessInstanceId1"] = example.Apply(getServerlessInstancesResult =&gt; getServerlessInstancesResult.Instances[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerlessInstancesResult> Invoke(GetServerlessInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerlessInstancesResult>("alicloud:mongodb/getServerlessInstances:getServerlessInstances", args ?? new GetServerlessInstancesInvokeArgs(), options.WithDefaults());

@@ -42,20 +42,24 @@ class AppTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_template_name: pulumi.Input[str],
-             component_lists: pulumi.Input[Sequence[pulumi.Input[str]]],
+             app_template_name: Optional[pulumi.Input[str]] = None,
+             component_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              config_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AppTemplateConfigListArgs']]]] = None,
              integration_mode: Optional[pulumi.Input[str]] = None,
              scene: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appTemplateName' in kwargs:
+        if app_template_name is None and 'appTemplateName' in kwargs:
             app_template_name = kwargs['appTemplateName']
-        if 'componentLists' in kwargs:
+        if app_template_name is None:
+            raise TypeError("Missing 'app_template_name' argument")
+        if component_lists is None and 'componentLists' in kwargs:
             component_lists = kwargs['componentLists']
-        if 'configLists' in kwargs:
+        if component_lists is None:
+            raise TypeError("Missing 'component_lists' argument")
+        if config_lists is None and 'configLists' in kwargs:
             config_lists = kwargs['configLists']
-        if 'integrationMode' in kwargs:
+        if integration_mode is None and 'integrationMode' in kwargs:
             integration_mode = kwargs['integrationMode']
 
         _setter("app_template_name", app_template_name)
@@ -168,15 +172,15 @@ class _AppTemplateState:
              integration_mode: Optional[pulumi.Input[str]] = None,
              scene: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appTemplateName' in kwargs:
+        if app_template_name is None and 'appTemplateName' in kwargs:
             app_template_name = kwargs['appTemplateName']
-        if 'componentLists' in kwargs:
+        if component_lists is None and 'componentLists' in kwargs:
             component_lists = kwargs['componentLists']
-        if 'configLists' in kwargs:
+        if config_lists is None and 'configLists' in kwargs:
             config_lists = kwargs['configLists']
-        if 'integrationMode' in kwargs:
+        if integration_mode is None and 'integrationMode' in kwargs:
             integration_mode = kwargs['integrationMode']
 
         if app_template_name is not None:
@@ -285,24 +289,6 @@ class AppTemplate(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.137.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.imp.AppTemplate("example",
-            app_template_name="example_value",
-            component_lists=[
-                "component.live",
-                "component.liveRecord",
-            ],
-            integration_mode="paasSDK",
-            scene="business")
-        ```
-
         ## Import
 
         Apsara Agile Live (IMP) App Template can be imported using the id, e.g.
@@ -333,24 +319,6 @@ class AppTemplate(pulumi.CustomResource):
         For information about Apsara Agile Live (IMP) App Template and how to use it, see [What is App Template](https://help.aliyun.com/document_detail/270121.html).
 
         > **NOTE:** Available in v1.137.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.imp.AppTemplate("example",
-            app_template_name="example_value",
-            component_lists=[
-                "component.live",
-                "component.liveRecord",
-            ],
-            integration_mode="paasSDK",
-            scene="business")
-        ```
 
         ## Import
 

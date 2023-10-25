@@ -5,35 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * Empty resource sets defaults values for every property.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.ram.AccountPasswordPolicy("default", {});
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const corporate = new alicloud.ram.AccountPasswordPolicy("corporate", {
- *     hardExpiry: true,
- *     maxLoginAttempts: 3,
- *     maxPasswordAge: 12,
- *     minimumPasswordLength: 9,
- *     passwordReusePrevention: 5,
- *     requireLowercaseCharacters: false,
- *     requireNumbers: false,
- *     requireSymbols: false,
- *     requireUppercaseCharacters: false,
- * });
- * ```
- * For not specified values sets defaults.
- *
  * ## Import
  *
  * RAM account password policy can be imported using the `id`, e.g. bash

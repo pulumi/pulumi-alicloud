@@ -35,18 +35,26 @@ class GatewayVcoRouteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             next_hop: pulumi.Input[str],
-             route_dest: pulumi.Input[str],
-             vpn_connection_id: pulumi.Input[str],
-             weight: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             next_hop: Optional[pulumi.Input[str]] = None,
+             route_dest: Optional[pulumi.Input[str]] = None,
+             vpn_connection_id: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nextHop' in kwargs:
+        if next_hop is None and 'nextHop' in kwargs:
             next_hop = kwargs['nextHop']
-        if 'routeDest' in kwargs:
+        if next_hop is None:
+            raise TypeError("Missing 'next_hop' argument")
+        if route_dest is None and 'routeDest' in kwargs:
             route_dest = kwargs['routeDest']
-        if 'vpnConnectionId' in kwargs:
+        if route_dest is None:
+            raise TypeError("Missing 'route_dest' argument")
+        if vpn_connection_id is None and 'vpnConnectionId' in kwargs:
             vpn_connection_id = kwargs['vpnConnectionId']
+        if vpn_connection_id is None:
+            raise TypeError("Missing 'vpn_connection_id' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
 
         _setter("next_hop", next_hop)
         _setter("route_dest", route_dest)
@@ -134,13 +142,13 @@ class _GatewayVcoRouteState:
              status: Optional[pulumi.Input[str]] = None,
              vpn_connection_id: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nextHop' in kwargs:
+        if next_hop is None and 'nextHop' in kwargs:
             next_hop = kwargs['nextHop']
-        if 'routeDest' in kwargs:
+        if route_dest is None and 'routeDest' in kwargs:
             route_dest = kwargs['routeDest']
-        if 'vpnConnectionId' in kwargs:
+        if vpn_connection_id is None and 'vpnConnectionId' in kwargs:
             vpn_connection_id = kwargs['vpnConnectionId']
 
         if next_hop is not None:
@@ -232,81 +240,6 @@ class GatewayVcoRoute(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.183.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_instance = alicloud.cen.Instance("defaultInstance", cen_instance_name=var["name"])
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter",
-            cen_id=default_instance.id,
-            transit_router_description="desd",
-            transit_router_name=var["name"])
-        default_transit_router_available_resources = alicloud.cen.get_transit_router_available_resources()
-        default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway",
-            ip_address="42.104.22.210",
-            asn="45014",
-            description="testAccVpnConnectionDesc")
-        default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment",
-            customer_gateway_id=default_customer_gateway.id,
-            network_type="public",
-            local_subnet="0.0.0.0/0",
-            remote_subnet="0.0.0.0/0",
-            effect_immediately=False,
-            ike_config=alicloud.vpn.GatewayVpnAttachmentIkeConfigArgs(
-                ike_auth_alg="md5",
-                ike_enc_alg="des",
-                ike_version="ikev2",
-                ike_mode="main",
-                ike_lifetime=86400,
-                psk="tf-testvpn2",
-                ike_pfs="group1",
-                remote_id="testbob2",
-                local_id="testalice2",
-            ),
-            ipsec_config=alicloud.vpn.GatewayVpnAttachmentIpsecConfigArgs(
-                ipsec_pfs="group5",
-                ipsec_enc_alg="des",
-                ipsec_auth_alg="md5",
-                ipsec_lifetime=86400,
-            ),
-            bgp_config=alicloud.vpn.GatewayVpnAttachmentBgpConfigArgs(
-                enable=True,
-                local_asn=45014,
-                tunnel_cidr="169.254.11.0/30",
-                local_bgp_ip="169.254.11.1",
-            ),
-            health_check_config=alicloud.vpn.GatewayVpnAttachmentHealthCheckConfigArgs(
-                enable=True,
-                sip="192.168.1.1",
-                dip="10.0.0.1",
-                interval=10,
-                retry=10,
-                policy="revoke_route",
-            ),
-            enable_dpd=True,
-            enable_nat_traversal=True,
-            vpn_attachment_name=var["name"])
-        default_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment",
-            auto_publish_route_enabled=False,
-            transit_router_attachment_description=var["name"],
-            transit_router_attachment_name=var["name"],
-            cen_id=default_transit_router.cen_id,
-            transit_router_id=default_transit_router.transit_router_id,
-            vpn_id=default_gateway_vpn_attachment.id,
-            zones=[alicloud.cen.TransitRouterVpnAttachmentZoneArgs(
-                zone_id=default_transit_router_available_resources.resources[0].master_zones[0],
-            )])
-        default_gateway_vco_route = alicloud.vpn.GatewayVcoRoute("defaultGatewayVcoRoute",
-            route_dest="192.168.12.0/24",
-            next_hop=default_transit_router_vpn_attachment.vpn_id,
-            vpn_connection_id=default_transit_router_vpn_attachment.vpn_id,
-            weight=100)
-        ```
-
         ## Import
 
         VPN Gateway Vco Route can be imported using the id, e.g.
@@ -334,81 +267,6 @@ class GatewayVcoRoute(pulumi.CustomResource):
         For information about VPN Gateway Vco Route and how to use it, see [What is Vco Route](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvcorouteentry).
 
         > **NOTE:** Available in v1.183.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_instance = alicloud.cen.Instance("defaultInstance", cen_instance_name=var["name"])
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter",
-            cen_id=default_instance.id,
-            transit_router_description="desd",
-            transit_router_name=var["name"])
-        default_transit_router_available_resources = alicloud.cen.get_transit_router_available_resources()
-        default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway",
-            ip_address="42.104.22.210",
-            asn="45014",
-            description="testAccVpnConnectionDesc")
-        default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment",
-            customer_gateway_id=default_customer_gateway.id,
-            network_type="public",
-            local_subnet="0.0.0.0/0",
-            remote_subnet="0.0.0.0/0",
-            effect_immediately=False,
-            ike_config=alicloud.vpn.GatewayVpnAttachmentIkeConfigArgs(
-                ike_auth_alg="md5",
-                ike_enc_alg="des",
-                ike_version="ikev2",
-                ike_mode="main",
-                ike_lifetime=86400,
-                psk="tf-testvpn2",
-                ike_pfs="group1",
-                remote_id="testbob2",
-                local_id="testalice2",
-            ),
-            ipsec_config=alicloud.vpn.GatewayVpnAttachmentIpsecConfigArgs(
-                ipsec_pfs="group5",
-                ipsec_enc_alg="des",
-                ipsec_auth_alg="md5",
-                ipsec_lifetime=86400,
-            ),
-            bgp_config=alicloud.vpn.GatewayVpnAttachmentBgpConfigArgs(
-                enable=True,
-                local_asn=45014,
-                tunnel_cidr="169.254.11.0/30",
-                local_bgp_ip="169.254.11.1",
-            ),
-            health_check_config=alicloud.vpn.GatewayVpnAttachmentHealthCheckConfigArgs(
-                enable=True,
-                sip="192.168.1.1",
-                dip="10.0.0.1",
-                interval=10,
-                retry=10,
-                policy="revoke_route",
-            ),
-            enable_dpd=True,
-            enable_nat_traversal=True,
-            vpn_attachment_name=var["name"])
-        default_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment",
-            auto_publish_route_enabled=False,
-            transit_router_attachment_description=var["name"],
-            transit_router_attachment_name=var["name"],
-            cen_id=default_transit_router.cen_id,
-            transit_router_id=default_transit_router.transit_router_id,
-            vpn_id=default_gateway_vpn_attachment.id,
-            zones=[alicloud.cen.TransitRouterVpnAttachmentZoneArgs(
-                zone_id=default_transit_router_available_resources.resources[0].master_zones[0],
-            )])
-        default_gateway_vco_route = alicloud.vpn.GatewayVcoRoute("defaultGatewayVcoRoute",
-            route_dest="192.168.12.0/24",
-            next_hop=default_transit_router_vpn_attachment.vpn_id,
-            vpn_connection_id=default_transit_router_vpn_attachment.vpn_id,
-            weight=100)
-        ```
 
         ## Import
 

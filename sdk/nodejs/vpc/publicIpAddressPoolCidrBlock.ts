@@ -12,31 +12,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.189.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
- *     status: "OK",
- * });
- * const defaultPublicIpAddressPool = new alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool", {
- *     description: name,
- *     publicIpAddressPoolName: name,
- *     isp: "BGP",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
- * });
- * const defaultPublicIpAddressPoolCidrBlock = new alicloud.vpc.PublicIpAddressPoolCidrBlock("defaultPublicIpAddressPoolCidrBlock", {
- *     publicIpAddressPoolId: defaultPublicIpAddressPool.id,
- *     cidrBlock: "47.118.126.0/25",
- * });
- * ```
- *
  * ## Import
  *
  * VPC Public Ip Address Pool Cidr Block can be imported using the id, e.g.

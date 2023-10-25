@@ -93,8 +93,8 @@ class ClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_cluster_category: pulumi.Input[str],
-             mode: pulumi.Input[str],
+             db_cluster_category: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
              auto_renew_period: Optional[pulumi.Input[int]] = None,
              compute_resource: Optional[pulumi.Input[str]] = None,
              db_cluster_class: Optional[pulumi.Input[str]] = None,
@@ -118,49 +118,53 @@ class ClusterArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbClusterCategory' in kwargs:
+        if db_cluster_category is None and 'dbClusterCategory' in kwargs:
             db_cluster_category = kwargs['dbClusterCategory']
-        if 'autoRenewPeriod' in kwargs:
+        if db_cluster_category is None:
+            raise TypeError("Missing 'db_cluster_category' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'computeResource' in kwargs:
+        if compute_resource is None and 'computeResource' in kwargs:
             compute_resource = kwargs['computeResource']
-        if 'dbClusterClass' in kwargs:
+        if db_cluster_class is None and 'dbClusterClass' in kwargs:
             db_cluster_class = kwargs['dbClusterClass']
-        if 'dbClusterVersion' in kwargs:
+        if db_cluster_version is None and 'dbClusterVersion' in kwargs:
             db_cluster_version = kwargs['dbClusterVersion']
-        if 'dbNodeClass' in kwargs:
+        if db_node_class is None and 'dbNodeClass' in kwargs:
             db_node_class = kwargs['dbNodeClass']
-        if 'dbNodeCount' in kwargs:
+        if db_node_count is None and 'dbNodeCount' in kwargs:
             db_node_count = kwargs['dbNodeCount']
-        if 'dbNodeStorage' in kwargs:
+        if db_node_storage is None and 'dbNodeStorage' in kwargs:
             db_node_storage = kwargs['dbNodeStorage']
-        if 'diskPerformanceLevel' in kwargs:
+        if disk_performance_level is None and 'diskPerformanceLevel' in kwargs:
             disk_performance_level = kwargs['diskPerformanceLevel']
-        if 'elasticIoResource' in kwargs:
+        if elastic_io_resource is None and 'elasticIoResource' in kwargs:
             elastic_io_resource = kwargs['elasticIoResource']
-        if 'elasticIoResourceSize' in kwargs:
+        if elastic_io_resource_size is None and 'elasticIoResourceSize' in kwargs:
             elastic_io_resource_size = kwargs['elasticIoResourceSize']
-        if 'maintainTime' in kwargs:
+        if maintain_time is None and 'maintainTime' in kwargs:
             maintain_time = kwargs['maintainTime']
-        if 'modifyType' in kwargs:
+        if modify_type is None and 'modifyType' in kwargs:
             modify_type = kwargs['modifyType']
-        if 'payType' in kwargs:
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityIps' in kwargs:
+        if security_ips is None and 'securityIps' in kwargs:
             security_ips = kwargs['securityIps']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("db_cluster_category", db_cluster_category)
@@ -620,51 +624,51 @@ class _ClusterState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'computeResource' in kwargs:
+        if compute_resource is None and 'computeResource' in kwargs:
             compute_resource = kwargs['computeResource']
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'dbClusterCategory' in kwargs:
+        if db_cluster_category is None and 'dbClusterCategory' in kwargs:
             db_cluster_category = kwargs['dbClusterCategory']
-        if 'dbClusterClass' in kwargs:
+        if db_cluster_class is None and 'dbClusterClass' in kwargs:
             db_cluster_class = kwargs['dbClusterClass']
-        if 'dbClusterVersion' in kwargs:
+        if db_cluster_version is None and 'dbClusterVersion' in kwargs:
             db_cluster_version = kwargs['dbClusterVersion']
-        if 'dbNodeClass' in kwargs:
+        if db_node_class is None and 'dbNodeClass' in kwargs:
             db_node_class = kwargs['dbNodeClass']
-        if 'dbNodeCount' in kwargs:
+        if db_node_count is None and 'dbNodeCount' in kwargs:
             db_node_count = kwargs['dbNodeCount']
-        if 'dbNodeStorage' in kwargs:
+        if db_node_storage is None and 'dbNodeStorage' in kwargs:
             db_node_storage = kwargs['dbNodeStorage']
-        if 'diskPerformanceLevel' in kwargs:
+        if disk_performance_level is None and 'diskPerformanceLevel' in kwargs:
             disk_performance_level = kwargs['diskPerformanceLevel']
-        if 'elasticIoResource' in kwargs:
+        if elastic_io_resource is None and 'elasticIoResource' in kwargs:
             elastic_io_resource = kwargs['elasticIoResource']
-        if 'elasticIoResourceSize' in kwargs:
+        if elastic_io_resource_size is None and 'elasticIoResourceSize' in kwargs:
             elastic_io_resource_size = kwargs['elasticIoResourceSize']
-        if 'maintainTime' in kwargs:
+        if maintain_time is None and 'maintainTime' in kwargs:
             maintain_time = kwargs['maintainTime']
-        if 'modifyType' in kwargs:
+        if modify_type is None and 'modifyType' in kwargs:
             modify_type = kwargs['modifyType']
-        if 'payType' in kwargs:
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityIps' in kwargs:
+        if security_ips is None and 'securityIps' in kwargs:
             security_ips = kwargs['securityIps']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if auto_renew_period is not None:
@@ -1088,38 +1092,6 @@ class Cluster(pulumi.CustomResource):
         > **NOTE:** Available in v1.71.0+.
 
         ## Example Usage
-        ### Create a ADB MySQL cluster
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "adbClusterconfig"
-        creation = config.get("creation")
-        if creation is None:
-            creation = "ADB"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_cluster = alicloud.adb.Cluster("defaultCluster",
-            db_cluster_version="3.0",
-            db_cluster_category="Cluster",
-            db_node_class="C8",
-            db_node_count=2,
-            db_node_storage=200,
-            pay_type="PostPaid",
-            description=name,
-            vswitch_id=default_switch.id)
-        ```
 
         ## Import
 
@@ -1168,38 +1140,6 @@ class Cluster(pulumi.CustomResource):
         > **NOTE:** Available in v1.71.0+.
 
         ## Example Usage
-        ### Create a ADB MySQL cluster
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "adbClusterconfig"
-        creation = config.get("creation")
-        if creation is None:
-            creation = "ADB"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_cluster = alicloud.adb.Cluster("defaultCluster",
-            db_cluster_version="3.0",
-            db_cluster_category="Cluster",
-            db_node_class="C8",
-            db_node_count=2,
-            db_node_storage=200,
-            pay_type="PostPaid",
-            description=name,
-            vswitch_id=default_switch.id)
-        ```
 
         ## Import
 

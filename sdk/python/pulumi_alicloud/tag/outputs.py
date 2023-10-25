@@ -33,15 +33,21 @@ class GetMetaTagsTagResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: str,
-             key_name: str,
-             value_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             category: Optional[str] = None,
+             key_name: Optional[str] = None,
+             value_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'keyName' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'valueName' in kwargs:
+        if key_name is None:
+            raise TypeError("Missing 'key_name' argument")
+        if value_name is None and 'valueName' in kwargs:
             value_name = kwargs['valueName']
+        if value_name is None:
+            raise TypeError("Missing 'value_name' argument")
 
         _setter("category", category)
         _setter("key_name", key_name)

@@ -17,43 +17,6 @@ namespace Pulumi.AliCloud.CloudSso
         /// &gt; **NOTE:** Available in v1.135.0+.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.CloudSso.GetDirectories.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.CloudSso.GetDirectories.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Directory",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cloudSsoDirectoryId1"] = ids.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Directories[0]?.Id),
-        ///         ["cloudSsoDirectoryId2"] = nameRegex.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Directories[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDirectoriesResult> InvokeAsync(GetDirectoriesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDirectoriesResult>("alicloud:cloudsso/getDirectories:getDirectories", args ?? new GetDirectoriesArgs(), options.WithDefaults());
@@ -64,43 +27,6 @@ namespace Pulumi.AliCloud.CloudSso
         /// &gt; **NOTE:** Available in v1.135.0+.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.CloudSso.GetDirectories.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.CloudSso.GetDirectories.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Directory",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cloudSsoDirectoryId1"] = ids.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Directories[0]?.Id),
-        ///         ["cloudSsoDirectoryId2"] = nameRegex.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Directories[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDirectoriesResult> Invoke(GetDirectoriesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDirectoriesResult>("alicloud:cloudsso/getDirectories:getDirectories", args ?? new GetDirectoriesInvokeArgs(), options.WithDefaults());

@@ -94,12 +94,12 @@ class EtlArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             etl_name: pulumi.Input[str],
-             etl_sinks: pulumi.Input[Sequence[pulumi.Input['EtlEtlSinkArgs']]],
-             logstore: pulumi.Input[str],
-             project: pulumi.Input[str],
-             script: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             etl_name: Optional[pulumi.Input[str]] = None,
+             etl_sinks: Optional[pulumi.Input[Sequence[pulumi.Input['EtlEtlSinkArgs']]]] = None,
+             logstore: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             script: Optional[pulumi.Input[str]] = None,
              access_key_id: Optional[pulumi.Input[str]] = None,
              access_key_secret: Optional[pulumi.Input[str]] = None,
              create_time: Optional[pulumi.Input[int]] = None,
@@ -117,37 +117,49 @@ class EtlArgs:
              status: Optional[pulumi.Input[str]] = None,
              to_time: Optional[pulumi.Input[int]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'etlName' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if etl_name is None and 'etlName' in kwargs:
             etl_name = kwargs['etlName']
-        if 'etlSinks' in kwargs:
+        if etl_name is None:
+            raise TypeError("Missing 'etl_name' argument")
+        if etl_sinks is None and 'etlSinks' in kwargs:
             etl_sinks = kwargs['etlSinks']
-        if 'accessKeyId' in kwargs:
+        if etl_sinks is None:
+            raise TypeError("Missing 'etl_sinks' argument")
+        if logstore is None:
+            raise TypeError("Missing 'logstore' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if script is None:
+            raise TypeError("Missing 'script' argument")
+        if access_key_id is None and 'accessKeyId' in kwargs:
             access_key_id = kwargs['accessKeyId']
-        if 'accessKeySecret' in kwargs:
+        if access_key_secret is None and 'accessKeySecret' in kwargs:
             access_key_secret = kwargs['accessKeySecret']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'etlType' in kwargs:
+        if etl_type is None and 'etlType' in kwargs:
             etl_type = kwargs['etlType']
-        if 'fromTime' in kwargs:
+        if from_time is None and 'fromTime' in kwargs:
             from_time = kwargs['fromTime']
-        if 'kmsEncryptedAccessKeyId' in kwargs:
+        if kms_encrypted_access_key_id is None and 'kmsEncryptedAccessKeyId' in kwargs:
             kms_encrypted_access_key_id = kwargs['kmsEncryptedAccessKeyId']
-        if 'kmsEncryptedAccessKeySecret' in kwargs:
+        if kms_encrypted_access_key_secret is None and 'kmsEncryptedAccessKeySecret' in kwargs:
             kms_encrypted_access_key_secret = kwargs['kmsEncryptedAccessKeySecret']
-        if 'kmsEncryptionAccessKeyIdContext' in kwargs:
+        if kms_encryption_access_key_id_context is None and 'kmsEncryptionAccessKeyIdContext' in kwargs:
             kms_encryption_access_key_id_context = kwargs['kmsEncryptionAccessKeyIdContext']
-        if 'kmsEncryptionAccessKeySecretContext' in kwargs:
+        if kms_encryption_access_key_secret_context is None and 'kmsEncryptionAccessKeySecretContext' in kwargs:
             kms_encryption_access_key_secret_context = kwargs['kmsEncryptionAccessKeySecretContext']
-        if 'lastModifiedTime' in kwargs:
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
             last_modified_time = kwargs['lastModifiedTime']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'toTime' in kwargs:
+        if to_time is None and 'toTime' in kwargs:
             to_time = kwargs['toTime']
 
         _setter("display_name", display_name)
@@ -572,37 +584,37 @@ class _EtlState:
              status: Optional[pulumi.Input[str]] = None,
              to_time: Optional[pulumi.Input[int]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessKeyId' in kwargs:
+        if access_key_id is None and 'accessKeyId' in kwargs:
             access_key_id = kwargs['accessKeyId']
-        if 'accessKeySecret' in kwargs:
+        if access_key_secret is None and 'accessKeySecret' in kwargs:
             access_key_secret = kwargs['accessKeySecret']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'etlName' in kwargs:
+        if etl_name is None and 'etlName' in kwargs:
             etl_name = kwargs['etlName']
-        if 'etlSinks' in kwargs:
+        if etl_sinks is None and 'etlSinks' in kwargs:
             etl_sinks = kwargs['etlSinks']
-        if 'etlType' in kwargs:
+        if etl_type is None and 'etlType' in kwargs:
             etl_type = kwargs['etlType']
-        if 'fromTime' in kwargs:
+        if from_time is None and 'fromTime' in kwargs:
             from_time = kwargs['fromTime']
-        if 'kmsEncryptedAccessKeyId' in kwargs:
+        if kms_encrypted_access_key_id is None and 'kmsEncryptedAccessKeyId' in kwargs:
             kms_encrypted_access_key_id = kwargs['kmsEncryptedAccessKeyId']
-        if 'kmsEncryptedAccessKeySecret' in kwargs:
+        if kms_encrypted_access_key_secret is None and 'kmsEncryptedAccessKeySecret' in kwargs:
             kms_encrypted_access_key_secret = kwargs['kmsEncryptedAccessKeySecret']
-        if 'kmsEncryptionAccessKeyIdContext' in kwargs:
+        if kms_encryption_access_key_id_context is None and 'kmsEncryptionAccessKeyIdContext' in kwargs:
             kms_encryption_access_key_id_context = kwargs['kmsEncryptionAccessKeyIdContext']
-        if 'kmsEncryptionAccessKeySecretContext' in kwargs:
+        if kms_encryption_access_key_secret_context is None and 'kmsEncryptionAccessKeySecretContext' in kwargs:
             kms_encryption_access_key_secret_context = kwargs['kmsEncryptionAccessKeySecretContext']
-        if 'lastModifiedTime' in kwargs:
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
             last_modified_time = kwargs['lastModifiedTime']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'toTime' in kwargs:
+        if to_time is None and 'toTime' in kwargs:
             to_time = kwargs['toTime']
 
         if access_key_id is not None:
@@ -965,69 +977,6 @@ class Etl(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.120.0
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example2 = alicloud.log.Store("example2",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example3 = alicloud.log.Store("example3",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_etl = alicloud.log.Etl("exampleEtl",
-            etl_name="terraform-example",
-            project=example_project.name,
-            display_name="terraform-example",
-            description="terraform-example",
-            access_key_id="access_key_id",
-            access_key_secret="access_key_secret",
-            script="e_set('new','key')",
-            logstore=example_store.name,
-            etl_sinks=[
-                alicloud.log.EtlEtlSinkArgs(
-                    name="target_name",
-                    access_key_id="example2_access_key_id",
-                    access_key_secret="example2_access_key_secret",
-                    endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=example_project.name,
-                    logstore=example2.name,
-                ),
-                alicloud.log.EtlEtlSinkArgs(
-                    name="target_name2",
-                    access_key_id="example3_access_key_id",
-                    access_key_secret="example3_access_key_secret",
-                    endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=example_project.name,
-                    logstore=example3.name,
-                ),
-            ])
-        ```
-
         ## Import
 
         Log etl can be imported using the id, e.g.
@@ -1074,69 +1023,6 @@ class Etl(pulumi.CustomResource):
         [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/125384.htm).
 
         > **NOTE:** Available in 1.120.0
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example2 = alicloud.log.Store("example2",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example3 = alicloud.log.Store("example3",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_etl = alicloud.log.Etl("exampleEtl",
-            etl_name="terraform-example",
-            project=example_project.name,
-            display_name="terraform-example",
-            description="terraform-example",
-            access_key_id="access_key_id",
-            access_key_secret="access_key_secret",
-            script="e_set('new','key')",
-            logstore=example_store.name,
-            etl_sinks=[
-                alicloud.log.EtlEtlSinkArgs(
-                    name="target_name",
-                    access_key_id="example2_access_key_id",
-                    access_key_secret="example2_access_key_secret",
-                    endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=example_project.name,
-                    logstore=example2.name,
-                ),
-                alicloud.log.EtlEtlSinkArgs(
-                    name="target_name2",
-                    access_key_id="example3_access_key_id",
-                    access_key_secret="example3_access_key_secret",
-                    endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=example_project.name,
-                    logstore=example3.name,
-                ),
-            ])
-        ```
 
         ## Import
 

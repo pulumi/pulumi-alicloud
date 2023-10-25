@@ -56,31 +56,37 @@ class DedicatedPropreHostEcsClassListArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_type: pulumi.Input[str],
-             sys_disk_capacity: pulumi.Input[int],
-             sys_disk_type: pulumi.Input[str],
+             instance_type: Optional[pulumi.Input[str]] = None,
+             sys_disk_capacity: Optional[pulumi.Input[int]] = None,
+             sys_disk_type: Optional[pulumi.Input[str]] = None,
              data_disk_performance_level: Optional[pulumi.Input[str]] = None,
              disk_capacity: Optional[pulumi.Input[int]] = None,
              disk_count: Optional[pulumi.Input[int]] = None,
              disk_type: Optional[pulumi.Input[str]] = None,
              system_disk_performance_level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'sysDiskCapacity' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if sys_disk_capacity is None and 'sysDiskCapacity' in kwargs:
             sys_disk_capacity = kwargs['sysDiskCapacity']
-        if 'sysDiskType' in kwargs:
+        if sys_disk_capacity is None:
+            raise TypeError("Missing 'sys_disk_capacity' argument")
+        if sys_disk_type is None and 'sysDiskType' in kwargs:
             sys_disk_type = kwargs['sysDiskType']
-        if 'dataDiskPerformanceLevel' in kwargs:
+        if sys_disk_type is None:
+            raise TypeError("Missing 'sys_disk_type' argument")
+        if data_disk_performance_level is None and 'dataDiskPerformanceLevel' in kwargs:
             data_disk_performance_level = kwargs['dataDiskPerformanceLevel']
-        if 'diskCapacity' in kwargs:
+        if disk_capacity is None and 'diskCapacity' in kwargs:
             disk_capacity = kwargs['diskCapacity']
-        if 'diskCount' in kwargs:
+        if disk_count is None and 'diskCount' in kwargs:
             disk_count = kwargs['diskCount']
-        if 'diskType' in kwargs:
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'systemDiskPerformanceLevel' in kwargs:
+        if system_disk_performance_level is None and 'systemDiskPerformanceLevel' in kwargs:
             system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
 
         _setter("instance_type", instance_type)

@@ -117,45 +117,45 @@ class ProviderArgs:
              shared_credentials_file: Optional[pulumi.Input[str]] = None,
              skip_region_validation: Optional[pulumi.Input[bool]] = None,
              source_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessKey' in kwargs:
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'assumeRole' in kwargs:
+        if assume_role is None and 'assumeRole' in kwargs:
             assume_role = kwargs['assumeRole']
-        if 'clientConnectTimeout' in kwargs:
+        if client_connect_timeout is None and 'clientConnectTimeout' in kwargs:
             client_connect_timeout = kwargs['clientConnectTimeout']
-        if 'clientReadTimeout' in kwargs:
+        if client_read_timeout is None and 'clientReadTimeout' in kwargs:
             client_read_timeout = kwargs['clientReadTimeout']
-        if 'configurationSource' in kwargs:
+        if configuration_source is None and 'configurationSource' in kwargs:
             configuration_source = kwargs['configurationSource']
-        if 'credentialsUri' in kwargs:
+        if credentials_uri is None and 'credentialsUri' in kwargs:
             credentials_uri = kwargs['credentialsUri']
-        if 'ecsRoleName' in kwargs:
+        if ecs_role_name is None and 'ecsRoleName' in kwargs:
             ecs_role_name = kwargs['ecsRoleName']
-        if 'logEndpoint' in kwargs:
+        if log_endpoint is None and 'logEndpoint' in kwargs:
             log_endpoint = kwargs['logEndpoint']
-        if 'maxRetryTimeout' in kwargs:
+        if max_retry_timeout is None and 'maxRetryTimeout' in kwargs:
             max_retry_timeout = kwargs['maxRetryTimeout']
-        if 'mnsEndpoint' in kwargs:
+        if mns_endpoint is None and 'mnsEndpoint' in kwargs:
             mns_endpoint = kwargs['mnsEndpoint']
-        if 'otsInstanceName' in kwargs:
+        if ots_instance_name is None and 'otsInstanceName' in kwargs:
             ots_instance_name = kwargs['otsInstanceName']
-        if 'secretKey' in kwargs:
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
-        if 'secureTransport' in kwargs:
+        if secure_transport is None and 'secureTransport' in kwargs:
             secure_transport = kwargs['secureTransport']
-        if 'securityToken' in kwargs:
+        if security_token is None and 'securityToken' in kwargs:
             security_token = kwargs['securityToken']
-        if 'securityTransport' in kwargs:
+        if security_transport is None and 'securityTransport' in kwargs:
             security_transport = kwargs['securityTransport']
-        if 'sharedCredentialsFile' in kwargs:
+        if shared_credentials_file is None and 'sharedCredentialsFile' in kwargs:
             shared_credentials_file = kwargs['sharedCredentialsFile']
-        if 'skipRegionValidation' in kwargs:
+        if skip_region_validation is None and 'skipRegionValidation' in kwargs:
             skip_region_validation = kwargs['skipRegionValidation']
-        if 'sourceIp' in kwargs:
+        if source_ip is None and 'sourceIp' in kwargs:
             source_ip = kwargs['sourceIp']
 
         if access_key is not None:
@@ -633,11 +633,7 @@ class Provider(pulumi.ProviderResource):
 
             __props__.__dict__["access_key"] = access_key
             __props__.__dict__["account_id"] = account_id
-            if assume_role is not None and not isinstance(assume_role, ProviderAssumeRoleArgs):
-                assume_role = assume_role or {}
-                def _setter(key, value):
-                    assume_role[key] = value
-                ProviderAssumeRoleArgs._configure(_setter, **assume_role)
+            assume_role = _utilities.configure(assume_role, ProviderAssumeRoleArgs, True)
             __props__.__dict__["assume_role"] = pulumi.Output.from_input(assume_role).apply(pulumi.runtime.to_json) if assume_role is not None else None
             __props__.__dict__["client_connect_timeout"] = pulumi.Output.from_input(client_connect_timeout).apply(pulumi.runtime.to_json) if client_connect_timeout is not None else None
             __props__.__dict__["client_read_timeout"] = pulumi.Output.from_input(client_read_timeout).apply(pulumi.runtime.to_json) if client_read_timeout is not None else None

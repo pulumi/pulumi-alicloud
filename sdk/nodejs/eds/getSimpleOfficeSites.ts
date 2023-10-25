@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.140.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.eds.getSimpleOfficeSites({
- *     ids: ["example_id"],
- *     status: "REGISTERED",
- * });
- * export const desktopAccessType = _default.then(_default => _default.sites?.[0]?.desktopAccessType);
- * ```
  */
 export function getSimpleOfficeSites(args?: GetSimpleOfficeSitesArgs, opts?: pulumi.InvokeOptions): Promise<GetSimpleOfficeSitesResult> {
     args = args || {};
@@ -79,21 +64,6 @@ export interface GetSimpleOfficeSitesResult {
  * This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.140.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.eds.getSimpleOfficeSites({
- *     ids: ["example_id"],
- *     status: "REGISTERED",
- * });
- * export const desktopAccessType = _default.then(_default => _default.sites?.[0]?.desktopAccessType);
- * ```
  */
 export function getSimpleOfficeSitesOutput(args?: GetSimpleOfficeSitesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSimpleOfficeSitesResult> {
     return pulumi.output(args).apply((a: any) => getSimpleOfficeSites(a, opts))

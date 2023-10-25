@@ -19,53 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.119.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf_example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := rds.NewRdsParameterGroup(ctx, "default", &rds.RdsParameterGroupArgs{
-//				Engine:        pulumi.String("mysql"),
-//				EngineVersion: pulumi.String("5.7"),
-//				ParamDetails: rds.RdsParameterGroupParamDetailArray{
-//					&rds.RdsParameterGroupParamDetailArgs{
-//						ParamName:  pulumi.String("back_log"),
-//						ParamValue: pulumi.String("4000"),
-//					},
-//					&rds.RdsParameterGroupParamDetailArgs{
-//						ParamName:  pulumi.String("wait_timeout"),
-//						ParamValue: pulumi.String("86460"),
-//					},
-//				},
-//				ParameterGroupDesc: pulumi.String(name),
-//				ParameterGroupName: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // RDS Parameter Group can be imported using the id, e.g.

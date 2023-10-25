@@ -32,17 +32,23 @@ class NetworkGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ccn_id: pulumi.Input[str],
-             cen_id: pulumi.Input[str],
-             cen_uid: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ccn_id: Optional[pulumi.Input[str]] = None,
+             cen_id: Optional[pulumi.Input[str]] = None,
+             cen_uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ccnId' in kwargs:
+        if ccn_id is None and 'ccnId' in kwargs:
             ccn_id = kwargs['ccnId']
-        if 'cenId' in kwargs:
+        if ccn_id is None:
+            raise TypeError("Missing 'ccn_id' argument")
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'cenUid' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if cen_uid is None and 'cenUid' in kwargs:
             cen_uid = kwargs['cenUid']
+        if cen_uid is None:
+            raise TypeError("Missing 'cen_uid' argument")
 
         _setter("ccn_id", ccn_id)
         _setter("cen_id", cen_id)
@@ -109,13 +115,13 @@ class _NetworkGrantState:
              ccn_id: Optional[pulumi.Input[str]] = None,
              cen_id: Optional[pulumi.Input[str]] = None,
              cen_uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ccnId' in kwargs:
+        if ccn_id is None and 'ccnId' in kwargs:
             ccn_id = kwargs['ccnId']
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'cenUid' in kwargs:
+        if cen_uid is None and 'cenUid' in kwargs:
             cen_uid = kwargs['cenUid']
 
         if ccn_id is not None:
@@ -180,49 +186,6 @@ class NetworkGrant(pulumi.CustomResource):
 
         > **NOTE:** Only the following regions support create Cloud Connect Network Grant. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        cen_uid = config.get_float("cenUid")
-        if cen_uid is None:
-            cen_uid = 123456789
-        default = alicloud.Provider("default", region="cn-shanghai")
-        # Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
-        cen_account = alicloud.Provider("cenAccount",
-            region="cn-hangzhou",
-            assume_role=alicloud.ProviderAssumeRoleArgs(
-                role_arn=f"acs:ram::{cen_uid}:role/terraform-example-assume-role",
-            ))
-        # Method 2: Use the target cen account's access_key, secret_key
-        # provider "alicloud" {
-        #   region     = "cn-hangzhou"
-        #   access_key = "access_key"
-        #   secret_key = "secret_key"
-        #   alias      = "cen_account"
-        # }
-        default_network = alicloud.cloudconnect.Network("defaultNetwork",
-            description=name,
-            cidr_block="192.168.0.0/24",
-            is_default=True,
-            opts=pulumi.ResourceOptions(provider=alicloud["default"]))
-        cen = alicloud.cen.Instance("cen", cen_instance_name=name,
-        opts=pulumi.ResourceOptions(provider=alicloud["cen_account"]))
-        default_network_grant = alicloud.cloudconnect.NetworkGrant("defaultNetworkGrant",
-            ccn_id=default_network.id,
-            cen_id=cen.id,
-            cen_uid=cen_uid,
-            opts=pulumi.ResourceOptions(provider=alicloud["default"]))
-        ```
-
         ## Import
 
         The Cloud Connect Network Grant can be imported using the instance_id, e.g.
@@ -251,49 +214,6 @@ class NetworkGrant(pulumi.CustomResource):
         > **NOTE:** Available since v1.63.0.
 
         > **NOTE:** Only the following regions support create Cloud Connect Network Grant. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        cen_uid = config.get_float("cenUid")
-        if cen_uid is None:
-            cen_uid = 123456789
-        default = alicloud.Provider("default", region="cn-shanghai")
-        # Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
-        cen_account = alicloud.Provider("cenAccount",
-            region="cn-hangzhou",
-            assume_role=alicloud.ProviderAssumeRoleArgs(
-                role_arn=f"acs:ram::{cen_uid}:role/terraform-example-assume-role",
-            ))
-        # Method 2: Use the target cen account's access_key, secret_key
-        # provider "alicloud" {
-        #   region     = "cn-hangzhou"
-        #   access_key = "access_key"
-        #   secret_key = "secret_key"
-        #   alias      = "cen_account"
-        # }
-        default_network = alicloud.cloudconnect.Network("defaultNetwork",
-            description=name,
-            cidr_block="192.168.0.0/24",
-            is_default=True,
-            opts=pulumi.ResourceOptions(provider=alicloud["default"]))
-        cen = alicloud.cen.Instance("cen", cen_instance_name=name,
-        opts=pulumi.ResourceOptions(provider=alicloud["cen_account"]))
-        default_network_grant = alicloud.cloudconnect.NetworkGrant("defaultNetworkGrant",
-            ccn_id=default_network.id,
-            cen_id=cen.id,
-            cen_uid=cen_uid,
-            opts=pulumi.ResourceOptions(provider=alicloud["default"]))
-        ```
 
         ## Import
 

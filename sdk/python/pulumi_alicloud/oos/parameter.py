@@ -44,18 +44,24 @@ class ParameterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parameter_name: pulumi.Input[str],
-             type: pulumi.Input[str],
-             value: pulumi.Input[str],
+             parameter_name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              constraints: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterName' in kwargs:
+        if parameter_name is None and 'parameterName' in kwargs:
             parameter_name = kwargs['parameterName']
-        if 'resourceGroupId' in kwargs:
+        if parameter_name is None:
+            raise TypeError("Missing 'parameter_name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("parameter_name", parameter_name)
@@ -195,11 +201,11 @@ class _ParameterState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterName' in kwargs:
+        if parameter_name is None and 'parameterName' in kwargs:
             parameter_name = kwargs['parameterName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         if constraints is not None:
@@ -322,27 +328,6 @@ class Parameter(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.147.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.resourcemanager.get_resource_groups()
-        example = alicloud.oos.Parameter("example",
-            parameter_name="my-Parameter",
-            type="String",
-            value="example_value",
-            description="example_value",
-            tags={
-                "Created": "TF",
-                "For": "OosParameter",
-            },
-            resource_group_id=default.groups[0].id)
-        ```
-
         ## Import
 
         OOS Parameter can be imported using the id, e.g.
@@ -373,27 +358,6 @@ class Parameter(pulumi.CustomResource):
         For information about OOS Parameter and how to use it, see [What is Parameter](https://www.alibabacloud.com/help/en/doc-detail/183408.html).
 
         > **NOTE:** Available in v1.147.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.resourcemanager.get_resource_groups()
-        example = alicloud.oos.Parameter("example",
-            parameter_name="my-Parameter",
-            type="String",
-            value="example_value",
-            description="example_value",
-            tags={
-                "Created": "TF",
-                "For": "OosParameter",
-            },
-            resource_group_id=default.groups[0].id)
-        ```
 
         ## Import
 

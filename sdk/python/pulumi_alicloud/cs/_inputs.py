@@ -74,7 +74,7 @@ class ApplicationServiceArgs:
              name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if id is not None:
@@ -147,9 +147,9 @@ class ClusterNodeArgs:
              name: Optional[pulumi.Input[str]] = None,
              private_ip: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'privateIp' in kwargs:
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
 
         if eip is not None:
@@ -234,7 +234,7 @@ class EdgeKubernetesAddonArgs:
              config: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if config is not None:
@@ -306,13 +306,13 @@ class EdgeKubernetesCertificateAuthorityArgs:
              client_cert: Optional[pulumi.Input[str]] = None,
              client_key: Optional[pulumi.Input[str]] = None,
              cluster_cert: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientCert' in kwargs:
+        if client_cert is None and 'clientCert' in kwargs:
             client_cert = kwargs['clientCert']
-        if 'clientKey' in kwargs:
+        if client_key is None and 'clientKey' in kwargs:
             client_key = kwargs['clientKey']
-        if 'clusterCert' in kwargs:
+        if cluster_cert is None and 'clusterCert' in kwargs:
             cluster_cert = kwargs['clusterCert']
 
         if client_cert is not None:
@@ -386,15 +386,15 @@ class EdgeKubernetesConnectionsArgs:
              api_server_intranet: Optional[pulumi.Input[str]] = None,
              master_public_ip: Optional[pulumi.Input[str]] = None,
              service_domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiServerInternet' in kwargs:
+        if api_server_internet is None and 'apiServerInternet' in kwargs:
             api_server_internet = kwargs['apiServerInternet']
-        if 'apiServerIntranet' in kwargs:
+        if api_server_intranet is None and 'apiServerIntranet' in kwargs:
             api_server_intranet = kwargs['apiServerIntranet']
-        if 'masterPublicIp' in kwargs:
+        if master_public_ip is None and 'masterPublicIp' in kwargs:
             master_public_ip = kwargs['masterPublicIp']
-        if 'serviceDomain' in kwargs:
+        if service_domain is None and 'serviceDomain' in kwargs:
             service_domain = kwargs['serviceDomain']
 
         if api_server_internet is not None:
@@ -472,10 +472,12 @@ class EdgeKubernetesLogConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("type", type)
         if project is not None:
@@ -525,7 +527,7 @@ class EdgeKubernetesRuntimeArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -605,15 +607,15 @@ class EdgeKubernetesWorkerDataDiskArgs:
              performance_level: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[str]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoSnapshotPolicyId' in kwargs:
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
             auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         if auto_snapshot_policy_id is not None:
@@ -767,9 +769,9 @@ class EdgeKubernetesWorkerNodeArgs:
              id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              private_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'privateIp' in kwargs:
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
 
         if id is not None:
@@ -841,7 +843,7 @@ class KubernetesAddonArgs:
              config: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if config is not None:
@@ -913,7 +915,7 @@ class KubernetesAutoscalerNodepoolArgs:
              id: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[str]] = None,
              taints: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if id is not None:
@@ -983,13 +985,13 @@ class KubernetesCertificateAuthorityArgs:
              client_cert: Optional[pulumi.Input[str]] = None,
              client_key: Optional[pulumi.Input[str]] = None,
              cluster_cert: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientCert' in kwargs:
+        if client_cert is None and 'clientCert' in kwargs:
             client_cert = kwargs['clientCert']
-        if 'clientKey' in kwargs:
+        if client_key is None and 'clientKey' in kwargs:
             client_key = kwargs['clientKey']
-        if 'clusterCert' in kwargs:
+        if cluster_cert is None and 'clusterCert' in kwargs:
             cluster_cert = kwargs['clusterCert']
 
         if client_cert is not None:
@@ -1063,15 +1065,15 @@ class KubernetesConnectionsArgs:
              api_server_intranet: Optional[pulumi.Input[str]] = None,
              master_public_ip: Optional[pulumi.Input[str]] = None,
              service_domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiServerInternet' in kwargs:
+        if api_server_internet is None and 'apiServerInternet' in kwargs:
             api_server_internet = kwargs['apiServerInternet']
-        if 'apiServerIntranet' in kwargs:
+        if api_server_intranet is None and 'apiServerIntranet' in kwargs:
             api_server_intranet = kwargs['apiServerIntranet']
-        if 'masterPublicIp' in kwargs:
+        if master_public_ip is None and 'masterPublicIp' in kwargs:
             master_public_ip = kwargs['masterPublicIp']
-        if 'serviceDomain' in kwargs:
+        if service_domain is None and 'serviceDomain' in kwargs:
             service_domain = kwargs['serviceDomain']
 
         if api_server_internet is not None:
@@ -1155,9 +1157,9 @@ class KubernetesMasterNodeArgs:
              id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              private_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'privateIp' in kwargs:
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
 
         if id is not None:
@@ -1233,21 +1235,27 @@ class KubernetesPermissionPermissionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster: pulumi.Input[str],
-             role_name: pulumi.Input[str],
-             role_type: pulumi.Input[str],
+             cluster: Optional[pulumi.Input[str]] = None,
+             role_name: Optional[pulumi.Input[str]] = None,
+             role_type: Optional[pulumi.Input[str]] = None,
              is_custom: Optional[pulumi.Input[bool]] = None,
              is_ram_role: Optional[pulumi.Input[bool]] = None,
              namespace: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'roleName' in kwargs:
+        if cluster is None:
+            raise TypeError("Missing 'cluster' argument")
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
-        if 'roleType' in kwargs:
+        if role_name is None:
+            raise TypeError("Missing 'role_name' argument")
+        if role_type is None and 'roleType' in kwargs:
             role_type = kwargs['roleType']
-        if 'isCustom' in kwargs:
+        if role_type is None:
+            raise TypeError("Missing 'role_type' argument")
+        if is_custom is None and 'isCustom' in kwargs:
             is_custom = kwargs['isCustom']
-        if 'isRamRole' in kwargs:
+        if is_ram_role is None and 'isRamRole' in kwargs:
             is_ram_role = kwargs['isRamRole']
 
         _setter("cluster", cluster)
@@ -1352,7 +1360,7 @@ class KubernetesRuntimeArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -1408,7 +1416,7 @@ class KubernetesTaintArgs:
              effect: Optional[pulumi.Input[str]] = None,
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if effect is not None:
@@ -1502,15 +1510,15 @@ class KubernetesWorkerDataDiskArgs:
              performance_level: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[str]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoSnapshotPolicyId' in kwargs:
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
             auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         if auto_snapshot_policy_id is not None:
@@ -1664,9 +1672,9 @@ class KubernetesWorkerNodeArgs:
              id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              private_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'privateIp' in kwargs:
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
 
         if id is not None:
@@ -1749,7 +1757,7 @@ class ManagedKubernetesAddonArgs:
              config: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if config is not None:
@@ -1832,13 +1840,13 @@ class ManagedKubernetesCertificateAuthorityArgs:
              client_cert: Optional[pulumi.Input[str]] = None,
              client_key: Optional[pulumi.Input[str]] = None,
              cluster_cert: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientCert' in kwargs:
+        if client_cert is None and 'clientCert' in kwargs:
             client_cert = kwargs['clientCert']
-        if 'clientKey' in kwargs:
+        if client_key is None and 'clientKey' in kwargs:
             client_key = kwargs['clientKey']
-        if 'clusterCert' in kwargs:
+        if cluster_cert is None and 'clusterCert' in kwargs:
             cluster_cert = kwargs['clusterCert']
 
         if client_cert is not None:
@@ -1912,15 +1920,15 @@ class ManagedKubernetesConnectionsArgs:
              api_server_intranet: Optional[pulumi.Input[str]] = None,
              master_public_ip: Optional[pulumi.Input[str]] = None,
              service_domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiServerInternet' in kwargs:
+        if api_server_internet is None and 'apiServerInternet' in kwargs:
             api_server_internet = kwargs['apiServerInternet']
-        if 'apiServerIntranet' in kwargs:
+        if api_server_intranet is None and 'apiServerIntranet' in kwargs:
             api_server_intranet = kwargs['apiServerIntranet']
-        if 'masterPublicIp' in kwargs:
+        if master_public_ip is None and 'masterPublicIp' in kwargs:
             master_public_ip = kwargs['masterPublicIp']
-        if 'serviceDomain' in kwargs:
+        if service_domain is None and 'serviceDomain' in kwargs:
             service_domain = kwargs['serviceDomain']
 
         if api_server_internet is not None:
@@ -1995,9 +2003,6 @@ class ManagedKubernetesMaintenanceWindowArgs:
         :param pulumi.Input[str] weekly_period: Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
                
                for example:
-               ```python
-               import pulumi
-               ```
         """
         ManagedKubernetesMaintenanceWindowArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -2009,16 +2014,24 @@ class ManagedKubernetesMaintenanceWindowArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             duration: pulumi.Input[str],
-             enable: pulumi.Input[bool],
-             maintenance_time: pulumi.Input[str],
-             weekly_period: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             duration: Optional[pulumi.Input[str]] = None,
+             enable: Optional[pulumi.Input[bool]] = None,
+             maintenance_time: Optional[pulumi.Input[str]] = None,
+             weekly_period: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maintenanceTime' in kwargs:
+        if duration is None:
+            raise TypeError("Missing 'duration' argument")
+        if enable is None:
+            raise TypeError("Missing 'enable' argument")
+        if maintenance_time is None and 'maintenanceTime' in kwargs:
             maintenance_time = kwargs['maintenanceTime']
-        if 'weeklyPeriod' in kwargs:
+        if maintenance_time is None:
+            raise TypeError("Missing 'maintenance_time' argument")
+        if weekly_period is None and 'weeklyPeriod' in kwargs:
             weekly_period = kwargs['weeklyPeriod']
+        if weekly_period is None:
+            raise TypeError("Missing 'weekly_period' argument")
 
         _setter("duration", duration)
         _setter("enable", enable)
@@ -2068,9 +2081,6 @@ class ManagedKubernetesMaintenanceWindowArgs:
         Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 
         for example:
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "weekly_period")
 
@@ -2106,13 +2116,13 @@ class ManagedKubernetesRrsaMetadataArgs:
              ram_oidc_provider_arn: Optional[pulumi.Input[str]] = None,
              ram_oidc_provider_name: Optional[pulumi.Input[str]] = None,
              rrsa_oidc_issuer_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ramOidcProviderArn' in kwargs:
+        if ram_oidc_provider_arn is None and 'ramOidcProviderArn' in kwargs:
             ram_oidc_provider_arn = kwargs['ramOidcProviderArn']
-        if 'ramOidcProviderName' in kwargs:
+        if ram_oidc_provider_name is None and 'ramOidcProviderName' in kwargs:
             ram_oidc_provider_name = kwargs['ramOidcProviderName']
-        if 'rrsaOidcIssuerUrl' in kwargs:
+        if rrsa_oidc_issuer_url is None and 'rrsaOidcIssuerUrl' in kwargs:
             rrsa_oidc_issuer_url = kwargs['rrsaOidcIssuerUrl']
 
         if enabled is not None:
@@ -2192,7 +2202,7 @@ class ManagedKubernetesRuntimeArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -2235,24 +2245,6 @@ class ManagedKubernetesTaintArgs:
         :param pulumi.Input[str] effect: The taint effect.
                
                The following example is the definition of taints block:
-               
-               ```python
-               import pulumi
-               import pulumi_alicloud as alicloud
-               
-               k8s = alicloud.cs.ManagedKubernetes("k8s", taints=[
-                   alicloud.cs.ManagedKubernetesTaintArgs(
-                       effect="NoSchedule",
-                       key="key-a",
-                       value="value-a",
-                   ),
-                   alicloud.cs.ManagedKubernetesTaintArgs(
-                       effect="NoSchedule",
-                       key="key-b",
-                       value="value-b",
-                   ),
-               ])
-               ```
         :param pulumi.Input[str] key: The taint key.
         :param pulumi.Input[str] value: The taint value.
         """
@@ -2268,7 +2260,7 @@ class ManagedKubernetesTaintArgs:
              effect: Optional[pulumi.Input[str]] = None,
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if effect is not None:
@@ -2285,24 +2277,6 @@ class ManagedKubernetesTaintArgs:
         The taint effect.
 
         The following example is the definition of taints block:
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        k8s = alicloud.cs.ManagedKubernetes("k8s", taints=[
-            alicloud.cs.ManagedKubernetesTaintArgs(
-                effect="NoSchedule",
-                key="key-a",
-                value="value-a",
-            ),
-            alicloud.cs.ManagedKubernetesTaintArgs(
-                effect="NoSchedule",
-                key="key-b",
-                value="value-b",
-            ),
-        ])
-        ```
         """
         return pulumi.get(self, "effect")
 
@@ -2382,15 +2356,15 @@ class ManagedKubernetesWorkerDataDiskArgs:
              performance_level: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[str]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoSnapshotPolicyId' in kwargs:
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
             auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         if auto_snapshot_policy_id is not None:
@@ -2544,9 +2518,9 @@ class ManagedKubernetesWorkerNodeArgs:
              id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              private_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'privateIp' in kwargs:
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
 
         if id is not None:
@@ -2640,15 +2614,15 @@ class NodePoolDataDiskArgs:
              performance_level: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoSnapshotPolicyId' in kwargs:
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
             auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         if auto_snapshot_policy_id is not None:
@@ -2842,33 +2816,33 @@ class NodePoolKubeletConfigurationArgs:
              registry_pull_qps: Optional[pulumi.Input[str]] = None,
              serialize_image_pulls: Optional[pulumi.Input[str]] = None,
              system_reserved: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cpuManagerPolicy' in kwargs:
+        if cpu_manager_policy is None and 'cpuManagerPolicy' in kwargs:
             cpu_manager_policy = kwargs['cpuManagerPolicy']
-        if 'eventBurst' in kwargs:
+        if event_burst is None and 'eventBurst' in kwargs:
             event_burst = kwargs['eventBurst']
-        if 'eventRecordQps' in kwargs:
+        if event_record_qps is None and 'eventRecordQps' in kwargs:
             event_record_qps = kwargs['eventRecordQps']
-        if 'evictionHard' in kwargs:
+        if eviction_hard is None and 'evictionHard' in kwargs:
             eviction_hard = kwargs['evictionHard']
-        if 'evictionSoft' in kwargs:
+        if eviction_soft is None and 'evictionSoft' in kwargs:
             eviction_soft = kwargs['evictionSoft']
-        if 'evictionSoftGracePeriod' in kwargs:
+        if eviction_soft_grace_period is None and 'evictionSoftGracePeriod' in kwargs:
             eviction_soft_grace_period = kwargs['evictionSoftGracePeriod']
-        if 'kubeApiBurst' in kwargs:
+        if kube_api_burst is None and 'kubeApiBurst' in kwargs:
             kube_api_burst = kwargs['kubeApiBurst']
-        if 'kubeApiQps' in kwargs:
+        if kube_api_qps is None and 'kubeApiQps' in kwargs:
             kube_api_qps = kwargs['kubeApiQps']
-        if 'kubeReserved' in kwargs:
+        if kube_reserved is None and 'kubeReserved' in kwargs:
             kube_reserved = kwargs['kubeReserved']
-        if 'registryBurst' in kwargs:
+        if registry_burst is None and 'registryBurst' in kwargs:
             registry_burst = kwargs['registryBurst']
-        if 'registryPullQps' in kwargs:
+        if registry_pull_qps is None and 'registryPullQps' in kwargs:
             registry_pull_qps = kwargs['registryPullQps']
-        if 'serializeImagePulls' in kwargs:
+        if serialize_image_pulls is None and 'serializeImagePulls' in kwargs:
             serialize_image_pulls = kwargs['serializeImagePulls']
-        if 'systemReserved' in kwargs:
+        if system_reserved is None and 'systemReserved' in kwargs:
             system_reserved = kwargs['systemReserved']
 
         if cpu_manager_policy is not None:
@@ -3072,10 +3046,12 @@ class NodePoolLabelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
+             key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
 
         _setter("key", key)
         if value is not None:
@@ -3132,20 +3108,22 @@ class NodePoolManagementArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_unavailable: pulumi.Input[int],
+             max_unavailable: Optional[pulumi.Input[int]] = None,
              auto_repair: Optional[pulumi.Input[bool]] = None,
              auto_upgrade: Optional[pulumi.Input[bool]] = None,
              surge: Optional[pulumi.Input[int]] = None,
              surge_percentage: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxUnavailable' in kwargs:
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
             max_unavailable = kwargs['maxUnavailable']
-        if 'autoRepair' in kwargs:
+        if max_unavailable is None:
+            raise TypeError("Missing 'max_unavailable' argument")
+        if auto_repair is None and 'autoRepair' in kwargs:
             auto_repair = kwargs['autoRepair']
-        if 'autoUpgrade' in kwargs:
+        if auto_upgrade is None and 'autoUpgrade' in kwargs:
             auto_upgrade = kwargs['autoUpgrade']
-        if 'surgePercentage' in kwargs:
+        if surge_percentage is None and 'surgePercentage' in kwargs:
             surge_percentage = kwargs['surgePercentage']
 
         _setter("max_unavailable", max_unavailable)
@@ -3234,9 +3212,9 @@ class NodePoolRollingPolicyArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_parallelism: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxParallelism' in kwargs:
+        if max_parallelism is None and 'maxParallelism' in kwargs:
             max_parallelism = kwargs['maxParallelism']
 
         if max_parallelism is not None:
@@ -3270,9 +3248,9 @@ class NodePoolRolloutPolicyArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_unavailable: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxUnavailable' in kwargs:
+        if max_unavailable is None and 'maxUnavailable' in kwargs:
             max_unavailable = kwargs['maxUnavailable']
 
         if max_unavailable is not None:
@@ -3320,23 +3298,27 @@ class NodePoolScalingConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_size: pulumi.Input[int],
-             min_size: pulumi.Input[int],
+             max_size: Optional[pulumi.Input[int]] = None,
+             min_size: Optional[pulumi.Input[int]] = None,
              eip_bandwidth: Optional[pulumi.Input[int]] = None,
              eip_internet_charge_type: Optional[pulumi.Input[str]] = None,
              is_bond_eip: Optional[pulumi.Input[bool]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if max_size is None:
+            raise TypeError("Missing 'max_size' argument")
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'eipBandwidth' in kwargs:
+        if min_size is None:
+            raise TypeError("Missing 'min_size' argument")
+        if eip_bandwidth is None and 'eipBandwidth' in kwargs:
             eip_bandwidth = kwargs['eipBandwidth']
-        if 'eipInternetChargeType' in kwargs:
+        if eip_internet_charge_type is None and 'eipInternetChargeType' in kwargs:
             eip_internet_charge_type = kwargs['eipInternetChargeType']
-        if 'isBondEip' in kwargs:
+        if is_bond_eip is None and 'isBondEip' in kwargs:
             is_bond_eip = kwargs['isBondEip']
 
         _setter("max_size", max_size)
@@ -3442,11 +3424,11 @@ class NodePoolSpotPriceLimitArgs:
              _setter: Callable[[Any, Any], None],
              instance_type: Optional[pulumi.Input[str]] = None,
              price_limit: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'priceLimit' in kwargs:
+        if price_limit is None and 'priceLimit' in kwargs:
             price_limit = kwargs['priceLimit']
 
         if instance_type is not None:
@@ -3499,11 +3481,13 @@ class NodePoolTaintArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
+             key: Optional[pulumi.Input[str]] = None,
              effect: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
 
         _setter("key", key)
         if effect is not None:
@@ -3573,7 +3557,7 @@ class ServerlessKubernetesAddonArgs:
              config: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if config is not None:
@@ -3649,13 +3633,13 @@ class ServerlessKubernetesRrsaMetadataArgs:
              ram_oidc_provider_arn: Optional[pulumi.Input[str]] = None,
              ram_oidc_provider_name: Optional[pulumi.Input[str]] = None,
              rrsa_oidc_issuer_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ramOidcProviderArn' in kwargs:
+        if ram_oidc_provider_arn is None and 'ramOidcProviderArn' in kwargs:
             ram_oidc_provider_arn = kwargs['ramOidcProviderArn']
-        if 'ramOidcProviderName' in kwargs:
+        if ram_oidc_provider_name is None and 'ramOidcProviderName' in kwargs:
             ram_oidc_provider_name = kwargs['ramOidcProviderName']
-        if 'rrsaOidcIssuerUrl' in kwargs:
+        if rrsa_oidc_issuer_url is None and 'rrsaOidcIssuerUrl' in kwargs:
             rrsa_oidc_issuer_url = kwargs['rrsaOidcIssuerUrl']
 
         if enabled is not None:
@@ -3740,9 +3724,9 @@ class SwarmNodeArgs:
              name: Optional[pulumi.Input[str]] = None,
              private_ip: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'privateIp' in kwargs:
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
 
         if eip is not None:
@@ -3831,25 +3815,31 @@ class GetKubernetesPermissionPermissionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_id: str,
-             resource_type: str,
-             role_name: str,
+             resource_id: Optional[str] = None,
+             resource_type: Optional[str] = None,
+             role_name: Optional[str] = None,
              is_owner: Optional[bool] = None,
              is_ram_role: Optional[bool] = None,
              role_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceId' in kwargs:
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceType' in kwargs:
+        if resource_id is None:
+            raise TypeError("Missing 'resource_id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'roleName' in kwargs:
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
-        if 'isOwner' in kwargs:
+        if role_name is None:
+            raise TypeError("Missing 'role_name' argument")
+        if is_owner is None and 'isOwner' in kwargs:
             is_owner = kwargs['isOwner']
-        if 'isRamRole' in kwargs:
+        if is_ram_role is None and 'isRamRole' in kwargs:
             is_ram_role = kwargs['isRamRole']
-        if 'roleType' in kwargs:
+        if role_type is None and 'roleType' in kwargs:
             role_type = kwargs['roleType']
 
         _setter("resource_id", resource_id)

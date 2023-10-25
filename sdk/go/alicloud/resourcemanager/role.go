@@ -18,62 +18,6 @@ import (
 //
 // > **NOTE:** Available since v1.82.0.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tfexample"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_default, err := alicloud.GetAccount(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = resourcemanager.NewRole(ctx, "example", &resourcemanager.RoleArgs{
-//				RoleName: pulumi.String(name),
-//				AssumeRolePolicyDocument: pulumi.String(fmt.Sprintf(`     {
-//	          "Statement": [
-//	               {
-//	                    "Action": "sts:AssumeRole",
-//	                    "Effect": "Allow",
-//	                    "Principal": {
-//	                        "RAM":[
-//	                                "acs:ram::%v:root"
-//	                        ]
-//	                    }
-//	                }
-//	          ],
-//	          "Version": "1"
-//	     }
-//
-// `, _default.Id)),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Resource Manager can be imported using the id or role_name, e.g.

@@ -15,43 +15,6 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.186.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Vpc.GetPublicIpAddressPools.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Vpc.GetPublicIpAddressPools.Invoke(new()
-        ///     {
-        ///         NameRegex = "example_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["vpcPublicIpAddressPoolId1"] = ids.Apply(getPublicIpAddressPoolsResult =&gt; getPublicIpAddressPoolsResult.Pools[0]?.Id),
-        ///         ["vpcPublicIpAddressPoolId2"] = nameRegex.Apply(getPublicIpAddressPoolsResult =&gt; getPublicIpAddressPoolsResult.Pools[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPublicIpAddressPoolsResult> InvokeAsync(GetPublicIpAddressPoolsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPublicIpAddressPoolsResult>("alicloud:vpc/getPublicIpAddressPools:getPublicIpAddressPools", args ?? new GetPublicIpAddressPoolsArgs(), options.WithDefaults());
@@ -60,43 +23,6 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.186.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Vpc.GetPublicIpAddressPools.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Vpc.GetPublicIpAddressPools.Invoke(new()
-        ///     {
-        ///         NameRegex = "example_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["vpcPublicIpAddressPoolId1"] = ids.Apply(getPublicIpAddressPoolsResult =&gt; getPublicIpAddressPoolsResult.Pools[0]?.Id),
-        ///         ["vpcPublicIpAddressPoolId2"] = nameRegex.Apply(getPublicIpAddressPoolsResult =&gt; getPublicIpAddressPoolsResult.Pools[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPublicIpAddressPoolsResult> Invoke(GetPublicIpAddressPoolsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPublicIpAddressPoolsResult>("alicloud:vpc/getPublicIpAddressPools:getPublicIpAddressPools", args ?? new GetPublicIpAddressPoolsInvokeArgs(), options.WithDefaults());

@@ -19,61 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.129.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleEventBus, err := eventbridge.NewEventBus(ctx, "exampleEventBus", &eventbridge.EventBusArgs{
-//				EventBusName: pulumi.String("example_value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = eventbridge.NewRule(ctx, "exampleRule", &eventbridge.RuleArgs{
-//				EventBusName:  exampleEventBus.ID(),
-//				RuleName:      pulumi.Any(_var.Name),
-//				Description:   pulumi.String("test"),
-//				FilterPattern: pulumi.String("{\"source\":[\"crmabc.newsletter\"],\"type\":[\"UserSignUp\", \"UserLogin\"]}"),
-//				Targets: eventbridge.RuleTargetArray{
-//					&eventbridge.RuleTargetArgs{
-//						TargetId: pulumi.String("tf-test"),
-//						Endpoint: pulumi.String("acs:mns:cn-hangzhou:118938335****:queues/tf-test"),
-//						Type:     pulumi.String("acs.mns.queue"),
-//						ParamLists: eventbridge.RuleTargetParamListArray{
-//							&eventbridge.RuleTargetParamListArgs{
-//								ResourceKey: pulumi.String("queue"),
-//								Form:        pulumi.String("CONSTANT"),
-//								Value:       pulumi.String("tf-testaccEbRule"),
-//							},
-//							&eventbridge.RuleTargetParamListArgs{
-//								ResourceKey: pulumi.String("Body"),
-//								Form:        pulumi.String("ORIGINAL"),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Event Bridge Rule can be imported using the id, e.g.

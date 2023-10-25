@@ -11,54 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.195.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example";
- * const default = alicloud.cen.getTransitRouterAvailableResources({});
- * const zone = _default.then(_default => _default.resources?.[0]?.masterZones?.[1]);
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
- *     vpcName: name,
- *     cidrBlock: "192.168.0.0/16",
- * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
- *     vswitchName: name,
- *     cidrBlock: "192.168.1.0/24",
- *     vpcId: exampleNetwork.id,
- *     zoneId: zone,
- * });
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {cenInstanceName: name});
- * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
- *     transitRouterName: name,
- *     cenId: exampleInstance.id,
- *     supportMulticast: true,
- * });
- * const exampleTransitRouterMulticastDomain = new alicloud.cen.TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain", {
- *     transitRouterId: exampleTransitRouter.transitRouterId,
- *     transitRouterMulticastDomainName: name,
- * });
- * const exampleTransitRouterVpcAttachment = new alicloud.cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", {
- *     cenId: exampleTransitRouter.cenId,
- *     transitRouterId: exampleTransitRouterMulticastDomain.transitRouterId,
- *     vpcId: exampleNetwork.id,
- *     zoneMappings: [{
- *         zoneId: zone,
- *         vswitchId: exampleSwitch.id,
- *     }],
- * });
- * const exampleTransitRouterMulticastDomainAssociation = new alicloud.cen.TransitRouterMulticastDomainAssociation("exampleTransitRouterMulticastDomainAssociation", {
- *     transitRouterMulticastDomainId: exampleTransitRouterMulticastDomain.id,
- *     transitRouterAttachmentId: exampleTransitRouterVpcAttachment.transitRouterAttachmentId,
- *     vswitchId: exampleSwitch.id,
- * });
- * ```
- *
  * ## Import
  *
  * Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association can be imported using the id, e.g.

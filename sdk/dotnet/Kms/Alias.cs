@@ -14,29 +14,6 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// &gt; **NOTE:** Available in v1.77.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var thisKey = new AliCloud.Kms.Key("thisKey");
-    /// 
-    ///     var thisAlias = new AliCloud.Kms.Alias("thisAlias", new()
-    ///     {
-    ///         AliasName = "alias/test_kms_alias",
-    ///         KeyId = thisKey.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// KMS alias can be imported using the id, e.g.

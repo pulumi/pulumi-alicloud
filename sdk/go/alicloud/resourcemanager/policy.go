@@ -18,51 +18,6 @@ import (
 //
 // > **NOTE:** Available since v1.83.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tfexample"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := resourcemanager.NewPolicy(ctx, "example", &resourcemanager.PolicyArgs{
-//				PolicyName: pulumi.String(name),
-//				PolicyDocument: pulumi.String(`		{
-//				"Statement": [{
-//					"Action": ["oss:*"],
-//					"Effect": "Allow",
-//					"Resource": ["acs:oss:*:*:*"]
-//				}],
-//				"Version": "1"
-//			}
-//
-// `),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Resource Manager Policy can be imported using the id, e.g.

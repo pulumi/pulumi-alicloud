@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides ASM available versions in the specified region.
  *
  * > **NOTE:** Available in v1.161.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.servicemesh.getVersions({
- *     edition: "Default",
- * });
- * export const serviceMeshVersion = data.alicloud_service_mesh_versions.versions[0].version;
- * ```
  */
 export function getVersions(args?: GetVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetVersionsResult> {
     args = args || {};
@@ -71,20 +57,6 @@ export interface GetVersionsResult {
  * This data source provides ASM available versions in the specified region.
  *
  * > **NOTE:** Available in v1.161.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.servicemesh.getVersions({
- *     edition: "Default",
- * });
- * export const serviceMeshVersion = data.alicloud_service_mesh_versions.versions[0].version;
- * ```
  */
 export function getVersionsOutput(args?: GetVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVersionsResult> {
     return pulumi.output(args).apply((a: any) => getVersions(a, opts))

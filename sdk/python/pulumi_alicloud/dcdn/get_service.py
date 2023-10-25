@@ -74,15 +74,6 @@ def get_service(enable: Optional[str] = None,
 
     > **NOTE:** Available in v1.111.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    open = alicloud.dcdn.get_service(enable="On")
-    ```
-
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
            
@@ -108,15 +99,6 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
     For information about DCDN and how to use it, see [What is DCDN](https://help.aliyun.com/document_detail/197288.html).
 
     > **NOTE:** Available in v1.111.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    open = alicloud.dcdn.get_service(enable="On")
-    ```
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.

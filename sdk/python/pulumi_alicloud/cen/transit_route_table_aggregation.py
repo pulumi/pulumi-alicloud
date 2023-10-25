@@ -38,22 +38,28 @@ class TransitRouteTableAggregationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             transit_route_table_aggregation_cidr: pulumi.Input[str],
-             transit_route_table_aggregation_scope: pulumi.Input[str],
-             transit_route_table_id: pulumi.Input[str],
+             transit_route_table_aggregation_cidr: Optional[pulumi.Input[str]] = None,
+             transit_route_table_aggregation_scope: Optional[pulumi.Input[str]] = None,
+             transit_route_table_id: Optional[pulumi.Input[str]] = None,
              transit_route_table_aggregation_description: Optional[pulumi.Input[str]] = None,
              transit_route_table_aggregation_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'transitRouteTableAggregationCidr' in kwargs:
+        if transit_route_table_aggregation_cidr is None and 'transitRouteTableAggregationCidr' in kwargs:
             transit_route_table_aggregation_cidr = kwargs['transitRouteTableAggregationCidr']
-        if 'transitRouteTableAggregationScope' in kwargs:
+        if transit_route_table_aggregation_cidr is None:
+            raise TypeError("Missing 'transit_route_table_aggregation_cidr' argument")
+        if transit_route_table_aggregation_scope is None and 'transitRouteTableAggregationScope' in kwargs:
             transit_route_table_aggregation_scope = kwargs['transitRouteTableAggregationScope']
-        if 'transitRouteTableId' in kwargs:
+        if transit_route_table_aggregation_scope is None:
+            raise TypeError("Missing 'transit_route_table_aggregation_scope' argument")
+        if transit_route_table_id is None and 'transitRouteTableId' in kwargs:
             transit_route_table_id = kwargs['transitRouteTableId']
-        if 'transitRouteTableAggregationDescription' in kwargs:
+        if transit_route_table_id is None:
+            raise TypeError("Missing 'transit_route_table_id' argument")
+        if transit_route_table_aggregation_description is None and 'transitRouteTableAggregationDescription' in kwargs:
             transit_route_table_aggregation_description = kwargs['transitRouteTableAggregationDescription']
-        if 'transitRouteTableAggregationName' in kwargs:
+        if transit_route_table_aggregation_name is None and 'transitRouteTableAggregationName' in kwargs:
             transit_route_table_aggregation_name = kwargs['transitRouteTableAggregationName']
 
         _setter("transit_route_table_aggregation_cidr", transit_route_table_aggregation_cidr)
@@ -161,17 +167,17 @@ class _TransitRouteTableAggregationState:
              transit_route_table_aggregation_name: Optional[pulumi.Input[str]] = None,
              transit_route_table_aggregation_scope: Optional[pulumi.Input[str]] = None,
              transit_route_table_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'transitRouteTableAggregationCidr' in kwargs:
+        if transit_route_table_aggregation_cidr is None and 'transitRouteTableAggregationCidr' in kwargs:
             transit_route_table_aggregation_cidr = kwargs['transitRouteTableAggregationCidr']
-        if 'transitRouteTableAggregationDescription' in kwargs:
+        if transit_route_table_aggregation_description is None and 'transitRouteTableAggregationDescription' in kwargs:
             transit_route_table_aggregation_description = kwargs['transitRouteTableAggregationDescription']
-        if 'transitRouteTableAggregationName' in kwargs:
+        if transit_route_table_aggregation_name is None and 'transitRouteTableAggregationName' in kwargs:
             transit_route_table_aggregation_name = kwargs['transitRouteTableAggregationName']
-        if 'transitRouteTableAggregationScope' in kwargs:
+        if transit_route_table_aggregation_scope is None and 'transitRouteTableAggregationScope' in kwargs:
             transit_route_table_aggregation_scope = kwargs['transitRouteTableAggregationScope']
-        if 'transitRouteTableId' in kwargs:
+        if transit_route_table_id is None and 'transitRouteTableId' in kwargs:
             transit_route_table_id = kwargs['transitRouteTableId']
 
         if status is not None:
@@ -278,29 +284,6 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.202.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
-        example_transit_route_table_aggregation = alicloud.cen.TransitRouteTableAggregation("exampleTransitRouteTableAggregation",
-            transit_route_table_id=example_transit_router_route_table.transit_router_route_table_id,
-            transit_route_table_aggregation_cidr="10.0.0.0/8",
-            transit_route_table_aggregation_scope="VPC",
-            transit_route_table_aggregation_name="tf_example",
-            transit_route_table_aggregation_description="tf_example")
-        ```
-
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Route Table Aggregation can be imported using the id, e.g.
@@ -329,29 +312,6 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
         For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation).
 
         > **NOTE:** Available since v1.202.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
-        example_transit_route_table_aggregation = alicloud.cen.TransitRouteTableAggregation("exampleTransitRouteTableAggregation",
-            transit_route_table_id=example_transit_router_route_table.transit_router_route_table_id,
-            transit_route_table_aggregation_cidr="10.0.0.0/8",
-            transit_route_table_aggregation_scope="VPC",
-            transit_route_table_aggregation_name="tf_example",
-            transit_route_table_aggregation_description="tf_example")
-        ```
 
         ## Import
 

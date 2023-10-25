@@ -17,58 +17,6 @@ import (
 //
 // > **NOTE:** Available since v1.19.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/datahub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform_example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			exampleProject, err := datahub.NewProject(ctx, "exampleProject", &datahub.ProjectArgs{
-//				Comment: pulumi.String("created by terraform"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleTopic, err := datahub.NewTopic(ctx, "exampleTopic", &datahub.TopicArgs{
-//				ProjectName: exampleProject.Name,
-//				RecordType:  pulumi.String("BLOB"),
-//				ShardCount:  pulumi.Int(3),
-//				LifeCycle:   pulumi.Int(7),
-//				Comment:     pulumi.String("created by terraform"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = datahub.NewSubscription(ctx, "exampleSubscription", &datahub.SubscriptionArgs{
-//				ProjectName: exampleProject.Name,
-//				TopicName:   exampleTopic.Name,
-//				Comment:     pulumi.String("created by terraform"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Datahub subscription can be imported using the ID, e.g.

@@ -15,39 +15,6 @@ import (
 // This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
 //
 // > **NOTE:** Available since v1.195.0.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := threatdetection.GetHoneyPots(ctx, &threatdetection.GetHoneyPotsArgs{
-//				Ids: []string{
-//					"xxxx",
-//				},
-//				HoneypotName: pulumi.StringRef("tf-example"),
-//				NodeId:       pulumi.StringRef("a44e1ab3-6945-444c-889d-5bacee7056e8"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("alicloudThreatDetectionHoneyPotExampleId", _default.Pots[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetHoneyPots(ctx *pulumi.Context, args *GetHoneyPotsArgs, opts ...pulumi.InvokeOption) (*GetHoneyPotsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHoneyPotsResult

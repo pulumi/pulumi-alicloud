@@ -15,36 +15,6 @@ import (
 // This data source provides the Ens Key Pairs of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.133.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ens"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			nameRegex, err := ens.GetKeyPairs(ctx, &ens.GetKeyPairsArgs{
-//				Version:   "example_value",
-//				NameRegex: pulumi.StringRef("^my-KeyPair"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ensKeyPairId1", nameRegex.Pairs[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetKeyPairs(ctx *pulumi.Context, args *GetKeyPairsArgs, opts ...pulumi.InvokeOption) (*GetKeyPairsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKeyPairsResult

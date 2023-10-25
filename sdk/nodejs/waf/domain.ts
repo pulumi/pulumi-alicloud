@@ -15,31 +15,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.82.0+ .
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const domain = new alicloud.waf.Domain("domain", {
- *     clusterType: "PhysicalCluster",
- *     domainName: "alicloud-provider.cn",
- *     http2Ports: ["443"],
- *     httpPorts: ["80"],
- *     httpToUserIp: "Off",
- *     httpsPorts: ["443"],
- *     httpsRedirect: "Off",
- *     instanceId: "waf-123455",
- *     isAccessProduct: "On",
- *     loadBalancing: "IpHash",
- *     logHeaders: [{
- *         key: "foo",
- *         value: "http",
- *     }],
- *     sourceIps: ["1.1.1.1"],
- * });
- * ```
- *
  * ## Import
  *
  * WAF domain can be imported using the id, e.g.

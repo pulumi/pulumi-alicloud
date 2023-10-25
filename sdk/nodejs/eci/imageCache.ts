@@ -13,48 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.eci.getZones({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "10.0.0.0/8",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vswitchName: name,
- *     cidrBlock: "10.1.0.0/16",
- *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneIds?.[0]),
- * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
- *     isp: "BGP",
- *     addressName: name,
- *     netmode: "public",
- *     bandwidth: "1",
- *     securityProtectionTypes: ["AntiDDoS_Enhanced"],
- *     paymentType: "PayAsYouGo",
- * });
- * const defaultRegions = alicloud.getRegions({
- *     current: true,
- * });
- * const defaultImageCache = new alicloud.eci.ImageCache("defaultImageCache", {
- *     imageCacheName: name,
- *     images: [defaultRegions.then(defaultRegions => `registry-vpc.${defaultRegions.regions?.[0]?.id}.aliyuncs.com/eci_open/nginx:alpine`)],
- *     securityGroupId: defaultSecurityGroup.id,
- *     vswitchId: defaultSwitch.id,
- *     eipInstanceId: defaultEipAddress.id,
- * });
- * ```
- *
  * ## Import
  *
  * ECI Image Cache can be imported using the id, e.g.

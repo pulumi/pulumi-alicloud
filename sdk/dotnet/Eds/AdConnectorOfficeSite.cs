@@ -16,53 +16,6 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// &gt; **NOTE:** Available since v1.176.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
-    ///     {
-    ///         CenInstanceName = name,
-    ///         ProtectionLevel = "REDUCED",
-    ///     });
-    /// 
-    ///     var defaultAdConnectorOfficeSite = new AliCloud.Eds.AdConnectorOfficeSite("defaultAdConnectorOfficeSite", new()
-    ///     {
-    ///         AdConnectorOfficeSiteName = name,
-    ///         Bandwidth = 100,
-    ///         CenId = defaultInstance.Id,
-    ///         CidrBlock = "10.0.0.0/12",
-    ///         DesktopAccessType = "INTERNET",
-    ///         DnsAddresses = new[]
-    ///         {
-    ///             "127.0.0.2",
-    ///         },
-    ///         DomainName = "corp.example.com",
-    ///         DomainPassword = "Example1234",
-    ///         DomainUserName = "sAMAccountName",
-    ///         EnableAdminAccess = false,
-    ///         EnableInternetAccess = false,
-    ///         MfaEnabled = false,
-    ///         SubDomainDnsAddresses = new[]
-    ///         {
-    ///             "127.0.0.3",
-    ///         },
-    ///         SubDomainName = "child.example.com",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ECD Ad Connector Office Site can be imported using the id, e.g.

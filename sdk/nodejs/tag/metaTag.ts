@@ -14,20 +14,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Meta Tag Only Support `cn-hangzhou` Region
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.tag.MetaTag("example", {
- *     key: "Name1",
- *     values: ["Desc2"],
- * });
- * ```
- *
  * ## Import
  *
  * Tag Meta Tag can be imported using the id, e.g.

@@ -12,20 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in 1.58.0+
  *
  * > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kubeConfigFilePrefix`.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const k8sClusters = alicloud.cs.getServerlessKubernetesClusters({
- *     kubeConfigFilePrefix: "~/.kube/serverless",
- *     nameRegex: "my-first-k8s",
- *     outputFile: "my-first-k8s-json",
- * });
- * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
- * ```
  */
 export function getServerlessKubernetesClusters(args?: GetServerlessKubernetesClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetServerlessKubernetesClustersResult> {
     args = args || {};
@@ -94,20 +80,6 @@ export interface GetServerlessKubernetesClustersResult {
  * > **NOTE:** Available in 1.58.0+
  *
  * > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kubeConfigFilePrefix`.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const k8sClusters = alicloud.cs.getServerlessKubernetesClusters({
- *     kubeConfigFilePrefix: "~/.kube/serverless",
- *     nameRegex: "my-first-k8s",
- *     outputFile: "my-first-k8s-json",
- * });
- * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
- * ```
  */
 export function getServerlessKubernetesClustersOutput(args?: GetServerlessKubernetesClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerlessKubernetesClustersResult> {
     return pulumi.output(args).apply((a: any) => getServerlessKubernetesClusters(a, opts))

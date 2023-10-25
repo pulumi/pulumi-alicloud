@@ -79,8 +79,8 @@ class DomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
-             is_access_product: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             is_access_product: Optional[pulumi.Input[str]] = None,
              cluster_type: Optional[pulumi.Input[str]] = None,
              connection_time: Optional[pulumi.Input[int]] = None,
              domain: Optional[pulumi.Input[str]] = None,
@@ -96,39 +96,43 @@ class DomainArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              source_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              write_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'isAccessProduct' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if is_access_product is None and 'isAccessProduct' in kwargs:
             is_access_product = kwargs['isAccessProduct']
-        if 'clusterType' in kwargs:
+        if is_access_product is None:
+            raise TypeError("Missing 'is_access_product' argument")
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'connectionTime' in kwargs:
+        if connection_time is None and 'connectionTime' in kwargs:
             connection_time = kwargs['connectionTime']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'http2Ports' in kwargs:
+        if http2_ports is None and 'http2Ports' in kwargs:
             http2_ports = kwargs['http2Ports']
-        if 'httpPorts' in kwargs:
+        if http_ports is None and 'httpPorts' in kwargs:
             http_ports = kwargs['httpPorts']
-        if 'httpToUserIp' in kwargs:
+        if http_to_user_ip is None and 'httpToUserIp' in kwargs:
             http_to_user_ip = kwargs['httpToUserIp']
-        if 'httpsPorts' in kwargs:
+        if https_ports is None and 'httpsPorts' in kwargs:
             https_ports = kwargs['httpsPorts']
-        if 'httpsRedirect' in kwargs:
+        if https_redirect is None and 'httpsRedirect' in kwargs:
             https_redirect = kwargs['httpsRedirect']
-        if 'loadBalancing' in kwargs:
+        if load_balancing is None and 'loadBalancing' in kwargs:
             load_balancing = kwargs['loadBalancing']
-        if 'logHeaders' in kwargs:
+        if log_headers is None and 'logHeaders' in kwargs:
             log_headers = kwargs['logHeaders']
-        if 'readTime' in kwargs:
+        if read_time is None and 'readTime' in kwargs:
             read_time = kwargs['readTime']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'sourceIps' in kwargs:
+        if source_ips is None and 'sourceIps' in kwargs:
             source_ips = kwargs['sourceIps']
-        if 'writeTime' in kwargs:
+        if write_time is None and 'writeTime' in kwargs:
             write_time = kwargs['writeTime']
 
         _setter("instance_id", instance_id)
@@ -465,39 +469,39 @@ class _DomainState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              source_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              write_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterType' in kwargs:
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'connectionTime' in kwargs:
+        if connection_time is None and 'connectionTime' in kwargs:
             connection_time = kwargs['connectionTime']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'http2Ports' in kwargs:
+        if http2_ports is None and 'http2Ports' in kwargs:
             http2_ports = kwargs['http2Ports']
-        if 'httpPorts' in kwargs:
+        if http_ports is None and 'httpPorts' in kwargs:
             http_ports = kwargs['httpPorts']
-        if 'httpToUserIp' in kwargs:
+        if http_to_user_ip is None and 'httpToUserIp' in kwargs:
             http_to_user_ip = kwargs['httpToUserIp']
-        if 'httpsPorts' in kwargs:
+        if https_ports is None and 'httpsPorts' in kwargs:
             https_ports = kwargs['httpsPorts']
-        if 'httpsRedirect' in kwargs:
+        if https_redirect is None and 'httpsRedirect' in kwargs:
             https_redirect = kwargs['httpsRedirect']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'isAccessProduct' in kwargs:
+        if is_access_product is None and 'isAccessProduct' in kwargs:
             is_access_product = kwargs['isAccessProduct']
-        if 'loadBalancing' in kwargs:
+        if load_balancing is None and 'loadBalancing' in kwargs:
             load_balancing = kwargs['loadBalancing']
-        if 'logHeaders' in kwargs:
+        if log_headers is None and 'logHeaders' in kwargs:
             log_headers = kwargs['logHeaders']
-        if 'readTime' in kwargs:
+        if read_time is None and 'readTime' in kwargs:
             read_time = kwargs['readTime']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'sourceIps' in kwargs:
+        if source_ips is None and 'sourceIps' in kwargs:
             source_ips = kwargs['sourceIps']
-        if 'writeTime' in kwargs:
+        if write_time is None and 'writeTime' in kwargs:
             write_time = kwargs['writeTime']
 
         if cluster_type is not None:
@@ -795,30 +799,6 @@ class Domain(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.82.0+ .
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        domain = alicloud.waf.Domain("domain",
-            cluster_type="PhysicalCluster",
-            domain_name="alicloud-provider.cn",
-            http2_ports=["443"],
-            http_ports=["80"],
-            http_to_user_ip="Off",
-            https_ports=["443"],
-            https_redirect="Off",
-            instance_id="waf-123455",
-            is_access_product="On",
-            load_balancing="IpHash",
-            log_headers=[alicloud.waf.DomainLogHeaderArgs(
-                key="foo",
-                value="http",
-            )],
-            source_ips=["1.1.1.1"])
-        ```
-
         ## Import
 
         WAF domain can be imported using the id, e.g.
@@ -864,30 +844,6 @@ class Domain(pulumi.CustomResource):
         For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
 
         > **NOTE:** Available in 1.82.0+ .
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        domain = alicloud.waf.Domain("domain",
-            cluster_type="PhysicalCluster",
-            domain_name="alicloud-provider.cn",
-            http2_ports=["443"],
-            http_ports=["80"],
-            http_to_user_ip="Off",
-            https_ports=["443"],
-            https_redirect="Off",
-            instance_id="waf-123455",
-            is_access_product="On",
-            load_balancing="IpHash",
-            log_headers=[alicloud.waf.DomainLogHeaderArgs(
-                key="foo",
-                value="http",
-            )],
-            source_ips=["1.1.1.1"])
-        ```
 
         ## Import
 

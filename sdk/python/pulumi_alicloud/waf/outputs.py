@@ -33,7 +33,7 @@ class DomainLogHeader(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -85,26 +85,42 @@ class GetCertificatesCertificateResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificate_id: str,
-             certificate_name: str,
-             common_name: str,
-             domain: str,
-             id: str,
-             instance_id: str,
-             is_using: bool,
-             sans: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             certificate_id: Optional[str] = None,
+             certificate_name: Optional[str] = None,
+             common_name: Optional[str] = None,
+             domain: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             is_using: Optional[bool] = None,
+             sans: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certificateId' in kwargs:
+        if certificate_id is None and 'certificateId' in kwargs:
             certificate_id = kwargs['certificateId']
-        if 'certificateName' in kwargs:
+        if certificate_id is None:
+            raise TypeError("Missing 'certificate_id' argument")
+        if certificate_name is None and 'certificateName' in kwargs:
             certificate_name = kwargs['certificateName']
-        if 'commonName' in kwargs:
+        if certificate_name is None:
+            raise TypeError("Missing 'certificate_name' argument")
+        if common_name is None and 'commonName' in kwargs:
             common_name = kwargs['commonName']
-        if 'instanceId' in kwargs:
+        if common_name is None:
+            raise TypeError("Missing 'common_name' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'isUsing' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if is_using is None and 'isUsing' in kwargs:
             is_using = kwargs['isUsing']
+        if is_using is None:
+            raise TypeError("Missing 'is_using' argument")
+        if sans is None:
+            raise TypeError("Missing 'sans' argument")
 
         _setter("certificate_id", certificate_id)
         _setter("certificate_name", certificate_name)
@@ -242,57 +258,95 @@ class GetDomainsDomainResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_type: str,
-             cname: str,
-             connection_time: int,
-             domain: str,
-             domain_name: str,
-             http2_ports: Sequence[str],
-             http_ports: Sequence[str],
-             http_to_user_ip: str,
-             https_ports: Sequence[str],
-             https_redirect: str,
-             id: str,
-             is_access_product: str,
-             load_balancing: str,
-             log_headers: Sequence['outputs.GetDomainsDomainLogHeaderResult'],
-             read_time: int,
-             resource_group_id: str,
-             source_ips: Sequence[str],
-             version: int,
-             write_time: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cluster_type: Optional[str] = None,
+             cname: Optional[str] = None,
+             connection_time: Optional[int] = None,
+             domain: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             http2_ports: Optional[Sequence[str]] = None,
+             http_ports: Optional[Sequence[str]] = None,
+             http_to_user_ip: Optional[str] = None,
+             https_ports: Optional[Sequence[str]] = None,
+             https_redirect: Optional[str] = None,
+             id: Optional[str] = None,
+             is_access_product: Optional[str] = None,
+             load_balancing: Optional[str] = None,
+             log_headers: Optional[Sequence['outputs.GetDomainsDomainLogHeaderResult']] = None,
+             read_time: Optional[int] = None,
+             resource_group_id: Optional[str] = None,
+             source_ips: Optional[Sequence[str]] = None,
+             version: Optional[int] = None,
+             write_time: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterType' in kwargs:
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'connectionTime' in kwargs:
+        if cluster_type is None:
+            raise TypeError("Missing 'cluster_type' argument")
+        if cname is None:
+            raise TypeError("Missing 'cname' argument")
+        if connection_time is None and 'connectionTime' in kwargs:
             connection_time = kwargs['connectionTime']
-        if 'domainName' in kwargs:
+        if connection_time is None:
+            raise TypeError("Missing 'connection_time' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'http2Ports' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if http2_ports is None and 'http2Ports' in kwargs:
             http2_ports = kwargs['http2Ports']
-        if 'httpPorts' in kwargs:
+        if http2_ports is None:
+            raise TypeError("Missing 'http2_ports' argument")
+        if http_ports is None and 'httpPorts' in kwargs:
             http_ports = kwargs['httpPorts']
-        if 'httpToUserIp' in kwargs:
+        if http_ports is None:
+            raise TypeError("Missing 'http_ports' argument")
+        if http_to_user_ip is None and 'httpToUserIp' in kwargs:
             http_to_user_ip = kwargs['httpToUserIp']
-        if 'httpsPorts' in kwargs:
+        if http_to_user_ip is None:
+            raise TypeError("Missing 'http_to_user_ip' argument")
+        if https_ports is None and 'httpsPorts' in kwargs:
             https_ports = kwargs['httpsPorts']
-        if 'httpsRedirect' in kwargs:
+        if https_ports is None:
+            raise TypeError("Missing 'https_ports' argument")
+        if https_redirect is None and 'httpsRedirect' in kwargs:
             https_redirect = kwargs['httpsRedirect']
-        if 'isAccessProduct' in kwargs:
+        if https_redirect is None:
+            raise TypeError("Missing 'https_redirect' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_access_product is None and 'isAccessProduct' in kwargs:
             is_access_product = kwargs['isAccessProduct']
-        if 'loadBalancing' in kwargs:
+        if is_access_product is None:
+            raise TypeError("Missing 'is_access_product' argument")
+        if load_balancing is None and 'loadBalancing' in kwargs:
             load_balancing = kwargs['loadBalancing']
-        if 'logHeaders' in kwargs:
+        if load_balancing is None:
+            raise TypeError("Missing 'load_balancing' argument")
+        if log_headers is None and 'logHeaders' in kwargs:
             log_headers = kwargs['logHeaders']
-        if 'readTime' in kwargs:
+        if log_headers is None:
+            raise TypeError("Missing 'log_headers' argument")
+        if read_time is None and 'readTime' in kwargs:
             read_time = kwargs['readTime']
-        if 'resourceGroupId' in kwargs:
+        if read_time is None:
+            raise TypeError("Missing 'read_time' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'sourceIps' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if source_ips is None and 'sourceIps' in kwargs:
             source_ips = kwargs['sourceIps']
-        if 'writeTime' in kwargs:
+        if source_ips is None:
+            raise TypeError("Missing 'source_ips' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if write_time is None and 'writeTime' in kwargs:
             write_time = kwargs['writeTime']
+        if write_time is None:
+            raise TypeError("Missing 'write_time' argument")
 
         _setter("cluster_type", cluster_type)
         _setter("cname", cname)
@@ -484,10 +538,14 @@ class GetDomainsDomainLogHeaderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("value", value)
@@ -543,26 +601,42 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             end_date: int,
-             id: str,
-             in_debt: int,
-             instance_id: str,
-             remain_day: int,
-             status: int,
-             subscription_type: str,
-             trial: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             end_date: Optional[int] = None,
+             id: Optional[str] = None,
+             in_debt: Optional[int] = None,
+             instance_id: Optional[str] = None,
+             remain_day: Optional[int] = None,
+             status: Optional[int] = None,
+             subscription_type: Optional[str] = None,
+             trial: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endDate' in kwargs:
+        if end_date is None and 'endDate' in kwargs:
             end_date = kwargs['endDate']
-        if 'inDebt' in kwargs:
+        if end_date is None:
+            raise TypeError("Missing 'end_date' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if in_debt is None and 'inDebt' in kwargs:
             in_debt = kwargs['inDebt']
-        if 'instanceId' in kwargs:
+        if in_debt is None:
+            raise TypeError("Missing 'in_debt' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'remainDay' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if remain_day is None and 'remainDay' in kwargs:
             remain_day = kwargs['remainDay']
-        if 'subscriptionType' in kwargs:
+        if remain_day is None:
+            raise TypeError("Missing 'remain_day' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if subscription_type is None and 'subscriptionType' in kwargs:
             subscription_type = kwargs['subscriptionType']
+        if subscription_type is None:
+            raise TypeError("Missing 'subscription_type' argument")
+        if trial is None:
+            raise TypeError("Missing 'trial' argument")
 
         _setter("end_date", end_date)
         _setter("id", id)

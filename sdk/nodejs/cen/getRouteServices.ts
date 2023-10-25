@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides CEN Route Service available to the user.
  *
  * > **NOTE:** Available in v1.102.0+
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cen.getRouteServices({
- *     cenId: "cen-7qthudw0ll6jmc****",
- * });
- * export const firstCenRouteServiceId = example.then(example => example.services?.[0]?.id);
- * ```
  */
 export function getRouteServices(args: GetRouteServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteServicesResult> {
 
@@ -119,20 +105,6 @@ export interface GetRouteServicesResult {
  * This data source provides CEN Route Service available to the user.
  *
  * > **NOTE:** Available in v1.102.0+
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cen.getRouteServices({
- *     cenId: "cen-7qthudw0ll6jmc****",
- * });
- * export const firstCenRouteServiceId = example.then(example => example.services?.[0]?.id);
- * ```
  */
 export function getRouteServicesOutput(args: GetRouteServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteServicesResult> {
     return pulumi.output(args).apply((a: any) => getRouteServices(a, opts))

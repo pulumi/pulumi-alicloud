@@ -84,14 +84,14 @@ class DbClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: pulumi.Input[str],
-             db_cluster_class: pulumi.Input[str],
-             db_cluster_network_type: pulumi.Input[str],
-             db_cluster_version: pulumi.Input[str],
-             db_node_group_count: pulumi.Input[int],
-             db_node_storage: pulumi.Input[str],
-             payment_type: pulumi.Input[str],
-             storage_type: pulumi.Input[str],
+             category: Optional[pulumi.Input[str]] = None,
+             db_cluster_class: Optional[pulumi.Input[str]] = None,
+             db_cluster_network_type: Optional[pulumi.Input[str]] = None,
+             db_cluster_version: Optional[pulumi.Input[str]] = None,
+             db_node_group_count: Optional[pulumi.Input[int]] = None,
+             db_node_storage: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             storage_type: Optional[pulumi.Input[str]] = None,
              db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]]] = None,
              db_cluster_description: Optional[pulumi.Input[str]] = None,
              encryption_key: Optional[pulumi.Input[str]] = None,
@@ -103,39 +103,55 @@ class DbClusterArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbClusterClass' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if db_cluster_class is None and 'dbClusterClass' in kwargs:
             db_cluster_class = kwargs['dbClusterClass']
-        if 'dbClusterNetworkType' in kwargs:
+        if db_cluster_class is None:
+            raise TypeError("Missing 'db_cluster_class' argument")
+        if db_cluster_network_type is None and 'dbClusterNetworkType' in kwargs:
             db_cluster_network_type = kwargs['dbClusterNetworkType']
-        if 'dbClusterVersion' in kwargs:
+        if db_cluster_network_type is None:
+            raise TypeError("Missing 'db_cluster_network_type' argument")
+        if db_cluster_version is None and 'dbClusterVersion' in kwargs:
             db_cluster_version = kwargs['dbClusterVersion']
-        if 'dbNodeGroupCount' in kwargs:
+        if db_cluster_version is None:
+            raise TypeError("Missing 'db_cluster_version' argument")
+        if db_node_group_count is None and 'dbNodeGroupCount' in kwargs:
             db_node_group_count = kwargs['dbNodeGroupCount']
-        if 'dbNodeStorage' in kwargs:
+        if db_node_group_count is None:
+            raise TypeError("Missing 'db_node_group_count' argument")
+        if db_node_storage is None and 'dbNodeStorage' in kwargs:
             db_node_storage = kwargs['dbNodeStorage']
-        if 'paymentType' in kwargs:
+        if db_node_storage is None:
+            raise TypeError("Missing 'db_node_storage' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'storageType' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
-        if 'dbClusterAccessWhiteLists' in kwargs:
+        if storage_type is None:
+            raise TypeError("Missing 'storage_type' argument")
+        if db_cluster_access_white_lists is None and 'dbClusterAccessWhiteLists' in kwargs:
             db_cluster_access_white_lists = kwargs['dbClusterAccessWhiteLists']
-        if 'dbClusterDescription' in kwargs:
+        if db_cluster_description is None and 'dbClusterDescription' in kwargs:
             db_cluster_description = kwargs['dbClusterDescription']
-        if 'encryptionKey' in kwargs:
+        if encryption_key is None and 'encryptionKey' in kwargs:
             encryption_key = kwargs['encryptionKey']
-        if 'encryptionType' in kwargs:
+        if encryption_type is None and 'encryptionType' in kwargs:
             encryption_type = kwargs['encryptionType']
-        if 'maintainTime' in kwargs:
+        if maintain_time is None and 'maintainTime' in kwargs:
             maintain_time = kwargs['maintainTime']
-        if 'usedTime' in kwargs:
+        if used_time is None and 'usedTime' in kwargs:
             used_time = kwargs['usedTime']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("category", category)
@@ -498,41 +514,41 @@ class _DbClusterState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'dbClusterAccessWhiteLists' in kwargs:
+        if db_cluster_access_white_lists is None and 'dbClusterAccessWhiteLists' in kwargs:
             db_cluster_access_white_lists = kwargs['dbClusterAccessWhiteLists']
-        if 'dbClusterClass' in kwargs:
+        if db_cluster_class is None and 'dbClusterClass' in kwargs:
             db_cluster_class = kwargs['dbClusterClass']
-        if 'dbClusterDescription' in kwargs:
+        if db_cluster_description is None and 'dbClusterDescription' in kwargs:
             db_cluster_description = kwargs['dbClusterDescription']
-        if 'dbClusterNetworkType' in kwargs:
+        if db_cluster_network_type is None and 'dbClusterNetworkType' in kwargs:
             db_cluster_network_type = kwargs['dbClusterNetworkType']
-        if 'dbClusterVersion' in kwargs:
+        if db_cluster_version is None and 'dbClusterVersion' in kwargs:
             db_cluster_version = kwargs['dbClusterVersion']
-        if 'dbNodeGroupCount' in kwargs:
+        if db_node_group_count is None and 'dbNodeGroupCount' in kwargs:
             db_node_group_count = kwargs['dbNodeGroupCount']
-        if 'dbNodeStorage' in kwargs:
+        if db_node_storage is None and 'dbNodeStorage' in kwargs:
             db_node_storage = kwargs['dbNodeStorage']
-        if 'encryptionKey' in kwargs:
+        if encryption_key is None and 'encryptionKey' in kwargs:
             encryption_key = kwargs['encryptionKey']
-        if 'encryptionType' in kwargs:
+        if encryption_type is None and 'encryptionType' in kwargs:
             encryption_type = kwargs['encryptionType']
-        if 'maintainTime' in kwargs:
+        if maintain_time is None and 'maintainTime' in kwargs:
             maintain_time = kwargs['maintainTime']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'storageType' in kwargs:
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
-        if 'usedTime' in kwargs:
+        if used_time is None and 'usedTime' in kwargs:
             used_time = kwargs['usedTime']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if category is not None:
@@ -865,40 +881,6 @@ class DbCluster(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.clickhouse.get_regions(current=True)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_regions.regions[0].zone_ids[0].zone_id)
-        default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
-            db_cluster_version="22.8.5.29",
-            category="Basic",
-            db_cluster_class="S8",
-            db_cluster_network_type="vpc",
-            db_node_group_count=1,
-            payment_type="PayAsYouGo",
-            db_node_storage="500",
-            storage_type="cloud_essd",
-            vswitch_id=default_switch.id,
-            vpc_id=default_network.id)
-        ```
-
         ## Import
 
         Click House DBCluster can be imported using the id, e.g.
@@ -943,40 +925,6 @@ class DbCluster(pulumi.CustomResource):
         For information about Click House DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createdbinstance).
 
         > **NOTE:** Available since v1.134.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.clickhouse.get_regions(current=True)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_regions.regions[0].zone_ids[0].zone_id)
-        default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
-            db_cluster_version="22.8.5.29",
-            category="Basic",
-            db_cluster_class="S8",
-            db_cluster_network_type="vpc",
-            db_node_group_count=1,
-            payment_type="PayAsYouGo",
-            db_node_storage="500",
-            storage_type="cloud_essd",
-            vswitch_id=default_switch.id,
-            vpc_id=default_network.id)
-        ```
 
         ## Import
 

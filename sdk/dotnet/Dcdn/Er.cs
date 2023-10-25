@@ -16,48 +16,6 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// &gt; **NOTE:** Available since v1.201.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = new AliCloud.Dcdn.Er("default", new()
-    ///     {
-    ///         ErName = name,
-    ///         Description = name,
-    ///         EnvConf = new AliCloud.Dcdn.Inputs.ErEnvConfArgs
-    ///         {
-    ///             Staging = new AliCloud.Dcdn.Inputs.ErEnvConfStagingArgs
-    ///             {
-    ///                 SpecName = "5ms",
-    ///                 AllowedHosts = new[]
-    ///                 {
-    ///                     "example.com",
-    ///                 },
-    ///             },
-    ///             Production = new AliCloud.Dcdn.Inputs.ErEnvConfProductionArgs
-    ///             {
-    ///                 SpecName = "5ms",
-    ///                 AllowedHosts = new[]
-    ///                 {
-    ///                     "example.com",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// DCDN Er can be imported using the id, e.g.

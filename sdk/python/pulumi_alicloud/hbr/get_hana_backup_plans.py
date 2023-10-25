@@ -149,22 +149,6 @@ def get_hana_backup_plans(cluster_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.179.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.hbr.get_hana_backup_plans(cluster_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("hbrHanaBackupPlanId1", ids.plans[0].id)
-    ```
-
 
     :param str cluster_id: The ID of the SAP HANA instance.
     :param str database_name: The name of the database.
@@ -213,22 +197,6 @@ def get_hana_backup_plans_output(cluster_id: Optional[pulumi.Input[str]] = None,
     This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.179.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.hbr.get_hana_backup_plans(cluster_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("hbrHanaBackupPlanId1", ids.plans[0].id)
-    ```
 
 
     :param str cluster_id: The ID of the SAP HANA instance.

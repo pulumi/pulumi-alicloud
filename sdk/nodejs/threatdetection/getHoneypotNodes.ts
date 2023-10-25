@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
  *
  * > **NOTE:** Available in 1.195.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.threatdetection.getHoneypotNodes({
- *     ids: [alicloud_threat_detection_honeypot_node["default"].id],
- * });
- * export const alicloudThreatDetectionHoneypotNodeExampleId = _default.then(_default => _default.nodes?.[0]?.id);
- * ```
  */
 export function getHoneypotNodes(args?: GetHoneypotNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetHoneypotNodesResult> {
     args = args || {};
@@ -103,18 +91,6 @@ export interface GetHoneypotNodesResult {
  * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
  *
  * > **NOTE:** Available in 1.195.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.threatdetection.getHoneypotNodes({
- *     ids: [alicloud_threat_detection_honeypot_node["default"].id],
- * });
- * export const alicloudThreatDetectionHoneypotNodeExampleId = _default.then(_default => _default.nodes?.[0]?.id);
- * ```
  */
 export function getHoneypotNodesOutput(args?: GetHoneypotNodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHoneypotNodesResult> {
     return pulumi.output(args).apply((a: any) => getHoneypotNodes(a, opts))

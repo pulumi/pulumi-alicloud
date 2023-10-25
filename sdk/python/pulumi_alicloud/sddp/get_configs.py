@@ -90,22 +90,6 @@ def get_configs(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.133.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_config = alicloud.sddp.Config("defaultConfig",
-        code="access_failed_cnt",
-        value="10")
-    default_configs = alicloud.sddp.get_configs_output(ids=[default_config.id],
-        output_file="./t.json")
-    pulumi.export("sddpConfigId", default_configs.ids)
-    ```
-
 
     :param Sequence[str] ids: A list of Config IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -134,22 +118,6 @@ def get_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     This data source provides the Sddp Configs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.133.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_config = alicloud.sddp.Config("defaultConfig",
-        code="access_failed_cnt",
-        value="10")
-    default_configs = alicloud.sddp.get_configs_output(ids=[default_config.id],
-        output_file="./t.json")
-    pulumi.export("sddpConfigId", default_configs.ids)
-    ```
 
 
     :param Sequence[str] ids: A list of Config IDs.

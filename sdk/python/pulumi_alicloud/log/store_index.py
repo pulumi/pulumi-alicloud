@@ -37,15 +37,19 @@ class StoreIndexArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             logstore: pulumi.Input[str],
-             project: pulumi.Input[str],
+             logstore: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              field_searches: Optional[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchArgs']]]] = None,
              full_text: Optional[pulumi.Input['StoreIndexFullTextArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fieldSearches' in kwargs:
+        if logstore is None:
+            raise TypeError("Missing 'logstore' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if field_searches is None and 'fieldSearches' in kwargs:
             field_searches = kwargs['fieldSearches']
-        if 'fullText' in kwargs:
+        if full_text is None and 'fullText' in kwargs:
             full_text = kwargs['fullText']
 
         _setter("logstore", logstore)
@@ -132,11 +136,11 @@ class _StoreIndexState:
              full_text: Optional[pulumi.Input['StoreIndexFullTextArgs']] = None,
              logstore: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fieldSearches' in kwargs:
+        if field_searches is None and 'fieldSearches' in kwargs:
             field_searches = kwargs['fieldSearches']
-        if 'fullText' in kwargs:
+        if full_text is None and 'fullText' in kwargs:
             full_text = kwargs['fullText']
 
         if field_searches is not None:
@@ -211,41 +215,6 @@ class StoreIndex(pulumi.CustomResource):
         Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
         You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_store_index = alicloud.log.StoreIndex("exampleStoreIndex",
-            project=example_project.name,
-            logstore=example_store.name,
-            full_text=alicloud.log.StoreIndexFullTextArgs(
-                case_sensitive=True,
-                token=\"\"\" #$^*
-        	\"\"\",
-            ),
-            field_searches=[alicloud.log.StoreIndexFieldSearchArgs(
-                name="terraform-example",
-                enable_analytics=True,
-                type="text",
-                token=\"\"\" #$^*
-        	\"\"\",
-            )])
-        ```
         ## Module Support
 
         You can use the existing sls module
@@ -276,41 +245,6 @@ class StoreIndex(pulumi.CustomResource):
         Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
         You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_store_index = alicloud.log.StoreIndex("exampleStoreIndex",
-            project=example_project.name,
-            logstore=example_store.name,
-            full_text=alicloud.log.StoreIndexFullTextArgs(
-                case_sensitive=True,
-                token=\"\"\" #$^*
-        	\"\"\",
-            ),
-            field_searches=[alicloud.log.StoreIndexFieldSearchArgs(
-                name="terraform-example",
-                enable_analytics=True,
-                type="text",
-                token=\"\"\" #$^*
-        	\"\"\",
-            )])
-        ```
         ## Module Support
 
         You can use the existing sls module
@@ -357,11 +291,7 @@ class StoreIndex(pulumi.CustomResource):
             __props__ = StoreIndexArgs.__new__(StoreIndexArgs)
 
             __props__.__dict__["field_searches"] = field_searches
-            if full_text is not None and not isinstance(full_text, StoreIndexFullTextArgs):
-                full_text = full_text or {}
-                def _setter(key, value):
-                    full_text[key] = value
-                StoreIndexFullTextArgs._configure(_setter, **full_text)
+            full_text = _utilities.configure(full_text, StoreIndexFullTextArgs, True)
             __props__.__dict__["full_text"] = full_text
             if logstore is None and not opts.urn:
                 raise TypeError("Missing required property 'logstore'")

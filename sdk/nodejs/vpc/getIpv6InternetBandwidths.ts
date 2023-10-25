@@ -10,32 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Vpc Ipv6 Internet Bandwidths of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.143.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.vpc.getIpv6InternetBandwidths({
- *     ids: ["example_id"],
- * });
- * export const vpcIpv6InternetBandwidthId1 = ids.then(ids => ids.bandwidths?.[0]?.id);
- * const ipv6InternetBandwidthId = alicloud.vpc.getIpv6InternetBandwidths({
- *     ipv6InternetBandwidthId: "example_value",
- * });
- * export const vpcIpv6InternetBandwidthId2 = ipv6InternetBandwidthId.then(ipv6InternetBandwidthId => ipv6InternetBandwidthId.bandwidths?.[0]?.id);
- * const ipv6AddressId = alicloud.vpc.getIpv6InternetBandwidths({
- *     ipv6AddressId: "example_value",
- * });
- * export const vpcIpv6InternetBandwidthId3 = ipv6AddressId.then(ipv6AddressId => ipv6AddressId.bandwidths?.[0]?.id);
- * const status = alicloud.vpc.getIpv6InternetBandwidths({
- *     status: "Normal",
- * });
- * export const vpcIpv6InternetBandwidthId4 = status.then(status => status.bandwidths?.[0]?.id);
- * ```
  */
 export function getIpv6InternetBandwidths(args?: GetIpv6InternetBandwidthsArgs, opts?: pulumi.InvokeOptions): Promise<GetIpv6InternetBandwidthsResult> {
     args = args || {};
@@ -95,32 +69,6 @@ export interface GetIpv6InternetBandwidthsResult {
  * This data source provides the Vpc Ipv6 Internet Bandwidths of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.143.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.vpc.getIpv6InternetBandwidths({
- *     ids: ["example_id"],
- * });
- * export const vpcIpv6InternetBandwidthId1 = ids.then(ids => ids.bandwidths?.[0]?.id);
- * const ipv6InternetBandwidthId = alicloud.vpc.getIpv6InternetBandwidths({
- *     ipv6InternetBandwidthId: "example_value",
- * });
- * export const vpcIpv6InternetBandwidthId2 = ipv6InternetBandwidthId.then(ipv6InternetBandwidthId => ipv6InternetBandwidthId.bandwidths?.[0]?.id);
- * const ipv6AddressId = alicloud.vpc.getIpv6InternetBandwidths({
- *     ipv6AddressId: "example_value",
- * });
- * export const vpcIpv6InternetBandwidthId3 = ipv6AddressId.then(ipv6AddressId => ipv6AddressId.bandwidths?.[0]?.id);
- * const status = alicloud.vpc.getIpv6InternetBandwidths({
- *     status: "Normal",
- * });
- * export const vpcIpv6InternetBandwidthId4 = status.then(status => status.bandwidths?.[0]?.id);
- * ```
  */
 export function getIpv6InternetBandwidthsOutput(args?: GetIpv6InternetBandwidthsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6InternetBandwidthsResult> {
     return pulumi.output(args).apply((a: any) => getIpv6InternetBandwidths(a, opts))

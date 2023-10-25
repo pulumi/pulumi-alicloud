@@ -9,39 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.5.0.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.rds.getZones({
- *     engine: "MySQL",
- *     engineVersion: "5.6",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: name,
- * });
- * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
- *     engine: "MySQL",
- *     engineVersion: "5.6",
- *     instanceType: "rds.mysql.s1.small",
- *     instanceStorage: 10,
- *     vswitchId: defaultSwitch.id,
- *     instanceName: name,
- * });
- * const defaultDatabase = new alicloud.rds.Database("defaultDatabase", {instanceId: defaultInstance.id});
- * ```
- *
  * ## Import
  *
  * RDS database can be imported using the id, e.g.

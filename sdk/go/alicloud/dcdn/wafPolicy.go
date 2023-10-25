@@ -19,43 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.184.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf_example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := dcdn.NewWafPolicy(ctx, "example", &dcdn.WafPolicyArgs{
-//				DefenseScene: pulumi.String("waf_group"),
-//				PolicyName:   pulumi.String(name),
-//				PolicyType:   pulumi.String("custom"),
-//				Status:       pulumi.String("on"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // DCDN Waf Policy can be imported using the id, e.g.

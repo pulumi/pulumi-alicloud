@@ -63,9 +63,9 @@ class PeerConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accepting_region_id: pulumi.Input[str],
-             accepting_vpc_id: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
+             accepting_region_id: Optional[pulumi.Input[str]] = None,
+             accepting_vpc_id: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
              accepting_ali_uid: Optional[pulumi.Input[int]] = None,
              bandwidth: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -74,21 +74,27 @@ class PeerConnectionArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceptingRegionId' in kwargs:
+        if accepting_region_id is None and 'acceptingRegionId' in kwargs:
             accepting_region_id = kwargs['acceptingRegionId']
-        if 'acceptingVpcId' in kwargs:
+        if accepting_region_id is None:
+            raise TypeError("Missing 'accepting_region_id' argument")
+        if accepting_vpc_id is None and 'acceptingVpcId' in kwargs:
             accepting_vpc_id = kwargs['acceptingVpcId']
-        if 'vpcId' in kwargs:
+        if accepting_vpc_id is None:
+            raise TypeError("Missing 'accepting_vpc_id' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'acceptingAliUid' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if accepting_ali_uid is None and 'acceptingAliUid' in kwargs:
             accepting_ali_uid = kwargs['acceptingAliUid']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'peerConnectionName' in kwargs:
+        if peer_connection_name is None and 'peerConnectionName' in kwargs:
             peer_connection_name = kwargs['peerConnectionName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("accepting_region_id", accepting_region_id)
@@ -318,23 +324,23 @@ class _PeerConnectionState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceptingAliUid' in kwargs:
+        if accepting_ali_uid is None and 'acceptingAliUid' in kwargs:
             accepting_ali_uid = kwargs['acceptingAliUid']
-        if 'acceptingRegionId' in kwargs:
+        if accepting_region_id is None and 'acceptingRegionId' in kwargs:
             accepting_region_id = kwargs['acceptingRegionId']
-        if 'acceptingVpcId' in kwargs:
+        if accepting_vpc_id is None and 'acceptingVpcId' in kwargs:
             accepting_vpc_id = kwargs['acceptingVpcId']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'peerConnectionName' in kwargs:
+        if peer_connection_name is None and 'peerConnectionName' in kwargs:
             peer_connection_name = kwargs['peerConnectionName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if accepting_ali_uid is not None:
@@ -538,39 +544,6 @@ class PeerConnection(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.186.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_account = alicloud.get_account()
-        config = pulumi.Config()
-        accepting_region = config.get("acceptingRegion")
-        if accepting_region is None:
-            accepting_region = "cn-beijing"
-        local = alicloud.Provider("local", region="cn-hangzhou")
-        accepting = alicloud.Provider("accepting", region=accepting_region)
-        local_vpc = alicloud.vpc.Network("localVpc",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            opts=pulumi.ResourceOptions(provider=alicloud["local"]))
-        accepting_vpc = alicloud.vpc.Network("acceptingVpc",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            opts=pulumi.ResourceOptions(provider=alicloud["accepting"]))
-        default_peer_connection = alicloud.vpc.PeerConnection("defaultPeerConnection",
-            peer_connection_name="terraform-example",
-            vpc_id=local_vpc.id,
-            accepting_ali_uid=default_account.id,
-            accepting_region_id=accepting_region,
-            accepting_vpc_id=accepting_vpc.id,
-            description="terraform-example",
-            opts=pulumi.ResourceOptions(provider=alicloud["local"]))
-        ```
-
         ## Import
 
         VPC Peer Connection can be imported using the id, e.g.
@@ -612,39 +585,6 @@ class PeerConnection(pulumi.CustomResource):
         For information about VPC Peer Connection and how to use it, see [What is Peer Connection](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createvpcpeer).
 
         > **NOTE:** Available since v1.186.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_account = alicloud.get_account()
-        config = pulumi.Config()
-        accepting_region = config.get("acceptingRegion")
-        if accepting_region is None:
-            accepting_region = "cn-beijing"
-        local = alicloud.Provider("local", region="cn-hangzhou")
-        accepting = alicloud.Provider("accepting", region=accepting_region)
-        local_vpc = alicloud.vpc.Network("localVpc",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            opts=pulumi.ResourceOptions(provider=alicloud["local"]))
-        accepting_vpc = alicloud.vpc.Network("acceptingVpc",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            opts=pulumi.ResourceOptions(provider=alicloud["accepting"]))
-        default_peer_connection = alicloud.vpc.PeerConnection("defaultPeerConnection",
-            peer_connection_name="terraform-example",
-            vpc_id=local_vpc.id,
-            accepting_ali_uid=default_account.id,
-            accepting_region_id=accepting_region,
-            accepting_vpc_id=accepting_vpc.id,
-            description="terraform-example",
-            opts=pulumi.ResourceOptions(provider=alicloud["local"]))
-        ```
 
         ## Import
 

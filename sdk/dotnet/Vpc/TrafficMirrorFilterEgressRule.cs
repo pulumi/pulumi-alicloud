@@ -16,36 +16,6 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available since v1.140.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Vpc.TrafficMirrorFilter("example", new()
-    ///     {
-    ///         TrafficMirrorFilterName = "example_value",
-    ///     });
-    /// 
-    ///     var @default = new AliCloud.Vpc.TrafficMirrorFilterEgressRule("default", new()
-    ///     {
-    ///         Action = "drop",
-    ///         Priority = 2,
-    ///         SourceCidrBlock = "10.0.0.0/11",
-    ///         DestinationCidrBlock = "10.0.0.0/12",
-    ///         TrafficMirrorFilterId = example.Id,
-    ///         Protocol = "ALL",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// VPC Traffic Mirror Filter Egress Rule can be imported using the id, e.g.

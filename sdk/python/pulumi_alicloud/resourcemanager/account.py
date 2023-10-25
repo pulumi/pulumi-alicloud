@@ -45,23 +45,25 @@ class AccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              account_name_prefix: Optional[pulumi.Input[str]] = None,
              folder_id: Optional[pulumi.Input[str]] = None,
              payer_account_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'abandonAbleCheckIds' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if abandon_able_check_ids is None and 'abandonAbleCheckIds' in kwargs:
             abandon_able_check_ids = kwargs['abandonAbleCheckIds']
-        if 'accountNamePrefix' in kwargs:
+        if account_name_prefix is None and 'accountNamePrefix' in kwargs:
             account_name_prefix = kwargs['accountNamePrefix']
-        if 'folderId' in kwargs:
+        if folder_id is None and 'folderId' in kwargs:
             folder_id = kwargs['folderId']
-        if 'payerAccountId' in kwargs:
+        if payer_account_id is None and 'payerAccountId' in kwargs:
             payer_account_id = kwargs['payerAccountId']
 
         _setter("display_name", display_name)
@@ -217,25 +219,25 @@ class _AccountState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'abandonAbleCheckIds' in kwargs:
+        if abandon_able_check_ids is None and 'abandonAbleCheckIds' in kwargs:
             abandon_able_check_ids = kwargs['abandonAbleCheckIds']
-        if 'accountNamePrefix' in kwargs:
+        if account_name_prefix is None and 'accountNamePrefix' in kwargs:
             account_name_prefix = kwargs['accountNamePrefix']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'folderId' in kwargs:
+        if folder_id is None and 'folderId' in kwargs:
             folder_id = kwargs['folderId']
-        if 'joinMethod' in kwargs:
+        if join_method is None and 'joinMethod' in kwargs:
             join_method = kwargs['joinMethod']
-        if 'joinTime' in kwargs:
+        if join_time is None and 'joinTime' in kwargs:
             join_time = kwargs['joinTime']
-        if 'modifyTime' in kwargs:
+        if modify_time is None and 'modifyTime' in kwargs:
             modify_time = kwargs['modifyTime']
-        if 'payerAccountId' in kwargs:
+        if payer_account_id is None and 'payerAccountId' in kwargs:
             payer_account_id = kwargs['payerAccountId']
-        if 'resourceDirectoryId' in kwargs:
+        if resource_directory_id is None and 'resourceDirectoryId' in kwargs:
             resource_directory_id = kwargs['resourceDirectoryId']
 
         if abandon_able_check_ids is not None:
@@ -433,23 +435,6 @@ class Account(pulumi.CustomResource):
         > **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
 
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        display_name = config.get("displayName")
-        if display_name is None:
-            display_name = "EAccount"
-        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=name)
-        example_account = alicloud.resourcemanager.Account("exampleAccount",
-            display_name=display_name,
-            folder_id=example_folder.id)
-        ```
         ### Deleting `resourcemanager.Account` or removing it from your configuration
 
         Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,
@@ -493,23 +478,6 @@ class Account(pulumi.CustomResource):
         > **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
 
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        display_name = config.get("displayName")
-        if display_name is None:
-            display_name = "EAccount"
-        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=name)
-        example_account = alicloud.resourcemanager.Account("exampleAccount",
-            display_name=display_name,
-            folder_id=example_folder.id)
-        ```
         ### Deleting `resourcemanager.Account` or removing it from your configuration
 
         Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,

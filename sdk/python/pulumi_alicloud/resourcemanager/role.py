@@ -35,17 +35,21 @@ class RoleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             assume_role_policy_document: pulumi.Input[str],
-             role_name: pulumi.Input[str],
+             assume_role_policy_document: Optional[pulumi.Input[str]] = None,
+             role_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              max_session_duration: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'assumeRolePolicyDocument' in kwargs:
+        if assume_role_policy_document is None and 'assumeRolePolicyDocument' in kwargs:
             assume_role_policy_document = kwargs['assumeRolePolicyDocument']
-        if 'roleName' in kwargs:
+        if assume_role_policy_document is None:
+            raise TypeError("Missing 'assume_role_policy_document' argument")
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
-        if 'maxSessionDuration' in kwargs:
+        if role_name is None:
+            raise TypeError("Missing 'role_name' argument")
+        if max_session_duration is None and 'maxSessionDuration' in kwargs:
             max_session_duration = kwargs['maxSessionDuration']
 
         _setter("assume_role_policy_document", assume_role_policy_document)
@@ -144,17 +148,17 @@ class _RoleState:
              role_id: Optional[pulumi.Input[str]] = None,
              role_name: Optional[pulumi.Input[str]] = None,
              update_date: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'assumeRolePolicyDocument' in kwargs:
+        if assume_role_policy_document is None and 'assumeRolePolicyDocument' in kwargs:
             assume_role_policy_document = kwargs['assumeRolePolicyDocument']
-        if 'maxSessionDuration' in kwargs:
+        if max_session_duration is None and 'maxSessionDuration' in kwargs:
             max_session_duration = kwargs['maxSessionDuration']
-        if 'roleId' in kwargs:
+        if role_id is None and 'roleId' in kwargs:
             role_id = kwargs['roleId']
-        if 'roleName' in kwargs:
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
-        if 'updateDate' in kwargs:
+        if update_date is None and 'updateDate' in kwargs:
             update_date = kwargs['updateDate']
 
         if arn is not None:
@@ -273,36 +277,6 @@ class Role(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.82.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        default = alicloud.get_account()
-        example = alicloud.resourcemanager.Role("example",
-            role_name=name,
-            assume_role_policy_document=f\"\"\"     {{
-                  "Statement": [
-                       {{
-                            "Action": "sts:AssumeRole",
-                            "Effect": "Allow",
-                            "Principal": {{
-                                "RAM":[
-                                        "acs:ram::{default.id}:root"
-                                ]
-                            }}
-                        }}
-                  ],
-                  "Version": "1"
-             }}
-        \"\"\")
-        ```
-
         ## Import
 
         Resource Manager can be imported using the id or role_name, e.g.
@@ -329,36 +303,6 @@ class Role(pulumi.CustomResource):
         For information about Resource Manager role and how to use it, see [What is Resource Manager role](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
 
         > **NOTE:** Available since v1.82.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        default = alicloud.get_account()
-        example = alicloud.resourcemanager.Role("example",
-            role_name=name,
-            assume_role_policy_document=f\"\"\"     {{
-                  "Statement": [
-                       {{
-                            "Action": "sts:AssumeRole",
-                            "Effect": "Allow",
-                            "Principal": {{
-                                "RAM":[
-                                        "acs:ram::{default.id}:root"
-                                ]
-                            }}
-                        }}
-                  ],
-                  "Version": "1"
-             }}
-        \"\"\")
-        ```
 
         ## Import
 

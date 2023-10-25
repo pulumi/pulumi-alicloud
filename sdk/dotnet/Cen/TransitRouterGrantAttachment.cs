@@ -16,44 +16,6 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// &gt; **NOTE:** Available since v1.187.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = AliCloud.GetAccount.Invoke();
-    /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
-    ///     {
-    ///         VpcName = "tf_example",
-    ///         CidrBlock = "172.17.3.0/24",
-    ///     });
-    /// 
-    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
-    ///     {
-    ///         CenInstanceName = "tf_example",
-    ///         Description = "an example for cen",
-    ///     });
-    /// 
-    ///     var exampleTransitRouterGrantAttachment = new AliCloud.Cen.TransitRouterGrantAttachment("exampleTransitRouterGrantAttachment", new()
-    ///     {
-    ///         CenId = exampleInstance.Id,
-    ///         CenOwnerId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
-    ///         InstanceId = exampleNetwork.Id,
-    ///         InstanceType = "VPC",
-    ///         OrderType = "PayByCenOwner",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Cloud Enterprise Network (CEN) Transit Router Grant Attachment can be imported using the id, e.g.

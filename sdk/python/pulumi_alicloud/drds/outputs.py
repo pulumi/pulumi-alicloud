@@ -54,26 +54,46 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_string: str,
-             create_time: int,
-             description: str,
-             id: str,
-             network_type: str,
-             port: str,
-             status: str,
-             type: str,
-             version: int,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             connection_string: Optional[str] = None,
+             create_time: Optional[int] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             network_type: Optional[str] = None,
+             port: Optional[str] = None,
+             status: Optional[str] = None,
+             type: Optional[str] = None,
+             version: Optional[int] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'createTime' in kwargs:
+        if connection_string is None:
+            raise TypeError("Missing 'connection_string' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'networkType' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'zoneId' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("connection_string", connection_string)
         _setter("create_time", create_time)

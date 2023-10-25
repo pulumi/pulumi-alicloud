@@ -47,29 +47,39 @@ class FileSystemArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             file_system_name: pulumi.Input[str],
-             protocol_type: pulumi.Input[str],
-             space_capacity: pulumi.Input[int],
-             storage_type: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             file_system_name: Optional[pulumi.Input[str]] = None,
+             protocol_type: Optional[pulumi.Input[str]] = None,
+             space_capacity: Optional[pulumi.Input[int]] = None,
+             storage_type: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              provisioned_throughput_in_mi_bps: Optional[pulumi.Input[int]] = None,
              throughput_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fileSystemName' in kwargs:
+        if file_system_name is None and 'fileSystemName' in kwargs:
             file_system_name = kwargs['fileSystemName']
-        if 'protocolType' in kwargs:
+        if file_system_name is None:
+            raise TypeError("Missing 'file_system_name' argument")
+        if protocol_type is None and 'protocolType' in kwargs:
             protocol_type = kwargs['protocolType']
-        if 'spaceCapacity' in kwargs:
+        if protocol_type is None:
+            raise TypeError("Missing 'protocol_type' argument")
+        if space_capacity is None and 'spaceCapacity' in kwargs:
             space_capacity = kwargs['spaceCapacity']
-        if 'storageType' in kwargs:
+        if space_capacity is None:
+            raise TypeError("Missing 'space_capacity' argument")
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
-        if 'zoneId' in kwargs:
+        if storage_type is None:
+            raise TypeError("Missing 'storage_type' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'provisionedThroughputInMiBps' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if provisioned_throughput_in_mi_bps is None and 'provisionedThroughputInMiBps' in kwargs:
             provisioned_throughput_in_mi_bps = kwargs['provisionedThroughputInMiBps']
-        if 'throughputMode' in kwargs:
+        if throughput_mode is None and 'throughputMode' in kwargs:
             throughput_mode = kwargs['throughputMode']
 
         _setter("file_system_name", file_system_name)
@@ -225,21 +235,21 @@ class _FileSystemState:
              storage_type: Optional[pulumi.Input[str]] = None,
              throughput_mode: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fileSystemName' in kwargs:
+        if file_system_name is None and 'fileSystemName' in kwargs:
             file_system_name = kwargs['fileSystemName']
-        if 'protocolType' in kwargs:
+        if protocol_type is None and 'protocolType' in kwargs:
             protocol_type = kwargs['protocolType']
-        if 'provisionedThroughputInMiBps' in kwargs:
+        if provisioned_throughput_in_mi_bps is None and 'provisionedThroughputInMiBps' in kwargs:
             provisioned_throughput_in_mi_bps = kwargs['provisionedThroughputInMiBps']
-        if 'spaceCapacity' in kwargs:
+        if space_capacity is None and 'spaceCapacity' in kwargs:
             space_capacity = kwargs['spaceCapacity']
-        if 'storageType' in kwargs:
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
-        if 'throughputMode' in kwargs:
+        if throughput_mode is None and 'throughputMode' in kwargs:
             throughput_mode = kwargs['throughputMode']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if description is not None:
@@ -377,29 +387,6 @@ class FileSystem(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.140.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.dfs.get_zones()
-        default_file_system = alicloud.dfs.FileSystem("defaultFileSystem",
-            storage_type=default_zones.zones[0].options[0].storage_type,
-            zone_id=default_zones.zones[0].zone_id,
-            protocol_type="HDFS",
-            description=name,
-            file_system_name=name,
-            throughput_mode="Standard",
-            space_capacity=1024)
-        ```
-
         ## Import
 
         DFS File System can be imported using the id, e.g.
@@ -431,29 +418,6 @@ class FileSystem(pulumi.CustomResource):
         For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/doc-detail/207144.htm).
 
         > **NOTE:** Available since v1.140.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.dfs.get_zones()
-        default_file_system = alicloud.dfs.FileSystem("defaultFileSystem",
-            storage_type=default_zones.zones[0].options[0].storage_type,
-            zone_id=default_zones.zones[0].zone_id,
-            protocol_type="HDFS",
-            description=name,
-            file_system_name=name,
-            throughput_mode="Standard",
-            space_capacity=1024)
-        ```
 
         ## Import
 

@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Alb Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.133.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.alb.getRules({
- *     ids: ["example_id"],
- * });
- * export const albRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
- * const nameRegex = alicloud.alb.getRules({
- *     nameRegex: "^my-Rule",
- * });
- * export const albRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
- * ```
  */
 export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
     args = args || {};
@@ -100,24 +82,6 @@ export interface GetRulesResult {
  * This data source provides the Alb Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.133.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.alb.getRules({
- *     ids: ["example_id"],
- * });
- * export const albRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
- * const nameRegex = alicloud.alb.getRules({
- *     nameRegex: "^my-Rule",
- * });
- * export const albRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
- * ```
  */
 export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
     return pulumi.output(args).apply((a: any) => getRules(a, opts))

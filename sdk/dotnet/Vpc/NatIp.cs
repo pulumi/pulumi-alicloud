@@ -16,68 +16,6 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available in v1.136.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
-    ///     {
-    ///         VpcName = "terraform-example",
-    ///         CidrBlock = "172.16.0.0/12",
-    ///     });
-    /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
-    ///     {
-    ///         VpcId = exampleNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/21",
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = "terraform-example",
-    ///     });
-    /// 
-    ///     var exampleNatGateway = new AliCloud.Vpc.NatGateway("exampleNatGateway", new()
-    ///     {
-    ///         VpcId = exampleNetwork.Id,
-    ///         InternetChargeType = "PayByLcu",
-    ///         NatGatewayName = "terraform-example",
-    ///         Description = "terraform-example",
-    ///         NatType = "Enhanced",
-    ///         VswitchId = exampleSwitch.Id,
-    ///         NetworkType = "intranet",
-    ///     });
-    /// 
-    ///     var exampleNatIpCidr = new AliCloud.Vpc.NatIpCidr("exampleNatIpCidr", new()
-    ///     {
-    ///         NatIpCidrBlock = "192.168.0.0/16",
-    ///         NatGatewayId = exampleNatGateway.Id,
-    ///         NatIpCidrDescription = "terraform-example",
-    ///         NatIpCidrName = "terraform-example",
-    ///     });
-    /// 
-    ///     var exampleNatIp = new AliCloud.Vpc.NatIp("exampleNatIp", new()
-    ///     {
-    ///         NatIpAddress = "192.168.0.37",
-    ///         NatGatewayId = exampleNatGateway.Id,
-    ///         NatIpDescription = "example_value",
-    ///         NatIpName = "example_value",
-    ///         NatIpCidr = exampleNatIpCidr.NatIpCidrBlock,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// VPC Nat Ip can be imported using the id, e.g.

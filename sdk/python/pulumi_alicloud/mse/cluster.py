@@ -71,12 +71,12 @@ class ClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_specification: pulumi.Input[str],
-             cluster_type: pulumi.Input[str],
-             cluster_version: pulumi.Input[str],
-             instance_count: pulumi.Input[int],
-             net_type: pulumi.Input[str],
-             pub_network_flow: pulumi.Input[str],
+             cluster_specification: Optional[pulumi.Input[str]] = None,
+             cluster_type: Optional[pulumi.Input[str]] = None,
+             cluster_version: Optional[pulumi.Input[str]] = None,
+             instance_count: Optional[pulumi.Input[int]] = None,
+             net_type: Optional[pulumi.Input[str]] = None,
+             pub_network_flow: Optional[pulumi.Input[str]] = None,
              acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              cluster_alias_name: Optional[pulumi.Input[str]] = None,
              connection_type: Optional[pulumi.Input[str]] = None,
@@ -87,39 +87,51 @@ class ClusterArgs:
              request_pars: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterSpecification' in kwargs:
+        if cluster_specification is None and 'clusterSpecification' in kwargs:
             cluster_specification = kwargs['clusterSpecification']
-        if 'clusterType' in kwargs:
+        if cluster_specification is None:
+            raise TypeError("Missing 'cluster_specification' argument")
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'clusterVersion' in kwargs:
+        if cluster_type is None:
+            raise TypeError("Missing 'cluster_type' argument")
+        if cluster_version is None and 'clusterVersion' in kwargs:
             cluster_version = kwargs['clusterVersion']
-        if 'instanceCount' in kwargs:
+        if cluster_version is None:
+            raise TypeError("Missing 'cluster_version' argument")
+        if instance_count is None and 'instanceCount' in kwargs:
             instance_count = kwargs['instanceCount']
-        if 'netType' in kwargs:
+        if instance_count is None:
+            raise TypeError("Missing 'instance_count' argument")
+        if net_type is None and 'netType' in kwargs:
             net_type = kwargs['netType']
-        if 'pubNetworkFlow' in kwargs:
+        if net_type is None:
+            raise TypeError("Missing 'net_type' argument")
+        if pub_network_flow is None and 'pubNetworkFlow' in kwargs:
             pub_network_flow = kwargs['pubNetworkFlow']
-        if 'aclEntryLists' in kwargs:
+        if pub_network_flow is None:
+            raise TypeError("Missing 'pub_network_flow' argument")
+        if acl_entry_lists is None and 'aclEntryLists' in kwargs:
             acl_entry_lists = kwargs['aclEntryLists']
-        if 'clusterAliasName' in kwargs:
+        if cluster_alias_name is None and 'clusterAliasName' in kwargs:
             cluster_alias_name = kwargs['clusterAliasName']
-        if 'connectionType' in kwargs:
+        if connection_type is None and 'connectionType' in kwargs:
             connection_type = kwargs['connectionType']
-        if 'diskType' in kwargs:
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'mseVersion' in kwargs:
+        if mse_version is None and 'mseVersion' in kwargs:
             mse_version = kwargs['mseVersion']
-        if 'privateSlbSpecification' in kwargs:
+        if private_slb_specification is None and 'privateSlbSpecification' in kwargs:
             private_slb_specification = kwargs['privateSlbSpecification']
-        if 'pubSlbSpecification' in kwargs:
+        if pub_slb_specification is None and 'pubSlbSpecification' in kwargs:
             pub_slb_specification = kwargs['pubSlbSpecification']
-        if 'requestPars' in kwargs:
+        if request_pars is None and 'requestPars' in kwargs:
             request_pars = kwargs['requestPars']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         _setter("cluster_specification", cluster_specification)
@@ -430,43 +442,43 @@ class _ClusterState:
              status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclEntryLists' in kwargs:
+        if acl_entry_lists is None and 'aclEntryLists' in kwargs:
             acl_entry_lists = kwargs['aclEntryLists']
-        if 'appVersion' in kwargs:
+        if app_version is None and 'appVersion' in kwargs:
             app_version = kwargs['appVersion']
-        if 'clusterAliasName' in kwargs:
+        if cluster_alias_name is None and 'clusterAliasName' in kwargs:
             cluster_alias_name = kwargs['clusterAliasName']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'clusterSpecification' in kwargs:
+        if cluster_specification is None and 'clusterSpecification' in kwargs:
             cluster_specification = kwargs['clusterSpecification']
-        if 'clusterType' in kwargs:
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'clusterVersion' in kwargs:
+        if cluster_version is None and 'clusterVersion' in kwargs:
             cluster_version = kwargs['clusterVersion']
-        if 'connectionType' in kwargs:
+        if connection_type is None and 'connectionType' in kwargs:
             connection_type = kwargs['connectionType']
-        if 'diskType' in kwargs:
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'instanceCount' in kwargs:
+        if instance_count is None and 'instanceCount' in kwargs:
             instance_count = kwargs['instanceCount']
-        if 'mseVersion' in kwargs:
+        if mse_version is None and 'mseVersion' in kwargs:
             mse_version = kwargs['mseVersion']
-        if 'netType' in kwargs:
+        if net_type is None and 'netType' in kwargs:
             net_type = kwargs['netType']
-        if 'privateSlbSpecification' in kwargs:
+        if private_slb_specification is None and 'privateSlbSpecification' in kwargs:
             private_slb_specification = kwargs['privateSlbSpecification']
-        if 'pubNetworkFlow' in kwargs:
+        if pub_network_flow is None and 'pubNetworkFlow' in kwargs:
             pub_network_flow = kwargs['pubNetworkFlow']
-        if 'pubSlbSpecification' in kwargs:
+        if pub_slb_specification is None and 'pubSlbSpecification' in kwargs:
             pub_slb_specification = kwargs['pubSlbSpecification']
-        if 'requestPars' in kwargs:
+        if request_pars is None and 'requestPars' in kwargs:
             request_pars = kwargs['requestPars']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if acl_entry_lists is not None:
@@ -764,35 +776,6 @@ class Cluster(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.94.0+.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_cluster = alicloud.mse.Cluster("exampleCluster",
-            cluster_specification="MSE_SC_1_2_60_c",
-            cluster_type="Nacos-Ans",
-            cluster_version="NACOS_2_0_0",
-            instance_count=1,
-            net_type="privatenet",
-            pub_network_flow="1",
-            connection_type="slb",
-            cluster_alias_name="terraform-example",
-            mse_version="mse_dev",
-            vswitch_id=example_switch.id,
-            vpc_id=example_network.id)
-        ```
-
         ## Import
 
         MSE Cluster can be imported using the id, e.g.
@@ -830,35 +813,6 @@ class Cluster(pulumi.CustomResource):
         Provides a MSE Cluster resource. It is a one-stop microservice platform for the industry's mainstream open source microservice frameworks Spring Cloud and Dubbo, providing governance center, managed registry and managed configuration center.
 
         > **NOTE:** Available in 1.94.0+.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_cluster = alicloud.mse.Cluster("exampleCluster",
-            cluster_specification="MSE_SC_1_2_60_c",
-            cluster_type="Nacos-Ans",
-            cluster_version="NACOS_2_0_0",
-            instance_count=1,
-            net_type="privatenet",
-            pub_network_flow="1",
-            connection_type="slb",
-            cluster_alias_name="terraform-example",
-            mse_version="mse_dev",
-            vswitch_id=example_switch.id,
-            vpc_id=example_network.id)
-        ```
 
         ## Import
 

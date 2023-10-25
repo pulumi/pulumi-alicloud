@@ -11,37 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.123.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultDdosCooInstance = new alicloud.ddos.DdosCooInstance("defaultDdosCooInstance", {
- *     bandwidth: "30",
- *     baseBandwidth: "30",
- *     serviceBandwidth: "100",
- *     portCount: "50",
- *     domainCount: "50",
- *     period: 1,
- *     productType: "ddoscoo",
- * });
- * const defaultPort = new alicloud.ddos.Port("defaultPort", {
- *     instanceId: defaultDdosCooInstance.id,
- *     frontendPort: "7001",
- *     backendPort: "7002",
- *     frontendProtocol: "tcp",
- *     realServers: [
- *         "1.1.1.1",
- *         "2.2.2.2",
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * Anti-DDoS Pro Port can be imported using the id, e.g.

@@ -23,15 +23,6 @@ namespace Pulumi.AliCloud.Log.Outputs
         public readonly string? EncryptType;
         /// <summary>
         /// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         public readonly Outputs.StoreEncryptConfUserCmkInfo? UserCmkInfo;
 

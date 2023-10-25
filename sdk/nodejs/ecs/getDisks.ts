@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * > **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsDisks from version 1.122.0.
  *
  * This data source provides the disks of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const disksDs = alicloud.ecs.getDisks({
- *     nameRegex: "sample_disk",
- * });
- * export const firstDiskId = disksDs.then(disksDs => disksDs.disks?.[0]?.id);
- * ```
  */
 export function getDisks(args?: GetDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetDisksResult> {
     args = args || {};
@@ -124,17 +112,6 @@ export interface GetDisksArgs {
     status?: string;
     /**
      * A map of tags assigned to the disks. It must be in the format:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as alicloud from "@pulumi/alicloud";
-     *
-     * const disksDs = alicloud.ecs.getDisks({
-     *     tags: {
-     *         tagKey1: "tagValue1",
-     *         tagKey2: "tagValue2",
-     *     },
-     * });
-     * ```
      */
     tags?: {[key: string]: any};
     /**
@@ -225,18 +202,6 @@ export interface GetDisksResult {
  * > **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsDisks from version 1.122.0.
  *
  * This data source provides the disks of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const disksDs = alicloud.ecs.getDisks({
- *     nameRegex: "sample_disk",
- * });
- * export const firstDiskId = disksDs.then(disksDs => disksDs.disks?.[0]?.id);
- * ```
  */
 export function getDisksOutput(args?: GetDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDisksResult> {
     return pulumi.output(args).apply((a: any) => getDisks(a, opts))
@@ -306,17 +271,6 @@ export interface GetDisksOutputArgs {
     status?: pulumi.Input<string>;
     /**
      * A map of tags assigned to the disks. It must be in the format:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as alicloud from "@pulumi/alicloud";
-     *
-     * const disksDs = alicloud.ecs.getDisks({
-     *     tags: {
-     *         tagKey1: "tagValue1",
-     *         tagKey2: "tagValue2",
-     *     },
-     * });
-     * ```
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

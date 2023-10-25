@@ -19,39 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.203.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/chatbot"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAgents, err := chatbot.GetAgents(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = chatbot.NewPublishTask(ctx, "defaultPublishTask", &chatbot.PublishTaskArgs{
-//				BizType:  pulumi.String("faq"),
-//				AgentKey: *pulumi.String(defaultAgents.Agents[0].AgentKey),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Chatbot Publish Task can be imported using the id, e.g.

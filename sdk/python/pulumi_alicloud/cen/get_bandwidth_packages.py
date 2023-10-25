@@ -142,17 +142,6 @@ def get_bandwidth_packages(ids: Optional[Sequence[str]] = None,
     """
     This data source provides CEN Bandwidth Packages available to the user.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.cen.get_bandwidth_packages(instance_id="cen-id1",
-        name_regex="^foo")
-    pulumi.export("firstCenBandwidthPackageId", example.packages[0].id)
-    ```
-
 
     :param Sequence[str] ids: Limit search to a list of specific CEN Bandwidth Package IDs.
     :param bool include_reservation_data: Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
@@ -193,17 +182,6 @@ def get_bandwidth_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[s
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBandwidthPackagesResult]:
     """
     This data source provides CEN Bandwidth Packages available to the user.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.cen.get_bandwidth_packages(instance_id="cen-id1",
-        name_regex="^foo")
-    pulumi.export("firstCenBandwidthPackageId", example.packages[0].id)
-    ```
 
 
     :param Sequence[str] ids: Limit search to a list of specific CEN Bandwidth Package IDs.

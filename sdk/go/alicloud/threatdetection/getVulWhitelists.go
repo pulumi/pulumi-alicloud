@@ -15,37 +15,6 @@ import (
 // This data source provides Threat Detection Vul Whitelists of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.195.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := threatdetection.GetVulWhitelists(ctx, &threatdetection.GetVulWhitelistsArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("alicloudThreatDetectionVulWhitelistExampleId", _default.Whitelists[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetVulWhitelists(ctx *pulumi.Context, args *GetVulWhitelistsArgs, opts ...pulumi.InvokeOption) (*GetVulWhitelistsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVulWhitelistsResult

@@ -64,11 +64,11 @@ class TrafficMirrorSessionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             priority: pulumi.Input[int],
-             traffic_mirror_filter_id: pulumi.Input[str],
-             traffic_mirror_source_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             traffic_mirror_target_id: pulumi.Input[str],
-             traffic_mirror_target_type: pulumi.Input[str],
+             priority: Optional[pulumi.Input[int]] = None,
+             traffic_mirror_filter_id: Optional[pulumi.Input[str]] = None,
+             traffic_mirror_source_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             traffic_mirror_target_id: Optional[pulumi.Input[str]] = None,
+             traffic_mirror_target_type: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              packet_length: Optional[pulumi.Input[int]] = None,
@@ -77,27 +77,37 @@ class TrafficMirrorSessionArgs:
              traffic_mirror_session_description: Optional[pulumi.Input[str]] = None,
              traffic_mirror_session_name: Optional[pulumi.Input[str]] = None,
              virtual_network_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'trafficMirrorFilterId' in kwargs:
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if traffic_mirror_filter_id is None and 'trafficMirrorFilterId' in kwargs:
             traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
-        if 'trafficMirrorSourceIds' in kwargs:
+        if traffic_mirror_filter_id is None:
+            raise TypeError("Missing 'traffic_mirror_filter_id' argument")
+        if traffic_mirror_source_ids is None and 'trafficMirrorSourceIds' in kwargs:
             traffic_mirror_source_ids = kwargs['trafficMirrorSourceIds']
-        if 'trafficMirrorTargetId' in kwargs:
+        if traffic_mirror_source_ids is None:
+            raise TypeError("Missing 'traffic_mirror_source_ids' argument")
+        if traffic_mirror_target_id is None and 'trafficMirrorTargetId' in kwargs:
             traffic_mirror_target_id = kwargs['trafficMirrorTargetId']
-        if 'trafficMirrorTargetType' in kwargs:
+        if traffic_mirror_target_id is None:
+            raise TypeError("Missing 'traffic_mirror_target_id' argument")
+        if traffic_mirror_target_type is None and 'trafficMirrorTargetType' in kwargs:
             traffic_mirror_target_type = kwargs['trafficMirrorTargetType']
-        if 'dryRun' in kwargs:
+        if traffic_mirror_target_type is None:
+            raise TypeError("Missing 'traffic_mirror_target_type' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'packetLength' in kwargs:
+        if packet_length is None and 'packetLength' in kwargs:
             packet_length = kwargs['packetLength']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'trafficMirrorSessionDescription' in kwargs:
+        if traffic_mirror_session_description is None and 'trafficMirrorSessionDescription' in kwargs:
             traffic_mirror_session_description = kwargs['trafficMirrorSessionDescription']
-        if 'trafficMirrorSessionName' in kwargs:
+        if traffic_mirror_session_name is None and 'trafficMirrorSessionName' in kwargs:
             traffic_mirror_session_name = kwargs['trafficMirrorSessionName']
-        if 'virtualNetworkId' in kwargs:
+        if virtual_network_id is None and 'virtualNetworkId' in kwargs:
             virtual_network_id = kwargs['virtualNetworkId']
 
         _setter("priority", priority)
@@ -351,27 +361,27 @@ class _TrafficMirrorSessionState:
              traffic_mirror_target_id: Optional[pulumi.Input[str]] = None,
              traffic_mirror_target_type: Optional[pulumi.Input[str]] = None,
              virtual_network_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'packetLength' in kwargs:
+        if packet_length is None and 'packetLength' in kwargs:
             packet_length = kwargs['packetLength']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'trafficMirrorFilterId' in kwargs:
+        if traffic_mirror_filter_id is None and 'trafficMirrorFilterId' in kwargs:
             traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
-        if 'trafficMirrorSessionDescription' in kwargs:
+        if traffic_mirror_session_description is None and 'trafficMirrorSessionDescription' in kwargs:
             traffic_mirror_session_description = kwargs['trafficMirrorSessionDescription']
-        if 'trafficMirrorSessionName' in kwargs:
+        if traffic_mirror_session_name is None and 'trafficMirrorSessionName' in kwargs:
             traffic_mirror_session_name = kwargs['trafficMirrorSessionName']
-        if 'trafficMirrorSourceIds' in kwargs:
+        if traffic_mirror_source_ids is None and 'trafficMirrorSourceIds' in kwargs:
             traffic_mirror_source_ids = kwargs['trafficMirrorSourceIds']
-        if 'trafficMirrorTargetId' in kwargs:
+        if traffic_mirror_target_id is None and 'trafficMirrorTargetId' in kwargs:
             traffic_mirror_target_id = kwargs['trafficMirrorTargetId']
-        if 'trafficMirrorTargetType' in kwargs:
+        if traffic_mirror_target_type is None and 'trafficMirrorTargetType' in kwargs:
             traffic_mirror_target_type = kwargs['trafficMirrorTargetType']
-        if 'virtualNetworkId' in kwargs:
+        if virtual_network_id is None and 'virtualNetworkId' in kwargs:
             virtual_network_id = kwargs['virtualNetworkId']
 
         if dry_run is not None:
@@ -600,71 +610,6 @@ class TrafficMirrorSession(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.142.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.g7")
-        default_zones = alicloud.get_zones(available_resource_creation="Instance",
-            available_instance_type=default_instance_types.instance_types[0].id)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
-            description=name,
-            vpc_id=default_network.id)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            most_recent=True,
-            owners="system")
-        default_instance = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_instance.append(alicloud.ecs.Instance(f"defaultInstance-{range['value']}",
-                availability_zone=default_zones.zones[0].id,
-                instance_name=name,
-                host_name=name,
-                image_id=default_images.images[0].id,
-                instance_type=default_instance_types.instance_types[0].id,
-                security_groups=[default_security_group.id],
-                vswitch_id=default_switch.id,
-                system_disk_category="cloud_essd"))
-        default_ecs_network_interface = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_ecs_network_interface.append(alicloud.ecs.EcsNetworkInterface(f"defaultEcsNetworkInterface-{range['value']}",
-                network_interface_name=name,
-                vswitch_id=default_switch.id,
-                security_group_ids=[default_security_group.id]))
-        default_ecs_network_interface_attachment = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_ecs_network_interface_attachment.append(alicloud.ecs.EcsNetworkInterfaceAttachment(f"defaultEcsNetworkInterfaceAttachment-{range['value']}",
-                instance_id=default_instance[range["value"]].id,
-                network_interface_id=default_ecs_network_interface[range["value"]].id))
-        default_traffic_mirror_filter = alicloud.vpc.TrafficMirrorFilter("defaultTrafficMirrorFilter",
-            traffic_mirror_filter_name=name,
-            traffic_mirror_filter_description=name)
-        default_traffic_mirror_session = alicloud.vpc.TrafficMirrorSession("defaultTrafficMirrorSession",
-            priority=1,
-            virtual_network_id=10,
-            traffic_mirror_session_description=name,
-            traffic_mirror_session_name=name,
-            traffic_mirror_target_id=default_ecs_network_interface_attachment[0].network_interface_id,
-            traffic_mirror_source_ids=[default_ecs_network_interface_attachment[1].network_interface_id],
-            traffic_mirror_filter_id=default_traffic_mirror_filter.id,
-            traffic_mirror_target_type="NetworkInterface")
-        ```
-
         ## Import
 
         VPC Traffic Mirror Session can be imported using the id, e.g.
@@ -703,71 +648,6 @@ class TrafficMirrorSession(pulumi.CustomResource):
         For information about VPC Traffic Mirror Session and how to use it, see [What is Traffic Mirror Session](https://www.alibabacloud.com/help/en/doc-detail/261364.htm).
 
         > **NOTE:** Available since v1.142.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.g7")
-        default_zones = alicloud.get_zones(available_resource_creation="Instance",
-            available_instance_type=default_instance_types.instance_types[0].id)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
-            description=name,
-            vpc_id=default_network.id)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            most_recent=True,
-            owners="system")
-        default_instance = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_instance.append(alicloud.ecs.Instance(f"defaultInstance-{range['value']}",
-                availability_zone=default_zones.zones[0].id,
-                instance_name=name,
-                host_name=name,
-                image_id=default_images.images[0].id,
-                instance_type=default_instance_types.instance_types[0].id,
-                security_groups=[default_security_group.id],
-                vswitch_id=default_switch.id,
-                system_disk_category="cloud_essd"))
-        default_ecs_network_interface = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_ecs_network_interface.append(alicloud.ecs.EcsNetworkInterface(f"defaultEcsNetworkInterface-{range['value']}",
-                network_interface_name=name,
-                vswitch_id=default_switch.id,
-                security_group_ids=[default_security_group.id]))
-        default_ecs_network_interface_attachment = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_ecs_network_interface_attachment.append(alicloud.ecs.EcsNetworkInterfaceAttachment(f"defaultEcsNetworkInterfaceAttachment-{range['value']}",
-                instance_id=default_instance[range["value"]].id,
-                network_interface_id=default_ecs_network_interface[range["value"]].id))
-        default_traffic_mirror_filter = alicloud.vpc.TrafficMirrorFilter("defaultTrafficMirrorFilter",
-            traffic_mirror_filter_name=name,
-            traffic_mirror_filter_description=name)
-        default_traffic_mirror_session = alicloud.vpc.TrafficMirrorSession("defaultTrafficMirrorSession",
-            priority=1,
-            virtual_network_id=10,
-            traffic_mirror_session_description=name,
-            traffic_mirror_session_name=name,
-            traffic_mirror_target_id=default_ecs_network_interface_attachment[0].network_interface_id,
-            traffic_mirror_source_ids=[default_ecs_network_interface_attachment[1].network_interface_id],
-            traffic_mirror_filter_id=default_traffic_mirror_filter.id,
-            traffic_mirror_target_type="NetworkInterface")
-        ```
 
         ## Import
 

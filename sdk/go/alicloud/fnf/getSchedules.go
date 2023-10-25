@@ -15,39 +15,6 @@ import (
 // This data source provides the Fnf Schedules of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.105.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fnf"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := fnf.GetSchedules(ctx, &fnf.GetSchedulesArgs{
-//				FlowName: "example_value",
-//				Ids: []string{
-//					"example_value",
-//				},
-//				NameRegex: pulumi.StringRef("the_resource_name"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstFnfScheduleId", example.Schedules[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetSchedules(ctx *pulumi.Context, args *GetSchedulesArgs, opts ...pulumi.InvokeOption) (*GetSchedulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSchedulesResult

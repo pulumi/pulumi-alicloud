@@ -75,35 +75,43 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_class: pulumi.Input[str],
-             instance_storage: pulumi.Input[str],
-             payment_type: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             instance_class: Optional[pulumi.Input[str]] = None,
+             instance_storage: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              app_key: Optional[pulumi.Input[str]] = None,
              disk_category: Optional[pulumi.Input[str]] = None,
              duration: Optional[pulumi.Input[str]] = None,
              engine_type: Optional[pulumi.Input[str]] = None,
              instance_alias: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceClass' in kwargs:
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'instanceStorage' in kwargs:
+        if instance_class is None:
+            raise TypeError("Missing 'instance_class' argument")
+        if instance_storage is None and 'instanceStorage' in kwargs:
             instance_storage = kwargs['instanceStorage']
-        if 'paymentType' in kwargs:
+        if instance_storage is None:
+            raise TypeError("Missing 'instance_storage' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'vswitchId' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'appKey' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if app_key is None and 'appKey' in kwargs:
             app_key = kwargs['appKey']
-        if 'diskCategory' in kwargs:
+        if disk_category is None and 'diskCategory' in kwargs:
             disk_category = kwargs['diskCategory']
-        if 'engineType' in kwargs:
+        if engine_type is None and 'engineType' in kwargs:
             engine_type = kwargs['engineType']
-        if 'instanceAlias' in kwargs:
+        if instance_alias is None and 'instanceAlias' in kwargs:
             instance_alias = kwargs['instanceAlias']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("instance_class", instance_class)
@@ -344,25 +352,25 @@ class _InstanceState:
              status: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appKey' in kwargs:
+        if app_key is None and 'appKey' in kwargs:
             app_key = kwargs['appKey']
-        if 'diskCategory' in kwargs:
+        if disk_category is None and 'diskCategory' in kwargs:
             disk_category = kwargs['diskCategory']
-        if 'engineType' in kwargs:
+        if engine_type is None and 'engineType' in kwargs:
             engine_type = kwargs['engineType']
-        if 'instanceAlias' in kwargs:
+        if instance_alias is None and 'instanceAlias' in kwargs:
             instance_alias = kwargs['instanceAlias']
-        if 'instanceClass' in kwargs:
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'instanceStorage' in kwargs:
+        if instance_storage is None and 'instanceStorage' in kwargs:
             instance_storage = kwargs['instanceStorage']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if app_key is not None:
@@ -566,29 +574,6 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.112.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.tsdb.get_zones()
-        example_network = alicloud.vpc.Network("exampleNetwork", cidr_block="192.168.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            availability_zone=example_zones.ids[0],
-            cidr_block="192.168.1.0/24",
-            vpc_id=example_network.id)
-        example_instance = alicloud.tsdb.Instance("exampleInstance",
-            payment_type="PayAsYouGo",
-            vswitch_id=example_switch.id,
-            instance_storage="50",
-            instance_class="tsdb.1x.basic",
-            engine_type="tsdb_tsdb",
-            instance_alias="tf-testaccTsdbInstance")
-        ```
-
         ## Import
 
         TSDB Instance can be imported using the id, e.g.
@@ -644,29 +629,6 @@ class Instance(pulumi.CustomResource):
         For information about Time Series Database (TSDB) Instance and how to use it, see [What is Time Series Database (TSDB)](https://www.alibabacloud.com/help/en/doc-detail/55652.htm).
 
         > **NOTE:** Available in v1.112.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.tsdb.get_zones()
-        example_network = alicloud.vpc.Network("exampleNetwork", cidr_block="192.168.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            availability_zone=example_zones.ids[0],
-            cidr_block="192.168.1.0/24",
-            vpc_id=example_network.id)
-        example_instance = alicloud.tsdb.Instance("exampleInstance",
-            payment_type="PayAsYouGo",
-            vswitch_id=example_switch.id,
-            instance_storage="50",
-            instance_class="tsdb.1x.basic",
-            engine_type="tsdb_tsdb",
-            instance_alias="tf-testaccTsdbInstance")
-        ```
 
         ## Import
 

@@ -17,34 +17,6 @@ import (
 // For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyopenlogshipper).
 //
 // > **NOTE:** Available in v1.195.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := threatdetection.GetLogShipper(ctx, &threatdetection.GetLogShipperArgs{
-//				Enable: pulumi.StringRef("On"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetLogShipper(ctx *pulumi.Context, args *GetLogShipperArgs, opts ...pulumi.InvokeOption) (*GetLogShipperResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLogShipperResult

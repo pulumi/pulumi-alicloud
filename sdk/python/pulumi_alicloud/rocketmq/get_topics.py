@@ -138,33 +138,6 @@ def get_topics(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in 1.53.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    name = config.get("name")
-    if name is None:
-        name = "onsInstanceName"
-    topic = config.get("topic")
-    if topic is None:
-        topic = "onsTopicDatasourceName"
-    default_instance = alicloud.rocketmq.Instance("defaultInstance",
-        instance_name=name,
-        remark="default_ons_instance_remark")
-    default_topic = alicloud.rocketmq.Topic("defaultTopic",
-        topic_name=topic,
-        instance_id=default_instance.id,
-        message_type=0,
-        remark="dafault_ons_topic_remark")
-    topics_ds = alicloud.rocketmq.get_topics_output(instance_id=default_topic.instance_id,
-        name_regex=topic,
-        output_file="topics.txt")
-    pulumi.export("firstTopicName", topics_ds.topics[0].topic_name)
-    ```
-
 
     :param Sequence[str] ids: A list of topic IDs to filter results.
     :param str instance_id: ID of the ONS Instance that owns the topics.
@@ -206,33 +179,6 @@ def get_topics_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
     This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in 1.53.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    name = config.get("name")
-    if name is None:
-        name = "onsInstanceName"
-    topic = config.get("topic")
-    if topic is None:
-        topic = "onsTopicDatasourceName"
-    default_instance = alicloud.rocketmq.Instance("defaultInstance",
-        instance_name=name,
-        remark="default_ons_instance_remark")
-    default_topic = alicloud.rocketmq.Topic("defaultTopic",
-        topic_name=topic,
-        instance_id=default_instance.id,
-        message_type=0,
-        remark="dafault_ons_topic_remark")
-    topics_ds = alicloud.rocketmq.get_topics_output(instance_id=default_topic.instance_id,
-        name_regex=topic,
-        output_file="topics.txt")
-    pulumi.export("firstTopicName", topics_ds.topics[0].topic_name)
-    ```
 
 
     :param Sequence[str] ids: A list of topic IDs to filter results.

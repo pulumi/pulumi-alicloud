@@ -15,40 +15,6 @@ import (
 // This data source provides the Nas Snapshots of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.152.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := nas.GetSnapshots(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("nasSnapshotId1", ids.Snapshots[0].Id)
-//			nameRegex, err := nas.GetSnapshots(ctx, &nas.GetSnapshotsArgs{
-//				NameRegex: pulumi.StringRef("^my-Snapshot"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("nasSnapshotId2", nameRegex.Snapshots[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetSnapshots(ctx *pulumi.Context, args *GetSnapshotsArgs, opts ...pulumi.InvokeOption) (*GetSnapshotsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSnapshotsResult

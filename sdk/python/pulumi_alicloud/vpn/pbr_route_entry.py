@@ -41,24 +41,36 @@ class PbrRouteEntryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             next_hop: pulumi.Input[str],
-             publish_vpc: pulumi.Input[bool],
-             route_dest: pulumi.Input[str],
-             route_source: pulumi.Input[str],
-             vpn_gateway_id: pulumi.Input[str],
-             weight: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             next_hop: Optional[pulumi.Input[str]] = None,
+             publish_vpc: Optional[pulumi.Input[bool]] = None,
+             route_dest: Optional[pulumi.Input[str]] = None,
+             route_source: Optional[pulumi.Input[str]] = None,
+             vpn_gateway_id: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nextHop' in kwargs:
+        if next_hop is None and 'nextHop' in kwargs:
             next_hop = kwargs['nextHop']
-        if 'publishVpc' in kwargs:
+        if next_hop is None:
+            raise TypeError("Missing 'next_hop' argument")
+        if publish_vpc is None and 'publishVpc' in kwargs:
             publish_vpc = kwargs['publishVpc']
-        if 'routeDest' in kwargs:
+        if publish_vpc is None:
+            raise TypeError("Missing 'publish_vpc' argument")
+        if route_dest is None and 'routeDest' in kwargs:
             route_dest = kwargs['routeDest']
-        if 'routeSource' in kwargs:
+        if route_dest is None:
+            raise TypeError("Missing 'route_dest' argument")
+        if route_source is None and 'routeSource' in kwargs:
             route_source = kwargs['routeSource']
-        if 'vpnGatewayId' in kwargs:
+        if route_source is None:
+            raise TypeError("Missing 'route_source' argument")
+        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
             vpn_gateway_id = kwargs['vpnGatewayId']
+        if vpn_gateway_id is None:
+            raise TypeError("Missing 'vpn_gateway_id' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
 
         _setter("next_hop", next_hop)
         _setter("publish_vpc", publish_vpc)
@@ -180,17 +192,17 @@ class _PbrRouteEntryState:
              status: Optional[pulumi.Input[str]] = None,
              vpn_gateway_id: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nextHop' in kwargs:
+        if next_hop is None and 'nextHop' in kwargs:
             next_hop = kwargs['nextHop']
-        if 'publishVpc' in kwargs:
+        if publish_vpc is None and 'publishVpc' in kwargs:
             publish_vpc = kwargs['publishVpc']
-        if 'routeDest' in kwargs:
+        if route_dest is None and 'routeDest' in kwargs:
             route_dest = kwargs['routeDest']
-        if 'routeSource' in kwargs:
+        if route_source is None and 'routeSource' in kwargs:
             route_source = kwargs['routeSource']
-        if 'vpnGatewayId' in kwargs:
+        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
             vpn_gateway_id = kwargs['vpnGatewayId']
 
         if next_hop is not None:
@@ -312,34 +324,6 @@ class PbrRouteEntry(pulumi.CustomResource):
 
         For information about VPN Pbr Route Entry and how to use it, see [What is VPN Pbr Route Entry](https://www.alibabacloud.com/help/en/doc-detail/127248.html).
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfacc"
-        default_gateways = alicloud.vpn.get_gateways()
-        default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway", ip_address="192.168.1.1")
-        default_connection = alicloud.vpn.Connection("defaultConnection",
-            customer_gateway_id=default_customer_gateway.id,
-            vpn_gateway_id=default_gateways.ids[0],
-            local_subnets=["192.168.2.0/24"],
-            remote_subnets=["192.168.3.0/24"])
-        default_pbr_route_entry = alicloud.vpn.PbrRouteEntry("defaultPbrRouteEntry",
-            vpn_gateway_id=default_gateways.ids[0],
-            route_source="192.168.1.0/24",
-            route_dest="10.0.0.0/24",
-            next_hop=default_connection.id,
-            weight=0,
-            publish_vpc=False)
-        ```
-
         ## Import
 
         VPN Pbr route entry can be imported using the id, e.g.
@@ -369,34 +353,6 @@ class PbrRouteEntry(pulumi.CustomResource):
         > **NOTE:** Available in 1.162.0+.
 
         For information about VPN Pbr Route Entry and how to use it, see [What is VPN Pbr Route Entry](https://www.alibabacloud.com/help/en/doc-detail/127248.html).
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfacc"
-        default_gateways = alicloud.vpn.get_gateways()
-        default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway", ip_address="192.168.1.1")
-        default_connection = alicloud.vpn.Connection("defaultConnection",
-            customer_gateway_id=default_customer_gateway.id,
-            vpn_gateway_id=default_gateways.ids[0],
-            local_subnets=["192.168.2.0/24"],
-            remote_subnets=["192.168.3.0/24"])
-        default_pbr_route_entry = alicloud.vpn.PbrRouteEntry("defaultPbrRouteEntry",
-            vpn_gateway_id=default_gateways.ids[0],
-            route_source="192.168.1.0/24",
-            route_dest="10.0.0.0/24",
-            next_hop=default_connection.id,
-            weight=0,
-            publish_vpc=False)
-        ```
 
         ## Import
 

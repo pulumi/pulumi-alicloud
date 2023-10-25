@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides user-available access groups. Use when you can create mount points
  *
  * > NOTE: Available in 1.35.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.nas.getAccessGroups({
- *     nameRegex: "^foo",
- *     accessGroupType: "Classic",
- *     description: "tf-testAccAccessGroupsdatasource",
- * });
- * export const alicloudNasAccessGroupsId = example.then(example => example.groups?.[0]?.id);
- * ```
  */
 export function getAccessGroups(args?: GetAccessGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessGroupsResult> {
     args = args || {};
@@ -128,20 +114,6 @@ export interface GetAccessGroupsResult {
  * This data source provides user-available access groups. Use when you can create mount points
  *
  * > NOTE: Available in 1.35.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.nas.getAccessGroups({
- *     nameRegex: "^foo",
- *     accessGroupType: "Classic",
- *     description: "tf-testAccAccessGroupsdatasource",
- * });
- * export const alicloudNasAccessGroupsId = example.then(example => example.groups?.[0]?.id);
- * ```
  */
 export function getAccessGroupsOutput(args?: GetAccessGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessGroupsResult> {
     return pulumi.output(args).apply((a: any) => getAccessGroups(a, opts))

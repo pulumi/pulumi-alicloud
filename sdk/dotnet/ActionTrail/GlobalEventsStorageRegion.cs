@@ -16,24 +16,6 @@ namespace Pulumi.AliCloud.ActionTrail
     /// 
     /// &gt; **NOTE:** Available since v1.201.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foo = new AliCloud.ActionTrail.GlobalEventsStorageRegion("foo", new()
-    ///     {
-    ///         StorageRegion = "cn-hangzhou",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Global events storage region not can be imported.

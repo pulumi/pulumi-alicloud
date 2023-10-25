@@ -11,23 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.136.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.quickbi.User("example", {
- *     accountName: "example_value",
- *     adminUser: false,
- *     authAdminUser: false,
- *     nickName: "example_value",
- *     userType: "Analyst",
- * });
- * ```
- *
  * ## Import
  *
  * Quick BI User can be imported using the id, e.g.

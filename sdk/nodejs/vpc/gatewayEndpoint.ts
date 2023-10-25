@@ -11,32 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.208.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const domain = config.get("domain") || "com.aliyun.cn-hangzhou.oss";
- * const defaultVpc = new alicloud.vpc.Network("defaultVpc", {description: "tf-example"});
- * const defaultRg = new alicloud.resourcemanager.ResourceGroup("defaultRg", {
- *     displayName: "tf-example-497",
- *     resourceGroupName: name,
- * });
- * const _default = new alicloud.vpc.GatewayEndpoint("default", {
- *     gatewayEndpointDescrption: "test-gateway-endpoint",
- *     gatewayEndpointName: name,
- *     vpcId: defaultVpc.id,
- *     resourceGroupId: defaultRg.id,
- *     serviceName: domain,
- *     policyDocument: "{ \"Version\" : \"1\", \"Statement\" : [ { \"Effect\" : \"Allow\", \"Resource\" : [ \"*\" ], \"Action\" : [ \"*\" ], \"Principal\" : [ \"*\" ] } ] }",
- * });
- * ```
- *
  * ## Import
  *
  * VPC Gateway Endpoint can be imported using the id, e.g.

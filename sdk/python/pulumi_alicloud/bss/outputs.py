@@ -53,24 +53,40 @@ class GetOpenApiPricingModulesModuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             code: str,
-             id: str,
-             pricing_module_name: str,
-             product_code: str,
-             product_type: str,
-             subscription_type: str,
-             unit: str,
-             values: Sequence['outputs.GetOpenApiPricingModulesModuleValueResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             code: Optional[str] = None,
+             id: Optional[str] = None,
+             pricing_module_name: Optional[str] = None,
+             product_code: Optional[str] = None,
+             product_type: Optional[str] = None,
+             subscription_type: Optional[str] = None,
+             unit: Optional[str] = None,
+             values: Optional[Sequence['outputs.GetOpenApiPricingModulesModuleValueResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'pricingModuleName' in kwargs:
+        if code is None:
+            raise TypeError("Missing 'code' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if pricing_module_name is None and 'pricingModuleName' in kwargs:
             pricing_module_name = kwargs['pricingModuleName']
-        if 'productCode' in kwargs:
+        if pricing_module_name is None:
+            raise TypeError("Missing 'pricing_module_name' argument")
+        if product_code is None and 'productCode' in kwargs:
             product_code = kwargs['productCode']
-        if 'productType' in kwargs:
+        if product_code is None:
+            raise TypeError("Missing 'product_code' argument")
+        if product_type is None and 'productType' in kwargs:
             product_type = kwargs['productType']
-        if 'subscriptionType' in kwargs:
+        if product_type is None:
+            raise TypeError("Missing 'product_type' argument")
+        if subscription_type is None and 'subscriptionType' in kwargs:
             subscription_type = kwargs['subscriptionType']
+        if subscription_type is None:
+            raise TypeError("Missing 'subscription_type' argument")
+        if unit is None:
+            raise TypeError("Missing 'unit' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("code", code)
         _setter("id", id)
@@ -174,12 +190,20 @@ class GetOpenApiPricingModulesModuleValueResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             remark: str,
-             type: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[str] = None,
+             remark: Optional[str] = None,
+             type: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if remark is None:
+            raise TypeError("Missing 'remark' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("name", name)
         _setter("remark", remark)
@@ -250,21 +274,31 @@ class GetOpenApiProductsProductResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             product_code: str,
-             product_name: str,
-             product_type: str,
-             subscription_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             product_code: Optional[str] = None,
+             product_name: Optional[str] = None,
+             product_type: Optional[str] = None,
+             subscription_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'productCode' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if product_code is None and 'productCode' in kwargs:
             product_code = kwargs['productCode']
-        if 'productName' in kwargs:
+        if product_code is None:
+            raise TypeError("Missing 'product_code' argument")
+        if product_name is None and 'productName' in kwargs:
             product_name = kwargs['productName']
-        if 'productType' in kwargs:
+        if product_name is None:
+            raise TypeError("Missing 'product_name' argument")
+        if product_type is None and 'productType' in kwargs:
             product_type = kwargs['productType']
-        if 'subscriptionType' in kwargs:
+        if product_type is None:
+            raise TypeError("Missing 'product_type' argument")
+        if subscription_type is None and 'subscriptionType' in kwargs:
             subscription_type = kwargs['subscriptionType']
+        if subscription_type is None:
+            raise TypeError("Missing 'subscription_type' argument")
 
         _setter("id", id)
         _setter("product_code", product_code)

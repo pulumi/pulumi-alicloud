@@ -18,35 +18,6 @@ import (
 //
 // > **NOTE:** Available since v1.152.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ram.NewSecurityPreference(ctx, "example", &ram.SecurityPreferenceArgs{
-//				AllowUserToChangePassword: pulumi.Bool(true),
-//				EnableSaveMfaTicket:       pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // RAM Security Preference can be imported using the id, e.g.

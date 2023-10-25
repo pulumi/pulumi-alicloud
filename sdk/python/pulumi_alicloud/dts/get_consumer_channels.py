@@ -90,18 +90,6 @@ def get_consumer_channels(dts_instance_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.146.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dts.get_consumer_channels()
-    pulumi.export("dtsConsumerChannelId1", ids.channels[0].id)
-    ```
-
 
     :param str dts_instance_id: Subscription instance ID.
     :param Sequence[str] ids: A list of Consumer Channel IDs.
@@ -131,18 +119,6 @@ def get_consumer_channels_output(dts_instance_id: Optional[pulumi.Input[str]] = 
     This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.146.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dts.get_consumer_channels()
-    pulumi.export("dtsConsumerChannelId1", ids.channels[0].id)
-    ```
 
 
     :param str dts_instance_id: Subscription instance ID.

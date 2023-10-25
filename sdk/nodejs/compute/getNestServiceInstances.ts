@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Compute Nest Service Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.205.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.compute.getNestServiceInstances({
- *     ids: ["example_id"],
- * });
- * export const armsPrometheisId1 = ids.then(ids => ids.serviceInstances?.[0]?.id);
- * const nameRegex = alicloud.compute.getNestServiceInstances({
- *     nameRegex: "tf-example",
- * });
- * export const armsPrometheisId2 = nameRegex.then(nameRegex => nameRegex.serviceInstances?.[0]?.id);
- * ```
  */
 export function getNestServiceInstances(args?: GetNestServiceInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetNestServiceInstancesResult> {
     args = args || {};
@@ -106,24 +88,6 @@ export interface GetNestServiceInstancesResult {
  * This data source provides the Compute Nest Service Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.205.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.compute.getNestServiceInstances({
- *     ids: ["example_id"],
- * });
- * export const armsPrometheisId1 = ids.then(ids => ids.serviceInstances?.[0]?.id);
- * const nameRegex = alicloud.compute.getNestServiceInstances({
- *     nameRegex: "tf-example",
- * });
- * export const armsPrometheisId2 = nameRegex.then(nameRegex => nameRegex.serviceInstances?.[0]?.id);
- * ```
  */
 export function getNestServiceInstancesOutput(args?: GetNestServiceInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNestServiceInstancesResult> {
     return pulumi.output(args).apply((a: any) => getNestServiceInstances(a, opts))

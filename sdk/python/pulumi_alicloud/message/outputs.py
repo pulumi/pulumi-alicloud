@@ -71,51 +71,81 @@ class GetServiceQueuesQueueResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             active_messages: int,
-             create_time: int,
-             delay_messages: int,
-             delay_seconds: int,
-             id: str,
-             inactive_messages: int,
-             last_modify_time: int,
-             logging_enabled: bool,
-             maximum_message_size: int,
-             message_retention_period: int,
-             polling_wait_seconds: int,
-             queue_internal_url: str,
-             queue_name: str,
-             queue_url: str,
-             visibility_timeout: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             active_messages: Optional[int] = None,
+             create_time: Optional[int] = None,
+             delay_messages: Optional[int] = None,
+             delay_seconds: Optional[int] = None,
+             id: Optional[str] = None,
+             inactive_messages: Optional[int] = None,
+             last_modify_time: Optional[int] = None,
+             logging_enabled: Optional[bool] = None,
+             maximum_message_size: Optional[int] = None,
+             message_retention_period: Optional[int] = None,
+             polling_wait_seconds: Optional[int] = None,
+             queue_internal_url: Optional[str] = None,
+             queue_name: Optional[str] = None,
+             queue_url: Optional[str] = None,
+             visibility_timeout: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'activeMessages' in kwargs:
+        if active_messages is None and 'activeMessages' in kwargs:
             active_messages = kwargs['activeMessages']
-        if 'createTime' in kwargs:
+        if active_messages is None:
+            raise TypeError("Missing 'active_messages' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'delayMessages' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if delay_messages is None and 'delayMessages' in kwargs:
             delay_messages = kwargs['delayMessages']
-        if 'delaySeconds' in kwargs:
+        if delay_messages is None:
+            raise TypeError("Missing 'delay_messages' argument")
+        if delay_seconds is None and 'delaySeconds' in kwargs:
             delay_seconds = kwargs['delaySeconds']
-        if 'inactiveMessages' in kwargs:
+        if delay_seconds is None:
+            raise TypeError("Missing 'delay_seconds' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if inactive_messages is None and 'inactiveMessages' in kwargs:
             inactive_messages = kwargs['inactiveMessages']
-        if 'lastModifyTime' in kwargs:
+        if inactive_messages is None:
+            raise TypeError("Missing 'inactive_messages' argument")
+        if last_modify_time is None and 'lastModifyTime' in kwargs:
             last_modify_time = kwargs['lastModifyTime']
-        if 'loggingEnabled' in kwargs:
+        if last_modify_time is None:
+            raise TypeError("Missing 'last_modify_time' argument")
+        if logging_enabled is None and 'loggingEnabled' in kwargs:
             logging_enabled = kwargs['loggingEnabled']
-        if 'maximumMessageSize' in kwargs:
+        if logging_enabled is None:
+            raise TypeError("Missing 'logging_enabled' argument")
+        if maximum_message_size is None and 'maximumMessageSize' in kwargs:
             maximum_message_size = kwargs['maximumMessageSize']
-        if 'messageRetentionPeriod' in kwargs:
+        if maximum_message_size is None:
+            raise TypeError("Missing 'maximum_message_size' argument")
+        if message_retention_period is None and 'messageRetentionPeriod' in kwargs:
             message_retention_period = kwargs['messageRetentionPeriod']
-        if 'pollingWaitSeconds' in kwargs:
+        if message_retention_period is None:
+            raise TypeError("Missing 'message_retention_period' argument")
+        if polling_wait_seconds is None and 'pollingWaitSeconds' in kwargs:
             polling_wait_seconds = kwargs['pollingWaitSeconds']
-        if 'queueInternalUrl' in kwargs:
+        if polling_wait_seconds is None:
+            raise TypeError("Missing 'polling_wait_seconds' argument")
+        if queue_internal_url is None and 'queueInternalUrl' in kwargs:
             queue_internal_url = kwargs['queueInternalUrl']
-        if 'queueName' in kwargs:
+        if queue_internal_url is None:
+            raise TypeError("Missing 'queue_internal_url' argument")
+        if queue_name is None and 'queueName' in kwargs:
             queue_name = kwargs['queueName']
-        if 'queueUrl' in kwargs:
+        if queue_name is None:
+            raise TypeError("Missing 'queue_name' argument")
+        if queue_url is None and 'queueUrl' in kwargs:
             queue_url = kwargs['queueUrl']
-        if 'visibilityTimeout' in kwargs:
+        if queue_url is None:
+            raise TypeError("Missing 'queue_url' argument")
+        if visibility_timeout is None and 'visibilityTimeout' in kwargs:
             visibility_timeout = kwargs['visibilityTimeout']
+        if visibility_timeout is None:
+            raise TypeError("Missing 'visibility_timeout' argument")
 
         _setter("active_messages", active_messages)
         _setter("create_time", create_time)
@@ -298,37 +328,59 @@ class GetServiceSubscriptionsSubscriptionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: int,
-             endpoint: str,
-             filter_tag: str,
-             id: str,
-             last_modify_time: int,
-             notify_content_format: str,
-             notify_strategy: str,
-             subscription_name: str,
-             subscription_url: str,
-             topic_name: str,
-             topic_owner: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[int] = None,
+             endpoint: Optional[str] = None,
+             filter_tag: Optional[str] = None,
+             id: Optional[str] = None,
+             last_modify_time: Optional[int] = None,
+             notify_content_format: Optional[str] = None,
+             notify_strategy: Optional[str] = None,
+             subscription_name: Optional[str] = None,
+             subscription_url: Optional[str] = None,
+             topic_name: Optional[str] = None,
+             topic_owner: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'filterTag' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if filter_tag is None and 'filterTag' in kwargs:
             filter_tag = kwargs['filterTag']
-        if 'lastModifyTime' in kwargs:
+        if filter_tag is None:
+            raise TypeError("Missing 'filter_tag' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if last_modify_time is None and 'lastModifyTime' in kwargs:
             last_modify_time = kwargs['lastModifyTime']
-        if 'notifyContentFormat' in kwargs:
+        if last_modify_time is None:
+            raise TypeError("Missing 'last_modify_time' argument")
+        if notify_content_format is None and 'notifyContentFormat' in kwargs:
             notify_content_format = kwargs['notifyContentFormat']
-        if 'notifyStrategy' in kwargs:
+        if notify_content_format is None:
+            raise TypeError("Missing 'notify_content_format' argument")
+        if notify_strategy is None and 'notifyStrategy' in kwargs:
             notify_strategy = kwargs['notifyStrategy']
-        if 'subscriptionName' in kwargs:
+        if notify_strategy is None:
+            raise TypeError("Missing 'notify_strategy' argument")
+        if subscription_name is None and 'subscriptionName' in kwargs:
             subscription_name = kwargs['subscriptionName']
-        if 'subscriptionUrl' in kwargs:
+        if subscription_name is None:
+            raise TypeError("Missing 'subscription_name' argument")
+        if subscription_url is None and 'subscriptionUrl' in kwargs:
             subscription_url = kwargs['subscriptionUrl']
-        if 'topicName' in kwargs:
+        if subscription_url is None:
+            raise TypeError("Missing 'subscription_url' argument")
+        if topic_name is None and 'topicName' in kwargs:
             topic_name = kwargs['topicName']
-        if 'topicOwner' in kwargs:
+        if topic_name is None:
+            raise TypeError("Missing 'topic_name' argument")
+        if topic_owner is None and 'topicOwner' in kwargs:
             topic_owner = kwargs['topicOwner']
+        if topic_owner is None:
+            raise TypeError("Missing 'topic_owner' argument")
 
         _setter("create_time", create_time)
         _setter("endpoint", endpoint)
@@ -472,36 +524,56 @@ class GetServiceTopicsTopicResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: int,
-             id: str,
-             last_modify_time: int,
-             logging_enabled: bool,
-             max_message_size: int,
-             message_count: int,
-             message_retention_period: int,
-             topic_inner_url: str,
-             topic_name: str,
-             topic_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[int] = None,
+             id: Optional[str] = None,
+             last_modify_time: Optional[int] = None,
+             logging_enabled: Optional[bool] = None,
+             max_message_size: Optional[int] = None,
+             message_count: Optional[int] = None,
+             message_retention_period: Optional[int] = None,
+             topic_inner_url: Optional[str] = None,
+             topic_name: Optional[str] = None,
+             topic_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'lastModifyTime' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if last_modify_time is None and 'lastModifyTime' in kwargs:
             last_modify_time = kwargs['lastModifyTime']
-        if 'loggingEnabled' in kwargs:
+        if last_modify_time is None:
+            raise TypeError("Missing 'last_modify_time' argument")
+        if logging_enabled is None and 'loggingEnabled' in kwargs:
             logging_enabled = kwargs['loggingEnabled']
-        if 'maxMessageSize' in kwargs:
+        if logging_enabled is None:
+            raise TypeError("Missing 'logging_enabled' argument")
+        if max_message_size is None and 'maxMessageSize' in kwargs:
             max_message_size = kwargs['maxMessageSize']
-        if 'messageCount' in kwargs:
+        if max_message_size is None:
+            raise TypeError("Missing 'max_message_size' argument")
+        if message_count is None and 'messageCount' in kwargs:
             message_count = kwargs['messageCount']
-        if 'messageRetentionPeriod' in kwargs:
+        if message_count is None:
+            raise TypeError("Missing 'message_count' argument")
+        if message_retention_period is None and 'messageRetentionPeriod' in kwargs:
             message_retention_period = kwargs['messageRetentionPeriod']
-        if 'topicInnerUrl' in kwargs:
+        if message_retention_period is None:
+            raise TypeError("Missing 'message_retention_period' argument")
+        if topic_inner_url is None and 'topicInnerUrl' in kwargs:
             topic_inner_url = kwargs['topicInnerUrl']
-        if 'topicName' in kwargs:
+        if topic_inner_url is None:
+            raise TypeError("Missing 'topic_inner_url' argument")
+        if topic_name is None and 'topicName' in kwargs:
             topic_name = kwargs['topicName']
-        if 'topicUrl' in kwargs:
+        if topic_name is None:
+            raise TypeError("Missing 'topic_name' argument")
+        if topic_url is None and 'topicUrl' in kwargs:
             topic_url = kwargs['topicUrl']
+        if topic_url is None:
+            raise TypeError("Missing 'topic_url' argument")
 
         _setter("create_time", create_time)
         _setter("id", id)

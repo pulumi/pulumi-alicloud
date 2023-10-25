@@ -34,17 +34,23 @@ class BandwidthLimitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth_limit: pulumi.Input[int],
-             instance_id: pulumi.Input[str],
-             region_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth_limit: Optional[pulumi.Input[int]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bandwidthLimit' in kwargs:
+        if bandwidth_limit is None and 'bandwidthLimit' in kwargs:
             bandwidth_limit = kwargs['bandwidthLimit']
-        if 'instanceId' in kwargs:
+        if bandwidth_limit is None:
+            raise TypeError("Missing 'bandwidth_limit' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'regionIds' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if region_ids is None and 'regionIds' in kwargs:
             region_ids = kwargs['regionIds']
+        if region_ids is None:
+            raise TypeError("Missing 'region_ids' argument")
 
         _setter("bandwidth_limit", bandwidth_limit)
         _setter("instance_id", instance_id)
@@ -115,13 +121,13 @@ class _BandwidthLimitState:
              bandwidth_limit: Optional[pulumi.Input[int]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bandwidthLimit' in kwargs:
+        if bandwidth_limit is None and 'bandwidthLimit' in kwargs:
             bandwidth_limit = kwargs['bandwidthLimit']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'regionIds' in kwargs:
+        if region_ids is None and 'regionIds' in kwargs:
             region_ids = kwargs['regionIds']
 
         if bandwidth_limit is not None:
@@ -188,61 +194,6 @@ class BandwidthLimit(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.18.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region1 = config.get("region1")
-        if region1 is None:
-            region1 = "eu-central-1"
-        region2 = config.get("region2")
-        if region2 is None:
-            region2 = "ap-southeast-1"
-        ec = alicloud.Provider("ec", region=region1)
-        as_ = alicloud.Provider("as", region=region2)
-        vpc1 = alicloud.vpc.Network("vpc1",
-            vpc_name="tf-example",
-            cidr_block="192.168.0.0/16",
-            opts=pulumi.ResourceOptions(provider=alicloud["ec"]))
-        vpc2 = alicloud.vpc.Network("vpc2",
-            vpc_name="tf-example",
-            cidr_block="172.16.0.0/12",
-            opts=pulumi.ResourceOptions(provider=alicloud["as"]))
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example1 = alicloud.cen.InstanceAttachment("example1",
-            instance_id=example_instance.id,
-            child_instance_id=vpc1.id,
-            child_instance_type="VPC",
-            child_instance_region_id=region1)
-        example2 = alicloud.cen.InstanceAttachment("example2",
-            instance_id=example_instance.id,
-            child_instance_id=vpc2.id,
-            child_instance_type="VPC",
-            child_instance_region_id=region2)
-        example_bandwidth_package = alicloud.cen.BandwidthPackage("exampleBandwidthPackage",
-            bandwidth=5,
-            cen_bandwidth_package_name="tf_example",
-            geographic_region_a_id="Europe",
-            geographic_region_b_id="Asia-Pacific")
-        example_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            instance_id=example_instance.id,
-            bandwidth_package_id=example_bandwidth_package.id)
-        example_bandwidth_limit = alicloud.cen.BandwidthLimit("exampleBandwidthLimit",
-            instance_id=example_bandwidth_package_attachment.instance_id,
-            region_ids=[
-                example1.child_instance_region_id,
-                example2.child_instance_region_id,
-            ],
-            bandwidth_limit=4)
-        ```
-
         ## Import
 
         CEN bandwidth limit can be imported using the id, e.g.
@@ -273,61 +224,6 @@ class BandwidthLimit(pulumi.CustomResource):
         For information about CEN and how to use it, see [Cross-region interconnection bandwidth](https://www.alibabacloud.com/help/doc-detail/65983.htm)
 
         > **NOTE:** Available since v1.18.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region1 = config.get("region1")
-        if region1 is None:
-            region1 = "eu-central-1"
-        region2 = config.get("region2")
-        if region2 is None:
-            region2 = "ap-southeast-1"
-        ec = alicloud.Provider("ec", region=region1)
-        as_ = alicloud.Provider("as", region=region2)
-        vpc1 = alicloud.vpc.Network("vpc1",
-            vpc_name="tf-example",
-            cidr_block="192.168.0.0/16",
-            opts=pulumi.ResourceOptions(provider=alicloud["ec"]))
-        vpc2 = alicloud.vpc.Network("vpc2",
-            vpc_name="tf-example",
-            cidr_block="172.16.0.0/12",
-            opts=pulumi.ResourceOptions(provider=alicloud["as"]))
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example1 = alicloud.cen.InstanceAttachment("example1",
-            instance_id=example_instance.id,
-            child_instance_id=vpc1.id,
-            child_instance_type="VPC",
-            child_instance_region_id=region1)
-        example2 = alicloud.cen.InstanceAttachment("example2",
-            instance_id=example_instance.id,
-            child_instance_id=vpc2.id,
-            child_instance_type="VPC",
-            child_instance_region_id=region2)
-        example_bandwidth_package = alicloud.cen.BandwidthPackage("exampleBandwidthPackage",
-            bandwidth=5,
-            cen_bandwidth_package_name="tf_example",
-            geographic_region_a_id="Europe",
-            geographic_region_b_id="Asia-Pacific")
-        example_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            instance_id=example_instance.id,
-            bandwidth_package_id=example_bandwidth_package.id)
-        example_bandwidth_limit = alicloud.cen.BandwidthLimit("exampleBandwidthLimit",
-            instance_id=example_bandwidth_package_attachment.instance_id,
-            region_ids=[
-                example1.child_instance_region_id,
-                example2.child_instance_region_id,
-            ],
-            bandwidth_limit=4)
-        ```
 
         ## Import
 

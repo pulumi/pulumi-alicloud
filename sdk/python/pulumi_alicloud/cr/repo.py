@@ -40,15 +40,21 @@ class RepoArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespace: pulumi.Input[str],
-             repo_type: pulumi.Input[str],
-             summary: pulumi.Input[str],
+             namespace: Optional[pulumi.Input[str]] = None,
+             repo_type: Optional[pulumi.Input[str]] = None,
+             summary: Optional[pulumi.Input[str]] = None,
              detail: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'repoType' in kwargs:
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if repo_type is None and 'repoType' in kwargs:
             repo_type = kwargs['repoType']
+        if repo_type is None:
+            raise TypeError("Missing 'repo_type' argument")
+        if summary is None:
+            raise TypeError("Missing 'summary' argument")
 
         _setter("namespace", namespace)
         _setter("repo_type", repo_type)
@@ -155,11 +161,11 @@ class _RepoState:
              namespace: Optional[pulumi.Input[str]] = None,
              repo_type: Optional[pulumi.Input[str]] = None,
              summary: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainList' in kwargs:
+        if domain_list is None and 'domainList' in kwargs:
             domain_list = kwargs['domainList']
-        if 'repoType' in kwargs:
+        if repo_type is None and 'repoType' in kwargs:
             repo_type = kwargs['repoType']
 
         if detail is not None:
@@ -266,28 +272,6 @@ class Repo(pulumi.CustomResource):
 
         > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_namespace = alicloud.cr.Namespace("exampleNamespace",
-            auto_create=False,
-            default_visibility="PUBLIC")
-        example_repo = alicloud.cr.Repo("exampleRepo",
-            namespace=example_namespace.name,
-            summary="this is summary of my new repo",
-            repo_type="PUBLIC",
-            detail="this is a public repo")
-        ```
-
         ## Import
 
         Container Registry repository can be imported using the `namespace/repository`, e.g.
@@ -316,28 +300,6 @@ class Repo(pulumi.CustomResource):
         > **NOTE:** Available since v1.35.0.
 
         > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_namespace = alicloud.cr.Namespace("exampleNamespace",
-            auto_create=False,
-            default_visibility="PUBLIC")
-        example_repo = alicloud.cr.Repo("exampleRepo",
-            namespace=example_namespace.name,
-            summary="this is summary of my new repo",
-            repo_type="PUBLIC",
-            detail="this is a public repo")
-        ```
 
         ## Import
 

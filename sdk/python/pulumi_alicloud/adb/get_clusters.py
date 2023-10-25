@@ -196,17 +196,6 @@ def get_clusters(description: Optional[str] = None,
 
     > **NOTE:** Available in v1.71.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    adb_clusters_ds = alicloud.adb.get_clusters(description_regex="am-\\\\w+",
-        status="Running")
-    pulumi.export("firstAdbClusterId", adb_clusters_ds.clusters[0].id)
-    ```
-
 
     :param str description: The description of the ADB cluster.
     :param str description_regex: A regex string to filter results by cluster description.
@@ -267,17 +256,6 @@ def get_clusters_output(description: Optional[pulumi.Input[Optional[str]]] = Non
     > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
 
     > **NOTE:** Available in v1.71.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    adb_clusters_ds = alicloud.adb.get_clusters(description_regex="am-\\\\w+",
-        status="Running")
-    pulumi.export("firstAdbClusterId", adb_clusters_ds.clusters[0].id)
-    ```
 
 
     :param str description: The description of the ADB cluster.

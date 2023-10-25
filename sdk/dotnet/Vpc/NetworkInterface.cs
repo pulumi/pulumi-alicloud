@@ -18,56 +18,6 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE** Only one of private_ips or private_ips_count can be specified when assign private IPs.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "networkInterfaceName";
-    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "192.168.0.0/24",
-    ///     });
-    /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
-    ///     {
-    ///         CidrBlock = "192.168.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VpcId = vpc.Id,
-    ///     });
-    /// 
-    ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
-    ///     {
-    ///         VpcId = vpc.Id,
-    ///     });
-    /// 
-    ///     var defaultNetworkInterface = new AliCloud.Vpc.NetworkInterface("defaultNetworkInterface", new()
-    ///     {
-    ///         NetworkInterfaceName = name,
-    ///         VswitchId = vswitch.Id,
-    ///         SecurityGroupIds = new[]
-    ///         {
-    ///             @group.Id,
-    ///         },
-    ///         PrivateIp = "192.168.0.2",
-    ///         PrivateIpsCount = 3,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ENI can be imported using the id, e.g.

@@ -138,20 +138,6 @@ def get_aggregate_compliance_packs(aggregator_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.124.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.cfg.get_aggregate_compliance_packs(aggregator_id="ca-3a9b626622af001d****",
-        ids=["cp-152a626622af00bc****"],
-        name_regex="the_resource_name")
-    pulumi.export("firstConfigAggregateCompliancePackId", example.packs[0].id)
-    ```
-
 
     :param str aggregator_id: The ID of aggregator.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -194,20 +180,6 @@ def get_aggregate_compliance_packs_output(aggregator_id: Optional[pulumi.Input[s
     This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.124.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.cfg.get_aggregate_compliance_packs(aggregator_id="ca-3a9b626622af001d****",
-        ids=["cp-152a626622af00bc****"],
-        name_regex="the_resource_name")
-    pulumi.export("firstConfigAggregateCompliancePackId", example.packs[0].id)
-    ```
 
 
     :param str aggregator_id: The ID of aggregator.

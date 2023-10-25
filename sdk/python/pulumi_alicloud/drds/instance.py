@@ -58,27 +58,37 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             instance_series: pulumi.Input[str],
-             specification: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             instance_series: Optional[pulumi.Input[str]] = None,
+             specification: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              instance_charge_type: Optional[pulumi.Input[str]] = None,
              mysql_version: Optional[pulumi.Input[int]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceSeries' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if instance_series is None and 'instanceSeries' in kwargs:
             instance_series = kwargs['instanceSeries']
-        if 'vswitchId' in kwargs:
+        if instance_series is None:
+            raise TypeError("Missing 'instance_series' argument")
+        if specification is None:
+            raise TypeError("Missing 'specification' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'instanceChargeType' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'mysqlVersion' in kwargs:
+        if mysql_version is None and 'mysqlVersion' in kwargs:
             mysql_version = kwargs['mysqlVersion']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         _setter("description", description)
@@ -264,21 +274,21 @@ class _InstanceState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'instanceSeries' in kwargs:
+        if instance_series is None and 'instanceSeries' in kwargs:
             instance_series = kwargs['instanceSeries']
-        if 'mysqlVersion' in kwargs:
+        if mysql_version is None and 'mysqlVersion' in kwargs:
             mysql_version = kwargs['mysqlVersion']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if connection_string is not None:
@@ -459,21 +469,6 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Currently, this resource only support `Domestic Site Account`.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.drds.Instance("default",
-            description="drds instance",
-            instance_charge_type="PostPaid",
-            instance_series="drds.sn1.4c8g",
-            specification="drds.sn1.4c8g.8C16G",
-            vswitch_id="vsw-bp1jlu3swk8rq2yoi40ey",
-            zone_id="cn-hangzhou-e")
-        ```
-
         ## Import
 
         Distributed Relational Database Service (DRDS) can be imported using the id, e.g.
@@ -520,21 +515,6 @@ class Instance(pulumi.CustomResource):
         > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
 
         > **NOTE:** Currently, this resource only support `Domestic Site Account`.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.drds.Instance("default",
-            description="drds instance",
-            instance_charge_type="PostPaid",
-            instance_series="drds.sn1.4c8g",
-            specification="drds.sn1.4c8g.8C16G",
-            vswitch_id="vsw-bp1jlu3swk8rq2yoi40ey",
-            zone_id="cn-hangzhou-e")
-        ```
 
         ## Import
 

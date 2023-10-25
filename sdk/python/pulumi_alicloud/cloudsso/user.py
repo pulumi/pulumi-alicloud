@@ -47,25 +47,29 @@ class UserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             directory_id: pulumi.Input[str],
-             user_name: pulumi.Input[str],
+             directory_id: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              email: Optional[pulumi.Input[str]] = None,
              first_name: Optional[pulumi.Input[str]] = None,
              last_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'directoryId' in kwargs:
+        if directory_id is None and 'directoryId' in kwargs:
             directory_id = kwargs['directoryId']
-        if 'userName' in kwargs:
+        if directory_id is None:
+            raise TypeError("Missing 'directory_id' argument")
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
-        if 'displayName' in kwargs:
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'firstName' in kwargs:
+        if first_name is None and 'firstName' in kwargs:
             first_name = kwargs['firstName']
-        if 'lastName' in kwargs:
+        if last_name is None and 'lastName' in kwargs:
             last_name = kwargs['lastName']
 
         _setter("directory_id", directory_id)
@@ -228,19 +232,19 @@ class _UserState:
              status: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'directoryId' in kwargs:
+        if directory_id is None and 'directoryId' in kwargs:
             directory_id = kwargs['directoryId']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'firstName' in kwargs:
+        if first_name is None and 'firstName' in kwargs:
             first_name = kwargs['firstName']
-        if 'lastName' in kwargs:
+        if last_name is None and 'lastName' in kwargs:
             last_name = kwargs['lastName']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
 
         if description is not None:

@@ -15,43 +15,6 @@ namespace Pulumi.AliCloud.Compute
         /// This data source provides the Compute Nest Service Instances of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.205.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Compute.GetNestServiceInstances.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Compute.GetNestServiceInstances.Invoke(new()
-        ///     {
-        ///         NameRegex = "tf-example",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["armsPrometheisId1"] = ids.Apply(getNestServiceInstancesResult =&gt; getNestServiceInstancesResult.ServiceInstances[0]?.Id),
-        ///         ["armsPrometheisId2"] = nameRegex.Apply(getNestServiceInstancesResult =&gt; getNestServiceInstancesResult.ServiceInstances[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNestServiceInstancesResult> InvokeAsync(GetNestServiceInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNestServiceInstancesResult>("alicloud:compute/getNestServiceInstances:getNestServiceInstances", args ?? new GetNestServiceInstancesArgs(), options.WithDefaults());
@@ -60,43 +23,6 @@ namespace Pulumi.AliCloud.Compute
         /// This data source provides the Compute Nest Service Instances of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.205.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Compute.GetNestServiceInstances.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Compute.GetNestServiceInstances.Invoke(new()
-        ///     {
-        ///         NameRegex = "tf-example",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["armsPrometheisId1"] = ids.Apply(getNestServiceInstancesResult =&gt; getNestServiceInstancesResult.ServiceInstances[0]?.Id),
-        ///         ["armsPrometheisId2"] = nameRegex.Apply(getNestServiceInstancesResult =&gt; getNestServiceInstancesResult.ServiceInstances[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetNestServiceInstancesResult> Invoke(GetNestServiceInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNestServiceInstancesResult>("alicloud:compute/getNestServiceInstances:getNestServiceInstances", args ?? new GetNestServiceInstancesInvokeArgs(), options.WithDefaults());

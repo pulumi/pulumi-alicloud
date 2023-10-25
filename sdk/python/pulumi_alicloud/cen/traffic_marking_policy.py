@@ -41,21 +41,27 @@ class TrafficMarkingPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             marking_dscp: pulumi.Input[int],
-             priority: pulumi.Input[int],
-             transit_router_id: pulumi.Input[str],
+             marking_dscp: Optional[pulumi.Input[int]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             transit_router_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              traffic_marking_policy_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'markingDscp' in kwargs:
+        if marking_dscp is None and 'markingDscp' in kwargs:
             marking_dscp = kwargs['markingDscp']
-        if 'transitRouterId' in kwargs:
+        if marking_dscp is None:
+            raise TypeError("Missing 'marking_dscp' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'dryRun' in kwargs:
+        if transit_router_id is None:
+            raise TypeError("Missing 'transit_router_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'trafficMarkingPolicyName' in kwargs:
+        if traffic_marking_policy_name is None and 'trafficMarkingPolicyName' in kwargs:
             traffic_marking_policy_name = kwargs['trafficMarkingPolicyName']
 
         _setter("marking_dscp", marking_dscp)
@@ -185,17 +191,17 @@ class _TrafficMarkingPolicyState:
              traffic_marking_policy_id: Optional[pulumi.Input[str]] = None,
              traffic_marking_policy_name: Optional[pulumi.Input[str]] = None,
              transit_router_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'markingDscp' in kwargs:
+        if marking_dscp is None and 'markingDscp' in kwargs:
             marking_dscp = kwargs['markingDscp']
-        if 'trafficMarkingPolicyId' in kwargs:
+        if traffic_marking_policy_id is None and 'trafficMarkingPolicyId' in kwargs:
             traffic_marking_policy_id = kwargs['trafficMarkingPolicyId']
-        if 'trafficMarkingPolicyName' in kwargs:
+        if traffic_marking_policy_name is None and 'trafficMarkingPolicyName' in kwargs:
             traffic_marking_policy_name = kwargs['trafficMarkingPolicyName']
-        if 'transitRouterId' in kwargs:
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
 
         if description is not None:
@@ -331,27 +337,6 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.173.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        example_traffic_marking_policy = alicloud.cen.TrafficMarkingPolicy("exampleTrafficMarkingPolicy",
-            marking_dscp=1,
-            priority=1,
-            traffic_marking_policy_name="tf_example",
-            transit_router_id=example_transit_router.transit_router_id)
-        ```
-
         ## Import
 
         Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.
@@ -381,27 +366,6 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtrafficmarkingpolicy).
 
         > **NOTE:** Available since v1.173.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        example_traffic_marking_policy = alicloud.cen.TrafficMarkingPolicy("exampleTrafficMarkingPolicy",
-            marking_dscp=1,
-            priority=1,
-            traffic_marking_policy_name="tf_example",
-            transit_router_id=example_transit_router.transit_router_id)
-        ```
 
         ## Import
 

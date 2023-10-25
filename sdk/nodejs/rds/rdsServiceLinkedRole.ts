@@ -11,17 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.189.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.rds.RdsServiceLinkedRole("default", {serviceName: "AliyunServiceRoleForRdsPgsqlOnEcs"});
- * ```
- *
  * ## Import
  *
  * RDS Service Linked Role can be imported using the id, e.g.

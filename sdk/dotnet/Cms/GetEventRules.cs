@@ -15,43 +15,6 @@ namespace Pulumi.AliCloud.Cms
         /// This data source provides the Cms Event Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.182.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Cms.GetEventRules.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Cms.GetEventRules.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-EventRule",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cmsEventRuleId1"] = ids.Apply(getEventRulesResult =&gt; getEventRulesResult.Rules[0]?.Id),
-        ///         ["cmsEventRuleId2"] = nameRegex.Apply(getEventRulesResult =&gt; getEventRulesResult.Rules[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEventRulesResult> InvokeAsync(GetEventRulesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEventRulesResult>("alicloud:cms/getEventRules:getEventRules", args ?? new GetEventRulesArgs(), options.WithDefaults());
@@ -60,43 +23,6 @@ namespace Pulumi.AliCloud.Cms
         /// This data source provides the Cms Event Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.182.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Cms.GetEventRules.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Cms.GetEventRules.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-EventRule",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cmsEventRuleId1"] = ids.Apply(getEventRulesResult =&gt; getEventRulesResult.Rules[0]?.Id),
-        ///         ["cmsEventRuleId2"] = nameRegex.Apply(getEventRulesResult =&gt; getEventRulesResult.Rules[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetEventRulesResult> Invoke(GetEventRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEventRulesResult>("alicloud:cms/getEventRules:getEventRules", args ?? new GetEventRulesInvokeArgs(), options.WithDefaults());

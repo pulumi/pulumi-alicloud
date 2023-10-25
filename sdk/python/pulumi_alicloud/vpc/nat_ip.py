@@ -44,28 +44,30 @@ class NatIpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             nat_gateway_id: pulumi.Input[str],
+             nat_gateway_id: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              nat_ip: Optional[pulumi.Input[str]] = None,
              nat_ip_cidr: Optional[pulumi.Input[str]] = None,
              nat_ip_cidr_id: Optional[pulumi.Input[str]] = None,
              nat_ip_description: Optional[pulumi.Input[str]] = None,
              nat_ip_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'natGatewayId' in kwargs:
+        if nat_gateway_id is None and 'natGatewayId' in kwargs:
             nat_gateway_id = kwargs['natGatewayId']
-        if 'dryRun' in kwargs:
+        if nat_gateway_id is None:
+            raise TypeError("Missing 'nat_gateway_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'natIp' in kwargs:
+        if nat_ip is None and 'natIp' in kwargs:
             nat_ip = kwargs['natIp']
-        if 'natIpCidr' in kwargs:
+        if nat_ip_cidr is None and 'natIpCidr' in kwargs:
             nat_ip_cidr = kwargs['natIpCidr']
-        if 'natIpCidrId' in kwargs:
+        if nat_ip_cidr_id is None and 'natIpCidrId' in kwargs:
             nat_ip_cidr_id = kwargs['natIpCidrId']
-        if 'natIpDescription' in kwargs:
+        if nat_ip_description is None and 'natIpDescription' in kwargs:
             nat_ip_description = kwargs['natIpDescription']
-        if 'natIpName' in kwargs:
+        if nat_ip_name is None and 'natIpName' in kwargs:
             nat_ip_name = kwargs['natIpName']
 
         _setter("nat_gateway_id", nat_gateway_id)
@@ -215,23 +217,23 @@ class _NatIpState:
              nat_ip_id: Optional[pulumi.Input[str]] = None,
              nat_ip_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'natGatewayId' in kwargs:
+        if nat_gateway_id is None and 'natGatewayId' in kwargs:
             nat_gateway_id = kwargs['natGatewayId']
-        if 'natIp' in kwargs:
+        if nat_ip is None and 'natIp' in kwargs:
             nat_ip = kwargs['natIp']
-        if 'natIpCidr' in kwargs:
+        if nat_ip_cidr is None and 'natIpCidr' in kwargs:
             nat_ip_cidr = kwargs['natIpCidr']
-        if 'natIpCidrId' in kwargs:
+        if nat_ip_cidr_id is None and 'natIpCidrId' in kwargs:
             nat_ip_cidr_id = kwargs['natIpCidrId']
-        if 'natIpDescription' in kwargs:
+        if nat_ip_description is None and 'natIpDescription' in kwargs:
             nat_ip_description = kwargs['natIpDescription']
-        if 'natIpId' in kwargs:
+        if nat_ip_id is None and 'natIpId' in kwargs:
             nat_ip_id = kwargs['natIpId']
-        if 'natIpName' in kwargs:
+        if nat_ip_name is None and 'natIpName' in kwargs:
             nat_ip_name = kwargs['natIpName']
 
         if dry_run is not None:
@@ -382,44 +384,6 @@ class NatIp(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.136.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/12")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vpc_id=example_network.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=example_zones.zones[0].id,
-            vswitch_name="terraform-example")
-        example_nat_gateway = alicloud.vpc.NatGateway("exampleNatGateway",
-            vpc_id=example_network.id,
-            internet_charge_type="PayByLcu",
-            nat_gateway_name="terraform-example",
-            description="terraform-example",
-            nat_type="Enhanced",
-            vswitch_id=example_switch.id,
-            network_type="intranet")
-        example_nat_ip_cidr = alicloud.vpc.NatIpCidr("exampleNatIpCidr",
-            nat_ip_cidr="192.168.0.0/16",
-            nat_gateway_id=example_nat_gateway.id,
-            nat_ip_cidr_description="terraform-example",
-            nat_ip_cidr_name="terraform-example")
-        example_nat_ip = alicloud.vpc.NatIp("exampleNatIp",
-            nat_ip="192.168.0.37",
-            nat_gateway_id=example_nat_gateway.id,
-            nat_ip_description="example_value",
-            nat_ip_name="example_value",
-            nat_ip_cidr=example_nat_ip_cidr.nat_ip_cidr)
-        ```
-
         ## Import
 
         VPC Nat Ip can be imported using the id, e.g.
@@ -450,44 +414,6 @@ class NatIp(pulumi.CustomResource):
         For information about VPC Nat Ip and how to use it, see [What is Nat Ip](https://www.alibabacloud.com/help/doc-detail/281976.htm).
 
         > **NOTE:** Available in v1.136.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/12")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vpc_id=example_network.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=example_zones.zones[0].id,
-            vswitch_name="terraform-example")
-        example_nat_gateway = alicloud.vpc.NatGateway("exampleNatGateway",
-            vpc_id=example_network.id,
-            internet_charge_type="PayByLcu",
-            nat_gateway_name="terraform-example",
-            description="terraform-example",
-            nat_type="Enhanced",
-            vswitch_id=example_switch.id,
-            network_type="intranet")
-        example_nat_ip_cidr = alicloud.vpc.NatIpCidr("exampleNatIpCidr",
-            nat_ip_cidr="192.168.0.0/16",
-            nat_gateway_id=example_nat_gateway.id,
-            nat_ip_cidr_description="terraform-example",
-            nat_ip_cidr_name="terraform-example")
-        example_nat_ip = alicloud.vpc.NatIp("exampleNatIp",
-            nat_ip="192.168.0.37",
-            nat_gateway_id=example_nat_gateway.id,
-            nat_ip_description="example_value",
-            nat_ip_name="example_value",
-            nat_ip_cidr=example_nat_ip_cidr.nat_ip_cidr)
-        ```
 
         ## Import
 

@@ -52,30 +52,38 @@ class BundleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             desktop_type: pulumi.Input[str],
-             image_id: pulumi.Input[str],
-             root_disk_size_gib: pulumi.Input[int],
-             user_disk_size_gibs: pulumi.Input[Sequence[pulumi.Input[int]]],
+             desktop_type: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             root_disk_size_gib: Optional[pulumi.Input[int]] = None,
+             user_disk_size_gibs: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              bundle_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              language: Optional[pulumi.Input[str]] = None,
              root_disk_performance_level: Optional[pulumi.Input[str]] = None,
              user_disk_performance_level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'desktopType' in kwargs:
+        if desktop_type is None and 'desktopType' in kwargs:
             desktop_type = kwargs['desktopType']
-        if 'imageId' in kwargs:
+        if desktop_type is None:
+            raise TypeError("Missing 'desktop_type' argument")
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'rootDiskSizeGib' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if root_disk_size_gib is None and 'rootDiskSizeGib' in kwargs:
             root_disk_size_gib = kwargs['rootDiskSizeGib']
-        if 'userDiskSizeGibs' in kwargs:
+        if root_disk_size_gib is None:
+            raise TypeError("Missing 'root_disk_size_gib' argument")
+        if user_disk_size_gibs is None and 'userDiskSizeGibs' in kwargs:
             user_disk_size_gibs = kwargs['userDiskSizeGibs']
-        if 'bundleName' in kwargs:
+        if user_disk_size_gibs is None:
+            raise TypeError("Missing 'user_disk_size_gibs' argument")
+        if bundle_name is None and 'bundleName' in kwargs:
             bundle_name = kwargs['bundleName']
-        if 'rootDiskPerformanceLevel' in kwargs:
+        if root_disk_performance_level is None and 'rootDiskPerformanceLevel' in kwargs:
             root_disk_performance_level = kwargs['rootDiskPerformanceLevel']
-        if 'userDiskPerformanceLevel' in kwargs:
+        if user_disk_performance_level is None and 'userDiskPerformanceLevel' in kwargs:
             user_disk_performance_level = kwargs['userDiskPerformanceLevel']
 
         _setter("desktop_type", desktop_type)
@@ -254,21 +262,21 @@ class _BundleState:
              root_disk_size_gib: Optional[pulumi.Input[int]] = None,
              user_disk_performance_level: Optional[pulumi.Input[str]] = None,
              user_disk_size_gibs: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bundleName' in kwargs:
+        if bundle_name is None and 'bundleName' in kwargs:
             bundle_name = kwargs['bundleName']
-        if 'desktopType' in kwargs:
+        if desktop_type is None and 'desktopType' in kwargs:
             desktop_type = kwargs['desktopType']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'rootDiskPerformanceLevel' in kwargs:
+        if root_disk_performance_level is None and 'rootDiskPerformanceLevel' in kwargs:
             root_disk_performance_level = kwargs['rootDiskPerformanceLevel']
-        if 'rootDiskSizeGib' in kwargs:
+        if root_disk_size_gib is None and 'rootDiskSizeGib' in kwargs:
             root_disk_size_gib = kwargs['rootDiskSizeGib']
-        if 'userDiskPerformanceLevel' in kwargs:
+        if user_disk_performance_level is None and 'userDiskPerformanceLevel' in kwargs:
             user_disk_performance_level = kwargs['userDiskPerformanceLevel']
-        if 'userDiskSizeGibs' in kwargs:
+        if user_disk_size_gibs is None and 'userDiskSizeGibs' in kwargs:
             user_disk_size_gibs = kwargs['userDiskSizeGibs']
 
         if bundle_name is not None:
@@ -423,35 +431,6 @@ class Bundle(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.170.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_images = alicloud.eds.get_images(image_type="SYSTEM",
-            os_type="Windows",
-            desktop_instance_type="eds.hf.4c8g")
-        default_desktop_types = alicloud.eds.get_desktop_types(instance_type_family="eds.hf",
-            cpu_count=4,
-            memory_size=8192)
-        default_bundle = alicloud.eds.Bundle("defaultBundle",
-            description=name,
-            desktop_type=default_desktop_types.ids[0],
-            bundle_name=name,
-            image_id=default_images.ids[0],
-            user_disk_size_gibs=[70],
-            root_disk_size_gib=80,
-            root_disk_performance_level="PL1",
-            user_disk_performance_level="PL1")
-        ```
-
         ## Import
 
         ECD Bundle can be imported using the id, e.g.
@@ -486,35 +465,6 @@ class Bundle(pulumi.CustomResource):
         For information about ECD Bundle and how to use it, see [What is Bundle](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createbundle).
 
         > **NOTE:** Available since v1.170.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_images = alicloud.eds.get_images(image_type="SYSTEM",
-            os_type="Windows",
-            desktop_instance_type="eds.hf.4c8g")
-        default_desktop_types = alicloud.eds.get_desktop_types(instance_type_family="eds.hf",
-            cpu_count=4,
-            memory_size=8192)
-        default_bundle = alicloud.eds.Bundle("defaultBundle",
-            description=name,
-            desktop_type=default_desktop_types.ids[0],
-            bundle_name=name,
-            image_id=default_images.ids[0],
-            user_disk_size_gibs=[70],
-            root_disk_size_gib=80,
-            root_disk_performance_level="PL1",
-            user_disk_performance_level="PL1")
-        ```
 
         ## Import
 

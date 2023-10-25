@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Hbr OtsBackupPlans of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.163.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.hbr.getOtsBackupPlans({
- *     nameRegex: "^my-otsBackupPlan",
- * });
- * export const hbrOtsBackupPlanId = data.alicloud_hbr_ots_backup_plans.plans[0].id;
- * ```
  */
 export function getOtsBackupPlans(args?: GetOtsBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetOtsBackupPlansResult> {
     args = args || {};
@@ -90,20 +76,6 @@ export interface GetOtsBackupPlansResult {
  * This data source provides the Hbr OtsBackupPlans of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.163.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.hbr.getOtsBackupPlans({
- *     nameRegex: "^my-otsBackupPlan",
- * });
- * export const hbrOtsBackupPlanId = data.alicloud_hbr_ots_backup_plans.plans[0].id;
- * ```
  */
 export function getOtsBackupPlansOutput(args?: GetOtsBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOtsBackupPlansResult> {
     return pulumi.output(args).apply((a: any) => getOtsBackupPlans(a, opts))

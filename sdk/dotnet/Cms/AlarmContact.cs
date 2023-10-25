@@ -14,48 +14,6 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// &gt; **NOTE:** Available since v1.99.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // If you use this template, you need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible.
-    ///     var example = new AliCloud.Cms.AlarmContact("example", new()
-    ///     {
-    ///         AlarmContactName = "terraform-example",
-    ///         ChannelsMail = "terraform@test.com",
-    ///         Describe = "For example",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // If you use this template, you can ignore the diff of the alarm contact information by `lifestyle`. We recommend the above usage and activate the link in time.
-    ///     var example = new AliCloud.Cms.AlarmContact("example", new()
-    ///     {
-    ///         AlarmContactName = "tf-example",
-    ///         Describe = "For example",
-    ///         ChannelsMail = "terraform@test.com",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Alarm contact can be imported using the id, e.g.

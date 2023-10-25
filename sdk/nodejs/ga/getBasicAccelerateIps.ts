@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Global Accelerator (GA) Basic Accelerate IPs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.194.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ga.getBasicAccelerateIps({
- *     ids: ["example_id"],
- *     ipSetId: "example_ip_set_id",
- * });
- * export const gaBasicAccelerateIpId1 = ids.then(ids => ids.ips?.[0]?.id);
- * ```
  */
 export function getBasicAccelerateIps(args: GetBasicAccelerateIpsArgs, opts?: pulumi.InvokeOptions): Promise<GetBasicAccelerateIpsResult> {
 
@@ -104,21 +89,6 @@ export interface GetBasicAccelerateIpsResult {
  * This data source provides the Global Accelerator (GA) Basic Accelerate IPs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.194.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ga.getBasicAccelerateIps({
- *     ids: ["example_id"],
- *     ipSetId: "example_ip_set_id",
- * });
- * export const gaBasicAccelerateIpId1 = ids.then(ids => ids.ips?.[0]?.id);
- * ```
  */
 export function getBasicAccelerateIpsOutput(args: GetBasicAccelerateIpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBasicAccelerateIpsResult> {
     return pulumi.output(args).apply((a: any) => getBasicAccelerateIps(a, opts))

@@ -15,33 +15,6 @@ import (
 // This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.185.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := dcdn.GetWafDomains(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dcdnWafDomainId1", ids.Domains[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetWafDomains(ctx *pulumi.Context, args *GetWafDomainsArgs, opts ...pulumi.InvokeOption) (*GetWafDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetWafDomainsResult

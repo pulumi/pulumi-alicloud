@@ -15,35 +15,6 @@ import (
 // This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.128.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cassandra"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := cassandra.GetBackupPlans(ctx, &cassandra.GetBackupPlansArgs{
-//				ClusterId: "example_value",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstCassandraBackupPlanId", example.Plans[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetBackupPlans(ctx *pulumi.Context, args *GetBackupPlansArgs, opts ...pulumi.InvokeOption) (*GetBackupPlansResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBackupPlansResult

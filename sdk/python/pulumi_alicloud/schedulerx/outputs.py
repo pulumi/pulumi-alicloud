@@ -36,16 +36,24 @@ class GetNamespacesNamespaceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             id: str,
-             namespace_id: str,
-             namespace_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             namespace_id: Optional[str] = None,
+             namespace_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'namespaceId' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
-        if 'namespaceName' in kwargs:
+        if namespace_id is None:
+            raise TypeError("Missing 'namespace_id' argument")
+        if namespace_name is None and 'namespaceName' in kwargs:
             namespace_name = kwargs['namespaceName']
+        if namespace_name is None:
+            raise TypeError("Missing 'namespace_name' argument")
 
         _setter("description", description)
         _setter("id", id)

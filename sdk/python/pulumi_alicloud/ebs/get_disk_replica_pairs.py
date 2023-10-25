@@ -106,16 +106,6 @@ def get_disk_replica_pairs(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.196.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.ebs.get_disk_replica_pairs(ids=[alicloud_ebs_disk_replica_pair["default"]["id"]])
-    pulumi.export("alicloudEbsDiskReplicaPairExampleId", default.pairs[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Disk Replica Pair IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -149,16 +139,6 @@ def get_disk_replica_pairs_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     This data source provides Ebs Disk Replica Pair available to the user.
 
     > **NOTE:** Available in 1.196.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.ebs.get_disk_replica_pairs(ids=[alicloud_ebs_disk_replica_pair["default"]["id"]])
-    pulumi.export("alicloudEbsDiskReplicaPairExampleId", default.pairs[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Disk Replica Pair IDs.

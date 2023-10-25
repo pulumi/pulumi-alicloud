@@ -77,7 +77,7 @@ class NatGatewayArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vpc_id: pulumi.Input[str],
+             vpc_id: Optional[pulumi.Input[str]] = None,
              deletion_protection: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
@@ -94,29 +94,31 @@ class NatGatewayArgs:
              specification: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'deletionProtection' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'eipBindMode' in kwargs:
+        if eip_bind_mode is None and 'eipBindMode' in kwargs:
             eip_bind_mode = kwargs['eipBindMode']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'natGatewayName' in kwargs:
+        if nat_gateway_name is None and 'natGatewayName' in kwargs:
             nat_gateway_name = kwargs['natGatewayName']
-        if 'natType' in kwargs:
+        if nat_type is None and 'natType' in kwargs:
             nat_type = kwargs['natType']
-        if 'networkType' in kwargs:
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         _setter("vpc_id", vpc_id)
@@ -456,33 +458,33 @@ class _NatGatewayState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'eipBindMode' in kwargs:
+        if eip_bind_mode is None and 'eipBindMode' in kwargs:
             eip_bind_mode = kwargs['eipBindMode']
-        if 'forwardTableIds' in kwargs:
+        if forward_table_ids is None and 'forwardTableIds' in kwargs:
             forward_table_ids = kwargs['forwardTableIds']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'natGatewayName' in kwargs:
+        if nat_gateway_name is None and 'natGatewayName' in kwargs:
             nat_gateway_name = kwargs['natGatewayName']
-        if 'natType' in kwargs:
+        if nat_type is None and 'natType' in kwargs:
             nat_type = kwargs['natType']
-        if 'networkType' in kwargs:
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'snatTableIds' in kwargs:
+        if snat_table_ids is None and 'snatTableIds' in kwargs:
             snat_table_ids = kwargs['snatTableIds']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if deletion_protection is not None:

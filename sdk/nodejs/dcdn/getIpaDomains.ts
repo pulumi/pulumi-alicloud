@@ -10,28 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.158.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dcdn.getIpaDomains({
- *     domainName: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const dcdnIpaDomainId1 = ids.then(ids => ids.domains?.[0]?.id);
- * const status = alicloud.dcdn.getIpaDomains({
- *     status: "online",
- * });
- * export const dcdnIpaDomainId2 = status.then(status => status.domains?.[0]?.id);
- * ```
  */
 export function getIpaDomains(args?: GetIpaDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetIpaDomainsResult> {
     args = args || {};
@@ -92,28 +70,6 @@ export interface GetIpaDomainsResult {
  * This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.158.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dcdn.getIpaDomains({
- *     domainName: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const dcdnIpaDomainId1 = ids.then(ids => ids.domains?.[0]?.id);
- * const status = alicloud.dcdn.getIpaDomains({
- *     status: "online",
- * });
- * export const dcdnIpaDomainId2 = status.then(status => status.domains?.[0]?.id);
- * ```
  */
 export function getIpaDomainsOutput(args?: GetIpaDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpaDomainsResult> {
     return pulumi.output(args).apply((a: any) => getIpaDomains(a, opts))

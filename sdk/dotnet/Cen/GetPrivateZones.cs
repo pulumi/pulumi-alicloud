@@ -15,37 +15,6 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Private Zones available to the user.
         /// 
         /// &gt; **NOTE:** Available in v1.88.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = AliCloud.Cen.GetPrivateZones.Invoke(new()
-        ///     {
-        ///         CenId = "cen-o40h17ll9w********",
-        ///         Ids = new[]
-        ///         {
-        ///             "cn-hangzhou",
-        ///         },
-        ///         Status = "Active",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstCenPrivateZonesId"] = @this.Apply(@this =&gt; @this.Apply(getPrivateZonesResult =&gt; getPrivateZonesResult.Zones[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPrivateZonesResult> InvokeAsync(GetPrivateZonesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateZonesResult>("alicloud:cen/getPrivateZones:getPrivateZones", args ?? new GetPrivateZonesArgs(), options.WithDefaults());
@@ -54,37 +23,6 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Private Zones available to the user.
         /// 
         /// &gt; **NOTE:** Available in v1.88.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = AliCloud.Cen.GetPrivateZones.Invoke(new()
-        ///     {
-        ///         CenId = "cen-o40h17ll9w********",
-        ///         Ids = new[]
-        ///         {
-        ///             "cn-hangzhou",
-        ///         },
-        ///         Status = "Active",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstCenPrivateZonesId"] = @this.Apply(@this =&gt; @this.Apply(getPrivateZonesResult =&gt; getPrivateZonesResult.Zones[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPrivateZonesResult> Invoke(GetPrivateZonesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateZonesResult>("alicloud:cen/getPrivateZones:getPrivateZones", args ?? new GetPrivateZonesInvokeArgs(), options.WithDefaults());

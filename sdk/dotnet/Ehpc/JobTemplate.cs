@@ -16,27 +16,6 @@ namespace Pulumi.AliCloud.Ehpc
     /// 
     /// &gt; **NOTE:** Available in v1.133.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Ehpc.JobTemplate("default", new()
-    ///     {
-    ///         CommandLine = "./LammpsTest/lammps.pbs",
-    ///         JobTemplateName = "example_value",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Ehpc Job Template can be imported using the id, e.g.

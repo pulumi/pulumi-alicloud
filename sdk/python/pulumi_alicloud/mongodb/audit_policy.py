@@ -32,16 +32,20 @@ class AuditPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             audit_status: pulumi.Input[str],
-             db_instance_id: pulumi.Input[str],
+             audit_status: Optional[pulumi.Input[str]] = None,
+             db_instance_id: Optional[pulumi.Input[str]] = None,
              storage_period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'auditStatus' in kwargs:
+        if audit_status is None and 'auditStatus' in kwargs:
             audit_status = kwargs['auditStatus']
-        if 'dbInstanceId' in kwargs:
+        if audit_status is None:
+            raise TypeError("Missing 'audit_status' argument")
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
-        if 'storagePeriod' in kwargs:
+        if db_instance_id is None:
+            raise TypeError("Missing 'db_instance_id' argument")
+        if storage_period is None and 'storagePeriod' in kwargs:
             storage_period = kwargs['storagePeriod']
 
         _setter("audit_status", audit_status)
@@ -110,13 +114,13 @@ class _AuditPolicyState:
              audit_status: Optional[pulumi.Input[str]] = None,
              db_instance_id: Optional[pulumi.Input[str]] = None,
              storage_period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'auditStatus' in kwargs:
+        if audit_status is None and 'auditStatus' in kwargs:
             audit_status = kwargs['auditStatus']
-        if 'dbInstanceId' in kwargs:
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
-        if 'storagePeriod' in kwargs:
+        if storage_period is None and 'storagePeriod' in kwargs:
             storage_period = kwargs['storagePeriod']
 
         if audit_status is not None:
@@ -179,47 +183,6 @@ class AuditPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.148.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.mongodb.get_zones()
-        index = len(default_zones.zones) - 1
-        zone_id = default_zones.zones[index].id
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=zone_id)
-        default_instance = alicloud.mongodb.Instance("defaultInstance",
-            engine_version="4.2",
-            db_instance_class="dds.mongo.mid",
-            db_instance_storage=10,
-            vswitch_id=default_switch.id,
-            security_ip_lists=[
-                "10.168.1.12",
-                "100.69.7.112",
-            ],
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_audit_policy = alicloud.mongodb.AuditPolicy("defaultAuditPolicy",
-            db_instance_id=default_instance.id,
-            audit_status="disabled")
-        ```
-
         ## Import
 
         MongoDB Audit Policy can be imported using the id, e.g.
@@ -246,47 +209,6 @@ class AuditPolicy(pulumi.CustomResource):
         For information about MongoDB Audit Policy and how to use it, see [What is Audit Policy](https://www.alibabacloud.com/help/doc-detail/131941.html).
 
         > **NOTE:** Available since v1.148.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.mongodb.get_zones()
-        index = len(default_zones.zones) - 1
-        zone_id = default_zones.zones[index].id
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=zone_id)
-        default_instance = alicloud.mongodb.Instance("defaultInstance",
-            engine_version="4.2",
-            db_instance_class="dds.mongo.mid",
-            db_instance_storage=10,
-            vswitch_id=default_switch.id,
-            security_ip_lists=[
-                "10.168.1.12",
-                "100.69.7.112",
-            ],
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_audit_policy = alicloud.mongodb.AuditPolicy("defaultAuditPolicy",
-            db_instance_id=default_instance.id,
-            audit_status="disabled")
-        ```
 
         ## Import
 

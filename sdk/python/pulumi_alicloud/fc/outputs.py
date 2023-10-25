@@ -78,9 +78,9 @@ class AliasRoutingConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              additional_version_weights: Optional[Mapping[str, float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'additionalVersionWeights' in kwargs:
+        if additional_version_weights is None and 'additionalVersionWeights' in kwargs:
             additional_version_weights = kwargs['additionalVersionWeights']
 
         if additional_version_weights is not None:
@@ -134,15 +134,21 @@ class CustomDomainCertConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert_name: str,
-             certificate: str,
-             private_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cert_name: Optional[str] = None,
+             certificate: Optional[str] = None,
+             private_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certName' in kwargs:
+        if cert_name is None and 'certName' in kwargs:
             cert_name = kwargs['certName']
-        if 'privateKey' in kwargs:
+        if cert_name is None:
+            raise TypeError("Missing 'cert_name' argument")
+        if certificate is None:
+            raise TypeError("Missing 'certificate' argument")
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
+        if private_key is None:
+            raise TypeError("Missing 'private_key' argument")
 
         _setter("cert_name", cert_name)
         _setter("certificate", certificate)
@@ -218,17 +224,23 @@ class CustomDomainRouteConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             function_name: str,
-             path: str,
-             service_name: str,
+             function_name: Optional[str] = None,
+             path: Optional[str] = None,
+             service_name: Optional[str] = None,
              methods: Optional[Sequence[str]] = None,
              qualifier: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'functionName' in kwargs:
+        if function_name is None and 'functionName' in kwargs:
             function_name = kwargs['functionName']
-        if 'serviceName' in kwargs:
+        if function_name is None:
+            raise TypeError("Missing 'function_name' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
 
         _setter("function_name", function_name)
         _setter("path", path)
@@ -317,11 +329,11 @@ class FunctionAsyncInvokeConfigDestinationConfig(dict):
              _setter: Callable[[Any, Any], None],
              on_failure: Optional['outputs.FunctionAsyncInvokeConfigDestinationConfigOnFailure'] = None,
              on_success: Optional['outputs.FunctionAsyncInvokeConfigDestinationConfigOnSuccess'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'onFailure' in kwargs:
+        if on_failure is None and 'onFailure' in kwargs:
             on_failure = kwargs['onFailure']
-        if 'onSuccess' in kwargs:
+        if on_success is None and 'onSuccess' in kwargs:
             on_success = kwargs['onSuccess']
 
         if on_failure is not None:
@@ -360,9 +372,11 @@ class FunctionAsyncInvokeConfigDestinationConfigOnFailure(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             destination: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
 
         _setter("destination", destination)
 
@@ -389,9 +403,11 @@ class FunctionAsyncInvokeConfigDestinationConfigOnSuccess(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             destination: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
 
         _setter("destination", destination)
 
@@ -424,11 +440,13 @@ class FunctionCustomContainerConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image: str,
+             image: Optional[str] = None,
              args: Optional[str] = None,
              command: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if image is None:
+            raise TypeError("Missing 'image' argument")
 
         _setter("image", image)
         if args is not None:
@@ -503,15 +521,19 @@ class ServiceLogConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             logstore: str,
-             project: str,
+             logstore: Optional[str] = None,
+             project: Optional[str] = None,
              enable_instance_metrics: Optional[bool] = None,
              enable_request_metrics: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'enableInstanceMetrics' in kwargs:
+        if logstore is None:
+            raise TypeError("Missing 'logstore' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if enable_instance_metrics is None and 'enableInstanceMetrics' in kwargs:
             enable_instance_metrics = kwargs['enableInstanceMetrics']
-        if 'enableRequestMetrics' in kwargs:
+        if enable_request_metrics is None and 'enableRequestMetrics' in kwargs:
             enable_request_metrics = kwargs['enableRequestMetrics']
 
         _setter("logstore", logstore)
@@ -595,17 +617,23 @@ class ServiceNasConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_id: int,
-             mount_points: Sequence['outputs.ServiceNasConfigMountPoint'],
-             user_id: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             group_id: Optional[int] = None,
+             mount_points: Optional[Sequence['outputs.ServiceNasConfigMountPoint']] = None,
+             user_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'mountPoints' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if mount_points is None and 'mountPoints' in kwargs:
             mount_points = kwargs['mountPoints']
-        if 'userId' in kwargs:
+        if mount_points is None:
+            raise TypeError("Missing 'mount_points' argument")
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
 
         _setter("group_id", group_id)
         _setter("mount_points", mount_points)
@@ -672,14 +700,18 @@ class ServiceNasConfigMountPoint(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mount_dir: str,
-             server_addr: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             mount_dir: Optional[str] = None,
+             server_addr: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mountDir' in kwargs:
+        if mount_dir is None and 'mountDir' in kwargs:
             mount_dir = kwargs['mountDir']
-        if 'serverAddr' in kwargs:
+        if mount_dir is None:
+            raise TypeError("Missing 'mount_dir' argument")
+        if server_addr is None and 'serverAddr' in kwargs:
             server_addr = kwargs['serverAddr']
+        if server_addr is None:
+            raise TypeError("Missing 'server_addr' argument")
 
         _setter("mount_dir", mount_dir)
         _setter("server_addr", server_addr)
@@ -718,10 +750,14 @@ class ServiceTracingConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             params: Mapping[str, Any],
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             params: Optional[Mapping[str, Any]] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if params is None:
+            raise TypeError("Missing 'params' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("params", params)
         _setter("type", type)
@@ -784,16 +820,20 @@ class ServiceVpcConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             security_group_id: str,
-             vswitch_ids: Sequence[str],
+             security_group_id: Optional[str] = None,
+             vswitch_ids: Optional[Sequence[str]] = None,
              vpc_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vswitchIds' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
-        if 'vpcId' in kwargs:
+        if vswitch_ids is None:
+            raise TypeError("Missing 'vswitch_ids' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         _setter("security_group_id", security_group_id)
@@ -870,13 +910,13 @@ class V2FunctionCode(dict):
              oss_bucket_name: Optional[str] = None,
              oss_object_name: Optional[str] = None,
              zip_file: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ossBucketName' in kwargs:
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'ossObjectName' in kwargs:
+        if oss_object_name is None and 'ossObjectName' in kwargs:
             oss_object_name = kwargs['ossObjectName']
-        if 'zipFile' in kwargs:
+        if zip_file is None and 'zipFile' in kwargs:
             zip_file = kwargs['zipFile']
 
         if oss_bucket_name is not None:
@@ -961,11 +1001,11 @@ class V2FunctionCustomContainerConfig(dict):
              command: Optional[str] = None,
              image: Optional[str] = None,
              web_server_mode: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accelerationType' in kwargs:
+        if acceleration_type is None and 'accelerationType' in kwargs:
             acceleration_type = kwargs['accelerationType']
-        if 'webServerMode' in kwargs:
+        if web_server_mode is None and 'webServerMode' in kwargs:
             web_server_mode = kwargs['webServerMode']
 
         if acceleration_type is not None:
@@ -1062,11 +1102,11 @@ class V2FunctionCustomDns(dict):
              dns_options: Optional[Sequence['outputs.V2FunctionCustomDnsDnsOption']] = None,
              name_servers: Optional[Sequence[str]] = None,
              searches: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dnsOptions' in kwargs:
+        if dns_options is None and 'dnsOptions' in kwargs:
             dns_options = kwargs['dnsOptions']
-        if 'nameServers' in kwargs:
+        if name_servers is None and 'nameServers' in kwargs:
             name_servers = kwargs['nameServers']
 
         if dns_options is not None:
@@ -1120,7 +1160,7 @@ class V2FunctionCustomDnsDnsOption(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -1207,19 +1247,19 @@ class V2FunctionCustomHealthCheckConfig(dict):
              period_seconds: Optional[int] = None,
              success_threshold: Optional[int] = None,
              timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'failureThreshold' in kwargs:
+        if failure_threshold is None and 'failureThreshold' in kwargs:
             failure_threshold = kwargs['failureThreshold']
-        if 'httpGetUrl' in kwargs:
+        if http_get_url is None and 'httpGetUrl' in kwargs:
             http_get_url = kwargs['httpGetUrl']
-        if 'initialDelaySeconds' in kwargs:
+        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
             initial_delay_seconds = kwargs['initialDelaySeconds']
-        if 'periodSeconds' in kwargs:
+        if period_seconds is None and 'periodSeconds' in kwargs:
             period_seconds = kwargs['periodSeconds']
-        if 'successThreshold' in kwargs:
+        if success_threshold is None and 'successThreshold' in kwargs:
             success_threshold = kwargs['successThreshold']
-        if 'timeoutSeconds' in kwargs:
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
             timeout_seconds = kwargs['timeoutSeconds']
 
         if failure_threshold is not None:
@@ -1303,7 +1343,7 @@ class V2FunctionCustomRuntimeConfig(dict):
              _setter: Callable[[Any, Any], None],
              args: Optional[Sequence[str]] = None,
              commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if args is not None:
@@ -1366,11 +1406,11 @@ class V2FunctionInstanceLifecycleConfig(dict):
              _setter: Callable[[Any, Any], None],
              pre_freeze: Optional['outputs.V2FunctionInstanceLifecycleConfigPreFreeze'] = None,
              pre_stop: Optional['outputs.V2FunctionInstanceLifecycleConfigPreStop'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'preFreeze' in kwargs:
+        if pre_freeze is None and 'preFreeze' in kwargs:
             pre_freeze = kwargs['preFreeze']
-        if 'preStop' in kwargs:
+        if pre_stop is None and 'preStop' in kwargs:
             pre_stop = kwargs['preStop']
 
         if pre_freeze is not None:
@@ -1414,7 +1454,7 @@ class V2FunctionInstanceLifecycleConfigPreFreeze(dict):
              _setter: Callable[[Any, Any], None],
              handler: Optional[str] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if handler is not None:
@@ -1458,7 +1498,7 @@ class V2FunctionInstanceLifecycleConfigPreStop(dict):
              _setter: Callable[[Any, Any], None],
              handler: Optional[str] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if handler is not None:
@@ -1521,31 +1561,49 @@ class GetCustomDomainsDomainResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: str,
-             api_version: str,
-             cert_config: 'outputs.GetCustomDomainsDomainCertConfigResult',
-             created_time: str,
-             domain_name: str,
-             id: str,
-             last_modified_time: str,
-             protocol: str,
-             route_configs: Sequence['outputs.GetCustomDomainsDomainRouteConfigResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[str] = None,
+             api_version: Optional[str] = None,
+             cert_config: Optional['outputs.GetCustomDomainsDomainCertConfigResult'] = None,
+             created_time: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             id: Optional[str] = None,
+             last_modified_time: Optional[str] = None,
+             protocol: Optional[str] = None,
+             route_configs: Optional[Sequence['outputs.GetCustomDomainsDomainRouteConfigResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'apiVersion' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if api_version is None and 'apiVersion' in kwargs:
             api_version = kwargs['apiVersion']
-        if 'certConfig' in kwargs:
+        if api_version is None:
+            raise TypeError("Missing 'api_version' argument")
+        if cert_config is None and 'certConfig' in kwargs:
             cert_config = kwargs['certConfig']
-        if 'createdTime' in kwargs:
+        if cert_config is None:
+            raise TypeError("Missing 'cert_config' argument")
+        if created_time is None and 'createdTime' in kwargs:
             created_time = kwargs['createdTime']
-        if 'domainName' in kwargs:
+        if created_time is None:
+            raise TypeError("Missing 'created_time' argument")
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'lastModifiedTime' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
             last_modified_time = kwargs['lastModifiedTime']
-        if 'routeConfigs' in kwargs:
+        if last_modified_time is None:
+            raise TypeError("Missing 'last_modified_time' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if route_configs is None and 'routeConfigs' in kwargs:
             route_configs = kwargs['routeConfigs']
+        if route_configs is None:
+            raise TypeError("Missing 'route_configs' argument")
 
         _setter("account_id", account_id)
         _setter("api_version", api_version)
@@ -1647,12 +1705,16 @@ class GetCustomDomainsDomainCertConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert_name: str,
-             certificate: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cert_name: Optional[str] = None,
+             certificate: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certName' in kwargs:
+        if cert_name is None and 'certName' in kwargs:
             cert_name = kwargs['certName']
+        if cert_name is None:
+            raise TypeError("Missing 'cert_name' argument")
+        if certificate is None:
+            raise TypeError("Missing 'certificate' argument")
 
         _setter("cert_name", cert_name)
         _setter("certificate", certificate)
@@ -1700,17 +1762,27 @@ class GetCustomDomainsDomainRouteConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             function_name: str,
-             methods: Sequence[str],
-             path: str,
-             qualifier: str,
-             service_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             function_name: Optional[str] = None,
+             methods: Optional[Sequence[str]] = None,
+             path: Optional[str] = None,
+             qualifier: Optional[str] = None,
+             service_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'functionName' in kwargs:
+        if function_name is None and 'functionName' in kwargs:
             function_name = kwargs['functionName']
-        if 'serviceName' in kwargs:
+        if function_name is None:
+            raise TypeError("Missing 'function_name' argument")
+        if methods is None:
+            raise TypeError("Missing 'methods' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if qualifier is None:
+            raise TypeError("Missing 'qualifier' argument")
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
 
         _setter("function_name", function_name)
         _setter("methods", methods)
@@ -1824,47 +1896,81 @@ class GetFunctionsFunctionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ca_port: int,
-             code_checksum: str,
-             code_size: int,
-             creation_time: str,
-             description: str,
-             environment_variables: Mapping[str, Any],
-             handler: str,
-             id: str,
-             initialization_timeout: int,
-             initializer: str,
-             instance_concurrency: int,
-             instance_type: str,
-             last_modification_time: str,
-             memory_size: int,
-             name: str,
-             runtime: str,
-             timeout: int,
+             ca_port: Optional[int] = None,
+             code_checksum: Optional[str] = None,
+             code_size: Optional[int] = None,
+             creation_time: Optional[str] = None,
+             description: Optional[str] = None,
+             environment_variables: Optional[Mapping[str, Any]] = None,
+             handler: Optional[str] = None,
+             id: Optional[str] = None,
+             initialization_timeout: Optional[int] = None,
+             initializer: Optional[str] = None,
+             instance_concurrency: Optional[int] = None,
+             instance_type: Optional[str] = None,
+             last_modification_time: Optional[str] = None,
+             memory_size: Optional[int] = None,
+             name: Optional[str] = None,
+             runtime: Optional[str] = None,
+             timeout: Optional[int] = None,
              custom_container_config: Optional['outputs.GetFunctionsFunctionCustomContainerConfigResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'caPort' in kwargs:
+        if ca_port is None and 'caPort' in kwargs:
             ca_port = kwargs['caPort']
-        if 'codeChecksum' in kwargs:
+        if ca_port is None:
+            raise TypeError("Missing 'ca_port' argument")
+        if code_checksum is None and 'codeChecksum' in kwargs:
             code_checksum = kwargs['codeChecksum']
-        if 'codeSize' in kwargs:
+        if code_checksum is None:
+            raise TypeError("Missing 'code_checksum' argument")
+        if code_size is None and 'codeSize' in kwargs:
             code_size = kwargs['codeSize']
-        if 'creationTime' in kwargs:
+        if code_size is None:
+            raise TypeError("Missing 'code_size' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'environmentVariables' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if environment_variables is None and 'environmentVariables' in kwargs:
             environment_variables = kwargs['environmentVariables']
-        if 'initializationTimeout' in kwargs:
+        if environment_variables is None:
+            raise TypeError("Missing 'environment_variables' argument")
+        if handler is None:
+            raise TypeError("Missing 'handler' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if initialization_timeout is None and 'initializationTimeout' in kwargs:
             initialization_timeout = kwargs['initializationTimeout']
-        if 'instanceConcurrency' in kwargs:
+        if initialization_timeout is None:
+            raise TypeError("Missing 'initialization_timeout' argument")
+        if initializer is None:
+            raise TypeError("Missing 'initializer' argument")
+        if instance_concurrency is None and 'instanceConcurrency' in kwargs:
             instance_concurrency = kwargs['instanceConcurrency']
-        if 'instanceType' in kwargs:
+        if instance_concurrency is None:
+            raise TypeError("Missing 'instance_concurrency' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'lastModificationTime' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if last_modification_time is None and 'lastModificationTime' in kwargs:
             last_modification_time = kwargs['lastModificationTime']
-        if 'memorySize' in kwargs:
+        if last_modification_time is None:
+            raise TypeError("Missing 'last_modification_time' argument")
+        if memory_size is None and 'memorySize' in kwargs:
             memory_size = kwargs['memorySize']
-        if 'customContainerConfig' in kwargs:
+        if memory_size is None:
+            raise TypeError("Missing 'memory_size' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if runtime is None:
+            raise TypeError("Missing 'runtime' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if custom_container_config is None and 'customContainerConfig' in kwargs:
             custom_container_config = kwargs['customContainerConfig']
 
         _setter("ca_port", ca_port)
@@ -2052,11 +2158,17 @@ class GetFunctionsFunctionCustomContainerConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             args: str,
-             command: str,
-             image: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             args: Optional[str] = None,
+             command: Optional[str] = None,
+             image: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if args is None:
+            raise TypeError("Missing 'args' argument")
+        if command is None:
+            raise TypeError("Missing 'command' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
 
         _setter("args", args)
         _setter("command", command)
@@ -2128,30 +2240,50 @@ class GetServicesServiceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             creation_time: str,
-             description: str,
-             id: str,
-             internet_access: bool,
-             last_modification_time: str,
-             log_config: 'outputs.GetServicesServiceLogConfigResult',
-             name: str,
-             nas_config: 'outputs.GetServicesServiceNasConfigResult',
-             role: str,
-             vpc_config: 'outputs.GetServicesServiceVpcConfigResult',
-             opts: Optional[pulumi.ResourceOptions]=None,
+             creation_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             internet_access: Optional[bool] = None,
+             last_modification_time: Optional[str] = None,
+             log_config: Optional['outputs.GetServicesServiceLogConfigResult'] = None,
+             name: Optional[str] = None,
+             nas_config: Optional['outputs.GetServicesServiceNasConfigResult'] = None,
+             role: Optional[str] = None,
+             vpc_config: Optional['outputs.GetServicesServiceVpcConfigResult'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'creationTime' in kwargs:
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'internetAccess' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if internet_access is None and 'internetAccess' in kwargs:
             internet_access = kwargs['internetAccess']
-        if 'lastModificationTime' in kwargs:
+        if internet_access is None:
+            raise TypeError("Missing 'internet_access' argument")
+        if last_modification_time is None and 'lastModificationTime' in kwargs:
             last_modification_time = kwargs['lastModificationTime']
-        if 'logConfig' in kwargs:
+        if last_modification_time is None:
+            raise TypeError("Missing 'last_modification_time' argument")
+        if log_config is None and 'logConfig' in kwargs:
             log_config = kwargs['logConfig']
-        if 'nasConfig' in kwargs:
+        if log_config is None:
+            raise TypeError("Missing 'log_config' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if nas_config is None and 'nasConfig' in kwargs:
             nas_config = kwargs['nasConfig']
-        if 'vpcConfig' in kwargs:
+        if nas_config is None:
+            raise TypeError("Missing 'nas_config' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if vpc_config is None and 'vpcConfig' in kwargs:
             vpc_config = kwargs['vpcConfig']
+        if vpc_config is None:
+            raise TypeError("Missing 'vpc_config' argument")
 
         _setter("creation_time", creation_time)
         _setter("description", description)
@@ -2262,10 +2394,14 @@ class GetServicesServiceLogConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             logstore: str,
-             project: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             logstore: Optional[str] = None,
+             project: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if logstore is None:
+            raise TypeError("Missing 'logstore' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
 
         _setter("logstore", logstore)
         _setter("project", project)
@@ -2307,17 +2443,23 @@ class GetServicesServiceNasConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_id: int,
-             mount_points: Sequence['outputs.GetServicesServiceNasConfigMountPointResult'],
-             user_id: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             group_id: Optional[int] = None,
+             mount_points: Optional[Sequence['outputs.GetServicesServiceNasConfigMountPointResult']] = None,
+             user_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'mountPoints' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if mount_points is None and 'mountPoints' in kwargs:
             mount_points = kwargs['mountPoints']
-        if 'userId' in kwargs:
+        if mount_points is None:
+            raise TypeError("Missing 'mount_points' argument")
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
 
         _setter("group_id", group_id)
         _setter("mount_points", mount_points)
@@ -2365,14 +2507,18 @@ class GetServicesServiceNasConfigMountPointResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mount_dir: str,
-             server_addr: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             mount_dir: Optional[str] = None,
+             server_addr: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mountDir' in kwargs:
+        if mount_dir is None and 'mountDir' in kwargs:
             mount_dir = kwargs['mountDir']
-        if 'serverAddr' in kwargs:
+        if mount_dir is None:
+            raise TypeError("Missing 'mount_dir' argument")
+        if server_addr is None and 'serverAddr' in kwargs:
             server_addr = kwargs['serverAddr']
+        if server_addr is None:
+            raise TypeError("Missing 'server_addr' argument")
 
         _setter("mount_dir", mount_dir)
         _setter("server_addr", server_addr)
@@ -2414,17 +2560,23 @@ class GetServicesServiceVpcConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             security_group_id: str,
-             vpc_id: str,
-             vswitch_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             security_group_id: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vpcId' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchIds' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
+        if vswitch_ids is None:
+            raise TypeError("Missing 'vswitch_ids' argument")
 
         _setter("security_group_id", security_group_id)
         _setter("vpc_id", vpc_id)
@@ -2490,24 +2642,40 @@ class GetTriggersTriggerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config: str,
-             creation_time: str,
-             id: str,
-             invocation_role: str,
-             last_modification_time: str,
-             name: str,
-             source_arn: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             config: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             id: Optional[str] = None,
+             invocation_role: Optional[str] = None,
+             last_modification_time: Optional[str] = None,
+             name: Optional[str] = None,
+             source_arn: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'creationTime' in kwargs:
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'invocationRole' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if invocation_role is None and 'invocationRole' in kwargs:
             invocation_role = kwargs['invocationRole']
-        if 'lastModificationTime' in kwargs:
+        if invocation_role is None:
+            raise TypeError("Missing 'invocation_role' argument")
+        if last_modification_time is None and 'lastModificationTime' in kwargs:
             last_modification_time = kwargs['lastModificationTime']
-        if 'sourceArn' in kwargs:
+        if last_modification_time is None:
+            raise TypeError("Missing 'last_modification_time' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if source_arn is None and 'sourceArn' in kwargs:
             source_arn = kwargs['sourceArn']
+        if source_arn is None:
+            raise TypeError("Missing 'source_arn' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("config", config)
         _setter("creation_time", creation_time)
@@ -2597,9 +2765,11 @@ class GetZonesZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
 
         _setter("id", id)
 

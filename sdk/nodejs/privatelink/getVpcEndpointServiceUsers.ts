@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Privatelink Vpc Endpoint Service Users of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.110.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.privatelink.getVpcEndpointServiceUsers({
- *     serviceId: "epsrv-gw81c6vxxxxxx",
- * });
- * export const firstPrivatelinkVpcEndpointServiceUserId = example.then(example => example.users?.[0]?.id);
- * ```
  */
 export function getVpcEndpointServiceUsers(args: GetVpcEndpointServiceUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointServiceUsersResult> {
 
@@ -71,20 +57,6 @@ export interface GetVpcEndpointServiceUsersResult {
  * This data source provides the Privatelink Vpc Endpoint Service Users of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.110.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.privatelink.getVpcEndpointServiceUsers({
- *     serviceId: "epsrv-gw81c6vxxxxxx",
- * });
- * export const firstPrivatelinkVpcEndpointServiceUserId = example.then(example => example.users?.[0]?.id);
- * ```
  */
 export function getVpcEndpointServiceUsersOutput(args: GetVpcEndpointServiceUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointServiceUsersResult> {
     return pulumi.output(args).apply((a: any) => getVpcEndpointServiceUsers(a, opts))

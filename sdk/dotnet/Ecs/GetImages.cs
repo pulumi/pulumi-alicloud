@@ -14,33 +14,6 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
         /// other public images and the ones available on the image market. 
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var imagesDs = AliCloud.Ecs.GetImages.Invoke(new()
-        ///     {
-        ///         NameRegex = "^centos_6",
-        ///         Owners = "system",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstImageId"] = imagesDs.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetImagesResult> InvokeAsync(GetImagesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("alicloud:ecs/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
@@ -48,33 +21,6 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
         /// other public images and the ones available on the image market. 
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var imagesDs = AliCloud.Ecs.GetImages.Invoke(new()
-        ///     {
-        ///         NameRegex = "^centos_6",
-        ///         Owners = "system",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstImageId"] = imagesDs.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("alicloud:ecs/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());

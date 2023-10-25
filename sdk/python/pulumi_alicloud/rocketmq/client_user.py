@@ -47,27 +47,33 @@ class ClientUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: pulumi.Input[int],
-             sag_id: pulumi.Input[str],
-             user_mail: pulumi.Input[str],
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             sag_id: Optional[pulumi.Input[str]] = None,
+             user_mail: Optional[pulumi.Input[str]] = None,
              client_ip: Optional[pulumi.Input[str]] = None,
              kms_encrypted_password: Optional[pulumi.Input[str]] = None,
              kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              password: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sagId' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if sag_id is None and 'sagId' in kwargs:
             sag_id = kwargs['sagId']
-        if 'userMail' in kwargs:
+        if sag_id is None:
+            raise TypeError("Missing 'sag_id' argument")
+        if user_mail is None and 'userMail' in kwargs:
             user_mail = kwargs['userMail']
-        if 'clientIp' in kwargs:
+        if user_mail is None:
+            raise TypeError("Missing 'user_mail' argument")
+        if client_ip is None and 'clientIp' in kwargs:
             client_ip = kwargs['clientIp']
-        if 'kmsEncryptedPassword' in kwargs:
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
             kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if 'kmsEncryptionContext' in kwargs:
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
             kms_encryption_context = kwargs['kmsEncryptionContext']
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
 
         _setter("bandwidth", bandwidth)
@@ -225,19 +231,19 @@ class _ClientUserState:
              sag_id: Optional[pulumi.Input[str]] = None,
              user_mail: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientIp' in kwargs:
+        if client_ip is None and 'clientIp' in kwargs:
             client_ip = kwargs['clientIp']
-        if 'kmsEncryptedPassword' in kwargs:
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
             kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if 'kmsEncryptionContext' in kwargs:
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
             kms_encryption_context = kwargs['kmsEncryptionContext']
-        if 'sagId' in kwargs:
+        if sag_id is None and 'sagId' in kwargs:
             sag_id = kwargs['sagId']
-        if 'userMail' in kwargs:
+        if user_mail is None and 'userMail' in kwargs:
             user_mail = kwargs['userMail']
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
 
         if bandwidth is not None:
@@ -377,30 +383,6 @@ class ClientUser(pulumi.CustomResource):
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        sag_id = config.get("sagId")
-        if sag_id is None:
-            sag_id = "sag-9bifkfaz4fg***"
-        default = alicloud.rocketmq.ClientUser("default",
-            sag_id=sag_id,
-            bandwidth=20,
-            user_mail="tf-example@abc.com",
-            user_name=name,
-            password="example1234",
-            client_ip="192.1.10.0")
-        ```
-
         ## Import
 
         The Sag ClientUser can be imported using the name, e.g.
@@ -434,30 +416,6 @@ class ClientUser(pulumi.CustomResource):
         > **NOTE:** Available since v1.65.0.
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        sag_id = config.get("sagId")
-        if sag_id is None:
-            sag_id = "sag-9bifkfaz4fg***"
-        default = alicloud.rocketmq.ClientUser("default",
-            sag_id=sag_id,
-            bandwidth=20,
-            user_mail="tf-example@abc.com",
-            user_name=name,
-            password="example1234",
-            client_ip="192.1.10.0")
-        ```
 
         ## Import
 

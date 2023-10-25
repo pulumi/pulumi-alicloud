@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the RDS instance classes resource available info of Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.46.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const resources = alicloud.rds.getInstanceClasses({
- *     engine: "MySQL",
- *     engineVersion: "5.6",
- *     instanceChargeType: "PostPaid",
- *     outputFile: "./classes.txt",
- * });
- * export const firstDbInstanceClass = resources.then(resources => resources.instanceClasses?.[0]?.instanceClass);
- * ```
  */
 export function getInstanceClasses(args?: GetInstanceClassesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceClassesResult> {
     args = args || {};
@@ -150,21 +135,6 @@ export interface GetInstanceClassesResult {
  * This data source provides the RDS instance classes resource available info of Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.46.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const resources = alicloud.rds.getInstanceClasses({
- *     engine: "MySQL",
- *     engineVersion: "5.6",
- *     instanceChargeType: "PostPaid",
- *     outputFile: "./classes.txt",
- * });
- * export const firstDbInstanceClass = resources.then(resources => resources.instanceClasses?.[0]?.instanceClass);
- * ```
  */
 export function getInstanceClassesOutput(args?: GetInstanceClassesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceClassesResult> {
     return pulumi.output(args).apply((a: any) => getInstanceClasses(a, opts))

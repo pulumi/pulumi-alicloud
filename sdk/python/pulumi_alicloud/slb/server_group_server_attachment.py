@@ -41,18 +41,24 @@ class ServerGroupServerAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port: pulumi.Input[int],
-             server_group_id: pulumi.Input[str],
-             server_id: pulumi.Input[str],
+             port: Optional[pulumi.Input[int]] = None,
+             server_group_id: Optional[pulumi.Input[str]] = None,
+             server_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupId' in kwargs:
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
-        if 'serverId' in kwargs:
+        if server_group_id is None:
+            raise TypeError("Missing 'server_group_id' argument")
+        if server_id is None and 'serverId' in kwargs:
             server_id = kwargs['serverId']
+        if server_id is None:
+            raise TypeError("Missing 'server_id' argument")
 
         _setter("port", port)
         _setter("server_group_id", server_group_id)
@@ -173,11 +179,11 @@ class _ServerGroupServerAttachmentState:
              server_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupId' in kwargs:
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
-        if 'serverId' in kwargs:
+        if server_id is None and 'serverId' in kwargs:
             server_id = kwargs['serverId']
 
         if description is not None:

@@ -14,30 +14,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example";
- * const defaultQos = new alicloud.rocketmq.Qos("defaultQos", {});
- * const defaultQosCar = new alicloud.rocketmq.QosCar("defaultQosCar", {
- *     qosId: defaultQos.id,
- *     description: name,
- *     priority: 1,
- *     limitType: "Absolute",
- *     minBandwidthAbs: 10,
- *     maxBandwidthAbs: 20,
- *     minBandwidthPercent: 10,
- *     maxBandwidthPercent: 20,
- *     percentSourceType: "InternetUpBandwidth",
- * });
- * ```
- *
  * ## Import
  *
  * The Sag Qos Car can be imported using the id, e.g.

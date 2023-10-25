@@ -128,18 +128,6 @@ def get_accounts(account_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.102.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.kvstore.get_accounts(instance_id="example_value")
-    pulumi.export("firstKvstoreAccountId", example.accounts[0].id)
-    ```
-
 
     :param str account_name: The name of the account.
     :param str instance_id: The Id of instance in which account belongs.
@@ -178,18 +166,6 @@ def get_accounts_output(account_name: Optional[pulumi.Input[Optional[str]]] = No
     This data source provides the KVStore Accounts of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.102.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.kvstore.get_accounts(instance_id="example_value")
-    pulumi.export("firstKvstoreAccountId", example.accounts[0].id)
-    ```
 
 
     :param str account_name: The name of the account.

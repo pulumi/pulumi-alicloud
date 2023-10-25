@@ -10,28 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Service Mesh Extension Providers of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.191.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.servicemesh.getExtensionProviders({
- *     ids: ["example_id"],
- *     serviceMeshId: "example_service_mesh_id",
- *     type: "httpextauth",
- * });
- * export const serviceMeshExtensionProvidersId1 = ids.then(ids => ids.providers?.[0]?.id);
- * const nameRegex = alicloud.servicemesh.getExtensionProviders({
- *     nameRegex: "^my-ServiceMeshExtensionProvider",
- *     serviceMeshId: "example_service_mesh_id",
- *     type: "httpextauth",
- * });
- * export const serviceMeshExtensionProvidersId2 = nameRegex.then(nameRegex => nameRegex.providers?.[0]?.id);
- * ```
  */
 export function getExtensionProviders(args: GetExtensionProvidersArgs, opts?: pulumi.InvokeOptions): Promise<GetExtensionProvidersResult> {
 
@@ -103,28 +81,6 @@ export interface GetExtensionProvidersResult {
  * This data source provides the Service Mesh Extension Providers of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.191.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.servicemesh.getExtensionProviders({
- *     ids: ["example_id"],
- *     serviceMeshId: "example_service_mesh_id",
- *     type: "httpextauth",
- * });
- * export const serviceMeshExtensionProvidersId1 = ids.then(ids => ids.providers?.[0]?.id);
- * const nameRegex = alicloud.servicemesh.getExtensionProviders({
- *     nameRegex: "^my-ServiceMeshExtensionProvider",
- *     serviceMeshId: "example_service_mesh_id",
- *     type: "httpextauth",
- * });
- * export const serviceMeshExtensionProvidersId2 = nameRegex.then(nameRegex => nameRegex.providers?.[0]?.id);
- * ```
  */
 export function getExtensionProvidersOutput(args: GetExtensionProvidersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExtensionProvidersResult> {
     return pulumi.output(args).apply((a: any) => getExtensionProviders(a, opts))

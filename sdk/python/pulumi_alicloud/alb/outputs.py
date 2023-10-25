@@ -145,11 +145,11 @@ class AScriptExtAttribute(dict):
              _setter: Callable[[Any, Any], None],
              attribute_key: Optional[str] = None,
              attribute_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'attributeKey' in kwargs:
+        if attribute_key is None and 'attributeKey' in kwargs:
             attribute_key = kwargs['attributeKey']
-        if 'attributeValue' in kwargs:
+        if attribute_value is None and 'attributeValue' in kwargs:
             attribute_value = kwargs['attributeValue']
 
         if attribute_key is not None:
@@ -197,7 +197,7 @@ class AclAclEntry(dict):
              description: Optional[str] = None,
              entry: Optional[str] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if description is not None:
@@ -282,13 +282,13 @@ class ListenerAccessLogTracingConfig(dict):
              tracing_enabled: Optional[bool] = None,
              tracing_sample: Optional[int] = None,
              tracing_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'tracingEnabled' in kwargs:
+        if tracing_enabled is None and 'tracingEnabled' in kwargs:
             tracing_enabled = kwargs['tracingEnabled']
-        if 'tracingSample' in kwargs:
+        if tracing_sample is None and 'tracingSample' in kwargs:
             tracing_sample = kwargs['tracingSample']
-        if 'tracingType' in kwargs:
+        if tracing_type is None and 'tracingType' in kwargs:
             tracing_type = kwargs['tracingType']
 
         if tracing_enabled is not None:
@@ -367,11 +367,11 @@ class ListenerAclConfig(dict):
              _setter: Callable[[Any, Any], None],
              acl_relations: Optional[Sequence['outputs.ListenerAclConfigAclRelation']] = None,
              acl_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclRelations' in kwargs:
+        if acl_relations is None and 'aclRelations' in kwargs:
             acl_relations = kwargs['aclRelations']
-        if 'aclType' in kwargs:
+        if acl_type is None and 'aclType' in kwargs:
             acl_type = kwargs['aclType']
 
         if acl_relations is not None:
@@ -432,9 +432,9 @@ class ListenerAclConfigAclRelation(dict):
              _setter: Callable[[Any, Any], None],
              acl_id: Optional[str] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclId' in kwargs:
+        if acl_id is None and 'aclId' in kwargs:
             acl_id = kwargs['aclId']
 
         if acl_id is not None:
@@ -491,9 +491,9 @@ class ListenerCertificates(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              certificate_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certificateId' in kwargs:
+        if certificate_id is None and 'certificateId' in kwargs:
             certificate_id = kwargs['certificateId']
 
         if certificate_id is not None:
@@ -542,12 +542,16 @@ class ListenerDefaultAction(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             forward_group_config: 'outputs.ListenerDefaultActionForwardGroupConfig',
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             forward_group_config: Optional['outputs.ListenerDefaultActionForwardGroupConfig'] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'forwardGroupConfig' in kwargs:
+        if forward_group_config is None and 'forwardGroupConfig' in kwargs:
             forward_group_config = kwargs['forwardGroupConfig']
+        if forward_group_config is None:
+            raise TypeError("Missing 'forward_group_config' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("forward_group_config", forward_group_config)
         _setter("type", type)
@@ -600,11 +604,13 @@ class ListenerDefaultActionForwardGroupConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_group_tuples: Sequence['outputs.ListenerDefaultActionForwardGroupConfigServerGroupTuple'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             server_group_tuples: Optional[Sequence['outputs.ListenerDefaultActionForwardGroupConfigServerGroupTuple']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupTuples' in kwargs:
+        if server_group_tuples is None and 'serverGroupTuples' in kwargs:
             server_group_tuples = kwargs['serverGroupTuples']
+        if server_group_tuples is None:
+            raise TypeError("Missing 'server_group_tuples' argument")
 
         _setter("server_group_tuples", server_group_tuples)
 
@@ -648,11 +654,13 @@ class ListenerDefaultActionForwardGroupConfigServerGroupTuple(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_group_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             server_group_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupId' in kwargs:
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
+        if server_group_id is None:
+            raise TypeError("Missing 'server_group_id' argument")
 
         _setter("server_group_id", server_group_id)
 
@@ -705,11 +713,11 @@ class ListenerQuicConfig(dict):
              _setter: Callable[[Any, Any], None],
              quic_listener_id: Optional[str] = None,
              quic_upgrade_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'quicListenerId' in kwargs:
+        if quic_listener_id is None and 'quicListenerId' in kwargs:
             quic_listener_id = kwargs['quicListenerId']
-        if 'quicUpgradeEnabled' in kwargs:
+        if quic_upgrade_enabled is None and 'quicUpgradeEnabled' in kwargs:
             quic_upgrade_enabled = kwargs['quicUpgradeEnabled']
 
         if quic_listener_id is not None:
@@ -840,33 +848,33 @@ class ListenerXForwardedForConfig(dict):
              x_forwarded_for_proto_enabled: Optional[bool] = None,
              x_forwarded_for_slb_id_enabled: Optional[bool] = None,
              x_forwarded_for_slb_port_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'xForwardedForClientCertClientVerifyAlias' in kwargs:
+        if x_forwarded_for_client_cert_client_verify_alias is None and 'xForwardedForClientCertClientVerifyAlias' in kwargs:
             x_forwarded_for_client_cert_client_verify_alias = kwargs['xForwardedForClientCertClientVerifyAlias']
-        if 'xForwardedForClientCertClientVerifyEnabled' in kwargs:
+        if x_forwarded_for_client_cert_client_verify_enabled is None and 'xForwardedForClientCertClientVerifyEnabled' in kwargs:
             x_forwarded_for_client_cert_client_verify_enabled = kwargs['xForwardedForClientCertClientVerifyEnabled']
-        if 'xForwardedForClientCertFingerPrintAlias' in kwargs:
+        if x_forwarded_for_client_cert_finger_print_alias is None and 'xForwardedForClientCertFingerPrintAlias' in kwargs:
             x_forwarded_for_client_cert_finger_print_alias = kwargs['xForwardedForClientCertFingerPrintAlias']
-        if 'xForwardedForClientCertFingerPrintEnabled' in kwargs:
+        if x_forwarded_for_client_cert_finger_print_enabled is None and 'xForwardedForClientCertFingerPrintEnabled' in kwargs:
             x_forwarded_for_client_cert_finger_print_enabled = kwargs['xForwardedForClientCertFingerPrintEnabled']
-        if 'xForwardedForClientCertIssuerDnAlias' in kwargs:
+        if x_forwarded_for_client_cert_issuer_dn_alias is None and 'xForwardedForClientCertIssuerDnAlias' in kwargs:
             x_forwarded_for_client_cert_issuer_dn_alias = kwargs['xForwardedForClientCertIssuerDnAlias']
-        if 'xForwardedForClientCertIssuerDnEnabled' in kwargs:
+        if x_forwarded_for_client_cert_issuer_dn_enabled is None and 'xForwardedForClientCertIssuerDnEnabled' in kwargs:
             x_forwarded_for_client_cert_issuer_dn_enabled = kwargs['xForwardedForClientCertIssuerDnEnabled']
-        if 'xForwardedForClientCertSubjectDnAlias' in kwargs:
+        if x_forwarded_for_client_cert_subject_dn_alias is None and 'xForwardedForClientCertSubjectDnAlias' in kwargs:
             x_forwarded_for_client_cert_subject_dn_alias = kwargs['xForwardedForClientCertSubjectDnAlias']
-        if 'xForwardedForClientCertSubjectDnEnabled' in kwargs:
+        if x_forwarded_for_client_cert_subject_dn_enabled is None and 'xForwardedForClientCertSubjectDnEnabled' in kwargs:
             x_forwarded_for_client_cert_subject_dn_enabled = kwargs['xForwardedForClientCertSubjectDnEnabled']
-        if 'xForwardedForClientSrcPortEnabled' in kwargs:
+        if x_forwarded_for_client_src_port_enabled is None and 'xForwardedForClientSrcPortEnabled' in kwargs:
             x_forwarded_for_client_src_port_enabled = kwargs['xForwardedForClientSrcPortEnabled']
-        if 'xForwardedForEnabled' in kwargs:
+        if x_forwarded_for_enabled is None and 'xForwardedForEnabled' in kwargs:
             x_forwarded_for_enabled = kwargs['xForwardedForEnabled']
-        if 'xForwardedForProtoEnabled' in kwargs:
+        if x_forwarded_for_proto_enabled is None and 'xForwardedForProtoEnabled' in kwargs:
             x_forwarded_for_proto_enabled = kwargs['xForwardedForProtoEnabled']
-        if 'xForwardedForSlbIdEnabled' in kwargs:
+        if x_forwarded_for_slb_id_enabled is None and 'xForwardedForSlbIdEnabled' in kwargs:
             x_forwarded_for_slb_id_enabled = kwargs['xForwardedForSlbIdEnabled']
-        if 'xForwardedForSlbPortEnabled' in kwargs:
+        if x_forwarded_for_slb_port_enabled is None and 'xForwardedForSlbPortEnabled' in kwargs:
             x_forwarded_for_slb_port_enabled = kwargs['xForwardedForSlbPortEnabled']
 
         if x_forwarded_for_client_cert_client_verify_alias is not None:
@@ -1037,14 +1045,18 @@ class LoadBalancerAccessLogConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             log_project: str,
-             log_store: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             log_project: Optional[str] = None,
+             log_store: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'logProject' in kwargs:
+        if log_project is None and 'logProject' in kwargs:
             log_project = kwargs['logProject']
-        if 'logStore' in kwargs:
+        if log_project is None:
+            raise TypeError("Missing 'log_project' argument")
+        if log_store is None and 'logStore' in kwargs:
             log_store = kwargs['logStore']
+        if log_store is None:
+            raise TypeError("Missing 'log_store' argument")
 
         _setter("log_project", log_project)
         _setter("log_store", log_store)
@@ -1097,11 +1109,13 @@ class LoadBalancerLoadBalancerBillingConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pay_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             pay_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'payType' in kwargs:
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
+        if pay_type is None:
+            raise TypeError("Missing 'pay_type' argument")
 
         _setter("pay_type", pay_type)
 
@@ -1133,7 +1147,7 @@ class LoadBalancerModificationProtectionConfig(dict):
              _setter: Callable[[Any, Any], None],
              reason: Optional[str] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if reason is not None:
@@ -1199,16 +1213,20 @@ class LoadBalancerZoneMapping(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vswitch_id: str,
-             zone_id: str,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
              load_balancer_addresses: Optional[Sequence['outputs.LoadBalancerZoneMappingLoadBalancerAddress']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'loadBalancerAddresses' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if load_balancer_addresses is None and 'loadBalancerAddresses' in kwargs:
             load_balancer_addresses = kwargs['loadBalancerAddresses']
 
         _setter("vswitch_id", vswitch_id)
@@ -1289,13 +1307,13 @@ class LoadBalancerZoneMappingLoadBalancerAddress(dict):
              allocation_id: Optional[str] = None,
              eip_type: Optional[str] = None,
              ipv6_address: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allocationId' in kwargs:
+        if allocation_id is None and 'allocationId' in kwargs:
             allocation_id = kwargs['allocationId']
-        if 'eipType' in kwargs:
+        if eip_type is None and 'eipType' in kwargs:
             eip_type = kwargs['eipType']
-        if 'ipv6Address' in kwargs:
+        if ipv6_address is None and 'ipv6Address' in kwargs:
             ipv6_address = kwargs['ipv6Address']
 
         if address is not None:
@@ -1415,8 +1433,8 @@ class RuleRuleAction(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             order: int,
-             type: str,
+             order: Optional[int] = None,
+             type: Optional[str] = None,
              cors_config: Optional['outputs.RuleRuleActionCorsConfig'] = None,
              fixed_response_config: Optional['outputs.RuleRuleActionFixedResponseConfig'] = None,
              forward_group_config: Optional['outputs.RuleRuleActionForwardGroupConfig'] = None,
@@ -1425,23 +1443,27 @@ class RuleRuleAction(dict):
              rewrite_config: Optional['outputs.RuleRuleActionRewriteConfig'] = None,
              traffic_limit_config: Optional['outputs.RuleRuleActionTrafficLimitConfig'] = None,
              traffic_mirror_config: Optional['outputs.RuleRuleActionTrafficMirrorConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'corsConfig' in kwargs:
+        if order is None:
+            raise TypeError("Missing 'order' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if cors_config is None and 'corsConfig' in kwargs:
             cors_config = kwargs['corsConfig']
-        if 'fixedResponseConfig' in kwargs:
+        if fixed_response_config is None and 'fixedResponseConfig' in kwargs:
             fixed_response_config = kwargs['fixedResponseConfig']
-        if 'forwardGroupConfig' in kwargs:
+        if forward_group_config is None and 'forwardGroupConfig' in kwargs:
             forward_group_config = kwargs['forwardGroupConfig']
-        if 'insertHeaderConfig' in kwargs:
+        if insert_header_config is None and 'insertHeaderConfig' in kwargs:
             insert_header_config = kwargs['insertHeaderConfig']
-        if 'redirectConfig' in kwargs:
+        if redirect_config is None and 'redirectConfig' in kwargs:
             redirect_config = kwargs['redirectConfig']
-        if 'rewriteConfig' in kwargs:
+        if rewrite_config is None and 'rewriteConfig' in kwargs:
             rewrite_config = kwargs['rewriteConfig']
-        if 'trafficLimitConfig' in kwargs:
+        if traffic_limit_config is None and 'trafficLimitConfig' in kwargs:
             traffic_limit_config = kwargs['trafficLimitConfig']
-        if 'trafficMirrorConfig' in kwargs:
+        if traffic_mirror_config is None and 'trafficMirrorConfig' in kwargs:
             traffic_mirror_config = kwargs['trafficMirrorConfig']
 
         _setter("order", order)
@@ -1609,19 +1631,19 @@ class RuleRuleActionCorsConfig(dict):
              allow_origins: Optional[Sequence[str]] = None,
              expose_headers: Optional[Sequence[str]] = None,
              max_age: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowCredentials' in kwargs:
+        if allow_credentials is None and 'allowCredentials' in kwargs:
             allow_credentials = kwargs['allowCredentials']
-        if 'allowHeaders' in kwargs:
+        if allow_headers is None and 'allowHeaders' in kwargs:
             allow_headers = kwargs['allowHeaders']
-        if 'allowMethods' in kwargs:
+        if allow_methods is None and 'allowMethods' in kwargs:
             allow_methods = kwargs['allowMethods']
-        if 'allowOrigins' in kwargs:
+        if allow_origins is None and 'allowOrigins' in kwargs:
             allow_origins = kwargs['allowOrigins']
-        if 'exposeHeaders' in kwargs:
+        if expose_headers is None and 'exposeHeaders' in kwargs:
             expose_headers = kwargs['exposeHeaders']
-        if 'maxAge' in kwargs:
+        if max_age is None and 'maxAge' in kwargs:
             max_age = kwargs['maxAge']
 
         if allow_credentials is not None:
@@ -1725,14 +1747,16 @@ class RuleRuleActionFixedResponseConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: str,
+             content: Optional[str] = None,
              content_type: Optional[str] = None,
              http_code: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contentType' in kwargs:
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if content_type is None and 'contentType' in kwargs:
             content_type = kwargs['contentType']
-        if 'httpCode' in kwargs:
+        if http_code is None and 'httpCode' in kwargs:
             http_code = kwargs['httpCode']
 
         _setter("content", content)
@@ -1804,11 +1828,11 @@ class RuleRuleActionForwardGroupConfig(dict):
              _setter: Callable[[Any, Any], None],
              server_group_sticky_session: Optional['outputs.RuleRuleActionForwardGroupConfigServerGroupStickySession'] = None,
              server_group_tuples: Optional[Sequence['outputs.RuleRuleActionForwardGroupConfigServerGroupTuple']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupStickySession' in kwargs:
+        if server_group_sticky_session is None and 'serverGroupStickySession' in kwargs:
             server_group_sticky_session = kwargs['serverGroupStickySession']
-        if 'serverGroupTuples' in kwargs:
+        if server_group_tuples is None and 'serverGroupTuples' in kwargs:
             server_group_tuples = kwargs['serverGroupTuples']
 
         if server_group_sticky_session is not None:
@@ -1852,7 +1876,7 @@ class RuleRuleActionForwardGroupConfigServerGroupStickySession(dict):
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if enabled is not None:
@@ -1913,9 +1937,9 @@ class RuleRuleActionForwardGroupConfigServerGroupTuple(dict):
              _setter: Callable[[Any, Any], None],
              server_group_id: Optional[str] = None,
              weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupId' in kwargs:
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
 
         if server_group_id is not None:
@@ -1981,9 +2005,9 @@ class RuleRuleActionInsertHeaderConfig(dict):
              key: Optional[str] = None,
              value: Optional[str] = None,
              value_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'valueType' in kwargs:
+        if value_type is None and 'valueType' in kwargs:
             value_type = kwargs['valueType']
 
         if key is not None:
@@ -2071,9 +2095,9 @@ class RuleRuleActionRedirectConfig(dict):
              port: Optional[str] = None,
              protocol: Optional[str] = None,
              query: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'httpCode' in kwargs:
+        if http_code is None and 'httpCode' in kwargs:
             http_code = kwargs['httpCode']
 
         if host is not None:
@@ -2161,7 +2185,7 @@ class RuleRuleActionRewriteConfig(dict):
              host: Optional[str] = None,
              path: Optional[str] = None,
              query: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if host is not None:
@@ -2211,7 +2235,7 @@ class RuleRuleActionTrafficLimitConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              qps: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if qps is not None:
@@ -2264,11 +2288,11 @@ class RuleRuleActionTrafficMirrorConfig(dict):
              _setter: Callable[[Any, Any], None],
              mirror_group_config: Optional['outputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfig'] = None,
              target_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mirrorGroupConfig' in kwargs:
+        if mirror_group_config is None and 'mirrorGroupConfig' in kwargs:
             mirror_group_config = kwargs['mirrorGroupConfig']
-        if 'targetType' in kwargs:
+        if target_type is None and 'targetType' in kwargs:
             target_type = kwargs['targetType']
 
         if mirror_group_config is not None:
@@ -2325,9 +2349,9 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              server_group_tuples: Optional[Sequence['outputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupTuples' in kwargs:
+        if server_group_tuples is None and 'serverGroupTuples' in kwargs:
             server_group_tuples = kwargs['serverGroupTuples']
 
         if server_group_tuples is not None:
@@ -2374,9 +2398,9 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              server_group_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupId' in kwargs:
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
 
         if server_group_id is not None:
@@ -2455,7 +2479,7 @@ class RuleRuleCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              cookie_config: Optional['outputs.RuleRuleConditionCookieConfig'] = None,
              header_config: Optional['outputs.RuleRuleConditionHeaderConfig'] = None,
              host_config: Optional['outputs.RuleRuleConditionHostConfig'] = None,
@@ -2463,21 +2487,23 @@ class RuleRuleCondition(dict):
              path_config: Optional['outputs.RuleRuleConditionPathConfig'] = None,
              query_string_config: Optional['outputs.RuleRuleConditionQueryStringConfig'] = None,
              source_ip_config: Optional['outputs.RuleRuleConditionSourceIpConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cookieConfig' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if cookie_config is None and 'cookieConfig' in kwargs:
             cookie_config = kwargs['cookieConfig']
-        if 'headerConfig' in kwargs:
+        if header_config is None and 'headerConfig' in kwargs:
             header_config = kwargs['headerConfig']
-        if 'hostConfig' in kwargs:
+        if host_config is None and 'hostConfig' in kwargs:
             host_config = kwargs['hostConfig']
-        if 'methodConfig' in kwargs:
+        if method_config is None and 'methodConfig' in kwargs:
             method_config = kwargs['methodConfig']
-        if 'pathConfig' in kwargs:
+        if path_config is None and 'pathConfig' in kwargs:
             path_config = kwargs['pathConfig']
-        if 'queryStringConfig' in kwargs:
+        if query_string_config is None and 'queryStringConfig' in kwargs:
             query_string_config = kwargs['queryStringConfig']
-        if 'sourceIpConfig' in kwargs:
+        if source_ip_config is None and 'sourceIpConfig' in kwargs:
             source_ip_config = kwargs['sourceIpConfig']
 
         _setter("type", type)
@@ -2576,7 +2602,7 @@ class RuleRuleConditionCookieConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[Sequence['outputs.RuleRuleConditionCookieConfigValue']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if values is not None:
@@ -2611,7 +2637,7 @@ class RuleRuleConditionCookieConfigValue(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -2656,7 +2682,7 @@ class RuleRuleConditionHeaderConfig(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -2696,7 +2722,7 @@ class RuleRuleConditionHostConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if values is not None:
@@ -2726,7 +2752,7 @@ class RuleRuleConditionMethodConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if values is not None:
@@ -2756,7 +2782,7 @@ class RuleRuleConditionPathConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if values is not None:
@@ -2786,7 +2812,7 @@ class RuleRuleConditionQueryStringConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[Sequence['outputs.RuleRuleConditionQueryStringConfigValue']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if values is not None:
@@ -2821,7 +2847,7 @@ class RuleRuleConditionQueryStringConfigValue(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -2862,7 +2888,7 @@ class RuleRuleConditionSourceIpConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if values is not None:
@@ -2976,31 +3002,31 @@ class ServerGroupHealthCheckConfig(dict):
              health_check_timeout: Optional[int] = None,
              healthy_threshold: Optional[int] = None,
              unhealthy_threshold: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'healthCheckCodes' in kwargs:
+        if health_check_codes is None and 'healthCheckCodes' in kwargs:
             health_check_codes = kwargs['healthCheckCodes']
-        if 'healthCheckConnectPort' in kwargs:
+        if health_check_connect_port is None and 'healthCheckConnectPort' in kwargs:
             health_check_connect_port = kwargs['healthCheckConnectPort']
-        if 'healthCheckEnabled' in kwargs:
+        if health_check_enabled is None and 'healthCheckEnabled' in kwargs:
             health_check_enabled = kwargs['healthCheckEnabled']
-        if 'healthCheckHost' in kwargs:
+        if health_check_host is None and 'healthCheckHost' in kwargs:
             health_check_host = kwargs['healthCheckHost']
-        if 'healthCheckHttpVersion' in kwargs:
+        if health_check_http_version is None and 'healthCheckHttpVersion' in kwargs:
             health_check_http_version = kwargs['healthCheckHttpVersion']
-        if 'healthCheckInterval' in kwargs:
+        if health_check_interval is None and 'healthCheckInterval' in kwargs:
             health_check_interval = kwargs['healthCheckInterval']
-        if 'healthCheckMethod' in kwargs:
+        if health_check_method is None and 'healthCheckMethod' in kwargs:
             health_check_method = kwargs['healthCheckMethod']
-        if 'healthCheckPath' in kwargs:
+        if health_check_path is None and 'healthCheckPath' in kwargs:
             health_check_path = kwargs['healthCheckPath']
-        if 'healthCheckProtocol' in kwargs:
+        if health_check_protocol is None and 'healthCheckProtocol' in kwargs:
             health_check_protocol = kwargs['healthCheckProtocol']
-        if 'healthCheckTimeout' in kwargs:
+        if health_check_timeout is None and 'healthCheckTimeout' in kwargs:
             health_check_timeout = kwargs['healthCheckTimeout']
-        if 'healthyThreshold' in kwargs:
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
             healthy_threshold = kwargs['healthyThreshold']
-        if 'unhealthyThreshold' in kwargs:
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
             unhealthy_threshold = kwargs['unhealthyThreshold']
 
         if health_check_codes is not None:
@@ -3193,23 +3219,27 @@ class ServerGroupServer(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_id: str,
-             server_type: str,
+             server_id: Optional[str] = None,
+             server_type: Optional[str] = None,
              description: Optional[str] = None,
              port: Optional[int] = None,
              remote_ip_enabled: Optional[bool] = None,
              server_ip: Optional[str] = None,
              status: Optional[str] = None,
              weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverId' in kwargs:
+        if server_id is None and 'serverId' in kwargs:
             server_id = kwargs['serverId']
-        if 'serverType' in kwargs:
+        if server_id is None:
+            raise TypeError("Missing 'server_id' argument")
+        if server_type is None and 'serverType' in kwargs:
             server_type = kwargs['serverType']
-        if 'remoteIpEnabled' in kwargs:
+        if server_type is None:
+            raise TypeError("Missing 'server_type' argument")
+        if remote_ip_enabled is None and 'remoteIpEnabled' in kwargs:
             remote_ip_enabled = kwargs['remoteIpEnabled']
-        if 'serverIp' in kwargs:
+        if server_ip is None and 'serverIp' in kwargs:
             server_ip = kwargs['serverIp']
 
         _setter("server_id", server_id)
@@ -3352,13 +3382,13 @@ class ServerGroupStickySessionConfig(dict):
              cookie_timeout: Optional[int] = None,
              sticky_session_enabled: Optional[bool] = None,
              sticky_session_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cookieTimeout' in kwargs:
+        if cookie_timeout is None and 'cookieTimeout' in kwargs:
             cookie_timeout = kwargs['cookieTimeout']
-        if 'stickySessionEnabled' in kwargs:
+        if sticky_session_enabled is None and 'stickySessionEnabled' in kwargs:
             sticky_session_enabled = kwargs['stickySessionEnabled']
-        if 'stickySessionType' in kwargs:
+        if sticky_session_type is None and 'stickySessionType' in kwargs:
             sticky_session_type = kwargs['stickySessionType']
 
         if cookie is not None:
@@ -3438,25 +3468,39 @@ class GetAclsAclResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acl_entries: Sequence['outputs.GetAclsAclAclEntryResult'],
-             acl_id: str,
-             acl_name: str,
-             address_ip_version: str,
-             id: str,
-             resource_group_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             acl_entries: Optional[Sequence['outputs.GetAclsAclAclEntryResult']] = None,
+             acl_id: Optional[str] = None,
+             acl_name: Optional[str] = None,
+             address_ip_version: Optional[str] = None,
+             id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclEntries' in kwargs:
+        if acl_entries is None and 'aclEntries' in kwargs:
             acl_entries = kwargs['aclEntries']
-        if 'aclId' in kwargs:
+        if acl_entries is None:
+            raise TypeError("Missing 'acl_entries' argument")
+        if acl_id is None and 'aclId' in kwargs:
             acl_id = kwargs['aclId']
-        if 'aclName' in kwargs:
+        if acl_id is None:
+            raise TypeError("Missing 'acl_id' argument")
+        if acl_name is None and 'aclName' in kwargs:
             acl_name = kwargs['aclName']
-        if 'addressIpVersion' in kwargs:
+        if acl_name is None:
+            raise TypeError("Missing 'acl_name' argument")
+        if address_ip_version is None and 'addressIpVersion' in kwargs:
             address_ip_version = kwargs['addressIpVersion']
-        if 'resourceGroupId' in kwargs:
+        if address_ip_version is None:
+            raise TypeError("Missing 'address_ip_version' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("acl_entries", acl_entries)
         _setter("acl_id", acl_id)
@@ -3542,11 +3586,17 @@ class GetAclsAclAclEntryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             entry: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             entry: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if entry is None:
+            raise TypeError("Missing 'entry' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("description", description)
         _setter("entry", entry)
@@ -3616,33 +3666,55 @@ class GetAscriptsAscriptResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ascript_id: str,
-             ascript_name: str,
-             enabled: bool,
-             ext_attribute_enabled: bool,
-             ext_attributes: Sequence['outputs.GetAscriptsAscriptExtAttributeResult'],
-             id: str,
-             listener_id: str,
-             load_balancer_id: str,
-             position: str,
-             script_content: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ascript_id: Optional[str] = None,
+             ascript_name: Optional[str] = None,
+             enabled: Optional[bool] = None,
+             ext_attribute_enabled: Optional[bool] = None,
+             ext_attributes: Optional[Sequence['outputs.GetAscriptsAscriptExtAttributeResult']] = None,
+             id: Optional[str] = None,
+             listener_id: Optional[str] = None,
+             load_balancer_id: Optional[str] = None,
+             position: Optional[str] = None,
+             script_content: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ascriptId' in kwargs:
+        if ascript_id is None and 'ascriptId' in kwargs:
             ascript_id = kwargs['ascriptId']
-        if 'ascriptName' in kwargs:
+        if ascript_id is None:
+            raise TypeError("Missing 'ascript_id' argument")
+        if ascript_name is None and 'ascriptName' in kwargs:
             ascript_name = kwargs['ascriptName']
-        if 'extAttributeEnabled' in kwargs:
+        if ascript_name is None:
+            raise TypeError("Missing 'ascript_name' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if ext_attribute_enabled is None and 'extAttributeEnabled' in kwargs:
             ext_attribute_enabled = kwargs['extAttributeEnabled']
-        if 'extAttributes' in kwargs:
+        if ext_attribute_enabled is None:
+            raise TypeError("Missing 'ext_attribute_enabled' argument")
+        if ext_attributes is None and 'extAttributes' in kwargs:
             ext_attributes = kwargs['extAttributes']
-        if 'listenerId' in kwargs:
+        if ext_attributes is None:
+            raise TypeError("Missing 'ext_attributes' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'loadBalancerId' in kwargs:
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
-        if 'scriptContent' in kwargs:
+        if load_balancer_id is None:
+            raise TypeError("Missing 'load_balancer_id' argument")
+        if position is None:
+            raise TypeError("Missing 'position' argument")
+        if script_content is None and 'scriptContent' in kwargs:
             script_content = kwargs['scriptContent']
+        if script_content is None:
+            raise TypeError("Missing 'script_content' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("ascript_id", ascript_id)
         _setter("ascript_name", ascript_name)
@@ -3756,14 +3828,18 @@ class GetAscriptsAscriptExtAttributeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attribute_key: str,
-             attribute_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             attribute_key: Optional[str] = None,
+             attribute_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'attributeKey' in kwargs:
+        if attribute_key is None and 'attributeKey' in kwargs:
             attribute_key = kwargs['attributeKey']
-        if 'attributeValue' in kwargs:
+        if attribute_key is None:
+            raise TypeError("Missing 'attribute_key' argument")
+        if attribute_value is None and 'attributeValue' in kwargs:
             attribute_value = kwargs['attributeValue']
+        if attribute_value is None:
+            raise TypeError("Missing 'attribute_value' argument")
 
         _setter("attribute_key", attribute_key)
         _setter("attribute_value", attribute_value)
@@ -3838,48 +3914,76 @@ class GetHealthCheckTemplatesTemplateResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             health_check_codes: Sequence[str],
-             health_check_connect_port: int,
-             health_check_host: str,
-             health_check_http_version: str,
-             health_check_interval: int,
-             health_check_method: str,
-             health_check_path: str,
-             health_check_protocol: str,
-             health_check_template_id: str,
-             health_check_template_name: str,
-             health_check_timeout: int,
-             healthy_threshold: int,
-             id: str,
-             unhealthy_threshold: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             health_check_codes: Optional[Sequence[str]] = None,
+             health_check_connect_port: Optional[int] = None,
+             health_check_host: Optional[str] = None,
+             health_check_http_version: Optional[str] = None,
+             health_check_interval: Optional[int] = None,
+             health_check_method: Optional[str] = None,
+             health_check_path: Optional[str] = None,
+             health_check_protocol: Optional[str] = None,
+             health_check_template_id: Optional[str] = None,
+             health_check_template_name: Optional[str] = None,
+             health_check_timeout: Optional[int] = None,
+             healthy_threshold: Optional[int] = None,
+             id: Optional[str] = None,
+             unhealthy_threshold: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'healthCheckCodes' in kwargs:
+        if health_check_codes is None and 'healthCheckCodes' in kwargs:
             health_check_codes = kwargs['healthCheckCodes']
-        if 'healthCheckConnectPort' in kwargs:
+        if health_check_codes is None:
+            raise TypeError("Missing 'health_check_codes' argument")
+        if health_check_connect_port is None and 'healthCheckConnectPort' in kwargs:
             health_check_connect_port = kwargs['healthCheckConnectPort']
-        if 'healthCheckHost' in kwargs:
+        if health_check_connect_port is None:
+            raise TypeError("Missing 'health_check_connect_port' argument")
+        if health_check_host is None and 'healthCheckHost' in kwargs:
             health_check_host = kwargs['healthCheckHost']
-        if 'healthCheckHttpVersion' in kwargs:
+        if health_check_host is None:
+            raise TypeError("Missing 'health_check_host' argument")
+        if health_check_http_version is None and 'healthCheckHttpVersion' in kwargs:
             health_check_http_version = kwargs['healthCheckHttpVersion']
-        if 'healthCheckInterval' in kwargs:
+        if health_check_http_version is None:
+            raise TypeError("Missing 'health_check_http_version' argument")
+        if health_check_interval is None and 'healthCheckInterval' in kwargs:
             health_check_interval = kwargs['healthCheckInterval']
-        if 'healthCheckMethod' in kwargs:
+        if health_check_interval is None:
+            raise TypeError("Missing 'health_check_interval' argument")
+        if health_check_method is None and 'healthCheckMethod' in kwargs:
             health_check_method = kwargs['healthCheckMethod']
-        if 'healthCheckPath' in kwargs:
+        if health_check_method is None:
+            raise TypeError("Missing 'health_check_method' argument")
+        if health_check_path is None and 'healthCheckPath' in kwargs:
             health_check_path = kwargs['healthCheckPath']
-        if 'healthCheckProtocol' in kwargs:
+        if health_check_path is None:
+            raise TypeError("Missing 'health_check_path' argument")
+        if health_check_protocol is None and 'healthCheckProtocol' in kwargs:
             health_check_protocol = kwargs['healthCheckProtocol']
-        if 'healthCheckTemplateId' in kwargs:
+        if health_check_protocol is None:
+            raise TypeError("Missing 'health_check_protocol' argument")
+        if health_check_template_id is None and 'healthCheckTemplateId' in kwargs:
             health_check_template_id = kwargs['healthCheckTemplateId']
-        if 'healthCheckTemplateName' in kwargs:
+        if health_check_template_id is None:
+            raise TypeError("Missing 'health_check_template_id' argument")
+        if health_check_template_name is None and 'healthCheckTemplateName' in kwargs:
             health_check_template_name = kwargs['healthCheckTemplateName']
-        if 'healthCheckTimeout' in kwargs:
+        if health_check_template_name is None:
+            raise TypeError("Missing 'health_check_template_name' argument")
+        if health_check_timeout is None and 'healthCheckTimeout' in kwargs:
             health_check_timeout = kwargs['healthCheckTimeout']
-        if 'healthyThreshold' in kwargs:
+        if health_check_timeout is None:
+            raise TypeError("Missing 'health_check_timeout' argument")
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
             healthy_threshold = kwargs['healthyThreshold']
-        if 'unhealthyThreshold' in kwargs:
+        if healthy_threshold is None:
+            raise TypeError("Missing 'healthy_threshold' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
             unhealthy_threshold = kwargs['unhealthyThreshold']
+        if unhealthy_threshold is None:
+            raise TypeError("Missing 'unhealthy_threshold' argument")
 
         _setter("health_check_codes", health_check_codes)
         _setter("health_check_connect_port", health_check_connect_port)
@@ -4089,65 +4193,107 @@ class GetListenersListenerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_log_record_customized_headers_enabled: bool,
-             access_log_tracing_configs: Sequence['outputs.GetListenersListenerAccessLogTracingConfigResult'],
-             acl_configs: Sequence['outputs.GetListenersListenerAclConfigResult'],
-             certificates: Sequence['outputs.GetListenersListenerCertificateResult'],
-             default_actions: Sequence['outputs.GetListenersListenerDefaultActionResult'],
-             gzip_enabled: bool,
-             http2_enabled: bool,
-             id: str,
-             idle_timeout: int,
-             listener_description: str,
-             listener_id: str,
-             listener_port: int,
-             listener_protocol: str,
-             load_balancer_id: str,
-             max_results: str,
-             next_token: str,
-             quic_configs: Sequence['outputs.GetListenersListenerQuicConfigResult'],
-             request_timeout: int,
-             security_policy_id: str,
-             status: str,
-             xforwarded_for_configs: Sequence['outputs.GetListenersListenerXforwardedForConfigResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_log_record_customized_headers_enabled: Optional[bool] = None,
+             access_log_tracing_configs: Optional[Sequence['outputs.GetListenersListenerAccessLogTracingConfigResult']] = None,
+             acl_configs: Optional[Sequence['outputs.GetListenersListenerAclConfigResult']] = None,
+             certificates: Optional[Sequence['outputs.GetListenersListenerCertificateResult']] = None,
+             default_actions: Optional[Sequence['outputs.GetListenersListenerDefaultActionResult']] = None,
+             gzip_enabled: Optional[bool] = None,
+             http2_enabled: Optional[bool] = None,
+             id: Optional[str] = None,
+             idle_timeout: Optional[int] = None,
+             listener_description: Optional[str] = None,
+             listener_id: Optional[str] = None,
+             listener_port: Optional[int] = None,
+             listener_protocol: Optional[str] = None,
+             load_balancer_id: Optional[str] = None,
+             max_results: Optional[str] = None,
+             next_token: Optional[str] = None,
+             quic_configs: Optional[Sequence['outputs.GetListenersListenerQuicConfigResult']] = None,
+             request_timeout: Optional[int] = None,
+             security_policy_id: Optional[str] = None,
+             status: Optional[str] = None,
+             xforwarded_for_configs: Optional[Sequence['outputs.GetListenersListenerXforwardedForConfigResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessLogRecordCustomizedHeadersEnabled' in kwargs:
+        if access_log_record_customized_headers_enabled is None and 'accessLogRecordCustomizedHeadersEnabled' in kwargs:
             access_log_record_customized_headers_enabled = kwargs['accessLogRecordCustomizedHeadersEnabled']
-        if 'accessLogTracingConfigs' in kwargs:
+        if access_log_record_customized_headers_enabled is None:
+            raise TypeError("Missing 'access_log_record_customized_headers_enabled' argument")
+        if access_log_tracing_configs is None and 'accessLogTracingConfigs' in kwargs:
             access_log_tracing_configs = kwargs['accessLogTracingConfigs']
-        if 'aclConfigs' in kwargs:
+        if access_log_tracing_configs is None:
+            raise TypeError("Missing 'access_log_tracing_configs' argument")
+        if acl_configs is None and 'aclConfigs' in kwargs:
             acl_configs = kwargs['aclConfigs']
-        if 'defaultActions' in kwargs:
+        if acl_configs is None:
+            raise TypeError("Missing 'acl_configs' argument")
+        if certificates is None:
+            raise TypeError("Missing 'certificates' argument")
+        if default_actions is None and 'defaultActions' in kwargs:
             default_actions = kwargs['defaultActions']
-        if 'gzipEnabled' in kwargs:
+        if default_actions is None:
+            raise TypeError("Missing 'default_actions' argument")
+        if gzip_enabled is None and 'gzipEnabled' in kwargs:
             gzip_enabled = kwargs['gzipEnabled']
-        if 'http2Enabled' in kwargs:
+        if gzip_enabled is None:
+            raise TypeError("Missing 'gzip_enabled' argument")
+        if http2_enabled is None and 'http2Enabled' in kwargs:
             http2_enabled = kwargs['http2Enabled']
-        if 'idleTimeout' in kwargs:
+        if http2_enabled is None:
+            raise TypeError("Missing 'http2_enabled' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if idle_timeout is None and 'idleTimeout' in kwargs:
             idle_timeout = kwargs['idleTimeout']
-        if 'listenerDescription' in kwargs:
+        if idle_timeout is None:
+            raise TypeError("Missing 'idle_timeout' argument")
+        if listener_description is None and 'listenerDescription' in kwargs:
             listener_description = kwargs['listenerDescription']
-        if 'listenerId' in kwargs:
+        if listener_description is None:
+            raise TypeError("Missing 'listener_description' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'listenerPort' in kwargs:
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if listener_port is None and 'listenerPort' in kwargs:
             listener_port = kwargs['listenerPort']
-        if 'listenerProtocol' in kwargs:
+        if listener_port is None:
+            raise TypeError("Missing 'listener_port' argument")
+        if listener_protocol is None and 'listenerProtocol' in kwargs:
             listener_protocol = kwargs['listenerProtocol']
-        if 'loadBalancerId' in kwargs:
+        if listener_protocol is None:
+            raise TypeError("Missing 'listener_protocol' argument")
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
-        if 'maxResults' in kwargs:
+        if load_balancer_id is None:
+            raise TypeError("Missing 'load_balancer_id' argument")
+        if max_results is None and 'maxResults' in kwargs:
             max_results = kwargs['maxResults']
-        if 'nextToken' in kwargs:
+        if max_results is None:
+            raise TypeError("Missing 'max_results' argument")
+        if next_token is None and 'nextToken' in kwargs:
             next_token = kwargs['nextToken']
-        if 'quicConfigs' in kwargs:
+        if next_token is None:
+            raise TypeError("Missing 'next_token' argument")
+        if quic_configs is None and 'quicConfigs' in kwargs:
             quic_configs = kwargs['quicConfigs']
-        if 'requestTimeout' in kwargs:
+        if quic_configs is None:
+            raise TypeError("Missing 'quic_configs' argument")
+        if request_timeout is None and 'requestTimeout' in kwargs:
             request_timeout = kwargs['requestTimeout']
-        if 'securityPolicyId' in kwargs:
+        if request_timeout is None:
+            raise TypeError("Missing 'request_timeout' argument")
+        if security_policy_id is None and 'securityPolicyId' in kwargs:
             security_policy_id = kwargs['securityPolicyId']
-        if 'xforwardedForConfigs' in kwargs:
+        if security_policy_id is None:
+            raise TypeError("Missing 'security_policy_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if xforwarded_for_configs is None and 'xforwardedForConfigs' in kwargs:
             xforwarded_for_configs = kwargs['xforwardedForConfigs']
+        if xforwarded_for_configs is None:
+            raise TypeError("Missing 'xforwarded_for_configs' argument")
 
         _setter("access_log_record_customized_headers_enabled", access_log_record_customized_headers_enabled)
         _setter("access_log_tracing_configs", access_log_tracing_configs)
@@ -4372,17 +4518,23 @@ class GetListenersListenerAccessLogTracingConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             tracing_enabled: bool,
-             tracing_sample: int,
-             tracing_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             tracing_enabled: Optional[bool] = None,
+             tracing_sample: Optional[int] = None,
+             tracing_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'tracingEnabled' in kwargs:
+        if tracing_enabled is None and 'tracingEnabled' in kwargs:
             tracing_enabled = kwargs['tracingEnabled']
-        if 'tracingSample' in kwargs:
+        if tracing_enabled is None:
+            raise TypeError("Missing 'tracing_enabled' argument")
+        if tracing_sample is None and 'tracingSample' in kwargs:
             tracing_sample = kwargs['tracingSample']
-        if 'tracingType' in kwargs:
+        if tracing_sample is None:
+            raise TypeError("Missing 'tracing_sample' argument")
+        if tracing_type is None and 'tracingType' in kwargs:
             tracing_type = kwargs['tracingType']
+        if tracing_type is None:
+            raise TypeError("Missing 'tracing_type' argument")
 
         _setter("tracing_enabled", tracing_enabled)
         _setter("tracing_sample", tracing_sample)
@@ -4436,14 +4588,18 @@ class GetListenersListenerAclConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acl_relations: Sequence['outputs.GetListenersListenerAclConfigAclRelationResult'],
-             acl_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             acl_relations: Optional[Sequence['outputs.GetListenersListenerAclConfigAclRelationResult']] = None,
+             acl_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclRelations' in kwargs:
+        if acl_relations is None and 'aclRelations' in kwargs:
             acl_relations = kwargs['aclRelations']
-        if 'aclType' in kwargs:
+        if acl_relations is None:
+            raise TypeError("Missing 'acl_relations' argument")
+        if acl_type is None and 'aclType' in kwargs:
             acl_type = kwargs['aclType']
+        if acl_type is None:
+            raise TypeError("Missing 'acl_type' argument")
 
         _setter("acl_relations", acl_relations)
         _setter("acl_type", acl_type)
@@ -4482,12 +4638,16 @@ class GetListenersListenerAclConfigAclRelationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acl_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             acl_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclId' in kwargs:
+        if acl_id is None and 'aclId' in kwargs:
             acl_id = kwargs['aclId']
+        if acl_id is None:
+            raise TypeError("Missing 'acl_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("acl_id", acl_id)
         _setter("status", status)
@@ -4523,11 +4683,13 @@ class GetListenersListenerCertificateResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificate_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             certificate_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certificateId' in kwargs:
+        if certificate_id is None and 'certificateId' in kwargs:
             certificate_id = kwargs['certificateId']
+        if certificate_id is None:
+            raise TypeError("Missing 'certificate_id' argument")
 
         _setter("certificate_id", certificate_id)
 
@@ -4557,12 +4719,16 @@ class GetListenersListenerDefaultActionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             forward_group_configs: Sequence['outputs.GetListenersListenerDefaultActionForwardGroupConfigResult'],
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             forward_group_configs: Optional[Sequence['outputs.GetListenersListenerDefaultActionForwardGroupConfigResult']] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'forwardGroupConfigs' in kwargs:
+        if forward_group_configs is None and 'forwardGroupConfigs' in kwargs:
             forward_group_configs = kwargs['forwardGroupConfigs']
+        if forward_group_configs is None:
+            raise TypeError("Missing 'forward_group_configs' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("forward_group_configs", forward_group_configs)
         _setter("type", type)
@@ -4598,11 +4764,13 @@ class GetListenersListenerDefaultActionForwardGroupConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_group_tuples: Sequence['outputs.GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             server_group_tuples: Optional[Sequence['outputs.GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupTuples' in kwargs:
+        if server_group_tuples is None and 'serverGroupTuples' in kwargs:
             server_group_tuples = kwargs['serverGroupTuples']
+        if server_group_tuples is None:
+            raise TypeError("Missing 'server_group_tuples' argument")
 
         _setter("server_group_tuples", server_group_tuples)
 
@@ -4629,11 +4797,13 @@ class GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleResult(
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_group_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             server_group_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupId' in kwargs:
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
+        if server_group_id is None:
+            raise TypeError("Missing 'server_group_id' argument")
 
         _setter("server_group_id", server_group_id)
 
@@ -4663,14 +4833,18 @@ class GetListenersListenerQuicConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             quic_listener_id: str,
-             quic_upgrade_enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             quic_listener_id: Optional[str] = None,
+             quic_upgrade_enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'quicListenerId' in kwargs:
+        if quic_listener_id is None and 'quicListenerId' in kwargs:
             quic_listener_id = kwargs['quicListenerId']
-        if 'quicUpgradeEnabled' in kwargs:
+        if quic_listener_id is None:
+            raise TypeError("Missing 'quic_listener_id' argument")
+        if quic_upgrade_enabled is None and 'quicUpgradeEnabled' in kwargs:
             quic_upgrade_enabled = kwargs['quicUpgradeEnabled']
+        if quic_upgrade_enabled is None:
+            raise TypeError("Missing 'quic_upgrade_enabled' argument")
 
         _setter("quic_listener_id", quic_listener_id)
         _setter("quic_upgrade_enabled", quic_upgrade_enabled)
@@ -4742,25 +4916,51 @@ class GetListenersListenerXforwardedForConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             xforwardedforclientcert_issuerdnalias: str,
-             xforwardedforclientcert_issuerdnenabled: bool,
-             xforwardedforclientcertclientverifyalias: str,
-             xforwardedforclientcertclientverifyenabled: bool,
-             xforwardedforclientcertfingerprintalias: str,
-             xforwardedforclientcertfingerprintenabled: bool,
-             xforwardedforclientcertsubjectdnalias: str,
-             xforwardedforclientcertsubjectdnenabled: bool,
-             xforwardedforclientsrcportenabled: bool,
-             xforwardedforenabled: bool,
-             xforwardedforprotoenabled: bool,
-             xforwardedforslbidenabled: bool,
-             xforwardedforslbportenabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             xforwardedforclientcert_issuerdnalias: Optional[str] = None,
+             xforwardedforclientcert_issuerdnenabled: Optional[bool] = None,
+             xforwardedforclientcertclientverifyalias: Optional[str] = None,
+             xforwardedforclientcertclientverifyenabled: Optional[bool] = None,
+             xforwardedforclientcertfingerprintalias: Optional[str] = None,
+             xforwardedforclientcertfingerprintenabled: Optional[bool] = None,
+             xforwardedforclientcertsubjectdnalias: Optional[str] = None,
+             xforwardedforclientcertsubjectdnenabled: Optional[bool] = None,
+             xforwardedforclientsrcportenabled: Optional[bool] = None,
+             xforwardedforenabled: Optional[bool] = None,
+             xforwardedforprotoenabled: Optional[bool] = None,
+             xforwardedforslbidenabled: Optional[bool] = None,
+             xforwardedforslbportenabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'xforwardedforclientcertIssuerdnalias' in kwargs:
+        if xforwardedforclientcert_issuerdnalias is None and 'xforwardedforclientcertIssuerdnalias' in kwargs:
             xforwardedforclientcert_issuerdnalias = kwargs['xforwardedforclientcertIssuerdnalias']
-        if 'xforwardedforclientcertIssuerdnenabled' in kwargs:
+        if xforwardedforclientcert_issuerdnalias is None:
+            raise TypeError("Missing 'xforwardedforclientcert_issuerdnalias' argument")
+        if xforwardedforclientcert_issuerdnenabled is None and 'xforwardedforclientcertIssuerdnenabled' in kwargs:
             xforwardedforclientcert_issuerdnenabled = kwargs['xforwardedforclientcertIssuerdnenabled']
+        if xforwardedforclientcert_issuerdnenabled is None:
+            raise TypeError("Missing 'xforwardedforclientcert_issuerdnenabled' argument")
+        if xforwardedforclientcertclientverifyalias is None:
+            raise TypeError("Missing 'xforwardedforclientcertclientverifyalias' argument")
+        if xforwardedforclientcertclientverifyenabled is None:
+            raise TypeError("Missing 'xforwardedforclientcertclientverifyenabled' argument")
+        if xforwardedforclientcertfingerprintalias is None:
+            raise TypeError("Missing 'xforwardedforclientcertfingerprintalias' argument")
+        if xforwardedforclientcertfingerprintenabled is None:
+            raise TypeError("Missing 'xforwardedforclientcertfingerprintenabled' argument")
+        if xforwardedforclientcertsubjectdnalias is None:
+            raise TypeError("Missing 'xforwardedforclientcertsubjectdnalias' argument")
+        if xforwardedforclientcertsubjectdnenabled is None:
+            raise TypeError("Missing 'xforwardedforclientcertsubjectdnenabled' argument")
+        if xforwardedforclientsrcportenabled is None:
+            raise TypeError("Missing 'xforwardedforclientsrcportenabled' argument")
+        if xforwardedforenabled is None:
+            raise TypeError("Missing 'xforwardedforenabled' argument")
+        if xforwardedforprotoenabled is None:
+            raise TypeError("Missing 'xforwardedforprotoenabled' argument")
+        if xforwardedforslbidenabled is None:
+            raise TypeError("Missing 'xforwardedforslbidenabled' argument")
+        if xforwardedforslbportenabled is None:
+            raise TypeError("Missing 'xforwardedforslbportenabled' argument")
 
         _setter("xforwardedforclientcert_issuerdnalias", xforwardedforclientcert_issuerdnalias)
         _setter("xforwardedforclientcert_issuerdnenabled", xforwardedforclientcert_issuerdnenabled)
@@ -4958,65 +5158,107 @@ class GetLoadBalancersBalancerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_log_configs: Sequence['outputs.GetLoadBalancersBalancerAccessLogConfigResult'],
-             address_allocated_mode: str,
-             address_type: str,
-             bandwidth_package_id: str,
-             create_time: str,
-             deletion_protection_configs: Sequence['outputs.GetLoadBalancersBalancerDeletionProtectionConfigResult'],
-             dns_name: str,
-             id: str,
-             load_balancer_billing_configs: Sequence['outputs.GetLoadBalancersBalancerLoadBalancerBillingConfigResult'],
-             load_balancer_business_status: str,
-             load_balancer_bussiness_status: str,
-             load_balancer_edition: str,
-             load_balancer_id: str,
-             load_balancer_name: str,
-             load_balancer_operation_locks: Sequence['outputs.GetLoadBalancersBalancerLoadBalancerOperationLockResult'],
-             modification_protection_configs: Sequence['outputs.GetLoadBalancersBalancerModificationProtectionConfigResult'],
-             resource_group_id: str,
-             status: str,
-             tags: Mapping[str, Any],
-             vpc_id: str,
-             zone_mappings: Sequence['outputs.GetLoadBalancersBalancerZoneMappingResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_log_configs: Optional[Sequence['outputs.GetLoadBalancersBalancerAccessLogConfigResult']] = None,
+             address_allocated_mode: Optional[str] = None,
+             address_type: Optional[str] = None,
+             bandwidth_package_id: Optional[str] = None,
+             create_time: Optional[str] = None,
+             deletion_protection_configs: Optional[Sequence['outputs.GetLoadBalancersBalancerDeletionProtectionConfigResult']] = None,
+             dns_name: Optional[str] = None,
+             id: Optional[str] = None,
+             load_balancer_billing_configs: Optional[Sequence['outputs.GetLoadBalancersBalancerLoadBalancerBillingConfigResult']] = None,
+             load_balancer_business_status: Optional[str] = None,
+             load_balancer_bussiness_status: Optional[str] = None,
+             load_balancer_edition: Optional[str] = None,
+             load_balancer_id: Optional[str] = None,
+             load_balancer_name: Optional[str] = None,
+             load_balancer_operation_locks: Optional[Sequence['outputs.GetLoadBalancersBalancerLoadBalancerOperationLockResult']] = None,
+             modification_protection_configs: Optional[Sequence['outputs.GetLoadBalancersBalancerModificationProtectionConfigResult']] = None,
+             resource_group_id: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             vpc_id: Optional[str] = None,
+             zone_mappings: Optional[Sequence['outputs.GetLoadBalancersBalancerZoneMappingResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessLogConfigs' in kwargs:
+        if access_log_configs is None and 'accessLogConfigs' in kwargs:
             access_log_configs = kwargs['accessLogConfigs']
-        if 'addressAllocatedMode' in kwargs:
+        if access_log_configs is None:
+            raise TypeError("Missing 'access_log_configs' argument")
+        if address_allocated_mode is None and 'addressAllocatedMode' in kwargs:
             address_allocated_mode = kwargs['addressAllocatedMode']
-        if 'addressType' in kwargs:
+        if address_allocated_mode is None:
+            raise TypeError("Missing 'address_allocated_mode' argument")
+        if address_type is None and 'addressType' in kwargs:
             address_type = kwargs['addressType']
-        if 'bandwidthPackageId' in kwargs:
+        if address_type is None:
+            raise TypeError("Missing 'address_type' argument")
+        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
             bandwidth_package_id = kwargs['bandwidthPackageId']
-        if 'createTime' in kwargs:
+        if bandwidth_package_id is None:
+            raise TypeError("Missing 'bandwidth_package_id' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'deletionProtectionConfigs' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if deletion_protection_configs is None and 'deletionProtectionConfigs' in kwargs:
             deletion_protection_configs = kwargs['deletionProtectionConfigs']
-        if 'dnsName' in kwargs:
+        if deletion_protection_configs is None:
+            raise TypeError("Missing 'deletion_protection_configs' argument")
+        if dns_name is None and 'dnsName' in kwargs:
             dns_name = kwargs['dnsName']
-        if 'loadBalancerBillingConfigs' in kwargs:
+        if dns_name is None:
+            raise TypeError("Missing 'dns_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if load_balancer_billing_configs is None and 'loadBalancerBillingConfigs' in kwargs:
             load_balancer_billing_configs = kwargs['loadBalancerBillingConfigs']
-        if 'loadBalancerBusinessStatus' in kwargs:
+        if load_balancer_billing_configs is None:
+            raise TypeError("Missing 'load_balancer_billing_configs' argument")
+        if load_balancer_business_status is None and 'loadBalancerBusinessStatus' in kwargs:
             load_balancer_business_status = kwargs['loadBalancerBusinessStatus']
-        if 'loadBalancerBussinessStatus' in kwargs:
+        if load_balancer_business_status is None:
+            raise TypeError("Missing 'load_balancer_business_status' argument")
+        if load_balancer_bussiness_status is None and 'loadBalancerBussinessStatus' in kwargs:
             load_balancer_bussiness_status = kwargs['loadBalancerBussinessStatus']
-        if 'loadBalancerEdition' in kwargs:
+        if load_balancer_bussiness_status is None:
+            raise TypeError("Missing 'load_balancer_bussiness_status' argument")
+        if load_balancer_edition is None and 'loadBalancerEdition' in kwargs:
             load_balancer_edition = kwargs['loadBalancerEdition']
-        if 'loadBalancerId' in kwargs:
+        if load_balancer_edition is None:
+            raise TypeError("Missing 'load_balancer_edition' argument")
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
-        if 'loadBalancerName' in kwargs:
+        if load_balancer_id is None:
+            raise TypeError("Missing 'load_balancer_id' argument")
+        if load_balancer_name is None and 'loadBalancerName' in kwargs:
             load_balancer_name = kwargs['loadBalancerName']
-        if 'loadBalancerOperationLocks' in kwargs:
+        if load_balancer_name is None:
+            raise TypeError("Missing 'load_balancer_name' argument")
+        if load_balancer_operation_locks is None and 'loadBalancerOperationLocks' in kwargs:
             load_balancer_operation_locks = kwargs['loadBalancerOperationLocks']
-        if 'modificationProtectionConfigs' in kwargs:
+        if load_balancer_operation_locks is None:
+            raise TypeError("Missing 'load_balancer_operation_locks' argument")
+        if modification_protection_configs is None and 'modificationProtectionConfigs' in kwargs:
             modification_protection_configs = kwargs['modificationProtectionConfigs']
-        if 'resourceGroupId' in kwargs:
+        if modification_protection_configs is None:
+            raise TypeError("Missing 'modification_protection_configs' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'vpcId' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'zoneMappings' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if zone_mappings is None and 'zoneMappings' in kwargs:
             zone_mappings = kwargs['zoneMappings']
+        if zone_mappings is None:
+            raise TypeError("Missing 'zone_mappings' argument")
 
         _setter("access_log_configs", access_log_configs)
         _setter("address_allocated_mode", address_allocated_mode)
@@ -5232,14 +5474,18 @@ class GetLoadBalancersBalancerAccessLogConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             log_project: str,
-             log_store: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             log_project: Optional[str] = None,
+             log_store: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'logProject' in kwargs:
+        if log_project is None and 'logProject' in kwargs:
             log_project = kwargs['logProject']
-        if 'logStore' in kwargs:
+        if log_project is None:
+            raise TypeError("Missing 'log_project' argument")
+        if log_store is None and 'logStore' in kwargs:
             log_store = kwargs['logStore']
+        if log_store is None:
+            raise TypeError("Missing 'log_store' argument")
 
         _setter("log_project", log_project)
         _setter("log_store", log_store)
@@ -5278,12 +5524,16 @@ class GetLoadBalancersBalancerDeletionProtectionConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             enabled_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             enabled: Optional[bool] = None,
+             enabled_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'enabledTime' in kwargs:
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if enabled_time is None and 'enabledTime' in kwargs:
             enabled_time = kwargs['enabledTime']
+        if enabled_time is None:
+            raise TypeError("Missing 'enabled_time' argument")
 
         _setter("enabled", enabled)
         _setter("enabled_time", enabled_time)
@@ -5319,11 +5569,13 @@ class GetLoadBalancersBalancerLoadBalancerBillingConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pay_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             pay_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'payType' in kwargs:
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
+        if pay_type is None:
+            raise TypeError("Missing 'pay_type' argument")
 
         _setter("pay_type", pay_type)
 
@@ -5353,14 +5605,18 @@ class GetLoadBalancersBalancerLoadBalancerOperationLockResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lock_reason: str,
-             lock_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             lock_reason: Optional[str] = None,
+             lock_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'lockReason' in kwargs:
+        if lock_reason is None and 'lockReason' in kwargs:
             lock_reason = kwargs['lockReason']
-        if 'lockType' in kwargs:
+        if lock_reason is None:
+            raise TypeError("Missing 'lock_reason' argument")
+        if lock_type is None and 'lockType' in kwargs:
             lock_type = kwargs['lockType']
+        if lock_type is None:
+            raise TypeError("Missing 'lock_type' argument")
 
         _setter("lock_reason", lock_reason)
         _setter("lock_type", lock_type)
@@ -5399,10 +5655,14 @@ class GetLoadBalancersBalancerModificationProtectionConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             reason: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             reason: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if reason is None:
+            raise TypeError("Missing 'reason' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("reason", reason)
         _setter("status", status)
@@ -5443,17 +5703,23 @@ class GetLoadBalancersBalancerZoneMappingResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             load_balancer_addresses: Sequence['outputs.GetLoadBalancersBalancerZoneMappingLoadBalancerAddressResult'],
-             vswitch_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             load_balancer_addresses: Optional[Sequence['outputs.GetLoadBalancersBalancerZoneMappingLoadBalancerAddressResult']] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'loadBalancerAddresses' in kwargs:
+        if load_balancer_addresses is None and 'loadBalancerAddresses' in kwargs:
             load_balancer_addresses = kwargs['loadBalancerAddresses']
-        if 'vswitchId' in kwargs:
+        if load_balancer_addresses is None:
+            raise TypeError("Missing 'load_balancer_addresses' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("load_balancer_addresses", load_balancer_addresses)
         _setter("vswitch_id", vswitch_id)
@@ -5492,9 +5758,11 @@ class GetLoadBalancersBalancerZoneMappingLoadBalancerAddressResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             address: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
 
         _setter("address", address)
 
@@ -5542,29 +5810,47 @@ class GetRulesRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             listener_id: str,
-             load_balancer_id: str,
-             priority: int,
-             rule_actions: Sequence['outputs.GetRulesRuleRuleActionResult'],
-             rule_conditions: Sequence['outputs.GetRulesRuleRuleConditionResult'],
-             rule_id: str,
-             rule_name: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             listener_id: Optional[str] = None,
+             load_balancer_id: Optional[str] = None,
+             priority: Optional[int] = None,
+             rule_actions: Optional[Sequence['outputs.GetRulesRuleRuleActionResult']] = None,
+             rule_conditions: Optional[Sequence['outputs.GetRulesRuleRuleConditionResult']] = None,
+             rule_id: Optional[str] = None,
+             rule_name: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'listenerId' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'loadBalancerId' in kwargs:
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
-        if 'ruleActions' in kwargs:
+        if load_balancer_id is None:
+            raise TypeError("Missing 'load_balancer_id' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if rule_actions is None and 'ruleActions' in kwargs:
             rule_actions = kwargs['ruleActions']
-        if 'ruleConditions' in kwargs:
+        if rule_actions is None:
+            raise TypeError("Missing 'rule_actions' argument")
+        if rule_conditions is None and 'ruleConditions' in kwargs:
             rule_conditions = kwargs['ruleConditions']
-        if 'ruleId' in kwargs:
+        if rule_conditions is None:
+            raise TypeError("Missing 'rule_conditions' argument")
+        if rule_id is None and 'ruleId' in kwargs:
             rule_id = kwargs['ruleId']
-        if 'ruleName' in kwargs:
+        if rule_id is None:
+            raise TypeError("Missing 'rule_id' argument")
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("id", id)
         _setter("listener_id", listener_id)
@@ -5687,31 +5973,49 @@ class GetRulesRuleRuleActionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fixed_response_configs: Sequence['outputs.GetRulesRuleRuleActionFixedResponseConfigResult'],
-             forward_group_configs: Sequence['outputs.GetRulesRuleRuleActionForwardGroupConfigResult'],
-             insert_header_configs: Sequence['outputs.GetRulesRuleRuleActionInsertHeaderConfigResult'],
-             order: int,
-             redirect_configs: Sequence['outputs.GetRulesRuleRuleActionRedirectConfigResult'],
-             rewrite_configs: Sequence['outputs.GetRulesRuleRuleActionRewriteConfigResult'],
-             traffic_limit_configs: Sequence['outputs.GetRulesRuleRuleActionTrafficLimitConfigResult'],
-             traffic_mirror_configs: Sequence['outputs.GetRulesRuleRuleActionTrafficMirrorConfigResult'],
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             fixed_response_configs: Optional[Sequence['outputs.GetRulesRuleRuleActionFixedResponseConfigResult']] = None,
+             forward_group_configs: Optional[Sequence['outputs.GetRulesRuleRuleActionForwardGroupConfigResult']] = None,
+             insert_header_configs: Optional[Sequence['outputs.GetRulesRuleRuleActionInsertHeaderConfigResult']] = None,
+             order: Optional[int] = None,
+             redirect_configs: Optional[Sequence['outputs.GetRulesRuleRuleActionRedirectConfigResult']] = None,
+             rewrite_configs: Optional[Sequence['outputs.GetRulesRuleRuleActionRewriteConfigResult']] = None,
+             traffic_limit_configs: Optional[Sequence['outputs.GetRulesRuleRuleActionTrafficLimitConfigResult']] = None,
+             traffic_mirror_configs: Optional[Sequence['outputs.GetRulesRuleRuleActionTrafficMirrorConfigResult']] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fixedResponseConfigs' in kwargs:
+        if fixed_response_configs is None and 'fixedResponseConfigs' in kwargs:
             fixed_response_configs = kwargs['fixedResponseConfigs']
-        if 'forwardGroupConfigs' in kwargs:
+        if fixed_response_configs is None:
+            raise TypeError("Missing 'fixed_response_configs' argument")
+        if forward_group_configs is None and 'forwardGroupConfigs' in kwargs:
             forward_group_configs = kwargs['forwardGroupConfigs']
-        if 'insertHeaderConfigs' in kwargs:
+        if forward_group_configs is None:
+            raise TypeError("Missing 'forward_group_configs' argument")
+        if insert_header_configs is None and 'insertHeaderConfigs' in kwargs:
             insert_header_configs = kwargs['insertHeaderConfigs']
-        if 'redirectConfigs' in kwargs:
+        if insert_header_configs is None:
+            raise TypeError("Missing 'insert_header_configs' argument")
+        if order is None:
+            raise TypeError("Missing 'order' argument")
+        if redirect_configs is None and 'redirectConfigs' in kwargs:
             redirect_configs = kwargs['redirectConfigs']
-        if 'rewriteConfigs' in kwargs:
+        if redirect_configs is None:
+            raise TypeError("Missing 'redirect_configs' argument")
+        if rewrite_configs is None and 'rewriteConfigs' in kwargs:
             rewrite_configs = kwargs['rewriteConfigs']
-        if 'trafficLimitConfigs' in kwargs:
+        if rewrite_configs is None:
+            raise TypeError("Missing 'rewrite_configs' argument")
+        if traffic_limit_configs is None and 'trafficLimitConfigs' in kwargs:
             traffic_limit_configs = kwargs['trafficLimitConfigs']
-        if 'trafficMirrorConfigs' in kwargs:
+        if traffic_limit_configs is None:
+            raise TypeError("Missing 'traffic_limit_configs' argument")
+        if traffic_mirror_configs is None and 'trafficMirrorConfigs' in kwargs:
             traffic_mirror_configs = kwargs['trafficMirrorConfigs']
+        if traffic_mirror_configs is None:
+            raise TypeError("Missing 'traffic_mirror_configs' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("fixed_response_configs", fixed_response_configs)
         _setter("forward_group_configs", forward_group_configs)
@@ -5816,15 +6120,21 @@ class GetRulesRuleRuleActionFixedResponseConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: str,
-             content_type: str,
-             http_code: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             content: Optional[str] = None,
+             content_type: Optional[str] = None,
+             http_code: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contentType' in kwargs:
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if content_type is None and 'contentType' in kwargs:
             content_type = kwargs['contentType']
-        if 'httpCode' in kwargs:
+        if content_type is None:
+            raise TypeError("Missing 'content_type' argument")
+        if http_code is None and 'httpCode' in kwargs:
             http_code = kwargs['httpCode']
+        if http_code is None:
+            raise TypeError("Missing 'http_code' argument")
 
         _setter("content", content)
         _setter("content_type", content_type)
@@ -5869,11 +6179,13 @@ class GetRulesRuleRuleActionForwardGroupConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_group_tuples: Sequence['outputs.GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             server_group_tuples: Optional[Sequence['outputs.GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupTuples' in kwargs:
+        if server_group_tuples is None and 'serverGroupTuples' in kwargs:
             server_group_tuples = kwargs['serverGroupTuples']
+        if server_group_tuples is None:
+            raise TypeError("Missing 'server_group_tuples' argument")
 
         _setter("server_group_tuples", server_group_tuples)
 
@@ -5903,12 +6215,16 @@ class GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_group_id: str,
-             weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             server_group_id: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupId' in kwargs:
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
+        if server_group_id is None:
+            raise TypeError("Missing 'server_group_id' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
 
         _setter("server_group_id", server_group_id)
         _setter("weight", weight)
@@ -5950,13 +6266,19 @@ class GetRulesRuleRuleActionInsertHeaderConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
-             value_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             value_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'valueType' in kwargs:
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if value_type is None and 'valueType' in kwargs:
             value_type = kwargs['valueType']
+        if value_type is None:
+            raise TypeError("Missing 'value_type' argument")
 
         _setter("key", key)
         _setter("value", value)
@@ -6016,16 +6338,28 @@ class GetRulesRuleRuleActionRedirectConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host: str,
-             http_code: str,
-             path: str,
-             port: str,
-             protocol: str,
-             query: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             host: Optional[str] = None,
+             http_code: Optional[str] = None,
+             path: Optional[str] = None,
+             port: Optional[str] = None,
+             protocol: Optional[str] = None,
+             query: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'httpCode' in kwargs:
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if http_code is None and 'httpCode' in kwargs:
             http_code = kwargs['httpCode']
+        if http_code is None:
+            raise TypeError("Missing 'http_code' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if query is None:
+            raise TypeError("Missing 'query' argument")
 
         _setter("host", host)
         _setter("http_code", http_code)
@@ -6103,11 +6437,17 @@ class GetRulesRuleRuleActionRewriteConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host: str,
-             path: str,
-             query: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             host: Optional[str] = None,
+             path: Optional[str] = None,
+             query: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if query is None:
+            raise TypeError("Missing 'query' argument")
 
         _setter("host", host)
         _setter("path", path)
@@ -6152,9 +6492,11 @@ class GetRulesRuleRuleActionTrafficLimitConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             qps: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             qps: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if qps is None:
+            raise TypeError("Missing 'qps' argument")
 
         _setter("qps", qps)
 
@@ -6184,14 +6526,18 @@ class GetRulesRuleRuleActionTrafficMirrorConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mirror_group_configs: Sequence['outputs.GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigResult'],
-             target_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             mirror_group_configs: Optional[Sequence['outputs.GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigResult']] = None,
+             target_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mirrorGroupConfigs' in kwargs:
+        if mirror_group_configs is None and 'mirrorGroupConfigs' in kwargs:
             mirror_group_configs = kwargs['mirrorGroupConfigs']
-        if 'targetType' in kwargs:
+        if mirror_group_configs is None:
+            raise TypeError("Missing 'mirror_group_configs' argument")
+        if target_type is None and 'targetType' in kwargs:
             target_type = kwargs['targetType']
+        if target_type is None:
+            raise TypeError("Missing 'target_type' argument")
 
         _setter("mirror_group_configs", mirror_group_configs)
         _setter("target_type", target_type)
@@ -6227,11 +6573,13 @@ class GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_group_tuples: Sequence['outputs.GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             server_group_tuples: Optional[Sequence['outputs.GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupTuples' in kwargs:
+        if server_group_tuples is None and 'serverGroupTuples' in kwargs:
             server_group_tuples = kwargs['serverGroupTuples']
+        if server_group_tuples is None:
+            raise TypeError("Missing 'server_group_tuples' argument")
 
         _setter("server_group_tuples", server_group_tuples)
 
@@ -6258,11 +6606,13 @@ class GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_group_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             server_group_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupId' in kwargs:
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
+        if server_group_id is None:
+            raise TypeError("Missing 'server_group_id' argument")
 
         _setter("server_group_id", server_group_id)
 
@@ -6310,30 +6660,46 @@ class GetRulesRuleRuleConditionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cookie_configs: Sequence['outputs.GetRulesRuleRuleConditionCookieConfigResult'],
-             header_configs: Sequence['outputs.GetRulesRuleRuleConditionHeaderConfigResult'],
-             host_configs: Sequence['outputs.GetRulesRuleRuleConditionHostConfigResult'],
-             method_configs: Sequence['outputs.GetRulesRuleRuleConditionMethodConfigResult'],
-             path_configs: Sequence['outputs.GetRulesRuleRuleConditionPathConfigResult'],
-             query_string_configs: Sequence['outputs.GetRulesRuleRuleConditionQueryStringConfigResult'],
-             source_ip_configs: Sequence['outputs.GetRulesRuleRuleConditionSourceIpConfigResult'],
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cookie_configs: Optional[Sequence['outputs.GetRulesRuleRuleConditionCookieConfigResult']] = None,
+             header_configs: Optional[Sequence['outputs.GetRulesRuleRuleConditionHeaderConfigResult']] = None,
+             host_configs: Optional[Sequence['outputs.GetRulesRuleRuleConditionHostConfigResult']] = None,
+             method_configs: Optional[Sequence['outputs.GetRulesRuleRuleConditionMethodConfigResult']] = None,
+             path_configs: Optional[Sequence['outputs.GetRulesRuleRuleConditionPathConfigResult']] = None,
+             query_string_configs: Optional[Sequence['outputs.GetRulesRuleRuleConditionQueryStringConfigResult']] = None,
+             source_ip_configs: Optional[Sequence['outputs.GetRulesRuleRuleConditionSourceIpConfigResult']] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cookieConfigs' in kwargs:
+        if cookie_configs is None and 'cookieConfigs' in kwargs:
             cookie_configs = kwargs['cookieConfigs']
-        if 'headerConfigs' in kwargs:
+        if cookie_configs is None:
+            raise TypeError("Missing 'cookie_configs' argument")
+        if header_configs is None and 'headerConfigs' in kwargs:
             header_configs = kwargs['headerConfigs']
-        if 'hostConfigs' in kwargs:
+        if header_configs is None:
+            raise TypeError("Missing 'header_configs' argument")
+        if host_configs is None and 'hostConfigs' in kwargs:
             host_configs = kwargs['hostConfigs']
-        if 'methodConfigs' in kwargs:
+        if host_configs is None:
+            raise TypeError("Missing 'host_configs' argument")
+        if method_configs is None and 'methodConfigs' in kwargs:
             method_configs = kwargs['methodConfigs']
-        if 'pathConfigs' in kwargs:
+        if method_configs is None:
+            raise TypeError("Missing 'method_configs' argument")
+        if path_configs is None and 'pathConfigs' in kwargs:
             path_configs = kwargs['pathConfigs']
-        if 'queryStringConfigs' in kwargs:
+        if path_configs is None:
+            raise TypeError("Missing 'path_configs' argument")
+        if query_string_configs is None and 'queryStringConfigs' in kwargs:
             query_string_configs = kwargs['queryStringConfigs']
-        if 'sourceIpConfigs' in kwargs:
+        if query_string_configs is None:
+            raise TypeError("Missing 'query_string_configs' argument")
+        if source_ip_configs is None and 'sourceIpConfigs' in kwargs:
             source_ip_configs = kwargs['sourceIpConfigs']
+        if source_ip_configs is None:
+            raise TypeError("Missing 'source_ip_configs' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("cookie_configs", cookie_configs)
         _setter("header_configs", header_configs)
@@ -6423,9 +6789,11 @@ class GetRulesRuleRuleConditionCookieConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             values: Sequence['outputs.GetRulesRuleRuleConditionCookieConfigValueResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             values: Optional[Sequence['outputs.GetRulesRuleRuleConditionCookieConfigValueResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("values", values)
 
@@ -6455,10 +6823,14 @@ class GetRulesRuleRuleConditionCookieConfigValueResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("value", value)
@@ -6497,10 +6869,14 @@ class GetRulesRuleRuleConditionHeaderConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("key", key)
         _setter("values", values)
@@ -6536,9 +6912,11 @@ class GetRulesRuleRuleConditionHostConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("values", values)
 
@@ -6565,9 +6943,11 @@ class GetRulesRuleRuleConditionMethodConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("values", values)
 
@@ -6594,9 +6974,11 @@ class GetRulesRuleRuleConditionPathConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("values", values)
 
@@ -6623,9 +7005,11 @@ class GetRulesRuleRuleConditionQueryStringConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             values: Sequence['outputs.GetRulesRuleRuleConditionQueryStringConfigValueResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             values: Optional[Sequence['outputs.GetRulesRuleRuleConditionQueryStringConfigValueResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("values", values)
 
@@ -6655,10 +7039,14 @@ class GetRulesRuleRuleConditionQueryStringConfigValueResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("value", value)
@@ -6694,9 +7082,11 @@ class GetRulesRuleRuleConditionSourceIpConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("values", values)
 
@@ -6741,23 +7131,37 @@ class GetSecurityPoliciesPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ciphers: Sequence[str],
-             id: str,
-             resource_group_id: str,
-             security_policy_id: str,
-             security_policy_name: str,
-             status: str,
-             tls_versions: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ciphers: Optional[Sequence[str]] = None,
+             id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             security_policy_id: Optional[str] = None,
+             security_policy_name: Optional[str] = None,
+             status: Optional[str] = None,
+             tls_versions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceGroupId' in kwargs:
+        if ciphers is None:
+            raise TypeError("Missing 'ciphers' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityPolicyId' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if security_policy_id is None and 'securityPolicyId' in kwargs:
             security_policy_id = kwargs['securityPolicyId']
-        if 'securityPolicyName' in kwargs:
+        if security_policy_id is None:
+            raise TypeError("Missing 'security_policy_id' argument")
+        if security_policy_name is None and 'securityPolicyName' in kwargs:
             security_policy_name = kwargs['securityPolicyName']
-        if 'tlsVersions' in kwargs:
+        if security_policy_name is None:
+            raise TypeError("Missing 'security_policy_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tls_versions is None and 'tlsVersions' in kwargs:
             tls_versions = kwargs['tlsVersions']
+        if tls_versions is None:
+            raise TypeError("Missing 'tls_versions' argument")
 
         _setter("ciphers", ciphers)
         _setter("id", id)
@@ -6868,29 +7272,51 @@ class GetServerGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             health_check_configs: Sequence['outputs.GetServerGroupsGroupHealthCheckConfigResult'],
-             id: str,
-             protocol: str,
-             scheduler: str,
-             server_group_id: str,
-             server_group_name: str,
-             servers: Sequence['outputs.GetServerGroupsGroupServerResult'],
-             status: str,
-             sticky_session_configs: Sequence['outputs.GetServerGroupsGroupStickySessionConfigResult'],
-             tags: Mapping[str, Any],
-             vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             health_check_configs: Optional[Sequence['outputs.GetServerGroupsGroupHealthCheckConfigResult']] = None,
+             id: Optional[str] = None,
+             protocol: Optional[str] = None,
+             scheduler: Optional[str] = None,
+             server_group_id: Optional[str] = None,
+             server_group_name: Optional[str] = None,
+             servers: Optional[Sequence['outputs.GetServerGroupsGroupServerResult']] = None,
+             status: Optional[str] = None,
+             sticky_session_configs: Optional[Sequence['outputs.GetServerGroupsGroupStickySessionConfigResult']] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             vpc_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'healthCheckConfigs' in kwargs:
+        if health_check_configs is None and 'healthCheckConfigs' in kwargs:
             health_check_configs = kwargs['healthCheckConfigs']
-        if 'serverGroupId' in kwargs:
+        if health_check_configs is None:
+            raise TypeError("Missing 'health_check_configs' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if scheduler is None:
+            raise TypeError("Missing 'scheduler' argument")
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
-        if 'serverGroupName' in kwargs:
+        if server_group_id is None:
+            raise TypeError("Missing 'server_group_id' argument")
+        if server_group_name is None and 'serverGroupName' in kwargs:
             server_group_name = kwargs['serverGroupName']
-        if 'stickySessionConfigs' in kwargs:
+        if server_group_name is None:
+            raise TypeError("Missing 'server_group_name' argument")
+        if servers is None:
+            raise TypeError("Missing 'servers' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if sticky_session_configs is None and 'stickySessionConfigs' in kwargs:
             sticky_session_configs = kwargs['stickySessionConfigs']
-        if 'vpcId' in kwargs:
+        if sticky_session_configs is None:
+            raise TypeError("Missing 'sticky_session_configs' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
 
         _setter("health_check_configs", health_check_configs)
         _setter("id", id)
@@ -7040,44 +7466,68 @@ class GetServerGroupsGroupHealthCheckConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             health_check_codes: Sequence[str],
-             health_check_connect_port: int,
-             health_check_enabled: bool,
-             health_check_host: str,
-             health_check_http_version: str,
-             health_check_interval: int,
-             health_check_method: str,
-             health_check_path: str,
-             health_check_protocol: str,
-             health_check_timeout: int,
-             healthy_threshold: int,
-             unhealthy_threshold: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             health_check_codes: Optional[Sequence[str]] = None,
+             health_check_connect_port: Optional[int] = None,
+             health_check_enabled: Optional[bool] = None,
+             health_check_host: Optional[str] = None,
+             health_check_http_version: Optional[str] = None,
+             health_check_interval: Optional[int] = None,
+             health_check_method: Optional[str] = None,
+             health_check_path: Optional[str] = None,
+             health_check_protocol: Optional[str] = None,
+             health_check_timeout: Optional[int] = None,
+             healthy_threshold: Optional[int] = None,
+             unhealthy_threshold: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'healthCheckCodes' in kwargs:
+        if health_check_codes is None and 'healthCheckCodes' in kwargs:
             health_check_codes = kwargs['healthCheckCodes']
-        if 'healthCheckConnectPort' in kwargs:
+        if health_check_codes is None:
+            raise TypeError("Missing 'health_check_codes' argument")
+        if health_check_connect_port is None and 'healthCheckConnectPort' in kwargs:
             health_check_connect_port = kwargs['healthCheckConnectPort']
-        if 'healthCheckEnabled' in kwargs:
+        if health_check_connect_port is None:
+            raise TypeError("Missing 'health_check_connect_port' argument")
+        if health_check_enabled is None and 'healthCheckEnabled' in kwargs:
             health_check_enabled = kwargs['healthCheckEnabled']
-        if 'healthCheckHost' in kwargs:
+        if health_check_enabled is None:
+            raise TypeError("Missing 'health_check_enabled' argument")
+        if health_check_host is None and 'healthCheckHost' in kwargs:
             health_check_host = kwargs['healthCheckHost']
-        if 'healthCheckHttpVersion' in kwargs:
+        if health_check_host is None:
+            raise TypeError("Missing 'health_check_host' argument")
+        if health_check_http_version is None and 'healthCheckHttpVersion' in kwargs:
             health_check_http_version = kwargs['healthCheckHttpVersion']
-        if 'healthCheckInterval' in kwargs:
+        if health_check_http_version is None:
+            raise TypeError("Missing 'health_check_http_version' argument")
+        if health_check_interval is None and 'healthCheckInterval' in kwargs:
             health_check_interval = kwargs['healthCheckInterval']
-        if 'healthCheckMethod' in kwargs:
+        if health_check_interval is None:
+            raise TypeError("Missing 'health_check_interval' argument")
+        if health_check_method is None and 'healthCheckMethod' in kwargs:
             health_check_method = kwargs['healthCheckMethod']
-        if 'healthCheckPath' in kwargs:
+        if health_check_method is None:
+            raise TypeError("Missing 'health_check_method' argument")
+        if health_check_path is None and 'healthCheckPath' in kwargs:
             health_check_path = kwargs['healthCheckPath']
-        if 'healthCheckProtocol' in kwargs:
+        if health_check_path is None:
+            raise TypeError("Missing 'health_check_path' argument")
+        if health_check_protocol is None and 'healthCheckProtocol' in kwargs:
             health_check_protocol = kwargs['healthCheckProtocol']
-        if 'healthCheckTimeout' in kwargs:
+        if health_check_protocol is None:
+            raise TypeError("Missing 'health_check_protocol' argument")
+        if health_check_timeout is None and 'healthCheckTimeout' in kwargs:
             health_check_timeout = kwargs['healthCheckTimeout']
-        if 'healthyThreshold' in kwargs:
+        if health_check_timeout is None:
+            raise TypeError("Missing 'health_check_timeout' argument")
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
             healthy_threshold = kwargs['healthyThreshold']
-        if 'unhealthyThreshold' in kwargs:
+        if healthy_threshold is None:
+            raise TypeError("Missing 'healthy_threshold' argument")
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
             unhealthy_threshold = kwargs['unhealthyThreshold']
+        if unhealthy_threshold is None:
+            raise TypeError("Missing 'unhealthy_threshold' argument")
 
         _setter("health_check_codes", health_check_codes)
         _setter("health_check_connect_port", health_check_connect_port)
@@ -7221,21 +7671,35 @@ class GetServerGroupsGroupServerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             port: int,
-             server_id: str,
-             server_ip: str,
-             server_type: str,
-             status: str,
-             weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             port: Optional[int] = None,
+             server_id: Optional[str] = None,
+             server_ip: Optional[str] = None,
+             server_type: Optional[str] = None,
+             status: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverId' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if server_id is None and 'serverId' in kwargs:
             server_id = kwargs['serverId']
-        if 'serverIp' in kwargs:
+        if server_id is None:
+            raise TypeError("Missing 'server_id' argument")
+        if server_ip is None and 'serverIp' in kwargs:
             server_ip = kwargs['serverIp']
-        if 'serverType' in kwargs:
+        if server_ip is None:
+            raise TypeError("Missing 'server_ip' argument")
+        if server_type is None and 'serverType' in kwargs:
             server_type = kwargs['serverType']
+        if server_type is None:
+            raise TypeError("Missing 'server_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
 
         _setter("description", description)
         _setter("port", port)
@@ -7325,18 +7789,26 @@ class GetServerGroupsGroupStickySessionConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cookie: str,
-             cookie_timeout: int,
-             sticky_session_enabled: bool,
-             sticky_session_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cookie: Optional[str] = None,
+             cookie_timeout: Optional[int] = None,
+             sticky_session_enabled: Optional[bool] = None,
+             sticky_session_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cookieTimeout' in kwargs:
+        if cookie is None:
+            raise TypeError("Missing 'cookie' argument")
+        if cookie_timeout is None and 'cookieTimeout' in kwargs:
             cookie_timeout = kwargs['cookieTimeout']
-        if 'stickySessionEnabled' in kwargs:
+        if cookie_timeout is None:
+            raise TypeError("Missing 'cookie_timeout' argument")
+        if sticky_session_enabled is None and 'stickySessionEnabled' in kwargs:
             sticky_session_enabled = kwargs['stickySessionEnabled']
-        if 'stickySessionType' in kwargs:
+        if sticky_session_enabled is None:
+            raise TypeError("Missing 'sticky_session_enabled' argument")
+        if sticky_session_type is None and 'stickySessionType' in kwargs:
             sticky_session_type = kwargs['stickySessionType']
+        if sticky_session_type is None:
+            raise TypeError("Missing 'sticky_session_type' argument")
 
         _setter("cookie", cookie)
         _setter("cookie_timeout", cookie_timeout)
@@ -7399,16 +7871,24 @@ class GetSystemSecurityPoliciesPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ciphers: Sequence[str],
-             id: str,
-             security_policy_id: str,
-             tls_versions: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ciphers: Optional[Sequence[str]] = None,
+             id: Optional[str] = None,
+             security_policy_id: Optional[str] = None,
+             tls_versions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'securityPolicyId' in kwargs:
+        if ciphers is None:
+            raise TypeError("Missing 'ciphers' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if security_policy_id is None and 'securityPolicyId' in kwargs:
             security_policy_id = kwargs['securityPolicyId']
-        if 'tlsVersions' in kwargs:
+        if security_policy_id is None:
+            raise TypeError("Missing 'security_policy_id' argument")
+        if tls_versions is None and 'tlsVersions' in kwargs:
             tls_versions = kwargs['tlsVersions']
+        if tls_versions is None:
+            raise TypeError("Missing 'tls_versions' argument")
 
         _setter("ciphers", ciphers)
         _setter("id", id)
@@ -7468,15 +7948,21 @@ class GetZonesZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             local_name: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             local_name: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'localName' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if local_name is None and 'localName' in kwargs:
             local_name = kwargs['localName']
-        if 'zoneId' in kwargs:
+        if local_name is None:
+            raise TypeError("Missing 'local_name' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("id", id)
         _setter("local_name", local_name)

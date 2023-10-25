@@ -15,31 +15,6 @@ namespace Pulumi.AliCloud.Sddp
         /// This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.159.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Sddp.GetDataLimits.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["sddpDataLimitId1"] = ids.Apply(getDataLimitsResult =&gt; getDataLimitsResult.Limits[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDataLimitsResult> InvokeAsync(GetDataLimitsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDataLimitsResult>("alicloud:sddp/getDataLimits:getDataLimits", args ?? new GetDataLimitsArgs(), options.WithDefaults());
@@ -48,31 +23,6 @@ namespace Pulumi.AliCloud.Sddp
         /// This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.159.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Sddp.GetDataLimits.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["sddpDataLimitId1"] = ids.Apply(getDataLimitsResult =&gt; getDataLimitsResult.Limits[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDataLimitsResult> Invoke(GetDataLimitsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDataLimitsResult>("alicloud:sddp/getDataLimits:getDataLimits", args ?? new GetDataLimitsInvokeArgs(), options.WithDefaults());

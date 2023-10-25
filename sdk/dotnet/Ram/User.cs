@@ -18,30 +18,6 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// &gt; **NOTE:** Available since v1.0.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new RAM user.
-    ///     var user = new AliCloud.Ram.User("user", new()
-    ///     {
-    ///         Comments = "yoyoyo",
-    ///         DisplayName = "user_display_name",
-    ///         Email = "hello.uuu@aaa.com",
-    ///         Mobile = "86-18688888888",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// RAM User can be imported using the id, e.g.

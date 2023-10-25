@@ -35,18 +35,26 @@ class ServiceHybridDoubleWriteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespace: pulumi.Input[str],
-             source_namespace: pulumi.Input[str],
-             source_user_id: pulumi.Input[str],
-             user_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             source_namespace: Optional[pulumi.Input[str]] = None,
+             source_user_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sourceNamespace' in kwargs:
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if source_namespace is None and 'sourceNamespace' in kwargs:
             source_namespace = kwargs['sourceNamespace']
-        if 'sourceUserId' in kwargs:
+        if source_namespace is None:
+            raise TypeError("Missing 'source_namespace' argument")
+        if source_user_id is None and 'sourceUserId' in kwargs:
             source_user_id = kwargs['sourceUserId']
-        if 'userId' in kwargs:
+        if source_user_id is None:
+            raise TypeError("Missing 'source_user_id' argument")
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
 
         _setter("namespace", namespace)
         _setter("source_namespace", source_namespace)
@@ -130,13 +138,13 @@ class _ServiceHybridDoubleWriteState:
              source_namespace: Optional[pulumi.Input[str]] = None,
              source_user_id: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sourceNamespace' in kwargs:
+        if source_namespace is None and 'sourceNamespace' in kwargs:
             source_namespace = kwargs['sourceNamespace']
-        if 'sourceUserId' in kwargs:
+        if source_user_id is None and 'sourceUserId' in kwargs:
             source_user_id = kwargs['sourceUserId']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
 
         if namespace is not None:
@@ -214,23 +222,6 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.210.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        source = alicloud.cms.Namespace("source", namespace="your_source_namespace")
-        default_namespace = alicloud.cms.Namespace("defaultNamespace", namespace="your_namespace")
-        default_service_hybrid_double_write = alicloud.cloudmonitor.ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite",
-            source_namespace=source.id,
-            source_user_id="your_source_account",
-            namespace=default_namespace.id,
-            user_id="your_account")
-        ```
-
         ## Import
 
         Cloud Monitor Service Hybrid Double Write can be imported using the id, e.g.
@@ -258,23 +249,6 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
         For information about Cloud Monitor Service Hybrid Double Write and how to use it, see [What is Hybrid Double Write](https://next.api.alibabacloud.com/document/Cms/2018-03-08/CreateHybridDoubleWrite).
 
         > **NOTE:** Available since v1.210.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        source = alicloud.cms.Namespace("source", namespace="your_source_namespace")
-        default_namespace = alicloud.cms.Namespace("defaultNamespace", namespace="your_namespace")
-        default_service_hybrid_double_write = alicloud.cloudmonitor.ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite",
-            source_namespace=source.id,
-            source_user_id="your_source_account",
-            namespace=default_namespace.id,
-            user_id="your_account")
-        ```
 
         ## Import
 

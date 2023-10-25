@@ -62,7 +62,7 @@ class MetricRuleTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metric_rule_template_name: pulumi.Input[str],
+             metric_rule_template_name: Optional[pulumi.Input[str]] = None,
              alert_templates: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]]] = None,
              apply_mode: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -73,25 +73,27 @@ class MetricRuleTemplateArgs:
              rest_version: Optional[pulumi.Input[str]] = None,
              silence_time: Optional[pulumi.Input[int]] = None,
              webhook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'metricRuleTemplateName' in kwargs:
+        if metric_rule_template_name is None and 'metricRuleTemplateName' in kwargs:
             metric_rule_template_name = kwargs['metricRuleTemplateName']
-        if 'alertTemplates' in kwargs:
+        if metric_rule_template_name is None:
+            raise TypeError("Missing 'metric_rule_template_name' argument")
+        if alert_templates is None and 'alertTemplates' in kwargs:
             alert_templates = kwargs['alertTemplates']
-        if 'applyMode' in kwargs:
+        if apply_mode is None and 'applyMode' in kwargs:
             apply_mode = kwargs['applyMode']
-        if 'enableEndTime' in kwargs:
+        if enable_end_time is None and 'enableEndTime' in kwargs:
             enable_end_time = kwargs['enableEndTime']
-        if 'enableStartTime' in kwargs:
+        if enable_start_time is None and 'enableStartTime' in kwargs:
             enable_start_time = kwargs['enableStartTime']
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'notifyLevel' in kwargs:
+        if notify_level is None and 'notifyLevel' in kwargs:
             notify_level = kwargs['notifyLevel']
-        if 'restVersion' in kwargs:
+        if rest_version is None and 'restVersion' in kwargs:
             rest_version = kwargs['restVersion']
-        if 'silenceTime' in kwargs:
+        if silence_time is None and 'silenceTime' in kwargs:
             silence_time = kwargs['silenceTime']
 
         _setter("metric_rule_template_name", metric_rule_template_name)
@@ -313,25 +315,25 @@ class _MetricRuleTemplateState:
              rest_version: Optional[pulumi.Input[str]] = None,
              silence_time: Optional[pulumi.Input[int]] = None,
              webhook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alertTemplates' in kwargs:
+        if alert_templates is None and 'alertTemplates' in kwargs:
             alert_templates = kwargs['alertTemplates']
-        if 'applyMode' in kwargs:
+        if apply_mode is None and 'applyMode' in kwargs:
             apply_mode = kwargs['applyMode']
-        if 'enableEndTime' in kwargs:
+        if enable_end_time is None and 'enableEndTime' in kwargs:
             enable_end_time = kwargs['enableEndTime']
-        if 'enableStartTime' in kwargs:
+        if enable_start_time is None and 'enableStartTime' in kwargs:
             enable_start_time = kwargs['enableStartTime']
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'metricRuleTemplateName' in kwargs:
+        if metric_rule_template_name is None and 'metricRuleTemplateName' in kwargs:
             metric_rule_template_name = kwargs['metricRuleTemplateName']
-        if 'notifyLevel' in kwargs:
+        if notify_level is None and 'notifyLevel' in kwargs:
             notify_level = kwargs['notifyLevel']
-        if 'restVersion' in kwargs:
+        if rest_version is None and 'restVersion' in kwargs:
             rest_version = kwargs['restVersion']
-        if 'silenceTime' in kwargs:
+        if silence_time is None and 'silenceTime' in kwargs:
             silence_time = kwargs['silenceTime']
 
         if alert_templates is not None:
@@ -518,36 +520,6 @@ class MetricRuleTemplate(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example = alicloud.cms.MetricRuleTemplate("example",
-            metric_rule_template_name=name,
-            alert_templates=[alicloud.cms.MetricRuleTemplateAlertTemplateArgs(
-                category="ecs",
-                metric_name="cpu_total",
-                namespace="acs_ecs_dashboard",
-                rule_name="tf_example",
-                escalations=alicloud.cms.MetricRuleTemplateAlertTemplateEscalationsArgs(
-                    critical=alicloud.cms.MetricRuleTemplateAlertTemplateEscalationsCriticalArgs(
-                        comparison_operator="GreaterThanThreshold",
-                        statistics="Average",
-                        threshold="90",
-                        times="3",
-                    ),
-                ),
-            )])
-        ```
-
         ## Import
 
         Cloud Monitor Service Metric Rule Template can be imported using the id, e.g.
@@ -586,36 +558,6 @@ class MetricRuleTemplate(pulumi.CustomResource):
         For information about Cloud Monitor Service Metric Rule Template and how to use it, see [What is Metric Rule Template](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmetricruletemplate).
 
         > **NOTE:** Available since v1.134.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example = alicloud.cms.MetricRuleTemplate("example",
-            metric_rule_template_name=name,
-            alert_templates=[alicloud.cms.MetricRuleTemplateAlertTemplateArgs(
-                category="ecs",
-                metric_name="cpu_total",
-                namespace="acs_ecs_dashboard",
-                rule_name="tf_example",
-                escalations=alicloud.cms.MetricRuleTemplateAlertTemplateEscalationsArgs(
-                    critical=alicloud.cms.MetricRuleTemplateAlertTemplateEscalationsCriticalArgs(
-                        comparison_operator="GreaterThanThreshold",
-                        statistics="Average",
-                        threshold="90",
-                        times="3",
-                    ),
-                ),
-            )])
-        ```
 
         ## Import
 

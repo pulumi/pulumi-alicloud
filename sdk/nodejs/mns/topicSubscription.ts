@@ -5,27 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const topic = new alicloud.mns.Topic("topic", {
- *     loggingEnabled: false,
- *     maximumMessageSize: 65536,
- * });
- * const subscription = new alicloud.mns.TopicSubscription("subscription", {
- *     endpoint: "http://www.xxx.com/xxx",
- *     filterTag: "test",
- *     notifyContentFormat: "XML",
- *     notifyStrategy: "BACKOFF_RETRY",
- *     topicName: "tf-example-mnstopic",
- * });
- * ```
- *
  * ## Import
  *
  * MNS Topic subscription can be imported using the id, e.g.

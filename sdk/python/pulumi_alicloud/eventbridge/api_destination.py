@@ -37,18 +37,24 @@ class ApiDestinationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_destination_name: pulumi.Input[str],
-             connection_name: pulumi.Input[str],
-             http_api_parameters: pulumi.Input['ApiDestinationHttpApiParametersArgs'],
+             api_destination_name: Optional[pulumi.Input[str]] = None,
+             connection_name: Optional[pulumi.Input[str]] = None,
+             http_api_parameters: Optional[pulumi.Input['ApiDestinationHttpApiParametersArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiDestinationName' in kwargs:
+        if api_destination_name is None and 'apiDestinationName' in kwargs:
             api_destination_name = kwargs['apiDestinationName']
-        if 'connectionName' in kwargs:
+        if api_destination_name is None:
+            raise TypeError("Missing 'api_destination_name' argument")
+        if connection_name is None and 'connectionName' in kwargs:
             connection_name = kwargs['connectionName']
-        if 'httpApiParameters' in kwargs:
+        if connection_name is None:
+            raise TypeError("Missing 'connection_name' argument")
+        if http_api_parameters is None and 'httpApiParameters' in kwargs:
             http_api_parameters = kwargs['httpApiParameters']
+        if http_api_parameters is None:
+            raise TypeError("Missing 'http_api_parameters' argument")
 
         _setter("api_destination_name", api_destination_name)
         _setter("connection_name", connection_name)
@@ -137,15 +143,15 @@ class _ApiDestinationState:
              create_time: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              http_api_parameters: Optional[pulumi.Input['ApiDestinationHttpApiParametersArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiDestinationName' in kwargs:
+        if api_destination_name is None and 'apiDestinationName' in kwargs:
             api_destination_name = kwargs['apiDestinationName']
-        if 'connectionName' in kwargs:
+        if connection_name is None and 'connectionName' in kwargs:
             connection_name = kwargs['connectionName']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'httpApiParameters' in kwargs:
+        if http_api_parameters is None and 'httpApiParameters' in kwargs:
             http_api_parameters = kwargs['httpApiParameters']
 
         if api_destination_name is not None:
@@ -237,36 +243,6 @@ class ApiDestination(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.211.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-chengdu"
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_connection = alicloud.eventbridge.Connection("defaultConnection",
-            connection_name=name,
-            network_parameters=alicloud.eventbridge.ConnectionNetworkParametersArgs(
-                network_type="PublicNetwork",
-            ))
-        default_api_destination = alicloud.eventbridge.ApiDestination("defaultApiDestination",
-            connection_name=default_connection.connection_name,
-            api_destination_name=name,
-            description="test-api-destination-connection",
-            http_api_parameters=alicloud.eventbridge.ApiDestinationHttpApiParametersArgs(
-                endpoint="http://127.0.0.1:8001",
-                method="POST",
-            ))
-        ```
-
         ## Import
 
         Event Bridge Api Destination can be imported using the id, e.g.
@@ -294,36 +270,6 @@ class ApiDestination(pulumi.CustomResource):
         For information about Event Bridge Api Destination and how to use it, see [What is Api Destination](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createapidestination).
 
         > **NOTE:** Available since v1.211.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-chengdu"
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_connection = alicloud.eventbridge.Connection("defaultConnection",
-            connection_name=name,
-            network_parameters=alicloud.eventbridge.ConnectionNetworkParametersArgs(
-                network_type="PublicNetwork",
-            ))
-        default_api_destination = alicloud.eventbridge.ApiDestination("defaultApiDestination",
-            connection_name=default_connection.connection_name,
-            api_destination_name=name,
-            description="test-api-destination-connection",
-            http_api_parameters=alicloud.eventbridge.ApiDestinationHttpApiParametersArgs(
-                endpoint="http://127.0.0.1:8001",
-                method="POST",
-            ))
-        ```
 
         ## Import
 
@@ -372,11 +318,7 @@ class ApiDestination(pulumi.CustomResource):
                 raise TypeError("Missing required property 'connection_name'")
             __props__.__dict__["connection_name"] = connection_name
             __props__.__dict__["description"] = description
-            if http_api_parameters is not None and not isinstance(http_api_parameters, ApiDestinationHttpApiParametersArgs):
-                http_api_parameters = http_api_parameters or {}
-                def _setter(key, value):
-                    http_api_parameters[key] = value
-                ApiDestinationHttpApiParametersArgs._configure(_setter, **http_api_parameters)
+            http_api_parameters = _utilities.configure(http_api_parameters, ApiDestinationHttpApiParametersArgs, True)
             if http_api_parameters is None and not opts.urn:
                 raise TypeError("Missing required property 'http_api_parameters'")
             __props__.__dict__["http_api_parameters"] = http_api_parameters

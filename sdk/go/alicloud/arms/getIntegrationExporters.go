@@ -15,39 +15,6 @@ import (
 // This data source provides the Arms Integration Exporters of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.203.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := arms.GetIntegrationExporters(ctx, &arms.GetIntegrationExportersArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//				ClusterId:       "your_cluster_id",
-//				IntegrationType: "kafka",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("armsIntegrationExportersId1", ids.IntegrationExporters[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetIntegrationExporters(ctx *pulumi.Context, args *GetIntegrationExportersArgs, opts ...pulumi.InvokeOption) (*GetIntegrationExportersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIntegrationExportersResult

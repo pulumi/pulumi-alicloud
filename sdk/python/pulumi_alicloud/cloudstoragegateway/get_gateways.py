@@ -148,20 +148,6 @@ def get_gateways(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.132.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
-    name_regex = alicloud.cloudstoragegateway.get_gateways_output(storage_bundle_id=example.id,
-        name_regex="^my-Gateway")
-    pulumi.export("cloudStorageGatewayGatewayId", name_regex.gateways[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Gateway IDs.
     :param str name_regex: A regex string to filter results by Gateway name.
@@ -207,20 +193,6 @@ def get_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.132.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
-    name_regex = alicloud.cloudstoragegateway.get_gateways_output(storage_bundle_id=example.id,
-        name_regex="^my-Gateway")
-    pulumi.export("cloudStorageGatewayGatewayId", name_regex.gateways[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Gateway IDs.

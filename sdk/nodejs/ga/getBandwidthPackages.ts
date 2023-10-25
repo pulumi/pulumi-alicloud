@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.112.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ga.getBandwidthPackages({
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstGaBandwidthPackageId = example.then(example => example.packages?.[0]?.id);
- * ```
  */
 export function getBandwidthPackages(args?: GetBandwidthPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthPackagesResult> {
     args = args || {};
@@ -91,21 +76,6 @@ export interface GetBandwidthPackagesResult {
  * This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.112.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ga.getBandwidthPackages({
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstGaBandwidthPackageId = example.then(example => example.packages?.[0]?.id);
- * ```
  */
 export function getBandwidthPackagesOutput(args?: GetBandwidthPackagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBandwidthPackagesResult> {
     return pulumi.output(args).apply((a: any) => getBandwidthPackages(a, opts))

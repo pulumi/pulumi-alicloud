@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Alb Server Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.131.0.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.alb.getServerGroups({});
- * export const albServerGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
- * const nameRegex = alicloud.alb.getServerGroups({
- *     nameRegex: "^my-ServerGroup",
- * });
- * export const albServerGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
- * ```
  */
 export function getServerGroups(args?: GetServerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerGroupsResult> {
     args = args || {};
@@ -134,22 +118,6 @@ export interface GetServerGroupsResult {
  * This data source provides the Alb Server Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.131.0.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.alb.getServerGroups({});
- * export const albServerGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
- * const nameRegex = alicloud.alb.getServerGroups({
- *     nameRegex: "^my-ServerGroup",
- * });
- * export const albServerGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
- * ```
  */
 export function getServerGroupsOutput(args?: GetServerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerGroupsResult> {
     return pulumi.output(args).apply((a: any) => getServerGroups(a, opts))

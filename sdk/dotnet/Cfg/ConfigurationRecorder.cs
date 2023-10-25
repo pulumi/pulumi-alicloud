@@ -17,28 +17,6 @@ namespace Pulumi.AliCloud.Cfg
     /// 
     /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Cfg.ConfigurationRecorder("example", new()
-    ///     {
-    ///         ResourceTypes = new[]
-    ///         {
-    ///             "ACS::ECS::Instance",
-    ///             "ACS::ECS::Disk",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Alicloud Config Configuration Recorder can be imported using the id, e.g.

@@ -38,20 +38,26 @@ class CustomRoutingEndpointGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: pulumi.Input[str],
-             endpoint_group_region: pulumi.Input[str],
-             listener_id: pulumi.Input[str],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             endpoint_group_region: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
              custom_routing_endpoint_group_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'endpointGroupRegion' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if endpoint_group_region is None and 'endpointGroupRegion' in kwargs:
             endpoint_group_region = kwargs['endpointGroupRegion']
-        if 'listenerId' in kwargs:
+        if endpoint_group_region is None:
+            raise TypeError("Missing 'endpoint_group_region' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'customRoutingEndpointGroupName' in kwargs:
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if custom_routing_endpoint_group_name is None and 'customRoutingEndpointGroupName' in kwargs:
             custom_routing_endpoint_group_name = kwargs['customRoutingEndpointGroupName']
 
         _setter("accelerator_id", accelerator_id)
@@ -159,15 +165,15 @@ class _CustomRoutingEndpointGroupState:
              endpoint_group_region: Optional[pulumi.Input[str]] = None,
              listener_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'customRoutingEndpointGroupName' in kwargs:
+        if custom_routing_endpoint_group_name is None and 'customRoutingEndpointGroupName' in kwargs:
             custom_routing_endpoint_group_name = kwargs['customRoutingEndpointGroupName']
-        if 'endpointGroupRegion' in kwargs:
+        if endpoint_group_region is None and 'endpointGroupRegion' in kwargs:
             endpoint_group_region = kwargs['endpointGroupRegion']
-        if 'listenerId' in kwargs:
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
 
         if accelerator_id is not None:
@@ -274,47 +280,6 @@ class CustomRoutingEndpointGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.197.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
-            bandwidth=100,
-            type="Basic",
-            bandwidth_type="Basic",
-            payment_type="PayAsYouGo",
-            billing_type="PayBy95",
-            ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
-            bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
-            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
-            listener_type="CustomRouting",
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=10000,
-                to_port=16000,
-            )])
-        default_custom_routing_endpoint_group = alicloud.ga.CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup",
-            accelerator_id=default_listener.accelerator_id,
-            listener_id=default_listener.id,
-            endpoint_group_region=region,
-            custom_routing_endpoint_group_name="terraform-example",
-            description="terraform-example")
-        ```
-
         ## Import
 
         Global Accelerator (GA) Custom Routing Endpoint Group can be imported using the id, e.g.
@@ -343,47 +308,6 @@ class CustomRoutingEndpointGroup(pulumi.CustomResource):
         For information about Global Accelerator (GA) Custom Routing Endpoint Group and how to use it, see [What is Custom Routing Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createcustomroutingendpointgroups).
 
         > **NOTE:** Available since v1.197.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
-            bandwidth=100,
-            type="Basic",
-            bandwidth_type="Basic",
-            payment_type="PayAsYouGo",
-            billing_type="PayBy95",
-            ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
-            bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
-            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
-            listener_type="CustomRouting",
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=10000,
-                to_port=16000,
-            )])
-        default_custom_routing_endpoint_group = alicloud.ga.CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup",
-            accelerator_id=default_listener.accelerator_id,
-            listener_id=default_listener.id,
-            endpoint_group_region=region,
-            custom_routing_endpoint_group_name="terraform-example",
-            description="terraform-example")
-        ```
 
         ## Import
 

@@ -74,8 +74,8 @@ class JobTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             command_line: pulumi.Input[str],
-             job_template_name: pulumi.Input[str],
+             command_line: Optional[pulumi.Input[str]] = None,
+             job_template_name: Optional[pulumi.Input[str]] = None,
              array_request: Optional[pulumi.Input[str]] = None,
              clock_time: Optional[pulumi.Input[str]] = None,
              gpu: Optional[pulumi.Input[int]] = None,
@@ -91,25 +91,29 @@ class JobTemplateArgs:
              task: Optional[pulumi.Input[int]] = None,
              thread: Optional[pulumi.Input[int]] = None,
              variables: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'commandLine' in kwargs:
+        if command_line is None and 'commandLine' in kwargs:
             command_line = kwargs['commandLine']
-        if 'jobTemplateName' in kwargs:
+        if command_line is None:
+            raise TypeError("Missing 'command_line' argument")
+        if job_template_name is None and 'jobTemplateName' in kwargs:
             job_template_name = kwargs['jobTemplateName']
-        if 'arrayRequest' in kwargs:
+        if job_template_name is None:
+            raise TypeError("Missing 'job_template_name' argument")
+        if array_request is None and 'arrayRequest' in kwargs:
             array_request = kwargs['arrayRequest']
-        if 'clockTime' in kwargs:
+        if clock_time is None and 'clockTime' in kwargs:
             clock_time = kwargs['clockTime']
-        if 'packagePath' in kwargs:
+        if package_path is None and 'packagePath' in kwargs:
             package_path = kwargs['packagePath']
-        if 'reRunable' in kwargs:
+        if re_runable is None and 'reRunable' in kwargs:
             re_runable = kwargs['reRunable']
-        if 'runasUser' in kwargs:
+        if runas_user is None and 'runasUser' in kwargs:
             runas_user = kwargs['runasUser']
-        if 'stderrRedirectPath' in kwargs:
+        if stderr_redirect_path is None and 'stderrRedirectPath' in kwargs:
             stderr_redirect_path = kwargs['stderrRedirectPath']
-        if 'stdoutRedirectPath' in kwargs:
+        if stdout_redirect_path is None and 'stdoutRedirectPath' in kwargs:
             stdout_redirect_path = kwargs['stdoutRedirectPath']
 
         _setter("command_line", command_line)
@@ -430,25 +434,25 @@ class _JobTemplateState:
              task: Optional[pulumi.Input[int]] = None,
              thread: Optional[pulumi.Input[int]] = None,
              variables: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'arrayRequest' in kwargs:
+        if array_request is None and 'arrayRequest' in kwargs:
             array_request = kwargs['arrayRequest']
-        if 'clockTime' in kwargs:
+        if clock_time is None and 'clockTime' in kwargs:
             clock_time = kwargs['clockTime']
-        if 'commandLine' in kwargs:
+        if command_line is None and 'commandLine' in kwargs:
             command_line = kwargs['commandLine']
-        if 'jobTemplateName' in kwargs:
+        if job_template_name is None and 'jobTemplateName' in kwargs:
             job_template_name = kwargs['jobTemplateName']
-        if 'packagePath' in kwargs:
+        if package_path is None and 'packagePath' in kwargs:
             package_path = kwargs['packagePath']
-        if 'reRunable' in kwargs:
+        if re_runable is None and 'reRunable' in kwargs:
             re_runable = kwargs['reRunable']
-        if 'runasUser' in kwargs:
+        if runas_user is None and 'runasUser' in kwargs:
             runas_user = kwargs['runasUser']
-        if 'stderrRedirectPath' in kwargs:
+        if stderr_redirect_path is None and 'stderrRedirectPath' in kwargs:
             stderr_redirect_path = kwargs['stderrRedirectPath']
-        if 'stdoutRedirectPath' in kwargs:
+        if stdout_redirect_path is None and 'stdoutRedirectPath' in kwargs:
             stdout_redirect_path = kwargs['stdoutRedirectPath']
 
         if array_request is not None:
@@ -721,19 +725,6 @@ class JobTemplate(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.133.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ehpc.JobTemplate("default",
-            command_line="./LammpsTest/lammps.pbs",
-            job_template_name="example_value")
-        ```
-
         ## Import
 
         Ehpc Job Template can be imported using the id, e.g.
@@ -774,19 +765,6 @@ class JobTemplate(pulumi.CustomResource):
         For information about Ehpc Job Template and how to use it, see [What is Job Template](https://www.alibabacloud.com/help/product/57664.html).
 
         > **NOTE:** Available in v1.133.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ehpc.JobTemplate("default",
-            command_line="./LammpsTest/lammps.pbs",
-            job_template_name="example_value")
-        ```
 
         ## Import
 

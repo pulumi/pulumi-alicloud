@@ -13,39 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.123.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const domain = config.get("domain") || "tf-example.alibaba.com";
- * const defaultDdosCooInstance = new alicloud.ddos.DdosCooInstance("defaultDdosCooInstance", {
- *     bandwidth: "30",
- *     baseBandwidth: "30",
- *     serviceBandwidth: "100",
- *     portCount: "50",
- *     domainCount: "50",
- *     period: 1,
- *     productType: "ddoscoo",
- * });
- * const defaultDomainResource = new alicloud.ddos.DomainResource("defaultDomainResource", {
- *     domain: domain,
- *     rsType: 0,
- *     instanceIds: [defaultDdosCooInstance.id],
- *     realServers: ["177.167.32.11"],
- *     httpsExt: "{\"Http2\":1,\"Http2https\":0,\"Https2http\":0}",
- *     proxyTypes: [{
- *         proxyPorts: [443],
- *         proxyType: "https",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * Anti-DDoS Pro Domain Resource can be imported using the id, e.g.

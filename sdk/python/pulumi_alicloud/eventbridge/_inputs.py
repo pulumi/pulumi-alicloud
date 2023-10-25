@@ -43,10 +43,14 @@ class ApiDestinationHttpApiParametersArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: pulumi.Input[str],
-             method: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             endpoint: Optional[pulumi.Input[str]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if method is None:
+            raise TypeError("Missing 'method' argument")
 
         _setter("endpoint", endpoint)
         _setter("method", method)
@@ -103,15 +107,15 @@ class ConnectionAuthParametersArgs:
              authorization_type: Optional[pulumi.Input[str]] = None,
              basic_auth_parameters: Optional[pulumi.Input['ConnectionAuthParametersBasicAuthParametersArgs']] = None,
              oauth_parameters: Optional[pulumi.Input['ConnectionAuthParametersOauthParametersArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiKeyAuthParameters' in kwargs:
+        if api_key_auth_parameters is None and 'apiKeyAuthParameters' in kwargs:
             api_key_auth_parameters = kwargs['apiKeyAuthParameters']
-        if 'authorizationType' in kwargs:
+        if authorization_type is None and 'authorizationType' in kwargs:
             authorization_type = kwargs['authorizationType']
-        if 'basicAuthParameters' in kwargs:
+        if basic_auth_parameters is None and 'basicAuthParameters' in kwargs:
             basic_auth_parameters = kwargs['basicAuthParameters']
-        if 'oauthParameters' in kwargs:
+        if oauth_parameters is None and 'oauthParameters' in kwargs:
             oauth_parameters = kwargs['oauthParameters']
 
         if api_key_auth_parameters is not None:
@@ -191,11 +195,11 @@ class ConnectionAuthParametersApiKeyAuthParametersArgs:
              _setter: Callable[[Any, Any], None],
              api_key_name: Optional[pulumi.Input[str]] = None,
              api_key_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiKeyName' in kwargs:
+        if api_key_name is None and 'apiKeyName' in kwargs:
             api_key_name = kwargs['apiKeyName']
-        if 'apiKeyValue' in kwargs:
+        if api_key_value is None and 'apiKeyValue' in kwargs:
             api_key_value = kwargs['apiKeyValue']
 
         if api_key_name is not None:
@@ -247,7 +251,7 @@ class ConnectionAuthParametersBasicAuthParametersArgs:
              _setter: Callable[[Any, Any], None],
              password: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if password is not None:
@@ -307,15 +311,15 @@ class ConnectionAuthParametersOauthParametersArgs:
              client_parameters: Optional[pulumi.Input['ConnectionAuthParametersOauthParametersClientParametersArgs']] = None,
              http_method: Optional[pulumi.Input[str]] = None,
              oauth_http_parameters: Optional[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authorizationEndpoint' in kwargs:
+        if authorization_endpoint is None and 'authorizationEndpoint' in kwargs:
             authorization_endpoint = kwargs['authorizationEndpoint']
-        if 'clientParameters' in kwargs:
+        if client_parameters is None and 'clientParameters' in kwargs:
             client_parameters = kwargs['clientParameters']
-        if 'httpMethod' in kwargs:
+        if http_method is None and 'httpMethod' in kwargs:
             http_method = kwargs['httpMethod']
-        if 'oauthHttpParameters' in kwargs:
+        if oauth_http_parameters is None and 'oauthHttpParameters' in kwargs:
             oauth_http_parameters = kwargs['oauthHttpParameters']
 
         if authorization_endpoint is not None:
@@ -395,11 +399,11 @@ class ConnectionAuthParametersOauthParametersClientParametersArgs:
              _setter: Callable[[Any, Any], None],
              client_id: Optional[pulumi.Input[str]] = None,
              client_secret: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'clientSecret' in kwargs:
+        if client_secret is None and 'clientSecret' in kwargs:
             client_secret = kwargs['clientSecret']
 
         if client_id is not None:
@@ -455,13 +459,13 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersArgs:
              body_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs']]]] = None,
              header_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs']]]] = None,
              query_string_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bodyParameters' in kwargs:
+        if body_parameters is None and 'bodyParameters' in kwargs:
             body_parameters = kwargs['bodyParameters']
-        if 'headerParameters' in kwargs:
+        if header_parameters is None and 'headerParameters' in kwargs:
             header_parameters = kwargs['headerParameters']
-        if 'queryStringParameters' in kwargs:
+        if query_string_parameters is None and 'queryStringParameters' in kwargs:
             query_string_parameters = kwargs['queryStringParameters']
 
         if body_parameters is not None:
@@ -531,9 +535,9 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArg
              is_value_secret: Optional[pulumi.Input[str]] = None,
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'isValueSecret' in kwargs:
+        if is_value_secret is None and 'isValueSecret' in kwargs:
             is_value_secret = kwargs['isValueSecret']
 
         if is_value_secret is not None:
@@ -603,9 +607,9 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterA
              is_value_secret: Optional[pulumi.Input[str]] = None,
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'isValueSecret' in kwargs:
+        if is_value_secret is None and 'isValueSecret' in kwargs:
             is_value_secret = kwargs['isValueSecret']
 
         if is_value_secret is not None:
@@ -675,9 +679,9 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParam
              is_value_secret: Optional[pulumi.Input[str]] = None,
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'isValueSecret' in kwargs:
+        if is_value_secret is None and 'isValueSecret' in kwargs:
             is_value_secret = kwargs['isValueSecret']
 
         if is_value_secret is not None:
@@ -747,19 +751,21 @@ class ConnectionNetworkParametersArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_type: pulumi.Input[str],
+             network_type: Optional[pulumi.Input[str]] = None,
              security_group_id: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitche_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'networkType' in kwargs:
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'securityGroupId' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitcheId' in kwargs:
+        if vswitche_id is None and 'vswitcheId' in kwargs:
             vswitche_id = kwargs['vswitcheId']
 
         _setter("network_type", network_type)
@@ -849,21 +855,29 @@ class RuleTargetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: pulumi.Input[str],
-             param_lists: pulumi.Input[Sequence[pulumi.Input['RuleTargetParamListArgs']]],
-             target_id: pulumi.Input[str],
-             type: pulumi.Input[str],
+             endpoint: Optional[pulumi.Input[str]] = None,
+             param_lists: Optional[pulumi.Input[Sequence[pulumi.Input['RuleTargetParamListArgs']]]] = None,
+             target_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              dead_letter_queue: Optional[pulumi.Input['RuleTargetDeadLetterQueueArgs']] = None,
              push_retry_strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'paramLists' in kwargs:
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if param_lists is None and 'paramLists' in kwargs:
             param_lists = kwargs['paramLists']
-        if 'targetId' in kwargs:
+        if param_lists is None:
+            raise TypeError("Missing 'param_lists' argument")
+        if target_id is None and 'targetId' in kwargs:
             target_id = kwargs['targetId']
-        if 'deadLetterQueue' in kwargs:
+        if target_id is None:
+            raise TypeError("Missing 'target_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if dead_letter_queue is None and 'deadLetterQueue' in kwargs:
             dead_letter_queue = kwargs['deadLetterQueue']
-        if 'pushRetryStrategy' in kwargs:
+        if push_retry_strategy is None and 'pushRetryStrategy' in kwargs:
             push_retry_strategy = kwargs['pushRetryStrategy']
 
         _setter("endpoint", endpoint)
@@ -964,7 +978,7 @@ class RuleTargetDeadLetterQueueArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if arn is not None:
@@ -998,9 +1012,6 @@ class RuleTargetParamListArgs:
                
                > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
                
-               ```python
-               import pulumi
-               ```
                
                In order to fix the diff, from version 1.160.0,
                this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
@@ -1016,14 +1027,18 @@ class RuleTargetParamListArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             form: pulumi.Input[str],
-             resource_key: pulumi.Input[str],
+             form: Optional[pulumi.Input[str]] = None,
+             resource_key: Optional[pulumi.Input[str]] = None,
              template: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceKey' in kwargs:
+        if form is None:
+            raise TypeError("Missing 'form' argument")
+        if resource_key is None and 'resourceKey' in kwargs:
             resource_key = kwargs['resourceKey']
+        if resource_key is None:
+            raise TypeError("Missing 'resource_key' argument")
 
         _setter("form", form)
         _setter("resource_key", resource_key)
@@ -1076,9 +1091,6 @@ class RuleTargetParamListArgs:
 
         > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
 
-        ```python
-        import pulumi
-        ```
 
         In order to fix the diff, from version 1.160.0,
         this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.

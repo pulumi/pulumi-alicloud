@@ -49,31 +49,39 @@ class VbrHealthCheckArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cen_id: pulumi.Input[str],
-             health_check_target_ip: pulumi.Input[str],
-             vbr_instance_id: pulumi.Input[str],
-             vbr_instance_region_id: pulumi.Input[str],
+             cen_id: Optional[pulumi.Input[str]] = None,
+             health_check_target_ip: Optional[pulumi.Input[str]] = None,
+             vbr_instance_id: Optional[pulumi.Input[str]] = None,
+             vbr_instance_region_id: Optional[pulumi.Input[str]] = None,
              health_check_interval: Optional[pulumi.Input[int]] = None,
              health_check_source_ip: Optional[pulumi.Input[str]] = None,
              healthy_threshold: Optional[pulumi.Input[int]] = None,
              vbr_instance_owner_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'healthCheckTargetIp' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if health_check_target_ip is None and 'healthCheckTargetIp' in kwargs:
             health_check_target_ip = kwargs['healthCheckTargetIp']
-        if 'vbrInstanceId' in kwargs:
+        if health_check_target_ip is None:
+            raise TypeError("Missing 'health_check_target_ip' argument")
+        if vbr_instance_id is None and 'vbrInstanceId' in kwargs:
             vbr_instance_id = kwargs['vbrInstanceId']
-        if 'vbrInstanceRegionId' in kwargs:
+        if vbr_instance_id is None:
+            raise TypeError("Missing 'vbr_instance_id' argument")
+        if vbr_instance_region_id is None and 'vbrInstanceRegionId' in kwargs:
             vbr_instance_region_id = kwargs['vbrInstanceRegionId']
-        if 'healthCheckInterval' in kwargs:
+        if vbr_instance_region_id is None:
+            raise TypeError("Missing 'vbr_instance_region_id' argument")
+        if health_check_interval is None and 'healthCheckInterval' in kwargs:
             health_check_interval = kwargs['healthCheckInterval']
-        if 'healthCheckSourceIp' in kwargs:
+        if health_check_source_ip is None and 'healthCheckSourceIp' in kwargs:
             health_check_source_ip = kwargs['healthCheckSourceIp']
-        if 'healthyThreshold' in kwargs:
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
             healthy_threshold = kwargs['healthyThreshold']
-        if 'vbrInstanceOwnerId' in kwargs:
+        if vbr_instance_owner_id is None and 'vbrInstanceOwnerId' in kwargs:
             vbr_instance_owner_id = kwargs['vbrInstanceOwnerId']
 
         _setter("cen_id", cen_id)
@@ -234,23 +242,23 @@ class _VbrHealthCheckState:
              vbr_instance_id: Optional[pulumi.Input[str]] = None,
              vbr_instance_owner_id: Optional[pulumi.Input[int]] = None,
              vbr_instance_region_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'healthCheckInterval' in kwargs:
+        if health_check_interval is None and 'healthCheckInterval' in kwargs:
             health_check_interval = kwargs['healthCheckInterval']
-        if 'healthCheckSourceIp' in kwargs:
+        if health_check_source_ip is None and 'healthCheckSourceIp' in kwargs:
             health_check_source_ip = kwargs['healthCheckSourceIp']
-        if 'healthCheckTargetIp' in kwargs:
+        if health_check_target_ip is None and 'healthCheckTargetIp' in kwargs:
             health_check_target_ip = kwargs['healthCheckTargetIp']
-        if 'healthyThreshold' in kwargs:
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
             healthy_threshold = kwargs['healthyThreshold']
-        if 'vbrInstanceId' in kwargs:
+        if vbr_instance_id is None and 'vbrInstanceId' in kwargs:
             vbr_instance_id = kwargs['vbrInstanceId']
-        if 'vbrInstanceOwnerId' in kwargs:
+        if vbr_instance_owner_id is None and 'vbrInstanceOwnerId' in kwargs:
             vbr_instance_owner_id = kwargs['vbrInstanceOwnerId']
-        if 'vbrInstanceRegionId' in kwargs:
+        if vbr_instance_region_id is None and 'vbrInstanceRegionId' in kwargs:
             vbr_instance_region_id = kwargs['vbrInstanceRegionId']
 
         if cen_id is not None:
@@ -391,52 +399,6 @@ class VbrHealthCheck(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.88.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.RandomInteger("vlanId",
-            max=2999,
-            min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
-            local_gateway_ip="10.0.0.1",
-            peer_gateway_ip="10.0.0.2",
-            peering_subnet_mask="255.255.255.252",
-            physical_connection_id=default_physical_connections.connections[0].id,
-            virtual_border_router_name=name,
-            vlan_id=vlan_id.id,
-            min_rx_interval=1000,
-            min_tx_interval=1000,
-            detect_multiplier=10)
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name=name,
-            protection_level="REDUCED")
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
-            instance_id=example_instance.id,
-            child_instance_id=example_virtual_border_router.id,
-            child_instance_type="VBR",
-            child_instance_region_id=default_regions.regions[0].id)
-        example_vbr_health_check = alicloud.cen.VbrHealthCheck("exampleVbrHealthCheck",
-            cen_id=example_instance.id,
-            health_check_source_ip="192.168.1.2",
-            health_check_target_ip="10.0.0.2",
-            vbr_instance_id=example_virtual_border_router.id,
-            vbr_instance_region_id=example_instance_attachment.child_instance_region_id,
-            health_check_interval=2,
-            healthy_threshold=8)
-        ```
-
         ## Import
 
         CEN VBR HealthCheck can be imported using the id, e.g.
@@ -471,52 +433,6 @@ class VbrHealthCheck(pulumi.CustomResource):
         For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-enablecenvbrhealthcheck).
 
         > **NOTE:** Available since v1.88.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.RandomInteger("vlanId",
-            max=2999,
-            min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
-            local_gateway_ip="10.0.0.1",
-            peer_gateway_ip="10.0.0.2",
-            peering_subnet_mask="255.255.255.252",
-            physical_connection_id=default_physical_connections.connections[0].id,
-            virtual_border_router_name=name,
-            vlan_id=vlan_id.id,
-            min_rx_interval=1000,
-            min_tx_interval=1000,
-            detect_multiplier=10)
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name=name,
-            protection_level="REDUCED")
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
-            instance_id=example_instance.id,
-            child_instance_id=example_virtual_border_router.id,
-            child_instance_type="VBR",
-            child_instance_region_id=default_regions.regions[0].id)
-        example_vbr_health_check = alicloud.cen.VbrHealthCheck("exampleVbrHealthCheck",
-            cen_id=example_instance.id,
-            health_check_source_ip="192.168.1.2",
-            health_check_target_ip="10.0.0.2",
-            vbr_instance_id=example_virtual_border_router.id,
-            vbr_instance_region_id=example_instance_attachment.child_instance_region_id,
-            health_check_interval=2,
-            healthy_threshold=8)
-        ```
 
         ## Import
 

@@ -32,16 +32,18 @@ class UserVpcAuthorizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             authorized_user_id: pulumi.Input[str],
+             authorized_user_id: Optional[pulumi.Input[str]] = None,
              auth_channel: Optional[pulumi.Input[str]] = None,
              auth_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authorizedUserId' in kwargs:
+        if authorized_user_id is None and 'authorizedUserId' in kwargs:
             authorized_user_id = kwargs['authorizedUserId']
-        if 'authChannel' in kwargs:
+        if authorized_user_id is None:
+            raise TypeError("Missing 'authorized_user_id' argument")
+        if auth_channel is None and 'authChannel' in kwargs:
             auth_channel = kwargs['authChannel']
-        if 'authType' in kwargs:
+        if auth_type is None and 'authType' in kwargs:
             auth_type = kwargs['authType']
 
         _setter("authorized_user_id", authorized_user_id)
@@ -111,13 +113,13 @@ class _UserVpcAuthorizationState:
              auth_channel: Optional[pulumi.Input[str]] = None,
              auth_type: Optional[pulumi.Input[str]] = None,
              authorized_user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authChannel' in kwargs:
+        if auth_channel is None and 'authChannel' in kwargs:
             auth_channel = kwargs['authChannel']
-        if 'authType' in kwargs:
+        if auth_type is None and 'authType' in kwargs:
             auth_type = kwargs['authType']
-        if 'authorizedUserId' in kwargs:
+        if authorized_user_id is None and 'authorizedUserId' in kwargs:
             authorized_user_id = kwargs['authorizedUserId']
 
         if auth_channel is not None:
@@ -178,23 +180,6 @@ class UserVpcAuthorization(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.138.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        authorized_user_id = config.get_float("authorizedUserId")
-        if authorized_user_id is None:
-            authorized_user_id = 123456789
-        example = alicloud.pvtz.UserVpcAuthorization("example",
-            authorized_user_id=authorized_user_id,
-            auth_channel="RESOURCE_DIRECTORY")
-        ```
-
         ## Import
 
         Private Zone User Vpc Authorization can be imported using the id, e.g.
@@ -219,23 +204,6 @@ class UserVpcAuthorization(pulumi.CustomResource):
         Provides a Private Zone User Vpc Authorization resource.
 
         > **NOTE:** Available since v1.138.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        authorized_user_id = config.get_float("authorizedUserId")
-        if authorized_user_id is None:
-            authorized_user_id = 123456789
-        example = alicloud.pvtz.UserVpcAuthorization("example",
-            authorized_user_id=authorized_user_id,
-            auth_channel="RESOURCE_DIRECTORY")
-        ```
 
         ## Import
 

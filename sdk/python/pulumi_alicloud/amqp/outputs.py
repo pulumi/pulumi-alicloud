@@ -53,28 +53,44 @@ class GetBindingsBindingResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             argument: str,
-             binding_key: str,
-             binding_type: str,
-             destination_name: str,
-             id: str,
-             instance_id: str,
-             source_exchange: str,
-             virtual_host_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             argument: Optional[str] = None,
+             binding_key: Optional[str] = None,
+             binding_type: Optional[str] = None,
+             destination_name: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             source_exchange: Optional[str] = None,
+             virtual_host_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bindingKey' in kwargs:
+        if argument is None:
+            raise TypeError("Missing 'argument' argument")
+        if binding_key is None and 'bindingKey' in kwargs:
             binding_key = kwargs['bindingKey']
-        if 'bindingType' in kwargs:
+        if binding_key is None:
+            raise TypeError("Missing 'binding_key' argument")
+        if binding_type is None and 'bindingType' in kwargs:
             binding_type = kwargs['bindingType']
-        if 'destinationName' in kwargs:
+        if binding_type is None:
+            raise TypeError("Missing 'binding_type' argument")
+        if destination_name is None and 'destinationName' in kwargs:
             destination_name = kwargs['destinationName']
-        if 'instanceId' in kwargs:
+        if destination_name is None:
+            raise TypeError("Missing 'destination_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'sourceExchange' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if source_exchange is None and 'sourceExchange' in kwargs:
             source_exchange = kwargs['sourceExchange']
-        if 'virtualHostName' in kwargs:
+        if source_exchange is None:
+            raise TypeError("Missing 'source_exchange' argument")
+        if virtual_host_name is None and 'virtualHostName' in kwargs:
             virtual_host_name = kwargs['virtualHostName']
+        if virtual_host_name is None:
+            raise TypeError("Missing 'virtual_host_name' argument")
 
         _setter("argument", argument)
         _setter("binding_key", binding_key)
@@ -185,28 +201,44 @@ class GetExchangesExchangeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attributes: Mapping[str, Any],
-             auto_delete_state: bool,
-             create_time: str,
-             exchange_name: str,
-             exchange_type: str,
-             id: str,
-             instance_id: str,
-             virtual_host_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             attributes: Optional[Mapping[str, Any]] = None,
+             auto_delete_state: Optional[bool] = None,
+             create_time: Optional[str] = None,
+             exchange_name: Optional[str] = None,
+             exchange_type: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             virtual_host_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoDeleteState' in kwargs:
+        if attributes is None:
+            raise TypeError("Missing 'attributes' argument")
+        if auto_delete_state is None and 'autoDeleteState' in kwargs:
             auto_delete_state = kwargs['autoDeleteState']
-        if 'createTime' in kwargs:
+        if auto_delete_state is None:
+            raise TypeError("Missing 'auto_delete_state' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'exchangeName' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if exchange_name is None and 'exchangeName' in kwargs:
             exchange_name = kwargs['exchangeName']
-        if 'exchangeType' in kwargs:
+        if exchange_name is None:
+            raise TypeError("Missing 'exchange_name' argument")
+        if exchange_type is None and 'exchangeType' in kwargs:
             exchange_type = kwargs['exchangeType']
-        if 'instanceId' in kwargs:
+        if exchange_type is None:
+            raise TypeError("Missing 'exchange_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'virtualHostName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if virtual_host_name is None and 'virtualHostName' in kwargs:
             virtual_host_name = kwargs['virtualHostName']
+        if virtual_host_name is None:
+            raise TypeError("Missing 'virtual_host_name' argument")
 
         _setter("attributes", attributes)
         _setter("auto_delete_state", auto_delete_state)
@@ -335,46 +367,74 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             expire_time: str,
-             id: str,
-             instance_id: str,
-             instance_name: str,
-             instance_type: str,
-             payment_type: str,
-             private_end_point: str,
-             public_endpoint: str,
-             renewal_duration: int,
-             renewal_duration_unit: str,
-             renewal_status: str,
-             status: str,
-             support_eip: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             expire_time: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             private_end_point: Optional[str] = None,
+             public_endpoint: Optional[str] = None,
+             renewal_duration: Optional[int] = None,
+             renewal_duration_unit: Optional[str] = None,
+             renewal_status: Optional[str] = None,
+             status: Optional[str] = None,
+             support_eip: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'expireTime' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
-        if 'instanceId' in kwargs:
+        if expire_time is None:
+            raise TypeError("Missing 'expire_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceType' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'paymentType' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'privateEndPoint' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if private_end_point is None and 'privateEndPoint' in kwargs:
             private_end_point = kwargs['privateEndPoint']
-        if 'publicEndpoint' in kwargs:
+        if private_end_point is None:
+            raise TypeError("Missing 'private_end_point' argument")
+        if public_endpoint is None and 'publicEndpoint' in kwargs:
             public_endpoint = kwargs['publicEndpoint']
-        if 'renewalDuration' in kwargs:
+        if public_endpoint is None:
+            raise TypeError("Missing 'public_endpoint' argument")
+        if renewal_duration is None and 'renewalDuration' in kwargs:
             renewal_duration = kwargs['renewalDuration']
-        if 'renewalDurationUnit' in kwargs:
+        if renewal_duration is None:
+            raise TypeError("Missing 'renewal_duration' argument")
+        if renewal_duration_unit is None and 'renewalDurationUnit' in kwargs:
             renewal_duration_unit = kwargs['renewalDurationUnit']
-        if 'renewalStatus' in kwargs:
+        if renewal_duration_unit is None:
+            raise TypeError("Missing 'renewal_duration_unit' argument")
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'supportEip' in kwargs:
+        if renewal_status is None:
+            raise TypeError("Missing 'renewal_status' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if support_eip is None and 'supportEip' in kwargs:
             support_eip = kwargs['supportEip']
+        if support_eip is None:
+            raise TypeError("Missing 'support_eip' argument")
 
         _setter("create_time", create_time)
         _setter("expire_time", expire_time)
@@ -542,31 +602,49 @@ class GetQueuesQueueResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attributes: Mapping[str, Any],
-             auto_delete_state: bool,
-             create_time: str,
-             exclusive_state: bool,
-             id: str,
-             instance_id: str,
-             last_consume_time: str,
-             queue_name: str,
-             virtual_host_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             attributes: Optional[Mapping[str, Any]] = None,
+             auto_delete_state: Optional[bool] = None,
+             create_time: Optional[str] = None,
+             exclusive_state: Optional[bool] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             last_consume_time: Optional[str] = None,
+             queue_name: Optional[str] = None,
+             virtual_host_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoDeleteState' in kwargs:
+        if attributes is None:
+            raise TypeError("Missing 'attributes' argument")
+        if auto_delete_state is None and 'autoDeleteState' in kwargs:
             auto_delete_state = kwargs['autoDeleteState']
-        if 'createTime' in kwargs:
+        if auto_delete_state is None:
+            raise TypeError("Missing 'auto_delete_state' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'exclusiveState' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if exclusive_state is None and 'exclusiveState' in kwargs:
             exclusive_state = kwargs['exclusiveState']
-        if 'instanceId' in kwargs:
+        if exclusive_state is None:
+            raise TypeError("Missing 'exclusive_state' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'lastConsumeTime' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if last_consume_time is None and 'lastConsumeTime' in kwargs:
             last_consume_time = kwargs['lastConsumeTime']
-        if 'queueName' in kwargs:
+        if last_consume_time is None:
+            raise TypeError("Missing 'last_consume_time' argument")
+        if queue_name is None and 'queueName' in kwargs:
             queue_name = kwargs['queueName']
-        if 'virtualHostName' in kwargs:
+        if queue_name is None:
+            raise TypeError("Missing 'queue_name' argument")
+        if virtual_host_name is None and 'virtualHostName' in kwargs:
             virtual_host_name = kwargs['virtualHostName']
+        if virtual_host_name is None:
+            raise TypeError("Missing 'virtual_host_name' argument")
 
         _setter("attributes", attributes)
         _setter("auto_delete_state", auto_delete_state)
@@ -683,25 +761,39 @@ class GetStaticAccountsAccountResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_key: str,
-             create_time: str,
-             id: str,
-             instance_id: str,
-             master_uid: str,
-             password: str,
-             user_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_key: Optional[str] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             master_uid: Optional[str] = None,
+             password: Optional[str] = None,
+             user_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessKey' in kwargs:
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'createTime' in kwargs:
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'instanceId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'masterUid' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if master_uid is None and 'masterUid' in kwargs:
             master_uid = kwargs['masterUid']
-        if 'userName' in kwargs:
+        if master_uid is None:
+            raise TypeError("Missing 'master_uid' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
 
         _setter("access_key", access_key)
         _setter("create_time", create_time)
@@ -788,15 +880,21 @@ class GetVirtualHostsHostResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             instance_id: str,
-             virtual_host_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             virtual_host_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'virtualHostName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if virtual_host_name is None and 'virtualHostName' in kwargs:
             virtual_host_name = kwargs['virtualHostName']
+        if virtual_host_name is None:
+            raise TypeError("Missing 'virtual_host_name' argument")
 
         _setter("id", id)
         _setter("instance_id", instance_id)

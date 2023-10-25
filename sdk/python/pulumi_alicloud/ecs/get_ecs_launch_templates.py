@@ -139,19 +139,6 @@ def get_ecs_launch_templates(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.120.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ecs.get_ecs_launch_templates(ids=["lt-bp1a469uxxxxxx"],
-        name_regex="your_launch_name")
-    pulumi.export("firstEcsLaunchTemplateId", example.templates[0].id)
-    ```
-
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Launch Template IDs.
@@ -198,19 +185,6 @@ def get_ecs_launch_templates_output(enable_details: Optional[pulumi.Input[Option
     This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.120.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ecs.get_ecs_launch_templates(ids=["lt-bp1a469uxxxxxx"],
-        name_regex="your_launch_name")
-    pulumi.export("firstEcsLaunchTemplateId", example.templates[0].id)
-    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

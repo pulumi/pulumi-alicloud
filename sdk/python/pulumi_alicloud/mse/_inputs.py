@@ -56,21 +56,21 @@ class GatewaySlbListArgs:
              slb_ip: Optional[pulumi.Input[str]] = None,
              slb_port: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'associateId' in kwargs:
+        if associate_id is None and 'associateId' in kwargs:
             associate_id = kwargs['associateId']
-        if 'gatewaySlbMode' in kwargs:
+        if gateway_slb_mode is None and 'gatewaySlbMode' in kwargs:
             gateway_slb_mode = kwargs['gatewaySlbMode']
-        if 'gatewaySlbStatus' in kwargs:
+        if gateway_slb_status is None and 'gatewaySlbStatus' in kwargs:
             gateway_slb_status = kwargs['gatewaySlbStatus']
-        if 'gmtCreate' in kwargs:
+        if gmt_create is None and 'gmtCreate' in kwargs:
             gmt_create = kwargs['gmtCreate']
-        if 'slbId' in kwargs:
+        if slb_id is None and 'slbId' in kwargs:
             slb_id = kwargs['slbId']
-        if 'slbIp' in kwargs:
+        if slb_ip is None and 'slbIp' in kwargs:
             slb_ip = kwargs['slbIp']
-        if 'slbPort' in kwargs:
+        if slb_port is None and 'slbPort' in kwargs:
             slb_port = kwargs['slbPort']
 
         if associate_id is not None:

@@ -15,35 +15,6 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.188.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.Cen.GetTransitRouterPrefixListAssociations.Invoke(new()
-        ///     {
-        ///         TransitRouterId = "tr-6ehx7q2jze8ch5ji0****",
-        ///         TransitRouterTableId = "vtb-6ehgc262hr170qgyc****",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cenTransitRouterPrefixListAssociationId"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterPrefixListAssociationsResult =&gt; getTransitRouterPrefixListAssociationsResult.Associations[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTransitRouterPrefixListAssociationsResult> InvokeAsync(GetTransitRouterPrefixListAssociationsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterPrefixListAssociationsResult>("alicloud:cen/getTransitRouterPrefixListAssociations:getTransitRouterPrefixListAssociations", args ?? new GetTransitRouterPrefixListAssociationsArgs(), options.WithDefaults());
@@ -52,35 +23,6 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.188.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.Cen.GetTransitRouterPrefixListAssociations.Invoke(new()
-        ///     {
-        ///         TransitRouterId = "tr-6ehx7q2jze8ch5ji0****",
-        ///         TransitRouterTableId = "vtb-6ehgc262hr170qgyc****",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cenTransitRouterPrefixListAssociationId"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterPrefixListAssociationsResult =&gt; getTransitRouterPrefixListAssociationsResult.Associations[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTransitRouterPrefixListAssociationsResult> Invoke(GetTransitRouterPrefixListAssociationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterPrefixListAssociationsResult>("alicloud:cen/getTransitRouterPrefixListAssociations:getTransitRouterPrefixListAssociations", args ?? new GetTransitRouterPrefixListAssociationsInvokeArgs(), options.WithDefaults());

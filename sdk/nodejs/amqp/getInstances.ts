@@ -10,27 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Amqp Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.128.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.amqp.getInstances({
- *     ids: [
- *         "amqp-abc12345",
- *         "amqp-abc34567",
- *     ],
- * });
- * export const amqpInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
- * const nameRegex = alicloud.amqp.getInstances({
- *     nameRegex: "^my-Instance",
- * });
- * export const amqpInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
- * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -91,27 +70,6 @@ export interface GetInstancesResult {
  * This data source provides the Amqp Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.128.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.amqp.getInstances({
- *     ids: [
- *         "amqp-abc12345",
- *         "amqp-abc34567",
- *     ],
- * });
- * export const amqpInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
- * const nameRegex = alicloud.amqp.getInstances({
- *     nameRegex: "^my-Instance",
- * });
- * export const amqpInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
- * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))

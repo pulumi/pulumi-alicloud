@@ -19,59 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.195.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tfexample"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultHoneypotImages, err := threatdetection.GetHoneypotImages(ctx, &threatdetection.GetHoneypotImagesArgs{
-//				NameRegex: pulumi.StringRef("^ruoyi"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultHoneypotNode, err := threatdetection.NewHoneypotNode(ctx, "defaultHoneypotNode", &threatdetection.HoneypotNodeArgs{
-//				NodeName:          pulumi.String(name),
-//				AvailableProbeNum: pulumi.Int(20),
-//				SecurityGroupProbeIpLists: pulumi.StringArray{
-//					pulumi.String("0.0.0.0/0"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = threatdetection.NewHoneyPot(ctx, "defaultHoneyPot", &threatdetection.HoneyPotArgs{
-//				HoneypotImageName: *pulumi.String(defaultHoneypotImages.Images[0].HoneypotImageName),
-//				HoneypotImageId:   *pulumi.String(defaultHoneypotImages.Images[0].HoneypotImageId),
-//				HoneypotName:      pulumi.String(name),
-//				NodeId:            defaultHoneypotNode.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Threat Detection Honey Pot can be imported using the id, e.g.

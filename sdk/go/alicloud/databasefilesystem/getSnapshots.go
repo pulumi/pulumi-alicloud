@@ -15,51 +15,6 @@ import (
 // This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.156.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/databasefilesystem"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := databasefilesystem.GetSnapshots(ctx, &databasefilesystem.GetSnapshotsArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dbfsSnapshotId1", ids.Snapshots[0].Id)
-//			nameRegex, err := databasefilesystem.GetSnapshots(ctx, &databasefilesystem.GetSnapshotsArgs{
-//				NameRegex: pulumi.StringRef("^my-Snapshot"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dbfsSnapshotId2", nameRegex.Snapshots[0].Id)
-//			status, err := databasefilesystem.GetSnapshots(ctx, &databasefilesystem.GetSnapshotsArgs{
-//				Status: pulumi.StringRef("accomplished"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dbfsSnapshotId3", status.Snapshots[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetSnapshots(ctx *pulumi.Context, args *GetSnapshotsArgs, opts ...pulumi.InvokeOption) (*GetSnapshotsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSnapshotsResult

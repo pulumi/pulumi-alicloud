@@ -16,46 +16,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
  * For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/en/slb/classic-load-balancer/developer-reference/api-createloadbalancer-2#t4182.html).
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraformslbconfig";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/12",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: name,
- * });
- * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {
- *     loadBalancerName: name,
- *     loadBalancerSpec: "slb.s2.small",
- *     vswitchId: defaultSwitch.id,
- *     tags: {
- *         tag_a: 1,
- *         tag_b: 2,
- *         tag_c: 3,
- *         tag_d: 4,
- *         tag_e: 5,
- *         tag_f: 6,
- *         tag_g: 7,
- *         tag_h: 8,
- *         tag_i: 9,
- *         tag_j: 10,
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Load balancer can be imported using the id, e.g.

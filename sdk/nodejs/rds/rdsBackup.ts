@@ -11,25 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.149.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
- *     engine: "MySQL",
- *     engineVersion: "5.6",
- *     instanceType: "rds.mysql.t1.small",
- *     instanceStorage: 30,
- *     instanceChargeType: "Postpaid",
- *     dbInstanceStorageType: "local_ssd",
- * });
- * const exampleRdsBackup = new alicloud.rds.RdsBackup("exampleRdsBackup", {dbInstanceId: exampleInstance.id});
- * ```
- *
  * ## Import
  *
  * RDS Backup can be imported using the id, e.g.

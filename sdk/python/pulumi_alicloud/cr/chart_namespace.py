@@ -35,19 +35,23 @@ class ChartNamespaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
-             namespace_name: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             namespace_name: Optional[pulumi.Input[str]] = None,
              auto_create_repo: Optional[pulumi.Input[bool]] = None,
              default_repo_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'namespaceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if namespace_name is None and 'namespaceName' in kwargs:
             namespace_name = kwargs['namespaceName']
-        if 'autoCreateRepo' in kwargs:
+        if namespace_name is None:
+            raise TypeError("Missing 'namespace_name' argument")
+        if auto_create_repo is None and 'autoCreateRepo' in kwargs:
             auto_create_repo = kwargs['autoCreateRepo']
-        if 'defaultRepoType' in kwargs:
+        if default_repo_type is None and 'defaultRepoType' in kwargs:
             default_repo_type = kwargs['defaultRepoType']
 
         _setter("instance_id", instance_id)
@@ -134,15 +138,15 @@ class _ChartNamespaceState:
              default_repo_type: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              namespace_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoCreateRepo' in kwargs:
+        if auto_create_repo is None and 'autoCreateRepo' in kwargs:
             auto_create_repo = kwargs['autoCreateRepo']
-        if 'defaultRepoType' in kwargs:
+        if default_repo_type is None and 'defaultRepoType' in kwargs:
             default_repo_type = kwargs['defaultRepoType']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'namespaceName' in kwargs:
+        if namespace_name is None and 'namespaceName' in kwargs:
             namespace_name = kwargs['namespaceName']
 
         if auto_create_repo is not None:
@@ -220,30 +224,6 @@ class ChartNamespace(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.149.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "example-name"
-        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
-            payment_type="Subscription",
-            period=1,
-            renew_period=0,
-            renewal_status="ManualRenewal",
-            instance_type="Advanced",
-            instance_name=name)
-        example_chart_namespace = alicloud.cr.ChartNamespace("exampleChartNamespace",
-            instance_id=example_registry_enterprise_instance.id,
-            namespace_name=name)
-        ```
-
         ## Import
 
         CR Chart Namespace can be imported using the id, e.g.
@@ -271,30 +251,6 @@ class ChartNamespace(pulumi.CustomResource):
         For information about CR Chart Namespace and how to use it, see [What is Chart Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createchartnamespace).
 
         > **NOTE:** Available since v1.149.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "example-name"
-        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
-            payment_type="Subscription",
-            period=1,
-            renew_period=0,
-            renewal_status="ManualRenewal",
-            instance_type="Advanced",
-            instance_name=name)
-        example_chart_namespace = alicloud.cr.ChartNamespace("exampleChartNamespace",
-            instance_id=example_registry_enterprise_instance.id,
-            namespace_name=name)
-        ```
 
         ## Import
 

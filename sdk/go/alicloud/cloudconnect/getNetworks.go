@@ -17,41 +17,6 @@ import (
 // > **NOTE:** Available in 1.59.0+
 //
 // > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudconnect"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := cloudconnect.GetNetworks(ctx, &cloudconnect.GetNetworksArgs{
-// Ids: interface{}{
-// alicloud_cloud_connect_networks.Default.Id,
-// },
-// NameRegex: pulumi.StringRef("^tf-testAcc.*"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// _, err = cloudconnect.NewNetwork(ctx, "defaultNetwork", &cloudconnect.NetworkArgs{
-// CidrBlock: pulumi.String("192.168.0.0/24"),
-// Description: pulumi.String("tf-testAccCloudConnectNetworkDescription"),
-// IsDefault: pulumi.Bool(true),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
-// ```
 func GetNetworks(ctx *pulumi.Context, args *GetNetworksArgs, opts ...pulumi.InvokeOption) (*GetNetworksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworksResult

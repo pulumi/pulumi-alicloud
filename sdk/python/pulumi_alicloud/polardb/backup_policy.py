@@ -80,7 +80,7 @@ class BackupPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_cluster_id: pulumi.Input[str],
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
              backup_frequency: Optional[pulumi.Input[str]] = None,
              backup_retention_period: Optional[pulumi.Input[str]] = None,
              backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
@@ -98,43 +98,45 @@ class BackupPolicyArgs:
              log_backup_retention_period: Optional[pulumi.Input[int]] = None,
              preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              preferred_backup_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbClusterId' in kwargs:
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'backupFrequency' in kwargs:
+        if db_cluster_id is None:
+            raise TypeError("Missing 'db_cluster_id' argument")
+        if backup_frequency is None and 'backupFrequency' in kwargs:
             backup_frequency = kwargs['backupFrequency']
-        if 'backupRetentionPeriod' in kwargs:
+        if backup_retention_period is None and 'backupRetentionPeriod' in kwargs:
             backup_retention_period = kwargs['backupRetentionPeriod']
-        if 'backupRetentionPolicyOnClusterDeletion' in kwargs:
+        if backup_retention_policy_on_cluster_deletion is None and 'backupRetentionPolicyOnClusterDeletion' in kwargs:
             backup_retention_policy_on_cluster_deletion = kwargs['backupRetentionPolicyOnClusterDeletion']
-        if 'dataLevel1BackupFrequency' in kwargs:
+        if data_level1_backup_frequency is None and 'dataLevel1BackupFrequency' in kwargs:
             data_level1_backup_frequency = kwargs['dataLevel1BackupFrequency']
-        if 'dataLevel1BackupPeriods' in kwargs:
+        if data_level1_backup_periods is None and 'dataLevel1BackupPeriods' in kwargs:
             data_level1_backup_periods = kwargs['dataLevel1BackupPeriods']
-        if 'dataLevel1BackupRetentionPeriod' in kwargs:
+        if data_level1_backup_retention_period is None and 'dataLevel1BackupRetentionPeriod' in kwargs:
             data_level1_backup_retention_period = kwargs['dataLevel1BackupRetentionPeriod']
-        if 'dataLevel1BackupTime' in kwargs:
+        if data_level1_backup_time is None and 'dataLevel1BackupTime' in kwargs:
             data_level1_backup_time = kwargs['dataLevel1BackupTime']
-        if 'dataLevel2BackupAnotherRegionRegion' in kwargs:
+        if data_level2_backup_another_region_region is None and 'dataLevel2BackupAnotherRegionRegion' in kwargs:
             data_level2_backup_another_region_region = kwargs['dataLevel2BackupAnotherRegionRegion']
-        if 'dataLevel2BackupAnotherRegionRetentionPeriod' in kwargs:
+        if data_level2_backup_another_region_retention_period is None and 'dataLevel2BackupAnotherRegionRetentionPeriod' in kwargs:
             data_level2_backup_another_region_retention_period = kwargs['dataLevel2BackupAnotherRegionRetentionPeriod']
-        if 'dataLevel2BackupPeriods' in kwargs:
+        if data_level2_backup_periods is None and 'dataLevel2BackupPeriods' in kwargs:
             data_level2_backup_periods = kwargs['dataLevel2BackupPeriods']
-        if 'dataLevel2BackupRetentionPeriod' in kwargs:
+        if data_level2_backup_retention_period is None and 'dataLevel2BackupRetentionPeriod' in kwargs:
             data_level2_backup_retention_period = kwargs['dataLevel2BackupRetentionPeriod']
-        if 'enableBackupLog' in kwargs:
+        if enable_backup_log is None and 'enableBackupLog' in kwargs:
             enable_backup_log = kwargs['enableBackupLog']
-        if 'logBackupAnotherRegionRegion' in kwargs:
+        if log_backup_another_region_region is None and 'logBackupAnotherRegionRegion' in kwargs:
             log_backup_another_region_region = kwargs['logBackupAnotherRegionRegion']
-        if 'logBackupAnotherRegionRetentionPeriod' in kwargs:
+        if log_backup_another_region_retention_period is None and 'logBackupAnotherRegionRetentionPeriod' in kwargs:
             log_backup_another_region_retention_period = kwargs['logBackupAnotherRegionRetentionPeriod']
-        if 'logBackupRetentionPeriod' in kwargs:
+        if log_backup_retention_period is None and 'logBackupRetentionPeriod' in kwargs:
             log_backup_retention_period = kwargs['logBackupRetentionPeriod']
-        if 'preferredBackupPeriods' in kwargs:
+        if preferred_backup_periods is None and 'preferredBackupPeriods' in kwargs:
             preferred_backup_periods = kwargs['preferredBackupPeriods']
-        if 'preferredBackupTime' in kwargs:
+        if preferred_backup_time is None and 'preferredBackupTime' in kwargs:
             preferred_backup_time = kwargs['preferredBackupTime']
 
         _setter("db_cluster_id", db_cluster_id)
@@ -480,43 +482,43 @@ class _BackupPolicyState:
              log_backup_retention_period: Optional[pulumi.Input[int]] = None,
              preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              preferred_backup_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupFrequency' in kwargs:
+        if backup_frequency is None and 'backupFrequency' in kwargs:
             backup_frequency = kwargs['backupFrequency']
-        if 'backupRetentionPeriod' in kwargs:
+        if backup_retention_period is None and 'backupRetentionPeriod' in kwargs:
             backup_retention_period = kwargs['backupRetentionPeriod']
-        if 'backupRetentionPolicyOnClusterDeletion' in kwargs:
+        if backup_retention_policy_on_cluster_deletion is None and 'backupRetentionPolicyOnClusterDeletion' in kwargs:
             backup_retention_policy_on_cluster_deletion = kwargs['backupRetentionPolicyOnClusterDeletion']
-        if 'dataLevel1BackupFrequency' in kwargs:
+        if data_level1_backup_frequency is None and 'dataLevel1BackupFrequency' in kwargs:
             data_level1_backup_frequency = kwargs['dataLevel1BackupFrequency']
-        if 'dataLevel1BackupPeriods' in kwargs:
+        if data_level1_backup_periods is None and 'dataLevel1BackupPeriods' in kwargs:
             data_level1_backup_periods = kwargs['dataLevel1BackupPeriods']
-        if 'dataLevel1BackupRetentionPeriod' in kwargs:
+        if data_level1_backup_retention_period is None and 'dataLevel1BackupRetentionPeriod' in kwargs:
             data_level1_backup_retention_period = kwargs['dataLevel1BackupRetentionPeriod']
-        if 'dataLevel1BackupTime' in kwargs:
+        if data_level1_backup_time is None and 'dataLevel1BackupTime' in kwargs:
             data_level1_backup_time = kwargs['dataLevel1BackupTime']
-        if 'dataLevel2BackupAnotherRegionRegion' in kwargs:
+        if data_level2_backup_another_region_region is None and 'dataLevel2BackupAnotherRegionRegion' in kwargs:
             data_level2_backup_another_region_region = kwargs['dataLevel2BackupAnotherRegionRegion']
-        if 'dataLevel2BackupAnotherRegionRetentionPeriod' in kwargs:
+        if data_level2_backup_another_region_retention_period is None and 'dataLevel2BackupAnotherRegionRetentionPeriod' in kwargs:
             data_level2_backup_another_region_retention_period = kwargs['dataLevel2BackupAnotherRegionRetentionPeriod']
-        if 'dataLevel2BackupPeriods' in kwargs:
+        if data_level2_backup_periods is None and 'dataLevel2BackupPeriods' in kwargs:
             data_level2_backup_periods = kwargs['dataLevel2BackupPeriods']
-        if 'dataLevel2BackupRetentionPeriod' in kwargs:
+        if data_level2_backup_retention_period is None and 'dataLevel2BackupRetentionPeriod' in kwargs:
             data_level2_backup_retention_period = kwargs['dataLevel2BackupRetentionPeriod']
-        if 'dbClusterId' in kwargs:
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'enableBackupLog' in kwargs:
+        if enable_backup_log is None and 'enableBackupLog' in kwargs:
             enable_backup_log = kwargs['enableBackupLog']
-        if 'logBackupAnotherRegionRegion' in kwargs:
+        if log_backup_another_region_region is None and 'logBackupAnotherRegionRegion' in kwargs:
             log_backup_another_region_region = kwargs['logBackupAnotherRegionRegion']
-        if 'logBackupAnotherRegionRetentionPeriod' in kwargs:
+        if log_backup_another_region_retention_period is None and 'logBackupAnotherRegionRetentionPeriod' in kwargs:
             log_backup_another_region_retention_period = kwargs['logBackupAnotherRegionRetentionPeriod']
-        if 'logBackupRetentionPeriod' in kwargs:
+        if log_backup_retention_period is None and 'logBackupRetentionPeriod' in kwargs:
             log_backup_retention_period = kwargs['logBackupRetentionPeriod']
-        if 'preferredBackupPeriods' in kwargs:
+        if preferred_backup_periods is None and 'preferredBackupPeriods' in kwargs:
             preferred_backup_periods = kwargs['preferredBackupPeriods']
-        if 'preferredBackupTime' in kwargs:
+        if preferred_backup_time is None and 'preferredBackupTime' in kwargs:
             preferred_backup_time = kwargs['preferredBackupTime']
 
         if backup_frequency is not None:

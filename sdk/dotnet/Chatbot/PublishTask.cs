@@ -16,29 +16,6 @@ namespace Pulumi.AliCloud.Chatbot
     /// 
     /// &gt; **NOTE:** Available in v1.203.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultAgents = AliCloud.Chatbot.GetAgents.Invoke();
-    /// 
-    ///     var defaultPublishTask = new AliCloud.Chatbot.PublishTask("defaultPublishTask", new()
-    ///     {
-    ///         BizType = "faq",
-    ///         AgentKey = defaultAgents.Apply(getAgentsResult =&gt; getAgentsResult.Agents[0]?.AgentKey),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Chatbot Publish Task can be imported using the id, e.g.

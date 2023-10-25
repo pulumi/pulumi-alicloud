@@ -10,45 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
- * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- * }));
- * const example = new alicloud.cloudstoragegateway.StorageBundle("example", {storageBundleName: "example_value"});
- * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("defaultGateway", {
- *     description: "tf-acctestDesalone",
- *     gatewayClass: "Standard",
- *     type: "File",
- *     paymentType: "PayAsYouGo",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
- *     releaseAfterExpiration: false,
- *     publicNetworkBandwidth: 40,
- *     storageBundleId: example.id,
- *     location: "Cloud",
- *     gatewayName: "example_value",
- * });
- * const defaultGatewaySmbUser = new alicloud.cloudstoragegateway.GatewaySmbUser("defaultGatewaySmbUser", {
- *     username: "your_username",
- *     password: "password",
- *     gatewayId: defaultGateway.id,
- * });
- * const ids = alicloud.cloudstoragegateway.getGatewaySmbUsersOutput({
- *     gatewayId: defaultGateway.id,
- *     ids: [defaultGatewaySmbUser.id],
- * });
- * export const cloudStorageGatewayGatewaySmbUserId1 = ids.apply(ids => ids.users?.[0]?.id);
- * ```
  */
 export function getGatewaySmbUsers(args: GetGatewaySmbUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaySmbUsersResult> {
 
@@ -101,45 +62,6 @@ export interface GetGatewaySmbUsersResult {
  * This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
- * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- * }));
- * const example = new alicloud.cloudstoragegateway.StorageBundle("example", {storageBundleName: "example_value"});
- * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("defaultGateway", {
- *     description: "tf-acctestDesalone",
- *     gatewayClass: "Standard",
- *     type: "File",
- *     paymentType: "PayAsYouGo",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
- *     releaseAfterExpiration: false,
- *     publicNetworkBandwidth: 40,
- *     storageBundleId: example.id,
- *     location: "Cloud",
- *     gatewayName: "example_value",
- * });
- * const defaultGatewaySmbUser = new alicloud.cloudstoragegateway.GatewaySmbUser("defaultGatewaySmbUser", {
- *     username: "your_username",
- *     password: "password",
- *     gatewayId: defaultGateway.id,
- * });
- * const ids = alicloud.cloudstoragegateway.getGatewaySmbUsersOutput({
- *     gatewayId: defaultGateway.id,
- *     ids: [defaultGatewaySmbUser.id],
- * });
- * export const cloudStorageGatewayGatewaySmbUserId1 = ids.apply(ids => ids.users?.[0]?.id);
- * ```
  */
 export function getGatewaySmbUsersOutput(args: GetGatewaySmbUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaySmbUsersResult> {
     return pulumi.output(args).apply((a: any) => getGatewaySmbUsers(a, opts))

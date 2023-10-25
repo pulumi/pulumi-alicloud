@@ -57,11 +57,11 @@ class NestServiceInstanceCommodity(dict):
              _setter: Callable[[Any, Any], None],
              pay_period: Optional[int] = None,
              pay_period_unit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'payPeriod' in kwargs:
+        if pay_period is None and 'payPeriod' in kwargs:
             pay_period = kwargs['payPeriod']
-        if 'payPeriodUnit' in kwargs:
+        if pay_period_unit is None and 'payPeriodUnit' in kwargs:
             pay_period_unit = kwargs['payPeriodUnit']
 
         if pay_period is not None:
@@ -134,13 +134,13 @@ class NestServiceInstanceOperationMetadata(dict):
              operation_end_time: Optional[str] = None,
              operation_start_time: Optional[str] = None,
              resources: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'operatedServiceInstanceId' in kwargs:
+        if operated_service_instance_id is None and 'operatedServiceInstanceId' in kwargs:
             operated_service_instance_id = kwargs['operatedServiceInstanceId']
-        if 'operationEndTime' in kwargs:
+        if operation_end_time is None and 'operationEndTime' in kwargs:
             operation_end_time = kwargs['operationEndTime']
-        if 'operationStartTime' in kwargs:
+        if operation_start_time is None and 'operationStartTime' in kwargs:
             operation_start_time = kwargs['operationStartTime']
 
         if operated_service_instance_id is not None:
@@ -204,7 +204,7 @@ class GetNestServiceInstancesFilterResult(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -282,36 +282,64 @@ class GetNestServiceInstancesServiceInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enable_instance_ops: bool,
-             id: str,
-             operated_service_instance_id: str,
-             operation_end_time: str,
-             operation_start_time: str,
-             parameters: str,
-             resources: str,
-             service_instance_id: str,
-             service_instance_name: str,
-             services: Sequence['outputs.GetNestServiceInstancesServiceInstanceServiceResult'],
-             source: str,
-             status: str,
-             tags: Mapping[str, Any],
-             template_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             enable_instance_ops: Optional[bool] = None,
+             id: Optional[str] = None,
+             operated_service_instance_id: Optional[str] = None,
+             operation_end_time: Optional[str] = None,
+             operation_start_time: Optional[str] = None,
+             parameters: Optional[str] = None,
+             resources: Optional[str] = None,
+             service_instance_id: Optional[str] = None,
+             service_instance_name: Optional[str] = None,
+             services: Optional[Sequence['outputs.GetNestServiceInstancesServiceInstanceServiceResult']] = None,
+             source: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             template_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'enableInstanceOps' in kwargs:
+        if enable_instance_ops is None and 'enableInstanceOps' in kwargs:
             enable_instance_ops = kwargs['enableInstanceOps']
-        if 'operatedServiceInstanceId' in kwargs:
+        if enable_instance_ops is None:
+            raise TypeError("Missing 'enable_instance_ops' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if operated_service_instance_id is None and 'operatedServiceInstanceId' in kwargs:
             operated_service_instance_id = kwargs['operatedServiceInstanceId']
-        if 'operationEndTime' in kwargs:
+        if operated_service_instance_id is None:
+            raise TypeError("Missing 'operated_service_instance_id' argument")
+        if operation_end_time is None and 'operationEndTime' in kwargs:
             operation_end_time = kwargs['operationEndTime']
-        if 'operationStartTime' in kwargs:
+        if operation_end_time is None:
+            raise TypeError("Missing 'operation_end_time' argument")
+        if operation_start_time is None and 'operationStartTime' in kwargs:
             operation_start_time = kwargs['operationStartTime']
-        if 'serviceInstanceId' in kwargs:
+        if operation_start_time is None:
+            raise TypeError("Missing 'operation_start_time' argument")
+        if parameters is None:
+            raise TypeError("Missing 'parameters' argument")
+        if resources is None:
+            raise TypeError("Missing 'resources' argument")
+        if service_instance_id is None and 'serviceInstanceId' in kwargs:
             service_instance_id = kwargs['serviceInstanceId']
-        if 'serviceInstanceName' in kwargs:
+        if service_instance_id is None:
+            raise TypeError("Missing 'service_instance_id' argument")
+        if service_instance_name is None and 'serviceInstanceName' in kwargs:
             service_instance_name = kwargs['serviceInstanceName']
-        if 'templateName' in kwargs:
+        if service_instance_name is None:
+            raise TypeError("Missing 'service_instance_name' argument")
+        if services is None:
+            raise TypeError("Missing 'services' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
 
         _setter("enable_instance_ops", enable_instance_ops)
         _setter("id", id)
@@ -482,34 +510,54 @@ class GetNestServiceInstancesServiceInstanceServiceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             deploy_type: str,
-             publish_time: str,
-             service_id: str,
-             service_infos: Sequence['outputs.GetNestServiceInstancesServiceInstanceServiceServiceInfoResult'],
-             service_type: str,
-             status: str,
-             supplier_name: str,
-             supplier_url: str,
-             version: str,
-             version_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             deploy_type: Optional[str] = None,
+             publish_time: Optional[str] = None,
+             service_id: Optional[str] = None,
+             service_infos: Optional[Sequence['outputs.GetNestServiceInstancesServiceInstanceServiceServiceInfoResult']] = None,
+             service_type: Optional[str] = None,
+             status: Optional[str] = None,
+             supplier_name: Optional[str] = None,
+             supplier_url: Optional[str] = None,
+             version: Optional[str] = None,
+             version_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deployType' in kwargs:
+        if deploy_type is None and 'deployType' in kwargs:
             deploy_type = kwargs['deployType']
-        if 'publishTime' in kwargs:
+        if deploy_type is None:
+            raise TypeError("Missing 'deploy_type' argument")
+        if publish_time is None and 'publishTime' in kwargs:
             publish_time = kwargs['publishTime']
-        if 'serviceId' in kwargs:
+        if publish_time is None:
+            raise TypeError("Missing 'publish_time' argument")
+        if service_id is None and 'serviceId' in kwargs:
             service_id = kwargs['serviceId']
-        if 'serviceInfos' in kwargs:
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+        if service_infos is None and 'serviceInfos' in kwargs:
             service_infos = kwargs['serviceInfos']
-        if 'serviceType' in kwargs:
+        if service_infos is None:
+            raise TypeError("Missing 'service_infos' argument")
+        if service_type is None and 'serviceType' in kwargs:
             service_type = kwargs['serviceType']
-        if 'supplierName' in kwargs:
+        if service_type is None:
+            raise TypeError("Missing 'service_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if supplier_name is None and 'supplierName' in kwargs:
             supplier_name = kwargs['supplierName']
-        if 'supplierUrl' in kwargs:
+        if supplier_name is None:
+            raise TypeError("Missing 'supplier_name' argument")
+        if supplier_url is None and 'supplierUrl' in kwargs:
             supplier_url = kwargs['supplierUrl']
-        if 'versionName' in kwargs:
+        if supplier_url is None:
+            raise TypeError("Missing 'supplier_url' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if version_name is None and 'versionName' in kwargs:
             version_name = kwargs['versionName']
+        if version_name is None:
+            raise TypeError("Missing 'version_name' argument")
 
         _setter("deploy_type", deploy_type)
         _setter("publish_time", publish_time)
@@ -626,14 +674,22 @@ class GetNestServiceInstancesServiceInstanceServiceServiceInfoResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image: str,
-             locale: str,
-             name: str,
-             short_description: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             image: Optional[str] = None,
+             locale: Optional[str] = None,
+             name: Optional[str] = None,
+             short_description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'shortDescription' in kwargs:
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if locale is None:
+            raise TypeError("Missing 'locale' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if short_description is None and 'shortDescription' in kwargs:
             short_description = kwargs['shortDescription']
+        if short_description is None:
+            raise TypeError("Missing 'short_description' argument")
 
         _setter("image", image)
         _setter("locale", locale)

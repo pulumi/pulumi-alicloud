@@ -15,39 +15,6 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
         /// 
         /// &gt; **NOTE:** Available in 1.194.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.CloudFirewall.GetVpcFirewallCens.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             alicloud_cloud_firewall_vpc_firewall_cen.Default.Id,
-        ///         },
-        ///         CenId = "cen-cjok7uyb5w2b27573v",
-        ///         MemberUid = "1415189284827022",
-        ///         Status = "closed",
-        ///         VpcFirewallName = "tf-test",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudCloudFirewallVpcFirewallCenExampleId"] = @default.Apply(@default =&gt; @default.Apply(getVpcFirewallCensResult =&gt; getVpcFirewallCensResult.Cens[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVpcFirewallCensResult> InvokeAsync(GetVpcFirewallCensArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcFirewallCensResult>("alicloud:cloudfirewall/getVpcFirewallCens:getVpcFirewallCens", args ?? new GetVpcFirewallCensArgs(), options.WithDefaults());
@@ -56,39 +23,6 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
         /// 
         /// &gt; **NOTE:** Available in 1.194.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.CloudFirewall.GetVpcFirewallCens.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             alicloud_cloud_firewall_vpc_firewall_cen.Default.Id,
-        ///         },
-        ///         CenId = "cen-cjok7uyb5w2b27573v",
-        ///         MemberUid = "1415189284827022",
-        ///         Status = "closed",
-        ///         VpcFirewallName = "tf-test",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudCloudFirewallVpcFirewallCenExampleId"] = @default.Apply(@default =&gt; @default.Apply(getVpcFirewallCensResult =&gt; getVpcFirewallCensResult.Cens[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetVpcFirewallCensResult> Invoke(GetVpcFirewallCensInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcFirewallCensResult>("alicloud:cloudfirewall/getVpcFirewallCens:getVpcFirewallCens", args ?? new GetVpcFirewallCensInvokeArgs(), options.WithDefaults());

@@ -76,13 +76,13 @@ class GroupMetricRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: pulumi.Input[str],
-             escalations: pulumi.Input['GroupMetricRuleEscalationsArgs'],
-             group_id: pulumi.Input[str],
-             group_metric_rule_name: pulumi.Input[str],
-             metric_name: pulumi.Input[str],
-             namespace: pulumi.Input[str],
-             rule_id: pulumi.Input[str],
+             category: Optional[pulumi.Input[str]] = None,
+             escalations: Optional[pulumi.Input['GroupMetricRuleEscalationsArgs']] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             group_metric_rule_name: Optional[pulumi.Input[str]] = None,
+             metric_name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             rule_id: Optional[pulumi.Input[str]] = None,
              contact_groups: Optional[pulumi.Input[str]] = None,
              dimensions: Optional[pulumi.Input[str]] = None,
              effective_interval: Optional[pulumi.Input[str]] = None,
@@ -93,25 +93,39 @@ class GroupMetricRuleArgs:
              silence_time: Optional[pulumi.Input[int]] = None,
              targets: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]] = None,
              webhook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupId' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if escalations is None:
+            raise TypeError("Missing 'escalations' argument")
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'groupMetricRuleName' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if group_metric_rule_name is None and 'groupMetricRuleName' in kwargs:
             group_metric_rule_name = kwargs['groupMetricRuleName']
-        if 'metricName' in kwargs:
+        if group_metric_rule_name is None:
+            raise TypeError("Missing 'group_metric_rule_name' argument")
+        if metric_name is None and 'metricName' in kwargs:
             metric_name = kwargs['metricName']
-        if 'ruleId' in kwargs:
+        if metric_name is None:
+            raise TypeError("Missing 'metric_name' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if rule_id is None and 'ruleId' in kwargs:
             rule_id = kwargs['ruleId']
-        if 'contactGroups' in kwargs:
+        if rule_id is None:
+            raise TypeError("Missing 'rule_id' argument")
+        if contact_groups is None and 'contactGroups' in kwargs:
             contact_groups = kwargs['contactGroups']
-        if 'effectiveInterval' in kwargs:
+        if effective_interval is None and 'effectiveInterval' in kwargs:
             effective_interval = kwargs['effectiveInterval']
-        if 'emailSubject' in kwargs:
+        if email_subject is None and 'emailSubject' in kwargs:
             email_subject = kwargs['emailSubject']
-        if 'noEffectiveInterval' in kwargs:
+        if no_effective_interval is None and 'noEffectiveInterval' in kwargs:
             no_effective_interval = kwargs['noEffectiveInterval']
-        if 'silenceTime' in kwargs:
+        if silence_time is None and 'silenceTime' in kwargs:
             silence_time = kwargs['silenceTime']
 
         _setter("category", category)
@@ -431,25 +445,25 @@ class _GroupMetricRuleState:
              status: Optional[pulumi.Input[str]] = None,
              targets: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]] = None,
              webhook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contactGroups' in kwargs:
+        if contact_groups is None and 'contactGroups' in kwargs:
             contact_groups = kwargs['contactGroups']
-        if 'effectiveInterval' in kwargs:
+        if effective_interval is None and 'effectiveInterval' in kwargs:
             effective_interval = kwargs['effectiveInterval']
-        if 'emailSubject' in kwargs:
+        if email_subject is None and 'emailSubject' in kwargs:
             email_subject = kwargs['emailSubject']
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'groupMetricRuleName' in kwargs:
+        if group_metric_rule_name is None and 'groupMetricRuleName' in kwargs:
             group_metric_rule_name = kwargs['groupMetricRuleName']
-        if 'metricName' in kwargs:
+        if metric_name is None and 'metricName' in kwargs:
             metric_name = kwargs['metricName']
-        if 'noEffectiveInterval' in kwargs:
+        if no_effective_interval is None and 'noEffectiveInterval' in kwargs:
             no_effective_interval = kwargs['noEffectiveInterval']
-        if 'ruleId' in kwargs:
+        if rule_id is None and 'ruleId' in kwargs:
             rule_id = kwargs['ruleId']
-        if 'silenceTime' in kwargs:
+        if silence_time is None and 'silenceTime' in kwargs:
             silence_time = kwargs['silenceTime']
 
         if category is not None:
@@ -736,52 +750,6 @@ class GroupMetricRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.104.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
-            alarm_contact_group_name=name,
-            describe=name)
-        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup",
-            monitor_group_name=name,
-            contact_groups=[default_alarm_contact_group.id])
-        this = alicloud.cms.GroupMetricRule("this",
-            group_id=default_monitor_group.id,
-            group_metric_rule_name=name,
-            category="ecs",
-            metric_name="cpu_total",
-            namespace="acs_ecs_dashboard",
-            rule_id=name,
-            period=60,
-            interval="3600",
-            silence_time=85800,
-            no_effective_interval="00:00-05:30",
-            webhook="http://www.aliyun.com",
-            escalations=alicloud.cms.GroupMetricRuleEscalationsArgs(
-                warn=alicloud.cms.GroupMetricRuleEscalationsWarnArgs(
-                    comparison_operator="GreaterThanOrEqualToThreshold",
-                    statistics="Average",
-                    threshold="90",
-                    times=3,
-                ),
-                info=alicloud.cms.GroupMetricRuleEscalationsInfoArgs(
-                    comparison_operator="LessThanLastWeek",
-                    statistics="Average",
-                    threshold="90",
-                    times=5,
-                ),
-            ))
-        ```
-
         ## Import
 
         Cloud Monitor Service Group Metric Rule can be imported using the id, e.g.
@@ -822,52 +790,6 @@ class GroupMetricRule(pulumi.CustomResource):
         For information about Cloud Monitor Service Group Metric Rule and how to use it, see [What is Group Metric Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putgroupmetricrule).
 
         > **NOTE:** Available since v1.104.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
-            alarm_contact_group_name=name,
-            describe=name)
-        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup",
-            monitor_group_name=name,
-            contact_groups=[default_alarm_contact_group.id])
-        this = alicloud.cms.GroupMetricRule("this",
-            group_id=default_monitor_group.id,
-            group_metric_rule_name=name,
-            category="ecs",
-            metric_name="cpu_total",
-            namespace="acs_ecs_dashboard",
-            rule_id=name,
-            period=60,
-            interval="3600",
-            silence_time=85800,
-            no_effective_interval="00:00-05:30",
-            webhook="http://www.aliyun.com",
-            escalations=alicloud.cms.GroupMetricRuleEscalationsArgs(
-                warn=alicloud.cms.GroupMetricRuleEscalationsWarnArgs(
-                    comparison_operator="GreaterThanOrEqualToThreshold",
-                    statistics="Average",
-                    threshold="90",
-                    times=3,
-                ),
-                info=alicloud.cms.GroupMetricRuleEscalationsInfoArgs(
-                    comparison_operator="LessThanLastWeek",
-                    statistics="Average",
-                    threshold="90",
-                    times=5,
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -929,11 +851,7 @@ class GroupMetricRule(pulumi.CustomResource):
             __props__.__dict__["dimensions"] = dimensions
             __props__.__dict__["effective_interval"] = effective_interval
             __props__.__dict__["email_subject"] = email_subject
-            if escalations is not None and not isinstance(escalations, GroupMetricRuleEscalationsArgs):
-                escalations = escalations or {}
-                def _setter(key, value):
-                    escalations[key] = value
-                GroupMetricRuleEscalationsArgs._configure(_setter, **escalations)
+            escalations = _utilities.configure(escalations, GroupMetricRuleEscalationsArgs, True)
             if escalations is None and not opts.urn:
                 raise TypeError("Missing required property 'escalations'")
             __props__.__dict__["escalations"] = escalations

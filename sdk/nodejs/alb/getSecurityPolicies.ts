@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Alb Security Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.130.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.alb.getSecurityPolicies({});
- * export const albSecurityPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
- * const nameRegex = alicloud.alb.getSecurityPolicies({
- *     nameRegex: "^my-SecurityPolicy",
- * });
- * export const albSecurityPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
- * ```
  */
 export function getSecurityPolicies(args?: GetSecurityPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityPoliciesResult> {
     args = args || {};
@@ -101,22 +85,6 @@ export interface GetSecurityPoliciesResult {
  * This data source provides the Alb Security Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.130.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.alb.getSecurityPolicies({});
- * export const albSecurityPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
- * const nameRegex = alicloud.alb.getSecurityPolicies({
- *     nameRegex: "^my-SecurityPolicy",
- * });
- * export const albSecurityPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
- * ```
  */
 export function getSecurityPoliciesOutput(args?: GetSecurityPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getSecurityPolicies(a, opts))

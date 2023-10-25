@@ -20,31 +20,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:**  Available in 1.40.0+.
         /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var snapshots = AliCloud.Ecs.GetSnapshots.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "s-123456890abcdef",
-        ///         },
-        ///         NameRegex = "tf-testAcc-snapshot",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// ##  Argument Reference
         /// 
         /// The following arguments are supported:
@@ -86,31 +61,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:**  Available in 1.40.0+.
         /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var snapshots = AliCloud.Ecs.GetSnapshots.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "s-123456890abcdef",
-        ///         },
-        ///         NameRegex = "tf-testAcc-snapshot",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// ##  Argument Reference
         /// 
         /// The following arguments are supported:

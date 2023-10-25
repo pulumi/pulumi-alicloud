@@ -70,11 +70,11 @@ class ApiArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auth_type: pulumi.Input[str],
-             description: pulumi.Input[str],
-             group_id: pulumi.Input[str],
-             request_config: pulumi.Input['ApiRequestConfigArgs'],
-             service_type: pulumi.Input[str],
+             auth_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             request_config: Optional[pulumi.Input['ApiRequestConfigArgs']] = None,
+             service_type: Optional[pulumi.Input[str]] = None,
              constant_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]]] = None,
              fc_service_config: Optional[pulumi.Input['ApiFcServiceConfigArgs']] = None,
              force_nonce_check: Optional[pulumi.Input[bool]] = None,
@@ -85,33 +85,43 @@ class ApiArgs:
              request_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]]] = None,
              stage_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authType' in kwargs:
+        if auth_type is None and 'authType' in kwargs:
             auth_type = kwargs['authType']
-        if 'groupId' in kwargs:
+        if auth_type is None:
+            raise TypeError("Missing 'auth_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'requestConfig' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if request_config is None and 'requestConfig' in kwargs:
             request_config = kwargs['requestConfig']
-        if 'serviceType' in kwargs:
+        if request_config is None:
+            raise TypeError("Missing 'request_config' argument")
+        if service_type is None and 'serviceType' in kwargs:
             service_type = kwargs['serviceType']
-        if 'constantParameters' in kwargs:
+        if service_type is None:
+            raise TypeError("Missing 'service_type' argument")
+        if constant_parameters is None and 'constantParameters' in kwargs:
             constant_parameters = kwargs['constantParameters']
-        if 'fcServiceConfig' in kwargs:
+        if fc_service_config is None and 'fcServiceConfig' in kwargs:
             fc_service_config = kwargs['fcServiceConfig']
-        if 'forceNonceCheck' in kwargs:
+        if force_nonce_check is None and 'forceNonceCheck' in kwargs:
             force_nonce_check = kwargs['forceNonceCheck']
-        if 'httpServiceConfig' in kwargs:
+        if http_service_config is None and 'httpServiceConfig' in kwargs:
             http_service_config = kwargs['httpServiceConfig']
-        if 'httpVpcServiceConfig' in kwargs:
+        if http_vpc_service_config is None and 'httpVpcServiceConfig' in kwargs:
             http_vpc_service_config = kwargs['httpVpcServiceConfig']
-        if 'mockServiceConfig' in kwargs:
+        if mock_service_config is None and 'mockServiceConfig' in kwargs:
             mock_service_config = kwargs['mockServiceConfig']
-        if 'requestParameters' in kwargs:
+        if request_parameters is None and 'requestParameters' in kwargs:
             request_parameters = kwargs['requestParameters']
-        if 'stageNames' in kwargs:
+        if stage_names is None and 'stageNames' in kwargs:
             stage_names = kwargs['stageNames']
-        if 'systemParameters' in kwargs:
+        if system_parameters is None and 'systemParameters' in kwargs:
             system_parameters = kwargs['systemParameters']
 
         _setter("auth_type", auth_type)
@@ -397,35 +407,35 @@ class _ApiState:
              service_type: Optional[pulumi.Input[str]] = None,
              stage_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiId' in kwargs:
+        if api_id is None and 'apiId' in kwargs:
             api_id = kwargs['apiId']
-        if 'authType' in kwargs:
+        if auth_type is None and 'authType' in kwargs:
             auth_type = kwargs['authType']
-        if 'constantParameters' in kwargs:
+        if constant_parameters is None and 'constantParameters' in kwargs:
             constant_parameters = kwargs['constantParameters']
-        if 'fcServiceConfig' in kwargs:
+        if fc_service_config is None and 'fcServiceConfig' in kwargs:
             fc_service_config = kwargs['fcServiceConfig']
-        if 'forceNonceCheck' in kwargs:
+        if force_nonce_check is None and 'forceNonceCheck' in kwargs:
             force_nonce_check = kwargs['forceNonceCheck']
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'httpServiceConfig' in kwargs:
+        if http_service_config is None and 'httpServiceConfig' in kwargs:
             http_service_config = kwargs['httpServiceConfig']
-        if 'httpVpcServiceConfig' in kwargs:
+        if http_vpc_service_config is None and 'httpVpcServiceConfig' in kwargs:
             http_vpc_service_config = kwargs['httpVpcServiceConfig']
-        if 'mockServiceConfig' in kwargs:
+        if mock_service_config is None and 'mockServiceConfig' in kwargs:
             mock_service_config = kwargs['mockServiceConfig']
-        if 'requestConfig' in kwargs:
+        if request_config is None and 'requestConfig' in kwargs:
             request_config = kwargs['requestConfig']
-        if 'requestParameters' in kwargs:
+        if request_parameters is None and 'requestParameters' in kwargs:
             request_parameters = kwargs['requestParameters']
-        if 'serviceType' in kwargs:
+        if service_type is None and 'serviceType' in kwargs:
             service_type = kwargs['serviceType']
-        if 'stageNames' in kwargs:
+        if stage_names is None and 'stageNames' in kwargs:
             stage_names = kwargs['stageNames']
-        if 'systemParameters' in kwargs:
+        if system_parameters is None and 'systemParameters' in kwargs:
             system_parameters = kwargs['systemParameters']
 
         if api_id is not None:
@@ -676,48 +686,6 @@ class Api(pulumi.CustomResource):
                  system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_group = alicloud.apigateway.Group("exampleGroup", description="tf-example")
-        example_api = alicloud.apigateway.Api("exampleApi",
-            group_id=example_group.id,
-            description="tf-example",
-            auth_type="APP",
-            force_nonce_check=False,
-            request_config=alicloud.apigateway.ApiRequestConfigArgs(
-                protocol="HTTP",
-                method="GET",
-                path="/example/path",
-                mode="MAPPING",
-            ),
-            service_type="HTTP",
-            http_service_config=alicloud.apigateway.ApiHttpServiceConfigArgs(
-                address="http://apigateway-backend.alicloudapi.com:8080",
-                method="GET",
-                path="/web/cloudapi",
-                timeout=12,
-                aone_name="cloudapi-openapi",
-            ),
-            request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
-                name="example",
-                type="STRING",
-                required="OPTIONAL",
-                in_="QUERY",
-                in_service="QUERY",
-                name_service="exampleservice",
-            )],
-            stage_names=[
-                "RELEASE",
-                "TEST",
-            ])
-        ```
-
         ## Import
 
         Api gateway api can be imported using the id.Format to `<API Group Id>:<API Id>` e.g.
@@ -751,48 +719,6 @@ class Api(pulumi.CustomResource):
                  args: ApiArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_group = alicloud.apigateway.Group("exampleGroup", description="tf-example")
-        example_api = alicloud.apigateway.Api("exampleApi",
-            group_id=example_group.id,
-            description="tf-example",
-            auth_type="APP",
-            force_nonce_check=False,
-            request_config=alicloud.apigateway.ApiRequestConfigArgs(
-                protocol="HTTP",
-                method="GET",
-                path="/example/path",
-                mode="MAPPING",
-            ),
-            service_type="HTTP",
-            http_service_config=alicloud.apigateway.ApiHttpServiceConfigArgs(
-                address="http://apigateway-backend.alicloudapi.com:8080",
-                method="GET",
-                path="/web/cloudapi",
-                timeout=12,
-                aone_name="cloudapi-openapi",
-            ),
-            request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
-                name="example",
-                type="STRING",
-                required="OPTIONAL",
-                in_="QUERY",
-                in_service="QUERY",
-                name_service="exampleservice",
-            )],
-            stage_names=[
-                "RELEASE",
-                "TEST",
-            ])
-        ```
-
         ## Import
 
         Api gateway api can be imported using the id.Format to `<API Group Id>:<API Id>` e.g.
@@ -851,40 +777,20 @@ class Api(pulumi.CustomResource):
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
-            if fc_service_config is not None and not isinstance(fc_service_config, ApiFcServiceConfigArgs):
-                fc_service_config = fc_service_config or {}
-                def _setter(key, value):
-                    fc_service_config[key] = value
-                ApiFcServiceConfigArgs._configure(_setter, **fc_service_config)
+            fc_service_config = _utilities.configure(fc_service_config, ApiFcServiceConfigArgs, True)
             __props__.__dict__["fc_service_config"] = fc_service_config
             __props__.__dict__["force_nonce_check"] = force_nonce_check
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
-            if http_service_config is not None and not isinstance(http_service_config, ApiHttpServiceConfigArgs):
-                http_service_config = http_service_config or {}
-                def _setter(key, value):
-                    http_service_config[key] = value
-                ApiHttpServiceConfigArgs._configure(_setter, **http_service_config)
+            http_service_config = _utilities.configure(http_service_config, ApiHttpServiceConfigArgs, True)
             __props__.__dict__["http_service_config"] = http_service_config
-            if http_vpc_service_config is not None and not isinstance(http_vpc_service_config, ApiHttpVpcServiceConfigArgs):
-                http_vpc_service_config = http_vpc_service_config or {}
-                def _setter(key, value):
-                    http_vpc_service_config[key] = value
-                ApiHttpVpcServiceConfigArgs._configure(_setter, **http_vpc_service_config)
+            http_vpc_service_config = _utilities.configure(http_vpc_service_config, ApiHttpVpcServiceConfigArgs, True)
             __props__.__dict__["http_vpc_service_config"] = http_vpc_service_config
-            if mock_service_config is not None and not isinstance(mock_service_config, ApiMockServiceConfigArgs):
-                mock_service_config = mock_service_config or {}
-                def _setter(key, value):
-                    mock_service_config[key] = value
-                ApiMockServiceConfigArgs._configure(_setter, **mock_service_config)
+            mock_service_config = _utilities.configure(mock_service_config, ApiMockServiceConfigArgs, True)
             __props__.__dict__["mock_service_config"] = mock_service_config
             __props__.__dict__["name"] = name
-            if request_config is not None and not isinstance(request_config, ApiRequestConfigArgs):
-                request_config = request_config or {}
-                def _setter(key, value):
-                    request_config[key] = value
-                ApiRequestConfigArgs._configure(_setter, **request_config)
+            request_config = _utilities.configure(request_config, ApiRequestConfigArgs, True)
             if request_config is None and not opts.urn:
                 raise TypeError("Missing required property 'request_config'")
             __props__.__dict__["request_config"] = request_config

@@ -12,42 +12,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** It is not recommended to use this resource management policy version, it is recommended to directly use the policy resource to manage your policy. Please refer to the link for usage resource_manager_policy.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tfexample";
- * const examplePolicy = new alicloud.resourcemanager.Policy("examplePolicy", {
- *     policyName: name,
- *     policyDocument: `		{
- * 			"Statement": [{
- * 				"Action": ["oss:*"],
- * 				"Effect": "Allow",
- * 				"Resource": ["acs:oss:*:*:*"]
- * 			}],
- * 			"Version": "1"
- * 		}
- * `,
- * });
- * const examplePolicyVersion = new alicloud.resourcemanager.PolicyVersion("examplePolicyVersion", {
- *     policyName: examplePolicy.policyName,
- *     policyDocument: `		{
- * 			"Statement": [{
- * 				"Action": ["oss:*"],
- * 				"Effect": "Allow",
- * 				"Resource": ["acs:oss:*:*:myphotos"]
- * 			}],
- * 			"Version": "1"
- * 		}
- * `,
- * });
- * ```
- *
  * ## Import
  *
  * Resource Manager Policy Version can be imported using the id, e.g.

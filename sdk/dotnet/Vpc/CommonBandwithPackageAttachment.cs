@@ -10,43 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("defaultCommonBandwithPackage", new()
-    ///     {
-    ///         Bandwidth = "3",
-    ///         InternetChargeType = "PayByBandwidth",
-    ///     });
-    /// 
-    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
-    ///     {
-    ///         Bandwidth = "3",
-    ///         InternetChargeType = "PayByTraffic",
-    ///     });
-    /// 
-    ///     var defaultCommonBandwithPackageAttachment = new AliCloud.Vpc.CommonBandwithPackageAttachment("defaultCommonBandwithPackageAttachment", new()
-    ///     {
-    ///         BandwidthPackageId = defaultCommonBandwithPackage.Id,
-    ///         InstanceId = defaultEipAddress.Id,
-    ///         BandwidthPackageBandwidth = "2",
-    ///         IpType = "EIP",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.

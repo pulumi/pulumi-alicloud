@@ -15,40 +15,6 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Route Maps available to the user.
         /// 
         /// &gt; **NOTE:** Available in v1.87.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = AliCloud.Cen.GetRouteMaps.Invoke(new()
-        ///     {
-        ///         CenId = "cen-ihdlgo87ai********",
-        ///         Ids = new[]
-        ///         {
-        ///             "cen-ihdlgo87ai:cenrmap-bnh97kb3mn********",
-        ///         },
-        ///         DescriptionRegex = "datasource_test",
-        ///         CenRegionId = "cn-hangzhou",
-        ///         TransmitDirection = "RegionIn",
-        ///         Status = "Active",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstCenRouteMapId"] = @this.Apply(@this =&gt; @this.Apply(getRouteMapsResult =&gt; getRouteMapsResult.Maps[0]?.RouteMapId)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouteMapsResult> InvokeAsync(GetRouteMapsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouteMapsResult>("alicloud:cen/getRouteMaps:getRouteMaps", args ?? new GetRouteMapsArgs(), options.WithDefaults());
@@ -57,40 +23,6 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Route Maps available to the user.
         /// 
         /// &gt; **NOTE:** Available in v1.87.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = AliCloud.Cen.GetRouteMaps.Invoke(new()
-        ///     {
-        ///         CenId = "cen-ihdlgo87ai********",
-        ///         Ids = new[]
-        ///         {
-        ///             "cen-ihdlgo87ai:cenrmap-bnh97kb3mn********",
-        ///         },
-        ///         DescriptionRegex = "datasource_test",
-        ///         CenRegionId = "cn-hangzhou",
-        ///         TransmitDirection = "RegionIn",
-        ///         Status = "Active",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstCenRouteMapId"] = @this.Apply(@this =&gt; @this.Apply(getRouteMapsResult =&gt; getRouteMapsResult.Maps[0]?.RouteMapId)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRouteMapsResult> Invoke(GetRouteMapsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouteMapsResult>("alicloud:cen/getRouteMaps:getRouteMaps", args ?? new GetRouteMapsInvokeArgs(), options.WithDefaults());

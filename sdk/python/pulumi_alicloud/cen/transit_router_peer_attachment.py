@@ -65,9 +65,9 @@ class TransitRouterPeerAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cen_id: pulumi.Input[str],
-             peer_transit_router_id: pulumi.Input[str],
-             peer_transit_router_region_id: pulumi.Input[str],
+             cen_id: Optional[pulumi.Input[str]] = None,
+             peer_transit_router_id: Optional[pulumi.Input[str]] = None,
+             peer_transit_router_region_id: Optional[pulumi.Input[str]] = None,
              auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
              bandwidth: Optional[pulumi.Input[int]] = None,
              bandwidth_type: Optional[pulumi.Input[str]] = None,
@@ -79,33 +79,39 @@ class TransitRouterPeerAttachmentArgs:
              transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
              transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
              transit_router_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'peerTransitRouterId' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if peer_transit_router_id is None and 'peerTransitRouterId' in kwargs:
             peer_transit_router_id = kwargs['peerTransitRouterId']
-        if 'peerTransitRouterRegionId' in kwargs:
+        if peer_transit_router_id is None:
+            raise TypeError("Missing 'peer_transit_router_id' argument")
+        if peer_transit_router_region_id is None and 'peerTransitRouterRegionId' in kwargs:
             peer_transit_router_region_id = kwargs['peerTransitRouterRegionId']
-        if 'autoPublishRouteEnabled' in kwargs:
+        if peer_transit_router_region_id is None:
+            raise TypeError("Missing 'peer_transit_router_region_id' argument")
+        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
             auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
-        if 'bandwidthType' in kwargs:
+        if bandwidth_type is None and 'bandwidthType' in kwargs:
             bandwidth_type = kwargs['bandwidthType']
-        if 'cenBandwidthPackageId' in kwargs:
+        if cen_bandwidth_package_id is None and 'cenBandwidthPackageId' in kwargs:
             cen_bandwidth_package_id = kwargs['cenBandwidthPackageId']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'resourceType' in kwargs:
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'routeTableAssociationEnabled' in kwargs:
+        if route_table_association_enabled is None and 'routeTableAssociationEnabled' in kwargs:
             route_table_association_enabled = kwargs['routeTableAssociationEnabled']
-        if 'routeTablePropagationEnabled' in kwargs:
+        if route_table_propagation_enabled is None and 'routeTablePropagationEnabled' in kwargs:
             route_table_propagation_enabled = kwargs['routeTablePropagationEnabled']
-        if 'transitRouterAttachmentDescription' in kwargs:
+        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
             transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if 'transitRouterAttachmentName' in kwargs:
+        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
             transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if 'transitRouterId' in kwargs:
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
 
         _setter("cen_id", cen_id)
@@ -379,35 +385,35 @@ class _TransitRouterPeerAttachmentState:
              transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
              transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
              transit_router_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoPublishRouteEnabled' in kwargs:
+        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
             auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
-        if 'bandwidthType' in kwargs:
+        if bandwidth_type is None and 'bandwidthType' in kwargs:
             bandwidth_type = kwargs['bandwidthType']
-        if 'cenBandwidthPackageId' in kwargs:
+        if cen_bandwidth_package_id is None and 'cenBandwidthPackageId' in kwargs:
             cen_bandwidth_package_id = kwargs['cenBandwidthPackageId']
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'peerTransitRouterId' in kwargs:
+        if peer_transit_router_id is None and 'peerTransitRouterId' in kwargs:
             peer_transit_router_id = kwargs['peerTransitRouterId']
-        if 'peerTransitRouterRegionId' in kwargs:
+        if peer_transit_router_region_id is None and 'peerTransitRouterRegionId' in kwargs:
             peer_transit_router_region_id = kwargs['peerTransitRouterRegionId']
-        if 'resourceType' in kwargs:
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'routeTableAssociationEnabled' in kwargs:
+        if route_table_association_enabled is None and 'routeTableAssociationEnabled' in kwargs:
             route_table_association_enabled = kwargs['routeTableAssociationEnabled']
-        if 'routeTablePropagationEnabled' in kwargs:
+        if route_table_propagation_enabled is None and 'routeTablePropagationEnabled' in kwargs:
             route_table_propagation_enabled = kwargs['routeTablePropagationEnabled']
-        if 'transitRouterAttachmentDescription' in kwargs:
+        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
             transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if 'transitRouterAttachmentId' in kwargs:
+        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
             transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if 'transitRouterAttachmentName' in kwargs:
+        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
             transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if 'transitRouterId' in kwargs:
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
 
         if auto_publish_route_enabled is not None:
@@ -661,56 +667,6 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.128.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        peer_region = config.get("peerRegion")
-        if peer_region is None:
-            peer_region = "cn-beijing"
-        hz = alicloud.Provider("hz", region=region)
-        bj = alicloud.Provider("bj", region=peer_region)
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name=name,
-            protection_level="REDUCED",
-            opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        example_bandwidth_package = alicloud.cen.BandwidthPackage("exampleBandwidthPackage",
-            bandwidth=5,
-            cen_bandwidth_package_name="tf_example",
-            geographic_region_a_id="China",
-            geographic_region_b_id="China",
-            opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        example_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            instance_id=example_instance.id,
-            bandwidth_package_id=example_bandwidth_package.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter", cen_id=example_bandwidth_package_attachment.instance_id,
-        opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        peer = alicloud.cen.TransitRouter("peer", cen_id=example_transit_router.cen_id,
-        opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        example_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("exampleTransitRouterPeerAttachment",
-            cen_id=example_instance.id,
-            transit_router_id=example_transit_router.transit_router_id,
-            peer_transit_router_region_id=peer_region,
-            peer_transit_router_id=peer.transit_router_id,
-            cen_bandwidth_package_id=example_bandwidth_package_attachment.bandwidth_package_id,
-            bandwidth=5,
-            transit_router_attachment_description=name,
-            transit_router_attachment_name=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        ```
-
         ## Import
 
         CEN instance can be imported using the id, e.g.
@@ -746,56 +702,6 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         Provides a CEN transit router peer attachment resource that associate the transit router with the CEN instance. [What is CEN transit router peer attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterpeerattachment)
 
         > **NOTE:** Available since v1.128.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        peer_region = config.get("peerRegion")
-        if peer_region is None:
-            peer_region = "cn-beijing"
-        hz = alicloud.Provider("hz", region=region)
-        bj = alicloud.Provider("bj", region=peer_region)
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name=name,
-            protection_level="REDUCED",
-            opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        example_bandwidth_package = alicloud.cen.BandwidthPackage("exampleBandwidthPackage",
-            bandwidth=5,
-            cen_bandwidth_package_name="tf_example",
-            geographic_region_a_id="China",
-            geographic_region_b_id="China",
-            opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        example_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            instance_id=example_instance.id,
-            bandwidth_package_id=example_bandwidth_package.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter", cen_id=example_bandwidth_package_attachment.instance_id,
-        opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        peer = alicloud.cen.TransitRouter("peer", cen_id=example_transit_router.cen_id,
-        opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        example_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("exampleTransitRouterPeerAttachment",
-            cen_id=example_instance.id,
-            transit_router_id=example_transit_router.transit_router_id,
-            peer_transit_router_region_id=peer_region,
-            peer_transit_router_id=peer.transit_router_id,
-            cen_bandwidth_package_id=example_bandwidth_package_attachment.bandwidth_package_id,
-            bandwidth=5,
-            transit_router_attachment_description=name,
-            transit_router_attachment_name=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        ```
 
         ## Import
 

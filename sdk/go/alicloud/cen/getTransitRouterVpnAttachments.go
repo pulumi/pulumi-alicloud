@@ -15,35 +15,6 @@ import (
 // This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.183.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := cen.GetTransitRouterVpnAttachments(ctx, &cen.GetTransitRouterVpnAttachmentsArgs{
-//				CenId: "example_value",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("cenTransitRouterVpnAttachmentId1", ids.Attachments[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetTransitRouterVpnAttachments(ctx *pulumi.Context, args *GetTransitRouterVpnAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetTransitRouterVpnAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRouterVpnAttachmentsResult

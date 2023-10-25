@@ -49,27 +49,33 @@ class AddressBookArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             group_name: pulumi.Input[str],
-             group_type: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             group_type: Optional[pulumi.Input[str]] = None,
              address_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              auto_add_tag_ecs: Optional[pulumi.Input[int]] = None,
              ecs_tags: Optional[pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              tag_relation: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupName' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'groupType' in kwargs:
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if group_type is None and 'groupType' in kwargs:
             group_type = kwargs['groupType']
-        if 'addressLists' in kwargs:
+        if group_type is None:
+            raise TypeError("Missing 'group_type' argument")
+        if address_lists is None and 'addressLists' in kwargs:
             address_lists = kwargs['addressLists']
-        if 'autoAddTagEcs' in kwargs:
+        if auto_add_tag_ecs is None and 'autoAddTagEcs' in kwargs:
             auto_add_tag_ecs = kwargs['autoAddTagEcs']
-        if 'ecsTags' in kwargs:
+        if ecs_tags is None and 'ecsTags' in kwargs:
             ecs_tags = kwargs['ecsTags']
-        if 'tagRelation' in kwargs:
+        if tag_relation is None and 'tagRelation' in kwargs:
             tag_relation = kwargs['tagRelation']
 
         _setter("description", description)
@@ -227,19 +233,19 @@ class _AddressBookState:
              group_type: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              tag_relation: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addressLists' in kwargs:
+        if address_lists is None and 'addressLists' in kwargs:
             address_lists = kwargs['addressLists']
-        if 'autoAddTagEcs' in kwargs:
+        if auto_add_tag_ecs is None and 'autoAddTagEcs' in kwargs:
             auto_add_tag_ecs = kwargs['autoAddTagEcs']
-        if 'ecsTags' in kwargs:
+        if ecs_tags is None and 'ecsTags' in kwargs:
             ecs_tags = kwargs['ecsTags']
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'groupType' in kwargs:
+        if group_type is None and 'groupType' in kwargs:
             group_type = kwargs['groupType']
-        if 'tagRelation' in kwargs:
+        if tag_relation is None and 'tagRelation' in kwargs:
             tag_relation = kwargs['tagRelation']
 
         if address_lists is not None:
@@ -377,26 +383,6 @@ class AddressBook(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.178.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cloudfirewall.AddressBook("example",
-            auto_add_tag_ecs=0,
-            description="example_value",
-            ecs_tags=[alicloud.cloudfirewall.AddressBookEcsTagArgs(
-                tag_key="created",
-                tag_value="tfTestAcc0",
-            )],
-            group_name="example_value",
-            group_type="tag",
-            tag_relation="and")
-        ```
-
         ## Import
 
         Cloud Firewall Address Book can be imported using the id, e.g.
@@ -428,26 +414,6 @@ class AddressBook(pulumi.CustomResource):
         For information about Cloud Firewall Address Book and how to use it, see [What is Address Book](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-addaddressbook).
 
         > **NOTE:** Available since v1.178.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cloudfirewall.AddressBook("example",
-            auto_add_tag_ecs=0,
-            description="example_value",
-            ecs_tags=[alicloud.cloudfirewall.AddressBookEcsTagArgs(
-                tag_key="created",
-                tag_value="tfTestAcc0",
-            )],
-            group_name="example_value",
-            group_type="tag",
-            tag_relation="and")
-        ```
 
         ## Import
 

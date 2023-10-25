@@ -15,34 +15,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Ecs.SecurityGroup("default");
-    /// 
-    ///     var allowAllTcp = new AliCloud.Ecs.SecurityGroupRule("allowAllTcp", new()
-    ///     {
-    ///         Type = "ingress",
-    ///         IpProtocol = "tcp",
-    ///         NicType = "internet",
-    ///         Policy = "accept",
-    ///         PortRange = "1/65535",
-    ///         Priority = 1,
-    ///         SecurityGroupId = @default.Id,
-    ///         CidrIp = "0.0.0.0/0",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ## Module Support
     /// 
     /// You can use the existing security-group module

@@ -56,10 +56,10 @@ class AlidnsRecordArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain_name: pulumi.Input[str],
-             rr: pulumi.Input[str],
-             type: pulumi.Input[str],
-             value: pulumi.Input[str],
+             domain_name: Optional[pulumi.Input[str]] = None,
+             rr: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              line: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
@@ -67,11 +67,19 @@ class AlidnsRecordArgs:
              status: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
              user_client_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'userClientIp' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if rr is None:
+            raise TypeError("Missing 'rr' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if user_client_ip is None and 'userClientIp' in kwargs:
             user_client_ip = kwargs['userClientIp']
 
         _setter("domain_name", domain_name)
@@ -282,11 +290,11 @@ class _AlidnsRecordState:
              type: Optional[pulumi.Input[str]] = None,
              user_client_ip: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'userClientIp' in kwargs:
+        if user_client_ip is None and 'userClientIp' in kwargs:
             user_client_ip = kwargs['userClientIp']
 
         if domain_name is not None:
@@ -469,29 +477,6 @@ class AlidnsRecord(pulumi.CustomResource):
 
         > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
-        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
-            domain_name="starmove.com",
-            group_id=default_domain_group.id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        record = alicloud.dns.AlidnsRecord("record",
-            domain_name=default_alidns_domain.domain_name,
-            rr="alimail",
-            type="CNAME",
-            value="mail.mxhichin.com",
-            remark="tf-example",
-            status="ENABLE")
-        ```
-
         ## Import
 
         Alidns Domain Record can be imported using the id, e.g.
@@ -526,29 +511,6 @@ class AlidnsRecord(pulumi.CustomResource):
         > **NOTE:** Available since v1.85.0.
 
         > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
-        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
-            domain_name="starmove.com",
-            group_id=default_domain_group.id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        record = alicloud.dns.AlidnsRecord("record",
-            domain_name=default_alidns_domain.domain_name,
-            rr="alimail",
-            type="CNAME",
-            value="mail.mxhichin.com",
-            remark="tf-example",
-            status="ENABLE")
-        ```
 
         ## Import
 

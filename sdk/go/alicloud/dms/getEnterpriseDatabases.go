@@ -15,36 +15,6 @@ import (
 // This data source provides DMS Enterprise Database available to the user. [What is Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-listdatabases).
 //
 // > **NOTE:** Available since v1.195.0.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := dms.GetEnterpriseDatabases(ctx, &dms.GetEnterpriseDatabasesArgs{
-//				NameRegex:  pulumi.StringRef("test2"),
-//				InstanceId: "2195118",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("alicloudDmsEnterpriseDatabaseExampleId", _default.Databases[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetEnterpriseDatabases(ctx *pulumi.Context, args *GetEnterpriseDatabasesArgs, opts ...pulumi.InvokeOption) (*GetEnterpriseDatabasesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEnterpriseDatabasesResult

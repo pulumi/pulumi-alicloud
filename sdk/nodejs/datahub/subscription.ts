@@ -9,31 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.19.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform_example";
- * const exampleProject = new alicloud.datahub.Project("exampleProject", {comment: "created by terraform"});
- * const exampleTopic = new alicloud.datahub.Topic("exampleTopic", {
- *     projectName: exampleProject.name,
- *     recordType: "BLOB",
- *     shardCount: 3,
- *     lifeCycle: 7,
- *     comment: "created by terraform",
- * });
- * const exampleSubscription = new alicloud.datahub.Subscription("exampleSubscription", {
- *     projectName: exampleProject.name,
- *     topicName: exampleTopic.name,
- *     comment: "created by terraform",
- * });
- * ```
- *
  * ## Import
  *
  * Datahub subscription can be imported using the ID, e.g.

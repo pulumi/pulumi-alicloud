@@ -161,9 +161,9 @@ class EcsInstanceSetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image_id: pulumi.Input[str],
-             instance_type: pulumi.Input[str],
-             security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             image_id: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              amount: Optional[pulumi.Input[int]] = None,
              auto_release_time: Optional[pulumi.Input[str]] = None,
              auto_renew: Optional[pulumi.Input[bool]] = None,
@@ -205,85 +205,91 @@ class EcsInstanceSetArgs:
              unique_suffix: Optional[pulumi.Input[bool]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceType' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'securityGroupIds' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'autoReleaseTime' in kwargs:
+        if security_group_ids is None:
+            raise TypeError("Missing 'security_group_ids' argument")
+        if auto_release_time is None and 'autoReleaseTime' in kwargs:
             auto_release_time = kwargs['autoReleaseTime']
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'bootCheckOsWithAssistant' in kwargs:
+        if boot_check_os_with_assistant is None and 'bootCheckOsWithAssistant' in kwargs:
             boot_check_os_with_assistant = kwargs['bootCheckOsWithAssistant']
-        if 'dataDisks' in kwargs:
+        if data_disks is None and 'dataDisks' in kwargs:
             data_disks = kwargs['dataDisks']
-        if 'dedicatedHostId' in kwargs:
+        if dedicated_host_id is None and 'dedicatedHostId' in kwargs:
             dedicated_host_id = kwargs['dedicatedHostId']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'deploymentSetId' in kwargs:
+        if deployment_set_id is None and 'deploymentSetId' in kwargs:
             deployment_set_id = kwargs['deploymentSetId']
-        if 'excludeInstanceFilter' in kwargs:
+        if exclude_instance_filter is None and 'excludeInstanceFilter' in kwargs:
             exclude_instance_filter = kwargs['excludeInstanceFilter']
-        if 'hostName' in kwargs:
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'hpcClusterId' in kwargs:
+        if hpc_cluster_id is None and 'hpcClusterId' in kwargs:
             hpc_cluster_id = kwargs['hpcClusterId']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'internetMaxBandwidthOut' in kwargs:
+        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
             internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'launchTemplateId' in kwargs:
+        if launch_template_id is None and 'launchTemplateId' in kwargs:
             launch_template_id = kwargs['launchTemplateId']
-        if 'launchTemplateName' in kwargs:
+        if launch_template_name is None and 'launchTemplateName' in kwargs:
             launch_template_name = kwargs['launchTemplateName']
-        if 'launchTemplateVersion' in kwargs:
+        if launch_template_version is None and 'launchTemplateVersion' in kwargs:
             launch_template_version = kwargs['launchTemplateVersion']
-        if 'networkInterfaces' in kwargs:
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
             network_interfaces = kwargs['networkInterfaces']
-        if 'passwordInherit' in kwargs:
+        if password_inherit is None and 'passwordInherit' in kwargs:
             password_inherit = kwargs['passwordInherit']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'ramRoleName' in kwargs:
+        if ram_role_name is None and 'ramRoleName' in kwargs:
             ram_role_name = kwargs['ramRoleName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityEnhancementStrategy' in kwargs:
+        if security_enhancement_strategy is None and 'securityEnhancementStrategy' in kwargs:
             security_enhancement_strategy = kwargs['securityEnhancementStrategy']
-        if 'spotPriceLimit' in kwargs:
+        if spot_price_limit is None and 'spotPriceLimit' in kwargs:
             spot_price_limit = kwargs['spotPriceLimit']
-        if 'spotStrategy' in kwargs:
+        if spot_strategy is None and 'spotStrategy' in kwargs:
             spot_strategy = kwargs['spotStrategy']
-        if 'systemDiskAutoSnapshotPolicyId' in kwargs:
+        if system_disk_auto_snapshot_policy_id is None and 'systemDiskAutoSnapshotPolicyId' in kwargs:
             system_disk_auto_snapshot_policy_id = kwargs['systemDiskAutoSnapshotPolicyId']
-        if 'systemDiskCategory' in kwargs:
+        if system_disk_category is None and 'systemDiskCategory' in kwargs:
             system_disk_category = kwargs['systemDiskCategory']
-        if 'systemDiskDescription' in kwargs:
+        if system_disk_description is None and 'systemDiskDescription' in kwargs:
             system_disk_description = kwargs['systemDiskDescription']
-        if 'systemDiskName' in kwargs:
+        if system_disk_name is None and 'systemDiskName' in kwargs:
             system_disk_name = kwargs['systemDiskName']
-        if 'systemDiskPerformanceLevel' in kwargs:
+        if system_disk_performance_level is None and 'systemDiskPerformanceLevel' in kwargs:
             system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
-        if 'systemDiskSize' in kwargs:
+        if system_disk_size is None and 'systemDiskSize' in kwargs:
             system_disk_size = kwargs['systemDiskSize']
-        if 'uniqueSuffix' in kwargs:
+        if unique_suffix is None and 'uniqueSuffix' in kwargs:
             unique_suffix = kwargs['uniqueSuffix']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("image_id", image_id)
@@ -1101,87 +1107,87 @@ class _EcsInstanceSetState:
              unique_suffix: Optional[pulumi.Input[bool]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoReleaseTime' in kwargs:
+        if auto_release_time is None and 'autoReleaseTime' in kwargs:
             auto_release_time = kwargs['autoReleaseTime']
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'bootCheckOsWithAssistant' in kwargs:
+        if boot_check_os_with_assistant is None and 'bootCheckOsWithAssistant' in kwargs:
             boot_check_os_with_assistant = kwargs['bootCheckOsWithAssistant']
-        if 'dataDisks' in kwargs:
+        if data_disks is None and 'dataDisks' in kwargs:
             data_disks = kwargs['dataDisks']
-        if 'dedicatedHostId' in kwargs:
+        if dedicated_host_id is None and 'dedicatedHostId' in kwargs:
             dedicated_host_id = kwargs['dedicatedHostId']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'deploymentSetId' in kwargs:
+        if deployment_set_id is None and 'deploymentSetId' in kwargs:
             deployment_set_id = kwargs['deploymentSetId']
-        if 'excludeInstanceFilter' in kwargs:
+        if exclude_instance_filter is None and 'excludeInstanceFilter' in kwargs:
             exclude_instance_filter = kwargs['excludeInstanceFilter']
-        if 'hostName' in kwargs:
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'hpcClusterId' in kwargs:
+        if hpc_cluster_id is None and 'hpcClusterId' in kwargs:
             hpc_cluster_id = kwargs['hpcClusterId']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'instanceIds' in kwargs:
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'internetMaxBandwidthOut' in kwargs:
+        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
             internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'launchTemplateId' in kwargs:
+        if launch_template_id is None and 'launchTemplateId' in kwargs:
             launch_template_id = kwargs['launchTemplateId']
-        if 'launchTemplateName' in kwargs:
+        if launch_template_name is None and 'launchTemplateName' in kwargs:
             launch_template_name = kwargs['launchTemplateName']
-        if 'launchTemplateVersion' in kwargs:
+        if launch_template_version is None and 'launchTemplateVersion' in kwargs:
             launch_template_version = kwargs['launchTemplateVersion']
-        if 'networkInterfaces' in kwargs:
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
             network_interfaces = kwargs['networkInterfaces']
-        if 'passwordInherit' in kwargs:
+        if password_inherit is None and 'passwordInherit' in kwargs:
             password_inherit = kwargs['passwordInherit']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'ramRoleName' in kwargs:
+        if ram_role_name is None and 'ramRoleName' in kwargs:
             ram_role_name = kwargs['ramRoleName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityEnhancementStrategy' in kwargs:
+        if security_enhancement_strategy is None and 'securityEnhancementStrategy' in kwargs:
             security_enhancement_strategy = kwargs['securityEnhancementStrategy']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'spotPriceLimit' in kwargs:
+        if spot_price_limit is None and 'spotPriceLimit' in kwargs:
             spot_price_limit = kwargs['spotPriceLimit']
-        if 'spotStrategy' in kwargs:
+        if spot_strategy is None and 'spotStrategy' in kwargs:
             spot_strategy = kwargs['spotStrategy']
-        if 'systemDiskAutoSnapshotPolicyId' in kwargs:
+        if system_disk_auto_snapshot_policy_id is None and 'systemDiskAutoSnapshotPolicyId' in kwargs:
             system_disk_auto_snapshot_policy_id = kwargs['systemDiskAutoSnapshotPolicyId']
-        if 'systemDiskCategory' in kwargs:
+        if system_disk_category is None and 'systemDiskCategory' in kwargs:
             system_disk_category = kwargs['systemDiskCategory']
-        if 'systemDiskDescription' in kwargs:
+        if system_disk_description is None and 'systemDiskDescription' in kwargs:
             system_disk_description = kwargs['systemDiskDescription']
-        if 'systemDiskName' in kwargs:
+        if system_disk_name is None and 'systemDiskName' in kwargs:
             system_disk_name = kwargs['systemDiskName']
-        if 'systemDiskPerformanceLevel' in kwargs:
+        if system_disk_performance_level is None and 'systemDiskPerformanceLevel' in kwargs:
             system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
-        if 'systemDiskSize' in kwargs:
+        if system_disk_size is None and 'systemDiskSize' in kwargs:
             system_disk_size = kwargs['systemDiskSize']
-        if 'uniqueSuffix' in kwargs:
+        if unique_suffix is None and 'uniqueSuffix' in kwargs:
             unique_suffix = kwargs['uniqueSuffix']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if amount is not None:
@@ -1883,47 +1889,6 @@ class EcsInstanceSet(pulumi.CustomResource):
 
         > **NOTE:** Only `tags` support batch modification.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            most_recent=True,
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        beijing_k = alicloud.ecs.EcsInstanceSet("beijingK",
-            amount=10,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            instance_name=name,
-            instance_charge_type="PostPaid",
-            system_disk_performance_level="PL0",
-            system_disk_category="cloud_efficiency",
-            system_disk_size=200,
-            vswitch_id=default_switch.id,
-            security_group_ids=[__item.id for __item in [default_security_group]],
-            zone_id=default_zones.zones[0].id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] amount: The number of instances that you want to create. Valid values: `1` to `100`.
@@ -1993,47 +1958,6 @@ class EcsInstanceSet(pulumi.CustomResource):
         > **NOTE:** In the instances managed by this resource, names are automatically generated based on `instance_name` and `unique_suffix`.
 
         > **NOTE:** Only `tags` support batch modification.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            most_recent=True,
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        beijing_k = alicloud.ecs.EcsInstanceSet("beijingK",
-            amount=10,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            instance_name=name,
-            instance_charge_type="PostPaid",
-            system_disk_performance_level="PL0",
-            system_disk_category="cloud_efficiency",
-            system_disk_size=200,
-            vswitch_id=default_switch.id,
-            security_group_ids=[__item.id for __item in [default_security_group]],
-            zone_id=default_zones.zones[0].id)
-        ```
 
         :param str resource_name: The name of the resource.
         :param EcsInstanceSetArgs args: The arguments to use to populate this resource's properties.
@@ -2117,11 +2041,7 @@ class EcsInstanceSet(pulumi.CustomResource):
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["deployment_set_id"] = deployment_set_id
             __props__.__dict__["description"] = description
-            if exclude_instance_filter is not None and not isinstance(exclude_instance_filter, EcsInstanceSetExcludeInstanceFilterArgs):
-                exclude_instance_filter = exclude_instance_filter or {}
-                def _setter(key, value):
-                    exclude_instance_filter[key] = value
-                EcsInstanceSetExcludeInstanceFilterArgs._configure(_setter, **exclude_instance_filter)
+            exclude_instance_filter = _utilities.configure(exclude_instance_filter, EcsInstanceSetExcludeInstanceFilterArgs, True)
             __props__.__dict__["exclude_instance_filter"] = exclude_instance_filter
             __props__.__dict__["host_name"] = host_name
             __props__.__dict__["hpc_cluster_id"] = hpc_cluster_id

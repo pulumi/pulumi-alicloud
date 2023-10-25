@@ -15,39 +15,6 @@ namespace Pulumi.AliCloud.Ddos
         /// This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.180.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Ddos.GetDdosBgpIps.Invoke(new()
-        ///     {
-        ///         InstanceId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["ddosbgpIpId1"] = ids.Apply(getDdosBgpIpsResult =&gt; getDdosBgpIpsResult.Ips[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDdosBgpIpsResult> InvokeAsync(GetDdosBgpIpsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDdosBgpIpsResult>("alicloud:ddos/getDdosBgpIps:getDdosBgpIps", args ?? new GetDdosBgpIpsArgs(), options.WithDefaults());
@@ -56,39 +23,6 @@ namespace Pulumi.AliCloud.Ddos
         /// This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.180.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Ddos.GetDdosBgpIps.Invoke(new()
-        ///     {
-        ///         InstanceId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["ddosbgpIpId1"] = ids.Apply(getDdosBgpIpsResult =&gt; getDdosBgpIpsResult.Ips[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDdosBgpIpsResult> Invoke(GetDdosBgpIpsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDdosBgpIpsResult>("alicloud:ddos/getDdosBgpIps:getDdosBgpIps", args ?? new GetDdosBgpIpsInvokeArgs(), options.WithDefaults());

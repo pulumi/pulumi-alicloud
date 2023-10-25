@@ -15,38 +15,6 @@ import (
 // This data source provides the Eip Addresses of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.126.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := ecs.GetEipAddresses(ctx, &ecs.GetEipAddressesArgs{
-//				Ids: []string{
-//					"eip-bp1jvx5ki6c********",
-//				},
-//				NameRegex: pulumi.StringRef("the_resource_name"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstEipAddressId", example.Addresses[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetEipAddresses(ctx *pulumi.Context, args *GetEipAddressesArgs, opts ...pulumi.InvokeOption) (*GetEipAddressesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEipAddressesResult

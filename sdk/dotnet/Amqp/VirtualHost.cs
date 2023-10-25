@@ -16,38 +16,6 @@ namespace Pulumi.AliCloud.Amqp
     /// 
     /// &gt; **NOTE:** Available since v1.126.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultInstance = new AliCloud.Amqp.Instance("defaultInstance", new()
-    ///     {
-    ///         InstanceType = "professional",
-    ///         MaxTps = "1000",
-    ///         QueueCapacity = "50",
-    ///         SupportEip = true,
-    ///         MaxEipTps = "128",
-    ///         PaymentType = "Subscription",
-    ///         Period = 1,
-    ///     });
-    /// 
-    ///     var defaultVirtualHost = new AliCloud.Amqp.VirtualHost("defaultVirtualHost", new()
-    ///     {
-    ///         InstanceId = defaultInstance.Id,
-    ///         VirtualHostName = "tf-example",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// RabbitMQ (AMQP) Virtual Host can be imported using the id, e.g.

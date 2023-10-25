@@ -15,43 +15,6 @@ namespace Pulumi.AliCloud.Arms
         /// This data source provides the Arms Prometheis of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.203.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Arms.GetPrometheis.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Arms.GetPrometheis.Invoke(new()
-        ///     {
-        ///         NameRegex = "tf-example",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["armsPrometheisId1"] = ids.Apply(getPrometheisResult =&gt; getPrometheisResult.Prometheis[0]?.Id),
-        ///         ["armsPrometheisId2"] = nameRegex.Apply(getPrometheisResult =&gt; getPrometheisResult.Prometheis[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPrometheisResult> InvokeAsync(GetPrometheisArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrometheisResult>("alicloud:arms/getPrometheis:getPrometheis", args ?? new GetPrometheisArgs(), options.WithDefaults());
@@ -60,43 +23,6 @@ namespace Pulumi.AliCloud.Arms
         /// This data source provides the Arms Prometheis of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.203.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Arms.GetPrometheis.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Arms.GetPrometheis.Invoke(new()
-        ///     {
-        ///         NameRegex = "tf-example",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["armsPrometheisId1"] = ids.Apply(getPrometheisResult =&gt; getPrometheisResult.Prometheis[0]?.Id),
-        ///         ["armsPrometheisId2"] = nameRegex.Apply(getPrometheisResult =&gt; getPrometheisResult.Prometheis[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPrometheisResult> Invoke(GetPrometheisInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrometheisResult>("alicloud:arms/getPrometheis:getPrometheis", args ?? new GetPrometheisInvokeArgs(), options.WithDefaults());

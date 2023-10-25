@@ -11,20 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.131.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.dataworks.Folder("example", {
- *     folderPath: "Business Flow/tfTestAcc/folderDi/tftest1",
- *     projectId: "320687",
- * });
- * ```
- *
  * ## Import
  *
  * Data Works Folder can be imported using the id, e.g.

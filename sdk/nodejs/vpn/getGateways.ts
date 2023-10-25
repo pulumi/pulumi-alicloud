@@ -8,26 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const vpnGateways = alicloud.vpn.getGateways({
- *     businessStatus: "Normal",
- *     ids: [
- *         "fake-vpn-id1",
- *         "fake-vpn-id2",
- *     ],
- *     includeReservationData: true,
- *     nameRegex: "testAcc*",
- *     outputFile: "/tmp/vpns",
- *     status: "Active",
- *     vpcId: "fake-vpc-id",
- * });
- * ```
  */
 export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
     args = args || {};
@@ -129,26 +109,6 @@ export interface GetGatewaysResult {
 }
 /**
  * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const vpnGateways = alicloud.vpn.getGateways({
- *     businessStatus: "Normal",
- *     ids: [
- *         "fake-vpn-id1",
- *         "fake-vpn-id2",
- *     ],
- *     includeReservationData: true,
- *     nameRegex: "testAcc*",
- *     outputFile: "/tmp/vpns",
- *     status: "Active",
- *     vpcId: "fake-vpc-id",
- * });
- * ```
  */
 export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
     return pulumi.output(args).apply((a: any) => getGateways(a, opts))

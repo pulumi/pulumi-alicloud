@@ -16,44 +16,6 @@ namespace Pulumi.AliCloud.Cfg
     /// 
     /// &gt; **NOTE:** Available since v1.124.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf_example";
-    ///     var defaultAccounts = AliCloud.ResourceManager.GetAccounts.Invoke(new()
-    ///     {
-    ///         Status = "CreateSuccess",
-    ///     });
-    /// 
-    ///     var defaultAggregator = new AliCloud.Cfg.Aggregator("defaultAggregator", new()
-    ///     {
-    ///         AggregatorAccounts = new[]
-    ///         {
-    ///             new AliCloud.Cfg.Inputs.AggregatorAggregatorAccountArgs
-    ///             {
-    ///                 AccountId = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.AccountId),
-    ///                 AccountName = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.DisplayName),
-    ///                 AccountType = "ResourceDirectory",
-    ///             },
-    ///         },
-    ///         AggregatorName = name,
-    ///         Description = name,
-    ///         AggregatorType = "CUSTOM",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Cloud Config Aggregator can be imported using the id, e.g.

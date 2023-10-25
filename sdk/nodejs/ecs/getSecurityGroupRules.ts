@@ -10,29 +10,6 @@ import * as utilities from "../utilities";
  * The `alicloud.ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
  * Each collection item represents a single `ingress` or `egress` permission rule.
  * The ID of the security group can be provided via a variable or the result from the other data source `alicloud.ecs.getSecurityGroups`.
- *
- * ## Example Usage
- *
- * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const securityGroupId = config.requireObject("securityGroupId");
- * const groupsDs = alicloud.ecs.getSecurityGroups({
- *     nameRegex: "api",
- * });
- * const ingressRulesDs = groupsDs.then(groupsDs => alicloud.ecs.getSecurityGroupRules({
- *     direction: "ingress",
- *     groupId: groupsDs.groups?.[0]?.id,
- *     ipProtocol: "tcp",
- *     nicType: "internet",
- * }));
- * // Pass port_range to the backend service
- * const backend = new alicloud.ecs.Instance("backend", {userData: ingressRulesDs.then(ingressRulesDs => `config_service.sh --portrange=${ingressRulesDs.rules?.[0]?.portRange}`)});
- * ```
  */
 export function getSecurityGroupRules(args: GetSecurityGroupRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupRulesResult> {
 
@@ -120,29 +97,6 @@ export interface GetSecurityGroupRulesResult {
  * The `alicloud.ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
  * Each collection item represents a single `ingress` or `egress` permission rule.
  * The ID of the security group can be provided via a variable or the result from the other data source `alicloud.ecs.getSecurityGroups`.
- *
- * ## Example Usage
- *
- * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const securityGroupId = config.requireObject("securityGroupId");
- * const groupsDs = alicloud.ecs.getSecurityGroups({
- *     nameRegex: "api",
- * });
- * const ingressRulesDs = groupsDs.then(groupsDs => alicloud.ecs.getSecurityGroupRules({
- *     direction: "ingress",
- *     groupId: groupsDs.groups?.[0]?.id,
- *     ipProtocol: "tcp",
- *     nicType: "internet",
- * }));
- * // Pass port_range to the backend service
- * const backend = new alicloud.ecs.Instance("backend", {userData: ingressRulesDs.then(ingressRulesDs => `config_service.sh --portrange=${ingressRulesDs.rules?.[0]?.portRange}`)});
- * ```
  */
 export function getSecurityGroupRulesOutput(args: GetSecurityGroupRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityGroupRulesResult> {
     return pulumi.output(args).apply((a: any) => getSecurityGroupRules(a, opts))

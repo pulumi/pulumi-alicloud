@@ -68,9 +68,9 @@ class TransitRouterVpcAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cen_id: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
-             zone_mappings: pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]],
+             cen_id: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]] = None,
              auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              payment_type: Optional[pulumi.Input[str]] = None,
@@ -82,33 +82,39 @@ class TransitRouterVpcAttachmentArgs:
              transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
              transit_router_id: Optional[pulumi.Input[str]] = None,
              vpc_owner_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'vpcId' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'zoneMappings' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if zone_mappings is None and 'zoneMappings' in kwargs:
             zone_mappings = kwargs['zoneMappings']
-        if 'autoPublishRouteEnabled' in kwargs:
+        if zone_mappings is None:
+            raise TypeError("Missing 'zone_mappings' argument")
+        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
             auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceType' in kwargs:
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'routeTableAssociationEnabled' in kwargs:
+        if route_table_association_enabled is None and 'routeTableAssociationEnabled' in kwargs:
             route_table_association_enabled = kwargs['routeTableAssociationEnabled']
-        if 'routeTablePropagationEnabled' in kwargs:
+        if route_table_propagation_enabled is None and 'routeTablePropagationEnabled' in kwargs:
             route_table_propagation_enabled = kwargs['routeTablePropagationEnabled']
-        if 'transitRouterAttachmentDescription' in kwargs:
+        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
             transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if 'transitRouterAttachmentName' in kwargs:
+        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
             transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if 'transitRouterId' in kwargs:
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'vpcOwnerId' in kwargs:
+        if vpc_owner_id is None and 'vpcOwnerId' in kwargs:
             vpc_owner_id = kwargs['vpcOwnerId']
 
         _setter("cen_id", cen_id)
@@ -396,35 +402,35 @@ class _TransitRouterVpcAttachmentState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vpc_owner_id: Optional[pulumi.Input[str]] = None,
              zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoPublishRouteEnabled' in kwargs:
+        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
             auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceType' in kwargs:
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'routeTableAssociationEnabled' in kwargs:
+        if route_table_association_enabled is None and 'routeTableAssociationEnabled' in kwargs:
             route_table_association_enabled = kwargs['routeTableAssociationEnabled']
-        if 'routeTablePropagationEnabled' in kwargs:
+        if route_table_propagation_enabled is None and 'routeTablePropagationEnabled' in kwargs:
             route_table_propagation_enabled = kwargs['routeTablePropagationEnabled']
-        if 'transitRouterAttachmentDescription' in kwargs:
+        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
             transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if 'transitRouterAttachmentId' in kwargs:
+        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
             transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if 'transitRouterAttachmentName' in kwargs:
+        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
             transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if 'transitRouterId' in kwargs:
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vpcOwnerId' in kwargs:
+        if vpc_owner_id is None and 'vpcOwnerId' in kwargs:
             vpc_owner_id = kwargs['vpcOwnerId']
-        if 'zoneMappings' in kwargs:
+        if zone_mappings is None and 'zoneMappings' in kwargs:
             zone_mappings = kwargs['zoneMappings']
 
         if auto_publish_route_enabled is not None:
@@ -691,58 +697,6 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.126.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.cen.get_transit_router_available_resources()
-        master_zone = default.resources[0].master_zones[0]
-        slave_zone = default.resources[0].slave_zones[1]
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="192.168.0.0/16")
-        example_master = alicloud.vpc.Switch("exampleMaster",
-            vswitch_name=name,
-            cidr_block="192.168.1.0/24",
-            vpc_id=example_network.id,
-            zone_id=master_zone)
-        example_slave = alicloud.vpc.Switch("exampleSlave",
-            vswitch_name=name,
-            cidr_block="192.168.2.0/24",
-            vpc_id=example_network.id,
-            zone_id=slave_zone)
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name=name,
-            protection_level="REDUCED")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name=name,
-            cen_id=example_instance.id)
-        example_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment",
-            cen_id=example_instance.id,
-            transit_router_id=example_transit_router.transit_router_id,
-            vpc_id=example_network.id,
-            zone_mappings=[
-                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
-                    zone_id=master_zone,
-                    vswitch_id=example_master.id,
-                ),
-                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
-                    zone_id=slave_zone,
-                    vswitch_id=example_slave.id,
-                ),
-            ],
-            transit_router_attachment_name=name,
-            transit_router_attachment_description=name)
-        ```
-
         ## Import
 
         CEN instance can be imported using the id, e.g.
@@ -779,58 +733,6 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
 
         > **NOTE:** Available since v1.126.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.cen.get_transit_router_available_resources()
-        master_zone = default.resources[0].master_zones[0]
-        slave_zone = default.resources[0].slave_zones[1]
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="192.168.0.0/16")
-        example_master = alicloud.vpc.Switch("exampleMaster",
-            vswitch_name=name,
-            cidr_block="192.168.1.0/24",
-            vpc_id=example_network.id,
-            zone_id=master_zone)
-        example_slave = alicloud.vpc.Switch("exampleSlave",
-            vswitch_name=name,
-            cidr_block="192.168.2.0/24",
-            vpc_id=example_network.id,
-            zone_id=slave_zone)
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name=name,
-            protection_level="REDUCED")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name=name,
-            cen_id=example_instance.id)
-        example_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment",
-            cen_id=example_instance.id,
-            transit_router_id=example_transit_router.transit_router_id,
-            vpc_id=example_network.id,
-            zone_mappings=[
-                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
-                    zone_id=master_zone,
-                    vswitch_id=example_master.id,
-                ),
-                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
-                    zone_id=slave_zone,
-                    vswitch_id=example_slave.id,
-                ),
-            ],
-            transit_router_attachment_name=name,
-            transit_router_attachment_description=name)
-        ```
 
         ## Import
 

@@ -92,27 +92,27 @@ class KeyArgs:
              rotation_interval: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'automaticRotation' in kwargs:
+        if automatic_rotation is None and 'automaticRotation' in kwargs:
             automatic_rotation = kwargs['automaticRotation']
-        if 'deletionWindowInDays' in kwargs:
+        if deletion_window_in_days is None and 'deletionWindowInDays' in kwargs:
             deletion_window_in_days = kwargs['deletionWindowInDays']
-        if 'dkmsInstanceId' in kwargs:
+        if dkms_instance_id is None and 'dkmsInstanceId' in kwargs:
             dkms_instance_id = kwargs['dkmsInstanceId']
-        if 'isEnabled' in kwargs:
+        if is_enabled is None and 'isEnabled' in kwargs:
             is_enabled = kwargs['isEnabled']
-        if 'keySpec' in kwargs:
+        if key_spec is None and 'keySpec' in kwargs:
             key_spec = kwargs['keySpec']
-        if 'keyState' in kwargs:
+        if key_state is None and 'keyState' in kwargs:
             key_state = kwargs['keyState']
-        if 'keyUsage' in kwargs:
+        if key_usage is None and 'keyUsage' in kwargs:
             key_usage = kwargs['keyUsage']
-        if 'pendingWindowInDays' in kwargs:
+        if pending_window_in_days is None and 'pendingWindowInDays' in kwargs:
             pending_window_in_days = kwargs['pendingWindowInDays']
-        if 'protectionLevel' in kwargs:
+        if protection_level is None and 'protectionLevel' in kwargs:
             protection_level = kwargs['protectionLevel']
-        if 'rotationInterval' in kwargs:
+        if rotation_interval is None and 'rotationInterval' in kwargs:
             rotation_interval = kwargs['rotationInterval']
 
         if automatic_rotation is not None:
@@ -457,39 +457,39 @@ class _KeyState:
              rotation_interval: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'automaticRotation' in kwargs:
+        if automatic_rotation is None and 'automaticRotation' in kwargs:
             automatic_rotation = kwargs['automaticRotation']
-        if 'creationDate' in kwargs:
+        if creation_date is None and 'creationDate' in kwargs:
             creation_date = kwargs['creationDate']
-        if 'deleteDate' in kwargs:
+        if delete_date is None and 'deleteDate' in kwargs:
             delete_date = kwargs['deleteDate']
-        if 'deletionWindowInDays' in kwargs:
+        if deletion_window_in_days is None and 'deletionWindowInDays' in kwargs:
             deletion_window_in_days = kwargs['deletionWindowInDays']
-        if 'dkmsInstanceId' in kwargs:
+        if dkms_instance_id is None and 'dkmsInstanceId' in kwargs:
             dkms_instance_id = kwargs['dkmsInstanceId']
-        if 'isEnabled' in kwargs:
+        if is_enabled is None and 'isEnabled' in kwargs:
             is_enabled = kwargs['isEnabled']
-        if 'keySpec' in kwargs:
+        if key_spec is None and 'keySpec' in kwargs:
             key_spec = kwargs['keySpec']
-        if 'keyState' in kwargs:
+        if key_state is None and 'keyState' in kwargs:
             key_state = kwargs['keyState']
-        if 'keyUsage' in kwargs:
+        if key_usage is None and 'keyUsage' in kwargs:
             key_usage = kwargs['keyUsage']
-        if 'lastRotationDate' in kwargs:
+        if last_rotation_date is None and 'lastRotationDate' in kwargs:
             last_rotation_date = kwargs['lastRotationDate']
-        if 'materialExpireTime' in kwargs:
+        if material_expire_time is None and 'materialExpireTime' in kwargs:
             material_expire_time = kwargs['materialExpireTime']
-        if 'nextRotationDate' in kwargs:
+        if next_rotation_date is None and 'nextRotationDate' in kwargs:
             next_rotation_date = kwargs['nextRotationDate']
-        if 'pendingWindowInDays' in kwargs:
+        if pending_window_in_days is None and 'pendingWindowInDays' in kwargs:
             pending_window_in_days = kwargs['pendingWindowInDays']
-        if 'primaryKeyVersion' in kwargs:
+        if primary_key_version is None and 'primaryKeyVersion' in kwargs:
             primary_key_version = kwargs['primaryKeyVersion']
-        if 'protectionLevel' in kwargs:
+        if protection_level is None and 'protectionLevel' in kwargs:
             protection_level = kwargs['protectionLevel']
-        if 'rotationInterval' in kwargs:
+        if rotation_interval is None and 'rotationInterval' in kwargs:
             rotation_interval = kwargs['rotationInterval']
 
         if arn is not None:
@@ -858,20 +858,6 @@ class Key(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.85.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        key = alicloud.kms.Key("key",
-            description="Hello KMS",
-            pending_window_in_days=7,
-            status="Enabled")
-        ```
-
         ## Import
 
         Alikms key can be imported using the id, e.g.
@@ -920,20 +906,6 @@ class Key(pulumi.CustomResource):
         A kms key can help user to protect data security in the transmission process. For information about Alikms Key and how to use it, see [What is Resource Alikms Key](https://www.alibabacloud.com/help/doc-detail/28947.htm).
 
         > **NOTE:** Available since v1.85.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        key = alicloud.kms.Key("key",
-            description="Hello KMS",
-            pending_window_in_days=7,
-            status="Enabled")
-        ```
 
         ## Import
 

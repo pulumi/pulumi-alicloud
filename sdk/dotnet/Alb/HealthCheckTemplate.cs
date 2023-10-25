@@ -16,26 +16,6 @@ namespace Pulumi.AliCloud.Alb
     /// 
     /// &gt; **NOTE:** Available since v1.134.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Alb.HealthCheckTemplate("example", new()
-    ///     {
-    ///         HealthCheckTemplateName = "example_name",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Application Load Balancer (ALB) Health Check Template can be imported using the id, e.g.

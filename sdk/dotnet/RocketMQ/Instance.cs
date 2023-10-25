@@ -18,27 +18,6 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// &gt; **NOTE:** Available in 1.51.0+
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.RocketMQ.Instance("example", new()
-    ///     {
-    ///         InstanceName = "tf-example-ons-instance",
-    ///         Remark = "tf-example-ons-instance-remark",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ONS INSTANCE can be imported using the id, e.g.

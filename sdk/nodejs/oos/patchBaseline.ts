@@ -11,23 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.146.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const _default = new alicloud.oos.PatchBaseline("default", {
- *     patchBaselineName: name,
- *     operationSystem: "Windows",
- *     approvalRules: "{\"PatchRules\":[{\"EnableNonSecurity\":true,\"PatchFilterGroup\":[{\"Values\":[\"*\"],\"Key\":\"Product\"},{\"Values\":[\"Security\",\"Bugfix\"],\"Key\":\"Classification\"},{\"Values\":[\"Critical\",\"Important\"],\"Key\":\"Severity\"}],\"ApproveAfterDays\":7,\"ComplianceLevel\":\"Unspecified\"}]}",
- * });
- * ```
- *
  * ## Import
  *
  * OOS Patch Baseline can be imported using the id, e.g.

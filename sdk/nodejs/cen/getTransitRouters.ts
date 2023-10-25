@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
  *
  * > **NOTE:** Available in 1.126.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cen.getTransitRouters({
- *     cenId: "cen-id1",
- * });
- * export const firstTransitRoutersType = _default.then(_default => _default.transitRouters?.[0]?.type);
- * ```
  */
 export function getTransitRouters(args: GetTransitRoutersArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRoutersResult> {
 
@@ -108,18 +96,6 @@ export interface GetTransitRoutersResult {
  * This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
  *
  * > **NOTE:** Available in 1.126.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cen.getTransitRouters({
- *     cenId: "cen-id1",
- * });
- * export const firstTransitRoutersType = _default.then(_default => _default.transitRouters?.[0]?.type);
- * ```
  */
 export function getTransitRoutersOutput(args: GetTransitRoutersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRoutersResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouters(a, opts))

@@ -14,34 +14,6 @@ import (
 
 // This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
 // other public images and the ones available on the image market.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			imagesDs, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				NameRegex: pulumi.StringRef("^centos_6"),
-//				Owners:    pulumi.StringRef("system"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstImageId", imagesDs.Images[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOption) (*GetImagesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetImagesResult

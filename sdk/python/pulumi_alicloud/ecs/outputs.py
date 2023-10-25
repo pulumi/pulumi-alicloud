@@ -145,20 +145,26 @@ class AutoProvisioningGroupLaunchTemplateConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_price: str,
-             vswitch_id: str,
-             weighted_capacity: str,
+             max_price: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             weighted_capacity: Optional[str] = None,
              instance_type: Optional[str] = None,
              priority: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxPrice' in kwargs:
+        if max_price is None and 'maxPrice' in kwargs:
             max_price = kwargs['maxPrice']
-        if 'vswitchId' in kwargs:
+        if max_price is None:
+            raise TypeError("Missing 'max_price' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'weightedCapacity' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if weighted_capacity is None and 'weightedCapacity' in kwargs:
             weighted_capacity = kwargs['weightedCapacity']
-        if 'instanceType' in kwargs:
+        if weighted_capacity is None:
+            raise TypeError("Missing 'weighted_capacity' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
 
         _setter("max_price", max_price)
@@ -248,11 +254,11 @@ class DedicatedHostNetworkAttribute(dict):
              _setter: Callable[[Any, Any], None],
              slb_udp_timeout: Optional[int] = None,
              udp_timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'slbUdpTimeout' in kwargs:
+        if slb_udp_timeout is None and 'slbUdpTimeout' in kwargs:
             slb_udp_timeout = kwargs['slbUdpTimeout']
-        if 'udpTimeout' in kwargs:
+        if udp_timeout is None and 'udpTimeout' in kwargs:
             udp_timeout = kwargs['udpTimeout']
 
         if slb_udp_timeout is not None:
@@ -350,7 +356,7 @@ class EcsInstanceSetDataDisk(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk_size: int,
+             disk_size: Optional[int] = None,
              auto_snapshot_policy_id: Optional[str] = None,
              disk_category: Optional[str] = None,
              disk_description: Optional[str] = None,
@@ -359,23 +365,25 @@ class EcsInstanceSetDataDisk(dict):
              kms_key_id: Optional[str] = None,
              performance_level: Optional[str] = None,
              snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'autoSnapshotPolicyId' in kwargs:
+        if disk_size is None:
+            raise TypeError("Missing 'disk_size' argument")
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
             auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if 'diskCategory' in kwargs:
+        if disk_category is None and 'diskCategory' in kwargs:
             disk_category = kwargs['diskCategory']
-        if 'diskDescription' in kwargs:
+        if disk_description is None and 'diskDescription' in kwargs:
             disk_description = kwargs['diskDescription']
-        if 'diskName' in kwargs:
+        if disk_name is None and 'diskName' in kwargs:
             disk_name = kwargs['diskName']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         _setter("disk_size", disk_size)
@@ -490,10 +498,14 @@ class EcsInstanceSetExcludeInstanceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("key", key)
         _setter("values", values)
@@ -564,20 +576,22 @@ class EcsInstanceSetNetworkInterface(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             security_group_id: str,
+             security_group_id: Optional[str] = None,
              description: Optional[str] = None,
              network_interface_name: Optional[str] = None,
              primary_ip_address: Optional[str] = None,
              vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'networkInterfaceName' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if network_interface_name is None and 'networkInterfaceName' in kwargs:
             network_interface_name = kwargs['networkInterfaceName']
-        if 'primaryIpAddress' in kwargs:
+        if primary_ip_address is None and 'primaryIpAddress' in kwargs:
             primary_ip_address = kwargs['primaryIpAddress']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         _setter("security_group_id", security_group_id)
@@ -695,13 +709,13 @@ class EcsLaunchTemplateDataDisk(dict):
              performance_level: Optional[str] = None,
              size: Optional[int] = None,
              snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteWithInstance' in kwargs:
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         if category is not None:
@@ -838,13 +852,13 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
              primary_ip: Optional[str] = None,
              security_group_id: Optional[str] = None,
              vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'primaryIp' in kwargs:
+        if primary_ip is None and 'primaryIp' in kwargs:
             primary_ip = kwargs['primaryIp']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if description is not None:
@@ -961,11 +975,11 @@ class EcsLaunchTemplateSystemDisk(dict):
              name: Optional[str] = None,
              performance_level: Optional[str] = None,
              size: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteWithInstance' in kwargs:
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
 
         if category is not None:
@@ -1075,7 +1089,7 @@ class EcsPrefixListEntry(dict):
              _setter: Callable[[Any, Any], None],
              cidr: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if cidr is not None:
@@ -1152,11 +1166,11 @@ class ImageDiskDeviceMapping(dict):
              disk_type: Optional[str] = None,
              size: Optional[int] = None,
              snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'diskType' in kwargs:
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         if device is not None:
@@ -1255,13 +1269,13 @@ class ImageImportDiskDeviceMapping(dict):
              format: Optional[str] = None,
              oss_bucket: Optional[str] = None,
              oss_object: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'diskImageSize' in kwargs:
+        if disk_image_size is None and 'diskImageSize' in kwargs:
             disk_image_size = kwargs['diskImageSize']
-        if 'ossBucket' in kwargs:
+        if oss_bucket is None and 'ossBucket' in kwargs:
             oss_bucket = kwargs['ossBucket']
-        if 'ossObject' in kwargs:
+        if oss_object is None and 'ossObject' in kwargs:
             oss_object = kwargs['ossObject']
 
         if device is not None:
@@ -1392,7 +1406,7 @@ class InstanceDataDisk(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             size: int,
+             size: Optional[int] = None,
              auto_snapshot_policy_id: Optional[str] = None,
              category: Optional[str] = None,
              delete_with_instance: Optional[bool] = None,
@@ -1403,17 +1417,19 @@ class InstanceDataDisk(dict):
              name: Optional[str] = None,
              performance_level: Optional[str] = None,
              snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoSnapshotPolicyId' in kwargs:
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
             auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if 'deleteWithInstance' in kwargs:
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         _setter("size", size)
@@ -1570,11 +1586,11 @@ class InstanceMaintenanceTime(dict):
              _setter: Callable[[Any, Any], None],
              end_time: Optional[str] = None,
              start_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endTime' in kwargs:
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'startTime' in kwargs:
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
 
         if end_time is not None:
@@ -1678,13 +1694,13 @@ class LaunchTemplateDataDisk(dict):
              performance_level: Optional[str] = None,
              size: Optional[int] = None,
              snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteWithInstance' in kwargs:
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         if category is not None:
@@ -1834,13 +1850,13 @@ class LaunchTemplateNetworkInterfaces(dict):
              primary_ip: Optional[str] = None,
              security_group_id: Optional[str] = None,
              vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'primaryIp' in kwargs:
+        if primary_ip is None and 'primaryIp' in kwargs:
             primary_ip = kwargs['primaryIp']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if description is not None:
@@ -1971,11 +1987,11 @@ class LaunchTemplateSystemDisk(dict):
              name: Optional[str] = None,
              performance_level: Optional[str] = None,
              size: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteWithInstance' in kwargs:
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
 
         if category is not None:
@@ -2102,9 +2118,9 @@ class ReservedInstanceOperationLock(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'lockReason' in kwargs:
+        if lock_reason is None and 'lockReason' in kwargs:
             lock_reason = kwargs['lockReason']
 
         if lock_reason is not None:
@@ -2163,35 +2179,57 @@ class GetActivationsActivationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             activation_id: str,
-             create_time: str,
-             deregistered_count: int,
-             description: str,
-             disabled: bool,
-             id: str,
-             instance_count: int,
-             instance_name: str,
-             ip_address_range: str,
-             registered_count: int,
-             time_to_live_in_hours: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             activation_id: Optional[str] = None,
+             create_time: Optional[str] = None,
+             deregistered_count: Optional[int] = None,
+             description: Optional[str] = None,
+             disabled: Optional[bool] = None,
+             id: Optional[str] = None,
+             instance_count: Optional[int] = None,
+             instance_name: Optional[str] = None,
+             ip_address_range: Optional[str] = None,
+             registered_count: Optional[int] = None,
+             time_to_live_in_hours: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'activationId' in kwargs:
+        if activation_id is None and 'activationId' in kwargs:
             activation_id = kwargs['activationId']
-        if 'createTime' in kwargs:
+        if activation_id is None:
+            raise TypeError("Missing 'activation_id' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'deregisteredCount' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if deregistered_count is None and 'deregisteredCount' in kwargs:
             deregistered_count = kwargs['deregisteredCount']
-        if 'instanceCount' in kwargs:
+        if deregistered_count is None:
+            raise TypeError("Missing 'deregistered_count' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_count is None and 'instanceCount' in kwargs:
             instance_count = kwargs['instanceCount']
-        if 'instanceName' in kwargs:
+        if instance_count is None:
+            raise TypeError("Missing 'instance_count' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'ipAddressRange' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if ip_address_range is None and 'ipAddressRange' in kwargs:
             ip_address_range = kwargs['ipAddressRange']
-        if 'registeredCount' in kwargs:
+        if ip_address_range is None:
+            raise TypeError("Missing 'ip_address_range' argument")
+        if registered_count is None and 'registeredCount' in kwargs:
             registered_count = kwargs['registeredCount']
-        if 'timeToLiveInHours' in kwargs:
+        if registered_count is None:
+            raise TypeError("Missing 'registered_count' argument")
+        if time_to_live_in_hours is None and 'timeToLiveInHours' in kwargs:
             time_to_live_in_hours = kwargs['timeToLiveInHours']
+        if time_to_live_in_hours is None:
+            raise TypeError("Missing 'time_to_live_in_hours' argument")
 
         _setter("activation_id", activation_id)
         _setter("create_time", create_time)
@@ -2344,39 +2382,65 @@ class GetAutoSnapshotPoliciesPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_snapshot_policy_id: str,
-             copied_snapshots_retention_days: int,
-             disk_nums: int,
-             enable_cross_region_copy: bool,
-             id: str,
-             name: str,
-             repeat_weekdays: Sequence[str],
-             retention_days: int,
-             status: str,
-             tags: Mapping[str, Any],
-             target_copy_regions: Sequence[str],
-             time_points: Sequence[str],
-             volume_nums: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auto_snapshot_policy_id: Optional[str] = None,
+             copied_snapshots_retention_days: Optional[int] = None,
+             disk_nums: Optional[int] = None,
+             enable_cross_region_copy: Optional[bool] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             repeat_weekdays: Optional[Sequence[str]] = None,
+             retention_days: Optional[int] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             target_copy_regions: Optional[Sequence[str]] = None,
+             time_points: Optional[Sequence[str]] = None,
+             volume_nums: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoSnapshotPolicyId' in kwargs:
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
             auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if 'copiedSnapshotsRetentionDays' in kwargs:
+        if auto_snapshot_policy_id is None:
+            raise TypeError("Missing 'auto_snapshot_policy_id' argument")
+        if copied_snapshots_retention_days is None and 'copiedSnapshotsRetentionDays' in kwargs:
             copied_snapshots_retention_days = kwargs['copiedSnapshotsRetentionDays']
-        if 'diskNums' in kwargs:
+        if copied_snapshots_retention_days is None:
+            raise TypeError("Missing 'copied_snapshots_retention_days' argument")
+        if disk_nums is None and 'diskNums' in kwargs:
             disk_nums = kwargs['diskNums']
-        if 'enableCrossRegionCopy' in kwargs:
+        if disk_nums is None:
+            raise TypeError("Missing 'disk_nums' argument")
+        if enable_cross_region_copy is None and 'enableCrossRegionCopy' in kwargs:
             enable_cross_region_copy = kwargs['enableCrossRegionCopy']
-        if 'repeatWeekdays' in kwargs:
+        if enable_cross_region_copy is None:
+            raise TypeError("Missing 'enable_cross_region_copy' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if repeat_weekdays is None and 'repeatWeekdays' in kwargs:
             repeat_weekdays = kwargs['repeatWeekdays']
-        if 'retentionDays' in kwargs:
+        if repeat_weekdays is None:
+            raise TypeError("Missing 'repeat_weekdays' argument")
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'targetCopyRegions' in kwargs:
+        if retention_days is None:
+            raise TypeError("Missing 'retention_days' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if target_copy_regions is None and 'targetCopyRegions' in kwargs:
             target_copy_regions = kwargs['targetCopyRegions']
-        if 'timePoints' in kwargs:
+        if target_copy_regions is None:
+            raise TypeError("Missing 'target_copy_regions' argument")
+        if time_points is None and 'timePoints' in kwargs:
             time_points = kwargs['timePoints']
-        if 'volumeNums' in kwargs:
+        if time_points is None:
+            raise TypeError("Missing 'time_points' argument")
+        if volume_nums is None and 'volumeNums' in kwargs:
             volume_nums = kwargs['volumeNums']
+        if volume_nums is None:
+            raise TypeError("Missing 'volume_nums' argument")
 
         _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         _setter("copied_snapshots_retention_days", copied_snapshots_retention_days)
@@ -2562,52 +2626,86 @@ class GetCapacityReservationsReservationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             capacity_reservation_id: str,
-             capacity_reservation_name: str,
-             description: str,
-             end_time: str,
-             end_time_type: str,
-             id: str,
-             instance_amount: str,
-             instance_type: str,
-             match_criteria: str,
-             payment_type: str,
-             platform: str,
-             resource_group_id: str,
-             start_time: str,
-             start_time_type: str,
-             status: str,
-             time_slot: str,
-             zone_ids: Sequence[str],
+             capacity_reservation_id: Optional[str] = None,
+             capacity_reservation_name: Optional[str] = None,
+             description: Optional[str] = None,
+             end_time: Optional[str] = None,
+             end_time_type: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_amount: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             match_criteria: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             platform: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             start_time: Optional[str] = None,
+             start_time_type: Optional[str] = None,
+             status: Optional[str] = None,
+             time_slot: Optional[str] = None,
+             zone_ids: Optional[Sequence[str]] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'capacityReservationId' in kwargs:
+        if capacity_reservation_id is None and 'capacityReservationId' in kwargs:
             capacity_reservation_id = kwargs['capacityReservationId']
-        if 'capacityReservationName' in kwargs:
+        if capacity_reservation_id is None:
+            raise TypeError("Missing 'capacity_reservation_id' argument")
+        if capacity_reservation_name is None and 'capacityReservationName' in kwargs:
             capacity_reservation_name = kwargs['capacityReservationName']
-        if 'endTime' in kwargs:
+        if capacity_reservation_name is None:
+            raise TypeError("Missing 'capacity_reservation_name' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'endTimeType' in kwargs:
+        if end_time is None:
+            raise TypeError("Missing 'end_time' argument")
+        if end_time_type is None and 'endTimeType' in kwargs:
             end_time_type = kwargs['endTimeType']
-        if 'instanceAmount' in kwargs:
+        if end_time_type is None:
+            raise TypeError("Missing 'end_time_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_amount is None and 'instanceAmount' in kwargs:
             instance_amount = kwargs['instanceAmount']
-        if 'instanceType' in kwargs:
+        if instance_amount is None:
+            raise TypeError("Missing 'instance_amount' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'matchCriteria' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if match_criteria is None and 'matchCriteria' in kwargs:
             match_criteria = kwargs['matchCriteria']
-        if 'paymentType' in kwargs:
+        if match_criteria is None:
+            raise TypeError("Missing 'match_criteria' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if platform is None:
+            raise TypeError("Missing 'platform' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'startTime' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'startTimeType' in kwargs:
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if start_time_type is None and 'startTimeType' in kwargs:
             start_time_type = kwargs['startTimeType']
-        if 'timeSlot' in kwargs:
+        if start_time_type is None:
+            raise TypeError("Missing 'start_time_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if time_slot is None and 'timeSlot' in kwargs:
             time_slot = kwargs['timeSlot']
-        if 'zoneIds' in kwargs:
+        if time_slot is None:
+            raise TypeError("Missing 'time_slot' argument")
+        if zone_ids is None and 'zoneIds' in kwargs:
             zone_ids = kwargs['zoneIds']
+        if zone_ids is None:
+            raise TypeError("Missing 'zone_ids' argument")
 
         _setter("capacity_reservation_id", capacity_reservation_id)
         _setter("capacity_reservation_name", capacity_reservation_name)
@@ -2815,28 +2913,48 @@ class GetCommandsCommandResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             command_content: str,
-             command_id: str,
-             description: str,
-             enable_parameter: bool,
-             id: str,
-             name: str,
-             parameter_names: Sequence[str],
-             timeout: int,
-             type: str,
-             working_dir: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             command_content: Optional[str] = None,
+             command_id: Optional[str] = None,
+             description: Optional[str] = None,
+             enable_parameter: Optional[bool] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             parameter_names: Optional[Sequence[str]] = None,
+             timeout: Optional[int] = None,
+             type: Optional[str] = None,
+             working_dir: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'commandContent' in kwargs:
+        if command_content is None and 'commandContent' in kwargs:
             command_content = kwargs['commandContent']
-        if 'commandId' in kwargs:
+        if command_content is None:
+            raise TypeError("Missing 'command_content' argument")
+        if command_id is None and 'commandId' in kwargs:
             command_id = kwargs['commandId']
-        if 'enableParameter' in kwargs:
+        if command_id is None:
+            raise TypeError("Missing 'command_id' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if enable_parameter is None and 'enableParameter' in kwargs:
             enable_parameter = kwargs['enableParameter']
-        if 'parameterNames' in kwargs:
+        if enable_parameter is None:
+            raise TypeError("Missing 'enable_parameter' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if parameter_names is None and 'parameterNames' in kwargs:
             parameter_names = kwargs['parameterNames']
-        if 'workingDir' in kwargs:
+        if parameter_names is None:
+            raise TypeError("Missing 'parameter_names' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if working_dir is None and 'workingDir' in kwargs:
             working_dir = kwargs['workingDir']
+        if working_dir is None:
+            raise TypeError("Missing 'working_dir' argument")
 
         _setter("command_content", command_content)
         _setter("command_id", command_id)
@@ -3022,75 +3140,129 @@ class GetDedicatedHostsHostResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action_on_maintenance: str,
-             auto_placement: str,
-             auto_release_time: str,
-             capacities: Sequence['outputs.GetDedicatedHostsHostCapacityResult'],
-             cores: int,
-             cpu_over_commit_ratio: float,
-             dedicated_host_id: str,
-             dedicated_host_name: str,
-             dedicated_host_type: str,
-             description: str,
-             expired_time: str,
-             gpu_spec: str,
-             id: str,
-             machine_id: str,
-             network_attributes: Sequence['outputs.GetDedicatedHostsHostNetworkAttributeResult'],
-             operation_locks: Sequence['outputs.GetDedicatedHostsHostOperationLockResult'],
-             payment_type: str,
-             physical_gpus: int,
-             resource_group_id: str,
-             sale_cycle: str,
-             sockets: int,
-             status: str,
-             supported_custom_instance_type_families: Sequence[str],
-             supported_instance_type_families: Sequence[str],
-             supported_instance_types_lists: Sequence[str],
-             tags: Mapping[str, Any],
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             action_on_maintenance: Optional[str] = None,
+             auto_placement: Optional[str] = None,
+             auto_release_time: Optional[str] = None,
+             capacities: Optional[Sequence['outputs.GetDedicatedHostsHostCapacityResult']] = None,
+             cores: Optional[int] = None,
+             cpu_over_commit_ratio: Optional[float] = None,
+             dedicated_host_id: Optional[str] = None,
+             dedicated_host_name: Optional[str] = None,
+             dedicated_host_type: Optional[str] = None,
+             description: Optional[str] = None,
+             expired_time: Optional[str] = None,
+             gpu_spec: Optional[str] = None,
+             id: Optional[str] = None,
+             machine_id: Optional[str] = None,
+             network_attributes: Optional[Sequence['outputs.GetDedicatedHostsHostNetworkAttributeResult']] = None,
+             operation_locks: Optional[Sequence['outputs.GetDedicatedHostsHostOperationLockResult']] = None,
+             payment_type: Optional[str] = None,
+             physical_gpus: Optional[int] = None,
+             resource_group_id: Optional[str] = None,
+             sale_cycle: Optional[str] = None,
+             sockets: Optional[int] = None,
+             status: Optional[str] = None,
+             supported_custom_instance_type_families: Optional[Sequence[str]] = None,
+             supported_instance_type_families: Optional[Sequence[str]] = None,
+             supported_instance_types_lists: Optional[Sequence[str]] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'actionOnMaintenance' in kwargs:
+        if action_on_maintenance is None and 'actionOnMaintenance' in kwargs:
             action_on_maintenance = kwargs['actionOnMaintenance']
-        if 'autoPlacement' in kwargs:
+        if action_on_maintenance is None:
+            raise TypeError("Missing 'action_on_maintenance' argument")
+        if auto_placement is None and 'autoPlacement' in kwargs:
             auto_placement = kwargs['autoPlacement']
-        if 'autoReleaseTime' in kwargs:
+        if auto_placement is None:
+            raise TypeError("Missing 'auto_placement' argument")
+        if auto_release_time is None and 'autoReleaseTime' in kwargs:
             auto_release_time = kwargs['autoReleaseTime']
-        if 'cpuOverCommitRatio' in kwargs:
+        if auto_release_time is None:
+            raise TypeError("Missing 'auto_release_time' argument")
+        if capacities is None:
+            raise TypeError("Missing 'capacities' argument")
+        if cores is None:
+            raise TypeError("Missing 'cores' argument")
+        if cpu_over_commit_ratio is None and 'cpuOverCommitRatio' in kwargs:
             cpu_over_commit_ratio = kwargs['cpuOverCommitRatio']
-        if 'dedicatedHostId' in kwargs:
+        if cpu_over_commit_ratio is None:
+            raise TypeError("Missing 'cpu_over_commit_ratio' argument")
+        if dedicated_host_id is None and 'dedicatedHostId' in kwargs:
             dedicated_host_id = kwargs['dedicatedHostId']
-        if 'dedicatedHostName' in kwargs:
+        if dedicated_host_id is None:
+            raise TypeError("Missing 'dedicated_host_id' argument")
+        if dedicated_host_name is None and 'dedicatedHostName' in kwargs:
             dedicated_host_name = kwargs['dedicatedHostName']
-        if 'dedicatedHostType' in kwargs:
+        if dedicated_host_name is None:
+            raise TypeError("Missing 'dedicated_host_name' argument")
+        if dedicated_host_type is None and 'dedicatedHostType' in kwargs:
             dedicated_host_type = kwargs['dedicatedHostType']
-        if 'expiredTime' in kwargs:
+        if dedicated_host_type is None:
+            raise TypeError("Missing 'dedicated_host_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'gpuSpec' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if gpu_spec is None and 'gpuSpec' in kwargs:
             gpu_spec = kwargs['gpuSpec']
-        if 'machineId' in kwargs:
+        if gpu_spec is None:
+            raise TypeError("Missing 'gpu_spec' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if machine_id is None and 'machineId' in kwargs:
             machine_id = kwargs['machineId']
-        if 'networkAttributes' in kwargs:
+        if machine_id is None:
+            raise TypeError("Missing 'machine_id' argument")
+        if network_attributes is None and 'networkAttributes' in kwargs:
             network_attributes = kwargs['networkAttributes']
-        if 'operationLocks' in kwargs:
+        if network_attributes is None:
+            raise TypeError("Missing 'network_attributes' argument")
+        if operation_locks is None and 'operationLocks' in kwargs:
             operation_locks = kwargs['operationLocks']
-        if 'paymentType' in kwargs:
+        if operation_locks is None:
+            raise TypeError("Missing 'operation_locks' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'physicalGpus' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if physical_gpus is None and 'physicalGpus' in kwargs:
             physical_gpus = kwargs['physicalGpus']
-        if 'resourceGroupId' in kwargs:
+        if physical_gpus is None:
+            raise TypeError("Missing 'physical_gpus' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'saleCycle' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if sale_cycle is None and 'saleCycle' in kwargs:
             sale_cycle = kwargs['saleCycle']
-        if 'supportedCustomInstanceTypeFamilies' in kwargs:
+        if sale_cycle is None:
+            raise TypeError("Missing 'sale_cycle' argument")
+        if sockets is None:
+            raise TypeError("Missing 'sockets' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if supported_custom_instance_type_families is None and 'supportedCustomInstanceTypeFamilies' in kwargs:
             supported_custom_instance_type_families = kwargs['supportedCustomInstanceTypeFamilies']
-        if 'supportedInstanceTypeFamilies' in kwargs:
+        if supported_custom_instance_type_families is None:
+            raise TypeError("Missing 'supported_custom_instance_type_families' argument")
+        if supported_instance_type_families is None and 'supportedInstanceTypeFamilies' in kwargs:
             supported_instance_type_families = kwargs['supportedInstanceTypeFamilies']
-        if 'supportedInstanceTypesLists' in kwargs:
+        if supported_instance_type_families is None:
+            raise TypeError("Missing 'supported_instance_type_families' argument")
+        if supported_instance_types_lists is None and 'supportedInstanceTypesLists' in kwargs:
             supported_instance_types_lists = kwargs['supportedInstanceTypesLists']
-        if 'zoneId' in kwargs:
+        if supported_instance_types_lists is None:
+            raise TypeError("Missing 'supported_instance_types_lists' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("action_on_maintenance", action_on_maintenance)
         _setter("auto_placement", auto_placement)
@@ -3375,35 +3547,53 @@ class GetDedicatedHostsHostCapacityResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             available_local_storage: int,
-             available_memory: float,
-             available_vcpus: int,
-             available_vgpus: int,
-             local_storage_category: str,
-             total_local_storage: int,
-             total_memory: float,
-             total_vcpus: int,
-             total_vgpus: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             available_local_storage: Optional[int] = None,
+             available_memory: Optional[float] = None,
+             available_vcpus: Optional[int] = None,
+             available_vgpus: Optional[int] = None,
+             local_storage_category: Optional[str] = None,
+             total_local_storage: Optional[int] = None,
+             total_memory: Optional[float] = None,
+             total_vcpus: Optional[int] = None,
+             total_vgpus: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availableLocalStorage' in kwargs:
+        if available_local_storage is None and 'availableLocalStorage' in kwargs:
             available_local_storage = kwargs['availableLocalStorage']
-        if 'availableMemory' in kwargs:
+        if available_local_storage is None:
+            raise TypeError("Missing 'available_local_storage' argument")
+        if available_memory is None and 'availableMemory' in kwargs:
             available_memory = kwargs['availableMemory']
-        if 'availableVcpus' in kwargs:
+        if available_memory is None:
+            raise TypeError("Missing 'available_memory' argument")
+        if available_vcpus is None and 'availableVcpus' in kwargs:
             available_vcpus = kwargs['availableVcpus']
-        if 'availableVgpus' in kwargs:
+        if available_vcpus is None:
+            raise TypeError("Missing 'available_vcpus' argument")
+        if available_vgpus is None and 'availableVgpus' in kwargs:
             available_vgpus = kwargs['availableVgpus']
-        if 'localStorageCategory' in kwargs:
+        if available_vgpus is None:
+            raise TypeError("Missing 'available_vgpus' argument")
+        if local_storage_category is None and 'localStorageCategory' in kwargs:
             local_storage_category = kwargs['localStorageCategory']
-        if 'totalLocalStorage' in kwargs:
+        if local_storage_category is None:
+            raise TypeError("Missing 'local_storage_category' argument")
+        if total_local_storage is None and 'totalLocalStorage' in kwargs:
             total_local_storage = kwargs['totalLocalStorage']
-        if 'totalMemory' in kwargs:
+        if total_local_storage is None:
+            raise TypeError("Missing 'total_local_storage' argument")
+        if total_memory is None and 'totalMemory' in kwargs:
             total_memory = kwargs['totalMemory']
-        if 'totalVcpus' in kwargs:
+        if total_memory is None:
+            raise TypeError("Missing 'total_memory' argument")
+        if total_vcpus is None and 'totalVcpus' in kwargs:
             total_vcpus = kwargs['totalVcpus']
-        if 'totalVgpus' in kwargs:
+        if total_vcpus is None:
+            raise TypeError("Missing 'total_vcpus' argument")
+        if total_vgpus is None and 'totalVgpus' in kwargs:
             total_vgpus = kwargs['totalVgpus']
+        if total_vgpus is None:
+            raise TypeError("Missing 'total_vgpus' argument")
 
         _setter("available_local_storage", available_local_storage)
         _setter("available_memory", available_memory)
@@ -3505,14 +3695,18 @@ class GetDedicatedHostsHostNetworkAttributeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             slb_udp_timeout: int,
-             udp_timeout: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             slb_udp_timeout: Optional[int] = None,
+             udp_timeout: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'slbUdpTimeout' in kwargs:
+        if slb_udp_timeout is None and 'slbUdpTimeout' in kwargs:
             slb_udp_timeout = kwargs['slbUdpTimeout']
-        if 'udpTimeout' in kwargs:
+        if slb_udp_timeout is None:
+            raise TypeError("Missing 'slb_udp_timeout' argument")
+        if udp_timeout is None and 'udpTimeout' in kwargs:
             udp_timeout = kwargs['udpTimeout']
+        if udp_timeout is None:
+            raise TypeError("Missing 'udp_timeout' argument")
 
         _setter("slb_udp_timeout", slb_udp_timeout)
         _setter("udp_timeout", udp_timeout)
@@ -3548,11 +3742,13 @@ class GetDedicatedHostsHostOperationLockResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lock_reason: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             lock_reason: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'lockReason' in kwargs:
+        if lock_reason is None and 'lockReason' in kwargs:
             lock_reason = kwargs['lockReason']
+        if lock_reason is None:
+            raise TypeError("Missing 'lock_reason' argument")
 
         _setter("lock_reason", lock_reason)
 
@@ -3580,9 +3776,9 @@ class GetDedicatedHostsOperationLockResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'lockReason' in kwargs:
+        if lock_reason is None and 'lockReason' in kwargs:
             lock_reason = kwargs['lockReason']
 
         if lock_reason is not None:
@@ -3658,15 +3854,6 @@ class GetDisksDiskResult(dict):
         :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
         :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
         :param Mapping[str, Any] tags: A map of tags assigned to the disks. It must be in the format:
-               ```python
-               import pulumi
-               import pulumi_alicloud as alicloud
-               
-               disks_ds = alicloud.ecs.get_disks(tags={
-                   "tagKey1": "tagValue1",
-                   "tagKey2": "tagValue2",
-               })
-               ```
         :param str type: Disk type. Possible values: `system` and `data`.
         """
         GetDisksDiskResult._configure(
@@ -3715,104 +3902,184 @@ class GetDisksDiskResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attached_time: str,
-             auto_snapshot_policy_id: str,
-             availability_zone: str,
-             category: str,
-             creation_time: str,
-             delete_auto_snapshot: bool,
-             delete_with_instance: bool,
-             description: str,
-             detached_time: str,
-             device: str,
-             disk_id: str,
-             disk_name: str,
-             disk_type: str,
-             enable_auto_snapshot: bool,
-             enable_automated_snapshot_policy: bool,
-             encrypted: str,
-             expired_time: str,
-             id: str,
-             image_id: str,
-             instance_id: str,
-             iops: int,
-             iops_read: int,
-             iops_write: int,
-             kms_key_id: str,
-             mount_instance_num: int,
-             mount_instances: Sequence['outputs.GetDisksDiskMountInstanceResult'],
-             name: str,
-             operation_locks: Sequence['outputs.GetDisksDiskOperationLockResult'],
-             payment_type: str,
-             performance_level: str,
-             portable: bool,
-             product_code: str,
-             region_id: str,
-             resource_group_id: str,
-             size: int,
-             snapshot_id: str,
-             status: str,
-             tags: Mapping[str, Any],
-             type: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             attached_time: Optional[str] = None,
+             auto_snapshot_policy_id: Optional[str] = None,
+             availability_zone: Optional[str] = None,
+             category: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             delete_auto_snapshot: Optional[bool] = None,
+             delete_with_instance: Optional[bool] = None,
+             description: Optional[str] = None,
+             detached_time: Optional[str] = None,
+             device: Optional[str] = None,
+             disk_id: Optional[str] = None,
+             disk_name: Optional[str] = None,
+             disk_type: Optional[str] = None,
+             enable_auto_snapshot: Optional[bool] = None,
+             enable_automated_snapshot_policy: Optional[bool] = None,
+             encrypted: Optional[str] = None,
+             expired_time: Optional[str] = None,
+             id: Optional[str] = None,
+             image_id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             iops: Optional[int] = None,
+             iops_read: Optional[int] = None,
+             iops_write: Optional[int] = None,
+             kms_key_id: Optional[str] = None,
+             mount_instance_num: Optional[int] = None,
+             mount_instances: Optional[Sequence['outputs.GetDisksDiskMountInstanceResult']] = None,
+             name: Optional[str] = None,
+             operation_locks: Optional[Sequence['outputs.GetDisksDiskOperationLockResult']] = None,
+             payment_type: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             portable: Optional[bool] = None,
+             product_code: Optional[str] = None,
+             region_id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             size: Optional[int] = None,
+             snapshot_id: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             type: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'attachedTime' in kwargs:
+        if attached_time is None and 'attachedTime' in kwargs:
             attached_time = kwargs['attachedTime']
-        if 'autoSnapshotPolicyId' in kwargs:
+        if attached_time is None:
+            raise TypeError("Missing 'attached_time' argument")
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
             auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if 'availabilityZone' in kwargs:
+        if auto_snapshot_policy_id is None:
+            raise TypeError("Missing 'auto_snapshot_policy_id' argument")
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'creationTime' in kwargs:
+        if availability_zone is None:
+            raise TypeError("Missing 'availability_zone' argument")
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'deleteAutoSnapshot' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if delete_auto_snapshot is None and 'deleteAutoSnapshot' in kwargs:
             delete_auto_snapshot = kwargs['deleteAutoSnapshot']
-        if 'deleteWithInstance' in kwargs:
+        if delete_auto_snapshot is None:
+            raise TypeError("Missing 'delete_auto_snapshot' argument")
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'detachedTime' in kwargs:
+        if delete_with_instance is None:
+            raise TypeError("Missing 'delete_with_instance' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if detached_time is None and 'detachedTime' in kwargs:
             detached_time = kwargs['detachedTime']
-        if 'diskId' in kwargs:
+        if detached_time is None:
+            raise TypeError("Missing 'detached_time' argument")
+        if device is None:
+            raise TypeError("Missing 'device' argument")
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
-        if 'diskName' in kwargs:
+        if disk_id is None:
+            raise TypeError("Missing 'disk_id' argument")
+        if disk_name is None and 'diskName' in kwargs:
             disk_name = kwargs['diskName']
-        if 'diskType' in kwargs:
+        if disk_name is None:
+            raise TypeError("Missing 'disk_name' argument")
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'enableAutoSnapshot' in kwargs:
+        if disk_type is None:
+            raise TypeError("Missing 'disk_type' argument")
+        if enable_auto_snapshot is None and 'enableAutoSnapshot' in kwargs:
             enable_auto_snapshot = kwargs['enableAutoSnapshot']
-        if 'enableAutomatedSnapshotPolicy' in kwargs:
+        if enable_auto_snapshot is None:
+            raise TypeError("Missing 'enable_auto_snapshot' argument")
+        if enable_automated_snapshot_policy is None and 'enableAutomatedSnapshotPolicy' in kwargs:
             enable_automated_snapshot_policy = kwargs['enableAutomatedSnapshotPolicy']
-        if 'expiredTime' in kwargs:
+        if enable_automated_snapshot_policy is None:
+            raise TypeError("Missing 'enable_automated_snapshot_policy' argument")
+        if encrypted is None:
+            raise TypeError("Missing 'encrypted' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'imageId' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceId' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'iopsRead' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if iops is None:
+            raise TypeError("Missing 'iops' argument")
+        if iops_read is None and 'iopsRead' in kwargs:
             iops_read = kwargs['iopsRead']
-        if 'iopsWrite' in kwargs:
+        if iops_read is None:
+            raise TypeError("Missing 'iops_read' argument")
+        if iops_write is None and 'iopsWrite' in kwargs:
             iops_write = kwargs['iopsWrite']
-        if 'kmsKeyId' in kwargs:
+        if iops_write is None:
+            raise TypeError("Missing 'iops_write' argument")
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'mountInstanceNum' in kwargs:
+        if kms_key_id is None:
+            raise TypeError("Missing 'kms_key_id' argument")
+        if mount_instance_num is None and 'mountInstanceNum' in kwargs:
             mount_instance_num = kwargs['mountInstanceNum']
-        if 'mountInstances' in kwargs:
+        if mount_instance_num is None:
+            raise TypeError("Missing 'mount_instance_num' argument")
+        if mount_instances is None and 'mountInstances' in kwargs:
             mount_instances = kwargs['mountInstances']
-        if 'operationLocks' in kwargs:
+        if mount_instances is None:
+            raise TypeError("Missing 'mount_instances' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if operation_locks is None and 'operationLocks' in kwargs:
             operation_locks = kwargs['operationLocks']
-        if 'paymentType' in kwargs:
+        if operation_locks is None:
+            raise TypeError("Missing 'operation_locks' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'performanceLevel' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'productCode' in kwargs:
+        if performance_level is None:
+            raise TypeError("Missing 'performance_level' argument")
+        if portable is None:
+            raise TypeError("Missing 'portable' argument")
+        if product_code is None and 'productCode' in kwargs:
             product_code = kwargs['productCode']
-        if 'regionId' in kwargs:
+        if product_code is None:
+            raise TypeError("Missing 'product_code' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'resourceGroupId' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'snapshotId' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
-        if 'zoneId' in kwargs:
+        if snapshot_id is None:
+            raise TypeError("Missing 'snapshot_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("attached_time", attached_time)
         _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
@@ -4093,15 +4360,6 @@ class GetDisksDiskResult(dict):
     def tags(self) -> Mapping[str, Any]:
         """
         A map of tags assigned to the disks. It must be in the format:
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        disks_ds = alicloud.ecs.get_disks(tags={
-            "tagKey1": "tagValue1",
-            "tagKey2": "tagValue2",
-        })
-        ```
         """
         return pulumi.get(self, "tags")
 
@@ -4138,15 +4396,21 @@ class GetDisksDiskMountInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attached_time: str,
-             device: str,
-             instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             attached_time: Optional[str] = None,
+             device: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'attachedTime' in kwargs:
+        if attached_time is None and 'attachedTime' in kwargs:
             attached_time = kwargs['attachedTime']
-        if 'instanceId' in kwargs:
+        if attached_time is None:
+            raise TypeError("Missing 'attached_time' argument")
+        if device is None:
+            raise TypeError("Missing 'device' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
 
         _setter("attached_time", attached_time)
         _setter("device", device)
@@ -4185,11 +4449,13 @@ class GetDisksDiskOperationLockResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lock_reason: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             lock_reason: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'lockReason' in kwargs:
+        if lock_reason is None and 'lockReason' in kwargs:
             lock_reason = kwargs['lockReason']
+        if lock_reason is None:
+            raise TypeError("Missing 'lock_reason' argument")
 
         _setter("lock_reason", lock_reason)
 
@@ -4211,9 +4477,9 @@ class GetDisksOperationLockResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'lockReason' in kwargs:
+        if lock_reason is None and 'lockReason' in kwargs:
             lock_reason = kwargs['lockReason']
 
         if lock_reason is not None:
@@ -4263,29 +4529,47 @@ class GetEcsDedicatedHostClustersClusterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dedicated_host_cluster_capacities: Sequence['outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityResult'],
-             dedicated_host_cluster_id: str,
-             dedicated_host_cluster_name: str,
-             dedicated_host_ids: Sequence[str],
-             description: str,
-             id: str,
-             resource_group_id: str,
-             tags: Mapping[str, Any],
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             dedicated_host_cluster_capacities: Optional[Sequence['outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityResult']] = None,
+             dedicated_host_cluster_id: Optional[str] = None,
+             dedicated_host_cluster_name: Optional[str] = None,
+             dedicated_host_ids: Optional[Sequence[str]] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dedicatedHostClusterCapacities' in kwargs:
+        if dedicated_host_cluster_capacities is None and 'dedicatedHostClusterCapacities' in kwargs:
             dedicated_host_cluster_capacities = kwargs['dedicatedHostClusterCapacities']
-        if 'dedicatedHostClusterId' in kwargs:
+        if dedicated_host_cluster_capacities is None:
+            raise TypeError("Missing 'dedicated_host_cluster_capacities' argument")
+        if dedicated_host_cluster_id is None and 'dedicatedHostClusterId' in kwargs:
             dedicated_host_cluster_id = kwargs['dedicatedHostClusterId']
-        if 'dedicatedHostClusterName' in kwargs:
+        if dedicated_host_cluster_id is None:
+            raise TypeError("Missing 'dedicated_host_cluster_id' argument")
+        if dedicated_host_cluster_name is None and 'dedicatedHostClusterName' in kwargs:
             dedicated_host_cluster_name = kwargs['dedicatedHostClusterName']
-        if 'dedicatedHostIds' in kwargs:
+        if dedicated_host_cluster_name is None:
+            raise TypeError("Missing 'dedicated_host_cluster_name' argument")
+        if dedicated_host_ids is None and 'dedicatedHostIds' in kwargs:
             dedicated_host_ids = kwargs['dedicatedHostIds']
-        if 'resourceGroupId' in kwargs:
+        if dedicated_host_ids is None:
+            raise TypeError("Missing 'dedicated_host_ids' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'zoneId' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("dedicated_host_cluster_capacities", dedicated_host_cluster_capacities)
         _setter("dedicated_host_cluster_id", dedicated_host_cluster_id)
@@ -4396,23 +4680,33 @@ class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityResult(dict)
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             available_memory: int,
-             available_vcpus: int,
-             local_storage_capacities: Sequence['outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityResult'],
-             total_memory: int,
-             total_vcpus: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             available_memory: Optional[int] = None,
+             available_vcpus: Optional[int] = None,
+             local_storage_capacities: Optional[Sequence['outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityResult']] = None,
+             total_memory: Optional[int] = None,
+             total_vcpus: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availableMemory' in kwargs:
+        if available_memory is None and 'availableMemory' in kwargs:
             available_memory = kwargs['availableMemory']
-        if 'availableVcpus' in kwargs:
+        if available_memory is None:
+            raise TypeError("Missing 'available_memory' argument")
+        if available_vcpus is None and 'availableVcpus' in kwargs:
             available_vcpus = kwargs['availableVcpus']
-        if 'localStorageCapacities' in kwargs:
+        if available_vcpus is None:
+            raise TypeError("Missing 'available_vcpus' argument")
+        if local_storage_capacities is None and 'localStorageCapacities' in kwargs:
             local_storage_capacities = kwargs['localStorageCapacities']
-        if 'totalMemory' in kwargs:
+        if local_storage_capacities is None:
+            raise TypeError("Missing 'local_storage_capacities' argument")
+        if total_memory is None and 'totalMemory' in kwargs:
             total_memory = kwargs['totalMemory']
-        if 'totalVcpus' in kwargs:
+        if total_memory is None:
+            raise TypeError("Missing 'total_memory' argument")
+        if total_vcpus is None and 'totalVcpus' in kwargs:
             total_vcpus = kwargs['totalVcpus']
+        if total_vcpus is None:
+            raise TypeError("Missing 'total_vcpus' argument")
 
         _setter("available_memory", available_memory)
         _setter("available_vcpus", available_vcpus)
@@ -4481,17 +4775,23 @@ class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorage
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             available_disk: int,
-             data_disk_category: str,
-             total_disk: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             available_disk: Optional[int] = None,
+             data_disk_category: Optional[str] = None,
+             total_disk: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availableDisk' in kwargs:
+        if available_disk is None and 'availableDisk' in kwargs:
             available_disk = kwargs['availableDisk']
-        if 'dataDiskCategory' in kwargs:
+        if available_disk is None:
+            raise TypeError("Missing 'available_disk' argument")
+        if data_disk_category is None and 'dataDiskCategory' in kwargs:
             data_disk_category = kwargs['dataDiskCategory']
-        if 'totalDisk' in kwargs:
+        if data_disk_category is None:
+            raise TypeError("Missing 'data_disk_category' argument")
+        if total_disk is None and 'totalDisk' in kwargs:
             total_disk = kwargs['totalDisk']
+        if total_disk is None:
+            raise TypeError("Missing 'total_disk' argument")
 
         _setter("available_disk", available_disk)
         _setter("data_disk_category", data_disk_category)
@@ -4563,28 +4863,48 @@ class GetEcsDeploymentSetsSetResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             deployment_set_id: str,
-             deployment_set_name: str,
-             description: str,
-             domain: str,
-             granularity: str,
-             id: str,
-             instance_amount: int,
-             instance_ids: Sequence[str],
-             strategy: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             deployment_set_id: Optional[str] = None,
+             deployment_set_name: Optional[str] = None,
+             description: Optional[str] = None,
+             domain: Optional[str] = None,
+             granularity: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_amount: Optional[int] = None,
+             instance_ids: Optional[Sequence[str]] = None,
+             strategy: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'deploymentSetId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if deployment_set_id is None and 'deploymentSetId' in kwargs:
             deployment_set_id = kwargs['deploymentSetId']
-        if 'deploymentSetName' in kwargs:
+        if deployment_set_id is None:
+            raise TypeError("Missing 'deployment_set_id' argument")
+        if deployment_set_name is None and 'deploymentSetName' in kwargs:
             deployment_set_name = kwargs['deploymentSetName']
-        if 'instanceAmount' in kwargs:
+        if deployment_set_name is None:
+            raise TypeError("Missing 'deployment_set_name' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if granularity is None:
+            raise TypeError("Missing 'granularity' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_amount is None and 'instanceAmount' in kwargs:
             instance_amount = kwargs['instanceAmount']
-        if 'instanceIds' in kwargs:
+        if instance_amount is None:
+            raise TypeError("Missing 'instance_amount' argument")
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
+        if instance_ids is None:
+            raise TypeError("Missing 'instance_ids' argument")
+        if strategy is None:
+            raise TypeError("Missing 'strategy' argument")
 
         _setter("create_time", create_time)
         _setter("deployment_set_id", deployment_set_id)
@@ -4804,104 +5124,184 @@ class GetEcsDisksDiskResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attached_time: str,
-             auto_snapshot_policy_id: str,
-             availability_zone: str,
-             category: str,
-             creation_time: str,
-             delete_auto_snapshot: bool,
-             delete_with_instance: bool,
-             description: str,
-             detached_time: str,
-             device: str,
-             disk_id: str,
-             disk_name: str,
-             disk_type: str,
-             enable_auto_snapshot: bool,
-             enable_automated_snapshot_policy: bool,
-             encrypted: str,
-             expired_time: str,
-             id: str,
-             image_id: str,
-             instance_id: str,
-             iops: int,
-             iops_read: int,
-             iops_write: int,
-             kms_key_id: str,
-             mount_instance_num: int,
-             mount_instances: Sequence['outputs.GetEcsDisksDiskMountInstanceResult'],
-             name: str,
-             operation_locks: Sequence['outputs.GetEcsDisksDiskOperationLockResult'],
-             payment_type: str,
-             performance_level: str,
-             portable: bool,
-             product_code: str,
-             region_id: str,
-             resource_group_id: str,
-             size: int,
-             snapshot_id: str,
-             status: str,
-             tags: Mapping[str, Any],
-             type: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             attached_time: Optional[str] = None,
+             auto_snapshot_policy_id: Optional[str] = None,
+             availability_zone: Optional[str] = None,
+             category: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             delete_auto_snapshot: Optional[bool] = None,
+             delete_with_instance: Optional[bool] = None,
+             description: Optional[str] = None,
+             detached_time: Optional[str] = None,
+             device: Optional[str] = None,
+             disk_id: Optional[str] = None,
+             disk_name: Optional[str] = None,
+             disk_type: Optional[str] = None,
+             enable_auto_snapshot: Optional[bool] = None,
+             enable_automated_snapshot_policy: Optional[bool] = None,
+             encrypted: Optional[str] = None,
+             expired_time: Optional[str] = None,
+             id: Optional[str] = None,
+             image_id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             iops: Optional[int] = None,
+             iops_read: Optional[int] = None,
+             iops_write: Optional[int] = None,
+             kms_key_id: Optional[str] = None,
+             mount_instance_num: Optional[int] = None,
+             mount_instances: Optional[Sequence['outputs.GetEcsDisksDiskMountInstanceResult']] = None,
+             name: Optional[str] = None,
+             operation_locks: Optional[Sequence['outputs.GetEcsDisksDiskOperationLockResult']] = None,
+             payment_type: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             portable: Optional[bool] = None,
+             product_code: Optional[str] = None,
+             region_id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             size: Optional[int] = None,
+             snapshot_id: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             type: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'attachedTime' in kwargs:
+        if attached_time is None and 'attachedTime' in kwargs:
             attached_time = kwargs['attachedTime']
-        if 'autoSnapshotPolicyId' in kwargs:
+        if attached_time is None:
+            raise TypeError("Missing 'attached_time' argument")
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
             auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if 'availabilityZone' in kwargs:
+        if auto_snapshot_policy_id is None:
+            raise TypeError("Missing 'auto_snapshot_policy_id' argument")
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'creationTime' in kwargs:
+        if availability_zone is None:
+            raise TypeError("Missing 'availability_zone' argument")
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'deleteAutoSnapshot' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if delete_auto_snapshot is None and 'deleteAutoSnapshot' in kwargs:
             delete_auto_snapshot = kwargs['deleteAutoSnapshot']
-        if 'deleteWithInstance' in kwargs:
+        if delete_auto_snapshot is None:
+            raise TypeError("Missing 'delete_auto_snapshot' argument")
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'detachedTime' in kwargs:
+        if delete_with_instance is None:
+            raise TypeError("Missing 'delete_with_instance' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if detached_time is None and 'detachedTime' in kwargs:
             detached_time = kwargs['detachedTime']
-        if 'diskId' in kwargs:
+        if detached_time is None:
+            raise TypeError("Missing 'detached_time' argument")
+        if device is None:
+            raise TypeError("Missing 'device' argument")
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
-        if 'diskName' in kwargs:
+        if disk_id is None:
+            raise TypeError("Missing 'disk_id' argument")
+        if disk_name is None and 'diskName' in kwargs:
             disk_name = kwargs['diskName']
-        if 'diskType' in kwargs:
+        if disk_name is None:
+            raise TypeError("Missing 'disk_name' argument")
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'enableAutoSnapshot' in kwargs:
+        if disk_type is None:
+            raise TypeError("Missing 'disk_type' argument")
+        if enable_auto_snapshot is None and 'enableAutoSnapshot' in kwargs:
             enable_auto_snapshot = kwargs['enableAutoSnapshot']
-        if 'enableAutomatedSnapshotPolicy' in kwargs:
+        if enable_auto_snapshot is None:
+            raise TypeError("Missing 'enable_auto_snapshot' argument")
+        if enable_automated_snapshot_policy is None and 'enableAutomatedSnapshotPolicy' in kwargs:
             enable_automated_snapshot_policy = kwargs['enableAutomatedSnapshotPolicy']
-        if 'expiredTime' in kwargs:
+        if enable_automated_snapshot_policy is None:
+            raise TypeError("Missing 'enable_automated_snapshot_policy' argument")
+        if encrypted is None:
+            raise TypeError("Missing 'encrypted' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'imageId' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceId' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'iopsRead' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if iops is None:
+            raise TypeError("Missing 'iops' argument")
+        if iops_read is None and 'iopsRead' in kwargs:
             iops_read = kwargs['iopsRead']
-        if 'iopsWrite' in kwargs:
+        if iops_read is None:
+            raise TypeError("Missing 'iops_read' argument")
+        if iops_write is None and 'iopsWrite' in kwargs:
             iops_write = kwargs['iopsWrite']
-        if 'kmsKeyId' in kwargs:
+        if iops_write is None:
+            raise TypeError("Missing 'iops_write' argument")
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'mountInstanceNum' in kwargs:
+        if kms_key_id is None:
+            raise TypeError("Missing 'kms_key_id' argument")
+        if mount_instance_num is None and 'mountInstanceNum' in kwargs:
             mount_instance_num = kwargs['mountInstanceNum']
-        if 'mountInstances' in kwargs:
+        if mount_instance_num is None:
+            raise TypeError("Missing 'mount_instance_num' argument")
+        if mount_instances is None and 'mountInstances' in kwargs:
             mount_instances = kwargs['mountInstances']
-        if 'operationLocks' in kwargs:
+        if mount_instances is None:
+            raise TypeError("Missing 'mount_instances' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if operation_locks is None and 'operationLocks' in kwargs:
             operation_locks = kwargs['operationLocks']
-        if 'paymentType' in kwargs:
+        if operation_locks is None:
+            raise TypeError("Missing 'operation_locks' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'performanceLevel' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'productCode' in kwargs:
+        if performance_level is None:
+            raise TypeError("Missing 'performance_level' argument")
+        if portable is None:
+            raise TypeError("Missing 'portable' argument")
+        if product_code is None and 'productCode' in kwargs:
             product_code = kwargs['productCode']
-        if 'regionId' in kwargs:
+        if product_code is None:
+            raise TypeError("Missing 'product_code' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'resourceGroupId' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'snapshotId' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
-        if 'zoneId' in kwargs:
+        if snapshot_id is None:
+            raise TypeError("Missing 'snapshot_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("attached_time", attached_time)
         _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
@@ -5270,15 +5670,21 @@ class GetEcsDisksDiskMountInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attached_time: str,
-             device: str,
-             instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             attached_time: Optional[str] = None,
+             device: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'attachedTime' in kwargs:
+        if attached_time is None and 'attachedTime' in kwargs:
             attached_time = kwargs['attachedTime']
-        if 'instanceId' in kwargs:
+        if attached_time is None:
+            raise TypeError("Missing 'attached_time' argument")
+        if device is None:
+            raise TypeError("Missing 'device' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
 
         _setter("attached_time", attached_time)
         _setter("device", device)
@@ -5320,11 +5726,13 @@ class GetEcsDisksDiskOperationLockResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lock_reason: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             lock_reason: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'lockReason' in kwargs:
+        if lock_reason is None and 'lockReason' in kwargs:
             lock_reason = kwargs['lockReason']
+        if lock_reason is None:
+            raise TypeError("Missing 'lock_reason' argument")
 
         _setter("lock_reason", lock_reason)
 
@@ -5346,9 +5754,9 @@ class GetEcsDisksOperationLockResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'lockReason' in kwargs:
+        if lock_reason is None and 'lockReason' in kwargs:
             lock_reason = kwargs['lockReason']
 
         if lock_reason is not None:
@@ -5404,31 +5812,53 @@ class GetEcsImageComponentsComponentResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             component_type: str,
-             content: str,
-             create_time: str,
-             description: str,
-             id: str,
-             image_component_id: str,
-             image_component_name: str,
-             owner: str,
-             resource_group_id: str,
-             system_type: str,
-             tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             component_type: Optional[str] = None,
+             content: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             image_component_id: Optional[str] = None,
+             image_component_name: Optional[str] = None,
+             owner: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             system_type: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'componentType' in kwargs:
+        if component_type is None and 'componentType' in kwargs:
             component_type = kwargs['componentType']
-        if 'createTime' in kwargs:
+        if component_type is None:
+            raise TypeError("Missing 'component_type' argument")
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'imageComponentId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_component_id is None and 'imageComponentId' in kwargs:
             image_component_id = kwargs['imageComponentId']
-        if 'imageComponentName' in kwargs:
+        if image_component_id is None:
+            raise TypeError("Missing 'image_component_id' argument")
+        if image_component_name is None and 'imageComponentName' in kwargs:
             image_component_name = kwargs['imageComponentName']
-        if 'resourceGroupId' in kwargs:
+        if image_component_name is None:
+            raise TypeError("Missing 'image_component_name' argument")
+        if owner is None:
+            raise TypeError("Missing 'owner' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'systemType' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if system_type is None and 'systemType' in kwargs:
             system_type = kwargs['systemType']
+        if system_type is None:
+            raise TypeError("Missing 'system_type' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
 
         _setter("component_type", component_type)
         _setter("content", content)
@@ -5596,54 +6026,88 @@ class GetEcsImagePipelinePipelineResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             add_accounts: Sequence[str],
-             base_image: str,
-             base_image_type: str,
-             build_content: str,
-             creation_time: str,
-             delete_instance_on_failure: bool,
-             description: str,
-             id: str,
-             image_name: str,
-             image_pipeline_id: str,
-             instance_type: str,
-             internet_max_bandwidth_out: int,
-             name: str,
-             resource_group_id: str,
-             system_disk_size: int,
-             to_region_ids: Sequence[str],
-             vswitch_id: str,
+             add_accounts: Optional[Sequence[str]] = None,
+             base_image: Optional[str] = None,
+             base_image_type: Optional[str] = None,
+             build_content: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             delete_instance_on_failure: Optional[bool] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             image_name: Optional[str] = None,
+             image_pipeline_id: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             internet_max_bandwidth_out: Optional[int] = None,
+             name: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             system_disk_size: Optional[int] = None,
+             to_region_ids: Optional[Sequence[str]] = None,
+             vswitch_id: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addAccounts' in kwargs:
+        if add_accounts is None and 'addAccounts' in kwargs:
             add_accounts = kwargs['addAccounts']
-        if 'baseImage' in kwargs:
+        if add_accounts is None:
+            raise TypeError("Missing 'add_accounts' argument")
+        if base_image is None and 'baseImage' in kwargs:
             base_image = kwargs['baseImage']
-        if 'baseImageType' in kwargs:
+        if base_image is None:
+            raise TypeError("Missing 'base_image' argument")
+        if base_image_type is None and 'baseImageType' in kwargs:
             base_image_type = kwargs['baseImageType']
-        if 'buildContent' in kwargs:
+        if base_image_type is None:
+            raise TypeError("Missing 'base_image_type' argument")
+        if build_content is None and 'buildContent' in kwargs:
             build_content = kwargs['buildContent']
-        if 'creationTime' in kwargs:
+        if build_content is None:
+            raise TypeError("Missing 'build_content' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'deleteInstanceOnFailure' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if delete_instance_on_failure is None and 'deleteInstanceOnFailure' in kwargs:
             delete_instance_on_failure = kwargs['deleteInstanceOnFailure']
-        if 'imageName' in kwargs:
+        if delete_instance_on_failure is None:
+            raise TypeError("Missing 'delete_instance_on_failure' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_name is None and 'imageName' in kwargs:
             image_name = kwargs['imageName']
-        if 'imagePipelineId' in kwargs:
+        if image_name is None:
+            raise TypeError("Missing 'image_name' argument")
+        if image_pipeline_id is None and 'imagePipelineId' in kwargs:
             image_pipeline_id = kwargs['imagePipelineId']
-        if 'instanceType' in kwargs:
+        if image_pipeline_id is None:
+            raise TypeError("Missing 'image_pipeline_id' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetMaxBandwidthOut' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
             internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if 'resourceGroupId' in kwargs:
+        if internet_max_bandwidth_out is None:
+            raise TypeError("Missing 'internet_max_bandwidth_out' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'systemDiskSize' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if system_disk_size is None and 'systemDiskSize' in kwargs:
             system_disk_size = kwargs['systemDiskSize']
-        if 'toRegionIds' in kwargs:
+        if system_disk_size is None:
+            raise TypeError("Missing 'system_disk_size' argument")
+        if to_region_ids is None and 'toRegionIds' in kwargs:
             to_region_ids = kwargs['toRegionIds']
-        if 'vswitchId' in kwargs:
+        if to_region_ids is None:
+            raise TypeError("Missing 'to_region_ids' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("add_accounts", add_accounts)
         _setter("base_image", base_image)
@@ -5868,43 +6332,73 @@ class GetEcsInvocationsInvocationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             command_content: str,
-             command_id: str,
-             command_name: str,
-             command_type: str,
-             create_time: str,
-             frequency: str,
-             id: str,
-             invocation_id: str,
-             invocation_status: str,
-             invoke_instances: Sequence['outputs.GetEcsInvocationsInvocationInvokeInstanceResult'],
-             invoke_status: str,
-             parameters: str,
-             repeat_mode: str,
-             timed: bool,
-             username: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             command_content: Optional[str] = None,
+             command_id: Optional[str] = None,
+             command_name: Optional[str] = None,
+             command_type: Optional[str] = None,
+             create_time: Optional[str] = None,
+             frequency: Optional[str] = None,
+             id: Optional[str] = None,
+             invocation_id: Optional[str] = None,
+             invocation_status: Optional[str] = None,
+             invoke_instances: Optional[Sequence['outputs.GetEcsInvocationsInvocationInvokeInstanceResult']] = None,
+             invoke_status: Optional[str] = None,
+             parameters: Optional[str] = None,
+             repeat_mode: Optional[str] = None,
+             timed: Optional[bool] = None,
+             username: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'commandContent' in kwargs:
+        if command_content is None and 'commandContent' in kwargs:
             command_content = kwargs['commandContent']
-        if 'commandId' in kwargs:
+        if command_content is None:
+            raise TypeError("Missing 'command_content' argument")
+        if command_id is None and 'commandId' in kwargs:
             command_id = kwargs['commandId']
-        if 'commandName' in kwargs:
+        if command_id is None:
+            raise TypeError("Missing 'command_id' argument")
+        if command_name is None and 'commandName' in kwargs:
             command_name = kwargs['commandName']
-        if 'commandType' in kwargs:
+        if command_name is None:
+            raise TypeError("Missing 'command_name' argument")
+        if command_type is None and 'commandType' in kwargs:
             command_type = kwargs['commandType']
-        if 'createTime' in kwargs:
+        if command_type is None:
+            raise TypeError("Missing 'command_type' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'invocationId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if frequency is None:
+            raise TypeError("Missing 'frequency' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if invocation_id is None and 'invocationId' in kwargs:
             invocation_id = kwargs['invocationId']
-        if 'invocationStatus' in kwargs:
+        if invocation_id is None:
+            raise TypeError("Missing 'invocation_id' argument")
+        if invocation_status is None and 'invocationStatus' in kwargs:
             invocation_status = kwargs['invocationStatus']
-        if 'invokeInstances' in kwargs:
+        if invocation_status is None:
+            raise TypeError("Missing 'invocation_status' argument")
+        if invoke_instances is None and 'invokeInstances' in kwargs:
             invoke_instances = kwargs['invokeInstances']
-        if 'invokeStatus' in kwargs:
+        if invoke_instances is None:
+            raise TypeError("Missing 'invoke_instances' argument")
+        if invoke_status is None and 'invokeStatus' in kwargs:
             invoke_status = kwargs['invokeStatus']
-        if 'repeatMode' in kwargs:
+        if invoke_status is None:
+            raise TypeError("Missing 'invoke_status' argument")
+        if parameters is None:
+            raise TypeError("Missing 'parameters' argument")
+        if repeat_mode is None and 'repeatMode' in kwargs:
             repeat_mode = kwargs['repeatMode']
+        if repeat_mode is None:
+            raise TypeError("Missing 'repeat_mode' argument")
+        if timed is None:
+            raise TypeError("Missing 'timed' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
 
         _setter("command_content", command_content)
         _setter("command_id", command_id)
@@ -6101,45 +6595,75 @@ class GetEcsInvocationsInvocationInvokeInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             creation_time: str,
-             dropped: int,
-             error_code: str,
-             error_info: str,
-             exit_code: int,
-             finish_time: str,
-             instance_id: str,
-             instance_invoke_status: str,
-             invocation_status: str,
-             output: str,
-             repeats: int,
-             start_time: str,
-             stop_time: str,
-             timed: bool,
-             update_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             creation_time: Optional[str] = None,
+             dropped: Optional[int] = None,
+             error_code: Optional[str] = None,
+             error_info: Optional[str] = None,
+             exit_code: Optional[int] = None,
+             finish_time: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_invoke_status: Optional[str] = None,
+             invocation_status: Optional[str] = None,
+             output: Optional[str] = None,
+             repeats: Optional[int] = None,
+             start_time: Optional[str] = None,
+             stop_time: Optional[str] = None,
+             timed: Optional[bool] = None,
+             update_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'creationTime' in kwargs:
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'errorCode' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if dropped is None:
+            raise TypeError("Missing 'dropped' argument")
+        if error_code is None and 'errorCode' in kwargs:
             error_code = kwargs['errorCode']
-        if 'errorInfo' in kwargs:
+        if error_code is None:
+            raise TypeError("Missing 'error_code' argument")
+        if error_info is None and 'errorInfo' in kwargs:
             error_info = kwargs['errorInfo']
-        if 'exitCode' in kwargs:
+        if error_info is None:
+            raise TypeError("Missing 'error_info' argument")
+        if exit_code is None and 'exitCode' in kwargs:
             exit_code = kwargs['exitCode']
-        if 'finishTime' in kwargs:
+        if exit_code is None:
+            raise TypeError("Missing 'exit_code' argument")
+        if finish_time is None and 'finishTime' in kwargs:
             finish_time = kwargs['finishTime']
-        if 'instanceId' in kwargs:
+        if finish_time is None:
+            raise TypeError("Missing 'finish_time' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceInvokeStatus' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_invoke_status is None and 'instanceInvokeStatus' in kwargs:
             instance_invoke_status = kwargs['instanceInvokeStatus']
-        if 'invocationStatus' in kwargs:
+        if instance_invoke_status is None:
+            raise TypeError("Missing 'instance_invoke_status' argument")
+        if invocation_status is None and 'invocationStatus' in kwargs:
             invocation_status = kwargs['invocationStatus']
-        if 'startTime' in kwargs:
+        if invocation_status is None:
+            raise TypeError("Missing 'invocation_status' argument")
+        if output is None:
+            raise TypeError("Missing 'output' argument")
+        if repeats is None:
+            raise TypeError("Missing 'repeats' argument")
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'stopTime' in kwargs:
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if stop_time is None and 'stopTime' in kwargs:
             stop_time = kwargs['stopTime']
-        if 'updateTime' in kwargs:
+        if stop_time is None:
+            raise TypeError("Missing 'stop_time' argument")
+        if timed is None:
+            raise TypeError("Missing 'timed' argument")
+        if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
+        if update_time is None:
+            raise TypeError("Missing 'update_time' argument")
 
         _setter("creation_time", creation_time)
         _setter("dropped", dropped)
@@ -6305,23 +6829,37 @@ class GetEcsKeyPairsKeyPairResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             finger_print: str,
-             id: str,
-             instances: Sequence['outputs.GetEcsKeyPairsKeyPairInstanceResult'],
-             key_name: str,
-             key_pair_name: str,
-             resource_group_id: str,
-             tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             finger_print: Optional[str] = None,
+             id: Optional[str] = None,
+             instances: Optional[Sequence['outputs.GetEcsKeyPairsKeyPairInstanceResult']] = None,
+             key_name: Optional[str] = None,
+             key_pair_name: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fingerPrint' in kwargs:
+        if finger_print is None and 'fingerPrint' in kwargs:
             finger_print = kwargs['fingerPrint']
-        if 'keyName' in kwargs:
+        if finger_print is None:
+            raise TypeError("Missing 'finger_print' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instances is None:
+            raise TypeError("Missing 'instances' argument")
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'keyPairName' in kwargs:
+        if key_name is None:
+            raise TypeError("Missing 'key_name' argument")
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'resourceGroupId' in kwargs:
+        if key_pair_name is None:
+            raise TypeError("Missing 'key_pair_name' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
 
         _setter("finger_print", finger_print)
         _setter("id", id)
@@ -6427,40 +6965,64 @@ class GetEcsKeyPairsKeyPairInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             availability_zone: str,
-             description: str,
-             image_id: str,
-             instance_id: str,
-             instance_name: str,
-             instance_type: str,
-             key_name: str,
-             private_ip: str,
-             public_ip: str,
-             region_id: str,
-             status: str,
-             vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             availability_zone: Optional[str] = None,
+             description: Optional[str] = None,
+             image_id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             key_name: Optional[str] = None,
+             private_ip: Optional[str] = None,
+             public_ip: Optional[str] = None,
+             region_id: Optional[str] = None,
+             status: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'imageId' in kwargs:
+        if availability_zone is None:
+            raise TypeError("Missing 'availability_zone' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceId' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceType' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'keyName' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'privateIp' in kwargs:
+        if key_name is None:
+            raise TypeError("Missing 'key_name' argument")
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
-        if 'publicIp' in kwargs:
+        if private_ip is None:
+            raise TypeError("Missing 'private_ip' argument")
+        if public_ip is None and 'publicIp' in kwargs:
             public_ip = kwargs['publicIp']
-        if 'regionId' in kwargs:
+        if public_ip is None:
+            raise TypeError("Missing 'public_ip' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'vswitchId' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("availability_zone", availability_zone)
         _setter("description", description)
@@ -6588,23 +7150,37 @@ class GetEcsKeyPairsPairResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             finger_print: str,
-             id: str,
-             instances: Sequence['outputs.GetEcsKeyPairsPairInstanceResult'],
-             key_name: str,
-             key_pair_name: str,
-             resource_group_id: str,
-             tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             finger_print: Optional[str] = None,
+             id: Optional[str] = None,
+             instances: Optional[Sequence['outputs.GetEcsKeyPairsPairInstanceResult']] = None,
+             key_name: Optional[str] = None,
+             key_pair_name: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fingerPrint' in kwargs:
+        if finger_print is None and 'fingerPrint' in kwargs:
             finger_print = kwargs['fingerPrint']
-        if 'keyName' in kwargs:
+        if finger_print is None:
+            raise TypeError("Missing 'finger_print' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instances is None:
+            raise TypeError("Missing 'instances' argument")
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'keyPairName' in kwargs:
+        if key_name is None:
+            raise TypeError("Missing 'key_name' argument")
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'resourceGroupId' in kwargs:
+        if key_pair_name is None:
+            raise TypeError("Missing 'key_pair_name' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
 
         _setter("finger_print", finger_print)
         _setter("id", id)
@@ -6710,40 +7286,64 @@ class GetEcsKeyPairsPairInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             availability_zone: str,
-             description: str,
-             image_id: str,
-             instance_id: str,
-             instance_name: str,
-             instance_type: str,
-             key_name: str,
-             private_ip: str,
-             public_ip: str,
-             region_id: str,
-             status: str,
-             vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             availability_zone: Optional[str] = None,
+             description: Optional[str] = None,
+             image_id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             key_name: Optional[str] = None,
+             private_ip: Optional[str] = None,
+             public_ip: Optional[str] = None,
+             region_id: Optional[str] = None,
+             status: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'imageId' in kwargs:
+        if availability_zone is None:
+            raise TypeError("Missing 'availability_zone' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceId' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceType' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'keyName' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'privateIp' in kwargs:
+        if key_name is None:
+            raise TypeError("Missing 'key_name' argument")
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
-        if 'publicIp' in kwargs:
+        if private_ip is None:
+            raise TypeError("Missing 'private_ip' argument")
+        if public_ip is None and 'publicIp' in kwargs:
             public_ip = kwargs['publicIp']
-        if 'regionId' in kwargs:
+        if public_ip is None:
+            raise TypeError("Missing 'public_ip' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'vswitchId' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("availability_zone", availability_zone)
         _setter("description", description)
@@ -6980,131 +7580,217 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_release_time: str,
-             created_by: str,
-             data_disks: Sequence['outputs.GetEcsLaunchTemplatesTemplateDataDiskResult'],
-             default_version_number: int,
-             deployment_set_id: str,
-             description: str,
-             enable_vm_os_config: bool,
-             host_name: str,
-             id: str,
-             image_id: str,
-             image_owner_alias: str,
-             instance_charge_type: str,
-             instance_name: str,
-             instance_type: str,
-             internet_charge_type: str,
-             internet_max_bandwidth_in: int,
-             internet_max_bandwidth_out: int,
-             io_optimized: str,
-             key_pair_name: str,
-             latest_version_number: int,
-             launch_template_id: str,
-             launch_template_name: str,
-             modified_time: str,
-             network_interfaces: Sequence['outputs.GetEcsLaunchTemplatesTemplateNetworkInterfaceResult'],
-             network_type: str,
-             password_inherit: bool,
-             period: int,
-             private_ip_address: str,
-             ram_role_name: str,
-             resource_group_id: str,
-             security_enhancement_strategy: str,
-             security_group_id: str,
-             security_group_ids: Sequence[str],
-             spot_duration: str,
-             spot_price_limit: float,
-             spot_strategy: str,
-             system_disks: Sequence['outputs.GetEcsLaunchTemplatesTemplateSystemDiskResult'],
-             template_tags: Mapping[str, Any],
-             user_data: str,
-             version_description: str,
-             vpc_id: str,
-             vswitch_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auto_release_time: Optional[str] = None,
+             created_by: Optional[str] = None,
+             data_disks: Optional[Sequence['outputs.GetEcsLaunchTemplatesTemplateDataDiskResult']] = None,
+             default_version_number: Optional[int] = None,
+             deployment_set_id: Optional[str] = None,
+             description: Optional[str] = None,
+             enable_vm_os_config: Optional[bool] = None,
+             host_name: Optional[str] = None,
+             id: Optional[str] = None,
+             image_id: Optional[str] = None,
+             image_owner_alias: Optional[str] = None,
+             instance_charge_type: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             internet_charge_type: Optional[str] = None,
+             internet_max_bandwidth_in: Optional[int] = None,
+             internet_max_bandwidth_out: Optional[int] = None,
+             io_optimized: Optional[str] = None,
+             key_pair_name: Optional[str] = None,
+             latest_version_number: Optional[int] = None,
+             launch_template_id: Optional[str] = None,
+             launch_template_name: Optional[str] = None,
+             modified_time: Optional[str] = None,
+             network_interfaces: Optional[Sequence['outputs.GetEcsLaunchTemplatesTemplateNetworkInterfaceResult']] = None,
+             network_type: Optional[str] = None,
+             password_inherit: Optional[bool] = None,
+             period: Optional[int] = None,
+             private_ip_address: Optional[str] = None,
+             ram_role_name: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             security_enhancement_strategy: Optional[str] = None,
+             security_group_id: Optional[str] = None,
+             security_group_ids: Optional[Sequence[str]] = None,
+             spot_duration: Optional[str] = None,
+             spot_price_limit: Optional[float] = None,
+             spot_strategy: Optional[str] = None,
+             system_disks: Optional[Sequence['outputs.GetEcsLaunchTemplatesTemplateSystemDiskResult']] = None,
+             template_tags: Optional[Mapping[str, Any]] = None,
+             user_data: Optional[str] = None,
+             version_description: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoReleaseTime' in kwargs:
+        if auto_release_time is None and 'autoReleaseTime' in kwargs:
             auto_release_time = kwargs['autoReleaseTime']
-        if 'createdBy' in kwargs:
+        if auto_release_time is None:
+            raise TypeError("Missing 'auto_release_time' argument")
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'dataDisks' in kwargs:
+        if created_by is None:
+            raise TypeError("Missing 'created_by' argument")
+        if data_disks is None and 'dataDisks' in kwargs:
             data_disks = kwargs['dataDisks']
-        if 'defaultVersionNumber' in kwargs:
+        if data_disks is None:
+            raise TypeError("Missing 'data_disks' argument")
+        if default_version_number is None and 'defaultVersionNumber' in kwargs:
             default_version_number = kwargs['defaultVersionNumber']
-        if 'deploymentSetId' in kwargs:
+        if default_version_number is None:
+            raise TypeError("Missing 'default_version_number' argument")
+        if deployment_set_id is None and 'deploymentSetId' in kwargs:
             deployment_set_id = kwargs['deploymentSetId']
-        if 'enableVmOsConfig' in kwargs:
+        if deployment_set_id is None:
+            raise TypeError("Missing 'deployment_set_id' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if enable_vm_os_config is None and 'enableVmOsConfig' in kwargs:
             enable_vm_os_config = kwargs['enableVmOsConfig']
-        if 'hostName' in kwargs:
+        if enable_vm_os_config is None:
+            raise TypeError("Missing 'enable_vm_os_config' argument")
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'imageId' in kwargs:
+        if host_name is None:
+            raise TypeError("Missing 'host_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'imageOwnerAlias' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if image_owner_alias is None and 'imageOwnerAlias' in kwargs:
             image_owner_alias = kwargs['imageOwnerAlias']
-        if 'instanceChargeType' in kwargs:
+        if image_owner_alias is None:
+            raise TypeError("Missing 'image_owner_alias' argument")
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'instanceName' in kwargs:
+        if instance_charge_type is None:
+            raise TypeError("Missing 'instance_charge_type' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceType' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetChargeType' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'internetMaxBandwidthIn' in kwargs:
+        if internet_charge_type is None:
+            raise TypeError("Missing 'internet_charge_type' argument")
+        if internet_max_bandwidth_in is None and 'internetMaxBandwidthIn' in kwargs:
             internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
-        if 'internetMaxBandwidthOut' in kwargs:
+        if internet_max_bandwidth_in is None:
+            raise TypeError("Missing 'internet_max_bandwidth_in' argument")
+        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
             internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if 'ioOptimized' in kwargs:
+        if internet_max_bandwidth_out is None:
+            raise TypeError("Missing 'internet_max_bandwidth_out' argument")
+        if io_optimized is None and 'ioOptimized' in kwargs:
             io_optimized = kwargs['ioOptimized']
-        if 'keyPairName' in kwargs:
+        if io_optimized is None:
+            raise TypeError("Missing 'io_optimized' argument")
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'latestVersionNumber' in kwargs:
+        if key_pair_name is None:
+            raise TypeError("Missing 'key_pair_name' argument")
+        if latest_version_number is None and 'latestVersionNumber' in kwargs:
             latest_version_number = kwargs['latestVersionNumber']
-        if 'launchTemplateId' in kwargs:
+        if latest_version_number is None:
+            raise TypeError("Missing 'latest_version_number' argument")
+        if launch_template_id is None and 'launchTemplateId' in kwargs:
             launch_template_id = kwargs['launchTemplateId']
-        if 'launchTemplateName' in kwargs:
+        if launch_template_id is None:
+            raise TypeError("Missing 'launch_template_id' argument")
+        if launch_template_name is None and 'launchTemplateName' in kwargs:
             launch_template_name = kwargs['launchTemplateName']
-        if 'modifiedTime' in kwargs:
+        if launch_template_name is None:
+            raise TypeError("Missing 'launch_template_name' argument")
+        if modified_time is None and 'modifiedTime' in kwargs:
             modified_time = kwargs['modifiedTime']
-        if 'networkInterfaces' in kwargs:
+        if modified_time is None:
+            raise TypeError("Missing 'modified_time' argument")
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
             network_interfaces = kwargs['networkInterfaces']
-        if 'networkType' in kwargs:
+        if network_interfaces is None:
+            raise TypeError("Missing 'network_interfaces' argument")
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'passwordInherit' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if password_inherit is None and 'passwordInherit' in kwargs:
             password_inherit = kwargs['passwordInherit']
-        if 'privateIpAddress' in kwargs:
+        if password_inherit is None:
+            raise TypeError("Missing 'password_inherit' argument")
+        if period is None:
+            raise TypeError("Missing 'period' argument")
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
             private_ip_address = kwargs['privateIpAddress']
-        if 'ramRoleName' in kwargs:
+        if private_ip_address is None:
+            raise TypeError("Missing 'private_ip_address' argument")
+        if ram_role_name is None and 'ramRoleName' in kwargs:
             ram_role_name = kwargs['ramRoleName']
-        if 'resourceGroupId' in kwargs:
+        if ram_role_name is None:
+            raise TypeError("Missing 'ram_role_name' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityEnhancementStrategy' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if security_enhancement_strategy is None and 'securityEnhancementStrategy' in kwargs:
             security_enhancement_strategy = kwargs['securityEnhancementStrategy']
-        if 'securityGroupId' in kwargs:
+        if security_enhancement_strategy is None:
+            raise TypeError("Missing 'security_enhancement_strategy' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'securityGroupIds' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'spotDuration' in kwargs:
+        if security_group_ids is None:
+            raise TypeError("Missing 'security_group_ids' argument")
+        if spot_duration is None and 'spotDuration' in kwargs:
             spot_duration = kwargs['spotDuration']
-        if 'spotPriceLimit' in kwargs:
+        if spot_duration is None:
+            raise TypeError("Missing 'spot_duration' argument")
+        if spot_price_limit is None and 'spotPriceLimit' in kwargs:
             spot_price_limit = kwargs['spotPriceLimit']
-        if 'spotStrategy' in kwargs:
+        if spot_price_limit is None:
+            raise TypeError("Missing 'spot_price_limit' argument")
+        if spot_strategy is None and 'spotStrategy' in kwargs:
             spot_strategy = kwargs['spotStrategy']
-        if 'systemDisks' in kwargs:
+        if spot_strategy is None:
+            raise TypeError("Missing 'spot_strategy' argument")
+        if system_disks is None and 'systemDisks' in kwargs:
             system_disks = kwargs['systemDisks']
-        if 'templateTags' in kwargs:
+        if system_disks is None:
+            raise TypeError("Missing 'system_disks' argument")
+        if template_tags is None and 'templateTags' in kwargs:
             template_tags = kwargs['templateTags']
-        if 'userData' in kwargs:
+        if template_tags is None:
+            raise TypeError("Missing 'template_tags' argument")
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'versionDescription' in kwargs:
+        if user_data is None:
+            raise TypeError("Missing 'user_data' argument")
+        if version_description is None and 'versionDescription' in kwargs:
             version_description = kwargs['versionDescription']
-        if 'vpcId' in kwargs:
+        if version_description is None:
+            raise TypeError("Missing 'version_description' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("auto_release_time", auto_release_time)
         _setter("created_by", created_by)
@@ -7530,22 +8216,38 @@ class GetEcsLaunchTemplatesTemplateDataDiskResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: str,
-             delete_with_instance: bool,
-             description: str,
-             encrypted: bool,
-             name: str,
-             performance_level: str,
-             size: int,
-             snapshot_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             category: Optional[str] = None,
+             delete_with_instance: Optional[bool] = None,
+             description: Optional[str] = None,
+             encrypted: Optional[bool] = None,
+             name: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             size: Optional[int] = None,
+             snapshot_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteWithInstance' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'performanceLevel' in kwargs:
+        if delete_with_instance is None:
+            raise TypeError("Missing 'delete_with_instance' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if encrypted is None:
+            raise TypeError("Missing 'encrypted' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'snapshotId' in kwargs:
+        if performance_level is None:
+            raise TypeError("Missing 'performance_level' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
+        if snapshot_id is None:
+            raise TypeError("Missing 'snapshot_id' argument")
 
         _setter("category", category)
         _setter("delete_with_instance", delete_with_instance)
@@ -7647,19 +8349,29 @@ class GetEcsLaunchTemplatesTemplateNetworkInterfaceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             name: str,
-             primary_ip: str,
-             security_group_id: str,
-             vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             name: Optional[str] = None,
+             primary_ip: Optional[str] = None,
+             security_group_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'primaryIp' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if primary_ip is None and 'primaryIp' in kwargs:
             primary_ip = kwargs['primaryIp']
-        if 'securityGroupId' in kwargs:
+        if primary_ip is None:
+            raise TypeError("Missing 'primary_ip' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vswitchId' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("description", description)
         _setter("name", name)
@@ -7740,19 +8452,33 @@ class GetEcsLaunchTemplatesTemplateSystemDiskResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: str,
-             delete_with_instance: bool,
-             description: str,
-             iops: str,
-             name: str,
-             performance_level: str,
-             size: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             category: Optional[str] = None,
+             delete_with_instance: Optional[bool] = None,
+             description: Optional[str] = None,
+             iops: Optional[str] = None,
+             name: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             size: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteWithInstance' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'performanceLevel' in kwargs:
+        if delete_with_instance is None:
+            raise TypeError("Missing 'delete_with_instance' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if iops is None:
+            raise TypeError("Missing 'iops' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
+        if performance_level is None:
+            raise TypeError("Missing 'performance_level' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
 
         _setter("category", category)
         _setter("delete_with_instance", delete_with_instance)
@@ -7851,23 +8577,37 @@ class GetEcsNetworkInterfacePermissionsPermissionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: str,
-             id: str,
-             network_interface_id: str,
-             network_interface_permission_id: str,
-             permission: str,
-             service_name: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[str] = None,
+             id: Optional[str] = None,
+             network_interface_id: Optional[str] = None,
+             network_interface_permission_id: Optional[str] = None,
+             permission: Optional[str] = None,
+             service_name: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'networkInterfaceId' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if network_interface_id is None and 'networkInterfaceId' in kwargs:
             network_interface_id = kwargs['networkInterfaceId']
-        if 'networkInterfacePermissionId' in kwargs:
+        if network_interface_id is None:
+            raise TypeError("Missing 'network_interface_id' argument")
+        if network_interface_permission_id is None and 'networkInterfacePermissionId' in kwargs:
             network_interface_permission_id = kwargs['networkInterfacePermissionId']
-        if 'serviceName' in kwargs:
+        if network_interface_permission_id is None:
+            raise TypeError("Missing 'network_interface_permission_id' argument")
+        if permission is None:
+            raise TypeError("Missing 'permission' argument")
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("account_id", account_id)
         _setter("id", id)
@@ -8025,75 +8765,129 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             associated_public_ips: Sequence['outputs.GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult'],
-             creation_time: str,
-             description: str,
-             id: str,
-             instance_id: str,
-             mac: str,
-             name: str,
-             network_interface_id: str,
-             network_interface_name: str,
-             network_interface_traffic_mode: str,
-             owner_id: str,
-             primary_ip_address: str,
-             private_ip: str,
-             private_ip_addresses: Sequence[str],
-             private_ips: Sequence[str],
-             queue_number: int,
-             resource_group_id: str,
-             security_group_ids: Sequence[str],
-             security_groups: Sequence[str],
-             service_id: int,
-             service_managed: bool,
-             status: str,
-             tags: Mapping[str, Any],
-             type: str,
-             vpc_id: str,
-             vswitch_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             associated_public_ips: Optional[Sequence['outputs.GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult']] = None,
+             creation_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             mac: Optional[str] = None,
+             name: Optional[str] = None,
+             network_interface_id: Optional[str] = None,
+             network_interface_name: Optional[str] = None,
+             network_interface_traffic_mode: Optional[str] = None,
+             owner_id: Optional[str] = None,
+             primary_ip_address: Optional[str] = None,
+             private_ip: Optional[str] = None,
+             private_ip_addresses: Optional[Sequence[str]] = None,
+             private_ips: Optional[Sequence[str]] = None,
+             queue_number: Optional[int] = None,
+             resource_group_id: Optional[str] = None,
+             security_group_ids: Optional[Sequence[str]] = None,
+             security_groups: Optional[Sequence[str]] = None,
+             service_id: Optional[int] = None,
+             service_managed: Optional[bool] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             type: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'associatedPublicIps' in kwargs:
+        if associated_public_ips is None and 'associatedPublicIps' in kwargs:
             associated_public_ips = kwargs['associatedPublicIps']
-        if 'creationTime' in kwargs:
+        if associated_public_ips is None:
+            raise TypeError("Missing 'associated_public_ips' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'instanceId' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'networkInterfaceId' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if mac is None:
+            raise TypeError("Missing 'mac' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if network_interface_id is None and 'networkInterfaceId' in kwargs:
             network_interface_id = kwargs['networkInterfaceId']
-        if 'networkInterfaceName' in kwargs:
+        if network_interface_id is None:
+            raise TypeError("Missing 'network_interface_id' argument")
+        if network_interface_name is None and 'networkInterfaceName' in kwargs:
             network_interface_name = kwargs['networkInterfaceName']
-        if 'networkInterfaceTrafficMode' in kwargs:
+        if network_interface_name is None:
+            raise TypeError("Missing 'network_interface_name' argument")
+        if network_interface_traffic_mode is None and 'networkInterfaceTrafficMode' in kwargs:
             network_interface_traffic_mode = kwargs['networkInterfaceTrafficMode']
-        if 'ownerId' in kwargs:
+        if network_interface_traffic_mode is None:
+            raise TypeError("Missing 'network_interface_traffic_mode' argument")
+        if owner_id is None and 'ownerId' in kwargs:
             owner_id = kwargs['ownerId']
-        if 'primaryIpAddress' in kwargs:
+        if owner_id is None:
+            raise TypeError("Missing 'owner_id' argument")
+        if primary_ip_address is None and 'primaryIpAddress' in kwargs:
             primary_ip_address = kwargs['primaryIpAddress']
-        if 'privateIp' in kwargs:
+        if primary_ip_address is None:
+            raise TypeError("Missing 'primary_ip_address' argument")
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
-        if 'privateIpAddresses' in kwargs:
+        if private_ip is None:
+            raise TypeError("Missing 'private_ip' argument")
+        if private_ip_addresses is None and 'privateIpAddresses' in kwargs:
             private_ip_addresses = kwargs['privateIpAddresses']
-        if 'privateIps' in kwargs:
+        if private_ip_addresses is None:
+            raise TypeError("Missing 'private_ip_addresses' argument")
+        if private_ips is None and 'privateIps' in kwargs:
             private_ips = kwargs['privateIps']
-        if 'queueNumber' in kwargs:
+        if private_ips is None:
+            raise TypeError("Missing 'private_ips' argument")
+        if queue_number is None and 'queueNumber' in kwargs:
             queue_number = kwargs['queueNumber']
-        if 'resourceGroupId' in kwargs:
+        if queue_number is None:
+            raise TypeError("Missing 'queue_number' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityGroupIds' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'securityGroups' in kwargs:
+        if security_group_ids is None:
+            raise TypeError("Missing 'security_group_ids' argument")
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'serviceId' in kwargs:
+        if security_groups is None:
+            raise TypeError("Missing 'security_groups' argument")
+        if service_id is None and 'serviceId' in kwargs:
             service_id = kwargs['serviceId']
-        if 'serviceManaged' in kwargs:
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+        if service_managed is None and 'serviceManaged' in kwargs:
             service_managed = kwargs['serviceManaged']
-        if 'vpcId' in kwargs:
+        if service_managed is None:
+            raise TypeError("Missing 'service_managed' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("associated_public_ips", associated_public_ips)
         _setter("creation_time", creation_time)
@@ -8351,11 +9145,13 @@ class GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             public_ip_address: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             public_ip_address: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'publicIpAddress' in kwargs:
+        if public_ip_address is None and 'publicIpAddress' in kwargs:
             public_ip_address = kwargs['publicIpAddress']
+        if public_ip_address is None:
+            raise TypeError("Missing 'public_ip_address' argument")
 
         _setter("public_ip_address", public_ip_address)
 
@@ -8405,29 +9201,47 @@ class GetEcsPrefixListsListResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address_family: str,
-             association_count: int,
-             create_time: str,
-             description: str,
-             entries: Sequence['outputs.GetEcsPrefixListsListEntryResult'],
-             id: str,
-             max_entries: int,
-             prefix_list_id: str,
-             prefix_list_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             address_family: Optional[str] = None,
+             association_count: Optional[int] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             entries: Optional[Sequence['outputs.GetEcsPrefixListsListEntryResult']] = None,
+             id: Optional[str] = None,
+             max_entries: Optional[int] = None,
+             prefix_list_id: Optional[str] = None,
+             prefix_list_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addressFamily' in kwargs:
+        if address_family is None and 'addressFamily' in kwargs:
             address_family = kwargs['addressFamily']
-        if 'associationCount' in kwargs:
+        if address_family is None:
+            raise TypeError("Missing 'address_family' argument")
+        if association_count is None and 'associationCount' in kwargs:
             association_count = kwargs['associationCount']
-        if 'createTime' in kwargs:
+        if association_count is None:
+            raise TypeError("Missing 'association_count' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'maxEntries' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if entries is None:
+            raise TypeError("Missing 'entries' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if max_entries is None and 'maxEntries' in kwargs:
             max_entries = kwargs['maxEntries']
-        if 'prefixListId' in kwargs:
+        if max_entries is None:
+            raise TypeError("Missing 'max_entries' argument")
+        if prefix_list_id is None and 'prefixListId' in kwargs:
             prefix_list_id = kwargs['prefixListId']
-        if 'prefixListName' in kwargs:
+        if prefix_list_id is None:
+            raise TypeError("Missing 'prefix_list_id' argument")
+        if prefix_list_name is None and 'prefixListName' in kwargs:
             prefix_list_name = kwargs['prefixListName']
+        if prefix_list_name is None:
+            raise TypeError("Missing 'prefix_list_name' argument")
 
         _setter("address_family", address_family)
         _setter("association_count", association_count)
@@ -8525,10 +9339,14 @@ class GetEcsPrefixListsListEntryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr: str,
-             description: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cidr: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if cidr is None:
+            raise TypeError("Missing 'cidr' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
 
         _setter("cidr", cidr)
         _setter("description", description)
@@ -8582,24 +9400,38 @@ class GetEcsSnapshotGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             id: str,
-             instance_id: str,
-             resource_group_id: str,
-             snapshot_group_id: str,
-             snapshot_group_name: str,
-             status: str,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             snapshot_group_id: Optional[str] = None,
+             snapshot_group_name: Optional[str] = None,
+             status: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'resourceGroupId' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'snapshotGroupId' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if snapshot_group_id is None and 'snapshotGroupId' in kwargs:
             snapshot_group_id = kwargs['snapshotGroupId']
-        if 'snapshotGroupName' in kwargs:
+        if snapshot_group_id is None:
+            raise TypeError("Missing 'snapshot_group_id' argument")
+        if snapshot_group_name is None and 'snapshotGroupName' in kwargs:
             snapshot_group_name = kwargs['snapshotGroupName']
+        if snapshot_group_name is None:
+            raise TypeError("Missing 'snapshot_group_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("description", description)
         _setter("id", id)
@@ -8761,66 +9593,118 @@ class GetEcsSnapshotsSnapshotResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: str,
-             creation_time: str,
-             description: str,
-             disk_id: str,
-             encrypted: bool,
-             id: str,
-             instant_access: bool,
-             instant_access_retention_days: int,
-             name: str,
-             product_code: str,
-             progress: str,
-             remain_time: int,
-             resource_group_id: str,
-             retention_days: int,
-             snapshot_id: str,
-             snapshot_name: str,
-             snapshot_sn: str,
-             snapshot_type: str,
-             source_disk_id: str,
-             source_disk_size: str,
-             source_disk_type: str,
-             source_storage_type: str,
-             status: str,
-             tags: Mapping[str, Any],
-             type: str,
-             usage: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             category: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             description: Optional[str] = None,
+             disk_id: Optional[str] = None,
+             encrypted: Optional[bool] = None,
+             id: Optional[str] = None,
+             instant_access: Optional[bool] = None,
+             instant_access_retention_days: Optional[int] = None,
+             name: Optional[str] = None,
+             product_code: Optional[str] = None,
+             progress: Optional[str] = None,
+             remain_time: Optional[int] = None,
+             resource_group_id: Optional[str] = None,
+             retention_days: Optional[int] = None,
+             snapshot_id: Optional[str] = None,
+             snapshot_name: Optional[str] = None,
+             snapshot_sn: Optional[str] = None,
+             snapshot_type: Optional[str] = None,
+             source_disk_id: Optional[str] = None,
+             source_disk_size: Optional[str] = None,
+             source_disk_type: Optional[str] = None,
+             source_storage_type: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             type: Optional[str] = None,
+             usage: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'creationTime' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'diskId' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
-        if 'instantAccess' in kwargs:
+        if disk_id is None:
+            raise TypeError("Missing 'disk_id' argument")
+        if encrypted is None:
+            raise TypeError("Missing 'encrypted' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instant_access is None and 'instantAccess' in kwargs:
             instant_access = kwargs['instantAccess']
-        if 'instantAccessRetentionDays' in kwargs:
+        if instant_access is None:
+            raise TypeError("Missing 'instant_access' argument")
+        if instant_access_retention_days is None and 'instantAccessRetentionDays' in kwargs:
             instant_access_retention_days = kwargs['instantAccessRetentionDays']
-        if 'productCode' in kwargs:
+        if instant_access_retention_days is None:
+            raise TypeError("Missing 'instant_access_retention_days' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if product_code is None and 'productCode' in kwargs:
             product_code = kwargs['productCode']
-        if 'remainTime' in kwargs:
+        if product_code is None:
+            raise TypeError("Missing 'product_code' argument")
+        if progress is None:
+            raise TypeError("Missing 'progress' argument")
+        if remain_time is None and 'remainTime' in kwargs:
             remain_time = kwargs['remainTime']
-        if 'resourceGroupId' in kwargs:
+        if remain_time is None:
+            raise TypeError("Missing 'remain_time' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'retentionDays' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'snapshotId' in kwargs:
+        if retention_days is None:
+            raise TypeError("Missing 'retention_days' argument")
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
-        if 'snapshotName' in kwargs:
+        if snapshot_id is None:
+            raise TypeError("Missing 'snapshot_id' argument")
+        if snapshot_name is None and 'snapshotName' in kwargs:
             snapshot_name = kwargs['snapshotName']
-        if 'snapshotSn' in kwargs:
+        if snapshot_name is None:
+            raise TypeError("Missing 'snapshot_name' argument")
+        if snapshot_sn is None and 'snapshotSn' in kwargs:
             snapshot_sn = kwargs['snapshotSn']
-        if 'snapshotType' in kwargs:
+        if snapshot_sn is None:
+            raise TypeError("Missing 'snapshot_sn' argument")
+        if snapshot_type is None and 'snapshotType' in kwargs:
             snapshot_type = kwargs['snapshotType']
-        if 'sourceDiskId' in kwargs:
+        if snapshot_type is None:
+            raise TypeError("Missing 'snapshot_type' argument")
+        if source_disk_id is None and 'sourceDiskId' in kwargs:
             source_disk_id = kwargs['sourceDiskId']
-        if 'sourceDiskSize' in kwargs:
+        if source_disk_id is None:
+            raise TypeError("Missing 'source_disk_id' argument")
+        if source_disk_size is None and 'sourceDiskSize' in kwargs:
             source_disk_size = kwargs['sourceDiskSize']
-        if 'sourceDiskType' in kwargs:
+        if source_disk_size is None:
+            raise TypeError("Missing 'source_disk_size' argument")
+        if source_disk_type is None and 'sourceDiskType' in kwargs:
             source_disk_type = kwargs['sourceDiskType']
-        if 'sourceStorageType' in kwargs:
+        if source_disk_type is None:
+            raise TypeError("Missing 'source_disk_type' argument")
+        if source_storage_type is None and 'sourceStorageType' in kwargs:
             source_storage_type = kwargs['sourceStorageType']
+        if source_storage_type is None:
+            raise TypeError("Missing 'source_storage_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if usage is None:
+            raise TypeError("Missing 'usage' argument")
 
         _setter("category", category)
         _setter("creation_time", creation_time)
@@ -9087,30 +9971,50 @@ class GetEcsStorageCapacityUnitsUnitResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allocation_status: str,
-             capacity: int,
-             create_time: str,
-             description: str,
-             expired_time: str,
-             id: str,
-             start_time: str,
-             status: str,
-             storage_capacity_unit_id: str,
-             storage_capacity_unit_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             allocation_status: Optional[str] = None,
+             capacity: Optional[int] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             expired_time: Optional[str] = None,
+             id: Optional[str] = None,
+             start_time: Optional[str] = None,
+             status: Optional[str] = None,
+             storage_capacity_unit_id: Optional[str] = None,
+             storage_capacity_unit_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allocationStatus' in kwargs:
+        if allocation_status is None and 'allocationStatus' in kwargs:
             allocation_status = kwargs['allocationStatus']
-        if 'createTime' in kwargs:
+        if allocation_status is None:
+            raise TypeError("Missing 'allocation_status' argument")
+        if capacity is None:
+            raise TypeError("Missing 'capacity' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'expiredTime' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'startTime' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'storageCapacityUnitId' in kwargs:
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if storage_capacity_unit_id is None and 'storageCapacityUnitId' in kwargs:
             storage_capacity_unit_id = kwargs['storageCapacityUnitId']
-        if 'storageCapacityUnitName' in kwargs:
+        if storage_capacity_unit_id is None:
+            raise TypeError("Missing 'storage_capacity_unit_id' argument")
+        if storage_capacity_unit_name is None and 'storageCapacityUnitName' in kwargs:
             storage_capacity_unit_name = kwargs['storageCapacityUnitName']
+        if storage_capacity_unit_name is None:
+            raise TypeError("Missing 'storage_capacity_unit_name' argument")
 
         _setter("allocation_status", allocation_status)
         _setter("capacity", capacity)
@@ -9308,89 +10212,151 @@ class GetEipAddressesAddressResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address_name: str,
-             allocation_id: str,
-             available_regions: Sequence[str],
-             bandwidth: str,
-             bandwidth_package_bandwidth: str,
-             bandwidth_package_id: str,
-             bandwidth_package_type: str,
-             create_time: str,
-             deletion_protection: bool,
-             description: str,
-             expired_time: str,
-             has_reservation_data: str,
-             hd_monitor_status: str,
-             id: str,
-             instance_id: str,
-             instance_region_id: str,
-             instance_type: str,
-             internet_charge_type: str,
-             ip_address: str,
-             isp: str,
-             operation_locks: Sequence[str],
-             payment_type: str,
-             reservation_active_time: str,
-             reservation_bandwidth: str,
-             reservation_internet_charge_type: str,
-             reservation_order_type: str,
-             resource_group_id: str,
-             second_limited: bool,
-             segment_instance_id: str,
-             status: str,
-             tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             address_name: Optional[str] = None,
+             allocation_id: Optional[str] = None,
+             available_regions: Optional[Sequence[str]] = None,
+             bandwidth: Optional[str] = None,
+             bandwidth_package_bandwidth: Optional[str] = None,
+             bandwidth_package_id: Optional[str] = None,
+             bandwidth_package_type: Optional[str] = None,
+             create_time: Optional[str] = None,
+             deletion_protection: Optional[bool] = None,
+             description: Optional[str] = None,
+             expired_time: Optional[str] = None,
+             has_reservation_data: Optional[str] = None,
+             hd_monitor_status: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_region_id: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             internet_charge_type: Optional[str] = None,
+             ip_address: Optional[str] = None,
+             isp: Optional[str] = None,
+             operation_locks: Optional[Sequence[str]] = None,
+             payment_type: Optional[str] = None,
+             reservation_active_time: Optional[str] = None,
+             reservation_bandwidth: Optional[str] = None,
+             reservation_internet_charge_type: Optional[str] = None,
+             reservation_order_type: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             second_limited: Optional[bool] = None,
+             segment_instance_id: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addressName' in kwargs:
+        if address_name is None and 'addressName' in kwargs:
             address_name = kwargs['addressName']
-        if 'allocationId' in kwargs:
+        if address_name is None:
+            raise TypeError("Missing 'address_name' argument")
+        if allocation_id is None and 'allocationId' in kwargs:
             allocation_id = kwargs['allocationId']
-        if 'availableRegions' in kwargs:
+        if allocation_id is None:
+            raise TypeError("Missing 'allocation_id' argument")
+        if available_regions is None and 'availableRegions' in kwargs:
             available_regions = kwargs['availableRegions']
-        if 'bandwidthPackageBandwidth' in kwargs:
+        if available_regions is None:
+            raise TypeError("Missing 'available_regions' argument")
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if bandwidth_package_bandwidth is None and 'bandwidthPackageBandwidth' in kwargs:
             bandwidth_package_bandwidth = kwargs['bandwidthPackageBandwidth']
-        if 'bandwidthPackageId' in kwargs:
+        if bandwidth_package_bandwidth is None:
+            raise TypeError("Missing 'bandwidth_package_bandwidth' argument")
+        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
             bandwidth_package_id = kwargs['bandwidthPackageId']
-        if 'bandwidthPackageType' in kwargs:
+        if bandwidth_package_id is None:
+            raise TypeError("Missing 'bandwidth_package_id' argument")
+        if bandwidth_package_type is None and 'bandwidthPackageType' in kwargs:
             bandwidth_package_type = kwargs['bandwidthPackageType']
-        if 'createTime' in kwargs:
+        if bandwidth_package_type is None:
+            raise TypeError("Missing 'bandwidth_package_type' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'deletionProtection' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'expiredTime' in kwargs:
+        if deletion_protection is None:
+            raise TypeError("Missing 'deletion_protection' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'hasReservationData' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if has_reservation_data is None and 'hasReservationData' in kwargs:
             has_reservation_data = kwargs['hasReservationData']
-        if 'hdMonitorStatus' in kwargs:
+        if has_reservation_data is None:
+            raise TypeError("Missing 'has_reservation_data' argument")
+        if hd_monitor_status is None and 'hdMonitorStatus' in kwargs:
             hd_monitor_status = kwargs['hdMonitorStatus']
-        if 'instanceId' in kwargs:
+        if hd_monitor_status is None:
+            raise TypeError("Missing 'hd_monitor_status' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceRegionId' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_region_id is None and 'instanceRegionId' in kwargs:
             instance_region_id = kwargs['instanceRegionId']
-        if 'instanceType' in kwargs:
+        if instance_region_id is None:
+            raise TypeError("Missing 'instance_region_id' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetChargeType' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'ipAddress' in kwargs:
+        if internet_charge_type is None:
+            raise TypeError("Missing 'internet_charge_type' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
-        if 'operationLocks' in kwargs:
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if isp is None:
+            raise TypeError("Missing 'isp' argument")
+        if operation_locks is None and 'operationLocks' in kwargs:
             operation_locks = kwargs['operationLocks']
-        if 'paymentType' in kwargs:
+        if operation_locks is None:
+            raise TypeError("Missing 'operation_locks' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'reservationActiveTime' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if reservation_active_time is None and 'reservationActiveTime' in kwargs:
             reservation_active_time = kwargs['reservationActiveTime']
-        if 'reservationBandwidth' in kwargs:
+        if reservation_active_time is None:
+            raise TypeError("Missing 'reservation_active_time' argument")
+        if reservation_bandwidth is None and 'reservationBandwidth' in kwargs:
             reservation_bandwidth = kwargs['reservationBandwidth']
-        if 'reservationInternetChargeType' in kwargs:
+        if reservation_bandwidth is None:
+            raise TypeError("Missing 'reservation_bandwidth' argument")
+        if reservation_internet_charge_type is None and 'reservationInternetChargeType' in kwargs:
             reservation_internet_charge_type = kwargs['reservationInternetChargeType']
-        if 'reservationOrderType' in kwargs:
+        if reservation_internet_charge_type is None:
+            raise TypeError("Missing 'reservation_internet_charge_type' argument")
+        if reservation_order_type is None and 'reservationOrderType' in kwargs:
             reservation_order_type = kwargs['reservationOrderType']
-        if 'resourceGroupId' in kwargs:
+        if reservation_order_type is None:
+            raise TypeError("Missing 'reservation_order_type' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'secondLimited' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if second_limited is None and 'secondLimited' in kwargs:
             second_limited = kwargs['secondLimited']
-        if 'segmentInstanceId' in kwargs:
+        if second_limited is None:
+            raise TypeError("Missing 'second_limited' argument")
+        if segment_instance_id is None and 'segmentInstanceId' in kwargs:
             segment_instance_id = kwargs['segmentInstanceId']
+        if segment_instance_id is None:
+            raise TypeError("Missing 'segment_instance_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
 
         _setter("address_name", address_name)
         _setter("allocation_id", allocation_id)
@@ -9710,29 +10676,47 @@ class GetEipAddressesEipResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: str,
-             creation_time: str,
-             deletion_protection: bool,
-             id: str,
-             instance_id: str,
-             instance_type: str,
-             internet_charge_type: str,
-             ip_address: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             deletion_protection: Optional[bool] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             internet_charge_type: Optional[str] = None,
+             ip_address: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'creationTime' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'deletionProtection' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'instanceId' in kwargs:
+        if deletion_protection is None:
+            raise TypeError("Missing 'deletion_protection' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceType' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetChargeType' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'ipAddress' in kwargs:
+        if internet_charge_type is None:
+            raise TypeError("Missing 'internet_charge_type' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("bandwidth", bandwidth)
         _setter("creation_time", creation_time)
@@ -9897,89 +10881,151 @@ class GetEipsAddressResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address_name: str,
-             allocation_id: str,
-             available_regions: Sequence[str],
-             bandwidth: str,
-             bandwidth_package_bandwidth: str,
-             bandwidth_package_id: str,
-             bandwidth_package_type: str,
-             create_time: str,
-             deletion_protection: bool,
-             description: str,
-             expired_time: str,
-             has_reservation_data: str,
-             hd_monitor_status: str,
-             id: str,
-             instance_id: str,
-             instance_region_id: str,
-             instance_type: str,
-             internet_charge_type: str,
-             ip_address: str,
-             isp: str,
-             operation_locks: Sequence[str],
-             payment_type: str,
-             reservation_active_time: str,
-             reservation_bandwidth: str,
-             reservation_internet_charge_type: str,
-             reservation_order_type: str,
-             resource_group_id: str,
-             second_limited: bool,
-             segment_instance_id: str,
-             status: str,
-             tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             address_name: Optional[str] = None,
+             allocation_id: Optional[str] = None,
+             available_regions: Optional[Sequence[str]] = None,
+             bandwidth: Optional[str] = None,
+             bandwidth_package_bandwidth: Optional[str] = None,
+             bandwidth_package_id: Optional[str] = None,
+             bandwidth_package_type: Optional[str] = None,
+             create_time: Optional[str] = None,
+             deletion_protection: Optional[bool] = None,
+             description: Optional[str] = None,
+             expired_time: Optional[str] = None,
+             has_reservation_data: Optional[str] = None,
+             hd_monitor_status: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_region_id: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             internet_charge_type: Optional[str] = None,
+             ip_address: Optional[str] = None,
+             isp: Optional[str] = None,
+             operation_locks: Optional[Sequence[str]] = None,
+             payment_type: Optional[str] = None,
+             reservation_active_time: Optional[str] = None,
+             reservation_bandwidth: Optional[str] = None,
+             reservation_internet_charge_type: Optional[str] = None,
+             reservation_order_type: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             second_limited: Optional[bool] = None,
+             segment_instance_id: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addressName' in kwargs:
+        if address_name is None and 'addressName' in kwargs:
             address_name = kwargs['addressName']
-        if 'allocationId' in kwargs:
+        if address_name is None:
+            raise TypeError("Missing 'address_name' argument")
+        if allocation_id is None and 'allocationId' in kwargs:
             allocation_id = kwargs['allocationId']
-        if 'availableRegions' in kwargs:
+        if allocation_id is None:
+            raise TypeError("Missing 'allocation_id' argument")
+        if available_regions is None and 'availableRegions' in kwargs:
             available_regions = kwargs['availableRegions']
-        if 'bandwidthPackageBandwidth' in kwargs:
+        if available_regions is None:
+            raise TypeError("Missing 'available_regions' argument")
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if bandwidth_package_bandwidth is None and 'bandwidthPackageBandwidth' in kwargs:
             bandwidth_package_bandwidth = kwargs['bandwidthPackageBandwidth']
-        if 'bandwidthPackageId' in kwargs:
+        if bandwidth_package_bandwidth is None:
+            raise TypeError("Missing 'bandwidth_package_bandwidth' argument")
+        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
             bandwidth_package_id = kwargs['bandwidthPackageId']
-        if 'bandwidthPackageType' in kwargs:
+        if bandwidth_package_id is None:
+            raise TypeError("Missing 'bandwidth_package_id' argument")
+        if bandwidth_package_type is None and 'bandwidthPackageType' in kwargs:
             bandwidth_package_type = kwargs['bandwidthPackageType']
-        if 'createTime' in kwargs:
+        if bandwidth_package_type is None:
+            raise TypeError("Missing 'bandwidth_package_type' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'deletionProtection' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'expiredTime' in kwargs:
+        if deletion_protection is None:
+            raise TypeError("Missing 'deletion_protection' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'hasReservationData' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if has_reservation_data is None and 'hasReservationData' in kwargs:
             has_reservation_data = kwargs['hasReservationData']
-        if 'hdMonitorStatus' in kwargs:
+        if has_reservation_data is None:
+            raise TypeError("Missing 'has_reservation_data' argument")
+        if hd_monitor_status is None and 'hdMonitorStatus' in kwargs:
             hd_monitor_status = kwargs['hdMonitorStatus']
-        if 'instanceId' in kwargs:
+        if hd_monitor_status is None:
+            raise TypeError("Missing 'hd_monitor_status' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceRegionId' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_region_id is None and 'instanceRegionId' in kwargs:
             instance_region_id = kwargs['instanceRegionId']
-        if 'instanceType' in kwargs:
+        if instance_region_id is None:
+            raise TypeError("Missing 'instance_region_id' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetChargeType' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'ipAddress' in kwargs:
+        if internet_charge_type is None:
+            raise TypeError("Missing 'internet_charge_type' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
-        if 'operationLocks' in kwargs:
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if isp is None:
+            raise TypeError("Missing 'isp' argument")
+        if operation_locks is None and 'operationLocks' in kwargs:
             operation_locks = kwargs['operationLocks']
-        if 'paymentType' in kwargs:
+        if operation_locks is None:
+            raise TypeError("Missing 'operation_locks' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'reservationActiveTime' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if reservation_active_time is None and 'reservationActiveTime' in kwargs:
             reservation_active_time = kwargs['reservationActiveTime']
-        if 'reservationBandwidth' in kwargs:
+        if reservation_active_time is None:
+            raise TypeError("Missing 'reservation_active_time' argument")
+        if reservation_bandwidth is None and 'reservationBandwidth' in kwargs:
             reservation_bandwidth = kwargs['reservationBandwidth']
-        if 'reservationInternetChargeType' in kwargs:
+        if reservation_bandwidth is None:
+            raise TypeError("Missing 'reservation_bandwidth' argument")
+        if reservation_internet_charge_type is None and 'reservationInternetChargeType' in kwargs:
             reservation_internet_charge_type = kwargs['reservationInternetChargeType']
-        if 'reservationOrderType' in kwargs:
+        if reservation_internet_charge_type is None:
+            raise TypeError("Missing 'reservation_internet_charge_type' argument")
+        if reservation_order_type is None and 'reservationOrderType' in kwargs:
             reservation_order_type = kwargs['reservationOrderType']
-        if 'resourceGroupId' in kwargs:
+        if reservation_order_type is None:
+            raise TypeError("Missing 'reservation_order_type' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'secondLimited' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if second_limited is None and 'secondLimited' in kwargs:
             second_limited = kwargs['secondLimited']
-        if 'segmentInstanceId' in kwargs:
+        if second_limited is None:
+            raise TypeError("Missing 'second_limited' argument")
+        if segment_instance_id is None and 'segmentInstanceId' in kwargs:
             segment_instance_id = kwargs['segmentInstanceId']
+        if segment_instance_id is None:
+            raise TypeError("Missing 'segment_instance_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
 
         _setter("address_name", address_name)
         _setter("allocation_id", allocation_id)
@@ -10237,29 +11283,47 @@ class GetEipsEipResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: str,
-             creation_time: str,
-             deletion_protection: bool,
-             id: str,
-             instance_id: str,
-             instance_type: str,
-             internet_charge_type: str,
-             ip_address: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             deletion_protection: Optional[bool] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             internet_charge_type: Optional[str] = None,
+             ip_address: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'creationTime' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'deletionProtection' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'instanceId' in kwargs:
+        if deletion_protection is None:
+            raise TypeError("Missing 'deletion_protection' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceType' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetChargeType' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'ipAddress' in kwargs:
+        if internet_charge_type is None:
+            raise TypeError("Missing 'internet_charge_type' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("bandwidth", bandwidth)
         _setter("creation_time", creation_time)
@@ -10403,48 +11467,78 @@ class GetElasticityAssurancesAssuranceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allocated_resources: Sequence['outputs.GetElasticityAssurancesAssuranceAllocatedResourceResult'],
-             description: str,
-             elasticity_assurance_id: str,
-             end_time: str,
-             id: str,
-             instance_charge_type: str,
-             private_pool_options_id: str,
-             private_pool_options_match_criteria: str,
-             private_pool_options_name: str,
-             resource_group_id: str,
-             start_time: str,
-             start_time_type: str,
-             status: str,
-             total_assurance_times: str,
-             used_assurance_times: int,
+             allocated_resources: Optional[Sequence['outputs.GetElasticityAssurancesAssuranceAllocatedResourceResult']] = None,
+             description: Optional[str] = None,
+             elasticity_assurance_id: Optional[str] = None,
+             end_time: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_charge_type: Optional[str] = None,
+             private_pool_options_id: Optional[str] = None,
+             private_pool_options_match_criteria: Optional[str] = None,
+             private_pool_options_name: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             start_time: Optional[str] = None,
+             start_time_type: Optional[str] = None,
+             status: Optional[str] = None,
+             total_assurance_times: Optional[str] = None,
+             used_assurance_times: Optional[int] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allocatedResources' in kwargs:
+        if allocated_resources is None and 'allocatedResources' in kwargs:
             allocated_resources = kwargs['allocatedResources']
-        if 'elasticityAssuranceId' in kwargs:
+        if allocated_resources is None:
+            raise TypeError("Missing 'allocated_resources' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if elasticity_assurance_id is None and 'elasticityAssuranceId' in kwargs:
             elasticity_assurance_id = kwargs['elasticityAssuranceId']
-        if 'endTime' in kwargs:
+        if elasticity_assurance_id is None:
+            raise TypeError("Missing 'elasticity_assurance_id' argument")
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'instanceChargeType' in kwargs:
+        if end_time is None:
+            raise TypeError("Missing 'end_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'privatePoolOptionsId' in kwargs:
+        if instance_charge_type is None:
+            raise TypeError("Missing 'instance_charge_type' argument")
+        if private_pool_options_id is None and 'privatePoolOptionsId' in kwargs:
             private_pool_options_id = kwargs['privatePoolOptionsId']
-        if 'privatePoolOptionsMatchCriteria' in kwargs:
+        if private_pool_options_id is None:
+            raise TypeError("Missing 'private_pool_options_id' argument")
+        if private_pool_options_match_criteria is None and 'privatePoolOptionsMatchCriteria' in kwargs:
             private_pool_options_match_criteria = kwargs['privatePoolOptionsMatchCriteria']
-        if 'privatePoolOptionsName' in kwargs:
+        if private_pool_options_match_criteria is None:
+            raise TypeError("Missing 'private_pool_options_match_criteria' argument")
+        if private_pool_options_name is None and 'privatePoolOptionsName' in kwargs:
             private_pool_options_name = kwargs['privatePoolOptionsName']
-        if 'resourceGroupId' in kwargs:
+        if private_pool_options_name is None:
+            raise TypeError("Missing 'private_pool_options_name' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'startTime' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'startTimeType' in kwargs:
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if start_time_type is None and 'startTimeType' in kwargs:
             start_time_type = kwargs['startTimeType']
-        if 'totalAssuranceTimes' in kwargs:
+        if start_time_type is None:
+            raise TypeError("Missing 'start_time_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if total_assurance_times is None and 'totalAssuranceTimes' in kwargs:
             total_assurance_times = kwargs['totalAssuranceTimes']
-        if 'usedAssuranceTimes' in kwargs:
+        if total_assurance_times is None:
+            raise TypeError("Missing 'total_assurance_times' argument")
+        if used_assurance_times is None and 'usedAssuranceTimes' in kwargs:
             used_assurance_times = kwargs['usedAssuranceTimes']
+        if used_assurance_times is None:
+            raise TypeError("Missing 'used_assurance_times' argument")
 
         _setter("allocated_resources", allocated_resources)
         _setter("description", description)
@@ -10616,20 +11710,28 @@ class GetElasticityAssurancesAssuranceAllocatedResourceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_type: str,
-             total_amount: int,
-             used_amount: int,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             instance_type: Optional[str] = None,
+             total_amount: Optional[int] = None,
+             used_amount: Optional[int] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'totalAmount' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if total_amount is None and 'totalAmount' in kwargs:
             total_amount = kwargs['totalAmount']
-        if 'usedAmount' in kwargs:
+        if total_amount is None:
+            raise TypeError("Missing 'total_amount' argument")
+        if used_amount is None and 'usedAmount' in kwargs:
             used_amount = kwargs['usedAmount']
-        if 'zoneId' in kwargs:
+        if used_amount is None:
+            raise TypeError("Missing 'used_amount' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("instance_type", instance_type)
         _setter("total_amount", total_amount)
@@ -10692,14 +11794,22 @@ class GetHpcClustersClusterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             hpc_cluster_id: str,
-             id: str,
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             hpc_cluster_id: Optional[str] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'hpcClusterId' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if hpc_cluster_id is None and 'hpcClusterId' in kwargs:
             hpc_cluster_id = kwargs['hpcClusterId']
+        if hpc_cluster_id is None:
+            raise TypeError("Missing 'hpc_cluster_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("description", description)
         _setter("hpc_cluster_id", hpc_cluster_id)
@@ -10817,58 +11927,104 @@ class GetImagesImageResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             architecture: str,
-             creation_time: str,
-             description: str,
-             disk_device_mappings: Sequence['outputs.GetImagesImageDiskDeviceMappingResult'],
-             id: str,
-             image_id: str,
-             image_owner_alias: str,
-             image_version: str,
-             is_copied: bool,
-             is_self_shared: str,
-             is_subscribed: bool,
-             is_support_io_optimized: bool,
-             name: str,
-             os_name: str,
-             os_name_en: str,
-             os_type: str,
-             platform: str,
-             product_code: str,
-             progress: str,
-             size: int,
-             state: str,
-             status: str,
-             usage: str,
+             architecture: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             description: Optional[str] = None,
+             disk_device_mappings: Optional[Sequence['outputs.GetImagesImageDiskDeviceMappingResult']] = None,
+             id: Optional[str] = None,
+             image_id: Optional[str] = None,
+             image_owner_alias: Optional[str] = None,
+             image_version: Optional[str] = None,
+             is_copied: Optional[bool] = None,
+             is_self_shared: Optional[str] = None,
+             is_subscribed: Optional[bool] = None,
+             is_support_io_optimized: Optional[bool] = None,
+             name: Optional[str] = None,
+             os_name: Optional[str] = None,
+             os_name_en: Optional[str] = None,
+             os_type: Optional[str] = None,
+             platform: Optional[str] = None,
+             product_code: Optional[str] = None,
+             progress: Optional[str] = None,
+             size: Optional[int] = None,
+             state: Optional[str] = None,
+             status: Optional[str] = None,
+             usage: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'creationTime' in kwargs:
+        if architecture is None:
+            raise TypeError("Missing 'architecture' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'diskDeviceMappings' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if disk_device_mappings is None and 'diskDeviceMappings' in kwargs:
             disk_device_mappings = kwargs['diskDeviceMappings']
-        if 'imageId' in kwargs:
+        if disk_device_mappings is None:
+            raise TypeError("Missing 'disk_device_mappings' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'imageOwnerAlias' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if image_owner_alias is None and 'imageOwnerAlias' in kwargs:
             image_owner_alias = kwargs['imageOwnerAlias']
-        if 'imageVersion' in kwargs:
+        if image_owner_alias is None:
+            raise TypeError("Missing 'image_owner_alias' argument")
+        if image_version is None and 'imageVersion' in kwargs:
             image_version = kwargs['imageVersion']
-        if 'isCopied' in kwargs:
+        if image_version is None:
+            raise TypeError("Missing 'image_version' argument")
+        if is_copied is None and 'isCopied' in kwargs:
             is_copied = kwargs['isCopied']
-        if 'isSelfShared' in kwargs:
+        if is_copied is None:
+            raise TypeError("Missing 'is_copied' argument")
+        if is_self_shared is None and 'isSelfShared' in kwargs:
             is_self_shared = kwargs['isSelfShared']
-        if 'isSubscribed' in kwargs:
+        if is_self_shared is None:
+            raise TypeError("Missing 'is_self_shared' argument")
+        if is_subscribed is None and 'isSubscribed' in kwargs:
             is_subscribed = kwargs['isSubscribed']
-        if 'isSupportIoOptimized' in kwargs:
+        if is_subscribed is None:
+            raise TypeError("Missing 'is_subscribed' argument")
+        if is_support_io_optimized is None and 'isSupportIoOptimized' in kwargs:
             is_support_io_optimized = kwargs['isSupportIoOptimized']
-        if 'osName' in kwargs:
+        if is_support_io_optimized is None:
+            raise TypeError("Missing 'is_support_io_optimized' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if os_name is None and 'osName' in kwargs:
             os_name = kwargs['osName']
-        if 'osNameEn' in kwargs:
+        if os_name is None:
+            raise TypeError("Missing 'os_name' argument")
+        if os_name_en is None and 'osNameEn' in kwargs:
             os_name_en = kwargs['osNameEn']
-        if 'osType' in kwargs:
+        if os_name_en is None:
+            raise TypeError("Missing 'os_name_en' argument")
+        if os_type is None and 'osType' in kwargs:
             os_type = kwargs['osType']
-        if 'productCode' in kwargs:
+        if os_type is None:
+            raise TypeError("Missing 'os_type' argument")
+        if platform is None:
+            raise TypeError("Missing 'platform' argument")
+        if product_code is None and 'productCode' in kwargs:
             product_code = kwargs['productCode']
+        if product_code is None:
+            raise TypeError("Missing 'product_code' argument")
+        if progress is None:
+            raise TypeError("Missing 'progress' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if usage is None:
+            raise TypeError("Missing 'usage' argument")
 
         _setter("architecture", architecture)
         _setter("creation_time", creation_time)
@@ -11094,13 +12250,19 @@ class GetImagesImageDiskDeviceMappingResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             device: str,
-             size: str,
-             snapshot_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             device: Optional[str] = None,
+             size: Optional[str] = None,
+             snapshot_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'snapshotId' in kwargs:
+        if device is None:
+            raise TypeError("Missing 'device' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
+        if snapshot_id is None:
+            raise TypeError("Missing 'snapshot_id' argument")
 
         _setter("device", device)
         _setter("size", size)
@@ -11151,13 +12313,19 @@ class GetInstanceTypeFamiliesFamilyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             generation: str,
-             id: str,
-             zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             generation: Optional[str] = None,
+             id: Optional[str] = None,
+             zone_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneIds' in kwargs:
+        if generation is None:
+            raise TypeError("Missing 'generation' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if zone_ids is None and 'zoneIds' in kwargs:
             zone_ids = kwargs['zoneIds']
+        if zone_ids is None:
+            raise TypeError("Missing 'zone_ids' argument")
 
         _setter("generation", generation)
         _setter("id", id)
@@ -11240,33 +12408,55 @@ class GetInstanceTypesInstanceTypeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             availability_zones: Sequence[str],
-             burstable_instance: 'outputs.GetInstanceTypesInstanceTypeBurstableInstanceResult',
-             cpu_core_count: int,
-             eni_amount: int,
-             family: str,
-             gpu: 'outputs.GetInstanceTypesInstanceTypeGpuResult',
-             id: str,
-             local_storage: 'outputs.GetInstanceTypesInstanceTypeLocalStorageResult',
-             memory_size: float,
-             nvme_support: str,
-             price: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             availability_zones: Optional[Sequence[str]] = None,
+             burstable_instance: Optional['outputs.GetInstanceTypesInstanceTypeBurstableInstanceResult'] = None,
+             cpu_core_count: Optional[int] = None,
+             eni_amount: Optional[int] = None,
+             family: Optional[str] = None,
+             gpu: Optional['outputs.GetInstanceTypesInstanceTypeGpuResult'] = None,
+             id: Optional[str] = None,
+             local_storage: Optional['outputs.GetInstanceTypesInstanceTypeLocalStorageResult'] = None,
+             memory_size: Optional[float] = None,
+             nvme_support: Optional[str] = None,
+             price: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availabilityZones' in kwargs:
+        if availability_zones is None and 'availabilityZones' in kwargs:
             availability_zones = kwargs['availabilityZones']
-        if 'burstableInstance' in kwargs:
+        if availability_zones is None:
+            raise TypeError("Missing 'availability_zones' argument")
+        if burstable_instance is None and 'burstableInstance' in kwargs:
             burstable_instance = kwargs['burstableInstance']
-        if 'cpuCoreCount' in kwargs:
+        if burstable_instance is None:
+            raise TypeError("Missing 'burstable_instance' argument")
+        if cpu_core_count is None and 'cpuCoreCount' in kwargs:
             cpu_core_count = kwargs['cpuCoreCount']
-        if 'eniAmount' in kwargs:
+        if cpu_core_count is None:
+            raise TypeError("Missing 'cpu_core_count' argument")
+        if eni_amount is None and 'eniAmount' in kwargs:
             eni_amount = kwargs['eniAmount']
-        if 'localStorage' in kwargs:
+        if eni_amount is None:
+            raise TypeError("Missing 'eni_amount' argument")
+        if family is None:
+            raise TypeError("Missing 'family' argument")
+        if gpu is None:
+            raise TypeError("Missing 'gpu' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if local_storage is None and 'localStorage' in kwargs:
             local_storage = kwargs['localStorage']
-        if 'memorySize' in kwargs:
+        if local_storage is None:
+            raise TypeError("Missing 'local_storage' argument")
+        if memory_size is None and 'memorySize' in kwargs:
             memory_size = kwargs['memorySize']
-        if 'nvmeSupport' in kwargs:
+        if memory_size is None:
+            raise TypeError("Missing 'memory_size' argument")
+        if nvme_support is None and 'nvmeSupport' in kwargs:
             nvme_support = kwargs['nvmeSupport']
+        if nvme_support is None:
+            raise TypeError("Missing 'nvme_support' argument")
+        if price is None:
+            raise TypeError("Missing 'price' argument")
 
         _setter("availability_zones", availability_zones)
         _setter("burstable_instance", burstable_instance)
@@ -11388,14 +12578,18 @@ class GetInstanceTypesInstanceTypeBurstableInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             baseline_credit: str,
-             initial_credit: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             baseline_credit: Optional[str] = None,
+             initial_credit: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'baselineCredit' in kwargs:
+        if baseline_credit is None and 'baselineCredit' in kwargs:
             baseline_credit = kwargs['baselineCredit']
-        if 'initialCredit' in kwargs:
+        if baseline_credit is None:
+            raise TypeError("Missing 'baseline_credit' argument")
+        if initial_credit is None and 'initialCredit' in kwargs:
             initial_credit = kwargs['initialCredit']
+        if initial_credit is None:
+            raise TypeError("Missing 'initial_credit' argument")
 
         _setter("baseline_credit", baseline_credit)
         _setter("initial_credit", initial_credit)
@@ -11424,10 +12618,14 @@ class GetInstanceTypesInstanceTypeGpuResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             amount: str,
-             category: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             amount: Optional[str] = None,
+             category: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if amount is None:
+            raise TypeError("Missing 'amount' argument")
+        if category is None:
+            raise TypeError("Missing 'category' argument")
 
         _setter("amount", amount)
         _setter("category", category)
@@ -11458,11 +12656,17 @@ class GetInstanceTypesInstanceTypeLocalStorageResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             amount: str,
-             capacity: str,
-             category: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             amount: Optional[str] = None,
+             capacity: Optional[str] = None,
+             category: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if amount is None:
+            raise TypeError("Missing 'amount' argument")
+        if capacity is None:
+            raise TypeError("Missing 'capacity' argument")
+        if category is None:
+            raise TypeError("Missing 'category' argument")
 
         _setter("amount", amount)
         _setter("capacity", capacity)
@@ -11536,15 +12740,6 @@ class GetInstancesInstanceResult(dict):
         :param str vpc_id: ID of the VPC linked to the instances.
         :param str vswitch_id: ID of the VSwitch linked to the instances.
         :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
-               ```python
-               import pulumi
-               import pulumi_alicloud as alicloud
-               
-               tagged_instances = alicloud.ecs.get_instances(tags={
-                   "tagKey1": "tagValue1",
-                   "tagKey2": "tagValue2",
-               })
-               ```
         """
         GetInstancesInstanceResult._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -11576,68 +12771,114 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             availability_zone: str,
-             creation_time: str,
-             description: str,
-             disk_device_mappings: Sequence['outputs.GetInstancesInstanceDiskDeviceMappingResult'],
-             eip: str,
-             id: str,
-             image_id: str,
-             instance_charge_type: str,
-             instance_type: str,
-             internet_charge_type: str,
-             internet_max_bandwidth_out: int,
-             key_name: str,
-             name: str,
-             private_ip: str,
-             public_ip: str,
-             ram_role_name: str,
-             region_id: str,
-             resource_group_id: str,
-             security_groups: Sequence[str],
-             spot_strategy: str,
-             status: str,
-             vpc_id: str,
-             vswitch_id: str,
+             availability_zone: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             description: Optional[str] = None,
+             disk_device_mappings: Optional[Sequence['outputs.GetInstancesInstanceDiskDeviceMappingResult']] = None,
+             eip: Optional[str] = None,
+             id: Optional[str] = None,
+             image_id: Optional[str] = None,
+             instance_charge_type: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             internet_charge_type: Optional[str] = None,
+             internet_max_bandwidth_out: Optional[int] = None,
+             key_name: Optional[str] = None,
+             name: Optional[str] = None,
+             private_ip: Optional[str] = None,
+             public_ip: Optional[str] = None,
+             ram_role_name: Optional[str] = None,
+             region_id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             security_groups: Optional[Sequence[str]] = None,
+             spot_strategy: Optional[str] = None,
+             status: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'creationTime' in kwargs:
+        if availability_zone is None:
+            raise TypeError("Missing 'availability_zone' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'diskDeviceMappings' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if disk_device_mappings is None and 'diskDeviceMappings' in kwargs:
             disk_device_mappings = kwargs['diskDeviceMappings']
-        if 'imageId' in kwargs:
+        if disk_device_mappings is None:
+            raise TypeError("Missing 'disk_device_mappings' argument")
+        if eip is None:
+            raise TypeError("Missing 'eip' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceChargeType' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'instanceType' in kwargs:
+        if instance_charge_type is None:
+            raise TypeError("Missing 'instance_charge_type' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetChargeType' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'internetMaxBandwidthOut' in kwargs:
+        if internet_charge_type is None:
+            raise TypeError("Missing 'internet_charge_type' argument")
+        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
             internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if 'keyName' in kwargs:
+        if internet_max_bandwidth_out is None:
+            raise TypeError("Missing 'internet_max_bandwidth_out' argument")
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'privateIp' in kwargs:
+        if key_name is None:
+            raise TypeError("Missing 'key_name' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
-        if 'publicIp' in kwargs:
+        if private_ip is None:
+            raise TypeError("Missing 'private_ip' argument")
+        if public_ip is None and 'publicIp' in kwargs:
             public_ip = kwargs['publicIp']
-        if 'ramRoleName' in kwargs:
+        if public_ip is None:
+            raise TypeError("Missing 'public_ip' argument")
+        if ram_role_name is None and 'ramRoleName' in kwargs:
             ram_role_name = kwargs['ramRoleName']
-        if 'regionId' in kwargs:
+        if ram_role_name is None:
+            raise TypeError("Missing 'ram_role_name' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'resourceGroupId' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityGroups' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'spotStrategy' in kwargs:
+        if security_groups is None:
+            raise TypeError("Missing 'security_groups' argument")
+        if spot_strategy is None and 'spotStrategy' in kwargs:
             spot_strategy = kwargs['spotStrategy']
-        if 'vpcId' in kwargs:
+        if spot_strategy is None:
+            raise TypeError("Missing 'spot_strategy' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("availability_zone", availability_zone)
         _setter("creation_time", creation_time)
@@ -11854,15 +13095,6 @@ class GetInstancesInstanceResult(dict):
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
         A map of tags assigned to the ECS instances. It must be in the format:
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        tagged_instances = alicloud.ecs.get_instances(tags={
-            "tagKey1": "tagValue1",
-            "tagKey2": "tagValue2",
-        })
-        ```
         """
         return pulumi.get(self, "tags")
 
@@ -11896,18 +13128,30 @@ class GetInstancesInstanceDiskDeviceMappingResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: str,
-             device: str,
-             disk_id: str,
-             disk_name: str,
-             size: int,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             category: Optional[str] = None,
+             device: Optional[str] = None,
+             disk_id: Optional[str] = None,
+             disk_name: Optional[str] = None,
+             size: Optional[int] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'diskId' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if device is None:
+            raise TypeError("Missing 'device' argument")
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
-        if 'diskName' in kwargs:
+        if disk_id is None:
+            raise TypeError("Missing 'disk_id' argument")
+        if disk_name is None and 'diskName' in kwargs:
             disk_name = kwargs['diskName']
+        if disk_name is None:
+            raise TypeError("Missing 'disk_name' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("category", category)
         _setter("device", device)
@@ -11996,23 +13240,37 @@ class GetKeyPairsKeyPairResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             finger_print: str,
-             id: str,
-             instances: Sequence['outputs.GetKeyPairsKeyPairInstanceResult'],
-             key_name: str,
-             key_pair_name: str,
-             resource_group_id: str,
-             tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             finger_print: Optional[str] = None,
+             id: Optional[str] = None,
+             instances: Optional[Sequence['outputs.GetKeyPairsKeyPairInstanceResult']] = None,
+             key_name: Optional[str] = None,
+             key_pair_name: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fingerPrint' in kwargs:
+        if finger_print is None and 'fingerPrint' in kwargs:
             finger_print = kwargs['fingerPrint']
-        if 'keyName' in kwargs:
+        if finger_print is None:
+            raise TypeError("Missing 'finger_print' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instances is None:
+            raise TypeError("Missing 'instances' argument")
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'keyPairName' in kwargs:
+        if key_name is None:
+            raise TypeError("Missing 'key_name' argument")
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'resourceGroupId' in kwargs:
+        if key_pair_name is None:
+            raise TypeError("Missing 'key_pair_name' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
 
         _setter("finger_print", finger_print)
         _setter("id", id)
@@ -12118,40 +13376,64 @@ class GetKeyPairsKeyPairInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             availability_zone: str,
-             description: str,
-             image_id: str,
-             instance_id: str,
-             instance_name: str,
-             instance_type: str,
-             key_name: str,
-             private_ip: str,
-             public_ip: str,
-             region_id: str,
-             status: str,
-             vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             availability_zone: Optional[str] = None,
+             description: Optional[str] = None,
+             image_id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             key_name: Optional[str] = None,
+             private_ip: Optional[str] = None,
+             public_ip: Optional[str] = None,
+             region_id: Optional[str] = None,
+             status: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'imageId' in kwargs:
+        if availability_zone is None:
+            raise TypeError("Missing 'availability_zone' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceId' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceType' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'keyName' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'privateIp' in kwargs:
+        if key_name is None:
+            raise TypeError("Missing 'key_name' argument")
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
-        if 'publicIp' in kwargs:
+        if private_ip is None:
+            raise TypeError("Missing 'private_ip' argument")
+        if public_ip is None and 'publicIp' in kwargs:
             public_ip = kwargs['publicIp']
-        if 'regionId' in kwargs:
+        if public_ip is None:
+            raise TypeError("Missing 'public_ip' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'vswitchId' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("availability_zone", availability_zone)
         _setter("description", description)
@@ -12279,23 +13561,37 @@ class GetKeyPairsPairResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             finger_print: str,
-             id: str,
-             instances: Sequence['outputs.GetKeyPairsPairInstanceResult'],
-             key_name: str,
-             key_pair_name: str,
-             resource_group_id: str,
-             tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             finger_print: Optional[str] = None,
+             id: Optional[str] = None,
+             instances: Optional[Sequence['outputs.GetKeyPairsPairInstanceResult']] = None,
+             key_name: Optional[str] = None,
+             key_pair_name: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fingerPrint' in kwargs:
+        if finger_print is None and 'fingerPrint' in kwargs:
             finger_print = kwargs['fingerPrint']
-        if 'keyName' in kwargs:
+        if finger_print is None:
+            raise TypeError("Missing 'finger_print' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instances is None:
+            raise TypeError("Missing 'instances' argument")
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'keyPairName' in kwargs:
+        if key_name is None:
+            raise TypeError("Missing 'key_name' argument")
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'resourceGroupId' in kwargs:
+        if key_pair_name is None:
+            raise TypeError("Missing 'key_pair_name' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
 
         _setter("finger_print", finger_print)
         _setter("id", id)
@@ -12401,40 +13697,64 @@ class GetKeyPairsPairInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             availability_zone: str,
-             description: str,
-             image_id: str,
-             instance_id: str,
-             instance_name: str,
-             instance_type: str,
-             key_name: str,
-             private_ip: str,
-             public_ip: str,
-             region_id: str,
-             status: str,
-             vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             availability_zone: Optional[str] = None,
+             description: Optional[str] = None,
+             image_id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             key_name: Optional[str] = None,
+             private_ip: Optional[str] = None,
+             public_ip: Optional[str] = None,
+             region_id: Optional[str] = None,
+             status: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'imageId' in kwargs:
+        if availability_zone is None:
+            raise TypeError("Missing 'availability_zone' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceId' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceType' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'keyName' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'privateIp' in kwargs:
+        if key_name is None:
+            raise TypeError("Missing 'key_name' argument")
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
-        if 'publicIp' in kwargs:
+        if private_ip is None:
+            raise TypeError("Missing 'private_ip' argument")
+        if public_ip is None and 'publicIp' in kwargs:
             public_ip = kwargs['publicIp']
-        if 'regionId' in kwargs:
+        if public_ip is None:
+            raise TypeError("Missing 'public_ip' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'vswitchId' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("availability_zone", availability_zone)
         _setter("description", description)
@@ -12611,75 +13931,129 @@ class GetNetworkInterfacesInterfaceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             associated_public_ips: Sequence['outputs.GetNetworkInterfacesInterfaceAssociatedPublicIpResult'],
-             creation_time: str,
-             description: str,
-             id: str,
-             instance_id: str,
-             mac: str,
-             name: str,
-             network_interface_id: str,
-             network_interface_name: str,
-             network_interface_traffic_mode: str,
-             owner_id: str,
-             primary_ip_address: str,
-             private_ip: str,
-             private_ip_addresses: Sequence[str],
-             private_ips: Sequence[str],
-             queue_number: int,
-             resource_group_id: str,
-             security_group_ids: Sequence[str],
-             security_groups: Sequence[str],
-             service_id: int,
-             service_managed: bool,
-             status: str,
-             tags: Mapping[str, Any],
-             type: str,
-             vpc_id: str,
-             vswitch_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             associated_public_ips: Optional[Sequence['outputs.GetNetworkInterfacesInterfaceAssociatedPublicIpResult']] = None,
+             creation_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             mac: Optional[str] = None,
+             name: Optional[str] = None,
+             network_interface_id: Optional[str] = None,
+             network_interface_name: Optional[str] = None,
+             network_interface_traffic_mode: Optional[str] = None,
+             owner_id: Optional[str] = None,
+             primary_ip_address: Optional[str] = None,
+             private_ip: Optional[str] = None,
+             private_ip_addresses: Optional[Sequence[str]] = None,
+             private_ips: Optional[Sequence[str]] = None,
+             queue_number: Optional[int] = None,
+             resource_group_id: Optional[str] = None,
+             security_group_ids: Optional[Sequence[str]] = None,
+             security_groups: Optional[Sequence[str]] = None,
+             service_id: Optional[int] = None,
+             service_managed: Optional[bool] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             type: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'associatedPublicIps' in kwargs:
+        if associated_public_ips is None and 'associatedPublicIps' in kwargs:
             associated_public_ips = kwargs['associatedPublicIps']
-        if 'creationTime' in kwargs:
+        if associated_public_ips is None:
+            raise TypeError("Missing 'associated_public_ips' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'instanceId' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'networkInterfaceId' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if mac is None:
+            raise TypeError("Missing 'mac' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if network_interface_id is None and 'networkInterfaceId' in kwargs:
             network_interface_id = kwargs['networkInterfaceId']
-        if 'networkInterfaceName' in kwargs:
+        if network_interface_id is None:
+            raise TypeError("Missing 'network_interface_id' argument")
+        if network_interface_name is None and 'networkInterfaceName' in kwargs:
             network_interface_name = kwargs['networkInterfaceName']
-        if 'networkInterfaceTrafficMode' in kwargs:
+        if network_interface_name is None:
+            raise TypeError("Missing 'network_interface_name' argument")
+        if network_interface_traffic_mode is None and 'networkInterfaceTrafficMode' in kwargs:
             network_interface_traffic_mode = kwargs['networkInterfaceTrafficMode']
-        if 'ownerId' in kwargs:
+        if network_interface_traffic_mode is None:
+            raise TypeError("Missing 'network_interface_traffic_mode' argument")
+        if owner_id is None and 'ownerId' in kwargs:
             owner_id = kwargs['ownerId']
-        if 'primaryIpAddress' in kwargs:
+        if owner_id is None:
+            raise TypeError("Missing 'owner_id' argument")
+        if primary_ip_address is None and 'primaryIpAddress' in kwargs:
             primary_ip_address = kwargs['primaryIpAddress']
-        if 'privateIp' in kwargs:
+        if primary_ip_address is None:
+            raise TypeError("Missing 'primary_ip_address' argument")
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
-        if 'privateIpAddresses' in kwargs:
+        if private_ip is None:
+            raise TypeError("Missing 'private_ip' argument")
+        if private_ip_addresses is None and 'privateIpAddresses' in kwargs:
             private_ip_addresses = kwargs['privateIpAddresses']
-        if 'privateIps' in kwargs:
+        if private_ip_addresses is None:
+            raise TypeError("Missing 'private_ip_addresses' argument")
+        if private_ips is None and 'privateIps' in kwargs:
             private_ips = kwargs['privateIps']
-        if 'queueNumber' in kwargs:
+        if private_ips is None:
+            raise TypeError("Missing 'private_ips' argument")
+        if queue_number is None and 'queueNumber' in kwargs:
             queue_number = kwargs['queueNumber']
-        if 'resourceGroupId' in kwargs:
+        if queue_number is None:
+            raise TypeError("Missing 'queue_number' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityGroupIds' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'securityGroups' in kwargs:
+        if security_group_ids is None:
+            raise TypeError("Missing 'security_group_ids' argument")
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'serviceId' in kwargs:
+        if security_groups is None:
+            raise TypeError("Missing 'security_groups' argument")
+        if service_id is None and 'serviceId' in kwargs:
             service_id = kwargs['serviceId']
-        if 'serviceManaged' in kwargs:
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+        if service_managed is None and 'serviceManaged' in kwargs:
             service_managed = kwargs['serviceManaged']
-        if 'vpcId' in kwargs:
+        if service_managed is None:
+            raise TypeError("Missing 'service_managed' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("associated_public_ips", associated_public_ips)
         _setter("creation_time", creation_time)
@@ -12901,11 +14275,13 @@ class GetNetworkInterfacesInterfaceAssociatedPublicIpResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             public_ip_address: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             public_ip_address: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'publicIpAddress' in kwargs:
+        if public_ip_address is None and 'publicIpAddress' in kwargs:
             public_ip_address = kwargs['publicIpAddress']
+        if public_ip_address is None:
+            raise TypeError("Missing 'public_ip_address' argument")
 
         _setter("public_ip_address", public_ip_address)
 
@@ -12965,39 +14341,65 @@ class GetSecurityGroupRulesRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             dest_cidr_ip: str,
-             dest_group_id: str,
-             dest_group_owner_account: str,
-             direction: str,
-             ip_protocol: str,
-             nic_type: str,
-             policy: str,
-             port_range: str,
-             priority: int,
-             source_cidr_ip: str,
-             source_group_id: str,
-             source_group_owner_account: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             dest_cidr_ip: Optional[str] = None,
+             dest_group_id: Optional[str] = None,
+             dest_group_owner_account: Optional[str] = None,
+             direction: Optional[str] = None,
+             ip_protocol: Optional[str] = None,
+             nic_type: Optional[str] = None,
+             policy: Optional[str] = None,
+             port_range: Optional[str] = None,
+             priority: Optional[int] = None,
+             source_cidr_ip: Optional[str] = None,
+             source_group_id: Optional[str] = None,
+             source_group_owner_account: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destCidrIp' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if dest_cidr_ip is None and 'destCidrIp' in kwargs:
             dest_cidr_ip = kwargs['destCidrIp']
-        if 'destGroupId' in kwargs:
+        if dest_cidr_ip is None:
+            raise TypeError("Missing 'dest_cidr_ip' argument")
+        if dest_group_id is None and 'destGroupId' in kwargs:
             dest_group_id = kwargs['destGroupId']
-        if 'destGroupOwnerAccount' in kwargs:
+        if dest_group_id is None:
+            raise TypeError("Missing 'dest_group_id' argument")
+        if dest_group_owner_account is None and 'destGroupOwnerAccount' in kwargs:
             dest_group_owner_account = kwargs['destGroupOwnerAccount']
-        if 'ipProtocol' in kwargs:
+        if dest_group_owner_account is None:
+            raise TypeError("Missing 'dest_group_owner_account' argument")
+        if direction is None:
+            raise TypeError("Missing 'direction' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
             ip_protocol = kwargs['ipProtocol']
-        if 'nicType' in kwargs:
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if nic_type is None and 'nicType' in kwargs:
             nic_type = kwargs['nicType']
-        if 'portRange' in kwargs:
+        if nic_type is None:
+            raise TypeError("Missing 'nic_type' argument")
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if port_range is None and 'portRange' in kwargs:
             port_range = kwargs['portRange']
-        if 'sourceCidrIp' in kwargs:
+        if port_range is None:
+            raise TypeError("Missing 'port_range' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if source_cidr_ip is None and 'sourceCidrIp' in kwargs:
             source_cidr_ip = kwargs['sourceCidrIp']
-        if 'sourceGroupId' in kwargs:
+        if source_cidr_ip is None:
+            raise TypeError("Missing 'source_cidr_ip' argument")
+        if source_group_id is None and 'sourceGroupId' in kwargs:
             source_group_id = kwargs['sourceGroupId']
-        if 'sourceGroupOwnerAccount' in kwargs:
+        if source_group_id is None:
+            raise TypeError("Missing 'source_group_id' argument")
+        if source_group_owner_account is None and 'sourceGroupOwnerAccount' in kwargs:
             source_group_owner_account = kwargs['sourceGroupOwnerAccount']
+        if source_group_owner_account is None:
+            raise TypeError("Missing 'source_group_owner_account' argument")
 
         _setter("description", description)
         _setter("dest_cidr_ip", dest_cidr_ip)
@@ -13140,15 +14542,6 @@ class GetSecurityGroupsGroupResult(dict):
         :param str security_group_type: The type of the security group.
         :param str vpc_id: Used to retrieve security groups that belong to the specified VPC ID.
         :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
-               ```python
-               import pulumi
-               import pulumi_alicloud as alicloud
-               
-               tagged_security_groups = alicloud.ecs.get_security_groups(tags={
-                   "tagKey1": "tagValue1",
-                   "tagKey2": "tagValue2",
-               })
-               ```
         """
         GetSecurityGroupsGroupResult._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -13165,27 +14558,43 @@ class GetSecurityGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             creation_time: str,
-             description: str,
-             id: str,
-             inner_access: bool,
-             name: str,
-             resource_group_id: str,
-             security_group_type: str,
-             vpc_id: str,
+             creation_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             inner_access: Optional[bool] = None,
+             name: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             security_group_type: Optional[str] = None,
+             vpc_id: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'creationTime' in kwargs:
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'innerAccess' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if inner_access is None and 'innerAccess' in kwargs:
             inner_access = kwargs['innerAccess']
-        if 'resourceGroupId' in kwargs:
+        if inner_access is None:
+            raise TypeError("Missing 'inner_access' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityGroupType' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if security_group_type is None and 'securityGroupType' in kwargs:
             security_group_type = kwargs['securityGroupType']
-        if 'vpcId' in kwargs:
+        if security_group_type is None:
+            raise TypeError("Missing 'security_group_type' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
 
         _setter("creation_time", creation_time)
         _setter("description", description)
@@ -13267,15 +14676,6 @@ class GetSecurityGroupsGroupResult(dict):
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
         A map of tags assigned to the ECS instances. It must be in the format:
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        tagged_security_groups = alicloud.ecs.get_security_groups(tags={
-            "tagKey1": "tagValue1",
-            "tagKey2": "tagValue2",
-        })
-        ```
         """
         return pulumi.get(self, "tags")
 
@@ -13358,66 +14758,118 @@ class GetSnapshotsSnapshotResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: str,
-             creation_time: str,
-             description: str,
-             disk_id: str,
-             encrypted: bool,
-             id: str,
-             instant_access: bool,
-             instant_access_retention_days: int,
-             name: str,
-             product_code: str,
-             progress: str,
-             remain_time: int,
-             resource_group_id: str,
-             retention_days: int,
-             snapshot_id: str,
-             snapshot_name: str,
-             snapshot_sn: str,
-             snapshot_type: str,
-             source_disk_id: str,
-             source_disk_size: str,
-             source_disk_type: str,
-             source_storage_type: str,
-             status: str,
-             tags: Mapping[str, Any],
-             type: str,
-             usage: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             category: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             description: Optional[str] = None,
+             disk_id: Optional[str] = None,
+             encrypted: Optional[bool] = None,
+             id: Optional[str] = None,
+             instant_access: Optional[bool] = None,
+             instant_access_retention_days: Optional[int] = None,
+             name: Optional[str] = None,
+             product_code: Optional[str] = None,
+             progress: Optional[str] = None,
+             remain_time: Optional[int] = None,
+             resource_group_id: Optional[str] = None,
+             retention_days: Optional[int] = None,
+             snapshot_id: Optional[str] = None,
+             snapshot_name: Optional[str] = None,
+             snapshot_sn: Optional[str] = None,
+             snapshot_type: Optional[str] = None,
+             source_disk_id: Optional[str] = None,
+             source_disk_size: Optional[str] = None,
+             source_disk_type: Optional[str] = None,
+             source_storage_type: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             type: Optional[str] = None,
+             usage: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'creationTime' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'diskId' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
-        if 'instantAccess' in kwargs:
+        if disk_id is None:
+            raise TypeError("Missing 'disk_id' argument")
+        if encrypted is None:
+            raise TypeError("Missing 'encrypted' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instant_access is None and 'instantAccess' in kwargs:
             instant_access = kwargs['instantAccess']
-        if 'instantAccessRetentionDays' in kwargs:
+        if instant_access is None:
+            raise TypeError("Missing 'instant_access' argument")
+        if instant_access_retention_days is None and 'instantAccessRetentionDays' in kwargs:
             instant_access_retention_days = kwargs['instantAccessRetentionDays']
-        if 'productCode' in kwargs:
+        if instant_access_retention_days is None:
+            raise TypeError("Missing 'instant_access_retention_days' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if product_code is None and 'productCode' in kwargs:
             product_code = kwargs['productCode']
-        if 'remainTime' in kwargs:
+        if product_code is None:
+            raise TypeError("Missing 'product_code' argument")
+        if progress is None:
+            raise TypeError("Missing 'progress' argument")
+        if remain_time is None and 'remainTime' in kwargs:
             remain_time = kwargs['remainTime']
-        if 'resourceGroupId' in kwargs:
+        if remain_time is None:
+            raise TypeError("Missing 'remain_time' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'retentionDays' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'snapshotId' in kwargs:
+        if retention_days is None:
+            raise TypeError("Missing 'retention_days' argument")
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
-        if 'snapshotName' in kwargs:
+        if snapshot_id is None:
+            raise TypeError("Missing 'snapshot_id' argument")
+        if snapshot_name is None and 'snapshotName' in kwargs:
             snapshot_name = kwargs['snapshotName']
-        if 'snapshotSn' in kwargs:
+        if snapshot_name is None:
+            raise TypeError("Missing 'snapshot_name' argument")
+        if snapshot_sn is None and 'snapshotSn' in kwargs:
             snapshot_sn = kwargs['snapshotSn']
-        if 'snapshotType' in kwargs:
+        if snapshot_sn is None:
+            raise TypeError("Missing 'snapshot_sn' argument")
+        if snapshot_type is None and 'snapshotType' in kwargs:
             snapshot_type = kwargs['snapshotType']
-        if 'sourceDiskId' in kwargs:
+        if snapshot_type is None:
+            raise TypeError("Missing 'snapshot_type' argument")
+        if source_disk_id is None and 'sourceDiskId' in kwargs:
             source_disk_id = kwargs['sourceDiskId']
-        if 'sourceDiskSize' in kwargs:
+        if source_disk_id is None:
+            raise TypeError("Missing 'source_disk_id' argument")
+        if source_disk_size is None and 'sourceDiskSize' in kwargs:
             source_disk_size = kwargs['sourceDiskSize']
-        if 'sourceDiskType' in kwargs:
+        if source_disk_size is None:
+            raise TypeError("Missing 'source_disk_size' argument")
+        if source_disk_type is None and 'sourceDiskType' in kwargs:
             source_disk_type = kwargs['sourceDiskType']
-        if 'sourceStorageType' in kwargs:
+        if source_disk_type is None:
+            raise TypeError("Missing 'source_disk_type' argument")
+        if source_storage_type is None and 'sourceStorageType' in kwargs:
             source_storage_type = kwargs['sourceStorageType']
+        if source_storage_type is None:
+            raise TypeError("Missing 'source_storage_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if usage is None:
+            raise TypeError("Missing 'usage' argument")
 
         _setter("category", category)
         _setter("creation_time", creation_time)

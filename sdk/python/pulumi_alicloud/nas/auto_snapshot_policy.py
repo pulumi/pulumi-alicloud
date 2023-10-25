@@ -44,19 +44,23 @@ class AutoSnapshotPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             repeat_weekdays: pulumi.Input[Sequence[pulumi.Input[str]]],
-             time_points: pulumi.Input[Sequence[pulumi.Input[str]]],
+             repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
              retention_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'repeatWeekdays' in kwargs:
+        if repeat_weekdays is None and 'repeatWeekdays' in kwargs:
             repeat_weekdays = kwargs['repeatWeekdays']
-        if 'timePoints' in kwargs:
+        if repeat_weekdays is None:
+            raise TypeError("Missing 'repeat_weekdays' argument")
+        if time_points is None and 'timePoints' in kwargs:
             time_points = kwargs['timePoints']
-        if 'autoSnapshotPolicyName' in kwargs:
+        if time_points is None:
+            raise TypeError("Missing 'time_points' argument")
+        if auto_snapshot_policy_name is None and 'autoSnapshotPolicyName' in kwargs:
             auto_snapshot_policy_name = kwargs['autoSnapshotPolicyName']
-        if 'retentionDays' in kwargs:
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
 
         _setter("repeat_weekdays", repeat_weekdays)
@@ -165,15 +169,15 @@ class _AutoSnapshotPolicyState:
              retention_days: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
              time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoSnapshotPolicyName' in kwargs:
+        if auto_snapshot_policy_name is None and 'autoSnapshotPolicyName' in kwargs:
             auto_snapshot_policy_name = kwargs['autoSnapshotPolicyName']
-        if 'repeatWeekdays' in kwargs:
+        if repeat_weekdays is None and 'repeatWeekdays' in kwargs:
             repeat_weekdays = kwargs['repeatWeekdays']
-        if 'retentionDays' in kwargs:
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'timePoints' in kwargs:
+        if time_points is None and 'timePoints' in kwargs:
             time_points = kwargs['timePoints']
 
         if auto_snapshot_policy_name is not None:
@@ -274,29 +278,6 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.153.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.nas.AutoSnapshotPolicy("example",
-            auto_snapshot_policy_name="example_value",
-            repeat_weekdays=[
-                "3",
-                "4",
-                "5",
-            ],
-            retention_days=30,
-            time_points=[
-                "3",
-                "4",
-                "5",
-            ])
-        ```
-
         ## Import
 
         Network Attached Storage (NAS) Auto Snapshot Policy can be imported using the id, e.g.
@@ -333,29 +314,6 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         For information about Network Attached Storage (NAS) Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/135662.html).
 
         > **NOTE:** Available in v1.153.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.nas.AutoSnapshotPolicy("example",
-            auto_snapshot_policy_name="example_value",
-            repeat_weekdays=[
-                "3",
-                "4",
-                "5",
-            ],
-            retention_days=30,
-            time_points=[
-                "3",
-                "4",
-                "5",
-            ])
-        ```
 
         ## Import
 

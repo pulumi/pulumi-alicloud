@@ -79,49 +79,83 @@ class GetDedicatedBlockStorageClustersClusterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             available_capacity: str,
-             category: str,
-             create_time: str,
-             dedicated_block_storage_cluster_id: str,
-             dedicated_block_storage_cluster_name: str,
-             delivery_capacity: str,
-             description: str,
-             expired_time: str,
-             id: str,
-             performance_level: str,
-             resource_group_id: str,
-             status: str,
-             supported_category: str,
-             total_capacity: str,
-             type: str,
-             used_capacity: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             available_capacity: Optional[str] = None,
+             category: Optional[str] = None,
+             create_time: Optional[str] = None,
+             dedicated_block_storage_cluster_id: Optional[str] = None,
+             dedicated_block_storage_cluster_name: Optional[str] = None,
+             delivery_capacity: Optional[str] = None,
+             description: Optional[str] = None,
+             expired_time: Optional[str] = None,
+             id: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             status: Optional[str] = None,
+             supported_category: Optional[str] = None,
+             total_capacity: Optional[str] = None,
+             type: Optional[str] = None,
+             used_capacity: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availableCapacity' in kwargs:
+        if available_capacity is None and 'availableCapacity' in kwargs:
             available_capacity = kwargs['availableCapacity']
-        if 'createTime' in kwargs:
+        if available_capacity is None:
+            raise TypeError("Missing 'available_capacity' argument")
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dedicatedBlockStorageClusterId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if dedicated_block_storage_cluster_id is None and 'dedicatedBlockStorageClusterId' in kwargs:
             dedicated_block_storage_cluster_id = kwargs['dedicatedBlockStorageClusterId']
-        if 'dedicatedBlockStorageClusterName' in kwargs:
+        if dedicated_block_storage_cluster_id is None:
+            raise TypeError("Missing 'dedicated_block_storage_cluster_id' argument")
+        if dedicated_block_storage_cluster_name is None and 'dedicatedBlockStorageClusterName' in kwargs:
             dedicated_block_storage_cluster_name = kwargs['dedicatedBlockStorageClusterName']
-        if 'deliveryCapacity' in kwargs:
+        if dedicated_block_storage_cluster_name is None:
+            raise TypeError("Missing 'dedicated_block_storage_cluster_name' argument")
+        if delivery_capacity is None and 'deliveryCapacity' in kwargs:
             delivery_capacity = kwargs['deliveryCapacity']
-        if 'expiredTime' in kwargs:
+        if delivery_capacity is None:
+            raise TypeError("Missing 'delivery_capacity' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'performanceLevel' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'resourceGroupId' in kwargs:
+        if performance_level is None:
+            raise TypeError("Missing 'performance_level' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'supportedCategory' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if supported_category is None and 'supportedCategory' in kwargs:
             supported_category = kwargs['supportedCategory']
-        if 'totalCapacity' in kwargs:
+        if supported_category is None:
+            raise TypeError("Missing 'supported_category' argument")
+        if total_capacity is None and 'totalCapacity' in kwargs:
             total_capacity = kwargs['totalCapacity']
-        if 'usedCapacity' in kwargs:
+        if total_capacity is None:
+            raise TypeError("Missing 'total_capacity' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if used_capacity is None and 'usedCapacity' in kwargs:
             used_capacity = kwargs['usedCapacity']
-        if 'zoneId' in kwargs:
+        if used_capacity is None:
+            raise TypeError("Missing 'used_capacity' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("available_capacity", available_capacity)
         _setter("category", category)
@@ -333,46 +367,78 @@ class GetDiskReplicaGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             destination_region_id: str,
-             destination_zone_id: str,
-             group_name: str,
-             id: str,
-             last_recover_point: str,
-             primary_region: str,
-             primary_zone: str,
-             replica_group_id: str,
-             rpo: int,
-             site: str,
-             source_region_id: str,
-             source_zone_id: str,
-             standby_region: str,
-             standby_zone: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             destination_region_id: Optional[str] = None,
+             destination_zone_id: Optional[str] = None,
+             group_name: Optional[str] = None,
+             id: Optional[str] = None,
+             last_recover_point: Optional[str] = None,
+             primary_region: Optional[str] = None,
+             primary_zone: Optional[str] = None,
+             replica_group_id: Optional[str] = None,
+             rpo: Optional[int] = None,
+             site: Optional[str] = None,
+             source_region_id: Optional[str] = None,
+             source_zone_id: Optional[str] = None,
+             standby_region: Optional[str] = None,
+             standby_zone: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationRegionId' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if destination_region_id is None and 'destinationRegionId' in kwargs:
             destination_region_id = kwargs['destinationRegionId']
-        if 'destinationZoneId' in kwargs:
+        if destination_region_id is None:
+            raise TypeError("Missing 'destination_region_id' argument")
+        if destination_zone_id is None and 'destinationZoneId' in kwargs:
             destination_zone_id = kwargs['destinationZoneId']
-        if 'groupName' in kwargs:
+        if destination_zone_id is None:
+            raise TypeError("Missing 'destination_zone_id' argument")
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'lastRecoverPoint' in kwargs:
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if last_recover_point is None and 'lastRecoverPoint' in kwargs:
             last_recover_point = kwargs['lastRecoverPoint']
-        if 'primaryRegion' in kwargs:
+        if last_recover_point is None:
+            raise TypeError("Missing 'last_recover_point' argument")
+        if primary_region is None and 'primaryRegion' in kwargs:
             primary_region = kwargs['primaryRegion']
-        if 'primaryZone' in kwargs:
+        if primary_region is None:
+            raise TypeError("Missing 'primary_region' argument")
+        if primary_zone is None and 'primaryZone' in kwargs:
             primary_zone = kwargs['primaryZone']
-        if 'replicaGroupId' in kwargs:
+        if primary_zone is None:
+            raise TypeError("Missing 'primary_zone' argument")
+        if replica_group_id is None and 'replicaGroupId' in kwargs:
             replica_group_id = kwargs['replicaGroupId']
-        if 'sourceRegionId' in kwargs:
+        if replica_group_id is None:
+            raise TypeError("Missing 'replica_group_id' argument")
+        if rpo is None:
+            raise TypeError("Missing 'rpo' argument")
+        if site is None:
+            raise TypeError("Missing 'site' argument")
+        if source_region_id is None and 'sourceRegionId' in kwargs:
             source_region_id = kwargs['sourceRegionId']
-        if 'sourceZoneId' in kwargs:
+        if source_region_id is None:
+            raise TypeError("Missing 'source_region_id' argument")
+        if source_zone_id is None and 'sourceZoneId' in kwargs:
             source_zone_id = kwargs['sourceZoneId']
-        if 'standbyRegion' in kwargs:
+        if source_zone_id is None:
+            raise TypeError("Missing 'source_zone_id' argument")
+        if standby_region is None and 'standbyRegion' in kwargs:
             standby_region = kwargs['standbyRegion']
-        if 'standbyZone' in kwargs:
+        if standby_region is None:
+            raise TypeError("Missing 'standby_region' argument")
+        if standby_zone is None and 'standbyZone' in kwargs:
             standby_zone = kwargs['standbyZone']
+        if standby_zone is None:
+            raise TypeError("Missing 'standby_zone' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("description", description)
         _setter("destination_region_id", destination_region_id)
@@ -569,40 +635,68 @@ class GetDiskReplicaPairsPairResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: str,
-             description: str,
-             destination_disk_id: str,
-             destination_region_id: str,
-             destination_zone_id: str,
-             disk_id: str,
-             id: str,
-             pair_name: str,
-             payment_type: str,
-             replica_pair_id: str,
-             resource_group_id: str,
-             rpo: str,
-             source_zone_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth: Optional[str] = None,
+             description: Optional[str] = None,
+             destination_disk_id: Optional[str] = None,
+             destination_region_id: Optional[str] = None,
+             destination_zone_id: Optional[str] = None,
+             disk_id: Optional[str] = None,
+             id: Optional[str] = None,
+             pair_name: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             replica_pair_id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             rpo: Optional[str] = None,
+             source_zone_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationDiskId' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if destination_disk_id is None and 'destinationDiskId' in kwargs:
             destination_disk_id = kwargs['destinationDiskId']
-        if 'destinationRegionId' in kwargs:
+        if destination_disk_id is None:
+            raise TypeError("Missing 'destination_disk_id' argument")
+        if destination_region_id is None and 'destinationRegionId' in kwargs:
             destination_region_id = kwargs['destinationRegionId']
-        if 'destinationZoneId' in kwargs:
+        if destination_region_id is None:
+            raise TypeError("Missing 'destination_region_id' argument")
+        if destination_zone_id is None and 'destinationZoneId' in kwargs:
             destination_zone_id = kwargs['destinationZoneId']
-        if 'diskId' in kwargs:
+        if destination_zone_id is None:
+            raise TypeError("Missing 'destination_zone_id' argument")
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
-        if 'pairName' in kwargs:
+        if disk_id is None:
+            raise TypeError("Missing 'disk_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if pair_name is None and 'pairName' in kwargs:
             pair_name = kwargs['pairName']
-        if 'paymentType' in kwargs:
+        if pair_name is None:
+            raise TypeError("Missing 'pair_name' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'replicaPairId' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if replica_pair_id is None and 'replicaPairId' in kwargs:
             replica_pair_id = kwargs['replicaPairId']
-        if 'resourceGroupId' in kwargs:
+        if replica_pair_id is None:
+            raise TypeError("Missing 'replica_pair_id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'sourceZoneId' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if rpo is None:
+            raise TypeError("Missing 'rpo' argument")
+        if source_zone_id is None and 'sourceZoneId' in kwargs:
             source_zone_id = kwargs['sourceZoneId']
+        if source_zone_id is None:
+            raise TypeError("Missing 'source_zone_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("bandwidth", bandwidth)
         _setter("description", description)
@@ -746,12 +840,16 @@ class GetRegionsRegionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             region_id: str,
-             zones: Sequence['outputs.GetRegionsRegionZoneResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             region_id: Optional[str] = None,
+             zones: Optional[Sequence['outputs.GetRegionsRegionZoneResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'regionId' in kwargs:
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if zones is None:
+            raise TypeError("Missing 'zones' argument")
 
         _setter("region_id", region_id)
         _setter("zones", zones)
@@ -787,11 +885,13 @@ class GetRegionsRegionZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("zone_id", zone_id)
 

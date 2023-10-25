@@ -119,18 +119,6 @@ def get_nas_backup_plans(file_system_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.132.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.hbr.get_nas_backup_plans(name_regex="^my-NasBackupPlan")
-    pulumi.export("hbrNasBackupPlanId", ids.plans[0].id)
-    ```
-
 
     :param str file_system_id: The File System ID of Nas.
     :param Sequence[str] ids: A list of NasBackupPlan IDs.
@@ -169,18 +157,6 @@ def get_nas_backup_plans_output(file_system_id: Optional[pulumi.Input[Optional[s
     This data source provides the Hbr NasBackupPlans of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.132.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.hbr.get_nas_backup_plans(name_regex="^my-NasBackupPlan")
-    pulumi.export("hbrNasBackupPlanId", ids.plans[0].id)
-    ```
 
 
     :param str file_system_id: The File System ID of Nas.

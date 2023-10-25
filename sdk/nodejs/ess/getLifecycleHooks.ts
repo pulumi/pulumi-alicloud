@@ -10,19 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides available lifecycle hook resources.
  *
  * > **NOTE:** Available in 1.72.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ds = alicloud.ess.getLifecycleHooks({
- *     nameRegex: "lifecyclehook_name",
- *     scalingGroupId: "scaling_group_id",
- * });
- * export const firstLifecycleHook = ds.then(ds => ds.hooks?.[0]?.id);
- * ```
  */
 export function getLifecycleHooks(args?: GetLifecycleHooksArgs, opts?: pulumi.InvokeOptions): Promise<GetLifecycleHooksResult> {
     args = args || {};
@@ -89,19 +76,6 @@ export interface GetLifecycleHooksResult {
  * This data source provides available lifecycle hook resources.
  *
  * > **NOTE:** Available in 1.72.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ds = alicloud.ess.getLifecycleHooks({
- *     nameRegex: "lifecyclehook_name",
- *     scalingGroupId: "scaling_group_id",
- * });
- * export const firstLifecycleHook = ds.then(ds => ds.hooks?.[0]?.id);
- * ```
  */
 export function getLifecycleHooksOutput(args?: GetLifecycleHooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLifecycleHooksResult> {
     return pulumi.output(args).apply((a: any) => getLifecycleHooks(a, opts))

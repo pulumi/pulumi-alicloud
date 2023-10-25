@@ -35,14 +35,18 @@ class KubernetesAddonInitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             version: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
              config: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
 
         _setter("cluster_id", cluster_id)
         _setter("version", version)
@@ -140,13 +144,13 @@ class _KubernetesAddonState:
              next_version: Optional[pulumi.Input[str]] = None,
              required: Optional[pulumi.Input[bool]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'canUpgrade' in kwargs:
+        if can_upgrade is None and 'canUpgrade' in kwargs:
             can_upgrade = kwargs['canUpgrade']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'nextVersion' in kwargs:
+        if next_version is None and 'nextVersion' in kwargs:
             next_version = kwargs['nextVersion']
 
         if can_upgrade is not None:

@@ -38,22 +38,26 @@ class EnterpriseProxyAccessArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             proxy_id: pulumi.Input[str],
-             user_id: pulumi.Input[str],
+             proxy_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
              indep_account: Optional[pulumi.Input[str]] = None,
              indep_password: Optional[pulumi.Input[str]] = None,
              proxy_access_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'proxyId' in kwargs:
+        if proxy_id is None and 'proxyId' in kwargs:
             proxy_id = kwargs['proxyId']
-        if 'userId' in kwargs:
+        if proxy_id is None:
+            raise TypeError("Missing 'proxy_id' argument")
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
-        if 'indepAccount' in kwargs:
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+        if indep_account is None and 'indepAccount' in kwargs:
             indep_account = kwargs['indepAccount']
-        if 'indepPassword' in kwargs:
+        if indep_password is None and 'indepPassword' in kwargs:
             indep_password = kwargs['indepPassword']
-        if 'proxyAccessId' in kwargs:
+        if proxy_access_id is None and 'proxyAccessId' in kwargs:
             proxy_access_id = kwargs['proxyAccessId']
 
         _setter("proxy_id", proxy_id)
@@ -187,31 +191,31 @@ class _EnterpriseProxyAccessState:
              user_id: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
              user_uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessId' in kwargs:
+        if access_id is None and 'accessId' in kwargs:
             access_id = kwargs['accessId']
-        if 'accessSecret' in kwargs:
+        if access_secret is None and 'accessSecret' in kwargs:
             access_secret = kwargs['accessSecret']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'indepAccount' in kwargs:
+        if indep_account is None and 'indepAccount' in kwargs:
             indep_account = kwargs['indepAccount']
-        if 'indepPassword' in kwargs:
+        if indep_password is None and 'indepPassword' in kwargs:
             indep_password = kwargs['indepPassword']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'originInfo' in kwargs:
+        if origin_info is None and 'originInfo' in kwargs:
             origin_info = kwargs['originInfo']
-        if 'proxyAccessId' in kwargs:
+        if proxy_access_id is None and 'proxyAccessId' in kwargs:
             proxy_access_id = kwargs['proxyAccessId']
-        if 'proxyId' in kwargs:
+        if proxy_id is None and 'proxyId' in kwargs:
             proxy_id = kwargs['proxyId']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
-        if 'userUid' in kwargs:
+        if user_uid is None and 'userUid' in kwargs:
             user_uid = kwargs['userUid']
 
         if access_id is not None:
@@ -401,21 +405,6 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.195.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.dms.EnterpriseProxyAccess("default",
-            indep_account="dmstest",
-            indep_password="PASSWORD-DEMO",
-            proxy_id="1881",
-            user_id="104442")
-        ```
-
         ## Import
 
         DMS Enterprise Proxy Access can be imported using the id, e.g.
@@ -444,21 +433,6 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
         For information about DMS Enterprise Proxy Access and how to use it, see [What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess).
 
         > **NOTE:** Available in v1.195.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.dms.EnterpriseProxyAccess("default",
-            indep_account="dmstest",
-            indep_password="PASSWORD-DEMO",
-            proxy_id="1881",
-            user_id="104442")
-        ```
 
         ## Import
 

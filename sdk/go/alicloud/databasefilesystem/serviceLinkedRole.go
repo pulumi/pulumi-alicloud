@@ -19,32 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.157.0.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/databasefilesystem"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databasefilesystem.NewServiceLinkedRole(ctx, "serviceLinkedRole", &databasefilesystem.ServiceLinkedRoleArgs{
-//				ProductName: pulumi.String("AliyunServiceRoleForDbfs"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Dbfs service-linked roles(SLR) can be imported using the id, e.g.

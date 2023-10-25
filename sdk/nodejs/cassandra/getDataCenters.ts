@@ -11,18 +11,6 @@ import * as utilities from "../utilities";
  * Filters support regular expression for the cluster name or ids.
  *
  * > **NOTE:**  Available in 1.88.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const cassandra = alicloud.cassandra.getDataCenters({
- *     clusterId: "cds-xxxxx",
- *     nameRegex: "tf_testAccCassandra_dc",
- * });
- * ```
  */
 export function getDataCenters(args: GetDataCentersArgs, opts?: pulumi.InvokeOptions): Promise<GetDataCentersResult> {
 
@@ -89,18 +77,6 @@ export interface GetDataCentersResult {
  * Filters support regular expression for the cluster name or ids.
  *
  * > **NOTE:**  Available in 1.88.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const cassandra = alicloud.cassandra.getDataCenters({
- *     clusterId: "cds-xxxxx",
- *     nameRegex: "tf_testAccCassandra_dc",
- * });
- * ```
  */
 export function getDataCentersOutput(args: GetDataCentersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataCentersResult> {
     return pulumi.output(args).apply((a: any) => getDataCenters(a, opts))

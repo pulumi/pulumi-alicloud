@@ -41,19 +41,27 @@ class SubnetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr: pulumi.Input[str],
-             subnet_name: pulumi.Input[str],
-             vpd_id: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             cidr: Optional[pulumi.Input[str]] = None,
+             subnet_name: Optional[pulumi.Input[str]] = None,
+             vpd_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'subnetName' in kwargs:
+        if cidr is None:
+            raise TypeError("Missing 'cidr' argument")
+        if subnet_name is None and 'subnetName' in kwargs:
             subnet_name = kwargs['subnetName']
-        if 'vpdId' in kwargs:
+        if subnet_name is None:
+            raise TypeError("Missing 'subnet_name' argument")
+        if vpd_id is None and 'vpdId' in kwargs:
             vpd_id = kwargs['vpdId']
-        if 'zoneId' in kwargs:
+        if vpd_id is None:
+            raise TypeError("Missing 'vpd_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("cidr", cidr)
         _setter("subnet_name", subnet_name)
@@ -185,21 +193,21 @@ class _SubnetState:
              type: Optional[pulumi.Input[str]] = None,
              vpd_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'gmtModified' in kwargs:
+        if gmt_modified is None and 'gmtModified' in kwargs:
             gmt_modified = kwargs['gmtModified']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'subnetId' in kwargs:
+        if subnet_id is None and 'subnetId' in kwargs:
             subnet_id = kwargs['subnetId']
-        if 'subnetName' in kwargs:
+        if subnet_name is None and 'subnetName' in kwargs:
             subnet_name = kwargs['subnetName']
-        if 'vpdId' in kwargs:
+        if vpd_id is None and 'vpdId' in kwargs:
             vpd_id = kwargs['vpdId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if cidr is not None:
@@ -379,31 +387,6 @@ class Subnet(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.204.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_vpd = alicloud.eflo.Vpd("defaultVpd",
-            cidr="10.0.0.0/8",
-            vpd_name=name,
-            resource_group_id=default_resource_groups.groups[0].id)
-        default_subnet = alicloud.eflo.Subnet("defaultSubnet",
-            subnet_name=name,
-            zone_id=default_zones.zones[0].id,
-            cidr="10.0.0.0/16",
-            vpd_id=default_vpd.id)
-        ```
-
         ## Import
 
         Eflo Subnet can be imported using the id, e.g.
@@ -435,31 +418,6 @@ class Subnet(pulumi.CustomResource):
         For information about Eflo Subnet and how to use it, see [What is Subnet](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
 
         > **NOTE:** Available since v1.204.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_vpd = alicloud.eflo.Vpd("defaultVpd",
-            cidr="10.0.0.0/8",
-            vpd_name=name,
-            resource_group_id=default_resource_groups.groups[0].id)
-        default_subnet = alicloud.eflo.Subnet("defaultSubnet",
-            subnet_name=name,
-            zone_id=default_zones.zones[0].id,
-            cidr="10.0.0.0/16",
-            vpd_id=default_vpd.id)
-        ```
 
         ## Import
 

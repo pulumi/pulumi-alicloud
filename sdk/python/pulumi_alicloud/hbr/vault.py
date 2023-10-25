@@ -41,23 +41,25 @@ class VaultArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vault_name: pulumi.Input[str],
+             vault_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              encrypt_type: Optional[pulumi.Input[str]] = None,
              kms_key_id: Optional[pulumi.Input[str]] = None,
              vault_storage_class: Optional[pulumi.Input[str]] = None,
              vault_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vaultName' in kwargs:
+        if vault_name is None and 'vaultName' in kwargs:
             vault_name = kwargs['vaultName']
-        if 'encryptType' in kwargs:
+        if vault_name is None:
+            raise TypeError("Missing 'vault_name' argument")
+        if encrypt_type is None and 'encryptType' in kwargs:
             encrypt_type = kwargs['encryptType']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'vaultStorageClass' in kwargs:
+        if vault_storage_class is None and 'vaultStorageClass' in kwargs:
             vault_storage_class = kwargs['vaultStorageClass']
-        if 'vaultType' in kwargs:
+        if vault_type is None and 'vaultType' in kwargs:
             vault_type = kwargs['vaultType']
 
         _setter("vault_name", vault_name)
@@ -185,17 +187,17 @@ class _VaultState:
              vault_name: Optional[pulumi.Input[str]] = None,
              vault_storage_class: Optional[pulumi.Input[str]] = None,
              vault_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'encryptType' in kwargs:
+        if encrypt_type is None and 'encryptType' in kwargs:
             encrypt_type = kwargs['encryptType']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'vaultName' in kwargs:
+        if vault_name is None and 'vaultName' in kwargs:
             vault_name = kwargs['vaultName']
-        if 'vaultStorageClass' in kwargs:
+        if vault_storage_class is None and 'vaultStorageClass' in kwargs:
             vault_storage_class = kwargs['vaultStorageClass']
-        if 'vaultType' in kwargs:
+        if vault_type is None and 'vaultType' in kwargs:
             vault_type = kwargs['vaultType']
 
         if description is not None:
@@ -317,17 +319,6 @@ class Vault(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.129.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.hbr.Vault("example", vault_name="example_value")
-        ```
-
         ## Import
 
         HBR Vault can be imported using the id, e.g.
@@ -357,17 +348,6 @@ class Vault(pulumi.CustomResource):
         For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
 
         > **NOTE:** Available since v1.129.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.hbr.Vault("example", vault_name="example_value")
-        ```
 
         ## Import
 

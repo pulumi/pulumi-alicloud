@@ -58,9 +58,9 @@ class HoneypotProbeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             control_node_id: pulumi.Input[str],
-             display_name: pulumi.Input[str],
-             probe_type: pulumi.Input[str],
+             control_node_id: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             probe_type: Optional[pulumi.Input[str]] = None,
              arp: Optional[pulumi.Input[bool]] = None,
              honeypot_bind_lists: Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]] = None,
              ping: Optional[pulumi.Input[bool]] = None,
@@ -69,23 +69,29 @@ class HoneypotProbeArgs:
              service_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              uuid: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'controlNodeId' in kwargs:
+        if control_node_id is None and 'controlNodeId' in kwargs:
             control_node_id = kwargs['controlNodeId']
-        if 'displayName' in kwargs:
+        if control_node_id is None:
+            raise TypeError("Missing 'control_node_id' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'probeType' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if probe_type is None and 'probeType' in kwargs:
             probe_type = kwargs['probeType']
-        if 'honeypotBindLists' in kwargs:
+        if probe_type is None:
+            raise TypeError("Missing 'probe_type' argument")
+        if honeypot_bind_lists is None and 'honeypotBindLists' in kwargs:
             honeypot_bind_lists = kwargs['honeypotBindLists']
-        if 'probeVersion' in kwargs:
+        if probe_version is None and 'probeVersion' in kwargs:
             probe_version = kwargs['probeVersion']
-        if 'proxyIp' in kwargs:
+        if proxy_ip is None and 'proxyIp' in kwargs:
             proxy_ip = kwargs['proxyIp']
-        if 'serviceIpLists' in kwargs:
+        if service_ip_lists is None and 'serviceIpLists' in kwargs:
             service_ip_lists = kwargs['serviceIpLists']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         _setter("control_node_id", control_node_id)
@@ -305,25 +311,25 @@ class _HoneypotProbeState:
              status: Optional[pulumi.Input[str]] = None,
              uuid: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'controlNodeId' in kwargs:
+        if control_node_id is None and 'controlNodeId' in kwargs:
             control_node_id = kwargs['controlNodeId']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'honeypotBindLists' in kwargs:
+        if honeypot_bind_lists is None and 'honeypotBindLists' in kwargs:
             honeypot_bind_lists = kwargs['honeypotBindLists']
-        if 'honeypotProbeId' in kwargs:
+        if honeypot_probe_id is None and 'honeypotProbeId' in kwargs:
             honeypot_probe_id = kwargs['honeypotProbeId']
-        if 'probeType' in kwargs:
+        if probe_type is None and 'probeType' in kwargs:
             probe_type = kwargs['probeType']
-        if 'probeVersion' in kwargs:
+        if probe_version is None and 'probeVersion' in kwargs:
             probe_version = kwargs['probeVersion']
-        if 'proxyIp' in kwargs:
+        if proxy_ip is None and 'proxyIp' in kwargs:
             proxy_ip = kwargs['proxyIp']
-        if 'serviceIpLists' in kwargs:
+        if service_ip_lists is None and 'serviceIpLists' in kwargs:
             service_ip_lists = kwargs['serviceIpLists']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if arp is not None:
@@ -534,30 +540,6 @@ class HoneypotProbe(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.195.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.threatdetection.HoneypotProbe("default",
-            arp=True,
-            control_node_id="a44e1ab3-6945-444c-889d-5bacee7056e8",
-            display_name="apispec",
-            honeypot_bind_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListArgs(
-                bind_port_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListBindPortListArgs(
-                    end_port=80,
-                    start_port=80,
-                )],
-                honeypot_id="ede59ccdb1b7a2e21735d4593a6eb5ed31883af320c5ab63ab33818e94307be9",
-            )],
-            ping=True,
-            probe_type="host_probe",
-            uuid="032b618f-b220-4a0d-bd37-fbdc6ef58b6a")
-        ```
-
         ## Import
 
         Threat Detection Honeypot Probe can be imported using the id, e.g.
@@ -592,30 +574,6 @@ class HoneypotProbe(pulumi.CustomResource):
         For information about Threat Detection Honeypot Probe and how to use it, see [What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe).
 
         > **NOTE:** Available in v1.195.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.threatdetection.HoneypotProbe("default",
-            arp=True,
-            control_node_id="a44e1ab3-6945-444c-889d-5bacee7056e8",
-            display_name="apispec",
-            honeypot_bind_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListArgs(
-                bind_port_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListBindPortListArgs(
-                    end_port=80,
-                    start_port=80,
-                )],
-                honeypot_id="ede59ccdb1b7a2e21735d4593a6eb5ed31883af320c5ab63ab33818e94307be9",
-            )],
-            ping=True,
-            probe_type="host_probe",
-            uuid="032b618f-b220-4a0d-bd37-fbdc6ef58b6a")
-        ```
 
         ## Import
 

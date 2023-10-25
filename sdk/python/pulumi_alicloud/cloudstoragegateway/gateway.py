@@ -59,10 +59,10 @@ class GatewayArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gateway_name: pulumi.Input[str],
-             location: pulumi.Input[str],
-             storage_bundle_id: pulumi.Input[str],
-             type: pulumi.Input[str],
+             gateway_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             storage_bundle_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              gateway_class: Optional[pulumi.Input[str]] = None,
              payment_type: Optional[pulumi.Input[str]] = None,
@@ -71,25 +71,33 @@ class GatewayArgs:
              reason_type: Optional[pulumi.Input[str]] = None,
              release_after_expiration: Optional[pulumi.Input[bool]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'gatewayName' in kwargs:
+        if gateway_name is None and 'gatewayName' in kwargs:
             gateway_name = kwargs['gatewayName']
-        if 'storageBundleId' in kwargs:
+        if gateway_name is None:
+            raise TypeError("Missing 'gateway_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if storage_bundle_id is None and 'storageBundleId' in kwargs:
             storage_bundle_id = kwargs['storageBundleId']
-        if 'gatewayClass' in kwargs:
+        if storage_bundle_id is None:
+            raise TypeError("Missing 'storage_bundle_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if gateway_class is None and 'gatewayClass' in kwargs:
             gateway_class = kwargs['gatewayClass']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'publicNetworkBandwidth' in kwargs:
+        if public_network_bandwidth is None and 'publicNetworkBandwidth' in kwargs:
             public_network_bandwidth = kwargs['publicNetworkBandwidth']
-        if 'reasonDetail' in kwargs:
+        if reason_detail is None and 'reasonDetail' in kwargs:
             reason_detail = kwargs['reasonDetail']
-        if 'reasonType' in kwargs:
+        if reason_type is None and 'reasonType' in kwargs:
             reason_type = kwargs['reasonType']
-        if 'releaseAfterExpiration' in kwargs:
+        if release_after_expiration is None and 'releaseAfterExpiration' in kwargs:
             release_after_expiration = kwargs['releaseAfterExpiration']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         _setter("gateway_name", gateway_name)
@@ -322,25 +330,25 @@ class _GatewayState:
              storage_bundle_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'gatewayClass' in kwargs:
+        if gateway_class is None and 'gatewayClass' in kwargs:
             gateway_class = kwargs['gatewayClass']
-        if 'gatewayName' in kwargs:
+        if gateway_name is None and 'gatewayName' in kwargs:
             gateway_name = kwargs['gatewayName']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'publicNetworkBandwidth' in kwargs:
+        if public_network_bandwidth is None and 'publicNetworkBandwidth' in kwargs:
             public_network_bandwidth = kwargs['publicNetworkBandwidth']
-        if 'reasonDetail' in kwargs:
+        if reason_detail is None and 'reasonDetail' in kwargs:
             reason_detail = kwargs['reasonDetail']
-        if 'reasonType' in kwargs:
+        if reason_type is None and 'reasonType' in kwargs:
             reason_type = kwargs['reasonType']
-        if 'releaseAfterExpiration' in kwargs:
+        if release_after_expiration is None and 'releaseAfterExpiration' in kwargs:
             release_after_expiration = kwargs['releaseAfterExpiration']
-        if 'storageBundleId' in kwargs:
+        if storage_bundle_id is None and 'storageBundleId' in kwargs:
             storage_bundle_id = kwargs['storageBundleId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if description is not None:

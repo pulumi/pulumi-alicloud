@@ -16,27 +16,6 @@ namespace Pulumi.AliCloud.Sddp
     /// 
     /// &gt; **NOTE:** Available since v1.133.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Sddp.Config("default", new()
-    ///     {
-    ///         Code = "access_failed_cnt",
-    ///         Value = "10",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Data Security Center Config can be imported using the id, e.g.

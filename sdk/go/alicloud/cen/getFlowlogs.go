@@ -15,38 +15,6 @@ import (
 // This data source provides CEN flow logs available to the user.
 //
 // > **NOTE:** Available in 1.78.0+
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cen.GetFlowlogs(ctx, &cen.GetFlowlogsArgs{
-//				Ids: []string{
-//					"flowlog-tig1xxxxx",
-//				},
-//				NameRegex: pulumi.StringRef("^foo"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstCenFlowlogId", data.Alicloud_cen_instances.Default.Flowlogs[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFlowlogs(ctx *pulumi.Context, args *GetFlowlogsArgs, opts ...pulumi.InvokeOption) (*GetFlowlogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFlowlogsResult

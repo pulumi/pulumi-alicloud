@@ -19,45 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.140.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := vpc.NewTrafficMirrorFilter(ctx, "example", &vpc.TrafficMirrorFilterArgs{
-//				TrafficMirrorFilterName: pulumi.String("example_value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpc.NewTrafficMirrorFilterEgressRule(ctx, "default", &vpc.TrafficMirrorFilterEgressRuleArgs{
-//				Action:                pulumi.String("drop"),
-//				Priority:              pulumi.Int(2),
-//				SourceCidrBlock:       pulumi.String("10.0.0.0/11"),
-//				DestinationCidrBlock:  pulumi.String("10.0.0.0/12"),
-//				TrafficMirrorFilterId: example.ID(),
-//				Protocol:              pulumi.String("ALL"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // VPC Traffic Mirror Filter Egress Rule can be imported using the id, e.g.

@@ -40,16 +40,18 @@ class SearchIndexSchemaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             field_schemas: pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaFieldSchemaArgs']]],
+             field_schemas: Optional[pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaFieldSchemaArgs']]]] = None,
              index_settings: Optional[pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSettingArgs']]]] = None,
              index_sorts: Optional[pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSortArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fieldSchemas' in kwargs:
+        if field_schemas is None and 'fieldSchemas' in kwargs:
             field_schemas = kwargs['fieldSchemas']
-        if 'indexSettings' in kwargs:
+        if field_schemas is None:
+            raise TypeError("Missing 'field_schemas' argument")
+        if index_settings is None and 'indexSettings' in kwargs:
             index_settings = kwargs['indexSettings']
-        if 'indexSorts' in kwargs:
+        if index_sorts is None and 'indexSorts' in kwargs:
             index_sorts = kwargs['indexSorts']
 
         _setter("field_schemas", field_schemas)
@@ -127,22 +129,26 @@ class SearchIndexSchemaFieldSchemaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             field_name: pulumi.Input[str],
-             field_type: pulumi.Input[str],
+             field_name: Optional[pulumi.Input[str]] = None,
+             field_type: Optional[pulumi.Input[str]] = None,
              analyzer: Optional[pulumi.Input[str]] = None,
              enable_sort_and_agg: Optional[pulumi.Input[bool]] = None,
              index: Optional[pulumi.Input[bool]] = None,
              is_array: Optional[pulumi.Input[bool]] = None,
              store: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fieldName' in kwargs:
+        if field_name is None and 'fieldName' in kwargs:
             field_name = kwargs['fieldName']
-        if 'fieldType' in kwargs:
+        if field_name is None:
+            raise TypeError("Missing 'field_name' argument")
+        if field_type is None and 'fieldType' in kwargs:
             field_type = kwargs['fieldType']
-        if 'enableSortAndAgg' in kwargs:
+        if field_type is None:
+            raise TypeError("Missing 'field_type' argument")
+        if enable_sort_and_agg is None and 'enableSortAndAgg' in kwargs:
             enable_sort_and_agg = kwargs['enableSortAndAgg']
-        if 'isArray' in kwargs:
+        if is_array is None and 'isArray' in kwargs:
             is_array = kwargs['isArray']
 
         _setter("field_name", field_name)
@@ -258,9 +264,9 @@ class SearchIndexSchemaIndexSettingArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              routing_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'routingFields' in kwargs:
+        if routing_fields is None and 'routingFields' in kwargs:
             routing_fields = kwargs['routingFields']
 
         if routing_fields is not None:
@@ -293,9 +299,11 @@ class SearchIndexSchemaIndexSortArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sorters: pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSortSorterArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             sorters: Optional[pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSortSorterArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if sorters is None:
+            raise TypeError("Missing 'sorters' argument")
 
         _setter("sorters", sorters)
 
@@ -339,11 +347,11 @@ class SearchIndexSchemaIndexSortSorterArgs:
              mode: Optional[pulumi.Input[str]] = None,
              order: Optional[pulumi.Input[str]] = None,
              sorter_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fieldName' in kwargs:
+        if field_name is None and 'fieldName' in kwargs:
             field_name = kwargs['fieldName']
-        if 'sorterType' in kwargs:
+        if sorter_type is None and 'sorterType' in kwargs:
             sorter_type = kwargs['sorterType']
 
         if field_name is not None:
@@ -421,10 +429,14 @@ class TableDefinedColumnArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("name", name)
         _setter("type", type)
@@ -471,10 +483,14 @@ class TablePrimaryKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("name", name)
         _setter("type", type)
@@ -535,17 +551,17 @@ class TunnelChannelArgs:
              channel_status: Optional[pulumi.Input[str]] = None,
              channel_type: Optional[pulumi.Input[str]] = None,
              client_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'channelId' in kwargs:
+        if channel_id is None and 'channelId' in kwargs:
             channel_id = kwargs['channelId']
-        if 'channelRpo' in kwargs:
+        if channel_rpo is None and 'channelRpo' in kwargs:
             channel_rpo = kwargs['channelRpo']
-        if 'channelStatus' in kwargs:
+        if channel_status is None and 'channelStatus' in kwargs:
             channel_status = kwargs['channelStatus']
-        if 'channelType' in kwargs:
+        if channel_type is None and 'channelType' in kwargs:
             channel_type = kwargs['channelType']
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
 
         if channel_id is not None:

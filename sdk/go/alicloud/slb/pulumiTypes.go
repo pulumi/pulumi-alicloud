@@ -3384,29 +3384,6 @@ type GetLoadBalancersBalancer struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-	// 			Tags: map[string]interface{}{
-	// 				"tagKey1": "tagValue1",
-	// 				"tagKey2": "tagValue2",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId string `pulumi:"vpcId"`
@@ -3461,29 +3438,6 @@ type GetLoadBalancersBalancerArgs struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-	// 			Tags: map[string]interface{}{
-	// 				"tagKey1": "tagValue1",
-	// 				"tagKey2": "tagValue2",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -3686,32 +3640,6 @@ func (o GetLoadBalancersBalancerOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-//				Tags: map[string]interface{}{
-//					"tagKey1": "tagValue1",
-//					"tagKey2": "tagValue2",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o GetLoadBalancersBalancerOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
@@ -4176,29 +4104,6 @@ type GetLoadBalancersSlb struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-	// 			Tags: map[string]interface{}{
-	// 				"tagKey1": "tagValue1",
-	// 				"tagKey2": "tagValue2",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId string `pulumi:"vpcId"`
@@ -4239,29 +4144,6 @@ type GetLoadBalancersSlbArgs struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-	// 			Tags: map[string]interface{}{
-	// 				"tagKey1": "tagValue1",
-	// 				"tagKey2": "tagValue2",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -4389,32 +4271,6 @@ func (o GetLoadBalancersSlbOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-//				Tags: map[string]interface{}{
-//					"tagKey1": "tagValue1",
-//					"tagKey2": "tagValue2",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o GetLoadBalancersSlbOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetLoadBalancersSlb) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }

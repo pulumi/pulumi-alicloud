@@ -13,44 +13,6 @@ import (
 )
 
 // This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
-//				NameRegex:  pulumi.StringRef("^web-"),
-//				OutputFile: pulumi.StringRef("web_access.json"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			primaryVpcDs, err := vpc.NewNetwork(ctx, "primaryVpcDs", nil)
-//			if err != nil {
-//				return err
-//			}
-//			primarySecGroupsDs := ecs.GetSecurityGroupsOutput(ctx, ecs.GetSecurityGroupsOutputArgs{
-//				VpcId: primaryVpcDs.ID(),
-//			}, nil)
-//			ctx.Export("firstGroupId", primarySecGroupsDs.ApplyT(func(primarySecGroupsDs ecs.GetSecurityGroupsResult) (*string, error) {
-//				return &primarySecGroupsDs.Groups[0].Id, nil
-//			}).(pulumi.StringPtrOutput))
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetSecurityGroups(ctx *pulumi.Context, args *GetSecurityGroupsArgs, opts ...pulumi.InvokeOption) (*GetSecurityGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSecurityGroupsResult
@@ -75,29 +37,6 @@ type GetSecurityGroupsArgs struct {
 	// The Id of resource group which the securityGroup belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
-	// 			Tags: map[string]interface{}{
-	// 				"tagKey1": "tagValue1",
-	// 				"tagKey2": "tagValue2",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Used to retrieve security groups that belong to the specified VPC ID.
 	VpcId *string `pulumi:"vpcId"`
@@ -154,29 +93,6 @@ type GetSecurityGroupsOutputArgs struct {
 	// The Id of resource group which the securityGroup belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
-	// 			Tags: map[string]interface{}{
-	// 				"tagKey1": "tagValue1",
-	// 				"tagKey2": "tagValue2",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// Used to retrieve security groups that belong to the specified VPC ID.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`

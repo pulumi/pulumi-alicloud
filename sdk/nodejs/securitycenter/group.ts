@@ -11,19 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.133.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example";
- * const example = new alicloud.securitycenter.Group("example", {groupName: name});
- * ```
- *
  * ## Import
  *
  * Security Center Group can be imported using the id, e.g.

@@ -36,18 +36,26 @@ class GetAgentsAgentResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             agent_id: str,
-             agent_key: str,
-             agent_name: str,
-             id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             agent_id: Optional[str] = None,
+             agent_key: Optional[str] = None,
+             agent_name: Optional[str] = None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'agentId' in kwargs:
+        if agent_id is None and 'agentId' in kwargs:
             agent_id = kwargs['agentId']
-        if 'agentKey' in kwargs:
+        if agent_id is None:
+            raise TypeError("Missing 'agent_id' argument")
+        if agent_key is None and 'agentKey' in kwargs:
             agent_key = kwargs['agentKey']
-        if 'agentName' in kwargs:
+        if agent_key is None:
+            raise TypeError("Missing 'agent_key' argument")
+        if agent_name is None and 'agentName' in kwargs:
             agent_name = kwargs['agentName']
+        if agent_name is None:
+            raise TypeError("Missing 'agent_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
 
         _setter("agent_id", agent_id)
         _setter("agent_key", agent_key)

@@ -18,37 +18,6 @@ namespace Pulumi.AliCloud.Scdn
     /// 
     /// &gt; **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Scdn.Domain("example", new()
-    ///     {
-    ///         DomainName = "my-Domain",
-    ///         Sources = new[]
-    ///         {
-    ///             new AliCloud.Scdn.Inputs.DomainSourceArgs
-    ///             {
-    ///                 Content = "xxx.aliyuncs.com",
-    ///                 Enabled = "online",
-    ///                 Port = 80,
-    ///                 Priority = "20",
-    ///                 Type = "oss",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// SCDN Domain can be imported using the id, e.g.

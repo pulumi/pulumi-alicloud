@@ -112,16 +112,6 @@ def get_transit_router_route_table_propagations(ids: Optional[Sequence[str]] = N
 
     > **NOTE:** Available in 1.126.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.cen.get_transit_router_route_table_propagations(transit_router_route_table_id="rtb-id1")
-    pulumi.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default.propagations[0].resource_type)
-    ```
-
 
     :param Sequence[str] ids: A list of CEN Transit Router Route Table Association IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -155,16 +145,6 @@ def get_transit_router_route_table_propagations_output(ids: Optional[pulumi.Inpu
     This data source provides CEN Transit Router Route Table Propagations available to the user.[What is Cen Transit Router Route Table Propagations](https://help.aliyun.com/document_detail/261245.html)
 
     > **NOTE:** Available in 1.126.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.cen.get_transit_router_route_table_propagations(transit_router_route_table_id="rtb-id1")
-    pulumi.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default.propagations[0].resource_type)
-    ```
 
 
     :param Sequence[str] ids: A list of CEN Transit Router Route Table Association IDs.

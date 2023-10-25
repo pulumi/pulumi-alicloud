@@ -56,7 +56,7 @@ class EcsBackupClientArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
              data_network_type: Optional[pulumi.Input[str]] = None,
              data_proxy_setting: Optional[pulumi.Input[str]] = None,
              max_cpu_core: Optional[pulumi.Input[str]] = None,
@@ -67,27 +67,29 @@ class EcsBackupClientArgs:
              proxy_user: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              use_https: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'dataNetworkType' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if data_network_type is None and 'dataNetworkType' in kwargs:
             data_network_type = kwargs['dataNetworkType']
-        if 'dataProxySetting' in kwargs:
+        if data_proxy_setting is None and 'dataProxySetting' in kwargs:
             data_proxy_setting = kwargs['dataProxySetting']
-        if 'maxCpuCore' in kwargs:
+        if max_cpu_core is None and 'maxCpuCore' in kwargs:
             max_cpu_core = kwargs['maxCpuCore']
-        if 'maxWorker' in kwargs:
+        if max_worker is None and 'maxWorker' in kwargs:
             max_worker = kwargs['maxWorker']
-        if 'proxyHost' in kwargs:
+        if proxy_host is None and 'proxyHost' in kwargs:
             proxy_host = kwargs['proxyHost']
-        if 'proxyPassword' in kwargs:
+        if proxy_password is None and 'proxyPassword' in kwargs:
             proxy_password = kwargs['proxyPassword']
-        if 'proxyPort' in kwargs:
+        if proxy_port is None and 'proxyPort' in kwargs:
             proxy_port = kwargs['proxyPort']
-        if 'proxyUser' in kwargs:
+        if proxy_user is None and 'proxyUser' in kwargs:
             proxy_user = kwargs['proxyUser']
-        if 'useHttps' in kwargs:
+        if use_https is None and 'useHttps' in kwargs:
             use_https = kwargs['useHttps']
 
         _setter("instance_id", instance_id)
@@ -301,27 +303,27 @@ class _EcsBackupClientState:
              proxy_user: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              use_https: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dataNetworkType' in kwargs:
+        if data_network_type is None and 'dataNetworkType' in kwargs:
             data_network_type = kwargs['dataNetworkType']
-        if 'dataProxySetting' in kwargs:
+        if data_proxy_setting is None and 'dataProxySetting' in kwargs:
             data_proxy_setting = kwargs['dataProxySetting']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'maxCpuCore' in kwargs:
+        if max_cpu_core is None and 'maxCpuCore' in kwargs:
             max_cpu_core = kwargs['maxCpuCore']
-        if 'maxWorker' in kwargs:
+        if max_worker is None and 'maxWorker' in kwargs:
             max_worker = kwargs['maxWorker']
-        if 'proxyHost' in kwargs:
+        if proxy_host is None and 'proxyHost' in kwargs:
             proxy_host = kwargs['proxyHost']
-        if 'proxyPassword' in kwargs:
+        if proxy_password is None and 'proxyPassword' in kwargs:
             proxy_password = kwargs['proxyPassword']
-        if 'proxyPort' in kwargs:
+        if proxy_port is None and 'proxyPort' in kwargs:
             proxy_port = kwargs['proxyPort']
-        if 'proxyUser' in kwargs:
+        if proxy_user is None and 'proxyUser' in kwargs:
             proxy_user = kwargs['proxyUser']
-        if 'useHttps' in kwargs:
+        if use_https is None and 'useHttps' in kwargs:
             use_https = kwargs['useHttps']
 
         if data_network_type is not None:
@@ -504,49 +506,6 @@ class EcsBackupClient(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.132.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            availability_zone=example_zones.zones[0].id,
-            security_groups=[example_security_group.id],
-            instance_name="terraform-example",
-            internet_charge_type="PayByBandwidth",
-            vswitch_id=example_switch.id)
-        example_ecs_backup_client = alicloud.hbr.EcsBackupClient("exampleEcsBackupClient",
-            instance_id=example_instance.id,
-            use_https=False,
-            data_network_type="VPC",
-            max_cpu_core="2",
-            max_worker="4",
-            data_proxy_setting="USE_CONTROL_PROXY",
-            proxy_host="192.168.11.101",
-            proxy_port="80",
-            proxy_user="user",
-            proxy_password="password")
-        ```
         ## Notice
 
         > **Note:** Please read the following precautions carefully before deleting a client:
@@ -592,49 +551,6 @@ class EcsBackupClient(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.132.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            availability_zone=example_zones.zones[0].id,
-            security_groups=[example_security_group.id],
-            instance_name="terraform-example",
-            internet_charge_type="PayByBandwidth",
-            vswitch_id=example_switch.id)
-        example_ecs_backup_client = alicloud.hbr.EcsBackupClient("exampleEcsBackupClient",
-            instance_id=example_instance.id,
-            use_https=False,
-            data_network_type="VPC",
-            max_cpu_core="2",
-            max_worker="4",
-            data_proxy_setting="USE_CONTROL_PROXY",
-            proxy_host="192.168.11.101",
-            proxy_port="80",
-            proxy_user="user",
-            proxy_password="password")
-        ```
         ## Notice
 
         > **Note:** Please read the following precautions carefully before deleting a client:

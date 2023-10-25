@@ -139,20 +139,6 @@ def get_rules(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.133.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.alb.get_rules(ids=["example_id"])
-    pulumi.export("albRuleId1", ids.rules[0].id)
-    name_regex = alicloud.alb.get_rules(name_regex="^my-Rule")
-    pulumi.export("albRuleId2", name_regex.rules[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Rule IDs.
     :param Sequence[str] listener_ids: The listener ids.
@@ -199,20 +185,6 @@ def get_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None
     This data source provides the Alb Rules of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.133.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.alb.get_rules(ids=["example_id"])
-    pulumi.export("albRuleId1", ids.rules[0].id)
-    name_regex = alicloud.alb.get_rules(name_regex="^my-Rule")
-    pulumi.export("albRuleId2", name_regex.rules[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Rule IDs.

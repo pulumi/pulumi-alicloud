@@ -35,11 +35,11 @@ class TopicArgs:
              logging_enabled: Optional[pulumi.Input[bool]] = None,
              maximum_message_size: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'loggingEnabled' in kwargs:
+        if logging_enabled is None and 'loggingEnabled' in kwargs:
             logging_enabled = kwargs['loggingEnabled']
-        if 'maximumMessageSize' in kwargs:
+        if maximum_message_size is None and 'maximumMessageSize' in kwargs:
             maximum_message_size = kwargs['maximumMessageSize']
 
         if logging_enabled is not None:
@@ -110,11 +110,11 @@ class _TopicState:
              logging_enabled: Optional[pulumi.Input[bool]] = None,
              maximum_message_size: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'loggingEnabled' in kwargs:
+        if logging_enabled is None and 'loggingEnabled' in kwargs:
             logging_enabled = kwargs['loggingEnabled']
-        if 'maximumMessageSize' in kwargs:
+        if maximum_message_size is None and 'maximumMessageSize' in kwargs:
             maximum_message_size = kwargs['maximumMessageSize']
 
         if logging_enabled is not None:
@@ -171,19 +171,6 @@ class Topic(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        topic = alicloud.mns.Topic("topic",
-            logging_enabled=False,
-            maximum_message_size=65536)
-        ```
-
         ## Import
 
         MNS Topic can be imported using the id or name, e.g.
@@ -205,19 +192,6 @@ class Topic(pulumi.CustomResource):
                  args: Optional[TopicArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        topic = alicloud.mns.Topic("topic",
-            logging_enabled=False,
-            maximum_message_size=65536)
-        ```
-
         ## Import
 
         MNS Topic can be imported using the id or name, e.g.

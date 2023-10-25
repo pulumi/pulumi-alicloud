@@ -15,54 +15,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.68.0+.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "Instance",
- * });
- * const defaultInstanceTypes = alicloud.ecs.getInstanceTypes({
- *     instanceTypeFamily: "ecs.sn1ne",
- * });
- * const defaultImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
- *     owners: "system",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: "terraform-example",
- *     cidrBlock: "172.17.3.0/24",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vswitchName: "terraform-example",
- *     cidrBlock: "172.17.3.0/24",
- *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     instanceName: "terraform-example",
- *     securityGroups: [defaultSecurityGroup.id],
- *     vswitchId: defaultSwitch.id,
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.ids?.[0]),
- *     imageId: defaultImages.then(defaultImages => defaultImages.ids?.[0]),
- *     internetMaxBandwidthOut: 10,
- * });
- * const defaultImage = new alicloud.ecs.Image("defaultImage", {
- *     instanceId: defaultInstance.id,
- *     imageName: "terraform-example",
- *     description: "terraform-example",
- * });
- * const config = new pulumi.Config();
- * const accountId = config.get("accountId") || "123456789";
- * const defaultImageSharePermission = new alicloud.ecs.ImageSharePermission("defaultImageSharePermission", {
- *     imageId: defaultImage.id,
- *     accountId: accountId,
- * });
- * ```
  * ## Attributes Reference0
  *
  *  The following attributes are exported:

@@ -54,17 +54,25 @@ class GetConsumerGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             consumer_id: str,
-             id: str,
-             instance_id: str,
-             remark: str,
+             consumer_id: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             remark: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'consumerId' in kwargs:
+        if consumer_id is None and 'consumerId' in kwargs:
             consumer_id = kwargs['consumerId']
-        if 'instanceId' in kwargs:
+        if consumer_id is None:
+            raise TypeError("Missing 'consumer_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if remark is None:
+            raise TypeError("Missing 'remark' argument")
 
         _setter("consumer_id", consumer_id)
         _setter("id", id)
@@ -154,34 +162,54 @@ class GetHistoryDeliveryJobsJobResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             end_time: str,
-             history_delivery_job_id: str,
-             home_region: str,
-             id: str,
-             job_statuses: Sequence['outputs.GetHistoryDeliveryJobsJobJobStatusResult'],
-             start_time: str,
-             status: int,
-             trail_name: str,
-             updated_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             end_time: Optional[str] = None,
+             history_delivery_job_id: Optional[str] = None,
+             home_region: Optional[str] = None,
+             id: Optional[str] = None,
+             job_statuses: Optional[Sequence['outputs.GetHistoryDeliveryJobsJobJobStatusResult']] = None,
+             start_time: Optional[str] = None,
+             status: Optional[int] = None,
+             trail_name: Optional[str] = None,
+             updated_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'endTime' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'historyDeliveryJobId' in kwargs:
+        if end_time is None:
+            raise TypeError("Missing 'end_time' argument")
+        if history_delivery_job_id is None and 'historyDeliveryJobId' in kwargs:
             history_delivery_job_id = kwargs['historyDeliveryJobId']
-        if 'homeRegion' in kwargs:
+        if history_delivery_job_id is None:
+            raise TypeError("Missing 'history_delivery_job_id' argument")
+        if home_region is None and 'homeRegion' in kwargs:
             home_region = kwargs['homeRegion']
-        if 'jobStatuses' in kwargs:
+        if home_region is None:
+            raise TypeError("Missing 'home_region' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if job_statuses is None and 'jobStatuses' in kwargs:
             job_statuses = kwargs['jobStatuses']
-        if 'startTime' in kwargs:
+        if job_statuses is None:
+            raise TypeError("Missing 'job_statuses' argument")
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'trailName' in kwargs:
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if trail_name is None and 'trailName' in kwargs:
             trail_name = kwargs['trailName']
-        if 'updatedTime' in kwargs:
+        if trail_name is None:
+            raise TypeError("Missing 'trail_name' argument")
+        if updated_time is None and 'updatedTime' in kwargs:
             updated_time = kwargs['updatedTime']
+        if updated_time is None:
+            raise TypeError("Missing 'updated_time' argument")
 
         _setter("create_time", create_time)
         _setter("end_time", end_time)
@@ -289,10 +317,14 @@ class GetHistoryDeliveryJobsJobJobStatusResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             region: str,
-             status: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             region: Optional[str] = None,
+             status: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("region", region)
         _setter("status", status)
@@ -412,87 +444,143 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_lists: Sequence['outputs.GetInstancesInstanceAllowedListResult'],
-             config: str,
-             create_time: str,
-             deploy_type: int,
-             disk_size: int,
-             disk_type: int,
-             domain_endpoint: str,
-             eip_max: int,
-             end_point: str,
-             expired_time: int,
-             id: str,
-             io_max: int,
-             msg_retain: int,
-             name: str,
-             paid_type: str,
-             partition_num: int,
-             sasl_domain_endpoint: str,
-             security_group: str,
-             service_status: int,
-             service_version: str,
-             spec_type: str,
-             ssl_domain_endpoint: str,
-             ssl_end_point: str,
-             topic_quota: int,
-             upgrade_service_detail_infos: Sequence['outputs.GetInstancesInstanceUpgradeServiceDetailInfoResult'],
-             vpc_id: str,
-             vswitch_id: str,
-             zone_id: str,
+             allowed_lists: Optional[Sequence['outputs.GetInstancesInstanceAllowedListResult']] = None,
+             config: Optional[str] = None,
+             create_time: Optional[str] = None,
+             deploy_type: Optional[int] = None,
+             disk_size: Optional[int] = None,
+             disk_type: Optional[int] = None,
+             domain_endpoint: Optional[str] = None,
+             eip_max: Optional[int] = None,
+             end_point: Optional[str] = None,
+             expired_time: Optional[int] = None,
+             id: Optional[str] = None,
+             io_max: Optional[int] = None,
+             msg_retain: Optional[int] = None,
+             name: Optional[str] = None,
+             paid_type: Optional[str] = None,
+             partition_num: Optional[int] = None,
+             sasl_domain_endpoint: Optional[str] = None,
+             security_group: Optional[str] = None,
+             service_status: Optional[int] = None,
+             service_version: Optional[str] = None,
+             spec_type: Optional[str] = None,
+             ssl_domain_endpoint: Optional[str] = None,
+             ssl_end_point: Optional[str] = None,
+             topic_quota: Optional[int] = None,
+             upgrade_service_detail_infos: Optional[Sequence['outputs.GetInstancesInstanceUpgradeServiceDetailInfoResult']] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedLists' in kwargs:
+        if allowed_lists is None and 'allowedLists' in kwargs:
             allowed_lists = kwargs['allowedLists']
-        if 'createTime' in kwargs:
+        if allowed_lists is None:
+            raise TypeError("Missing 'allowed_lists' argument")
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'deployType' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if deploy_type is None and 'deployType' in kwargs:
             deploy_type = kwargs['deployType']
-        if 'diskSize' in kwargs:
+        if deploy_type is None:
+            raise TypeError("Missing 'deploy_type' argument")
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'diskType' in kwargs:
+        if disk_size is None:
+            raise TypeError("Missing 'disk_size' argument")
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'domainEndpoint' in kwargs:
+        if disk_type is None:
+            raise TypeError("Missing 'disk_type' argument")
+        if domain_endpoint is None and 'domainEndpoint' in kwargs:
             domain_endpoint = kwargs['domainEndpoint']
-        if 'eipMax' in kwargs:
+        if domain_endpoint is None:
+            raise TypeError("Missing 'domain_endpoint' argument")
+        if eip_max is None and 'eipMax' in kwargs:
             eip_max = kwargs['eipMax']
-        if 'endPoint' in kwargs:
+        if eip_max is None:
+            raise TypeError("Missing 'eip_max' argument")
+        if end_point is None and 'endPoint' in kwargs:
             end_point = kwargs['endPoint']
-        if 'expiredTime' in kwargs:
+        if end_point is None:
+            raise TypeError("Missing 'end_point' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'ioMax' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if io_max is None and 'ioMax' in kwargs:
             io_max = kwargs['ioMax']
-        if 'msgRetain' in kwargs:
+        if io_max is None:
+            raise TypeError("Missing 'io_max' argument")
+        if msg_retain is None and 'msgRetain' in kwargs:
             msg_retain = kwargs['msgRetain']
-        if 'paidType' in kwargs:
+        if msg_retain is None:
+            raise TypeError("Missing 'msg_retain' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if paid_type is None and 'paidType' in kwargs:
             paid_type = kwargs['paidType']
-        if 'partitionNum' in kwargs:
+        if paid_type is None:
+            raise TypeError("Missing 'paid_type' argument")
+        if partition_num is None and 'partitionNum' in kwargs:
             partition_num = kwargs['partitionNum']
-        if 'saslDomainEndpoint' in kwargs:
+        if partition_num is None:
+            raise TypeError("Missing 'partition_num' argument")
+        if sasl_domain_endpoint is None and 'saslDomainEndpoint' in kwargs:
             sasl_domain_endpoint = kwargs['saslDomainEndpoint']
-        if 'securityGroup' in kwargs:
+        if sasl_domain_endpoint is None:
+            raise TypeError("Missing 'sasl_domain_endpoint' argument")
+        if security_group is None and 'securityGroup' in kwargs:
             security_group = kwargs['securityGroup']
-        if 'serviceStatus' in kwargs:
+        if security_group is None:
+            raise TypeError("Missing 'security_group' argument")
+        if service_status is None and 'serviceStatus' in kwargs:
             service_status = kwargs['serviceStatus']
-        if 'serviceVersion' in kwargs:
+        if service_status is None:
+            raise TypeError("Missing 'service_status' argument")
+        if service_version is None and 'serviceVersion' in kwargs:
             service_version = kwargs['serviceVersion']
-        if 'specType' in kwargs:
+        if service_version is None:
+            raise TypeError("Missing 'service_version' argument")
+        if spec_type is None and 'specType' in kwargs:
             spec_type = kwargs['specType']
-        if 'sslDomainEndpoint' in kwargs:
+        if spec_type is None:
+            raise TypeError("Missing 'spec_type' argument")
+        if ssl_domain_endpoint is None and 'sslDomainEndpoint' in kwargs:
             ssl_domain_endpoint = kwargs['sslDomainEndpoint']
-        if 'sslEndPoint' in kwargs:
+        if ssl_domain_endpoint is None:
+            raise TypeError("Missing 'ssl_domain_endpoint' argument")
+        if ssl_end_point is None and 'sslEndPoint' in kwargs:
             ssl_end_point = kwargs['sslEndPoint']
-        if 'topicQuota' in kwargs:
+        if ssl_end_point is None:
+            raise TypeError("Missing 'ssl_end_point' argument")
+        if topic_quota is None and 'topicQuota' in kwargs:
             topic_quota = kwargs['topicQuota']
-        if 'upgradeServiceDetailInfos' in kwargs:
+        if topic_quota is None:
+            raise TypeError("Missing 'topic_quota' argument")
+        if upgrade_service_detail_infos is None and 'upgradeServiceDetailInfos' in kwargs:
             upgrade_service_detail_infos = kwargs['upgradeServiceDetailInfos']
-        if 'vpcId' in kwargs:
+        if upgrade_service_detail_infos is None:
+            raise TypeError("Missing 'upgrade_service_detail_infos' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("allowed_lists", allowed_lists)
         _setter("config", config)
@@ -778,17 +866,23 @@ class GetInstancesInstanceAllowedListResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             deploy_type: str,
-             internet_lists: Sequence['outputs.GetInstancesInstanceAllowedListInternetListResult'],
-             vpc_lists: Sequence['outputs.GetInstancesInstanceAllowedListVpcListResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             deploy_type: Optional[str] = None,
+             internet_lists: Optional[Sequence['outputs.GetInstancesInstanceAllowedListInternetListResult']] = None,
+             vpc_lists: Optional[Sequence['outputs.GetInstancesInstanceAllowedListVpcListResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deployType' in kwargs:
+        if deploy_type is None and 'deployType' in kwargs:
             deploy_type = kwargs['deployType']
-        if 'internetLists' in kwargs:
+        if deploy_type is None:
+            raise TypeError("Missing 'deploy_type' argument")
+        if internet_lists is None and 'internetLists' in kwargs:
             internet_lists = kwargs['internetLists']
-        if 'vpcLists' in kwargs:
+        if internet_lists is None:
+            raise TypeError("Missing 'internet_lists' argument")
+        if vpc_lists is None and 'vpcLists' in kwargs:
             vpc_lists = kwargs['vpcLists']
+        if vpc_lists is None:
+            raise TypeError("Missing 'vpc_lists' argument")
 
         _setter("deploy_type", deploy_type)
         _setter("internet_lists", internet_lists)
@@ -836,14 +930,18 @@ class GetInstancesInstanceAllowedListInternetListResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_ip_lists: Sequence[str],
-             port_range: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             allowed_ip_lists: Optional[Sequence[str]] = None,
+             port_range: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedIpLists' in kwargs:
+        if allowed_ip_lists is None and 'allowedIpLists' in kwargs:
             allowed_ip_lists = kwargs['allowedIpLists']
-        if 'portRange' in kwargs:
+        if allowed_ip_lists is None:
+            raise TypeError("Missing 'allowed_ip_lists' argument")
+        if port_range is None and 'portRange' in kwargs:
             port_range = kwargs['portRange']
+        if port_range is None:
+            raise TypeError("Missing 'port_range' argument")
 
         _setter("allowed_ip_lists", allowed_ip_lists)
         _setter("port_range", port_range)
@@ -882,14 +980,18 @@ class GetInstancesInstanceAllowedListVpcListResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_ip_lists: Sequence[str],
-             port_range: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             allowed_ip_lists: Optional[Sequence[str]] = None,
+             port_range: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedIpLists' in kwargs:
+        if allowed_ip_lists is None and 'allowedIpLists' in kwargs:
             allowed_ip_lists = kwargs['allowedIpLists']
-        if 'portRange' in kwargs:
+        if allowed_ip_lists is None:
+            raise TypeError("Missing 'allowed_ip_lists' argument")
+        if port_range is None and 'portRange' in kwargs:
             port_range = kwargs['portRange']
+        if port_range is None:
+            raise TypeError("Missing 'port_range' argument")
 
         _setter("allowed_ip_lists", allowed_ip_lists)
         _setter("port_range", port_range)
@@ -925,11 +1027,13 @@ class GetInstancesInstanceUpgradeServiceDetailInfoResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             current2_open_source_version: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             current2_open_source_version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'current2OpenSourceVersion' in kwargs:
+        if current2_open_source_version is None and 'current2OpenSourceVersion' in kwargs:
             current2_open_source_version = kwargs['current2OpenSourceVersion']
+        if current2_open_source_version is None:
+            raise TypeError("Missing 'current2_open_source_version' argument")
 
         _setter("current2_open_source_version", current2_open_source_version)
 
@@ -971,22 +1075,34 @@ class GetSaslAclsAclResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acl_operation_type: str,
-             acl_resource_name: str,
-             acl_resource_pattern_type: str,
-             acl_resource_type: str,
-             host: str,
-             username: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             acl_operation_type: Optional[str] = None,
+             acl_resource_name: Optional[str] = None,
+             acl_resource_pattern_type: Optional[str] = None,
+             acl_resource_type: Optional[str] = None,
+             host: Optional[str] = None,
+             username: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclOperationType' in kwargs:
+        if acl_operation_type is None and 'aclOperationType' in kwargs:
             acl_operation_type = kwargs['aclOperationType']
-        if 'aclResourceName' in kwargs:
+        if acl_operation_type is None:
+            raise TypeError("Missing 'acl_operation_type' argument")
+        if acl_resource_name is None and 'aclResourceName' in kwargs:
             acl_resource_name = kwargs['aclResourceName']
-        if 'aclResourcePatternType' in kwargs:
+        if acl_resource_name is None:
+            raise TypeError("Missing 'acl_resource_name' argument")
+        if acl_resource_pattern_type is None and 'aclResourcePatternType' in kwargs:
             acl_resource_pattern_type = kwargs['aclResourcePatternType']
-        if 'aclResourceType' in kwargs:
+        if acl_resource_pattern_type is None:
+            raise TypeError("Missing 'acl_resource_pattern_type' argument")
+        if acl_resource_type is None and 'aclResourceType' in kwargs:
             acl_resource_type = kwargs['aclResourceType']
+        if acl_resource_type is None:
+            raise TypeError("Missing 'acl_resource_type' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
 
         _setter("acl_operation_type", acl_operation_type)
         _setter("acl_resource_name", acl_resource_name)
@@ -1061,10 +1177,14 @@ class GetSaslUsersUserResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: str,
-             username: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             password: Optional[str] = None,
+             username: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
 
         _setter("password", password)
         _setter("username", username)
@@ -1130,31 +1250,51 @@ class GetTopicsTopicResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compact_topic: bool,
-             create_time: str,
-             id: str,
-             instance_id: str,
-             local_topic: bool,
-             partition_num: int,
-             remark: str,
-             status: int,
-             status_name: str,
-             topic: str,
+             compact_topic: Optional[bool] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             local_topic: Optional[bool] = None,
+             partition_num: Optional[int] = None,
+             remark: Optional[str] = None,
+             status: Optional[int] = None,
+             status_name: Optional[str] = None,
+             topic: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'compactTopic' in kwargs:
+        if compact_topic is None and 'compactTopic' in kwargs:
             compact_topic = kwargs['compactTopic']
-        if 'createTime' in kwargs:
+        if compact_topic is None:
+            raise TypeError("Missing 'compact_topic' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'instanceId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'localTopic' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if local_topic is None and 'localTopic' in kwargs:
             local_topic = kwargs['localTopic']
-        if 'partitionNum' in kwargs:
+        if local_topic is None:
+            raise TypeError("Missing 'local_topic' argument")
+        if partition_num is None and 'partitionNum' in kwargs:
             partition_num = kwargs['partitionNum']
-        if 'statusName' in kwargs:
+        if partition_num is None:
+            raise TypeError("Missing 'partition_num' argument")
+        if remark is None:
+            raise TypeError("Missing 'remark' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if status_name is None and 'statusName' in kwargs:
             status_name = kwargs['statusName']
+        if status_name is None:
+            raise TypeError("Missing 'status_name' argument")
+        if topic is None:
+            raise TypeError("Missing 'topic' argument")
 
         _setter("compact_topic", compact_topic)
         _setter("create_time", create_time)
@@ -1300,37 +1440,59 @@ class GetTrailsActiontrailResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             event_rw: str,
-             id: str,
-             is_organization_trail: bool,
-             oss_bucket_name: str,
-             oss_key_prefix: str,
-             oss_write_role_arn: str,
-             sls_project_arn: str,
-             sls_write_role_arn: str,
-             status: str,
-             trail_name: str,
-             trail_region: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             event_rw: Optional[str] = None,
+             id: Optional[str] = None,
+             is_organization_trail: Optional[bool] = None,
+             oss_bucket_name: Optional[str] = None,
+             oss_key_prefix: Optional[str] = None,
+             oss_write_role_arn: Optional[str] = None,
+             sls_project_arn: Optional[str] = None,
+             sls_write_role_arn: Optional[str] = None,
+             status: Optional[str] = None,
+             trail_name: Optional[str] = None,
+             trail_region: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventRw' in kwargs:
+        if event_rw is None and 'eventRw' in kwargs:
             event_rw = kwargs['eventRw']
-        if 'isOrganizationTrail' in kwargs:
+        if event_rw is None:
+            raise TypeError("Missing 'event_rw' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_organization_trail is None and 'isOrganizationTrail' in kwargs:
             is_organization_trail = kwargs['isOrganizationTrail']
-        if 'ossBucketName' in kwargs:
+        if is_organization_trail is None:
+            raise TypeError("Missing 'is_organization_trail' argument")
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'ossKeyPrefix' in kwargs:
+        if oss_bucket_name is None:
+            raise TypeError("Missing 'oss_bucket_name' argument")
+        if oss_key_prefix is None and 'ossKeyPrefix' in kwargs:
             oss_key_prefix = kwargs['ossKeyPrefix']
-        if 'ossWriteRoleArn' in kwargs:
+        if oss_key_prefix is None:
+            raise TypeError("Missing 'oss_key_prefix' argument")
+        if oss_write_role_arn is None and 'ossWriteRoleArn' in kwargs:
             oss_write_role_arn = kwargs['ossWriteRoleArn']
-        if 'slsProjectArn' in kwargs:
+        if oss_write_role_arn is None:
+            raise TypeError("Missing 'oss_write_role_arn' argument")
+        if sls_project_arn is None and 'slsProjectArn' in kwargs:
             sls_project_arn = kwargs['slsProjectArn']
-        if 'slsWriteRoleArn' in kwargs:
+        if sls_project_arn is None:
+            raise TypeError("Missing 'sls_project_arn' argument")
+        if sls_write_role_arn is None and 'slsWriteRoleArn' in kwargs:
             sls_write_role_arn = kwargs['slsWriteRoleArn']
-        if 'trailName' in kwargs:
+        if sls_write_role_arn is None:
+            raise TypeError("Missing 'sls_write_role_arn' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if trail_name is None and 'trailName' in kwargs:
             trail_name = kwargs['trailName']
-        if 'trailRegion' in kwargs:
+        if trail_name is None:
+            raise TypeError("Missing 'trail_name' argument")
+        if trail_region is None and 'trailRegion' in kwargs:
             trail_region = kwargs['trailRegion']
+        if trail_region is None:
+            raise TypeError("Missing 'trail_region' argument")
 
         _setter("event_rw", event_rw)
         _setter("id", id)
@@ -1465,37 +1627,59 @@ class GetTrailsDeprecatedActiontrailResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             event_rw: str,
-             id: str,
-             is_organization_trail: bool,
-             oss_bucket_name: str,
-             oss_key_prefix: str,
-             oss_write_role_arn: str,
-             sls_project_arn: str,
-             sls_write_role_arn: str,
-             status: str,
-             trail_name: str,
-             trail_region: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             event_rw: Optional[str] = None,
+             id: Optional[str] = None,
+             is_organization_trail: Optional[bool] = None,
+             oss_bucket_name: Optional[str] = None,
+             oss_key_prefix: Optional[str] = None,
+             oss_write_role_arn: Optional[str] = None,
+             sls_project_arn: Optional[str] = None,
+             sls_write_role_arn: Optional[str] = None,
+             status: Optional[str] = None,
+             trail_name: Optional[str] = None,
+             trail_region: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventRw' in kwargs:
+        if event_rw is None and 'eventRw' in kwargs:
             event_rw = kwargs['eventRw']
-        if 'isOrganizationTrail' in kwargs:
+        if event_rw is None:
+            raise TypeError("Missing 'event_rw' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_organization_trail is None and 'isOrganizationTrail' in kwargs:
             is_organization_trail = kwargs['isOrganizationTrail']
-        if 'ossBucketName' in kwargs:
+        if is_organization_trail is None:
+            raise TypeError("Missing 'is_organization_trail' argument")
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'ossKeyPrefix' in kwargs:
+        if oss_bucket_name is None:
+            raise TypeError("Missing 'oss_bucket_name' argument")
+        if oss_key_prefix is None and 'ossKeyPrefix' in kwargs:
             oss_key_prefix = kwargs['ossKeyPrefix']
-        if 'ossWriteRoleArn' in kwargs:
+        if oss_key_prefix is None:
+            raise TypeError("Missing 'oss_key_prefix' argument")
+        if oss_write_role_arn is None and 'ossWriteRoleArn' in kwargs:
             oss_write_role_arn = kwargs['ossWriteRoleArn']
-        if 'slsProjectArn' in kwargs:
+        if oss_write_role_arn is None:
+            raise TypeError("Missing 'oss_write_role_arn' argument")
+        if sls_project_arn is None and 'slsProjectArn' in kwargs:
             sls_project_arn = kwargs['slsProjectArn']
-        if 'slsWriteRoleArn' in kwargs:
+        if sls_project_arn is None:
+            raise TypeError("Missing 'sls_project_arn' argument")
+        if sls_write_role_arn is None and 'slsWriteRoleArn' in kwargs:
             sls_write_role_arn = kwargs['slsWriteRoleArn']
-        if 'trailName' in kwargs:
+        if sls_write_role_arn is None:
+            raise TypeError("Missing 'sls_write_role_arn' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if trail_name is None and 'trailName' in kwargs:
             trail_name = kwargs['trailName']
-        if 'trailRegion' in kwargs:
+        if trail_name is None:
+            raise TypeError("Missing 'trail_name' argument")
+        if trail_region is None and 'trailRegion' in kwargs:
             trail_region = kwargs['trailRegion']
+        if trail_region is None:
+            raise TypeError("Missing 'trail_region' argument")
 
         _setter("event_rw", event_rw)
         _setter("id", id)
@@ -1618,37 +1802,59 @@ class GetTrailsDeprecatedTrailResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             event_rw: str,
-             id: str,
-             is_organization_trail: bool,
-             oss_bucket_name: str,
-             oss_key_prefix: str,
-             oss_write_role_arn: str,
-             sls_project_arn: str,
-             sls_write_role_arn: str,
-             status: str,
-             trail_name: str,
-             trail_region: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             event_rw: Optional[str] = None,
+             id: Optional[str] = None,
+             is_organization_trail: Optional[bool] = None,
+             oss_bucket_name: Optional[str] = None,
+             oss_key_prefix: Optional[str] = None,
+             oss_write_role_arn: Optional[str] = None,
+             sls_project_arn: Optional[str] = None,
+             sls_write_role_arn: Optional[str] = None,
+             status: Optional[str] = None,
+             trail_name: Optional[str] = None,
+             trail_region: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventRw' in kwargs:
+        if event_rw is None and 'eventRw' in kwargs:
             event_rw = kwargs['eventRw']
-        if 'isOrganizationTrail' in kwargs:
+        if event_rw is None:
+            raise TypeError("Missing 'event_rw' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_organization_trail is None and 'isOrganizationTrail' in kwargs:
             is_organization_trail = kwargs['isOrganizationTrail']
-        if 'ossBucketName' in kwargs:
+        if is_organization_trail is None:
+            raise TypeError("Missing 'is_organization_trail' argument")
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'ossKeyPrefix' in kwargs:
+        if oss_bucket_name is None:
+            raise TypeError("Missing 'oss_bucket_name' argument")
+        if oss_key_prefix is None and 'ossKeyPrefix' in kwargs:
             oss_key_prefix = kwargs['ossKeyPrefix']
-        if 'ossWriteRoleArn' in kwargs:
+        if oss_key_prefix is None:
+            raise TypeError("Missing 'oss_key_prefix' argument")
+        if oss_write_role_arn is None and 'ossWriteRoleArn' in kwargs:
             oss_write_role_arn = kwargs['ossWriteRoleArn']
-        if 'slsProjectArn' in kwargs:
+        if oss_write_role_arn is None:
+            raise TypeError("Missing 'oss_write_role_arn' argument")
+        if sls_project_arn is None and 'slsProjectArn' in kwargs:
             sls_project_arn = kwargs['slsProjectArn']
-        if 'slsWriteRoleArn' in kwargs:
+        if sls_project_arn is None:
+            raise TypeError("Missing 'sls_project_arn' argument")
+        if sls_write_role_arn is None and 'slsWriteRoleArn' in kwargs:
             sls_write_role_arn = kwargs['slsWriteRoleArn']
-        if 'trailName' in kwargs:
+        if sls_write_role_arn is None:
+            raise TypeError("Missing 'sls_write_role_arn' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if trail_name is None and 'trailName' in kwargs:
             trail_name = kwargs['trailName']
-        if 'trailRegion' in kwargs:
+        if trail_name is None:
+            raise TypeError("Missing 'trail_name' argument")
+        if trail_region is None and 'trailRegion' in kwargs:
             trail_region = kwargs['trailRegion']
+        if trail_region is None:
+            raise TypeError("Missing 'trail_region' argument")
 
         _setter("event_rw", event_rw)
         _setter("id", id)
@@ -1775,37 +1981,59 @@ class GetTrailsTrailResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             event_rw: str,
-             id: str,
-             is_organization_trail: bool,
-             oss_bucket_name: str,
-             oss_key_prefix: str,
-             oss_write_role_arn: str,
-             sls_project_arn: str,
-             sls_write_role_arn: str,
-             status: str,
-             trail_name: str,
-             trail_region: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             event_rw: Optional[str] = None,
+             id: Optional[str] = None,
+             is_organization_trail: Optional[bool] = None,
+             oss_bucket_name: Optional[str] = None,
+             oss_key_prefix: Optional[str] = None,
+             oss_write_role_arn: Optional[str] = None,
+             sls_project_arn: Optional[str] = None,
+             sls_write_role_arn: Optional[str] = None,
+             status: Optional[str] = None,
+             trail_name: Optional[str] = None,
+             trail_region: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventRw' in kwargs:
+        if event_rw is None and 'eventRw' in kwargs:
             event_rw = kwargs['eventRw']
-        if 'isOrganizationTrail' in kwargs:
+        if event_rw is None:
+            raise TypeError("Missing 'event_rw' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_organization_trail is None and 'isOrganizationTrail' in kwargs:
             is_organization_trail = kwargs['isOrganizationTrail']
-        if 'ossBucketName' in kwargs:
+        if is_organization_trail is None:
+            raise TypeError("Missing 'is_organization_trail' argument")
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'ossKeyPrefix' in kwargs:
+        if oss_bucket_name is None:
+            raise TypeError("Missing 'oss_bucket_name' argument")
+        if oss_key_prefix is None and 'ossKeyPrefix' in kwargs:
             oss_key_prefix = kwargs['ossKeyPrefix']
-        if 'ossWriteRoleArn' in kwargs:
+        if oss_key_prefix is None:
+            raise TypeError("Missing 'oss_key_prefix' argument")
+        if oss_write_role_arn is None and 'ossWriteRoleArn' in kwargs:
             oss_write_role_arn = kwargs['ossWriteRoleArn']
-        if 'slsProjectArn' in kwargs:
+        if oss_write_role_arn is None:
+            raise TypeError("Missing 'oss_write_role_arn' argument")
+        if sls_project_arn is None and 'slsProjectArn' in kwargs:
             sls_project_arn = kwargs['slsProjectArn']
-        if 'slsWriteRoleArn' in kwargs:
+        if sls_project_arn is None:
+            raise TypeError("Missing 'sls_project_arn' argument")
+        if sls_write_role_arn is None and 'slsWriteRoleArn' in kwargs:
             sls_write_role_arn = kwargs['slsWriteRoleArn']
-        if 'trailName' in kwargs:
+        if sls_write_role_arn is None:
+            raise TypeError("Missing 'sls_write_role_arn' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if trail_name is None and 'trailName' in kwargs:
             trail_name = kwargs['trailName']
-        if 'trailRegion' in kwargs:
+        if trail_name is None:
+            raise TypeError("Missing 'trail_name' argument")
+        if trail_region is None and 'trailRegion' in kwargs:
             trail_region = kwargs['trailRegion']
+        if trail_region is None:
+            raise TypeError("Missing 'trail_region' argument")
 
         _setter("event_rw", event_rw)
         _setter("id", id)

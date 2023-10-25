@@ -54,34 +54,54 @@ class GetDeviceGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             device_active: str,
-             device_count: str,
-             device_online: str,
-             error_message: str,
-             group_desc: str,
-             group_id: str,
-             group_name: str,
-             id: str,
-             success: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             device_active: Optional[str] = None,
+             device_count: Optional[str] = None,
+             device_online: Optional[str] = None,
+             error_message: Optional[str] = None,
+             group_desc: Optional[str] = None,
+             group_id: Optional[str] = None,
+             group_name: Optional[str] = None,
+             id: Optional[str] = None,
+             success: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'deviceActive' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if device_active is None and 'deviceActive' in kwargs:
             device_active = kwargs['deviceActive']
-        if 'deviceCount' in kwargs:
+        if device_active is None:
+            raise TypeError("Missing 'device_active' argument")
+        if device_count is None and 'deviceCount' in kwargs:
             device_count = kwargs['deviceCount']
-        if 'deviceOnline' in kwargs:
+        if device_count is None:
+            raise TypeError("Missing 'device_count' argument")
+        if device_online is None and 'deviceOnline' in kwargs:
             device_online = kwargs['deviceOnline']
-        if 'errorMessage' in kwargs:
+        if device_online is None:
+            raise TypeError("Missing 'device_online' argument")
+        if error_message is None and 'errorMessage' in kwargs:
             error_message = kwargs['errorMessage']
-        if 'groupDesc' in kwargs:
+        if error_message is None:
+            raise TypeError("Missing 'error_message' argument")
+        if group_desc is None and 'groupDesc' in kwargs:
             group_desc = kwargs['groupDesc']
-        if 'groupId' in kwargs:
+        if group_desc is None:
+            raise TypeError("Missing 'group_desc' argument")
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'groupName' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if success is None:
+            raise TypeError("Missing 'success' argument")
 
         _setter("create_time", create_time)
         _setter("device_active", device_active)

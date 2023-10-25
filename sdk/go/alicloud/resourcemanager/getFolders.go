@@ -17,33 +17,6 @@ import (
 // > **NOTE:**  Available in 1.84.0+.
 //
 // > **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := resourcemanager.GetFolders(ctx, &resourcemanager.GetFoldersArgs{
-//				NameRegex: pulumi.StringRef("tftest"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstFolderId", example.Folders[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFolders(ctx *pulumi.Context, args *GetFoldersArgs, opts ...pulumi.InvokeOption) (*GetFoldersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFoldersResult

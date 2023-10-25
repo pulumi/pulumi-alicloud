@@ -66,16 +66,20 @@ class AccessConfigurationPermissionPolicy(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             permission_policy_name: str,
-             permission_policy_type: str,
+             permission_policy_name: Optional[str] = None,
+             permission_policy_type: Optional[str] = None,
              permission_policy_document: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'permissionPolicyName' in kwargs:
+        if permission_policy_name is None and 'permissionPolicyName' in kwargs:
             permission_policy_name = kwargs['permissionPolicyName']
-        if 'permissionPolicyType' in kwargs:
+        if permission_policy_name is None:
+            raise TypeError("Missing 'permission_policy_name' argument")
+        if permission_policy_type is None and 'permissionPolicyType' in kwargs:
             permission_policy_type = kwargs['permissionPolicyType']
-        if 'permissionPolicyDocument' in kwargs:
+        if permission_policy_type is None:
+            raise TypeError("Missing 'permission_policy_type' argument")
+        if permission_policy_document is None and 'permissionPolicyDocument' in kwargs:
             permission_policy_document = kwargs['permissionPolicyDocument']
 
         _setter("permission_policy_name", permission_policy_name)
@@ -146,11 +150,11 @@ class DirectorySamlIdentityProviderConfiguration(dict):
              _setter: Callable[[Any, Any], None],
              encoded_metadata_document: Optional[str] = None,
              sso_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'encodedMetadataDocument' in kwargs:
+        if encoded_metadata_document is None and 'encodedMetadataDocument' in kwargs:
             encoded_metadata_document = kwargs['encodedMetadataDocument']
-        if 'ssoStatus' in kwargs:
+        if sso_status is None and 'ssoStatus' in kwargs:
             sso_status = kwargs['ssoStatus']
 
         if encoded_metadata_document is not None:
@@ -219,39 +223,61 @@ class GetAccessAssignmentsAssignmentResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_configuration_id: str,
-             access_configuration_name: str,
-             directory_id: str,
-             id: str,
-             principal_id: str,
-             principal_name: str,
-             principal_type: str,
-             target_id: str,
-             target_name: str,
-             target_path_name: str,
-             target_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_configuration_id: Optional[str] = None,
+             access_configuration_name: Optional[str] = None,
+             directory_id: Optional[str] = None,
+             id: Optional[str] = None,
+             principal_id: Optional[str] = None,
+             principal_name: Optional[str] = None,
+             principal_type: Optional[str] = None,
+             target_id: Optional[str] = None,
+             target_name: Optional[str] = None,
+             target_path_name: Optional[str] = None,
+             target_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessConfigurationId' in kwargs:
+        if access_configuration_id is None and 'accessConfigurationId' in kwargs:
             access_configuration_id = kwargs['accessConfigurationId']
-        if 'accessConfigurationName' in kwargs:
+        if access_configuration_id is None:
+            raise TypeError("Missing 'access_configuration_id' argument")
+        if access_configuration_name is None and 'accessConfigurationName' in kwargs:
             access_configuration_name = kwargs['accessConfigurationName']
-        if 'directoryId' in kwargs:
+        if access_configuration_name is None:
+            raise TypeError("Missing 'access_configuration_name' argument")
+        if directory_id is None and 'directoryId' in kwargs:
             directory_id = kwargs['directoryId']
-        if 'principalId' in kwargs:
+        if directory_id is None:
+            raise TypeError("Missing 'directory_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if principal_id is None and 'principalId' in kwargs:
             principal_id = kwargs['principalId']
-        if 'principalName' in kwargs:
+        if principal_id is None:
+            raise TypeError("Missing 'principal_id' argument")
+        if principal_name is None and 'principalName' in kwargs:
             principal_name = kwargs['principalName']
-        if 'principalType' in kwargs:
+        if principal_name is None:
+            raise TypeError("Missing 'principal_name' argument")
+        if principal_type is None and 'principalType' in kwargs:
             principal_type = kwargs['principalType']
-        if 'targetId' in kwargs:
+        if principal_type is None:
+            raise TypeError("Missing 'principal_type' argument")
+        if target_id is None and 'targetId' in kwargs:
             target_id = kwargs['targetId']
-        if 'targetName' in kwargs:
+        if target_id is None:
+            raise TypeError("Missing 'target_id' argument")
+        if target_name is None and 'targetName' in kwargs:
             target_name = kwargs['targetName']
-        if 'targetPathName' in kwargs:
+        if target_name is None:
+            raise TypeError("Missing 'target_name' argument")
+        if target_path_name is None and 'targetPathName' in kwargs:
             target_path_name = kwargs['targetPathName']
-        if 'targetType' in kwargs:
+        if target_path_name is None:
+            raise TypeError("Missing 'target_path_name' argument")
+        if target_type is None and 'targetType' in kwargs:
             target_type = kwargs['targetType']
+        if target_type is None:
+            raise TypeError("Missing 'target_type' argument")
 
         _setter("access_configuration_id", access_configuration_id)
         _setter("access_configuration_name", access_configuration_name)
@@ -395,34 +421,54 @@ class GetAccessConfigurationsConfigurationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_configuration_id: str,
-             access_configuration_name: str,
-             create_time: str,
-             description: str,
-             directory_id: str,
-             id: str,
-             permission_policies: Sequence['outputs.GetAccessConfigurationsConfigurationPermissionPolicyResult'],
-             relay_state: str,
-             session_duration: int,
-             status_notifications: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_configuration_id: Optional[str] = None,
+             access_configuration_name: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             directory_id: Optional[str] = None,
+             id: Optional[str] = None,
+             permission_policies: Optional[Sequence['outputs.GetAccessConfigurationsConfigurationPermissionPolicyResult']] = None,
+             relay_state: Optional[str] = None,
+             session_duration: Optional[int] = None,
+             status_notifications: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessConfigurationId' in kwargs:
+        if access_configuration_id is None and 'accessConfigurationId' in kwargs:
             access_configuration_id = kwargs['accessConfigurationId']
-        if 'accessConfigurationName' in kwargs:
+        if access_configuration_id is None:
+            raise TypeError("Missing 'access_configuration_id' argument")
+        if access_configuration_name is None and 'accessConfigurationName' in kwargs:
             access_configuration_name = kwargs['accessConfigurationName']
-        if 'createTime' in kwargs:
+        if access_configuration_name is None:
+            raise TypeError("Missing 'access_configuration_name' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'directoryId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if directory_id is None and 'directoryId' in kwargs:
             directory_id = kwargs['directoryId']
-        if 'permissionPolicies' in kwargs:
+        if directory_id is None:
+            raise TypeError("Missing 'directory_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if permission_policies is None and 'permissionPolicies' in kwargs:
             permission_policies = kwargs['permissionPolicies']
-        if 'relayState' in kwargs:
+        if permission_policies is None:
+            raise TypeError("Missing 'permission_policies' argument")
+        if relay_state is None and 'relayState' in kwargs:
             relay_state = kwargs['relayState']
-        if 'sessionDuration' in kwargs:
+        if relay_state is None:
+            raise TypeError("Missing 'relay_state' argument")
+        if session_duration is None and 'sessionDuration' in kwargs:
             session_duration = kwargs['sessionDuration']
-        if 'statusNotifications' in kwargs:
+        if session_duration is None:
+            raise TypeError("Missing 'session_duration' argument")
+        if status_notifications is None and 'statusNotifications' in kwargs:
             status_notifications = kwargs['statusNotifications']
+        if status_notifications is None:
+            raise TypeError("Missing 'status_notifications' argument")
 
         _setter("access_configuration_id", access_configuration_id)
         _setter("access_configuration_name", access_configuration_name)
@@ -539,20 +585,28 @@ class GetAccessConfigurationsConfigurationPermissionPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             add_time: str,
-             permission_policy_document: str,
-             permission_policy_name: str,
-             permission_policy_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             add_time: Optional[str] = None,
+             permission_policy_document: Optional[str] = None,
+             permission_policy_name: Optional[str] = None,
+             permission_policy_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addTime' in kwargs:
+        if add_time is None and 'addTime' in kwargs:
             add_time = kwargs['addTime']
-        if 'permissionPolicyDocument' in kwargs:
+        if add_time is None:
+            raise TypeError("Missing 'add_time' argument")
+        if permission_policy_document is None and 'permissionPolicyDocument' in kwargs:
             permission_policy_document = kwargs['permissionPolicyDocument']
-        if 'permissionPolicyName' in kwargs:
+        if permission_policy_document is None:
+            raise TypeError("Missing 'permission_policy_document' argument")
+        if permission_policy_name is None and 'permissionPolicyName' in kwargs:
             permission_policy_name = kwargs['permissionPolicyName']
-        if 'permissionPolicyType' in kwargs:
+        if permission_policy_name is None:
+            raise TypeError("Missing 'permission_policy_name' argument")
+        if permission_policy_type is None and 'permissionPolicyType' in kwargs:
             permission_policy_type = kwargs['permissionPolicyType']
+        if permission_policy_type is None:
+            raise TypeError("Missing 'permission_policy_type' argument")
 
         _setter("add_time", add_time)
         _setter("permission_policy_document", permission_policy_document)
@@ -630,29 +684,47 @@ class GetDirectoriesDirectoryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             directory_id: str,
-             directory_name: str,
-             id: str,
-             mfa_authentication_status: str,
-             region: str,
-             saml_identity_provider_configurations: Sequence['outputs.GetDirectoriesDirectorySamlIdentityProviderConfigurationResult'],
-             scim_synchronization_status: str,
-             tasks: Sequence['outputs.GetDirectoriesDirectoryTaskResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             directory_id: Optional[str] = None,
+             directory_name: Optional[str] = None,
+             id: Optional[str] = None,
+             mfa_authentication_status: Optional[str] = None,
+             region: Optional[str] = None,
+             saml_identity_provider_configurations: Optional[Sequence['outputs.GetDirectoriesDirectorySamlIdentityProviderConfigurationResult']] = None,
+             scim_synchronization_status: Optional[str] = None,
+             tasks: Optional[Sequence['outputs.GetDirectoriesDirectoryTaskResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'directoryId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if directory_id is None and 'directoryId' in kwargs:
             directory_id = kwargs['directoryId']
-        if 'directoryName' in kwargs:
+        if directory_id is None:
+            raise TypeError("Missing 'directory_id' argument")
+        if directory_name is None and 'directoryName' in kwargs:
             directory_name = kwargs['directoryName']
-        if 'mfaAuthenticationStatus' in kwargs:
+        if directory_name is None:
+            raise TypeError("Missing 'directory_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if mfa_authentication_status is None and 'mfaAuthenticationStatus' in kwargs:
             mfa_authentication_status = kwargs['mfaAuthenticationStatus']
-        if 'samlIdentityProviderConfigurations' in kwargs:
+        if mfa_authentication_status is None:
+            raise TypeError("Missing 'mfa_authentication_status' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if saml_identity_provider_configurations is None and 'samlIdentityProviderConfigurations' in kwargs:
             saml_identity_provider_configurations = kwargs['samlIdentityProviderConfigurations']
-        if 'scimSynchronizationStatus' in kwargs:
+        if saml_identity_provider_configurations is None:
+            raise TypeError("Missing 'saml_identity_provider_configurations' argument")
+        if scim_synchronization_status is None and 'scimSynchronizationStatus' in kwargs:
             scim_synchronization_status = kwargs['scimSynchronizationStatus']
+        if scim_synchronization_status is None:
+            raise TypeError("Missing 'scim_synchronization_status' argument")
+        if tasks is None:
+            raise TypeError("Missing 'tasks' argument")
 
         _setter("create_time", create_time)
         _setter("directory_id", directory_id)
@@ -763,23 +835,33 @@ class GetDirectoriesDirectorySamlIdentityProviderConfigurationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             encoded_metadata_document: str,
-             entity_id: str,
-             login_url: str,
-             sso_status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             encoded_metadata_document: Optional[str] = None,
+             entity_id: Optional[str] = None,
+             login_url: Optional[str] = None,
+             sso_status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'encodedMetadataDocument' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if encoded_metadata_document is None and 'encodedMetadataDocument' in kwargs:
             encoded_metadata_document = kwargs['encodedMetadataDocument']
-        if 'entityId' in kwargs:
+        if encoded_metadata_document is None:
+            raise TypeError("Missing 'encoded_metadata_document' argument")
+        if entity_id is None and 'entityId' in kwargs:
             entity_id = kwargs['entityId']
-        if 'loginUrl' in kwargs:
+        if entity_id is None:
+            raise TypeError("Missing 'entity_id' argument")
+        if login_url is None and 'loginUrl' in kwargs:
             login_url = kwargs['loginUrl']
-        if 'ssoStatus' in kwargs:
+        if login_url is None:
+            raise TypeError("Missing 'login_url' argument")
+        if sso_status is None and 'ssoStatus' in kwargs:
             sso_status = kwargs['ssoStatus']
+        if sso_status is None:
+            raise TypeError("Missing 'sso_status' argument")
 
         _setter("create_time", create_time)
         _setter("encoded_metadata_document", encoded_metadata_document)
@@ -884,51 +966,81 @@ class GetDirectoriesDirectoryTaskResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_configuration_id: str,
-             access_configuration_name: str,
-             end_time: str,
-             failure_reason: str,
-             principal_id: str,
-             principal_name: str,
-             principal_type: str,
-             start_time: str,
-             status: str,
-             target_id: str,
-             target_name: str,
-             target_path: str,
-             target_type: str,
-             task_id: str,
-             task_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_configuration_id: Optional[str] = None,
+             access_configuration_name: Optional[str] = None,
+             end_time: Optional[str] = None,
+             failure_reason: Optional[str] = None,
+             principal_id: Optional[str] = None,
+             principal_name: Optional[str] = None,
+             principal_type: Optional[str] = None,
+             start_time: Optional[str] = None,
+             status: Optional[str] = None,
+             target_id: Optional[str] = None,
+             target_name: Optional[str] = None,
+             target_path: Optional[str] = None,
+             target_type: Optional[str] = None,
+             task_id: Optional[str] = None,
+             task_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessConfigurationId' in kwargs:
+        if access_configuration_id is None and 'accessConfigurationId' in kwargs:
             access_configuration_id = kwargs['accessConfigurationId']
-        if 'accessConfigurationName' in kwargs:
+        if access_configuration_id is None:
+            raise TypeError("Missing 'access_configuration_id' argument")
+        if access_configuration_name is None and 'accessConfigurationName' in kwargs:
             access_configuration_name = kwargs['accessConfigurationName']
-        if 'endTime' in kwargs:
+        if access_configuration_name is None:
+            raise TypeError("Missing 'access_configuration_name' argument")
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'failureReason' in kwargs:
+        if end_time is None:
+            raise TypeError("Missing 'end_time' argument")
+        if failure_reason is None and 'failureReason' in kwargs:
             failure_reason = kwargs['failureReason']
-        if 'principalId' in kwargs:
+        if failure_reason is None:
+            raise TypeError("Missing 'failure_reason' argument")
+        if principal_id is None and 'principalId' in kwargs:
             principal_id = kwargs['principalId']
-        if 'principalName' in kwargs:
+        if principal_id is None:
+            raise TypeError("Missing 'principal_id' argument")
+        if principal_name is None and 'principalName' in kwargs:
             principal_name = kwargs['principalName']
-        if 'principalType' in kwargs:
+        if principal_name is None:
+            raise TypeError("Missing 'principal_name' argument")
+        if principal_type is None and 'principalType' in kwargs:
             principal_type = kwargs['principalType']
-        if 'startTime' in kwargs:
+        if principal_type is None:
+            raise TypeError("Missing 'principal_type' argument")
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'targetId' in kwargs:
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if target_id is None and 'targetId' in kwargs:
             target_id = kwargs['targetId']
-        if 'targetName' in kwargs:
+        if target_id is None:
+            raise TypeError("Missing 'target_id' argument")
+        if target_name is None and 'targetName' in kwargs:
             target_name = kwargs['targetName']
-        if 'targetPath' in kwargs:
+        if target_name is None:
+            raise TypeError("Missing 'target_name' argument")
+        if target_path is None and 'targetPath' in kwargs:
             target_path = kwargs['targetPath']
-        if 'targetType' in kwargs:
+        if target_path is None:
+            raise TypeError("Missing 'target_path' argument")
+        if target_type is None and 'targetType' in kwargs:
             target_type = kwargs['targetType']
-        if 'taskId' in kwargs:
+        if target_type is None:
+            raise TypeError("Missing 'target_type' argument")
+        if task_id is None and 'taskId' in kwargs:
             task_id = kwargs['taskId']
-        if 'taskType' in kwargs:
+        if task_id is None:
+            raise TypeError("Missing 'task_id' argument")
+        if task_type is None and 'taskType' in kwargs:
             task_type = kwargs['taskType']
+        if task_type is None:
+            raise TypeError("Missing 'task_type' argument")
 
         _setter("access_configuration_id", access_configuration_id)
         _setter("access_configuration_name", access_configuration_name)
@@ -1099,25 +1211,39 @@ class GetGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             description: str,
-             directory_id: str,
-             group_id: str,
-             group_name: str,
-             id: str,
-             provision_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             directory_id: Optional[str] = None,
+             group_id: Optional[str] = None,
+             group_name: Optional[str] = None,
+             id: Optional[str] = None,
+             provision_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'directoryId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if directory_id is None and 'directoryId' in kwargs:
             directory_id = kwargs['directoryId']
-        if 'groupId' in kwargs:
+        if directory_id is None:
+            raise TypeError("Missing 'directory_id' argument")
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'groupName' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'provisionType' in kwargs:
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if provision_type is None and 'provisionType' in kwargs:
             provision_type = kwargs['provisionType']
+        if provision_type is None:
+            raise TypeError("Missing 'provision_type' argument")
 
         _setter("create_time", create_time)
         _setter("description", description)
@@ -1219,28 +1345,44 @@ class GetScimServerCredentialsCredentialResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             credential_id: str,
-             credential_secret: str,
-             credential_type: str,
-             directory_id: str,
-             expire_time: str,
-             id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             credential_id: Optional[str] = None,
+             credential_secret: Optional[str] = None,
+             credential_type: Optional[str] = None,
+             directory_id: Optional[str] = None,
+             expire_time: Optional[str] = None,
+             id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'credentialId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if credential_id is None and 'credentialId' in kwargs:
             credential_id = kwargs['credentialId']
-        if 'credentialSecret' in kwargs:
+        if credential_id is None:
+            raise TypeError("Missing 'credential_id' argument")
+        if credential_secret is None and 'credentialSecret' in kwargs:
             credential_secret = kwargs['credentialSecret']
-        if 'credentialType' in kwargs:
+        if credential_secret is None:
+            raise TypeError("Missing 'credential_secret' argument")
+        if credential_type is None and 'credentialType' in kwargs:
             credential_type = kwargs['credentialType']
-        if 'directoryId' in kwargs:
+        if credential_type is None:
+            raise TypeError("Missing 'credential_type' argument")
+        if directory_id is None and 'directoryId' in kwargs:
             directory_id = kwargs['directoryId']
-        if 'expireTime' in kwargs:
+        if directory_id is None:
+            raise TypeError("Missing 'directory_id' argument")
+        if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
+        if expire_time is None:
+            raise TypeError("Missing 'expire_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("create_time", create_time)
         _setter("credential_id", credential_id)
@@ -1366,39 +1508,65 @@ class GetUsersUserResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             description: str,
-             directory_id: str,
-             display_name: str,
-             email: str,
-             first_name: str,
-             id: str,
-             last_name: str,
-             mfa_devices: Sequence['outputs.GetUsersUserMfaDeviceResult'],
-             provision_type: str,
-             status: str,
-             user_id: str,
-             user_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             directory_id: Optional[str] = None,
+             display_name: Optional[str] = None,
+             email: Optional[str] = None,
+             first_name: Optional[str] = None,
+             id: Optional[str] = None,
+             last_name: Optional[str] = None,
+             mfa_devices: Optional[Sequence['outputs.GetUsersUserMfaDeviceResult']] = None,
+             provision_type: Optional[str] = None,
+             status: Optional[str] = None,
+             user_id: Optional[str] = None,
+             user_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'directoryId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if directory_id is None and 'directoryId' in kwargs:
             directory_id = kwargs['directoryId']
-        if 'displayName' in kwargs:
+        if directory_id is None:
+            raise TypeError("Missing 'directory_id' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'firstName' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if first_name is None and 'firstName' in kwargs:
             first_name = kwargs['firstName']
-        if 'lastName' in kwargs:
+        if first_name is None:
+            raise TypeError("Missing 'first_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if last_name is None and 'lastName' in kwargs:
             last_name = kwargs['lastName']
-        if 'mfaDevices' in kwargs:
+        if last_name is None:
+            raise TypeError("Missing 'last_name' argument")
+        if mfa_devices is None and 'mfaDevices' in kwargs:
             mfa_devices = kwargs['mfaDevices']
-        if 'provisionType' in kwargs:
+        if mfa_devices is None:
+            raise TypeError("Missing 'mfa_devices' argument")
+        if provision_type is None and 'provisionType' in kwargs:
             provision_type = kwargs['provisionType']
-        if 'userId' in kwargs:
+        if provision_type is None:
+            raise TypeError("Missing 'provision_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
-        if 'userName' in kwargs:
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
 
         _setter("create_time", create_time)
         _setter("description", description)
@@ -1542,20 +1710,28 @@ class GetUsersUserMfaDeviceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             device_id: str,
-             device_name: str,
-             device_type: str,
-             effective_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             device_id: Optional[str] = None,
+             device_name: Optional[str] = None,
+             device_type: Optional[str] = None,
+             effective_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deviceId' in kwargs:
+        if device_id is None and 'deviceId' in kwargs:
             device_id = kwargs['deviceId']
-        if 'deviceName' in kwargs:
+        if device_id is None:
+            raise TypeError("Missing 'device_id' argument")
+        if device_name is None and 'deviceName' in kwargs:
             device_name = kwargs['deviceName']
-        if 'deviceType' in kwargs:
+        if device_name is None:
+            raise TypeError("Missing 'device_name' argument")
+        if device_type is None and 'deviceType' in kwargs:
             device_type = kwargs['deviceType']
-        if 'effectiveTime' in kwargs:
+        if device_type is None:
+            raise TypeError("Missing 'device_type' argument")
+        if effective_time is None and 'effectiveTime' in kwargs:
             effective_time = kwargs['effectiveTime']
+        if effective_time is None:
+            raise TypeError("Missing 'effective_time' argument")
 
         _setter("device_id", device_id)
         _setter("device_name", device_name)

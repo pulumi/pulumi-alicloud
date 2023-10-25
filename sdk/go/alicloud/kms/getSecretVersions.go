@@ -15,34 +15,6 @@ import (
 // This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in v1.88.0+.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			kmsSecretVersionsDs, err := kms.GetSecretVersions(ctx, &kms.GetSecretVersionsArgs{
-//				EnableDetails: pulumi.BoolRef(true),
-//				SecretName:    "secret_name",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstSecretData", kmsSecretVersionsDs.Versions[0].SecretData)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetSecretVersions(ctx *pulumi.Context, args *GetSecretVersionsArgs, opts ...pulumi.InvokeOption) (*GetSecretVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSecretVersionsResult

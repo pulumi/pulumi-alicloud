@@ -11,50 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.134.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
- *
- * const defaultDomainNew = new alicloud.cdn.DomainNew("defaultDomainNew", {
- *     scope: "overseas",
- *     domainName: "mycdndomain.alicloud-provider.cn",
- *     cdnType: "web",
- *     sources: [{
- *         type: "ipaddr",
- *         content: "1.1.3.1",
- *         priority: 20,
- *         port: 80,
- *         weight: 15,
- *     }],
- * });
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
- *     max: 99999,
- *     min: 10000,
- * });
- * const defaultProject = new alicloud.log.Project("defaultProject", {description: "terraform-example"});
- * const defaultStore = new alicloud.log.Store("defaultStore", {
- *     project: defaultProject.name,
- *     shardCount: 3,
- *     autoSplit: true,
- *     maxSplitShardCount: 60,
- *     appendMeta: true,
- * });
- * const defaultRegions = alicloud.getRegions({
- *     current: true,
- * });
- * const defaultRealTimeLogDelivery = new alicloud.cdn.RealTimeLogDelivery("defaultRealTimeLogDelivery", {
- *     domain: defaultDomainNew.domainName,
- *     logstore: defaultProject.name,
- *     project: defaultStore.name,
- *     slsRegion: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
- * });
- * ```
- *
  * ## Import
  *
  * CDN Real Time Log Delivery can be imported using the id, e.g.

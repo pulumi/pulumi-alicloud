@@ -35,17 +35,21 @@ class PolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_document: pulumi.Input[str],
-             policy_name: pulumi.Input[str],
+             policy_document: Optional[pulumi.Input[str]] = None,
+             policy_name: Optional[pulumi.Input[str]] = None,
              default_version: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'policyDocument' in kwargs:
+        if policy_document is None and 'policyDocument' in kwargs:
             policy_document = kwargs['policyDocument']
-        if 'policyName' in kwargs:
+        if policy_document is None:
+            raise TypeError("Missing 'policy_document' argument")
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'defaultVersion' in kwargs:
+        if policy_name is None:
+            raise TypeError("Missing 'policy_name' argument")
+        if default_version is None and 'defaultVersion' in kwargs:
             default_version = kwargs['defaultVersion']
 
         _setter("policy_document", policy_document)
@@ -142,15 +146,15 @@ class _PolicyState:
              policy_document: Optional[pulumi.Input[str]] = None,
              policy_name: Optional[pulumi.Input[str]] = None,
              policy_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultVersion' in kwargs:
+        if default_version is None and 'defaultVersion' in kwargs:
             default_version = kwargs['defaultVersion']
-        if 'policyDocument' in kwargs:
+        if policy_document is None and 'policyDocument' in kwargs:
             policy_document = kwargs['policyDocument']
-        if 'policyName' in kwargs:
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'policyType' in kwargs:
+        if policy_type is None and 'policyType' in kwargs:
             policy_type = kwargs['policyType']
 
         if default_version is not None:
@@ -247,31 +251,6 @@ class Policy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.83.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        example = alicloud.resourcemanager.Policy("example",
-            policy_name=name,
-            policy_document=\"\"\"		{
-        			"Statement": [{
-        				"Action": ["oss:*"],
-        				"Effect": "Allow",
-        				"Resource": ["acs:oss:*:*:*"]
-        			}],
-        			"Version": "1"
-        		}
-        \"\"\")
-        ```
-
         ## Import
 
         Resource Manager Policy can be imported using the id, e.g.
@@ -298,31 +277,6 @@ class Policy(pulumi.CustomResource):
         For information about Resource Manager Policy and how to use it, see [What is Resource Manager Policy](https://www.alibabacloud.com/help/en/doc-detail/93732.htm).
 
         > **NOTE:** Available since v1.83.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        example = alicloud.resourcemanager.Policy("example",
-            policy_name=name,
-            policy_document=\"\"\"		{
-        			"Statement": [{
-        				"Action": ["oss:*"],
-        				"Effect": "Allow",
-        				"Resource": ["acs:oss:*:*:*"]
-        			}],
-        			"Version": "1"
-        		}
-        \"\"\")
-        ```
 
         ## Import
 

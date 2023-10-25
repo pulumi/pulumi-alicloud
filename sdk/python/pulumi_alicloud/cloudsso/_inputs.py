@@ -34,16 +34,20 @@ class AccessConfigurationPermissionPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             permission_policy_name: pulumi.Input[str],
-             permission_policy_type: pulumi.Input[str],
+             permission_policy_name: Optional[pulumi.Input[str]] = None,
+             permission_policy_type: Optional[pulumi.Input[str]] = None,
              permission_policy_document: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'permissionPolicyName' in kwargs:
+        if permission_policy_name is None and 'permissionPolicyName' in kwargs:
             permission_policy_name = kwargs['permissionPolicyName']
-        if 'permissionPolicyType' in kwargs:
+        if permission_policy_name is None:
+            raise TypeError("Missing 'permission_policy_name' argument")
+        if permission_policy_type is None and 'permissionPolicyType' in kwargs:
             permission_policy_type = kwargs['permissionPolicyType']
-        if 'permissionPolicyDocument' in kwargs:
+        if permission_policy_type is None:
+            raise TypeError("Missing 'permission_policy_type' argument")
+        if permission_policy_document is None and 'permissionPolicyDocument' in kwargs:
             permission_policy_document = kwargs['permissionPolicyDocument']
 
         _setter("permission_policy_name", permission_policy_name)
@@ -107,11 +111,11 @@ class DirectorySamlIdentityProviderConfigurationArgs:
              _setter: Callable[[Any, Any], None],
              encoded_metadata_document: Optional[pulumi.Input[str]] = None,
              sso_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'encodedMetadataDocument' in kwargs:
+        if encoded_metadata_document is None and 'encodedMetadataDocument' in kwargs:
             encoded_metadata_document = kwargs['encodedMetadataDocument']
-        if 'ssoStatus' in kwargs:
+        if sso_status is None and 'ssoStatus' in kwargs:
             sso_status = kwargs['ssoStatus']
 
         if encoded_metadata_document is not None:

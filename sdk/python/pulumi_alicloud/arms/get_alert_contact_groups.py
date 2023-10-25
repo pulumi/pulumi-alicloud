@@ -129,18 +129,6 @@ def get_alert_contact_groups(alert_contact_group_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.131.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    name_regex = alicloud.arms.get_alert_contact_groups(name_regex="^my-AlertContactGroup")
-    pulumi.export("armsAlertContactGroupId", name_regex.groups[0].id)
-    ```
-
 
     :param str alert_contact_group_name: The name of the resource.
     :param str contact_id: The contact id.
@@ -183,18 +171,6 @@ def get_alert_contact_groups_output(alert_contact_group_name: Optional[pulumi.In
     This data source provides the Arms Alert Contact Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.131.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    name_regex = alicloud.arms.get_alert_contact_groups(name_regex="^my-AlertContactGroup")
-    pulumi.export("armsAlertContactGroupId", name_regex.groups[0].id)
-    ```
 
 
     :param str alert_contact_group_name: The name of the resource.

@@ -16,35 +16,6 @@ namespace Pulumi.AliCloud.GraphDatabase
     /// 
     /// &gt; **NOTE:** Available since v1.136.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var example = new AliCloud.GraphDatabase.DbInstance("example", new()
-    ///     {
-    ///         DbNodeClass = "gdb.r.2xlarge",
-    ///         DbInstanceNetworkType = "vpc",
-    ///         DbVersion = "1.0",
-    ///         DbInstanceCategory = "HA",
-    ///         DbInstanceStorageType = "cloud_ssd",
-    ///         DbNodeStorage = 50,
-    ///         PaymentType = "PayAsYouGo",
-    ///         DbInstanceDescription = name,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Graph Database Db Instance can be imported using the id, e.g.

@@ -11,63 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.163.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
- *     nameRegex: "default",
- * });
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
- *     mostRecent: true,
- *     owners: "system",
- * });
- * const defaultInstanceTypes = defaultImages.then(defaultImages => alicloud.ecs.getInstanceTypes({
- *     imageId: defaultImages.ids?.[0],
- * }));
- * const defaultAccount = alicloud.getAccount({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: "terraform-example",
- *     cidrBlock: "172.17.3.0/24",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vswitchName: "terraform-example",
- *     cidrBlock: "172.17.3.0/24",
- *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- * });
- * const defaultEcsImagePipeline = new alicloud.ecs.EcsImagePipeline("defaultEcsImagePipeline", {
- *     addAccounts: [defaultAccount.then(defaultAccount => defaultAccount.id)],
- *     baseImage: defaultImages.then(defaultImages => defaultImages.ids?.[0]),
- *     baseImageType: "IMAGE",
- *     buildContent: "RUN yum update -y",
- *     deleteInstanceOnFailure: false,
- *     imageName: "terraform-example",
- *     description: "terraform-example",
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.ids?.[0]),
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
- *     internetMaxBandwidthOut: 20,
- *     systemDiskSize: 40,
- *     toRegionIds: [
- *         "cn-qingdao",
- *         "cn-zhangjiakou",
- *     ],
- *     vswitchId: defaultSwitch.id,
- *     tags: {
- *         Created: "TF",
- *         For: "Acceptance-test",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * ECS Image Pipeline can be imported using the id, e.g.

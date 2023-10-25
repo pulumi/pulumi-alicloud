@@ -13,26 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** The Data Security Center Instance is not support in the international site.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.sddp.Instance("default", {
- *     dataphin: "yes",
- *     paymentType: "Subscription",
- *     period: 1,
- *     sdCbool: "yes",
- *     sdc: "3",
- *     sddpVersion: "version_company",
- *     udCbool: "yes",
- *     udc: "2000",
- * });
- * ```
- *
  * ## Import
  *
  * Data Security Center Instance can be imported using the id, e.g.

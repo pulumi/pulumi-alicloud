@@ -16,29 +16,6 @@ namespace Pulumi.AliCloud.Dms
     /// 
     /// &gt; **NOTE:** Available in v1.195.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Dms.EnterpriseProxyAccess("default", new()
-    ///     {
-    ///         IndepAccount = "dmstest",
-    ///         IndepPassword = "PASSWORD-DEMO",
-    ///         ProxyId = "1881",
-    ///         UserId = "104442",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// DMS Enterprise Proxy Access can be imported using the id, e.g.

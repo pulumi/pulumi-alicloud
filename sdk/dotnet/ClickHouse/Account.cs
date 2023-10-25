@@ -16,64 +16,6 @@ namespace Pulumi.AliCloud.ClickHouse
     /// 
     /// &gt; **NOTE:** Available since v1.134.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultRegions = AliCloud.ClickHouse.GetRegions.Invoke(new()
-    ///     {
-    ///         Current = true,
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "10.4.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VswitchName = name,
-    ///         CidrBlock = "10.4.0.0/24",
-    ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.ZoneIds[0]?.ZoneId),
-    ///     });
-    /// 
-    ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new()
-    ///     {
-    ///         DbClusterVersion = "22.8.5.29",
-    ///         Category = "Basic",
-    ///         DbClusterClass = "S8",
-    ///         DbClusterNetworkType = "vpc",
-    ///         DbNodeGroupCount = 1,
-    ///         PaymentType = "PayAsYouGo",
-    ///         DbNodeStorage = "500",
-    ///         StorageType = "cloud_essd",
-    ///         VswitchId = defaultSwitch.Id,
-    ///         VpcId = defaultNetwork.Id,
-    ///     });
-    /// 
-    ///     var defaultAccount = new AliCloud.ClickHouse.Account("defaultAccount", new()
-    ///     {
-    ///         DbClusterId = defaultDbCluster.Id,
-    ///         AccountDescription = "tf-example-description",
-    ///         AccountName = "examplename",
-    ///         AccountPassword = "Example1234",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Click House Account can be imported using the id, e.g.

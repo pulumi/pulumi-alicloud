@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.182.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.vpc.getPrefixLists({});
- * export const vpcPrefixListId1 = ids.then(ids => ids.lists?.[0]?.id);
- * const nameRegex = alicloud.vpc.getPrefixLists({
- *     nameRegex: "^my-PrefixList",
- * });
- * export const vpcPrefixListId2 = nameRegex.then(nameRegex => nameRegex.lists?.[0]?.id);
- * ```
  */
 export function getPrefixLists(args?: GetPrefixListsArgs, opts?: pulumi.InvokeOptions): Promise<GetPrefixListsResult> {
     args = args || {};
@@ -86,22 +70,6 @@ export interface GetPrefixListsResult {
  * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.182.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.vpc.getPrefixLists({});
- * export const vpcPrefixListId1 = ids.then(ids => ids.lists?.[0]?.id);
- * const nameRegex = alicloud.vpc.getPrefixLists({
- *     nameRegex: "^my-PrefixList",
- * });
- * export const vpcPrefixListId2 = nameRegex.then(nameRegex => nameRegex.lists?.[0]?.id);
- * ```
  */
 export function getPrefixListsOutput(args?: GetPrefixListsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrefixListsResult> {
     return pulumi.output(args).apply((a: any) => getPrefixLists(a, opts))

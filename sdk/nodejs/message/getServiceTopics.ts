@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Message Notification Service Topics of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.188.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.message.getServiceTopics({
- *     ids: ["example_id"],
- * });
- * export const topicId1 = ids.then(ids => ids.topics?.[0]?.id);
- * const name = alicloud.message.getServiceTopics({
- *     topicName: "tf-example",
- * });
- * export const topicId2 = name.then(name => name.topics?.[0]?.id);
- * ```
  */
 export function getServiceTopics(args?: GetServiceTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceTopicsResult> {
     args = args || {};
@@ -95,22 +79,6 @@ export interface GetServiceTopicsResult {
  * This data source provides the Message Notification Service Topics of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.188.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.message.getServiceTopics({
- *     ids: ["example_id"],
- * });
- * export const topicId1 = ids.then(ids => ids.topics?.[0]?.id);
- * const name = alicloud.message.getServiceTopics({
- *     topicName: "tf-example",
- * });
- * export const topicId2 = name.then(name => name.topics?.[0]?.id);
- * ```
  */
 export function getServiceTopicsOutput(args?: GetServiceTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceTopicsResult> {
     return pulumi.output(args).apply((a: any) => getServiceTopics(a, opts))

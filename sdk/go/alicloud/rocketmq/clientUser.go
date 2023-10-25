@@ -21,49 +21,6 @@ import (
 //
 // > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			sagId := "sag-9bifkfaz4fg***"
-//			if param := cfg.Get("sagId"); param != "" {
-//				sagId = param
-//			}
-//			_, err := rocketmq.NewClientUser(ctx, "default", &rocketmq.ClientUserArgs{
-//				SagId:     pulumi.String(sagId),
-//				Bandwidth: pulumi.Int(20),
-//				UserMail:  pulumi.String("tf-example@abc.com"),
-//				UserName:  pulumi.String(name),
-//				Password:  pulumi.String("example1234"),
-//				ClientIp:  pulumi.String("192.1.10.0"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // The Sag ClientUser can be imported using the name, e.g.

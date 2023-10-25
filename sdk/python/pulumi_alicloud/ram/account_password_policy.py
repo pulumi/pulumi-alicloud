@@ -59,25 +59,25 @@ class AccountPasswordPolicyArgs:
              require_numbers: Optional[pulumi.Input[bool]] = None,
              require_symbols: Optional[pulumi.Input[bool]] = None,
              require_uppercase_characters: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'hardExpiry' in kwargs:
+        if hard_expiry is None and 'hardExpiry' in kwargs:
             hard_expiry = kwargs['hardExpiry']
-        if 'maxLoginAttempts' in kwargs:
+        if max_login_attempts is None and 'maxLoginAttempts' in kwargs:
             max_login_attempts = kwargs['maxLoginAttempts']
-        if 'maxPasswordAge' in kwargs:
+        if max_password_age is None and 'maxPasswordAge' in kwargs:
             max_password_age = kwargs['maxPasswordAge']
-        if 'minimumPasswordLength' in kwargs:
+        if minimum_password_length is None and 'minimumPasswordLength' in kwargs:
             minimum_password_length = kwargs['minimumPasswordLength']
-        if 'passwordReusePrevention' in kwargs:
+        if password_reuse_prevention is None and 'passwordReusePrevention' in kwargs:
             password_reuse_prevention = kwargs['passwordReusePrevention']
-        if 'requireLowercaseCharacters' in kwargs:
+        if require_lowercase_characters is None and 'requireLowercaseCharacters' in kwargs:
             require_lowercase_characters = kwargs['requireLowercaseCharacters']
-        if 'requireNumbers' in kwargs:
+        if require_numbers is None and 'requireNumbers' in kwargs:
             require_numbers = kwargs['requireNumbers']
-        if 'requireSymbols' in kwargs:
+        if require_symbols is None and 'requireSymbols' in kwargs:
             require_symbols = kwargs['requireSymbols']
-        if 'requireUppercaseCharacters' in kwargs:
+        if require_uppercase_characters is None and 'requireUppercaseCharacters' in kwargs:
             require_uppercase_characters = kwargs['requireUppercaseCharacters']
 
         if hard_expiry is not None:
@@ -256,25 +256,25 @@ class _AccountPasswordPolicyState:
              require_numbers: Optional[pulumi.Input[bool]] = None,
              require_symbols: Optional[pulumi.Input[bool]] = None,
              require_uppercase_characters: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'hardExpiry' in kwargs:
+        if hard_expiry is None and 'hardExpiry' in kwargs:
             hard_expiry = kwargs['hardExpiry']
-        if 'maxLoginAttempts' in kwargs:
+        if max_login_attempts is None and 'maxLoginAttempts' in kwargs:
             max_login_attempts = kwargs['maxLoginAttempts']
-        if 'maxPasswordAge' in kwargs:
+        if max_password_age is None and 'maxPasswordAge' in kwargs:
             max_password_age = kwargs['maxPasswordAge']
-        if 'minimumPasswordLength' in kwargs:
+        if minimum_password_length is None and 'minimumPasswordLength' in kwargs:
             minimum_password_length = kwargs['minimumPasswordLength']
-        if 'passwordReusePrevention' in kwargs:
+        if password_reuse_prevention is None and 'passwordReusePrevention' in kwargs:
             password_reuse_prevention = kwargs['passwordReusePrevention']
-        if 'requireLowercaseCharacters' in kwargs:
+        if require_lowercase_characters is None and 'requireLowercaseCharacters' in kwargs:
             require_lowercase_characters = kwargs['requireLowercaseCharacters']
-        if 'requireNumbers' in kwargs:
+        if require_numbers is None and 'requireNumbers' in kwargs:
             require_numbers = kwargs['requireNumbers']
-        if 'requireSymbols' in kwargs:
+        if require_symbols is None and 'requireSymbols' in kwargs:
             require_symbols = kwargs['requireSymbols']
-        if 'requireUppercaseCharacters' in kwargs:
+        if require_uppercase_characters is None and 'requireUppercaseCharacters' in kwargs:
             require_uppercase_characters = kwargs['requireUppercaseCharacters']
 
         if hard_expiry is not None:
@@ -421,34 +421,6 @@ class AccountPasswordPolicy(pulumi.CustomResource):
                  require_uppercase_characters: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Empty resource sets defaults values for every property.
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ram.AccountPasswordPolicy("default")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        corporate = alicloud.ram.AccountPasswordPolicy("corporate",
-            hard_expiry=True,
-            max_login_attempts=3,
-            max_password_age=12,
-            minimum_password_length=9,
-            password_reuse_prevention=5,
-            require_lowercase_characters=False,
-            require_numbers=False,
-            require_symbols=False,
-            require_uppercase_characters=False)
-        ```
-        For not specified values sets defaults.
-
         ## Import
 
         RAM account password policy can be imported using the `id`, e.g. bash
@@ -476,34 +448,6 @@ class AccountPasswordPolicy(pulumi.CustomResource):
                  args: Optional[AccountPasswordPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Empty resource sets defaults values for every property.
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ram.AccountPasswordPolicy("default")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        corporate = alicloud.ram.AccountPasswordPolicy("corporate",
-            hard_expiry=True,
-            max_login_attempts=3,
-            max_password_age=12,
-            minimum_password_length=9,
-            password_reuse_prevention=5,
-            require_lowercase_characters=False,
-            require_numbers=False,
-            require_symbols=False,
-            require_uppercase_characters=False)
-        ```
-        For not specified values sets defaults.
-
         ## Import
 
         RAM account password policy can be imported using the `id`, e.g. bash

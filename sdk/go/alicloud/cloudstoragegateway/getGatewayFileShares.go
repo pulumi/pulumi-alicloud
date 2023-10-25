@@ -15,47 +15,6 @@ import (
 // This data source provides the Cloud Storage Gateway Gateway File Shares of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.144.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := cloudstoragegateway.GetGatewayFileShares(ctx, &cloudstoragegateway.GetGatewayFileSharesArgs{
-//				GatewayId: "example_value",
-//				Ids: []string{
-//					"example_value-1",
-//					"example_value-2",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("cloudStorageGatewayGatewayFileShareId1", ids.Shares[0].Id)
-//			nameRegex, err := cloudstoragegateway.GetGatewayFileShares(ctx, &cloudstoragegateway.GetGatewayFileSharesArgs{
-//				GatewayId: "example_value",
-//				NameRegex: pulumi.StringRef("^my-GatewayFileShare"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("cloudStorageGatewayGatewayFileShareId2", nameRegex.Shares[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetGatewayFileShares(ctx *pulumi.Context, args *GetGatewayFileSharesArgs, opts ...pulumi.InvokeOption) (*GetGatewayFileSharesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGatewayFileSharesResult

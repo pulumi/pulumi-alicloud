@@ -51,24 +51,26 @@ class TopicArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_name: pulumi.Input[str],
+             project_name: Optional[pulumi.Input[str]] = None,
              comment: Optional[pulumi.Input[str]] = None,
              life_cycle: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              record_schema: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              record_type: Optional[pulumi.Input[str]] = None,
              shard_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'projectName' in kwargs:
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'lifeCycle' in kwargs:
+        if project_name is None:
+            raise TypeError("Missing 'project_name' argument")
+        if life_cycle is None and 'lifeCycle' in kwargs:
             life_cycle = kwargs['lifeCycle']
-        if 'recordSchema' in kwargs:
+        if record_schema is None and 'recordSchema' in kwargs:
             record_schema = kwargs['recordSchema']
-        if 'recordType' in kwargs:
+        if record_type is None and 'recordType' in kwargs:
             record_type = kwargs['recordType']
-        if 'shardCount' in kwargs:
+        if shard_count is None and 'shardCount' in kwargs:
             shard_count = kwargs['shardCount']
 
         _setter("project_name", project_name)
@@ -232,21 +234,21 @@ class _TopicState:
              record_schema: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              record_type: Optional[pulumi.Input[str]] = None,
              shard_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'lastModifyTime' in kwargs:
+        if last_modify_time is None and 'lastModifyTime' in kwargs:
             last_modify_time = kwargs['lastModifyTime']
-        if 'lifeCycle' in kwargs:
+        if life_cycle is None and 'lifeCycle' in kwargs:
             life_cycle = kwargs['lifeCycle']
-        if 'projectName' in kwargs:
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'recordSchema' in kwargs:
+        if record_schema is None and 'recordSchema' in kwargs:
             record_schema = kwargs['recordSchema']
-        if 'recordType' in kwargs:
+        if record_type is None and 'recordType' in kwargs:
             record_type = kwargs['recordType']
-        if 'shardCount' in kwargs:
+        if shard_count is None and 'shardCount' in kwargs:
             shard_count = kwargs['shardCount']
 
         if comment is not None:
@@ -402,40 +404,6 @@ class Topic(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.19.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        example = alicloud.datahub.Project("example", comment="created by terraform")
-        example_blob = alicloud.datahub.Topic("exampleBlob",
-            project_name=example.name,
-            record_type="BLOB",
-            shard_count=3,
-            life_cycle=7,
-            comment="created by terraform")
-        example_tuple = alicloud.datahub.Topic("exampleTuple",
-            project_name=example.name,
-            record_type="TUPLE",
-            record_schema={
-                "bigint_field": "BIGINT",
-                "timestamp_field": "TIMESTAMP",
-                "string_field": "STRING",
-                "double_field": "DOUBLE",
-                "boolean_field": "BOOLEAN",
-            },
-            shard_count=3,
-            life_cycle=7,
-            comment="created by terraform")
-        ```
-
         ## Import
 
         Datahub topic can be imported using the ID, e.g.
@@ -471,40 +439,6 @@ class Topic(pulumi.CustomResource):
         The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://www.alibabacloud.com/help/en/datahub/latest/nerbcz).
 
         > **NOTE:** Available since v1.19.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        example = alicloud.datahub.Project("example", comment="created by terraform")
-        example_blob = alicloud.datahub.Topic("exampleBlob",
-            project_name=example.name,
-            record_type="BLOB",
-            shard_count=3,
-            life_cycle=7,
-            comment="created by terraform")
-        example_tuple = alicloud.datahub.Topic("exampleTuple",
-            project_name=example.name,
-            record_type="TUPLE",
-            record_schema={
-                "bigint_field": "BIGINT",
-                "timestamp_field": "TIMESTAMP",
-                "string_field": "STRING",
-                "double_field": "DOUBLE",
-                "boolean_field": "BOOLEAN",
-            },
-            shard_count=3,
-            life_cycle=7,
-            comment="created by terraform")
-        ```
 
         ## Import
 

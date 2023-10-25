@@ -18,36 +18,6 @@ import (
 //
 // > **NOTE:** Available since v1.111.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ga.NewAccelerator(ctx, "example", &ga.AcceleratorArgs{
-//				AutoUseCoupon: pulumi.Bool(true),
-//				Duration:      pulumi.Int(1),
-//				Spec:          pulumi.String("1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Ga Accelerator can be imported using the id, e.g.

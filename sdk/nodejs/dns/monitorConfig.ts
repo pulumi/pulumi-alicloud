@@ -13,67 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.153.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example";
- * const domainName = config.get("domainName") || "alicloud-provider.com";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {alarmContactGroupName: name});
- * const defaultGtmInstance = new alicloud.dns.GtmInstance("defaultGtmInstance", {
- *     instanceName: name,
- *     paymentType: "Subscription",
- *     period: 1,
- *     renewalStatus: "ManualRenewal",
- *     packageEdition: "standard",
- *     healthCheckTaskCount: 100,
- *     smsNotificationCount: 1000,
- *     publicCnameMode: "SYSTEM_ASSIGN",
- *     ttl: 60,
- *     cnameType: "PUBLIC",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
- *     alertGroups: [defaultAlarmContactGroup.alarmContactGroupName],
- *     publicUserDomainName: domainName,
- *     alertConfigs: [{
- *         smsNotice: true,
- *         noticeType: "ADDR_ALERT",
- *         emailNotice: true,
- *         dingtalkNotice: true,
- *     }],
- * });
- * const defaultAddressPool = new alicloud.dns.AddressPool("defaultAddressPool", {
- *     addressPoolName: name,
- *     instanceId: defaultGtmInstance.id,
- *     lbaStrategy: "RATIO",
- *     type: "IPV4",
- *     addresses: [{
- *         attributeInfo: "{\"lineCodeRectifyType\":\"RECTIFIED\",\"lineCodes\":[\"os_namerica_us\"]}",
- *         remark: "address_remark",
- *         address: "1.1.1.1",
- *         mode: "SMART",
- *         lbaWeight: 1,
- *     }],
- * });
- * const defaultMonitorConfig = new alicloud.dns.MonitorConfig("defaultMonitorConfig", {
- *     addrPoolId: defaultAddressPool.id,
- *     evaluationCount: 1,
- *     interval: 60,
- *     timeout: 5000,
- *     protocolType: "TCP",
- *     monitorExtendInfo: "{\"failureRate\":50,\"port\":80}",
- *     ispCityNodes: [{
- *         cityCode: "503",
- *         ispCode: "465",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * DNS Monitor Config can be imported using the id, e.g.

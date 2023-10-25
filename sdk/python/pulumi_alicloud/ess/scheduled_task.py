@@ -87,31 +87,31 @@ class ScheduledTaskArgs:
              scheduled_action: Optional[pulumi.Input[str]] = None,
              scheduled_task_name: Optional[pulumi.Input[str]] = None,
              task_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'launchExpirationTime' in kwargs:
+        if launch_expiration_time is None and 'launchExpirationTime' in kwargs:
             launch_expiration_time = kwargs['launchExpirationTime']
-        if 'launchTime' in kwargs:
+        if launch_time is None and 'launchTime' in kwargs:
             launch_time = kwargs['launchTime']
-        if 'maxValue' in kwargs:
+        if max_value is None and 'maxValue' in kwargs:
             max_value = kwargs['maxValue']
-        if 'minValue' in kwargs:
+        if min_value is None and 'minValue' in kwargs:
             min_value = kwargs['minValue']
-        if 'recurrenceEndTime' in kwargs:
+        if recurrence_end_time is None and 'recurrenceEndTime' in kwargs:
             recurrence_end_time = kwargs['recurrenceEndTime']
-        if 'recurrenceType' in kwargs:
+        if recurrence_type is None and 'recurrenceType' in kwargs:
             recurrence_type = kwargs['recurrenceType']
-        if 'recurrenceValue' in kwargs:
+        if recurrence_value is None and 'recurrenceValue' in kwargs:
             recurrence_value = kwargs['recurrenceValue']
-        if 'scalingGroupId' in kwargs:
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
-        if 'scheduledAction' in kwargs:
+        if scheduled_action is None and 'scheduledAction' in kwargs:
             scheduled_action = kwargs['scheduledAction']
-        if 'scheduledTaskName' in kwargs:
+        if scheduled_task_name is None and 'scheduledTaskName' in kwargs:
             scheduled_task_name = kwargs['scheduledTaskName']
-        if 'taskEnabled' in kwargs:
+        if task_enabled is None and 'taskEnabled' in kwargs:
             task_enabled = kwargs['taskEnabled']
 
         if description is not None:
@@ -386,31 +386,31 @@ class _ScheduledTaskState:
              scheduled_action: Optional[pulumi.Input[str]] = None,
              scheduled_task_name: Optional[pulumi.Input[str]] = None,
              task_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'launchExpirationTime' in kwargs:
+        if launch_expiration_time is None and 'launchExpirationTime' in kwargs:
             launch_expiration_time = kwargs['launchExpirationTime']
-        if 'launchTime' in kwargs:
+        if launch_time is None and 'launchTime' in kwargs:
             launch_time = kwargs['launchTime']
-        if 'maxValue' in kwargs:
+        if max_value is None and 'maxValue' in kwargs:
             max_value = kwargs['maxValue']
-        if 'minValue' in kwargs:
+        if min_value is None and 'minValue' in kwargs:
             min_value = kwargs['minValue']
-        if 'recurrenceEndTime' in kwargs:
+        if recurrence_end_time is None and 'recurrenceEndTime' in kwargs:
             recurrence_end_time = kwargs['recurrenceEndTime']
-        if 'recurrenceType' in kwargs:
+        if recurrence_type is None and 'recurrenceType' in kwargs:
             recurrence_type = kwargs['recurrenceType']
-        if 'recurrenceValue' in kwargs:
+        if recurrence_value is None and 'recurrenceValue' in kwargs:
             recurrence_value = kwargs['recurrenceValue']
-        if 'scalingGroupId' in kwargs:
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
-        if 'scheduledAction' in kwargs:
+        if scheduled_action is None and 'scheduledAction' in kwargs:
             scheduled_action = kwargs['scheduledAction']
-        if 'scheduledTaskName' in kwargs:
+        if scheduled_task_name is None and 'scheduledTaskName' in kwargs:
             scheduled_task_name = kwargs['scheduledTaskName']
-        if 'taskEnabled' in kwargs:
+        if task_enabled is None and 'taskEnabled' in kwargs:
             task_enabled = kwargs['taskEnabled']
 
         if description is not None:

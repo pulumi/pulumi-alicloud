@@ -10,19 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides a list Container Registry repositories on Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.35.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const myRepos = alicloud.cr.getRepos({
- *     nameRegex: "my-repos",
- *     outputFile: "my-repo-json",
- * });
- * export const output = myRepos.then(myRepos => myRepos.repos);
- * ```
  */
 export function getRepos(args?: GetReposArgs, opts?: pulumi.InvokeOptions): Promise<GetReposResult> {
     args = args || {};
@@ -90,19 +77,6 @@ export interface GetReposResult {
  * This data source provides a list Container Registry repositories on Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.35.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const myRepos = alicloud.cr.getRepos({
- *     nameRegex: "my-repos",
- *     outputFile: "my-repo-json",
- * });
- * export const output = myRepos.then(myRepos => myRepos.repos);
- * ```
  */
 export function getReposOutput(args?: GetReposOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReposResult> {
     return pulumi.output(args).apply((a: any) => getRepos(a, opts))

@@ -85,7 +85,7 @@ class StackArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             stack_name: pulumi.Input[str],
+             stack_name: Optional[pulumi.Input[str]] = None,
              create_option: Optional[pulumi.Input[str]] = None,
              deletion_protection: Optional[pulumi.Input[str]] = None,
              disable_rollback: Optional[pulumi.Input[bool]] = None,
@@ -105,43 +105,45 @@ class StackArgs:
              template_version: Optional[pulumi.Input[str]] = None,
              timeout_in_minutes: Optional[pulumi.Input[int]] = None,
              use_previous_parameters: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'stackName' in kwargs:
+        if stack_name is None and 'stackName' in kwargs:
             stack_name = kwargs['stackName']
-        if 'createOption' in kwargs:
+        if stack_name is None:
+            raise TypeError("Missing 'stack_name' argument")
+        if create_option is None and 'createOption' in kwargs:
             create_option = kwargs['createOption']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'disableRollback' in kwargs:
+        if disable_rollback is None and 'disableRollback' in kwargs:
             disable_rollback = kwargs['disableRollback']
-        if 'notificationUrls' in kwargs:
+        if notification_urls is None and 'notificationUrls' in kwargs:
             notification_urls = kwargs['notificationUrls']
-        if 'ramRoleName' in kwargs:
+        if ram_role_name is None and 'ramRoleName' in kwargs:
             ram_role_name = kwargs['ramRoleName']
-        if 'replacementOption' in kwargs:
+        if replacement_option is None and 'replacementOption' in kwargs:
             replacement_option = kwargs['replacementOption']
-        if 'retainAllResources' in kwargs:
+        if retain_all_resources is None and 'retainAllResources' in kwargs:
             retain_all_resources = kwargs['retainAllResources']
-        if 'retainResources' in kwargs:
+        if retain_resources is None and 'retainResources' in kwargs:
             retain_resources = kwargs['retainResources']
-        if 'stackPolicyBody' in kwargs:
+        if stack_policy_body is None and 'stackPolicyBody' in kwargs:
             stack_policy_body = kwargs['stackPolicyBody']
-        if 'stackPolicyDuringUpdateBody' in kwargs:
+        if stack_policy_during_update_body is None and 'stackPolicyDuringUpdateBody' in kwargs:
             stack_policy_during_update_body = kwargs['stackPolicyDuringUpdateBody']
-        if 'stackPolicyDuringUpdateUrl' in kwargs:
+        if stack_policy_during_update_url is None and 'stackPolicyDuringUpdateUrl' in kwargs:
             stack_policy_during_update_url = kwargs['stackPolicyDuringUpdateUrl']
-        if 'stackPolicyUrl' in kwargs:
+        if stack_policy_url is None and 'stackPolicyUrl' in kwargs:
             stack_policy_url = kwargs['stackPolicyUrl']
-        if 'templateBody' in kwargs:
+        if template_body is None and 'templateBody' in kwargs:
             template_body = kwargs['templateBody']
-        if 'templateUrl' in kwargs:
+        if template_url is None and 'templateUrl' in kwargs:
             template_url = kwargs['templateUrl']
-        if 'templateVersion' in kwargs:
+        if template_version is None and 'templateVersion' in kwargs:
             template_version = kwargs['templateVersion']
-        if 'timeoutInMinutes' in kwargs:
+        if timeout_in_minutes is None and 'timeoutInMinutes' in kwargs:
             timeout_in_minutes = kwargs['timeoutInMinutes']
-        if 'usePreviousParameters' in kwargs:
+        if use_previous_parameters is None and 'usePreviousParameters' in kwargs:
             use_previous_parameters = kwargs['usePreviousParameters']
 
         _setter("stack_name", stack_name)
@@ -521,43 +523,43 @@ class _StackState:
              template_version: Optional[pulumi.Input[str]] = None,
              timeout_in_minutes: Optional[pulumi.Input[int]] = None,
              use_previous_parameters: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createOption' in kwargs:
+        if create_option is None and 'createOption' in kwargs:
             create_option = kwargs['createOption']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'disableRollback' in kwargs:
+        if disable_rollback is None and 'disableRollback' in kwargs:
             disable_rollback = kwargs['disableRollback']
-        if 'notificationUrls' in kwargs:
+        if notification_urls is None and 'notificationUrls' in kwargs:
             notification_urls = kwargs['notificationUrls']
-        if 'ramRoleName' in kwargs:
+        if ram_role_name is None and 'ramRoleName' in kwargs:
             ram_role_name = kwargs['ramRoleName']
-        if 'replacementOption' in kwargs:
+        if replacement_option is None and 'replacementOption' in kwargs:
             replacement_option = kwargs['replacementOption']
-        if 'retainAllResources' in kwargs:
+        if retain_all_resources is None and 'retainAllResources' in kwargs:
             retain_all_resources = kwargs['retainAllResources']
-        if 'retainResources' in kwargs:
+        if retain_resources is None and 'retainResources' in kwargs:
             retain_resources = kwargs['retainResources']
-        if 'stackName' in kwargs:
+        if stack_name is None and 'stackName' in kwargs:
             stack_name = kwargs['stackName']
-        if 'stackPolicyBody' in kwargs:
+        if stack_policy_body is None and 'stackPolicyBody' in kwargs:
             stack_policy_body = kwargs['stackPolicyBody']
-        if 'stackPolicyDuringUpdateBody' in kwargs:
+        if stack_policy_during_update_body is None and 'stackPolicyDuringUpdateBody' in kwargs:
             stack_policy_during_update_body = kwargs['stackPolicyDuringUpdateBody']
-        if 'stackPolicyDuringUpdateUrl' in kwargs:
+        if stack_policy_during_update_url is None and 'stackPolicyDuringUpdateUrl' in kwargs:
             stack_policy_during_update_url = kwargs['stackPolicyDuringUpdateUrl']
-        if 'stackPolicyUrl' in kwargs:
+        if stack_policy_url is None and 'stackPolicyUrl' in kwargs:
             stack_policy_url = kwargs['stackPolicyUrl']
-        if 'templateBody' in kwargs:
+        if template_body is None and 'templateBody' in kwargs:
             template_body = kwargs['templateBody']
-        if 'templateUrl' in kwargs:
+        if template_url is None and 'templateUrl' in kwargs:
             template_url = kwargs['templateUrl']
-        if 'templateVersion' in kwargs:
+        if template_version is None and 'templateVersion' in kwargs:
             template_version = kwargs['templateVersion']
-        if 'timeoutInMinutes' in kwargs:
+        if timeout_in_minutes is None and 'timeoutInMinutes' in kwargs:
             timeout_in_minutes = kwargs['timeoutInMinutes']
-        if 'usePreviousParameters' in kwargs:
+        if use_previous_parameters is None and 'usePreviousParameters' in kwargs:
             use_previous_parameters = kwargs['usePreviousParameters']
 
         if create_option is not None:
@@ -889,33 +891,6 @@ class Stack(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.106.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ros.Stack("example",
-            stack_name="tf-testaccstack",
-            stack_policy_body=\"\"\"    {
-            	"Statement": [{
-            		"Action": "Update:Delete",
-            		"Resource": "*",
-            		"Effect": "Allow",
-            		"Principal": "*"
-            	}]
-            }
-            
-        \"\"\",
-            template_body=\"\"\"    {
-            	"ROSTemplateFormatVersion": "2015-09-01"
-            }
-            
-        \"\"\")
-        ```
-
         ## Import
 
         ROS Stack can be imported using the id, e.g.
@@ -959,33 +934,6 @@ class Stack(pulumi.CustomResource):
         For information about ROS Stack and how to use it, see [What is Stack](https://www.alibabacloud.com/help/en/doc-detail/132086.htm).
 
         > **NOTE:** Available in v1.106.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ros.Stack("example",
-            stack_name="tf-testaccstack",
-            stack_policy_body=\"\"\"    {
-            	"Statement": [{
-            		"Action": "Update:Delete",
-            		"Resource": "*",
-            		"Effect": "Allow",
-            		"Principal": "*"
-            	}]
-            }
-            
-        \"\"\",
-            template_body=\"\"\"    {
-            	"ROSTemplateFormatVersion": "2015-09-01"
-            }
-            
-        \"\"\")
-        ```
 
         ## Import
 

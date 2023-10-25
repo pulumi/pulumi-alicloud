@@ -57,27 +57,33 @@ class AutoSnapshotPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             repeat_weekdays: pulumi.Input[Sequence[pulumi.Input[str]]],
-             retention_days: pulumi.Input[int],
-             time_points: pulumi.Input[Sequence[pulumi.Input[str]]],
+             repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             retention_days: Optional[pulumi.Input[int]] = None,
+             time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              copied_snapshots_retention_days: Optional[pulumi.Input[int]] = None,
              enable_cross_region_copy: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'repeatWeekdays' in kwargs:
+        if repeat_weekdays is None and 'repeatWeekdays' in kwargs:
             repeat_weekdays = kwargs['repeatWeekdays']
-        if 'retentionDays' in kwargs:
+        if repeat_weekdays is None:
+            raise TypeError("Missing 'repeat_weekdays' argument")
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'timePoints' in kwargs:
+        if retention_days is None:
+            raise TypeError("Missing 'retention_days' argument")
+        if time_points is None and 'timePoints' in kwargs:
             time_points = kwargs['timePoints']
-        if 'copiedSnapshotsRetentionDays' in kwargs:
+        if time_points is None:
+            raise TypeError("Missing 'time_points' argument")
+        if copied_snapshots_retention_days is None and 'copiedSnapshotsRetentionDays' in kwargs:
             copied_snapshots_retention_days = kwargs['copiedSnapshotsRetentionDays']
-        if 'enableCrossRegionCopy' in kwargs:
+        if enable_cross_region_copy is None and 'enableCrossRegionCopy' in kwargs:
             enable_cross_region_copy = kwargs['enableCrossRegionCopy']
-        if 'targetCopyRegions' in kwargs:
+        if target_copy_regions is None and 'targetCopyRegions' in kwargs:
             target_copy_regions = kwargs['targetCopyRegions']
 
         _setter("repeat_weekdays", repeat_weekdays)
@@ -259,19 +265,19 @@ class _AutoSnapshotPolicyState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'copiedSnapshotsRetentionDays' in kwargs:
+        if copied_snapshots_retention_days is None and 'copiedSnapshotsRetentionDays' in kwargs:
             copied_snapshots_retention_days = kwargs['copiedSnapshotsRetentionDays']
-        if 'enableCrossRegionCopy' in kwargs:
+        if enable_cross_region_copy is None and 'enableCrossRegionCopy' in kwargs:
             enable_cross_region_copy = kwargs['enableCrossRegionCopy']
-        if 'repeatWeekdays' in kwargs:
+        if repeat_weekdays is None and 'repeatWeekdays' in kwargs:
             repeat_weekdays = kwargs['repeatWeekdays']
-        if 'retentionDays' in kwargs:
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'targetCopyRegions' in kwargs:
+        if target_copy_regions is None and 'targetCopyRegions' in kwargs:
             target_copy_regions = kwargs['targetCopyRegions']
-        if 'timePoints' in kwargs:
+        if time_points is None and 'timePoints' in kwargs:
             time_points = kwargs['timePoints']
 
         if copied_snapshots_retention_days is not None:
@@ -433,28 +439,6 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.117.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ecs.AutoSnapshotPolicy("example",
-            repeat_weekdays=[
-                "1",
-                "2",
-                "3",
-            ],
-            retention_days=-1,
-            time_points=[
-                "1",
-                "22",
-                "23",
-            ])
-        ```
-
         ## Import
 
         ECS Auto Snapshot Policy can be imported using the id, e.g.
@@ -496,28 +480,6 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         For information about ECS Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/25527.htm).
 
         > **NOTE:** Available in v1.117.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ecs.AutoSnapshotPolicy("example",
-            repeat_weekdays=[
-                "1",
-                "2",
-                "3",
-            ],
-            retention_days=-1,
-            time_points=[
-                "1",
-                "22",
-                "23",
-            ])
-        ```
 
         ## Import
 

@@ -10,48 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "10.4.0.0/16",
-    ///     });
-    /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
-    ///     {
-    ///         VswitchName = name,
-    ///         CidrBlock = "10.4.0.0/24",
-    ///         VpcId = exampleNetwork.Id,
-    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
-    ///     });
-    /// 
-    ///     var exampleHAVip = new AliCloud.Vpc.HAVip("exampleHAVip", new()
-    ///     {
-    ///         VswitchId = exampleSwitch.Id,
-    ///         Description = name,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// The havip can be imported using the id, e.g.

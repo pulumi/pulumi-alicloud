@@ -10,29 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides a list of Route Tables owned by an Alibaba Cloud account.
  *
  * > **NOTE:** Available in 1.36.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "route-tables-datasource-example-name";
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
- *     cidrBlock: "172.16.0.0/12",
- *     vpcName: name,
- * });
- * const fooRouteTable = new alicloud.vpc.RouteTable("fooRouteTable", {
- *     description: name,
- *     routeTableName: name,
- *     vpcId: fooNetwork.id,
- * });
- * const fooRouteTables = alicloud.vpc.getRouteTablesOutput({
- *     ids: [fooRouteTable.id],
- * });
- * export const routeTableIds = fooRouteTables.apply(fooRouteTables => fooRouteTables.ids);
- * ```
  */
 export function getRouteTables(args?: GetRouteTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteTablesResult> {
     args = args || {};
@@ -157,29 +134,6 @@ export interface GetRouteTablesResult {
  * This data source provides a list of Route Tables owned by an Alibaba Cloud account.
  *
  * > **NOTE:** Available in 1.36.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "route-tables-datasource-example-name";
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
- *     cidrBlock: "172.16.0.0/12",
- *     vpcName: name,
- * });
- * const fooRouteTable = new alicloud.vpc.RouteTable("fooRouteTable", {
- *     description: name,
- *     routeTableName: name,
- *     vpcId: fooNetwork.id,
- * });
- * const fooRouteTables = alicloud.vpc.getRouteTablesOutput({
- *     ids: [fooRouteTable.id],
- * });
- * export const routeTableIds = fooRouteTables.apply(fooRouteTables => fooRouteTables.ids);
- * ```
  */
 export function getRouteTablesOutput(args?: GetRouteTablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteTablesResult> {
     return pulumi.output(args).apply((a: any) => getRouteTables(a, opts))

@@ -10,29 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.gpdb.getAccounts({
- *     dbInstanceId: "example_value",
- *     ids: [
- *         "my-Account-1",
- *         "my-Account-2",
- *     ],
- * });
- * export const gpdbAccountId1 = ids.then(ids => ids.accounts?.[0]?.id);
- * const nameRegex = alicloud.gpdb.getAccounts({
- *     dbInstanceId: "example_value",
- *     nameRegex: "^my-Account",
- * });
- * export const gpdbAccountId2 = nameRegex.then(nameRegex => nameRegex.accounts?.[0]?.id);
- * ```
  */
 export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountsResult> {
 
@@ -92,29 +69,6 @@ export interface GetAccountsResult {
  * This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.gpdb.getAccounts({
- *     dbInstanceId: "example_value",
- *     ids: [
- *         "my-Account-1",
- *         "my-Account-2",
- *     ],
- * });
- * export const gpdbAccountId1 = ids.then(ids => ids.accounts?.[0]?.id);
- * const nameRegex = alicloud.gpdb.getAccounts({
- *     dbInstanceId: "example_value",
- *     nameRegex: "^my-Account",
- * });
- * export const gpdbAccountId2 = nameRegex.then(nameRegex => nameRegex.accounts?.[0]?.id);
- * ```
  */
 export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
     return pulumi.output(args).apply((a: any) => getAccounts(a, opts))

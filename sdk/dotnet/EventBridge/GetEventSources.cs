@@ -15,38 +15,6 @@ namespace Pulumi.AliCloud.EventBridge
         /// This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.130.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.EventBridge.GetEventSources.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///         NameRegex = "the_resource_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstEventBridgeEventSourceId"] = example.Apply(getEventSourcesResult =&gt; getEventSourcesResult.Sources[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEventSourcesResult> InvokeAsync(GetEventSourcesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEventSourcesResult>("alicloud:eventbridge/getEventSources:getEventSources", args ?? new GetEventSourcesArgs(), options.WithDefaults());
@@ -55,38 +23,6 @@ namespace Pulumi.AliCloud.EventBridge
         /// This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.130.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.EventBridge.GetEventSources.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///         NameRegex = "the_resource_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstEventBridgeEventSourceId"] = example.Apply(getEventSourcesResult =&gt; getEventSourcesResult.Sources[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetEventSourcesResult> Invoke(GetEventSourcesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEventSourcesResult>("alicloud:eventbridge/getEventSources:getEventSources", args ?? new GetEventSourcesInvokeArgs(), options.WithDefaults());

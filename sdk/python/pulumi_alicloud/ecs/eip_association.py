@@ -41,23 +41,27 @@ class EipAssociationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allocation_id: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
+             allocation_id: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
              force: Optional[pulumi.Input[bool]] = None,
              instance_type: Optional[pulumi.Input[str]] = None,
              private_ip_address: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allocationId' in kwargs:
+        if allocation_id is None and 'allocationId' in kwargs:
             allocation_id = kwargs['allocationId']
-        if 'instanceId' in kwargs:
+        if allocation_id is None:
+            raise TypeError("Missing 'allocation_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceType' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'privateIpAddress' in kwargs:
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
             private_ip_address = kwargs['privateIpAddress']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         _setter("allocation_id", allocation_id)
@@ -180,17 +184,17 @@ class _EipAssociationState:
              instance_type: Optional[pulumi.Input[str]] = None,
              private_ip_address: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allocationId' in kwargs:
+        if allocation_id is None and 'allocationId' in kwargs:
             allocation_id = kwargs['allocationId']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'privateIpAddress' in kwargs:
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
             private_ip_address = kwargs['privateIpAddress']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if allocation_id is not None:
@@ -303,47 +307,6 @@ class EipAssociation(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.117.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            availability_zone=example_zones.zones[0].id,
-            instance_name=name,
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            security_groups=[example_security_group.id],
-            vswitch_id=example_switch.id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        example_eip_address = alicloud.ecs.EipAddress("exampleEipAddress", address_name=name)
-        example_eip_association = alicloud.ecs.EipAssociation("exampleEipAssociation",
-            allocation_id=example_eip_address.id,
-            instance_id=example_instance.id)
-        ```
         ## Module Support
 
         You can use the existing eip module
@@ -384,47 +347,6 @@ class EipAssociation(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.117.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            availability_zone=example_zones.zones[0].id,
-            instance_name=name,
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            security_groups=[example_security_group.id],
-            vswitch_id=example_switch.id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        example_eip_address = alicloud.ecs.EipAddress("exampleEipAddress", address_name=name)
-        example_eip_association = alicloud.ecs.EipAssociation("exampleEipAssociation",
-            allocation_id=example_eip_address.id,
-            instance_id=example_instance.id)
-        ```
         ## Module Support
 
         You can use the existing eip module

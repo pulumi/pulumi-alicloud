@@ -19,45 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.153.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := nas.NewAutoSnapshotPolicy(ctx, "example", &nas.AutoSnapshotPolicyArgs{
-//				AutoSnapshotPolicyName: pulumi.String("example_value"),
-//				RepeatWeekdays: pulumi.StringArray{
-//					pulumi.String("3"),
-//					pulumi.String("4"),
-//					pulumi.String("5"),
-//				},
-//				RetentionDays: pulumi.Int(30),
-//				TimePoints: pulumi.StringArray{
-//					pulumi.String("3"),
-//					pulumi.String("4"),
-//					pulumi.String("5"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Network Attached Storage (NAS) Auto Snapshot Policy can be imported using the id, e.g.

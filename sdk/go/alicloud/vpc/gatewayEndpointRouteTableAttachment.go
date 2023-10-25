@@ -19,66 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.208.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaulteVpc, err := vpc.NewNetwork(ctx, "defaulteVpc", &vpc.NetworkArgs{
-//				Description: pulumi.String("test"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultGE, err := vpc.NewGatewayEndpoint(ctx, "defaultGE", &vpc.GatewayEndpointArgs{
-//				ServiceName:               pulumi.String("com.aliyun.cn-hangzhou.oss"),
-//				PolicyDocument:            pulumi.String("{ \"Version\" : \"1\", \"Statement\" : [ { \"Effect\" : \"Allow\", \"Resource\" : [ \"*\" ], \"Action\" : [ \"*\" ], \"Principal\" : [ \"*\" ] } ] }"),
-//				VpcId:                     defaulteVpc.ID(),
-//				GatewayEndpointDescrption: pulumi.String("test-gateway-endpoint"),
-//				GatewayEndpointName:       pulumi.String(fmt.Sprintf("%v1", name)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultRT, err := vpc.NewRouteTable(ctx, "defaultRT", &vpc.RouteTableArgs{
-//				VpcId:          defaulteVpc.ID(),
-//				RouteTableName: pulumi.String(fmt.Sprintf("%v2", name)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpc.NewGatewayEndpointRouteTableAttachment(ctx, "default", &vpc.GatewayEndpointRouteTableAttachmentArgs{
-//				GatewayEndpointId: defaultGE.ID(),
-//				RouteTableId:      defaultRT.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // VPC Gateway Endpoint Route Table Attachment can be imported using the id, e.g.

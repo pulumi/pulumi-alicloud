@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.120.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.resourcemanager.getControlPolicies({
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstResourceManagerControlPolicyId = example.then(example => example.policies?.[0]?.id);
- * ```
  */
 export function getControlPolicies(args?: GetControlPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetControlPoliciesResult> {
     args = args || {};
@@ -91,21 +76,6 @@ export interface GetControlPoliciesResult {
  * This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.120.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.resourcemanager.getControlPolicies({
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstResourceManagerControlPolicyId = example.then(example => example.policies?.[0]?.id);
- * ```
  */
 export function getControlPoliciesOutput(args?: GetControlPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetControlPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getControlPolicies(a, opts))

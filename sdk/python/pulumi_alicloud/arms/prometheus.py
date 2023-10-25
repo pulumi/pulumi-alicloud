@@ -53,8 +53,8 @@ class PrometheusArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_type: pulumi.Input[str],
-             grafana_instance_id: pulumi.Input[str],
+             cluster_type: Optional[pulumi.Input[str]] = None,
+             grafana_instance_id: Optional[pulumi.Input[str]] = None,
              cluster_id: Optional[pulumi.Input[str]] = None,
              cluster_name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -63,25 +63,29 @@ class PrometheusArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterType' in kwargs:
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'grafanaInstanceId' in kwargs:
+        if cluster_type is None:
+            raise TypeError("Missing 'cluster_type' argument")
+        if grafana_instance_id is None and 'grafanaInstanceId' in kwargs:
             grafana_instance_id = kwargs['grafanaInstanceId']
-        if 'clusterId' in kwargs:
+        if grafana_instance_id is None:
+            raise TypeError("Missing 'grafana_instance_id' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'subClustersJson' in kwargs:
+        if sub_clusters_json is None and 'subClustersJson' in kwargs:
             sub_clusters_json = kwargs['subClustersJson']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         _setter("cluster_type", cluster_type)
@@ -276,25 +280,25 @@ class _PrometheusState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'clusterType' in kwargs:
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'grafanaInstanceId' in kwargs:
+        if grafana_instance_id is None and 'grafanaInstanceId' in kwargs:
             grafana_instance_id = kwargs['grafanaInstanceId']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'subClustersJson' in kwargs:
+        if sub_clusters_json is None and 'subClustersJson' in kwargs:
             sub_clusters_json = kwargs['subClustersJson']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if cluster_id is not None:
@@ -462,43 +466,6 @@ class Prometheus(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.203.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[len(default_zones.zones) - 1].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_prometheus = alicloud.arms.Prometheus("defaultPrometheus",
-            cluster_type="ecs",
-            grafana_instance_id="free",
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            security_group_id=default_security_group.id,
-            cluster_name=default_network.id.apply(lambda id: f"{name}-{id}"),
-            resource_group_id=default_resource_groups.groups[0].id,
-            tags={
-                "Created": "TF",
-                "For": "Prometheus",
-            })
-        ```
-
         ## Import
 
         Application Real-Time Monitoring Service (ARMS) Prometheus can be imported using the id, e.g.
@@ -532,43 +499,6 @@ class Prometheus(pulumi.CustomResource):
         For information about Application Real-Time Monitoring Service (ARMS) Prometheus and how to use it, see [What is Prometheus](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-createprometheusinstance).
 
         > **NOTE:** Available since v1.203.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[len(default_zones.zones) - 1].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_prometheus = alicloud.arms.Prometheus("defaultPrometheus",
-            cluster_type="ecs",
-            grafana_instance_id="free",
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            security_group_id=default_security_group.id,
-            cluster_name=default_network.id.apply(lambda id: f"{name}-{id}"),
-            resource_group_id=default_resource_groups.groups[0].id,
-            tags={
-                "Created": "TF",
-                "For": "Prometheus",
-            })
-        ```
 
         ## Import
 

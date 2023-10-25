@@ -44,26 +44,32 @@ class AlidnsInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dns_security: pulumi.Input[str],
-             domain_numbers: pulumi.Input[str],
-             version_code: pulumi.Input[str],
+             dns_security: Optional[pulumi.Input[str]] = None,
+             domain_numbers: Optional[pulumi.Input[str]] = None,
+             version_code: Optional[pulumi.Input[str]] = None,
              payment_type: Optional[pulumi.Input[str]] = None,
              period: Optional[pulumi.Input[int]] = None,
              renew_period: Optional[pulumi.Input[int]] = None,
              renewal_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dnsSecurity' in kwargs:
+        if dns_security is None and 'dnsSecurity' in kwargs:
             dns_security = kwargs['dnsSecurity']
-        if 'domainNumbers' in kwargs:
+        if dns_security is None:
+            raise TypeError("Missing 'dns_security' argument")
+        if domain_numbers is None and 'domainNumbers' in kwargs:
             domain_numbers = kwargs['domainNumbers']
-        if 'versionCode' in kwargs:
+        if domain_numbers is None:
+            raise TypeError("Missing 'domain_numbers' argument")
+        if version_code is None and 'versionCode' in kwargs:
             version_code = kwargs['versionCode']
-        if 'paymentType' in kwargs:
+        if version_code is None:
+            raise TypeError("Missing 'version_code' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'renewPeriod' in kwargs:
+        if renew_period is None and 'renewPeriod' in kwargs:
             renew_period = kwargs['renewPeriod']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
 
         _setter("dns_security", dns_security)
@@ -207,21 +213,21 @@ class _AlidnsInstanceState:
              renewal_status: Optional[pulumi.Input[str]] = None,
              version_code: Optional[pulumi.Input[str]] = None,
              version_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dnsSecurity' in kwargs:
+        if dns_security is None and 'dnsSecurity' in kwargs:
             dns_security = kwargs['dnsSecurity']
-        if 'domainNumbers' in kwargs:
+        if domain_numbers is None and 'domainNumbers' in kwargs:
             domain_numbers = kwargs['domainNumbers']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'renewPeriod' in kwargs:
+        if renew_period is None and 'renewPeriod' in kwargs:
             renew_period = kwargs['renewPeriod']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'versionCode' in kwargs:
+        if version_code is None and 'versionCode' in kwargs:
             version_code = kwargs['versionCode']
-        if 'versionName' in kwargs:
+        if version_name is None and 'versionName' in kwargs:
             version_name = kwargs['versionName']
 
         if dns_security is not None:
@@ -356,23 +362,6 @@ class AlidnsInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.95.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.dns.AlidnsInstance("example",
-            dns_security="no",
-            domain_numbers="2",
-            period=1,
-            renew_period=1,
-            renewal_status="ManualRenewal",
-            version_code="version_personal")
-        ```
-
         ## Import
 
         DNS instance be imported using the id, e.g.
@@ -401,23 +390,6 @@ class AlidnsInstance(pulumi.CustomResource):
         Create an Alidns Instance resource.
 
         > **NOTE:** Available since v1.95.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.dns.AlidnsInstance("example",
-            dns_security="no",
-            domain_numbers="2",
-            period=1,
-            renew_period=1,
-            renewal_status="ManualRenewal",
-            version_code="version_personal")
-        ```
 
         ## Import
 

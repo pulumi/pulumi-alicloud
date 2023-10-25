@@ -38,19 +38,27 @@ class DedicatedBlockStorageClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dedicated_block_storage_cluster_name: pulumi.Input[str],
-             total_capacity: pulumi.Input[str],
-             type: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             dedicated_block_storage_cluster_name: Optional[pulumi.Input[str]] = None,
+             total_capacity: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dedicatedBlockStorageClusterName' in kwargs:
+        if dedicated_block_storage_cluster_name is None and 'dedicatedBlockStorageClusterName' in kwargs:
             dedicated_block_storage_cluster_name = kwargs['dedicatedBlockStorageClusterName']
-        if 'totalCapacity' in kwargs:
+        if dedicated_block_storage_cluster_name is None:
+            raise TypeError("Missing 'dedicated_block_storage_cluster_name' argument")
+        if total_capacity is None and 'totalCapacity' in kwargs:
             total_capacity = kwargs['totalCapacity']
-        if 'zoneId' in kwargs:
+        if total_capacity is None:
+            raise TypeError("Missing 'total_capacity' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("dedicated_block_storage_cluster_name", dedicated_block_storage_cluster_name)
         _setter("total_capacity", total_capacity)
@@ -196,31 +204,31 @@ class _DedicatedBlockStorageClusterState:
              type: Optional[pulumi.Input[str]] = None,
              used_capacity: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availableCapacity' in kwargs:
+        if available_capacity is None and 'availableCapacity' in kwargs:
             available_capacity = kwargs['availableCapacity']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dedicatedBlockStorageClusterId' in kwargs:
+        if dedicated_block_storage_cluster_id is None and 'dedicatedBlockStorageClusterId' in kwargs:
             dedicated_block_storage_cluster_id = kwargs['dedicatedBlockStorageClusterId']
-        if 'dedicatedBlockStorageClusterName' in kwargs:
+        if dedicated_block_storage_cluster_name is None and 'dedicatedBlockStorageClusterName' in kwargs:
             dedicated_block_storage_cluster_name = kwargs['dedicatedBlockStorageClusterName']
-        if 'deliveryCapacity' in kwargs:
+        if delivery_capacity is None and 'deliveryCapacity' in kwargs:
             delivery_capacity = kwargs['deliveryCapacity']
-        if 'expiredTime' in kwargs:
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'supportedCategory' in kwargs:
+        if supported_category is None and 'supportedCategory' in kwargs:
             supported_category = kwargs['supportedCategory']
-        if 'totalCapacity' in kwargs:
+        if total_capacity is None and 'totalCapacity' in kwargs:
             total_capacity = kwargs['totalCapacity']
-        if 'usedCapacity' in kwargs:
+        if used_capacity is None and 'usedCapacity' in kwargs:
             used_capacity = kwargs['usedCapacity']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if available_capacity is not None:

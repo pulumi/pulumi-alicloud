@@ -38,20 +38,24 @@ class ClientKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aap_name: pulumi.Input[str],
-             password: pulumi.Input[str],
+             aap_name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
              not_after: Optional[pulumi.Input[str]] = None,
              not_before: Optional[pulumi.Input[str]] = None,
              private_key_data_file: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aapName' in kwargs:
+        if aap_name is None and 'aapName' in kwargs:
             aap_name = kwargs['aapName']
-        if 'notAfter' in kwargs:
+        if aap_name is None:
+            raise TypeError("Missing 'aap_name' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if not_after is None and 'notAfter' in kwargs:
             not_after = kwargs['notAfter']
-        if 'notBefore' in kwargs:
+        if not_before is None and 'notBefore' in kwargs:
             not_before = kwargs['notBefore']
-        if 'privateKeyDataFile' in kwargs:
+        if private_key_data_file is None and 'privateKeyDataFile' in kwargs:
             private_key_data_file = kwargs['privateKeyDataFile']
 
         _setter("aap_name", aap_name)
@@ -160,17 +164,17 @@ class _ClientKeyState:
              not_before: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              private_key_data_file: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aapName' in kwargs:
+        if aap_name is None and 'aapName' in kwargs:
             aap_name = kwargs['aapName']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'notAfter' in kwargs:
+        if not_after is None and 'notAfter' in kwargs:
             not_after = kwargs['notAfter']
-        if 'notBefore' in kwargs:
+        if not_before is None and 'notBefore' in kwargs:
             not_before = kwargs['notBefore']
-        if 'privateKeyDataFile' in kwargs:
+        if private_key_data_file is None and 'privateKeyDataFile' in kwargs:
             private_key_data_file = kwargs['privateKeyDataFile']
 
         if aap_name is not None:
@@ -277,30 +281,6 @@ class ClientKey(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.210.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        a_ap0 = alicloud.kms.ApplicationAccessPoint("aAP0",
-            policies=["aa"],
-            description="aa",
-            application_access_point_name=name)
-        default = alicloud.kms.ClientKey("default",
-            aap_name=a_ap0.application_access_point_name,
-            password="YouPassword123!",
-            not_before="2023-09-01T14:11:22Z",
-            not_after="2028-09-01T14:11:22Z",
-            private_key_data_file="./private_key_data_file.txt")
-        ```
-
         ## Import
 
         KMS Client Key can be imported using the id, e.g.
@@ -331,30 +311,6 @@ class ClientKey(pulumi.CustomResource):
         For information about KMS Client Key and how to use it, see [What is Client Key](https://www.alibabacloud.com/help/zh/key-management-service/latest/api-createclientkey).
 
         > **NOTE:** Available since v1.210.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        a_ap0 = alicloud.kms.ApplicationAccessPoint("aAP0",
-            policies=["aa"],
-            description="aa",
-            application_access_point_name=name)
-        default = alicloud.kms.ClientKey("default",
-            aap_name=a_ap0.application_access_point_name,
-            password="YouPassword123!",
-            not_before="2023-09-01T14:11:22Z",
-            not_after="2028-09-01T14:11:22Z",
-            private_key_data_file="./private_key_data_file.txt")
-        ```
 
         ## Import
 

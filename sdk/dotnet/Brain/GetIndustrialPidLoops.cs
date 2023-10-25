@@ -15,39 +15,6 @@ namespace Pulumi.AliCloud.Brain
         /// This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.117.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Brain.GetIndustrialPidLoops.Invoke(new()
-        ///     {
-        ///         PidProjectId = "856c6b8f-ca63-40a4-xxxx-xxxx",
-        ///         Ids = new[]
-        ///         {
-        ///             "742a3d4e-d8b0-47c8-xxxx-xxxx",
-        ///         },
-        ///         NameRegex = "tf-testACC",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstBrainIndustrialPidLoopId"] = example.Apply(getIndustrialPidLoopsResult =&gt; getIndustrialPidLoopsResult.Loops[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetIndustrialPidLoopsResult> InvokeAsync(GetIndustrialPidLoopsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIndustrialPidLoopsResult>("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", args ?? new GetIndustrialPidLoopsArgs(), options.WithDefaults());
@@ -56,39 +23,6 @@ namespace Pulumi.AliCloud.Brain
         /// This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.117.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Brain.GetIndustrialPidLoops.Invoke(new()
-        ///     {
-        ///         PidProjectId = "856c6b8f-ca63-40a4-xxxx-xxxx",
-        ///         Ids = new[]
-        ///         {
-        ///             "742a3d4e-d8b0-47c8-xxxx-xxxx",
-        ///         },
-        ///         NameRegex = "tf-testACC",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstBrainIndustrialPidLoopId"] = example.Apply(getIndustrialPidLoopsResult =&gt; getIndustrialPidLoopsResult.Loops[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetIndustrialPidLoopsResult> Invoke(GetIndustrialPidLoopsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIndustrialPidLoopsResult>("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", args ?? new GetIndustrialPidLoopsInvokeArgs(), options.WithDefaults());

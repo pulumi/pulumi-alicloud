@@ -11,23 +11,6 @@ import * as utilities from "../utilities";
  * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
  *
  * > **NOTE:** Available since v1.7.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const dbInstancesDs = alicloud.rds.getInstances({
- *     nameRegex: "data-\\d+",
- *     status: "Running",
- *     tags: {
- *         size: "tiny",
- *         type: "database",
- *     },
- * });
- * export const firstDbInstanceId = dbInstancesDs.then(dbInstancesDs => dbInstancesDs.instances?.[0]?.id);
- * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -160,23 +143,6 @@ export interface GetInstancesResult {
  * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
  *
  * > **NOTE:** Available since v1.7.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const dbInstancesDs = alicloud.rds.getInstances({
- *     nameRegex: "data-\\d+",
- *     status: "Running",
- *     tags: {
- *         size: "tiny",
- *         type: "database",
- *     },
- * });
- * export const firstDbInstanceId = dbInstancesDs.then(dbInstancesDs => dbInstancesDs.instances?.[0]?.id);
- * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))

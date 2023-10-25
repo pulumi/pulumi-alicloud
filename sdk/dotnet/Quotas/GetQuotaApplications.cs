@@ -15,38 +15,6 @@ namespace Pulumi.AliCloud.Quotas
         /// This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.117.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Quotas.GetQuotaApplications.Invoke(new()
-        ///     {
-        ///         ProductCode = "ess",
-        ///         Ids = new[]
-        ///         {
-        ///             "4621F886-81E9-xxxx-xxxx",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstQuotasQuotaApplicationId"] = example.Apply(getQuotaApplicationsResult =&gt; getQuotaApplicationsResult.Applications[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetQuotaApplicationsResult> InvokeAsync(GetQuotaApplicationsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQuotaApplicationsResult>("alicloud:quotas/getQuotaApplications:getQuotaApplications", args ?? new GetQuotaApplicationsArgs(), options.WithDefaults());
@@ -55,38 +23,6 @@ namespace Pulumi.AliCloud.Quotas
         /// This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.117.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Quotas.GetQuotaApplications.Invoke(new()
-        ///     {
-        ///         ProductCode = "ess",
-        ///         Ids = new[]
-        ///         {
-        ///             "4621F886-81E9-xxxx-xxxx",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstQuotasQuotaApplicationId"] = example.Apply(getQuotaApplicationsResult =&gt; getQuotaApplicationsResult.Applications[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetQuotaApplicationsResult> Invoke(GetQuotaApplicationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQuotaApplicationsResult>("alicloud:quotas/getQuotaApplications:getQuotaApplications", args ?? new GetQuotaApplicationsInvokeArgs(), options.WithDefaults());

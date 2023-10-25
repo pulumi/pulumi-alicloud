@@ -44,26 +44,34 @@ class HostAccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host_account_name: pulumi.Input[str],
-             host_id: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             protocol_name: pulumi.Input[str],
+             host_account_name: Optional[pulumi.Input[str]] = None,
+             host_id: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             protocol_name: Optional[pulumi.Input[str]] = None,
              pass_phrase: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              private_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'hostAccountName' in kwargs:
+        if host_account_name is None and 'hostAccountName' in kwargs:
             host_account_name = kwargs['hostAccountName']
-        if 'hostId' in kwargs:
+        if host_account_name is None:
+            raise TypeError("Missing 'host_account_name' argument")
+        if host_id is None and 'hostId' in kwargs:
             host_id = kwargs['hostId']
-        if 'instanceId' in kwargs:
+        if host_id is None:
+            raise TypeError("Missing 'host_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'protocolName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if protocol_name is None and 'protocolName' in kwargs:
             protocol_name = kwargs['protocolName']
-        if 'passPhrase' in kwargs:
+        if protocol_name is None:
+            raise TypeError("Missing 'protocol_name' argument")
+        if pass_phrase is None and 'passPhrase' in kwargs:
             pass_phrase = kwargs['passPhrase']
-        if 'privateKey' in kwargs:
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
 
         _setter("host_account_name", host_account_name)
@@ -206,21 +214,21 @@ class _HostAccountState:
              password: Optional[pulumi.Input[str]] = None,
              private_key: Optional[pulumi.Input[str]] = None,
              protocol_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'hostAccountId' in kwargs:
+        if host_account_id is None and 'hostAccountId' in kwargs:
             host_account_id = kwargs['hostAccountId']
-        if 'hostAccountName' in kwargs:
+        if host_account_name is None and 'hostAccountName' in kwargs:
             host_account_name = kwargs['hostAccountName']
-        if 'hostId' in kwargs:
+        if host_id is None and 'hostId' in kwargs:
             host_id = kwargs['hostId']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'passPhrase' in kwargs:
+        if pass_phrase is None and 'passPhrase' in kwargs:
             pass_phrase = kwargs['passPhrase']
-        if 'privateKey' in kwargs:
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
-        if 'protocolName' in kwargs:
+        if protocol_name is None and 'protocolName' in kwargs:
             protocol_name = kwargs['protocolName']
 
         if host_account_id is not None:
@@ -357,52 +365,6 @@ class HostAccount(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.135.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.bastionhost.Instance("defaultInstance",
-            description=name,
-            license_code="bhah_ent_50_asset",
-            plan_code="cloudbastion",
-            storage="5",
-            bandwidth="5",
-            period=1,
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id])
-        default_host = alicloud.bastionhost.Host("defaultHost",
-            instance_id=default_instance.id,
-            host_name=name,
-            active_address_type="Private",
-            host_private_address="172.16.0.10",
-            os_type="Linux",
-            source="Local")
-        default_host_account = alicloud.bastionhost.HostAccount("defaultHostAccount",
-            host_account_name=name,
-            host_id=default_host.host_id,
-            instance_id=default_host.instance_id,
-            protocol_name="SSH",
-            password="YourPassword12345")
-        ```
-
         ## Import
 
         Bastion Host Host Account can be imported using the id, e.g.
@@ -433,52 +395,6 @@ class HostAccount(pulumi.CustomResource):
         For information about Bastion Host Host Account and how to use it, see [What is Host Account](https://www.alibabacloud.com/help/en/doc-detail/204377.htm).
 
         > **NOTE:** Available since v1.135.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.bastionhost.Instance("defaultInstance",
-            description=name,
-            license_code="bhah_ent_50_asset",
-            plan_code="cloudbastion",
-            storage="5",
-            bandwidth="5",
-            period=1,
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id])
-        default_host = alicloud.bastionhost.Host("defaultHost",
-            instance_id=default_instance.id,
-            host_name=name,
-            active_address_type="Private",
-            host_private_address="172.16.0.10",
-            os_type="Linux",
-            source="Local")
-        default_host_account = alicloud.bastionhost.HostAccount("defaultHostAccount",
-            host_account_name=name,
-            host_id=default_host.host_id,
-            instance_id=default_host.instance_id,
-            protocol_name="SSH",
-            password="YourPassword12345")
-        ```
 
         ## Import
 

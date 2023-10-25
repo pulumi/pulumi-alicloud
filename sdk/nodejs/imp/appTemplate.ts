@@ -13,25 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.137.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.imp.AppTemplate("example", {
- *     appTemplateName: "example_value",
- *     componentLists: [
- *         "component.live",
- *         "component.liveRecord",
- *     ],
- *     integrationMode: "paasSDK",
- *     scene: "business",
- * });
- * ```
- *
  * ## Import
  *
  * Apsara Agile Live (IMP) App Template can be imported using the id, e.g.

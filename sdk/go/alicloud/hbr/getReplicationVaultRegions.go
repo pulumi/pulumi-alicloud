@@ -15,33 +15,6 @@ import (
 // This data source provides the HBR Replication Vault Regions of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.152.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := hbr.GetReplicationVaultRegions(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("hbrReplicationVaultRegionRegionId1", _default.Regions[0].ReplicationRegionId)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetReplicationVaultRegions(ctx *pulumi.Context, args *GetReplicationVaultRegionsArgs, opts ...pulumi.InvokeOption) (*GetReplicationVaultRegionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetReplicationVaultRegionsResult

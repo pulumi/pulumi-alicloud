@@ -147,16 +147,16 @@ class SynchronizationJobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_initialization: pulumi.Input[bool],
-             data_synchronization: pulumi.Input[bool],
-             db_list: pulumi.Input[str],
-             destination_endpoint_engine_name: pulumi.Input[str],
-             destination_endpoint_instance_type: pulumi.Input[str],
-             dts_instance_id: pulumi.Input[str],
-             dts_job_name: pulumi.Input[str],
-             source_endpoint_engine_name: pulumi.Input[str],
-             source_endpoint_instance_type: pulumi.Input[str],
-             structure_initialization: pulumi.Input[bool],
+             data_initialization: Optional[pulumi.Input[bool]] = None,
+             data_synchronization: Optional[pulumi.Input[bool]] = None,
+             db_list: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_instance_type: Optional[pulumi.Input[str]] = None,
+             dts_instance_id: Optional[pulumi.Input[str]] = None,
+             dts_job_name: Optional[pulumi.Input[str]] = None,
+             source_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
+             source_endpoint_instance_type: Optional[pulumi.Input[str]] = None,
+             structure_initialization: Optional[pulumi.Input[bool]] = None,
              checkpoint: Optional[pulumi.Input[str]] = None,
              delay_notice: Optional[pulumi.Input[bool]] = None,
              delay_phone: Optional[pulumi.Input[str]] = None,
@@ -185,77 +185,97 @@ class SynchronizationJobArgs:
              source_endpoint_user_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              synchronization_direction: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dataInitialization' in kwargs:
+        if data_initialization is None and 'dataInitialization' in kwargs:
             data_initialization = kwargs['dataInitialization']
-        if 'dataSynchronization' in kwargs:
+        if data_initialization is None:
+            raise TypeError("Missing 'data_initialization' argument")
+        if data_synchronization is None and 'dataSynchronization' in kwargs:
             data_synchronization = kwargs['dataSynchronization']
-        if 'dbList' in kwargs:
+        if data_synchronization is None:
+            raise TypeError("Missing 'data_synchronization' argument")
+        if db_list is None and 'dbList' in kwargs:
             db_list = kwargs['dbList']
-        if 'destinationEndpointEngineName' in kwargs:
+        if db_list is None:
+            raise TypeError("Missing 'db_list' argument")
+        if destination_endpoint_engine_name is None and 'destinationEndpointEngineName' in kwargs:
             destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
-        if 'destinationEndpointInstanceType' in kwargs:
+        if destination_endpoint_engine_name is None:
+            raise TypeError("Missing 'destination_endpoint_engine_name' argument")
+        if destination_endpoint_instance_type is None and 'destinationEndpointInstanceType' in kwargs:
             destination_endpoint_instance_type = kwargs['destinationEndpointInstanceType']
-        if 'dtsInstanceId' in kwargs:
+        if destination_endpoint_instance_type is None:
+            raise TypeError("Missing 'destination_endpoint_instance_type' argument")
+        if dts_instance_id is None and 'dtsInstanceId' in kwargs:
             dts_instance_id = kwargs['dtsInstanceId']
-        if 'dtsJobName' in kwargs:
+        if dts_instance_id is None:
+            raise TypeError("Missing 'dts_instance_id' argument")
+        if dts_job_name is None and 'dtsJobName' in kwargs:
             dts_job_name = kwargs['dtsJobName']
-        if 'sourceEndpointEngineName' in kwargs:
+        if dts_job_name is None:
+            raise TypeError("Missing 'dts_job_name' argument")
+        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
             source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if 'sourceEndpointInstanceType' in kwargs:
+        if source_endpoint_engine_name is None:
+            raise TypeError("Missing 'source_endpoint_engine_name' argument")
+        if source_endpoint_instance_type is None and 'sourceEndpointInstanceType' in kwargs:
             source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
-        if 'structureInitialization' in kwargs:
+        if source_endpoint_instance_type is None:
+            raise TypeError("Missing 'source_endpoint_instance_type' argument")
+        if structure_initialization is None and 'structureInitialization' in kwargs:
             structure_initialization = kwargs['structureInitialization']
-        if 'delayNotice' in kwargs:
+        if structure_initialization is None:
+            raise TypeError("Missing 'structure_initialization' argument")
+        if delay_notice is None and 'delayNotice' in kwargs:
             delay_notice = kwargs['delayNotice']
-        if 'delayPhone' in kwargs:
+        if delay_phone is None and 'delayPhone' in kwargs:
             delay_phone = kwargs['delayPhone']
-        if 'delayRuleTime' in kwargs:
+        if delay_rule_time is None and 'delayRuleTime' in kwargs:
             delay_rule_time = kwargs['delayRuleTime']
-        if 'destinationEndpointDatabaseName' in kwargs:
+        if destination_endpoint_database_name is None and 'destinationEndpointDatabaseName' in kwargs:
             destination_endpoint_database_name = kwargs['destinationEndpointDatabaseName']
-        if 'destinationEndpointInstanceId' in kwargs:
+        if destination_endpoint_instance_id is None and 'destinationEndpointInstanceId' in kwargs:
             destination_endpoint_instance_id = kwargs['destinationEndpointInstanceId']
-        if 'destinationEndpointIp' in kwargs:
+        if destination_endpoint_ip is None and 'destinationEndpointIp' in kwargs:
             destination_endpoint_ip = kwargs['destinationEndpointIp']
-        if 'destinationEndpointOracleSid' in kwargs:
+        if destination_endpoint_oracle_sid is None and 'destinationEndpointOracleSid' in kwargs:
             destination_endpoint_oracle_sid = kwargs['destinationEndpointOracleSid']
-        if 'destinationEndpointPassword' in kwargs:
+        if destination_endpoint_password is None and 'destinationEndpointPassword' in kwargs:
             destination_endpoint_password = kwargs['destinationEndpointPassword']
-        if 'destinationEndpointPort' in kwargs:
+        if destination_endpoint_port is None and 'destinationEndpointPort' in kwargs:
             destination_endpoint_port = kwargs['destinationEndpointPort']
-        if 'destinationEndpointRegion' in kwargs:
+        if destination_endpoint_region is None and 'destinationEndpointRegion' in kwargs:
             destination_endpoint_region = kwargs['destinationEndpointRegion']
-        if 'destinationEndpointUserName' in kwargs:
+        if destination_endpoint_user_name is None and 'destinationEndpointUserName' in kwargs:
             destination_endpoint_user_name = kwargs['destinationEndpointUserName']
-        if 'errorNotice' in kwargs:
+        if error_notice is None and 'errorNotice' in kwargs:
             error_notice = kwargs['errorNotice']
-        if 'errorPhone' in kwargs:
+        if error_phone is None and 'errorPhone' in kwargs:
             error_phone = kwargs['errorPhone']
-        if 'instanceClass' in kwargs:
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'sourceEndpointDatabaseName' in kwargs:
+        if source_endpoint_database_name is None and 'sourceEndpointDatabaseName' in kwargs:
             source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
-        if 'sourceEndpointInstanceId' in kwargs:
+        if source_endpoint_instance_id is None and 'sourceEndpointInstanceId' in kwargs:
             source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
-        if 'sourceEndpointIp' in kwargs:
+        if source_endpoint_ip is None and 'sourceEndpointIp' in kwargs:
             source_endpoint_ip = kwargs['sourceEndpointIp']
-        if 'sourceEndpointOracleSid' in kwargs:
+        if source_endpoint_oracle_sid is None and 'sourceEndpointOracleSid' in kwargs:
             source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
-        if 'sourceEndpointOwnerId' in kwargs:
+        if source_endpoint_owner_id is None and 'sourceEndpointOwnerId' in kwargs:
             source_endpoint_owner_id = kwargs['sourceEndpointOwnerId']
-        if 'sourceEndpointPassword' in kwargs:
+        if source_endpoint_password is None and 'sourceEndpointPassword' in kwargs:
             source_endpoint_password = kwargs['sourceEndpointPassword']
-        if 'sourceEndpointPort' in kwargs:
+        if source_endpoint_port is None and 'sourceEndpointPort' in kwargs:
             source_endpoint_port = kwargs['sourceEndpointPort']
-        if 'sourceEndpointRegion' in kwargs:
+        if source_endpoint_region is None and 'sourceEndpointRegion' in kwargs:
             source_endpoint_region = kwargs['sourceEndpointRegion']
-        if 'sourceEndpointRole' in kwargs:
+        if source_endpoint_role is None and 'sourceEndpointRole' in kwargs:
             source_endpoint_role = kwargs['sourceEndpointRole']
-        if 'sourceEndpointUserName' in kwargs:
+        if source_endpoint_user_name is None and 'sourceEndpointUserName' in kwargs:
             source_endpoint_user_name = kwargs['sourceEndpointUserName']
-        if 'synchronizationDirection' in kwargs:
+        if synchronization_direction is None and 'synchronizationDirection' in kwargs:
             synchronization_direction = kwargs['synchronizationDirection']
 
         _setter("data_initialization", data_initialization)
@@ -966,77 +986,77 @@ class _SynchronizationJobState:
              status: Optional[pulumi.Input[str]] = None,
              structure_initialization: Optional[pulumi.Input[bool]] = None,
              synchronization_direction: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dataInitialization' in kwargs:
+        if data_initialization is None and 'dataInitialization' in kwargs:
             data_initialization = kwargs['dataInitialization']
-        if 'dataSynchronization' in kwargs:
+        if data_synchronization is None and 'dataSynchronization' in kwargs:
             data_synchronization = kwargs['dataSynchronization']
-        if 'dbList' in kwargs:
+        if db_list is None and 'dbList' in kwargs:
             db_list = kwargs['dbList']
-        if 'delayNotice' in kwargs:
+        if delay_notice is None and 'delayNotice' in kwargs:
             delay_notice = kwargs['delayNotice']
-        if 'delayPhone' in kwargs:
+        if delay_phone is None and 'delayPhone' in kwargs:
             delay_phone = kwargs['delayPhone']
-        if 'delayRuleTime' in kwargs:
+        if delay_rule_time is None and 'delayRuleTime' in kwargs:
             delay_rule_time = kwargs['delayRuleTime']
-        if 'destinationEndpointDatabaseName' in kwargs:
+        if destination_endpoint_database_name is None and 'destinationEndpointDatabaseName' in kwargs:
             destination_endpoint_database_name = kwargs['destinationEndpointDatabaseName']
-        if 'destinationEndpointEngineName' in kwargs:
+        if destination_endpoint_engine_name is None and 'destinationEndpointEngineName' in kwargs:
             destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
-        if 'destinationEndpointInstanceId' in kwargs:
+        if destination_endpoint_instance_id is None and 'destinationEndpointInstanceId' in kwargs:
             destination_endpoint_instance_id = kwargs['destinationEndpointInstanceId']
-        if 'destinationEndpointInstanceType' in kwargs:
+        if destination_endpoint_instance_type is None and 'destinationEndpointInstanceType' in kwargs:
             destination_endpoint_instance_type = kwargs['destinationEndpointInstanceType']
-        if 'destinationEndpointIp' in kwargs:
+        if destination_endpoint_ip is None and 'destinationEndpointIp' in kwargs:
             destination_endpoint_ip = kwargs['destinationEndpointIp']
-        if 'destinationEndpointOracleSid' in kwargs:
+        if destination_endpoint_oracle_sid is None and 'destinationEndpointOracleSid' in kwargs:
             destination_endpoint_oracle_sid = kwargs['destinationEndpointOracleSid']
-        if 'destinationEndpointPassword' in kwargs:
+        if destination_endpoint_password is None and 'destinationEndpointPassword' in kwargs:
             destination_endpoint_password = kwargs['destinationEndpointPassword']
-        if 'destinationEndpointPort' in kwargs:
+        if destination_endpoint_port is None and 'destinationEndpointPort' in kwargs:
             destination_endpoint_port = kwargs['destinationEndpointPort']
-        if 'destinationEndpointRegion' in kwargs:
+        if destination_endpoint_region is None and 'destinationEndpointRegion' in kwargs:
             destination_endpoint_region = kwargs['destinationEndpointRegion']
-        if 'destinationEndpointUserName' in kwargs:
+        if destination_endpoint_user_name is None and 'destinationEndpointUserName' in kwargs:
             destination_endpoint_user_name = kwargs['destinationEndpointUserName']
-        if 'dtsInstanceId' in kwargs:
+        if dts_instance_id is None and 'dtsInstanceId' in kwargs:
             dts_instance_id = kwargs['dtsInstanceId']
-        if 'dtsJobName' in kwargs:
+        if dts_job_name is None and 'dtsJobName' in kwargs:
             dts_job_name = kwargs['dtsJobName']
-        if 'errorNotice' in kwargs:
+        if error_notice is None and 'errorNotice' in kwargs:
             error_notice = kwargs['errorNotice']
-        if 'errorPhone' in kwargs:
+        if error_phone is None and 'errorPhone' in kwargs:
             error_phone = kwargs['errorPhone']
-        if 'instanceClass' in kwargs:
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'sourceEndpointDatabaseName' in kwargs:
+        if source_endpoint_database_name is None and 'sourceEndpointDatabaseName' in kwargs:
             source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
-        if 'sourceEndpointEngineName' in kwargs:
+        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
             source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if 'sourceEndpointInstanceId' in kwargs:
+        if source_endpoint_instance_id is None and 'sourceEndpointInstanceId' in kwargs:
             source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
-        if 'sourceEndpointInstanceType' in kwargs:
+        if source_endpoint_instance_type is None and 'sourceEndpointInstanceType' in kwargs:
             source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
-        if 'sourceEndpointIp' in kwargs:
+        if source_endpoint_ip is None and 'sourceEndpointIp' in kwargs:
             source_endpoint_ip = kwargs['sourceEndpointIp']
-        if 'sourceEndpointOracleSid' in kwargs:
+        if source_endpoint_oracle_sid is None and 'sourceEndpointOracleSid' in kwargs:
             source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
-        if 'sourceEndpointOwnerId' in kwargs:
+        if source_endpoint_owner_id is None and 'sourceEndpointOwnerId' in kwargs:
             source_endpoint_owner_id = kwargs['sourceEndpointOwnerId']
-        if 'sourceEndpointPassword' in kwargs:
+        if source_endpoint_password is None and 'sourceEndpointPassword' in kwargs:
             source_endpoint_password = kwargs['sourceEndpointPassword']
-        if 'sourceEndpointPort' in kwargs:
+        if source_endpoint_port is None and 'sourceEndpointPort' in kwargs:
             source_endpoint_port = kwargs['sourceEndpointPort']
-        if 'sourceEndpointRegion' in kwargs:
+        if source_endpoint_region is None and 'sourceEndpointRegion' in kwargs:
             source_endpoint_region = kwargs['sourceEndpointRegion']
-        if 'sourceEndpointRole' in kwargs:
+        if source_endpoint_role is None and 'sourceEndpointRole' in kwargs:
             source_endpoint_role = kwargs['sourceEndpointRole']
-        if 'sourceEndpointUserName' in kwargs:
+        if source_endpoint_user_name is None and 'sourceEndpointUserName' in kwargs:
             source_endpoint_user_name = kwargs['sourceEndpointUserName']
-        if 'structureInitialization' in kwargs:
+        if structure_initialization is None and 'structureInitialization' in kwargs:
             structure_initialization = kwargs['structureInitialization']
-        if 'synchronizationDirection' in kwargs:
+        if synchronization_direction is None and 'synchronizationDirection' in kwargs:
             synchronization_direction = kwargs['synchronizationDirection']
 
         if checkpoint is not None:

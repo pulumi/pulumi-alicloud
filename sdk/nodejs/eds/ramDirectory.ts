@@ -11,36 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.174.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.eds.getZones({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
- *     vswitchName: name,
- * });
- * const defaultRamDirectory = new alicloud.eds.RamDirectory("defaultRamDirectory", {
- *     desktopAccessType: "INTERNET",
- *     enableAdminAccess: true,
- *     enableInternetAccess: true,
- *     ramDirectoryName: name,
- *     vswitchIds: [defaultSwitch.id],
- * });
- * ```
- *
  * ## Import
  *
  * ECD Ram Directory can be imported using the id, e.g.

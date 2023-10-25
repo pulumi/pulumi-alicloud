@@ -99,13 +99,13 @@ class DedicatedPropreHostArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ecs_class_lists: pulumi.Input[Sequence[pulumi.Input['DedicatedPropreHostEcsClassListArgs']]],
-             ecs_zone_id: pulumi.Input[str],
-             engine: pulumi.Input[str],
-             payment_type: pulumi.Input[str],
-             security_group_id: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             ecs_class_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedPropreHostEcsClassListArgs']]]] = None,
+             ecs_zone_id: Optional[pulumi.Input[str]] = None,
+             engine: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              auto_renew: Optional[pulumi.Input[str]] = None,
              dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
              ecs_deployment_set_id: Optional[pulumi.Input[str]] = None,
@@ -118,41 +118,55 @@ class DedicatedPropreHostArgs:
              password_inherit: Optional[pulumi.Input[str]] = None,
              period: Optional[pulumi.Input[str]] = None,
              period_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ecsClassLists' in kwargs:
+        if ecs_class_lists is None and 'ecsClassLists' in kwargs:
             ecs_class_lists = kwargs['ecsClassLists']
-        if 'ecsZoneId' in kwargs:
+        if ecs_class_lists is None:
+            raise TypeError("Missing 'ecs_class_lists' argument")
+        if ecs_zone_id is None and 'ecsZoneId' in kwargs:
             ecs_zone_id = kwargs['ecsZoneId']
-        if 'paymentType' in kwargs:
+        if ecs_zone_id is None:
+            raise TypeError("Missing 'ecs_zone_id' argument")
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'securityGroupId' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vpcId' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'autoRenew' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'dedicatedHostGroupId' in kwargs:
+        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
             dedicated_host_group_id = kwargs['dedicatedHostGroupId']
-        if 'ecsDeploymentSetId' in kwargs:
+        if ecs_deployment_set_id is None and 'ecsDeploymentSetId' in kwargs:
             ecs_deployment_set_id = kwargs['ecsDeploymentSetId']
-        if 'ecsHostName' in kwargs:
+        if ecs_host_name is None and 'ecsHostName' in kwargs:
             ecs_host_name = kwargs['ecsHostName']
-        if 'ecsInstanceName' in kwargs:
+        if ecs_instance_name is None and 'ecsInstanceName' in kwargs:
             ecs_instance_name = kwargs['ecsInstanceName']
-        if 'ecsUniqueSuffix' in kwargs:
+        if ecs_unique_suffix is None and 'ecsUniqueSuffix' in kwargs:
             ecs_unique_suffix = kwargs['ecsUniqueSuffix']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'osPassword' in kwargs:
+        if os_password is None and 'osPassword' in kwargs:
             os_password = kwargs['osPassword']
-        if 'passwordInherit' in kwargs:
+        if password_inherit is None and 'passwordInherit' in kwargs:
             password_inherit = kwargs['passwordInherit']
-        if 'periodType' in kwargs:
+        if period_type is None and 'periodType' in kwargs:
             period_type = kwargs['periodType']
 
         _setter("ecs_class_lists", ecs_class_lists)
@@ -542,43 +556,43 @@ class _DedicatedPropreHostState:
              security_group_id: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'dedicatedHostGroupId' in kwargs:
+        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
             dedicated_host_group_id = kwargs['dedicatedHostGroupId']
-        if 'ecsClassLists' in kwargs:
+        if ecs_class_lists is None and 'ecsClassLists' in kwargs:
             ecs_class_lists = kwargs['ecsClassLists']
-        if 'ecsDeploymentSetId' in kwargs:
+        if ecs_deployment_set_id is None and 'ecsDeploymentSetId' in kwargs:
             ecs_deployment_set_id = kwargs['ecsDeploymentSetId']
-        if 'ecsHostName' in kwargs:
+        if ecs_host_name is None and 'ecsHostName' in kwargs:
             ecs_host_name = kwargs['ecsHostName']
-        if 'ecsInstanceId' in kwargs:
+        if ecs_instance_id is None and 'ecsInstanceId' in kwargs:
             ecs_instance_id = kwargs['ecsInstanceId']
-        if 'ecsInstanceName' in kwargs:
+        if ecs_instance_name is None and 'ecsInstanceName' in kwargs:
             ecs_instance_name = kwargs['ecsInstanceName']
-        if 'ecsUniqueSuffix' in kwargs:
+        if ecs_unique_suffix is None and 'ecsUniqueSuffix' in kwargs:
             ecs_unique_suffix = kwargs['ecsUniqueSuffix']
-        if 'ecsZoneId' in kwargs:
+        if ecs_zone_id is None and 'ecsZoneId' in kwargs:
             ecs_zone_id = kwargs['ecsZoneId']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'osPassword' in kwargs:
+        if os_password is None and 'osPassword' in kwargs:
             os_password = kwargs['osPassword']
-        if 'passwordInherit' in kwargs:
+        if password_inherit is None and 'passwordInherit' in kwargs:
             password_inherit = kwargs['passwordInherit']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'periodType' in kwargs:
+        if period_type is None and 'periodType' in kwargs:
             period_type = kwargs['periodType']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if auto_renew is not None:

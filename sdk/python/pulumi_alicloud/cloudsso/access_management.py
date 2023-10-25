@@ -44,28 +44,40 @@ class AccessManagementArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_configuration_id: pulumi.Input[str],
-             directory_id: pulumi.Input[str],
-             principal_id: pulumi.Input[str],
-             principal_type: pulumi.Input[str],
-             target_id: pulumi.Input[str],
-             target_type: pulumi.Input[str],
+             access_configuration_id: Optional[pulumi.Input[str]] = None,
+             directory_id: Optional[pulumi.Input[str]] = None,
+             principal_id: Optional[pulumi.Input[str]] = None,
+             principal_type: Optional[pulumi.Input[str]] = None,
+             target_id: Optional[pulumi.Input[str]] = None,
+             target_type: Optional[pulumi.Input[str]] = None,
              deprovision_strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessConfigurationId' in kwargs:
+        if access_configuration_id is None and 'accessConfigurationId' in kwargs:
             access_configuration_id = kwargs['accessConfigurationId']
-        if 'directoryId' in kwargs:
+        if access_configuration_id is None:
+            raise TypeError("Missing 'access_configuration_id' argument")
+        if directory_id is None and 'directoryId' in kwargs:
             directory_id = kwargs['directoryId']
-        if 'principalId' in kwargs:
+        if directory_id is None:
+            raise TypeError("Missing 'directory_id' argument")
+        if principal_id is None and 'principalId' in kwargs:
             principal_id = kwargs['principalId']
-        if 'principalType' in kwargs:
+        if principal_id is None:
+            raise TypeError("Missing 'principal_id' argument")
+        if principal_type is None and 'principalType' in kwargs:
             principal_type = kwargs['principalType']
-        if 'targetId' in kwargs:
+        if principal_type is None:
+            raise TypeError("Missing 'principal_type' argument")
+        if target_id is None and 'targetId' in kwargs:
             target_id = kwargs['targetId']
-        if 'targetType' in kwargs:
+        if target_id is None:
+            raise TypeError("Missing 'target_id' argument")
+        if target_type is None and 'targetType' in kwargs:
             target_type = kwargs['targetType']
-        if 'deprovisionStrategy' in kwargs:
+        if target_type is None:
+            raise TypeError("Missing 'target_type' argument")
+        if deprovision_strategy is None and 'deprovisionStrategy' in kwargs:
             deprovision_strategy = kwargs['deprovisionStrategy']
 
         _setter("access_configuration_id", access_configuration_id)
@@ -202,21 +214,21 @@ class _AccessManagementState:
              principal_type: Optional[pulumi.Input[str]] = None,
              target_id: Optional[pulumi.Input[str]] = None,
              target_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessConfigurationId' in kwargs:
+        if access_configuration_id is None and 'accessConfigurationId' in kwargs:
             access_configuration_id = kwargs['accessConfigurationId']
-        if 'deprovisionStrategy' in kwargs:
+        if deprovision_strategy is None and 'deprovisionStrategy' in kwargs:
             deprovision_strategy = kwargs['deprovisionStrategy']
-        if 'directoryId' in kwargs:
+        if directory_id is None and 'directoryId' in kwargs:
             directory_id = kwargs['directoryId']
-        if 'principalId' in kwargs:
+        if principal_id is None and 'principalId' in kwargs:
             principal_id = kwargs['principalId']
-        if 'principalType' in kwargs:
+        if principal_type is None and 'principalType' in kwargs:
             principal_type = kwargs['principalType']
-        if 'targetId' in kwargs:
+        if target_id is None and 'targetId' in kwargs:
             target_id = kwargs['targetId']
-        if 'targetType' in kwargs:
+        if target_type is None and 'targetType' in kwargs:
             target_type = kwargs['targetType']
 
         if access_configuration_id is not None:

@@ -15,46 +15,6 @@ import (
 // This data source provides the Global Accelerator (GA) Basic Endpoints of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.194.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := ga.GetBasicEndpoints(ctx, &ga.GetBasicEndpointsArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//				EndpointGroupId: "example_id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("gaBasicEndpointsId1", ids.Endpoints[0].Id)
-//			nameRegex, err := ga.GetBasicEndpoints(ctx, &ga.GetBasicEndpointsArgs{
-//				NameRegex:       pulumi.StringRef("tf-example"),
-//				EndpointGroupId: "example_id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("gaBasicEndpointsId2", nameRegex.Endpoints[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetBasicEndpoints(ctx *pulumi.Context, args *GetBasicEndpointsArgs, opts ...pulumi.InvokeOption) (*GetBasicEndpointsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBasicEndpointsResult

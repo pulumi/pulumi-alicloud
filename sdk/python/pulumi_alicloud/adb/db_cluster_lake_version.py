@@ -70,13 +70,13 @@ class DBClusterLakeVersionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compute_resource: pulumi.Input[str],
-             db_cluster_version: pulumi.Input[str],
-             payment_type: pulumi.Input[str],
-             storage_resource: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             compute_resource: Optional[pulumi.Input[str]] = None,
+             db_cluster_version: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             storage_resource: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              backup_set_id: Optional[pulumi.Input[str]] = None,
              db_cluster_description: Optional[pulumi.Input[str]] = None,
              enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
@@ -85,37 +85,51 @@ class DBClusterLakeVersionArgs:
              restore_type: Optional[pulumi.Input[str]] = None,
              security_ips: Optional[pulumi.Input[str]] = None,
              source_db_cluster_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'computeResource' in kwargs:
+        if compute_resource is None and 'computeResource' in kwargs:
             compute_resource = kwargs['computeResource']
-        if 'dbClusterVersion' in kwargs:
+        if compute_resource is None:
+            raise TypeError("Missing 'compute_resource' argument")
+        if db_cluster_version is None and 'dbClusterVersion' in kwargs:
             db_cluster_version = kwargs['dbClusterVersion']
-        if 'paymentType' in kwargs:
+        if db_cluster_version is None:
+            raise TypeError("Missing 'db_cluster_version' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'storageResource' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if storage_resource is None and 'storageResource' in kwargs:
             storage_resource = kwargs['storageResource']
-        if 'vpcId' in kwargs:
+        if storage_resource is None:
+            raise TypeError("Missing 'storage_resource' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'backupSetId' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if backup_set_id is None and 'backupSetId' in kwargs:
             backup_set_id = kwargs['backupSetId']
-        if 'dbClusterDescription' in kwargs:
+        if db_cluster_description is None and 'dbClusterDescription' in kwargs:
             db_cluster_description = kwargs['dbClusterDescription']
-        if 'enableDefaultResourceGroup' in kwargs:
+        if enable_default_resource_group is None and 'enableDefaultResourceGroup' in kwargs:
             enable_default_resource_group = kwargs['enableDefaultResourceGroup']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'restoreToTime' in kwargs:
+        if restore_to_time is None and 'restoreToTime' in kwargs:
             restore_to_time = kwargs['restoreToTime']
-        if 'restoreType' in kwargs:
+        if restore_type is None and 'restoreType' in kwargs:
             restore_type = kwargs['restoreType']
-        if 'securityIps' in kwargs:
+        if security_ips is None and 'securityIps' in kwargs:
             security_ips = kwargs['securityIps']
-        if 'sourceDbClusterId' in kwargs:
+        if source_db_cluster_id is None and 'sourceDbClusterId' in kwargs:
             source_db_cluster_id = kwargs['sourceDbClusterId']
 
         _setter("compute_resource", compute_resource)
@@ -443,51 +457,51 @@ class _DBClusterLakeVersionState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupSetId' in kwargs:
+        if backup_set_id is None and 'backupSetId' in kwargs:
             backup_set_id = kwargs['backupSetId']
-        if 'commodityCode' in kwargs:
+        if commodity_code is None and 'commodityCode' in kwargs:
             commodity_code = kwargs['commodityCode']
-        if 'computeResource' in kwargs:
+        if compute_resource is None and 'computeResource' in kwargs:
             compute_resource = kwargs['computeResource']
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dbClusterDescription' in kwargs:
+        if db_cluster_description is None and 'dbClusterDescription' in kwargs:
             db_cluster_description = kwargs['dbClusterDescription']
-        if 'dbClusterVersion' in kwargs:
+        if db_cluster_version is None and 'dbClusterVersion' in kwargs:
             db_cluster_version = kwargs['dbClusterVersion']
-        if 'enableDefaultResourceGroup' in kwargs:
+        if enable_default_resource_group is None and 'enableDefaultResourceGroup' in kwargs:
             enable_default_resource_group = kwargs['enableDefaultResourceGroup']
-        if 'engineVersion' in kwargs:
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'expireTime' in kwargs:
+        if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
-        if 'lockMode' in kwargs:
+        if lock_mode is None and 'lockMode' in kwargs:
             lock_mode = kwargs['lockMode']
-        if 'lockReason' in kwargs:
+        if lock_reason is None and 'lockReason' in kwargs:
             lock_reason = kwargs['lockReason']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'restoreToTime' in kwargs:
+        if restore_to_time is None and 'restoreToTime' in kwargs:
             restore_to_time = kwargs['restoreToTime']
-        if 'restoreType' in kwargs:
+        if restore_type is None and 'restoreType' in kwargs:
             restore_type = kwargs['restoreType']
-        if 'securityIps' in kwargs:
+        if security_ips is None and 'securityIps' in kwargs:
             security_ips = kwargs['securityIps']
-        if 'sourceDbClusterId' in kwargs:
+        if source_db_cluster_id is None and 'sourceDbClusterId' in kwargs:
             source_db_cluster_id = kwargs['sourceDbClusterId']
-        if 'storageResource' in kwargs:
+        if storage_resource is None and 'storageResource' in kwargs:
             storage_resource = kwargs['storageResource']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if backup_set_id is not None:
@@ -886,29 +900,6 @@ class DBClusterLakeVersion(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.190.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_zones = alicloud.adb.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.ids[0])
-        default_db_cluster_lake_version = alicloud.adb.DBClusterLakeVersion("defaultDBClusterLakeVersion",
-            db_cluster_version="5.0",
-            vpc_id=default_networks.ids[0],
-            vswitch_id=default_switches.ids[0],
-            zone_id=default_zones.ids[0],
-            compute_resource="16ACU",
-            storage_resource="0ACU",
-            payment_type="PayAsYouGo",
-            enable_default_resource_group=False)
-        ```
-
         ## Import
 
         AnalyticDB for MySQL (ADB) DB Cluster Lake Version can be imported using the id, e.g.
@@ -949,29 +940,6 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-createdbcluster).
 
         > **NOTE:** Available since v1.190.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_zones = alicloud.adb.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.ids[0])
-        default_db_cluster_lake_version = alicloud.adb.DBClusterLakeVersion("defaultDBClusterLakeVersion",
-            db_cluster_version="5.0",
-            vpc_id=default_networks.ids[0],
-            vswitch_id=default_switches.ids[0],
-            zone_id=default_zones.ids[0],
-            compute_resource="16ACU",
-            storage_resource="0ACU",
-            payment_type="PayAsYouGo",
-            enable_default_resource_group=False)
-        ```
 
         ## Import
 

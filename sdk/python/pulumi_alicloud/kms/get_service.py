@@ -74,15 +74,6 @@ def get_service(enable: Optional[str] = None,
 
     > **NOTE:** Available in v1.108.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    open = alicloud.kms.get_service(enable="On")
-    ```
-
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
            
@@ -108,15 +99,6 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
     For information about KMS and how to use it, see [What is KMS](https://help.aliyun.com/document_detail/186020.html).
 
     > **NOTE:** Available in v1.108.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    open = alicloud.kms.get_service(enable="On")
-    ```
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".

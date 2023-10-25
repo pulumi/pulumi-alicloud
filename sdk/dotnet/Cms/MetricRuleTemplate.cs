@@ -16,48 +16,6 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// &gt; **NOTE:** Available since v1.134.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var example = new AliCloud.Cms.MetricRuleTemplate("example", new()
-    ///     {
-    ///         MetricRuleTemplateName = name,
-    ///         AlertTemplates = new[]
-    ///         {
-    ///             new AliCloud.Cms.Inputs.MetricRuleTemplateAlertTemplateArgs
-    ///             {
-    ///                 Category = "ecs",
-    ///                 MetricName = "cpu_total",
-    ///                 Namespace = "acs_ecs_dashboard",
-    ///                 RuleName = "tf_example",
-    ///                 Escalations = new AliCloud.Cms.Inputs.MetricRuleTemplateAlertTemplateEscalationsArgs
-    ///                 {
-    ///                     Critical = new AliCloud.Cms.Inputs.MetricRuleTemplateAlertTemplateEscalationsCriticalArgs
-    ///                     {
-    ///                         ComparisonOperator = "GreaterThanThreshold",
-    ///                         Statistics = "Average",
-    ///                         Threshold = "90",
-    ///                         Times = "3",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Cloud Monitor Service Metric Rule Template can be imported using the id, e.g.

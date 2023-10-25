@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.138.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dts.getSynchronizationJobs({});
- * export const dtsSynchronizationJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
- * ```
  */
 export function getSynchronizationJobs(args?: GetSynchronizationJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetSynchronizationJobsResult> {
     args = args || {};
@@ -78,18 +66,6 @@ export interface GetSynchronizationJobsResult {
  * This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.138.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dts.getSynchronizationJobs({});
- * export const dtsSynchronizationJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
- * ```
  */
 export function getSynchronizationJobsOutput(args?: GetSynchronizationJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSynchronizationJobsResult> {
     return pulumi.output(args).apply((a: any) => getSynchronizationJobs(a, opts))

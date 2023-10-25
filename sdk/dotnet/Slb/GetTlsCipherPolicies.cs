@@ -15,44 +15,6 @@ namespace Pulumi.AliCloud.Slb
         /// This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.135.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Slb.GetTlsCipherPolicies.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Slb.GetTlsCipherPolicies.Invoke(new()
-        ///     {
-        ///         NameRegex = "^My-TlsCipherPolicy",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["slbTlsCipherPolicyId1"] = ids.Apply(getTlsCipherPoliciesResult =&gt; getTlsCipherPoliciesResult.Policies[0]?.Id),
-        ///         ["slbTlsCipherPolicyId2"] = nameRegex.Apply(getTlsCipherPoliciesResult =&gt; getTlsCipherPoliciesResult.Policies[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTlsCipherPoliciesResult> InvokeAsync(GetTlsCipherPoliciesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTlsCipherPoliciesResult>("alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies", args ?? new GetTlsCipherPoliciesArgs(), options.WithDefaults());
@@ -61,44 +23,6 @@ namespace Pulumi.AliCloud.Slb
         /// This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.135.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Slb.GetTlsCipherPolicies.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Slb.GetTlsCipherPolicies.Invoke(new()
-        ///     {
-        ///         NameRegex = "^My-TlsCipherPolicy",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["slbTlsCipherPolicyId1"] = ids.Apply(getTlsCipherPoliciesResult =&gt; getTlsCipherPoliciesResult.Policies[0]?.Id),
-        ///         ["slbTlsCipherPolicyId2"] = nameRegex.Apply(getTlsCipherPoliciesResult =&gt; getTlsCipherPoliciesResult.Policies[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTlsCipherPoliciesResult> Invoke(GetTlsCipherPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTlsCipherPoliciesResult>("alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies", args ?? new GetTlsCipherPoliciesInvokeArgs(), options.WithDefaults());

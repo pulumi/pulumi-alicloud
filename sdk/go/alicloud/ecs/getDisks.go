@@ -15,33 +15,6 @@ import (
 // > **DEPRECATED:** This datasource has been renamed to ecs.getEcsDisks from version 1.122.0.
 //
 // This data source provides the disks of the current Alibaba Cloud user.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			disksDs, err := ecs.GetDisks(ctx, &ecs.GetDisksArgs{
-//				NameRegex: pulumi.StringRef("sample_disk"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstDiskId", disksDs.Disks[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDisks(ctx *pulumi.Context, args *GetDisksArgs, opts ...pulumi.InvokeOption) (*GetDisksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDisksResult
@@ -93,29 +66,6 @@ type GetDisksArgs struct {
 	// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the disks. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := ecs.GetDisks(ctx, &ecs.GetDisksArgs{
-	// 			Tags: map[string]interface{}{
-	// 				"tagKey1": "tagValue1",
-	// 				"tagKey2": "tagValue2",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Disk type. Possible values: `system` and `data`.
 	//
@@ -230,29 +180,6 @@ type GetDisksOutputArgs struct {
 	// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A map of tags assigned to the disks. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := ecs.GetDisks(ctx, &ecs.GetDisksArgs{
-	// 			Tags: map[string]interface{}{
-	// 				"tagKey1": "tagValue1",
-	// 				"tagKey2": "tagValue2",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// Disk type. Possible values: `system` and `data`.
 	//

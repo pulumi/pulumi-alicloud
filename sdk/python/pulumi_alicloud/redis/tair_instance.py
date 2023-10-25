@@ -86,11 +86,11 @@ class TairInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_class: pulumi.Input[str],
-             instance_type: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             instance_class: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              auto_renew: Optional[pulumi.Input[str]] = None,
              auto_renew_period: Optional[pulumi.Input[str]] = None,
              effective_time: Optional[pulumi.Input[str]] = None,
@@ -107,41 +107,51 @@ class TairInstanceArgs:
              storage_size_gb: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              tair_instance_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceClass' in kwargs:
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'instanceType' in kwargs:
+        if instance_class is None:
+            raise TypeError("Missing 'instance_class' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'vpcId' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'autoRenew' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'effectiveTime' in kwargs:
+        if effective_time is None and 'effectiveTime' in kwargs:
             effective_time = kwargs['effectiveTime']
-        if 'engineVersion' in kwargs:
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'forceUpgrade' in kwargs:
+        if force_upgrade is None and 'forceUpgrade' in kwargs:
             force_upgrade = kwargs['forceUpgrade']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'secondaryZoneId' in kwargs:
+        if secondary_zone_id is None and 'secondaryZoneId' in kwargs:
             secondary_zone_id = kwargs['secondaryZoneId']
-        if 'shardCount' in kwargs:
+        if shard_count is None and 'shardCount' in kwargs:
             shard_count = kwargs['shardCount']
-        if 'storagePerformanceLevel' in kwargs:
+        if storage_performance_level is None and 'storagePerformanceLevel' in kwargs:
             storage_performance_level = kwargs['storagePerformanceLevel']
-        if 'storageSizeGb' in kwargs:
+        if storage_size_gb is None and 'storageSizeGb' in kwargs:
             storage_size_gb = kwargs['storageSizeGb']
-        if 'tairInstanceName' in kwargs:
+        if tair_instance_name is None and 'tairInstanceName' in kwargs:
             tair_instance_name = kwargs['tairInstanceName']
 
         _setter("instance_class", instance_class)
@@ -539,43 +549,43 @@ class _TairInstanceState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'effectiveTime' in kwargs:
+        if effective_time is None and 'effectiveTime' in kwargs:
             effective_time = kwargs['effectiveTime']
-        if 'engineVersion' in kwargs:
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'forceUpgrade' in kwargs:
+        if force_upgrade is None and 'forceUpgrade' in kwargs:
             force_upgrade = kwargs['forceUpgrade']
-        if 'instanceClass' in kwargs:
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'secondaryZoneId' in kwargs:
+        if secondary_zone_id is None and 'secondaryZoneId' in kwargs:
             secondary_zone_id = kwargs['secondaryZoneId']
-        if 'shardCount' in kwargs:
+        if shard_count is None and 'shardCount' in kwargs:
             shard_count = kwargs['shardCount']
-        if 'storagePerformanceLevel' in kwargs:
+        if storage_performance_level is None and 'storagePerformanceLevel' in kwargs:
             storage_performance_level = kwargs['storagePerformanceLevel']
-        if 'storageSizeGb' in kwargs:
+        if storage_size_gb is None and 'storageSizeGb' in kwargs:
             storage_size_gb = kwargs['storageSizeGb']
-        if 'tairInstanceName' in kwargs:
+        if tair_instance_name is None and 'tairInstanceName' in kwargs:
             tair_instance_name = kwargs['tairInstanceName']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if auto_renew is not None:

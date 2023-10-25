@@ -55,9 +55,9 @@ class VirtualNodeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             kube_config: pulumi.Input[str],
-             security_group_id: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             kube_config: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              eip_instance_id: Optional[pulumi.Input[str]] = None,
              enable_public_network: Optional[pulumi.Input[bool]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -65,23 +65,29 @@ class VirtualNodeArgs:
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]] = None,
              virtual_node_name: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'kubeConfig' in kwargs:
+        if kube_config is None and 'kubeConfig' in kwargs:
             kube_config = kwargs['kubeConfig']
-        if 'securityGroupId' in kwargs:
+        if kube_config is None:
+            raise TypeError("Missing 'kube_config' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vswitchId' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'eipInstanceId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if eip_instance_id is None and 'eipInstanceId' in kwargs:
             eip_instance_id = kwargs['eipInstanceId']
-        if 'enablePublicNetwork' in kwargs:
+        if enable_public_network is None and 'enablePublicNetwork' in kwargs:
             enable_public_network = kwargs['enablePublicNetwork']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'virtualNodeName' in kwargs:
+        if virtual_node_name is None and 'virtualNodeName' in kwargs:
             virtual_node_name = kwargs['virtualNodeName']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("kube_config", kube_config)
@@ -279,23 +285,23 @@ class _VirtualNodeState:
              virtual_node_name: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eipInstanceId' in kwargs:
+        if eip_instance_id is None and 'eipInstanceId' in kwargs:
             eip_instance_id = kwargs['eipInstanceId']
-        if 'enablePublicNetwork' in kwargs:
+        if enable_public_network is None and 'enablePublicNetwork' in kwargs:
             enable_public_network = kwargs['enablePublicNetwork']
-        if 'kubeConfig' in kwargs:
+        if kube_config is None and 'kubeConfig' in kwargs:
             kube_config = kwargs['kubeConfig']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'virtualNodeName' in kwargs:
+        if virtual_node_name is None and 'virtualNodeName' in kwargs:
             virtual_node_name = kwargs['virtualNodeName']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if eip_instance_id is not None:
@@ -477,54 +483,6 @@ class VirtualNode(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.145.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.eci.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.1.0.0/16",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].zone_ids[0])
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
-            isp="BGP",
-            address_name=name,
-            netmode="public",
-            bandwidth="1",
-            security_protection_types=["AntiDDoS_Enhanced"],
-            payment_type="PayAsYouGo")
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_virtual_node = alicloud.eci.VirtualNode("defaultVirtualNode",
-            security_group_id=default_security_group.id,
-            virtual_node_name=name,
-            vswitch_id=default_switch.id,
-            enable_public_network=False,
-            eip_instance_id=default_eip_address.id,
-            resource_group_id=default_resource_groups.groups[0].id,
-            kube_config="kube_config",
-            tags={
-                "Created": "TF",
-            },
-            taints=[alicloud.eci.VirtualNodeTaintArgs(
-                effect="NoSchedule",
-                key="TF",
-                value="example",
-            )])
-        ```
-
         ## Import
 
         ECI Virtual Node can be imported using the id, e.g.
@@ -558,54 +516,6 @@ class VirtualNode(pulumi.CustomResource):
         For information about ECI Virtual Node and how to use it, see [What is Virtual Node](https://www.alibabacloud.com/help/en/doc-detail/89129.html).
 
         > **NOTE:** Available since v1.145.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.eci.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.1.0.0/16",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].zone_ids[0])
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
-            isp="BGP",
-            address_name=name,
-            netmode="public",
-            bandwidth="1",
-            security_protection_types=["AntiDDoS_Enhanced"],
-            payment_type="PayAsYouGo")
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_virtual_node = alicloud.eci.VirtualNode("defaultVirtualNode",
-            security_group_id=default_security_group.id,
-            virtual_node_name=name,
-            vswitch_id=default_switch.id,
-            enable_public_network=False,
-            eip_instance_id=default_eip_address.id,
-            resource_group_id=default_resource_groups.groups[0].id,
-            kube_config="kube_config",
-            tags={
-                "Created": "TF",
-            },
-            taints=[alicloud.eci.VirtualNodeTaintArgs(
-                effect="NoSchedule",
-                key="TF",
-                value="example",
-            )])
-        ```
 
         ## Import
 

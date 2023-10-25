@@ -19,40 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.133.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alb.NewAcl(ctx, "defaultAcl", &alb.AclArgs{
-//				AclName:         pulumi.String("tf_example"),
-//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ALB Acl can be imported using the id, e.g.

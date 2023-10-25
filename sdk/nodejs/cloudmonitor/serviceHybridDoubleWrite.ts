@@ -11,24 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.210.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const source = new alicloud.cms.Namespace("source", {namespace: "your_source_namespace"});
- * const defaultNamespace = new alicloud.cms.Namespace("defaultNamespace", {namespace: "your_namespace"});
- * const defaultServiceHybridDoubleWrite = new alicloud.cloudmonitor.ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", {
- *     sourceNamespace: source.id,
- *     sourceUserId: "your_source_account",
- *     namespace: defaultNamespace.id,
- *     userId: "your_account",
- * });
- * ```
- *
  * ## Import
  *
  * Cloud Monitor Service Hybrid Double Write can be imported using the id, e.g.

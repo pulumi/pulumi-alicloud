@@ -90,22 +90,6 @@ def get_server_firewall_rules(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.143.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.simpleapplicationserver.get_server_firewall_rules(instance_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("simpleApplicationServerFirewallRuleId1", ids.rules[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Firewall Rule IDs.
     :param str instance_id: Alibaba Cloud simple application server instance ID.
@@ -135,22 +119,6 @@ def get_server_firewall_rules_output(ids: Optional[pulumi.Input[Optional[Sequenc
     This data source provides the Simple Application Server Firewall Rules of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.143.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.simpleapplicationserver.get_server_firewall_rules(instance_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("simpleApplicationServerFirewallRuleId1", ids.rules[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Firewall Rule IDs.

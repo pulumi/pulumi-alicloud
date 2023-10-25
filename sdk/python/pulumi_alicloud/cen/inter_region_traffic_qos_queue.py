@@ -38,20 +38,26 @@ class InterRegionTrafficQosQueueArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dscps: pulumi.Input[Sequence[pulumi.Input[str]]],
-             remain_bandwidth_percent: pulumi.Input[int],
-             traffic_qos_policy_id: pulumi.Input[str],
+             dscps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             remain_bandwidth_percent: Optional[pulumi.Input[int]] = None,
+             traffic_qos_policy_id: Optional[pulumi.Input[str]] = None,
              inter_region_traffic_qos_queue_description: Optional[pulumi.Input[str]] = None,
              inter_region_traffic_qos_queue_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'remainBandwidthPercent' in kwargs:
+        if dscps is None:
+            raise TypeError("Missing 'dscps' argument")
+        if remain_bandwidth_percent is None and 'remainBandwidthPercent' in kwargs:
             remain_bandwidth_percent = kwargs['remainBandwidthPercent']
-        if 'trafficQosPolicyId' in kwargs:
+        if remain_bandwidth_percent is None:
+            raise TypeError("Missing 'remain_bandwidth_percent' argument")
+        if traffic_qos_policy_id is None and 'trafficQosPolicyId' in kwargs:
             traffic_qos_policy_id = kwargs['trafficQosPolicyId']
-        if 'interRegionTrafficQosQueueDescription' in kwargs:
+        if traffic_qos_policy_id is None:
+            raise TypeError("Missing 'traffic_qos_policy_id' argument")
+        if inter_region_traffic_qos_queue_description is None and 'interRegionTrafficQosQueueDescription' in kwargs:
             inter_region_traffic_qos_queue_description = kwargs['interRegionTrafficQosQueueDescription']
-        if 'interRegionTrafficQosQueueName' in kwargs:
+        if inter_region_traffic_qos_queue_name is None and 'interRegionTrafficQosQueueName' in kwargs:
             inter_region_traffic_qos_queue_name = kwargs['interRegionTrafficQosQueueName']
 
         _setter("dscps", dscps)
@@ -159,15 +165,15 @@ class _InterRegionTrafficQosQueueState:
              remain_bandwidth_percent: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
              traffic_qos_policy_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'interRegionTrafficQosQueueDescription' in kwargs:
+        if inter_region_traffic_qos_queue_description is None and 'interRegionTrafficQosQueueDescription' in kwargs:
             inter_region_traffic_qos_queue_description = kwargs['interRegionTrafficQosQueueDescription']
-        if 'interRegionTrafficQosQueueName' in kwargs:
+        if inter_region_traffic_qos_queue_name is None and 'interRegionTrafficQosQueueName' in kwargs:
             inter_region_traffic_qos_queue_name = kwargs['interRegionTrafficQosQueueName']
-        if 'remainBandwidthPercent' in kwargs:
+        if remain_bandwidth_percent is None and 'remainBandwidthPercent' in kwargs:
             remain_bandwidth_percent = kwargs['remainBandwidthPercent']
-        if 'trafficQosPolicyId' in kwargs:
+        if traffic_qos_policy_id is None and 'trafficQosPolicyId' in kwargs:
             traffic_qos_policy_id = kwargs['trafficQosPolicyId']
 
         if dscps is not None:
@@ -274,73 +280,6 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_region = config.get("defaultRegion")
-        if default_region is None:
-            default_region = "cn-hangzhou"
-        peer_region = config.get("peerRegion")
-        if peer_region is None:
-            peer_region = "cn-beijing"
-        hz = alicloud.Provider("hz", region=default_region)
-        bj = alicloud.Provider("bj", region=peer_region)
-        default_instance = alicloud.cen.Instance("defaultInstance",
-            cen_instance_name=name,
-            protection_level="REDUCED")
-        default_bandwidth_package = alicloud.cen.BandwidthPackage("defaultBandwidthPackage",
-            bandwidth=5,
-            cen_bandwidth_package_name="tf_example",
-            geographic_region_a_id="China",
-            geographic_region_b_id="China",
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            instance_id=default_instance.id,
-            bandwidth_package_id=default_bandwidth_package.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter",
-            cen_id=default_instance.id,
-            support_multicast=True,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        peer = alicloud.cen.TransitRouter("peer",
-            cen_id=default_transit_router.cen_id,
-            support_multicast=True,
-            opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        default_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment",
-            cen_id=default_instance.id,
-            transit_router_id=default_transit_router.transit_router_id,
-            peer_transit_router_region_id=peer_region,
-            peer_transit_router_id=peer.transit_router_id,
-            cen_bandwidth_package_id=default_bandwidth_package_attachment.bandwidth_package_id,
-            bandwidth=5,
-            transit_router_attachment_description=name,
-            transit_router_attachment_name=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_inter_region_traffic_qos_policy = alicloud.cen.InterRegionTrafficQosPolicy("defaultInterRegionTrafficQosPolicy",
-            transit_router_id=default_transit_router.transit_router_id,
-            transit_router_attachment_id=default_transit_router_peer_attachment.transit_router_attachment_id,
-            inter_region_traffic_qos_policy_name=name,
-            inter_region_traffic_qos_policy_description=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_inter_region_traffic_qos_queue = alicloud.cen.InterRegionTrafficQosQueue("defaultInterRegionTrafficQosQueue",
-            remain_bandwidth_percent=20,
-            traffic_qos_policy_id=default_inter_region_traffic_qos_policy.id,
-            dscps=[
-                "1",
-                "2",
-            ],
-            inter_region_traffic_qos_queue_description=name)
-        ```
-
         ## Import
 
         Cen Inter Region Traffic Qos Queue can be imported using the id, e.g.
@@ -369,73 +308,6 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
         For information about Cen Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createceninterregiontrafficqosqueue).
 
         > **NOTE:** Available since v1.195.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_region = config.get("defaultRegion")
-        if default_region is None:
-            default_region = "cn-hangzhou"
-        peer_region = config.get("peerRegion")
-        if peer_region is None:
-            peer_region = "cn-beijing"
-        hz = alicloud.Provider("hz", region=default_region)
-        bj = alicloud.Provider("bj", region=peer_region)
-        default_instance = alicloud.cen.Instance("defaultInstance",
-            cen_instance_name=name,
-            protection_level="REDUCED")
-        default_bandwidth_package = alicloud.cen.BandwidthPackage("defaultBandwidthPackage",
-            bandwidth=5,
-            cen_bandwidth_package_name="tf_example",
-            geographic_region_a_id="China",
-            geographic_region_b_id="China",
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            instance_id=default_instance.id,
-            bandwidth_package_id=default_bandwidth_package.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter",
-            cen_id=default_instance.id,
-            support_multicast=True,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        peer = alicloud.cen.TransitRouter("peer",
-            cen_id=default_transit_router.cen_id,
-            support_multicast=True,
-            opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        default_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment",
-            cen_id=default_instance.id,
-            transit_router_id=default_transit_router.transit_router_id,
-            peer_transit_router_region_id=peer_region,
-            peer_transit_router_id=peer.transit_router_id,
-            cen_bandwidth_package_id=default_bandwidth_package_attachment.bandwidth_package_id,
-            bandwidth=5,
-            transit_router_attachment_description=name,
-            transit_router_attachment_name=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_inter_region_traffic_qos_policy = alicloud.cen.InterRegionTrafficQosPolicy("defaultInterRegionTrafficQosPolicy",
-            transit_router_id=default_transit_router.transit_router_id,
-            transit_router_attachment_id=default_transit_router_peer_attachment.transit_router_attachment_id,
-            inter_region_traffic_qos_policy_name=name,
-            inter_region_traffic_qos_policy_description=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_inter_region_traffic_qos_queue = alicloud.cen.InterRegionTrafficQosQueue("defaultInterRegionTrafficQosQueue",
-            remain_bandwidth_percent=20,
-            traffic_qos_policy_id=default_inter_region_traffic_qos_policy.id,
-            dscps=[
-                "1",
-                "2",
-            ],
-            inter_region_traffic_qos_queue_description=name)
-        ```
 
         ## Import
 

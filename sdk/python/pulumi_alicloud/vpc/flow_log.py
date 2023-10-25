@@ -59,11 +59,11 @@ class FlowLogArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             log_store_name: pulumi.Input[str],
-             project_name: pulumi.Input[str],
-             resource_id: pulumi.Input[str],
-             resource_type: pulumi.Input[str],
-             traffic_type: pulumi.Input[str],
+             log_store_name: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
+             resource_id: Optional[pulumi.Input[str]] = None,
+             resource_type: Optional[pulumi.Input[str]] = None,
+             traffic_type: Optional[pulumi.Input[str]] = None,
              aggregation_interval: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              flow_log_name: Optional[pulumi.Input[str]] = None,
@@ -71,25 +71,35 @@ class FlowLogArgs:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              traffic_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'logStoreName' in kwargs:
+        if log_store_name is None and 'logStoreName' in kwargs:
             log_store_name = kwargs['logStoreName']
-        if 'projectName' in kwargs:
+        if log_store_name is None:
+            raise TypeError("Missing 'log_store_name' argument")
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'resourceId' in kwargs:
+        if project_name is None:
+            raise TypeError("Missing 'project_name' argument")
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceType' in kwargs:
+        if resource_id is None:
+            raise TypeError("Missing 'resource_id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'trafficType' in kwargs:
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
+        if traffic_type is None and 'trafficType' in kwargs:
             traffic_type = kwargs['trafficType']
-        if 'aggregationInterval' in kwargs:
+        if traffic_type is None:
+            raise TypeError("Missing 'traffic_type' argument")
+        if aggregation_interval is None and 'aggregationInterval' in kwargs:
             aggregation_interval = kwargs['aggregationInterval']
-        if 'flowLogName' in kwargs:
+        if flow_log_name is None and 'flowLogName' in kwargs:
             flow_log_name = kwargs['flowLogName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'trafficPaths' in kwargs:
+        if traffic_paths is None and 'trafficPaths' in kwargs:
             traffic_paths = kwargs['trafficPaths']
 
         _setter("log_store_name", log_store_name)
@@ -329,31 +339,31 @@ class _FlowLogState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              traffic_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              traffic_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aggregationInterval' in kwargs:
+        if aggregation_interval is None and 'aggregationInterval' in kwargs:
             aggregation_interval = kwargs['aggregationInterval']
-        if 'businessStatus' in kwargs:
+        if business_status is None and 'businessStatus' in kwargs:
             business_status = kwargs['businessStatus']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'flowLogId' in kwargs:
+        if flow_log_id is None and 'flowLogId' in kwargs:
             flow_log_id = kwargs['flowLogId']
-        if 'flowLogName' in kwargs:
+        if flow_log_name is None and 'flowLogName' in kwargs:
             flow_log_name = kwargs['flowLogName']
-        if 'logStoreName' in kwargs:
+        if log_store_name is None and 'logStoreName' in kwargs:
             log_store_name = kwargs['logStoreName']
-        if 'projectName' in kwargs:
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'resourceId' in kwargs:
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceType' in kwargs:
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'trafficPaths' in kwargs:
+        if traffic_paths is None and 'trafficPaths' in kwargs:
             traffic_paths = kwargs['trafficPaths']
-        if 'trafficType' in kwargs:
+        if traffic_type is None and 'trafficType' in kwargs:
             traffic_type = kwargs['trafficType']
 
         if aggregation_interval is not None:

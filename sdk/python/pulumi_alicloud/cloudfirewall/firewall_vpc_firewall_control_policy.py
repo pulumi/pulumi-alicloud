@@ -76,41 +76,61 @@ class FirewallVpcFirewallControlPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acl_action: pulumi.Input[str],
-             application_name: pulumi.Input[str],
-             description: pulumi.Input[str],
-             destination: pulumi.Input[str],
-             destination_type: pulumi.Input[str],
-             order: pulumi.Input[int],
-             proto: pulumi.Input[str],
-             source: pulumi.Input[str],
-             source_type: pulumi.Input[str],
-             vpc_firewall_id: pulumi.Input[str],
+             acl_action: Optional[pulumi.Input[str]] = None,
+             application_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             destination: Optional[pulumi.Input[str]] = None,
+             destination_type: Optional[pulumi.Input[str]] = None,
+             order: Optional[pulumi.Input[int]] = None,
+             proto: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             source_type: Optional[pulumi.Input[str]] = None,
+             vpc_firewall_id: Optional[pulumi.Input[str]] = None,
              dest_port: Optional[pulumi.Input[str]] = None,
              dest_port_group: Optional[pulumi.Input[str]] = None,
              dest_port_type: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              member_uid: Optional[pulumi.Input[str]] = None,
              release: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclAction' in kwargs:
+        if acl_action is None and 'aclAction' in kwargs:
             acl_action = kwargs['aclAction']
-        if 'applicationName' in kwargs:
+        if acl_action is None:
+            raise TypeError("Missing 'acl_action' argument")
+        if application_name is None and 'applicationName' in kwargs:
             application_name = kwargs['applicationName']
-        if 'destinationType' in kwargs:
+        if application_name is None:
+            raise TypeError("Missing 'application_name' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+        if destination_type is None and 'destinationType' in kwargs:
             destination_type = kwargs['destinationType']
-        if 'sourceType' in kwargs:
+        if destination_type is None:
+            raise TypeError("Missing 'destination_type' argument")
+        if order is None:
+            raise TypeError("Missing 'order' argument")
+        if proto is None:
+            raise TypeError("Missing 'proto' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
-        if 'vpcFirewallId' in kwargs:
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+        if vpc_firewall_id is None and 'vpcFirewallId' in kwargs:
             vpc_firewall_id = kwargs['vpcFirewallId']
-        if 'destPort' in kwargs:
+        if vpc_firewall_id is None:
+            raise TypeError("Missing 'vpc_firewall_id' argument")
+        if dest_port is None and 'destPort' in kwargs:
             dest_port = kwargs['destPort']
-        if 'destPortGroup' in kwargs:
+        if dest_port_group is None and 'destPortGroup' in kwargs:
             dest_port_group = kwargs['destPortGroup']
-        if 'destPortType' in kwargs:
+        if dest_port_type is None and 'destPortType' in kwargs:
             dest_port_type = kwargs['destPortType']
-        if 'memberUid' in kwargs:
+        if member_uid is None and 'memberUid' in kwargs:
             member_uid = kwargs['memberUid']
 
         _setter("acl_action", acl_action)
@@ -447,41 +467,41 @@ class _FirewallVpcFirewallControlPolicyState:
              source_group_type: Optional[pulumi.Input[str]] = None,
              source_type: Optional[pulumi.Input[str]] = None,
              vpc_firewall_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclAction' in kwargs:
+        if acl_action is None and 'aclAction' in kwargs:
             acl_action = kwargs['aclAction']
-        if 'aclUuid' in kwargs:
+        if acl_uuid is None and 'aclUuid' in kwargs:
             acl_uuid = kwargs['aclUuid']
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'applicationName' in kwargs:
+        if application_name is None and 'applicationName' in kwargs:
             application_name = kwargs['applicationName']
-        if 'destPort' in kwargs:
+        if dest_port is None and 'destPort' in kwargs:
             dest_port = kwargs['destPort']
-        if 'destPortGroup' in kwargs:
+        if dest_port_group is None and 'destPortGroup' in kwargs:
             dest_port_group = kwargs['destPortGroup']
-        if 'destPortGroupPorts' in kwargs:
+        if dest_port_group_ports is None and 'destPortGroupPorts' in kwargs:
             dest_port_group_ports = kwargs['destPortGroupPorts']
-        if 'destPortType' in kwargs:
+        if dest_port_type is None and 'destPortType' in kwargs:
             dest_port_type = kwargs['destPortType']
-        if 'destinationGroupCidrs' in kwargs:
+        if destination_group_cidrs is None and 'destinationGroupCidrs' in kwargs:
             destination_group_cidrs = kwargs['destinationGroupCidrs']
-        if 'destinationGroupType' in kwargs:
+        if destination_group_type is None and 'destinationGroupType' in kwargs:
             destination_group_type = kwargs['destinationGroupType']
-        if 'destinationType' in kwargs:
+        if destination_type is None and 'destinationType' in kwargs:
             destination_type = kwargs['destinationType']
-        if 'hitTimes' in kwargs:
+        if hit_times is None and 'hitTimes' in kwargs:
             hit_times = kwargs['hitTimes']
-        if 'memberUid' in kwargs:
+        if member_uid is None and 'memberUid' in kwargs:
             member_uid = kwargs['memberUid']
-        if 'sourceGroupCidrs' in kwargs:
+        if source_group_cidrs is None and 'sourceGroupCidrs' in kwargs:
             source_group_cidrs = kwargs['sourceGroupCidrs']
-        if 'sourceGroupType' in kwargs:
+        if source_group_type is None and 'sourceGroupType' in kwargs:
             source_group_type = kwargs['sourceGroupType']
-        if 'sourceType' in kwargs:
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
-        if 'vpcFirewallId' in kwargs:
+        if vpc_firewall_id is None and 'vpcFirewallId' in kwargs:
             vpc_firewall_id = kwargs['vpcFirewallId']
 
         if acl_action is not None:
@@ -856,40 +876,6 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_account = alicloud.get_account()
-        default_instance = alicloud.cen.Instance("defaultInstance",
-            cen_instance_name=var["name"],
-            description="example_value",
-            tags={
-                "Created": "TF",
-                "For": "acceptance test",
-            })
-        default_firewall_vpc_firewall_control_policy = alicloud.cloudfirewall.FirewallVpcFirewallControlPolicy("defaultFirewallVpcFirewallControlPolicy",
-            order=1,
-            destination="127.0.0.2/32",
-            application_name="ANY",
-            description="example_value",
-            source_type="net",
-            dest_port="80/88",
-            acl_action="accept",
-            lang="zh",
-            destination_type="net",
-            source="127.0.0.1/32",
-            dest_port_type="port",
-            proto="TCP",
-            release=True,
-            member_uid=default_account.id,
-            vpc_firewall_id=default_instance.id)
-        ```
-
         ## Import
 
         Cloud Firewall Vpc Firewall Control Policy can be imported using the id, e.g.
@@ -934,40 +920,6 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         For information about Cloud Firewall Vpc Firewall Control Policy and how to use it, see [What is Vpc Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcontrolpolicy).
 
         > **NOTE:** Available since v1.194.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_account = alicloud.get_account()
-        default_instance = alicloud.cen.Instance("defaultInstance",
-            cen_instance_name=var["name"],
-            description="example_value",
-            tags={
-                "Created": "TF",
-                "For": "acceptance test",
-            })
-        default_firewall_vpc_firewall_control_policy = alicloud.cloudfirewall.FirewallVpcFirewallControlPolicy("defaultFirewallVpcFirewallControlPolicy",
-            order=1,
-            destination="127.0.0.2/32",
-            application_name="ANY",
-            description="example_value",
-            source_type="net",
-            dest_port="80/88",
-            acl_action="accept",
-            lang="zh",
-            destination_type="net",
-            source="127.0.0.1/32",
-            dest_port_type="port",
-            proto="TCP",
-            release=True,
-            member_uid=default_account.id,
-            vpc_firewall_id=default_instance.id)
-        ```
 
         ## Import
 

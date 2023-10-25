@@ -16,30 +16,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available in v1.177.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Ecs.Activation("example", new()
-    ///     {
-    ///         Description = "terraform-example",
-    ///         InstanceCount = 10,
-    ///         InstanceName = "terraform-example",
-    ///         IpAddressRange = "0.0.0.0/0",
-    ///         TimeToLiveInHours = 4,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ECS Activation can be imported using the id, e.g.

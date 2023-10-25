@@ -16,64 +16,6 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// &gt; **NOTE:** Available since v1.174.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultZones = AliCloud.Eds.GetZones.Invoke();
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "172.16.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
-    ///         VswitchName = name,
-    ///     });
-    /// 
-    ///     var defaultAdConnectorDirectory = new AliCloud.Eds.AdConnectorDirectory("defaultAdConnectorDirectory", new()
-    ///     {
-    ///         DirectoryName = name,
-    ///         DesktopAccessType = "INTERNET",
-    ///         DnsAddresses = new[]
-    ///         {
-    ///             "127.0.0.2",
-    ///         },
-    ///         DomainName = "corp.example.com",
-    ///         DomainPassword = "Example1234",
-    ///         DomainUserName = "sAMAccountName",
-    ///         EnableAdminAccess = false,
-    ///         MfaEnabled = false,
-    ///         Specification = 1,
-    ///         SubDomainDnsAddresses = new[]
-    ///         {
-    ///             "127.0.0.3",
-    ///         },
-    ///         SubDomainName = "child.example.com",
-    ///         VswitchIds = new[]
-    ///         {
-    ///             defaultSwitch.Id,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ECD Ad Connector Directory can be imported using the id, e.g.

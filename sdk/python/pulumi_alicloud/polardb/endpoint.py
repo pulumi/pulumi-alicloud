@@ -44,7 +44,7 @@ class EndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_cluster_id: pulumi.Input[str],
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
              auto_add_new_nodes: Optional[pulumi.Input[str]] = None,
              db_endpoint_description: Optional[pulumi.Input[str]] = None,
              endpoint_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -54,25 +54,27 @@ class EndpointArgs:
              read_write_mode: Optional[pulumi.Input[str]] = None,
              ssl_auto_rotate: Optional[pulumi.Input[str]] = None,
              ssl_enabled: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbClusterId' in kwargs:
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'autoAddNewNodes' in kwargs:
+        if db_cluster_id is None:
+            raise TypeError("Missing 'db_cluster_id' argument")
+        if auto_add_new_nodes is None and 'autoAddNewNodes' in kwargs:
             auto_add_new_nodes = kwargs['autoAddNewNodes']
-        if 'dbEndpointDescription' in kwargs:
+        if db_endpoint_description is None and 'dbEndpointDescription' in kwargs:
             db_endpoint_description = kwargs['dbEndpointDescription']
-        if 'endpointConfig' in kwargs:
+        if endpoint_config is None and 'endpointConfig' in kwargs:
             endpoint_config = kwargs['endpointConfig']
-        if 'endpointType' in kwargs:
+        if endpoint_type is None and 'endpointType' in kwargs:
             endpoint_type = kwargs['endpointType']
-        if 'netType' in kwargs:
+        if net_type is None and 'netType' in kwargs:
             net_type = kwargs['netType']
-        if 'readWriteMode' in kwargs:
+        if read_write_mode is None and 'readWriteMode' in kwargs:
             read_write_mode = kwargs['readWriteMode']
-        if 'sslAutoRotate' in kwargs:
+        if ssl_auto_rotate is None and 'sslAutoRotate' in kwargs:
             ssl_auto_rotate = kwargs['sslAutoRotate']
-        if 'sslEnabled' in kwargs:
+        if ssl_enabled is None and 'sslEnabled' in kwargs:
             ssl_enabled = kwargs['sslEnabled']
 
         _setter("db_cluster_id", db_cluster_id)
@@ -247,33 +249,33 @@ class _EndpointState:
              ssl_connection_string: Optional[pulumi.Input[str]] = None,
              ssl_enabled: Optional[pulumi.Input[str]] = None,
              ssl_expire_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoAddNewNodes' in kwargs:
+        if auto_add_new_nodes is None and 'autoAddNewNodes' in kwargs:
             auto_add_new_nodes = kwargs['autoAddNewNodes']
-        if 'dbClusterId' in kwargs:
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'dbEndpointDescription' in kwargs:
+        if db_endpoint_description is None and 'dbEndpointDescription' in kwargs:
             db_endpoint_description = kwargs['dbEndpointDescription']
-        if 'dbEndpointId' in kwargs:
+        if db_endpoint_id is None and 'dbEndpointId' in kwargs:
             db_endpoint_id = kwargs['dbEndpointId']
-        if 'endpointConfig' in kwargs:
+        if endpoint_config is None and 'endpointConfig' in kwargs:
             endpoint_config = kwargs['endpointConfig']
-        if 'endpointType' in kwargs:
+        if endpoint_type is None and 'endpointType' in kwargs:
             endpoint_type = kwargs['endpointType']
-        if 'netType' in kwargs:
+        if net_type is None and 'netType' in kwargs:
             net_type = kwargs['netType']
-        if 'readWriteMode' in kwargs:
+        if read_write_mode is None and 'readWriteMode' in kwargs:
             read_write_mode = kwargs['readWriteMode']
-        if 'sslAutoRotate' in kwargs:
+        if ssl_auto_rotate is None and 'sslAutoRotate' in kwargs:
             ssl_auto_rotate = kwargs['sslAutoRotate']
-        if 'sslCertificateUrl' in kwargs:
+        if ssl_certificate_url is None and 'sslCertificateUrl' in kwargs:
             ssl_certificate_url = kwargs['sslCertificateUrl']
-        if 'sslConnectionString' in kwargs:
+        if ssl_connection_string is None and 'sslConnectionString' in kwargs:
             ssl_connection_string = kwargs['sslConnectionString']
-        if 'sslEnabled' in kwargs:
+        if ssl_enabled is None and 'sslEnabled' in kwargs:
             ssl_enabled = kwargs['sslEnabled']
-        if 'sslExpireTime' in kwargs:
+        if ssl_expire_time is None and 'sslExpireTime' in kwargs:
             ssl_expire_time = kwargs['sslExpireTime']
 
         if auto_add_new_nodes is not None:
@@ -467,34 +469,6 @@ class Endpoint(pulumi.CustomResource):
 
         > **NOTE:** The primary endpoint and the default cluster endpoint can not be created or deleted manually.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
-            db_version="8.0",
-            pay_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_node_classes.classes[0].zone_id,
-            vswitch_name="terraform-example")
-        default_cluster = alicloud.polardb.Cluster("defaultCluster",
-            db_type="MySQL",
-            db_version="8.0",
-            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
-            pay_type="PostPaid",
-            vswitch_id=default_switch.id,
-            description="terraform-example")
-        default_endpoint = alicloud.polardb.Endpoint("defaultEndpoint",
-            db_cluster_id=default_cluster.id,
-            endpoint_type="Custom")
-        ```
         ## Argument Reference
 
         The following arguments are supported:
@@ -538,34 +512,6 @@ class Endpoint(pulumi.CustomResource):
 
         > **NOTE:** The primary endpoint and the default cluster endpoint can not be created or deleted manually.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
-            db_version="8.0",
-            pay_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_node_classes.classes[0].zone_id,
-            vswitch_name="terraform-example")
-        default_cluster = alicloud.polardb.Cluster("defaultCluster",
-            db_type="MySQL",
-            db_version="8.0",
-            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
-            pay_type="PostPaid",
-            vswitch_id=default_switch.id,
-            description="terraform-example")
-        default_endpoint = alicloud.polardb.Endpoint("defaultEndpoint",
-            db_cluster_id=default_cluster.id,
-            endpoint_type="Custom")
-        ```
         ## Argument Reference
 
         The following arguments are supported:

@@ -40,20 +40,28 @@ class RdsParameterGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             engine: pulumi.Input[str],
-             engine_version: pulumi.Input[str],
-             param_details: pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]],
-             parameter_group_name: pulumi.Input[str],
+             engine: Optional[pulumi.Input[str]] = None,
+             engine_version: Optional[pulumi.Input[str]] = None,
+             param_details: Optional[pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]]] = None,
+             parameter_group_name: Optional[pulumi.Input[str]] = None,
              parameter_group_desc: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'engineVersion' in kwargs:
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'paramDetails' in kwargs:
+        if engine_version is None:
+            raise TypeError("Missing 'engine_version' argument")
+        if param_details is None and 'paramDetails' in kwargs:
             param_details = kwargs['paramDetails']
-        if 'parameterGroupName' in kwargs:
+        if param_details is None:
+            raise TypeError("Missing 'param_details' argument")
+        if parameter_group_name is None and 'parameterGroupName' in kwargs:
             parameter_group_name = kwargs['parameterGroupName']
-        if 'parameterGroupDesc' in kwargs:
+        if parameter_group_name is None:
+            raise TypeError("Missing 'parameter_group_name' argument")
+        if parameter_group_desc is None and 'parameterGroupDesc' in kwargs:
             parameter_group_desc = kwargs['parameterGroupDesc']
 
         _setter("engine", engine)
@@ -156,15 +164,15 @@ class _RdsParameterGroupState:
              param_details: Optional[pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]]] = None,
              parameter_group_desc: Optional[pulumi.Input[str]] = None,
              parameter_group_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'engineVersion' in kwargs:
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'paramDetails' in kwargs:
+        if param_details is None and 'paramDetails' in kwargs:
             param_details = kwargs['paramDetails']
-        if 'parameterGroupDesc' in kwargs:
+        if parameter_group_desc is None and 'parameterGroupDesc' in kwargs:
             parameter_group_desc = kwargs['parameterGroupDesc']
-        if 'parameterGroupName' in kwargs:
+        if parameter_group_name is None and 'parameterGroupName' in kwargs:
             parameter_group_name = kwargs['parameterGroupName']
 
         if engine is not None:
@@ -257,35 +265,6 @@ class RdsParameterGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.119.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default = alicloud.rds.RdsParameterGroup("default",
-            engine="mysql",
-            engine_version="5.7",
-            param_details=[
-                alicloud.rds.RdsParameterGroupParamDetailArgs(
-                    param_name="back_log",
-                    param_value="4000",
-                ),
-                alicloud.rds.RdsParameterGroupParamDetailArgs(
-                    param_name="wait_timeout",
-                    param_value="86460",
-                ),
-            ],
-            parameter_group_desc=name,
-            parameter_group_name=name)
-        ```
-
         ## Import
 
         RDS Parameter Group can be imported using the id, e.g.
@@ -314,35 +293,6 @@ class RdsParameterGroup(pulumi.CustomResource):
         For information about RDS Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/doc-detail/144839.htm).
 
         > **NOTE:** Available since v1.119.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default = alicloud.rds.RdsParameterGroup("default",
-            engine="mysql",
-            engine_version="5.7",
-            param_details=[
-                alicloud.rds.RdsParameterGroupParamDetailArgs(
-                    param_name="back_log",
-                    param_value="4000",
-                ),
-                alicloud.rds.RdsParameterGroupParamDetailArgs(
-                    param_name="wait_timeout",
-                    param_value="86460",
-                ),
-            ],
-            parameter_group_desc=name,
-            parameter_group_name=name)
-        ```
 
         ## Import
 

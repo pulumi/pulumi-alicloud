@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.109.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.privatelink.getVpcEndpoints({
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstPrivatelinkVpcEndpointId = example.then(example => example.endpoints?.[0]?.id);
- * ```
  */
 export function getVpcEndpoints(args?: GetVpcEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointsResult> {
     args = args || {};
@@ -109,21 +94,6 @@ export interface GetVpcEndpointsResult {
  * This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.109.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.privatelink.getVpcEndpoints({
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstPrivatelinkVpcEndpointId = example.then(example => example.endpoints?.[0]?.id);
- * ```
  */
 export function getVpcEndpointsOutput(args?: GetVpcEndpointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointsResult> {
     return pulumi.output(args).apply((a: any) => getVpcEndpoints(a, opts))

@@ -55,33 +55,43 @@ class VirtualPhysicalConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             order_mode: pulumi.Input[str],
-             parent_physical_connection_id: pulumi.Input[str],
-             spec: pulumi.Input[str],
-             vlan_id: pulumi.Input[int],
-             vpconn_ali_uid: pulumi.Input[str],
+             order_mode: Optional[pulumi.Input[str]] = None,
+             parent_physical_connection_id: Optional[pulumi.Input[str]] = None,
+             spec: Optional[pulumi.Input[str]] = None,
+             vlan_id: Optional[pulumi.Input[int]] = None,
+             vpconn_ali_uid: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              expect_spec: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              virtual_physical_connection_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'orderMode' in kwargs:
+        if order_mode is None and 'orderMode' in kwargs:
             order_mode = kwargs['orderMode']
-        if 'parentPhysicalConnectionId' in kwargs:
+        if order_mode is None:
+            raise TypeError("Missing 'order_mode' argument")
+        if parent_physical_connection_id is None and 'parentPhysicalConnectionId' in kwargs:
             parent_physical_connection_id = kwargs['parentPhysicalConnectionId']
-        if 'vlanId' in kwargs:
+        if parent_physical_connection_id is None:
+            raise TypeError("Missing 'parent_physical_connection_id' argument")
+        if spec is None:
+            raise TypeError("Missing 'spec' argument")
+        if vlan_id is None and 'vlanId' in kwargs:
             vlan_id = kwargs['vlanId']
-        if 'vpconnAliUid' in kwargs:
+        if vlan_id is None:
+            raise TypeError("Missing 'vlan_id' argument")
+        if vpconn_ali_uid is None and 'vpconnAliUid' in kwargs:
             vpconn_ali_uid = kwargs['vpconnAliUid']
-        if 'dryRun' in kwargs:
+        if vpconn_ali_uid is None:
+            raise TypeError("Missing 'vpconn_ali_uid' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'expectSpec' in kwargs:
+        if expect_spec is None and 'expectSpec' in kwargs:
             expect_spec = kwargs['expectSpec']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'virtualPhysicalConnectionName' in kwargs:
+        if virtual_physical_connection_name is None and 'virtualPhysicalConnectionName' in kwargs:
             virtual_physical_connection_name = kwargs['virtualPhysicalConnectionName']
 
         _setter("order_mode", order_mode)
@@ -345,53 +355,53 @@ class _VirtualPhysicalConnectionState:
              virtual_physical_connection_status: Optional[pulumi.Input[str]] = None,
              vlan_id: Optional[pulumi.Input[int]] = None,
              vpconn_ali_uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessPointId' in kwargs:
+        if access_point_id is None and 'accessPointId' in kwargs:
             access_point_id = kwargs['accessPointId']
-        if 'adLocation' in kwargs:
+        if ad_location is None and 'adLocation' in kwargs:
             ad_location = kwargs['adLocation']
-        if 'businessStatus' in kwargs:
+        if business_status is None and 'businessStatus' in kwargs:
             business_status = kwargs['businessStatus']
-        if 'circuitCode' in kwargs:
+        if circuit_code is None and 'circuitCode' in kwargs:
             circuit_code = kwargs['circuitCode']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'enabledTime' in kwargs:
+        if enabled_time is None and 'enabledTime' in kwargs:
             enabled_time = kwargs['enabledTime']
-        if 'endTime' in kwargs:
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'expectSpec' in kwargs:
+        if expect_spec is None and 'expectSpec' in kwargs:
             expect_spec = kwargs['expectSpec']
-        if 'lineOperator' in kwargs:
+        if line_operator is None and 'lineOperator' in kwargs:
             line_operator = kwargs['lineOperator']
-        if 'loaStatus' in kwargs:
+        if loa_status is None and 'loaStatus' in kwargs:
             loa_status = kwargs['loaStatus']
-        if 'orderMode' in kwargs:
+        if order_mode is None and 'orderMode' in kwargs:
             order_mode = kwargs['orderMode']
-        if 'parentPhysicalConnectionAliUid' in kwargs:
+        if parent_physical_connection_ali_uid is None and 'parentPhysicalConnectionAliUid' in kwargs:
             parent_physical_connection_ali_uid = kwargs['parentPhysicalConnectionAliUid']
-        if 'parentPhysicalConnectionId' in kwargs:
+        if parent_physical_connection_id is None and 'parentPhysicalConnectionId' in kwargs:
             parent_physical_connection_id = kwargs['parentPhysicalConnectionId']
-        if 'peerLocation' in kwargs:
+        if peer_location is None and 'peerLocation' in kwargs:
             peer_location = kwargs['peerLocation']
-        if 'portNumber' in kwargs:
+        if port_number is None and 'portNumber' in kwargs:
             port_number = kwargs['portNumber']
-        if 'portType' in kwargs:
+        if port_type is None and 'portType' in kwargs:
             port_type = kwargs['portType']
-        if 'redundantPhysicalConnectionId' in kwargs:
+        if redundant_physical_connection_id is None and 'redundantPhysicalConnectionId' in kwargs:
             redundant_physical_connection_id = kwargs['redundantPhysicalConnectionId']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'virtualPhysicalConnectionName' in kwargs:
+        if virtual_physical_connection_name is None and 'virtualPhysicalConnectionName' in kwargs:
             virtual_physical_connection_name = kwargs['virtualPhysicalConnectionName']
-        if 'virtualPhysicalConnectionStatus' in kwargs:
+        if virtual_physical_connection_status is None and 'virtualPhysicalConnectionStatus' in kwargs:
             virtual_physical_connection_status = kwargs['virtualPhysicalConnectionStatus']
-        if 'vlanId' in kwargs:
+        if vlan_id is None and 'vlanId' in kwargs:
             vlan_id = kwargs['vlanId']
-        if 'vpconnAliUid' in kwargs:
+        if vpconn_ali_uid is None and 'vpconnAliUid' in kwargs:
             vpconn_ali_uid = kwargs['vpconnAliUid']
 
         if access_point_id is not None:
@@ -799,34 +809,6 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.196.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.RandomInteger("vlanId",
-            max=2999,
-            min=1)
-        default = alicloud.get_account()
-        example_virtual_physical_connection = alicloud.expressconnect.VirtualPhysicalConnection("exampleVirtualPhysicalConnection",
-            virtual_physical_connection_name=name,
-            description=name,
-            order_mode="PayByPhysicalConnectionOwner",
-            parent_physical_connection_id=example_physical_connections.ids[0],
-            spec="50M",
-            vlan_id=vlan_id.id,
-            vpconn_ali_uid=default.id)
-        ```
-
         ## Import
 
         Express Connect Virtual Physical Connection can be imported using the id, e.g.
@@ -862,34 +844,6 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
         For information about Express Connect Virtual Physical Connection and how to use it, see [What is Virtual Physical Connection](https://www.alibabacloud.com/help/en/express-connect/latest/createvirtualphysicalconnection#doc-api-Vpc-CreateVirtualPhysicalConnection).
 
         > **NOTE:** Available since v1.196.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.RandomInteger("vlanId",
-            max=2999,
-            min=1)
-        default = alicloud.get_account()
-        example_virtual_physical_connection = alicloud.expressconnect.VirtualPhysicalConnection("exampleVirtualPhysicalConnection",
-            virtual_physical_connection_name=name,
-            description=name,
-            order_mode="PayByPhysicalConnectionOwner",
-            parent_physical_connection_id=example_physical_connections.ids[0],
-            spec="50M",
-            vlan_id=vlan_id.id,
-            vpconn_ali_uid=default.id)
-        ```
 
         ## Import
 

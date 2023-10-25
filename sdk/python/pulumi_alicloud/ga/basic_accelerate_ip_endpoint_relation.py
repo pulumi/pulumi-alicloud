@@ -32,17 +32,23 @@ class BasicAccelerateIpEndpointRelationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerate_ip_id: pulumi.Input[str],
-             accelerator_id: pulumi.Input[str],
-             endpoint_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerate_ip_id: Optional[pulumi.Input[str]] = None,
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             endpoint_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accelerateIpId' in kwargs:
+        if accelerate_ip_id is None and 'accelerateIpId' in kwargs:
             accelerate_ip_id = kwargs['accelerateIpId']
-        if 'acceleratorId' in kwargs:
+        if accelerate_ip_id is None:
+            raise TypeError("Missing 'accelerate_ip_id' argument")
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'endpointId' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if endpoint_id is None and 'endpointId' in kwargs:
             endpoint_id = kwargs['endpointId']
+        if endpoint_id is None:
+            raise TypeError("Missing 'endpoint_id' argument")
 
         _setter("accelerate_ip_id", accelerate_ip_id)
         _setter("accelerator_id", accelerator_id)
@@ -113,13 +119,13 @@ class _BasicAccelerateIpEndpointRelationState:
              accelerator_id: Optional[pulumi.Input[str]] = None,
              endpoint_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accelerateIpId' in kwargs:
+        if accelerate_ip_id is None and 'accelerateIpId' in kwargs:
             accelerate_ip_id = kwargs['accelerateIpId']
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'endpointId' in kwargs:
+        if endpoint_id is None and 'endpointId' in kwargs:
             endpoint_id = kwargs['endpointId']
 
         if accelerate_ip_id is not None:
@@ -196,75 +202,6 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-shenzhen"
-        endpoint_region = config.get("endpointRegion")
-        if endpoint_region is None:
-            endpoint_region = "cn-hangzhou"
-        sz = alicloud.Provider("sz", region=region)
-        hz = alicloud.Provider("hz", region=endpoint_region)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id,
-            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id,
-        opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
-        default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("defaultEcsNetworkInterface",
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id],
-            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
-        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
-            duration=1,
-            basic_accelerator_name="terraform-example",
-            description="terraform-example",
-            bandwidth_billing_type="CDT",
-            auto_use_coupon="true",
-            auto_pay=True)
-        default_basic_ip_set = alicloud.ga.BasicIpSet("defaultBasicIpSet",
-            accelerator_id=default_basic_accelerator.id,
-            accelerate_region_id=endpoint_region,
-            isp_type="BGP",
-            bandwidth=5)
-        default_basic_accelerate_ip = alicloud.ga.BasicAccelerateIp("defaultBasicAccelerateIp",
-            accelerator_id=default_basic_accelerator.id,
-            ip_set_id=default_basic_ip_set.id)
-        default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup",
-            accelerator_id=default_basic_accelerator.id,
-            endpoint_group_region=region,
-            basic_endpoint_group_name="terraform-example",
-            description="terraform-example")
-        default_basic_endpoint = alicloud.ga.BasicEndpoint("defaultBasicEndpoint",
-            accelerator_id=default_basic_accelerator.id,
-            endpoint_group_id=default_basic_endpoint_group.id,
-            endpoint_type="ENI",
-            endpoint_address=default_ecs_network_interface.id,
-            endpoint_sub_address_type="primary",
-            endpoint_sub_address="192.168.0.1",
-            basic_endpoint_name="terraform-example",
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_basic_accelerate_ip_endpoint_relation = alicloud.ga.BasicAccelerateIpEndpointRelation("defaultBasicAccelerateIpEndpointRelation",
-            accelerator_id=default_basic_accelerate_ip.accelerator_id,
-            accelerate_ip_id=default_basic_accelerate_ip.id,
-            endpoint_id=default_basic_endpoint.endpoint_id)
-        ```
-
         ## Import
 
         Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation can be imported using the id, e.g.
@@ -291,75 +228,6 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
         For information about Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation and how to use it, see [What is Basic Accelerate Ip Endpoint Relation](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicaccelerateipendpointrelation).
 
         > **NOTE:** Available since v1.194.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-shenzhen"
-        endpoint_region = config.get("endpointRegion")
-        if endpoint_region is None:
-            endpoint_region = "cn-hangzhou"
-        sz = alicloud.Provider("sz", region=region)
-        hz = alicloud.Provider("hz", region=endpoint_region)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id,
-            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id,
-        opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
-        default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("defaultEcsNetworkInterface",
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id],
-            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
-        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
-            duration=1,
-            basic_accelerator_name="terraform-example",
-            description="terraform-example",
-            bandwidth_billing_type="CDT",
-            auto_use_coupon="true",
-            auto_pay=True)
-        default_basic_ip_set = alicloud.ga.BasicIpSet("defaultBasicIpSet",
-            accelerator_id=default_basic_accelerator.id,
-            accelerate_region_id=endpoint_region,
-            isp_type="BGP",
-            bandwidth=5)
-        default_basic_accelerate_ip = alicloud.ga.BasicAccelerateIp("defaultBasicAccelerateIp",
-            accelerator_id=default_basic_accelerator.id,
-            ip_set_id=default_basic_ip_set.id)
-        default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup",
-            accelerator_id=default_basic_accelerator.id,
-            endpoint_group_region=region,
-            basic_endpoint_group_name="terraform-example",
-            description="terraform-example")
-        default_basic_endpoint = alicloud.ga.BasicEndpoint("defaultBasicEndpoint",
-            accelerator_id=default_basic_accelerator.id,
-            endpoint_group_id=default_basic_endpoint_group.id,
-            endpoint_type="ENI",
-            endpoint_address=default_ecs_network_interface.id,
-            endpoint_sub_address_type="primary",
-            endpoint_sub_address="192.168.0.1",
-            basic_endpoint_name="terraform-example",
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_basic_accelerate_ip_endpoint_relation = alicloud.ga.BasicAccelerateIpEndpointRelation("defaultBasicAccelerateIpEndpointRelation",
-            accelerator_id=default_basic_accelerate_ip.accelerator_id,
-            accelerate_ip_id=default_basic_accelerate_ip.id,
-            endpoint_id=default_basic_endpoint.endpoint_id)
-        ```
 
         ## Import
 

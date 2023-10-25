@@ -16,69 +16,6 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// &gt; **NOTE:** Available since v1.201.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf_example";
-    ///     var exampleWafPolicy = new AliCloud.Dcdn.WafPolicy("exampleWafPolicy", new()
-    ///     {
-    ///         DefenseScene = "waf_group",
-    ///         PolicyName = name,
-    ///         PolicyType = "custom",
-    ///         Status = "on",
-    ///     });
-    /// 
-    ///     var exampleWafRule = new AliCloud.Dcdn.WafRule("exampleWafRule", new()
-    ///     {
-    ///         PolicyId = exampleWafPolicy.Id,
-    ///         RuleName = name,
-    ///         Conditions = new[]
-    ///         {
-    ///             new AliCloud.Dcdn.Inputs.WafRuleConditionArgs
-    ///             {
-    ///                 Key = "URI",
-    ///                 OpValue = "ne",
-    ///                 Values = "/login.php",
-    ///             },
-    ///             new AliCloud.Dcdn.Inputs.WafRuleConditionArgs
-    ///             {
-    ///                 Key = "Header",
-    ///                 SubKey = "a",
-    ///                 OpValue = "eq",
-    ///                 Values = "b",
-    ///             },
-    ///         },
-    ///         Status = "on",
-    ///         CcStatus = "on",
-    ///         Action = "monitor",
-    ///         Effect = "rule",
-    ///         RateLimit = new AliCloud.Dcdn.Inputs.WafRuleRateLimitArgs
-    ///         {
-    ///             Target = "IP",
-    ///             Interval = 5,
-    ///             Threshold = 5,
-    ///             Ttl = 1800,
-    ///             Status = new AliCloud.Dcdn.Inputs.WafRuleRateLimitStatusArgs
-    ///             {
-    ///                 Code = "200",
-    ///                 Ratio = 60,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Dcdn Waf Rule can be imported using the id, e.g.

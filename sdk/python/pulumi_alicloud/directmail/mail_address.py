@@ -35,15 +35,19 @@ class MailAddressArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: pulumi.Input[str],
-             sendtype: pulumi.Input[str],
+             account_name: Optional[pulumi.Input[str]] = None,
+             sendtype: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              reply_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'replyAddress' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if sendtype is None:
+            raise TypeError("Missing 'sendtype' argument")
+        if reply_address is None and 'replyAddress' in kwargs:
             reply_address = kwargs['replyAddress']
 
         _setter("account_name", account_name)
@@ -134,11 +138,11 @@ class _MailAddressState:
              reply_address: Optional[pulumi.Input[str]] = None,
              sendtype: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'replyAddress' in kwargs:
+        if reply_address is None and 'replyAddress' in kwargs:
             reply_address = kwargs['replyAddress']
 
         if account_name is not None:

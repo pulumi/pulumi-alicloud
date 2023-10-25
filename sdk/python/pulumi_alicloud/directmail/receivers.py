@@ -32,15 +32,19 @@ class ReceiversArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             receivers_alias: pulumi.Input[str],
-             receivers_name: pulumi.Input[str],
+             receivers_alias: Optional[pulumi.Input[str]] = None,
+             receivers_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'receiversAlias' in kwargs:
+        if receivers_alias is None and 'receiversAlias' in kwargs:
             receivers_alias = kwargs['receiversAlias']
-        if 'receiversName' in kwargs:
+        if receivers_alias is None:
+            raise TypeError("Missing 'receivers_alias' argument")
+        if receivers_name is None and 'receiversName' in kwargs:
             receivers_name = kwargs['receiversName']
+        if receivers_name is None:
+            raise TypeError("Missing 'receivers_name' argument")
 
         _setter("receivers_alias", receivers_alias)
         _setter("receivers_name", receivers_name)
@@ -112,11 +116,11 @@ class _ReceiversState:
              receivers_alias: Optional[pulumi.Input[str]] = None,
              receivers_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'receiversAlias' in kwargs:
+        if receivers_alias is None and 'receiversAlias' in kwargs:
             receivers_alias = kwargs['receiversAlias']
-        if 'receiversName' in kwargs:
+        if receivers_name is None and 'receiversName' in kwargs:
             receivers_name = kwargs['receiversName']
 
         if description is not None:

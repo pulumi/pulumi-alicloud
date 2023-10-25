@@ -10,30 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Rdc Organizations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.137.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccOrganizations-Organizations";
- * const _default = new alicloud.rdc.Organization("default", {
- *     organizationName: name,
- *     source: name,
- * });
- * const ids = alicloud.rdc.getOrganizationsOutput({
- *     ids: [_default.id],
- * });
- * export const rdcOrganizationId1 = ids.apply(ids => ids.id);
- * const nameRegex = alicloud.rdc.getOrganizations({
- *     nameRegex: "^my-Organization",
- * });
- * export const rdcOrganizationId2 = nameRegex.then(nameRegex => nameRegex.id);
- * ```
  */
 export function getOrganizations(args?: GetOrganizationsArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationsResult> {
     args = args || {};
@@ -88,30 +64,6 @@ export interface GetOrganizationsResult {
  * This data source provides the Rdc Organizations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.137.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccOrganizations-Organizations";
- * const _default = new alicloud.rdc.Organization("default", {
- *     organizationName: name,
- *     source: name,
- * });
- * const ids = alicloud.rdc.getOrganizationsOutput({
- *     ids: [_default.id],
- * });
- * export const rdcOrganizationId1 = ids.apply(ids => ids.id);
- * const nameRegex = alicloud.rdc.getOrganizations({
- *     nameRegex: "^my-Organization",
- * });
- * export const rdcOrganizationId2 = nameRegex.then(nameRegex => nameRegex.id);
- * ```
  */
 export function getOrganizationsOutput(args?: GetOrganizationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationsResult> {
     return pulumi.output(args).apply((a: any) => getOrganizations(a, opts))

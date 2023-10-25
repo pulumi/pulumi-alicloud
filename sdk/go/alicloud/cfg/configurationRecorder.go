@@ -19,35 +19,6 @@ import (
 //
 // > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cfg.NewConfigurationRecorder(ctx, "example", &cfg.ConfigurationRecorderArgs{
-//				ResourceTypes: pulumi.StringArray{
-//					pulumi.String("ACS::ECS::Instance"),
-//					pulumi.String("ACS::ECS::Disk"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Alicloud Config Configuration Recorder can be imported using the id, e.g.

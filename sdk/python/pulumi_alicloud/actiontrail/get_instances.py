@@ -118,34 +118,6 @@ def get_instances(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in 1.59.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    instance_name = config.get("instanceName")
-    if instance_name is None:
-        instance_name = "alikafkaInstanceName"
-    default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-    default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
-    default_switch = alicloud.vpc.Switch("defaultSwitch",
-        vpc_id=default_network.id,
-        cidr_block="172.16.0.0/24",
-        zone_id=default_zones.zones[0].id)
-    default_instance = alicloud.alikafka.Instance("defaultInstance",
-        partition_num=50,
-        disk_type=1,
-        disk_size=500,
-        deploy_type=4,
-        io_max=20,
-        vswitch_id=default_switch.id)
-    instances_ds = alicloud.actiontrail.get_instances(name_regex="alikafkaInstanceName",
-        output_file="instances.txt")
-    pulumi.export("firstInstanceName", instances_ds.instances[0].name)
-    ```
-
 
     :param Sequence[str] ids: A list of instance IDs to filter results.
     :param str name_regex: A regex string to filter results by the instance name.
@@ -179,34 +151,6 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in 1.59.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    instance_name = config.get("instanceName")
-    if instance_name is None:
-        instance_name = "alikafkaInstanceName"
-    default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-    default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
-    default_switch = alicloud.vpc.Switch("defaultSwitch",
-        vpc_id=default_network.id,
-        cidr_block="172.16.0.0/24",
-        zone_id=default_zones.zones[0].id)
-    default_instance = alicloud.alikafka.Instance("defaultInstance",
-        partition_num=50,
-        disk_type=1,
-        disk_size=500,
-        deploy_type=4,
-        io_max=20,
-        vswitch_id=default_switch.id)
-    instances_ds = alicloud.actiontrail.get_instances(name_regex="alikafkaInstanceName",
-        output_file="instances.txt")
-    pulumi.export("firstInstanceName", instances_ds.instances[0].name)
-    ```
 
 
     :param Sequence[str] ids: A list of instance IDs to filter results.

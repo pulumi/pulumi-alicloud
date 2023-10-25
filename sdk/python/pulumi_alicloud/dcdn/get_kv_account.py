@@ -63,15 +63,6 @@ def get_kv_account(status: Optional[str] = None,
 
     > **NOTE:** Available since v1.198.0.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    status = alicloud.dcdn.get_kv_account(status="online")
-    ```
-
 
     :param str status: The status of the KV feature for your account. Valid values: `online`, `offline`.
     """
@@ -92,15 +83,6 @@ def get_kv_account_output(status: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
 
     > **NOTE:** Available since v1.198.0.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    status = alicloud.dcdn.get_kv_account(status="online")
-    ```
 
 
     :param str status: The status of the KV feature for your account. Valid values: `online`, `offline`.

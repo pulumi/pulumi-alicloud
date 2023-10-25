@@ -83,35 +83,35 @@ class AutoscalingConfigArgs:
              skip_nodes_with_system_pods: Optional[pulumi.Input[bool]] = None,
              unneeded_duration: Optional[pulumi.Input[str]] = None,
              utilization_threshold: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'coolDownDuration' in kwargs:
+        if cool_down_duration is None and 'coolDownDuration' in kwargs:
             cool_down_duration = kwargs['coolDownDuration']
-        if 'daemonsetEvictionForNodes' in kwargs:
+        if daemonset_eviction_for_nodes is None and 'daemonsetEvictionForNodes' in kwargs:
             daemonset_eviction_for_nodes = kwargs['daemonsetEvictionForNodes']
-        if 'gpuUtilizationThreshold' in kwargs:
+        if gpu_utilization_threshold is None and 'gpuUtilizationThreshold' in kwargs:
             gpu_utilization_threshold = kwargs['gpuUtilizationThreshold']
-        if 'maxGracefulTerminationSec' in kwargs:
+        if max_graceful_termination_sec is None and 'maxGracefulTerminationSec' in kwargs:
             max_graceful_termination_sec = kwargs['maxGracefulTerminationSec']
-        if 'minReplicaCount' in kwargs:
+        if min_replica_count is None and 'minReplicaCount' in kwargs:
             min_replica_count = kwargs['minReplicaCount']
-        if 'recycleNodeDeletionEnabled' in kwargs:
+        if recycle_node_deletion_enabled is None and 'recycleNodeDeletionEnabled' in kwargs:
             recycle_node_deletion_enabled = kwargs['recycleNodeDeletionEnabled']
-        if 'scaleDownEnabled' in kwargs:
+        if scale_down_enabled is None and 'scaleDownEnabled' in kwargs:
             scale_down_enabled = kwargs['scaleDownEnabled']
-        if 'scaleUpFromZero' in kwargs:
+        if scale_up_from_zero is None and 'scaleUpFromZero' in kwargs:
             scale_up_from_zero = kwargs['scaleUpFromZero']
-        if 'scanInterval' in kwargs:
+        if scan_interval is None and 'scanInterval' in kwargs:
             scan_interval = kwargs['scanInterval']
-        if 'skipNodesWithLocalStorage' in kwargs:
+        if skip_nodes_with_local_storage is None and 'skipNodesWithLocalStorage' in kwargs:
             skip_nodes_with_local_storage = kwargs['skipNodesWithLocalStorage']
-        if 'skipNodesWithSystemPods' in kwargs:
+        if skip_nodes_with_system_pods is None and 'skipNodesWithSystemPods' in kwargs:
             skip_nodes_with_system_pods = kwargs['skipNodesWithSystemPods']
-        if 'unneededDuration' in kwargs:
+        if unneeded_duration is None and 'unneededDuration' in kwargs:
             unneeded_duration = kwargs['unneededDuration']
-        if 'utilizationThreshold' in kwargs:
+        if utilization_threshold is None and 'utilizationThreshold' in kwargs:
             utilization_threshold = kwargs['utilizationThreshold']
 
         if cluster_id is not None:
@@ -398,35 +398,35 @@ class _AutoscalingConfigState:
              skip_nodes_with_system_pods: Optional[pulumi.Input[bool]] = None,
              unneeded_duration: Optional[pulumi.Input[str]] = None,
              utilization_threshold: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'coolDownDuration' in kwargs:
+        if cool_down_duration is None and 'coolDownDuration' in kwargs:
             cool_down_duration = kwargs['coolDownDuration']
-        if 'daemonsetEvictionForNodes' in kwargs:
+        if daemonset_eviction_for_nodes is None and 'daemonsetEvictionForNodes' in kwargs:
             daemonset_eviction_for_nodes = kwargs['daemonsetEvictionForNodes']
-        if 'gpuUtilizationThreshold' in kwargs:
+        if gpu_utilization_threshold is None and 'gpuUtilizationThreshold' in kwargs:
             gpu_utilization_threshold = kwargs['gpuUtilizationThreshold']
-        if 'maxGracefulTerminationSec' in kwargs:
+        if max_graceful_termination_sec is None and 'maxGracefulTerminationSec' in kwargs:
             max_graceful_termination_sec = kwargs['maxGracefulTerminationSec']
-        if 'minReplicaCount' in kwargs:
+        if min_replica_count is None and 'minReplicaCount' in kwargs:
             min_replica_count = kwargs['minReplicaCount']
-        if 'recycleNodeDeletionEnabled' in kwargs:
+        if recycle_node_deletion_enabled is None and 'recycleNodeDeletionEnabled' in kwargs:
             recycle_node_deletion_enabled = kwargs['recycleNodeDeletionEnabled']
-        if 'scaleDownEnabled' in kwargs:
+        if scale_down_enabled is None and 'scaleDownEnabled' in kwargs:
             scale_down_enabled = kwargs['scaleDownEnabled']
-        if 'scaleUpFromZero' in kwargs:
+        if scale_up_from_zero is None and 'scaleUpFromZero' in kwargs:
             scale_up_from_zero = kwargs['scaleUpFromZero']
-        if 'scanInterval' in kwargs:
+        if scan_interval is None and 'scanInterval' in kwargs:
             scan_interval = kwargs['scanInterval']
-        if 'skipNodesWithLocalStorage' in kwargs:
+        if skip_nodes_with_local_storage is None and 'skipNodesWithLocalStorage' in kwargs:
             skip_nodes_with_local_storage = kwargs['skipNodesWithLocalStorage']
-        if 'skipNodesWithSystemPods' in kwargs:
+        if skip_nodes_with_system_pods is None and 'skipNodesWithSystemPods' in kwargs:
             skip_nodes_with_system_pods = kwargs['skipNodesWithSystemPods']
-        if 'unneededDuration' in kwargs:
+        if unneeded_duration is None and 'unneededDuration' in kwargs:
             unneeded_duration = kwargs['unneededDuration']
-        if 'utilizationThreshold' in kwargs:
+        if utilization_threshold is None and 'utilizationThreshold' in kwargs:
             utilization_threshold = kwargs['utilizationThreshold']
 
         if cluster_id is not None:

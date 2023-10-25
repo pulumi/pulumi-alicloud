@@ -23,32 +23,6 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// For information about Vpc Vpc and how to use it, see [What is Vpc](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/what-is-a-vpc).
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = new AliCloud.Vpc.Network("default", new()
-    ///     {
-    ///         Ipv6Isp = "BGP",
-    ///         Description = "test",
-    ///         CidrBlock = "10.0.0.0/8",
-    ///         VpcName = name,
-    ///         EnableIpv6 = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Vpc Vpc can be imported using the id, e.g.

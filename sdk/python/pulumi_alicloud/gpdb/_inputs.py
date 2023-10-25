@@ -45,11 +45,11 @@ class DbInstancePlanPlanConfigArgs:
              resume: Optional[pulumi.Input['DbInstancePlanPlanConfigResumeArgs']] = None,
              scale_in: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleInArgs']] = None,
              scale_out: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleOutArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'scaleIn' in kwargs:
+        if scale_in is None and 'scaleIn' in kwargs:
             scale_in = kwargs['scaleIn']
-        if 'scaleOut' in kwargs:
+        if scale_out is None and 'scaleOut' in kwargs:
             scale_out = kwargs['scaleOut']
 
         if pause is not None:
@@ -129,11 +129,11 @@ class DbInstancePlanPlanConfigPauseArgs:
              _setter: Callable[[Any, Any], None],
              execute_time: Optional[pulumi.Input[str]] = None,
              plan_cron_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'executeTime' in kwargs:
+        if execute_time is None and 'executeTime' in kwargs:
             execute_time = kwargs['executeTime']
-        if 'planCronTime' in kwargs:
+        if plan_cron_time is None and 'planCronTime' in kwargs:
             plan_cron_time = kwargs['planCronTime']
 
         if execute_time is not None:
@@ -185,11 +185,11 @@ class DbInstancePlanPlanConfigResumeArgs:
              _setter: Callable[[Any, Any], None],
              execute_time: Optional[pulumi.Input[str]] = None,
              plan_cron_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'executeTime' in kwargs:
+        if execute_time is None and 'executeTime' in kwargs:
             execute_time = kwargs['executeTime']
-        if 'planCronTime' in kwargs:
+        if plan_cron_time is None and 'planCronTime' in kwargs:
             plan_cron_time = kwargs['planCronTime']
 
         if execute_time is not None:
@@ -245,13 +245,13 @@ class DbInstancePlanPlanConfigScaleInArgs:
              execute_time: Optional[pulumi.Input[str]] = None,
              plan_cron_time: Optional[pulumi.Input[str]] = None,
              segment_node_num: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'executeTime' in kwargs:
+        if execute_time is None and 'executeTime' in kwargs:
             execute_time = kwargs['executeTime']
-        if 'planCronTime' in kwargs:
+        if plan_cron_time is None and 'planCronTime' in kwargs:
             plan_cron_time = kwargs['planCronTime']
-        if 'segmentNodeNum' in kwargs:
+        if segment_node_num is None and 'segmentNodeNum' in kwargs:
             segment_node_num = kwargs['segmentNodeNum']
 
         if execute_time is not None:
@@ -321,13 +321,13 @@ class DbInstancePlanPlanConfigScaleOutArgs:
              execute_time: Optional[pulumi.Input[str]] = None,
              plan_cron_time: Optional[pulumi.Input[str]] = None,
              segment_node_num: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'executeTime' in kwargs:
+        if execute_time is None and 'executeTime' in kwargs:
             execute_time = kwargs['executeTime']
-        if 'planCronTime' in kwargs:
+        if plan_cron_time is None and 'planCronTime' in kwargs:
             plan_cron_time = kwargs['planCronTime']
-        if 'segmentNodeNum' in kwargs:
+        if segment_node_num is None and 'segmentNodeNum' in kwargs:
             segment_node_num = kwargs['segmentNodeNum']
 
         if execute_time is not None:
@@ -398,13 +398,13 @@ class InstanceIpWhitelistArgs:
              ip_group_attribute: Optional[pulumi.Input[str]] = None,
              ip_group_name: Optional[pulumi.Input[str]] = None,
              security_ip_list: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipGroupAttribute' in kwargs:
+        if ip_group_attribute is None and 'ipGroupAttribute' in kwargs:
             ip_group_attribute = kwargs['ipGroupAttribute']
-        if 'ipGroupName' in kwargs:
+        if ip_group_name is None and 'ipGroupName' in kwargs:
             ip_group_name = kwargs['ipGroupName']
-        if 'securityIpList' in kwargs:
+        if security_ip_list is None and 'securityIpList' in kwargs:
             security_ip_list = kwargs['securityIpList']
 
         if ip_group_attribute is not None:

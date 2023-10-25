@@ -16,53 +16,6 @@ namespace Pulumi.AliCloud.FNF
     /// 
     /// &gt; **NOTE:** Available in v1.105.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Ram.Role("default", new()
-    ///     {
-    ///         Document = @"  {
-    ///     ""Statement"": [
-    ///       {
-    ///         ""Action"": ""sts:AssumeRole"",
-    ///         ""Effect"": ""Allow"",
-    ///         ""Principal"": {
-    ///           ""Service"": [
-    ///             ""fnf.aliyuncs.com""
-    ///           ]
-    ///         }
-    ///       }
-    ///     ],
-    ///     ""Version"": ""1""
-    ///   }
-    /// ",
-    ///     });
-    /// 
-    ///     var example = new AliCloud.FNF.Flow("example", new()
-    ///     {
-    ///         Definition = @"  version: v1beta1
-    ///   type: flow
-    ///   steps:
-    ///     - type: pass
-    ///       name: helloworld
-    /// ",
-    ///         RoleArn = @default.Arn,
-    ///         Description = "Test for terraform fnf_flow.",
-    ///         Type = "FDL",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Serverless Workflow Flow can be imported using the id, e.g.

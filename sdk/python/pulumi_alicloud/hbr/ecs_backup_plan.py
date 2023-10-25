@@ -74,12 +74,12 @@ class EcsBackupPlanArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_type: pulumi.Input[str],
-             ecs_backup_plan_name: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             retention: pulumi.Input[str],
-             schedule: pulumi.Input[str],
-             vault_id: pulumi.Input[str],
+             backup_type: Optional[pulumi.Input[str]] = None,
+             ecs_backup_plan_name: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             retention: Optional[pulumi.Input[str]] = None,
+             schedule: Optional[pulumi.Input[str]] = None,
+             vault_id: Optional[pulumi.Input[str]] = None,
              cross_account_role_name: Optional[pulumi.Input[str]] = None,
              cross_account_type: Optional[pulumi.Input[str]] = None,
              cross_account_user_id: Optional[pulumi.Input[int]] = None,
@@ -91,25 +91,37 @@ class EcsBackupPlanArgs:
              paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              speed_limit: Optional[pulumi.Input[str]] = None,
              update_paths: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'ecsBackupPlanName' in kwargs:
+        if backup_type is None:
+            raise TypeError("Missing 'backup_type' argument")
+        if ecs_backup_plan_name is None and 'ecsBackupPlanName' in kwargs:
             ecs_backup_plan_name = kwargs['ecsBackupPlanName']
-        if 'instanceId' in kwargs:
+        if ecs_backup_plan_name is None:
+            raise TypeError("Missing 'ecs_backup_plan_name' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'vaultId' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if retention is None:
+            raise TypeError("Missing 'retention' argument")
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
-        if 'crossAccountRoleName' in kwargs:
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
             cross_account_role_name = kwargs['crossAccountRoleName']
-        if 'crossAccountType' in kwargs:
+        if cross_account_type is None and 'crossAccountType' in kwargs:
             cross_account_type = kwargs['crossAccountType']
-        if 'crossAccountUserId' in kwargs:
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
             cross_account_user_id = kwargs['crossAccountUserId']
-        if 'speedLimit' in kwargs:
+        if speed_limit is None and 'speedLimit' in kwargs:
             speed_limit = kwargs['speedLimit']
-        if 'updatePaths' in kwargs:
+        if update_paths is None and 'updatePaths' in kwargs:
             update_paths = kwargs['updatePaths']
 
         _setter("backup_type", backup_type)
@@ -432,25 +444,25 @@ class _EcsBackupPlanState:
              speed_limit: Optional[pulumi.Input[str]] = None,
              update_paths: Optional[pulumi.Input[bool]] = None,
              vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'crossAccountRoleName' in kwargs:
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
             cross_account_role_name = kwargs['crossAccountRoleName']
-        if 'crossAccountType' in kwargs:
+        if cross_account_type is None and 'crossAccountType' in kwargs:
             cross_account_type = kwargs['crossAccountType']
-        if 'crossAccountUserId' in kwargs:
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
             cross_account_user_id = kwargs['crossAccountUserId']
-        if 'ecsBackupPlanName' in kwargs:
+        if ecs_backup_plan_name is None and 'ecsBackupPlanName' in kwargs:
             ecs_backup_plan_name = kwargs['ecsBackupPlanName']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'speedLimit' in kwargs:
+        if speed_limit is None and 'speedLimit' in kwargs:
             speed_limit = kwargs['speedLimit']
-        if 'updatePaths' in kwargs:
+        if update_paths is None and 'updatePaths' in kwargs:
             update_paths = kwargs['updatePaths']
-        if 'vaultId' in kwargs:
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
 
         if backup_type is not None:
@@ -729,53 +741,6 @@ class EcsBackupPlan(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.132.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            availability_zone=example_zones.zones[0].id,
-            security_groups=[example_security_group.id],
-            instance_name="terraform-example",
-            internet_charge_type="PayByBandwidth",
-            vswitch_id=example_switch.id)
-        example_vault = alicloud.hbr.Vault("exampleVault", vault_name="terraform-example")
-        example_ecs_backup_plan = alicloud.hbr.EcsBackupPlan("exampleEcsBackupPlan",
-            ecs_backup_plan_name="terraform-example",
-            instance_id=example_instance.id,
-            vault_id=example_vault.id,
-            retention="1",
-            schedule="I|1602673264|PT2H",
-            backup_type="COMPLETE",
-            speed_limit="0:24:5120",
-            paths=[
-                "/home",
-                "/var",
-            ],
-            exclude="  [\\"/home/exclude\\"]\\n",
-            include="  [\\"/home/include\\"]\\n")
-        ```
         ## Notice
 
         **About Backup path rules:**
@@ -835,53 +800,6 @@ class EcsBackupPlan(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.132.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            availability_zone=example_zones.zones[0].id,
-            security_groups=[example_security_group.id],
-            instance_name="terraform-example",
-            internet_charge_type="PayByBandwidth",
-            vswitch_id=example_switch.id)
-        example_vault = alicloud.hbr.Vault("exampleVault", vault_name="terraform-example")
-        example_ecs_backup_plan = alicloud.hbr.EcsBackupPlan("exampleEcsBackupPlan",
-            ecs_backup_plan_name="terraform-example",
-            instance_id=example_instance.id,
-            vault_id=example_vault.id,
-            retention="1",
-            schedule="I|1602673264|PT2H",
-            backup_type="COMPLETE",
-            speed_limit="0:24:5120",
-            paths=[
-                "/home",
-                "/var",
-            ],
-            exclude="  [\\"/home/exclude\\"]\\n",
-            include="  [\\"/home/include\\"]\\n")
-        ```
         ## Notice
 
         **About Backup path rules:**

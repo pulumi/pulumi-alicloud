@@ -55,34 +55,54 @@ class GetAppsAppResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_key: str,
-             app_name: str,
-             bundle_id: str,
-             create_time: str,
-             encoded_icon: str,
-             id: str,
-             industry_id: str,
-             package_name: str,
-             product_id: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             app_key: Optional[str] = None,
+             app_name: Optional[str] = None,
+             bundle_id: Optional[str] = None,
+             create_time: Optional[str] = None,
+             encoded_icon: Optional[str] = None,
+             id: Optional[str] = None,
+             industry_id: Optional[str] = None,
+             package_name: Optional[str] = None,
+             product_id: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appKey' in kwargs:
+        if app_key is None and 'appKey' in kwargs:
             app_key = kwargs['appKey']
-        if 'appName' in kwargs:
+        if app_key is None:
+            raise TypeError("Missing 'app_key' argument")
+        if app_name is None and 'appName' in kwargs:
             app_name = kwargs['appName']
-        if 'bundleId' in kwargs:
+        if app_name is None:
+            raise TypeError("Missing 'app_name' argument")
+        if bundle_id is None and 'bundleId' in kwargs:
             bundle_id = kwargs['bundleId']
-        if 'createTime' in kwargs:
+        if bundle_id is None:
+            raise TypeError("Missing 'bundle_id' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'encodedIcon' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if encoded_icon is None and 'encodedIcon' in kwargs:
             encoded_icon = kwargs['encodedIcon']
-        if 'industryId' in kwargs:
+        if encoded_icon is None:
+            raise TypeError("Missing 'encoded_icon' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if industry_id is None and 'industryId' in kwargs:
             industry_id = kwargs['industryId']
-        if 'packageName' in kwargs:
+        if industry_id is None:
+            raise TypeError("Missing 'industry_id' argument")
+        if package_name is None and 'packageName' in kwargs:
             package_name = kwargs['packageName']
-        if 'productId' in kwargs:
+        if package_name is None:
+            raise TypeError("Missing 'package_name' argument")
+        if product_id is None and 'productId' in kwargs:
             product_id = kwargs['productId']
+        if product_id is None:
+            raise TypeError("Missing 'product_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("app_key", app_key)
         _setter("app_name", app_name)
@@ -196,15 +216,21 @@ class GetProductsProductResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             product_id: str,
-             product_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             product_id: Optional[str] = None,
+             product_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'productId' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if product_id is None and 'productId' in kwargs:
             product_id = kwargs['productId']
-        if 'productName' in kwargs:
+        if product_id is None:
+            raise TypeError("Missing 'product_id' argument")
+        if product_name is None and 'productName' in kwargs:
             product_name = kwargs['productName']
+        if product_name is None:
+            raise TypeError("Missing 'product_name' argument")
 
         _setter("id", id)
         _setter("product_id", product_id)

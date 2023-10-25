@@ -54,28 +54,44 @@ class GetExpressSyncsSyncResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: str,
-             bucket_prefix: str,
-             bucket_region: str,
-             description: str,
-             express_sync_id: str,
-             express_sync_name: str,
-             id: str,
-             mns_topic: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bucket_name: Optional[str] = None,
+             bucket_prefix: Optional[str] = None,
+             bucket_region: Optional[str] = None,
+             description: Optional[str] = None,
+             express_sync_id: Optional[str] = None,
+             express_sync_name: Optional[str] = None,
+             id: Optional[str] = None,
+             mns_topic: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bucketName' in kwargs:
+        if bucket_name is None and 'bucketName' in kwargs:
             bucket_name = kwargs['bucketName']
-        if 'bucketPrefix' in kwargs:
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if bucket_prefix is None and 'bucketPrefix' in kwargs:
             bucket_prefix = kwargs['bucketPrefix']
-        if 'bucketRegion' in kwargs:
+        if bucket_prefix is None:
+            raise TypeError("Missing 'bucket_prefix' argument")
+        if bucket_region is None and 'bucketRegion' in kwargs:
             bucket_region = kwargs['bucketRegion']
-        if 'expressSyncId' in kwargs:
+        if bucket_region is None:
+            raise TypeError("Missing 'bucket_region' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if express_sync_id is None and 'expressSyncId' in kwargs:
             express_sync_id = kwargs['expressSyncId']
-        if 'expressSyncName' in kwargs:
+        if express_sync_id is None:
+            raise TypeError("Missing 'express_sync_id' argument")
+        if express_sync_name is None and 'expressSyncName' in kwargs:
             express_sync_name = kwargs['expressSyncName']
-        if 'mnsTopic' in kwargs:
+        if express_sync_name is None:
+            raise TypeError("Missing 'express_sync_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if mns_topic is None and 'mnsTopic' in kwargs:
             mns_topic = kwargs['mnsTopic']
+        if mns_topic is None:
+            raise TypeError("Missing 'mns_topic' argument")
 
         _setter("bucket_name", bucket_name)
         _setter("bucket_prefix", bucket_prefix)
@@ -236,68 +252,120 @@ class GetGatewayBlockVolumesVolumeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             cache_mode: str,
-             chap_enabled: bool,
-             chap_in_user: str,
-             chunk_size: int,
-             disk_id: str,
-             disk_type: str,
-             enabled: bool,
-             gateway_block_volume_name: str,
-             gateway_id: str,
-             id: str,
-             index_id: str,
-             local_path: str,
-             lun_id: int,
-             oss_bucket_name: str,
-             oss_bucket_ssl: bool,
-             oss_endpoint: str,
-             port: int,
-             protocol: str,
-             size: int,
-             state: str,
-             status: int,
-             target: str,
-             total_download: int,
-             total_upload: int,
-             volume_state: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             address: Optional[str] = None,
+             cache_mode: Optional[str] = None,
+             chap_enabled: Optional[bool] = None,
+             chap_in_user: Optional[str] = None,
+             chunk_size: Optional[int] = None,
+             disk_id: Optional[str] = None,
+             disk_type: Optional[str] = None,
+             enabled: Optional[bool] = None,
+             gateway_block_volume_name: Optional[str] = None,
+             gateway_id: Optional[str] = None,
+             id: Optional[str] = None,
+             index_id: Optional[str] = None,
+             local_path: Optional[str] = None,
+             lun_id: Optional[int] = None,
+             oss_bucket_name: Optional[str] = None,
+             oss_bucket_ssl: Optional[bool] = None,
+             oss_endpoint: Optional[str] = None,
+             port: Optional[int] = None,
+             protocol: Optional[str] = None,
+             size: Optional[int] = None,
+             state: Optional[str] = None,
+             status: Optional[int] = None,
+             target: Optional[str] = None,
+             total_download: Optional[int] = None,
+             total_upload: Optional[int] = None,
+             volume_state: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cacheMode' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if cache_mode is None and 'cacheMode' in kwargs:
             cache_mode = kwargs['cacheMode']
-        if 'chapEnabled' in kwargs:
+        if cache_mode is None:
+            raise TypeError("Missing 'cache_mode' argument")
+        if chap_enabled is None and 'chapEnabled' in kwargs:
             chap_enabled = kwargs['chapEnabled']
-        if 'chapInUser' in kwargs:
+        if chap_enabled is None:
+            raise TypeError("Missing 'chap_enabled' argument")
+        if chap_in_user is None and 'chapInUser' in kwargs:
             chap_in_user = kwargs['chapInUser']
-        if 'chunkSize' in kwargs:
+        if chap_in_user is None:
+            raise TypeError("Missing 'chap_in_user' argument")
+        if chunk_size is None and 'chunkSize' in kwargs:
             chunk_size = kwargs['chunkSize']
-        if 'diskId' in kwargs:
+        if chunk_size is None:
+            raise TypeError("Missing 'chunk_size' argument")
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
-        if 'diskType' in kwargs:
+        if disk_id is None:
+            raise TypeError("Missing 'disk_id' argument")
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'gatewayBlockVolumeName' in kwargs:
+        if disk_type is None:
+            raise TypeError("Missing 'disk_type' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if gateway_block_volume_name is None and 'gatewayBlockVolumeName' in kwargs:
             gateway_block_volume_name = kwargs['gatewayBlockVolumeName']
-        if 'gatewayId' in kwargs:
+        if gateway_block_volume_name is None:
+            raise TypeError("Missing 'gateway_block_volume_name' argument")
+        if gateway_id is None and 'gatewayId' in kwargs:
             gateway_id = kwargs['gatewayId']
-        if 'indexId' in kwargs:
+        if gateway_id is None:
+            raise TypeError("Missing 'gateway_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if index_id is None and 'indexId' in kwargs:
             index_id = kwargs['indexId']
-        if 'localPath' in kwargs:
+        if index_id is None:
+            raise TypeError("Missing 'index_id' argument")
+        if local_path is None and 'localPath' in kwargs:
             local_path = kwargs['localPath']
-        if 'lunId' in kwargs:
+        if local_path is None:
+            raise TypeError("Missing 'local_path' argument")
+        if lun_id is None and 'lunId' in kwargs:
             lun_id = kwargs['lunId']
-        if 'ossBucketName' in kwargs:
+        if lun_id is None:
+            raise TypeError("Missing 'lun_id' argument")
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'ossBucketSsl' in kwargs:
+        if oss_bucket_name is None:
+            raise TypeError("Missing 'oss_bucket_name' argument")
+        if oss_bucket_ssl is None and 'ossBucketSsl' in kwargs:
             oss_bucket_ssl = kwargs['ossBucketSsl']
-        if 'ossEndpoint' in kwargs:
+        if oss_bucket_ssl is None:
+            raise TypeError("Missing 'oss_bucket_ssl' argument")
+        if oss_endpoint is None and 'ossEndpoint' in kwargs:
             oss_endpoint = kwargs['ossEndpoint']
-        if 'totalDownload' in kwargs:
+        if oss_endpoint is None:
+            raise TypeError("Missing 'oss_endpoint' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if total_download is None and 'totalDownload' in kwargs:
             total_download = kwargs['totalDownload']
-        if 'totalUpload' in kwargs:
+        if total_download is None:
+            raise TypeError("Missing 'total_download' argument")
+        if total_upload is None and 'totalUpload' in kwargs:
             total_upload = kwargs['totalUpload']
-        if 'volumeState' in kwargs:
+        if total_upload is None:
+            raise TypeError("Missing 'total_upload' argument")
+        if volume_state is None and 'volumeState' in kwargs:
             volume_state = kwargs['volumeState']
+        if volume_state is None:
+            raise TypeError("Missing 'volume_state' argument")
 
         _setter("address", address)
         _setter("cache_mode", cache_mode)
@@ -576,35 +644,57 @@ class GetGatewayCacheDisksDiskResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cache_disk_category: str,
-             cache_disk_size_in_gb: int,
-             cache_id: str,
-             expired_time: int,
-             gateway_id: str,
-             id: str,
-             iops: int,
-             is_used: bool,
-             local_file_path: str,
-             renew_url: str,
-             status: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cache_disk_category: Optional[str] = None,
+             cache_disk_size_in_gb: Optional[int] = None,
+             cache_id: Optional[str] = None,
+             expired_time: Optional[int] = None,
+             gateway_id: Optional[str] = None,
+             id: Optional[str] = None,
+             iops: Optional[int] = None,
+             is_used: Optional[bool] = None,
+             local_file_path: Optional[str] = None,
+             renew_url: Optional[str] = None,
+             status: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cacheDiskCategory' in kwargs:
+        if cache_disk_category is None and 'cacheDiskCategory' in kwargs:
             cache_disk_category = kwargs['cacheDiskCategory']
-        if 'cacheDiskSizeInGb' in kwargs:
+        if cache_disk_category is None:
+            raise TypeError("Missing 'cache_disk_category' argument")
+        if cache_disk_size_in_gb is None and 'cacheDiskSizeInGb' in kwargs:
             cache_disk_size_in_gb = kwargs['cacheDiskSizeInGb']
-        if 'cacheId' in kwargs:
+        if cache_disk_size_in_gb is None:
+            raise TypeError("Missing 'cache_disk_size_in_gb' argument")
+        if cache_id is None and 'cacheId' in kwargs:
             cache_id = kwargs['cacheId']
-        if 'expiredTime' in kwargs:
+        if cache_id is None:
+            raise TypeError("Missing 'cache_id' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'gatewayId' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if gateway_id is None and 'gatewayId' in kwargs:
             gateway_id = kwargs['gatewayId']
-        if 'isUsed' in kwargs:
+        if gateway_id is None:
+            raise TypeError("Missing 'gateway_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if iops is None:
+            raise TypeError("Missing 'iops' argument")
+        if is_used is None and 'isUsed' in kwargs:
             is_used = kwargs['isUsed']
-        if 'localFilePath' in kwargs:
+        if is_used is None:
+            raise TypeError("Missing 'is_used' argument")
+        if local_file_path is None and 'localFilePath' in kwargs:
             local_file_path = kwargs['localFilePath']
-        if 'renewUrl' in kwargs:
+        if local_file_path is None:
+            raise TypeError("Missing 'local_file_path' argument")
+        if renew_url is None and 'renewUrl' in kwargs:
             renew_url = kwargs['renewUrl']
+        if renew_url is None:
+            raise TypeError("Missing 'renew_url' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("cache_disk_category", cache_disk_category)
         _setter("cache_disk_size_in_gb", cache_disk_size_in_gb)
@@ -904,176 +994,300 @@ class GetGatewayFileSharesShareResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_based_enumeration: bool,
-             address: str,
-             backend_limit: int,
-             browsable: bool,
-             bucket_infos: str,
-             buckets_stub: bool,
-             bypass_cache_read: bool,
-             cache_mode: str,
-             client_side_cmk: str,
-             client_side_encryption: bool,
-             direct_io: bool,
-             disk_id: str,
-             disk_type: str,
-             download_limit: int,
-             enabled: bool,
-             express_sync_id: str,
-             fast_reclaim: bool,
-             fe_limit: int,
-             file_num_limit: str,
-             fs_size_limit: str,
-             gateway_file_share_name: str,
-             gateway_id: str,
-             id: str,
-             ignore_delete: bool,
-             in_place: bool,
-             in_rate: str,
-             index_id: str,
-             kms_rotate_period: int,
-             lag_period: str,
-             local_path: str,
-             mns_health: str,
-             nfs_v4_optimization: bool,
-             obsolete_buckets: str,
-             oss_bucket_name: str,
-             oss_bucket_ssl: bool,
-             oss_endpoint: str,
-             oss_health: str,
-             oss_used: str,
-             out_rate: str,
-             partial_sync_paths: str,
-             path_prefix: str,
-             polling_interval: int,
-             protocol: str,
-             remaining_meta_space: str,
-             remote_sync: bool,
-             remote_sync_download: bool,
-             ro_client_list: str,
-             ro_user_list: str,
-             rw_client_list: str,
-             rw_user_list: str,
-             server_side_cmk: str,
-             server_side_encryption: bool,
-             size: str,
-             squash: str,
-             state: str,
-             support_archive: bool,
-             sync_progress: int,
-             total_download: str,
-             total_upload: str,
-             transfer_acceleration: bool,
-             used: str,
-             windows_acl: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_based_enumeration: Optional[bool] = None,
+             address: Optional[str] = None,
+             backend_limit: Optional[int] = None,
+             browsable: Optional[bool] = None,
+             bucket_infos: Optional[str] = None,
+             buckets_stub: Optional[bool] = None,
+             bypass_cache_read: Optional[bool] = None,
+             cache_mode: Optional[str] = None,
+             client_side_cmk: Optional[str] = None,
+             client_side_encryption: Optional[bool] = None,
+             direct_io: Optional[bool] = None,
+             disk_id: Optional[str] = None,
+             disk_type: Optional[str] = None,
+             download_limit: Optional[int] = None,
+             enabled: Optional[bool] = None,
+             express_sync_id: Optional[str] = None,
+             fast_reclaim: Optional[bool] = None,
+             fe_limit: Optional[int] = None,
+             file_num_limit: Optional[str] = None,
+             fs_size_limit: Optional[str] = None,
+             gateway_file_share_name: Optional[str] = None,
+             gateway_id: Optional[str] = None,
+             id: Optional[str] = None,
+             ignore_delete: Optional[bool] = None,
+             in_place: Optional[bool] = None,
+             in_rate: Optional[str] = None,
+             index_id: Optional[str] = None,
+             kms_rotate_period: Optional[int] = None,
+             lag_period: Optional[str] = None,
+             local_path: Optional[str] = None,
+             mns_health: Optional[str] = None,
+             nfs_v4_optimization: Optional[bool] = None,
+             obsolete_buckets: Optional[str] = None,
+             oss_bucket_name: Optional[str] = None,
+             oss_bucket_ssl: Optional[bool] = None,
+             oss_endpoint: Optional[str] = None,
+             oss_health: Optional[str] = None,
+             oss_used: Optional[str] = None,
+             out_rate: Optional[str] = None,
+             partial_sync_paths: Optional[str] = None,
+             path_prefix: Optional[str] = None,
+             polling_interval: Optional[int] = None,
+             protocol: Optional[str] = None,
+             remaining_meta_space: Optional[str] = None,
+             remote_sync: Optional[bool] = None,
+             remote_sync_download: Optional[bool] = None,
+             ro_client_list: Optional[str] = None,
+             ro_user_list: Optional[str] = None,
+             rw_client_list: Optional[str] = None,
+             rw_user_list: Optional[str] = None,
+             server_side_cmk: Optional[str] = None,
+             server_side_encryption: Optional[bool] = None,
+             size: Optional[str] = None,
+             squash: Optional[str] = None,
+             state: Optional[str] = None,
+             support_archive: Optional[bool] = None,
+             sync_progress: Optional[int] = None,
+             total_download: Optional[str] = None,
+             total_upload: Optional[str] = None,
+             transfer_acceleration: Optional[bool] = None,
+             used: Optional[str] = None,
+             windows_acl: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessBasedEnumeration' in kwargs:
+        if access_based_enumeration is None and 'accessBasedEnumeration' in kwargs:
             access_based_enumeration = kwargs['accessBasedEnumeration']
-        if 'backendLimit' in kwargs:
+        if access_based_enumeration is None:
+            raise TypeError("Missing 'access_based_enumeration' argument")
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if backend_limit is None and 'backendLimit' in kwargs:
             backend_limit = kwargs['backendLimit']
-        if 'bucketInfos' in kwargs:
+        if backend_limit is None:
+            raise TypeError("Missing 'backend_limit' argument")
+        if browsable is None:
+            raise TypeError("Missing 'browsable' argument")
+        if bucket_infos is None and 'bucketInfos' in kwargs:
             bucket_infos = kwargs['bucketInfos']
-        if 'bucketsStub' in kwargs:
+        if bucket_infos is None:
+            raise TypeError("Missing 'bucket_infos' argument")
+        if buckets_stub is None and 'bucketsStub' in kwargs:
             buckets_stub = kwargs['bucketsStub']
-        if 'bypassCacheRead' in kwargs:
+        if buckets_stub is None:
+            raise TypeError("Missing 'buckets_stub' argument")
+        if bypass_cache_read is None and 'bypassCacheRead' in kwargs:
             bypass_cache_read = kwargs['bypassCacheRead']
-        if 'cacheMode' in kwargs:
+        if bypass_cache_read is None:
+            raise TypeError("Missing 'bypass_cache_read' argument")
+        if cache_mode is None and 'cacheMode' in kwargs:
             cache_mode = kwargs['cacheMode']
-        if 'clientSideCmk' in kwargs:
+        if cache_mode is None:
+            raise TypeError("Missing 'cache_mode' argument")
+        if client_side_cmk is None and 'clientSideCmk' in kwargs:
             client_side_cmk = kwargs['clientSideCmk']
-        if 'clientSideEncryption' in kwargs:
+        if client_side_cmk is None:
+            raise TypeError("Missing 'client_side_cmk' argument")
+        if client_side_encryption is None and 'clientSideEncryption' in kwargs:
             client_side_encryption = kwargs['clientSideEncryption']
-        if 'directIo' in kwargs:
+        if client_side_encryption is None:
+            raise TypeError("Missing 'client_side_encryption' argument")
+        if direct_io is None and 'directIo' in kwargs:
             direct_io = kwargs['directIo']
-        if 'diskId' in kwargs:
+        if direct_io is None:
+            raise TypeError("Missing 'direct_io' argument")
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
-        if 'diskType' in kwargs:
+        if disk_id is None:
+            raise TypeError("Missing 'disk_id' argument")
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'downloadLimit' in kwargs:
+        if disk_type is None:
+            raise TypeError("Missing 'disk_type' argument")
+        if download_limit is None and 'downloadLimit' in kwargs:
             download_limit = kwargs['downloadLimit']
-        if 'expressSyncId' in kwargs:
+        if download_limit is None:
+            raise TypeError("Missing 'download_limit' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if express_sync_id is None and 'expressSyncId' in kwargs:
             express_sync_id = kwargs['expressSyncId']
-        if 'fastReclaim' in kwargs:
+        if express_sync_id is None:
+            raise TypeError("Missing 'express_sync_id' argument")
+        if fast_reclaim is None and 'fastReclaim' in kwargs:
             fast_reclaim = kwargs['fastReclaim']
-        if 'feLimit' in kwargs:
+        if fast_reclaim is None:
+            raise TypeError("Missing 'fast_reclaim' argument")
+        if fe_limit is None and 'feLimit' in kwargs:
             fe_limit = kwargs['feLimit']
-        if 'fileNumLimit' in kwargs:
+        if fe_limit is None:
+            raise TypeError("Missing 'fe_limit' argument")
+        if file_num_limit is None and 'fileNumLimit' in kwargs:
             file_num_limit = kwargs['fileNumLimit']
-        if 'fsSizeLimit' in kwargs:
+        if file_num_limit is None:
+            raise TypeError("Missing 'file_num_limit' argument")
+        if fs_size_limit is None and 'fsSizeLimit' in kwargs:
             fs_size_limit = kwargs['fsSizeLimit']
-        if 'gatewayFileShareName' in kwargs:
+        if fs_size_limit is None:
+            raise TypeError("Missing 'fs_size_limit' argument")
+        if gateway_file_share_name is None and 'gatewayFileShareName' in kwargs:
             gateway_file_share_name = kwargs['gatewayFileShareName']
-        if 'gatewayId' in kwargs:
+        if gateway_file_share_name is None:
+            raise TypeError("Missing 'gateway_file_share_name' argument")
+        if gateway_id is None and 'gatewayId' in kwargs:
             gateway_id = kwargs['gatewayId']
-        if 'ignoreDelete' in kwargs:
+        if gateway_id is None:
+            raise TypeError("Missing 'gateway_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ignore_delete is None and 'ignoreDelete' in kwargs:
             ignore_delete = kwargs['ignoreDelete']
-        if 'inPlace' in kwargs:
+        if ignore_delete is None:
+            raise TypeError("Missing 'ignore_delete' argument")
+        if in_place is None and 'inPlace' in kwargs:
             in_place = kwargs['inPlace']
-        if 'inRate' in kwargs:
+        if in_place is None:
+            raise TypeError("Missing 'in_place' argument")
+        if in_rate is None and 'inRate' in kwargs:
             in_rate = kwargs['inRate']
-        if 'indexId' in kwargs:
+        if in_rate is None:
+            raise TypeError("Missing 'in_rate' argument")
+        if index_id is None and 'indexId' in kwargs:
             index_id = kwargs['indexId']
-        if 'kmsRotatePeriod' in kwargs:
+        if index_id is None:
+            raise TypeError("Missing 'index_id' argument")
+        if kms_rotate_period is None and 'kmsRotatePeriod' in kwargs:
             kms_rotate_period = kwargs['kmsRotatePeriod']
-        if 'lagPeriod' in kwargs:
+        if kms_rotate_period is None:
+            raise TypeError("Missing 'kms_rotate_period' argument")
+        if lag_period is None and 'lagPeriod' in kwargs:
             lag_period = kwargs['lagPeriod']
-        if 'localPath' in kwargs:
+        if lag_period is None:
+            raise TypeError("Missing 'lag_period' argument")
+        if local_path is None and 'localPath' in kwargs:
             local_path = kwargs['localPath']
-        if 'mnsHealth' in kwargs:
+        if local_path is None:
+            raise TypeError("Missing 'local_path' argument")
+        if mns_health is None and 'mnsHealth' in kwargs:
             mns_health = kwargs['mnsHealth']
-        if 'nfsV4Optimization' in kwargs:
+        if mns_health is None:
+            raise TypeError("Missing 'mns_health' argument")
+        if nfs_v4_optimization is None and 'nfsV4Optimization' in kwargs:
             nfs_v4_optimization = kwargs['nfsV4Optimization']
-        if 'obsoleteBuckets' in kwargs:
+        if nfs_v4_optimization is None:
+            raise TypeError("Missing 'nfs_v4_optimization' argument")
+        if obsolete_buckets is None and 'obsoleteBuckets' in kwargs:
             obsolete_buckets = kwargs['obsoleteBuckets']
-        if 'ossBucketName' in kwargs:
+        if obsolete_buckets is None:
+            raise TypeError("Missing 'obsolete_buckets' argument")
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'ossBucketSsl' in kwargs:
+        if oss_bucket_name is None:
+            raise TypeError("Missing 'oss_bucket_name' argument")
+        if oss_bucket_ssl is None and 'ossBucketSsl' in kwargs:
             oss_bucket_ssl = kwargs['ossBucketSsl']
-        if 'ossEndpoint' in kwargs:
+        if oss_bucket_ssl is None:
+            raise TypeError("Missing 'oss_bucket_ssl' argument")
+        if oss_endpoint is None and 'ossEndpoint' in kwargs:
             oss_endpoint = kwargs['ossEndpoint']
-        if 'ossHealth' in kwargs:
+        if oss_endpoint is None:
+            raise TypeError("Missing 'oss_endpoint' argument")
+        if oss_health is None and 'ossHealth' in kwargs:
             oss_health = kwargs['ossHealth']
-        if 'ossUsed' in kwargs:
+        if oss_health is None:
+            raise TypeError("Missing 'oss_health' argument")
+        if oss_used is None and 'ossUsed' in kwargs:
             oss_used = kwargs['ossUsed']
-        if 'outRate' in kwargs:
+        if oss_used is None:
+            raise TypeError("Missing 'oss_used' argument")
+        if out_rate is None and 'outRate' in kwargs:
             out_rate = kwargs['outRate']
-        if 'partialSyncPaths' in kwargs:
+        if out_rate is None:
+            raise TypeError("Missing 'out_rate' argument")
+        if partial_sync_paths is None and 'partialSyncPaths' in kwargs:
             partial_sync_paths = kwargs['partialSyncPaths']
-        if 'pathPrefix' in kwargs:
+        if partial_sync_paths is None:
+            raise TypeError("Missing 'partial_sync_paths' argument")
+        if path_prefix is None and 'pathPrefix' in kwargs:
             path_prefix = kwargs['pathPrefix']
-        if 'pollingInterval' in kwargs:
+        if path_prefix is None:
+            raise TypeError("Missing 'path_prefix' argument")
+        if polling_interval is None and 'pollingInterval' in kwargs:
             polling_interval = kwargs['pollingInterval']
-        if 'remainingMetaSpace' in kwargs:
+        if polling_interval is None:
+            raise TypeError("Missing 'polling_interval' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if remaining_meta_space is None and 'remainingMetaSpace' in kwargs:
             remaining_meta_space = kwargs['remainingMetaSpace']
-        if 'remoteSync' in kwargs:
+        if remaining_meta_space is None:
+            raise TypeError("Missing 'remaining_meta_space' argument")
+        if remote_sync is None and 'remoteSync' in kwargs:
             remote_sync = kwargs['remoteSync']
-        if 'remoteSyncDownload' in kwargs:
+        if remote_sync is None:
+            raise TypeError("Missing 'remote_sync' argument")
+        if remote_sync_download is None and 'remoteSyncDownload' in kwargs:
             remote_sync_download = kwargs['remoteSyncDownload']
-        if 'roClientList' in kwargs:
+        if remote_sync_download is None:
+            raise TypeError("Missing 'remote_sync_download' argument")
+        if ro_client_list is None and 'roClientList' in kwargs:
             ro_client_list = kwargs['roClientList']
-        if 'roUserList' in kwargs:
+        if ro_client_list is None:
+            raise TypeError("Missing 'ro_client_list' argument")
+        if ro_user_list is None and 'roUserList' in kwargs:
             ro_user_list = kwargs['roUserList']
-        if 'rwClientList' in kwargs:
+        if ro_user_list is None:
+            raise TypeError("Missing 'ro_user_list' argument")
+        if rw_client_list is None and 'rwClientList' in kwargs:
             rw_client_list = kwargs['rwClientList']
-        if 'rwUserList' in kwargs:
+        if rw_client_list is None:
+            raise TypeError("Missing 'rw_client_list' argument")
+        if rw_user_list is None and 'rwUserList' in kwargs:
             rw_user_list = kwargs['rwUserList']
-        if 'serverSideCmk' in kwargs:
+        if rw_user_list is None:
+            raise TypeError("Missing 'rw_user_list' argument")
+        if server_side_cmk is None and 'serverSideCmk' in kwargs:
             server_side_cmk = kwargs['serverSideCmk']
-        if 'serverSideEncryption' in kwargs:
+        if server_side_cmk is None:
+            raise TypeError("Missing 'server_side_cmk' argument")
+        if server_side_encryption is None and 'serverSideEncryption' in kwargs:
             server_side_encryption = kwargs['serverSideEncryption']
-        if 'supportArchive' in kwargs:
+        if server_side_encryption is None:
+            raise TypeError("Missing 'server_side_encryption' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if squash is None:
+            raise TypeError("Missing 'squash' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if support_archive is None and 'supportArchive' in kwargs:
             support_archive = kwargs['supportArchive']
-        if 'syncProgress' in kwargs:
+        if support_archive is None:
+            raise TypeError("Missing 'support_archive' argument")
+        if sync_progress is None and 'syncProgress' in kwargs:
             sync_progress = kwargs['syncProgress']
-        if 'totalDownload' in kwargs:
+        if sync_progress is None:
+            raise TypeError("Missing 'sync_progress' argument")
+        if total_download is None and 'totalDownload' in kwargs:
             total_download = kwargs['totalDownload']
-        if 'totalUpload' in kwargs:
+        if total_download is None:
+            raise TypeError("Missing 'total_download' argument")
+        if total_upload is None and 'totalUpload' in kwargs:
             total_upload = kwargs['totalUpload']
-        if 'transferAcceleration' in kwargs:
+        if total_upload is None:
+            raise TypeError("Missing 'total_upload' argument")
+        if transfer_acceleration is None and 'transferAcceleration' in kwargs:
             transfer_acceleration = kwargs['transferAcceleration']
-        if 'windowsAcl' in kwargs:
+        if transfer_acceleration is None:
+            raise TypeError("Missing 'transfer_acceleration' argument")
+        if used is None:
+            raise TypeError("Missing 'used' argument")
+        if windows_acl is None and 'windowsAcl' in kwargs:
             windows_acl = kwargs['windowsAcl']
+        if windows_acl is None:
+            raise TypeError("Missing 'windows_acl' argument")
 
         _setter("access_based_enumeration", access_based_enumeration)
         _setter("address", address)
@@ -1655,13 +1869,19 @@ class GetGatewaySmbUsersUserResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gateway_id: str,
-             id: str,
-             username: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             gateway_id: Optional[str] = None,
+             id: Optional[str] = None,
+             username: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'gatewayId' in kwargs:
+        if gateway_id is None and 'gatewayId' in kwargs:
             gateway_id = kwargs['gatewayId']
+        if gateway_id is None:
+            raise TypeError("Missing 'gateway_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
 
         _setter("gateway_id", gateway_id)
         _setter("id", id)
@@ -1779,72 +1999,124 @@ class GetGatewaysGatewayResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             activated_time: str,
-             buy_url: str,
-             category: str,
-             create_time: str,
-             description: str,
-             ecs_instance_id: str,
-             expire_status: int,
-             expired_time: str,
-             gateway_class: str,
-             gateway_id: str,
-             gateway_name: str,
-             gateway_version: str,
-             id: str,
-             inner_ip: str,
-             ip: str,
-             is_release_after_expiration: bool,
-             location: str,
-             payment_type: str,
-             public_network_bandwidth: int,
-             renew_url: str,
-             status: str,
-             storage_bundle_id: str,
-             task_id: str,
-             type: str,
-             vpc_id: str,
-             vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             activated_time: Optional[str] = None,
+             buy_url: Optional[str] = None,
+             category: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             ecs_instance_id: Optional[str] = None,
+             expire_status: Optional[int] = None,
+             expired_time: Optional[str] = None,
+             gateway_class: Optional[str] = None,
+             gateway_id: Optional[str] = None,
+             gateway_name: Optional[str] = None,
+             gateway_version: Optional[str] = None,
+             id: Optional[str] = None,
+             inner_ip: Optional[str] = None,
+             ip: Optional[str] = None,
+             is_release_after_expiration: Optional[bool] = None,
+             location: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             public_network_bandwidth: Optional[int] = None,
+             renew_url: Optional[str] = None,
+             status: Optional[str] = None,
+             storage_bundle_id: Optional[str] = None,
+             task_id: Optional[str] = None,
+             type: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'activatedTime' in kwargs:
+        if activated_time is None and 'activatedTime' in kwargs:
             activated_time = kwargs['activatedTime']
-        if 'buyUrl' in kwargs:
+        if activated_time is None:
+            raise TypeError("Missing 'activated_time' argument")
+        if buy_url is None and 'buyUrl' in kwargs:
             buy_url = kwargs['buyUrl']
-        if 'createTime' in kwargs:
+        if buy_url is None:
+            raise TypeError("Missing 'buy_url' argument")
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'ecsInstanceId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if ecs_instance_id is None and 'ecsInstanceId' in kwargs:
             ecs_instance_id = kwargs['ecsInstanceId']
-        if 'expireStatus' in kwargs:
+        if ecs_instance_id is None:
+            raise TypeError("Missing 'ecs_instance_id' argument")
+        if expire_status is None and 'expireStatus' in kwargs:
             expire_status = kwargs['expireStatus']
-        if 'expiredTime' in kwargs:
+        if expire_status is None:
+            raise TypeError("Missing 'expire_status' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'gatewayClass' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if gateway_class is None and 'gatewayClass' in kwargs:
             gateway_class = kwargs['gatewayClass']
-        if 'gatewayId' in kwargs:
+        if gateway_class is None:
+            raise TypeError("Missing 'gateway_class' argument")
+        if gateway_id is None and 'gatewayId' in kwargs:
             gateway_id = kwargs['gatewayId']
-        if 'gatewayName' in kwargs:
+        if gateway_id is None:
+            raise TypeError("Missing 'gateway_id' argument")
+        if gateway_name is None and 'gatewayName' in kwargs:
             gateway_name = kwargs['gatewayName']
-        if 'gatewayVersion' in kwargs:
+        if gateway_name is None:
+            raise TypeError("Missing 'gateway_name' argument")
+        if gateway_version is None and 'gatewayVersion' in kwargs:
             gateway_version = kwargs['gatewayVersion']
-        if 'innerIp' in kwargs:
+        if gateway_version is None:
+            raise TypeError("Missing 'gateway_version' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if inner_ip is None and 'innerIp' in kwargs:
             inner_ip = kwargs['innerIp']
-        if 'isReleaseAfterExpiration' in kwargs:
+        if inner_ip is None:
+            raise TypeError("Missing 'inner_ip' argument")
+        if ip is None:
+            raise TypeError("Missing 'ip' argument")
+        if is_release_after_expiration is None and 'isReleaseAfterExpiration' in kwargs:
             is_release_after_expiration = kwargs['isReleaseAfterExpiration']
-        if 'paymentType' in kwargs:
+        if is_release_after_expiration is None:
+            raise TypeError("Missing 'is_release_after_expiration' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'publicNetworkBandwidth' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if public_network_bandwidth is None and 'publicNetworkBandwidth' in kwargs:
             public_network_bandwidth = kwargs['publicNetworkBandwidth']
-        if 'renewUrl' in kwargs:
+        if public_network_bandwidth is None:
+            raise TypeError("Missing 'public_network_bandwidth' argument")
+        if renew_url is None and 'renewUrl' in kwargs:
             renew_url = kwargs['renewUrl']
-        if 'storageBundleId' in kwargs:
+        if renew_url is None:
+            raise TypeError("Missing 'renew_url' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if storage_bundle_id is None and 'storageBundleId' in kwargs:
             storage_bundle_id = kwargs['storageBundleId']
-        if 'taskId' in kwargs:
+        if storage_bundle_id is None:
+            raise TypeError("Missing 'storage_bundle_id' argument")
+        if task_id is None and 'taskId' in kwargs:
             task_id = kwargs['taskId']
-        if 'vpcId' in kwargs:
+        if task_id is None:
+            raise TypeError("Missing 'task_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("activated_time", activated_time)
         _setter("buy_url", buy_url)
@@ -2093,14 +2365,18 @@ class GetStocksStockResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             available_gateway_classes: Sequence[str],
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             available_gateway_classes: Optional[Sequence[str]] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availableGatewayClasses' in kwargs:
+        if available_gateway_classes is None and 'availableGatewayClasses' in kwargs:
             available_gateway_classes = kwargs['availableGatewayClasses']
-        if 'zoneId' in kwargs:
+        if available_gateway_classes is None:
+            raise TypeError("Missing 'available_gateway_classes' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("available_gateway_classes", available_gateway_classes)
         _setter("zone_id", zone_id)
@@ -2143,20 +2419,32 @@ class GetStorageBundlesBundleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             description: str,
-             id: str,
-             location: str,
-             storage_bundle_id: str,
-             storage_bundle_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             location: Optional[str] = None,
+             storage_bundle_id: Optional[str] = None,
+             storage_bundle_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'storageBundleId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if storage_bundle_id is None and 'storageBundleId' in kwargs:
             storage_bundle_id = kwargs['storageBundleId']
-        if 'storageBundleName' in kwargs:
+        if storage_bundle_id is None:
+            raise TypeError("Missing 'storage_bundle_id' argument")
+        if storage_bundle_name is None and 'storageBundleName' in kwargs:
             storage_bundle_name = kwargs['storageBundleName']
+        if storage_bundle_name is None:
+            raise TypeError("Missing 'storage_bundle_name' argument")
 
         _setter("create_time", create_time)
         _setter("description", description)

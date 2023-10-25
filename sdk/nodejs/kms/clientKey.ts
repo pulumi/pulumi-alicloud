@@ -11,30 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.210.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const aAP0 = new alicloud.kms.ApplicationAccessPoint("aAP0", {
- *     policies: ["aa"],
- *     description: "aa",
- *     applicationAccessPointName: name,
- * });
- * const _default = new alicloud.kms.ClientKey("default", {
- *     aapName: aAP0.applicationAccessPointName,
- *     password: "YouPassword123!",
- *     notBefore: "2023-09-01T14:11:22Z",
- *     notAfter: "2028-09-01T14:11:22Z",
- *     privateKeyDataFile: "./private_key_data_file.txt",
- * });
- * ```
- *
  * ## Import
  *
  * KMS Client Key can be imported using the id, e.g.

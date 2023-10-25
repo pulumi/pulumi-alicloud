@@ -20,61 +20,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.0.0.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const slbListenerName = config.get("slbListenerName") || "forSlbListener";
- * const listenerApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("listenerApplicationLoadBalancer", {
- *     loadBalancerName: "tf-exampleSlbListenerHttp",
- *     internetChargeType: "PayByTraffic",
- *     addressType: "internet",
- *     instanceChargeType: "PayByCLCU",
- * });
- * const listenerAcl = new alicloud.slb.Acl("listenerAcl", {ipVersion: "ipv4"});
- * const listenerListener = new alicloud.slb.Listener("listenerListener", {
- *     loadBalancerId: listenerApplicationLoadBalancer.id,
- *     backendPort: 80,
- *     frontendPort: 80,
- *     protocol: "http",
- *     bandwidth: 10,
- *     stickySession: "on",
- *     stickySessionType: "insert",
- *     cookieTimeout: 86400,
- *     cookie: "tfslblistenercookie",
- *     healthCheck: "on",
- *     healthCheckDomain: "ali.com",
- *     healthCheckUri: "/cons",
- *     healthCheckConnectPort: 20,
- *     healthyThreshold: 8,
- *     unhealthyThreshold: 8,
- *     healthCheckTimeout: 8,
- *     healthCheckInterval: 5,
- *     healthCheckHttpCode: "http_2xx,http_3xx",
- *     xForwardedFor: {
- *         retriveSlbIp: true,
- *         retriveSlbId: true,
- *     },
- *     aclStatus: "on",
- *     aclType: "white",
- *     aclId: listenerAcl.id,
- *     requestTimeout: 80,
- *     idleTimeout: 30,
- * });
- * const first = new alicloud.slb.AclEntryAttachment("first", {
- *     aclId: listenerAcl.id,
- *     entry: "10.10.10.0/24",
- *     comment: "first",
- * });
- * const second = new alicloud.slb.AclEntryAttachment("second", {
- *     aclId: listenerAcl.id,
- *     entry: "168.10.10.0/24",
- *     comment: "second",
- * });
- * ```
  * ## Listener fields and protocol mapping
  *
  * load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:

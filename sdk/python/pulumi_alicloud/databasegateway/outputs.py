@@ -55,32 +55,52 @@ class GetGatewaysGatewayResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             gateway_desc: str,
-             gateway_instances: Sequence['outputs.GetGatewaysGatewayGatewayInstanceResult'],
-             gateway_name: str,
-             hosts: str,
-             id: str,
-             modified_time: str,
-             parent_id: str,
-             status: str,
-             user_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             gateway_desc: Optional[str] = None,
+             gateway_instances: Optional[Sequence['outputs.GetGatewaysGatewayGatewayInstanceResult']] = None,
+             gateway_name: Optional[str] = None,
+             hosts: Optional[str] = None,
+             id: Optional[str] = None,
+             modified_time: Optional[str] = None,
+             parent_id: Optional[str] = None,
+             status: Optional[str] = None,
+             user_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'gatewayDesc' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if gateway_desc is None and 'gatewayDesc' in kwargs:
             gateway_desc = kwargs['gatewayDesc']
-        if 'gatewayInstances' in kwargs:
+        if gateway_desc is None:
+            raise TypeError("Missing 'gateway_desc' argument")
+        if gateway_instances is None and 'gatewayInstances' in kwargs:
             gateway_instances = kwargs['gatewayInstances']
-        if 'gatewayName' in kwargs:
+        if gateway_instances is None:
+            raise TypeError("Missing 'gateway_instances' argument")
+        if gateway_name is None and 'gatewayName' in kwargs:
             gateway_name = kwargs['gatewayName']
-        if 'modifiedTime' in kwargs:
+        if gateway_name is None:
+            raise TypeError("Missing 'gateway_name' argument")
+        if hosts is None:
+            raise TypeError("Missing 'hosts' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if modified_time is None and 'modifiedTime' in kwargs:
             modified_time = kwargs['modifiedTime']
-        if 'parentId' in kwargs:
+        if modified_time is None:
+            raise TypeError("Missing 'modified_time' argument")
+        if parent_id is None and 'parentId' in kwargs:
             parent_id = kwargs['parentId']
-        if 'userId' in kwargs:
+        if parent_id is None:
+            raise TypeError("Missing 'parent_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
 
         _setter("create_time", create_time)
         _setter("gateway_desc", gateway_desc)
@@ -212,36 +232,56 @@ class GetGatewaysGatewayGatewayInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connect_endpoint_type: str,
-             current_daemon_version: str,
-             current_version: str,
-             end_point: str,
-             gateway_instance_id: str,
-             gateway_instance_status: str,
-             last_update_time: str,
-             local_ip: str,
-             message: str,
-             output_ip: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             connect_endpoint_type: Optional[str] = None,
+             current_daemon_version: Optional[str] = None,
+             current_version: Optional[str] = None,
+             end_point: Optional[str] = None,
+             gateway_instance_id: Optional[str] = None,
+             gateway_instance_status: Optional[str] = None,
+             last_update_time: Optional[str] = None,
+             local_ip: Optional[str] = None,
+             message: Optional[str] = None,
+             output_ip: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectEndpointType' in kwargs:
+        if connect_endpoint_type is None and 'connectEndpointType' in kwargs:
             connect_endpoint_type = kwargs['connectEndpointType']
-        if 'currentDaemonVersion' in kwargs:
+        if connect_endpoint_type is None:
+            raise TypeError("Missing 'connect_endpoint_type' argument")
+        if current_daemon_version is None and 'currentDaemonVersion' in kwargs:
             current_daemon_version = kwargs['currentDaemonVersion']
-        if 'currentVersion' in kwargs:
+        if current_daemon_version is None:
+            raise TypeError("Missing 'current_daemon_version' argument")
+        if current_version is None and 'currentVersion' in kwargs:
             current_version = kwargs['currentVersion']
-        if 'endPoint' in kwargs:
+        if current_version is None:
+            raise TypeError("Missing 'current_version' argument")
+        if end_point is None and 'endPoint' in kwargs:
             end_point = kwargs['endPoint']
-        if 'gatewayInstanceId' in kwargs:
+        if end_point is None:
+            raise TypeError("Missing 'end_point' argument")
+        if gateway_instance_id is None and 'gatewayInstanceId' in kwargs:
             gateway_instance_id = kwargs['gatewayInstanceId']
-        if 'gatewayInstanceStatus' in kwargs:
+        if gateway_instance_id is None:
+            raise TypeError("Missing 'gateway_instance_id' argument")
+        if gateway_instance_status is None and 'gatewayInstanceStatus' in kwargs:
             gateway_instance_status = kwargs['gatewayInstanceStatus']
-        if 'lastUpdateTime' in kwargs:
+        if gateway_instance_status is None:
+            raise TypeError("Missing 'gateway_instance_status' argument")
+        if last_update_time is None and 'lastUpdateTime' in kwargs:
             last_update_time = kwargs['lastUpdateTime']
-        if 'localIp' in kwargs:
+        if last_update_time is None:
+            raise TypeError("Missing 'last_update_time' argument")
+        if local_ip is None and 'localIp' in kwargs:
             local_ip = kwargs['localIp']
-        if 'outputIp' in kwargs:
+        if local_ip is None:
+            raise TypeError("Missing 'local_ip' argument")
+        if message is None:
+            raise TypeError("Missing 'message' argument")
+        if output_ip is None and 'outputIp' in kwargs:
             output_ip = kwargs['outputIp']
+        if output_ip is None:
+            raise TypeError("Missing 'output_ip' argument")
 
         _setter("connect_endpoint_type", connect_endpoint_type)
         _setter("current_daemon_version", current_daemon_version)

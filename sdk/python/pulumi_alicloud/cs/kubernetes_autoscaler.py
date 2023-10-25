@@ -43,21 +43,29 @@ class KubernetesAutoscalerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             cool_down_duration: pulumi.Input[str],
-             defer_scale_in_duration: pulumi.Input[str],
-             utilization: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             cool_down_duration: Optional[pulumi.Input[str]] = None,
+             defer_scale_in_duration: Optional[pulumi.Input[str]] = None,
+             utilization: Optional[pulumi.Input[str]] = None,
              nodepools: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]]] = None,
              use_ecs_ram_role_token: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'coolDownDuration' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if cool_down_duration is None and 'coolDownDuration' in kwargs:
             cool_down_duration = kwargs['coolDownDuration']
-        if 'deferScaleInDuration' in kwargs:
+        if cool_down_duration is None:
+            raise TypeError("Missing 'cool_down_duration' argument")
+        if defer_scale_in_duration is None and 'deferScaleInDuration' in kwargs:
             defer_scale_in_duration = kwargs['deferScaleInDuration']
-        if 'useEcsRamRoleToken' in kwargs:
+        if defer_scale_in_duration is None:
+            raise TypeError("Missing 'defer_scale_in_duration' argument")
+        if utilization is None:
+            raise TypeError("Missing 'utilization' argument")
+        if use_ecs_ram_role_token is None and 'useEcsRamRoleToken' in kwargs:
             use_ecs_ram_role_token = kwargs['useEcsRamRoleToken']
 
         _setter("cluster_id", cluster_id)
@@ -178,15 +186,15 @@ class _KubernetesAutoscalerState:
              nodepools: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]]] = None,
              use_ecs_ram_role_token: Optional[pulumi.Input[bool]] = None,
              utilization: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'coolDownDuration' in kwargs:
+        if cool_down_duration is None and 'coolDownDuration' in kwargs:
             cool_down_duration = kwargs['coolDownDuration']
-        if 'deferScaleInDuration' in kwargs:
+        if defer_scale_in_duration is None and 'deferScaleInDuration' in kwargs:
             defer_scale_in_duration = kwargs['deferScaleInDuration']
-        if 'useEcsRamRoleToken' in kwargs:
+        if use_ecs_ram_role_token is None and 'useEcsRamRoleToken' in kwargs:
             use_ecs_ram_role_token = kwargs['useEcsRamRoleToken']
 
         if cluster_id is not None:

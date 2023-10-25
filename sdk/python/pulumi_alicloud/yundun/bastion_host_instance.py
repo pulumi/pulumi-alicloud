@@ -59,13 +59,13 @@ class BastionHostInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: pulumi.Input[str],
-             description: pulumi.Input[str],
-             license_code: pulumi.Input[str],
-             plan_code: pulumi.Input[str],
-             security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             storage: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             bandwidth: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             license_code: Optional[pulumi.Input[str]] = None,
+             plan_code: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             storage: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]] = None,
              enable_public_access: Optional[pulumi.Input[bool]] = None,
              ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]] = None,
@@ -76,31 +76,45 @@ class BastionHostInstanceArgs:
              renewal_status: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'licenseCode' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if license_code is None and 'licenseCode' in kwargs:
             license_code = kwargs['licenseCode']
-        if 'planCode' in kwargs:
+        if license_code is None:
+            raise TypeError("Missing 'license_code' argument")
+        if plan_code is None and 'planCode' in kwargs:
             plan_code = kwargs['planCode']
-        if 'securityGroupIds' in kwargs:
+        if plan_code is None:
+            raise TypeError("Missing 'plan_code' argument")
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'vswitchId' in kwargs:
+        if security_group_ids is None:
+            raise TypeError("Missing 'security_group_ids' argument")
+        if storage is None:
+            raise TypeError("Missing 'storage' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'adAuthServers' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if ad_auth_servers is None and 'adAuthServers' in kwargs:
             ad_auth_servers = kwargs['adAuthServers']
-        if 'enablePublicAccess' in kwargs:
+        if enable_public_access is None and 'enablePublicAccess' in kwargs:
             enable_public_access = kwargs['enablePublicAccess']
-        if 'ldapAuthServers' in kwargs:
+        if ldap_auth_servers is None and 'ldapAuthServers' in kwargs:
             ldap_auth_servers = kwargs['ldapAuthServers']
-        if 'publicWhiteLists' in kwargs:
+        if public_white_lists is None and 'publicWhiteLists' in kwargs:
             public_white_lists = kwargs['publicWhiteLists']
-        if 'renewPeriod' in kwargs:
+        if renew_period is None and 'renewPeriod' in kwargs:
             renew_period = kwargs['renewPeriod']
-        if 'renewalPeriodUnit' in kwargs:
+        if renewal_period_unit is None and 'renewalPeriodUnit' in kwargs:
             renewal_period_unit = kwargs['renewalPeriodUnit']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("bandwidth", bandwidth)
@@ -348,31 +362,31 @@ class _BastionHostInstanceState:
              storage: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'adAuthServers' in kwargs:
+        if ad_auth_servers is None and 'adAuthServers' in kwargs:
             ad_auth_servers = kwargs['adAuthServers']
-        if 'enablePublicAccess' in kwargs:
+        if enable_public_access is None and 'enablePublicAccess' in kwargs:
             enable_public_access = kwargs['enablePublicAccess']
-        if 'ldapAuthServers' in kwargs:
+        if ldap_auth_servers is None and 'ldapAuthServers' in kwargs:
             ldap_auth_servers = kwargs['ldapAuthServers']
-        if 'licenseCode' in kwargs:
+        if license_code is None and 'licenseCode' in kwargs:
             license_code = kwargs['licenseCode']
-        if 'planCode' in kwargs:
+        if plan_code is None and 'planCode' in kwargs:
             plan_code = kwargs['planCode']
-        if 'publicWhiteLists' in kwargs:
+        if public_white_lists is None and 'publicWhiteLists' in kwargs:
             public_white_lists = kwargs['publicWhiteLists']
-        if 'renewPeriod' in kwargs:
+        if renew_period is None and 'renewPeriod' in kwargs:
             renew_period = kwargs['renewPeriod']
-        if 'renewalPeriodUnit' in kwargs:
+        if renewal_period_unit is None and 'renewalPeriodUnit' in kwargs:
             renewal_period_unit = kwargs['renewalPeriodUnit']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if ad_auth_servers is not None:

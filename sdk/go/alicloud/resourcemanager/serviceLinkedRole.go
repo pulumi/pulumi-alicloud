@@ -19,34 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.157.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := resourcemanager.NewServiceLinkedRole(ctx, "default", &resourcemanager.ServiceLinkedRoleArgs{
-//				ServiceName: pulumi.String("ops.elasticsearch.aliyuncs.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Resource Manager Service Linked Role can be imported using the id, e.g.

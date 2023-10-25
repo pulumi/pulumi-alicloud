@@ -46,24 +46,28 @@ class AlarmContactArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alarm_contact_name: pulumi.Input[str],
-             describe: pulumi.Input[str],
+             alarm_contact_name: Optional[pulumi.Input[str]] = None,
+             describe: Optional[pulumi.Input[str]] = None,
              channels_aliim: Optional[pulumi.Input[str]] = None,
              channels_ding_web_hook: Optional[pulumi.Input[str]] = None,
              channels_mail: Optional[pulumi.Input[str]] = None,
              channels_sms: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alarmContactName' in kwargs:
+        if alarm_contact_name is None and 'alarmContactName' in kwargs:
             alarm_contact_name = kwargs['alarmContactName']
-        if 'channelsAliim' in kwargs:
+        if alarm_contact_name is None:
+            raise TypeError("Missing 'alarm_contact_name' argument")
+        if describe is None:
+            raise TypeError("Missing 'describe' argument")
+        if channels_aliim is None and 'channelsAliim' in kwargs:
             channels_aliim = kwargs['channelsAliim']
-        if 'channelsDingWebHook' in kwargs:
+        if channels_ding_web_hook is None and 'channelsDingWebHook' in kwargs:
             channels_ding_web_hook = kwargs['channelsDingWebHook']
-        if 'channelsMail' in kwargs:
+        if channels_mail is None and 'channelsMail' in kwargs:
             channels_mail = kwargs['channelsMail']
-        if 'channelsSms' in kwargs:
+        if channels_sms is None and 'channelsSms' in kwargs:
             channels_sms = kwargs['channelsSms']
 
         _setter("alarm_contact_name", alarm_contact_name)
@@ -208,17 +212,17 @@ class _AlarmContactState:
              channels_sms: Optional[pulumi.Input[str]] = None,
              describe: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alarmContactName' in kwargs:
+        if alarm_contact_name is None and 'alarmContactName' in kwargs:
             alarm_contact_name = kwargs['alarmContactName']
-        if 'channelsAliim' in kwargs:
+        if channels_aliim is None and 'channelsAliim' in kwargs:
             channels_aliim = kwargs['channelsAliim']
-        if 'channelsDingWebHook' in kwargs:
+        if channels_ding_web_hook is None and 'channelsDingWebHook' in kwargs:
             channels_ding_web_hook = kwargs['channelsDingWebHook']
-        if 'channelsMail' in kwargs:
+        if channels_mail is None and 'channelsMail' in kwargs:
             channels_mail = kwargs['channelsMail']
-        if 'channelsSms' in kwargs:
+        if channels_sms is None and 'channelsSms' in kwargs:
             channels_sms = kwargs['channelsSms']
 
         if alarm_contact_name is not None:
@@ -341,32 +345,6 @@ class AlarmContact(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.99.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # If you use this template, you need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible.
-        example = alicloud.cms.AlarmContact("example",
-            alarm_contact_name="terraform-example",
-            channels_mail="terraform@test.com",
-            describe="For example")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # If you use this template, you can ignore the diff of the alarm contact information by `lifestyle`. We recommend the above usage and activate the link in time.
-        example = alicloud.cms.AlarmContact("example",
-            alarm_contact_name="tf-example",
-            describe="For example",
-            channels_mail="terraform@test.com")
-        ```
-
         ## Import
 
         Alarm contact can be imported using the id, e.g.
@@ -397,32 +375,6 @@ class AlarmContact(pulumi.CustomResource):
         Creates or modifies an alarm contact. For information about alarm contact and how to use it, see [What is alarm contact](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putcontact).
 
         > **NOTE:** Available since v1.99.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # If you use this template, you need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible.
-        example = alicloud.cms.AlarmContact("example",
-            alarm_contact_name="terraform-example",
-            channels_mail="terraform@test.com",
-            describe="For example")
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # If you use this template, you can ignore the diff of the alarm contact information by `lifestyle`. We recommend the above usage and activate the link in time.
-        example = alicloud.cms.AlarmContact("example",
-            alarm_contact_name="tf-example",
-            describe="For example",
-            channels_mail="terraform@test.com")
-        ```
 
         ## Import
 

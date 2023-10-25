@@ -5,17 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.apigateway.App("example", {description: "tf_example"});
- * ```
- *
  * ## Import
  *
  * Api gateway app can be imported using the id, e.g.

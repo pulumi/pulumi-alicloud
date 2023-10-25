@@ -15,37 +15,6 @@ namespace Pulumi.AliCloud.CS
         /// This data source provides a list of Ram user permissions.
         /// 
         /// &gt; **NOTE:** Available in v1.122.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var usersDs = AliCloud.Ram.GetUsers.Invoke(new()
-        ///     {
-        ///         NameRegex = "your_user_name",
-        ///     });
-        /// 
-        ///     var @default = AliCloud.CS.GetKubernetesPermission.Invoke(new()
-        ///     {
-        ///         Uid = usersDs.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["permissions"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult.Permissions)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubernetesPermissionResult> InvokeAsync(GetKubernetesPermissionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesPermissionResult>("alicloud:cs/getKubernetesPermission:getKubernetesPermission", args ?? new GetKubernetesPermissionArgs(), options.WithDefaults());
@@ -54,37 +23,6 @@ namespace Pulumi.AliCloud.CS
         /// This data source provides a list of Ram user permissions.
         /// 
         /// &gt; **NOTE:** Available in v1.122.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var usersDs = AliCloud.Ram.GetUsers.Invoke(new()
-        ///     {
-        ///         NameRegex = "your_user_name",
-        ///     });
-        /// 
-        ///     var @default = AliCloud.CS.GetKubernetesPermission.Invoke(new()
-        ///     {
-        ///         Uid = usersDs.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["permissions"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult.Permissions)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKubernetesPermissionResult> Invoke(GetKubernetesPermissionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesPermissionResult>("alicloud:cs/getKubernetesPermission:getKubernetesPermission", args ?? new GetKubernetesPermissionInvokeArgs(), options.WithDefaults());

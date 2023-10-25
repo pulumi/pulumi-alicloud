@@ -15,36 +15,6 @@ import (
 // This data source provides the domain extensions associated with a server load balancer listener.
 //
 // > **NOTE:** Available in 1.60.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := slb.GetDomainExtensions(ctx, &slb.GetDomainExtensionsArgs{
-//				FrontendPort: "fake-port",
-//				Ids: []string{
-//					"fake-de-id",
-//				},
-//				LoadBalancerId: "fake-lb-id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDomainExtensions(ctx *pulumi.Context, args *GetDomainExtensionsArgs, opts ...pulumi.InvokeOption) (*GetDomainExtensionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainExtensionsResult

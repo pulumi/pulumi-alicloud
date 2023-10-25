@@ -19,53 +19,6 @@ import (
 //
 // > **NOTE:** Available in 1.53.0+
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "onsInstanceName"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			topic := "onsTopicName"
-//			if param := cfg.Get("topic"); param != "" {
-//				topic = param
-//			}
-//			defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", &rocketmq.InstanceArgs{
-//				Remark: pulumi.String("default_ons_instance_remark"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = rocketmq.NewTopic(ctx, "defaultTopic", &rocketmq.TopicArgs{
-//				TopicName:   pulumi.String(topic),
-//				InstanceId:  defaultInstance.ID(),
-//				MessageType: pulumi.Int(0),
-//				Remark:      pulumi.String("dafault_ons_topic_remark"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ONS TOPIC can be imported using the id, e.g.

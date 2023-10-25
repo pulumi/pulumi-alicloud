@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides a list Container Registry Enterprise Edition namespaces on Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.86.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const myNamespaces = alicloud.cs.getRegistryEnterpriseNamespaces({
- *     instanceId: "cri-xxx",
- *     nameRegex: "my-namespace",
- *     outputFile: "my-namespace-json",
- * });
- * export const output = myNamespaces.then(myNamespaces => myNamespaces.namespaces);
- * ```
  */
 export function getRegistryEnterpriseNamespaces(args: GetRegistryEnterpriseNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseNamespacesResult> {
 
@@ -89,20 +75,6 @@ export interface GetRegistryEnterpriseNamespacesResult {
  * This data source provides a list Container Registry Enterprise Edition namespaces on Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.86.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const myNamespaces = alicloud.cs.getRegistryEnterpriseNamespaces({
- *     instanceId: "cri-xxx",
- *     nameRegex: "my-namespace",
- *     outputFile: "my-namespace-json",
- * });
- * export const output = myNamespaces.then(myNamespaces => myNamespaces.namespaces);
- * ```
  */
 export function getRegistryEnterpriseNamespacesOutput(args: GetRegistryEnterpriseNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseNamespacesResult> {
     return pulumi.output(args).apply((a: any) => getRegistryEnterpriseNamespaces(a, opts))

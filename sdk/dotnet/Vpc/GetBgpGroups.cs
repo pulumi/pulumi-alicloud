@@ -15,43 +15,6 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.152.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Vpc.GetBgpGroups.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Vpc.GetBgpGroups.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-BgpGroup",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["vpcBgpGroupId1"] = ids.Apply(getBgpGroupsResult =&gt; getBgpGroupsResult.Groups[0]?.Id),
-        ///         ["vpcBgpGroupId2"] = nameRegex.Apply(getBgpGroupsResult =&gt; getBgpGroupsResult.Groups[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBgpGroupsResult> InvokeAsync(GetBgpGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBgpGroupsResult>("alicloud:vpc/getBgpGroups:getBgpGroups", args ?? new GetBgpGroupsArgs(), options.WithDefaults());
@@ -60,43 +23,6 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.152.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Vpc.GetBgpGroups.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Vpc.GetBgpGroups.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-BgpGroup",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["vpcBgpGroupId1"] = ids.Apply(getBgpGroupsResult =&gt; getBgpGroupsResult.Groups[0]?.Id),
-        ///         ["vpcBgpGroupId2"] = nameRegex.Apply(getBgpGroupsResult =&gt; getBgpGroupsResult.Groups[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBgpGroupsResult> Invoke(GetBgpGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBgpGroupsResult>("alicloud:vpc/getBgpGroups:getBgpGroups", args ?? new GetBgpGroupsInvokeArgs(), options.WithDefaults());

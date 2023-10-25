@@ -92,29 +92,29 @@ class NetworkArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vpc_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'classicLinkEnabled' in kwargs:
+        if classic_link_enabled is None and 'classicLinkEnabled' in kwargs:
             classic_link_enabled = kwargs['classicLinkEnabled']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'enableIpv6' in kwargs:
+        if enable_ipv6 is None and 'enableIpv6' in kwargs:
             enable_ipv6 = kwargs['enableIpv6']
-        if 'ipv6Isp' in kwargs:
+        if ipv6_isp is None and 'ipv6Isp' in kwargs:
             ipv6_isp = kwargs['ipv6Isp']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'routeTableId' in kwargs:
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
-        if 'routerTableId' in kwargs:
+        if router_table_id is None and 'routerTableId' in kwargs:
             router_table_id = kwargs['routerTableId']
-        if 'secondaryCidrBlocks' in kwargs:
+        if secondary_cidr_blocks is None and 'secondaryCidrBlocks' in kwargs:
             secondary_cidr_blocks = kwargs['secondaryCidrBlocks']
-        if 'userCidrs' in kwargs:
+        if user_cidrs is None and 'userCidrs' in kwargs:
             user_cidrs = kwargs['userCidrs']
-        if 'vpcName' in kwargs:
+        if vpc_name is None and 'vpcName' in kwargs:
             vpc_name = kwargs['vpcName']
 
         if cidr_block is not None:
@@ -443,37 +443,37 @@ class _NetworkState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vpc_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'classicLinkEnabled' in kwargs:
+        if classic_link_enabled is None and 'classicLinkEnabled' in kwargs:
             classic_link_enabled = kwargs['classicLinkEnabled']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'enableIpv6' in kwargs:
+        if enable_ipv6 is None and 'enableIpv6' in kwargs:
             enable_ipv6 = kwargs['enableIpv6']
-        if 'ipv6CidrBlock' in kwargs:
+        if ipv6_cidr_block is None and 'ipv6CidrBlock' in kwargs:
             ipv6_cidr_block = kwargs['ipv6CidrBlock']
-        if 'ipv6CidrBlocks' in kwargs:
+        if ipv6_cidr_blocks is None and 'ipv6CidrBlocks' in kwargs:
             ipv6_cidr_blocks = kwargs['ipv6CidrBlocks']
-        if 'ipv6Isp' in kwargs:
+        if ipv6_isp is None and 'ipv6Isp' in kwargs:
             ipv6_isp = kwargs['ipv6Isp']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'routeTableId' in kwargs:
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
-        if 'routerId' in kwargs:
+        if router_id is None and 'routerId' in kwargs:
             router_id = kwargs['routerId']
-        if 'routerTableId' in kwargs:
+        if router_table_id is None and 'routerTableId' in kwargs:
             router_table_id = kwargs['routerTableId']
-        if 'secondaryCidrBlocks' in kwargs:
+        if secondary_cidr_blocks is None and 'secondaryCidrBlocks' in kwargs:
             secondary_cidr_blocks = kwargs['secondaryCidrBlocks']
-        if 'userCidrs' in kwargs:
+        if user_cidrs is None and 'userCidrs' in kwargs:
             user_cidrs = kwargs['userCidrs']
-        if 'vpcName' in kwargs:
+        if vpc_name is None and 'vpcName' in kwargs:
             vpc_name = kwargs['vpcName']
 
         if cidr_block is not None:
@@ -807,26 +807,6 @@ class Network(pulumi.CustomResource):
 
         For information about Vpc Vpc and how to use it, see [What is Vpc](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/what-is-a-vpc).
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.vpc.Network("default",
-            ipv6_isp="BGP",
-            description="test",
-            cidr_block="10.0.0.0/8",
-            vpc_name=name,
-            enable_ipv6=True)
-        ```
-
         ## Import
 
         Vpc Vpc can be imported using the id, e.g.
@@ -882,26 +862,6 @@ class Network(pulumi.CustomResource):
         to create a VPC and several VSwitches one-click.
 
         For information about Vpc Vpc and how to use it, see [What is Vpc](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/what-is-a-vpc).
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.vpc.Network("default",
-            ipv6_isp="BGP",
-            description="test",
-            cidr_block="10.0.0.0/8",
-            vpc_name=name,
-            enable_ipv6=True)
-        ```
 
         ## Import
 

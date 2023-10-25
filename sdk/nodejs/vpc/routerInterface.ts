@@ -13,26 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** The router interface is not connected when it is created. It can be connected by means of resource alicloud_router_interface_connection.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const foo = new alicloud.vpc.Network("foo", {
- *     vpcName: "tf_test_foo12345",
- *     cidrBlock: "172.16.0.0/12",
- * });
- * const _interface = new alicloud.vpc.RouterInterface("interface", {
- *     oppositeRegion: "cn-beijing",
- *     routerType: "VRouter",
- *     routerId: foo.routerId,
- *     role: "InitiatingSide",
- *     specification: "Large.2",
- *     description: "test1",
- * });
- * ```
- *
  * ## Import
  *
  * The router interface can be imported using the id, e.g.

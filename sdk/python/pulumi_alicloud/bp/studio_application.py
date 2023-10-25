@@ -46,22 +46,26 @@ class StudioApplicationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_name: pulumi.Input[str],
-             template_id: pulumi.Input[str],
+             application_name: Optional[pulumi.Input[str]] = None,
+             template_id: Optional[pulumi.Input[str]] = None,
              area_id: Optional[pulumi.Input[str]] = None,
              configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              instances: Optional[pulumi.Input[Sequence[pulumi.Input['StudioApplicationInstanceArgs']]]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationName' in kwargs:
+        if application_name is None and 'applicationName' in kwargs:
             application_name = kwargs['applicationName']
-        if 'templateId' in kwargs:
+        if application_name is None:
+            raise TypeError("Missing 'application_name' argument")
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
-        if 'areaId' in kwargs:
+        if template_id is None:
+            raise TypeError("Missing 'template_id' argument")
+        if area_id is None and 'areaId' in kwargs:
             area_id = kwargs['areaId']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("application_name", application_name)
@@ -206,15 +210,15 @@ class _StudioApplicationState:
              status: Optional[pulumi.Input[str]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
              variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationName' in kwargs:
+        if application_name is None and 'applicationName' in kwargs:
             application_name = kwargs['applicationName']
-        if 'areaId' in kwargs:
+        if area_id is None and 'areaId' in kwargs:
             area_id = kwargs['areaId']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'templateId' in kwargs:
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
 
         if application_name is not None:
@@ -351,32 +355,6 @@ class StudioApplication(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.192.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.bp.StudioApplication("default",
-            application_name="example_value",
-            area_id="example_value",
-            configuration={
-                "enableMonitor": "1",
-            },
-            instances=[alicloud.bp.StudioApplicationInstanceArgs(
-                id="example_value",
-                node_name="example_value",
-                node_type="ecs",
-            )],
-            resource_group_id="example_value",
-            template_id="example_value",
-            variables={
-                "test": "1",
-            })
-        ```
-
         ## Import
 
         Cloud Architect Design Tools Application can be imported using the id, e.g.
@@ -407,32 +385,6 @@ class StudioApplication(pulumi.CustomResource):
         For information about Cloud Architect Design Tools Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/428263.html).
 
         > **NOTE:** Available in v1.192.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.bp.StudioApplication("default",
-            application_name="example_value",
-            area_id="example_value",
-            configuration={
-                "enableMonitor": "1",
-            },
-            instances=[alicloud.bp.StudioApplicationInstanceArgs(
-                id="example_value",
-                node_name="example_value",
-                node_type="ecs",
-            )],
-            resource_group_id="example_value",
-            template_id="example_value",
-            variables={
-                "test": "1",
-            })
-        ```
 
         ## Import
 

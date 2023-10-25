@@ -19,62 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.143.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/simpleapplicationserver"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf_example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultImages, err := simpleapplicationserver.GetImages(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultServerPlans, err := simpleapplicationserver.GetServerPlans(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultInstance, err := simpleapplicationserver.NewInstance(ctx, "defaultInstance", &simpleapplicationserver.InstanceArgs{
-//				PaymentType:  pulumi.String("Subscription"),
-//				PlanId:       *pulumi.String(defaultServerPlans.Plans[0].Id),
-//				InstanceName: pulumi.String(name),
-//				ImageId:      *pulumi.String(defaultImages.Images[0].Id),
-//				Period:       pulumi.Int(1),
-//				DataDiskSize: pulumi.Int(100),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = simpleapplicationserver.NewFirewallRule(ctx, "defaultFirewallRule", &simpleapplicationserver.FirewallRuleArgs{
-//				InstanceId:   defaultInstance.ID(),
-//				RuleProtocol: pulumi.String("Tcp"),
-//				Port:         pulumi.String("9999"),
-//				Remark:       pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Simple Application Server Firewall Rule can be imported using the id, e.g.

@@ -16,33 +16,6 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// 
     /// &gt; **NOTE:** Available since v1.195.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.ThreatDetection.AntiBruteForceRule("default", new()
-    ///     {
-    ///         AntiBruteForceRuleName = "apispec_example",
-    ///         FailCount = 80,
-    ///         ForbiddenTime = 360,
-    ///         Span = 10,
-    ///         UuidLists = new[]
-    ///         {
-    ///             "032b618f-b220-4a0d-bd37-fbdc6ef58b6a",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Threat Detection Anti Brute Force Rule can be imported using the id, e.g.

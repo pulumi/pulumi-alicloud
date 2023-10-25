@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Privatelink Vpc Endpoint Connections of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.110.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.privatelink.getVpcEndpointConnections({
- *     serviceId: "example_value",
- *     status: "Connected",
- * });
- * export const firstPrivatelinkVpcEndpointConnectionId = example.then(example => example.connections?.[0]?.id);
- * ```
  */
 export function getVpcEndpointConnections(args: GetVpcEndpointConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointConnectionsResult> {
 
@@ -84,21 +69,6 @@ export interface GetVpcEndpointConnectionsResult {
  * This data source provides the Privatelink Vpc Endpoint Connections of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.110.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.privatelink.getVpcEndpointConnections({
- *     serviceId: "example_value",
- *     status: "Connected",
- * });
- * export const firstPrivatelinkVpcEndpointConnectionId = example.then(example => example.connections?.[0]?.id);
- * ```
  */
 export function getVpcEndpointConnectionsOutput(args: GetVpcEndpointConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointConnectionsResult> {
     return pulumi.output(args).apply((a: any) => getVpcEndpointConnections(a, opts))

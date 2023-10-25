@@ -43,15 +43,15 @@ class MonitorGroupArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              resource_group_name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contactGroups' in kwargs:
+        if contact_groups is None and 'contactGroups' in kwargs:
             contact_groups = kwargs['contactGroups']
-        if 'monitorGroupName' in kwargs:
+        if monitor_group_name is None and 'monitorGroupName' in kwargs:
             monitor_group_name = kwargs['monitorGroupName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'resourceGroupName' in kwargs:
+        if resource_group_name is None and 'resourceGroupName' in kwargs:
             resource_group_name = kwargs['resourceGroupName']
 
         if contact_groups is not None:
@@ -158,15 +158,15 @@ class _MonitorGroupState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              resource_group_name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contactGroups' in kwargs:
+        if contact_groups is None and 'contactGroups' in kwargs:
             contact_groups = kwargs['contactGroups']
-        if 'monitorGroupName' in kwargs:
+        if monitor_group_name is None and 'monitorGroupName' in kwargs:
             monitor_group_name = kwargs['monitorGroupName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'resourceGroupName' in kwargs:
+        if resource_group_name is None and 'resourceGroupName' in kwargs:
             resource_group_name = kwargs['resourceGroupName']
 
         if contact_groups is not None:
@@ -259,25 +259,6 @@ class MonitorGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.113.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cms.MonitorGroup("example", monitor_group_name="tf-example-accmonitorgroup")
-        default2 = alicloud.cms.MonitorGroup("default2",
-            contact_groups=["your_contact_groups"],
-            resource_group_id="your_resource_group_id",
-            resource_group_name="resource_group_name",
-            tags={
-                "Created": "TF",
-                "For": "Acceptance-example",
-            })
-        ```
-
         ## Import
 
         Cloud Monitor Service Monitor Group can be imported using the id, e.g.
@@ -306,25 +287,6 @@ class MonitorGroup(pulumi.CustomResource):
         For information about Cloud Monitor Service Monitor Group and how to use it, see [What is Monitor Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmonitorgroup).
 
         > **NOTE:** Available since v1.113.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cms.MonitorGroup("example", monitor_group_name="tf-example-accmonitorgroup")
-        default2 = alicloud.cms.MonitorGroup("default2",
-            contact_groups=["your_contact_groups"],
-            resource_group_id="your_resource_group_id",
-            resource_group_name="resource_group_name",
-            tags={
-                "Created": "TF",
-                "For": "Acceptance-example",
-            })
-        ```
 
         ## Import
 

@@ -118,17 +118,6 @@ def get_registry_enterprise_instances(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.86.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    my_instances = alicloud.cs.get_registry_enterprise_instances(name_regex="my-instances",
-        output_file="my-instances-json")
-    pulumi.export("output", my_instances.instances)
-    ```
-
 
     :param bool enable_details: Default to `true`. Set it to true can output instance authorization token.
     :param Sequence[str] ids: A list of ids to filter results by instance id.
@@ -163,17 +152,6 @@ def get_registry_enterprise_instances_output(enable_details: Optional[pulumi.Inp
     This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
 
     > **NOTE:** Available in v1.86.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    my_instances = alicloud.cs.get_registry_enterprise_instances(name_regex="my-instances",
-        output_file="my-instances-json")
-    pulumi.export("output", my_instances.instances)
-    ```
 
 
     :param bool enable_details: Default to `true`. Set it to true can output instance authorization token.

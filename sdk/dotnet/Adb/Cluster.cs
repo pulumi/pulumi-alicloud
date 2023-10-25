@@ -19,52 +19,6 @@ namespace Pulumi.AliCloud.Adb
     /// &gt; **NOTE:** Available in v1.71.0+.
     /// 
     /// ## Example Usage
-    /// ### Create a ADB MySQL cluster
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "adbClusterconfig";
-    ///     var creation = config.Get("creation") ?? "ADB";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = creation,
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "172.16.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = name,
-    ///     });
-    /// 
-    ///     var defaultCluster = new AliCloud.Adb.Cluster("defaultCluster", new()
-    ///     {
-    ///         DbClusterVersion = "3.0",
-    ///         DbClusterCategory = "Cluster",
-    ///         DbNodeClass = "C8",
-    ///         DbNodeCount = 2,
-    ///         DbNodeStorage = 200,
-    ///         PayType = "PostPaid",
-    ///         Description = name,
-    ///         VswitchId = defaultSwitch.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

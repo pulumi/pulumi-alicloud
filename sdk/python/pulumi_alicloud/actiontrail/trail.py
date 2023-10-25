@@ -75,29 +75,29 @@ class TrailArgs:
              status: Optional[pulumi.Input[str]] = None,
              trail_name: Optional[pulumi.Input[str]] = None,
              trail_region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventRw' in kwargs:
+        if event_rw is None and 'eventRw' in kwargs:
             event_rw = kwargs['eventRw']
-        if 'isOrganizationTrail' in kwargs:
+        if is_organization_trail is None and 'isOrganizationTrail' in kwargs:
             is_organization_trail = kwargs['isOrganizationTrail']
-        if 'mnsTopicArn' in kwargs:
+        if mns_topic_arn is None and 'mnsTopicArn' in kwargs:
             mns_topic_arn = kwargs['mnsTopicArn']
-        if 'ossBucketName' in kwargs:
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'ossKeyPrefix' in kwargs:
+        if oss_key_prefix is None and 'ossKeyPrefix' in kwargs:
             oss_key_prefix = kwargs['ossKeyPrefix']
-        if 'ossWriteRoleArn' in kwargs:
+        if oss_write_role_arn is None and 'ossWriteRoleArn' in kwargs:
             oss_write_role_arn = kwargs['ossWriteRoleArn']
-        if 'roleName' in kwargs:
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
-        if 'slsProjectArn' in kwargs:
+        if sls_project_arn is None and 'slsProjectArn' in kwargs:
             sls_project_arn = kwargs['slsProjectArn']
-        if 'slsWriteRoleArn' in kwargs:
+        if sls_write_role_arn is None and 'slsWriteRoleArn' in kwargs:
             sls_write_role_arn = kwargs['slsWriteRoleArn']
-        if 'trailName' in kwargs:
+        if trail_name is None and 'trailName' in kwargs:
             trail_name = kwargs['trailName']
-        if 'trailRegion' in kwargs:
+        if trail_region is None and 'trailRegion' in kwargs:
             trail_region = kwargs['trailRegion']
 
         if event_rw is not None:
@@ -366,29 +366,29 @@ class _TrailState:
              status: Optional[pulumi.Input[str]] = None,
              trail_name: Optional[pulumi.Input[str]] = None,
              trail_region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventRw' in kwargs:
+        if event_rw is None and 'eventRw' in kwargs:
             event_rw = kwargs['eventRw']
-        if 'isOrganizationTrail' in kwargs:
+        if is_organization_trail is None and 'isOrganizationTrail' in kwargs:
             is_organization_trail = kwargs['isOrganizationTrail']
-        if 'mnsTopicArn' in kwargs:
+        if mns_topic_arn is None and 'mnsTopicArn' in kwargs:
             mns_topic_arn = kwargs['mnsTopicArn']
-        if 'ossBucketName' in kwargs:
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'ossKeyPrefix' in kwargs:
+        if oss_key_prefix is None and 'ossKeyPrefix' in kwargs:
             oss_key_prefix = kwargs['ossKeyPrefix']
-        if 'ossWriteRoleArn' in kwargs:
+        if oss_write_role_arn is None and 'ossWriteRoleArn' in kwargs:
             oss_write_role_arn = kwargs['ossWriteRoleArn']
-        if 'roleName' in kwargs:
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
-        if 'slsProjectArn' in kwargs:
+        if sls_project_arn is None and 'slsProjectArn' in kwargs:
             sls_project_arn = kwargs['slsProjectArn']
-        if 'slsWriteRoleArn' in kwargs:
+        if sls_write_role_arn is None and 'slsWriteRoleArn' in kwargs:
             sls_write_role_arn = kwargs['slsWriteRoleArn']
-        if 'trailName' in kwargs:
+        if trail_name is None and 'trailName' in kwargs:
             trail_name = kwargs['trailName']
-        if 'trailRegion' in kwargs:
+        if trail_region is None and 'trailRegion' in kwargs:
             trail_region = kwargs['trailRegion']
 
         if event_rw is not None:
@@ -621,26 +621,6 @@ class Trail(pulumi.CustomResource):
         - Deliver events to Log Service: A project is created in Log Service.
         - Deliver events to OSS: A bucket is created in OSS.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_regions = alicloud.get_regions(current=True)
-        example_account = alicloud.get_account()
-        example_project = alicloud.log.Project("exampleProject", description="tf actiontrail example")
-        example_roles = alicloud.ram.get_roles(name_regex="AliyunServiceRoleForActionTrail")
-        example_trail = alicloud.actiontrail.Trail("exampleTrail",
-            trail_name=name,
-            sls_write_role_arn=example_roles.roles[0].arn,
-            sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example_regions.regions[0].id}:{example_account.id}:project/{name}"))
-        ```
-
         ## Import
 
         Action trail can be imported using the id or trail_name, e.g.
@@ -679,26 +659,6 @@ class Trail(pulumi.CustomResource):
         > **NOTE:** You can create a trail to deliver events to Log Service, Object Storage Service (OSS), or both. Before you call this operation to create a trail, make sure that the following requirements are met.
         - Deliver events to Log Service: A project is created in Log Service.
         - Deliver events to OSS: A bucket is created in OSS.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_regions = alicloud.get_regions(current=True)
-        example_account = alicloud.get_account()
-        example_project = alicloud.log.Project("exampleProject", description="tf actiontrail example")
-        example_roles = alicloud.ram.get_roles(name_regex="AliyunServiceRoleForActionTrail")
-        example_trail = alicloud.actiontrail.Trail("exampleTrail",
-            trail_name=name,
-            sls_write_role_arn=example_roles.roles[0].arn,
-            sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example_regions.regions[0].id}:{example_account.id}:project/{name}"))
-        ```
 
         ## Import
 

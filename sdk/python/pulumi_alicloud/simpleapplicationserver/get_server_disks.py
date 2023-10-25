@@ -129,26 +129,6 @@ def get_server_disks(disk_type: Optional[str] = None,
 
     > **NOTE:** Available in v1.143.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.simpleapplicationserver.get_server_disks(ids=["example_id"])
-    pulumi.export("simpleApplicationServerDiskId1", ids.disks[0].id)
-    name_regex = alicloud.simpleapplicationserver.get_server_disks(name_regex="^my-Disk")
-    pulumi.export("simpleApplicationServerDiskId2", name_regex.disks[0].id)
-    status = alicloud.simpleapplicationserver.get_server_disks(status="In_use")
-    pulumi.export("simpleApplicationServerDiskId3", status.disks[0].id)
-    instance_id = alicloud.simpleapplicationserver.get_server_disks(instance_id="example_value")
-    pulumi.export("simpleApplicationServerDiskId4", instance_id.disks[0].id)
-    disk_type = alicloud.simpleapplicationserver.get_server_disks(disk_type="System")
-    pulumi.export("simpleApplicationServerDiskId5", disk_type.disks[0].id)
-    ```
-
 
     :param str disk_type: The type of the disk. Possible values: `System`, `Data`.
     :param Sequence[str] ids: A list of Disk IDs.
@@ -191,26 +171,6 @@ def get_server_disks_output(disk_type: Optional[pulumi.Input[Optional[str]]] = N
     This data source provides the Simple Application Server Disks of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.143.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.simpleapplicationserver.get_server_disks(ids=["example_id"])
-    pulumi.export("simpleApplicationServerDiskId1", ids.disks[0].id)
-    name_regex = alicloud.simpleapplicationserver.get_server_disks(name_regex="^my-Disk")
-    pulumi.export("simpleApplicationServerDiskId2", name_regex.disks[0].id)
-    status = alicloud.simpleapplicationserver.get_server_disks(status="In_use")
-    pulumi.export("simpleApplicationServerDiskId3", status.disks[0].id)
-    instance_id = alicloud.simpleapplicationserver.get_server_disks(instance_id="example_value")
-    pulumi.export("simpleApplicationServerDiskId4", instance_id.disks[0].id)
-    disk_type = alicloud.simpleapplicationserver.get_server_disks(disk_type="System")
-    pulumi.export("simpleApplicationServerDiskId5", disk_type.disks[0].id)
-    ```
 
 
     :param str disk_type: The type of the disk. Possible values: `System`, `Data`.

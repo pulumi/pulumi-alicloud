@@ -81,13 +81,13 @@ class ElasticInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             engine: pulumi.Input[str],
-             engine_version: pulumi.Input[str],
-             instance_spec: pulumi.Input[str],
-             seg_node_num: pulumi.Input[int],
-             seg_storage_type: pulumi.Input[str],
-             storage_size: pulumi.Input[int],
-             vswitch_id: pulumi.Input[str],
+             engine: Optional[pulumi.Input[str]] = None,
+             engine_version: Optional[pulumi.Input[str]] = None,
+             instance_spec: Optional[pulumi.Input[str]] = None,
+             seg_node_num: Optional[pulumi.Input[int]] = None,
+             seg_storage_type: Optional[pulumi.Input[str]] = None,
+             storage_size: Optional[pulumi.Input[int]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              db_instance_category: Optional[pulumi.Input[str]] = None,
              db_instance_description: Optional[pulumi.Input[str]] = None,
              encryption_key: Optional[pulumi.Input[str]] = None,
@@ -99,39 +99,53 @@ class ElasticInstanceArgs:
              security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'engineVersion' in kwargs:
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'instanceSpec' in kwargs:
+        if engine_version is None:
+            raise TypeError("Missing 'engine_version' argument")
+        if instance_spec is None and 'instanceSpec' in kwargs:
             instance_spec = kwargs['instanceSpec']
-        if 'segNodeNum' in kwargs:
+        if instance_spec is None:
+            raise TypeError("Missing 'instance_spec' argument")
+        if seg_node_num is None and 'segNodeNum' in kwargs:
             seg_node_num = kwargs['segNodeNum']
-        if 'segStorageType' in kwargs:
+        if seg_node_num is None:
+            raise TypeError("Missing 'seg_node_num' argument")
+        if seg_storage_type is None and 'segStorageType' in kwargs:
             seg_storage_type = kwargs['segStorageType']
-        if 'storageSize' in kwargs:
+        if seg_storage_type is None:
+            raise TypeError("Missing 'seg_storage_type' argument")
+        if storage_size is None and 'storageSize' in kwargs:
             storage_size = kwargs['storageSize']
-        if 'vswitchId' in kwargs:
+        if storage_size is None:
+            raise TypeError("Missing 'storage_size' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'dbInstanceCategory' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if db_instance_category is None and 'dbInstanceCategory' in kwargs:
             db_instance_category = kwargs['dbInstanceCategory']
-        if 'dbInstanceDescription' in kwargs:
+        if db_instance_description is None and 'dbInstanceDescription' in kwargs:
             db_instance_description = kwargs['dbInstanceDescription']
-        if 'encryptionKey' in kwargs:
+        if encryption_key is None and 'encryptionKey' in kwargs:
             encryption_key = kwargs['encryptionKey']
-        if 'encryptionType' in kwargs:
+        if encryption_type is None and 'encryptionType' in kwargs:
             encryption_type = kwargs['encryptionType']
-        if 'instanceNetworkType' in kwargs:
+        if instance_network_type is None and 'instanceNetworkType' in kwargs:
             instance_network_type = kwargs['instanceNetworkType']
-        if 'paymentDuration' in kwargs:
+        if payment_duration is None and 'paymentDuration' in kwargs:
             payment_duration = kwargs['paymentDuration']
-        if 'paymentDurationUnit' in kwargs:
+        if payment_duration_unit is None and 'paymentDurationUnit' in kwargs:
             payment_duration_unit = kwargs['paymentDurationUnit']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'securityIpLists' in kwargs:
+        if security_ip_lists is None and 'securityIpLists' in kwargs:
             security_ip_lists = kwargs['securityIpLists']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("engine", engine)
@@ -485,41 +499,41 @@ class _ElasticInstanceState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'dbInstanceCategory' in kwargs:
+        if db_instance_category is None and 'dbInstanceCategory' in kwargs:
             db_instance_category = kwargs['dbInstanceCategory']
-        if 'dbInstanceDescription' in kwargs:
+        if db_instance_description is None and 'dbInstanceDescription' in kwargs:
             db_instance_description = kwargs['dbInstanceDescription']
-        if 'encryptionKey' in kwargs:
+        if encryption_key is None and 'encryptionKey' in kwargs:
             encryption_key = kwargs['encryptionKey']
-        if 'encryptionType' in kwargs:
+        if encryption_type is None and 'encryptionType' in kwargs:
             encryption_type = kwargs['encryptionType']
-        if 'engineVersion' in kwargs:
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'instanceNetworkType' in kwargs:
+        if instance_network_type is None and 'instanceNetworkType' in kwargs:
             instance_network_type = kwargs['instanceNetworkType']
-        if 'instanceSpec' in kwargs:
+        if instance_spec is None and 'instanceSpec' in kwargs:
             instance_spec = kwargs['instanceSpec']
-        if 'paymentDuration' in kwargs:
+        if payment_duration is None and 'paymentDuration' in kwargs:
             payment_duration = kwargs['paymentDuration']
-        if 'paymentDurationUnit' in kwargs:
+        if payment_duration_unit is None and 'paymentDurationUnit' in kwargs:
             payment_duration_unit = kwargs['paymentDurationUnit']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'securityIpLists' in kwargs:
+        if security_ip_lists is None and 'securityIpLists' in kwargs:
             security_ip_lists = kwargs['securityIpLists']
-        if 'segNodeNum' in kwargs:
+        if seg_node_num is None and 'segNodeNum' in kwargs:
             seg_node_num = kwargs['segNodeNum']
-        if 'segStorageType' in kwargs:
+        if seg_storage_type is None and 'segStorageType' in kwargs:
             seg_storage_type = kwargs['segStorageType']
-        if 'storageSize' in kwargs:
+        if storage_size is None and 'storageSize' in kwargs:
             storage_size = kwargs['storageSize']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if connection_string is not None:
@@ -855,31 +869,6 @@ class ElasticInstance(pulumi.CustomResource):
         > **NOTE:**  Available in 1.127.0+
 
         ## Example Usage
-        ### Create a AnalyticDB for PostgreSQL instance
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_zones = alicloud.get_zones(available_resource_creation="Gpdb")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            zone_id=default_zones.zones[0].id,
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            vswitch_name="vpc-123456")
-        adb_pg_instance = alicloud.gpdb.ElasticInstance("adbPgInstance",
-            engine="gpdb",
-            engine_version="6.0",
-            seg_storage_type="cloud_essd",
-            seg_node_num=4,
-            storage_size=50,
-            instance_spec="2C16G",
-            db_instance_description="Created by terraform",
-            instance_network_type="VPC",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id)
-        ```
 
         ## Import
 
@@ -929,31 +918,6 @@ class ElasticInstance(pulumi.CustomResource):
         > **NOTE:**  Available in 1.127.0+
 
         ## Example Usage
-        ### Create a AnalyticDB for PostgreSQL instance
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_zones = alicloud.get_zones(available_resource_creation="Gpdb")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            zone_id=default_zones.zones[0].id,
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            vswitch_name="vpc-123456")
-        adb_pg_instance = alicloud.gpdb.ElasticInstance("adbPgInstance",
-            engine="gpdb",
-            engine_version="6.0",
-            seg_storage_type="cloud_essd",
-            seg_node_num=4,
-            storage_size=50,
-            instance_spec="2C16G",
-            db_instance_description="Created by terraform",
-            instance_network_type="VPC",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id)
-        ```
 
         ## Import
 

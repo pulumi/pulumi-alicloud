@@ -9,48 +9,6 @@ import * as utilities from "../utilities";
  *
  * For information about Vpc Ha Vip and how to use it, see [What is Ha Vip](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createhavip).
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testacc-example";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultVpc = new alicloud.vpc.Network("defaultVpc", {
- *     description: "tf-test-acc-vpc",
- *     vpcName: name,
- *     cidrBlock: "192.168.0.0/16",
- * });
- * const defaultVswitch = new alicloud.vpc.Switch("defaultVswitch", {
- *     vpcId: defaultVpc.id,
- *     cidrBlock: "192.168.0.0/21",
- *     vswitchName: `${name}1`,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     description: "tf-testacc-vswitch",
- * });
- * const defaultRg = new alicloud.resourcemanager.ResourceGroup("defaultRg", {
- *     displayName: "tf-testacc-rg819",
- *     resourceGroupName: `${name}2`,
- * });
- * const changeRg = new alicloud.resourcemanager.ResourceGroup("changeRg", {
- *     displayName: "tf-testacc-changerg670",
- *     resourceGroupName: `${name}3`,
- * });
- * const defaultHaVipv2 = new alicloud.vpc.HaVipv2("defaultHaVipv2", {
- *     description: "test",
- *     vswitchId: defaultVswitch.id,
- *     haVipName: name,
- *     ipAddress: "192.168.1.101",
- *     resourceGroupId: defaultRg.id,
- * });
- * ```
- *
  * ## Import
  *
  * Vpc Ha Vip can be imported using the id, e.g.

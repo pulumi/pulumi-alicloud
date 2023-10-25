@@ -16,55 +16,6 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// &gt; **NOTE:** Available in v1.152.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var sourceRegion = config.Get("sourceRegion") ?? "cn-hangzhou";
-    ///     var source = new AliCloud.Provider("source", new()
-    ///     {
-    ///         Region = sourceRegion,
-    ///     });
-    /// 
-    ///     var defaultReplicationVaultRegions = AliCloud.Hbr.GetReplicationVaultRegions.Invoke();
-    /// 
-    ///     var replication = new AliCloud.Provider("replication", new()
-    ///     {
-    ///         Region = defaultReplicationVaultRegions.Apply(getReplicationVaultRegionsResult =&gt; getReplicationVaultRegionsResult.Regions[0]?.ReplicationRegionId),
-    ///     });
-    /// 
-    ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
-    ///     {
-    ///         VaultName = "terraform-example",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Source,
-    ///     });
-    /// 
-    ///     var defaultReplicationVault = new AliCloud.Hbr.ReplicationVault("defaultReplicationVault", new()
-    ///     {
-    ///         ReplicationSourceRegionId = sourceRegion,
-    ///         ReplicationSourceVaultId = defaultVault.Id,
-    ///         VaultName = "terraform-example",
-    ///         VaultStorageClass = "STANDARD",
-    ///         Description = "terraform-example",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Replication,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Hybrid Backup Recovery (HBR) Replication Vault can be imported using the id, e.g.

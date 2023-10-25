@@ -16,44 +16,6 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// &gt; **NOTE:** Available since v1.119.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf_example";
-    ///     var @default = new AliCloud.Rds.RdsParameterGroup("default", new()
-    ///     {
-    ///         Engine = "mysql",
-    ///         EngineVersion = "5.7",
-    ///         ParamDetails = new[]
-    ///         {
-    ///             new AliCloud.Rds.Inputs.RdsParameterGroupParamDetailArgs
-    ///             {
-    ///                 ParamName = "back_log",
-    ///                 ParamValue = "4000",
-    ///             },
-    ///             new AliCloud.Rds.Inputs.RdsParameterGroupParamDetailArgs
-    ///             {
-    ///                 ParamName = "wait_timeout",
-    ///                 ParamValue = "86460",
-    ///             },
-    ///         },
-    ///         ParameterGroupDesc = name,
-    ///         ParameterGroupName = name,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// RDS Parameter Group can be imported using the id, e.g.

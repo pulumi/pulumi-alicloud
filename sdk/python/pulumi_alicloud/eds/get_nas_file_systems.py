@@ -119,29 +119,6 @@ def get_nas_file_systems(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.141.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
-        cidr_block="172.16.0.0/12",
-        desktop_access_type="Internet",
-        office_site_name="your_office_site_name",
-        enable_internet_access=False)
-    default_nas_file_system = alicloud.eds.NasFileSystem("defaultNasFileSystem",
-        description="your_description",
-        office_site_id=default_simple_office_site.id,
-        nas_file_system_name="your_nas_file_system_name")
-    ids = alicloud.eds.get_nas_file_systems()
-    pulumi.export("ecdNasFileSystemId1", ids.systems[0].id)
-    name_regex = default_nas_file_system.nas_file_system_name.apply(lambda nas_file_system_name: alicloud.eds.get_nas_file_systems_output(name_regex=nas_file_system_name))
-    pulumi.export("ecdNasFileSystemId2", name_regex.systems[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Nas File System IDs.
     :param str name_regex: A regex string to filter results by Nas File System name.
@@ -180,29 +157,6 @@ def get_nas_file_systems_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.141.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
-        cidr_block="172.16.0.0/12",
-        desktop_access_type="Internet",
-        office_site_name="your_office_site_name",
-        enable_internet_access=False)
-    default_nas_file_system = alicloud.eds.NasFileSystem("defaultNasFileSystem",
-        description="your_description",
-        office_site_id=default_simple_office_site.id,
-        nas_file_system_name="your_nas_file_system_name")
-    ids = alicloud.eds.get_nas_file_systems()
-    pulumi.export("ecdNasFileSystemId1", ids.systems[0].id)
-    name_regex = default_nas_file_system.nas_file_system_name.apply(lambda nas_file_system_name: alicloud.eds.get_nas_file_systems_output(name_regex=nas_file_system_name))
-    pulumi.export("ecdNasFileSystemId2", name_regex.systems[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Nas File System IDs.

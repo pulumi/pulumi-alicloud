@@ -12,26 +12,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.72.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const basic = new alicloud.cms.SiteMonitor("basic", {
- *     address: "http://www.alibabacloud.com",
- *     interval: 5,
- *     ispCities: [{
- *         city: "546",
- *         isp: "465",
- *     }],
- *     taskName: "tf-example",
- *     taskType: "HTTP",
- * });
- * ```
- *
  * ## Import
  *
  * Cloud Monitor Service Site Monitor can be imported using the id, e.g.

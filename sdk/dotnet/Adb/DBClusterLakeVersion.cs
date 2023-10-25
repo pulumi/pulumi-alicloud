@@ -16,46 +16,6 @@ namespace Pulumi.AliCloud.Adb
     /// 
     /// &gt; **NOTE:** Available since v1.190.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultZones = AliCloud.Adb.GetZones.Invoke();
-    /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
-    ///     {
-    ///         NameRegex = "^default-NODELETING$",
-    ///     });
-    /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
-    ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
-    ///     });
-    /// 
-    ///     var defaultDBClusterLakeVersion = new AliCloud.Adb.DBClusterLakeVersion("defaultDBClusterLakeVersion", new()
-    ///     {
-    ///         DbClusterVersion = "5.0",
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
-    ///         ComputeResource = "16ACU",
-    ///         StorageResource = "0ACU",
-    ///         PaymentType = "PayAsYouGo",
-    ///         EnableDefaultResourceGroup = false,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// AnalyticDB for MySQL (ADB) DB Cluster Lake Version can be imported using the id, e.g.

@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Vpc Flow Logs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.122.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.vpc.getVpcFlowLogs({
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstVpcFlowLogId = example.then(example => example.logs?.[0]?.id);
- * ```
  */
 export function getVpcFlowLogs(args?: GetVpcFlowLogsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcFlowLogsResult> {
     args = args || {};
@@ -121,21 +106,6 @@ export interface GetVpcFlowLogsResult {
  * This data source provides the Vpc Flow Logs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.122.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.vpc.getVpcFlowLogs({
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstVpcFlowLogId = example.then(example => example.logs?.[0]?.id);
- * ```
  */
 export function getVpcFlowLogsOutput(args?: GetVpcFlowLogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcFlowLogsResult> {
     return pulumi.output(args).apply((a: any) => getVpcFlowLogs(a, opts))

@@ -12,17 +12,6 @@ import * as utilities from "../utilities";
  * For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
  *
  * > **NOTE:** Available since v1.128.0
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const open = alicloud.kvstore.getPermission({
- *     enable: "On",
- * });
- * ```
  */
 export function getPermission(args?: GetPermissionArgs, opts?: pulumi.InvokeOptions): Promise<GetPermissionResult> {
     args = args || {};
@@ -65,17 +54,6 @@ export interface GetPermissionResult {
  * For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
  *
  * > **NOTE:** Available since v1.128.0
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const open = alicloud.kvstore.getPermission({
- *     enable: "On",
- * });
- * ```
  */
 export function getPermissionOutput(args?: GetPermissionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPermissionResult> {
     return pulumi.output(args).apply((a: any) => getPermission(a, opts))

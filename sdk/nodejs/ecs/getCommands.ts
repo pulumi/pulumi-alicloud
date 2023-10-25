@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ecs Commands of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.116.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ecs.getCommands({
- *     ids: ["E2RY53-xxxx"],
- *     nameRegex: "tf-testAcc",
- * });
- * export const firstEcsCommandId = example.then(example => example.commands?.[0]?.id);
- * ```
  */
 export function getCommands(args?: GetCommandsArgs, opts?: pulumi.InvokeOptions): Promise<GetCommandsResult> {
     args = args || {};
@@ -103,21 +88,6 @@ export interface GetCommandsResult {
  * This data source provides the Ecs Commands of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.116.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ecs.getCommands({
- *     ids: ["E2RY53-xxxx"],
- *     nameRegex: "tf-testAcc",
- * });
- * export const firstEcsCommandId = example.then(example => example.commands?.[0]?.id);
- * ```
  */
 export function getCommandsOutput(args?: GetCommandsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCommandsResult> {
     return pulumi.output(args).apply((a: any) => getCommands(a, opts))

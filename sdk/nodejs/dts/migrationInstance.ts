@@ -11,28 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.157.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultRegions = alicloud.getRegions({
- *     current: true,
- * });
- * const defaultMigrationInstance = new alicloud.dts.MigrationInstance("defaultMigrationInstance", {
- *     paymentType: "PayAsYouGo",
- *     sourceEndpointEngineName: "MySQL",
- *     sourceEndpointRegion: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
- *     destinationEndpointEngineName: "MySQL",
- *     destinationEndpointRegion: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
- *     instanceClass: "small",
- *     syncArchitecture: "oneway",
- * });
- * ```
- *
  * ## Import
  *
  * DTS Migration Instance can be imported using the id, e.g.

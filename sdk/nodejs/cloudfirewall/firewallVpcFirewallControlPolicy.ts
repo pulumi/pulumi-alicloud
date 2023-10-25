@@ -11,42 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.194.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultAccount = alicloud.getAccount({});
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {
- *     cenInstanceName: _var.name,
- *     description: "example_value",
- *     tags: {
- *         Created: "TF",
- *         For: "acceptance test",
- *     },
- * });
- * const defaultFirewallVpcFirewallControlPolicy = new alicloud.cloudfirewall.FirewallVpcFirewallControlPolicy("defaultFirewallVpcFirewallControlPolicy", {
- *     order: 1,
- *     destination: "127.0.0.2/32",
- *     applicationName: "ANY",
- *     description: "example_value",
- *     sourceType: "net",
- *     destPort: "80/88",
- *     aclAction: "accept",
- *     lang: "zh",
- *     destinationType: "net",
- *     source: "127.0.0.1/32",
- *     destPortType: "port",
- *     proto: "TCP",
- *     release: true,
- *     memberUid: defaultAccount.then(defaultAccount => defaultAccount.id),
- *     vpcFirewallId: defaultInstance.id,
- * });
- * ```
- *
  * ## Import
  *
  * Cloud Firewall Vpc Firewall Control Policy can be imported using the id, e.g.

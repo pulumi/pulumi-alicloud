@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-servicecatalog-2021-09-01-listproductsasenduser)
  *
  * > **NOTE:** Available since v1.197.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.servicecatalog.getEndUserProducts({
- *     nameRegex: "ram模板创建",
- * });
- * export const alicloudServiceCatalogEndUserProductExampleId = _default.then(_default => _default.endUserProducts?.[0]?.id);
- * ```
  */
 export function getEndUserProducts(args?: GetEndUserProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndUserProductsResult> {
     args = args || {};
@@ -93,18 +81,6 @@ export interface GetEndUserProductsResult {
  * This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-servicecatalog-2021-09-01-listproductsasenduser)
  *
  * > **NOTE:** Available since v1.197.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.servicecatalog.getEndUserProducts({
- *     nameRegex: "ram模板创建",
- * });
- * export const alicloudServiceCatalogEndUserProductExampleId = _default.then(_default => _default.endUserProducts?.[0]?.id);
- * ```
  */
 export function getEndUserProductsOutput(args?: GetEndUserProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndUserProductsResult> {
     return pulumi.output(args).apply((a: any) => getEndUserProducts(a, opts))

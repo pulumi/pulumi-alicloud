@@ -43,11 +43,11 @@ class InstanceArgs:
              instance_type: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessedBy' in kwargs:
+        if accessed_by is None and 'accessedBy' in kwargs:
             accessed_by = kwargs['accessedBy']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
 
         if accessed_by is not None:
@@ -154,11 +154,11 @@ class _InstanceState:
              instance_type: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessedBy' in kwargs:
+        if accessed_by is None and 'accessedBy' in kwargs:
             accessed_by = kwargs['accessedBy']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
 
         if accessed_by is not None:
@@ -250,25 +250,6 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.10.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.ots.Instance("default",
-            description=name,
-            accessed_by="Vpc",
-            tags={
-                "Created": "TF",
-                "For": "Building table",
-            })
-        ```
-
         ## Import
 
         OTS instance can be imported using instance id or name, e.g.
@@ -296,25 +277,6 @@ class Instance(pulumi.CustomResource):
         It is foundation of creating data table.
 
         > **NOTE:** Available since v1.10.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.ots.Instance("default",
-            description=name,
-            accessed_by="Vpc",
-            tags={
-                "Created": "TF",
-                "For": "Building table",
-            })
-        ```
 
         ## Import
 

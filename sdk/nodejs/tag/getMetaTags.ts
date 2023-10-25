@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Tag Meta Tags of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.169.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.tag.getMetaTags({
- *     keyName: "example_value",
- * });
- * export const tagMetaTagDefault1 = _default.then(_default => _default.tags?.valueName);
- * ```
  */
 export function getMetaTags(args?: GetMetaTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetMetaTagsResult> {
     args = args || {};
@@ -65,20 +51,6 @@ export interface GetMetaTagsResult {
  * This data source provides the Tag Meta Tags of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.169.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.tag.getMetaTags({
- *     keyName: "example_value",
- * });
- * export const tagMetaTagDefault1 = _default.then(_default => _default.tags?.valueName);
- * ```
  */
 export function getMetaTagsOutput(args?: GetMetaTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetaTagsResult> {
     return pulumi.output(args).apply((a: any) => getMetaTags(a, opts))

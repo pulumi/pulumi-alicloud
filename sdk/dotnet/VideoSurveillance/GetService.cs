@@ -19,28 +19,6 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// &gt; **NOTE:** Available in v1.116.0+
         /// 
         /// &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var open = AliCloud.VideoSurveillance.GetService.Invoke(new()
-        ///     {
-        ///         Enable = "On",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("alicloud:videosurveillance/getService:getService", args ?? new GetServiceArgs(), options.WithDefaults());
@@ -53,28 +31,6 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// &gt; **NOTE:** Available in v1.116.0+
         /// 
         /// &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var open = AliCloud.VideoSurveillance.GetService.Invoke(new()
-        ///     {
-        ///         Enable = "On",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:videosurveillance/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());

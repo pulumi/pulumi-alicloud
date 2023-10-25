@@ -100,23 +100,6 @@ def get_traffic_mirror_filter_egress_rules(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.140.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpc.get_traffic_mirror_filter_egress_rules(traffic_mirror_filter_id="example_traffic_mirror_filter_id",
-        ids=["example_id"])
-    pulumi.export("vpcTrafficMirrorFilterEgressRuleId1", ids.rules[0].id)
-    status = alicloud.vpc.get_traffic_mirror_filter_egress_rules(traffic_mirror_filter_id="example_traffic_mirror_filter_id",
-        ids=["example_id"],
-        status="Created")
-    pulumi.export("vpcTrafficMirrorFilterEgressRuleId2", status.rules[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Traffic Mirror Filter Egress Rule IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -150,23 +133,6 @@ def get_traffic_mirror_filter_egress_rules_output(ids: Optional[pulumi.Input[Opt
     This data source provides the Vpc Traffic Mirror Filter Egress Rules of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.140.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpc.get_traffic_mirror_filter_egress_rules(traffic_mirror_filter_id="example_traffic_mirror_filter_id",
-        ids=["example_id"])
-    pulumi.export("vpcTrafficMirrorFilterEgressRuleId1", ids.rules[0].id)
-    status = alicloud.vpc.get_traffic_mirror_filter_egress_rules(traffic_mirror_filter_id="example_traffic_mirror_filter_id",
-        ids=["example_id"],
-        status="Created")
-    pulumi.export("vpcTrafficMirrorFilterEgressRuleId2", status.rules[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Traffic Mirror Filter Egress Rule IDs.

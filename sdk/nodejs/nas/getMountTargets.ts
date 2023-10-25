@@ -10,19 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides MountTargets available to the user.
  *
  * > **NOTE**: Available in 1.35.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.nas.getMountTargets({
- *     fileSystemId: "1a2sc4d",
- *     accessGroupName: "tf-testAccNasConfig",
- * });
- * export const theFirstMountTargetDomain = example.then(example => example.targets?.[0]?.id);
- * ```
  */
 export function getMountTargets(args: GetMountTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetMountTargetsResult> {
 
@@ -146,19 +133,6 @@ export interface GetMountTargetsResult {
  * This data source provides MountTargets available to the user.
  *
  * > **NOTE**: Available in 1.35.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.nas.getMountTargets({
- *     fileSystemId: "1a2sc4d",
- *     accessGroupName: "tf-testAccNasConfig",
- * });
- * export const theFirstMountTargetDomain = example.then(example => example.targets?.[0]?.id);
- * ```
  */
 export function getMountTargetsOutput(args: GetMountTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMountTargetsResult> {
     return pulumi.output(args).apply((a: any) => getMountTargets(a, opts))

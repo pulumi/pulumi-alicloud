@@ -13,28 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.136.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "name";
- * const _default = new alicloud.opensearch.AppGroup("default", {
- *     appGroupName: name,
- *     paymentType: "PayAsYouGo",
- *     type: "standard",
- *     quota: {
- *         docSize: 1,
- *         computeResource: 20,
- *         spec: "opensearch.share.common",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Open Search App Group can be imported using the id, e.g.

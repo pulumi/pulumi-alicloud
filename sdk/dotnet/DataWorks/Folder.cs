@@ -16,27 +16,6 @@ namespace Pulumi.AliCloud.DataWorks
     /// 
     /// &gt; **NOTE:** Available in v1.131.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.DataWorks.Folder("example", new()
-    ///     {
-    ///         FolderPath = "Business Flow/tfTestAcc/folderDi/tftest1",
-    ///         ProjectId = "320687",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Data Works Folder can be imported using the id, e.g.

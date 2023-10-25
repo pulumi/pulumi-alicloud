@@ -9,44 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.126.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {
- *     cenInstanceName: name,
- *     protectionLevel: "REDUCED",
- * });
- * const defaultTransitRouter = new alicloud.cen.TransitRouter("defaultTransitRouter", {cenId: defaultInstance.id});
- * const nameRegex = alicloud.expressconnect.getPhysicalConnections({
- *     nameRegex: "^preserved-NODELETING",
- * });
- * const defaultVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("defaultVirtualBorderRouter", {
- *     localGatewayIp: "10.0.0.1",
- *     peerGatewayIp: "10.0.0.2",
- *     peeringSubnetMask: "255.255.255.252",
- *     physicalConnectionId: nameRegex.then(nameRegex => nameRegex.connections?.[0]?.id),
- *     virtualBorderRouterName: name,
- *     vlanId: 2420,
- *     minRxInterval: 1000,
- *     minTxInterval: 1000,
- *     detectMultiplier: 10,
- * });
- * const defaultTransitRouterVbrAttachment = new alicloud.cen.TransitRouterVbrAttachment("defaultTransitRouterVbrAttachment", {
- *     transitRouterId: defaultTransitRouter.transitRouterId,
- *     transitRouterAttachmentName: "example",
- *     transitRouterAttachmentDescription: "example",
- *     vbrId: defaultVirtualBorderRouter.id,
- *     cenId: defaultInstance.id,
- * });
- * ```
- *
  * ## Import
  *
  * CEN transit router VBR attachment can be imported using the id, e.g.

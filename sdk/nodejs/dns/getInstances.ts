@@ -12,18 +12,6 @@ import * as utilities from "../utilities";
  * This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:**  Available in 1.84.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.dns.getInstances({
- *     ids: ["dns-cn-oew1npk****"],
- * });
- * export const firstInstanceId = example.then(example => example.instances?.[0]?.id);
- * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -82,18 +70,6 @@ export interface GetInstancesResult {
  * This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:**  Available in 1.84.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.dns.getInstances({
- *     ids: ["dns-cn-oew1npk****"],
- * });
- * export const firstInstanceId = example.then(example => example.instances?.[0]?.id);
- * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))

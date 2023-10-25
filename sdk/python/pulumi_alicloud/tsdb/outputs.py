@@ -79,58 +79,94 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_renew: str,
-             cpu_number: str,
-             disk_category: str,
-             engine_type: str,
-             expired_time: int,
-             id: str,
-             instance_alias: str,
-             instance_class: str,
-             instance_id: str,
-             instance_storage: str,
-             memory_size: str,
-             network_type: str,
-             payment_type: str,
-             status: str,
-             vpc_connection_address: str,
-             vpc_id: str,
-             vswitch_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auto_renew: Optional[str] = None,
+             cpu_number: Optional[str] = None,
+             disk_category: Optional[str] = None,
+             engine_type: Optional[str] = None,
+             expired_time: Optional[int] = None,
+             id: Optional[str] = None,
+             instance_alias: Optional[str] = None,
+             instance_class: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_storage: Optional[str] = None,
+             memory_size: Optional[str] = None,
+             network_type: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             status: Optional[str] = None,
+             vpc_connection_address: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'cpuNumber' in kwargs:
+        if auto_renew is None:
+            raise TypeError("Missing 'auto_renew' argument")
+        if cpu_number is None and 'cpuNumber' in kwargs:
             cpu_number = kwargs['cpuNumber']
-        if 'diskCategory' in kwargs:
+        if cpu_number is None:
+            raise TypeError("Missing 'cpu_number' argument")
+        if disk_category is None and 'diskCategory' in kwargs:
             disk_category = kwargs['diskCategory']
-        if 'engineType' in kwargs:
+        if disk_category is None:
+            raise TypeError("Missing 'disk_category' argument")
+        if engine_type is None and 'engineType' in kwargs:
             engine_type = kwargs['engineType']
-        if 'expiredTime' in kwargs:
+        if engine_type is None:
+            raise TypeError("Missing 'engine_type' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'instanceAlias' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_alias is None and 'instanceAlias' in kwargs:
             instance_alias = kwargs['instanceAlias']
-        if 'instanceClass' in kwargs:
+        if instance_alias is None:
+            raise TypeError("Missing 'instance_alias' argument")
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'instanceId' in kwargs:
+        if instance_class is None:
+            raise TypeError("Missing 'instance_class' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceStorage' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_storage is None and 'instanceStorage' in kwargs:
             instance_storage = kwargs['instanceStorage']
-        if 'memorySize' in kwargs:
+        if instance_storage is None:
+            raise TypeError("Missing 'instance_storage' argument")
+        if memory_size is None and 'memorySize' in kwargs:
             memory_size = kwargs['memorySize']
-        if 'networkType' in kwargs:
+        if memory_size is None:
+            raise TypeError("Missing 'memory_size' argument")
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'paymentType' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'vpcConnectionAddress' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_connection_address is None and 'vpcConnectionAddress' in kwargs:
             vpc_connection_address = kwargs['vpcConnectionAddress']
-        if 'vpcId' in kwargs:
+        if vpc_connection_address is None:
+            raise TypeError("Missing 'vpc_connection_address' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("auto_renew", auto_renew)
         _setter("cpu_number", cpu_number)
@@ -316,15 +352,21 @@ class GetZonesZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             local_name: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             local_name: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'localName' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if local_name is None and 'localName' in kwargs:
             local_name = kwargs['localName']
-        if 'zoneId' in kwargs:
+        if local_name is None:
+            raise TypeError("Missing 'local_name' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("id", id)
         _setter("local_name", local_name)

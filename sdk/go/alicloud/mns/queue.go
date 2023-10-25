@@ -12,38 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mns"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := mns.NewQueue(ctx, "queue", &mns.QueueArgs{
-//				DelaySeconds:           pulumi.Int(0),
-//				MaximumMessageSize:     pulumi.Int(65536),
-//				MessageRetentionPeriod: pulumi.Int(345600),
-//				PollingWaitSeconds:     pulumi.Int(0),
-//				VisibilityTimeout:      pulumi.Int(30),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // MNS QUEUE can be imported using the id or name, e.g.

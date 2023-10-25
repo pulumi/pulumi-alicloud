@@ -55,35 +55,43 @@ class ImageCacheArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image_cache_name: pulumi.Input[str],
-             images: pulumi.Input[Sequence[pulumi.Input[str]]],
-             security_group_id: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             image_cache_name: Optional[pulumi.Input[str]] = None,
+             images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              eip_instance_id: Optional[pulumi.Input[str]] = None,
              image_cache_size: Optional[pulumi.Input[int]] = None,
              image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              retention_days: Optional[pulumi.Input[int]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'imageCacheName' in kwargs:
+        if image_cache_name is None and 'imageCacheName' in kwargs:
             image_cache_name = kwargs['imageCacheName']
-        if 'securityGroupId' in kwargs:
+        if image_cache_name is None:
+            raise TypeError("Missing 'image_cache_name' argument")
+        if images is None:
+            raise TypeError("Missing 'images' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vswitchId' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'eipInstanceId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if eip_instance_id is None and 'eipInstanceId' in kwargs:
             eip_instance_id = kwargs['eipInstanceId']
-        if 'imageCacheSize' in kwargs:
+        if image_cache_size is None and 'imageCacheSize' in kwargs:
             image_cache_size = kwargs['imageCacheSize']
-        if 'imageRegistryCredentials' in kwargs:
+        if image_registry_credentials is None and 'imageRegistryCredentials' in kwargs:
             image_registry_credentials = kwargs['imageRegistryCredentials']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'retentionDays' in kwargs:
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("image_cache_name", image_cache_name)
@@ -284,27 +292,27 @@ class _ImageCacheState:
              status: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'containerGroupId' in kwargs:
+        if container_group_id is None and 'containerGroupId' in kwargs:
             container_group_id = kwargs['containerGroupId']
-        if 'eipInstanceId' in kwargs:
+        if eip_instance_id is None and 'eipInstanceId' in kwargs:
             eip_instance_id = kwargs['eipInstanceId']
-        if 'imageCacheName' in kwargs:
+        if image_cache_name is None and 'imageCacheName' in kwargs:
             image_cache_name = kwargs['imageCacheName']
-        if 'imageCacheSize' in kwargs:
+        if image_cache_size is None and 'imageCacheSize' in kwargs:
             image_cache_size = kwargs['imageCacheSize']
-        if 'imageRegistryCredentials' in kwargs:
+        if image_registry_credentials is None and 'imageRegistryCredentials' in kwargs:
             image_registry_credentials = kwargs['imageRegistryCredentials']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'retentionDays' in kwargs:
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if container_group_id is not None:
@@ -500,44 +508,6 @@ class ImageCache(pulumi.CustomResource):
 
         > **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.eci.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.1.0.0/16",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].zone_ids[0])
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
-            isp="BGP",
-            address_name=name,
-            netmode="public",
-            bandwidth="1",
-            security_protection_types=["AntiDDoS_Enhanced"],
-            payment_type="PayAsYouGo")
-        default_regions = alicloud.get_regions(current=True)
-        default_image_cache = alicloud.eci.ImageCache("defaultImageCache",
-            image_cache_name=name,
-            images=[f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/eci_open/nginx:alpine"],
-            security_group_id=default_security_group.id,
-            vswitch_id=default_switch.id,
-            eip_instance_id=default_eip_address.id)
-        ```
-
         ## Import
 
         ECI Image Cache can be imported using the id, e.g.
@@ -571,44 +541,6 @@ class ImageCache(pulumi.CustomResource):
         > **NOTE:** Available since v1.89.0.
 
         > **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.eci.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.1.0.0/16",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].zone_ids[0])
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
-            isp="BGP",
-            address_name=name,
-            netmode="public",
-            bandwidth="1",
-            security_protection_types=["AntiDDoS_Enhanced"],
-            payment_type="PayAsYouGo")
-        default_regions = alicloud.get_regions(current=True)
-        default_image_cache = alicloud.eci.ImageCache("defaultImageCache",
-            image_cache_name=name,
-            images=[f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/eci_open/nginx:alpine"],
-            security_group_id=default_security_group.id,
-            vswitch_id=default_switch.id,
-            eip_instance_id=default_eip_address.id)
-        ```
 
         ## Import
 

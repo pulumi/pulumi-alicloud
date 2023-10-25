@@ -15,59 +15,6 @@ import (
 // This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.153.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := vpc.GetBgpPeers(ctx, &vpc.GetBgpPeersArgs{
-//				Ids: []string{
-//					"example_value-1",
-//					"example_value-2",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("vpcBgpPeerId1", ids.Peers[0].Id)
-//			bgpGroupId, err := vpc.GetBgpPeers(ctx, &vpc.GetBgpPeersArgs{
-//				BgpGroupId: pulumi.StringRef("example_value"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("vpcBgpPeerId2", bgpGroupId.Peers[0].Id)
-//			routerId, err := vpc.GetBgpPeers(ctx, &vpc.GetBgpPeersArgs{
-//				RouterId: pulumi.StringRef("example_value"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("vpcBgpPeerId3", routerId.Peers[0].Id)
-//			status, err := vpc.GetBgpPeers(ctx, &vpc.GetBgpPeersArgs{
-//				Status: pulumi.StringRef("Available"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("vpcBgpPeerId4", status.Peers[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetBgpPeers(ctx *pulumi.Context, args *GetBgpPeersArgs, opts ...pulumi.InvokeOption) (*GetBgpPeersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBgpPeersResult

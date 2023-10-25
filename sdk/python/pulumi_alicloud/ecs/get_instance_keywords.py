@@ -94,17 +94,6 @@ def get_instance_keywords(key: Optional[str] = None,
 
     > **NOTE:** Available in v1.196.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    resources = alicloud.ecs.get_instance_keywords(key="account",
-        output_file="./classes.txt")
-    pulumi.export("accountKeywords", resources.keywords[0])
-    ```
-
 
     :param str key: The type of reserved keyword to query. Valid values: `account`, `database`.
     :param str output_file: File name where to save data source results (after running `pulumi up`).
@@ -131,17 +120,6 @@ def get_instance_keywords_output(key: Optional[pulumi.Input[str]] = None,
     Operation to query the reserved keywords of an ApsaraDB RDS instance. The reserved keywords cannot be used for the usernames of accounts or the names of databases.
 
     > **NOTE:** Available in v1.196.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    resources = alicloud.ecs.get_instance_keywords(key="account",
-        output_file="./classes.txt")
-    pulumi.export("accountKeywords", resources.keywords[0])
-    ```
 
 
     :param str key: The type of reserved keyword to query. Valid values: `account`, `database`.

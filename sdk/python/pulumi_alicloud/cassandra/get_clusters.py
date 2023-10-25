@@ -122,15 +122,6 @@ def get_clusters(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:**  Available in 1.88.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    cassandra = alicloud.cassandra.get_clusters(name_regex="tf_testAccCassandra")
-    ```
-
 
     :param Sequence[str] ids: The list of Cassandra cluster ids.
     :param str name_regex: A regex string to apply to the cluster name.
@@ -166,15 +157,6 @@ def get_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     Filters support regular expression for the cluster name, ids or tags.
 
     > **NOTE:**  Available in 1.88.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    cassandra = alicloud.cassandra.get_clusters(name_regex="tf_testAccCassandra")
-    ```
 
 
     :param Sequence[str] ids: The list of Cassandra cluster ids.

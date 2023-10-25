@@ -49,27 +49,31 @@ class DomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain_name: pulumi.Input[str],
-             sources: pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]],
+             domain_name: Optional[pulumi.Input[str]] = None,
+             sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]] = None,
              biz_name: Optional[pulumi.Input[str]] = None,
              cert_infos: Optional[pulumi.Input[Sequence[pulumi.Input['DomainCertInfoArgs']]]] = None,
              check_url: Optional[pulumi.Input[str]] = None,
              force_set: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'bizName' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if sources is None:
+            raise TypeError("Missing 'sources' argument")
+        if biz_name is None and 'bizName' in kwargs:
             biz_name = kwargs['bizName']
-        if 'certInfos' in kwargs:
+        if cert_infos is None and 'certInfos' in kwargs:
             cert_infos = kwargs['certInfos']
-        if 'checkUrl' in kwargs:
+        if check_url is None and 'checkUrl' in kwargs:
             check_url = kwargs['checkUrl']
-        if 'forceSet' in kwargs:
+        if force_set is None and 'forceSet' in kwargs:
             force_set = kwargs['forceSet']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("domain_name", domain_name)
@@ -234,19 +238,19 @@ class _DomainState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bizName' in kwargs:
+        if biz_name is None and 'bizName' in kwargs:
             biz_name = kwargs['bizName']
-        if 'certInfos' in kwargs:
+        if cert_infos is None and 'certInfos' in kwargs:
             cert_infos = kwargs['certInfos']
-        if 'checkUrl' in kwargs:
+        if check_url is None and 'checkUrl' in kwargs:
             check_url = kwargs['checkUrl']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'forceSet' in kwargs:
+        if force_set is None and 'forceSet' in kwargs:
             force_set = kwargs['forceSet']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         if biz_name is not None:
@@ -392,25 +396,6 @@ class Domain(pulumi.CustomResource):
 
         > **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.scdn.Domain("example",
-            domain_name="my-Domain",
-            sources=[alicloud.scdn.DomainSourceArgs(
-                content="xxx.aliyuncs.com",
-                enabled="online",
-                port=80,
-                priority="20",
-                type="oss",
-            )])
-        ```
-
         ## Import
 
         SCDN Domain can be imported using the id, e.g.
@@ -444,25 +429,6 @@ class Domain(pulumi.CustomResource):
         > **NOTE:** Available in v1.131.0+.
 
         > **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.scdn.Domain("example",
-            domain_name="my-Domain",
-            sources=[alicloud.scdn.DomainSourceArgs(
-                content="xxx.aliyuncs.com",
-                enabled="online",
-                port=80,
-                priority="20",
-                type="oss",
-            )])
-        ```
 
         ## Import
 

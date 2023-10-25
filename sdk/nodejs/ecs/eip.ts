@@ -14,18 +14,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** From version 1.10.1, this resource supports creating "PrePaid" EIP. In addition, it supports setting EIP name and description.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * // Create a new EIP.
- * const example = new alicloud.ecs.Eip("example", {
- *     bandwidth: "10",
- *     internetChargeType: "PayByBandwidth",
- * });
- * ```
  * ## Module Support
  *
  * You can use the existing eip module

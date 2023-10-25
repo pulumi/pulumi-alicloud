@@ -13,25 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** At present, the resource only supports cn-shanghai region.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "example_value";
- * const defaultProduct = new alicloud.mhub.Product("defaultProduct", {productName: name});
- * const defaultApp = new alicloud.mhub.App("defaultApp", {
- *     appName: name,
- *     productId: defaultProduct.id,
- *     packageName: "com.test.android",
- *     type: "Android",
- * });
- * ```
- *
  * ## Import
  *
  * MHUB App can be imported using the id, e.g.

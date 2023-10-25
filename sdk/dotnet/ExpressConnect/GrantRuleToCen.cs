@@ -16,62 +16,6 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// 
     /// &gt; **NOTE:** Available since v1.196.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var examplePhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
-    ///     {
-    ///         NameRegex = "^preserved-NODELETING",
-    ///     });
-    /// 
-    ///     var vlanId = new Random.RandomInteger("vlanId", new()
-    ///     {
-    ///         Max = 2999,
-    ///         Min = 1,
-    ///     });
-    /// 
-    ///     var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("exampleVirtualBorderRouter", new()
-    ///     {
-    ///         LocalGatewayIp = "10.0.0.1",
-    ///         PeerGatewayIp = "10.0.0.2",
-    ///         PeeringSubnetMask = "255.255.255.252",
-    ///         PhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
-    ///         VirtualBorderRouterName = name,
-    ///         VlanId = vlanId.Id,
-    ///         MinRxInterval = 1000,
-    ///         MinTxInterval = 1000,
-    ///         DetectMultiplier = 10,
-    ///     });
-    /// 
-    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
-    ///     {
-    ///         CenInstanceName = name,
-    ///     });
-    /// 
-    ///     var @default = AliCloud.GetAccount.Invoke();
-    /// 
-    ///     var exampleGrantRuleToCen = new AliCloud.ExpressConnect.GrantRuleToCen("exampleGrantRuleToCen", new()
-    ///     {
-    ///         CenId = exampleInstance.Id,
-    ///         CenOwnerId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
-    ///         InstanceId = exampleVirtualBorderRouter.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Express Connect Grant Rule To Cen can be imported using the id, e.g.

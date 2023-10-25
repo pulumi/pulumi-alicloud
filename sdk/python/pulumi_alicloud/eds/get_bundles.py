@@ -119,17 +119,6 @@ def get_bundles(bundle_ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.143.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
-    ```
-
 
     :param Sequence[str] bundle_ids: The bundle id of the bundle.
     :param str bundle_type: The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
@@ -168,17 +157,6 @@ def get_bundles_output(bundle_ids: Optional[pulumi.Input[Optional[Sequence[str]]
     This data source provides the Ecd bundles of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.143.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
-    ```
 
 
     :param Sequence[str] bundle_ids: The bundle id of the bundle.

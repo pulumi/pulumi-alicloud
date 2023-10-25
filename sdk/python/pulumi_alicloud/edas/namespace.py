@@ -37,17 +37,21 @@ class NamespaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespace_logical_id: pulumi.Input[str],
-             namespace_name: pulumi.Input[str],
+             namespace_logical_id: Optional[pulumi.Input[str]] = None,
+             namespace_name: Optional[pulumi.Input[str]] = None,
              debug_enable: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'namespaceLogicalId' in kwargs:
+        if namespace_logical_id is None and 'namespaceLogicalId' in kwargs:
             namespace_logical_id = kwargs['namespaceLogicalId']
-        if 'namespaceName' in kwargs:
+        if namespace_logical_id is None:
+            raise TypeError("Missing 'namespace_logical_id' argument")
+        if namespace_name is None and 'namespaceName' in kwargs:
             namespace_name = kwargs['namespaceName']
-        if 'debugEnable' in kwargs:
+        if namespace_name is None:
+            raise TypeError("Missing 'namespace_name' argument")
+        if debug_enable is None and 'debugEnable' in kwargs:
             debug_enable = kwargs['debugEnable']
 
         _setter("namespace_logical_id", namespace_logical_id)
@@ -138,13 +142,13 @@ class _NamespaceState:
              description: Optional[pulumi.Input[str]] = None,
              namespace_logical_id: Optional[pulumi.Input[str]] = None,
              namespace_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'debugEnable' in kwargs:
+        if debug_enable is None and 'debugEnable' in kwargs:
             debug_enable = kwargs['debugEnable']
-        if 'namespaceLogicalId' in kwargs:
+        if namespace_logical_id is None and 'namespaceLogicalId' in kwargs:
             namespace_logical_id = kwargs['namespaceLogicalId']
-        if 'namespaceName' in kwargs:
+        if namespace_name is None and 'namespaceName' in kwargs:
             namespace_name = kwargs['namespaceName']
 
         if debug_enable is not None:
@@ -224,26 +228,6 @@ class Namespace(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.173.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_namespace = alicloud.edas.Namespace("defaultNamespace",
-            debug_enable=False,
-            description=name,
-            namespace_logical_id=f"{default_regions.regions[0].id}:example",
-            namespace_name=name)
-        ```
-
         ## Import
 
         EDAS Namespace can be imported using the id, e.g.
@@ -273,26 +257,6 @@ class Namespace(pulumi.CustomResource):
         For information about EDAS Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/enterprise-distributed-application-service/latest/insertorupdateregion).
 
         > **NOTE:** Available since v1.173.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_namespace = alicloud.edas.Namespace("defaultNamespace",
-            debug_enable=False,
-            description=name,
-            namespace_logical_id=f"{default_regions.regions[0].id}:example",
-            namespace_name=name)
-        ```
 
         ## Import
 

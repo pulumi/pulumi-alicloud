@@ -151,17 +151,6 @@ def get_clusters(cluster_alias_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.94.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.mse.get_clusters(ids=["mse-cn-0d9xxxx"],
-        status="INIT_SUCCESS")
-    pulumi.export("clusterId", example.clusters[0].id)
-    ```
-
 
     :param str cluster_alias_name: The alias name of MSE Cluster.
     :param Sequence[str] ids: A list of MSE Cluster ids.
@@ -206,17 +195,6 @@ def get_clusters_output(cluster_alias_name: Optional[pulumi.Input[Optional[str]]
     This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in v1.94.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.mse.get_clusters(ids=["mse-cn-0d9xxxx"],
-        status="INIT_SUCCESS")
-    pulumi.export("clusterId", example.clusters[0].id)
-    ```
 
 
     :param str cluster_alias_name: The alias name of MSE Cluster.

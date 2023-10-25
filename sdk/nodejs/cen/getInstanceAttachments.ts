@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Cen Instance Attachments of the current Alibaba Cloud User.
  *
  * > **NOTE:** Available in v1.97.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cen.getInstanceAttachments({
- *     instanceId: "cen-o40h17ll9w********",
- * });
- * export const theFirstAttachmentedInstanceId = example.then(example => example.attachments?.[0]?.childInstanceId);
- * ```
  */
 export function getInstanceAttachments(args: GetInstanceAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceAttachmentsResult> {
 
@@ -99,18 +87,6 @@ export interface GetInstanceAttachmentsResult {
  * This data source provides Cen Instance Attachments of the current Alibaba Cloud User.
  *
  * > **NOTE:** Available in v1.97.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cen.getInstanceAttachments({
- *     instanceId: "cen-o40h17ll9w********",
- * });
- * export const theFirstAttachmentedInstanceId = example.then(example => example.attachments?.[0]?.childInstanceId);
- * ```
  */
 export function getInstanceAttachmentsOutput(args: GetInstanceAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getInstanceAttachments(a, opts))

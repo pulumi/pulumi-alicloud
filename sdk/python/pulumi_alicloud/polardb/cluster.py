@@ -238,9 +238,9 @@ class ClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_node_class: pulumi.Input[str],
-             db_type: pulumi.Input[str],
-             db_version: pulumi.Input[str],
+             db_node_class: Optional[pulumi.Input[str]] = None,
+             db_type: Optional[pulumi.Input[str]] = None,
+             db_version: Optional[pulumi.Input[str]] = None,
              allow_shut_down: Optional[pulumi.Input[str]] = None,
              auto_renew_period: Optional[pulumi.Input[int]] = None,
              backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
@@ -299,121 +299,127 @@ class ClusterArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbNodeClass' in kwargs:
+        if db_node_class is None and 'dbNodeClass' in kwargs:
             db_node_class = kwargs['dbNodeClass']
-        if 'dbType' in kwargs:
+        if db_node_class is None:
+            raise TypeError("Missing 'db_node_class' argument")
+        if db_type is None and 'dbType' in kwargs:
             db_type = kwargs['dbType']
-        if 'dbVersion' in kwargs:
+        if db_type is None:
+            raise TypeError("Missing 'db_type' argument")
+        if db_version is None and 'dbVersion' in kwargs:
             db_version = kwargs['dbVersion']
-        if 'allowShutDown' in kwargs:
+        if db_version is None:
+            raise TypeError("Missing 'db_version' argument")
+        if allow_shut_down is None and 'allowShutDown' in kwargs:
             allow_shut_down = kwargs['allowShutDown']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'backupRetentionPolicyOnClusterDeletion' in kwargs:
+        if backup_retention_policy_on_cluster_deletion is None and 'backupRetentionPolicyOnClusterDeletion' in kwargs:
             backup_retention_policy_on_cluster_deletion = kwargs['backupRetentionPolicyOnClusterDeletion']
-        if 'cloneDataPoint' in kwargs:
+        if clone_data_point is None and 'cloneDataPoint' in kwargs:
             clone_data_point = kwargs['cloneDataPoint']
-        if 'collectorStatus' in kwargs:
+        if collector_status is None and 'collectorStatus' in kwargs:
             collector_status = kwargs['collectorStatus']
-        if 'creationCategory' in kwargs:
+        if creation_category is None and 'creationCategory' in kwargs:
             creation_category = kwargs['creationCategory']
-        if 'creationOption' in kwargs:
+        if creation_option is None and 'creationOption' in kwargs:
             creation_option = kwargs['creationOption']
-        if 'dbClusterIpArrays' in kwargs:
+        if db_cluster_ip_arrays is None and 'dbClusterIpArrays' in kwargs:
             db_cluster_ip_arrays = kwargs['dbClusterIpArrays']
-        if 'dbNodeCount' in kwargs:
+        if db_node_count is None and 'dbNodeCount' in kwargs:
             db_node_count = kwargs['dbNodeCount']
-        if 'dbNodeId' in kwargs:
+        if db_node_id is None and 'dbNodeId' in kwargs:
             db_node_id = kwargs['dbNodeId']
-        if 'dbNodeNum' in kwargs:
+        if db_node_num is None and 'dbNodeNum' in kwargs:
             db_node_num = kwargs['dbNodeNum']
-        if 'defaultTimeZone' in kwargs:
+        if default_time_zone is None and 'defaultTimeZone' in kwargs:
             default_time_zone = kwargs['defaultTimeZone']
-        if 'deletionLock' in kwargs:
+        if deletion_lock is None and 'deletionLock' in kwargs:
             deletion_lock = kwargs['deletionLock']
-        if 'encryptNewTables' in kwargs:
+        if encrypt_new_tables is None and 'encryptNewTables' in kwargs:
             encrypt_new_tables = kwargs['encryptNewTables']
-        if 'encryptionKey' in kwargs:
+        if encryption_key is None and 'encryptionKey' in kwargs:
             encryption_key = kwargs['encryptionKey']
-        if 'fromTimeService' in kwargs:
+        if from_time_service is None and 'fromTimeService' in kwargs:
             from_time_service = kwargs['fromTimeService']
-        if 'gdnId' in kwargs:
+        if gdn_id is None and 'gdnId' in kwargs:
             gdn_id = kwargs['gdnId']
-        if 'hotReplicaMode' in kwargs:
+        if hot_replica_mode is None and 'hotReplicaMode' in kwargs:
             hot_replica_mode = kwargs['hotReplicaMode']
-        if 'hotStandbyCluster' in kwargs:
+        if hot_standby_cluster is None and 'hotStandbyCluster' in kwargs:
             hot_standby_cluster = kwargs['hotStandbyCluster']
-        if 'imciSwitch' in kwargs:
+        if imci_switch is None and 'imciSwitch' in kwargs:
             imci_switch = kwargs['imciSwitch']
-        if 'loosePolarLogBin' in kwargs:
+        if loose_polar_log_bin is None and 'loosePolarLogBin' in kwargs:
             loose_polar_log_bin = kwargs['loosePolarLogBin']
-        if 'lowerCaseTableNames' in kwargs:
+        if lower_case_table_names is None and 'lowerCaseTableNames' in kwargs:
             lower_case_table_names = kwargs['lowerCaseTableNames']
-        if 'maintainTime' in kwargs:
+        if maintain_time is None and 'maintainTime' in kwargs:
             maintain_time = kwargs['maintainTime']
-        if 'modifyType' in kwargs:
+        if modify_type is None and 'modifyType' in kwargs:
             modify_type = kwargs['modifyType']
-        if 'parameterGroupId' in kwargs:
+        if parameter_group_id is None and 'parameterGroupId' in kwargs:
             parameter_group_id = kwargs['parameterGroupId']
-        if 'payType' in kwargs:
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
-        if 'plannedEndTime' in kwargs:
+        if planned_end_time is None and 'plannedEndTime' in kwargs:
             planned_end_time = kwargs['plannedEndTime']
-        if 'plannedStartTime' in kwargs:
+        if planned_start_time is None and 'plannedStartTime' in kwargs:
             planned_start_time = kwargs['plannedStartTime']
-        if 'proxyClass' in kwargs:
+        if proxy_class is None and 'proxyClass' in kwargs:
             proxy_class = kwargs['proxyClass']
-        if 'proxyType' in kwargs:
+        if proxy_type is None and 'proxyType' in kwargs:
             proxy_type = kwargs['proxyType']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'scaleApRoNumMax' in kwargs:
+        if scale_ap_ro_num_max is None and 'scaleApRoNumMax' in kwargs:
             scale_ap_ro_num_max = kwargs['scaleApRoNumMax']
-        if 'scaleApRoNumMin' in kwargs:
+        if scale_ap_ro_num_min is None and 'scaleApRoNumMin' in kwargs:
             scale_ap_ro_num_min = kwargs['scaleApRoNumMin']
-        if 'scaleMax' in kwargs:
+        if scale_max is None and 'scaleMax' in kwargs:
             scale_max = kwargs['scaleMax']
-        if 'scaleMin' in kwargs:
+        if scale_min is None and 'scaleMin' in kwargs:
             scale_min = kwargs['scaleMin']
-        if 'scaleRoNumMax' in kwargs:
+        if scale_ro_num_max is None and 'scaleRoNumMax' in kwargs:
             scale_ro_num_max = kwargs['scaleRoNumMax']
-        if 'scaleRoNumMin' in kwargs:
+        if scale_ro_num_min is None and 'scaleRoNumMin' in kwargs:
             scale_ro_num_min = kwargs['scaleRoNumMin']
-        if 'secondsUntilAutoPause' in kwargs:
+        if seconds_until_auto_pause is None and 'secondsUntilAutoPause' in kwargs:
             seconds_until_auto_pause = kwargs['secondsUntilAutoPause']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'securityIps' in kwargs:
+        if security_ips is None and 'securityIps' in kwargs:
             security_ips = kwargs['securityIps']
-        if 'serverlessSteadySwitch' in kwargs:
+        if serverless_steady_switch is None and 'serverlessSteadySwitch' in kwargs:
             serverless_steady_switch = kwargs['serverlessSteadySwitch']
-        if 'serverlessType' in kwargs:
+        if serverless_type is None and 'serverlessType' in kwargs:
             serverless_type = kwargs['serverlessType']
-        if 'sourceResourceId' in kwargs:
+        if source_resource_id is None and 'sourceResourceId' in kwargs:
             source_resource_id = kwargs['sourceResourceId']
-        if 'storagePayType' in kwargs:
+        if storage_pay_type is None and 'storagePayType' in kwargs:
             storage_pay_type = kwargs['storagePayType']
-        if 'storageSpace' in kwargs:
+        if storage_space is None and 'storageSpace' in kwargs:
             storage_space = kwargs['storageSpace']
-        if 'storageType' in kwargs:
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
-        if 'subCategory' in kwargs:
+        if sub_category is None and 'subCategory' in kwargs:
             sub_category = kwargs['subCategory']
-        if 'tdeStatus' in kwargs:
+        if tde_status is None and 'tdeStatus' in kwargs:
             tde_status = kwargs['tdeStatus']
-        if 'upgradeType' in kwargs:
+        if upgrade_type is None and 'upgradeType' in kwargs:
             upgrade_type = kwargs['upgradeType']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("db_node_class", db_node_class)
@@ -1607,127 +1613,127 @@ class _ClusterState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowShutDown' in kwargs:
+        if allow_shut_down is None and 'allowShutDown' in kwargs:
             allow_shut_down = kwargs['allowShutDown']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'backupRetentionPolicyOnClusterDeletion' in kwargs:
+        if backup_retention_policy_on_cluster_deletion is None and 'backupRetentionPolicyOnClusterDeletion' in kwargs:
             backup_retention_policy_on_cluster_deletion = kwargs['backupRetentionPolicyOnClusterDeletion']
-        if 'cloneDataPoint' in kwargs:
+        if clone_data_point is None and 'cloneDataPoint' in kwargs:
             clone_data_point = kwargs['cloneDataPoint']
-        if 'collectorStatus' in kwargs:
+        if collector_status is None and 'collectorStatus' in kwargs:
             collector_status = kwargs['collectorStatus']
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'creationCategory' in kwargs:
+        if creation_category is None and 'creationCategory' in kwargs:
             creation_category = kwargs['creationCategory']
-        if 'creationOption' in kwargs:
+        if creation_option is None and 'creationOption' in kwargs:
             creation_option = kwargs['creationOption']
-        if 'dbClusterIpArrays' in kwargs:
+        if db_cluster_ip_arrays is None and 'dbClusterIpArrays' in kwargs:
             db_cluster_ip_arrays = kwargs['dbClusterIpArrays']
-        if 'dbNodeClass' in kwargs:
+        if db_node_class is None and 'dbNodeClass' in kwargs:
             db_node_class = kwargs['dbNodeClass']
-        if 'dbNodeCount' in kwargs:
+        if db_node_count is None and 'dbNodeCount' in kwargs:
             db_node_count = kwargs['dbNodeCount']
-        if 'dbNodeId' in kwargs:
+        if db_node_id is None and 'dbNodeId' in kwargs:
             db_node_id = kwargs['dbNodeId']
-        if 'dbNodeNum' in kwargs:
+        if db_node_num is None and 'dbNodeNum' in kwargs:
             db_node_num = kwargs['dbNodeNum']
-        if 'dbType' in kwargs:
+        if db_type is None and 'dbType' in kwargs:
             db_type = kwargs['dbType']
-        if 'dbVersion' in kwargs:
+        if db_version is None and 'dbVersion' in kwargs:
             db_version = kwargs['dbVersion']
-        if 'defaultTimeZone' in kwargs:
+        if default_time_zone is None and 'defaultTimeZone' in kwargs:
             default_time_zone = kwargs['defaultTimeZone']
-        if 'deletionLock' in kwargs:
+        if deletion_lock is None and 'deletionLock' in kwargs:
             deletion_lock = kwargs['deletionLock']
-        if 'encryptNewTables' in kwargs:
+        if encrypt_new_tables is None and 'encryptNewTables' in kwargs:
             encrypt_new_tables = kwargs['encryptNewTables']
-        if 'encryptionKey' in kwargs:
+        if encryption_key is None and 'encryptionKey' in kwargs:
             encryption_key = kwargs['encryptionKey']
-        if 'fromTimeService' in kwargs:
+        if from_time_service is None and 'fromTimeService' in kwargs:
             from_time_service = kwargs['fromTimeService']
-        if 'gdnId' in kwargs:
+        if gdn_id is None and 'gdnId' in kwargs:
             gdn_id = kwargs['gdnId']
-        if 'hotReplicaMode' in kwargs:
+        if hot_replica_mode is None and 'hotReplicaMode' in kwargs:
             hot_replica_mode = kwargs['hotReplicaMode']
-        if 'hotStandbyCluster' in kwargs:
+        if hot_standby_cluster is None and 'hotStandbyCluster' in kwargs:
             hot_standby_cluster = kwargs['hotStandbyCluster']
-        if 'imciSwitch' in kwargs:
+        if imci_switch is None and 'imciSwitch' in kwargs:
             imci_switch = kwargs['imciSwitch']
-        if 'loosePolarLogBin' in kwargs:
+        if loose_polar_log_bin is None and 'loosePolarLogBin' in kwargs:
             loose_polar_log_bin = kwargs['loosePolarLogBin']
-        if 'lowerCaseTableNames' in kwargs:
+        if lower_case_table_names is None and 'lowerCaseTableNames' in kwargs:
             lower_case_table_names = kwargs['lowerCaseTableNames']
-        if 'maintainTime' in kwargs:
+        if maintain_time is None and 'maintainTime' in kwargs:
             maintain_time = kwargs['maintainTime']
-        if 'modifyType' in kwargs:
+        if modify_type is None and 'modifyType' in kwargs:
             modify_type = kwargs['modifyType']
-        if 'parameterGroupId' in kwargs:
+        if parameter_group_id is None and 'parameterGroupId' in kwargs:
             parameter_group_id = kwargs['parameterGroupId']
-        if 'payType' in kwargs:
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
-        if 'plannedEndTime' in kwargs:
+        if planned_end_time is None and 'plannedEndTime' in kwargs:
             planned_end_time = kwargs['plannedEndTime']
-        if 'plannedStartTime' in kwargs:
+        if planned_start_time is None and 'plannedStartTime' in kwargs:
             planned_start_time = kwargs['plannedStartTime']
-        if 'proxyClass' in kwargs:
+        if proxy_class is None and 'proxyClass' in kwargs:
             proxy_class = kwargs['proxyClass']
-        if 'proxyType' in kwargs:
+        if proxy_type is None and 'proxyType' in kwargs:
             proxy_type = kwargs['proxyType']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'scaleApRoNumMax' in kwargs:
+        if scale_ap_ro_num_max is None and 'scaleApRoNumMax' in kwargs:
             scale_ap_ro_num_max = kwargs['scaleApRoNumMax']
-        if 'scaleApRoNumMin' in kwargs:
+        if scale_ap_ro_num_min is None and 'scaleApRoNumMin' in kwargs:
             scale_ap_ro_num_min = kwargs['scaleApRoNumMin']
-        if 'scaleMax' in kwargs:
+        if scale_max is None and 'scaleMax' in kwargs:
             scale_max = kwargs['scaleMax']
-        if 'scaleMin' in kwargs:
+        if scale_min is None and 'scaleMin' in kwargs:
             scale_min = kwargs['scaleMin']
-        if 'scaleRoNumMax' in kwargs:
+        if scale_ro_num_max is None and 'scaleRoNumMax' in kwargs:
             scale_ro_num_max = kwargs['scaleRoNumMax']
-        if 'scaleRoNumMin' in kwargs:
+        if scale_ro_num_min is None and 'scaleRoNumMin' in kwargs:
             scale_ro_num_min = kwargs['scaleRoNumMin']
-        if 'secondsUntilAutoPause' in kwargs:
+        if seconds_until_auto_pause is None and 'secondsUntilAutoPause' in kwargs:
             seconds_until_auto_pause = kwargs['secondsUntilAutoPause']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'securityIps' in kwargs:
+        if security_ips is None and 'securityIps' in kwargs:
             security_ips = kwargs['securityIps']
-        if 'serverlessSteadySwitch' in kwargs:
+        if serverless_steady_switch is None and 'serverlessSteadySwitch' in kwargs:
             serverless_steady_switch = kwargs['serverlessSteadySwitch']
-        if 'serverlessType' in kwargs:
+        if serverless_type is None and 'serverlessType' in kwargs:
             serverless_type = kwargs['serverlessType']
-        if 'sourceResourceId' in kwargs:
+        if source_resource_id is None and 'sourceResourceId' in kwargs:
             source_resource_id = kwargs['sourceResourceId']
-        if 'storagePayType' in kwargs:
+        if storage_pay_type is None and 'storagePayType' in kwargs:
             storage_pay_type = kwargs['storagePayType']
-        if 'storageSpace' in kwargs:
+        if storage_space is None and 'storageSpace' in kwargs:
             storage_space = kwargs['storageSpace']
-        if 'storageType' in kwargs:
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
-        if 'subCategory' in kwargs:
+        if sub_category is None and 'subCategory' in kwargs:
             sub_category = kwargs['subCategory']
-        if 'tdeRegion' in kwargs:
+        if tde_region is None and 'tdeRegion' in kwargs:
             tde_region = kwargs['tdeRegion']
-        if 'tdeStatus' in kwargs:
+        if tde_status is None and 'tdeStatus' in kwargs:
             tde_status = kwargs['tdeStatus']
-        if 'upgradeType' in kwargs:
+        if upgrade_type is None and 'upgradeType' in kwargs:
             upgrade_type = kwargs['upgradeType']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if allow_shut_down is not None:

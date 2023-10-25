@@ -45,13 +45,13 @@ class AclArgs:
              name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'entryLists' in kwargs:
+        if entry_lists is None and 'entryLists' in kwargs:
             entry_lists = kwargs['entryLists']
-        if 'ipVersion' in kwargs:
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         if entry_lists is not None:
@@ -164,13 +164,13 @@ class _AclState:
              name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'entryLists' in kwargs:
+        if entry_lists is None and 'entryLists' in kwargs:
             entry_lists = kwargs['entryLists']
-        if 'ipVersion' in kwargs:
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         if entry_lists is not None:
@@ -287,14 +287,6 @@ class Acl(pulumi.CustomResource):
 
         For information about acl and how to use it, see [Configure an access control list](https://www.alibabacloud.com/help/doc-detail/70015.htm).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        acl = alicloud.slb.Acl("acl", ip_version="ipv4")
-        ```
         ## Entry Block
 
         The entry mapping supports the following:
@@ -349,14 +341,6 @@ class Acl(pulumi.CustomResource):
 
         For information about acl and how to use it, see [Configure an access control list](https://www.alibabacloud.com/help/doc-detail/70015.htm).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        acl = alicloud.slb.Acl("acl", ip_version="ipv4")
-        ```
         ## Entry Block
 
         The entry mapping supports the following:

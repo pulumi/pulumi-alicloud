@@ -85,9 +85,9 @@ class ListenerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             listener_port: pulumi.Input[int],
-             listener_protocol: pulumi.Input[str],
-             load_balancer_id: pulumi.Input[str],
+             listener_port: Optional[pulumi.Input[int]] = None,
+             listener_protocol: Optional[pulumi.Input[str]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
              access_log_record_customized_headers_enabled: Optional[pulumi.Input[bool]] = None,
              access_log_tracing_config: Optional[pulumi.Input['ListenerAccessLogTracingConfigArgs']] = None,
              acl_config: Optional[pulumi.Input['ListenerAclConfigArgs']] = None,
@@ -103,39 +103,45 @@ class ListenerArgs:
              security_policy_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              x_forwarded_for_config: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'listenerPort' in kwargs:
+        if listener_port is None and 'listenerPort' in kwargs:
             listener_port = kwargs['listenerPort']
-        if 'listenerProtocol' in kwargs:
+        if listener_port is None:
+            raise TypeError("Missing 'listener_port' argument")
+        if listener_protocol is None and 'listenerProtocol' in kwargs:
             listener_protocol = kwargs['listenerProtocol']
-        if 'loadBalancerId' in kwargs:
+        if listener_protocol is None:
+            raise TypeError("Missing 'listener_protocol' argument")
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
-        if 'accessLogRecordCustomizedHeadersEnabled' in kwargs:
+        if load_balancer_id is None:
+            raise TypeError("Missing 'load_balancer_id' argument")
+        if access_log_record_customized_headers_enabled is None and 'accessLogRecordCustomizedHeadersEnabled' in kwargs:
             access_log_record_customized_headers_enabled = kwargs['accessLogRecordCustomizedHeadersEnabled']
-        if 'accessLogTracingConfig' in kwargs:
+        if access_log_tracing_config is None and 'accessLogTracingConfig' in kwargs:
             access_log_tracing_config = kwargs['accessLogTracingConfig']
-        if 'aclConfig' in kwargs:
+        if acl_config is None and 'aclConfig' in kwargs:
             acl_config = kwargs['aclConfig']
-        if 'defaultActions' in kwargs:
+        if default_actions is None and 'defaultActions' in kwargs:
             default_actions = kwargs['defaultActions']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'gzipEnabled' in kwargs:
+        if gzip_enabled is None and 'gzipEnabled' in kwargs:
             gzip_enabled = kwargs['gzipEnabled']
-        if 'http2Enabled' in kwargs:
+        if http2_enabled is None and 'http2Enabled' in kwargs:
             http2_enabled = kwargs['http2Enabled']
-        if 'idleTimeout' in kwargs:
+        if idle_timeout is None and 'idleTimeout' in kwargs:
             idle_timeout = kwargs['idleTimeout']
-        if 'listenerDescription' in kwargs:
+        if listener_description is None and 'listenerDescription' in kwargs:
             listener_description = kwargs['listenerDescription']
-        if 'quicConfig' in kwargs:
+        if quic_config is None and 'quicConfig' in kwargs:
             quic_config = kwargs['quicConfig']
-        if 'requestTimeout' in kwargs:
+        if request_timeout is None and 'requestTimeout' in kwargs:
             request_timeout = kwargs['requestTimeout']
-        if 'securityPolicyId' in kwargs:
+        if security_policy_id is None and 'securityPolicyId' in kwargs:
             security_policy_id = kwargs['securityPolicyId']
-        if 'xForwardedForConfig' in kwargs:
+        if x_forwarded_for_config is None and 'xForwardedForConfig' in kwargs:
             x_forwarded_for_config = kwargs['xForwardedForConfig']
 
         _setter("listener_port", listener_port)
@@ -491,39 +497,39 @@ class _ListenerState:
              security_policy_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              x_forwarded_for_config: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessLogRecordCustomizedHeadersEnabled' in kwargs:
+        if access_log_record_customized_headers_enabled is None and 'accessLogRecordCustomizedHeadersEnabled' in kwargs:
             access_log_record_customized_headers_enabled = kwargs['accessLogRecordCustomizedHeadersEnabled']
-        if 'accessLogTracingConfig' in kwargs:
+        if access_log_tracing_config is None and 'accessLogTracingConfig' in kwargs:
             access_log_tracing_config = kwargs['accessLogTracingConfig']
-        if 'aclConfig' in kwargs:
+        if acl_config is None and 'aclConfig' in kwargs:
             acl_config = kwargs['aclConfig']
-        if 'defaultActions' in kwargs:
+        if default_actions is None and 'defaultActions' in kwargs:
             default_actions = kwargs['defaultActions']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'gzipEnabled' in kwargs:
+        if gzip_enabled is None and 'gzipEnabled' in kwargs:
             gzip_enabled = kwargs['gzipEnabled']
-        if 'http2Enabled' in kwargs:
+        if http2_enabled is None and 'http2Enabled' in kwargs:
             http2_enabled = kwargs['http2Enabled']
-        if 'idleTimeout' in kwargs:
+        if idle_timeout is None and 'idleTimeout' in kwargs:
             idle_timeout = kwargs['idleTimeout']
-        if 'listenerDescription' in kwargs:
+        if listener_description is None and 'listenerDescription' in kwargs:
             listener_description = kwargs['listenerDescription']
-        if 'listenerPort' in kwargs:
+        if listener_port is None and 'listenerPort' in kwargs:
             listener_port = kwargs['listenerPort']
-        if 'listenerProtocol' in kwargs:
+        if listener_protocol is None and 'listenerProtocol' in kwargs:
             listener_protocol = kwargs['listenerProtocol']
-        if 'loadBalancerId' in kwargs:
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
-        if 'quicConfig' in kwargs:
+        if quic_config is None and 'quicConfig' in kwargs:
             quic_config = kwargs['quicConfig']
-        if 'requestTimeout' in kwargs:
+        if request_timeout is None and 'requestTimeout' in kwargs:
             request_timeout = kwargs['requestTimeout']
-        if 'securityPolicyId' in kwargs:
+        if security_policy_id is None and 'securityPolicyId' in kwargs:
             security_policy_id = kwargs['securityPolicyId']
-        if 'xForwardedForConfig' in kwargs:
+        if x_forwarded_for_config is None and 'xForwardedForConfig' in kwargs:
             x_forwarded_for_config = kwargs['xForwardedForConfig']
 
         if access_log_record_customized_headers_enabled is not None:
@@ -926,23 +932,11 @@ class Listener(pulumi.CustomResource):
             __props__ = ListenerArgs.__new__(ListenerArgs)
 
             __props__.__dict__["access_log_record_customized_headers_enabled"] = access_log_record_customized_headers_enabled
-            if access_log_tracing_config is not None and not isinstance(access_log_tracing_config, ListenerAccessLogTracingConfigArgs):
-                access_log_tracing_config = access_log_tracing_config or {}
-                def _setter(key, value):
-                    access_log_tracing_config[key] = value
-                ListenerAccessLogTracingConfigArgs._configure(_setter, **access_log_tracing_config)
+            access_log_tracing_config = _utilities.configure(access_log_tracing_config, ListenerAccessLogTracingConfigArgs, True)
             __props__.__dict__["access_log_tracing_config"] = access_log_tracing_config
-            if acl_config is not None and not isinstance(acl_config, ListenerAclConfigArgs):
-                acl_config = acl_config or {}
-                def _setter(key, value):
-                    acl_config[key] = value
-                ListenerAclConfigArgs._configure(_setter, **acl_config)
+            acl_config = _utilities.configure(acl_config, ListenerAclConfigArgs, True)
             __props__.__dict__["acl_config"] = acl_config
-            if certificates is not None and not isinstance(certificates, ListenerCertificatesArgs):
-                certificates = certificates or {}
-                def _setter(key, value):
-                    certificates[key] = value
-                ListenerCertificatesArgs._configure(_setter, **certificates)
+            certificates = _utilities.configure(certificates, ListenerCertificatesArgs, True)
             __props__.__dict__["certificates"] = certificates
             __props__.__dict__["default_actions"] = default_actions
             __props__.__dict__["dry_run"] = dry_run
@@ -959,20 +953,12 @@ class Listener(pulumi.CustomResource):
             if load_balancer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'load_balancer_id'")
             __props__.__dict__["load_balancer_id"] = load_balancer_id
-            if quic_config is not None and not isinstance(quic_config, ListenerQuicConfigArgs):
-                quic_config = quic_config or {}
-                def _setter(key, value):
-                    quic_config[key] = value
-                ListenerQuicConfigArgs._configure(_setter, **quic_config)
+            quic_config = _utilities.configure(quic_config, ListenerQuicConfigArgs, True)
             __props__.__dict__["quic_config"] = quic_config
             __props__.__dict__["request_timeout"] = request_timeout
             __props__.__dict__["security_policy_id"] = security_policy_id
             __props__.__dict__["status"] = status
-            if x_forwarded_for_config is not None and not isinstance(x_forwarded_for_config, ListenerXForwardedForConfigArgs):
-                x_forwarded_for_config = x_forwarded_for_config or {}
-                def _setter(key, value):
-                    x_forwarded_for_config[key] = value
-                ListenerXForwardedForConfigArgs._configure(_setter, **x_forwarded_for_config)
+            x_forwarded_for_config = _utilities.configure(x_forwarded_for_config, ListenerXForwardedForConfigArgs, True)
             __props__.__dict__["x_forwarded_for_config"] = x_forwarded_for_config
         super(Listener, __self__).__init__(
             'alicloud:alb/listener:Listener',

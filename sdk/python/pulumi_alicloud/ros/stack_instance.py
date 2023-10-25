@@ -49,31 +49,37 @@ class StackInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             stack_group_name: pulumi.Input[str],
-             stack_instance_account_id: pulumi.Input[str],
-             stack_instance_region_id: pulumi.Input[str],
+             stack_group_name: Optional[pulumi.Input[str]] = None,
+             stack_instance_account_id: Optional[pulumi.Input[str]] = None,
+             stack_instance_region_id: Optional[pulumi.Input[str]] = None,
              operation_description: Optional[pulumi.Input[str]] = None,
              operation_preferences: Optional[pulumi.Input[str]] = None,
              parameter_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]] = None,
              retain_stacks: Optional[pulumi.Input[bool]] = None,
              timeout_in_minutes: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'stackGroupName' in kwargs:
+        if stack_group_name is None and 'stackGroupName' in kwargs:
             stack_group_name = kwargs['stackGroupName']
-        if 'stackInstanceAccountId' in kwargs:
+        if stack_group_name is None:
+            raise TypeError("Missing 'stack_group_name' argument")
+        if stack_instance_account_id is None and 'stackInstanceAccountId' in kwargs:
             stack_instance_account_id = kwargs['stackInstanceAccountId']
-        if 'stackInstanceRegionId' in kwargs:
+        if stack_instance_account_id is None:
+            raise TypeError("Missing 'stack_instance_account_id' argument")
+        if stack_instance_region_id is None and 'stackInstanceRegionId' in kwargs:
             stack_instance_region_id = kwargs['stackInstanceRegionId']
-        if 'operationDescription' in kwargs:
+        if stack_instance_region_id is None:
+            raise TypeError("Missing 'stack_instance_region_id' argument")
+        if operation_description is None and 'operationDescription' in kwargs:
             operation_description = kwargs['operationDescription']
-        if 'operationPreferences' in kwargs:
+        if operation_preferences is None and 'operationPreferences' in kwargs:
             operation_preferences = kwargs['operationPreferences']
-        if 'parameterOverrides' in kwargs:
+        if parameter_overrides is None and 'parameterOverrides' in kwargs:
             parameter_overrides = kwargs['parameterOverrides']
-        if 'retainStacks' in kwargs:
+        if retain_stacks is None and 'retainStacks' in kwargs:
             retain_stacks = kwargs['retainStacks']
-        if 'timeoutInMinutes' in kwargs:
+        if timeout_in_minutes is None and 'timeoutInMinutes' in kwargs:
             timeout_in_minutes = kwargs['timeoutInMinutes']
 
         _setter("stack_group_name", stack_group_name)
@@ -235,23 +241,23 @@ class _StackInstanceState:
              stack_instance_region_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              timeout_in_minutes: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'operationDescription' in kwargs:
+        if operation_description is None and 'operationDescription' in kwargs:
             operation_description = kwargs['operationDescription']
-        if 'operationPreferences' in kwargs:
+        if operation_preferences is None and 'operationPreferences' in kwargs:
             operation_preferences = kwargs['operationPreferences']
-        if 'parameterOverrides' in kwargs:
+        if parameter_overrides is None and 'parameterOverrides' in kwargs:
             parameter_overrides = kwargs['parameterOverrides']
-        if 'retainStacks' in kwargs:
+        if retain_stacks is None and 'retainStacks' in kwargs:
             retain_stacks = kwargs['retainStacks']
-        if 'stackGroupName' in kwargs:
+        if stack_group_name is None and 'stackGroupName' in kwargs:
             stack_group_name = kwargs['stackGroupName']
-        if 'stackInstanceAccountId' in kwargs:
+        if stack_instance_account_id is None and 'stackInstanceAccountId' in kwargs:
             stack_instance_account_id = kwargs['stackInstanceAccountId']
-        if 'stackInstanceRegionId' in kwargs:
+        if stack_instance_region_id is None and 'stackInstanceRegionId' in kwargs:
             stack_instance_region_id = kwargs['stackInstanceRegionId']
-        if 'timeoutInMinutes' in kwargs:
+        if timeout_in_minutes is None and 'timeoutInMinutes' in kwargs:
             timeout_in_minutes = kwargs['timeoutInMinutes']
 
         if operation_description is not None:
@@ -403,40 +409,6 @@ class StackInstance(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.145.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_regions = alicloud.ros.get_regions()
-        example_stack_group = alicloud.ros.StackGroup("exampleStackGroup",
-            stack_group_name=var["name"],
-            template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\", \\"Parameters\\": {\\"VpcName\\": {\\"Type\\": \\"String\\"},\\"InstanceType\\": {\\"Type\\": \\"String\\"}}}",
-            description="test for stack groups",
-            parameters=[
-                alicloud.ros.StackGroupParameterArgs(
-                    parameter_key="VpcName",
-                    parameter_value="VpcName",
-                ),
-                alicloud.ros.StackGroupParameterArgs(
-                    parameter_key="InstanceType",
-                    parameter_value="InstanceType",
-                ),
-            ])
-        example_stack_instance = alicloud.ros.StackInstance("exampleStackInstance",
-            stack_group_name=example_stack_group.stack_group_name,
-            stack_instance_account_id="example_value",
-            stack_instance_region_id=example_regions.regions[0].region_id,
-            operation_preferences="{\\"FailureToleranceCount\\": 1, \\"MaxConcurrentCount\\": 2}",
-            parameter_overrides=[alicloud.ros.StackInstanceParameterOverrideArgs(
-                parameter_value="VpcName",
-                parameter_key="VpcName",
-            )])
-        ```
-
         ## Import
 
         ROS Stack Instance can be imported using the id, e.g.
@@ -468,40 +440,6 @@ class StackInstance(pulumi.CustomResource):
         For information about ROS Stack Instance and how to use it, see [What is Stack Instance](https://www.alibabacloud.com/help/en/doc-detail/151338.html).
 
         > **NOTE:** Available in v1.145.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_regions = alicloud.ros.get_regions()
-        example_stack_group = alicloud.ros.StackGroup("exampleStackGroup",
-            stack_group_name=var["name"],
-            template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\", \\"Parameters\\": {\\"VpcName\\": {\\"Type\\": \\"String\\"},\\"InstanceType\\": {\\"Type\\": \\"String\\"}}}",
-            description="test for stack groups",
-            parameters=[
-                alicloud.ros.StackGroupParameterArgs(
-                    parameter_key="VpcName",
-                    parameter_value="VpcName",
-                ),
-                alicloud.ros.StackGroupParameterArgs(
-                    parameter_key="InstanceType",
-                    parameter_value="InstanceType",
-                ),
-            ])
-        example_stack_instance = alicloud.ros.StackInstance("exampleStackInstance",
-            stack_group_name=example_stack_group.stack_group_name,
-            stack_instance_account_id="example_value",
-            stack_instance_region_id=example_regions.regions[0].region_id,
-            operation_preferences="{\\"FailureToleranceCount\\": 1, \\"MaxConcurrentCount\\": 2}",
-            parameter_overrides=[alicloud.ros.StackInstanceParameterOverrideArgs(
-                parameter_value="VpcName",
-                parameter_key="VpcName",
-            )])
-        ```
 
         ## Import
 

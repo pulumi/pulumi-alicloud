@@ -19,46 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.34.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooAccessGroup, err := nas.NewAccessGroup(ctx, "fooAccessGroup", &nas.AccessGroupArgs{
-//				AccessGroupName: pulumi.String("tf-NasConfigName"),
-//				AccessGroupType: pulumi.String("Vpc"),
-//				Description:     pulumi.String("tf-testAccNasConfig"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = nas.NewAccessRule(ctx, "fooAccessRule", &nas.AccessRuleArgs{
-//				AccessGroupName: fooAccessGroup.AccessGroupName,
-//				SourceCidrIp:    pulumi.String("168.1.1.0/16"),
-//				RwAccessType:    pulumi.String("RDWR"),
-//				UserAccessType:  pulumi.String("no_squash"),
-//				Priority:        pulumi.Int(2),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Nas Access Rule can be imported using the id, e.g.

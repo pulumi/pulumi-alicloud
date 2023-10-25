@@ -42,11 +42,11 @@ class AddressBookEcsTagArgs:
              _setter: Callable[[Any, Any], None],
              tag_key: Optional[pulumi.Input[str]] = None,
              tag_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'tagKey' in kwargs:
+        if tag_key is None and 'tagKey' in kwargs:
             tag_key = kwargs['tagKey']
-        if 'tagValue' in kwargs:
+        if tag_value is None and 'tagValue' in kwargs:
             tag_value = kwargs['tagValue']
 
         if tag_key is not None:
@@ -141,7 +141,7 @@ class FirewallVpcFirewallCenLocalVpcArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_instance_id: pulumi.Input[str],
+             network_instance_id: Optional[pulumi.Input[str]] = None,
              attachment_id: Optional[pulumi.Input[str]] = None,
              attachment_name: Optional[pulumi.Input[str]] = None,
              defend_cidr_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -158,41 +158,43 @@ class FirewallVpcFirewallCenLocalVpcArgs:
              vpc_cidr_table_lists: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs']]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vpc_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'networkInstanceId' in kwargs:
+        if network_instance_id is None and 'networkInstanceId' in kwargs:
             network_instance_id = kwargs['networkInstanceId']
-        if 'attachmentId' in kwargs:
+        if network_instance_id is None:
+            raise TypeError("Missing 'network_instance_id' argument")
+        if attachment_id is None and 'attachmentId' in kwargs:
             attachment_id = kwargs['attachmentId']
-        if 'attachmentName' in kwargs:
+        if attachment_name is None and 'attachmentName' in kwargs:
             attachment_name = kwargs['attachmentName']
-        if 'defendCidrLists' in kwargs:
+        if defend_cidr_lists is None and 'defendCidrLists' in kwargs:
             defend_cidr_lists = kwargs['defendCidrLists']
-        if 'eniLists' in kwargs:
+        if eni_lists is None and 'eniLists' in kwargs:
             eni_lists = kwargs['eniLists']
-        if 'manualVswitchId' in kwargs:
+        if manual_vswitch_id is None and 'manualVswitchId' in kwargs:
             manual_vswitch_id = kwargs['manualVswitchId']
-        if 'networkInstanceName' in kwargs:
+        if network_instance_name is None and 'networkInstanceName' in kwargs:
             network_instance_name = kwargs['networkInstanceName']
-        if 'networkInstanceType' in kwargs:
+        if network_instance_type is None and 'networkInstanceType' in kwargs:
             network_instance_type = kwargs['networkInstanceType']
-        if 'ownerId' in kwargs:
+        if owner_id is None and 'ownerId' in kwargs:
             owner_id = kwargs['ownerId']
-        if 'regionNo' in kwargs:
+        if region_no is None and 'regionNo' in kwargs:
             region_no = kwargs['regionNo']
-        if 'routeMode' in kwargs:
+        if route_mode is None and 'routeMode' in kwargs:
             route_mode = kwargs['routeMode']
-        if 'supportManualMode' in kwargs:
+        if support_manual_mode is None and 'supportManualMode' in kwargs:
             support_manual_mode = kwargs['supportManualMode']
-        if 'transitRouterId' in kwargs:
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'transitRouterType' in kwargs:
+        if transit_router_type is None and 'transitRouterType' in kwargs:
             transit_router_type = kwargs['transitRouterType']
-        if 'vpcCidrTableLists' in kwargs:
+        if vpc_cidr_table_lists is None and 'vpcCidrTableLists' in kwargs:
             vpc_cidr_table_lists = kwargs['vpcCidrTableLists']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vpcName' in kwargs:
+        if vpc_name is None and 'vpcName' in kwargs:
             vpc_name = kwargs['vpcName']
 
         _setter("network_instance_id", network_instance_id)
@@ -453,11 +455,11 @@ class FirewallVpcFirewallCenLocalVpcEniListArgs:
              _setter: Callable[[Any, Any], None],
              eni_id: Optional[pulumi.Input[str]] = None,
              eni_private_ip_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eniId' in kwargs:
+        if eni_id is None and 'eniId' in kwargs:
             eni_id = kwargs['eniId']
-        if 'eniPrivateIpAddress' in kwargs:
+        if eni_private_ip_address is None and 'eniPrivateIpAddress' in kwargs:
             eni_private_ip_address = kwargs['eniPrivateIpAddress']
 
         if eni_id is not None:
@@ -509,11 +511,11 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs:
              _setter: Callable[[Any, Any], None],
              route_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs']]]] = None,
              route_table_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'routeEntryLists' in kwargs:
+        if route_entry_lists is None and 'routeEntryLists' in kwargs:
             route_entry_lists = kwargs['routeEntryLists']
-        if 'routeTableId' in kwargs:
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
 
         if route_entry_lists is not None:
@@ -565,11 +567,11 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs:
              _setter: Callable[[Any, Any], None],
              destination_cidr: Optional[pulumi.Input[str]] = None,
              next_hop_instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationCidr' in kwargs:
+        if destination_cidr is None and 'destinationCidr' in kwargs:
             destination_cidr = kwargs['destinationCidr']
-        if 'nextHopInstanceId' in kwargs:
+        if next_hop_instance_id is None and 'nextHopInstanceId' in kwargs:
             next_hop_instance_id = kwargs['nextHopInstanceId']
 
         if destination_cidr is not None:
@@ -634,28 +636,34 @@ class FirewallVpcFirewallLocalVpcArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_vpc_cidr_table_lists: pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs']]],
-             region_no: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
+             local_vpc_cidr_table_lists: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs']]]] = None,
+             region_no: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
              eni_id: Optional[pulumi.Input[str]] = None,
              eni_private_ip_address: Optional[pulumi.Input[str]] = None,
              router_interface_id: Optional[pulumi.Input[str]] = None,
              vpc_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'localVpcCidrTableLists' in kwargs:
+        if local_vpc_cidr_table_lists is None and 'localVpcCidrTableLists' in kwargs:
             local_vpc_cidr_table_lists = kwargs['localVpcCidrTableLists']
-        if 'regionNo' in kwargs:
+        if local_vpc_cidr_table_lists is None:
+            raise TypeError("Missing 'local_vpc_cidr_table_lists' argument")
+        if region_no is None and 'regionNo' in kwargs:
             region_no = kwargs['regionNo']
-        if 'vpcId' in kwargs:
+        if region_no is None:
+            raise TypeError("Missing 'region_no' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'eniId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if eni_id is None and 'eniId' in kwargs:
             eni_id = kwargs['eniId']
-        if 'eniPrivateIpAddress' in kwargs:
+        if eni_private_ip_address is None and 'eniPrivateIpAddress' in kwargs:
             eni_private_ip_address = kwargs['eniPrivateIpAddress']
-        if 'routerInterfaceId' in kwargs:
+        if router_interface_id is None and 'routerInterfaceId' in kwargs:
             router_interface_id = kwargs['routerInterfaceId']
-        if 'vpcName' in kwargs:
+        if vpc_name is None and 'vpcName' in kwargs:
             vpc_name = kwargs['vpcName']
 
         _setter("local_vpc_cidr_table_lists", local_vpc_cidr_table_lists)
@@ -772,14 +780,18 @@ class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_route_entry_lists: pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs']]],
-             local_route_table_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             local_route_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs']]]] = None,
+             local_route_table_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'localRouteEntryLists' in kwargs:
+        if local_route_entry_lists is None and 'localRouteEntryLists' in kwargs:
             local_route_entry_lists = kwargs['localRouteEntryLists']
-        if 'localRouteTableId' in kwargs:
+        if local_route_entry_lists is None:
+            raise TypeError("Missing 'local_route_entry_lists' argument")
+        if local_route_table_id is None and 'localRouteTableId' in kwargs:
             local_route_table_id = kwargs['localRouteTableId']
+        if local_route_table_id is None:
+            raise TypeError("Missing 'local_route_table_id' argument")
 
         _setter("local_route_entry_lists", local_route_entry_lists)
         _setter("local_route_table_id", local_route_table_id)
@@ -826,14 +838,18 @@ class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_destination_cidr: pulumi.Input[str],
-             local_next_hop_instance_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             local_destination_cidr: Optional[pulumi.Input[str]] = None,
+             local_next_hop_instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'localDestinationCidr' in kwargs:
+        if local_destination_cidr is None and 'localDestinationCidr' in kwargs:
             local_destination_cidr = kwargs['localDestinationCidr']
-        if 'localNextHopInstanceId' in kwargs:
+        if local_destination_cidr is None:
+            raise TypeError("Missing 'local_destination_cidr' argument")
+        if local_next_hop_instance_id is None and 'localNextHopInstanceId' in kwargs:
             local_next_hop_instance_id = kwargs['localNextHopInstanceId']
+        if local_next_hop_instance_id is None:
+            raise TypeError("Missing 'local_next_hop_instance_id' argument")
 
         _setter("local_destination_cidr", local_destination_cidr)
         _setter("local_next_hop_instance_id", local_next_hop_instance_id)
@@ -895,28 +911,34 @@ class FirewallVpcFirewallPeerVpcArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             peer_vpc_cidr_table_lists: pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs']]],
-             region_no: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
+             peer_vpc_cidr_table_lists: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs']]]] = None,
+             region_no: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
              eni_id: Optional[pulumi.Input[str]] = None,
              eni_private_ip_address: Optional[pulumi.Input[str]] = None,
              router_interface_id: Optional[pulumi.Input[str]] = None,
              vpc_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'peerVpcCidrTableLists' in kwargs:
+        if peer_vpc_cidr_table_lists is None and 'peerVpcCidrTableLists' in kwargs:
             peer_vpc_cidr_table_lists = kwargs['peerVpcCidrTableLists']
-        if 'regionNo' in kwargs:
+        if peer_vpc_cidr_table_lists is None:
+            raise TypeError("Missing 'peer_vpc_cidr_table_lists' argument")
+        if region_no is None and 'regionNo' in kwargs:
             region_no = kwargs['regionNo']
-        if 'vpcId' in kwargs:
+        if region_no is None:
+            raise TypeError("Missing 'region_no' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'eniId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if eni_id is None and 'eniId' in kwargs:
             eni_id = kwargs['eniId']
-        if 'eniPrivateIpAddress' in kwargs:
+        if eni_private_ip_address is None and 'eniPrivateIpAddress' in kwargs:
             eni_private_ip_address = kwargs['eniPrivateIpAddress']
-        if 'routerInterfaceId' in kwargs:
+        if router_interface_id is None and 'routerInterfaceId' in kwargs:
             router_interface_id = kwargs['routerInterfaceId']
-        if 'vpcName' in kwargs:
+        if vpc_name is None and 'vpcName' in kwargs:
             vpc_name = kwargs['vpcName']
 
         _setter("peer_vpc_cidr_table_lists", peer_vpc_cidr_table_lists)
@@ -1033,14 +1055,18 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             peer_route_entry_lists: pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs']]],
-             peer_route_table_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             peer_route_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs']]]] = None,
+             peer_route_table_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'peerRouteEntryLists' in kwargs:
+        if peer_route_entry_lists is None and 'peerRouteEntryLists' in kwargs:
             peer_route_entry_lists = kwargs['peerRouteEntryLists']
-        if 'peerRouteTableId' in kwargs:
+        if peer_route_entry_lists is None:
+            raise TypeError("Missing 'peer_route_entry_lists' argument")
+        if peer_route_table_id is None and 'peerRouteTableId' in kwargs:
             peer_route_table_id = kwargs['peerRouteTableId']
+        if peer_route_table_id is None:
+            raise TypeError("Missing 'peer_route_table_id' argument")
 
         _setter("peer_route_entry_lists", peer_route_entry_lists)
         _setter("peer_route_table_id", peer_route_table_id)
@@ -1087,14 +1113,18 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             peer_destination_cidr: pulumi.Input[str],
-             peer_next_hop_instance_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             peer_destination_cidr: Optional[pulumi.Input[str]] = None,
+             peer_next_hop_instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'peerDestinationCidr' in kwargs:
+        if peer_destination_cidr is None and 'peerDestinationCidr' in kwargs:
             peer_destination_cidr = kwargs['peerDestinationCidr']
-        if 'peerNextHopInstanceId' in kwargs:
+        if peer_destination_cidr is None:
+            raise TypeError("Missing 'peer_destination_cidr' argument")
+        if peer_next_hop_instance_id is None and 'peerNextHopInstanceId' in kwargs:
             peer_next_hop_instance_id = kwargs['peerNextHopInstanceId']
+        if peer_next_hop_instance_id is None:
+            raise TypeError("Missing 'peer_next_hop_instance_id' argument")
 
         _setter("peer_destination_cidr", peer_destination_cidr)
         _setter("peer_next_hop_instance_id", peer_next_hop_instance_id)

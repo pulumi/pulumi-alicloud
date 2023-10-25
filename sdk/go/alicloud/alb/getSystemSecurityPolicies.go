@@ -15,37 +15,6 @@ import (
 // This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.183.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaults, err := alb.GetSystemSecurityPolicies(ctx, &alb.GetSystemSecurityPoliciesArgs{
-//				Ids: []string{
-//					"tls_cipher_policy_1_0",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("albSystemSecurityPolicyId1", defaults.Policies[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetSystemSecurityPolicies(ctx *pulumi.Context, args *GetSystemSecurityPoliciesArgs, opts ...pulumi.InvokeOption) (*GetSystemSecurityPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSystemSecurityPoliciesResult

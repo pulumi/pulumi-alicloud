@@ -44,17 +44,23 @@ class K8sSlbAttachmentSlbConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port_mappings: pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigPortMappingArgs']]],
-             scheduler: pulumi.Input[str],
-             type: pulumi.Input[str],
+             port_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigPortMappingArgs']]]] = None,
+             scheduler: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              slb_id: Optional[pulumi.Input[str]] = None,
              specification: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'portMappings' in kwargs:
+        if port_mappings is None and 'portMappings' in kwargs:
             port_mappings = kwargs['portMappings']
-        if 'slbId' in kwargs:
+        if port_mappings is None:
+            raise TypeError("Missing 'port_mappings' argument")
+        if scheduler is None:
+            raise TypeError("Missing 'scheduler' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if slb_id is None and 'slbId' in kwargs:
             slb_id = kwargs['slbId']
 
         _setter("port_mappings", port_mappings)
@@ -160,16 +166,20 @@ class K8sSlbAttachmentSlbConfigPortMappingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             loadbalancer_protocol: pulumi.Input[str],
-             service_port: pulumi.Input['K8sSlbAttachmentSlbConfigPortMappingServicePortArgs'],
+             loadbalancer_protocol: Optional[pulumi.Input[str]] = None,
+             service_port: Optional[pulumi.Input['K8sSlbAttachmentSlbConfigPortMappingServicePortArgs']] = None,
              cert_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'loadbalancerProtocol' in kwargs:
+        if loadbalancer_protocol is None and 'loadbalancerProtocol' in kwargs:
             loadbalancer_protocol = kwargs['loadbalancerProtocol']
-        if 'servicePort' in kwargs:
+        if loadbalancer_protocol is None:
+            raise TypeError("Missing 'loadbalancer_protocol' argument")
+        if service_port is None and 'servicePort' in kwargs:
             service_port = kwargs['servicePort']
-        if 'certId' in kwargs:
+        if service_port is None:
+            raise TypeError("Missing 'service_port' argument")
+        if cert_id is None and 'certId' in kwargs:
             cert_id = kwargs['certId']
 
         _setter("loadbalancer_protocol", loadbalancer_protocol)
@@ -234,13 +244,19 @@ class K8sSlbAttachmentSlbConfigPortMappingServicePortArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port: pulumi.Input[int],
-             protocol: pulumi.Input[str],
-             target_port: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             port: Optional[pulumi.Input[int]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             target_port: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'targetPort' in kwargs:
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if target_port is None and 'targetPort' in kwargs:
             target_port = kwargs['targetPort']
+        if target_port is None:
+            raise TypeError("Missing 'target_port' argument")
 
         _setter("port", port)
         _setter("protocol", protocol)

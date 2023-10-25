@@ -31,14 +31,6 @@ import * as utilities from "../utilities";
  *
  * For information about acl and how to use it, see [Configure an access control list](https://www.alibabacloud.com/help/doc-detail/70015.htm).
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const acl = new alicloud.slb.Acl("acl", {ipVersion: "ipv4"});
- * ```
  * ## Entry Block
  *
  * The entry mapping supports the following:

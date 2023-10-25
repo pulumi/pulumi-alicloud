@@ -193,17 +193,6 @@ def get_mount_targets(access_group_name: Optional[str] = None,
 
     > **NOTE**: Available in 1.35.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.nas.get_mount_targets(file_system_id="1a2sc4d",
-        access_group_name="tf-testAccNasConfig")
-    pulumi.export("theFirstMountTargetDomain", example.targets[0].id)
-    ```
-
 
     :param str access_group_name: Filter results by a specific AccessGroupName.
     :param str file_system_id: The ID of the FileSystem that owns the MountTarget.
@@ -261,17 +250,6 @@ def get_mount_targets_output(access_group_name: Optional[pulumi.Input[Optional[s
     This data source provides MountTargets available to the user.
 
     > **NOTE**: Available in 1.35.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.nas.get_mount_targets(file_system_id="1a2sc4d",
-        access_group_name="tf-testAccNasConfig")
-    pulumi.export("theFirstMountTargetDomain", example.targets[0].id)
-    ```
 
 
     :param str access_group_name: Filter results by a specific AccessGroupName.

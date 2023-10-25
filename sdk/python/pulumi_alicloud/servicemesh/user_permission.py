@@ -31,12 +31,14 @@ class UserPermissionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sub_account_user_id: pulumi.Input[str],
+             sub_account_user_id: Optional[pulumi.Input[str]] = None,
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'subAccountUserId' in kwargs:
+        if sub_account_user_id is None and 'subAccountUserId' in kwargs:
             sub_account_user_id = kwargs['subAccountUserId']
+        if sub_account_user_id is None:
+            raise TypeError("Missing 'sub_account_user_id' argument")
 
         _setter("sub_account_user_id", sub_account_user_id)
         if permissions is not None:
@@ -87,9 +89,9 @@ class _UserPermissionState:
              _setter: Callable[[Any, Any], None],
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]] = None,
              sub_account_user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'subAccountUserId' in kwargs:
+        if sub_account_user_id is None and 'subAccountUserId' in kwargs:
             sub_account_user_id = kwargs['subAccountUserId']
 
         if permissions is not None:

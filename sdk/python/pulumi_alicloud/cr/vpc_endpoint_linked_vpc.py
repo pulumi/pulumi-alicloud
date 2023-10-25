@@ -38,22 +38,30 @@ class VpcEndpointLinkedVpcArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
-             module_name: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             module_name: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              enable_create_dns_record_in_pvzt: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'moduleName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if module_name is None and 'moduleName' in kwargs:
             module_name = kwargs['moduleName']
-        if 'vpcId' in kwargs:
+        if module_name is None:
+            raise TypeError("Missing 'module_name' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'enableCreateDnsRecordInPvzt' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if enable_create_dns_record_in_pvzt is None and 'enableCreateDnsRecordInPvzt' in kwargs:
             enable_create_dns_record_in_pvzt = kwargs['enableCreateDnsRecordInPvzt']
 
         _setter("instance_id", instance_id)
@@ -160,17 +168,17 @@ class _VpcEndpointLinkedVpcState:
              status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'enableCreateDnsRecordInPvzt' in kwargs:
+        if enable_create_dns_record_in_pvzt is None and 'enableCreateDnsRecordInPvzt' in kwargs:
             enable_create_dns_record_in_pvzt = kwargs['enableCreateDnsRecordInPvzt']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'moduleName' in kwargs:
+        if module_name is None and 'moduleName' in kwargs:
             module_name = kwargs['moduleName']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if enable_create_dns_record_in_pvzt is not None:
@@ -277,42 +285,6 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.199.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
-            payment_type="Subscription",
-            period=1,
-            renew_period=0,
-            renewal_status="ManualRenewal",
-            instance_type="Advanced",
-            instance_name=name)
-        default_vpc_endpoint_linked_vpc = alicloud.cr.VpcEndpointLinkedVpc("defaultVpcEndpointLinkedVpc",
-            instance_id=default_registry_enterprise_instance.id,
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            module_name="Registry",
-            enable_create_dns_record_in_pvzt=True)
-        ```
-
         ## Import
 
         CR Vpc Endpoint Linked Vpc can be imported using the id, e.g.
@@ -341,42 +313,6 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
         For information about CR Vpc Endpoint Linked Vpc and how to use it, see [What is Vpc Endpoint Linked Vpc](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createinstancevpcendpointlinkedvpc).
 
         > **NOTE:** Available since v1.199.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
-            payment_type="Subscription",
-            period=1,
-            renew_period=0,
-            renewal_status="ManualRenewal",
-            instance_type="Advanced",
-            instance_name=name)
-        default_vpc_endpoint_linked_vpc = alicloud.cr.VpcEndpointLinkedVpc("defaultVpcEndpointLinkedVpc",
-            instance_id=default_registry_enterprise_instance.id,
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            module_name="Registry",
-            enable_create_dns_record_in_pvzt=True)
-        ```
 
         ## Import
 

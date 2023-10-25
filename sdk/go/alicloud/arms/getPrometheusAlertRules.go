@@ -15,47 +15,6 @@ import (
 // This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.136.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := arms.GetPrometheusAlertRules(ctx, &arms.GetPrometheusAlertRulesArgs{
-//				ClusterId: "example_value",
-//				Ids: []string{
-//					"example_value-1",
-//					"example_value-2",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("armsPrometheusAlertRuleId1", ids.Rules[0].Id)
-//			nameRegex, err := arms.GetPrometheusAlertRules(ctx, &arms.GetPrometheusAlertRulesArgs{
-//				ClusterId: "example_value",
-//				NameRegex: pulumi.StringRef("^my-PrometheusAlertRule"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("armsPrometheusAlertRuleId2", nameRegex.Rules[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetPrometheusAlertRules(ctx *pulumi.Context, args *GetPrometheusAlertRulesArgs, opts ...pulumi.InvokeOption) (*GetPrometheusAlertRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrometheusAlertRulesResult

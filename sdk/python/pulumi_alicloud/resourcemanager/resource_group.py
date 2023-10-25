@@ -34,14 +34,16 @@ class ResourceGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              resource_group_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'resourceGroupName' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if resource_group_name is None and 'resourceGroupName' in kwargs:
             resource_group_name = kwargs['resourceGroupName']
 
         _setter("display_name", display_name)
@@ -129,15 +131,15 @@ class _ResourceGroupState:
              region_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupRegionStatusArgs']]]] = None,
              resource_group_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'regionStatuses' in kwargs:
+        if region_statuses is None and 'regionStatuses' in kwargs:
             region_statuses = kwargs['regionStatuses']
-        if 'resourceGroupName' in kwargs:
+        if resource_group_name is None and 'resourceGroupName' in kwargs:
             resource_group_name = kwargs['resourceGroupName']
 
         if account_id is not None:
@@ -247,23 +249,6 @@ class ResourceGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.82.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        example = alicloud.resourcemanager.ResourceGroup("example",
-            resource_group_name=name,
-            display_name=name)
-        ```
-
         ## Import
 
         Resource Manager Resource Group can be imported using the id, e.g.
@@ -289,23 +274,6 @@ class ResourceGroup(pulumi.CustomResource):
         For information about Resource Manager Resoource Group and how to use it, see [What is Resource Manager Resource Group](https://www.alibabacloud.com/help/en/doc-detail/94485.htm)
 
         > **NOTE:** Available since v1.82.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        example = alicloud.resourcemanager.ResourceGroup("example",
-            resource_group_name=name,
-            display_name=name)
-        ```
 
         ## Import
 

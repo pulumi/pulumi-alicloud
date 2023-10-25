@@ -109,20 +109,6 @@ def get_ecs_storage_capacity_units(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.155.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ecs.get_ecs_storage_capacity_units()
-    pulumi.export("ecsStorageCapacityUnitId1", ids.units[0].id)
-    name_regex = alicloud.ecs.get_ecs_storage_capacity_units(name_regex="^my-StorageCapacityUnit")
-    pulumi.export("ecsStorageCapacityUnitId2", name_regex.units[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Storage Capacity Unit IDs.
     :param str name_regex: A regex string to filter results by Storage Capacity Unit name.
@@ -157,20 +143,6 @@ def get_ecs_storage_capacity_units_output(ids: Optional[pulumi.Input[Optional[Se
     This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.155.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ecs.get_ecs_storage_capacity_units()
-    pulumi.export("ecsStorageCapacityUnitId1", ids.units[0].id)
-    name_regex = alicloud.ecs.get_ecs_storage_capacity_units(name_regex="^my-StorageCapacityUnit")
-    pulumi.export("ecsStorageCapacityUnitId2", name_regex.units[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Storage Capacity Unit IDs.

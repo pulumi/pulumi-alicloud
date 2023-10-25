@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.eds.User("default", {
- *     endUserId: "example_value",
- *     email: "your_email",
- *     phone: "your_phone",
- *     password: "your_password",
- * });
- * const ids = alicloud.eds.getUsers({});
- * export const ecdUserId1 = ids.then(ids => ids.users?.[0]?.id);
- * ```
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
@@ -75,24 +57,6 @@ export interface GetUsersResult {
  * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.eds.User("default", {
- *     endUserId: "example_value",
- *     email: "your_email",
- *     phone: "your_phone",
- *     password: "your_password",
- * });
- * const ids = alicloud.eds.getUsers({});
- * export const ecdUserId1 = ids.then(ids => ids.users?.[0]?.id);
- * ```
  */
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
     return pulumi.output(args).apply((a: any) => getUsers(a, opts))

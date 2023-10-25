@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.166.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ecs.getEcsNetworkInterfacePermissions({
- *     ids: ["example_value"],
- *     networkInterfaceId: "example_value",
- * });
- * export const ecsNetworkInterfacePermissionId1 = ids.then(ids => ids.permissions?.[0]?.id);
- * ```
  */
 export function getEcsNetworkInterfacePermissions(args: GetEcsNetworkInterfacePermissionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsNetworkInterfacePermissionsResult> {
 
@@ -84,21 +69,6 @@ export interface GetEcsNetworkInterfacePermissionsResult {
  * This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.166.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ecs.getEcsNetworkInterfacePermissions({
- *     ids: ["example_value"],
- *     networkInterfaceId: "example_value",
- * });
- * export const ecsNetworkInterfacePermissionId1 = ids.then(ids => ids.permissions?.[0]?.id);
- * ```
  */
 export function getEcsNetworkInterfacePermissionsOutput(args: GetEcsNetworkInterfacePermissionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsNetworkInterfacePermissionsResult> {
     return pulumi.output(args).apply((a: any) => getEcsNetworkInterfacePermissions(a, opts))

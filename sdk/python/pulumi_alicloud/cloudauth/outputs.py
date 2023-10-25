@@ -33,17 +33,23 @@ class GetFaceConfigsConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             biz_name: str,
-             biz_type: str,
-             gmt_updated: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             biz_name: Optional[str] = None,
+             biz_type: Optional[str] = None,
+             gmt_updated: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bizName' in kwargs:
+        if biz_name is None and 'bizName' in kwargs:
             biz_name = kwargs['bizName']
-        if 'bizType' in kwargs:
+        if biz_name is None:
+            raise TypeError("Missing 'biz_name' argument")
+        if biz_type is None and 'bizType' in kwargs:
             biz_type = kwargs['bizType']
-        if 'gmtUpdated' in kwargs:
+        if biz_type is None:
+            raise TypeError("Missing 'biz_type' argument")
+        if gmt_updated is None and 'gmtUpdated' in kwargs:
             gmt_updated = kwargs['gmtUpdated']
+        if gmt_updated is None:
+            raise TypeError("Missing 'gmt_updated' argument")
 
         _setter("biz_name", biz_name)
         _setter("biz_type", biz_type)

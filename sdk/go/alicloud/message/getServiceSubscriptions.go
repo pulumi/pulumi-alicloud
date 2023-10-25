@@ -15,43 +15,6 @@ import (
 // This data source provides the Message Notification Service Subscriptions of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.188.0+.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/message"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := message.GetServiceSubscriptions(ctx, &message.GetServiceSubscriptionsArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//				TopicName: "tf-example",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("subscriptionId1", ids.Subscriptions[0].Id)
-//			name, err := message.GetServiceSubscriptions(ctx, &message.GetServiceSubscriptionsArgs{
-//				TopicName: "tf-example",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("subscriptionId2", name.Subscriptions[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetServiceSubscriptions(ctx *pulumi.Context, args *GetServiceSubscriptionsArgs, opts ...pulumi.InvokeOption) (*GetServiceSubscriptionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceSubscriptionsResult

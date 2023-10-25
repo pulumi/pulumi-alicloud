@@ -38,22 +38,26 @@ class RamDirectoryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ram_directory_name: pulumi.Input[str],
-             vswitch_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             ram_directory_name: Optional[pulumi.Input[str]] = None,
+             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              desktop_access_type: Optional[pulumi.Input[str]] = None,
              enable_admin_access: Optional[pulumi.Input[bool]] = None,
              enable_internet_access: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ramDirectoryName' in kwargs:
+        if ram_directory_name is None and 'ramDirectoryName' in kwargs:
             ram_directory_name = kwargs['ramDirectoryName']
-        if 'vswitchIds' in kwargs:
+        if ram_directory_name is None:
+            raise TypeError("Missing 'ram_directory_name' argument")
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
-        if 'desktopAccessType' in kwargs:
+        if vswitch_ids is None:
+            raise TypeError("Missing 'vswitch_ids' argument")
+        if desktop_access_type is None and 'desktopAccessType' in kwargs:
             desktop_access_type = kwargs['desktopAccessType']
-        if 'enableAdminAccess' in kwargs:
+        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
             enable_admin_access = kwargs['enableAdminAccess']
-        if 'enableInternetAccess' in kwargs:
+        if enable_internet_access is None and 'enableInternetAccess' in kwargs:
             enable_internet_access = kwargs['enableInternetAccess']
 
         _setter("ram_directory_name", ram_directory_name)
@@ -162,17 +166,17 @@ class _RamDirectoryState:
              ram_directory_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'desktopAccessType' in kwargs:
+        if desktop_access_type is None and 'desktopAccessType' in kwargs:
             desktop_access_type = kwargs['desktopAccessType']
-        if 'enableAdminAccess' in kwargs:
+        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
             enable_admin_access = kwargs['enableAdminAccess']
-        if 'enableInternetAccess' in kwargs:
+        if enable_internet_access is None and 'enableInternetAccess' in kwargs:
             enable_internet_access = kwargs['enableInternetAccess']
-        if 'ramDirectoryName' in kwargs:
+        if ram_directory_name is None and 'ramDirectoryName' in kwargs:
             ram_directory_name = kwargs['ramDirectoryName']
-        if 'vswitchIds' in kwargs:
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
 
         if desktop_access_type is not None:
@@ -279,35 +283,6 @@ class RamDirectory(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.174.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.eds.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.ids[0],
-            vswitch_name=name)
-        default_ram_directory = alicloud.eds.RamDirectory("defaultRamDirectory",
-            desktop_access_type="INTERNET",
-            enable_admin_access=True,
-            enable_internet_access=True,
-            ram_directory_name=name,
-            vswitch_ids=[default_switch.id])
-        ```
-
         ## Import
 
         ECD Ram Directory can be imported using the id, e.g.
@@ -336,35 +311,6 @@ class RamDirectory(pulumi.CustomResource):
         For information about ECD Ram Directory and how to use it, see [What is Ram Directory](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createramdirectory).
 
         > **NOTE:** Available since v1.174.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.eds.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.ids[0],
-            vswitch_name=name)
-        default_ram_directory = alicloud.eds.RamDirectory("defaultRamDirectory",
-            desktop_access_type="INTERNET",
-            enable_admin_access=True,
-            enable_internet_access=True,
-            ram_directory_name=name,
-            vswitch_ids=[default_switch.id])
-        ```
 
         ## Import
 

@@ -11,34 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.190.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultZones = alicloud.adb.getZones({});
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "^default-NODELETING$",
- * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.ids?.[0],
- * }));
- * const defaultDBClusterLakeVersion = new alicloud.adb.DBClusterLakeVersion("defaultDBClusterLakeVersion", {
- *     dbClusterVersion: "5.0",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
- *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
- *     computeResource: "16ACU",
- *     storageResource: "0ACU",
- *     paymentType: "PayAsYouGo",
- *     enableDefaultResourceGroup: false,
- * });
- * ```
- *
  * ## Import
  *
  * AnalyticDB for MySQL (ADB) DB Cluster Lake Version can be imported using the id, e.g.

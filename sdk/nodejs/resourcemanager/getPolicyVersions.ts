@@ -10,19 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
  *
  * > **NOTE:**  Available in 1.85.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.resourcemanager.getPolicyVersions({
- *     policyName: "tftest",
- *     policyType: "Custom",
- * });
- * export const firstPolicyVersionId = _default.then(_default => _default.versions?.[0]?.id);
- * ```
  */
 export function getPolicyVersions(args: GetPolicyVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyVersionsResult> {
 
@@ -87,19 +74,6 @@ export interface GetPolicyVersionsResult {
  * This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
  *
  * > **NOTE:**  Available in 1.85.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.resourcemanager.getPolicyVersions({
- *     policyName: "tftest",
- *     policyType: "Custom",
- * });
- * export const firstPolicyVersionId = _default.then(_default => _default.versions?.[0]?.id);
- * ```
  */
 export function getPolicyVersionsOutput(args: GetPolicyVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyVersionsResult> {
     return pulumi.output(args).apply((a: any) => getPolicyVersions(a, opts))

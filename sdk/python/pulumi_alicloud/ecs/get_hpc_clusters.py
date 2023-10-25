@@ -99,19 +99,6 @@ def get_hpc_clusters(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.116.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ecs.get_hpc_clusters(ids=["hpc-bp1i09xxxxxxxx"],
-        name_regex="tf-testAcc")
-    pulumi.export("firstEcsHpcClusterId", example.clusters[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Hpc Cluster IDs.
     :param str name_regex: A regex string to filter results by Hpc Cluster name.
@@ -142,19 +129,6 @@ def get_hpc_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.116.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ecs.get_hpc_clusters(ids=["hpc-bp1i09xxxxxxxx"],
-        name_regex="tf-testAcc")
-    pulumi.export("firstEcsHpcClusterId", example.clusters[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Hpc Cluster IDs.

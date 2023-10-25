@@ -21,60 +21,6 @@ import (
 //
 // > **NOTE:** Only Extreme NAS file systems support the snapshot feature.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "testacc"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
-//				FileSystemType: pulumi.StringRef("extreme"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
-//				FileSystemType: pulumi.String("extreme"),
-//				ProtocolType:   pulumi.String("NFS"),
-//				ZoneId:         *pulumi.String(defaultZones.Zones[0].ZoneId),
-//				StorageType:    pulumi.String("standard"),
-//				Description:    pulumi.String(name),
-//				Capacity:       pulumi.Int(100),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = nas.NewSnapshot(ctx, "defaultSnapshot", &nas.SnapshotArgs{
-//				FileSystemId:  defaultFileSystem.ID(),
-//				Description:   pulumi.String(name),
-//				RetentionDays: pulumi.Int(20),
-//				SnapshotName:  pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Network Attached Storage (NAS) Snapshot can be imported using the id, e.g.

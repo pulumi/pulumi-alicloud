@@ -38,21 +38,31 @@ class LifecyclePolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             file_system_id: pulumi.Input[str],
-             lifecycle_policy_name: pulumi.Input[str],
-             lifecycle_rule_name: pulumi.Input[str],
-             paths: pulumi.Input[Sequence[pulumi.Input[str]]],
-             storage_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             file_system_id: Optional[pulumi.Input[str]] = None,
+             lifecycle_policy_name: Optional[pulumi.Input[str]] = None,
+             lifecycle_rule_name: Optional[pulumi.Input[str]] = None,
+             paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             storage_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fileSystemId' in kwargs:
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'lifecyclePolicyName' in kwargs:
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if lifecycle_policy_name is None and 'lifecyclePolicyName' in kwargs:
             lifecycle_policy_name = kwargs['lifecyclePolicyName']
-        if 'lifecycleRuleName' in kwargs:
+        if lifecycle_policy_name is None:
+            raise TypeError("Missing 'lifecycle_policy_name' argument")
+        if lifecycle_rule_name is None and 'lifecycleRuleName' in kwargs:
             lifecycle_rule_name = kwargs['lifecycleRuleName']
-        if 'storageType' in kwargs:
+        if lifecycle_rule_name is None:
+            raise TypeError("Missing 'lifecycle_rule_name' argument")
+        if paths is None:
+            raise TypeError("Missing 'paths' argument")
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
+        if storage_type is None:
+            raise TypeError("Missing 'storage_type' argument")
 
         _setter("file_system_id", file_system_id)
         _setter("lifecycle_policy_name", lifecycle_policy_name)
@@ -153,15 +163,15 @@ class _LifecyclePolicyState:
              lifecycle_rule_name: Optional[pulumi.Input[str]] = None,
              paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              storage_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fileSystemId' in kwargs:
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'lifecyclePolicyName' in kwargs:
+        if lifecycle_policy_name is None and 'lifecyclePolicyName' in kwargs:
             lifecycle_policy_name = kwargs['lifecyclePolicyName']
-        if 'lifecycleRuleName' in kwargs:
+        if lifecycle_rule_name is None and 'lifecycleRuleName' in kwargs:
             lifecycle_rule_name = kwargs['lifecycleRuleName']
-        if 'storageType' in kwargs:
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
 
         if file_system_id is not None:
@@ -254,25 +264,6 @@ class LifecyclePolicy(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.153.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
-            protocol_type="NFS",
-            storage_type="Capacity")
-        example_lifecycle_policy = alicloud.nas.LifecyclePolicy("exampleLifecyclePolicy",
-            file_system_id=example_file_system.id,
-            lifecycle_policy_name="terraform-example",
-            lifecycle_rule_name="DEFAULT_ATIME_14",
-            storage_type="InfrequentAccess",
-            paths=["/"])
-        ```
-
         ## Import
 
         Network Attached Storage (NAS) Lifecycle Policy can be imported using the id, e.g.
@@ -301,25 +292,6 @@ class LifecyclePolicy(pulumi.CustomResource):
         For information about Network Attached Storage (NAS) Lifecycle Policy and how to use it, see [What is Lifecycle Policy](https://www.alibabacloud.com/help/en/doc-detail/169362.html).
 
         > **NOTE:** Available in v1.153.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
-            protocol_type="NFS",
-            storage_type="Capacity")
-        example_lifecycle_policy = alicloud.nas.LifecyclePolicy("exampleLifecyclePolicy",
-            file_system_id=example_file_system.id,
-            lifecycle_policy_name="terraform-example",
-            lifecycle_rule_name="DEFAULT_ATIME_14",
-            storage_type="InfrequentAccess",
-            paths=["/"])
-        ```
 
         ## Import
 

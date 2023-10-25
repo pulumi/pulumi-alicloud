@@ -103,23 +103,23 @@ class ClusterAdditionalVolume(dict):
              volume_mountpoint: Optional[str] = None,
              volume_protocol: Optional[str] = None,
              volume_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'jobQueue' in kwargs:
+        if job_queue is None and 'jobQueue' in kwargs:
             job_queue = kwargs['jobQueue']
-        if 'localDirectory' in kwargs:
+        if local_directory is None and 'localDirectory' in kwargs:
             local_directory = kwargs['localDirectory']
-        if 'remoteDirectory' in kwargs:
+        if remote_directory is None and 'remoteDirectory' in kwargs:
             remote_directory = kwargs['remoteDirectory']
-        if 'volumeId' in kwargs:
+        if volume_id is None and 'volumeId' in kwargs:
             volume_id = kwargs['volumeId']
-        if 'volumeMountOption' in kwargs:
+        if volume_mount_option is None and 'volumeMountOption' in kwargs:
             volume_mount_option = kwargs['volumeMountOption']
-        if 'volumeMountpoint' in kwargs:
+        if volume_mountpoint is None and 'volumeMountpoint' in kwargs:
             volume_mountpoint = kwargs['volumeMountpoint']
-        if 'volumeProtocol' in kwargs:
+        if volume_protocol is None and 'volumeProtocol' in kwargs:
             volume_protocol = kwargs['volumeProtocol']
-        if 'volumeType' in kwargs:
+        if volume_type is None and 'volumeType' in kwargs:
             volume_type = kwargs['volumeType']
 
         if job_queue is not None:
@@ -239,7 +239,7 @@ class ClusterAdditionalVolumeRole(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -269,7 +269,7 @@ class ClusterApplication(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if tag is not None:
@@ -303,7 +303,7 @@ class ClusterPostInstallScript(dict):
              _setter: Callable[[Any, Any], None],
              args: Optional[str] = None,
              url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if args is not None:
@@ -436,96 +436,160 @@ class GetClustersClusterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_type: str,
-             applications: Sequence['outputs.GetClustersClusterApplicationResult'],
-             client_version: str,
-             cluster_id: str,
-             cluster_name: str,
-             compute_count: int,
-             compute_instance_type: str,
-             create_time: str,
-             deploy_mode: str,
-             description: str,
-             ha_enable: bool,
-             id: str,
-             image_id: str,
-             image_owner_alias: str,
-             login_count: int,
-             login_instance_type: str,
-             manager_count: int,
-             manager_instance_type: str,
-             os_tag: str,
-             post_install_scripts: Sequence['outputs.GetClustersClusterPostInstallScriptResult'],
-             remote_directory: str,
-             scc_cluster_id: str,
-             scheduler_type: str,
-             security_group_id: str,
-             status: str,
-             volume_id: str,
-             volume_mountpoint: str,
-             volume_protocol: str,
-             volume_type: str,
-             vpc_id: str,
-             vswitch_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_type: Optional[str] = None,
+             applications: Optional[Sequence['outputs.GetClustersClusterApplicationResult']] = None,
+             client_version: Optional[str] = None,
+             cluster_id: Optional[str] = None,
+             cluster_name: Optional[str] = None,
+             compute_count: Optional[int] = None,
+             compute_instance_type: Optional[str] = None,
+             create_time: Optional[str] = None,
+             deploy_mode: Optional[str] = None,
+             description: Optional[str] = None,
+             ha_enable: Optional[bool] = None,
+             id: Optional[str] = None,
+             image_id: Optional[str] = None,
+             image_owner_alias: Optional[str] = None,
+             login_count: Optional[int] = None,
+             login_instance_type: Optional[str] = None,
+             manager_count: Optional[int] = None,
+             manager_instance_type: Optional[str] = None,
+             os_tag: Optional[str] = None,
+             post_install_scripts: Optional[Sequence['outputs.GetClustersClusterPostInstallScriptResult']] = None,
+             remote_directory: Optional[str] = None,
+             scc_cluster_id: Optional[str] = None,
+             scheduler_type: Optional[str] = None,
+             security_group_id: Optional[str] = None,
+             status: Optional[str] = None,
+             volume_id: Optional[str] = None,
+             volume_mountpoint: Optional[str] = None,
+             volume_protocol: Optional[str] = None,
+             volume_type: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountType' in kwargs:
+        if account_type is None and 'accountType' in kwargs:
             account_type = kwargs['accountType']
-        if 'clientVersion' in kwargs:
+        if account_type is None:
+            raise TypeError("Missing 'account_type' argument")
+        if applications is None:
+            raise TypeError("Missing 'applications' argument")
+        if client_version is None and 'clientVersion' in kwargs:
             client_version = kwargs['clientVersion']
-        if 'clusterId' in kwargs:
+        if client_version is None:
+            raise TypeError("Missing 'client_version' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'clusterName' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'computeCount' in kwargs:
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if compute_count is None and 'computeCount' in kwargs:
             compute_count = kwargs['computeCount']
-        if 'computeInstanceType' in kwargs:
+        if compute_count is None:
+            raise TypeError("Missing 'compute_count' argument")
+        if compute_instance_type is None and 'computeInstanceType' in kwargs:
             compute_instance_type = kwargs['computeInstanceType']
-        if 'createTime' in kwargs:
+        if compute_instance_type is None:
+            raise TypeError("Missing 'compute_instance_type' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'deployMode' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if deploy_mode is None and 'deployMode' in kwargs:
             deploy_mode = kwargs['deployMode']
-        if 'haEnable' in kwargs:
+        if deploy_mode is None:
+            raise TypeError("Missing 'deploy_mode' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if ha_enable is None and 'haEnable' in kwargs:
             ha_enable = kwargs['haEnable']
-        if 'imageId' in kwargs:
+        if ha_enable is None:
+            raise TypeError("Missing 'ha_enable' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'imageOwnerAlias' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if image_owner_alias is None and 'imageOwnerAlias' in kwargs:
             image_owner_alias = kwargs['imageOwnerAlias']
-        if 'loginCount' in kwargs:
+        if image_owner_alias is None:
+            raise TypeError("Missing 'image_owner_alias' argument")
+        if login_count is None and 'loginCount' in kwargs:
             login_count = kwargs['loginCount']
-        if 'loginInstanceType' in kwargs:
+        if login_count is None:
+            raise TypeError("Missing 'login_count' argument")
+        if login_instance_type is None and 'loginInstanceType' in kwargs:
             login_instance_type = kwargs['loginInstanceType']
-        if 'managerCount' in kwargs:
+        if login_instance_type is None:
+            raise TypeError("Missing 'login_instance_type' argument")
+        if manager_count is None and 'managerCount' in kwargs:
             manager_count = kwargs['managerCount']
-        if 'managerInstanceType' in kwargs:
+        if manager_count is None:
+            raise TypeError("Missing 'manager_count' argument")
+        if manager_instance_type is None and 'managerInstanceType' in kwargs:
             manager_instance_type = kwargs['managerInstanceType']
-        if 'osTag' in kwargs:
+        if manager_instance_type is None:
+            raise TypeError("Missing 'manager_instance_type' argument")
+        if os_tag is None and 'osTag' in kwargs:
             os_tag = kwargs['osTag']
-        if 'postInstallScripts' in kwargs:
+        if os_tag is None:
+            raise TypeError("Missing 'os_tag' argument")
+        if post_install_scripts is None and 'postInstallScripts' in kwargs:
             post_install_scripts = kwargs['postInstallScripts']
-        if 'remoteDirectory' in kwargs:
+        if post_install_scripts is None:
+            raise TypeError("Missing 'post_install_scripts' argument")
+        if remote_directory is None and 'remoteDirectory' in kwargs:
             remote_directory = kwargs['remoteDirectory']
-        if 'sccClusterId' in kwargs:
+        if remote_directory is None:
+            raise TypeError("Missing 'remote_directory' argument")
+        if scc_cluster_id is None and 'sccClusterId' in kwargs:
             scc_cluster_id = kwargs['sccClusterId']
-        if 'schedulerType' in kwargs:
+        if scc_cluster_id is None:
+            raise TypeError("Missing 'scc_cluster_id' argument")
+        if scheduler_type is None and 'schedulerType' in kwargs:
             scheduler_type = kwargs['schedulerType']
-        if 'securityGroupId' in kwargs:
+        if scheduler_type is None:
+            raise TypeError("Missing 'scheduler_type' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'volumeId' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if volume_id is None and 'volumeId' in kwargs:
             volume_id = kwargs['volumeId']
-        if 'volumeMountpoint' in kwargs:
+        if volume_id is None:
+            raise TypeError("Missing 'volume_id' argument")
+        if volume_mountpoint is None and 'volumeMountpoint' in kwargs:
             volume_mountpoint = kwargs['volumeMountpoint']
-        if 'volumeProtocol' in kwargs:
+        if volume_mountpoint is None:
+            raise TypeError("Missing 'volume_mountpoint' argument")
+        if volume_protocol is None and 'volumeProtocol' in kwargs:
             volume_protocol = kwargs['volumeProtocol']
-        if 'volumeType' in kwargs:
+        if volume_protocol is None:
+            raise TypeError("Missing 'volume_protocol' argument")
+        if volume_type is None and 'volumeType' in kwargs:
             volume_type = kwargs['volumeType']
-        if 'vpcId' in kwargs:
+        if volume_type is None:
+            raise TypeError("Missing 'volume_type' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("account_type", account_type)
         _setter("applications", applications)
@@ -821,9 +885,11 @@ class GetClustersClusterApplicationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             tag: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             tag: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if tag is None:
+            raise TypeError("Missing 'tag' argument")
 
         _setter("tag", tag)
 
@@ -846,10 +912,14 @@ class GetClustersClusterPostInstallScriptResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             args: str,
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             args: Optional[str] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if args is None:
+            raise TypeError("Missing 'args' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
 
         _setter("args", args)
         _setter("url", url)
@@ -933,47 +1003,85 @@ class GetJobTemplatesTemplateResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             array_request: str,
-             clock_time: str,
-             command_line: str,
-             gpu: int,
-             id: str,
-             job_template_id: str,
-             job_template_name: str,
-             mem: str,
-             node: int,
-             package_path: str,
-             priority: int,
-             queue: str,
-             re_runable: bool,
-             runas_user: str,
-             stderr_redirect_path: str,
-             stdout_redirect_path: str,
-             task: int,
-             thread: int,
-             variables: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             array_request: Optional[str] = None,
+             clock_time: Optional[str] = None,
+             command_line: Optional[str] = None,
+             gpu: Optional[int] = None,
+             id: Optional[str] = None,
+             job_template_id: Optional[str] = None,
+             job_template_name: Optional[str] = None,
+             mem: Optional[str] = None,
+             node: Optional[int] = None,
+             package_path: Optional[str] = None,
+             priority: Optional[int] = None,
+             queue: Optional[str] = None,
+             re_runable: Optional[bool] = None,
+             runas_user: Optional[str] = None,
+             stderr_redirect_path: Optional[str] = None,
+             stdout_redirect_path: Optional[str] = None,
+             task: Optional[int] = None,
+             thread: Optional[int] = None,
+             variables: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'arrayRequest' in kwargs:
+        if array_request is None and 'arrayRequest' in kwargs:
             array_request = kwargs['arrayRequest']
-        if 'clockTime' in kwargs:
+        if array_request is None:
+            raise TypeError("Missing 'array_request' argument")
+        if clock_time is None and 'clockTime' in kwargs:
             clock_time = kwargs['clockTime']
-        if 'commandLine' in kwargs:
+        if clock_time is None:
+            raise TypeError("Missing 'clock_time' argument")
+        if command_line is None and 'commandLine' in kwargs:
             command_line = kwargs['commandLine']
-        if 'jobTemplateId' in kwargs:
+        if command_line is None:
+            raise TypeError("Missing 'command_line' argument")
+        if gpu is None:
+            raise TypeError("Missing 'gpu' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if job_template_id is None and 'jobTemplateId' in kwargs:
             job_template_id = kwargs['jobTemplateId']
-        if 'jobTemplateName' in kwargs:
+        if job_template_id is None:
+            raise TypeError("Missing 'job_template_id' argument")
+        if job_template_name is None and 'jobTemplateName' in kwargs:
             job_template_name = kwargs['jobTemplateName']
-        if 'packagePath' in kwargs:
+        if job_template_name is None:
+            raise TypeError("Missing 'job_template_name' argument")
+        if mem is None:
+            raise TypeError("Missing 'mem' argument")
+        if node is None:
+            raise TypeError("Missing 'node' argument")
+        if package_path is None and 'packagePath' in kwargs:
             package_path = kwargs['packagePath']
-        if 'reRunable' in kwargs:
+        if package_path is None:
+            raise TypeError("Missing 'package_path' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if queue is None:
+            raise TypeError("Missing 'queue' argument")
+        if re_runable is None and 'reRunable' in kwargs:
             re_runable = kwargs['reRunable']
-        if 'runasUser' in kwargs:
+        if re_runable is None:
+            raise TypeError("Missing 're_runable' argument")
+        if runas_user is None and 'runasUser' in kwargs:
             runas_user = kwargs['runasUser']
-        if 'stderrRedirectPath' in kwargs:
+        if runas_user is None:
+            raise TypeError("Missing 'runas_user' argument")
+        if stderr_redirect_path is None and 'stderrRedirectPath' in kwargs:
             stderr_redirect_path = kwargs['stderrRedirectPath']
-        if 'stdoutRedirectPath' in kwargs:
+        if stderr_redirect_path is None:
+            raise TypeError("Missing 'stderr_redirect_path' argument")
+        if stdout_redirect_path is None and 'stdoutRedirectPath' in kwargs:
             stdout_redirect_path = kwargs['stdoutRedirectPath']
+        if stdout_redirect_path is None:
+            raise TypeError("Missing 'stdout_redirect_path' argument")
+        if task is None:
+            raise TypeError("Missing 'task' argument")
+        if thread is None:
+            raise TypeError("Missing 'thread' argument")
+        if variables is None:
+            raise TypeError("Missing 'variables' argument")
 
         _setter("array_request", array_request)
         _setter("clock_time", clock_time)

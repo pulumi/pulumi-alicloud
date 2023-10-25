@@ -32,15 +32,19 @@ class NamespaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_create: pulumi.Input[bool],
-             default_visibility: pulumi.Input[str],
+             auto_create: Optional[pulumi.Input[bool]] = None,
+             default_visibility: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoCreate' in kwargs:
+        if auto_create is None and 'autoCreate' in kwargs:
             auto_create = kwargs['autoCreate']
-        if 'defaultVisibility' in kwargs:
+        if auto_create is None:
+            raise TypeError("Missing 'auto_create' argument")
+        if default_visibility is None and 'defaultVisibility' in kwargs:
             default_visibility = kwargs['defaultVisibility']
+        if default_visibility is None:
+            raise TypeError("Missing 'default_visibility' argument")
 
         _setter("auto_create", auto_create)
         _setter("default_visibility", default_visibility)
@@ -108,11 +112,11 @@ class _NamespaceState:
              auto_create: Optional[pulumi.Input[bool]] = None,
              default_visibility: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoCreate' in kwargs:
+        if auto_create is None and 'autoCreate' in kwargs:
             auto_create = kwargs['autoCreate']
-        if 'defaultVisibility' in kwargs:
+        if default_visibility is None and 'defaultVisibility' in kwargs:
             default_visibility = kwargs['defaultVisibility']
 
         if auto_create is not None:
@@ -175,23 +179,6 @@ class Namespace(pulumi.CustomResource):
 
         > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        example = alicloud.cr.Namespace("example",
-            auto_create=False,
-            default_visibility="PUBLIC")
-        ```
-
         ## Import
 
         Container Registry namespace can be imported using the namespace, e.g.
@@ -218,23 +205,6 @@ class Namespace(pulumi.CustomResource):
         > **NOTE:** Available since v1.34.0.
 
         > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        example = alicloud.cr.Namespace("example",
-            auto_create=False,
-            default_visibility="PUBLIC")
-        ```
 
         ## Import
 

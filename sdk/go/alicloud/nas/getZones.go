@@ -15,31 +15,6 @@ import (
 // Provide  a data source to retrieve the type of zone used to create NAS file system.
 //
 // > **NOTE:** Available in v1.140.0+.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := nas.GetZones(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("alicloudNasZonesId", _default.Zones[0].ZoneId)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZonesResult

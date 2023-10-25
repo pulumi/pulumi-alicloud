@@ -234,21 +234,6 @@ def get_instance_classes(architecture: Optional[str] = None,
 
     > **NOTE:** Available since v1.49.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    resources_zones = alicloud.get_zones(available_resource_creation="KVStore")
-    resources_instance_classes = alicloud.kvstore.get_instance_classes(engine="Redis",
-        engine_version="5.0",
-        instance_charge_type="PrePaid",
-        output_file="./classes.txt",
-        zone_id=resources_zones.zones[0].id)
-    pulumi.export("firstKvstoreInstanceClass", resources_instance_classes.instance_classes)
-    ```
-
 
     :param str architecture: The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
     :param str edition_type: The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.
@@ -328,21 +313,6 @@ def get_instance_classes_output(architecture: Optional[pulumi.Input[Optional[str
     This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
 
     > **NOTE:** Available since v1.49.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    resources_zones = alicloud.get_zones(available_resource_creation="KVStore")
-    resources_instance_classes = alicloud.kvstore.get_instance_classes(engine="Redis",
-        engine_version="5.0",
-        instance_charge_type="PrePaid",
-        output_file="./classes.txt",
-        zone_id=resources_zones.zones[0].id)
-    pulumi.export("firstKvstoreInstanceClass", resources_instance_classes.instance_classes)
-    ```
 
 
     :param str architecture: The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.

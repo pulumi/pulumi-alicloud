@@ -151,21 +151,6 @@ def get_models(group_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.187.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.apigateway.get_models(ids=["example_id"],
-        group_id="example_group_id")
-    pulumi.export("apiGatewayModelId1", ids.models[0].id)
-    group_id = alicloud.apigateway.get_models(group_id="example_group_id")
-    pulumi.export("apiGatewayModelId2", group_id.models[0].id)
-    ```
-
 
     :param str group_id: The ID of the api group.
     :param Sequence[str] ids: A list of Model IDs.
@@ -210,21 +195,6 @@ def get_models_output(group_id: Optional[pulumi.Input[str]] = None,
     This data source provides the Api Gateway Models of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.187.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.apigateway.get_models(ids=["example_id"],
-        group_id="example_group_id")
-    pulumi.export("apiGatewayModelId1", ids.models[0].id)
-    group_id = alicloud.apigateway.get_models(group_id="example_group_id")
-    pulumi.export("apiGatewayModelId2", group_id.models[0].id)
-    ```
 
 
     :param str group_id: The ID of the api group.

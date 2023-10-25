@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Ebs Disk Replica Pair available to the user.
  *
  * > **NOTE:** Available in 1.196.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.ebs.getDiskReplicaPairs({
- *     ids: [alicloud_ebs_disk_replica_pair["default"].id],
- * });
- * export const alicloudEbsDiskReplicaPairExampleId = _default.then(_default => _default.pairs?.[0]?.id);
- * ```
  */
 export function getDiskReplicaPairs(args?: GetDiskReplicaPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskReplicaPairsResult> {
     args = args || {};
@@ -81,18 +69,6 @@ export interface GetDiskReplicaPairsResult {
  * This data source provides Ebs Disk Replica Pair available to the user.
  *
  * > **NOTE:** Available in 1.196.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.ebs.getDiskReplicaPairs({
- *     ids: [alicloud_ebs_disk_replica_pair["default"].id],
- * });
- * export const alicloudEbsDiskReplicaPairExampleId = _default.then(_default => _default.pairs?.[0]?.id);
- * ```
  */
 export function getDiskReplicaPairsOutput(args?: GetDiskReplicaPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskReplicaPairsResult> {
     return pulumi.output(args).apply((a: any) => getDiskReplicaPairs(a, opts))

@@ -160,16 +160,6 @@ def get_policy_attachments(language: Optional[str] = None,
 
     > **NOTE:**  Available in 1.93.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.resourcemanager.get_policy_attachments()
-    pulumi.export("firstAttachmentId", example.attachments[0].id)
-    ```
-
 
     :param str language: The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -216,16 +206,6 @@ def get_policy_attachments_output(language: Optional[pulumi.Input[Optional[str]]
     This data source provides the Resource Manager Policy Attachments of the current Alibaba Cloud user.
 
     > **NOTE:**  Available in 1.93.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.resourcemanager.get_policy_attachments()
-    pulumi.export("firstAttachmentId", example.attachments[0].id)
-    ```
 
 
     :param str language: The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.

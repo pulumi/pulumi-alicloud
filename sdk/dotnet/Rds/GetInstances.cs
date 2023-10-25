@@ -16,38 +16,6 @@ namespace Pulumi.AliCloud.Rds
         /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
         /// 
         /// &gt; **NOTE:** Available since v1.7.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var dbInstancesDs = AliCloud.Rds.GetInstances.Invoke(new()
-        ///     {
-        ///         NameRegex = "data-\\d+",
-        ///         Status = "Running",
-        ///         Tags = 
-        ///         {
-        ///             { "size", "tiny" },
-        ///             { "type", "database" },
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstDbInstanceId"] = dbInstancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:rds/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
@@ -57,38 +25,6 @@ namespace Pulumi.AliCloud.Rds
         /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
         /// 
         /// &gt; **NOTE:** Available since v1.7.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var dbInstancesDs = AliCloud.Rds.GetInstances.Invoke(new()
-        ///     {
-        ///         NameRegex = "data-\\d+",
-        ///         Status = "Running",
-        ///         Tags = 
-        ///         {
-        ///             { "size", "tiny" },
-        ///             { "type", "database" },
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstDbInstanceId"] = dbInstancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:rds/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());

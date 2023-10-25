@@ -38,20 +38,26 @@ class ExpressSyncArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: pulumi.Input[str],
-             bucket_region: pulumi.Input[str],
-             express_sync_name: pulumi.Input[str],
+             bucket_name: Optional[pulumi.Input[str]] = None,
+             bucket_region: Optional[pulumi.Input[str]] = None,
+             express_sync_name: Optional[pulumi.Input[str]] = None,
              bucket_prefix: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bucketName' in kwargs:
+        if bucket_name is None and 'bucketName' in kwargs:
             bucket_name = kwargs['bucketName']
-        if 'bucketRegion' in kwargs:
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if bucket_region is None and 'bucketRegion' in kwargs:
             bucket_region = kwargs['bucketRegion']
-        if 'expressSyncName' in kwargs:
+        if bucket_region is None:
+            raise TypeError("Missing 'bucket_region' argument")
+        if express_sync_name is None and 'expressSyncName' in kwargs:
             express_sync_name = kwargs['expressSyncName']
-        if 'bucketPrefix' in kwargs:
+        if express_sync_name is None:
+            raise TypeError("Missing 'express_sync_name' argument")
+        if bucket_prefix is None and 'bucketPrefix' in kwargs:
             bucket_prefix = kwargs['bucketPrefix']
 
         _setter("bucket_name", bucket_name)
@@ -155,15 +161,15 @@ class _ExpressSyncState:
              bucket_region: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              express_sync_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bucketName' in kwargs:
+        if bucket_name is None and 'bucketName' in kwargs:
             bucket_name = kwargs['bucketName']
-        if 'bucketPrefix' in kwargs:
+        if bucket_prefix is None and 'bucketPrefix' in kwargs:
             bucket_prefix = kwargs['bucketPrefix']
-        if 'bucketRegion' in kwargs:
+        if bucket_region is None and 'bucketRegion' in kwargs:
             bucket_region = kwargs['bucketRegion']
-        if 'expressSyncName' in kwargs:
+        if express_sync_name is None and 'expressSyncName' in kwargs:
             express_sync_name = kwargs['expressSyncName']
 
         if bucket_name is not None:

@@ -119,19 +119,6 @@ def get_accounts(db_instance_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.120.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.rds.get_accounts(db_instance_id="example_value",
-        name_regex="the_resource_name")
-    pulumi.export("firstRdsAccountId", example.accounts[0].id)
-    ```
-
 
     :param str db_instance_id: The db instance id.
     :param Sequence[str] ids: A list of Account IDs.
@@ -170,19 +157,6 @@ def get_accounts_output(db_instance_id: Optional[pulumi.Input[str]] = None,
     This data source provides the Rds Accounts of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.120.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.rds.get_accounts(db_instance_id="example_value",
-        name_regex="the_resource_name")
-    pulumi.export("firstRdsAccountId", example.accounts[0].id)
-    ```
 
 
     :param str db_instance_id: The db instance id.

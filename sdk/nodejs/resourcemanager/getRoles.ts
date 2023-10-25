@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
  *
  * > **NOTE:**  Available in 1.86.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.resourcemanager.getRoles({
- *     nameRegex: "tftest",
- * });
- * export const firstRoleId = example.then(example => example.roles?.[0]?.id);
- * ```
  */
 export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
     args = args || {};
@@ -85,18 +73,6 @@ export interface GetRolesResult {
  * This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
  *
  * > **NOTE:**  Available in 1.86.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.resourcemanager.getRoles({
- *     nameRegex: "tftest",
- * });
- * export const firstRoleId = example.then(example => example.roles?.[0]?.id);
- * ```
  */
 export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
     return pulumi.output(args).apply((a: any) => getRoles(a, opts))

@@ -34,17 +34,23 @@ class ListenerAclAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acl_id: pulumi.Input[str],
-             acl_type: pulumi.Input[str],
-             listener_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             acl_id: Optional[pulumi.Input[str]] = None,
+             acl_type: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclId' in kwargs:
+        if acl_id is None and 'aclId' in kwargs:
             acl_id = kwargs['aclId']
-        if 'aclType' in kwargs:
+        if acl_id is None:
+            raise TypeError("Missing 'acl_id' argument")
+        if acl_type is None and 'aclType' in kwargs:
             acl_type = kwargs['aclType']
-        if 'listenerId' in kwargs:
+        if acl_type is None:
+            raise TypeError("Missing 'acl_type' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
 
         _setter("acl_id", acl_id)
         _setter("acl_type", acl_type)
@@ -119,13 +125,13 @@ class _ListenerAclAttachmentState:
              acl_type: Optional[pulumi.Input[str]] = None,
              listener_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclId' in kwargs:
+        if acl_id is None and 'aclId' in kwargs:
             acl_id = kwargs['aclId']
-        if 'aclType' in kwargs:
+        if acl_type is None and 'aclType' in kwargs:
             acl_type = kwargs['aclType']
-        if 'listenerId' in kwargs:
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
 
         if acl_id is not None:

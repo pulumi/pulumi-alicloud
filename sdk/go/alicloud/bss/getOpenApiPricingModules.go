@@ -15,36 +15,6 @@ import (
 // This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
 //
 // > **NOTE:** Available in 1.195.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bss"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := bss.GetOpenApiPricingModules(ctx, &bss.GetOpenApiPricingModulesArgs{
-//				NameRegex:        pulumi.StringRef("国内月均日峰值带宽"),
-//				ProductCode:      "cdn",
-//				ProductType:      pulumi.StringRef("CDN"),
-//				SubscriptionType: "PayAsYouGo",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("alicloudBssOpenapiPricingModuleExampleId", _default.Modules[0].Code)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetOpenApiPricingModules(ctx *pulumi.Context, args *GetOpenApiPricingModulesArgs, opts ...pulumi.InvokeOption) (*GetOpenApiPricingModulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOpenApiPricingModulesResult

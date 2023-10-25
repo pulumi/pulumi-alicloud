@@ -13,54 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.124.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform_example";
- * const defaultAccounts = alicloud.resourcemanager.getAccounts({
- *     status: "CreateSuccess",
- * });
- * const defaultAggregator = new alicloud.cfg.Aggregator("defaultAggregator", {
- *     aggregatorAccounts: [{
- *         accountId: defaultAccounts.then(defaultAccounts => defaultAccounts.accounts?.[0]?.accountId),
- *         accountName: defaultAccounts.then(defaultAccounts => defaultAccounts.accounts?.[0]?.displayName),
- *         accountType: "ResourceDirectory",
- *     }],
- *     aggregatorName: name,
- *     description: name,
- *     aggregatorType: "CUSTOM",
- * });
- * const defaultAggregateConfigRule = new alicloud.cfg.AggregateConfigRule("defaultAggregateConfigRule", {
- *     aggregateConfigRuleName: "contains-tag",
- *     aggregatorId: defaultAggregator.id,
- *     configRuleTriggerTypes: "ConfigurationItemChangeNotification",
- *     sourceOwner: "ALIYUN",
- *     sourceIdentifier: "contains-tag",
- *     description: name,
- *     riskLevel: 1,
- *     resourceTypesScopes: ["ACS::ECS::Instance"],
- *     inputParameters: {
- *         key: "example",
- *         value: "example",
- *     },
- * });
- * const defaultAggregateCompliancePack = new alicloud.cfg.AggregateCompliancePack("defaultAggregateCompliancePack", {
- *     aggregateCompliancePackName: name,
- *     aggregatorId: defaultAggregator.id,
- *     description: name,
- *     riskLevel: 1,
- *     configRuleIds: [{
- *         configRuleId: defaultAggregateConfigRule.configRuleId,
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * Cloud Config Aggregate Compliance Pack can be imported using the id, e.g.

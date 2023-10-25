@@ -38,23 +38,33 @@ class PolicyAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_name: pulumi.Input[str],
-             policy_type: pulumi.Input[str],
-             principal_name: pulumi.Input[str],
-             principal_type: pulumi.Input[str],
-             resource_group_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             policy_name: Optional[pulumi.Input[str]] = None,
+             policy_type: Optional[pulumi.Input[str]] = None,
+             principal_name: Optional[pulumi.Input[str]] = None,
+             principal_type: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'policyName' in kwargs:
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'policyType' in kwargs:
+        if policy_name is None:
+            raise TypeError("Missing 'policy_name' argument")
+        if policy_type is None and 'policyType' in kwargs:
             policy_type = kwargs['policyType']
-        if 'principalName' in kwargs:
+        if policy_type is None:
+            raise TypeError("Missing 'policy_type' argument")
+        if principal_name is None and 'principalName' in kwargs:
             principal_name = kwargs['principalName']
-        if 'principalType' in kwargs:
+        if principal_name is None:
+            raise TypeError("Missing 'principal_name' argument")
+        if principal_type is None and 'principalType' in kwargs:
             principal_type = kwargs['principalType']
-        if 'resourceGroupId' in kwargs:
+        if principal_type is None:
+            raise TypeError("Missing 'principal_type' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
 
         _setter("policy_name", policy_name)
         _setter("policy_type", policy_type)
@@ -155,17 +165,17 @@ class _PolicyAttachmentState:
              principal_name: Optional[pulumi.Input[str]] = None,
              principal_type: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'policyName' in kwargs:
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'policyType' in kwargs:
+        if policy_type is None and 'policyType' in kwargs:
             policy_type = kwargs['policyType']
-        if 'principalName' in kwargs:
+        if principal_name is None and 'principalName' in kwargs:
             principal_name = kwargs['principalName']
-        if 'principalType' in kwargs:
+        if principal_type is None and 'principalType' in kwargs:
             principal_type = kwargs['principalType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         if policy_name is not None:

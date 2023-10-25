@@ -159,25 +159,6 @@ def get_security_group_rules(direction: Optional[str] = None,
     Each collection item represents a single `ingress` or `egress` permission rule.
     The ID of the security group can be provided via a variable or the result from the other data source `ecs_get_security_groups`.
 
-    ## Example Usage
-
-    The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    security_group_id = config.require_object("securityGroupId")
-    groups_ds = alicloud.ecs.get_security_groups(name_regex="api")
-    ingress_rules_ds = alicloud.ecs.get_security_group_rules(direction="ingress",
-        group_id=groups_ds.groups[0].id,
-        ip_protocol="tcp",
-        nic_type="internet")
-    # Pass port_range to the backend service
-    backend = alicloud.ecs.Instance("backend", user_data=f"config_service.sh --portrange={ingress_rules_ds.rules[0].port_range}")
-    ```
-
 
     :param str direction: Authorization direction. Valid values are: `ingress` or `egress`.
     :param str group_id: The ID of the security group that owns the rules.
@@ -221,25 +202,6 @@ def get_security_group_rules_output(direction: Optional[pulumi.Input[Optional[st
     The `ecs_get_security_group_rules` data source provides a collection of security permissions of a specific security group.
     Each collection item represents a single `ingress` or `egress` permission rule.
     The ID of the security group can be provided via a variable or the result from the other data source `ecs_get_security_groups`.
-
-    ## Example Usage
-
-    The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    security_group_id = config.require_object("securityGroupId")
-    groups_ds = alicloud.ecs.get_security_groups(name_regex="api")
-    ingress_rules_ds = alicloud.ecs.get_security_group_rules(direction="ingress",
-        group_id=groups_ds.groups[0].id,
-        ip_protocol="tcp",
-        nic_type="internet")
-    # Pass port_range to the backend service
-    backend = alicloud.ecs.Instance("backend", user_data=f"config_service.sh --portrange={ingress_rules_ds.rules[0].port_range}")
-    ```
 
 
     :param str direction: Authorization direction. Valid values are: `ingress` or `egress`.

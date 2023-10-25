@@ -29,13 +29,15 @@ class GatewayArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gateway_name: pulumi.Input[str],
+             gateway_name: Optional[pulumi.Input[str]] = None,
              gateway_desc: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'gatewayName' in kwargs:
+        if gateway_name is None and 'gatewayName' in kwargs:
             gateway_name = kwargs['gatewayName']
-        if 'gatewayDesc' in kwargs:
+        if gateway_name is None:
+            raise TypeError("Missing 'gateway_name' argument")
+        if gateway_desc is None and 'gatewayDesc' in kwargs:
             gateway_desc = kwargs['gatewayDesc']
 
         _setter("gateway_name", gateway_name)
@@ -91,11 +93,11 @@ class _GatewayState:
              gateway_desc: Optional[pulumi.Input[str]] = None,
              gateway_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'gatewayDesc' in kwargs:
+        if gateway_desc is None and 'gatewayDesc' in kwargs:
             gateway_desc = kwargs['gatewayDesc']
-        if 'gatewayName' in kwargs:
+        if gateway_name is None and 'gatewayName' in kwargs:
             gateway_name = kwargs['gatewayName']
 
         if gateway_desc is not None:
@@ -157,17 +159,6 @@ class Gateway(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.135.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.databasegateway.Gateway("example", gateway_name="example_value")
-        ```
-
         ## Import
 
         Database Gateway Gateway can be imported using the id, e.g.
@@ -193,17 +184,6 @@ class Gateway(pulumi.CustomResource):
         For information about Database Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/doc-detail/123415.htm).
 
         > **NOTE:** Available in v1.135.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.databasegateway.Gateway("example", gateway_name="example_value")
-        ```
 
         ## Import
 

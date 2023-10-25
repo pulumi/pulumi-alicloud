@@ -167,22 +167,6 @@ def get_basic_endpoints(endpoint_group_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.194.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ga.get_basic_endpoints(ids=["example_id"],
-        endpoint_group_id="example_id")
-    pulumi.export("gaBasicEndpointsId1", ids.endpoints[0].id)
-    name_regex = alicloud.ga.get_basic_endpoints(name_regex="tf-example",
-        endpoint_group_id="example_id")
-    pulumi.export("gaBasicEndpointsId2", name_regex.endpoints[0].id)
-    ```
-
 
     :param str endpoint_group_id: The ID of the Basic Endpoint Group.
     :param str endpoint_id: The ID of the Basic Endpoint.
@@ -233,22 +217,6 @@ def get_basic_endpoints_output(endpoint_group_id: Optional[pulumi.Input[str]] = 
     This data source provides the Global Accelerator (GA) Basic Endpoints of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.194.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ga.get_basic_endpoints(ids=["example_id"],
-        endpoint_group_id="example_id")
-    pulumi.export("gaBasicEndpointsId1", ids.endpoints[0].id)
-    name_regex = alicloud.ga.get_basic_endpoints(name_regex="tf-example",
-        endpoint_group_id="example_id")
-    pulumi.export("gaBasicEndpointsId2", name_regex.endpoints[0].id)
-    ```
 
 
     :param str endpoint_group_id: The ID of the Basic Endpoint Group.
