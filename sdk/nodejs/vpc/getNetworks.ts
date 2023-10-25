@@ -8,20 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides VPCs available to the user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const vpcsDs = alicloud.vpc.getNetworks({
- *     cidrBlock: "172.16.0.0/12",
- *     nameRegex: "^foo",
- *     status: "Available",
- * });
- * export const firstVpcId = vpcsDs.then(vpcsDs => vpcsDs.vpcs?.[0]?.id);
- * ```
  */
 export function getNetworks(args?: GetNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworksResult> {
     args = args || {};
@@ -165,20 +151,6 @@ export interface GetNetworksResult {
 }
 /**
  * This data source provides VPCs available to the user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const vpcsDs = alicloud.vpc.getNetworks({
- *     cidrBlock: "172.16.0.0/12",
- *     nameRegex: "^foo",
- *     status: "Available",
- * });
- * export const firstVpcId = vpcsDs.then(vpcsDs => vpcsDs.vpcs?.[0]?.id);
- * ```
  */
 export function getNetworksOutput(args?: GetNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworksResult> {
     return pulumi.output(args).apply((a: any) => getNetworks(a, opts))

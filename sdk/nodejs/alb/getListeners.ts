@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Application Load Balancer (ALB) Listeners of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.133.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.alb.getListeners({
- *     ids: ["example_id"],
- * });
- * export const albListenerId1 = ids.then(ids => ids.listeners?.[0]?.id);
- * ```
  */
 export function getListeners(args?: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> {
     args = args || {};
@@ -95,20 +81,6 @@ export interface GetListenersResult {
  * This data source provides the Application Load Balancer (ALB) Listeners of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.133.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.alb.getListeners({
- *     ids: ["example_id"],
- * });
- * export const albListenerId1 = ids.then(ids => ids.listeners?.[0]?.id);
- * ```
  */
 export function getListenersOutput(args?: GetListenersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListenersResult> {
     return pulumi.output(args).apply((a: any) => getListeners(a, opts))

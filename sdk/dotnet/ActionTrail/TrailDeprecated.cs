@@ -16,28 +16,6 @@ namespace Pulumi.AliCloud.ActionTrail
     /// 
     /// &gt; **NOTE:** Available in 1.35.0+
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new action trail.
-    ///     var foo = new AliCloud.ActionTrail.TrailDeprecated("foo", new()
-    ///     {
-    ///         EventRw = "Write-test",
-    ///         OssBucketName = alicloud_oss_bucket.Bucket.Id,
-    ///         RoleName = alicloud_ram_role_policy_attachment.Attach.Role_name,
-    ///         OssKeyPrefix = "at-product-account-audit-B",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Action trail can be imported using the id, e.g.

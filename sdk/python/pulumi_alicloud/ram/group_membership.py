@@ -29,14 +29,18 @@ class GroupMembershipArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_name: pulumi.Input[str],
-             user_names: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             user_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'userNames' in kwargs:
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if user_names is None and 'userNames' in kwargs:
             user_names = kwargs['userNames']
+        if user_names is None:
+            raise TypeError("Missing 'user_names' argument")
 
         _setter("group_name", group_name)
         _setter("user_names", user_names)
@@ -86,11 +90,11 @@ class _GroupMembershipState:
              _setter: Callable[[Any, Any], None],
              group_name: Optional[pulumi.Input[str]] = None,
              user_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'userNames' in kwargs:
+        if user_names is None and 'userNames' in kwargs:
             user_names = kwargs['userNames']
 
         if group_name is not None:

@@ -65,13 +65,13 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             payment_type: pulumi.Input[str],
-             period: pulumi.Input[int],
-             sd_cbool: pulumi.Input[str],
-             sdc: pulumi.Input[str],
-             sddp_version: pulumi.Input[str],
-             ud_cbool: pulumi.Input[str],
-             udc: pulumi.Input[str],
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             sd_cbool: Optional[pulumi.Input[str]] = None,
+             sdc: Optional[pulumi.Input[str]] = None,
+             sddp_version: Optional[pulumi.Input[str]] = None,
+             ud_cbool: Optional[pulumi.Input[str]] = None,
+             udc: Optional[pulumi.Input[str]] = None,
              dataphin: Optional[pulumi.Input[str]] = None,
              dataphin_count: Optional[pulumi.Input[str]] = None,
              logistics: Optional[pulumi.Input[str]] = None,
@@ -79,25 +79,39 @@ class InstanceArgs:
              oss_size: Optional[pulumi.Input[str]] = None,
              renew_period: Optional[pulumi.Input[int]] = None,
              renewal_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'sdCbool' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if period is None:
+            raise TypeError("Missing 'period' argument")
+        if sd_cbool is None and 'sdCbool' in kwargs:
             sd_cbool = kwargs['sdCbool']
-        if 'sddpVersion' in kwargs:
+        if sd_cbool is None:
+            raise TypeError("Missing 'sd_cbool' argument")
+        if sdc is None:
+            raise TypeError("Missing 'sdc' argument")
+        if sddp_version is None and 'sddpVersion' in kwargs:
             sddp_version = kwargs['sddpVersion']
-        if 'udCbool' in kwargs:
+        if sddp_version is None:
+            raise TypeError("Missing 'sddp_version' argument")
+        if ud_cbool is None and 'udCbool' in kwargs:
             ud_cbool = kwargs['udCbool']
-        if 'dataphinCount' in kwargs:
+        if ud_cbool is None:
+            raise TypeError("Missing 'ud_cbool' argument")
+        if udc is None:
+            raise TypeError("Missing 'udc' argument")
+        if dataphin_count is None and 'dataphinCount' in kwargs:
             dataphin_count = kwargs['dataphinCount']
-        if 'modifyType' in kwargs:
+        if modify_type is None and 'modifyType' in kwargs:
             modify_type = kwargs['modifyType']
-        if 'ossSize' in kwargs:
+        if oss_size is None and 'ossSize' in kwargs:
             oss_size = kwargs['ossSize']
-        if 'renewPeriod' in kwargs:
+        if renew_period is None and 'renewPeriod' in kwargs:
             renew_period = kwargs['renewPeriod']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
 
         _setter("payment_type", payment_type)
@@ -387,35 +401,35 @@ class _InstanceState:
              status: Optional[pulumi.Input[str]] = None,
              ud_cbool: Optional[pulumi.Input[str]] = None,
              udc: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dataphinCount' in kwargs:
+        if dataphin_count is None and 'dataphinCount' in kwargs:
             dataphin_count = kwargs['dataphinCount']
-        if 'instanceNum' in kwargs:
+        if instance_num is None and 'instanceNum' in kwargs:
             instance_num = kwargs['instanceNum']
-        if 'modifyType' in kwargs:
+        if modify_type is None and 'modifyType' in kwargs:
             modify_type = kwargs['modifyType']
-        if 'odpsSet' in kwargs:
+        if odps_set is None and 'odpsSet' in kwargs:
             odps_set = kwargs['odpsSet']
-        if 'ossBucketSet' in kwargs:
+        if oss_bucket_set is None and 'ossBucketSet' in kwargs:
             oss_bucket_set = kwargs['ossBucketSet']
-        if 'ossSize' in kwargs:
+        if oss_size is None and 'ossSize' in kwargs:
             oss_size = kwargs['ossSize']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'rdsSet' in kwargs:
+        if rds_set is None and 'rdsSet' in kwargs:
             rds_set = kwargs['rdsSet']
-        if 'remainDays' in kwargs:
+        if remain_days is None and 'remainDays' in kwargs:
             remain_days = kwargs['remainDays']
-        if 'renewPeriod' in kwargs:
+        if renew_period is None and 'renewPeriod' in kwargs:
             renew_period = kwargs['renewPeriod']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'sdCbool' in kwargs:
+        if sd_cbool is None and 'sdCbool' in kwargs:
             sd_cbool = kwargs['sdCbool']
-        if 'sddpVersion' in kwargs:
+        if sddp_version is None and 'sddpVersion' in kwargs:
             sddp_version = kwargs['sddpVersion']
-        if 'udCbool' in kwargs:
+        if ud_cbool is None and 'udCbool' in kwargs:
             ud_cbool = kwargs['udCbool']
 
         if authed is not None:
@@ -743,25 +757,6 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** The Data Security Center Instance is not support in the international site.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.sddp.Instance("default",
-            dataphin="yes",
-            payment_type="Subscription",
-            period=1,
-            sd_cbool="yes",
-            sdc="3",
-            sddp_version="version_company",
-            ud_cbool="yes",
-            udc="2000")
-        ```
-
         ## Import
 
         Data Security Center Instance can be imported using the id, e.g.
@@ -801,25 +796,6 @@ class Instance(pulumi.CustomResource):
         > **NOTE:** Available in v1.136.0+.
 
         > **NOTE:** The Data Security Center Instance is not support in the international site.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.sddp.Instance("default",
-            dataphin="yes",
-            payment_type="Subscription",
-            period=1,
-            sd_cbool="yes",
-            sdc="3",
-            sddp_version="version_company",
-            ud_cbool="yes",
-            udc="2000")
-        ```
 
         ## Import
 

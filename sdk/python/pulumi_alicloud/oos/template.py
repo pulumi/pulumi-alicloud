@@ -41,21 +41,25 @@ class TemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: pulumi.Input[str],
-             template_name: pulumi.Input[str],
+             content: Optional[pulumi.Input[str]] = None,
+             template_name: Optional[pulumi.Input[str]] = None,
              auto_delete_executions: Optional[pulumi.Input[bool]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              version_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'templateName' in kwargs:
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
-        if 'autoDeleteExecutions' in kwargs:
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
+        if auto_delete_executions is None and 'autoDeleteExecutions' in kwargs:
             auto_delete_executions = kwargs['autoDeleteExecutions']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'versionName' in kwargs:
+        if version_name is None and 'versionName' in kwargs:
             version_name = kwargs['versionName']
 
         _setter("content", content)
@@ -222,35 +226,35 @@ class _TemplateState:
              updated_by: Optional[pulumi.Input[str]] = None,
              updated_date: Optional[pulumi.Input[str]] = None,
              version_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoDeleteExecutions' in kwargs:
+        if auto_delete_executions is None and 'autoDeleteExecutions' in kwargs:
             auto_delete_executions = kwargs['autoDeleteExecutions']
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'createdDate' in kwargs:
+        if created_date is None and 'createdDate' in kwargs:
             created_date = kwargs['createdDate']
-        if 'hasTrigger' in kwargs:
+        if has_trigger is None and 'hasTrigger' in kwargs:
             has_trigger = kwargs['hasTrigger']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'shareType' in kwargs:
+        if share_type is None and 'shareType' in kwargs:
             share_type = kwargs['shareType']
-        if 'templateFormat' in kwargs:
+        if template_format is None and 'templateFormat' in kwargs:
             template_format = kwargs['templateFormat']
-        if 'templateId' in kwargs:
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
-        if 'templateName' in kwargs:
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
-        if 'templateType' in kwargs:
+        if template_type is None and 'templateType' in kwargs:
             template_type = kwargs['templateType']
-        if 'templateVersion' in kwargs:
+        if template_version is None and 'templateVersion' in kwargs:
             template_version = kwargs['templateVersion']
-        if 'updatedBy' in kwargs:
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedDate' in kwargs:
+        if updated_date is None and 'updatedDate' in kwargs:
             updated_date = kwargs['updatedDate']
-        if 'versionName' in kwargs:
+        if version_name is None and 'versionName' in kwargs:
             version_name = kwargs['versionName']
 
         if auto_delete_executions is not None:
@@ -510,45 +514,6 @@ class Template(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.92.0+.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.oos.Template("example",
-            content=\"\"\"  {
-            "FormatVersion": "OOS-2019-06-01",
-            "Description": "Update Describe instances of given status",
-            "Parameters":{
-              "Status":{
-                "Type": "String",
-                "Description": "(Required) The status of the Ecs instance."
-              }
-            },
-            "Tasks": [
-              {
-                "Properties" :{
-                  "Parameters":{
-                    "Status": "{{ Status }}"
-                  },
-                  "API": "DescribeInstances",
-                  "Service": "Ecs"
-                },
-                "Name": "foo",
-                "Action": "ACS::ExecuteApi"
-              }]
-          }
-          
-        \"\"\",
-            tags={
-                "Created": "TF",
-                "For": "acceptance Test",
-            },
-            template_name="test-name",
-            version_name="test")
-        ```
-
         ## Import
 
         OOS Template can be imported using the id or template_name, e.g.
@@ -576,45 +541,6 @@ class Template(pulumi.CustomResource):
         Provides a OOS Template resource. For information about Alicloud OOS Template and how to use it, see [What is Resource Alicloud OOS Template](https://www.alibabacloud.com/help/doc-detail/120761.htm).
 
         > **NOTE:** Available in 1.92.0+.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.oos.Template("example",
-            content=\"\"\"  {
-            "FormatVersion": "OOS-2019-06-01",
-            "Description": "Update Describe instances of given status",
-            "Parameters":{
-              "Status":{
-                "Type": "String",
-                "Description": "(Required) The status of the Ecs instance."
-              }
-            },
-            "Tasks": [
-              {
-                "Properties" :{
-                  "Parameters":{
-                    "Status": "{{ Status }}"
-                  },
-                  "API": "DescribeInstances",
-                  "Service": "Ecs"
-                },
-                "Name": "foo",
-                "Action": "ACS::ExecuteApi"
-              }]
-          }
-          
-        \"\"\",
-            tags={
-                "Created": "TF",
-                "For": "acceptance Test",
-            },
-            template_name="test-name",
-            version_name="test")
-        ```
 
         ## Import
 

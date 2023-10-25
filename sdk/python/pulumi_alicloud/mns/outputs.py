@@ -47,25 +47,39 @@ class GetQueuesQueueResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             delay_seconds: int,
-             id: str,
-             maximum_message_size: int,
-             message_retention_period: int,
-             name: str,
-             polling_wait_seconds: int,
-             visibility_timeouts: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             delay_seconds: Optional[int] = None,
+             id: Optional[str] = None,
+             maximum_message_size: Optional[int] = None,
+             message_retention_period: Optional[int] = None,
+             name: Optional[str] = None,
+             polling_wait_seconds: Optional[int] = None,
+             visibility_timeouts: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'delaySeconds' in kwargs:
+        if delay_seconds is None and 'delaySeconds' in kwargs:
             delay_seconds = kwargs['delaySeconds']
-        if 'maximumMessageSize' in kwargs:
+        if delay_seconds is None:
+            raise TypeError("Missing 'delay_seconds' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if maximum_message_size is None and 'maximumMessageSize' in kwargs:
             maximum_message_size = kwargs['maximumMessageSize']
-        if 'messageRetentionPeriod' in kwargs:
+        if maximum_message_size is None:
+            raise TypeError("Missing 'maximum_message_size' argument")
+        if message_retention_period is None and 'messageRetentionPeriod' in kwargs:
             message_retention_period = kwargs['messageRetentionPeriod']
-        if 'pollingWaitSeconds' in kwargs:
+        if message_retention_period is None:
+            raise TypeError("Missing 'message_retention_period' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if polling_wait_seconds is None and 'pollingWaitSeconds' in kwargs:
             polling_wait_seconds = kwargs['pollingWaitSeconds']
-        if 'visibilityTimeouts' in kwargs:
+        if polling_wait_seconds is None:
+            raise TypeError("Missing 'polling_wait_seconds' argument")
+        if visibility_timeouts is None and 'visibilityTimeouts' in kwargs:
             visibility_timeouts = kwargs['visibilityTimeouts']
+        if visibility_timeouts is None:
+            raise TypeError("Missing 'visibility_timeouts' argument")
 
         _setter("delay_seconds", delay_seconds)
         _setter("id", id)
@@ -164,23 +178,37 @@ class GetTopicSubscriptionsSubscriptionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: str,
-             filter_tag: str,
-             id: str,
-             name: str,
-             notify_content_format: str,
-             notify_strategy: str,
-             topic_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             endpoint: Optional[str] = None,
+             filter_tag: Optional[str] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             notify_content_format: Optional[str] = None,
+             notify_strategy: Optional[str] = None,
+             topic_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'filterTag' in kwargs:
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if filter_tag is None and 'filterTag' in kwargs:
             filter_tag = kwargs['filterTag']
-        if 'notifyContentFormat' in kwargs:
+        if filter_tag is None:
+            raise TypeError("Missing 'filter_tag' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if notify_content_format is None and 'notifyContentFormat' in kwargs:
             notify_content_format = kwargs['notifyContentFormat']
-        if 'notifyStrategy' in kwargs:
+        if notify_content_format is None:
+            raise TypeError("Missing 'notify_content_format' argument")
+        if notify_strategy is None and 'notifyStrategy' in kwargs:
             notify_strategy = kwargs['notifyStrategy']
-        if 'topicName' in kwargs:
+        if notify_strategy is None:
+            raise TypeError("Missing 'notify_strategy' argument")
+        if topic_name is None and 'topicName' in kwargs:
             topic_name = kwargs['topicName']
+        if topic_name is None:
+            raise TypeError("Missing 'topic_name' argument")
 
         _setter("endpoint", endpoint)
         _setter("filter_tag", filter_tag)
@@ -270,16 +298,24 @@ class GetTopicsTopicResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             logging_enabled: bool,
-             maximum_message_size: int,
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             logging_enabled: Optional[bool] = None,
+             maximum_message_size: Optional[int] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'loggingEnabled' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if logging_enabled is None and 'loggingEnabled' in kwargs:
             logging_enabled = kwargs['loggingEnabled']
-        if 'maximumMessageSize' in kwargs:
+        if logging_enabled is None:
+            raise TypeError("Missing 'logging_enabled' argument")
+        if maximum_message_size is None and 'maximumMessageSize' in kwargs:
             maximum_message_size = kwargs['maximumMessageSize']
+        if maximum_message_size is None:
+            raise TypeError("Missing 'maximum_message_size' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("id", id)
         _setter("logging_enabled", logging_enabled)

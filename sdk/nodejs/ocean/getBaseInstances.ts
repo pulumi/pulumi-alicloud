@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ocean Base Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.203.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ocean.getBaseInstances({});
- * export const oceanBaseInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
- * const nameRegex = alicloud.ocean.getBaseInstances({
- *     nameRegex: "^my-Instance",
- * });
- * export const oceanBaseInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
- * ```
  */
 export function getBaseInstances(args?: GetBaseInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetBaseInstancesResult> {
     args = args || {};
@@ -113,22 +97,6 @@ export interface GetBaseInstancesResult {
  * This data source provides the Ocean Base Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.203.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ocean.getBaseInstances({});
- * export const oceanBaseInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
- * const nameRegex = alicloud.ocean.getBaseInstances({
- *     nameRegex: "^my-Instance",
- * });
- * export const oceanBaseInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
- * ```
  */
 export function getBaseInstancesOutput(args?: GetBaseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBaseInstancesResult> {
     return pulumi.output(args).apply((a: any) => getBaseInstances(a, opts))

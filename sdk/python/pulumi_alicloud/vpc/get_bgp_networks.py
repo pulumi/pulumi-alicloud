@@ -100,22 +100,6 @@ def get_bgp_networks(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.153.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpc.get_bgp_networks(ids=["example_value"])
-    pulumi.export("vpcBgpNetworkId1", ids.networks[0].id)
-    router_id = alicloud.vpc.get_bgp_networks(router_id="example_value")
-    pulumi.export("vpcBgpNetworkId2", router_id.networks[0].id)
-    status = alicloud.vpc.get_bgp_networks(status="Available")
-    pulumi.export("vpcBgpNetworkId3", status.networks[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Bgp Network IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -149,22 +133,6 @@ def get_bgp_networks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.153.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpc.get_bgp_networks(ids=["example_value"])
-    pulumi.export("vpcBgpNetworkId1", ids.networks[0].id)
-    router_id = alicloud.vpc.get_bgp_networks(router_id="example_value")
-    pulumi.export("vpcBgpNetworkId2", router_id.networks[0].id)
-    status = alicloud.vpc.get_bgp_networks(status="Available")
-    pulumi.export("vpcBgpNetworkId3", status.networks[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Bgp Network IDs.

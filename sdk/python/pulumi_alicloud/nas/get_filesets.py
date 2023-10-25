@@ -100,22 +100,6 @@ def get_filesets(file_system_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.153.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.nas.get_filesets(file_system_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("nasFilesetId1", ids.filesets[0].id)
-    ```
-
 
     :param str file_system_id: The ID of the file system.
     :param Sequence[str] ids: A list of Fileset IDs.
@@ -149,22 +133,6 @@ def get_filesets_output(file_system_id: Optional[pulumi.Input[str]] = None,
     This data source provides the Nas Filesets of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.153.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.nas.get_filesets(file_system_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("nasFilesetId1", ids.filesets[0].id)
-    ```
 
 
     :param str file_system_id: The ID of the file system.

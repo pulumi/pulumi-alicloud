@@ -118,16 +118,6 @@ def get_auto_snapshot_policies(ids: Optional[Sequence[str]] = None,
 
     > **NOTE**: Available in v1.153.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.nas.get_auto_snapshot_policies(ids=["example_value"])
-    pulumi.export("nasAutoSnapshotPoliciesId1", ids.policies[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Auto Snapshot Policies IDs.
     :param str name_regex: A regex string to filter results by Auto Snapshot Policy name.
@@ -162,16 +152,6 @@ def get_auto_snapshot_policies_output(ids: Optional[pulumi.Input[Optional[Sequen
     This data source provides Auto Snapshot Policies available to the user.
 
     > **NOTE**: Available in v1.153.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.nas.get_auto_snapshot_policies(ids=["example_value"])
-    pulumi.export("nasAutoSnapshotPoliciesId1", ids.policies[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Auto Snapshot Policies IDs.

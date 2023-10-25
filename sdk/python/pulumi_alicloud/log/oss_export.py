@@ -101,15 +101,15 @@ class OssExportArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             buffer_interval: pulumi.Input[int],
-             buffer_size: pulumi.Input[int],
-             content_type: pulumi.Input[str],
-             export_name: pulumi.Input[str],
-             logstore_name: pulumi.Input[str],
-             path_format: pulumi.Input[str],
-             project_name: pulumi.Input[str],
-             time_zone: pulumi.Input[str],
+             bucket: Optional[pulumi.Input[str]] = None,
+             buffer_interval: Optional[pulumi.Input[int]] = None,
+             buffer_size: Optional[pulumi.Input[int]] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             export_name: Optional[pulumi.Input[str]] = None,
+             logstore_name: Optional[pulumi.Input[str]] = None,
+             path_format: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
              compress_type: Optional[pulumi.Input[str]] = None,
              config_columns: Optional[pulumi.Input[Sequence[pulumi.Input['OssExportConfigColumnArgs']]]] = None,
              csv_config_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -126,51 +126,69 @@ class OssExportArgs:
              prefix: Optional[pulumi.Input[str]] = None,
              role_arn: Optional[pulumi.Input[str]] = None,
              suffix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bufferInterval' in kwargs:
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if buffer_interval is None and 'bufferInterval' in kwargs:
             buffer_interval = kwargs['bufferInterval']
-        if 'bufferSize' in kwargs:
+        if buffer_interval is None:
+            raise TypeError("Missing 'buffer_interval' argument")
+        if buffer_size is None and 'bufferSize' in kwargs:
             buffer_size = kwargs['bufferSize']
-        if 'contentType' in kwargs:
+        if buffer_size is None:
+            raise TypeError("Missing 'buffer_size' argument")
+        if content_type is None and 'contentType' in kwargs:
             content_type = kwargs['contentType']
-        if 'exportName' in kwargs:
+        if content_type is None:
+            raise TypeError("Missing 'content_type' argument")
+        if export_name is None and 'exportName' in kwargs:
             export_name = kwargs['exportName']
-        if 'logstoreName' in kwargs:
+        if export_name is None:
+            raise TypeError("Missing 'export_name' argument")
+        if logstore_name is None and 'logstoreName' in kwargs:
             logstore_name = kwargs['logstoreName']
-        if 'pathFormat' in kwargs:
+        if logstore_name is None:
+            raise TypeError("Missing 'logstore_name' argument")
+        if path_format is None and 'pathFormat' in kwargs:
             path_format = kwargs['pathFormat']
-        if 'projectName' in kwargs:
+        if path_format is None:
+            raise TypeError("Missing 'path_format' argument")
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'timeZone' in kwargs:
+        if project_name is None:
+            raise TypeError("Missing 'project_name' argument")
+        if time_zone is None and 'timeZone' in kwargs:
             time_zone = kwargs['timeZone']
-        if 'compressType' in kwargs:
+        if time_zone is None:
+            raise TypeError("Missing 'time_zone' argument")
+        if compress_type is None and 'compressType' in kwargs:
             compress_type = kwargs['compressType']
-        if 'configColumns' in kwargs:
+        if config_columns is None and 'configColumns' in kwargs:
             config_columns = kwargs['configColumns']
-        if 'csvConfigColumns' in kwargs:
+        if csv_config_columns is None and 'csvConfigColumns' in kwargs:
             csv_config_columns = kwargs['csvConfigColumns']
-        if 'csvConfigDelimiter' in kwargs:
+        if csv_config_delimiter is None and 'csvConfigDelimiter' in kwargs:
             csv_config_delimiter = kwargs['csvConfigDelimiter']
-        if 'csvConfigEscape' in kwargs:
+        if csv_config_escape is None and 'csvConfigEscape' in kwargs:
             csv_config_escape = kwargs['csvConfigEscape']
-        if 'csvConfigHeader' in kwargs:
+        if csv_config_header is None and 'csvConfigHeader' in kwargs:
             csv_config_header = kwargs['csvConfigHeader']
-        if 'csvConfigLinefeed' in kwargs:
+        if csv_config_linefeed is None and 'csvConfigLinefeed' in kwargs:
             csv_config_linefeed = kwargs['csvConfigLinefeed']
-        if 'csvConfigNull' in kwargs:
+        if csv_config_null is None and 'csvConfigNull' in kwargs:
             csv_config_null = kwargs['csvConfigNull']
-        if 'csvConfigQuote' in kwargs:
+        if csv_config_quote is None and 'csvConfigQuote' in kwargs:
             csv_config_quote = kwargs['csvConfigQuote']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'fromTime' in kwargs:
+        if from_time is None and 'fromTime' in kwargs:
             from_time = kwargs['fromTime']
-        if 'jsonEnableTag' in kwargs:
+        if json_enable_tag is None and 'jsonEnableTag' in kwargs:
             json_enable_tag = kwargs['jsonEnableTag']
-        if 'logReadRoleArn' in kwargs:
+        if log_read_role_arn is None and 'logReadRoleArn' in kwargs:
             log_read_role_arn = kwargs['logReadRoleArn']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
 
         _setter("bucket", bucket)
@@ -630,51 +648,51 @@ class _OssExportState:
              role_arn: Optional[pulumi.Input[str]] = None,
              suffix: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bufferInterval' in kwargs:
+        if buffer_interval is None and 'bufferInterval' in kwargs:
             buffer_interval = kwargs['bufferInterval']
-        if 'bufferSize' in kwargs:
+        if buffer_size is None and 'bufferSize' in kwargs:
             buffer_size = kwargs['bufferSize']
-        if 'compressType' in kwargs:
+        if compress_type is None and 'compressType' in kwargs:
             compress_type = kwargs['compressType']
-        if 'configColumns' in kwargs:
+        if config_columns is None and 'configColumns' in kwargs:
             config_columns = kwargs['configColumns']
-        if 'contentType' in kwargs:
+        if content_type is None and 'contentType' in kwargs:
             content_type = kwargs['contentType']
-        if 'csvConfigColumns' in kwargs:
+        if csv_config_columns is None and 'csvConfigColumns' in kwargs:
             csv_config_columns = kwargs['csvConfigColumns']
-        if 'csvConfigDelimiter' in kwargs:
+        if csv_config_delimiter is None and 'csvConfigDelimiter' in kwargs:
             csv_config_delimiter = kwargs['csvConfigDelimiter']
-        if 'csvConfigEscape' in kwargs:
+        if csv_config_escape is None and 'csvConfigEscape' in kwargs:
             csv_config_escape = kwargs['csvConfigEscape']
-        if 'csvConfigHeader' in kwargs:
+        if csv_config_header is None and 'csvConfigHeader' in kwargs:
             csv_config_header = kwargs['csvConfigHeader']
-        if 'csvConfigLinefeed' in kwargs:
+        if csv_config_linefeed is None and 'csvConfigLinefeed' in kwargs:
             csv_config_linefeed = kwargs['csvConfigLinefeed']
-        if 'csvConfigNull' in kwargs:
+        if csv_config_null is None and 'csvConfigNull' in kwargs:
             csv_config_null = kwargs['csvConfigNull']
-        if 'csvConfigQuote' in kwargs:
+        if csv_config_quote is None and 'csvConfigQuote' in kwargs:
             csv_config_quote = kwargs['csvConfigQuote']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'exportName' in kwargs:
+        if export_name is None and 'exportName' in kwargs:
             export_name = kwargs['exportName']
-        if 'fromTime' in kwargs:
+        if from_time is None and 'fromTime' in kwargs:
             from_time = kwargs['fromTime']
-        if 'jsonEnableTag' in kwargs:
+        if json_enable_tag is None and 'jsonEnableTag' in kwargs:
             json_enable_tag = kwargs['jsonEnableTag']
-        if 'logReadRoleArn' in kwargs:
+        if log_read_role_arn is None and 'logReadRoleArn' in kwargs:
             log_read_role_arn = kwargs['logReadRoleArn']
-        if 'logstoreName' in kwargs:
+        if logstore_name is None and 'logstoreName' in kwargs:
             logstore_name = kwargs['logstoreName']
-        if 'pathFormat' in kwargs:
+        if path_format is None and 'pathFormat' in kwargs:
             path_format = kwargs['pathFormat']
-        if 'projectName' in kwargs:
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'timeZone' in kwargs:
+        if time_zone is None and 'timeZone' in kwargs:
             time_zone = kwargs['timeZone']
 
         if bucket is not None:
@@ -1067,50 +1085,6 @@ class OssExport(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.187.0+
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject",
-            description="terraform-example",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_oss_export = alicloud.log.OssExport("exampleOssExport",
-            project_name=example_project.name,
-            logstore_name=example_store.name,
-            export_name="terraform-example",
-            display_name="terraform-example",
-            bucket="example-bucket",
-            prefix="root",
-            suffix="",
-            buffer_interval=300,
-            buffer_size=250,
-            compress_type="none",
-            path_format="%Y/%m/%d/%H/%M",
-            content_type="json",
-            json_enable_tag=True,
-            role_arn="role_arn_for_oss_write",
-            log_read_role_arn="role_arn_for_sls_read",
-            time_zone="+0800")
-        ```
-
         ## Import
 
         Log oss export can be imported using the id or name, e.g.
@@ -1159,50 +1133,6 @@ class OssExport(pulumi.CustomResource):
         [Refer to details](https://www.alibabacloud.com/help/en/log-service/latest/ship-logs-to-oss-new-version).
 
         > **NOTE:** Available in 1.187.0+
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject",
-            description="terraform-example",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_oss_export = alicloud.log.OssExport("exampleOssExport",
-            project_name=example_project.name,
-            logstore_name=example_store.name,
-            export_name="terraform-example",
-            display_name="terraform-example",
-            bucket="example-bucket",
-            prefix="root",
-            suffix="",
-            buffer_interval=300,
-            buffer_size=250,
-            compress_type="none",
-            path_format="%Y/%m/%d/%H/%M",
-            content_type="json",
-            json_enable_tag=True,
-            role_arn="role_arn_for_oss_write",
-            log_read_role_arn="role_arn_for_sls_read",
-            time_zone="+0800")
-        ```
 
         ## Import
 

@@ -132,16 +132,6 @@ def get_server_certificates(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the server certificate list.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    sample_ds = alicloud.slb.get_server_certificates()
-    pulumi.export("firstSlbServerCertificateId", sample_ds.certificates[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of server certificates IDs to filter results.
     :param str name_regex: A regex string to filter results by server certificate name.
@@ -178,16 +168,6 @@ def get_server_certificates_output(ids: Optional[pulumi.Input[Optional[Sequence[
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerCertificatesResult]:
     """
     This data source provides the server certificate list.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    sample_ds = alicloud.slb.get_server_certificates()
-    pulumi.export("firstSlbServerCertificateId", sample_ds.certificates[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of server certificates IDs to filter results.

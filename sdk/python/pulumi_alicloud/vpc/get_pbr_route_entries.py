@@ -96,17 +96,6 @@ def get_pbr_route_entries(ids: Optional[Sequence[str]] = None,
 
     The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpc.get_pbr_route_entries(vpn_gateway_id="example_vpn_gateway_id",
-        ids=["example_id"])
-    pulumi.export("vpnIpsecServerId1", ids.entries[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of VPN Pbr Route Entries IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -136,17 +125,6 @@ def get_pbr_route_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     > **NOTE:** Available in v1.162.0+.
 
     The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpc.get_pbr_route_entries(vpn_gateway_id="example_vpn_gateway_id",
-        ids=["example_id"])
-    pulumi.export("vpnIpsecServerId1", ids.entries[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of VPN Pbr Route Entries IDs.

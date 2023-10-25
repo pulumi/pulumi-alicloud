@@ -35,20 +35,28 @@ class AutoSnapShotPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_name: pulumi.Input[str],
-             repeat_weekdays: pulumi.Input[Sequence[pulumi.Input[str]]],
-             retention_days: pulumi.Input[int],
-             time_points: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             policy_name: Optional[pulumi.Input[str]] = None,
+             repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             retention_days: Optional[pulumi.Input[int]] = None,
+             time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'policyName' in kwargs:
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'repeatWeekdays' in kwargs:
+        if policy_name is None:
+            raise TypeError("Missing 'policy_name' argument")
+        if repeat_weekdays is None and 'repeatWeekdays' in kwargs:
             repeat_weekdays = kwargs['repeatWeekdays']
-        if 'retentionDays' in kwargs:
+        if repeat_weekdays is None:
+            raise TypeError("Missing 'repeat_weekdays' argument")
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'timePoints' in kwargs:
+        if retention_days is None:
+            raise TypeError("Missing 'retention_days' argument")
+        if time_points is None and 'timePoints' in kwargs:
             time_points = kwargs['timePoints']
+        if time_points is None:
+            raise TypeError("Missing 'time_points' argument")
 
         _setter("policy_name", policy_name)
         _setter("repeat_weekdays", repeat_weekdays)
@@ -156,25 +164,25 @@ class _AutoSnapShotPolicyState:
              status: Optional[pulumi.Input[str]] = None,
              status_detail: Optional[pulumi.Input[str]] = None,
              time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appliedDbfsNumber' in kwargs:
+        if applied_dbfs_number is None and 'appliedDbfsNumber' in kwargs:
             applied_dbfs_number = kwargs['appliedDbfsNumber']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'lastModified' in kwargs:
+        if last_modified is None and 'lastModified' in kwargs:
             last_modified = kwargs['lastModified']
-        if 'policyId' in kwargs:
+        if policy_id is None and 'policyId' in kwargs:
             policy_id = kwargs['policyId']
-        if 'policyName' in kwargs:
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'repeatWeekdays' in kwargs:
+        if repeat_weekdays is None and 'repeatWeekdays' in kwargs:
             repeat_weekdays = kwargs['repeatWeekdays']
-        if 'retentionDays' in kwargs:
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'statusDetail' in kwargs:
+        if status_detail is None and 'statusDetail' in kwargs:
             status_detail = kwargs['statusDetail']
-        if 'timePoints' in kwargs:
+        if time_points is None and 'timePoints' in kwargs:
             time_points = kwargs['timePoints']
 
         if applied_dbfs_number is not None:
@@ -336,21 +344,6 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.202.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.databasefilesystem.AutoSnapShotPolicy("default",
-            policy_name="tf-example",
-            repeat_weekdays=["2"],
-            retention_days=1,
-            time_points=["01"])
-        ```
-
         ## Import
 
         Dbfs Auto Snap Shot Policy can be imported using the id, e.g.
@@ -378,21 +371,6 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
         For information about Dbfs Auto Snap Shot Policy and how to use it.
 
         > **NOTE:** Available since v1.202.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.databasefilesystem.AutoSnapShotPolicy("default",
-            policy_name="tf-example",
-            repeat_weekdays=["2"],
-            retention_days=1,
-            time_points=["01"])
-        ```
 
         ## Import
 

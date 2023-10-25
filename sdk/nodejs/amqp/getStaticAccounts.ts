@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Amqp Static Account available to the user.[What is Static Account](https://help.aliyun.com/document_detail/184399.html)
  *
  * > **NOTE:** Available in 1.195.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.amqp.getStaticAccounts({
- *     instanceId: "amqp-cn-0ju2y01zs001",
- * });
- * export const alicloudAmqpStaticAccountExampleId = _default.then(_default => _default.accounts?.[0]?.id);
- * ```
  */
 export function getStaticAccounts(args?: GetStaticAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetStaticAccountsResult> {
     args = args || {};
@@ -75,18 +63,6 @@ export interface GetStaticAccountsResult {
  * This data source provides Amqp Static Account available to the user.[What is Static Account](https://help.aliyun.com/document_detail/184399.html)
  *
  * > **NOTE:** Available in 1.195.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.amqp.getStaticAccounts({
- *     instanceId: "amqp-cn-0ju2y01zs001",
- * });
- * export const alicloudAmqpStaticAccountExampleId = _default.then(_default => _default.accounts?.[0]?.id);
- * ```
  */
 export function getStaticAccountsOutput(args?: GetStaticAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStaticAccountsResult> {
     return pulumi.output(args).apply((a: any) => getStaticAccounts(a, opts))

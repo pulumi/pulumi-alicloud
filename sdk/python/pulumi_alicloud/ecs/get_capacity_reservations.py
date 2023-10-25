@@ -196,19 +196,6 @@ def get_capacity_reservations(capacity_reservation_ids: Optional[Sequence[str]] 
 
     > **NOTE:** Available in 1.195.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.ecs.get_capacity_reservations(ids=[alicloud_ecs_capacity_reservation["default"]["id"]],
-        name_regex=alicloud_ecs_capacity_reservation["default"]["name"],
-        instance_type="ecs.c6.large",
-        platform="linux")
-    pulumi.export("alicloudEcsCapacityReservationExampleId", default.reservations[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Capacity Reservation IDs.
     :param str instance_type: Instance type. Currently, you can only set the capacity reservation service for one instance type.
@@ -266,19 +253,6 @@ def get_capacity_reservations_output(capacity_reservation_ids: Optional[pulumi.I
     This data source provides Ecs Capacity Reservation available to the user.
 
     > **NOTE:** Available in 1.195.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.ecs.get_capacity_reservations(ids=[alicloud_ecs_capacity_reservation["default"]["id"]],
-        name_regex=alicloud_ecs_capacity_reservation["default"]["name"],
-        instance_type="ecs.c6.large",
-        platform="linux")
-    pulumi.export("alicloudEcsCapacityReservationExampleId", default.reservations[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Capacity Reservation IDs.

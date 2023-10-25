@@ -15,36 +15,6 @@ import (
 // This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.188.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := cen.GetTransitRouterPrefixListAssociations(ctx, &cen.GetTransitRouterPrefixListAssociationsArgs{
-//				TransitRouterId:      "tr-6ehx7q2jze8ch5ji0****",
-//				TransitRouterTableId: "vtb-6ehgc262hr170qgyc****",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("cenTransitRouterPrefixListAssociationId", _default.Associations[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetTransitRouterPrefixListAssociations(ctx *pulumi.Context, args *GetTransitRouterPrefixListAssociationsArgs, opts ...pulumi.InvokeOption) (*GetTransitRouterPrefixListAssociationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRouterPrefixListAssociationsResult

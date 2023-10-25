@@ -15,34 +15,6 @@ import (
 // This data source provides the ECS instance type families of Alibaba Cloud.
 //
 // > **NOTE:** Available in 1.54.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := ecs.GetInstanceTypeFamilies(ctx, &ecs.GetInstanceTypeFamiliesArgs{
-//				InstanceChargeType: pulumi.StringRef("PrePaid"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstInstanceTypeFamilyId", _default.Families[0].Id)
-//			ctx.Export("instanceIds", _default.Ids)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetInstanceTypeFamilies(ctx *pulumi.Context, args *GetInstanceTypeFamiliesArgs, opts ...pulumi.InvokeOption) (*GetInstanceTypeFamiliesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceTypeFamiliesResult

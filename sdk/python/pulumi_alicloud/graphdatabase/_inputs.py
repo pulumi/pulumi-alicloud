@@ -36,13 +36,13 @@ class DbInstanceDbInstanceIpArrayArgs:
              db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
              db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
              security_ips: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbInstanceIpArrayAttribute' in kwargs:
+        if db_instance_ip_array_attribute is None and 'dbInstanceIpArrayAttribute' in kwargs:
             db_instance_ip_array_attribute = kwargs['dbInstanceIpArrayAttribute']
-        if 'dbInstanceIpArrayName' in kwargs:
+        if db_instance_ip_array_name is None and 'dbInstanceIpArrayName' in kwargs:
             db_instance_ip_array_name = kwargs['dbInstanceIpArrayName']
-        if 'securityIps' in kwargs:
+        if security_ips is None and 'securityIps' in kwargs:
             security_ips = kwargs['securityIps']
 
         if db_instance_ip_array_attribute is not None:

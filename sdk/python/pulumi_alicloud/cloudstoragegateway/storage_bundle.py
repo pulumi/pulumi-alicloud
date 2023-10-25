@@ -29,12 +29,14 @@ class StorageBundleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             storage_bundle_name: pulumi.Input[str],
+             storage_bundle_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'storageBundleName' in kwargs:
+        if storage_bundle_name is None and 'storageBundleName' in kwargs:
             storage_bundle_name = kwargs['storageBundleName']
+        if storage_bundle_name is None:
+            raise TypeError("Missing 'storage_bundle_name' argument")
 
         _setter("storage_bundle_name", storage_bundle_name)
         if description is not None:
@@ -85,9 +87,9 @@ class _StorageBundleState:
              _setter: Callable[[Any, Any], None],
              description: Optional[pulumi.Input[str]] = None,
              storage_bundle_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'storageBundleName' in kwargs:
+        if storage_bundle_name is None and 'storageBundleName' in kwargs:
             storage_bundle_name = kwargs['storageBundleName']
 
         if description is not None:
@@ -135,17 +137,6 @@ class StorageBundle(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.116.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
-        ```
-
         ## Import
 
         Cloud Storage Gateway Storage Bundle can be imported using the id, e.g.
@@ -171,17 +162,6 @@ class StorageBundle(pulumi.CustomResource):
         For information about Cloud Storage Gateway Storage Bundle and how to use it, see [What is Storage Bundle](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/createstoragebundle).
 
         > **NOTE:** Available since v1.116.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
-        ```
 
         ## Import
 

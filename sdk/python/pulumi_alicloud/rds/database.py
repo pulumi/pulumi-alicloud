@@ -46,15 +46,17 @@ class DatabaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
              character_set: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'characterSet' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if character_set is None and 'characterSet' in kwargs:
             character_set = kwargs['characterSet']
 
         _setter("instance_id", instance_id)
@@ -164,11 +166,11 @@ class _DatabaseState:
              description: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'characterSet' in kwargs:
+        if character_set is None and 'characterSet' in kwargs:
             character_set = kwargs['characterSet']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
 
         if character_set is not None:
@@ -255,36 +257,6 @@ class Database(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.5.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="5.6")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_instance = alicloud.rds.Instance("defaultInstance",
-            engine="MySQL",
-            engine_version="5.6",
-            instance_type="rds.mysql.s1.small",
-            instance_storage=10,
-            vswitch_id=default_switch.id,
-            instance_name=name)
-        default_database = alicloud.rds.Database("defaultDatabase", instance_id=default_instance.id)
-        ```
-
         ## Import
 
         RDS database can be imported using the id, e.g.
@@ -321,36 +293,6 @@ class Database(pulumi.CustomResource):
         Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases, see [What is DB Database](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdatabase).
 
         > **NOTE:** Available since v1.5.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="5.6")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_instance = alicloud.rds.Instance("defaultInstance",
-            engine="MySQL",
-            engine_version="5.6",
-            instance_type="rds.mysql.s1.small",
-            instance_storage=10,
-            vswitch_id=default_switch.id,
-            instance_name=name)
-        default_database = alicloud.rds.Database("defaultDatabase", instance_id=default_instance.id)
-        ```
 
         ## Import
 

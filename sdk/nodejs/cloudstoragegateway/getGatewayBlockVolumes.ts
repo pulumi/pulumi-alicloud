@@ -10,29 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.144.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cloudstoragegateway.getGatewayBlockVolumes({
- *     gatewayId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const cloudStorageGatewayGatewayBlockVolumeId1 = ids.then(ids => ids.volumes?.[0]?.id);
- * const nameRegex = alicloud.cloudstoragegateway.getGatewayBlockVolumes({
- *     gatewayId: "example_value",
- *     nameRegex: "^my-GatewayBlockVolume",
- * });
- * export const cloudStorageGatewayGatewayBlockVolumeId2 = nameRegex.then(nameRegex => nameRegex.volumes?.[0]?.id);
- * ```
  */
 export function getGatewayBlockVolumes(args: GetGatewayBlockVolumesArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayBlockVolumesResult> {
 
@@ -92,29 +69,6 @@ export interface GetGatewayBlockVolumesResult {
  * This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.144.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cloudstoragegateway.getGatewayBlockVolumes({
- *     gatewayId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const cloudStorageGatewayGatewayBlockVolumeId1 = ids.then(ids => ids.volumes?.[0]?.id);
- * const nameRegex = alicloud.cloudstoragegateway.getGatewayBlockVolumes({
- *     gatewayId: "example_value",
- *     nameRegex: "^my-GatewayBlockVolume",
- * });
- * export const cloudStorageGatewayGatewayBlockVolumeId2 = nameRegex.then(nameRegex => nameRegex.volumes?.[0]?.id);
- * ```
  */
 export function getGatewayBlockVolumesOutput(args: GetGatewayBlockVolumesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayBlockVolumesResult> {
     return pulumi.output(args).apply((a: any) => getGatewayBlockVolumes(a, opts))

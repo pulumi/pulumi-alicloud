@@ -142,22 +142,6 @@ def get_gateway_vpn_attachments(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.181.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpn.get_gateway_vpn_attachments()
-    pulumi.export("vpnGatewayVpnAttachmentId1", ids.attachments[0].id)
-    name_regex = alicloud.vpn.get_gateway_vpn_attachments(name_regex="^my-VpnAttachment")
-    pulumi.export("vpnGatewayVpnAttachmentId2", name_regex.attachments[0].id)
-    pulumi.export("localId", data["alicloud_vpn_gateway_vpn_attachments"]["vpn_attachments"]["attachments"][0]["ike_config"][0]["local_id"])
-    pulumi.export("internetIp", data["alicloud_vpn_gateway_vpn_attachments"]["vpn_attachments"]["attachments"][0]["internet_ip"])
-    ```
-
 
     :param Sequence[str] ids: A list of Vpn Attachment IDs.
     :param str name_regex: A regex string to filter results by Vpn Attachment name.
@@ -202,22 +186,6 @@ def get_gateway_vpn_attachments_output(ids: Optional[pulumi.Input[Optional[Seque
     This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.181.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpn.get_gateway_vpn_attachments()
-    pulumi.export("vpnGatewayVpnAttachmentId1", ids.attachments[0].id)
-    name_regex = alicloud.vpn.get_gateway_vpn_attachments(name_regex="^my-VpnAttachment")
-    pulumi.export("vpnGatewayVpnAttachmentId2", name_regex.attachments[0].id)
-    pulumi.export("localId", data["alicloud_vpn_gateway_vpn_attachments"]["vpn_attachments"]["attachments"][0]["ike_config"][0]["local_id"])
-    pulumi.export("internetIp", data["alicloud_vpn_gateway_vpn_attachments"]["vpn_attachments"]["attachments"][0]["internet_ip"])
-    ```
 
 
     :param Sequence[str] ids: A list of Vpn Attachment IDs.

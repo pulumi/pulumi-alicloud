@@ -47,31 +47,45 @@ class BastionHostInstanceAdAuthServerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account: pulumi.Input[str],
-             base_dn: pulumi.Input[str],
-             domain: pulumi.Input[str],
-             is_ssl: pulumi.Input[bool],
-             password: pulumi.Input[str],
-             port: pulumi.Input[int],
-             server: pulumi.Input[str],
+             account: Optional[pulumi.Input[str]] = None,
+             base_dn: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             is_ssl: Optional[pulumi.Input[bool]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             server: Optional[pulumi.Input[str]] = None,
              email_mapping: Optional[pulumi.Input[str]] = None,
              filter: Optional[pulumi.Input[str]] = None,
              mobile_mapping: Optional[pulumi.Input[str]] = None,
              name_mapping: Optional[pulumi.Input[str]] = None,
              standby_server: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'baseDn' in kwargs:
+        if account is None:
+            raise TypeError("Missing 'account' argument")
+        if base_dn is None and 'baseDn' in kwargs:
             base_dn = kwargs['baseDn']
-        if 'isSsl' in kwargs:
+        if base_dn is None:
+            raise TypeError("Missing 'base_dn' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if is_ssl is None and 'isSsl' in kwargs:
             is_ssl = kwargs['isSsl']
-        if 'emailMapping' in kwargs:
+        if is_ssl is None:
+            raise TypeError("Missing 'is_ssl' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if server is None:
+            raise TypeError("Missing 'server' argument")
+        if email_mapping is None and 'emailMapping' in kwargs:
             email_mapping = kwargs['emailMapping']
-        if 'mobileMapping' in kwargs:
+        if mobile_mapping is None and 'mobileMapping' in kwargs:
             mobile_mapping = kwargs['mobileMapping']
-        if 'nameMapping' in kwargs:
+        if name_mapping is None and 'nameMapping' in kwargs:
             name_mapping = kwargs['nameMapping']
-        if 'standbyServer' in kwargs:
+        if standby_server is None and 'standbyServer' in kwargs:
             standby_server = kwargs['standbyServer']
 
         _setter("account", account)
@@ -234,11 +248,11 @@ class BastionHostInstanceLdapAuthServerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account: pulumi.Input[str],
-             base_dn: pulumi.Input[str],
-             password: pulumi.Input[str],
-             port: pulumi.Input[int],
-             server: pulumi.Input[str],
+             account: Optional[pulumi.Input[str]] = None,
+             base_dn: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             server: Optional[pulumi.Input[str]] = None,
              email_mapping: Optional[pulumi.Input[str]] = None,
              filter: Optional[pulumi.Input[str]] = None,
              is_ssl: Optional[pulumi.Input[bool]] = None,
@@ -246,21 +260,31 @@ class BastionHostInstanceLdapAuthServerArgs:
              mobile_mapping: Optional[pulumi.Input[str]] = None,
              name_mapping: Optional[pulumi.Input[str]] = None,
              standby_server: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'baseDn' in kwargs:
+        if account is None:
+            raise TypeError("Missing 'account' argument")
+        if base_dn is None and 'baseDn' in kwargs:
             base_dn = kwargs['baseDn']
-        if 'emailMapping' in kwargs:
+        if base_dn is None:
+            raise TypeError("Missing 'base_dn' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if server is None:
+            raise TypeError("Missing 'server' argument")
+        if email_mapping is None and 'emailMapping' in kwargs:
             email_mapping = kwargs['emailMapping']
-        if 'isSsl' in kwargs:
+        if is_ssl is None and 'isSsl' in kwargs:
             is_ssl = kwargs['isSsl']
-        if 'loginNameMapping' in kwargs:
+        if login_name_mapping is None and 'loginNameMapping' in kwargs:
             login_name_mapping = kwargs['loginNameMapping']
-        if 'mobileMapping' in kwargs:
+        if mobile_mapping is None and 'mobileMapping' in kwargs:
             mobile_mapping = kwargs['mobileMapping']
-        if 'nameMapping' in kwargs:
+        if name_mapping is None and 'nameMapping' in kwargs:
             name_mapping = kwargs['nameMapping']
-        if 'standbyServer' in kwargs:
+        if standby_server is None and 'standbyServer' in kwargs:
             standby_server = kwargs['standbyServer']
 
         _setter("account", account)

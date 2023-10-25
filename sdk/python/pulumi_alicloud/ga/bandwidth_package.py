@@ -75,8 +75,8 @@ class BandwidthPackageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: pulumi.Input[int],
-             type: pulumi.Input[str],
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              auto_pay: Optional[pulumi.Input[bool]] = None,
              auto_renew_duration: Optional[pulumi.Input[int]] = None,
              auto_use_coupon: Optional[pulumi.Input[bool]] = None,
@@ -92,29 +92,33 @@ class BandwidthPackageArgs:
              ratio: Optional[pulumi.Input[int]] = None,
              renewal_status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoPay' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if auto_pay is None and 'autoPay' in kwargs:
             auto_pay = kwargs['autoPay']
-        if 'autoRenewDuration' in kwargs:
+        if auto_renew_duration is None and 'autoRenewDuration' in kwargs:
             auto_renew_duration = kwargs['autoRenewDuration']
-        if 'autoUseCoupon' in kwargs:
+        if auto_use_coupon is None and 'autoUseCoupon' in kwargs:
             auto_use_coupon = kwargs['autoUseCoupon']
-        if 'bandwidthPackageName' in kwargs:
+        if bandwidth_package_name is None and 'bandwidthPackageName' in kwargs:
             bandwidth_package_name = kwargs['bandwidthPackageName']
-        if 'bandwidthType' in kwargs:
+        if bandwidth_type is None and 'bandwidthType' in kwargs:
             bandwidth_type = kwargs['bandwidthType']
-        if 'billingType' in kwargs:
+        if billing_type is None and 'billingType' in kwargs:
             billing_type = kwargs['billingType']
-        if 'cbnGeographicRegionIda' in kwargs:
+        if cbn_geographic_region_ida is None and 'cbnGeographicRegionIda' in kwargs:
             cbn_geographic_region_ida = kwargs['cbnGeographicRegionIda']
-        if 'cbnGeographicRegionIdb' in kwargs:
+        if cbn_geographic_region_idb is None and 'cbnGeographicRegionIdb' in kwargs:
             cbn_geographic_region_idb = kwargs['cbnGeographicRegionIdb']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'promotionOptionNo' in kwargs:
+        if promotion_option_no is None and 'promotionOptionNo' in kwargs:
             promotion_option_no = kwargs['promotionOptionNo']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
 
         _setter("bandwidth", bandwidth)
@@ -441,29 +445,29 @@ class _BandwidthPackageState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoPay' in kwargs:
+        if auto_pay is None and 'autoPay' in kwargs:
             auto_pay = kwargs['autoPay']
-        if 'autoRenewDuration' in kwargs:
+        if auto_renew_duration is None and 'autoRenewDuration' in kwargs:
             auto_renew_duration = kwargs['autoRenewDuration']
-        if 'autoUseCoupon' in kwargs:
+        if auto_use_coupon is None and 'autoUseCoupon' in kwargs:
             auto_use_coupon = kwargs['autoUseCoupon']
-        if 'bandwidthPackageName' in kwargs:
+        if bandwidth_package_name is None and 'bandwidthPackageName' in kwargs:
             bandwidth_package_name = kwargs['bandwidthPackageName']
-        if 'bandwidthType' in kwargs:
+        if bandwidth_type is None and 'bandwidthType' in kwargs:
             bandwidth_type = kwargs['bandwidthType']
-        if 'billingType' in kwargs:
+        if billing_type is None and 'billingType' in kwargs:
             billing_type = kwargs['billingType']
-        if 'cbnGeographicRegionIda' in kwargs:
+        if cbn_geographic_region_ida is None and 'cbnGeographicRegionIda' in kwargs:
             cbn_geographic_region_ida = kwargs['cbnGeographicRegionIda']
-        if 'cbnGeographicRegionIdb' in kwargs:
+        if cbn_geographic_region_idb is None and 'cbnGeographicRegionIdb' in kwargs:
             cbn_geographic_region_idb = kwargs['cbnGeographicRegionIdb']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'promotionOptionNo' in kwargs:
+        if promotion_option_no is None and 'promotionOptionNo' in kwargs:
             promotion_option_no = kwargs['promotionOptionNo']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
 
         if auto_pay is not None:
@@ -753,23 +757,6 @@ class BandwidthPackage(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.112.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ga.BandwidthPackage("example",
-            auto_pay=True,
-            bandwidth=20,
-            bandwidth_type="Basic",
-            duration="1",
-            ratio=30,
-            type="Basic")
-        ```
-
         ## Import
 
         Ga Bandwidth Package can be imported using the id, e.g.
@@ -813,23 +800,6 @@ class BandwidthPackage(pulumi.CustomResource):
         > **NOTE:** At present, The `ga.BandwidthPackage` created with `Subscription` cannot be deleted. you need to wait until the resource is outdated and released automatically.
 
         > **NOTE:** Available since v1.112.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ga.BandwidthPackage("example",
-            auto_pay=True,
-            bandwidth=20,
-            bandwidth_type="Basic",
-            duration="1",
-            ratio=30,
-            type="Basic")
-        ```
 
         ## Import
 

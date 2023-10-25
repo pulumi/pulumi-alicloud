@@ -114,18 +114,6 @@ def get_domain_txt_guid(domain_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.80.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    this = alicloud.dns.get_domain_txt_guid(domain_name="test111.abc",
-        type="ADD_SUB_DOMAIN")
-    pulumi.export("rr", this.rr)
-    pulumi.export("value", this.value)
-    ```
-
 
     :param str domain_name: Verified domain name.
     :param str lang: User language.
@@ -160,18 +148,6 @@ def get_domain_txt_guid_output(domain_name: Optional[pulumi.Input[str]] = None,
     Provides the generation of txt records to realize the retrieval and verification of domain names.
 
     > **NOTE:** Available in v1.80.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    this = alicloud.dns.get_domain_txt_guid(domain_name="test111.abc",
-        type="ADD_SUB_DOMAIN")
-    pulumi.export("rr", this.rr)
-    pulumi.export("value", this.value)
-    ```
 
 
     :param str domain_name: Verified domain name.

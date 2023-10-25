@@ -15,40 +15,6 @@ namespace Pulumi.AliCloud.CR
         /// This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.139.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.CR.GetEndpointAclPolicies.Invoke(new()
-        ///     {
-        ///         InstanceId = "example_value",
-        ///         EndpointType = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["crEndpointAclPolicyId1"] = ids.Apply(getEndpointAclPoliciesResult =&gt; getEndpointAclPoliciesResult.Policies[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEndpointAclPoliciesResult> InvokeAsync(GetEndpointAclPoliciesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEndpointAclPoliciesResult>("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", args ?? new GetEndpointAclPoliciesArgs(), options.WithDefaults());
@@ -57,40 +23,6 @@ namespace Pulumi.AliCloud.CR
         /// This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.139.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.CR.GetEndpointAclPolicies.Invoke(new()
-        ///     {
-        ///         InstanceId = "example_value",
-        ///         EndpointType = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["crEndpointAclPolicyId1"] = ids.Apply(getEndpointAclPoliciesResult =&gt; getEndpointAclPoliciesResult.Policies[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetEndpointAclPoliciesResult> Invoke(GetEndpointAclPoliciesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEndpointAclPoliciesResult>("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", args ?? new GetEndpointAclPoliciesInvokeArgs(), options.WithDefaults());

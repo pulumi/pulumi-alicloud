@@ -17,46 +17,6 @@ namespace Pulumi.AliCloud.CR
         /// For information about CR Chains and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/doc-detail/357821.html).
         /// 
         /// &gt; **NOTE:** Available in v1.161.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.CR.GetChains.Invoke(new()
-        ///     {
-        ///         InstanceId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.CR.GetChains.Invoke(new()
-        ///     {
-        ///         InstanceId = "example_value",
-        ///         NameRegex = "^my-Chain",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["crChainId1"] = ids.Apply(getChainsResult =&gt; getChainsResult.Chains[0]?.Id),
-        ///         ["crChainId2"] = nameRegex.Apply(getChainsResult =&gt; getChainsResult.Chains[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetChainsResult> InvokeAsync(GetChainsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetChainsResult>("alicloud:cr/getChains:getChains", args ?? new GetChainsArgs(), options.WithDefaults());
@@ -67,46 +27,6 @@ namespace Pulumi.AliCloud.CR
         /// For information about CR Chains and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/doc-detail/357821.html).
         /// 
         /// &gt; **NOTE:** Available in v1.161.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.CR.GetChains.Invoke(new()
-        ///     {
-        ///         InstanceId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.CR.GetChains.Invoke(new()
-        ///     {
-        ///         InstanceId = "example_value",
-        ///         NameRegex = "^my-Chain",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["crChainId1"] = ids.Apply(getChainsResult =&gt; getChainsResult.Chains[0]?.Id),
-        ///         ["crChainId2"] = nameRegex.Apply(getChainsResult =&gt; getChainsResult.Chains[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetChainsResult> Invoke(GetChainsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetChainsResult>("alicloud:cr/getChains:getChains", args ?? new GetChainsInvokeArgs(), options.WithDefaults());

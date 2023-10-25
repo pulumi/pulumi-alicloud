@@ -50,7 +50,7 @@ class EnterpriseUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             uid: pulumi.Input[str],
+             uid: Optional[pulumi.Input[str]] = None,
              max_execute_count: Optional[pulumi.Input[int]] = None,
              max_result_count: Optional[pulumi.Input[int]] = None,
              mobile: Optional[pulumi.Input[str]] = None,
@@ -59,17 +59,19 @@ class EnterpriseUserArgs:
              status: Optional[pulumi.Input[str]] = None,
              tid: Optional[pulumi.Input[int]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxExecuteCount' in kwargs:
+        if uid is None:
+            raise TypeError("Missing 'uid' argument")
+        if max_execute_count is None and 'maxExecuteCount' in kwargs:
             max_execute_count = kwargs['maxExecuteCount']
-        if 'maxResultCount' in kwargs:
+        if max_result_count is None and 'maxResultCount' in kwargs:
             max_result_count = kwargs['maxResultCount']
-        if 'nickName' in kwargs:
+        if nick_name is None and 'nickName' in kwargs:
             nick_name = kwargs['nickName']
-        if 'roleNames' in kwargs:
+        if role_names is None and 'roleNames' in kwargs:
             role_names = kwargs['roleNames']
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
 
         _setter("uid", uid)
@@ -253,17 +255,17 @@ class _EnterpriseUserState:
              tid: Optional[pulumi.Input[int]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxExecuteCount' in kwargs:
+        if max_execute_count is None and 'maxExecuteCount' in kwargs:
             max_execute_count = kwargs['maxExecuteCount']
-        if 'maxResultCount' in kwargs:
+        if max_result_count is None and 'maxResultCount' in kwargs:
             max_result_count = kwargs['maxResultCount']
-        if 'nickName' in kwargs:
+        if nick_name is None and 'nickName' in kwargs:
             nick_name = kwargs['nickName']
-        if 'roleNames' in kwargs:
+        if role_names is None and 'roleNames' in kwargs:
             role_names = kwargs['roleNames']
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
 
         if max_execute_count is not None:
@@ -420,28 +422,6 @@ class EnterpriseUser(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.90.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexamplename"
-        default_user = alicloud.ram.User("defaultUser",
-            display_name=name,
-            mobile="86-18688888888",
-            email="hello.uuu@aaa.com",
-            comments="example")
-        default_enterprise_user = alicloud.dms.EnterpriseUser("defaultEnterpriseUser",
-            uid=default_user.id,
-            user_name=name,
-            role_names=["DBA"],
-            mobile="86-18688888888")
-        ```
-
         ## Import
 
         DMS Enterprise User can be imported using the id, e.g.
@@ -472,28 +452,6 @@ class EnterpriseUser(pulumi.CustomResource):
         Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-registeruser).
 
         > **NOTE:** Available since v1.90.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexamplename"
-        default_user = alicloud.ram.User("defaultUser",
-            display_name=name,
-            mobile="86-18688888888",
-            email="hello.uuu@aaa.com",
-            comments="example")
-        default_enterprise_user = alicloud.dms.EnterpriseUser("defaultEnterpriseUser",
-            uid=default_user.id,
-            user_name=name,
-            role_names=["DBA"],
-            mobile="86-18688888888")
-        ```
 
         ## Import
 

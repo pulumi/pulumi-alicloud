@@ -16,41 +16,6 @@ namespace Pulumi.AliCloud.Cddc
     /// 
     /// &gt; **NOTE:** Available since v1.132.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "10.4.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultDedicatedHostGroup = new AliCloud.Cddc.DedicatedHostGroup("defaultDedicatedHostGroup", new()
-    ///     {
-    ///         Engine = "MySQL",
-    ///         VpcId = defaultNetwork.Id,
-    ///         CpuAllocationRatio = 101,
-    ///         MemAllocationRatio = 50,
-    ///         DiskAllocationRatio = 200,
-    ///         AllocationPolicy = "Evenly",
-    ///         HostReplacePolicy = "Manual",
-    ///         DedicatedHostGroupDesc = name,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ApsaraDB for MyBase Dedicated Host Group can be imported using the id, e.g.

@@ -11,31 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.112.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const exampleZones = alicloud.tsdb.getZones({});
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {cidrBlock: "192.168.0.0/16"});
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
- *     availabilityZone: exampleZones.then(exampleZones => exampleZones.ids?.[0]),
- *     cidrBlock: "192.168.1.0/24",
- *     vpcId: exampleNetwork.id,
- * });
- * const exampleInstance = new alicloud.tsdb.Instance("exampleInstance", {
- *     paymentType: "PayAsYouGo",
- *     vswitchId: exampleSwitch.id,
- *     instanceStorage: "50",
- *     instanceClass: "tsdb.1x.basic",
- *     engineType: "tsdb_tsdb",
- *     instanceAlias: "tf-testaccTsdbInstance",
- * });
- * ```
- *
  * ## Import
  *
  * TSDB Instance can be imported using the id, e.g.

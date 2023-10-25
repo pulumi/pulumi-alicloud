@@ -16,41 +16,6 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// &gt; **NOTE:** Available since v1.195.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
-    ///     {
-    ///         CenInstanceName = "tf_example",
-    ///         Description = "an example for cen",
-    ///     });
-    /// 
-    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
-    ///     {
-    ///         TransitRouterName = "tf_example",
-    ///         CenId = exampleInstance.Id,
-    ///         SupportMulticast = true,
-    ///     });
-    /// 
-    ///     var exampleTransitRouterMulticastDomain = new AliCloud.Cen.TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain", new()
-    ///     {
-    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
-    ///         TransitRouterMulticastDomainName = "tf_example",
-    ///         TransitRouterMulticastDomainDescription = "tf_example",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Cloud Enterprise Network (CEN) Transit Router Multicast Domain can be imported using the id, e.g.

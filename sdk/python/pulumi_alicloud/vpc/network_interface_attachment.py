@@ -33,19 +33,23 @@ class NetworkInterfaceAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
-             network_interface_id: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             network_interface_id: Optional[pulumi.Input[str]] = None,
              trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
              wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'networkInterfaceId' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if network_interface_id is None and 'networkInterfaceId' in kwargs:
             network_interface_id = kwargs['networkInterfaceId']
-        if 'trunkNetworkInstanceId' in kwargs:
+        if network_interface_id is None:
+            raise TypeError("Missing 'network_interface_id' argument")
+        if trunk_network_instance_id is None and 'trunkNetworkInstanceId' in kwargs:
             trunk_network_instance_id = kwargs['trunkNetworkInstanceId']
-        if 'waitForNetworkConfigurationReady' in kwargs:
+        if wait_for_network_configuration_ready is None and 'waitForNetworkConfigurationReady' in kwargs:
             wait_for_network_configuration_ready = kwargs['waitForNetworkConfigurationReady']
 
         _setter("instance_id", instance_id)
@@ -124,15 +128,15 @@ class _NetworkInterfaceAttachmentState:
              network_interface_id: Optional[pulumi.Input[str]] = None,
              trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
              wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'networkInterfaceId' in kwargs:
+        if network_interface_id is None and 'networkInterfaceId' in kwargs:
             network_interface_id = kwargs['networkInterfaceId']
-        if 'trunkNetworkInstanceId' in kwargs:
+        if trunk_network_instance_id is None and 'trunkNetworkInstanceId' in kwargs:
             trunk_network_instance_id = kwargs['trunkNetworkInstanceId']
-        if 'waitForNetworkConfigurationReady' in kwargs:
+        if wait_for_network_configuration_ready is None and 'waitForNetworkConfigurationReady' in kwargs:
             wait_for_network_configuration_ready = kwargs['waitForNetworkConfigurationReady']
 
         if instance_id is not None:

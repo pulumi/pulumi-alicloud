@@ -59,17 +59,17 @@ class SecurityGroupArgs:
              security_group_type: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'innerAccess' in kwargs:
+        if inner_access is None and 'innerAccess' in kwargs:
             inner_access = kwargs['innerAccess']
-        if 'innerAccessPolicy' in kwargs:
+        if inner_access_policy is None and 'innerAccessPolicy' in kwargs:
             inner_access_policy = kwargs['innerAccessPolicy']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityGroupType' in kwargs:
+        if security_group_type is None and 'securityGroupType' in kwargs:
             security_group_type = kwargs['securityGroupType']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if description is not None:
@@ -244,17 +244,17 @@ class _SecurityGroupState:
              security_group_type: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'innerAccess' in kwargs:
+        if inner_access is None and 'innerAccess' in kwargs:
             inner_access = kwargs['innerAccess']
-        if 'innerAccessPolicy' in kwargs:
+        if inner_access_policy is None and 'innerAccessPolicy' in kwargs:
             inner_access_policy = kwargs['innerAccessPolicy']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityGroupType' in kwargs:
+        if security_group_type is None and 'securityGroupType' in kwargs:
             security_group_type = kwargs['securityGroupType']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if description is not None:
@@ -402,27 +402,6 @@ class SecurityGroup(pulumi.CustomResource):
 
         > **NOTE:** From version 1.7.2, `ecs.SecurityGroup` has supported to segregate different ECS instance in which the same security group.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ecs.SecurityGroup("default", description="New security group")
-        ```
-        Basic usage for vpc
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="terraform-example",
-            cidr_block="10.1.0.0/21")
-        group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
-        ```
         ## Module Support
 
         You can use the existing security-group module
@@ -464,27 +443,6 @@ class SecurityGroup(pulumi.CustomResource):
 
         > **NOTE:** From version 1.7.2, `ecs.SecurityGroup` has supported to segregate different ECS instance in which the same security group.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ecs.SecurityGroup("default", description="New security group")
-        ```
-        Basic usage for vpc
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="terraform-example",
-            cidr_block="10.1.0.0/21")
-        group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
-        ```
         ## Module Support
 
         You can use the existing security-group module

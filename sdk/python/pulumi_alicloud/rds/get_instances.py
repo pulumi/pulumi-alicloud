@@ -236,21 +236,6 @@ def get_instances(connection_mode: Optional[str] = None,
 
     > **NOTE:** Available since v1.7.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    db_instances_ds = alicloud.rds.get_instances(name_regex="data-\\\\d+",
-        status="Running",
-        tags={
-            "size": "tiny",
-            "type": "database",
-        })
-    pulumi.export("firstDbInstanceId", db_instances_ds.instances[0].id)
-    ```
-
 
     :param str connection_mode: `Standard` for standard access mode and `Safe` for high security access mode.
     :param str db_type: `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
@@ -322,21 +307,6 @@ def get_instances_output(connection_mode: Optional[pulumi.Input[Optional[str]]] 
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 
     > **NOTE:** Available since v1.7.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    db_instances_ds = alicloud.rds.get_instances(name_regex="data-\\\\d+",
-        status="Running",
-        tags={
-            "size": "tiny",
-            "type": "database",
-        })
-    pulumi.export("firstDbInstanceId", db_instances_ds.instances[0].id)
-    ```
 
 
     :param str connection_mode: `Standard` for standard access mode and `Safe` for high security access mode.

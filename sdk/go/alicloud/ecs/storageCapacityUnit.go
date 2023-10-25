@@ -19,36 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.155.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.NewStorageCapacityUnit(ctx, "default", &ecs.StorageCapacityUnitArgs{
-//				Capacity:                pulumi.Int(20),
-//				Description:             pulumi.String("tftestdescription"),
-//				StorageCapacityUnitName: pulumi.String("tftestname"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ECS Storage Capacity Unit can be imported using the id, e.g.

@@ -109,27 +109,6 @@ def get_organizations(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.137.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    name = config.get("name")
-    if name is None:
-        name = "tf-testAccOrganizations-Organizations"
-    default = alicloud.rdc.Organization("default",
-        organization_name=name,
-        source=name)
-    ids = alicloud.rdc.get_organizations_output(ids=[default.id])
-    pulumi.export("rdcOrganizationId1", ids.id)
-    name_regex = alicloud.rdc.get_organizations(name_regex="^my-Organization")
-    pulumi.export("rdcOrganizationId2", name_regex.id)
-    ```
-
 
     :param Sequence[str] ids: A list of Organization IDs.
     :param str name_regex: A regex string to filter results by Organization name.
@@ -164,27 +143,6 @@ def get_organizations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     This data source provides the Rdc Organizations of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.137.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    name = config.get("name")
-    if name is None:
-        name = "tf-testAccOrganizations-Organizations"
-    default = alicloud.rdc.Organization("default",
-        organization_name=name,
-        source=name)
-    ids = alicloud.rdc.get_organizations_output(ids=[default.id])
-    pulumi.export("rdcOrganizationId1", ids.id)
-    name_regex = alicloud.rdc.get_organizations(name_regex="^my-Organization")
-    pulumi.export("rdcOrganizationId2", name_regex.id)
-    ```
 
 
     :param Sequence[str] ids: A list of Organization IDs.

@@ -14,33 +14,6 @@ import (
 
 // The `kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
 // Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := kvstore.GetInstances(ctx, &kvstore.GetInstancesArgs{
-//				NameRegex: pulumi.StringRef("testname"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstInstanceName", _default.Instances[0].Name)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult

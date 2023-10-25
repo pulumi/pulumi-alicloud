@@ -17,35 +17,6 @@ namespace Pulumi.AliCloud.Dns
         /// This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:**  Available in 1.84.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Dns.GetInstances.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "dns-cn-oew1npk****",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstInstanceId"] = example.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:dns/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
@@ -56,35 +27,6 @@ namespace Pulumi.AliCloud.Dns
         /// This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:**  Available in 1.84.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Dns.GetInstances.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "dns-cn-oew1npk****",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstInstanceId"] = example.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:dns/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());

@@ -15,34 +15,6 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Route Service available to the user.
         /// 
         /// &gt; **NOTE:** Available in v1.102.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Cen.GetRouteServices.Invoke(new()
-        ///     {
-        ///         CenId = "cen-7qthudw0ll6jmc****",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstCenRouteServiceId"] = example.Apply(getRouteServicesResult =&gt; getRouteServicesResult.Services[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouteServicesResult> InvokeAsync(GetRouteServicesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouteServicesResult>("alicloud:cen/getRouteServices:getRouteServices", args ?? new GetRouteServicesArgs(), options.WithDefaults());
@@ -51,34 +23,6 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Route Service available to the user.
         /// 
         /// &gt; **NOTE:** Available in v1.102.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Cen.GetRouteServices.Invoke(new()
-        ///     {
-        ///         CenId = "cen-7qthudw0ll6jmc****",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstCenRouteServiceId"] = example.Apply(getRouteServicesResult =&gt; getRouteServicesResult.Services[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRouteServicesResult> Invoke(GetRouteServicesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouteServicesResult>("alicloud:cen/getRouteServices:getRouteServices", args ?? new GetRouteServicesInvokeArgs(), options.WithDefaults());

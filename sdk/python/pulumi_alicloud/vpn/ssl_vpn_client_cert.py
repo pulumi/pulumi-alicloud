@@ -29,12 +29,14 @@ class SslVpnClientCertArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ssl_vpn_server_id: pulumi.Input[str],
+             ssl_vpn_server_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sslVpnServerId' in kwargs:
+        if ssl_vpn_server_id is None and 'sslVpnServerId' in kwargs:
             ssl_vpn_server_id = kwargs['sslVpnServerId']
+        if ssl_vpn_server_id is None:
+            raise TypeError("Missing 'ssl_vpn_server_id' argument")
 
         _setter("ssl_vpn_server_id", ssl_vpn_server_id)
         if name is not None:
@@ -105,17 +107,17 @@ class _SslVpnClientCertState:
              name: Optional[pulumi.Input[str]] = None,
              ssl_vpn_server_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'caCert' in kwargs:
+        if ca_cert is None and 'caCert' in kwargs:
             ca_cert = kwargs['caCert']
-        if 'clientCert' in kwargs:
+        if client_cert is None and 'clientCert' in kwargs:
             client_cert = kwargs['clientCert']
-        if 'clientConfig' in kwargs:
+        if client_config is None and 'clientConfig' in kwargs:
             client_config = kwargs['clientConfig']
-        if 'clientKey' in kwargs:
+        if client_key is None and 'clientKey' in kwargs:
             client_key = kwargs['clientKey']
-        if 'sslVpnServerId' in kwargs:
+        if ssl_vpn_server_id is None and 'sslVpnServerId' in kwargs:
             ssl_vpn_server_id = kwargs['sslVpnServerId']
 
         if ca_cert is not None:

@@ -15,44 +15,6 @@ import (
 // This data source provides the Pvtz Endpoints of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.143.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := pvtz.GetEndpoints(ctx, &pvtz.GetEndpointsArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("pvtzEndpointId1", ids.Endpoints[0].Id)
-//			nameRegex, err := pvtz.GetEndpoints(ctx, &pvtz.GetEndpointsArgs{
-//				NameRegex: pulumi.StringRef("^my-Endpoint"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("pvtzEndpointId2", nameRegex.Endpoints[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetEndpoints(ctx *pulumi.Context, args *GetEndpointsArgs, opts ...pulumi.InvokeOption) (*GetEndpointsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEndpointsResult

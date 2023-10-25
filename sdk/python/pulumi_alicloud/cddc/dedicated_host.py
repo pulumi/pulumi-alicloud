@@ -65,11 +65,11 @@ class DedicatedHostArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dedicated_host_group_id: pulumi.Input[str],
-             host_class: pulumi.Input[str],
-             payment_type: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
+             host_class: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              allocation_status: Optional[pulumi.Input[str]] = None,
              auto_renew: Optional[pulumi.Input[bool]] = None,
              host_name: Optional[pulumi.Input[str]] = None,
@@ -78,29 +78,39 @@ class DedicatedHostArgs:
              period: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              used_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dedicatedHostGroupId' in kwargs:
+        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
             dedicated_host_group_id = kwargs['dedicatedHostGroupId']
-        if 'hostClass' in kwargs:
+        if dedicated_host_group_id is None:
+            raise TypeError("Missing 'dedicated_host_group_id' argument")
+        if host_class is None and 'hostClass' in kwargs:
             host_class = kwargs['hostClass']
-        if 'paymentType' in kwargs:
+        if host_class is None:
+            raise TypeError("Missing 'host_class' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'vswitchId' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'allocationStatus' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if allocation_status is None and 'allocationStatus' in kwargs:
             allocation_status = kwargs['allocationStatus']
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'hostName' in kwargs:
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'imageCategory' in kwargs:
+        if image_category is None and 'imageCategory' in kwargs:
             image_category = kwargs['imageCategory']
-        if 'osPassword' in kwargs:
+        if os_password is None and 'osPassword' in kwargs:
             os_password = kwargs['osPassword']
-        if 'usedTime' in kwargs:
+        if used_time is None and 'usedTime' in kwargs:
             used_time = kwargs['usedTime']
 
         _setter("dedicated_host_group_id", dedicated_host_group_id)
@@ -360,31 +370,31 @@ class _DedicatedHostState:
              used_time: Optional[pulumi.Input[int]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allocationStatus' in kwargs:
+        if allocation_status is None and 'allocationStatus' in kwargs:
             allocation_status = kwargs['allocationStatus']
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'dedicatedHostGroupId' in kwargs:
+        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
             dedicated_host_group_id = kwargs['dedicatedHostGroupId']
-        if 'dedicatedHostId' in kwargs:
+        if dedicated_host_id is None and 'dedicatedHostId' in kwargs:
             dedicated_host_id = kwargs['dedicatedHostId']
-        if 'hostClass' in kwargs:
+        if host_class is None and 'hostClass' in kwargs:
             host_class = kwargs['hostClass']
-        if 'hostName' in kwargs:
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'imageCategory' in kwargs:
+        if image_category is None and 'imageCategory' in kwargs:
             image_category = kwargs['imageCategory']
-        if 'osPassword' in kwargs:
+        if os_password is None and 'osPassword' in kwargs:
             os_password = kwargs['osPassword']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'usedTime' in kwargs:
+        if used_time is None and 'usedTime' in kwargs:
             used_time = kwargs['usedTime']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if allocation_status is not None:

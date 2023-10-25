@@ -8,18 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the Function Compute services of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const fcServicesDs = alicloud.fc.getServices({
- *     nameRegex: "sample_fc_service",
- * });
- * export const firstFcServiceName = fcServicesDs.then(fcServicesDs => fcServicesDs.services?.[0]?.name);
- * ```
  */
 export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetServicesResult> {
     args = args || {};
@@ -75,18 +63,6 @@ export interface GetServicesResult {
 }
 /**
  * This data source provides the Function Compute services of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const fcServicesDs = alicloud.fc.getServices({
- *     nameRegex: "sample_fc_service",
- * });
- * export const firstFcServiceName = fcServicesDs.then(fcServicesDs => fcServicesDs.services?.[0]?.name);
- * ```
  */
 export function getServicesOutput(args?: GetServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicesResult> {
     return pulumi.output(args).apply((a: any) => getServices(a, opts))

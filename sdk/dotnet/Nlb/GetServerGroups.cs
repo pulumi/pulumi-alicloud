@@ -15,37 +15,6 @@ namespace Pulumi.AliCloud.Nlb
         /// This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.186.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Nlb.GetServerGroups.Invoke();
-        /// 
-        ///     var nameRegex = AliCloud.Nlb.GetServerGroups.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-ServerGroup",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["nlbServerGroupId1"] = ids.Apply(getServerGroupsResult =&gt; getServerGroupsResult.Groups[0]?.Id),
-        ///         ["nlbServerGroupId2"] = nameRegex.Apply(getServerGroupsResult =&gt; getServerGroupsResult.Groups[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerGroupsResult> InvokeAsync(GetServerGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerGroupsResult>("alicloud:nlb/getServerGroups:getServerGroups", args ?? new GetServerGroupsArgs(), options.WithDefaults());
@@ -54,37 +23,6 @@ namespace Pulumi.AliCloud.Nlb
         /// This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.186.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Nlb.GetServerGroups.Invoke();
-        /// 
-        ///     var nameRegex = AliCloud.Nlb.GetServerGroups.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-ServerGroup",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["nlbServerGroupId1"] = ids.Apply(getServerGroupsResult =&gt; getServerGroupsResult.Groups[0]?.Id),
-        ///         ["nlbServerGroupId2"] = nameRegex.Apply(getServerGroupsResult =&gt; getServerGroupsResult.Groups[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerGroupsResult> Invoke(GetServerGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerGroupsResult>("alicloud:nlb/getServerGroups:getServerGroups", args ?? new GetServerGroupsInvokeArgs(), options.WithDefaults());

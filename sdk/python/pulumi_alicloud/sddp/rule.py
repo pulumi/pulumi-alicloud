@@ -68,9 +68,9 @@ class RuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: pulumi.Input[int],
-             content: pulumi.Input[str],
-             rule_name: pulumi.Input[str],
+             category: Optional[pulumi.Input[int]] = None,
+             content: Optional[pulumi.Input[str]] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
              content_category: Optional[pulumi.Input[str]] = None,
              custom_type: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -83,25 +83,31 @@ class RuleArgs:
              status: Optional[pulumi.Input[int]] = None,
              target: Optional[pulumi.Input[str]] = None,
              warn_level: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ruleName' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
-        if 'contentCategory' in kwargs:
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
+        if content_category is None and 'contentCategory' in kwargs:
             content_category = kwargs['contentCategory']
-        if 'customType' in kwargs:
+        if custom_type is None and 'customType' in kwargs:
             custom_type = kwargs['customType']
-        if 'productCode' in kwargs:
+        if product_code is None and 'productCode' in kwargs:
             product_code = kwargs['productCode']
-        if 'productId' in kwargs:
+        if product_id is None and 'productId' in kwargs:
             product_id = kwargs['productId']
-        if 'riskLevelId' in kwargs:
+        if risk_level_id is None and 'riskLevelId' in kwargs:
             risk_level_id = kwargs['riskLevelId']
-        if 'ruleType' in kwargs:
+        if rule_type is None and 'ruleType' in kwargs:
             rule_type = kwargs['ruleType']
-        if 'statExpress' in kwargs:
+        if stat_express is None and 'statExpress' in kwargs:
             stat_express = kwargs['statExpress']
-        if 'warnLevel' in kwargs:
+        if warn_level is None and 'warnLevel' in kwargs:
             warn_level = kwargs['warnLevel']
 
         _setter("category", category)
@@ -385,25 +391,25 @@ class _RuleState:
              status: Optional[pulumi.Input[int]] = None,
              target: Optional[pulumi.Input[str]] = None,
              warn_level: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contentCategory' in kwargs:
+        if content_category is None and 'contentCategory' in kwargs:
             content_category = kwargs['contentCategory']
-        if 'customType' in kwargs:
+        if custom_type is None and 'customType' in kwargs:
             custom_type = kwargs['customType']
-        if 'productCode' in kwargs:
+        if product_code is None and 'productCode' in kwargs:
             product_code = kwargs['productCode']
-        if 'productId' in kwargs:
+        if product_id is None and 'productId' in kwargs:
             product_id = kwargs['productId']
-        if 'riskLevelId' in kwargs:
+        if risk_level_id is None and 'riskLevelId' in kwargs:
             risk_level_id = kwargs['riskLevelId']
-        if 'ruleName' in kwargs:
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
-        if 'ruleType' in kwargs:
+        if rule_type is None and 'ruleType' in kwargs:
             rule_type = kwargs['ruleType']
-        if 'statExpress' in kwargs:
+        if stat_express is None and 'statExpress' in kwargs:
             stat_express = kwargs['statExpress']
-        if 'warnLevel' in kwargs:
+        if warn_level is None and 'warnLevel' in kwargs:
             warn_level = kwargs['warnLevel']
 
         if category is not None:
@@ -646,26 +652,6 @@ class Rule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.132.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example_name"
-        default = alicloud.sddp.Rule("default",
-            category=0,
-            content="content",
-            rule_name=name,
-            risk_level_id="4",
-            product_code="OSS")
-        ```
-
         ## Import
 
         Data Security Center Rule can be imported using the id, e.g.
@@ -704,26 +690,6 @@ class Rule(pulumi.CustomResource):
         For information about Data Security Center Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/data-security-center/latest/api-sddp-2019-01-03-createrule).
 
         > **NOTE:** Available since v1.132.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example_name"
-        default = alicloud.sddp.Rule("default",
-            category=0,
-            content="content",
-            rule_name=name,
-            risk_level_id="4",
-            product_code="OSS")
-        ```
 
         ## Import
 

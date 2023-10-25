@@ -53,10 +53,10 @@ class SwarmArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: pulumi.Input[str],
-             instance_type: pulumi.Input[str],
-             password: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              disk_category: Optional[pulumi.Input[str]] = None,
              disk_size: Optional[pulumi.Input[int]] = None,
              image_id: Optional[pulumi.Input[str]] = None,
@@ -67,29 +67,37 @@ class SwarmArgs:
              node_number: Optional[pulumi.Input[int]] = None,
              release_eip: Optional[pulumi.Input[bool]] = None,
              size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'instanceType' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'vswitchId' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'diskCategory' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if disk_category is None and 'diskCategory' in kwargs:
             disk_category = kwargs['diskCategory']
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'isOutdated' in kwargs:
+        if is_outdated is None and 'isOutdated' in kwargs:
             is_outdated = kwargs['isOutdated']
-        if 'namePrefix' in kwargs:
+        if name_prefix is None and 'namePrefix' in kwargs:
             name_prefix = kwargs['namePrefix']
-        if 'needSlb' in kwargs:
+        if need_slb is None and 'needSlb' in kwargs:
             need_slb = kwargs['needSlb']
-        if 'nodeNumber' in kwargs:
+        if node_number is None and 'nodeNumber' in kwargs:
             node_number = kwargs['nodeNumber']
-        if 'releaseEip' in kwargs:
+        if release_eip is None and 'releaseEip' in kwargs:
             release_eip = kwargs['releaseEip']
 
         _setter("cidr_block", cidr_block)
@@ -319,37 +327,37 @@ class _SwarmState:
              slb_id: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'agentVersion' in kwargs:
+        if agent_version is None and 'agentVersion' in kwargs:
             agent_version = kwargs['agentVersion']
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'diskCategory' in kwargs:
+        if disk_category is None and 'diskCategory' in kwargs:
             disk_category = kwargs['diskCategory']
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'isOutdated' in kwargs:
+        if is_outdated is None and 'isOutdated' in kwargs:
             is_outdated = kwargs['isOutdated']
-        if 'namePrefix' in kwargs:
+        if name_prefix is None and 'namePrefix' in kwargs:
             name_prefix = kwargs['namePrefix']
-        if 'needSlb' in kwargs:
+        if need_slb is None and 'needSlb' in kwargs:
             need_slb = kwargs['needSlb']
-        if 'nodeNumber' in kwargs:
+        if node_number is None and 'nodeNumber' in kwargs:
             node_number = kwargs['nodeNumber']
-        if 'releaseEip' in kwargs:
+        if release_eip is None and 'releaseEip' in kwargs:
             release_eip = kwargs['releaseEip']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'slbId' in kwargs:
+        if slb_id is None and 'slbId' in kwargs:
             slb_id = kwargs['slbId']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if agent_version is not None:

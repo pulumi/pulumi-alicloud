@@ -40,20 +40,22 @@ class AclArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address_ip_version: pulumi.Input[str],
+             address_ip_version: Optional[pulumi.Input[str]] = None,
              acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]] = None,
              acl_name: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addressIpVersion' in kwargs:
+        if address_ip_version is None and 'addressIpVersion' in kwargs:
             address_ip_version = kwargs['addressIpVersion']
-        if 'aclEntries' in kwargs:
+        if address_ip_version is None:
+            raise TypeError("Missing 'address_ip_version' argument")
+        if acl_entries is None and 'aclEntries' in kwargs:
             acl_entries = kwargs['aclEntries']
-        if 'aclName' in kwargs:
+        if acl_name is None and 'aclName' in kwargs:
             acl_name = kwargs['aclName']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
 
         _setter("address_ip_version", address_ip_version)
@@ -169,15 +171,15 @@ class _AclState:
              dry_run: Optional[pulumi.Input[bool]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclEntries' in kwargs:
+        if acl_entries is None and 'aclEntries' in kwargs:
             acl_entries = kwargs['aclEntries']
-        if 'aclName' in kwargs:
+        if acl_name is None and 'aclName' in kwargs:
             acl_name = kwargs['aclName']
-        if 'addressIpVersion' in kwargs:
+        if address_ip_version is None and 'addressIpVersion' in kwargs:
             address_ip_version = kwargs['addressIpVersion']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
 
         if acl_entries is not None:
@@ -290,23 +292,6 @@ class Acl(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.150.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_acl = alicloud.ga.Acl("defaultAcl",
-            acl_name="terraform-example",
-            address_ip_version="IPv4")
-        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment",
-            acl_id=default_acl.id,
-            entry="192.168.1.1/32",
-            entry_description="terraform-example")
-        ```
-
         ## Import
 
         Global Accelerator (GA) Acl can be imported using the id, e.g.
@@ -335,23 +320,6 @@ class Acl(pulumi.CustomResource):
         For information about Global Accelerator (GA) Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createacl).
 
         > **NOTE:** Available since v1.150.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_acl = alicloud.ga.Acl("defaultAcl",
-            acl_name="terraform-example",
-            address_ip_version="IPv4")
-        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment",
-            acl_id=default_acl.id,
-            entry="192.168.1.1/32",
-            entry_description="terraform-example")
-        ```
 
         ## Import
 

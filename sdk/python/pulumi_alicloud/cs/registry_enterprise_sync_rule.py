@@ -50,32 +50,44 @@ class RegistryEnterpriseSyncRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
-             namespace_name: pulumi.Input[str],
-             tag_filter: pulumi.Input[str],
-             target_instance_id: pulumi.Input[str],
-             target_namespace_name: pulumi.Input[str],
-             target_region_id: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             namespace_name: Optional[pulumi.Input[str]] = None,
+             tag_filter: Optional[pulumi.Input[str]] = None,
+             target_instance_id: Optional[pulumi.Input[str]] = None,
+             target_namespace_name: Optional[pulumi.Input[str]] = None,
+             target_region_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              repo_name: Optional[pulumi.Input[str]] = None,
              target_repo_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'namespaceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if namespace_name is None and 'namespaceName' in kwargs:
             namespace_name = kwargs['namespaceName']
-        if 'tagFilter' in kwargs:
+        if namespace_name is None:
+            raise TypeError("Missing 'namespace_name' argument")
+        if tag_filter is None and 'tagFilter' in kwargs:
             tag_filter = kwargs['tagFilter']
-        if 'targetInstanceId' in kwargs:
+        if tag_filter is None:
+            raise TypeError("Missing 'tag_filter' argument")
+        if target_instance_id is None and 'targetInstanceId' in kwargs:
             target_instance_id = kwargs['targetInstanceId']
-        if 'targetNamespaceName' in kwargs:
+        if target_instance_id is None:
+            raise TypeError("Missing 'target_instance_id' argument")
+        if target_namespace_name is None and 'targetNamespaceName' in kwargs:
             target_namespace_name = kwargs['targetNamespaceName']
-        if 'targetRegionId' in kwargs:
+        if target_namespace_name is None:
+            raise TypeError("Missing 'target_namespace_name' argument")
+        if target_region_id is None and 'targetRegionId' in kwargs:
             target_region_id = kwargs['targetRegionId']
-        if 'repoName' in kwargs:
+        if target_region_id is None:
+            raise TypeError("Missing 'target_region_id' argument")
+        if repo_name is None and 'repoName' in kwargs:
             repo_name = kwargs['repoName']
-        if 'targetRepoName' in kwargs:
+        if target_repo_name is None and 'targetRepoName' in kwargs:
             target_repo_name = kwargs['targetRepoName']
 
         _setter("instance_id", instance_id)
@@ -260,29 +272,29 @@ class _RegistryEnterpriseSyncRuleState:
              target_namespace_name: Optional[pulumi.Input[str]] = None,
              target_region_id: Optional[pulumi.Input[str]] = None,
              target_repo_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'namespaceName' in kwargs:
+        if namespace_name is None and 'namespaceName' in kwargs:
             namespace_name = kwargs['namespaceName']
-        if 'repoName' in kwargs:
+        if repo_name is None and 'repoName' in kwargs:
             repo_name = kwargs['repoName']
-        if 'ruleId' in kwargs:
+        if rule_id is None and 'ruleId' in kwargs:
             rule_id = kwargs['ruleId']
-        if 'syncDirection' in kwargs:
+        if sync_direction is None and 'syncDirection' in kwargs:
             sync_direction = kwargs['syncDirection']
-        if 'syncScope' in kwargs:
+        if sync_scope is None and 'syncScope' in kwargs:
             sync_scope = kwargs['syncScope']
-        if 'tagFilter' in kwargs:
+        if tag_filter is None and 'tagFilter' in kwargs:
             tag_filter = kwargs['tagFilter']
-        if 'targetInstanceId' in kwargs:
+        if target_instance_id is None and 'targetInstanceId' in kwargs:
             target_instance_id = kwargs['targetInstanceId']
-        if 'targetNamespaceName' in kwargs:
+        if target_namespace_name is None and 'targetNamespaceName' in kwargs:
             target_namespace_name = kwargs['targetNamespaceName']
-        if 'targetRegionId' in kwargs:
+        if target_region_id is None and 'targetRegionId' in kwargs:
             target_region_id = kwargs['targetRegionId']
-        if 'targetRepoName' in kwargs:
+        if target_repo_name is None and 'targetRepoName' in kwargs:
             target_repo_name = kwargs['targetRepoName']
 
         if instance_id is not None:
@@ -479,64 +491,6 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
         > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        source_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("sourceRegistryEnterpriseInstance",
-            payment_type="Subscription",
-            period=1,
-            renew_period=0,
-            renewal_status="ManualRenewal",
-            instance_type="Advanced",
-            instance_name=f"{name}-source")
-        target_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("targetRegistryEnterpriseInstance",
-            payment_type="Subscription",
-            period=1,
-            renew_period=0,
-            renewal_status="ManualRenewal",
-            instance_type="Advanced",
-            instance_name=f"{name}-target")
-        source_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("sourceRegistryEnterpriseNamespace",
-            instance_id=source_registry_enterprise_instance.id,
-            auto_create=False,
-            default_visibility="PUBLIC")
-        target_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("targetRegistryEnterpriseNamespace",
-            instance_id=target_registry_enterprise_instance.id,
-            auto_create=False,
-            default_visibility="PUBLIC")
-        source_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("sourceRegistryEnterpriseRepo",
-            instance_id=source_registry_enterprise_instance.id,
-            namespace=source_registry_enterprise_namespace.name,
-            summary="this is summary of my new repo",
-            repo_type="PUBLIC",
-            detail="this is a public repo")
-        target_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("targetRegistryEnterpriseRepo",
-            instance_id=target_registry_enterprise_instance.id,
-            namespace=target_registry_enterprise_namespace.name,
-            summary="this is summary of my new repo",
-            repo_type="PUBLIC",
-            detail="this is a public repo")
-        default_regions = alicloud.get_regions(current=True)
-        default_registry_enterprise_sync_rule = alicloud.cs.RegistryEnterpriseSyncRule("defaultRegistryEnterpriseSyncRule",
-            instance_id=source_registry_enterprise_instance.id,
-            namespace_name=source_registry_enterprise_namespace.name,
-            target_region_id=default_regions.regions[0].id,
-            target_instance_id=target_registry_enterprise_instance.id,
-            target_namespace_name=target_registry_enterprise_namespace.name,
-            tag_filter=".*",
-            repo_name=source_registry_enterprise_repo.name,
-            target_repo_name=target_registry_enterprise_repo.name)
-        ```
-
         ## Import
 
         Container Registry Enterprise Edition sync rule can be imported using the id. Format to `{instance_id}:{namespace_name}:{rule_id}`, e.g.
@@ -571,64 +525,6 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         > **NOTE:** Available since v1.90.0.
 
         > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        source_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("sourceRegistryEnterpriseInstance",
-            payment_type="Subscription",
-            period=1,
-            renew_period=0,
-            renewal_status="ManualRenewal",
-            instance_type="Advanced",
-            instance_name=f"{name}-source")
-        target_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("targetRegistryEnterpriseInstance",
-            payment_type="Subscription",
-            period=1,
-            renew_period=0,
-            renewal_status="ManualRenewal",
-            instance_type="Advanced",
-            instance_name=f"{name}-target")
-        source_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("sourceRegistryEnterpriseNamespace",
-            instance_id=source_registry_enterprise_instance.id,
-            auto_create=False,
-            default_visibility="PUBLIC")
-        target_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("targetRegistryEnterpriseNamespace",
-            instance_id=target_registry_enterprise_instance.id,
-            auto_create=False,
-            default_visibility="PUBLIC")
-        source_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("sourceRegistryEnterpriseRepo",
-            instance_id=source_registry_enterprise_instance.id,
-            namespace=source_registry_enterprise_namespace.name,
-            summary="this is summary of my new repo",
-            repo_type="PUBLIC",
-            detail="this is a public repo")
-        target_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("targetRegistryEnterpriseRepo",
-            instance_id=target_registry_enterprise_instance.id,
-            namespace=target_registry_enterprise_namespace.name,
-            summary="this is summary of my new repo",
-            repo_type="PUBLIC",
-            detail="this is a public repo")
-        default_regions = alicloud.get_regions(current=True)
-        default_registry_enterprise_sync_rule = alicloud.cs.RegistryEnterpriseSyncRule("defaultRegistryEnterpriseSyncRule",
-            instance_id=source_registry_enterprise_instance.id,
-            namespace_name=source_registry_enterprise_namespace.name,
-            target_region_id=default_regions.regions[0].id,
-            target_instance_id=target_registry_enterprise_instance.id,
-            target_namespace_name=target_registry_enterprise_namespace.name,
-            tag_filter=".*",
-            repo_name=source_registry_enterprise_repo.name,
-            target_repo_name=target_registry_enterprise_repo.name)
-        ```
 
         ## Import
 

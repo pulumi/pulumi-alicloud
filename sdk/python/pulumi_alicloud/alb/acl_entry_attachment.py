@@ -32,13 +32,17 @@ class AclEntryAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acl_id: pulumi.Input[str],
-             entry: pulumi.Input[str],
+             acl_id: Optional[pulumi.Input[str]] = None,
+             entry: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclId' in kwargs:
+        if acl_id is None and 'aclId' in kwargs:
             acl_id = kwargs['aclId']
+        if acl_id is None:
+            raise TypeError("Missing 'acl_id' argument")
+        if entry is None:
+            raise TypeError("Missing 'entry' argument")
 
         _setter("acl_id", acl_id)
         _setter("entry", entry)
@@ -110,9 +114,9 @@ class _AclEntryAttachmentState:
              description: Optional[pulumi.Input[str]] = None,
              entry: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclId' in kwargs:
+        if acl_id is None and 'aclId' in kwargs:
             acl_id = kwargs['aclId']
 
         if acl_id is not None:
@@ -187,26 +191,6 @@ class AclEntryAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.166.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_acl = alicloud.alb.Acl("defaultAcl",
-            acl_name=name,
-            resource_group_id=default_resource_groups.groups[0].id)
-        default_acl_entry_attachment = alicloud.alb.AclEntryAttachment("defaultAclEntryAttachment",
-            acl_id=default_acl.id,
-            entry="168.10.10.0/24",
-            description=name)
-        ```
-
         ## Import
 
         Acl entry attachment can be imported using the id, e.g.
@@ -231,26 +215,6 @@ class AclEntryAttachment(pulumi.CustomResource):
         For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-addentriestoacl).
 
         > **NOTE:** Available since v1.166.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_acl = alicloud.alb.Acl("defaultAcl",
-            acl_name=name,
-            resource_group_id=default_resource_groups.groups[0].id)
-        default_acl_entry_attachment = alicloud.alb.AclEntryAttachment("defaultAclEntryAttachment",
-            acl_id=default_acl.id,
-            entry="168.10.10.0/24",
-            description=name)
-        ```
 
         ## Import
 

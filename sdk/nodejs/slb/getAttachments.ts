@@ -8,18 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the server load balancer attachments of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const sampleDs = alicloud.slb.getAttachments({
- *     loadBalancerId: alicloud_slb_load_balancer.sample_slb.id,
- * });
- * export const firstSlbAttachmentInstanceId = sampleDs.then(sampleDs => sampleDs.slbAttachments?.[0]?.instanceId);
- * ```
  */
 export function getAttachments(args: GetAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetAttachmentsResult> {
 
@@ -67,18 +55,6 @@ export interface GetAttachmentsResult {
 }
 /**
  * This data source provides the server load balancer attachments of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const sampleDs = alicloud.slb.getAttachments({
- *     loadBalancerId: alicloud_slb_load_balancer.sample_slb.id,
- * });
- * export const firstSlbAttachmentInstanceId = sampleDs.then(sampleDs => sampleDs.slbAttachments?.[0]?.instanceId);
- * ```
  */
 export function getAttachmentsOutput(args: GetAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getAttachments(a, opts))

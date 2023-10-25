@@ -235,19 +235,6 @@ def get_ecs_network_interfaces(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.123.1+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ecs.get_ecs_network_interfaces(ids=["eni-abcd1234"],
-        name_regex="tf-testAcc")
-    pulumi.export("firstEcsNetworkInterfaceId", example.interfaces[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Network Interface IDs.
     :param str instance_id: The instance id.
@@ -330,19 +317,6 @@ def get_ecs_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequen
     This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.123.1+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ecs.get_ecs_network_interfaces(ids=["eni-abcd1234"],
-        name_regex="tf-testAcc")
-    pulumi.export("firstEcsNetworkInterfaceId", example.interfaces[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Network Interface IDs.

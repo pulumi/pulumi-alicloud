@@ -36,19 +36,23 @@ class PolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_content: pulumi.Input[str],
-             policy_name: pulumi.Input[str],
+             policy_content: Optional[pulumi.Input[str]] = None,
+             policy_name: Optional[pulumi.Input[str]] = None,
              policy_desc: Optional[pulumi.Input[str]] = None,
              user_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'policyContent' in kwargs:
+        if policy_content is None and 'policyContent' in kwargs:
             policy_content = kwargs['policyContent']
-        if 'policyName' in kwargs:
+        if policy_content is None:
+            raise TypeError("Missing 'policy_content' argument")
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'policyDesc' in kwargs:
+        if policy_name is None:
+            raise TypeError("Missing 'policy_name' argument")
+        if policy_desc is None and 'policyDesc' in kwargs:
             policy_desc = kwargs['policyDesc']
-        if 'userType' in kwargs:
+        if user_type is None and 'userType' in kwargs:
             user_type = kwargs['userType']
 
         _setter("policy_content", policy_content)
@@ -137,15 +141,15 @@ class _PolicyState:
              policy_desc: Optional[pulumi.Input[str]] = None,
              policy_name: Optional[pulumi.Input[str]] = None,
              user_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'policyContent' in kwargs:
+        if policy_content is None and 'policyContent' in kwargs:
             policy_content = kwargs['policyContent']
-        if 'policyDesc' in kwargs:
+        if policy_desc is None and 'policyDesc' in kwargs:
             policy_desc = kwargs['policyDesc']
-        if 'policyName' in kwargs:
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'userType' in kwargs:
+        if user_type is None and 'userType' in kwargs:
             user_type = kwargs['userType']
 
         if policy_content is not None:
@@ -225,25 +229,6 @@ class Policy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.203.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        example = alicloud.tag.Policy("example",
-            policy_name=name,
-            policy_desc=name,
-            user_type="USER",
-            policy_content="		{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
-        ```
-
         ## Import
 
         Tag Policy can be imported using the id, e.g.
@@ -273,25 +258,6 @@ class Policy(pulumi.CustomResource):
         see [What is Policy](https://www.alibabacloud.com/help/en/resource-management/latest/create-policy).
 
         > **NOTE:** Available since v1.203.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        example = alicloud.tag.Policy("example",
-            policy_name=name,
-            policy_desc=name,
-            user_type="USER",
-            policy_content="		{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
-        ```
 
         ## Import
 

@@ -119,25 +119,6 @@ def get_gateway_block_volumes(gateway_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.144.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cloudstoragegateway.get_gateway_block_volumes(gateway_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("cloudStorageGatewayGatewayBlockVolumeId1", ids.volumes[0].id)
-    name_regex = alicloud.cloudstoragegateway.get_gateway_block_volumes(gateway_id="example_value",
-        name_regex="^my-GatewayBlockVolume")
-    pulumi.export("cloudStorageGatewayGatewayBlockVolumeId2", name_regex.volumes[0].id)
-    ```
-
 
     :param str gateway_id: The Gateway ID.
     :param Sequence[str] ids: A list of Gateway Block Volume IDs.
@@ -176,25 +157,6 @@ def get_gateway_block_volumes_output(gateway_id: Optional[pulumi.Input[str]] = N
     This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.144.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cloudstoragegateway.get_gateway_block_volumes(gateway_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("cloudStorageGatewayGatewayBlockVolumeId1", ids.volumes[0].id)
-    name_regex = alicloud.cloudstoragegateway.get_gateway_block_volumes(gateway_id="example_value",
-        name_regex="^my-GatewayBlockVolume")
-    pulumi.export("cloudStorageGatewayGatewayBlockVolumeId2", name_regex.volumes[0].id)
-    ```
 
 
     :param str gateway_id: The Gateway ID.

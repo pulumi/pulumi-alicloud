@@ -15,36 +15,6 @@ namespace Pulumi.AliCloud.Mse
         /// This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
         ///  
         /// &gt; **NOTE:** Available in v1.94.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Mse.GetClusters.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "mse-cn-0d9xxxx",
-        ///         },
-        ///         Status = "INIT_SUCCESS",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["clusterId"] = example.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:mse/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
@@ -53,36 +23,6 @@ namespace Pulumi.AliCloud.Mse
         /// This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
         ///  
         /// &gt; **NOTE:** Available in v1.94.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Mse.GetClusters.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "mse-cn-0d9xxxx",
-        ///         },
-        ///         Status = "INIT_SUCCESS",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["clusterId"] = example.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:mse/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());

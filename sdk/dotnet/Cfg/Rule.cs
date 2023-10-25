@@ -16,50 +16,6 @@ namespace Pulumi.AliCloud.Cfg
     /// 
     /// &gt; **NOTE:** Available since v1.204.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
-    ///     {
-    ///         Status = "OK",
-    ///     });
-    /// 
-    ///     var defaultRule = new AliCloud.Cfg.Rule("defaultRule", new()
-    ///     {
-    ///         Description = "If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant.",
-    ///         SourceOwner = "ALIYUN",
-    ///         SourceIdentifier = "contains-tag",
-    ///         RiskLevel = 1,
-    ///         TagValueScope = "example-value",
-    ///         TagKeyScope = "example-key",
-    ///         ExcludeResourceIdsScope = "example-resource_id",
-    ///         RegionIdsScope = "cn-hangzhou",
-    ///         ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
-    ///         ResourceGroupIdsScope = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
-    ///         ResourceTypesScopes = new[]
-    ///         {
-    ///             "ACS::RDS::DBInstance",
-    ///         },
-    ///         RuleName = "contains-tag",
-    ///         InputParameters = 
-    ///         {
-    ///             { "key", "example" },
-    ///             { "value", "example" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Config Rule can be imported using the id, e.g.

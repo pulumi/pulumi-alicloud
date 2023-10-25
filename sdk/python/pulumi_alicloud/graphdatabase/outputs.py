@@ -60,13 +60,13 @@ class DbInstanceDbInstanceIpArray(dict):
              db_instance_ip_array_attribute: Optional[str] = None,
              db_instance_ip_array_name: Optional[str] = None,
              security_ips: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbInstanceIpArrayAttribute' in kwargs:
+        if db_instance_ip_array_attribute is None and 'dbInstanceIpArrayAttribute' in kwargs:
             db_instance_ip_array_attribute = kwargs['dbInstanceIpArrayAttribute']
-        if 'dbInstanceIpArrayName' in kwargs:
+        if db_instance_ip_array_name is None and 'dbInstanceIpArrayName' in kwargs:
             db_instance_ip_array_name = kwargs['dbInstanceIpArrayName']
-        if 'securityIps' in kwargs:
+        if security_ips is None and 'securityIps' in kwargs:
             security_ips = kwargs['securityIps']
 
         if db_instance_ip_array_attribute is not None:
@@ -211,99 +211,165 @@ class GetDbInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_string: str,
-             create_time: str,
-             current_minor_version: str,
-             db_instance_category: str,
-             db_instance_cpu: str,
-             db_instance_description: str,
-             db_instance_id: str,
-             db_instance_ip_arrays: Sequence['outputs.GetDbInstancesInstanceDbInstanceIpArrayResult'],
-             db_instance_memory: str,
-             db_instance_network_type: str,
-             db_instance_storage_type: str,
-             db_instance_type: str,
-             db_node_class: str,
-             db_node_count: str,
-             db_node_storage: str,
-             db_version: str,
-             expire_time: str,
-             expired: str,
-             id: str,
-             latest_minor_version: str,
-             lock_mode: str,
-             lock_reason: str,
-             maintain_time: str,
-             master_db_instance_id: str,
-             payment_type: str,
-             port: int,
-             public_connection_string: str,
-             public_port: int,
-             read_only_db_instance_ids: Sequence[str],
-             status: str,
-             vpc_id: str,
-             vswitch_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             connection_string: Optional[str] = None,
+             create_time: Optional[str] = None,
+             current_minor_version: Optional[str] = None,
+             db_instance_category: Optional[str] = None,
+             db_instance_cpu: Optional[str] = None,
+             db_instance_description: Optional[str] = None,
+             db_instance_id: Optional[str] = None,
+             db_instance_ip_arrays: Optional[Sequence['outputs.GetDbInstancesInstanceDbInstanceIpArrayResult']] = None,
+             db_instance_memory: Optional[str] = None,
+             db_instance_network_type: Optional[str] = None,
+             db_instance_storage_type: Optional[str] = None,
+             db_instance_type: Optional[str] = None,
+             db_node_class: Optional[str] = None,
+             db_node_count: Optional[str] = None,
+             db_node_storage: Optional[str] = None,
+             db_version: Optional[str] = None,
+             expire_time: Optional[str] = None,
+             expired: Optional[str] = None,
+             id: Optional[str] = None,
+             latest_minor_version: Optional[str] = None,
+             lock_mode: Optional[str] = None,
+             lock_reason: Optional[str] = None,
+             maintain_time: Optional[str] = None,
+             master_db_instance_id: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             port: Optional[int] = None,
+             public_connection_string: Optional[str] = None,
+             public_port: Optional[int] = None,
+             read_only_db_instance_ids: Optional[Sequence[str]] = None,
+             status: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'createTime' in kwargs:
+        if connection_string is None:
+            raise TypeError("Missing 'connection_string' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'currentMinorVersion' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if current_minor_version is None and 'currentMinorVersion' in kwargs:
             current_minor_version = kwargs['currentMinorVersion']
-        if 'dbInstanceCategory' in kwargs:
+        if current_minor_version is None:
+            raise TypeError("Missing 'current_minor_version' argument")
+        if db_instance_category is None and 'dbInstanceCategory' in kwargs:
             db_instance_category = kwargs['dbInstanceCategory']
-        if 'dbInstanceCpu' in kwargs:
+        if db_instance_category is None:
+            raise TypeError("Missing 'db_instance_category' argument")
+        if db_instance_cpu is None and 'dbInstanceCpu' in kwargs:
             db_instance_cpu = kwargs['dbInstanceCpu']
-        if 'dbInstanceDescription' in kwargs:
+        if db_instance_cpu is None:
+            raise TypeError("Missing 'db_instance_cpu' argument")
+        if db_instance_description is None and 'dbInstanceDescription' in kwargs:
             db_instance_description = kwargs['dbInstanceDescription']
-        if 'dbInstanceId' in kwargs:
+        if db_instance_description is None:
+            raise TypeError("Missing 'db_instance_description' argument")
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
-        if 'dbInstanceIpArrays' in kwargs:
+        if db_instance_id is None:
+            raise TypeError("Missing 'db_instance_id' argument")
+        if db_instance_ip_arrays is None and 'dbInstanceIpArrays' in kwargs:
             db_instance_ip_arrays = kwargs['dbInstanceIpArrays']
-        if 'dbInstanceMemory' in kwargs:
+        if db_instance_ip_arrays is None:
+            raise TypeError("Missing 'db_instance_ip_arrays' argument")
+        if db_instance_memory is None and 'dbInstanceMemory' in kwargs:
             db_instance_memory = kwargs['dbInstanceMemory']
-        if 'dbInstanceNetworkType' in kwargs:
+        if db_instance_memory is None:
+            raise TypeError("Missing 'db_instance_memory' argument")
+        if db_instance_network_type is None and 'dbInstanceNetworkType' in kwargs:
             db_instance_network_type = kwargs['dbInstanceNetworkType']
-        if 'dbInstanceStorageType' in kwargs:
+        if db_instance_network_type is None:
+            raise TypeError("Missing 'db_instance_network_type' argument")
+        if db_instance_storage_type is None and 'dbInstanceStorageType' in kwargs:
             db_instance_storage_type = kwargs['dbInstanceStorageType']
-        if 'dbInstanceType' in kwargs:
+        if db_instance_storage_type is None:
+            raise TypeError("Missing 'db_instance_storage_type' argument")
+        if db_instance_type is None and 'dbInstanceType' in kwargs:
             db_instance_type = kwargs['dbInstanceType']
-        if 'dbNodeClass' in kwargs:
+        if db_instance_type is None:
+            raise TypeError("Missing 'db_instance_type' argument")
+        if db_node_class is None and 'dbNodeClass' in kwargs:
             db_node_class = kwargs['dbNodeClass']
-        if 'dbNodeCount' in kwargs:
+        if db_node_class is None:
+            raise TypeError("Missing 'db_node_class' argument")
+        if db_node_count is None and 'dbNodeCount' in kwargs:
             db_node_count = kwargs['dbNodeCount']
-        if 'dbNodeStorage' in kwargs:
+        if db_node_count is None:
+            raise TypeError("Missing 'db_node_count' argument")
+        if db_node_storage is None and 'dbNodeStorage' in kwargs:
             db_node_storage = kwargs['dbNodeStorage']
-        if 'dbVersion' in kwargs:
+        if db_node_storage is None:
+            raise TypeError("Missing 'db_node_storage' argument")
+        if db_version is None and 'dbVersion' in kwargs:
             db_version = kwargs['dbVersion']
-        if 'expireTime' in kwargs:
+        if db_version is None:
+            raise TypeError("Missing 'db_version' argument")
+        if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
-        if 'latestMinorVersion' in kwargs:
+        if expire_time is None:
+            raise TypeError("Missing 'expire_time' argument")
+        if expired is None:
+            raise TypeError("Missing 'expired' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if latest_minor_version is None and 'latestMinorVersion' in kwargs:
             latest_minor_version = kwargs['latestMinorVersion']
-        if 'lockMode' in kwargs:
+        if latest_minor_version is None:
+            raise TypeError("Missing 'latest_minor_version' argument")
+        if lock_mode is None and 'lockMode' in kwargs:
             lock_mode = kwargs['lockMode']
-        if 'lockReason' in kwargs:
+        if lock_mode is None:
+            raise TypeError("Missing 'lock_mode' argument")
+        if lock_reason is None and 'lockReason' in kwargs:
             lock_reason = kwargs['lockReason']
-        if 'maintainTime' in kwargs:
+        if lock_reason is None:
+            raise TypeError("Missing 'lock_reason' argument")
+        if maintain_time is None and 'maintainTime' in kwargs:
             maintain_time = kwargs['maintainTime']
-        if 'masterDbInstanceId' in kwargs:
+        if maintain_time is None:
+            raise TypeError("Missing 'maintain_time' argument")
+        if master_db_instance_id is None and 'masterDbInstanceId' in kwargs:
             master_db_instance_id = kwargs['masterDbInstanceId']
-        if 'paymentType' in kwargs:
+        if master_db_instance_id is None:
+            raise TypeError("Missing 'master_db_instance_id' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'publicConnectionString' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if public_connection_string is None and 'publicConnectionString' in kwargs:
             public_connection_string = kwargs['publicConnectionString']
-        if 'publicPort' in kwargs:
+        if public_connection_string is None:
+            raise TypeError("Missing 'public_connection_string' argument")
+        if public_port is None and 'publicPort' in kwargs:
             public_port = kwargs['publicPort']
-        if 'readOnlyDbInstanceIds' in kwargs:
+        if public_port is None:
+            raise TypeError("Missing 'public_port' argument")
+        if read_only_db_instance_ids is None and 'readOnlyDbInstanceIds' in kwargs:
             read_only_db_instance_ids = kwargs['readOnlyDbInstanceIds']
-        if 'vpcId' in kwargs:
+        if read_only_db_instance_ids is None:
+            raise TypeError("Missing 'read_only_db_instance_ids' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("connection_string", connection_string)
         _setter("create_time", create_time)
@@ -627,13 +693,13 @@ class GetDbInstancesInstanceDbInstanceIpArrayResult(dict):
              db_instance_ip_array_attribute: Optional[str] = None,
              db_instance_ip_array_name: Optional[str] = None,
              security_ips: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbInstanceIpArrayAttribute' in kwargs:
+        if db_instance_ip_array_attribute is None and 'dbInstanceIpArrayAttribute' in kwargs:
             db_instance_ip_array_attribute = kwargs['dbInstanceIpArrayAttribute']
-        if 'dbInstanceIpArrayName' in kwargs:
+        if db_instance_ip_array_name is None and 'dbInstanceIpArrayName' in kwargs:
             db_instance_ip_array_name = kwargs['dbInstanceIpArrayName']
-        if 'securityIps' in kwargs:
+        if security_ips is None and 'securityIps' in kwargs:
             security_ips = kwargs['securityIps']
 
         if db_instance_ip_array_attribute is not None:

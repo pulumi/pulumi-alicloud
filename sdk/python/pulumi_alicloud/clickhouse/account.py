@@ -53,9 +53,9 @@ class AccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: pulumi.Input[str],
-             account_password: pulumi.Input[str],
-             db_cluster_id: pulumi.Input[str],
+             account_name: Optional[pulumi.Input[str]] = None,
+             account_password: Optional[pulumi.Input[str]] = None,
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
              account_description: Optional[pulumi.Input[str]] = None,
              allow_databases: Optional[pulumi.Input[str]] = None,
              allow_dictionaries: Optional[pulumi.Input[str]] = None,
@@ -63,27 +63,33 @@ class AccountArgs:
              dml_authority: Optional[pulumi.Input[str]] = None,
              total_databases: Optional[pulumi.Input[str]] = None,
              total_dictionaries: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountPassword' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_password is None and 'accountPassword' in kwargs:
             account_password = kwargs['accountPassword']
-        if 'dbClusterId' in kwargs:
+        if account_password is None:
+            raise TypeError("Missing 'account_password' argument")
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'accountDescription' in kwargs:
+        if db_cluster_id is None:
+            raise TypeError("Missing 'db_cluster_id' argument")
+        if account_description is None and 'accountDescription' in kwargs:
             account_description = kwargs['accountDescription']
-        if 'allowDatabases' in kwargs:
+        if allow_databases is None and 'allowDatabases' in kwargs:
             allow_databases = kwargs['allowDatabases']
-        if 'allowDictionaries' in kwargs:
+        if allow_dictionaries is None and 'allowDictionaries' in kwargs:
             allow_dictionaries = kwargs['allowDictionaries']
-        if 'ddlAuthority' in kwargs:
+        if ddl_authority is None and 'ddlAuthority' in kwargs:
             ddl_authority = kwargs['ddlAuthority']
-        if 'dmlAuthority' in kwargs:
+        if dml_authority is None and 'dmlAuthority' in kwargs:
             dml_authority = kwargs['dmlAuthority']
-        if 'totalDatabases' in kwargs:
+        if total_databases is None and 'totalDatabases' in kwargs:
             total_databases = kwargs['totalDatabases']
-        if 'totalDictionaries' in kwargs:
+        if total_dictionaries is None and 'totalDictionaries' in kwargs:
             total_dictionaries = kwargs['totalDictionaries']
 
         _setter("account_name", account_name)
@@ -285,27 +291,27 @@ class _AccountState:
              total_databases: Optional[pulumi.Input[str]] = None,
              total_dictionaries: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountDescription' in kwargs:
+        if account_description is None and 'accountDescription' in kwargs:
             account_description = kwargs['accountDescription']
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountPassword' in kwargs:
+        if account_password is None and 'accountPassword' in kwargs:
             account_password = kwargs['accountPassword']
-        if 'allowDatabases' in kwargs:
+        if allow_databases is None and 'allowDatabases' in kwargs:
             allow_databases = kwargs['allowDatabases']
-        if 'allowDictionaries' in kwargs:
+        if allow_dictionaries is None and 'allowDictionaries' in kwargs:
             allow_dictionaries = kwargs['allowDictionaries']
-        if 'dbClusterId' in kwargs:
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'ddlAuthority' in kwargs:
+        if ddl_authority is None and 'ddlAuthority' in kwargs:
             ddl_authority = kwargs['ddlAuthority']
-        if 'dmlAuthority' in kwargs:
+        if dml_authority is None and 'dmlAuthority' in kwargs:
             dml_authority = kwargs['dmlAuthority']
-        if 'totalDatabases' in kwargs:
+        if total_databases is None and 'totalDatabases' in kwargs:
             total_databases = kwargs['totalDatabases']
-        if 'totalDictionaries' in kwargs:
+        if total_dictionaries is None and 'totalDictionaries' in kwargs:
             total_dictionaries = kwargs['totalDictionaries']
 
         if account_description is not None:
@@ -501,45 +507,6 @@ class Account(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.clickhouse.get_regions(current=True)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_regions.regions[0].zone_ids[0].zone_id)
-        default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
-            db_cluster_version="22.8.5.29",
-            category="Basic",
-            db_cluster_class="S8",
-            db_cluster_network_type="vpc",
-            db_node_group_count=1,
-            payment_type="PayAsYouGo",
-            db_node_storage="500",
-            storage_type="cloud_essd",
-            vswitch_id=default_switch.id,
-            vpc_id=default_network.id)
-        default_account = alicloud.clickhouse.Account("defaultAccount",
-            db_cluster_id=default_db_cluster.id,
-            account_description="tf-example-description",
-            account_name="examplename",
-            account_password="Example1234")
-        ```
-
         ## Import
 
         Click House Account can be imported using the id, e.g.
@@ -573,45 +540,6 @@ class Account(pulumi.CustomResource):
         For information about Click House Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createaccount).
 
         > **NOTE:** Available since v1.134.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.clickhouse.get_regions(current=True)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_regions.regions[0].zone_ids[0].zone_id)
-        default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
-            db_cluster_version="22.8.5.29",
-            category="Basic",
-            db_cluster_class="S8",
-            db_cluster_network_type="vpc",
-            db_node_group_count=1,
-            payment_type="PayAsYouGo",
-            db_node_storage="500",
-            storage_type="cloud_essd",
-            vswitch_id=default_switch.id,
-            vpc_id=default_network.id)
-        default_account = alicloud.clickhouse.Account("defaultAccount",
-            db_cluster_id=default_db_cluster.id,
-            account_description="tf-example-description",
-            account_name="examplename",
-            account_password="Example1234")
-        ```
 
         ## Import
 

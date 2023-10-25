@@ -41,23 +41,29 @@ class BackupPlanArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_time: pulumi.Input[str],
-             cluster_id: pulumi.Input[str],
-             data_center_id: pulumi.Input[str],
+             backup_time: Optional[pulumi.Input[str]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             data_center_id: Optional[pulumi.Input[str]] = None,
              active: Optional[pulumi.Input[bool]] = None,
              backup_period: Optional[pulumi.Input[str]] = None,
              retention_period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupTime' in kwargs:
+        if backup_time is None and 'backupTime' in kwargs:
             backup_time = kwargs['backupTime']
-        if 'clusterId' in kwargs:
+        if backup_time is None:
+            raise TypeError("Missing 'backup_time' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'dataCenterId' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if data_center_id is None and 'dataCenterId' in kwargs:
             data_center_id = kwargs['dataCenterId']
-        if 'backupPeriod' in kwargs:
+        if data_center_id is None:
+            raise TypeError("Missing 'data_center_id' argument")
+        if backup_period is None and 'backupPeriod' in kwargs:
             backup_period = kwargs['backupPeriod']
-        if 'retentionPeriod' in kwargs:
+        if retention_period is None and 'retentionPeriod' in kwargs:
             retention_period = kwargs['retentionPeriod']
 
         _setter("backup_time", backup_time)
@@ -179,17 +185,17 @@ class _BackupPlanState:
              cluster_id: Optional[pulumi.Input[str]] = None,
              data_center_id: Optional[pulumi.Input[str]] = None,
              retention_period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupPeriod' in kwargs:
+        if backup_period is None and 'backupPeriod' in kwargs:
             backup_period = kwargs['backupPeriod']
-        if 'backupTime' in kwargs:
+        if backup_time is None and 'backupTime' in kwargs:
             backup_time = kwargs['backupTime']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'dataCenterId' in kwargs:
+        if data_center_id is None and 'dataCenterId' in kwargs:
             data_center_id = kwargs['dataCenterId']
-        if 'retentionPeriod' in kwargs:
+        if retention_period is None and 'retentionPeriod' in kwargs:
             retention_period = kwargs['retentionPeriod']
 
         if active is not None:

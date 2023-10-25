@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.174.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.rds.getModifyParameterLogs({
- *     dbInstanceId: "example_value",
- *     endTime: "2022-06-08T13:56Z",
- *     startTime: "2022-06-04T13:56Z",
- * });
- * ```
  */
 export function getModifyParameterLogs(args: GetModifyParameterLogsArgs, opts?: pulumi.InvokeOptions): Promise<GetModifyParameterLogsResult> {
 
@@ -77,21 +62,6 @@ export interface GetModifyParameterLogsResult {
  * This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.174.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.rds.getModifyParameterLogs({
- *     dbInstanceId: "example_value",
- *     endTime: "2022-06-08T13:56Z",
- *     startTime: "2022-06-04T13:56Z",
- * });
- * ```
  */
 export function getModifyParameterLogsOutput(args: GetModifyParameterLogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetModifyParameterLogsResult> {
     return pulumi.output(args).apply((a: any) => getModifyParameterLogs(a, opts))

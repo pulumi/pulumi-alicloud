@@ -15,49 +15,6 @@ import (
 // This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available since v1.183.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := polardb.GetParameterGroups(ctx, &polardb.GetParameterGroupsArgs{
-// DbType: pulumi.StringRef("MySQL"),
-// DbVersion: pulumi.StringRef("8.0"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ids, err := polardb.GetParameterGroups(ctx, &polardb.GetParameterGroupsArgs{
-// Ids: interface{}{
-// _default.Groups[0].Id,
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("polardbParameterGroupId1", ids.Groups[0].Id)
-// nameRegex, err := polardb.GetParameterGroups(ctx, &polardb.GetParameterGroupsArgs{
-// NameRegex: pulumi.StringRef(_default.Groups[0].ParameterGroupName),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("polardbParameterGroupId2", nameRegex.Groups[0].Id)
-// return nil
-// })
-// }
-// ```
 func GetParameterGroups(ctx *pulumi.Context, args *GetParameterGroupsArgs, opts ...pulumi.InvokeOption) (*GetParameterGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetParameterGroupsResult

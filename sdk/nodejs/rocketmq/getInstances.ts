@@ -10,23 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides a list of ONS Instances in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.52.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "onsInstanceDatasourceName";
- * const _default = new alicloud.rocketmq.Instance("default", {remark: "default_ons_instance_remark"});
- * const instancesDs = alicloud.rocketmq.getInstancesOutput({
- *     ids: [_default.id],
- *     nameRegex: _default.name,
- *     outputFile: "instances.txt",
- * });
- * export const firstInstanceId = instancesDs.apply(instancesDs => instancesDs.instances?.[0]?.instanceId);
- * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -108,23 +91,6 @@ export interface GetInstancesResult {
  * This data source provides a list of ONS Instances in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.52.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "onsInstanceDatasourceName";
- * const _default = new alicloud.rocketmq.Instance("default", {remark: "default_ons_instance_remark"});
- * const instancesDs = alicloud.rocketmq.getInstancesOutput({
- *     ids: [_default.id],
- *     nameRegex: _default.name,
- *     outputFile: "instances.txt",
- * });
- * export const firstInstanceId = instancesDs.apply(instancesDs => instancesDs.instances?.[0]?.instanceId);
- * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))

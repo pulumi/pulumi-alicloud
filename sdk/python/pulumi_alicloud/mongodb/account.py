@@ -39,19 +39,25 @@ class AccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: pulumi.Input[str],
-             account_password: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
+             account_name: Optional[pulumi.Input[str]] = None,
+             account_password: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
              account_description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountPassword' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_password is None and 'accountPassword' in kwargs:
             account_password = kwargs['accountPassword']
-        if 'instanceId' in kwargs:
+        if account_password is None:
+            raise TypeError("Missing 'account_password' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'accountDescription' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if account_description is None and 'accountDescription' in kwargs:
             account_description = kwargs['accountDescription']
 
         _setter("account_name", account_name)
@@ -149,15 +155,15 @@ class _AccountState:
              account_password: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountDescription' in kwargs:
+        if account_description is None and 'accountDescription' in kwargs:
             account_description = kwargs['accountDescription']
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountPassword' in kwargs:
+        if account_password is None and 'accountPassword' in kwargs:
             account_password = kwargs['accountPassword']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
 
         if account_description is not None:
@@ -253,49 +259,6 @@ class Account(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.148.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.mongodb.get_zones()
-        index = len(default_zones.zones) - 1
-        zone_id = default_zones.zones[index].id
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=zone_id)
-        default_instance = alicloud.mongodb.Instance("defaultInstance",
-            engine_version="4.2",
-            db_instance_class="dds.mongo.mid",
-            db_instance_storage=10,
-            vswitch_id=default_switch.id,
-            security_ip_lists=[
-                "10.168.1.12",
-                "100.69.7.112",
-            ],
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_account = alicloud.mongodb.Account("defaultAccount",
-            account_name="root",
-            account_password="Example_123",
-            instance_id=default_instance.id,
-            account_description=name)
-        ```
-
         ## Import
 
         MongoDB Account can be imported using the id, e.g.
@@ -327,49 +290,6 @@ class Account(pulumi.CustomResource):
         For information about MongoDB Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/doc-detail/62154.html).
 
         > **NOTE:** Available since v1.148.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.mongodb.get_zones()
-        index = len(default_zones.zones) - 1
-        zone_id = default_zones.zones[index].id
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=zone_id)
-        default_instance = alicloud.mongodb.Instance("defaultInstance",
-            engine_version="4.2",
-            db_instance_class="dds.mongo.mid",
-            db_instance_storage=10,
-            vswitch_id=default_switch.id,
-            security_ip_lists=[
-                "10.168.1.12",
-                "100.69.7.112",
-            ],
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_account = alicloud.mongodb.Account("defaultAccount",
-            account_name="root",
-            account_password="Example_123",
-            instance_id=default_instance.id,
-            account_description=name)
-        ```
 
         ## Import
 

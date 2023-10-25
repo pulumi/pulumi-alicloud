@@ -51,28 +51,44 @@ class GetBackupPlansPlanResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             active: bool,
-             backup_period: str,
-             backup_time: str,
-             cluster_id: str,
-             create_time: str,
-             data_center_id: str,
-             id: str,
-             retention_period: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             active: Optional[bool] = None,
+             backup_period: Optional[str] = None,
+             backup_time: Optional[str] = None,
+             cluster_id: Optional[str] = None,
+             create_time: Optional[str] = None,
+             data_center_id: Optional[str] = None,
+             id: Optional[str] = None,
+             retention_period: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupPeriod' in kwargs:
+        if active is None:
+            raise TypeError("Missing 'active' argument")
+        if backup_period is None and 'backupPeriod' in kwargs:
             backup_period = kwargs['backupPeriod']
-        if 'backupTime' in kwargs:
+        if backup_period is None:
+            raise TypeError("Missing 'backup_period' argument")
+        if backup_time is None and 'backupTime' in kwargs:
             backup_time = kwargs['backupTime']
-        if 'clusterId' in kwargs:
+        if backup_time is None:
+            raise TypeError("Missing 'backup_time' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'createTime' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dataCenterId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if data_center_id is None and 'dataCenterId' in kwargs:
             data_center_id = kwargs['dataCenterId']
-        if 'retentionPeriod' in kwargs:
+        if data_center_id is None:
+            raise TypeError("Missing 'data_center_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if retention_period is None and 'retentionPeriod' in kwargs:
             retention_period = kwargs['retentionPeriod']
+        if retention_period is None:
+            raise TypeError("Missing 'retention_period' argument")
 
         _setter("active", active)
         _setter("backup_period", backup_period)
@@ -194,38 +210,60 @@ class GetClustersClusterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: str,
-             cluster_name: str,
-             created_time: str,
-             data_center_count: int,
-             expire_time: str,
-             id: str,
-             lock_mode: str,
-             major_version: str,
-             minor_version: str,
-             pay_type: str,
-             status: str,
+             cluster_id: Optional[str] = None,
+             cluster_name: Optional[str] = None,
+             created_time: Optional[str] = None,
+             data_center_count: Optional[int] = None,
+             expire_time: Optional[str] = None,
+             id: Optional[str] = None,
+             lock_mode: Optional[str] = None,
+             major_version: Optional[str] = None,
+             minor_version: Optional[str] = None,
+             pay_type: Optional[str] = None,
+             status: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'clusterName' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'createdTime' in kwargs:
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if created_time is None and 'createdTime' in kwargs:
             created_time = kwargs['createdTime']
-        if 'dataCenterCount' in kwargs:
+        if created_time is None:
+            raise TypeError("Missing 'created_time' argument")
+        if data_center_count is None and 'dataCenterCount' in kwargs:
             data_center_count = kwargs['dataCenterCount']
-        if 'expireTime' in kwargs:
+        if data_center_count is None:
+            raise TypeError("Missing 'data_center_count' argument")
+        if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
-        if 'lockMode' in kwargs:
+        if expire_time is None:
+            raise TypeError("Missing 'expire_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if lock_mode is None and 'lockMode' in kwargs:
             lock_mode = kwargs['lockMode']
-        if 'majorVersion' in kwargs:
+        if lock_mode is None:
+            raise TypeError("Missing 'lock_mode' argument")
+        if major_version is None and 'majorVersion' in kwargs:
             major_version = kwargs['majorVersion']
-        if 'minorVersion' in kwargs:
+        if major_version is None:
+            raise TypeError("Missing 'major_version' argument")
+        if minor_version is None and 'minorVersion' in kwargs:
             minor_version = kwargs['minorVersion']
-        if 'payType' in kwargs:
+        if minor_version is None:
+            raise TypeError("Missing 'minor_version' argument")
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
+        if pay_type is None:
+            raise TypeError("Missing 'pay_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("cluster_id", cluster_id)
         _setter("cluster_name", cluster_name)
@@ -393,54 +431,86 @@ class GetDataCentersCenterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: str,
-             commodity_instance: str,
-             created_time: str,
-             data_center_id: str,
-             data_center_name: str,
-             disk_size: int,
-             disk_type: str,
-             expire_time: str,
-             instance_type: str,
-             lock_mode: str,
-             node_count: int,
-             pay_type: str,
-             status: str,
-             vpc_id: str,
-             vswitch_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cluster_id: Optional[str] = None,
+             commodity_instance: Optional[str] = None,
+             created_time: Optional[str] = None,
+             data_center_id: Optional[str] = None,
+             data_center_name: Optional[str] = None,
+             disk_size: Optional[int] = None,
+             disk_type: Optional[str] = None,
+             expire_time: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             lock_mode: Optional[str] = None,
+             node_count: Optional[int] = None,
+             pay_type: Optional[str] = None,
+             status: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'commodityInstance' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if commodity_instance is None and 'commodityInstance' in kwargs:
             commodity_instance = kwargs['commodityInstance']
-        if 'createdTime' in kwargs:
+        if commodity_instance is None:
+            raise TypeError("Missing 'commodity_instance' argument")
+        if created_time is None and 'createdTime' in kwargs:
             created_time = kwargs['createdTime']
-        if 'dataCenterId' in kwargs:
+        if created_time is None:
+            raise TypeError("Missing 'created_time' argument")
+        if data_center_id is None and 'dataCenterId' in kwargs:
             data_center_id = kwargs['dataCenterId']
-        if 'dataCenterName' in kwargs:
+        if data_center_id is None:
+            raise TypeError("Missing 'data_center_id' argument")
+        if data_center_name is None and 'dataCenterName' in kwargs:
             data_center_name = kwargs['dataCenterName']
-        if 'diskSize' in kwargs:
+        if data_center_name is None:
+            raise TypeError("Missing 'data_center_name' argument")
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'diskType' in kwargs:
+        if disk_size is None:
+            raise TypeError("Missing 'disk_size' argument")
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'expireTime' in kwargs:
+        if disk_type is None:
+            raise TypeError("Missing 'disk_type' argument")
+        if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
-        if 'instanceType' in kwargs:
+        if expire_time is None:
+            raise TypeError("Missing 'expire_time' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'lockMode' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if lock_mode is None and 'lockMode' in kwargs:
             lock_mode = kwargs['lockMode']
-        if 'nodeCount' in kwargs:
+        if lock_mode is None:
+            raise TypeError("Missing 'lock_mode' argument")
+        if node_count is None and 'nodeCount' in kwargs:
             node_count = kwargs['nodeCount']
-        if 'payType' in kwargs:
+        if node_count is None:
+            raise TypeError("Missing 'node_count' argument")
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
-        if 'vpcId' in kwargs:
+        if pay_type is None:
+            raise TypeError("Missing 'pay_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("cluster_id", cluster_id)
         _setter("commodity_instance", commodity_instance)
@@ -602,12 +672,16 @@ class GetZonesZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             multi_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             multi_zone_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'multiZoneIds' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if multi_zone_ids is None and 'multiZoneIds' in kwargs:
             multi_zone_ids = kwargs['multiZoneIds']
+        if multi_zone_ids is None:
+            raise TypeError("Missing 'multi_zone_ids' argument")
 
         _setter("id", id)
         _setter("multi_zone_ids", multi_zone_ids)

@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.123.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ddos.getDdosCooDomainResources({
- *     ids: ["tftestacc1234.abc"],
- * });
- * export const firstDdoscooDomainResourceId = example.then(example => example.resources?.[0]?.id);
- * ```
  */
 export function getDdosCooDomainResources(args?: GetDdosCooDomainResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosCooDomainResourcesResult> {
     args = args || {};
@@ -77,20 +63,6 @@ export interface GetDdosCooDomainResourcesResult {
  * This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.123.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ddos.getDdosCooDomainResources({
- *     ids: ["tftestacc1234.abc"],
- * });
- * export const firstDdoscooDomainResourceId = example.then(example => example.resources?.[0]?.id);
- * ```
  */
 export function getDdosCooDomainResourcesOutput(args?: GetDdosCooDomainResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosCooDomainResourcesResult> {
     return pulumi.output(args).apply((a: any) => getDdosCooDomainResources(a, opts))

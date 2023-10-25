@@ -139,51 +139,6 @@ def get_images(desktop_instance_type: Optional[str] = None,
 
     > **NOTE:** Available in v1.146.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
-        cidr_block="172.16.0.0/12",
-        desktop_access_type="Internet",
-        office_site_name="your_simple_office_site_name")
-    default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
-    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
-        policy_group_name="your_policy_group_name",
-        clipboard="readwrite",
-        local_drive="read",
-        authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-            description="example_value",
-            cidr_ip="1.2.3.4/24",
-        )],
-        authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-            type="inflow",
-            policy="accept",
-            description="example_value",
-            port_range="80/80",
-            ip_protocol="TCP",
-            priority="1",
-            cidr_ip="0.0.0.0/0",
-        )])
-    default_desktop = alicloud.eds.Desktop("defaultDesktop",
-        office_site_id=default_simple_office_site.id,
-        policy_group_id=default_ecd_policy_group.id,
-        bundle_id=default_bundles.bundles[1].id,
-        desktop_name="your_desktop_name")
-    default_image = alicloud.eds.Image("defaultImage",
-        image_name="your_image_name",
-        desktop_id=default_desktop.id,
-        description="example_value")
-    ids = alicloud.eds.get_images_output(ids=[default_image.id])
-    pulumi.export("ecdImageId1", ids.images[0].id)
-    name_regex = default_image.image_name.apply(lambda image_name: alicloud.eds.get_images_output(name_regex=image_name))
-    pulumi.export("ecdImageId2", name_regex.images[0].id)
-    ```
-
 
     :param str desktop_instance_type: The desktop type of the image.
     :param Sequence[str] ids: A list of Image IDs.
@@ -230,51 +185,6 @@ def get_images_output(desktop_instance_type: Optional[pulumi.Input[Optional[str]
     This data source provides the Ecd Images of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.146.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
-        cidr_block="172.16.0.0/12",
-        desktop_access_type="Internet",
-        office_site_name="your_simple_office_site_name")
-    default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
-    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
-        policy_group_name="your_policy_group_name",
-        clipboard="readwrite",
-        local_drive="read",
-        authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-            description="example_value",
-            cidr_ip="1.2.3.4/24",
-        )],
-        authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-            type="inflow",
-            policy="accept",
-            description="example_value",
-            port_range="80/80",
-            ip_protocol="TCP",
-            priority="1",
-            cidr_ip="0.0.0.0/0",
-        )])
-    default_desktop = alicloud.eds.Desktop("defaultDesktop",
-        office_site_id=default_simple_office_site.id,
-        policy_group_id=default_ecd_policy_group.id,
-        bundle_id=default_bundles.bundles[1].id,
-        desktop_name="your_desktop_name")
-    default_image = alicloud.eds.Image("defaultImage",
-        image_name="your_image_name",
-        desktop_id=default_desktop.id,
-        description="example_value")
-    ids = alicloud.eds.get_images_output(ids=[default_image.id])
-    pulumi.export("ecdImageId1", ids.images[0].id)
-    name_regex = default_image.image_name.apply(lambda image_name: alicloud.eds.get_images_output(name_regex=image_name))
-    pulumi.export("ecdImageId2", name_regex.images[0].id)
-    ```
 
 
     :param str desktop_instance_type: The desktop type of the image.

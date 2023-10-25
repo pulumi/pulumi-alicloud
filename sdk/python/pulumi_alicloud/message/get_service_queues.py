@@ -138,18 +138,6 @@ def get_service_queues(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.188.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.message.get_service_queues(ids=["example_id"])
-    pulumi.export("queueId1", ids.queues[0].id)
-    name = alicloud.message.get_service_queues(queue_name="tf-example")
-    pulumi.export("queueId2", name.queues[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Queue IDs. Its element value is same as Queue Name.
     :param str name_regex: A regex string to filter results by Queue name.
@@ -190,18 +178,6 @@ def get_service_queues_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     This data source provides the Message Notification Service Queues of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.188.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.message.get_service_queues(ids=["example_id"])
-    pulumi.export("queueId1", ids.queues[0].id)
-    name = alicloud.message.get_service_queues(queue_name="tf-example")
-    pulumi.export("queueId2", name.queues[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Queue IDs. Its element value is same as Queue Name.

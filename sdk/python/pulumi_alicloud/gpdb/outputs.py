@@ -75,11 +75,11 @@ class DbInstancePlanPlanConfig(dict):
              resume: Optional['outputs.DbInstancePlanPlanConfigResume'] = None,
              scale_in: Optional['outputs.DbInstancePlanPlanConfigScaleIn'] = None,
              scale_out: Optional['outputs.DbInstancePlanPlanConfigScaleOut'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'scaleIn' in kwargs:
+        if scale_in is None and 'scaleIn' in kwargs:
             scale_in = kwargs['scaleIn']
-        if 'scaleOut' in kwargs:
+        if scale_out is None and 'scaleOut' in kwargs:
             scale_out = kwargs['scaleOut']
 
         if pause is not None:
@@ -162,11 +162,11 @@ class DbInstancePlanPlanConfigPause(dict):
              _setter: Callable[[Any, Any], None],
              execute_time: Optional[str] = None,
              plan_cron_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'executeTime' in kwargs:
+        if execute_time is None and 'executeTime' in kwargs:
             execute_time = kwargs['executeTime']
-        if 'planCronTime' in kwargs:
+        if plan_cron_time is None and 'planCronTime' in kwargs:
             plan_cron_time = kwargs['planCronTime']
 
         if execute_time is not None:
@@ -229,11 +229,11 @@ class DbInstancePlanPlanConfigResume(dict):
              _setter: Callable[[Any, Any], None],
              execute_time: Optional[str] = None,
              plan_cron_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'executeTime' in kwargs:
+        if execute_time is None and 'executeTime' in kwargs:
             execute_time = kwargs['executeTime']
-        if 'planCronTime' in kwargs:
+        if plan_cron_time is None and 'planCronTime' in kwargs:
             plan_cron_time = kwargs['planCronTime']
 
         if execute_time is not None:
@@ -302,13 +302,13 @@ class DbInstancePlanPlanConfigScaleIn(dict):
              execute_time: Optional[str] = None,
              plan_cron_time: Optional[str] = None,
              segment_node_num: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'executeTime' in kwargs:
+        if execute_time is None and 'executeTime' in kwargs:
             execute_time = kwargs['executeTime']
-        if 'planCronTime' in kwargs:
+        if plan_cron_time is None and 'planCronTime' in kwargs:
             plan_cron_time = kwargs['planCronTime']
-        if 'segmentNodeNum' in kwargs:
+        if segment_node_num is None and 'segmentNodeNum' in kwargs:
             segment_node_num = kwargs['segmentNodeNum']
 
         if execute_time is not None:
@@ -387,13 +387,13 @@ class DbInstancePlanPlanConfigScaleOut(dict):
              execute_time: Optional[str] = None,
              plan_cron_time: Optional[str] = None,
              segment_node_num: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'executeTime' in kwargs:
+        if execute_time is None and 'executeTime' in kwargs:
             execute_time = kwargs['executeTime']
-        if 'planCronTime' in kwargs:
+        if plan_cron_time is None and 'planCronTime' in kwargs:
             plan_cron_time = kwargs['planCronTime']
-        if 'segmentNodeNum' in kwargs:
+        if segment_node_num is None and 'segmentNodeNum' in kwargs:
             segment_node_num = kwargs['segmentNodeNum']
 
         if execute_time is not None:
@@ -473,13 +473,13 @@ class InstanceIpWhitelist(dict):
              ip_group_attribute: Optional[str] = None,
              ip_group_name: Optional[str] = None,
              security_ip_list: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipGroupAttribute' in kwargs:
+        if ip_group_attribute is None and 'ipGroupAttribute' in kwargs:
             ip_group_attribute = kwargs['ipGroupAttribute']
-        if 'ipGroupName' in kwargs:
+        if ip_group_name is None and 'ipGroupName' in kwargs:
             ip_group_name = kwargs['ipGroupName']
-        if 'securityIpList' in kwargs:
+        if security_ip_list is None and 'securityIpList' in kwargs:
             security_ip_list = kwargs['securityIpList']
 
         if ip_group_attribute is not None:
@@ -541,19 +541,29 @@ class GetAccountsAccountResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_description: str,
-             account_name: str,
-             db_instance_id: str,
-             id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_description: Optional[str] = None,
+             account_name: Optional[str] = None,
+             db_instance_id: Optional[str] = None,
+             id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountDescription' in kwargs:
+        if account_description is None and 'accountDescription' in kwargs:
             account_description = kwargs['accountDescription']
-        if 'accountName' in kwargs:
+        if account_description is None:
+            raise TypeError("Missing 'account_description' argument")
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'dbInstanceId' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
+        if db_instance_id is None:
+            raise TypeError("Missing 'db_instance_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("account_description", account_description)
         _setter("account_name", account_name)
@@ -642,34 +652,54 @@ class GetDbInstancePlansPlanResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_instance_plan_name: str,
-             id: str,
-             plan_configs: Sequence['outputs.GetDbInstancePlansPlanPlanConfigResult'],
-             plan_desc: str,
-             plan_end_date: str,
-             plan_id: str,
-             plan_schedule_type: str,
-             plan_start_date: str,
-             plan_type: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             db_instance_plan_name: Optional[str] = None,
+             id: Optional[str] = None,
+             plan_configs: Optional[Sequence['outputs.GetDbInstancePlansPlanPlanConfigResult']] = None,
+             plan_desc: Optional[str] = None,
+             plan_end_date: Optional[str] = None,
+             plan_id: Optional[str] = None,
+             plan_schedule_type: Optional[str] = None,
+             plan_start_date: Optional[str] = None,
+             plan_type: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbInstancePlanName' in kwargs:
+        if db_instance_plan_name is None and 'dbInstancePlanName' in kwargs:
             db_instance_plan_name = kwargs['dbInstancePlanName']
-        if 'planConfigs' in kwargs:
+        if db_instance_plan_name is None:
+            raise TypeError("Missing 'db_instance_plan_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if plan_configs is None and 'planConfigs' in kwargs:
             plan_configs = kwargs['planConfigs']
-        if 'planDesc' in kwargs:
+        if plan_configs is None:
+            raise TypeError("Missing 'plan_configs' argument")
+        if plan_desc is None and 'planDesc' in kwargs:
             plan_desc = kwargs['planDesc']
-        if 'planEndDate' in kwargs:
+        if plan_desc is None:
+            raise TypeError("Missing 'plan_desc' argument")
+        if plan_end_date is None and 'planEndDate' in kwargs:
             plan_end_date = kwargs['planEndDate']
-        if 'planId' in kwargs:
+        if plan_end_date is None:
+            raise TypeError("Missing 'plan_end_date' argument")
+        if plan_id is None and 'planId' in kwargs:
             plan_id = kwargs['planId']
-        if 'planScheduleType' in kwargs:
+        if plan_id is None:
+            raise TypeError("Missing 'plan_id' argument")
+        if plan_schedule_type is None and 'planScheduleType' in kwargs:
             plan_schedule_type = kwargs['planScheduleType']
-        if 'planStartDate' in kwargs:
+        if plan_schedule_type is None:
+            raise TypeError("Missing 'plan_schedule_type' argument")
+        if plan_start_date is None and 'planStartDate' in kwargs:
             plan_start_date = kwargs['planStartDate']
-        if 'planType' in kwargs:
+        if plan_start_date is None:
+            raise TypeError("Missing 'plan_start_date' argument")
+        if plan_type is None and 'planType' in kwargs:
             plan_type = kwargs['planType']
+        if plan_type is None:
+            raise TypeError("Missing 'plan_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("db_instance_plan_name", db_instance_plan_name)
         _setter("id", id)
@@ -783,16 +813,24 @@ class GetDbInstancePlansPlanPlanConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pauses: Sequence['outputs.GetDbInstancePlansPlanPlanConfigPauseResult'],
-             resumes: Sequence['outputs.GetDbInstancePlansPlanPlanConfigResumeResult'],
-             scale_ins: Sequence['outputs.GetDbInstancePlansPlanPlanConfigScaleInResult'],
-             scale_outs: Sequence['outputs.GetDbInstancePlansPlanPlanConfigScaleOutResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             pauses: Optional[Sequence['outputs.GetDbInstancePlansPlanPlanConfigPauseResult']] = None,
+             resumes: Optional[Sequence['outputs.GetDbInstancePlansPlanPlanConfigResumeResult']] = None,
+             scale_ins: Optional[Sequence['outputs.GetDbInstancePlansPlanPlanConfigScaleInResult']] = None,
+             scale_outs: Optional[Sequence['outputs.GetDbInstancePlansPlanPlanConfigScaleOutResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'scaleIns' in kwargs:
+        if pauses is None:
+            raise TypeError("Missing 'pauses' argument")
+        if resumes is None:
+            raise TypeError("Missing 'resumes' argument")
+        if scale_ins is None and 'scaleIns' in kwargs:
             scale_ins = kwargs['scaleIns']
-        if 'scaleOuts' in kwargs:
+        if scale_ins is None:
+            raise TypeError("Missing 'scale_ins' argument")
+        if scale_outs is None and 'scaleOuts' in kwargs:
             scale_outs = kwargs['scaleOuts']
+        if scale_outs is None:
+            raise TypeError("Missing 'scale_outs' argument")
 
         _setter("pauses", pauses)
         _setter("resumes", resumes)
@@ -852,17 +890,23 @@ class GetDbInstancePlansPlanPlanConfigPauseResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             execute_time: str,
-             plan_cron_time: str,
-             plan_task_status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             execute_time: Optional[str] = None,
+             plan_cron_time: Optional[str] = None,
+             plan_task_status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'executeTime' in kwargs:
+        if execute_time is None and 'executeTime' in kwargs:
             execute_time = kwargs['executeTime']
-        if 'planCronTime' in kwargs:
+        if execute_time is None:
+            raise TypeError("Missing 'execute_time' argument")
+        if plan_cron_time is None and 'planCronTime' in kwargs:
             plan_cron_time = kwargs['planCronTime']
-        if 'planTaskStatus' in kwargs:
+        if plan_cron_time is None:
+            raise TypeError("Missing 'plan_cron_time' argument")
+        if plan_task_status is None and 'planTaskStatus' in kwargs:
             plan_task_status = kwargs['planTaskStatus']
+        if plan_task_status is None:
+            raise TypeError("Missing 'plan_task_status' argument")
 
         _setter("execute_time", execute_time)
         _setter("plan_cron_time", plan_cron_time)
@@ -913,17 +957,23 @@ class GetDbInstancePlansPlanPlanConfigResumeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             execute_time: str,
-             plan_cron_time: str,
-             plan_task_status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             execute_time: Optional[str] = None,
+             plan_cron_time: Optional[str] = None,
+             plan_task_status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'executeTime' in kwargs:
+        if execute_time is None and 'executeTime' in kwargs:
             execute_time = kwargs['executeTime']
-        if 'planCronTime' in kwargs:
+        if execute_time is None:
+            raise TypeError("Missing 'execute_time' argument")
+        if plan_cron_time is None and 'planCronTime' in kwargs:
             plan_cron_time = kwargs['planCronTime']
-        if 'planTaskStatus' in kwargs:
+        if plan_cron_time is None:
+            raise TypeError("Missing 'plan_cron_time' argument")
+        if plan_task_status is None and 'planTaskStatus' in kwargs:
             plan_task_status = kwargs['planTaskStatus']
+        if plan_task_status is None:
+            raise TypeError("Missing 'plan_task_status' argument")
 
         _setter("execute_time", execute_time)
         _setter("plan_cron_time", plan_cron_time)
@@ -977,20 +1027,28 @@ class GetDbInstancePlansPlanPlanConfigScaleInResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             execute_time: str,
-             plan_cron_time: str,
-             plan_task_status: str,
-             segment_node_num: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             execute_time: Optional[str] = None,
+             plan_cron_time: Optional[str] = None,
+             plan_task_status: Optional[str] = None,
+             segment_node_num: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'executeTime' in kwargs:
+        if execute_time is None and 'executeTime' in kwargs:
             execute_time = kwargs['executeTime']
-        if 'planCronTime' in kwargs:
+        if execute_time is None:
+            raise TypeError("Missing 'execute_time' argument")
+        if plan_cron_time is None and 'planCronTime' in kwargs:
             plan_cron_time = kwargs['planCronTime']
-        if 'planTaskStatus' in kwargs:
+        if plan_cron_time is None:
+            raise TypeError("Missing 'plan_cron_time' argument")
+        if plan_task_status is None and 'planTaskStatus' in kwargs:
             plan_task_status = kwargs['planTaskStatus']
-        if 'segmentNodeNum' in kwargs:
+        if plan_task_status is None:
+            raise TypeError("Missing 'plan_task_status' argument")
+        if segment_node_num is None and 'segmentNodeNum' in kwargs:
             segment_node_num = kwargs['segmentNodeNum']
+        if segment_node_num is None:
+            raise TypeError("Missing 'segment_node_num' argument")
 
         _setter("execute_time", execute_time)
         _setter("plan_cron_time", plan_cron_time)
@@ -1053,20 +1111,28 @@ class GetDbInstancePlansPlanPlanConfigScaleOutResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             execute_time: str,
-             plan_cron_time: str,
-             plan_task_status: str,
-             segment_node_num: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             execute_time: Optional[str] = None,
+             plan_cron_time: Optional[str] = None,
+             plan_task_status: Optional[str] = None,
+             segment_node_num: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'executeTime' in kwargs:
+        if execute_time is None and 'executeTime' in kwargs:
             execute_time = kwargs['executeTime']
-        if 'planCronTime' in kwargs:
+        if execute_time is None:
+            raise TypeError("Missing 'execute_time' argument")
+        if plan_cron_time is None and 'planCronTime' in kwargs:
             plan_cron_time = kwargs['planCronTime']
-        if 'planTaskStatus' in kwargs:
+        if plan_cron_time is None:
+            raise TypeError("Missing 'plan_cron_time' argument")
+        if plan_task_status is None and 'planTaskStatus' in kwargs:
             plan_task_status = kwargs['planTaskStatus']
-        if 'segmentNodeNum' in kwargs:
+        if plan_task_status is None:
+            raise TypeError("Missing 'plan_task_status' argument")
+        if segment_node_num is None and 'segmentNodeNum' in kwargs:
             segment_node_num = kwargs['segmentNodeNum']
+        if segment_node_num is None:
+            raise TypeError("Missing 'segment_node_num' argument")
 
         _setter("execute_time", execute_time)
         _setter("plan_cron_time", plan_cron_time)
@@ -1205,88 +1271,148 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             availability_zone: str,
-             charge_type: str,
-             connection_string: str,
-             cpu_cores: str,
-             create_time: str,
-             creation_time: str,
-             db_instance_category: str,
-             db_instance_class: str,
-             db_instance_id: str,
-             db_instance_mode: str,
-             description: str,
-             engine: str,
-             engine_version: str,
-             id: str,
-             instance_network_type: str,
-             ip_whitelists: Sequence['outputs.GetInstancesInstanceIpWhitelistResult'],
-             maintain_end_time: str,
-             maintain_start_time: str,
-             master_node_num: str,
-             memory_size: str,
-             payment_type: str,
-             region_id: str,
-             seg_node_num: str,
-             status: str,
-             storage_size: int,
-             storage_type: str,
-             tags: Mapping[str, Any],
-             vpc_id: str,
-             vswitch_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             availability_zone: Optional[str] = None,
+             charge_type: Optional[str] = None,
+             connection_string: Optional[str] = None,
+             cpu_cores: Optional[str] = None,
+             create_time: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             db_instance_category: Optional[str] = None,
+             db_instance_class: Optional[str] = None,
+             db_instance_id: Optional[str] = None,
+             db_instance_mode: Optional[str] = None,
+             description: Optional[str] = None,
+             engine: Optional[str] = None,
+             engine_version: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_network_type: Optional[str] = None,
+             ip_whitelists: Optional[Sequence['outputs.GetInstancesInstanceIpWhitelistResult']] = None,
+             maintain_end_time: Optional[str] = None,
+             maintain_start_time: Optional[str] = None,
+             master_node_num: Optional[str] = None,
+             memory_size: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             region_id: Optional[str] = None,
+             seg_node_num: Optional[str] = None,
+             status: Optional[str] = None,
+             storage_size: Optional[int] = None,
+             storage_type: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'chargeType' in kwargs:
+        if availability_zone is None:
+            raise TypeError("Missing 'availability_zone' argument")
+        if charge_type is None and 'chargeType' in kwargs:
             charge_type = kwargs['chargeType']
-        if 'connectionString' in kwargs:
+        if charge_type is None:
+            raise TypeError("Missing 'charge_type' argument")
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'cpuCores' in kwargs:
+        if connection_string is None:
+            raise TypeError("Missing 'connection_string' argument")
+        if cpu_cores is None and 'cpuCores' in kwargs:
             cpu_cores = kwargs['cpuCores']
-        if 'createTime' in kwargs:
+        if cpu_cores is None:
+            raise TypeError("Missing 'cpu_cores' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'creationTime' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'dbInstanceCategory' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if db_instance_category is None and 'dbInstanceCategory' in kwargs:
             db_instance_category = kwargs['dbInstanceCategory']
-        if 'dbInstanceClass' in kwargs:
+        if db_instance_category is None:
+            raise TypeError("Missing 'db_instance_category' argument")
+        if db_instance_class is None and 'dbInstanceClass' in kwargs:
             db_instance_class = kwargs['dbInstanceClass']
-        if 'dbInstanceId' in kwargs:
+        if db_instance_class is None:
+            raise TypeError("Missing 'db_instance_class' argument")
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
-        if 'dbInstanceMode' in kwargs:
+        if db_instance_id is None:
+            raise TypeError("Missing 'db_instance_id' argument")
+        if db_instance_mode is None and 'dbInstanceMode' in kwargs:
             db_instance_mode = kwargs['dbInstanceMode']
-        if 'engineVersion' in kwargs:
+        if db_instance_mode is None:
+            raise TypeError("Missing 'db_instance_mode' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'instanceNetworkType' in kwargs:
+        if engine_version is None:
+            raise TypeError("Missing 'engine_version' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_network_type is None and 'instanceNetworkType' in kwargs:
             instance_network_type = kwargs['instanceNetworkType']
-        if 'ipWhitelists' in kwargs:
+        if instance_network_type is None:
+            raise TypeError("Missing 'instance_network_type' argument")
+        if ip_whitelists is None and 'ipWhitelists' in kwargs:
             ip_whitelists = kwargs['ipWhitelists']
-        if 'maintainEndTime' in kwargs:
+        if ip_whitelists is None:
+            raise TypeError("Missing 'ip_whitelists' argument")
+        if maintain_end_time is None and 'maintainEndTime' in kwargs:
             maintain_end_time = kwargs['maintainEndTime']
-        if 'maintainStartTime' in kwargs:
+        if maintain_end_time is None:
+            raise TypeError("Missing 'maintain_end_time' argument")
+        if maintain_start_time is None and 'maintainStartTime' in kwargs:
             maintain_start_time = kwargs['maintainStartTime']
-        if 'masterNodeNum' in kwargs:
+        if maintain_start_time is None:
+            raise TypeError("Missing 'maintain_start_time' argument")
+        if master_node_num is None and 'masterNodeNum' in kwargs:
             master_node_num = kwargs['masterNodeNum']
-        if 'memorySize' in kwargs:
+        if master_node_num is None:
+            raise TypeError("Missing 'master_node_num' argument")
+        if memory_size is None and 'memorySize' in kwargs:
             memory_size = kwargs['memorySize']
-        if 'paymentType' in kwargs:
+        if memory_size is None:
+            raise TypeError("Missing 'memory_size' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'regionId' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'segNodeNum' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if seg_node_num is None and 'segNodeNum' in kwargs:
             seg_node_num = kwargs['segNodeNum']
-        if 'storageSize' in kwargs:
+        if seg_node_num is None:
+            raise TypeError("Missing 'seg_node_num' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if storage_size is None and 'storageSize' in kwargs:
             storage_size = kwargs['storageSize']
-        if 'storageType' in kwargs:
+        if storage_size is None:
+            raise TypeError("Missing 'storage_size' argument")
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
-        if 'vpcId' in kwargs:
+        if storage_type is None:
+            raise TypeError("Missing 'storage_type' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("availability_zone", availability_zone)
         _setter("charge_type", charge_type)
@@ -1574,17 +1700,23 @@ class GetInstancesInstanceIpWhitelistResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_group_attribute: str,
-             ip_group_name: str,
-             security_ip_list: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ip_group_attribute: Optional[str] = None,
+             ip_group_name: Optional[str] = None,
+             security_ip_list: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipGroupAttribute' in kwargs:
+        if ip_group_attribute is None and 'ipGroupAttribute' in kwargs:
             ip_group_attribute = kwargs['ipGroupAttribute']
-        if 'ipGroupName' in kwargs:
+        if ip_group_attribute is None:
+            raise TypeError("Missing 'ip_group_attribute' argument")
+        if ip_group_name is None and 'ipGroupName' in kwargs:
             ip_group_name = kwargs['ipGroupName']
-        if 'securityIpList' in kwargs:
+        if ip_group_name is None:
+            raise TypeError("Missing 'ip_group_name' argument")
+        if security_ip_list is None and 'securityIpList' in kwargs:
             security_ip_list = kwargs['securityIpList']
+        if security_ip_list is None:
+            raise TypeError("Missing 'security_ip_list' argument")
 
         _setter("ip_group_attribute", ip_group_attribute)
         _setter("ip_group_name", ip_group_name)
@@ -1632,12 +1764,16 @@ class GetZonesZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             multi_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             multi_zone_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'multiZoneIds' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if multi_zone_ids is None and 'multiZoneIds' in kwargs:
             multi_zone_ids = kwargs['multiZoneIds']
+        if multi_zone_ids is None:
+            raise TypeError("Missing 'multi_zone_ids' argument")
 
         _setter("id", id)
         _setter("multi_zone_ids", multi_zone_ids)

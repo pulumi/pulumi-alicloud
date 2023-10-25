@@ -15,33 +15,6 @@ import (
 // This data source provides Amqp Static Account available to the user.[What is Static Account](https://help.aliyun.com/document_detail/184399.html)
 //
 // > **NOTE:** Available in 1.195.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := amqp.GetStaticAccounts(ctx, &amqp.GetStaticAccountsArgs{
-//				InstanceId: pulumi.StringRef("amqp-cn-0ju2y01zs001"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("alicloudAmqpStaticAccountExampleId", _default.Accounts[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetStaticAccounts(ctx *pulumi.Context, args *GetStaticAccountsArgs, opts ...pulumi.InvokeOption) (*GetStaticAccountsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetStaticAccountsResult

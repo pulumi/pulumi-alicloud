@@ -37,17 +37,19 @@ class ConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
              babelfish_port: Optional[pulumi.Input[str]] = None,
              connection_prefix: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'babelfishPort' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if babelfish_port is None and 'babelfishPort' in kwargs:
             babelfish_port = kwargs['babelfishPort']
-        if 'connectionPrefix' in kwargs:
+        if connection_prefix is None and 'connectionPrefix' in kwargs:
             connection_prefix = kwargs['connectionPrefix']
 
         _setter("instance_id", instance_id)
@@ -147,17 +149,17 @@ class _ConnectionState:
              instance_id: Optional[pulumi.Input[str]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'babelfishPort' in kwargs:
+        if babelfish_port is None and 'babelfishPort' in kwargs:
             babelfish_port = kwargs['babelfishPort']
-        if 'connectionPrefix' in kwargs:
+        if connection_prefix is None and 'connectionPrefix' in kwargs:
             connection_prefix = kwargs['connectionPrefix']
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'ipAddress' in kwargs:
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
 
         if babelfish_port is not None:
@@ -266,38 +268,6 @@ class Connection(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.5.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="5.6")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_instance = alicloud.rds.Instance("defaultInstance",
-            engine="MySQL",
-            engine_version="5.6",
-            instance_type="rds.mysql.t1.small",
-            instance_storage=10,
-            vswitch_id=default_switch.id,
-            instance_name=name)
-        default_connection = alicloud.rds.Connection("defaultConnection",
-            instance_id=default_instance.id,
-            connection_prefix="testabc")
-        ```
-
         ## Import
 
         RDS connection can be imported using the id, e.g.
@@ -328,38 +298,6 @@ class Connection(pulumi.CustomResource):
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 
         > **NOTE:** Available since v1.5.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="5.6")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_instance = alicloud.rds.Instance("defaultInstance",
-            engine="MySQL",
-            engine_version="5.6",
-            instance_type="rds.mysql.t1.small",
-            instance_storage=10,
-            vswitch_id=default_switch.id,
-            instance_name=name)
-        default_connection = alicloud.rds.Connection("defaultConnection",
-            instance_id=default_instance.id,
-            connection_prefix="testabc")
-        ```
 
         ## Import
 

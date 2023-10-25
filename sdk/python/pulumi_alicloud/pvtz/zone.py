@@ -64,19 +64,19 @@ class ZoneArgs:
              user_client_ip: Optional[pulumi.Input[str]] = None,
              user_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]] = None,
              zone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'proxyPattern' in kwargs:
+        if proxy_pattern is None and 'proxyPattern' in kwargs:
             proxy_pattern = kwargs['proxyPattern']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'syncStatus' in kwargs:
+        if sync_status is None and 'syncStatus' in kwargs:
             sync_status = kwargs['syncStatus']
-        if 'userClientIp' in kwargs:
+        if user_client_ip is None and 'userClientIp' in kwargs:
             user_client_ip = kwargs['userClientIp']
-        if 'userInfos' in kwargs:
+        if user_infos is None and 'userInfos' in kwargs:
             user_infos = kwargs['userInfos']
-        if 'zoneName' in kwargs:
+        if zone_name is None and 'zoneName' in kwargs:
             zone_name = kwargs['zoneName']
 
         if lang is not None:
@@ -275,23 +275,23 @@ class _ZoneState:
              user_client_ip: Optional[pulumi.Input[str]] = None,
              user_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]] = None,
              zone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'isPtr' in kwargs:
+        if is_ptr is None and 'isPtr' in kwargs:
             is_ptr = kwargs['isPtr']
-        if 'proxyPattern' in kwargs:
+        if proxy_pattern is None and 'proxyPattern' in kwargs:
             proxy_pattern = kwargs['proxyPattern']
-        if 'recordCount' in kwargs:
+        if record_count is None and 'recordCount' in kwargs:
             record_count = kwargs['recordCount']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'syncStatus' in kwargs:
+        if sync_status is None and 'syncStatus' in kwargs:
             sync_status = kwargs['syncStatus']
-        if 'userClientIp' in kwargs:
+        if user_client_ip is None and 'userClientIp' in kwargs:
             user_client_ip = kwargs['userClientIp']
-        if 'userInfos' in kwargs:
+        if user_infos is None and 'userInfos' in kwargs:
             user_infos = kwargs['userInfos']
-        if 'zoneName' in kwargs:
+        if zone_name is None and 'zoneName' in kwargs:
             zone_name = kwargs['zoneName']
 
         if is_ptr is not None:
@@ -475,17 +475,6 @@ class Zone(pulumi.CustomResource):
                  zone_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo = alicloud.pvtz.Zone("foo", zone_name="foo.test.com")
-        ```
-
         ## Import
 
         Private Zone can be imported using the id, e.g.
@@ -516,17 +505,6 @@ class Zone(pulumi.CustomResource):
                  args: Optional[ZoneArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo = alicloud.pvtz.Zone("foo", zone_name="foo.test.com")
-        ```
-
         ## Import
 
         Private Zone can be imported using the id, e.g.

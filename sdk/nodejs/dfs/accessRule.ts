@@ -11,30 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.140.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "example_name";
- * const defaultAccessGroup = new alicloud.dfs.AccessGroup("defaultAccessGroup", {
- *     networkType: "VPC",
- *     accessGroupName: name,
- *     description: name,
- * });
- * const defaultAccessRule = new alicloud.dfs.AccessRule("defaultAccessRule", {
- *     networkSegment: "192.0.2.0/24",
- *     accessGroupId: defaultAccessGroup.id,
- *     description: name,
- *     rwAccessType: "RDWR",
- *     priority: 10,
- * });
- * ```
- *
  * ## Import
  *
  * DFS Access Rule can be imported using the id, e.g.

@@ -99,18 +99,6 @@ def get_namespaces(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.129.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    name_regex = alicloud.sae.get_namespaces(name_regex="^my-Namespace")
-    pulumi.export("saeNamespaceId", name_regex.namespaces[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Namespace IDs.
     :param str name_regex: A regex string to filter results by Namespace name.
@@ -141,18 +129,6 @@ def get_namespaces_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     This data source provides the Sae Namespaces of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.129.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    name_regex = alicloud.sae.get_namespaces(name_regex="^my-Namespace")
-    pulumi.export("saeNamespaceId", name_regex.namespaces[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Namespace IDs.

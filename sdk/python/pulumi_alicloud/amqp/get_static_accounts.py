@@ -96,16 +96,6 @@ def get_static_accounts(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.195.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.amqp.get_static_accounts(instance_id="amqp-cn-0ju2y01zs001")
-    pulumi.export("alicloudAmqpStaticAccountExampleId", default.accounts[0].id)
-    ```
-
 
     :param Sequence[str] ids: The `key` of the resource supplied above.The value is formulated as `<instance_id>:<access_key>`.
     :param str instance_id: InstanceId
@@ -135,16 +125,6 @@ def get_static_accounts_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     This data source provides Amqp Static Account available to the user.[What is Static Account](https://help.aliyun.com/document_detail/184399.html)
 
     > **NOTE:** Available in 1.195.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.amqp.get_static_accounts(instance_id="amqp-cn-0ju2y01zs001")
-    pulumi.export("alicloudAmqpStaticAccountExampleId", default.accounts[0].id)
-    ```
 
 
     :param Sequence[str] ids: The `key` of the resource supplied above.The value is formulated as `<instance_id>:<access_key>`.

@@ -51,7 +51,7 @@ class SnapshotArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk_id: pulumi.Input[str],
+             disk_id: Optional[pulumi.Input[str]] = None,
              category: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              force: Optional[pulumi.Input[bool]] = None,
@@ -62,19 +62,21 @@ class SnapshotArgs:
              retention_days: Optional[pulumi.Input[int]] = None,
              snapshot_name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'diskId' in kwargs:
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
-        if 'instantAccess' in kwargs:
+        if disk_id is None:
+            raise TypeError("Missing 'disk_id' argument")
+        if instant_access is None and 'instantAccess' in kwargs:
             instant_access = kwargs['instantAccess']
-        if 'instantAccessRetentionDays' in kwargs:
+        if instant_access_retention_days is None and 'instantAccessRetentionDays' in kwargs:
             instant_access_retention_days = kwargs['instantAccessRetentionDays']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'retentionDays' in kwargs:
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'snapshotName' in kwargs:
+        if snapshot_name is None and 'snapshotName' in kwargs:
             snapshot_name = kwargs['snapshotName']
 
         _setter("disk_id", disk_id)
@@ -275,19 +277,19 @@ class _SnapshotState:
              snapshot_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'diskId' in kwargs:
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
-        if 'instantAccess' in kwargs:
+        if instant_access is None and 'instantAccess' in kwargs:
             instant_access = kwargs['instantAccess']
-        if 'instantAccessRetentionDays' in kwargs:
+        if instant_access_retention_days is None and 'instantAccessRetentionDays' in kwargs:
             instant_access_retention_days = kwargs['instantAccessRetentionDays']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'retentionDays' in kwargs:
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'snapshotName' in kwargs:
+        if snapshot_name is None and 'snapshotName' in kwargs:
             snapshot_name = kwargs['snapshotName']
 
         if category is not None:
@@ -470,20 +472,6 @@ class Snapshot(pulumi.CustomResource):
 
         For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        snapshot = alicloud.ecs.Snapshot("snapshot",
-            disk_id=alicloud_disk_attachment["instance-attachment"]["disk_id"],
-            description="this snapshot is created for testing",
-            tags={
-                "version": "1.2",
-            })
-        ```
-
         ## Import
 
         Snapshot can be imported using the id, e.g.
@@ -513,20 +501,6 @@ class Snapshot(pulumi.CustomResource):
         Provides an ECS snapshot resource.
 
         For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        snapshot = alicloud.ecs.Snapshot("snapshot",
-            disk_id=alicloud_disk_attachment["instance-attachment"]["disk_id"],
-            description="this snapshot is created for testing",
-            tags={
-                "version": "1.2",
-            })
-        ```
 
         ## Import
 

@@ -11,28 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.142.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
- *     cidrBlock: "172.16.0.0/12",
- *     enableAdminAccess: false,
- *     desktopAccessType: "Internet",
- *     officeSiteName: name,
- * });
- * const defaultNetworkPackage = new alicloud.eds.NetworkPackage("defaultNetworkPackage", {
- *     bandwidth: 10,
- *     officeSiteId: defaultSimpleOfficeSite.id,
- * });
- * ```
- *
  * ## Import
  *
  * ECD Network Package can be imported using the id, e.g.

@@ -26,11 +26,13 @@ class AccountAliasArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_alias: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_alias: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountAlias' in kwargs:
+        if account_alias is None and 'accountAlias' in kwargs:
             account_alias = kwargs['accountAlias']
+        if account_alias is None:
+            raise TypeError("Missing 'account_alias' argument")
 
         _setter("account_alias", account_alias)
 
@@ -63,9 +65,9 @@ class _AccountAliasState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              account_alias: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountAlias' in kwargs:
+        if account_alias is None and 'accountAlias' in kwargs:
             account_alias = kwargs['accountAlias']
 
         if account_alias is not None:
@@ -96,19 +98,6 @@ class AccountAlias(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        alias = alicloud.ram.AccountAlias("alias", account_alias=name)
-        ```
-
         ## Import
 
         RAM account alias can be imported using the id, e.g.
@@ -131,19 +120,6 @@ class AccountAlias(pulumi.CustomResource):
         Provides a RAM cloud account alias.
 
         > **NOTE:** Available since v1.0.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        alias = alicloud.ram.AccountAlias("alias", account_alias=name)
-        ```
 
         ## Import
 

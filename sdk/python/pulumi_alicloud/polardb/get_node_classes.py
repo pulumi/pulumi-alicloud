@@ -149,19 +149,6 @@ def get_node_classes(category: Optional[str] = None,
 
     > **NOTE:** Available since v1.81.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    resources = alicloud.polardb.get_node_classes(pay_type="PostPaid",
-        db_type="MySQL",
-        db_version="5.6")
-    pulumi.export("polardbNodeClasses", resources.classes)
-    pulumi.export("polardbAvailableZoneId", resources.classes[0].zone_id)
-    ```
-
 
     :param str category: The PolarDB node cluster series.
     :param str db_node_class: The PolarDB node class type by the user.
@@ -211,19 +198,6 @@ def get_node_classes_output(category: Optional[pulumi.Input[Optional[str]]] = No
     This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
 
     > **NOTE:** Available since v1.81.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    resources = alicloud.polardb.get_node_classes(pay_type="PostPaid",
-        db_type="MySQL",
-        db_version="5.6")
-    pulumi.export("polardbNodeClasses", resources.classes)
-    pulumi.export("polardbAvailableZoneId", resources.classes[0].zone_id)
-    ```
 
 
     :param str category: The PolarDB node cluster series.

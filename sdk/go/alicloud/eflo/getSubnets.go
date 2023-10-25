@@ -15,36 +15,6 @@ import (
 // This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
 //
 // > **NOTE:** Available in 1.204.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eflo"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := eflo.GetSubnets(ctx, &eflo.GetSubnetsArgs{
-//				NameRegex:  pulumi.StringRef(alicloud_eflo_subnet.Default.Name),
-//				SubnetName: pulumi.StringRef("SubnetTestForTerraform"),
-//				VpdId:      pulumi.StringRef(_var.VpdId),
-//				ZoneId:     pulumi.StringRef(_var.ZoneId),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("alicloudEfloSubnetExampleId", _default.Subnets[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetSubnets(ctx *pulumi.Context, args *GetSubnetsArgs, opts ...pulumi.InvokeOption) (*GetSubnetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSubnetsResult

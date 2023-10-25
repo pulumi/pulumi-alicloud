@@ -110,18 +110,6 @@ def get_synchronization_jobs(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.138.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dts.get_synchronization_jobs()
-    pulumi.export("dtsSynchronizationJobId1", ids.jobs[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Synchronization Job IDs.
     :param str name_regex: A regex string to filter results by synchronization job name.
@@ -158,18 +146,6 @@ def get_synchronization_jobs_output(enable_details: Optional[pulumi.Input[Option
     This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.138.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dts.get_synchronization_jobs()
-    pulumi.export("dtsSynchronizationJobId1", ids.jobs[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Synchronization Job IDs.

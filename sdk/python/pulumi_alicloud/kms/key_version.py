@@ -28,11 +28,13 @@ class KeyVersionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'keyId' in kwargs:
+        if key_id is None and 'keyId' in kwargs:
             key_id = kwargs['keyId']
+        if key_id is None:
+            raise TypeError("Missing 'key_id' argument")
 
         _setter("key_id", key_id)
 
@@ -73,11 +75,11 @@ class _KeyVersionState:
              _setter: Callable[[Any, Any], None],
              key_id: Optional[pulumi.Input[str]] = None,
              key_version_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'keyId' in kwargs:
+        if key_id is None and 'keyId' in kwargs:
             key_id = kwargs['keyId']
-        if 'keyVersionId' in kwargs:
+        if key_version_id is None and 'keyVersionId' in kwargs:
             key_version_id = kwargs['keyVersionId']
 
         if key_id is not None:
@@ -124,18 +126,6 @@ class KeyVersion(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.85.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        this = alicloud.kms.Key("this")
-        keyversion = alicloud.kms.KeyVersion("keyversion", key_id=this.id)
-        ```
-
         ## Import
 
         Alikms key version can be imported using the id, e.g.
@@ -160,18 +150,6 @@ class KeyVersion(pulumi.CustomResource):
         Provides a Alikms Key Version resource. For information about Alikms Key Version and how to use it, see [What is Resource Alikms Key Version](https://www.alibabacloud.com/help/doc-detail/133838.htm).
 
         > **NOTE:** Available in v1.85.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        this = alicloud.kms.Key("this")
-        keyversion = alicloud.kms.KeyVersion("keyversion", key_id=this.id)
-        ```
 
         ## Import
 

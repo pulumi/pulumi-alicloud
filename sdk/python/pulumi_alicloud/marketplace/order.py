@@ -47,25 +47,31 @@ class OrderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             package_version: pulumi.Input[str],
-             pricing_cycle: pulumi.Input[str],
-             product_code: pulumi.Input[str],
+             package_version: Optional[pulumi.Input[str]] = None,
+             pricing_cycle: Optional[pulumi.Input[str]] = None,
+             product_code: Optional[pulumi.Input[str]] = None,
              components: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              coupon_id: Optional[pulumi.Input[str]] = None,
              duration: Optional[pulumi.Input[int]] = None,
              pay_type: Optional[pulumi.Input[str]] = None,
              quantity: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'packageVersion' in kwargs:
+        if package_version is None and 'packageVersion' in kwargs:
             package_version = kwargs['packageVersion']
-        if 'pricingCycle' in kwargs:
+        if package_version is None:
+            raise TypeError("Missing 'package_version' argument")
+        if pricing_cycle is None and 'pricingCycle' in kwargs:
             pricing_cycle = kwargs['pricingCycle']
-        if 'productCode' in kwargs:
+        if pricing_cycle is None:
+            raise TypeError("Missing 'pricing_cycle' argument")
+        if product_code is None and 'productCode' in kwargs:
             product_code = kwargs['productCode']
-        if 'couponId' in kwargs:
+        if product_code is None:
+            raise TypeError("Missing 'product_code' argument")
+        if coupon_id is None and 'couponId' in kwargs:
             coupon_id = kwargs['couponId']
-        if 'payType' in kwargs:
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
 
         _setter("package_version", package_version)
@@ -223,17 +229,17 @@ class _OrderState:
              pricing_cycle: Optional[pulumi.Input[str]] = None,
              product_code: Optional[pulumi.Input[str]] = None,
              quantity: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'couponId' in kwargs:
+        if coupon_id is None and 'couponId' in kwargs:
             coupon_id = kwargs['couponId']
-        if 'packageVersion' in kwargs:
+        if package_version is None and 'packageVersion' in kwargs:
             package_version = kwargs['packageVersion']
-        if 'payType' in kwargs:
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
-        if 'pricingCycle' in kwargs:
+        if pricing_cycle is None and 'pricingCycle' in kwargs:
             pricing_cycle = kwargs['pricingCycle']
-        if 'productCode' in kwargs:
+        if product_code is None and 'productCode' in kwargs:
             product_code = kwargs['productCode']
 
         if components is not None:
@@ -365,24 +371,6 @@ class Order(pulumi.CustomResource):
                  quantity: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        order = alicloud.marketplace.Order("order",
-            coupon_id="",
-            duration=1,
-            package_version="yuncode2713600001",
-            pay_type="prepay",
-            pricing_cycle="Month",
-            product_code="cmapi033136",
-            quantity=1)
-        ```
-
         ## Import
 
         Market order can be imported using the id, e.g.
@@ -409,24 +397,6 @@ class Order(pulumi.CustomResource):
                  args: OrderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        order = alicloud.marketplace.Order("order",
-            coupon_id="",
-            duration=1,
-            package_version="yuncode2713600001",
-            pay_type="prepay",
-            pricing_cycle="Month",
-            product_code="cmapi033136",
-            quantity=1)
-        ```
-
         ## Import
 
         Market order can be imported using the id, e.g.

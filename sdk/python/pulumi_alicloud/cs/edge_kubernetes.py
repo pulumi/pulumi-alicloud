@@ -154,9 +154,9 @@ class EdgeKubernetesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             worker_instance_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-             worker_number: pulumi.Input[int],
-             worker_vswitch_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             worker_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             worker_number: Optional[pulumi.Input[int]] = None,
+             worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              addons: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeKubernetesAddonArgs']]]] = None,
              availability_zone: Optional[pulumi.Input[str]] = None,
              client_cert: Optional[pulumi.Input[str]] = None,
@@ -194,75 +194,81 @@ class EdgeKubernetesArgs:
              worker_disk_size: Optional[pulumi.Input[int]] = None,
              worker_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
              worker_instance_charge_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'workerInstanceTypes' in kwargs:
+        if worker_instance_types is None and 'workerInstanceTypes' in kwargs:
             worker_instance_types = kwargs['workerInstanceTypes']
-        if 'workerNumber' in kwargs:
+        if worker_instance_types is None:
+            raise TypeError("Missing 'worker_instance_types' argument")
+        if worker_number is None and 'workerNumber' in kwargs:
             worker_number = kwargs['workerNumber']
-        if 'workerVswitchIds' in kwargs:
+        if worker_number is None:
+            raise TypeError("Missing 'worker_number' argument")
+        if worker_vswitch_ids is None and 'workerVswitchIds' in kwargs:
             worker_vswitch_ids = kwargs['workerVswitchIds']
-        if 'availabilityZone' in kwargs:
+        if worker_vswitch_ids is None:
+            raise TypeError("Missing 'worker_vswitch_ids' argument")
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'clientCert' in kwargs:
+        if client_cert is None and 'clientCert' in kwargs:
             client_cert = kwargs['clientCert']
-        if 'clientKey' in kwargs:
+        if client_key is None and 'clientKey' in kwargs:
             client_key = kwargs['clientKey']
-        if 'clusterCaCert' in kwargs:
+        if cluster_ca_cert is None and 'clusterCaCert' in kwargs:
             cluster_ca_cert = kwargs['clusterCaCert']
-        if 'clusterSpec' in kwargs:
+        if cluster_spec is None and 'clusterSpec' in kwargs:
             cluster_spec = kwargs['clusterSpec']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'forceUpdate' in kwargs:
+        if force_update is None and 'forceUpdate' in kwargs:
             force_update = kwargs['forceUpdate']
-        if 'installCloudMonitor' in kwargs:
+        if install_cloud_monitor is None and 'installCloudMonitor' in kwargs:
             install_cloud_monitor = kwargs['installCloudMonitor']
-        if 'isEnterpriseSecurityGroup' in kwargs:
+        if is_enterprise_security_group is None and 'isEnterpriseSecurityGroup' in kwargs:
             is_enterprise_security_group = kwargs['isEnterpriseSecurityGroup']
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'kubeConfig' in kwargs:
+        if kube_config is None and 'kubeConfig' in kwargs:
             kube_config = kwargs['kubeConfig']
-        if 'loadBalancerSpec' in kwargs:
+        if load_balancer_spec is None and 'loadBalancerSpec' in kwargs:
             load_balancer_spec = kwargs['loadBalancerSpec']
-        if 'logConfig' in kwargs:
+        if log_config is None and 'logConfig' in kwargs:
             log_config = kwargs['logConfig']
-        if 'namePrefix' in kwargs:
+        if name_prefix is None and 'namePrefix' in kwargs:
             name_prefix = kwargs['namePrefix']
-        if 'newNatGateway' in kwargs:
+        if new_nat_gateway is None and 'newNatGateway' in kwargs:
             new_nat_gateway = kwargs['newNatGateway']
-        if 'nodeCidrMask' in kwargs:
+        if node_cidr_mask is None and 'nodeCidrMask' in kwargs:
             node_cidr_mask = kwargs['nodeCidrMask']
-        if 'podCidr' in kwargs:
+        if pod_cidr is None and 'podCidr' in kwargs:
             pod_cidr = kwargs['podCidr']
-        if 'proxyMode' in kwargs:
+        if proxy_mode is None and 'proxyMode' in kwargs:
             proxy_mode = kwargs['proxyMode']
-        if 'rdsInstances' in kwargs:
+        if rds_instances is None and 'rdsInstances' in kwargs:
             rds_instances = kwargs['rdsInstances']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'retainResources' in kwargs:
+        if retain_resources is None and 'retainResources' in kwargs:
             retain_resources = kwargs['retainResources']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'serviceCidr' in kwargs:
+        if service_cidr is None and 'serviceCidr' in kwargs:
             service_cidr = kwargs['serviceCidr']
-        if 'slbInternetEnabled' in kwargs:
+        if slb_internet_enabled is None and 'slbInternetEnabled' in kwargs:
             slb_internet_enabled = kwargs['slbInternetEnabled']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'workerDataDisks' in kwargs:
+        if worker_data_disks is None and 'workerDataDisks' in kwargs:
             worker_data_disks = kwargs['workerDataDisks']
-        if 'workerDiskCategory' in kwargs:
+        if worker_disk_category is None and 'workerDiskCategory' in kwargs:
             worker_disk_category = kwargs['workerDiskCategory']
-        if 'workerDiskPerformanceLevel' in kwargs:
+        if worker_disk_performance_level is None and 'workerDiskPerformanceLevel' in kwargs:
             worker_disk_performance_level = kwargs['workerDiskPerformanceLevel']
-        if 'workerDiskSize' in kwargs:
+        if worker_disk_size is None and 'workerDiskSize' in kwargs:
             worker_disk_size = kwargs['workerDiskSize']
-        if 'workerDiskSnapshotPolicyId' in kwargs:
+        if worker_disk_snapshot_policy_id is None and 'workerDiskSnapshotPolicyId' in kwargs:
             worker_disk_snapshot_policy_id = kwargs['workerDiskSnapshotPolicyId']
-        if 'workerInstanceChargeType' in kwargs:
+        if worker_instance_charge_type is None and 'workerInstanceChargeType' in kwargs:
             worker_instance_charge_type = kwargs['workerInstanceChargeType']
 
         _setter("worker_instance_types", worker_instance_types)
@@ -1054,89 +1060,89 @@ class _EdgeKubernetesState:
              worker_number: Optional[pulumi.Input[int]] = None,
              worker_ram_role_name: Optional[pulumi.Input[str]] = None,
              worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'certificateAuthority' in kwargs:
+        if certificate_authority is None and 'certificateAuthority' in kwargs:
             certificate_authority = kwargs['certificateAuthority']
-        if 'clientCert' in kwargs:
+        if client_cert is None and 'clientCert' in kwargs:
             client_cert = kwargs['clientCert']
-        if 'clientKey' in kwargs:
+        if client_key is None and 'clientKey' in kwargs:
             client_key = kwargs['clientKey']
-        if 'clusterCaCert' in kwargs:
+        if cluster_ca_cert is None and 'clusterCaCert' in kwargs:
             cluster_ca_cert = kwargs['clusterCaCert']
-        if 'clusterSpec' in kwargs:
+        if cluster_spec is None and 'clusterSpec' in kwargs:
             cluster_spec = kwargs['clusterSpec']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'forceUpdate' in kwargs:
+        if force_update is None and 'forceUpdate' in kwargs:
             force_update = kwargs['forceUpdate']
-        if 'installCloudMonitor' in kwargs:
+        if install_cloud_monitor is None and 'installCloudMonitor' in kwargs:
             install_cloud_monitor = kwargs['installCloudMonitor']
-        if 'isEnterpriseSecurityGroup' in kwargs:
+        if is_enterprise_security_group is None and 'isEnterpriseSecurityGroup' in kwargs:
             is_enterprise_security_group = kwargs['isEnterpriseSecurityGroup']
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'kubeConfig' in kwargs:
+        if kube_config is None and 'kubeConfig' in kwargs:
             kube_config = kwargs['kubeConfig']
-        if 'loadBalancerSpec' in kwargs:
+        if load_balancer_spec is None and 'loadBalancerSpec' in kwargs:
             load_balancer_spec = kwargs['loadBalancerSpec']
-        if 'logConfig' in kwargs:
+        if log_config is None and 'logConfig' in kwargs:
             log_config = kwargs['logConfig']
-        if 'namePrefix' in kwargs:
+        if name_prefix is None and 'namePrefix' in kwargs:
             name_prefix = kwargs['namePrefix']
-        if 'natGatewayId' in kwargs:
+        if nat_gateway_id is None and 'natGatewayId' in kwargs:
             nat_gateway_id = kwargs['natGatewayId']
-        if 'newNatGateway' in kwargs:
+        if new_nat_gateway is None and 'newNatGateway' in kwargs:
             new_nat_gateway = kwargs['newNatGateway']
-        if 'nodeCidrMask' in kwargs:
+        if node_cidr_mask is None and 'nodeCidrMask' in kwargs:
             node_cidr_mask = kwargs['nodeCidrMask']
-        if 'podCidr' in kwargs:
+        if pod_cidr is None and 'podCidr' in kwargs:
             pod_cidr = kwargs['podCidr']
-        if 'proxyMode' in kwargs:
+        if proxy_mode is None and 'proxyMode' in kwargs:
             proxy_mode = kwargs['proxyMode']
-        if 'rdsInstances' in kwargs:
+        if rds_instances is None and 'rdsInstances' in kwargs:
             rds_instances = kwargs['rdsInstances']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'retainResources' in kwargs:
+        if retain_resources is None and 'retainResources' in kwargs:
             retain_resources = kwargs['retainResources']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'serviceCidr' in kwargs:
+        if service_cidr is None and 'serviceCidr' in kwargs:
             service_cidr = kwargs['serviceCidr']
-        if 'slbInternet' in kwargs:
+        if slb_internet is None and 'slbInternet' in kwargs:
             slb_internet = kwargs['slbInternet']
-        if 'slbInternetEnabled' in kwargs:
+        if slb_internet_enabled is None and 'slbInternetEnabled' in kwargs:
             slb_internet_enabled = kwargs['slbInternetEnabled']
-        if 'slbIntranet' in kwargs:
+        if slb_intranet is None and 'slbIntranet' in kwargs:
             slb_intranet = kwargs['slbIntranet']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'workerDataDisks' in kwargs:
+        if worker_data_disks is None and 'workerDataDisks' in kwargs:
             worker_data_disks = kwargs['workerDataDisks']
-        if 'workerDiskCategory' in kwargs:
+        if worker_disk_category is None and 'workerDiskCategory' in kwargs:
             worker_disk_category = kwargs['workerDiskCategory']
-        if 'workerDiskPerformanceLevel' in kwargs:
+        if worker_disk_performance_level is None and 'workerDiskPerformanceLevel' in kwargs:
             worker_disk_performance_level = kwargs['workerDiskPerformanceLevel']
-        if 'workerDiskSize' in kwargs:
+        if worker_disk_size is None and 'workerDiskSize' in kwargs:
             worker_disk_size = kwargs['workerDiskSize']
-        if 'workerDiskSnapshotPolicyId' in kwargs:
+        if worker_disk_snapshot_policy_id is None and 'workerDiskSnapshotPolicyId' in kwargs:
             worker_disk_snapshot_policy_id = kwargs['workerDiskSnapshotPolicyId']
-        if 'workerInstanceChargeType' in kwargs:
+        if worker_instance_charge_type is None and 'workerInstanceChargeType' in kwargs:
             worker_instance_charge_type = kwargs['workerInstanceChargeType']
-        if 'workerInstanceTypes' in kwargs:
+        if worker_instance_types is None and 'workerInstanceTypes' in kwargs:
             worker_instance_types = kwargs['workerInstanceTypes']
-        if 'workerNodes' in kwargs:
+        if worker_nodes is None and 'workerNodes' in kwargs:
             worker_nodes = kwargs['workerNodes']
-        if 'workerNumber' in kwargs:
+        if worker_number is None and 'workerNumber' in kwargs:
             worker_number = kwargs['workerNumber']
-        if 'workerRamRoleName' in kwargs:
+        if worker_ram_role_name is None and 'workerRamRoleName' in kwargs:
             worker_ram_role_name = kwargs['workerRamRoleName']
-        if 'workerVswitchIds' in kwargs:
+        if worker_vswitch_ids is None and 'workerVswitchIds' in kwargs:
             worker_vswitch_ids = kwargs['workerVswitchIds']
 
         if addons is not None:
@@ -1896,106 +1902,6 @@ class EdgeKubernetes(pulumi.CustomResource):
 
         > **NOTE:** From version 1.185.0+, support new fields `cluster_spec`, `runtime` and `load_balancer_spec`.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=4,
-            memory_size=8,
-            kubernetes_node_role="Master")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_edge_kubernetes = alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes",
-            worker_vswitch_ids=[default_switch.id],
-            worker_instance_types=[default_instance_types.instance_types[0].id],
-            version="1.20.11-aliyunedge.1",
-            worker_number=1,
-            password="Test12345",
-            pod_cidr="10.99.0.0/16",
-            service_cidr="172.16.0.0/16",
-            worker_instance_charge_type="PostPaid",
-            new_nat_gateway=True,
-            node_cidr_mask=24,
-            install_cloud_monitor=True,
-            slb_internet_enabled=True,
-            is_enterprise_security_group=True,
-            worker_data_disks=[alicloud.cs.EdgeKubernetesWorkerDataDiskArgs(
-                category="cloud_ssd",
-                size="200",
-                encrypted="false",
-            )])
-        ```
-
-        You could create a professional kubernetes edge cluster now.
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=4,
-            memory_size=8,
-            kubernetes_node_role="Master")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_edge_kubernetes = alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes",
-            worker_vswitch_ids=[default_switch.id],
-            worker_instance_types=[default_instance_types.instance_types[0].id],
-            version="1.20.11-aliyunedge.1",
-            cluster_spec="ack.pro.small",
-            worker_number=1,
-            password="Test12345",
-            pod_cidr="10.99.0.0/16",
-            service_cidr="172.16.0.0/16",
-            worker_instance_charge_type="PostPaid",
-            new_nat_gateway=True,
-            node_cidr_mask=24,
-            load_balancer_spec="slb.s2.small",
-            install_cloud_monitor=True,
-            slb_internet_enabled=True,
-            is_enterprise_security_group=True,
-            addons=[alicloud.cs.EdgeKubernetesAddonArgs(
-                name="alibaba-log-controller",
-                config="{\\"IngressDashboardEnabled\\":\\"false\\"}",
-            )],
-            worker_data_disks=[alicloud.cs.EdgeKubernetesWorkerDataDiskArgs(
-                category="cloud_ssd",
-                size="200",
-                encrypted="false",
-            )],
-            runtime=alicloud.cs.EdgeKubernetesRuntimeArgs(
-                name="containerd",
-                version="1.5.10",
-            ))
-        ```
-
         ## Import
 
         Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -2081,106 +1987,6 @@ class EdgeKubernetes(pulumi.CustomResource):
         > **NOTE:** Available since v1.103.0.
 
         > **NOTE:** From version 1.185.0+, support new fields `cluster_spec`, `runtime` and `load_balancer_spec`.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=4,
-            memory_size=8,
-            kubernetes_node_role="Master")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_edge_kubernetes = alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes",
-            worker_vswitch_ids=[default_switch.id],
-            worker_instance_types=[default_instance_types.instance_types[0].id],
-            version="1.20.11-aliyunedge.1",
-            worker_number=1,
-            password="Test12345",
-            pod_cidr="10.99.0.0/16",
-            service_cidr="172.16.0.0/16",
-            worker_instance_charge_type="PostPaid",
-            new_nat_gateway=True,
-            node_cidr_mask=24,
-            install_cloud_monitor=True,
-            slb_internet_enabled=True,
-            is_enterprise_security_group=True,
-            worker_data_disks=[alicloud.cs.EdgeKubernetesWorkerDataDiskArgs(
-                category="cloud_ssd",
-                size="200",
-                encrypted="false",
-            )])
-        ```
-
-        You could create a professional kubernetes edge cluster now.
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=4,
-            memory_size=8,
-            kubernetes_node_role="Master")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_edge_kubernetes = alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes",
-            worker_vswitch_ids=[default_switch.id],
-            worker_instance_types=[default_instance_types.instance_types[0].id],
-            version="1.20.11-aliyunedge.1",
-            cluster_spec="ack.pro.small",
-            worker_number=1,
-            password="Test12345",
-            pod_cidr="10.99.0.0/16",
-            service_cidr="172.16.0.0/16",
-            worker_instance_charge_type="PostPaid",
-            new_nat_gateway=True,
-            node_cidr_mask=24,
-            load_balancer_spec="slb.s2.small",
-            install_cloud_monitor=True,
-            slb_internet_enabled=True,
-            is_enterprise_security_group=True,
-            addons=[alicloud.cs.EdgeKubernetesAddonArgs(
-                name="alibaba-log-controller",
-                config="{\\"IngressDashboardEnabled\\":\\"false\\"}",
-            )],
-            worker_data_disks=[alicloud.cs.EdgeKubernetesWorkerDataDiskArgs(
-                category="cloud_ssd",
-                size="200",
-                encrypted="false",
-            )],
-            runtime=alicloud.cs.EdgeKubernetesRuntimeArgs(
-                name="containerd",
-                version="1.5.10",
-            ))
-        ```
 
         ## Import
 
@@ -2271,11 +2077,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["kube_config"] = kube_config
             __props__.__dict__["load_balancer_spec"] = load_balancer_spec
-            if log_config is not None and not isinstance(log_config, EdgeKubernetesLogConfigArgs):
-                log_config = log_config or {}
-                def _setter(key, value):
-                    log_config[key] = value
-                EdgeKubernetesLogConfigArgs._configure(_setter, **log_config)
+            log_config = _utilities.configure(log_config, EdgeKubernetesLogConfigArgs, True)
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
             __props__.__dict__["name_prefix"] = name_prefix
@@ -2287,11 +2089,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             __props__.__dict__["rds_instances"] = rds_instances
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["retain_resources"] = retain_resources
-            if runtime is not None and not isinstance(runtime, EdgeKubernetesRuntimeArgs):
-                runtime = runtime or {}
-                def _setter(key, value):
-                    runtime[key] = value
-                EdgeKubernetesRuntimeArgs._configure(_setter, **runtime)
+            runtime = _utilities.configure(runtime, EdgeKubernetesRuntimeArgs, True)
             __props__.__dict__["runtime"] = runtime
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["service_cidr"] = service_cidr

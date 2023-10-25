@@ -22,37 +22,6 @@ namespace Pulumi.AliCloud.Cassandra
     /// &gt; **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
     /// 
     /// ## Example Usage
-    /// ### Create a cassandra cluster
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Cassandra.Cluster("default", new()
-    ///     {
-    ///         AutoRenew = false,
-    ///         ClusterName = "cassandra-cluster-name-tf",
-    ///         DataCenterName = "dc-1",
-    ///         DiskSize = 160,
-    ///         DiskType = "cloud_ssd",
-    ///         InstanceType = "cassandra.c.large",
-    ///         IpWhite = "127.0.0.1",
-    ///         MaintainEndTime = "20:00Z",
-    ///         MaintainStartTime = "18:00Z",
-    ///         MajorVersion = "3.11",
-    ///         NodeCount = 2,
-    ///         PayType = "PayAsYouGo",
-    ///         VswitchId = "vsw-xxxx",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
     /// 
     /// ## Import
     /// 

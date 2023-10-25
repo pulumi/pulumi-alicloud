@@ -34,16 +34,18 @@ class BackendServerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             load_balancer_id: pulumi.Input[str],
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
              backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]] = None,
              delete_protection_validation: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'loadBalancerId' in kwargs:
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
-        if 'backendServers' in kwargs:
+        if load_balancer_id is None:
+            raise TypeError("Missing 'load_balancer_id' argument")
+        if backend_servers is None and 'backendServers' in kwargs:
             backend_servers = kwargs['backendServers']
-        if 'deleteProtectionValidation' in kwargs:
+        if delete_protection_validation is None and 'deleteProtectionValidation' in kwargs:
             delete_protection_validation = kwargs['deleteProtectionValidation']
 
         _setter("load_balancer_id", load_balancer_id)
@@ -113,13 +115,13 @@ class _BackendServerState:
              backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]] = None,
              delete_protection_validation: Optional[pulumi.Input[bool]] = None,
              load_balancer_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backendServers' in kwargs:
+        if backend_servers is None and 'backendServers' in kwargs:
             backend_servers = kwargs['backendServers']
-        if 'deleteProtectionValidation' in kwargs:
+        if delete_protection_validation is None and 'deleteProtectionValidation' in kwargs:
             delete_protection_validation = kwargs['deleteProtectionValidation']
-        if 'loadBalancerId' in kwargs:
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
 
         if backend_servers is not None:

@@ -35,15 +35,17 @@ class AlarmContactGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alarm_contact_group_name: pulumi.Input[str],
+             alarm_contact_group_name: Optional[pulumi.Input[str]] = None,
              contacts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              describe: Optional[pulumi.Input[str]] = None,
              enable_subscribed: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alarmContactGroupName' in kwargs:
+        if alarm_contact_group_name is None and 'alarmContactGroupName' in kwargs:
             alarm_contact_group_name = kwargs['alarmContactGroupName']
-        if 'enableSubscribed' in kwargs:
+        if alarm_contact_group_name is None:
+            raise TypeError("Missing 'alarm_contact_group_name' argument")
+        if enable_subscribed is None and 'enableSubscribed' in kwargs:
             enable_subscribed = kwargs['enableSubscribed']
 
         _setter("alarm_contact_group_name", alarm_contact_group_name)
@@ -131,11 +133,11 @@ class _AlarmContactGroupState:
              contacts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              describe: Optional[pulumi.Input[str]] = None,
              enable_subscribed: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alarmContactGroupName' in kwargs:
+        if alarm_contact_group_name is None and 'alarmContactGroupName' in kwargs:
             alarm_contact_group_name = kwargs['alarmContactGroupName']
-        if 'enableSubscribed' in kwargs:
+        if enable_subscribed is None and 'enableSubscribed' in kwargs:
             enable_subscribed = kwargs['enableSubscribed']
 
         if alarm_contact_group_name is not None:
@@ -213,17 +215,6 @@ class AlarmContactGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.101.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cms.AlarmContactGroup("example", alarm_contact_group_name="tf-example")
-        ```
-
         ## Import
 
         CMS Alarm Contact Group can be imported using the id, e.g.
@@ -251,17 +242,6 @@ class AlarmContactGroup(pulumi.CustomResource):
         For information about CMS Alarm Contact Group and how to use it, see [What is Alarm Contact Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putcontactgroup).
 
         > **NOTE:** Available since v1.101.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cms.AlarmContactGroup("example", alarm_contact_group_name="tf-example")
-        ```
 
         ## Import
 

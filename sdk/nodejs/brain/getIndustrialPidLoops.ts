@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.117.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.brain.getIndustrialPidLoops({
- *     pidProjectId: "856c6b8f-ca63-40a4-xxxx-xxxx",
- *     ids: ["742a3d4e-d8b0-47c8-xxxx-xxxx"],
- *     nameRegex: "tf-testACC",
- * });
- * export const firstBrainIndustrialPidLoopId = example.then(example => example.loops?.[0]?.id);
- * ```
  */
 export function getIndustrialPidLoops(args: GetIndustrialPidLoopsArgs, opts?: pulumi.InvokeOptions): Promise<GetIndustrialPidLoopsResult> {
 
@@ -94,22 +78,6 @@ export interface GetIndustrialPidLoopsResult {
  * This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.117.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.brain.getIndustrialPidLoops({
- *     pidProjectId: "856c6b8f-ca63-40a4-xxxx-xxxx",
- *     ids: ["742a3d4e-d8b0-47c8-xxxx-xxxx"],
- *     nameRegex: "tf-testACC",
- * });
- * export const firstBrainIndustrialPidLoopId = example.then(example => example.loops?.[0]?.id);
- * ```
  */
 export function getIndustrialPidLoopsOutput(args: GetIndustrialPidLoopsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndustrialPidLoopsResult> {
     return pulumi.output(args).apply((a: any) => getIndustrialPidLoops(a, opts))

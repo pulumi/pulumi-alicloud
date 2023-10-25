@@ -8,30 +8,6 @@ import * as utilities from "../utilities";
  * Log Service manages all the ECS instances whose logs need to be collected by using the Logtail client in the form of machine groups.
  *  [Refer to details](https://www.alibabacloud.com/help/doc-detail/28966.htm)
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
- *
- * const _default = new random.RandomInteger("default", {
- *     max: 99999,
- *     min: 10000,
- * });
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
- * const exampleMachineGroup = new alicloud.log.MachineGroup("exampleMachineGroup", {
- *     project: exampleProject.name,
- *     identifyType: "ip",
- *     topic: "terraform",
- *     identifyLists: [
- *         "10.0.0.1",
- *         "10.0.0.2",
- *     ],
- * });
- * ```
  * ## Module Support
  *
  * You can use the existing sls-logtail module

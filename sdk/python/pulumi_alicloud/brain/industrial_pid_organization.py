@@ -29,13 +29,15 @@ class IndustrialPidOrganizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pid_organization_name: pulumi.Input[str],
+             pid_organization_name: Optional[pulumi.Input[str]] = None,
              parent_pid_organization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'pidOrganizationName' in kwargs:
+        if pid_organization_name is None and 'pidOrganizationName' in kwargs:
             pid_organization_name = kwargs['pidOrganizationName']
-        if 'parentPidOrganizationId' in kwargs:
+        if pid_organization_name is None:
+            raise TypeError("Missing 'pid_organization_name' argument")
+        if parent_pid_organization_id is None and 'parentPidOrganizationId' in kwargs:
             parent_pid_organization_id = kwargs['parentPidOrganizationId']
 
         _setter("pid_organization_name", pid_organization_name)
@@ -87,11 +89,11 @@ class _IndustrialPidOrganizationState:
              _setter: Callable[[Any, Any], None],
              parent_pid_organization_id: Optional[pulumi.Input[str]] = None,
              pid_organization_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parentPidOrganizationId' in kwargs:
+        if parent_pid_organization_id is None and 'parentPidOrganizationId' in kwargs:
             parent_pid_organization_id = kwargs['parentPidOrganizationId']
-        if 'pidOrganizationName' in kwargs:
+        if pid_organization_name is None and 'pidOrganizationName' in kwargs:
             pid_organization_name = kwargs['pidOrganizationName']
 
         if parent_pid_organization_id is not None:
@@ -137,17 +139,6 @@ class IndustrialPidOrganization(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.113.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.brain.IndustrialPidOrganization("example", pid_organization_name="tf-testAcc")
-        ```
-
         ## Import
 
         Brain Industrial Pid Organization can be imported using the id, e.g.
@@ -171,17 +162,6 @@ class IndustrialPidOrganization(pulumi.CustomResource):
         Provides a Brain Industrial Pid Organization resource.
 
         > **NOTE:** Available in v1.113.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.brain.IndustrialPidOrganization("example", pid_organization_name="tf-testAcc")
-        ```
 
         ## Import
 

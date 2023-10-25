@@ -34,15 +34,19 @@ class ScalingGroupVServerGroupsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             scaling_group_id: pulumi.Input[str],
-             vserver_groups: pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]],
+             scaling_group_id: Optional[pulumi.Input[str]] = None,
+             vserver_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]]] = None,
              force: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'scalingGroupId' in kwargs:
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
-        if 'vserverGroups' in kwargs:
+        if scaling_group_id is None:
+            raise TypeError("Missing 'scaling_group_id' argument")
+        if vserver_groups is None and 'vserverGroups' in kwargs:
             vserver_groups = kwargs['vserverGroups']
+        if vserver_groups is None:
+            raise TypeError("Missing 'vserver_groups' argument")
 
         _setter("scaling_group_id", scaling_group_id)
         _setter("vserver_groups", vserver_groups)
@@ -110,11 +114,11 @@ class _ScalingGroupVServerGroupsState:
              force: Optional[pulumi.Input[bool]] = None,
              scaling_group_id: Optional[pulumi.Input[str]] = None,
              vserver_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'scalingGroupId' in kwargs:
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
-        if 'vserverGroups' in kwargs:
+        if vserver_groups is None and 'vserverGroups' in kwargs:
             vserver_groups = kwargs['vserverGroups']
 
         if force is not None:

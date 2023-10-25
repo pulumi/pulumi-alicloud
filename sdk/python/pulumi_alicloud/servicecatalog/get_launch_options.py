@@ -118,19 +118,6 @@ def get_launch_options(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available since v1.196.0.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_end_user_products = alicloud.servicecatalog.get_end_user_products(name_regex="ram模板创建")
-    default_launch_options = alicloud.servicecatalog.get_launch_options(product_id="data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
-    pulumi.export("alicloudServiceCatalogLaunchOptionExampleId", default_launch_options.launch_options[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Launch Option IDs.
     :param str name_regex: A regex string to filter results by portfolio name.
@@ -165,19 +152,6 @@ def get_launch_options_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
 
     > **NOTE:** Available since v1.196.0.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_end_user_products = alicloud.servicecatalog.get_end_user_products(name_regex="ram模板创建")
-    default_launch_options = alicloud.servicecatalog.get_launch_options(product_id="data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
-    pulumi.export("alicloudServiceCatalogLaunchOptionExampleId", default_launch_options.launch_options[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Launch Option IDs.

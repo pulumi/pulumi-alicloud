@@ -46,22 +46,30 @@ class ServerGroupServerAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port: pulumi.Input[int],
-             server_group_id: pulumi.Input[str],
-             server_id: pulumi.Input[str],
-             server_type: pulumi.Input[str],
+             port: Optional[pulumi.Input[int]] = None,
+             server_group_id: Optional[pulumi.Input[str]] = None,
+             server_id: Optional[pulumi.Input[str]] = None,
+             server_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              server_ip: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupId' in kwargs:
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
-        if 'serverId' in kwargs:
+        if server_group_id is None:
+            raise TypeError("Missing 'server_group_id' argument")
+        if server_id is None and 'serverId' in kwargs:
             server_id = kwargs['serverId']
-        if 'serverType' in kwargs:
+        if server_id is None:
+            raise TypeError("Missing 'server_id' argument")
+        if server_type is None and 'serverType' in kwargs:
             server_type = kwargs['serverType']
-        if 'serverIp' in kwargs:
+        if server_type is None:
+            raise TypeError("Missing 'server_type' argument")
+        if server_ip is None and 'serverIp' in kwargs:
             server_ip = kwargs['serverIp']
 
         _setter("port", port)
@@ -212,17 +220,17 @@ class _ServerGroupServerAttachmentState:
              status: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupId' in kwargs:
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
-        if 'serverId' in kwargs:
+        if server_id is None and 'serverId' in kwargs:
             server_id = kwargs['serverId']
-        if 'serverIp' in kwargs:
+        if server_ip is None and 'serverIp' in kwargs:
             server_ip = kwargs['serverIp']
-        if 'serverType' in kwargs:
+        if server_type is None and 'serverType' in kwargs:
             server_type = kwargs['serverType']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if description is not None:
@@ -375,43 +383,6 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.192.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_server_group = alicloud.nlb.ServerGroup("defaultServerGroup",
-            resource_group_id=default_resource_groups.ids[0],
-            server_group_name=name,
-            server_group_type="Ip",
-            vpc_id=default_network.id,
-            scheduler="Wrr",
-            protocol="TCP",
-            health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
-                health_check_enabled=False,
-            ),
-            address_ip_version="Ipv4")
-        default_server_group_server_attachment = alicloud.nlb.ServerGroupServerAttachment("defaultServerGroupServerAttachment",
-            server_type="Ip",
-            server_id="10.0.0.0",
-            description=name,
-            port=80,
-            server_group_id=default_server_group.id,
-            weight=100,
-            server_ip="10.0.0.0")
-        ```
-
         ## Import
 
         NLB Server Group Server Attachment can be imported using the id, e.g.
@@ -444,43 +415,6 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         For information about NLB Server Group Server Attachment and how to use it, see [What is Server Group Server Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addserverstoservergroup-nlb).
 
         > **NOTE:** Available since v1.192.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_server_group = alicloud.nlb.ServerGroup("defaultServerGroup",
-            resource_group_id=default_resource_groups.ids[0],
-            server_group_name=name,
-            server_group_type="Ip",
-            vpc_id=default_network.id,
-            scheduler="Wrr",
-            protocol="TCP",
-            health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
-                health_check_enabled=False,
-            ),
-            address_ip_version="Ipv4")
-        default_server_group_server_attachment = alicloud.nlb.ServerGroupServerAttachment("defaultServerGroupServerAttachment",
-            server_type="Ip",
-            server_id="10.0.0.0",
-            description=name,
-            port=80,
-            server_group_id=default_server_group.id,
-            weight=100,
-            server_ip="10.0.0.0")
-        ```
 
         ## Import
 

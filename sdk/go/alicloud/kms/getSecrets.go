@@ -15,38 +15,6 @@ import (
 // This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in v1.86.0+.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			kmsSecretsDs, err := kms.GetSecrets(ctx, &kms.GetSecretsArgs{
-//				FetchTags: pulumi.BoolRef(true),
-//				NameRegex: pulumi.StringRef("name_regex"),
-//				Tags: map[string]interface{}{
-//					"k-aa": "v-aa",
-//					"k-bb": "v-bb",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstSecretId", kmsSecretsDs.Secrets[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetSecrets(ctx *pulumi.Context, args *GetSecretsArgs, opts ...pulumi.InvokeOption) (*GetSecretsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSecretsResult

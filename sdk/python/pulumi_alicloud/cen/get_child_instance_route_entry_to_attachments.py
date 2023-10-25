@@ -138,17 +138,6 @@ def get_child_instance_route_entry_to_attachments(cen_id: Optional[str] = None,
 
     > **NOTE:** Available in 1.195.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.cen.get_child_instance_route_entry_to_attachments(child_instance_route_table_id="vtb-t4nt0z5xxbti85c78nkzy",
-        transit_router_attachment_id="tr-attach-f1fd1y50rql00emvej")
-    pulumi.export("alicloudCenChildInstanceRouteEntryToAttachmentExampleId", default.attachments[0].id)
-    ```
-
 
     :param str cen_id: The ID of the CEN instance.
     :param str child_instance_route_table_id: The first ID of the resource
@@ -190,17 +179,6 @@ def get_child_instance_route_entry_to_attachments_output(cen_id: Optional[pulumi
     This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenchildinstancerouteentrytoattachment)
 
     > **NOTE:** Available in 1.195.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.cen.get_child_instance_route_entry_to_attachments(child_instance_route_table_id="vtb-t4nt0z5xxbti85c78nkzy",
-        transit_router_attachment_id="tr-attach-f1fd1y50rql00emvej")
-    pulumi.export("alicloudCenChildInstanceRouteEntryToAttachmentExampleId", default.attachments[0].id)
-    ```
 
 
     :param str cen_id: The ID of the CEN instance.

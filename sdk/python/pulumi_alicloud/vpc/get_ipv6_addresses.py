@@ -129,24 +129,6 @@ def get_ipv6_addresses(associated_instance_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.142.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    associated_instance_id = alicloud.vpc.get_ipv6_addresses(associated_instance_id="example_value")
-    pulumi.export("vpcIpv6AddressId1", associated_instance_id.addresses[0].id)
-    vswitch_id = alicloud.vpc.get_ipv6_addresses(vswitch_id="example_value")
-    pulumi.export("vpcIpv6AddressId2", vswitch_id.addresses[0].id)
-    vpc_id = alicloud.vpc.get_ipv6_addresses(vpc_id="example_value")
-    pulumi.export("vpcIpv6AddressId3", vpc_id.addresses[0].id)
-    status = alicloud.vpc.get_ipv6_addresses(status="Available")
-    pulumi.export("vpcIpv6AddressId4", status.addresses[0].id)
-    ```
-
 
     :param str associated_instance_id: The ID of the instance that is assigned the IPv6 address.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -188,24 +170,6 @@ def get_ipv6_addresses_output(associated_instance_id: Optional[pulumi.Input[Opti
     This data source provides the Vpc Ipv6 Addresses of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.142.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    associated_instance_id = alicloud.vpc.get_ipv6_addresses(associated_instance_id="example_value")
-    pulumi.export("vpcIpv6AddressId1", associated_instance_id.addresses[0].id)
-    vswitch_id = alicloud.vpc.get_ipv6_addresses(vswitch_id="example_value")
-    pulumi.export("vpcIpv6AddressId2", vswitch_id.addresses[0].id)
-    vpc_id = alicloud.vpc.get_ipv6_addresses(vpc_id="example_value")
-    pulumi.export("vpcIpv6AddressId3", vpc_id.addresses[0].id)
-    status = alicloud.vpc.get_ipv6_addresses(status="Available")
-    pulumi.export("vpcIpv6AddressId4", status.addresses[0].id)
-    ```
 
 
     :param str associated_instance_id: The ID of the instance that is assigned the IPv6 address.

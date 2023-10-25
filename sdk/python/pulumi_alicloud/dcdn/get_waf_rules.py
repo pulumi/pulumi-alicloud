@@ -113,16 +113,6 @@ def get_waf_rules(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available since v1.201.0.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.dcdn.get_waf_rules(ids=[alicloud_dcdn_waf_rule["default"]["id"]])
-    pulumi.export("alicloudDcdnWafRuleExampleId", default.waf_rules[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Waf Rule IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -158,16 +148,6 @@ def get_waf_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
 
     > **NOTE:** Available since v1.201.0.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.dcdn.get_waf_rules(ids=[alicloud_dcdn_waf_rule["default"]["id"]])
-    pulumi.export("alicloudDcdnWafRuleExampleId", default.waf_rules[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Waf Rule IDs.

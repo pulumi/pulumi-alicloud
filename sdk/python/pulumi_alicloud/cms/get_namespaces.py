@@ -110,18 +110,6 @@ def get_namespaces(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.171.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cms.get_namespaces(ids=["example_id"])
-    pulumi.export("cmsNamespaceId1", ids.namespaces[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Namespace IDs.
     :param str keyword: The keywords of the `namespace` or `description` of the namespace.
@@ -157,18 +145,6 @@ def get_namespaces_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     This data source provides the Cms Namespaces of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.171.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cms.get_namespaces(ids=["example_id"])
-    pulumi.export("cmsNamespaceId1", ids.namespaces[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Namespace IDs.

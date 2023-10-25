@@ -272,113 +272,113 @@ class InstanceArgs:
              vpc_auth_mode: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'autoUseCoupon' in kwargs:
+        if auto_use_coupon is None and 'autoUseCoupon' in kwargs:
             auto_use_coupon = kwargs['autoUseCoupon']
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'backupId' in kwargs:
+        if backup_id is None and 'backupId' in kwargs:
             backup_id = kwargs['backupId']
-        if 'backupPeriods' in kwargs:
+        if backup_periods is None and 'backupPeriods' in kwargs:
             backup_periods = kwargs['backupPeriods']
-        if 'backupTime' in kwargs:
+        if backup_time is None and 'backupTime' in kwargs:
             backup_time = kwargs['backupTime']
-        if 'businessInfo' in kwargs:
+        if business_info is None and 'businessInfo' in kwargs:
             business_info = kwargs['businessInfo']
-        if 'connectionStringPrefix' in kwargs:
+        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
             connection_string_prefix = kwargs['connectionStringPrefix']
-        if 'couponNo' in kwargs:
+        if coupon_no is None and 'couponNo' in kwargs:
             coupon_no = kwargs['couponNo']
-        if 'dbInstanceName' in kwargs:
+        if db_instance_name is None and 'dbInstanceName' in kwargs:
             db_instance_name = kwargs['dbInstanceName']
-        if 'dedicatedHostGroupId' in kwargs:
+        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
             dedicated_host_group_id = kwargs['dedicatedHostGroupId']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'effectiveTime' in kwargs:
+        if effective_time is None and 'effectiveTime' in kwargs:
             effective_time = kwargs['effectiveTime']
-        if 'enableBackupLog' in kwargs:
+        if enable_backup_log is None and 'enableBackupLog' in kwargs:
             enable_backup_log = kwargs['enableBackupLog']
-        if 'enablePublic' in kwargs:
+        if enable_public is None and 'enablePublic' in kwargs:
             enable_public = kwargs['enablePublic']
-        if 'encryptionKey' in kwargs:
+        if encryption_key is None and 'encryptionKey' in kwargs:
             encryption_key = kwargs['encryptionKey']
-        if 'encryptionName' in kwargs:
+        if encryption_name is None and 'encryptionName' in kwargs:
             encryption_name = kwargs['encryptionName']
-        if 'engineVersion' in kwargs:
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'forceUpgrade' in kwargs:
+        if force_upgrade is None and 'forceUpgrade' in kwargs:
             force_upgrade = kwargs['forceUpgrade']
-        if 'globalInstance' in kwargs:
+        if global_instance is None and 'globalInstance' in kwargs:
             global_instance = kwargs['globalInstance']
-        if 'globalInstanceId' in kwargs:
+        if global_instance_id is None and 'globalInstanceId' in kwargs:
             global_instance_id = kwargs['globalInstanceId']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'instanceClass' in kwargs:
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceReleaseProtection' in kwargs:
+        if instance_release_protection is None and 'instanceReleaseProtection' in kwargs:
             instance_release_protection = kwargs['instanceReleaseProtection']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'kmsEncryptedPassword' in kwargs:
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
             kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if 'kmsEncryptionContext' in kwargs:
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
             kms_encryption_context = kwargs['kmsEncryptionContext']
-        if 'maintainEndTime' in kwargs:
+        if maintain_end_time is None and 'maintainEndTime' in kwargs:
             maintain_end_time = kwargs['maintainEndTime']
-        if 'maintainStartTime' in kwargs:
+        if maintain_start_time is None and 'maintainStartTime' in kwargs:
             maintain_start_time = kwargs['maintainStartTime']
-        if 'modifyMode' in kwargs:
+        if modify_mode is None and 'modifyMode' in kwargs:
             modify_mode = kwargs['modifyMode']
-        if 'nodeType' in kwargs:
+        if node_type is None and 'nodeType' in kwargs:
             node_type = kwargs['nodeType']
-        if 'orderType' in kwargs:
+        if order_type is None and 'orderType' in kwargs:
             order_type = kwargs['orderType']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'privateConnectionPort' in kwargs:
+        if private_connection_port is None and 'privateConnectionPort' in kwargs:
             private_connection_port = kwargs['privateConnectionPort']
-        if 'privateConnectionPrefix' in kwargs:
+        if private_connection_prefix is None and 'privateConnectionPrefix' in kwargs:
             private_connection_prefix = kwargs['privateConnectionPrefix']
-        if 'privateIp' in kwargs:
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'restoreTime' in kwargs:
+        if restore_time is None and 'restoreTime' in kwargs:
             restore_time = kwargs['restoreTime']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'secondaryZoneId' in kwargs:
+        if secondary_zone_id is None and 'secondaryZoneId' in kwargs:
             secondary_zone_id = kwargs['secondaryZoneId']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'securityIpGroupAttribute' in kwargs:
+        if security_ip_group_attribute is None and 'securityIpGroupAttribute' in kwargs:
             security_ip_group_attribute = kwargs['securityIpGroupAttribute']
-        if 'securityIpGroupName' in kwargs:
+        if security_ip_group_name is None and 'securityIpGroupName' in kwargs:
             security_ip_group_name = kwargs['securityIpGroupName']
-        if 'securityIps' in kwargs:
+        if security_ips is None and 'securityIps' in kwargs:
             security_ips = kwargs['securityIps']
-        if 'shardCount' in kwargs:
+        if shard_count is None and 'shardCount' in kwargs:
             shard_count = kwargs['shardCount']
-        if 'srcdbInstanceId' in kwargs:
+        if srcdb_instance_id is None and 'srcdbInstanceId' in kwargs:
             srcdb_instance_id = kwargs['srcdbInstanceId']
-        if 'sslEnable' in kwargs:
+        if ssl_enable is None and 'sslEnable' in kwargs:
             ssl_enable = kwargs['sslEnable']
-        if 'tdeStatus' in kwargs:
+        if tde_status is None and 'tdeStatus' in kwargs:
             tde_status = kwargs['tdeStatus']
-        if 'vpcAuthMode' in kwargs:
+        if vpc_auth_mode is None and 'vpcAuthMode' in kwargs:
             vpc_auth_mode = kwargs['vpcAuthMode']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if auto_renew is not None:
@@ -1563,119 +1563,119 @@ class _InstanceState:
              vpc_auth_mode: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'autoUseCoupon' in kwargs:
+        if auto_use_coupon is None and 'autoUseCoupon' in kwargs:
             auto_use_coupon = kwargs['autoUseCoupon']
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'backupId' in kwargs:
+        if backup_id is None and 'backupId' in kwargs:
             backup_id = kwargs['backupId']
-        if 'backupPeriods' in kwargs:
+        if backup_periods is None and 'backupPeriods' in kwargs:
             backup_periods = kwargs['backupPeriods']
-        if 'backupTime' in kwargs:
+        if backup_time is None and 'backupTime' in kwargs:
             backup_time = kwargs['backupTime']
-        if 'businessInfo' in kwargs:
+        if business_info is None and 'businessInfo' in kwargs:
             business_info = kwargs['businessInfo']
-        if 'connectionDomain' in kwargs:
+        if connection_domain is None and 'connectionDomain' in kwargs:
             connection_domain = kwargs['connectionDomain']
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'connectionStringPrefix' in kwargs:
+        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
             connection_string_prefix = kwargs['connectionStringPrefix']
-        if 'couponNo' in kwargs:
+        if coupon_no is None and 'couponNo' in kwargs:
             coupon_no = kwargs['couponNo']
-        if 'dbInstanceName' in kwargs:
+        if db_instance_name is None and 'dbInstanceName' in kwargs:
             db_instance_name = kwargs['dbInstanceName']
-        if 'dedicatedHostGroupId' in kwargs:
+        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
             dedicated_host_group_id = kwargs['dedicatedHostGroupId']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'effectiveTime' in kwargs:
+        if effective_time is None and 'effectiveTime' in kwargs:
             effective_time = kwargs['effectiveTime']
-        if 'enableBackupLog' in kwargs:
+        if enable_backup_log is None and 'enableBackupLog' in kwargs:
             enable_backup_log = kwargs['enableBackupLog']
-        if 'enablePublic' in kwargs:
+        if enable_public is None and 'enablePublic' in kwargs:
             enable_public = kwargs['enablePublic']
-        if 'encryptionKey' in kwargs:
+        if encryption_key is None and 'encryptionKey' in kwargs:
             encryption_key = kwargs['encryptionKey']
-        if 'encryptionName' in kwargs:
+        if encryption_name is None and 'encryptionName' in kwargs:
             encryption_name = kwargs['encryptionName']
-        if 'endTime' in kwargs:
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'engineVersion' in kwargs:
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'forceUpgrade' in kwargs:
+        if force_upgrade is None and 'forceUpgrade' in kwargs:
             force_upgrade = kwargs['forceUpgrade']
-        if 'globalInstance' in kwargs:
+        if global_instance is None and 'globalInstance' in kwargs:
             global_instance = kwargs['globalInstance']
-        if 'globalInstanceId' in kwargs:
+        if global_instance_id is None and 'globalInstanceId' in kwargs:
             global_instance_id = kwargs['globalInstanceId']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'instanceClass' in kwargs:
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceReleaseProtection' in kwargs:
+        if instance_release_protection is None and 'instanceReleaseProtection' in kwargs:
             instance_release_protection = kwargs['instanceReleaseProtection']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'kmsEncryptedPassword' in kwargs:
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
             kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if 'kmsEncryptionContext' in kwargs:
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
             kms_encryption_context = kwargs['kmsEncryptionContext']
-        if 'maintainEndTime' in kwargs:
+        if maintain_end_time is None and 'maintainEndTime' in kwargs:
             maintain_end_time = kwargs['maintainEndTime']
-        if 'maintainStartTime' in kwargs:
+        if maintain_start_time is None and 'maintainStartTime' in kwargs:
             maintain_start_time = kwargs['maintainStartTime']
-        if 'modifyMode' in kwargs:
+        if modify_mode is None and 'modifyMode' in kwargs:
             modify_mode = kwargs['modifyMode']
-        if 'nodeType' in kwargs:
+        if node_type is None and 'nodeType' in kwargs:
             node_type = kwargs['nodeType']
-        if 'orderType' in kwargs:
+        if order_type is None and 'orderType' in kwargs:
             order_type = kwargs['orderType']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'privateConnectionPort' in kwargs:
+        if private_connection_port is None and 'privateConnectionPort' in kwargs:
             private_connection_port = kwargs['privateConnectionPort']
-        if 'privateConnectionPrefix' in kwargs:
+        if private_connection_prefix is None and 'privateConnectionPrefix' in kwargs:
             private_connection_prefix = kwargs['privateConnectionPrefix']
-        if 'privateIp' in kwargs:
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'restoreTime' in kwargs:
+        if restore_time is None and 'restoreTime' in kwargs:
             restore_time = kwargs['restoreTime']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'secondaryZoneId' in kwargs:
+        if secondary_zone_id is None and 'secondaryZoneId' in kwargs:
             secondary_zone_id = kwargs['secondaryZoneId']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'securityIpGroupAttribute' in kwargs:
+        if security_ip_group_attribute is None and 'securityIpGroupAttribute' in kwargs:
             security_ip_group_attribute = kwargs['securityIpGroupAttribute']
-        if 'securityIpGroupName' in kwargs:
+        if security_ip_group_name is None and 'securityIpGroupName' in kwargs:
             security_ip_group_name = kwargs['securityIpGroupName']
-        if 'securityIps' in kwargs:
+        if security_ips is None and 'securityIps' in kwargs:
             security_ips = kwargs['securityIps']
-        if 'shardCount' in kwargs:
+        if shard_count is None and 'shardCount' in kwargs:
             shard_count = kwargs['shardCount']
-        if 'srcdbInstanceId' in kwargs:
+        if srcdb_instance_id is None and 'srcdbInstanceId' in kwargs:
             srcdb_instance_id = kwargs['srcdbInstanceId']
-        if 'sslEnable' in kwargs:
+        if ssl_enable is None and 'sslEnable' in kwargs:
             ssl_enable = kwargs['sslEnable']
-        if 'tdeStatus' in kwargs:
+        if tde_status is None and 'tdeStatus' in kwargs:
             tde_status = kwargs['tdeStatus']
-        if 'vpcAuthMode' in kwargs:
+        if vpc_auth_mode is None and 'vpcAuthMode' in kwargs:
             vpc_auth_mode = kwargs['vpcAuthMode']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if auto_renew is not None:

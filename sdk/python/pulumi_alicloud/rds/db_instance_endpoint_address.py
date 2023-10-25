@@ -35,18 +35,26 @@ class DbInstanceEndpointAddressArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_string_prefix: pulumi.Input[str],
-             db_instance_endpoint_id: pulumi.Input[str],
-             db_instance_id: pulumi.Input[str],
-             port: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             connection_string_prefix: Optional[pulumi.Input[str]] = None,
+             db_instance_endpoint_id: Optional[pulumi.Input[str]] = None,
+             db_instance_id: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionStringPrefix' in kwargs:
+        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
             connection_string_prefix = kwargs['connectionStringPrefix']
-        if 'dbInstanceEndpointId' in kwargs:
+        if connection_string_prefix is None:
+            raise TypeError("Missing 'connection_string_prefix' argument")
+        if db_instance_endpoint_id is None and 'dbInstanceEndpointId' in kwargs:
             db_instance_endpoint_id = kwargs['dbInstanceEndpointId']
-        if 'dbInstanceId' in kwargs:
+        if db_instance_endpoint_id is None:
+            raise TypeError("Missing 'db_instance_endpoint_id' argument")
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
+        if db_instance_id is None:
+            raise TypeError("Missing 'db_instance_id' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
 
         _setter("connection_string_prefix", connection_string_prefix)
         _setter("db_instance_endpoint_id", db_instance_endpoint_id)
@@ -142,19 +150,19 @@ class _DbInstanceEndpointAddressState:
              ip_address: Optional[pulumi.Input[str]] = None,
              ip_type: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'connectionStringPrefix' in kwargs:
+        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
             connection_string_prefix = kwargs['connectionStringPrefix']
-        if 'dbInstanceEndpointId' in kwargs:
+        if db_instance_endpoint_id is None and 'dbInstanceEndpointId' in kwargs:
             db_instance_endpoint_id = kwargs['dbInstanceEndpointId']
-        if 'dbInstanceId' in kwargs:
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
-        if 'ipAddress' in kwargs:
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
-        if 'ipType' in kwargs:
+        if ip_type is None and 'ipType' in kwargs:
             ip_type = kwargs['ipType']
 
         if connection_string is not None:

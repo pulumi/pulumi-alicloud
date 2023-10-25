@@ -104,35 +104,35 @@ class EipArgs:
              security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'activityId' in kwargs:
+        if activity_id is None and 'activityId' in kwargs:
             activity_id = kwargs['activityId']
-        if 'addressName' in kwargs:
+        if address_name is None and 'addressName' in kwargs:
             address_name = kwargs['addressName']
-        if 'autoPay' in kwargs:
+        if auto_pay is None and 'autoPay' in kwargs:
             auto_pay = kwargs['autoPay']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'highDefinitionMonitorLogStatus' in kwargs:
+        if high_definition_monitor_log_status is None and 'highDefinitionMonitorLogStatus' in kwargs:
             high_definition_monitor_log_status = kwargs['highDefinitionMonitorLogStatus']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'logProject' in kwargs:
+        if log_project is None and 'logProject' in kwargs:
             log_project = kwargs['logProject']
-        if 'logStore' in kwargs:
+        if log_store is None and 'logStore' in kwargs:
             log_store = kwargs['logStore']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'pricingCycle' in kwargs:
+        if pricing_cycle is None and 'pricingCycle' in kwargs:
             pricing_cycle = kwargs['pricingCycle']
-        if 'publicIpAddressPoolId' in kwargs:
+        if public_ip_address_pool_id is None and 'publicIpAddressPoolId' in kwargs:
             public_ip_address_pool_id = kwargs['publicIpAddressPoolId']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityProtectionTypes' in kwargs:
+        if security_protection_types is None and 'securityProtectionTypes' in kwargs:
             security_protection_types = kwargs['securityProtectionTypes']
 
         if activity_id is not None:
@@ -534,39 +534,39 @@ class _EipState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'activityId' in kwargs:
+        if activity_id is None and 'activityId' in kwargs:
             activity_id = kwargs['activityId']
-        if 'addressName' in kwargs:
+        if address_name is None and 'addressName' in kwargs:
             address_name = kwargs['addressName']
-        if 'autoPay' in kwargs:
+        if auto_pay is None and 'autoPay' in kwargs:
             auto_pay = kwargs['autoPay']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'highDefinitionMonitorLogStatus' in kwargs:
+        if high_definition_monitor_log_status is None and 'highDefinitionMonitorLogStatus' in kwargs:
             high_definition_monitor_log_status = kwargs['highDefinitionMonitorLogStatus']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'ipAddress' in kwargs:
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
-        if 'logProject' in kwargs:
+        if log_project is None and 'logProject' in kwargs:
             log_project = kwargs['logProject']
-        if 'logStore' in kwargs:
+        if log_store is None and 'logStore' in kwargs:
             log_store = kwargs['logStore']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'pricingCycle' in kwargs:
+        if pricing_cycle is None and 'pricingCycle' in kwargs:
             pricing_cycle = kwargs['pricingCycle']
-        if 'publicIpAddressPoolId' in kwargs:
+        if public_ip_address_pool_id is None and 'publicIpAddressPoolId' in kwargs:
             public_ip_address_pool_id = kwargs['publicIpAddressPoolId']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityProtectionTypes' in kwargs:
+        if security_protection_types is None and 'securityProtectionTypes' in kwargs:
             security_protection_types = kwargs['securityProtectionTypes']
 
         if activity_id is not None:
@@ -946,17 +946,6 @@ class Eip(pulumi.CustomResource):
 
         > **NOTE:** From version 1.10.1, this resource supports creating "PrePaid" EIP. In addition, it supports setting EIP name and description.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new EIP.
-        example = alicloud.ecs.Eip("example",
-            bandwidth="10",
-            internet_charge_type="PayByBandwidth")
-        ```
         ## Module Support
 
         You can use the existing eip module
@@ -1004,17 +993,6 @@ class Eip(pulumi.CustomResource):
 
         > **NOTE:** From version 1.10.1, this resource supports creating "PrePaid" EIP. In addition, it supports setting EIP name and description.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new EIP.
-        example = alicloud.ecs.Eip("example",
-            bandwidth="10",
-            internet_charge_type="PayByBandwidth")
-        ```
         ## Module Support
 
         You can use the existing eip module

@@ -35,17 +35,21 @@ class OrganizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             organization_name: pulumi.Input[str],
-             source: pulumi.Input[str],
+             organization_name: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
              desired_member_count: Optional[pulumi.Input[int]] = None,
              real_pk: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'organizationName' in kwargs:
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
-        if 'desiredMemberCount' in kwargs:
+        if organization_name is None:
+            raise TypeError("Missing 'organization_name' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if desired_member_count is None and 'desiredMemberCount' in kwargs:
             desired_member_count = kwargs['desiredMemberCount']
-        if 'realPk' in kwargs:
+        if real_pk is None and 'realPk' in kwargs:
             real_pk = kwargs['realPk']
 
         _setter("organization_name", organization_name)
@@ -132,13 +136,13 @@ class _OrganizationState:
              organization_name: Optional[pulumi.Input[str]] = None,
              real_pk: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'desiredMemberCount' in kwargs:
+        if desired_member_count is None and 'desiredMemberCount' in kwargs:
             desired_member_count = kwargs['desiredMemberCount']
-        if 'organizationName' in kwargs:
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
-        if 'realPk' in kwargs:
+        if real_pk is None and 'realPk' in kwargs:
             real_pk = kwargs['realPk']
 
         if desired_member_count is not None:
@@ -216,19 +220,6 @@ class Organization(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.137.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.rdc.Organization("example",
-            organization_name="example_value",
-            source="example_value")
-        ```
-
         ## Import
 
         RDC Organization can be imported using the id, e.g.
@@ -256,19 +247,6 @@ class Organization(pulumi.CustomResource):
         For information about RDC Organization and how to use it, see [What is Organization](https://help.aliyun.com/product/51588.html).
 
         > **NOTE:** Available in v1.137.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.rdc.Organization("example",
-            organization_name="example_value",
-            source="example_value")
-        ```
 
         ## Import
 

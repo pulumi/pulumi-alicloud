@@ -15,35 +15,6 @@ import (
 // This data source provides Eflo Vpd available to the user.[What is Vpd](https://help.aliyun.com/document_detail/604976.html)
 //
 // > **NOTE:** Available in 1.201.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eflo"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := eflo.GetVpds(ctx, &eflo.GetVpdsArgs{
-// Ids: interface{}{
-// alicloud_eflo_vpd.Default.Id,
-// },
-// NameRegex: pulumi.StringRef(alicloud_eflo_vpd.Default.Name),
-// VpdName: pulumi.StringRef("RMC-Terraform-Test"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudEfloVpdExampleId", _default.Vpds[0].Id)
-// return nil
-// })
-// }
-// ```
 func GetVpds(ctx *pulumi.Context, args *GetVpdsArgs, opts ...pulumi.InvokeOption) (*GetVpdsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpdsResult

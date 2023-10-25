@@ -12,18 +12,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.cfg.ConfigurationRecorder("example", {resourceTypes: [
- *     "ACS::ECS::Instance",
- *     "ACS::ECS::Disk",
- * ]});
- * ```
- *
  * ## Import
  *
  * Alicloud Config Configuration Recorder can be imported using the id, e.g.

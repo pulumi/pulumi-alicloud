@@ -19,65 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.170.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultImages, err := eds.GetImages(ctx, &eds.GetImagesArgs{
-//				ImageType:           pulumi.StringRef("SYSTEM"),
-//				OsType:              pulumi.StringRef("Windows"),
-//				DesktopInstanceType: pulumi.StringRef("eds.hf.4c8g"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultDesktopTypes, err := eds.GetDesktopTypes(ctx, &eds.GetDesktopTypesArgs{
-//				InstanceTypeFamily: pulumi.StringRef("eds.hf"),
-//				CpuCount:           pulumi.IntRef(4),
-//				MemorySize:         pulumi.IntRef(8192),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = eds.NewBundle(ctx, "defaultBundle", &eds.BundleArgs{
-//				Description: pulumi.String(name),
-//				DesktopType: *pulumi.String(defaultDesktopTypes.Ids[0]),
-//				BundleName:  pulumi.String(name),
-//				ImageId:     *pulumi.String(defaultImages.Ids[0]),
-//				UserDiskSizeGibs: pulumi.IntArray{
-//					pulumi.Int(70),
-//				},
-//				RootDiskSizeGib:          pulumi.Int(80),
-//				RootDiskPerformanceLevel: pulumi.String("PL1"),
-//				UserDiskPerformanceLevel: pulumi.String("PL1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ECD Bundle can be imported using the id, e.g.

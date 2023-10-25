@@ -15,32 +15,6 @@ namespace Pulumi.AliCloud.Ots
     /// 
     /// &gt; **NOTE:** Available since v1.10.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = new AliCloud.Ots.Instance("default", new()
-    ///     {
-    ///         Description = name,
-    ///         AccessedBy = "Vpc",
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "TF" },
-    ///             { "For", "Building table" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// OTS instance can be imported using instance id or name, e.g.

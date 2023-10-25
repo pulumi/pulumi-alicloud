@@ -87,64 +87,104 @@ class GetDomainsDomainResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cname_auth_status: str,
-             cname_confirm_status: str,
-             cname_record: str,
-             create_time: str,
-             default_domain: str,
-             dns_mx: str,
-             dns_spf: str,
-             dns_txt: str,
-             domain_id: str,
-             domain_name: str,
-             domain_type: str,
-             icp_status: str,
-             id: str,
-             mx_auth_status: str,
-             mx_record: str,
-             spf_auth_status: str,
-             spf_record: str,
-             status: str,
-             tl_domain_name: str,
-             tracef_record: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cname_auth_status: Optional[str] = None,
+             cname_confirm_status: Optional[str] = None,
+             cname_record: Optional[str] = None,
+             create_time: Optional[str] = None,
+             default_domain: Optional[str] = None,
+             dns_mx: Optional[str] = None,
+             dns_spf: Optional[str] = None,
+             dns_txt: Optional[str] = None,
+             domain_id: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             domain_type: Optional[str] = None,
+             icp_status: Optional[str] = None,
+             id: Optional[str] = None,
+             mx_auth_status: Optional[str] = None,
+             mx_record: Optional[str] = None,
+             spf_auth_status: Optional[str] = None,
+             spf_record: Optional[str] = None,
+             status: Optional[str] = None,
+             tl_domain_name: Optional[str] = None,
+             tracef_record: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cnameAuthStatus' in kwargs:
+        if cname_auth_status is None and 'cnameAuthStatus' in kwargs:
             cname_auth_status = kwargs['cnameAuthStatus']
-        if 'cnameConfirmStatus' in kwargs:
+        if cname_auth_status is None:
+            raise TypeError("Missing 'cname_auth_status' argument")
+        if cname_confirm_status is None and 'cnameConfirmStatus' in kwargs:
             cname_confirm_status = kwargs['cnameConfirmStatus']
-        if 'cnameRecord' in kwargs:
+        if cname_confirm_status is None:
+            raise TypeError("Missing 'cname_confirm_status' argument")
+        if cname_record is None and 'cnameRecord' in kwargs:
             cname_record = kwargs['cnameRecord']
-        if 'createTime' in kwargs:
+        if cname_record is None:
+            raise TypeError("Missing 'cname_record' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'defaultDomain' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if default_domain is None and 'defaultDomain' in kwargs:
             default_domain = kwargs['defaultDomain']
-        if 'dnsMx' in kwargs:
+        if default_domain is None:
+            raise TypeError("Missing 'default_domain' argument")
+        if dns_mx is None and 'dnsMx' in kwargs:
             dns_mx = kwargs['dnsMx']
-        if 'dnsSpf' in kwargs:
+        if dns_mx is None:
+            raise TypeError("Missing 'dns_mx' argument")
+        if dns_spf is None and 'dnsSpf' in kwargs:
             dns_spf = kwargs['dnsSpf']
-        if 'dnsTxt' in kwargs:
+        if dns_spf is None:
+            raise TypeError("Missing 'dns_spf' argument")
+        if dns_txt is None and 'dnsTxt' in kwargs:
             dns_txt = kwargs['dnsTxt']
-        if 'domainId' in kwargs:
+        if dns_txt is None:
+            raise TypeError("Missing 'dns_txt' argument")
+        if domain_id is None and 'domainId' in kwargs:
             domain_id = kwargs['domainId']
-        if 'domainName' in kwargs:
+        if domain_id is None:
+            raise TypeError("Missing 'domain_id' argument")
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'domainType' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if domain_type is None and 'domainType' in kwargs:
             domain_type = kwargs['domainType']
-        if 'icpStatus' in kwargs:
+        if domain_type is None:
+            raise TypeError("Missing 'domain_type' argument")
+        if icp_status is None and 'icpStatus' in kwargs:
             icp_status = kwargs['icpStatus']
-        if 'mxAuthStatus' in kwargs:
+        if icp_status is None:
+            raise TypeError("Missing 'icp_status' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if mx_auth_status is None and 'mxAuthStatus' in kwargs:
             mx_auth_status = kwargs['mxAuthStatus']
-        if 'mxRecord' in kwargs:
+        if mx_auth_status is None:
+            raise TypeError("Missing 'mx_auth_status' argument")
+        if mx_record is None and 'mxRecord' in kwargs:
             mx_record = kwargs['mxRecord']
-        if 'spfAuthStatus' in kwargs:
+        if mx_record is None:
+            raise TypeError("Missing 'mx_record' argument")
+        if spf_auth_status is None and 'spfAuthStatus' in kwargs:
             spf_auth_status = kwargs['spfAuthStatus']
-        if 'spfRecord' in kwargs:
+        if spf_auth_status is None:
+            raise TypeError("Missing 'spf_auth_status' argument")
+        if spf_record is None and 'spfRecord' in kwargs:
             spf_record = kwargs['spfRecord']
-        if 'tlDomainName' in kwargs:
+        if spf_record is None:
+            raise TypeError("Missing 'spf_record' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tl_domain_name is None and 'tlDomainName' in kwargs:
             tl_domain_name = kwargs['tlDomainName']
-        if 'tracefRecord' in kwargs:
+        if tl_domain_name is None:
+            raise TypeError("Missing 'tl_domain_name' argument")
+        if tracef_record is None and 'tracefRecord' in kwargs:
             tracef_record = kwargs['tracefRecord']
+        if tracef_record is None:
+            raise TypeError("Missing 'tracef_record' argument")
 
         _setter("cname_auth_status", cname_auth_status)
         _setter("cname_confirm_status", cname_confirm_status)
@@ -378,41 +418,67 @@ class GetMailAddressesAddressResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: str,
-             create_time: str,
-             daily_count: str,
-             daily_req_count: str,
-             domain_status: str,
-             id: str,
-             mail_address_id: str,
-             month_count: str,
-             month_req_count: str,
-             reply_address: str,
-             reply_status: str,
-             sendtype: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_name: Optional[str] = None,
+             create_time: Optional[str] = None,
+             daily_count: Optional[str] = None,
+             daily_req_count: Optional[str] = None,
+             domain_status: Optional[str] = None,
+             id: Optional[str] = None,
+             mail_address_id: Optional[str] = None,
+             month_count: Optional[str] = None,
+             month_req_count: Optional[str] = None,
+             reply_address: Optional[str] = None,
+             reply_status: Optional[str] = None,
+             sendtype: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'createTime' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dailyCount' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if daily_count is None and 'dailyCount' in kwargs:
             daily_count = kwargs['dailyCount']
-        if 'dailyReqCount' in kwargs:
+        if daily_count is None:
+            raise TypeError("Missing 'daily_count' argument")
+        if daily_req_count is None and 'dailyReqCount' in kwargs:
             daily_req_count = kwargs['dailyReqCount']
-        if 'domainStatus' in kwargs:
+        if daily_req_count is None:
+            raise TypeError("Missing 'daily_req_count' argument")
+        if domain_status is None and 'domainStatus' in kwargs:
             domain_status = kwargs['domainStatus']
-        if 'mailAddressId' in kwargs:
+        if domain_status is None:
+            raise TypeError("Missing 'domain_status' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if mail_address_id is None and 'mailAddressId' in kwargs:
             mail_address_id = kwargs['mailAddressId']
-        if 'monthCount' in kwargs:
+        if mail_address_id is None:
+            raise TypeError("Missing 'mail_address_id' argument")
+        if month_count is None and 'monthCount' in kwargs:
             month_count = kwargs['monthCount']
-        if 'monthReqCount' in kwargs:
+        if month_count is None:
+            raise TypeError("Missing 'month_count' argument")
+        if month_req_count is None and 'monthReqCount' in kwargs:
             month_req_count = kwargs['monthReqCount']
-        if 'replyAddress' in kwargs:
+        if month_req_count is None:
+            raise TypeError("Missing 'month_req_count' argument")
+        if reply_address is None and 'replyAddress' in kwargs:
             reply_address = kwargs['replyAddress']
-        if 'replyStatus' in kwargs:
+        if reply_address is None:
+            raise TypeError("Missing 'reply_address' argument")
+        if reply_status is None and 'replyStatus' in kwargs:
             reply_status = kwargs['replyStatus']
+        if reply_status is None:
+            raise TypeError("Missing 'reply_status' argument")
+        if sendtype is None:
+            raise TypeError("Missing 'sendtype' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("account_name", account_name)
         _setter("create_time", create_time)
@@ -565,23 +631,37 @@ class GetReceiversReceiverseResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             description: str,
-             id: str,
-             receivers_alias: str,
-             receivers_id: str,
-             receivers_name: str,
-             status: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             receivers_alias: Optional[str] = None,
+             receivers_id: Optional[str] = None,
+             receivers_name: Optional[str] = None,
+             status: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'receiversAlias' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if receivers_alias is None and 'receiversAlias' in kwargs:
             receivers_alias = kwargs['receiversAlias']
-        if 'receiversId' in kwargs:
+        if receivers_alias is None:
+            raise TypeError("Missing 'receivers_alias' argument")
+        if receivers_id is None and 'receiversId' in kwargs:
             receivers_id = kwargs['receiversId']
-        if 'receiversName' in kwargs:
+        if receivers_id is None:
+            raise TypeError("Missing 'receivers_id' argument")
+        if receivers_name is None and 'receiversName' in kwargs:
             receivers_name = kwargs['receiversName']
+        if receivers_name is None:
+            raise TypeError("Missing 'receivers_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("create_time", create_time)
         _setter("description", description)
@@ -668,15 +748,21 @@ class GetTagsTagResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             tag_id: str,
-             tag_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             tag_id: Optional[str] = None,
+             tag_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'tagId' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if tag_id is None and 'tagId' in kwargs:
             tag_id = kwargs['tagId']
-        if 'tagName' in kwargs:
+        if tag_id is None:
+            raise TypeError("Missing 'tag_id' argument")
+        if tag_name is None and 'tagName' in kwargs:
             tag_name = kwargs['tagName']
+        if tag_name is None:
+            raise TypeError("Missing 'tag_name' argument")
 
         _setter("id", id)
         _setter("tag_id", tag_id)

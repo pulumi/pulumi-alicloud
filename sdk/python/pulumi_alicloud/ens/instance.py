@@ -100,10 +100,10 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_type: pulumi.Input[str],
-             internet_max_bandwidth_out: pulumi.Input[int],
-             payment_type: pulumi.Input[str],
-             schedule_area_level: pulumi.Input[str],
+             instance_type: Optional[pulumi.Input[str]] = None,
+             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             schedule_area_level: Optional[pulumi.Input[str]] = None,
              auto_renew: Optional[pulumi.Input[bool]] = None,
              carrier: Optional[pulumi.Input[str]] = None,
              data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]] = None,
@@ -125,49 +125,57 @@ class InstanceArgs:
              system_disk: Optional[pulumi.Input['InstanceSystemDiskArgs']] = None,
              unique_suffix: Optional[pulumi.Input[bool]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetMaxBandwidthOut' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
             internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if 'paymentType' in kwargs:
+        if internet_max_bandwidth_out is None:
+            raise TypeError("Missing 'internet_max_bandwidth_out' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'scheduleAreaLevel' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if schedule_area_level is None and 'scheduleAreaLevel' in kwargs:
             schedule_area_level = kwargs['scheduleAreaLevel']
-        if 'autoRenew' in kwargs:
+        if schedule_area_level is None:
+            raise TypeError("Missing 'schedule_area_level' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'dataDisks' in kwargs:
+        if data_disks is None and 'dataDisks' in kwargs:
             data_disks = kwargs['dataDisks']
-        if 'ensRegionId' in kwargs:
+        if ens_region_id is None and 'ensRegionId' in kwargs:
             ens_region_id = kwargs['ensRegionId']
-        if 'hostName' in kwargs:
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceChargeStrategy' in kwargs:
+        if instance_charge_strategy is None and 'instanceChargeStrategy' in kwargs:
             instance_charge_strategy = kwargs['instanceChargeStrategy']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'netDistrictCode' in kwargs:
+        if net_district_code is None and 'netDistrictCode' in kwargs:
             net_district_code = kwargs['netDistrictCode']
-        if 'passwordInherit' in kwargs:
+        if password_inherit is None and 'passwordInherit' in kwargs:
             password_inherit = kwargs['passwordInherit']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'publicIpIdentification' in kwargs:
+        if public_ip_identification is None and 'publicIpIdentification' in kwargs:
             public_ip_identification = kwargs['publicIpIdentification']
-        if 'schedulingPriceStrategy' in kwargs:
+        if scheduling_price_strategy is None and 'schedulingPriceStrategy' in kwargs:
             scheduling_price_strategy = kwargs['schedulingPriceStrategy']
-        if 'schedulingStrategy' in kwargs:
+        if scheduling_strategy is None and 'schedulingStrategy' in kwargs:
             scheduling_strategy = kwargs['schedulingStrategy']
-        if 'systemDisk' in kwargs:
+        if system_disk is None and 'systemDisk' in kwargs:
             system_disk = kwargs['systemDisk']
-        if 'uniqueSuffix' in kwargs:
+        if unique_suffix is None and 'uniqueSuffix' in kwargs:
             unique_suffix = kwargs['uniqueSuffix']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
 
         _setter("instance_type", instance_type)
@@ -634,49 +642,49 @@ class _InstanceState:
              system_disk: Optional[pulumi.Input['InstanceSystemDiskArgs']] = None,
              unique_suffix: Optional[pulumi.Input[bool]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'dataDisks' in kwargs:
+        if data_disks is None and 'dataDisks' in kwargs:
             data_disks = kwargs['dataDisks']
-        if 'ensRegionId' in kwargs:
+        if ens_region_id is None and 'ensRegionId' in kwargs:
             ens_region_id = kwargs['ensRegionId']
-        if 'hostName' in kwargs:
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceChargeStrategy' in kwargs:
+        if instance_charge_strategy is None and 'instanceChargeStrategy' in kwargs:
             instance_charge_strategy = kwargs['instanceChargeStrategy']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'internetMaxBandwidthOut' in kwargs:
+        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
             internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if 'netDistrictCode' in kwargs:
+        if net_district_code is None and 'netDistrictCode' in kwargs:
             net_district_code = kwargs['netDistrictCode']
-        if 'passwordInherit' in kwargs:
+        if password_inherit is None and 'passwordInherit' in kwargs:
             password_inherit = kwargs['passwordInherit']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'publicIpIdentification' in kwargs:
+        if public_ip_identification is None and 'publicIpIdentification' in kwargs:
             public_ip_identification = kwargs['publicIpIdentification']
-        if 'scheduleAreaLevel' in kwargs:
+        if schedule_area_level is None and 'scheduleAreaLevel' in kwargs:
             schedule_area_level = kwargs['scheduleAreaLevel']
-        if 'schedulingPriceStrategy' in kwargs:
+        if scheduling_price_strategy is None and 'schedulingPriceStrategy' in kwargs:
             scheduling_price_strategy = kwargs['schedulingPriceStrategy']
-        if 'schedulingStrategy' in kwargs:
+        if scheduling_strategy is None and 'schedulingStrategy' in kwargs:
             scheduling_strategy = kwargs['schedulingStrategy']
-        if 'systemDisk' in kwargs:
+        if system_disk is None and 'systemDisk' in kwargs:
             system_disk = kwargs['systemDisk']
-        if 'uniqueSuffix' in kwargs:
+        if unique_suffix is None and 'uniqueSuffix' in kwargs:
             unique_suffix = kwargs['uniqueSuffix']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
 
         if auto_renew is not None:
@@ -1211,11 +1219,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["schedule_area_level"] = schedule_area_level
             __props__.__dict__["scheduling_price_strategy"] = scheduling_price_strategy
             __props__.__dict__["scheduling_strategy"] = scheduling_strategy
-            if system_disk is not None and not isinstance(system_disk, InstanceSystemDiskArgs):
-                system_disk = system_disk or {}
-                def _setter(key, value):
-                    system_disk[key] = value
-                InstanceSystemDiskArgs._configure(_setter, **system_disk)
+            system_disk = _utilities.configure(system_disk, InstanceSystemDiskArgs, True)
             __props__.__dict__["system_disk"] = system_disk
             __props__.__dict__["unique_suffix"] = unique_suffix
             __props__.__dict__["user_data"] = user_data

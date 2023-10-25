@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cddc.getDedicatedHostGroups({
- *     engine: "MongoDB",
- * });
- * export const cddcDedicatedHostGroupId = _default.then(_default => _default.id);
- * ```
  */
 export function getDedicatedHostGroups(args?: GetDedicatedHostGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedHostGroupsResult> {
     args = args || {};
@@ -78,20 +64,6 @@ export interface GetDedicatedHostGroupsResult {
  * This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cddc.getDedicatedHostGroups({
- *     engine: "MongoDB",
- * });
- * export const cddcDedicatedHostGroupId = _default.then(_default => _default.id);
- * ```
  */
 export function getDedicatedHostGroupsOutput(args?: GetDedicatedHostGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedHostGroupsResult> {
     return pulumi.output(args).apply((a: any) => getDedicatedHostGroups(a, opts))

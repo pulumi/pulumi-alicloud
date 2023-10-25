@@ -15,38 +15,6 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.120.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Ecs.GetEcsSnapshots.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "s-bp1fvuxxxxxxxx",
-        ///         },
-        ///         NameRegex = "tf-test",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstEcsSnapshotId"] = example.Apply(getEcsSnapshotsResult =&gt; getEcsSnapshotsResult.Snapshots[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsSnapshotsResult> InvokeAsync(GetEcsSnapshotsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsSnapshotsResult>("alicloud:ecs/getEcsSnapshots:getEcsSnapshots", args ?? new GetEcsSnapshotsArgs(), options.WithDefaults());
@@ -55,38 +23,6 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.120.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Ecs.GetEcsSnapshots.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "s-bp1fvuxxxxxxxx",
-        ///         },
-        ///         NameRegex = "tf-test",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstEcsSnapshotId"] = example.Apply(getEcsSnapshotsResult =&gt; getEcsSnapshotsResult.Snapshots[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsSnapshotsResult> Invoke(GetEcsSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsSnapshotsResult>("alicloud:ecs/getEcsSnapshots:getEcsSnapshots", args ?? new GetEcsSnapshotsInvokeArgs(), options.WithDefaults());

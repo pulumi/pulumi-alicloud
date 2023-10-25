@@ -10,25 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.139.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cr.getEndpointAclPolicies({
- *     instanceId: "example_value",
- *     endpointType: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const crEndpointAclPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
- * ```
  */
 export function getEndpointAclPolicies(args: GetEndpointAclPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointAclPoliciesResult> {
 
@@ -81,25 +62,6 @@ export interface GetEndpointAclPoliciesResult {
  * This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.139.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cr.getEndpointAclPolicies({
- *     instanceId: "example_value",
- *     endpointType: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const crEndpointAclPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
- * ```
  */
 export function getEndpointAclPoliciesOutput(args: GetEndpointAclPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointAclPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getEndpointAclPolicies(a, opts))

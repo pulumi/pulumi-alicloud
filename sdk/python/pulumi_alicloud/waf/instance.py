@@ -77,51 +77,71 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             big_screen: pulumi.Input[str],
-             exclusive_ip_package: pulumi.Input[str],
-             ext_bandwidth: pulumi.Input[str],
-             ext_domain_package: pulumi.Input[str],
-             log_storage: pulumi.Input[str],
-             log_time: pulumi.Input[str],
-             package_code: pulumi.Input[str],
-             prefessional_service: pulumi.Input[str],
-             subscription_type: pulumi.Input[str],
-             waf_log: pulumi.Input[str],
+             big_screen: Optional[pulumi.Input[str]] = None,
+             exclusive_ip_package: Optional[pulumi.Input[str]] = None,
+             ext_bandwidth: Optional[pulumi.Input[str]] = None,
+             ext_domain_package: Optional[pulumi.Input[str]] = None,
+             log_storage: Optional[pulumi.Input[str]] = None,
+             log_time: Optional[pulumi.Input[str]] = None,
+             package_code: Optional[pulumi.Input[str]] = None,
+             prefessional_service: Optional[pulumi.Input[str]] = None,
+             subscription_type: Optional[pulumi.Input[str]] = None,
+             waf_log: Optional[pulumi.Input[str]] = None,
              modify_type: Optional[pulumi.Input[str]] = None,
              period: Optional[pulumi.Input[int]] = None,
              region: Optional[pulumi.Input[str]] = None,
              renew_period: Optional[pulumi.Input[int]] = None,
              renewal_status: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bigScreen' in kwargs:
+        if big_screen is None and 'bigScreen' in kwargs:
             big_screen = kwargs['bigScreen']
-        if 'exclusiveIpPackage' in kwargs:
+        if big_screen is None:
+            raise TypeError("Missing 'big_screen' argument")
+        if exclusive_ip_package is None and 'exclusiveIpPackage' in kwargs:
             exclusive_ip_package = kwargs['exclusiveIpPackage']
-        if 'extBandwidth' in kwargs:
+        if exclusive_ip_package is None:
+            raise TypeError("Missing 'exclusive_ip_package' argument")
+        if ext_bandwidth is None and 'extBandwidth' in kwargs:
             ext_bandwidth = kwargs['extBandwidth']
-        if 'extDomainPackage' in kwargs:
+        if ext_bandwidth is None:
+            raise TypeError("Missing 'ext_bandwidth' argument")
+        if ext_domain_package is None and 'extDomainPackage' in kwargs:
             ext_domain_package = kwargs['extDomainPackage']
-        if 'logStorage' in kwargs:
+        if ext_domain_package is None:
+            raise TypeError("Missing 'ext_domain_package' argument")
+        if log_storage is None and 'logStorage' in kwargs:
             log_storage = kwargs['logStorage']
-        if 'logTime' in kwargs:
+        if log_storage is None:
+            raise TypeError("Missing 'log_storage' argument")
+        if log_time is None and 'logTime' in kwargs:
             log_time = kwargs['logTime']
-        if 'packageCode' in kwargs:
+        if log_time is None:
+            raise TypeError("Missing 'log_time' argument")
+        if package_code is None and 'packageCode' in kwargs:
             package_code = kwargs['packageCode']
-        if 'prefessionalService' in kwargs:
+        if package_code is None:
+            raise TypeError("Missing 'package_code' argument")
+        if prefessional_service is None and 'prefessionalService' in kwargs:
             prefessional_service = kwargs['prefessionalService']
-        if 'subscriptionType' in kwargs:
+        if prefessional_service is None:
+            raise TypeError("Missing 'prefessional_service' argument")
+        if subscription_type is None and 'subscriptionType' in kwargs:
             subscription_type = kwargs['subscriptionType']
-        if 'wafLog' in kwargs:
+        if subscription_type is None:
+            raise TypeError("Missing 'subscription_type' argument")
+        if waf_log is None and 'wafLog' in kwargs:
             waf_log = kwargs['wafLog']
-        if 'modifyType' in kwargs:
+        if waf_log is None:
+            raise TypeError("Missing 'waf_log' argument")
+        if modify_type is None and 'modifyType' in kwargs:
             modify_type = kwargs['modifyType']
-        if 'renewPeriod' in kwargs:
+        if renew_period is None and 'renewPeriod' in kwargs:
             renew_period = kwargs['renewPeriod']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("big_screen", big_screen)
@@ -432,35 +452,35 @@ class _InstanceState:
              status: Optional[pulumi.Input[int]] = None,
              subscription_type: Optional[pulumi.Input[str]] = None,
              waf_log: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bigScreen' in kwargs:
+        if big_screen is None and 'bigScreen' in kwargs:
             big_screen = kwargs['bigScreen']
-        if 'exclusiveIpPackage' in kwargs:
+        if exclusive_ip_package is None and 'exclusiveIpPackage' in kwargs:
             exclusive_ip_package = kwargs['exclusiveIpPackage']
-        if 'extBandwidth' in kwargs:
+        if ext_bandwidth is None and 'extBandwidth' in kwargs:
             ext_bandwidth = kwargs['extBandwidth']
-        if 'extDomainPackage' in kwargs:
+        if ext_domain_package is None and 'extDomainPackage' in kwargs:
             ext_domain_package = kwargs['extDomainPackage']
-        if 'logStorage' in kwargs:
+        if log_storage is None and 'logStorage' in kwargs:
             log_storage = kwargs['logStorage']
-        if 'logTime' in kwargs:
+        if log_time is None and 'logTime' in kwargs:
             log_time = kwargs['logTime']
-        if 'modifyType' in kwargs:
+        if modify_type is None and 'modifyType' in kwargs:
             modify_type = kwargs['modifyType']
-        if 'packageCode' in kwargs:
+        if package_code is None and 'packageCode' in kwargs:
             package_code = kwargs['packageCode']
-        if 'prefessionalService' in kwargs:
+        if prefessional_service is None and 'prefessionalService' in kwargs:
             prefessional_service = kwargs['prefessionalService']
-        if 'renewPeriod' in kwargs:
+        if renew_period is None and 'renewPeriod' in kwargs:
             renew_period = kwargs['renewPeriod']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'subscriptionType' in kwargs:
+        if subscription_type is None and 'subscriptionType' in kwargs:
             subscription_type = kwargs['subscriptionType']
-        if 'wafLog' in kwargs:
+        if waf_log is None and 'wafLog' in kwargs:
             waf_log = kwargs['wafLog']
 
         if big_screen is not None:

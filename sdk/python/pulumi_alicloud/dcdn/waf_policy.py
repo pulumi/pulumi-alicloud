@@ -35,18 +35,26 @@ class WafPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             defense_scene: pulumi.Input[str],
-             policy_name: pulumi.Input[str],
-             policy_type: pulumi.Input[str],
-             status: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             defense_scene: Optional[pulumi.Input[str]] = None,
+             policy_name: Optional[pulumi.Input[str]] = None,
+             policy_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defenseScene' in kwargs:
+        if defense_scene is None and 'defenseScene' in kwargs:
             defense_scene = kwargs['defenseScene']
-        if 'policyName' in kwargs:
+        if defense_scene is None:
+            raise TypeError("Missing 'defense_scene' argument")
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'policyType' in kwargs:
+        if policy_name is None:
+            raise TypeError("Missing 'policy_name' argument")
+        if policy_type is None and 'policyType' in kwargs:
             policy_type = kwargs['policyType']
+        if policy_type is None:
+            raise TypeError("Missing 'policy_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("defense_scene", defense_scene)
         _setter("policy_name", policy_name)
@@ -130,13 +138,13 @@ class _WafPolicyState:
              policy_name: Optional[pulumi.Input[str]] = None,
              policy_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defenseScene' in kwargs:
+        if defense_scene is None and 'defenseScene' in kwargs:
             defense_scene = kwargs['defenseScene']
-        if 'policyName' in kwargs:
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'policyType' in kwargs:
+        if policy_type is None and 'policyType' in kwargs:
             policy_type = kwargs['policyType']
 
         if defense_scene is not None:
@@ -214,25 +222,6 @@ class WafPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.184.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        example = alicloud.dcdn.WafPolicy("example",
-            defense_scene="waf_group",
-            policy_name=name,
-            policy_type="custom",
-            status="on")
-        ```
-
         ## Import
 
         DCDN Waf Policy can be imported using the id, e.g.
@@ -260,25 +249,6 @@ class WafPolicy(pulumi.CustomResource):
         For information about DCDN Waf Policy and how to use it, see [What is Waf Policy](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-createdcdnwafpolicy).
 
         > **NOTE:** Available since v1.184.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        example = alicloud.dcdn.WafPolicy("example",
-            defense_scene="waf_group",
-            policy_name=name,
-            policy_type="custom",
-            status="on")
-        ```
 
         ## Import
 

@@ -34,17 +34,19 @@ class KeyPairAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              force: Optional[pulumi.Input[bool]] = None,
              key_name: Optional[pulumi.Input[str]] = None,
              key_pair_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceIds' in kwargs:
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
-        if 'keyName' in kwargs:
+        if instance_ids is None:
+            raise TypeError("Missing 'instance_ids' argument")
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
 
         _setter("instance_ids", instance_ids)
@@ -134,13 +136,13 @@ class _KeyPairAttachmentState:
              instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              key_name: Optional[pulumi.Input[str]] = None,
              key_pair_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceIds' in kwargs:
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
 
         if force is not None:

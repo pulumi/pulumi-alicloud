@@ -51,29 +51,35 @@ class QuotaAlarmArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             product_code: pulumi.Input[str],
-             quota_action_code: pulumi.Input[str],
-             quota_alarm_name: pulumi.Input[str],
+             product_code: Optional[pulumi.Input[str]] = None,
+             quota_action_code: Optional[pulumi.Input[str]] = None,
+             quota_alarm_name: Optional[pulumi.Input[str]] = None,
              quota_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]]] = None,
              threshold: Optional[pulumi.Input[float]] = None,
              threshold_percent: Optional[pulumi.Input[float]] = None,
              threshold_type: Optional[pulumi.Input[str]] = None,
              web_hook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'productCode' in kwargs:
+        if product_code is None and 'productCode' in kwargs:
             product_code = kwargs['productCode']
-        if 'quotaActionCode' in kwargs:
+        if product_code is None:
+            raise TypeError("Missing 'product_code' argument")
+        if quota_action_code is None and 'quotaActionCode' in kwargs:
             quota_action_code = kwargs['quotaActionCode']
-        if 'quotaAlarmName' in kwargs:
+        if quota_action_code is None:
+            raise TypeError("Missing 'quota_action_code' argument")
+        if quota_alarm_name is None and 'quotaAlarmName' in kwargs:
             quota_alarm_name = kwargs['quotaAlarmName']
-        if 'quotaDimensions' in kwargs:
+        if quota_alarm_name is None:
+            raise TypeError("Missing 'quota_alarm_name' argument")
+        if quota_dimensions is None and 'quotaDimensions' in kwargs:
             quota_dimensions = kwargs['quotaDimensions']
-        if 'thresholdPercent' in kwargs:
+        if threshold_percent is None and 'thresholdPercent' in kwargs:
             threshold_percent = kwargs['thresholdPercent']
-        if 'thresholdType' in kwargs:
+        if threshold_type is None and 'thresholdType' in kwargs:
             threshold_type = kwargs['thresholdType']
-        if 'webHook' in kwargs:
+        if web_hook is None and 'webHook' in kwargs:
             web_hook = kwargs['webHook']
 
         _setter("product_code", product_code)
@@ -239,23 +245,23 @@ class _QuotaAlarmState:
              threshold_percent: Optional[pulumi.Input[float]] = None,
              threshold_type: Optional[pulumi.Input[str]] = None,
              web_hook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'productCode' in kwargs:
+        if product_code is None and 'productCode' in kwargs:
             product_code = kwargs['productCode']
-        if 'quotaActionCode' in kwargs:
+        if quota_action_code is None and 'quotaActionCode' in kwargs:
             quota_action_code = kwargs['quotaActionCode']
-        if 'quotaAlarmName' in kwargs:
+        if quota_alarm_name is None and 'quotaAlarmName' in kwargs:
             quota_alarm_name = kwargs['quotaAlarmName']
-        if 'quotaDimensions' in kwargs:
+        if quota_dimensions is None and 'quotaDimensions' in kwargs:
             quota_dimensions = kwargs['quotaDimensions']
-        if 'thresholdPercent' in kwargs:
+        if threshold_percent is None and 'thresholdPercent' in kwargs:
             threshold_percent = kwargs['thresholdPercent']
-        if 'thresholdType' in kwargs:
+        if threshold_type is None and 'thresholdType' in kwargs:
             threshold_type = kwargs['thresholdType']
-        if 'webHook' in kwargs:
+        if web_hook is None and 'webHook' in kwargs:
             web_hook = kwargs['webHook']
 
         if create_time is not None:
@@ -409,30 +415,6 @@ class QuotaAlarm(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.116.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.quotas.QuotaAlarm("default",
-            quota_action_code="q_desktop-count",
-            quota_dimensions=[alicloud.quotas.QuotaAlarmQuotaDimensionArgs(
-                key="regionId",
-                value="cn-hangzhou",
-            )],
-            threshold_percent=80,
-            product_code="gws",
-            quota_alarm_name=name,
-            threshold_type="used")
-        ```
-
         ## Import
 
         Quotas Quota Alarm can be imported using the id, e.g.
@@ -466,30 +448,6 @@ class QuotaAlarm(pulumi.CustomResource):
         For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaalarm).
 
         > **NOTE:** Available since v1.116.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.quotas.QuotaAlarm("default",
-            quota_action_code="q_desktop-count",
-            quota_dimensions=[alicloud.quotas.QuotaAlarmQuotaDimensionArgs(
-                key="regionId",
-                value="cn-hangzhou",
-            )],
-            threshold_percent=80,
-            product_code="gws",
-            quota_alarm_name=name,
-            threshold_type="used")
-        ```
 
         ## Import
 

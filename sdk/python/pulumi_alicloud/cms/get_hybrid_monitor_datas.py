@@ -120,21 +120,6 @@ def get_hybrid_monitor_datas(end: Optional[str] = None,
 
     > **NOTE:** Available in v1.177.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.cms.get_hybrid_monitor_datas(namespace="example_value",
-        prom_sql="AliyunEcs_cpu_total",
-        start="1657505665",
-        end="1657520065")
-    pulumi.export("cmsMetricRuleTemplateId1", default.datas[0])
-    ```
-
 
     :param str end: The timestamp that specifies the end of the time range to query.
     :param str namespace: The name of the namespace.
@@ -176,21 +161,6 @@ def get_hybrid_monitor_datas_output(end: Optional[pulumi.Input[str]] = None,
     This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.177.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.cms.get_hybrid_monitor_datas(namespace="example_value",
-        prom_sql="AliyunEcs_cpu_total",
-        start="1657505665",
-        end="1657520065")
-    pulumi.export("cmsMetricRuleTemplateId1", default.datas[0])
-    ```
 
 
     :param str end: The timestamp that specifies the end of the time range to query.

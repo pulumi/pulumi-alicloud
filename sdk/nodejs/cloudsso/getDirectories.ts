@@ -12,24 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.135.0+.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cloudsso.getDirectories({
- *     ids: ["example_id"],
- * });
- * export const cloudSsoDirectoryId1 = ids.then(ids => ids.directories?.[0]?.id);
- * const nameRegex = alicloud.cloudsso.getDirectories({
- *     nameRegex: "^my-Directory",
- * });
- * export const cloudSsoDirectoryId2 = nameRegex.then(nameRegex => nameRegex.directories?.[0]?.id);
- * ```
  */
 export function getDirectories(args?: GetDirectoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetDirectoriesResult> {
     args = args || {};
@@ -86,24 +68,6 @@ export interface GetDirectoriesResult {
  * > **NOTE:** Available in v1.135.0+.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cloudsso.getDirectories({
- *     ids: ["example_id"],
- * });
- * export const cloudSsoDirectoryId1 = ids.then(ids => ids.directories?.[0]?.id);
- * const nameRegex = alicloud.cloudsso.getDirectories({
- *     nameRegex: "^my-Directory",
- * });
- * export const cloudSsoDirectoryId2 = nameRegex.then(nameRegex => nameRegex.directories?.[0]?.id);
- * ```
  */
 export function getDirectoriesOutput(args?: GetDirectoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDirectoriesResult> {
     return pulumi.output(args).apply((a: any) => getDirectories(a, opts))

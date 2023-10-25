@@ -15,39 +15,6 @@ namespace Pulumi.AliCloud.Vpn
         /// This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.181.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke();
-        /// 
-        ///     var nameRegex = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-VpnAttachment",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["vpnGatewayVpnAttachmentId1"] = ids.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
-        ///         ["vpnGatewayVpnAttachmentId2"] = nameRegex.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
-        ///         ["localId"] = data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Ike_config[0].Local_id,
-        ///         ["internetIp"] = data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Internet_ip,
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGatewayVpnAttachmentsResult> InvokeAsync(GetGatewayVpnAttachmentsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewayVpnAttachmentsResult>("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", args ?? new GetGatewayVpnAttachmentsArgs(), options.WithDefaults());
@@ -56,39 +23,6 @@ namespace Pulumi.AliCloud.Vpn
         /// This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.181.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke();
-        /// 
-        ///     var nameRegex = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-VpnAttachment",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["vpnGatewayVpnAttachmentId1"] = ids.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
-        ///         ["vpnGatewayVpnAttachmentId2"] = nameRegex.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
-        ///         ["localId"] = data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Ike_config[0].Local_id,
-        ///         ["internetIp"] = data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Internet_ip,
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGatewayVpnAttachmentsResult> Invoke(GetGatewayVpnAttachmentsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayVpnAttachmentsResult>("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", args ?? new GetGatewayVpnAttachmentsInvokeArgs(), options.WithDefaults());

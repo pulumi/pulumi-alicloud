@@ -16,34 +16,6 @@ namespace Pulumi.AliCloud.Oss
         /// This data source provides the ots tables of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.40.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var tablesDs = AliCloud.Ots.GetTables.Invoke(new()
-        ///     {
-        ///         InstanceName = "sample-instance",
-        ///         NameRegex = "sample-table",
-        ///         OutputFile = "tables.txt",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstTableId"] = tablesDs.Apply(getTablesResult =&gt; getTablesResult.Tables[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTablesResult> InvokeAsync(GetTablesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTablesResult>("alicloud:oss/getTables:getTables", args ?? new GetTablesArgs(), options.WithDefaults());
@@ -52,34 +24,6 @@ namespace Pulumi.AliCloud.Oss
         /// This data source provides the ots tables of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.40.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var tablesDs = AliCloud.Ots.GetTables.Invoke(new()
-        ///     {
-        ///         InstanceName = "sample-instance",
-        ///         NameRegex = "sample-table",
-        ///         OutputFile = "tables.txt",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstTableId"] = tablesDs.Apply(getTablesResult =&gt; getTablesResult.Tables[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTablesResult> Invoke(GetTablesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTablesResult>("alicloud:oss/getTables:getTables", args ?? new GetTablesInvokeArgs(), options.WithDefaults());

@@ -16,48 +16,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     /// 
     /// &gt; **NOTE:** Available since v1.143.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf_example";
-    ///     var defaultImages = AliCloud.SimpleApplicationServer.GetImages.Invoke();
-    /// 
-    ///     var defaultServerPlans = AliCloud.SimpleApplicationServer.GetServerPlans.Invoke();
-    /// 
-    ///     var defaultInstance = new AliCloud.SimpleApplicationServer.Instance("defaultInstance", new()
-    ///     {
-    ///         PaymentType = "Subscription",
-    ///         PlanId = defaultServerPlans.Apply(getServerPlansResult =&gt; getServerPlansResult.Plans[0]?.Id),
-    ///         InstanceName = name,
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         Period = 1,
-    ///         DataDiskSize = 100,
-    ///     });
-    /// 
-    ///     var defaultServerDisks = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
-    ///     {
-    ///         InstanceId = defaultInstance.Id,
-    ///     });
-    /// 
-    ///     var defaultSnapshot = new AliCloud.SimpleApplicationServer.Snapshot("defaultSnapshot", new()
-    ///     {
-    ///         DiskId = defaultServerDisks.Apply(getServerDisksResult =&gt; getServerDisksResult.Ids[0]),
-    ///         SnapshotName = name,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Simple Application Server Snapshot can be imported using the id, e.g.

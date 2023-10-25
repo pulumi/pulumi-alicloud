@@ -61,8 +61,8 @@ class EventRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             event_pattern: pulumi.Input['EventRuleEventPatternArgs'],
-             rule_name: pulumi.Input[str],
+             event_pattern: Optional[pulumi.Input['EventRuleEventPatternArgs']] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
              contact_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleContactParameterArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              fc_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleFcParameterArgs']]]] = None,
@@ -73,27 +73,31 @@ class EventRuleArgs:
              sls_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleSlsParameterArgs']]]] = None,
              status: Optional[pulumi.Input[str]] = None,
              webhook_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventPattern' in kwargs:
+        if event_pattern is None and 'eventPattern' in kwargs:
             event_pattern = kwargs['eventPattern']
-        if 'ruleName' in kwargs:
+        if event_pattern is None:
+            raise TypeError("Missing 'event_pattern' argument")
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
-        if 'contactParameters' in kwargs:
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
+        if contact_parameters is None and 'contactParameters' in kwargs:
             contact_parameters = kwargs['contactParameters']
-        if 'fcParameters' in kwargs:
+        if fc_parameters is None and 'fcParameters' in kwargs:
             fc_parameters = kwargs['fcParameters']
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'mnsParameters' in kwargs:
+        if mns_parameters is None and 'mnsParameters' in kwargs:
             mns_parameters = kwargs['mnsParameters']
-        if 'openApiParameters' in kwargs:
+        if open_api_parameters is None and 'openApiParameters' in kwargs:
             open_api_parameters = kwargs['openApiParameters']
-        if 'silenceTime' in kwargs:
+        if silence_time is None and 'silenceTime' in kwargs:
             silence_time = kwargs['silenceTime']
-        if 'slsParameters' in kwargs:
+        if sls_parameters is None and 'slsParameters' in kwargs:
             sls_parameters = kwargs['slsParameters']
-        if 'webhookParameters' in kwargs:
+        if webhook_parameters is None and 'webhookParameters' in kwargs:
             webhook_parameters = kwargs['webhookParameters']
 
         _setter("event_pattern", event_pattern)
@@ -324,27 +328,27 @@ class _EventRuleState:
              sls_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleSlsParameterArgs']]]] = None,
              status: Optional[pulumi.Input[str]] = None,
              webhook_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contactParameters' in kwargs:
+        if contact_parameters is None and 'contactParameters' in kwargs:
             contact_parameters = kwargs['contactParameters']
-        if 'eventPattern' in kwargs:
+        if event_pattern is None and 'eventPattern' in kwargs:
             event_pattern = kwargs['eventPattern']
-        if 'fcParameters' in kwargs:
+        if fc_parameters is None and 'fcParameters' in kwargs:
             fc_parameters = kwargs['fcParameters']
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'mnsParameters' in kwargs:
+        if mns_parameters is None and 'mnsParameters' in kwargs:
             mns_parameters = kwargs['mnsParameters']
-        if 'openApiParameters' in kwargs:
+        if open_api_parameters is None and 'openApiParameters' in kwargs:
             open_api_parameters = kwargs['openApiParameters']
-        if 'ruleName' in kwargs:
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
-        if 'silenceTime' in kwargs:
+        if silence_time is None and 'silenceTime' in kwargs:
             silence_time = kwargs['silenceTime']
-        if 'slsParameters' in kwargs:
+        if sls_parameters is None and 'slsParameters' in kwargs:
             sls_parameters = kwargs['slsParameters']
-        if 'webhookParameters' in kwargs:
+        if webhook_parameters is None and 'webhookParameters' in kwargs:
             webhook_parameters = kwargs['webhookParameters']
 
         if contact_parameters is not None:
@@ -542,34 +546,6 @@ class EventRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.182.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.cms.MonitorGroup("default", monitor_group_name=name)
-        example = alicloud.cms.EventRule("example",
-            rule_name=name,
-            group_id=default.id,
-            silence_time=100,
-            description=name,
-            status="ENABLED",
-            event_pattern=alicloud.cms.EventRuleEventPatternArgs(
-                product="ecs",
-                sql_filter="example_value",
-                name_lists=["example_value"],
-                level_lists=["CRITICAL"],
-                event_type_lists=["StatusNotification"],
-            ))
-        ```
-
         ## Import
 
         Cloud Monitor Service Event Rule can be imported using the id, e.g.
@@ -605,34 +581,6 @@ class EventRule(pulumi.CustomResource):
         For information about Cloud Monitor Service Event Rule and how to use it, see [What is Event Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/puteventrule).
 
         > **NOTE:** Available since v1.182.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.cms.MonitorGroup("default", monitor_group_name=name)
-        example = alicloud.cms.EventRule("example",
-            rule_name=name,
-            group_id=default.id,
-            silence_time=100,
-            description=name,
-            status="ENABLED",
-            event_pattern=alicloud.cms.EventRuleEventPatternArgs(
-                product="ecs",
-                sql_filter="example_value",
-                name_lists=["example_value"],
-                level_lists=["CRITICAL"],
-                event_type_lists=["StatusNotification"],
-            ))
-        ```
 
         ## Import
 
@@ -684,11 +632,7 @@ class EventRule(pulumi.CustomResource):
 
             __props__.__dict__["contact_parameters"] = contact_parameters
             __props__.__dict__["description"] = description
-            if event_pattern is not None and not isinstance(event_pattern, EventRuleEventPatternArgs):
-                event_pattern = event_pattern or {}
-                def _setter(key, value):
-                    event_pattern[key] = value
-                EventRuleEventPatternArgs._configure(_setter, **event_pattern)
+            event_pattern = _utilities.configure(event_pattern, EventRuleEventPatternArgs, True)
             if event_pattern is None and not opts.urn:
                 raise TypeError("Missing required property 'event_pattern'")
             __props__.__dict__["event_pattern"] = event_pattern

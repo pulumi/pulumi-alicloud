@@ -13,61 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** One logtail configure can be attached to multiple machine groups and one machine group can attach several logtail configures.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
- *
- * const _default = new random.RandomInteger("default", {
- *     max: 99999,
- *     min: 10000,
- * });
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
- * const exampleStore = new alicloud.log.Store("exampleStore", {
- *     project: exampleProject.name,
- *     retentionPeriod: 3650,
- *     shardCount: 3,
- *     autoSplit: true,
- *     maxSplitShardCount: 60,
- *     appendMeta: true,
- * });
- * const exampleLogTailConfig = new alicloud.log.LogTailConfig("exampleLogTailConfig", {
- *     project: exampleProject.name,
- *     logstore: exampleStore.name,
- *     inputType: "file",
- *     outputType: "LogService",
- *     inputDetail: `  	{
- * 		"logPath": "/logPath",
- * 		"filePattern": "access.log",
- * 		"logType": "json_log",
- * 		"topicFormat": "default",
- * 		"discardUnmatch": false,
- * 		"enableRawLog": true,
- * 		"fileEncoding": "gbk",
- * 		"maxDepth": 10
- * 	}
- * `,
- * });
- * const exampleMachineGroup = new alicloud.log.MachineGroup("exampleMachineGroup", {
- *     project: exampleProject.name,
- *     identifyType: "ip",
- *     topic: "terraform",
- *     identifyLists: [
- *         "10.0.0.1",
- *         "10.0.0.2",
- *     ],
- * });
- * const exampleLogTailAttachment = new alicloud.log.LogTailAttachment("exampleLogTailAttachment", {
- *     project: exampleProject.name,
- *     logtailConfigName: exampleLogTailConfig.name,
- *     machineGroupName: exampleMachineGroup.name,
- * });
- * ```
- *
  * ## Import
  *
  * Logtial to machine group can be imported using the id, e.g.

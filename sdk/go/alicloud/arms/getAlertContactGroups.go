@@ -15,35 +15,6 @@ import (
 // This data source provides the Arms Alert Contact Groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.131.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			nameRegex, err := arms.GetAlertContactGroups(ctx, &arms.GetAlertContactGroupsArgs{
-//				NameRegex: pulumi.StringRef("^my-AlertContactGroup"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("armsAlertContactGroupId", nameRegex.Groups[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAlertContactGroups(ctx *pulumi.Context, args *GetAlertContactGroupsArgs, opts ...pulumi.InvokeOption) (*GetAlertContactGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAlertContactGroupsResult

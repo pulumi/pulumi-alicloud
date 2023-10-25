@@ -118,19 +118,6 @@ def get_key_pairs(key_pair_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.133.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    name_regex = alicloud.ens.get_key_pairs(version="example_value",
-        name_regex="^my-KeyPair")
-    pulumi.export("ensKeyPairId1", name_regex.pairs[0].id)
-    ```
-
 
     :param str key_pair_name: The name of the key pair.
     :param str name_regex: A regex string to filter results by Key Pair name.
@@ -166,19 +153,6 @@ def get_key_pairs_output(key_pair_name: Optional[pulumi.Input[Optional[str]]] = 
     This data source provides the Ens Key Pairs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.133.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    name_regex = alicloud.ens.get_key_pairs(version="example_value",
-        name_regex="^my-KeyPair")
-    pulumi.export("ensKeyPairId1", name_regex.pairs[0].id)
-    ```
 
 
     :param str key_pair_name: The name of the key pair.

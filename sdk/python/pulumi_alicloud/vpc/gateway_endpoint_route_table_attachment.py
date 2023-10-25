@@ -29,14 +29,18 @@ class GatewayEndpointRouteTableAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gateway_endpoint_id: pulumi.Input[str],
-             route_table_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             gateway_endpoint_id: Optional[pulumi.Input[str]] = None,
+             route_table_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'gatewayEndpointId' in kwargs:
+        if gateway_endpoint_id is None and 'gatewayEndpointId' in kwargs:
             gateway_endpoint_id = kwargs['gatewayEndpointId']
-        if 'routeTableId' in kwargs:
+        if gateway_endpoint_id is None:
+            raise TypeError("Missing 'gateway_endpoint_id' argument")
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
+        if route_table_id is None:
+            raise TypeError("Missing 'route_table_id' argument")
 
         _setter("gateway_endpoint_id", gateway_endpoint_id)
         _setter("route_table_id", route_table_id)
@@ -90,11 +94,11 @@ class _GatewayEndpointRouteTableAttachmentState:
              gateway_endpoint_id: Optional[pulumi.Input[str]] = None,
              route_table_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'gatewayEndpointId' in kwargs:
+        if gateway_endpoint_id is None and 'gatewayEndpointId' in kwargs:
             gateway_endpoint_id = kwargs['gatewayEndpointId']
-        if 'routeTableId' in kwargs:
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
 
         if gateway_endpoint_id is not None:
@@ -156,33 +160,6 @@ class GatewayEndpointRouteTableAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.208.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        defaulte_vpc = alicloud.vpc.Network("defaulteVpc", description="test")
-        default_ge = alicloud.vpc.GatewayEndpoint("defaultGE",
-            service_name="com.aliyun.cn-hangzhou.oss",
-            policy_document="{ \\"Version\\" : \\"1\\", \\"Statement\\" : [ { \\"Effect\\" : \\"Allow\\", \\"Resource\\" : [ \\"*\\" ], \\"Action\\" : [ \\"*\\" ], \\"Principal\\" : [ \\"*\\" ] } ] }",
-            vpc_id=defaulte_vpc.id,
-            gateway_endpoint_descrption="test-gateway-endpoint",
-            gateway_endpoint_name=f"{name}1")
-        default_rt = alicloud.vpc.RouteTable("defaultRT",
-            vpc_id=defaulte_vpc.id,
-            route_table_name=f"{name}2")
-        default = alicloud.vpc.GatewayEndpointRouteTableAttachment("default",
-            gateway_endpoint_id=default_ge.id,
-            route_table_id=default_rt.id)
-        ```
-
         ## Import
 
         VPC Gateway Endpoint Route Table Attachment can be imported using the id, e.g.
@@ -208,33 +185,6 @@ class GatewayEndpointRouteTableAttachment(pulumi.CustomResource):
         For information about VPC Gateway Endpoint Route Table Attachment and how to use it, see [What is Gateway Endpoint Route Table Attachment](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/311148).
 
         > **NOTE:** Available since v1.208.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        defaulte_vpc = alicloud.vpc.Network("defaulteVpc", description="test")
-        default_ge = alicloud.vpc.GatewayEndpoint("defaultGE",
-            service_name="com.aliyun.cn-hangzhou.oss",
-            policy_document="{ \\"Version\\" : \\"1\\", \\"Statement\\" : [ { \\"Effect\\" : \\"Allow\\", \\"Resource\\" : [ \\"*\\" ], \\"Action\\" : [ \\"*\\" ], \\"Principal\\" : [ \\"*\\" ] } ] }",
-            vpc_id=defaulte_vpc.id,
-            gateway_endpoint_descrption="test-gateway-endpoint",
-            gateway_endpoint_name=f"{name}1")
-        default_rt = alicloud.vpc.RouteTable("defaultRT",
-            vpc_id=defaulte_vpc.id,
-            route_table_name=f"{name}2")
-        default = alicloud.vpc.GatewayEndpointRouteTableAttachment("default",
-            gateway_endpoint_id=default_ge.id,
-            route_table_id=default_rt.id)
-        ```
 
         ## Import
 

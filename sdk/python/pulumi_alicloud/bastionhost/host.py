@@ -53,33 +53,43 @@ class HostArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             active_address_type: pulumi.Input[str],
-             host_name: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             os_type: pulumi.Input[str],
-             source: pulumi.Input[str],
+             active_address_type: Optional[pulumi.Input[str]] = None,
+             host_name: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             os_type: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
              comment: Optional[pulumi.Input[str]] = None,
              host_private_address: Optional[pulumi.Input[str]] = None,
              host_public_address: Optional[pulumi.Input[str]] = None,
              instance_region_id: Optional[pulumi.Input[str]] = None,
              source_instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'activeAddressType' in kwargs:
+        if active_address_type is None and 'activeAddressType' in kwargs:
             active_address_type = kwargs['activeAddressType']
-        if 'hostName' in kwargs:
+        if active_address_type is None:
+            raise TypeError("Missing 'active_address_type' argument")
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'instanceId' in kwargs:
+        if host_name is None:
+            raise TypeError("Missing 'host_name' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'osType' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if os_type is None and 'osType' in kwargs:
             os_type = kwargs['osType']
-        if 'hostPrivateAddress' in kwargs:
+        if os_type is None:
+            raise TypeError("Missing 'os_type' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if host_private_address is None and 'hostPrivateAddress' in kwargs:
             host_private_address = kwargs['hostPrivateAddress']
-        if 'hostPublicAddress' in kwargs:
+        if host_public_address is None and 'hostPublicAddress' in kwargs:
             host_public_address = kwargs['hostPublicAddress']
-        if 'instanceRegionId' in kwargs:
+        if instance_region_id is None and 'instanceRegionId' in kwargs:
             instance_region_id = kwargs['instanceRegionId']
-        if 'sourceInstanceId' in kwargs:
+        if source_instance_id is None and 'sourceInstanceId' in kwargs:
             source_instance_id = kwargs['sourceInstanceId']
 
         _setter("active_address_type", active_address_type)
@@ -275,25 +285,25 @@ class _HostState:
              os_type: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
              source_instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'activeAddressType' in kwargs:
+        if active_address_type is None and 'activeAddressType' in kwargs:
             active_address_type = kwargs['activeAddressType']
-        if 'hostId' in kwargs:
+        if host_id is None and 'hostId' in kwargs:
             host_id = kwargs['hostId']
-        if 'hostName' in kwargs:
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'hostPrivateAddress' in kwargs:
+        if host_private_address is None and 'hostPrivateAddress' in kwargs:
             host_private_address = kwargs['hostPrivateAddress']
-        if 'hostPublicAddress' in kwargs:
+        if host_public_address is None and 'hostPublicAddress' in kwargs:
             host_public_address = kwargs['hostPublicAddress']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceRegionId' in kwargs:
+        if instance_region_id is None and 'instanceRegionId' in kwargs:
             instance_region_id = kwargs['instanceRegionId']
-        if 'osType' in kwargs:
+        if os_type is None and 'osType' in kwargs:
             os_type = kwargs['osType']
-        if 'sourceInstanceId' in kwargs:
+        if source_instance_id is None and 'sourceInstanceId' in kwargs:
             source_instance_id = kwargs['sourceInstanceId']
 
         if active_address_type is not None:
@@ -475,46 +485,6 @@ class Host(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.135.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.bastionhost.Instance("defaultInstance",
-            description=name,
-            license_code="bhah_ent_50_asset",
-            plan_code="cloudbastion",
-            storage="5",
-            bandwidth="5",
-            period=1,
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id])
-        default_host = alicloud.bastionhost.Host("defaultHost",
-            instance_id=default_instance.id,
-            host_name=name,
-            active_address_type="Private",
-            host_private_address="172.16.0.10",
-            os_type="Linux",
-            source="Local")
-        ```
-
         ## Import
 
         Bastion Host Host can be imported using the id, e.g.
@@ -548,46 +518,6 @@ class Host(pulumi.CustomResource):
         For information about Bastion Host Host and how to use it, see [What is Host](https://www.alibabacloud.com/help/en/doc-detail/201330.htm).
 
         > **NOTE:** Available since v1.135.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.bastionhost.Instance("defaultInstance",
-            description=name,
-            license_code="bhah_ent_50_asset",
-            plan_code="cloudbastion",
-            storage="5",
-            bandwidth="5",
-            period=1,
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id])
-        default_host = alicloud.bastionhost.Host("defaultHost",
-            instance_id=default_instance.id,
-            host_name=name,
-            active_address_type="Private",
-            host_private_address="172.16.0.10",
-            os_type="Linux",
-            source="Local")
-        ```
 
         ## Import
 

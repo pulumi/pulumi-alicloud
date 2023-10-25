@@ -59,9 +59,9 @@ class CapacityReservationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_amount: pulumi.Input[int],
-             instance_type: pulumi.Input[str],
-             zone_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             instance_amount: Optional[pulumi.Input[int]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              capacity_reservation_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
@@ -71,25 +71,31 @@ class CapacityReservationArgs:
              platform: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceAmount' in kwargs:
+        if instance_amount is None and 'instanceAmount' in kwargs:
             instance_amount = kwargs['instanceAmount']
-        if 'instanceType' in kwargs:
+        if instance_amount is None:
+            raise TypeError("Missing 'instance_amount' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'zoneIds' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if zone_ids is None and 'zoneIds' in kwargs:
             zone_ids = kwargs['zoneIds']
-        if 'capacityReservationName' in kwargs:
+        if zone_ids is None:
+            raise TypeError("Missing 'zone_ids' argument")
+        if capacity_reservation_name is None and 'capacityReservationName' in kwargs:
             capacity_reservation_name = kwargs['capacityReservationName']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'endTime' in kwargs:
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'endTimeType' in kwargs:
+        if end_time_type is None and 'endTimeType' in kwargs:
             end_time_type = kwargs['endTimeType']
-        if 'matchCriteria' in kwargs:
+        if match_criteria is None and 'matchCriteria' in kwargs:
             match_criteria = kwargs['matchCriteria']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("instance_amount", instance_amount)
@@ -339,33 +345,33 @@ class _CapacityReservationState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              time_slot: Optional[pulumi.Input[str]] = None,
              zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'capacityReservationName' in kwargs:
+        if capacity_reservation_name is None and 'capacityReservationName' in kwargs:
             capacity_reservation_name = kwargs['capacityReservationName']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'endTime' in kwargs:
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'endTimeType' in kwargs:
+        if end_time_type is None and 'endTimeType' in kwargs:
             end_time_type = kwargs['endTimeType']
-        if 'instanceAmount' in kwargs:
+        if instance_amount is None and 'instanceAmount' in kwargs:
             instance_amount = kwargs['instanceAmount']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'matchCriteria' in kwargs:
+        if match_criteria is None and 'matchCriteria' in kwargs:
             match_criteria = kwargs['matchCriteria']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'startTime' in kwargs:
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'startTimeType' in kwargs:
+        if start_time_type is None and 'startTimeType' in kwargs:
             start_time_type = kwargs['startTimeType']
-        if 'timeSlot' in kwargs:
+        if time_slot is None and 'timeSlot' in kwargs:
             time_slot = kwargs['timeSlot']
-        if 'zoneIds' in kwargs:
+        if zone_ids is None and 'zoneIds' in kwargs:
             zone_ids = kwargs['zoneIds']
 
         if capacity_reservation_name is not None:
@@ -633,33 +639,6 @@ class CapacityReservation(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.195.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.g5")
-        default_zones = alicloud.get_zones(available_resource_creation="Instance",
-            available_instance_type=default_instance_types.ids[0])
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_capacity_reservation = alicloud.ecs.CapacityReservation("defaultCapacityReservation",
-            description="terraform-example",
-            platform="linux",
-            capacity_reservation_name="terraform-example",
-            end_time_type="Unlimited",
-            resource_group_id=default_resource_groups.ids[0],
-            instance_amount=1,
-            instance_type=default_instance_types.ids[0],
-            match_criteria="Open",
-            tags={
-                "Created": "terraform-example",
-            },
-            zone_ids=[default_zones.zones[0].id])
-        ```
-
         ## Import
 
         Ecs Capacity Reservation can be imported using the id, e.g.
@@ -695,33 +674,6 @@ class CapacityReservation(pulumi.CustomResource):
         For information about Ecs Capacity Reservation and how to use it, see [What is Capacity Reservation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createcapacityreservation).
 
         > **NOTE:** Available in v1.195.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.g5")
-        default_zones = alicloud.get_zones(available_resource_creation="Instance",
-            available_instance_type=default_instance_types.ids[0])
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_capacity_reservation = alicloud.ecs.CapacityReservation("defaultCapacityReservation",
-            description="terraform-example",
-            platform="linux",
-            capacity_reservation_name="terraform-example",
-            end_time_type="Unlimited",
-            resource_group_id=default_resource_groups.ids[0],
-            instance_amount=1,
-            instance_type=default_instance_types.ids[0],
-            match_criteria="Open",
-            tags={
-                "Created": "terraform-example",
-            },
-            zone_ids=[default_zones.zones[0].id])
-        ```
 
         ## Import
 

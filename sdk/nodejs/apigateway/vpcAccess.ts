@@ -5,55 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const exampleZones = alicloud.getZones({
- *     availableResourceCreation: "Instance",
- * });
- * const exampleInstanceTypes = exampleZones.then(exampleZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: exampleZones.zones?.[0]?.id,
- *     cpuCoreCount: 1,
- *     memorySize: 2,
- * }));
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
- *     vpcName: "terraform-example",
- *     cidrBlock: "10.4.0.0/16",
- * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
- *     vswitchName: "terraform-example",
- *     cidrBlock: "10.4.0.0/24",
- *     vpcId: exampleNetwork.id,
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
- * });
- * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {
- *     description: "New security group",
- *     vpcId: exampleNetwork.id,
- * });
- * const exampleImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
- *     owners: "system",
- * });
- * const exampleInstance = new alicloud.ecs.Instance("exampleInstance", {
- *     availabilityZone: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
- *     instanceName: "terraform-example",
- *     imageId: exampleImages.then(exampleImages => exampleImages.images?.[0]?.id),
- *     instanceType: exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes?.[0]?.id),
- *     securityGroups: [exampleSecurityGroup.id],
- *     vswitchId: exampleSwitch.id,
- * });
- * const exampleVpcAccess = new alicloud.apigateway.VpcAccess("exampleVpcAccess", {
- *     vpcId: exampleNetwork.id,
- *     instanceId: exampleInstance.id,
- *     port: 8080,
- * });
- * ```
- *
  * ## Import
  *
  * Api gateway app can be imported using the id, e.g.

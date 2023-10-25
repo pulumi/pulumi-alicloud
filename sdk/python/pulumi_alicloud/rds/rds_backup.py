@@ -45,25 +45,27 @@ class RdsBackupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_instance_id: pulumi.Input[str],
+             db_instance_id: Optional[pulumi.Input[str]] = None,
              backup_method: Optional[pulumi.Input[str]] = None,
              backup_strategy: Optional[pulumi.Input[str]] = None,
              backup_type: Optional[pulumi.Input[str]] = None,
              db_name: Optional[pulumi.Input[str]] = None,
              remove_from_state: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbInstanceId' in kwargs:
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
-        if 'backupMethod' in kwargs:
+        if db_instance_id is None:
+            raise TypeError("Missing 'db_instance_id' argument")
+        if backup_method is None and 'backupMethod' in kwargs:
             backup_method = kwargs['backupMethod']
-        if 'backupStrategy' in kwargs:
+        if backup_strategy is None and 'backupStrategy' in kwargs:
             backup_strategy = kwargs['backupStrategy']
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'dbName' in kwargs:
+        if db_name is None and 'dbName' in kwargs:
             db_name = kwargs['dbName']
-        if 'removeFromState' in kwargs:
+        if remove_from_state is None and 'removeFromState' in kwargs:
             remove_from_state = kwargs['removeFromState']
 
         _setter("db_instance_id", db_instance_id)
@@ -203,23 +205,23 @@ class _RdsBackupState:
              db_name: Optional[pulumi.Input[str]] = None,
              remove_from_state: Optional[pulumi.Input[bool]] = None,
              store_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupId' in kwargs:
+        if backup_id is None and 'backupId' in kwargs:
             backup_id = kwargs['backupId']
-        if 'backupMethod' in kwargs:
+        if backup_method is None and 'backupMethod' in kwargs:
             backup_method = kwargs['backupMethod']
-        if 'backupStrategy' in kwargs:
+        if backup_strategy is None and 'backupStrategy' in kwargs:
             backup_strategy = kwargs['backupStrategy']
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'dbInstanceId' in kwargs:
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
-        if 'dbName' in kwargs:
+        if db_name is None and 'dbName' in kwargs:
             db_name = kwargs['dbName']
-        if 'removeFromState' in kwargs:
+        if remove_from_state is None and 'removeFromState' in kwargs:
             remove_from_state = kwargs['removeFromState']
-        if 'storeStatus' in kwargs:
+        if store_status is None and 'storeStatus' in kwargs:
             store_status = kwargs['storeStatus']
 
         if backup_id is not None:
@@ -359,24 +361,6 @@ class RdsBackup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.149.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_instance = alicloud.rds.Instance("exampleInstance",
-            engine="MySQL",
-            engine_version="5.6",
-            instance_type="rds.mysql.t1.small",
-            instance_storage=30,
-            instance_charge_type="Postpaid",
-            db_instance_storage_type="local_ssd")
-        example_rds_backup = alicloud.rds.RdsBackup("exampleRdsBackup", db_instance_id=example_instance.id)
-        ```
-
         ## Import
 
         RDS Backup can be imported using the id, e.g.
@@ -410,24 +394,6 @@ class RdsBackup(pulumi.CustomResource):
         For information about RDS Backup and how to use it, see [What is Backup](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createbackup).
 
         > **NOTE:** Available since v1.149.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_instance = alicloud.rds.Instance("exampleInstance",
-            engine="MySQL",
-            engine_version="5.6",
-            instance_type="rds.mysql.t1.small",
-            instance_storage=30,
-            instance_charge_type="Postpaid",
-            db_instance_storage_type="local_ssd")
-        example_rds_backup = alicloud.rds.RdsBackup("exampleRdsBackup", db_instance_id=example_instance.id)
-        ```
 
         ## Import
 

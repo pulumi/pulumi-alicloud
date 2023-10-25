@@ -19,68 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.109.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			exampleVpcEndpointService, err := privatelink.NewVpcEndpointService(ctx, "exampleVpcEndpointService", &privatelink.VpcEndpointServiceArgs{
-//				ServiceDescription:   pulumi.String(name),
-//				ConnectBandwidth:     pulumi.Int(103),
-//				AutoAcceptConnection: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("10.0.0.0/8"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: exampleNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = privatelink.NewVpcEndpoint(ctx, "exampleVpcEndpoint", &privatelink.VpcEndpointArgs{
-//				ServiceId: exampleVpcEndpointService.ID(),
-//				SecurityGroupIds: pulumi.StringArray{
-//					exampleSecurityGroup.ID(),
-//				},
-//				VpcId:           exampleNetwork.ID(),
-//				VpcEndpointName: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Private Link Vpc Endpoint can be imported using the id, e.g.

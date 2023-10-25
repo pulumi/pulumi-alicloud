@@ -15,35 +15,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         /// This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
         /// 
         /// &gt; **NOTE:** Available in 1.202.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.DatabaseFilesystem.GetAutoSnapShotPolicies.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             alicloud_dbfs_auto_snap_shot_policy.Default.Id,
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudDbfsAutoSnapShotPolicyExampleId"] = @default.Apply(@default =&gt; @default.Apply(getAutoSnapShotPoliciesResult =&gt; getAutoSnapShotPoliciesResult.AutoSnapShotPolicies[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAutoSnapShotPoliciesResult> InvokeAsync(GetAutoSnapShotPoliciesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAutoSnapShotPoliciesResult>("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", args ?? new GetAutoSnapShotPoliciesArgs(), options.WithDefaults());
@@ -52,35 +23,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         /// This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
         /// 
         /// &gt; **NOTE:** Available in 1.202.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.DatabaseFilesystem.GetAutoSnapShotPolicies.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             alicloud_dbfs_auto_snap_shot_policy.Default.Id,
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudDbfsAutoSnapShotPolicyExampleId"] = @default.Apply(@default =&gt; @default.Apply(getAutoSnapShotPoliciesResult =&gt; getAutoSnapShotPoliciesResult.AutoSnapShotPolicies[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAutoSnapShotPoliciesResult> Invoke(GetAutoSnapShotPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAutoSnapShotPoliciesResult>("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", args ?? new GetAutoSnapShotPoliciesInvokeArgs(), options.WithDefaults());

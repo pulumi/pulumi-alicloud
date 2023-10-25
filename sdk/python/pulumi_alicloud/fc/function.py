@@ -86,9 +86,9 @@ class FunctionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             handler: pulumi.Input[str],
-             runtime: pulumi.Input[str],
-             service: pulumi.Input[str],
+             handler: Optional[pulumi.Input[str]] = None,
+             runtime: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              ca_port: Optional[pulumi.Input[int]] = None,
              code_checksum: Optional[pulumi.Input[str]] = None,
              custom_container_config: Optional[pulumi.Input['FunctionCustomContainerConfigArgs']] = None,
@@ -106,29 +106,35 @@ class FunctionArgs:
              oss_bucket: Optional[pulumi.Input[str]] = None,
              oss_key: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'caPort' in kwargs:
+        if handler is None:
+            raise TypeError("Missing 'handler' argument")
+        if runtime is None:
+            raise TypeError("Missing 'runtime' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if ca_port is None and 'caPort' in kwargs:
             ca_port = kwargs['caPort']
-        if 'codeChecksum' in kwargs:
+        if code_checksum is None and 'codeChecksum' in kwargs:
             code_checksum = kwargs['codeChecksum']
-        if 'customContainerConfig' in kwargs:
+        if custom_container_config is None and 'customContainerConfig' in kwargs:
             custom_container_config = kwargs['customContainerConfig']
-        if 'environmentVariables' in kwargs:
+        if environment_variables is None and 'environmentVariables' in kwargs:
             environment_variables = kwargs['environmentVariables']
-        if 'initializationTimeout' in kwargs:
+        if initialization_timeout is None and 'initializationTimeout' in kwargs:
             initialization_timeout = kwargs['initializationTimeout']
-        if 'instanceConcurrency' in kwargs:
+        if instance_concurrency is None and 'instanceConcurrency' in kwargs:
             instance_concurrency = kwargs['instanceConcurrency']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'memorySize' in kwargs:
+        if memory_size is None and 'memorySize' in kwargs:
             memory_size = kwargs['memorySize']
-        if 'namePrefix' in kwargs:
+        if name_prefix is None and 'namePrefix' in kwargs:
             name_prefix = kwargs['namePrefix']
-        if 'ossBucket' in kwargs:
+        if oss_bucket is None and 'ossBucket' in kwargs:
             oss_bucket = kwargs['ossBucket']
-        if 'ossKey' in kwargs:
+        if oss_key is None and 'ossKey' in kwargs:
             oss_key = kwargs['ossKey']
 
         _setter("handler", handler)
@@ -512,33 +518,33 @@ class _FunctionState:
              runtime: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'caPort' in kwargs:
+        if ca_port is None and 'caPort' in kwargs:
             ca_port = kwargs['caPort']
-        if 'codeChecksum' in kwargs:
+        if code_checksum is None and 'codeChecksum' in kwargs:
             code_checksum = kwargs['codeChecksum']
-        if 'customContainerConfig' in kwargs:
+        if custom_container_config is None and 'customContainerConfig' in kwargs:
             custom_container_config = kwargs['customContainerConfig']
-        if 'environmentVariables' in kwargs:
+        if environment_variables is None and 'environmentVariables' in kwargs:
             environment_variables = kwargs['environmentVariables']
-        if 'functionId' in kwargs:
+        if function_id is None and 'functionId' in kwargs:
             function_id = kwargs['functionId']
-        if 'initializationTimeout' in kwargs:
+        if initialization_timeout is None and 'initializationTimeout' in kwargs:
             initialization_timeout = kwargs['initializationTimeout']
-        if 'instanceConcurrency' in kwargs:
+        if instance_concurrency is None and 'instanceConcurrency' in kwargs:
             instance_concurrency = kwargs['instanceConcurrency']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'lastModified' in kwargs:
+        if last_modified is None and 'lastModified' in kwargs:
             last_modified = kwargs['lastModified']
-        if 'memorySize' in kwargs:
+        if memory_size is None and 'memorySize' in kwargs:
             memory_size = kwargs['memorySize']
-        if 'namePrefix' in kwargs:
+        if name_prefix is None and 'namePrefix' in kwargs:
             name_prefix = kwargs['namePrefix']
-        if 'ossBucket' in kwargs:
+        if oss_bucket is None and 'ossBucket' in kwargs:
             oss_bucket = kwargs['ossBucket']
-        if 'ossKey' in kwargs:
+        if oss_key is None and 'ossKey' in kwargs:
             oss_key = kwargs['ossKey']
 
         if ca_port is not None:
@@ -886,73 +892,6 @@ class Function(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.10.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_project = alicloud.log.Project("defaultProject")
-        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
-        default_role = alicloud.ram.Role("defaultRole",
-            document=\"\"\"  {
-              "Statement": [
-                {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "fc.aliyuncs.com"
-                    ]
-                  }
-                }
-              ],
-              "Version": "1"
-          }
-        \"\"\",
-            description="this is a example",
-            force=True)
-        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
-            role_name=default_role.name,
-            policy_name="AliyunLogFullAccess",
-            policy_type="System")
-        default_service = alicloud.fc.Service("defaultService",
-            description="example-value",
-            role=default_role.arn,
-            log_config=alicloud.fc.ServiceLogConfigArgs(
-                project=default_project.name,
-                logstore=default_store.name,
-                enable_instance_metrics=True,
-                enable_request_metrics=True,
-            ))
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
-        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
-            bucket=default_bucket.id,
-            key="index.py",
-            content=\"\"\"import logging 
-        def handler(event, context): 
-        logger = logging.getLogger() 
-        logger.info('hello world') 
-        return 'hello world'\"\"\")
-        foo = alicloud.fc.Function("foo",
-            service=default_service.name,
-            description="example",
-            oss_bucket=default_bucket.id,
-            oss_key=default_bucket_object.key,
-            memory_size=512,
-            runtime="python3.10",
-            handler="hello.handler",
-            environment_variables={
-                "prefix": "terraform",
-            })
-        ```
         ## Module Support
 
         You can use to the existing fc module
@@ -1004,73 +943,6 @@ class Function(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.10.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_project = alicloud.log.Project("defaultProject")
-        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
-        default_role = alicloud.ram.Role("defaultRole",
-            document=\"\"\"  {
-              "Statement": [
-                {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "fc.aliyuncs.com"
-                    ]
-                  }
-                }
-              ],
-              "Version": "1"
-          }
-        \"\"\",
-            description="this is a example",
-            force=True)
-        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
-            role_name=default_role.name,
-            policy_name="AliyunLogFullAccess",
-            policy_type="System")
-        default_service = alicloud.fc.Service("defaultService",
-            description="example-value",
-            role=default_role.arn,
-            log_config=alicloud.fc.ServiceLogConfigArgs(
-                project=default_project.name,
-                logstore=default_store.name,
-                enable_instance_metrics=True,
-                enable_request_metrics=True,
-            ))
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
-        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
-            bucket=default_bucket.id,
-            key="index.py",
-            content=\"\"\"import logging 
-        def handler(event, context): 
-        logger = logging.getLogger() 
-        logger.info('hello world') 
-        return 'hello world'\"\"\")
-        foo = alicloud.fc.Function("foo",
-            service=default_service.name,
-            description="example",
-            oss_bucket=default_bucket.id,
-            oss_key=default_bucket_object.key,
-            memory_size=512,
-            runtime="python3.10",
-            handler="hello.handler",
-            environment_variables={
-                "prefix": "terraform",
-            })
-        ```
         ## Module Support
 
         You can use to the existing fc module
@@ -1134,11 +1006,7 @@ class Function(pulumi.CustomResource):
 
             __props__.__dict__["ca_port"] = ca_port
             __props__.__dict__["code_checksum"] = code_checksum
-            if custom_container_config is not None and not isinstance(custom_container_config, FunctionCustomContainerConfigArgs):
-                custom_container_config = custom_container_config or {}
-                def _setter(key, value):
-                    custom_container_config[key] = value
-                FunctionCustomContainerConfigArgs._configure(_setter, **custom_container_config)
+            custom_container_config = _utilities.configure(custom_container_config, FunctionCustomContainerConfigArgs, True)
             __props__.__dict__["custom_container_config"] = custom_container_config
             __props__.__dict__["description"] = description
             __props__.__dict__["environment_variables"] = environment_variables

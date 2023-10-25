@@ -37,7 +37,7 @@ class AppTemplateConfigList(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -111,38 +111,62 @@ class GetAppTemplatesTemplateResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_template_creator: str,
-             app_template_id: str,
-             app_template_name: str,
-             component_lists: Sequence[str],
-             config_lists: Sequence['outputs.GetAppTemplatesTemplateConfigListResult'],
-             create_time: str,
-             id: str,
-             integration_mode: str,
-             scene: str,
-             sdk_info: str,
-             standard_room_info: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             app_template_creator: Optional[str] = None,
+             app_template_id: Optional[str] = None,
+             app_template_name: Optional[str] = None,
+             component_lists: Optional[Sequence[str]] = None,
+             config_lists: Optional[Sequence['outputs.GetAppTemplatesTemplateConfigListResult']] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             integration_mode: Optional[str] = None,
+             scene: Optional[str] = None,
+             sdk_info: Optional[str] = None,
+             standard_room_info: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appTemplateCreator' in kwargs:
+        if app_template_creator is None and 'appTemplateCreator' in kwargs:
             app_template_creator = kwargs['appTemplateCreator']
-        if 'appTemplateId' in kwargs:
+        if app_template_creator is None:
+            raise TypeError("Missing 'app_template_creator' argument")
+        if app_template_id is None and 'appTemplateId' in kwargs:
             app_template_id = kwargs['appTemplateId']
-        if 'appTemplateName' in kwargs:
+        if app_template_id is None:
+            raise TypeError("Missing 'app_template_id' argument")
+        if app_template_name is None and 'appTemplateName' in kwargs:
             app_template_name = kwargs['appTemplateName']
-        if 'componentLists' in kwargs:
+        if app_template_name is None:
+            raise TypeError("Missing 'app_template_name' argument")
+        if component_lists is None and 'componentLists' in kwargs:
             component_lists = kwargs['componentLists']
-        if 'configLists' in kwargs:
+        if component_lists is None:
+            raise TypeError("Missing 'component_lists' argument")
+        if config_lists is None and 'configLists' in kwargs:
             config_lists = kwargs['configLists']
-        if 'createTime' in kwargs:
+        if config_lists is None:
+            raise TypeError("Missing 'config_lists' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'integrationMode' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if integration_mode is None and 'integrationMode' in kwargs:
             integration_mode = kwargs['integrationMode']
-        if 'sdkInfo' in kwargs:
+        if integration_mode is None:
+            raise TypeError("Missing 'integration_mode' argument")
+        if scene is None:
+            raise TypeError("Missing 'scene' argument")
+        if sdk_info is None and 'sdkInfo' in kwargs:
             sdk_info = kwargs['sdkInfo']
-        if 'standardRoomInfo' in kwargs:
+        if sdk_info is None:
+            raise TypeError("Missing 'sdk_info' argument")
+        if standard_room_info is None and 'standardRoomInfo' in kwargs:
             standard_room_info = kwargs['standardRoomInfo']
+        if standard_room_info is None:
+            raise TypeError("Missing 'standard_room_info' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("app_template_creator", app_template_creator)
         _setter("app_template_id", app_template_id)
@@ -271,10 +295,14 @@ class GetAppTemplatesTemplateConfigListResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("value", value)

@@ -89,11 +89,11 @@ class TransitRouterVpcAttachmentZoneMapping(dict):
              _setter: Callable[[Any, Any], None],
              vswitch_id: Optional[str] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if vswitch_id is not None:
@@ -149,11 +149,13 @@ class TransitRouterVpnAttachmentZone(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("zone_id", zone_id)
 
@@ -192,21 +194,31 @@ class GetBandwidthLimitsLimitResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth_limit: int,
-             instance_id: str,
-             local_region_id: str,
-             opposite_region_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth_limit: Optional[int] = None,
+             instance_id: Optional[str] = None,
+             local_region_id: Optional[str] = None,
+             opposite_region_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bandwidthLimit' in kwargs:
+        if bandwidth_limit is None and 'bandwidthLimit' in kwargs:
             bandwidth_limit = kwargs['bandwidthLimit']
-        if 'instanceId' in kwargs:
+        if bandwidth_limit is None:
+            raise TypeError("Missing 'bandwidth_limit' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'localRegionId' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if local_region_id is None and 'localRegionId' in kwargs:
             local_region_id = kwargs['localRegionId']
-        if 'oppositeRegionId' in kwargs:
+        if local_region_id is None:
+            raise TypeError("Missing 'local_region_id' argument")
+        if opposite_region_id is None and 'oppositeRegionId' in kwargs:
             opposite_region_id = kwargs['oppositeRegionId']
+        if opposite_region_id is None:
+            raise TypeError("Missing 'opposite_region_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("bandwidth_limit", bandwidth_limit)
         _setter("instance_id", instance_id)
@@ -331,64 +343,108 @@ class GetBandwidthPackagesPackageResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: int,
-             bandwidth_package_charge_type: str,
-             business_status: str,
-             cen_bandwidth_package_id: str,
-             cen_bandwidth_package_name: str,
-             cen_ids: Sequence[str],
-             description: str,
-             expired_time: str,
-             geographic_region_a_id: str,
-             geographic_region_b_id: str,
-             geographic_span_id: str,
-             has_reservation_data: str,
-             id: str,
-             instance_id: str,
-             is_cross_border: bool,
-             name: str,
-             payment_type: str,
-             reservation_active_time: str,
-             reservation_bandwidth: str,
-             reservation_internet_charge_type: str,
-             reservation_order_type: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth: Optional[int] = None,
+             bandwidth_package_charge_type: Optional[str] = None,
+             business_status: Optional[str] = None,
+             cen_bandwidth_package_id: Optional[str] = None,
+             cen_bandwidth_package_name: Optional[str] = None,
+             cen_ids: Optional[Sequence[str]] = None,
+             description: Optional[str] = None,
+             expired_time: Optional[str] = None,
+             geographic_region_a_id: Optional[str] = None,
+             geographic_region_b_id: Optional[str] = None,
+             geographic_span_id: Optional[str] = None,
+             has_reservation_data: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             is_cross_border: Optional[bool] = None,
+             name: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             reservation_active_time: Optional[str] = None,
+             reservation_bandwidth: Optional[str] = None,
+             reservation_internet_charge_type: Optional[str] = None,
+             reservation_order_type: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bandwidthPackageChargeType' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if bandwidth_package_charge_type is None and 'bandwidthPackageChargeType' in kwargs:
             bandwidth_package_charge_type = kwargs['bandwidthPackageChargeType']
-        if 'businessStatus' in kwargs:
+        if bandwidth_package_charge_type is None:
+            raise TypeError("Missing 'bandwidth_package_charge_type' argument")
+        if business_status is None and 'businessStatus' in kwargs:
             business_status = kwargs['businessStatus']
-        if 'cenBandwidthPackageId' in kwargs:
+        if business_status is None:
+            raise TypeError("Missing 'business_status' argument")
+        if cen_bandwidth_package_id is None and 'cenBandwidthPackageId' in kwargs:
             cen_bandwidth_package_id = kwargs['cenBandwidthPackageId']
-        if 'cenBandwidthPackageName' in kwargs:
+        if cen_bandwidth_package_id is None:
+            raise TypeError("Missing 'cen_bandwidth_package_id' argument")
+        if cen_bandwidth_package_name is None and 'cenBandwidthPackageName' in kwargs:
             cen_bandwidth_package_name = kwargs['cenBandwidthPackageName']
-        if 'cenIds' in kwargs:
+        if cen_bandwidth_package_name is None:
+            raise TypeError("Missing 'cen_bandwidth_package_name' argument")
+        if cen_ids is None and 'cenIds' in kwargs:
             cen_ids = kwargs['cenIds']
-        if 'expiredTime' in kwargs:
+        if cen_ids is None:
+            raise TypeError("Missing 'cen_ids' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'geographicRegionAId' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if geographic_region_a_id is None and 'geographicRegionAId' in kwargs:
             geographic_region_a_id = kwargs['geographicRegionAId']
-        if 'geographicRegionBId' in kwargs:
+        if geographic_region_a_id is None:
+            raise TypeError("Missing 'geographic_region_a_id' argument")
+        if geographic_region_b_id is None and 'geographicRegionBId' in kwargs:
             geographic_region_b_id = kwargs['geographicRegionBId']
-        if 'geographicSpanId' in kwargs:
+        if geographic_region_b_id is None:
+            raise TypeError("Missing 'geographic_region_b_id' argument")
+        if geographic_span_id is None and 'geographicSpanId' in kwargs:
             geographic_span_id = kwargs['geographicSpanId']
-        if 'hasReservationData' in kwargs:
+        if geographic_span_id is None:
+            raise TypeError("Missing 'geographic_span_id' argument")
+        if has_reservation_data is None and 'hasReservationData' in kwargs:
             has_reservation_data = kwargs['hasReservationData']
-        if 'instanceId' in kwargs:
+        if has_reservation_data is None:
+            raise TypeError("Missing 'has_reservation_data' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'isCrossBorder' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if is_cross_border is None and 'isCrossBorder' in kwargs:
             is_cross_border = kwargs['isCrossBorder']
-        if 'paymentType' in kwargs:
+        if is_cross_border is None:
+            raise TypeError("Missing 'is_cross_border' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'reservationActiveTime' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if reservation_active_time is None and 'reservationActiveTime' in kwargs:
             reservation_active_time = kwargs['reservationActiveTime']
-        if 'reservationBandwidth' in kwargs:
+        if reservation_active_time is None:
+            raise TypeError("Missing 'reservation_active_time' argument")
+        if reservation_bandwidth is None and 'reservationBandwidth' in kwargs:
             reservation_bandwidth = kwargs['reservationBandwidth']
-        if 'reservationInternetChargeType' in kwargs:
+        if reservation_bandwidth is None:
+            raise TypeError("Missing 'reservation_bandwidth' argument")
+        if reservation_internet_charge_type is None and 'reservationInternetChargeType' in kwargs:
             reservation_internet_charge_type = kwargs['reservationInternetChargeType']
-        if 'reservationOrderType' in kwargs:
+        if reservation_internet_charge_type is None:
+            raise TypeError("Missing 'reservation_internet_charge_type' argument")
+        if reservation_order_type is None and 'reservationOrderType' in kwargs:
             reservation_order_type = kwargs['reservationOrderType']
+        if reservation_order_type is None:
+            raise TypeError("Missing 'reservation_order_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("bandwidth", bandwidth)
         _setter("bandwidth_package_charge_type", bandwidth_package_charge_type)
@@ -619,25 +675,39 @@ class GetChildInstanceRouteEntryToAttachmentsAttachmentResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cen_id: str,
-             child_instance_route_table_id: str,
-             destination_cidr_block: str,
-             id: str,
-             service_type: str,
-             status: str,
-             transit_router_attachment_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cen_id: Optional[str] = None,
+             child_instance_route_table_id: Optional[str] = None,
+             destination_cidr_block: Optional[str] = None,
+             id: Optional[str] = None,
+             service_type: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_router_attachment_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'childInstanceRouteTableId' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if child_instance_route_table_id is None and 'childInstanceRouteTableId' in kwargs:
             child_instance_route_table_id = kwargs['childInstanceRouteTableId']
-        if 'destinationCidrBlock' in kwargs:
+        if child_instance_route_table_id is None:
+            raise TypeError("Missing 'child_instance_route_table_id' argument")
+        if destination_cidr_block is None and 'destinationCidrBlock' in kwargs:
             destination_cidr_block = kwargs['destinationCidrBlock']
-        if 'serviceType' in kwargs:
+        if destination_cidr_block is None:
+            raise TypeError("Missing 'destination_cidr_block' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if service_type is None and 'serviceType' in kwargs:
             service_type = kwargs['serviceType']
-        if 'transitRouterAttachmentId' in kwargs:
+        if service_type is None:
+            raise TypeError("Missing 'service_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
             transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if transit_router_attachment_id is None:
+            raise TypeError("Missing 'transit_router_attachment_id' argument")
 
         _setter("cen_id", cen_id)
         _setter("child_instance_route_table_id", child_instance_route_table_id)
@@ -739,26 +809,42 @@ class GetFlowlogsFlowlogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cen_id: str,
-             description: str,
-             flow_log_id: str,
-             flow_log_name: str,
-             id: str,
-             log_store_name: str,
-             project_name: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cen_id: Optional[str] = None,
+             description: Optional[str] = None,
+             flow_log_id: Optional[str] = None,
+             flow_log_name: Optional[str] = None,
+             id: Optional[str] = None,
+             log_store_name: Optional[str] = None,
+             project_name: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'flowLogId' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if flow_log_id is None and 'flowLogId' in kwargs:
             flow_log_id = kwargs['flowLogId']
-        if 'flowLogName' in kwargs:
+        if flow_log_id is None:
+            raise TypeError("Missing 'flow_log_id' argument")
+        if flow_log_name is None and 'flowLogName' in kwargs:
             flow_log_name = kwargs['flowLogName']
-        if 'logStoreName' in kwargs:
+        if flow_log_name is None:
+            raise TypeError("Missing 'flow_log_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if log_store_name is None and 'logStoreName' in kwargs:
             log_store_name = kwargs['logStoreName']
-        if 'projectName' in kwargs:
+        if log_store_name is None:
+            raise TypeError("Missing 'log_store_name' argument")
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
+        if project_name is None:
+            raise TypeError("Missing 'project_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("cen_id", cen_id)
         _setter("description", description)
@@ -869,28 +955,44 @@ class GetInstanceAttachmentsAttachmentResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             child_instance_attach_time: str,
-             child_instance_id: str,
-             child_instance_owner_id: int,
-             child_instance_region_id: str,
-             child_instance_type: str,
-             id: str,
-             instance_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             child_instance_attach_time: Optional[str] = None,
+             child_instance_id: Optional[str] = None,
+             child_instance_owner_id: Optional[int] = None,
+             child_instance_region_id: Optional[str] = None,
+             child_instance_type: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'childInstanceAttachTime' in kwargs:
+        if child_instance_attach_time is None and 'childInstanceAttachTime' in kwargs:
             child_instance_attach_time = kwargs['childInstanceAttachTime']
-        if 'childInstanceId' in kwargs:
+        if child_instance_attach_time is None:
+            raise TypeError("Missing 'child_instance_attach_time' argument")
+        if child_instance_id is None and 'childInstanceId' in kwargs:
             child_instance_id = kwargs['childInstanceId']
-        if 'childInstanceOwnerId' in kwargs:
+        if child_instance_id is None:
+            raise TypeError("Missing 'child_instance_id' argument")
+        if child_instance_owner_id is None and 'childInstanceOwnerId' in kwargs:
             child_instance_owner_id = kwargs['childInstanceOwnerId']
-        if 'childInstanceRegionId' in kwargs:
+        if child_instance_owner_id is None:
+            raise TypeError("Missing 'child_instance_owner_id' argument")
+        if child_instance_region_id is None and 'childInstanceRegionId' in kwargs:
             child_instance_region_id = kwargs['childInstanceRegionId']
-        if 'childInstanceType' in kwargs:
+        if child_instance_region_id is None:
+            raise TypeError("Missing 'child_instance_region_id' argument")
+        if child_instance_type is None and 'childInstanceType' in kwargs:
             child_instance_type = kwargs['childInstanceType']
-        if 'instanceId' in kwargs:
+        if child_instance_type is None:
+            raise TypeError("Missing 'child_instance_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("child_instance_attach_time", child_instance_attach_time)
         _setter("child_instance_id", child_instance_id)
@@ -1007,28 +1109,48 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cen_bandwidth_package_ids: Sequence[str],
-             cen_id: str,
-             cen_instance_name: str,
-             create_time: str,
-             description: str,
-             id: str,
-             name: str,
-             protection_level: str,
-             status: str,
-             tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cen_bandwidth_package_ids: Optional[Sequence[str]] = None,
+             cen_id: Optional[str] = None,
+             cen_instance_name: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             protection_level: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenBandwidthPackageIds' in kwargs:
+        if cen_bandwidth_package_ids is None and 'cenBandwidthPackageIds' in kwargs:
             cen_bandwidth_package_ids = kwargs['cenBandwidthPackageIds']
-        if 'cenId' in kwargs:
+        if cen_bandwidth_package_ids is None:
+            raise TypeError("Missing 'cen_bandwidth_package_ids' argument")
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'cenInstanceName' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if cen_instance_name is None and 'cenInstanceName' in kwargs:
             cen_instance_name = kwargs['cenInstanceName']
-        if 'createTime' in kwargs:
+        if cen_instance_name is None:
+            raise TypeError("Missing 'cen_instance_name' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'protectionLevel' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if protection_level is None and 'protectionLevel' in kwargs:
             protection_level = kwargs['protectionLevel']
+        if protection_level is None:
+            raise TypeError("Missing 'protection_level' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
 
         _setter("cen_bandwidth_package_ids", cen_bandwidth_package_ids)
         _setter("cen_id", cen_id)
@@ -1154,25 +1276,39 @@ class GetInterRegionTrafficQosPoliciesPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             inter_region_traffic_qos_policy_description: str,
-             inter_region_traffic_qos_policy_id: str,
-             inter_region_traffic_qos_policy_name: str,
-             status: str,
-             transit_router_attachment_id: str,
-             transit_router_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             inter_region_traffic_qos_policy_description: Optional[str] = None,
+             inter_region_traffic_qos_policy_id: Optional[str] = None,
+             inter_region_traffic_qos_policy_name: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_router_attachment_id: Optional[str] = None,
+             transit_router_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'interRegionTrafficQosPolicyDescription' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if inter_region_traffic_qos_policy_description is None and 'interRegionTrafficQosPolicyDescription' in kwargs:
             inter_region_traffic_qos_policy_description = kwargs['interRegionTrafficQosPolicyDescription']
-        if 'interRegionTrafficQosPolicyId' in kwargs:
+        if inter_region_traffic_qos_policy_description is None:
+            raise TypeError("Missing 'inter_region_traffic_qos_policy_description' argument")
+        if inter_region_traffic_qos_policy_id is None and 'interRegionTrafficQosPolicyId' in kwargs:
             inter_region_traffic_qos_policy_id = kwargs['interRegionTrafficQosPolicyId']
-        if 'interRegionTrafficQosPolicyName' in kwargs:
+        if inter_region_traffic_qos_policy_id is None:
+            raise TypeError("Missing 'inter_region_traffic_qos_policy_id' argument")
+        if inter_region_traffic_qos_policy_name is None and 'interRegionTrafficQosPolicyName' in kwargs:
             inter_region_traffic_qos_policy_name = kwargs['interRegionTrafficQosPolicyName']
-        if 'transitRouterAttachmentId' in kwargs:
+        if inter_region_traffic_qos_policy_name is None:
+            raise TypeError("Missing 'inter_region_traffic_qos_policy_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
             transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if 'transitRouterId' in kwargs:
+        if transit_router_attachment_id is None:
+            raise TypeError("Missing 'transit_router_attachment_id' argument")
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
+        if transit_router_id is None:
+            raise TypeError("Missing 'transit_router_id' argument")
 
         _setter("id", id)
         _setter("inter_region_traffic_qos_policy_description", inter_region_traffic_qos_policy_description)
@@ -1273,26 +1409,42 @@ class GetInterRegionTrafficQosQueuesQueueResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dscps: Sequence[str],
-             id: str,
-             inter_region_traffic_qos_queue_description: str,
-             inter_region_traffic_qos_queue_id: str,
-             inter_region_traffic_qos_queue_name: str,
-             remain_bandwidth_percent: int,
-             status: str,
-             traffic_qos_policy_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             dscps: Optional[Sequence[str]] = None,
+             id: Optional[str] = None,
+             inter_region_traffic_qos_queue_description: Optional[str] = None,
+             inter_region_traffic_qos_queue_id: Optional[str] = None,
+             inter_region_traffic_qos_queue_name: Optional[str] = None,
+             remain_bandwidth_percent: Optional[int] = None,
+             status: Optional[str] = None,
+             traffic_qos_policy_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'interRegionTrafficQosQueueDescription' in kwargs:
+        if dscps is None:
+            raise TypeError("Missing 'dscps' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if inter_region_traffic_qos_queue_description is None and 'interRegionTrafficQosQueueDescription' in kwargs:
             inter_region_traffic_qos_queue_description = kwargs['interRegionTrafficQosQueueDescription']
-        if 'interRegionTrafficQosQueueId' in kwargs:
+        if inter_region_traffic_qos_queue_description is None:
+            raise TypeError("Missing 'inter_region_traffic_qos_queue_description' argument")
+        if inter_region_traffic_qos_queue_id is None and 'interRegionTrafficQosQueueId' in kwargs:
             inter_region_traffic_qos_queue_id = kwargs['interRegionTrafficQosQueueId']
-        if 'interRegionTrafficQosQueueName' in kwargs:
+        if inter_region_traffic_qos_queue_id is None:
+            raise TypeError("Missing 'inter_region_traffic_qos_queue_id' argument")
+        if inter_region_traffic_qos_queue_name is None and 'interRegionTrafficQosQueueName' in kwargs:
             inter_region_traffic_qos_queue_name = kwargs['interRegionTrafficQosQueueName']
-        if 'remainBandwidthPercent' in kwargs:
+        if inter_region_traffic_qos_queue_name is None:
+            raise TypeError("Missing 'inter_region_traffic_qos_queue_name' argument")
+        if remain_bandwidth_percent is None and 'remainBandwidthPercent' in kwargs:
             remain_bandwidth_percent = kwargs['remainBandwidthPercent']
-        if 'trafficQosPolicyId' in kwargs:
+        if remain_bandwidth_percent is None:
+            raise TypeError("Missing 'remain_bandwidth_percent' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if traffic_qos_policy_id is None and 'trafficQosPolicyId' in kwargs:
             traffic_qos_policy_id = kwargs['trafficQosPolicyId']
+        if traffic_qos_policy_id is None:
+            raise TypeError("Missing 'traffic_qos_policy_id' argument")
 
         _setter("dscps", dscps)
         _setter("id", id)
@@ -1397,25 +1549,39 @@ class GetPrivateZonesZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_region_id: str,
-             cen_id: str,
-             host_region_id: str,
-             host_vpc_id: str,
-             id: str,
-             private_zone_dns_servers: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_region_id: Optional[str] = None,
+             cen_id: Optional[str] = None,
+             host_region_id: Optional[str] = None,
+             host_vpc_id: Optional[str] = None,
+             id: Optional[str] = None,
+             private_zone_dns_servers: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessRegionId' in kwargs:
+        if access_region_id is None and 'accessRegionId' in kwargs:
             access_region_id = kwargs['accessRegionId']
-        if 'cenId' in kwargs:
+        if access_region_id is None:
+            raise TypeError("Missing 'access_region_id' argument")
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'hostRegionId' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if host_region_id is None and 'hostRegionId' in kwargs:
             host_region_id = kwargs['hostRegionId']
-        if 'hostVpcId' in kwargs:
+        if host_region_id is None:
+            raise TypeError("Missing 'host_region_id' argument")
+        if host_vpc_id is None and 'hostVpcId' in kwargs:
             host_vpc_id = kwargs['hostVpcId']
-        if 'privateZoneDnsServers' in kwargs:
+        if host_vpc_id is None:
+            raise TypeError("Missing 'host_vpc_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if private_zone_dns_servers is None and 'privateZoneDnsServers' in kwargs:
             private_zone_dns_servers = kwargs['privateZoneDnsServers']
+        if private_zone_dns_servers is None:
+            raise TypeError("Missing 'private_zone_dns_servers' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("access_region_id", access_region_id)
         _setter("cen_id", cen_id)
@@ -1508,21 +1674,31 @@ class GetRegionRouteEntriesEntryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: str,
-             next_hop_id: str,
-             next_hop_region_id: str,
-             next_hop_type: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cidr_block: Optional[str] = None,
+             next_hop_id: Optional[str] = None,
+             next_hop_region_id: Optional[str] = None,
+             next_hop_type: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'nextHopId' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if next_hop_id is None and 'nextHopId' in kwargs:
             next_hop_id = kwargs['nextHopId']
-        if 'nextHopRegionId' in kwargs:
+        if next_hop_id is None:
+            raise TypeError("Missing 'next_hop_id' argument")
+        if next_hop_region_id is None and 'nextHopRegionId' in kwargs:
             next_hop_region_id = kwargs['nextHopRegionId']
-        if 'nextHopType' in kwargs:
+        if next_hop_region_id is None:
+            raise TypeError("Missing 'next_hop_region_id' argument")
+        if next_hop_type is None and 'nextHopType' in kwargs:
             next_hop_type = kwargs['nextHopType']
+        if next_hop_type is None:
+            raise TypeError("Missing 'next_hop_type' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("cidr_block", cidr_block)
         _setter("next_hop_id", next_hop_id)
@@ -1606,30 +1782,46 @@ class GetRouteEntriesEntryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: str,
-             conflicts: Sequence['outputs.GetRouteEntriesEntryConflictResult'],
-             next_hop_id: str,
-             next_hop_type: str,
-             operational_mode: bool,
-             publish_status: str,
-             route_table_id: str,
-             route_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cidr_block: Optional[str] = None,
+             conflicts: Optional[Sequence['outputs.GetRouteEntriesEntryConflictResult']] = None,
+             next_hop_id: Optional[str] = None,
+             next_hop_type: Optional[str] = None,
+             operational_mode: Optional[bool] = None,
+             publish_status: Optional[str] = None,
+             route_table_id: Optional[str] = None,
+             route_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'nextHopId' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if conflicts is None:
+            raise TypeError("Missing 'conflicts' argument")
+        if next_hop_id is None and 'nextHopId' in kwargs:
             next_hop_id = kwargs['nextHopId']
-        if 'nextHopType' in kwargs:
+        if next_hop_id is None:
+            raise TypeError("Missing 'next_hop_id' argument")
+        if next_hop_type is None and 'nextHopType' in kwargs:
             next_hop_type = kwargs['nextHopType']
-        if 'operationalMode' in kwargs:
+        if next_hop_type is None:
+            raise TypeError("Missing 'next_hop_type' argument")
+        if operational_mode is None and 'operationalMode' in kwargs:
             operational_mode = kwargs['operationalMode']
-        if 'publishStatus' in kwargs:
+        if operational_mode is None:
+            raise TypeError("Missing 'operational_mode' argument")
+        if publish_status is None and 'publishStatus' in kwargs:
             publish_status = kwargs['publishStatus']
-        if 'routeTableId' in kwargs:
+        if publish_status is None:
+            raise TypeError("Missing 'publish_status' argument")
+        if route_table_id is None and 'routeTableId' in kwargs:
             route_table_id = kwargs['routeTableId']
-        if 'routeType' in kwargs:
+        if route_table_id is None:
+            raise TypeError("Missing 'route_table_id' argument")
+        if route_type is None and 'routeType' in kwargs:
             route_type = kwargs['routeType']
+        if route_type is None:
+            raise TypeError("Missing 'route_type' argument")
 
         _setter("cidr_block", cidr_block)
         _setter("conflicts", conflicts)
@@ -1731,21 +1923,31 @@ class GetRouteEntriesEntryConflictResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: str,
-             instance_id: str,
-             instance_type: str,
-             region_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cidr_block: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             region_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'instanceId' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceType' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'regionId' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("cidr_block", cidr_block)
         _setter("instance_id", instance_id)
@@ -1895,88 +2097,148 @@ class GetRouteMapsMapResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             as_path_match_mode: str,
-             cen_id: str,
-             cen_region_id: str,
-             cidr_match_mode: str,
-             community_match_mode: str,
-             community_operate_mode: str,
-             description: str,
-             destination_child_instance_types: Sequence[str],
-             destination_cidr_blocks: Sequence[str],
-             destination_instance_ids: Sequence[str],
-             destination_instance_ids_reverse_match: bool,
-             destination_route_table_ids: Sequence[str],
-             id: str,
-             map_result: str,
-             match_asns: Sequence[str],
-             match_community_sets: Sequence[str],
-             next_priority: int,
-             operate_community_sets: Sequence[str],
-             preference: int,
-             prepend_as_paths: Sequence[str],
-             priority: int,
-             route_map_id: str,
-             route_types: Sequence[str],
-             source_child_instance_types: Sequence[str],
-             source_instance_ids: Sequence[str],
-             source_instance_ids_reverse_match: bool,
-             source_region_ids: Sequence[str],
-             source_route_table_ids: Sequence[str],
-             status: str,
-             transmit_direction: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             as_path_match_mode: Optional[str] = None,
+             cen_id: Optional[str] = None,
+             cen_region_id: Optional[str] = None,
+             cidr_match_mode: Optional[str] = None,
+             community_match_mode: Optional[str] = None,
+             community_operate_mode: Optional[str] = None,
+             description: Optional[str] = None,
+             destination_child_instance_types: Optional[Sequence[str]] = None,
+             destination_cidr_blocks: Optional[Sequence[str]] = None,
+             destination_instance_ids: Optional[Sequence[str]] = None,
+             destination_instance_ids_reverse_match: Optional[bool] = None,
+             destination_route_table_ids: Optional[Sequence[str]] = None,
+             id: Optional[str] = None,
+             map_result: Optional[str] = None,
+             match_asns: Optional[Sequence[str]] = None,
+             match_community_sets: Optional[Sequence[str]] = None,
+             next_priority: Optional[int] = None,
+             operate_community_sets: Optional[Sequence[str]] = None,
+             preference: Optional[int] = None,
+             prepend_as_paths: Optional[Sequence[str]] = None,
+             priority: Optional[int] = None,
+             route_map_id: Optional[str] = None,
+             route_types: Optional[Sequence[str]] = None,
+             source_child_instance_types: Optional[Sequence[str]] = None,
+             source_instance_ids: Optional[Sequence[str]] = None,
+             source_instance_ids_reverse_match: Optional[bool] = None,
+             source_region_ids: Optional[Sequence[str]] = None,
+             source_route_table_ids: Optional[Sequence[str]] = None,
+             status: Optional[str] = None,
+             transmit_direction: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'asPathMatchMode' in kwargs:
+        if as_path_match_mode is None and 'asPathMatchMode' in kwargs:
             as_path_match_mode = kwargs['asPathMatchMode']
-        if 'cenId' in kwargs:
+        if as_path_match_mode is None:
+            raise TypeError("Missing 'as_path_match_mode' argument")
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'cenRegionId' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if cen_region_id is None and 'cenRegionId' in kwargs:
             cen_region_id = kwargs['cenRegionId']
-        if 'cidrMatchMode' in kwargs:
+        if cen_region_id is None:
+            raise TypeError("Missing 'cen_region_id' argument")
+        if cidr_match_mode is None and 'cidrMatchMode' in kwargs:
             cidr_match_mode = kwargs['cidrMatchMode']
-        if 'communityMatchMode' in kwargs:
+        if cidr_match_mode is None:
+            raise TypeError("Missing 'cidr_match_mode' argument")
+        if community_match_mode is None and 'communityMatchMode' in kwargs:
             community_match_mode = kwargs['communityMatchMode']
-        if 'communityOperateMode' in kwargs:
+        if community_match_mode is None:
+            raise TypeError("Missing 'community_match_mode' argument")
+        if community_operate_mode is None and 'communityOperateMode' in kwargs:
             community_operate_mode = kwargs['communityOperateMode']
-        if 'destinationChildInstanceTypes' in kwargs:
+        if community_operate_mode is None:
+            raise TypeError("Missing 'community_operate_mode' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if destination_child_instance_types is None and 'destinationChildInstanceTypes' in kwargs:
             destination_child_instance_types = kwargs['destinationChildInstanceTypes']
-        if 'destinationCidrBlocks' in kwargs:
+        if destination_child_instance_types is None:
+            raise TypeError("Missing 'destination_child_instance_types' argument")
+        if destination_cidr_blocks is None and 'destinationCidrBlocks' in kwargs:
             destination_cidr_blocks = kwargs['destinationCidrBlocks']
-        if 'destinationInstanceIds' in kwargs:
+        if destination_cidr_blocks is None:
+            raise TypeError("Missing 'destination_cidr_blocks' argument")
+        if destination_instance_ids is None and 'destinationInstanceIds' in kwargs:
             destination_instance_ids = kwargs['destinationInstanceIds']
-        if 'destinationInstanceIdsReverseMatch' in kwargs:
+        if destination_instance_ids is None:
+            raise TypeError("Missing 'destination_instance_ids' argument")
+        if destination_instance_ids_reverse_match is None and 'destinationInstanceIdsReverseMatch' in kwargs:
             destination_instance_ids_reverse_match = kwargs['destinationInstanceIdsReverseMatch']
-        if 'destinationRouteTableIds' in kwargs:
+        if destination_instance_ids_reverse_match is None:
+            raise TypeError("Missing 'destination_instance_ids_reverse_match' argument")
+        if destination_route_table_ids is None and 'destinationRouteTableIds' in kwargs:
             destination_route_table_ids = kwargs['destinationRouteTableIds']
-        if 'mapResult' in kwargs:
+        if destination_route_table_ids is None:
+            raise TypeError("Missing 'destination_route_table_ids' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if map_result is None and 'mapResult' in kwargs:
             map_result = kwargs['mapResult']
-        if 'matchAsns' in kwargs:
+        if map_result is None:
+            raise TypeError("Missing 'map_result' argument")
+        if match_asns is None and 'matchAsns' in kwargs:
             match_asns = kwargs['matchAsns']
-        if 'matchCommunitySets' in kwargs:
+        if match_asns is None:
+            raise TypeError("Missing 'match_asns' argument")
+        if match_community_sets is None and 'matchCommunitySets' in kwargs:
             match_community_sets = kwargs['matchCommunitySets']
-        if 'nextPriority' in kwargs:
+        if match_community_sets is None:
+            raise TypeError("Missing 'match_community_sets' argument")
+        if next_priority is None and 'nextPriority' in kwargs:
             next_priority = kwargs['nextPriority']
-        if 'operateCommunitySets' in kwargs:
+        if next_priority is None:
+            raise TypeError("Missing 'next_priority' argument")
+        if operate_community_sets is None and 'operateCommunitySets' in kwargs:
             operate_community_sets = kwargs['operateCommunitySets']
-        if 'prependAsPaths' in kwargs:
+        if operate_community_sets is None:
+            raise TypeError("Missing 'operate_community_sets' argument")
+        if preference is None:
+            raise TypeError("Missing 'preference' argument")
+        if prepend_as_paths is None and 'prependAsPaths' in kwargs:
             prepend_as_paths = kwargs['prependAsPaths']
-        if 'routeMapId' in kwargs:
+        if prepend_as_paths is None:
+            raise TypeError("Missing 'prepend_as_paths' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if route_map_id is None and 'routeMapId' in kwargs:
             route_map_id = kwargs['routeMapId']
-        if 'routeTypes' in kwargs:
+        if route_map_id is None:
+            raise TypeError("Missing 'route_map_id' argument")
+        if route_types is None and 'routeTypes' in kwargs:
             route_types = kwargs['routeTypes']
-        if 'sourceChildInstanceTypes' in kwargs:
+        if route_types is None:
+            raise TypeError("Missing 'route_types' argument")
+        if source_child_instance_types is None and 'sourceChildInstanceTypes' in kwargs:
             source_child_instance_types = kwargs['sourceChildInstanceTypes']
-        if 'sourceInstanceIds' in kwargs:
+        if source_child_instance_types is None:
+            raise TypeError("Missing 'source_child_instance_types' argument")
+        if source_instance_ids is None and 'sourceInstanceIds' in kwargs:
             source_instance_ids = kwargs['sourceInstanceIds']
-        if 'sourceInstanceIdsReverseMatch' in kwargs:
+        if source_instance_ids is None:
+            raise TypeError("Missing 'source_instance_ids' argument")
+        if source_instance_ids_reverse_match is None and 'sourceInstanceIdsReverseMatch' in kwargs:
             source_instance_ids_reverse_match = kwargs['sourceInstanceIdsReverseMatch']
-        if 'sourceRegionIds' in kwargs:
+        if source_instance_ids_reverse_match is None:
+            raise TypeError("Missing 'source_instance_ids_reverse_match' argument")
+        if source_region_ids is None and 'sourceRegionIds' in kwargs:
             source_region_ids = kwargs['sourceRegionIds']
-        if 'sourceRouteTableIds' in kwargs:
+        if source_region_ids is None:
+            raise TypeError("Missing 'source_region_ids' argument")
+        if source_route_table_ids is None and 'sourceRouteTableIds' in kwargs:
             source_route_table_ids = kwargs['sourceRouteTableIds']
-        if 'transmitDirection' in kwargs:
+        if source_route_table_ids is None:
+            raise TypeError("Missing 'source_route_table_ids' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transmit_direction is None and 'transmitDirection' in kwargs:
             transmit_direction = kwargs['transmitDirection']
+        if transmit_direction is None:
+            raise TypeError("Missing 'transmit_direction' argument")
 
         _setter("as_path_match_mode", as_path_match_mode)
         _setter("cen_id", cen_id)
@@ -2291,28 +2553,48 @@ class GetRouteServicesServiceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_region_id: str,
-             cen_id: str,
-             cidrs: Sequence[str],
-             description: str,
-             host: str,
-             host_region_id: str,
-             host_vpc_id: str,
-             id: str,
-             status: str,
-             update_interval: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_region_id: Optional[str] = None,
+             cen_id: Optional[str] = None,
+             cidrs: Optional[Sequence[str]] = None,
+             description: Optional[str] = None,
+             host: Optional[str] = None,
+             host_region_id: Optional[str] = None,
+             host_vpc_id: Optional[str] = None,
+             id: Optional[str] = None,
+             status: Optional[str] = None,
+             update_interval: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessRegionId' in kwargs:
+        if access_region_id is None and 'accessRegionId' in kwargs:
             access_region_id = kwargs['accessRegionId']
-        if 'cenId' in kwargs:
+        if access_region_id is None:
+            raise TypeError("Missing 'access_region_id' argument")
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'hostRegionId' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if cidrs is None:
+            raise TypeError("Missing 'cidrs' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if host_region_id is None and 'hostRegionId' in kwargs:
             host_region_id = kwargs['hostRegionId']
-        if 'hostVpcId' in kwargs:
+        if host_region_id is None:
+            raise TypeError("Missing 'host_region_id' argument")
+        if host_vpc_id is None and 'hostVpcId' in kwargs:
             host_vpc_id = kwargs['hostVpcId']
-        if 'updateInterval' in kwargs:
+        if host_vpc_id is None:
+            raise TypeError("Missing 'host_vpc_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if update_interval is None and 'updateInterval' in kwargs:
             update_interval = kwargs['updateInterval']
+        if update_interval is None:
+            raise TypeError("Missing 'update_interval' argument")
 
         _setter("access_region_id", access_region_id)
         _setter("cen_id", cen_id)
@@ -2441,24 +2723,40 @@ class GetTrafficMarkingPoliciesPolicyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             id: str,
-             marking_dscp: int,
-             priority: int,
-             status: str,
-             traffic_marking_policy_id: str,
-             traffic_marking_policy_name: str,
-             transit_router_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             marking_dscp: Optional[int] = None,
+             priority: Optional[int] = None,
+             status: Optional[str] = None,
+             traffic_marking_policy_id: Optional[str] = None,
+             traffic_marking_policy_name: Optional[str] = None,
+             transit_router_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'markingDscp' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if marking_dscp is None and 'markingDscp' in kwargs:
             marking_dscp = kwargs['markingDscp']
-        if 'trafficMarkingPolicyId' in kwargs:
+        if marking_dscp is None:
+            raise TypeError("Missing 'marking_dscp' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if traffic_marking_policy_id is None and 'trafficMarkingPolicyId' in kwargs:
             traffic_marking_policy_id = kwargs['trafficMarkingPolicyId']
-        if 'trafficMarkingPolicyName' in kwargs:
+        if traffic_marking_policy_id is None:
+            raise TypeError("Missing 'traffic_marking_policy_id' argument")
+        if traffic_marking_policy_name is None and 'trafficMarkingPolicyName' in kwargs:
             traffic_marking_policy_name = kwargs['trafficMarkingPolicyName']
-        if 'transitRouterId' in kwargs:
+        if traffic_marking_policy_name is None:
+            raise TypeError("Missing 'traffic_marking_policy_name' argument")
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
+        if transit_router_id is None:
+            raise TypeError("Missing 'transit_router_id' argument")
 
         _setter("description", description)
         _setter("id", id)
@@ -2569,28 +2867,44 @@ class GetTransitRouteTableAggregationsTransitRouteTableAggregationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             route_type: str,
-             status: str,
-             transit_route_table_aggregation_cidr: str,
-             transit_route_table_aggregation_description: str,
-             transit_route_table_aggregation_name: str,
-             transit_route_table_aggregation_scope: str,
-             transit_route_table_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             route_type: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_route_table_aggregation_cidr: Optional[str] = None,
+             transit_route_table_aggregation_description: Optional[str] = None,
+             transit_route_table_aggregation_name: Optional[str] = None,
+             transit_route_table_aggregation_scope: Optional[str] = None,
+             transit_route_table_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'routeType' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if route_type is None and 'routeType' in kwargs:
             route_type = kwargs['routeType']
-        if 'transitRouteTableAggregationCidr' in kwargs:
+        if route_type is None:
+            raise TypeError("Missing 'route_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_route_table_aggregation_cidr is None and 'transitRouteTableAggregationCidr' in kwargs:
             transit_route_table_aggregation_cidr = kwargs['transitRouteTableAggregationCidr']
-        if 'transitRouteTableAggregationDescription' in kwargs:
+        if transit_route_table_aggregation_cidr is None:
+            raise TypeError("Missing 'transit_route_table_aggregation_cidr' argument")
+        if transit_route_table_aggregation_description is None and 'transitRouteTableAggregationDescription' in kwargs:
             transit_route_table_aggregation_description = kwargs['transitRouteTableAggregationDescription']
-        if 'transitRouteTableAggregationName' in kwargs:
+        if transit_route_table_aggregation_description is None:
+            raise TypeError("Missing 'transit_route_table_aggregation_description' argument")
+        if transit_route_table_aggregation_name is None and 'transitRouteTableAggregationName' in kwargs:
             transit_route_table_aggregation_name = kwargs['transitRouteTableAggregationName']
-        if 'transitRouteTableAggregationScope' in kwargs:
+        if transit_route_table_aggregation_name is None:
+            raise TypeError("Missing 'transit_route_table_aggregation_name' argument")
+        if transit_route_table_aggregation_scope is None and 'transitRouteTableAggregationScope' in kwargs:
             transit_route_table_aggregation_scope = kwargs['transitRouteTableAggregationScope']
-        if 'transitRouteTableId' in kwargs:
+        if transit_route_table_aggregation_scope is None:
+            raise TypeError("Missing 'transit_route_table_aggregation_scope' argument")
+        if transit_route_table_id is None and 'transitRouteTableId' in kwargs:
             transit_route_table_id = kwargs['transitRouteTableId']
+        if transit_route_table_id is None:
+            raise TypeError("Missing 'transit_route_table_id' argument")
 
         _setter("id", id)
         _setter("route_type", route_type)
@@ -2683,14 +2997,18 @@ class GetTransitRouterAvailableResourcesResourceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             master_zones: Sequence[str],
-             slave_zones: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             master_zones: Optional[Sequence[str]] = None,
+             slave_zones: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'masterZones' in kwargs:
+        if master_zones is None and 'masterZones' in kwargs:
             master_zones = kwargs['masterZones']
-        if 'slaveZones' in kwargs:
+        if master_zones is None:
+            raise TypeError("Missing 'master_zones' argument")
+        if slave_zones is None and 'slaveZones' in kwargs:
             slave_zones = kwargs['slaveZones']
+        if slave_zones is None:
+            raise TypeError("Missing 'slave_zones' argument")
 
         _setter("master_zones", master_zones)
         _setter("slave_zones", slave_zones)
@@ -2747,24 +3065,40 @@ class GetTransitRouterCidrsCidrResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr: str,
-             description: str,
-             family: str,
-             id: str,
-             publish_cidr_route: bool,
-             transit_router_cidr_id: str,
-             transit_router_cidr_name: str,
-             transit_router_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cidr: Optional[str] = None,
+             description: Optional[str] = None,
+             family: Optional[str] = None,
+             id: Optional[str] = None,
+             publish_cidr_route: Optional[bool] = None,
+             transit_router_cidr_id: Optional[str] = None,
+             transit_router_cidr_name: Optional[str] = None,
+             transit_router_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'publishCidrRoute' in kwargs:
+        if cidr is None:
+            raise TypeError("Missing 'cidr' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if family is None:
+            raise TypeError("Missing 'family' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if publish_cidr_route is None and 'publishCidrRoute' in kwargs:
             publish_cidr_route = kwargs['publishCidrRoute']
-        if 'transitRouterCidrId' in kwargs:
+        if publish_cidr_route is None:
+            raise TypeError("Missing 'publish_cidr_route' argument")
+        if transit_router_cidr_id is None and 'transitRouterCidrId' in kwargs:
             transit_router_cidr_id = kwargs['transitRouterCidrId']
-        if 'transitRouterCidrName' in kwargs:
+        if transit_router_cidr_id is None:
+            raise TypeError("Missing 'transit_router_cidr_id' argument")
+        if transit_router_cidr_name is None and 'transitRouterCidrName' in kwargs:
             transit_router_cidr_name = kwargs['transitRouterCidrName']
-        if 'transitRouterId' in kwargs:
+        if transit_router_cidr_name is None:
+            raise TypeError("Missing 'transit_router_cidr_name' argument")
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
+        if transit_router_id is None:
+            raise TypeError("Missing 'transit_router_id' argument")
 
         _setter("cidr", cidr)
         _setter("description", description)
@@ -2875,28 +3209,44 @@ class GetTransitRouterMulticastDomainAssociationsAssociationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             resource_id: str,
-             resource_owner_id: int,
-             resource_type: str,
-             status: str,
-             transit_router_attachment_id: str,
-             transit_router_multicast_domain_id: str,
-             vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             resource_id: Optional[str] = None,
+             resource_owner_id: Optional[int] = None,
+             resource_type: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_router_attachment_id: Optional[str] = None,
+             transit_router_multicast_domain_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceId' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceOwnerId' in kwargs:
+        if resource_id is None:
+            raise TypeError("Missing 'resource_id' argument")
+        if resource_owner_id is None and 'resourceOwnerId' in kwargs:
             resource_owner_id = kwargs['resourceOwnerId']
-        if 'resourceType' in kwargs:
+        if resource_owner_id is None:
+            raise TypeError("Missing 'resource_owner_id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'transitRouterAttachmentId' in kwargs:
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
             transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if 'transitRouterMulticastDomainId' in kwargs:
+        if transit_router_attachment_id is None:
+            raise TypeError("Missing 'transit_router_attachment_id' argument")
+        if transit_router_multicast_domain_id is None and 'transitRouterMulticastDomainId' in kwargs:
             transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
-        if 'vswitchId' in kwargs:
+        if transit_router_multicast_domain_id is None:
+            raise TypeError("Missing 'transit_router_multicast_domain_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("id", id)
         _setter("resource_id", resource_id)
@@ -3001,22 +3351,34 @@ class GetTransitRouterMulticastDomainMembersMemberResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_ip_address: str,
-             id: str,
-             network_interface_id: str,
-             status: str,
-             transit_router_multicast_domain_id: str,
-             vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             group_ip_address: Optional[str] = None,
+             id: Optional[str] = None,
+             network_interface_id: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_router_multicast_domain_id: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupIpAddress' in kwargs:
+        if group_ip_address is None and 'groupIpAddress' in kwargs:
             group_ip_address = kwargs['groupIpAddress']
-        if 'networkInterfaceId' in kwargs:
+        if group_ip_address is None:
+            raise TypeError("Missing 'group_ip_address' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if network_interface_id is None and 'networkInterfaceId' in kwargs:
             network_interface_id = kwargs['networkInterfaceId']
-        if 'transitRouterMulticastDomainId' in kwargs:
+        if network_interface_id is None:
+            raise TypeError("Missing 'network_interface_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_router_multicast_domain_id is None and 'transitRouterMulticastDomainId' in kwargs:
             transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
-        if 'vpcId' in kwargs:
+        if transit_router_multicast_domain_id is None:
+            raise TypeError("Missing 'transit_router_multicast_domain_id' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
 
         _setter("group_ip_address", group_ip_address)
         _setter("id", id)
@@ -3100,19 +3462,29 @@ class GetTransitRouterMulticastDomainPeerMembersMemberResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_ip_address: str,
-             id: str,
-             peer_transit_router_multicast_domain_id: str,
-             status: str,
-             transit_router_multicast_domain_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             group_ip_address: Optional[str] = None,
+             id: Optional[str] = None,
+             peer_transit_router_multicast_domain_id: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_router_multicast_domain_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupIpAddress' in kwargs:
+        if group_ip_address is None and 'groupIpAddress' in kwargs:
             group_ip_address = kwargs['groupIpAddress']
-        if 'peerTransitRouterMulticastDomainId' in kwargs:
+        if group_ip_address is None:
+            raise TypeError("Missing 'group_ip_address' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if peer_transit_router_multicast_domain_id is None and 'peerTransitRouterMulticastDomainId' in kwargs:
             peer_transit_router_multicast_domain_id = kwargs['peerTransitRouterMulticastDomainId']
-        if 'transitRouterMulticastDomainId' in kwargs:
+        if peer_transit_router_multicast_domain_id is None:
+            raise TypeError("Missing 'peer_transit_router_multicast_domain_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_router_multicast_domain_id is None and 'transitRouterMulticastDomainId' in kwargs:
             transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
+        if transit_router_multicast_domain_id is None:
+            raise TypeError("Missing 'transit_router_multicast_domain_id' argument")
 
         _setter("group_ip_address", group_ip_address)
         _setter("id", id)
@@ -3190,22 +3562,34 @@ class GetTransitRouterMulticastDomainSourcesSourceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_ip_address: str,
-             id: str,
-             network_interface_id: str,
-             status: str,
-             transit_router_multicast_domain_id: str,
-             vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             group_ip_address: Optional[str] = None,
+             id: Optional[str] = None,
+             network_interface_id: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_router_multicast_domain_id: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupIpAddress' in kwargs:
+        if group_ip_address is None and 'groupIpAddress' in kwargs:
             group_ip_address = kwargs['groupIpAddress']
-        if 'networkInterfaceId' in kwargs:
+        if group_ip_address is None:
+            raise TypeError("Missing 'group_ip_address' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if network_interface_id is None and 'networkInterfaceId' in kwargs:
             network_interface_id = kwargs['networkInterfaceId']
-        if 'transitRouterMulticastDomainId' in kwargs:
+        if network_interface_id is None:
+            raise TypeError("Missing 'network_interface_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_router_multicast_domain_id is None and 'transitRouterMulticastDomainId' in kwargs:
             transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
-        if 'vpcId' in kwargs:
+        if transit_router_multicast_domain_id is None:
+            raise TypeError("Missing 'transit_router_multicast_domain_id' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
 
         _setter("group_ip_address", group_ip_address)
         _setter("id", id)
@@ -3292,22 +3676,34 @@ class GetTransitRouterMulticastDomainsDomainResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             status: str,
-             transit_router_id: str,
-             transit_router_multicast_domain_description: str,
-             transit_router_multicast_domain_id: str,
-             transit_router_multicast_domain_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_router_id: Optional[str] = None,
+             transit_router_multicast_domain_description: Optional[str] = None,
+             transit_router_multicast_domain_id: Optional[str] = None,
+             transit_router_multicast_domain_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'transitRouterId' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'transitRouterMulticastDomainDescription' in kwargs:
+        if transit_router_id is None:
+            raise TypeError("Missing 'transit_router_id' argument")
+        if transit_router_multicast_domain_description is None and 'transitRouterMulticastDomainDescription' in kwargs:
             transit_router_multicast_domain_description = kwargs['transitRouterMulticastDomainDescription']
-        if 'transitRouterMulticastDomainId' in kwargs:
+        if transit_router_multicast_domain_description is None:
+            raise TypeError("Missing 'transit_router_multicast_domain_description' argument")
+        if transit_router_multicast_domain_id is None and 'transitRouterMulticastDomainId' in kwargs:
             transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
-        if 'transitRouterMulticastDomainName' in kwargs:
+        if transit_router_multicast_domain_id is None:
+            raise TypeError("Missing 'transit_router_multicast_domain_id' argument")
+        if transit_router_multicast_domain_name is None and 'transitRouterMulticastDomainName' in kwargs:
             transit_router_multicast_domain_name = kwargs['transitRouterMulticastDomainName']
+        if transit_router_multicast_domain_name is None:
+            raise TypeError("Missing 'transit_router_multicast_domain_name' argument")
 
         _setter("id", id)
         _setter("status", status)
@@ -3418,44 +3814,72 @@ class GetTransitRouterPeerAttachmentsAttachmentResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_publish_route_enabled: bool,
-             bandwidth: int,
-             cen_bandwidth_package_id: str,
-             geographic_span_id: str,
-             id: str,
-             peer_transit_router_id: str,
-             peer_transit_router_owner_id: str,
-             peer_transit_router_region_id: str,
-             resource_type: str,
-             status: str,
-             transit_router_attachment_description: str,
-             transit_router_attachment_id: str,
-             transit_router_attachment_name: str,
-             transit_router_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auto_publish_route_enabled: Optional[bool] = None,
+             bandwidth: Optional[int] = None,
+             cen_bandwidth_package_id: Optional[str] = None,
+             geographic_span_id: Optional[str] = None,
+             id: Optional[str] = None,
+             peer_transit_router_id: Optional[str] = None,
+             peer_transit_router_owner_id: Optional[str] = None,
+             peer_transit_router_region_id: Optional[str] = None,
+             resource_type: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_router_attachment_description: Optional[str] = None,
+             transit_router_attachment_id: Optional[str] = None,
+             transit_router_attachment_name: Optional[str] = None,
+             transit_router_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoPublishRouteEnabled' in kwargs:
+        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
             auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
-        if 'cenBandwidthPackageId' in kwargs:
+        if auto_publish_route_enabled is None:
+            raise TypeError("Missing 'auto_publish_route_enabled' argument")
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if cen_bandwidth_package_id is None and 'cenBandwidthPackageId' in kwargs:
             cen_bandwidth_package_id = kwargs['cenBandwidthPackageId']
-        if 'geographicSpanId' in kwargs:
+        if cen_bandwidth_package_id is None:
+            raise TypeError("Missing 'cen_bandwidth_package_id' argument")
+        if geographic_span_id is None and 'geographicSpanId' in kwargs:
             geographic_span_id = kwargs['geographicSpanId']
-        if 'peerTransitRouterId' in kwargs:
+        if geographic_span_id is None:
+            raise TypeError("Missing 'geographic_span_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if peer_transit_router_id is None and 'peerTransitRouterId' in kwargs:
             peer_transit_router_id = kwargs['peerTransitRouterId']
-        if 'peerTransitRouterOwnerId' in kwargs:
+        if peer_transit_router_id is None:
+            raise TypeError("Missing 'peer_transit_router_id' argument")
+        if peer_transit_router_owner_id is None and 'peerTransitRouterOwnerId' in kwargs:
             peer_transit_router_owner_id = kwargs['peerTransitRouterOwnerId']
-        if 'peerTransitRouterRegionId' in kwargs:
+        if peer_transit_router_owner_id is None:
+            raise TypeError("Missing 'peer_transit_router_owner_id' argument")
+        if peer_transit_router_region_id is None and 'peerTransitRouterRegionId' in kwargs:
             peer_transit_router_region_id = kwargs['peerTransitRouterRegionId']
-        if 'resourceType' in kwargs:
+        if peer_transit_router_region_id is None:
+            raise TypeError("Missing 'peer_transit_router_region_id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'transitRouterAttachmentDescription' in kwargs:
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
             transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if 'transitRouterAttachmentId' in kwargs:
+        if transit_router_attachment_description is None:
+            raise TypeError("Missing 'transit_router_attachment_description' argument")
+        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
             transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if 'transitRouterAttachmentName' in kwargs:
+        if transit_router_attachment_id is None:
+            raise TypeError("Missing 'transit_router_attachment_id' argument")
+        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
             transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if 'transitRouterId' in kwargs:
+        if transit_router_attachment_name is None:
+            raise TypeError("Missing 'transit_router_attachment_name' argument")
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
+        if transit_router_id is None:
+            raise TypeError("Missing 'transit_router_id' argument")
 
         _setter("auto_publish_route_enabled", auto_publish_route_enabled)
         _setter("bandwidth", bandwidth)
@@ -3623,31 +4047,49 @@ class GetTransitRouterPrefixListAssociationsAssociationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             next_hop: str,
-             next_hop_instance_id: str,
-             next_hop_type: str,
-             owner_uid: int,
-             prefix_list_id: str,
-             status: str,
-             transit_router_id: str,
-             transit_router_table_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             next_hop: Optional[str] = None,
+             next_hop_instance_id: Optional[str] = None,
+             next_hop_type: Optional[str] = None,
+             owner_uid: Optional[int] = None,
+             prefix_list_id: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_router_id: Optional[str] = None,
+             transit_router_table_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nextHop' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if next_hop is None and 'nextHop' in kwargs:
             next_hop = kwargs['nextHop']
-        if 'nextHopInstanceId' in kwargs:
+        if next_hop is None:
+            raise TypeError("Missing 'next_hop' argument")
+        if next_hop_instance_id is None and 'nextHopInstanceId' in kwargs:
             next_hop_instance_id = kwargs['nextHopInstanceId']
-        if 'nextHopType' in kwargs:
+        if next_hop_instance_id is None:
+            raise TypeError("Missing 'next_hop_instance_id' argument")
+        if next_hop_type is None and 'nextHopType' in kwargs:
             next_hop_type = kwargs['nextHopType']
-        if 'ownerUid' in kwargs:
+        if next_hop_type is None:
+            raise TypeError("Missing 'next_hop_type' argument")
+        if owner_uid is None and 'ownerUid' in kwargs:
             owner_uid = kwargs['ownerUid']
-        if 'prefixListId' in kwargs:
+        if owner_uid is None:
+            raise TypeError("Missing 'owner_uid' argument")
+        if prefix_list_id is None and 'prefixListId' in kwargs:
             prefix_list_id = kwargs['prefixListId']
-        if 'transitRouterId' in kwargs:
+        if prefix_list_id is None:
+            raise TypeError("Missing 'prefix_list_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'transitRouterTableId' in kwargs:
+        if transit_router_id is None:
+            raise TypeError("Missing 'transit_router_id' argument")
+        if transit_router_table_id is None and 'transitRouterTableId' in kwargs:
             transit_router_table_id = kwargs['transitRouterTableId']
+        if transit_router_table_id is None:
+            raise TypeError("Missing 'transit_router_table_id' argument")
 
         _setter("id", id)
         _setter("next_hop", next_hop)
@@ -3765,31 +4207,49 @@ class GetTransitRouterRouteEntriesEntryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             status: str,
-             transit_router_route_entry_description: str,
-             transit_router_route_entry_destination_cidr_block: str,
-             transit_router_route_entry_id: str,
-             transit_router_route_entry_name: str,
-             transit_router_route_entry_next_hop_id: str,
-             transit_router_route_entry_next_hop_type: str,
-             transit_router_route_entry_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_router_route_entry_description: Optional[str] = None,
+             transit_router_route_entry_destination_cidr_block: Optional[str] = None,
+             transit_router_route_entry_id: Optional[str] = None,
+             transit_router_route_entry_name: Optional[str] = None,
+             transit_router_route_entry_next_hop_id: Optional[str] = None,
+             transit_router_route_entry_next_hop_type: Optional[str] = None,
+             transit_router_route_entry_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'transitRouterRouteEntryDescription' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_router_route_entry_description is None and 'transitRouterRouteEntryDescription' in kwargs:
             transit_router_route_entry_description = kwargs['transitRouterRouteEntryDescription']
-        if 'transitRouterRouteEntryDestinationCidrBlock' in kwargs:
+        if transit_router_route_entry_description is None:
+            raise TypeError("Missing 'transit_router_route_entry_description' argument")
+        if transit_router_route_entry_destination_cidr_block is None and 'transitRouterRouteEntryDestinationCidrBlock' in kwargs:
             transit_router_route_entry_destination_cidr_block = kwargs['transitRouterRouteEntryDestinationCidrBlock']
-        if 'transitRouterRouteEntryId' in kwargs:
+        if transit_router_route_entry_destination_cidr_block is None:
+            raise TypeError("Missing 'transit_router_route_entry_destination_cidr_block' argument")
+        if transit_router_route_entry_id is None and 'transitRouterRouteEntryId' in kwargs:
             transit_router_route_entry_id = kwargs['transitRouterRouteEntryId']
-        if 'transitRouterRouteEntryName' in kwargs:
+        if transit_router_route_entry_id is None:
+            raise TypeError("Missing 'transit_router_route_entry_id' argument")
+        if transit_router_route_entry_name is None and 'transitRouterRouteEntryName' in kwargs:
             transit_router_route_entry_name = kwargs['transitRouterRouteEntryName']
-        if 'transitRouterRouteEntryNextHopId' in kwargs:
+        if transit_router_route_entry_name is None:
+            raise TypeError("Missing 'transit_router_route_entry_name' argument")
+        if transit_router_route_entry_next_hop_id is None and 'transitRouterRouteEntryNextHopId' in kwargs:
             transit_router_route_entry_next_hop_id = kwargs['transitRouterRouteEntryNextHopId']
-        if 'transitRouterRouteEntryNextHopType' in kwargs:
+        if transit_router_route_entry_next_hop_id is None:
+            raise TypeError("Missing 'transit_router_route_entry_next_hop_id' argument")
+        if transit_router_route_entry_next_hop_type is None and 'transitRouterRouteEntryNextHopType' in kwargs:
             transit_router_route_entry_next_hop_type = kwargs['transitRouterRouteEntryNextHopType']
-        if 'transitRouterRouteEntryType' in kwargs:
+        if transit_router_route_entry_next_hop_type is None:
+            raise TypeError("Missing 'transit_router_route_entry_next_hop_type' argument")
+        if transit_router_route_entry_type is None and 'transitRouterRouteEntryType' in kwargs:
             transit_router_route_entry_type = kwargs['transitRouterRouteEntryType']
+        if transit_router_route_entry_type is None:
+            raise TypeError("Missing 'transit_router_route_entry_type' argument")
 
         _setter("id", id)
         _setter("status", status)
@@ -3887,22 +4347,34 @@ class GetTransitRouterRouteTableAssociationsAssociationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             resource_id: str,
-             resource_type: str,
-             status: str,
-             transit_router_attachment_id: str,
-             transit_router_route_table_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             resource_id: Optional[str] = None,
+             resource_type: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_router_attachment_id: Optional[str] = None,
+             transit_router_route_table_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceId' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceType' in kwargs:
+        if resource_id is None:
+            raise TypeError("Missing 'resource_id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'transitRouterAttachmentId' in kwargs:
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
             transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if 'transitRouterRouteTableId' in kwargs:
+        if transit_router_attachment_id is None:
+            raise TypeError("Missing 'transit_router_attachment_id' argument")
+        if transit_router_route_table_id is None and 'transitRouterRouteTableId' in kwargs:
             transit_router_route_table_id = kwargs['transitRouterRouteTableId']
+        if transit_router_route_table_id is None:
+            raise TypeError("Missing 'transit_router_route_table_id' argument")
 
         _setter("id", id)
         _setter("resource_id", resource_id)
@@ -3982,19 +4454,29 @@ class GetTransitRouterRouteTablePropagationsPropagationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             resource_id: str,
-             resource_type: str,
-             status: str,
-             transit_router_attachment_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             resource_id: Optional[str] = None,
+             resource_type: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_router_attachment_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceId' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceType' in kwargs:
+        if resource_id is None:
+            raise TypeError("Missing 'resource_id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'transitRouterAttachmentId' in kwargs:
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
             transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if transit_router_attachment_id is None:
+            raise TypeError("Missing 'transit_router_attachment_id' argument")
 
         _setter("id", id)
         _setter("resource_id", resource_id)
@@ -4068,22 +4550,34 @@ class GetTransitRouterRouteTablesTableResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             status: str,
-             transit_router_route_table_description: str,
-             transit_router_route_table_id: str,
-             transit_router_route_table_name: str,
-             transit_router_route_table_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_router_route_table_description: Optional[str] = None,
+             transit_router_route_table_id: Optional[str] = None,
+             transit_router_route_table_name: Optional[str] = None,
+             transit_router_route_table_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'transitRouterRouteTableDescription' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_router_route_table_description is None and 'transitRouterRouteTableDescription' in kwargs:
             transit_router_route_table_description = kwargs['transitRouterRouteTableDescription']
-        if 'transitRouterRouteTableId' in kwargs:
+        if transit_router_route_table_description is None:
+            raise TypeError("Missing 'transit_router_route_table_description' argument")
+        if transit_router_route_table_id is None and 'transitRouterRouteTableId' in kwargs:
             transit_router_route_table_id = kwargs['transitRouterRouteTableId']
-        if 'transitRouterRouteTableName' in kwargs:
+        if transit_router_route_table_id is None:
+            raise TypeError("Missing 'transit_router_route_table_id' argument")
+        if transit_router_route_table_name is None and 'transitRouterRouteTableName' in kwargs:
             transit_router_route_table_name = kwargs['transitRouterRouteTableName']
-        if 'transitRouterRouteTableType' in kwargs:
+        if transit_router_route_table_name is None:
+            raise TypeError("Missing 'transit_router_route_table_name' argument")
+        if transit_router_route_table_type is None and 'transitRouterRouteTableType' in kwargs:
             transit_router_route_table_type = kwargs['transitRouterRouteTableType']
+        if transit_router_route_table_type is None:
+            raise TypeError("Missing 'transit_router_route_table_type' argument")
 
         _setter("id", id)
         _setter("status", status)
@@ -4174,31 +4668,49 @@ class GetTransitRouterVbrAttachmentsAttachmentResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_publish_route_enabled: bool,
-             id: str,
-             resource_type: str,
-             status: str,
-             transit_router_attachment_description: str,
-             transit_router_attachment_id: str,
-             transit_router_attachment_name: str,
-             vbr_id: str,
-             vbr_owner_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auto_publish_route_enabled: Optional[bool] = None,
+             id: Optional[str] = None,
+             resource_type: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_router_attachment_description: Optional[str] = None,
+             transit_router_attachment_id: Optional[str] = None,
+             transit_router_attachment_name: Optional[str] = None,
+             vbr_id: Optional[str] = None,
+             vbr_owner_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoPublishRouteEnabled' in kwargs:
+        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
             auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
-        if 'resourceType' in kwargs:
+        if auto_publish_route_enabled is None:
+            raise TypeError("Missing 'auto_publish_route_enabled' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'transitRouterAttachmentDescription' in kwargs:
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
             transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if 'transitRouterAttachmentId' in kwargs:
+        if transit_router_attachment_description is None:
+            raise TypeError("Missing 'transit_router_attachment_description' argument")
+        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
             transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if 'transitRouterAttachmentName' in kwargs:
+        if transit_router_attachment_id is None:
+            raise TypeError("Missing 'transit_router_attachment_id' argument")
+        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
             transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if 'vbrId' in kwargs:
+        if transit_router_attachment_name is None:
+            raise TypeError("Missing 'transit_router_attachment_name' argument")
+        if vbr_id is None and 'vbrId' in kwargs:
             vbr_id = kwargs['vbrId']
-        if 'vbrOwnerId' in kwargs:
+        if vbr_id is None:
+            raise TypeError("Missing 'vbr_id' argument")
+        if vbr_owner_id is None and 'vbrOwnerId' in kwargs:
             vbr_owner_id = kwargs['vbrOwnerId']
+        if vbr_owner_id is None:
+            raise TypeError("Missing 'vbr_owner_id' argument")
 
         _setter("auto_publish_route_enabled", auto_publish_route_enabled)
         _setter("id", id)
@@ -4318,34 +4830,54 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             payment_type: str,
-             resource_type: str,
-             status: str,
-             transit_router_attachment_description: str,
-             transit_router_attachment_id: str,
-             transit_router_attachment_name: str,
-             vpc_id: str,
-             vpc_owner_id: str,
-             zone_mappings: Sequence['outputs.GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             resource_type: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_router_attachment_description: Optional[str] = None,
+             transit_router_attachment_id: Optional[str] = None,
+             transit_router_attachment_name: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vpc_owner_id: Optional[str] = None,
+             zone_mappings: Optional[Sequence['outputs.GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'paymentType' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceType' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'transitRouterAttachmentDescription' in kwargs:
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
             transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if 'transitRouterAttachmentId' in kwargs:
+        if transit_router_attachment_description is None:
+            raise TypeError("Missing 'transit_router_attachment_description' argument")
+        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
             transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if 'transitRouterAttachmentName' in kwargs:
+        if transit_router_attachment_id is None:
+            raise TypeError("Missing 'transit_router_attachment_id' argument")
+        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
             transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if 'vpcId' in kwargs:
+        if transit_router_attachment_name is None:
+            raise TypeError("Missing 'transit_router_attachment_name' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vpcOwnerId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vpc_owner_id is None and 'vpcOwnerId' in kwargs:
             vpc_owner_id = kwargs['vpcOwnerId']
-        if 'zoneMappings' in kwargs:
+        if vpc_owner_id is None:
+            raise TypeError("Missing 'vpc_owner_id' argument")
+        if zone_mappings is None and 'zoneMappings' in kwargs:
             zone_mappings = kwargs['zoneMappings']
+        if zone_mappings is None:
+            raise TypeError("Missing 'zone_mappings' argument")
 
         _setter("id", id)
         _setter("payment_type", payment_type)
@@ -4456,14 +4988,18 @@ class GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vswitch_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("vswitch_id", vswitch_id)
         _setter("zone_id", zone_id)
@@ -4530,38 +5066,62 @@ class GetTransitRouterVpnAttachmentsAttachmentResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_publish_route_enabled: bool,
-             create_time: str,
-             id: str,
-             resource_type: str,
-             status: str,
-             transit_router_attachment_description: str,
-             transit_router_attachment_id: str,
-             transit_router_attachment_name: str,
-             transit_router_id: str,
-             vpn_id: str,
-             vpn_owner_id: str,
-             zones: Sequence['outputs.GetTransitRouterVpnAttachmentsAttachmentZoneResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             auto_publish_route_enabled: Optional[bool] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             resource_type: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_router_attachment_description: Optional[str] = None,
+             transit_router_attachment_id: Optional[str] = None,
+             transit_router_attachment_name: Optional[str] = None,
+             transit_router_id: Optional[str] = None,
+             vpn_id: Optional[str] = None,
+             vpn_owner_id: Optional[str] = None,
+             zones: Optional[Sequence['outputs.GetTransitRouterVpnAttachmentsAttachmentZoneResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoPublishRouteEnabled' in kwargs:
+        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
             auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
-        if 'createTime' in kwargs:
+        if auto_publish_route_enabled is None:
+            raise TypeError("Missing 'auto_publish_route_enabled' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'resourceType' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'transitRouterAttachmentDescription' in kwargs:
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
             transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if 'transitRouterAttachmentId' in kwargs:
+        if transit_router_attachment_description is None:
+            raise TypeError("Missing 'transit_router_attachment_description' argument")
+        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
             transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if 'transitRouterAttachmentName' in kwargs:
+        if transit_router_attachment_id is None:
+            raise TypeError("Missing 'transit_router_attachment_id' argument")
+        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
             transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if 'transitRouterId' in kwargs:
+        if transit_router_attachment_name is None:
+            raise TypeError("Missing 'transit_router_attachment_name' argument")
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'vpnId' in kwargs:
+        if transit_router_id is None:
+            raise TypeError("Missing 'transit_router_id' argument")
+        if vpn_id is None and 'vpnId' in kwargs:
             vpn_id = kwargs['vpnId']
-        if 'vpnOwnerId' in kwargs:
+        if vpn_id is None:
+            raise TypeError("Missing 'vpn_id' argument")
+        if vpn_owner_id is None and 'vpnOwnerId' in kwargs:
             vpn_owner_id = kwargs['vpnOwnerId']
+        if vpn_owner_id is None:
+            raise TypeError("Missing 'vpn_owner_id' argument")
+        if zones is None:
+            raise TypeError("Missing 'zones' argument")
 
         _setter("auto_publish_route_enabled", auto_publish_route_enabled)
         _setter("create_time", create_time)
@@ -4681,11 +5241,13 @@ class GetTransitRouterVpnAttachmentsAttachmentZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("zone_id", zone_id)
 
@@ -4736,29 +5298,47 @@ class GetTransitRoutersTransitRouterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ali_uid: str,
-             cen_id: str,
-             id: str,
-             status: str,
-             transit_router_description: str,
-             transit_router_id: str,
-             transit_router_name: str,
-             type: str,
-             xgw_vip: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ali_uid: Optional[str] = None,
+             cen_id: Optional[str] = None,
+             id: Optional[str] = None,
+             status: Optional[str] = None,
+             transit_router_description: Optional[str] = None,
+             transit_router_id: Optional[str] = None,
+             transit_router_name: Optional[str] = None,
+             type: Optional[str] = None,
+             xgw_vip: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aliUid' in kwargs:
+        if ali_uid is None and 'aliUid' in kwargs:
             ali_uid = kwargs['aliUid']
-        if 'cenId' in kwargs:
+        if ali_uid is None:
+            raise TypeError("Missing 'ali_uid' argument")
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'transitRouterDescription' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if transit_router_description is None and 'transitRouterDescription' in kwargs:
             transit_router_description = kwargs['transitRouterDescription']
-        if 'transitRouterId' in kwargs:
+        if transit_router_description is None:
+            raise TypeError("Missing 'transit_router_description' argument")
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'transitRouterName' in kwargs:
+        if transit_router_id is None:
+            raise TypeError("Missing 'transit_router_id' argument")
+        if transit_router_name is None and 'transitRouterName' in kwargs:
             transit_router_name = kwargs['transitRouterName']
-        if 'xgwVip' in kwargs:
+        if transit_router_name is None:
+            raise TypeError("Missing 'transit_router_name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if xgw_vip is None and 'xgwVip' in kwargs:
             xgw_vip = kwargs['xgwVip']
+        if xgw_vip is None:
+            raise TypeError("Missing 'xgw_vip' argument")
 
         _setter("ali_uid", ali_uid)
         _setter("cen_id", cen_id)
@@ -4878,30 +5458,46 @@ class GetVbrHealthChecksCheckResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cen_id: str,
-             health_check_interval: int,
-             health_check_source_ip: str,
-             health_check_target_ip: str,
-             healthy_threshold: int,
-             id: str,
-             vbr_instance_id: str,
-             vbr_instance_region_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cen_id: Optional[str] = None,
+             health_check_interval: Optional[int] = None,
+             health_check_source_ip: Optional[str] = None,
+             health_check_target_ip: Optional[str] = None,
+             healthy_threshold: Optional[int] = None,
+             id: Optional[str] = None,
+             vbr_instance_id: Optional[str] = None,
+             vbr_instance_region_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'healthCheckInterval' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if health_check_interval is None and 'healthCheckInterval' in kwargs:
             health_check_interval = kwargs['healthCheckInterval']
-        if 'healthCheckSourceIp' in kwargs:
+        if health_check_interval is None:
+            raise TypeError("Missing 'health_check_interval' argument")
+        if health_check_source_ip is None and 'healthCheckSourceIp' in kwargs:
             health_check_source_ip = kwargs['healthCheckSourceIp']
-        if 'healthCheckTargetIp' in kwargs:
+        if health_check_source_ip is None:
+            raise TypeError("Missing 'health_check_source_ip' argument")
+        if health_check_target_ip is None and 'healthCheckTargetIp' in kwargs:
             health_check_target_ip = kwargs['healthCheckTargetIp']
-        if 'healthyThreshold' in kwargs:
+        if health_check_target_ip is None:
+            raise TypeError("Missing 'health_check_target_ip' argument")
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
             healthy_threshold = kwargs['healthyThreshold']
-        if 'vbrInstanceId' in kwargs:
+        if healthy_threshold is None:
+            raise TypeError("Missing 'healthy_threshold' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if vbr_instance_id is None and 'vbrInstanceId' in kwargs:
             vbr_instance_id = kwargs['vbrInstanceId']
-        if 'vbrInstanceRegionId' in kwargs:
+        if vbr_instance_id is None:
+            raise TypeError("Missing 'vbr_instance_id' argument")
+        if vbr_instance_region_id is None and 'vbrInstanceRegionId' in kwargs:
             vbr_instance_region_id = kwargs['vbrInstanceRegionId']
+        if vbr_instance_region_id is None:
+            raise TypeError("Missing 'vbr_instance_region_id' argument")
 
         _setter("cen_id", cen_id)
         _setter("health_check_interval", health_check_interval)

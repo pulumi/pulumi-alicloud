@@ -125,17 +125,6 @@ def get_instance_type_families(generation: Optional[str] = None,
 
     > **NOTE:** Available in 1.54.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.ecs.get_instance_type_families(instance_charge_type="PrePaid")
-    pulumi.export("firstInstanceTypeFamilyId", default.families[0].id)
-    pulumi.export("instanceIds", default.ids)
-    ```
-
 
     :param str generation: The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
     :param str instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
@@ -174,17 +163,6 @@ def get_instance_type_families_output(generation: Optional[pulumi.Input[Optional
     This data source provides the ECS instance type families of Alibaba Cloud.
 
     > **NOTE:** Available in 1.54.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.ecs.get_instance_type_families(instance_charge_type="PrePaid")
-    pulumi.export("firstInstanceTypeFamilyId", default.families[0].id)
-    pulumi.export("instanceIds", default.ids)
-    ```
 
 
     :param str generation: The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).

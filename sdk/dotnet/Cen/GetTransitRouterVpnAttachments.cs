@@ -15,34 +15,6 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.183.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Cen.GetTransitRouterVpnAttachments.Invoke(new()
-        ///     {
-        ///         CenId = "example_value",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cenTransitRouterVpnAttachmentId1"] = ids.Apply(getTransitRouterVpnAttachmentsResult =&gt; getTransitRouterVpnAttachmentsResult.Attachments[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTransitRouterVpnAttachmentsResult> InvokeAsync(GetTransitRouterVpnAttachmentsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterVpnAttachmentsResult>("alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments", args ?? new GetTransitRouterVpnAttachmentsArgs(), options.WithDefaults());
@@ -51,34 +23,6 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.183.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Cen.GetTransitRouterVpnAttachments.Invoke(new()
-        ///     {
-        ///         CenId = "example_value",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cenTransitRouterVpnAttachmentId1"] = ids.Apply(getTransitRouterVpnAttachmentsResult =&gt; getTransitRouterVpnAttachmentsResult.Attachments[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTransitRouterVpnAttachmentsResult> Invoke(GetTransitRouterVpnAttachmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterVpnAttachmentsResult>("alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments", args ?? new GetTransitRouterVpnAttachmentsInvokeArgs(), options.WithDefaults());

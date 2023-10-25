@@ -26,11 +26,13 @@ class DomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             domain_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
 
         _setter("domain_name", domain_name)
 
@@ -67,9 +69,9 @@ class _DomainState:
              _setter: Callable[[Any, Any], None],
              domain_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
 
         if domain_name is not None:
@@ -116,21 +118,6 @@ class Domain(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "alicloud-provider.online"
-        example = alicloud.directmail.Domain("example", domain_name=domain_name)
-        ```
-
         ## Import
 
         Direct Mail Domain can be imported using the id, e.g.
@@ -155,21 +142,6 @@ class Domain(pulumi.CustomResource):
         For information about Direct Mail Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/doc-detail/29414.htm).
 
         > **NOTE:** Available since v1.134.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "alicloud-provider.online"
-        example = alicloud.directmail.Domain("example", domain_name=domain_name)
-        ```
 
         ## Import
 

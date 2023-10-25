@@ -29,14 +29,18 @@ class KeyPairArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key_pair_name: pulumi.Input[str],
-             public_key_body: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key_pair_name: Optional[pulumi.Input[str]] = None,
+             public_key_body: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'publicKeyBody' in kwargs:
+        if key_pair_name is None:
+            raise TypeError("Missing 'key_pair_name' argument")
+        if public_key_body is None and 'publicKeyBody' in kwargs:
             public_key_body = kwargs['publicKeyBody']
+        if public_key_body is None:
+            raise TypeError("Missing 'public_key_body' argument")
 
         _setter("key_pair_name", key_pair_name)
         _setter("public_key_body", public_key_body)
@@ -86,11 +90,11 @@ class _KeyPairState:
              _setter: Callable[[Any, Any], None],
              key_pair_name: Optional[pulumi.Input[str]] = None,
              public_key_body: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'publicKeyBody' in kwargs:
+        if public_key_body is None and 'publicKeyBody' in kwargs:
             public_key_body = kwargs['publicKeyBody']
 
         if key_pair_name is not None:
@@ -138,19 +142,6 @@ class KeyPair(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.130.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ecp.KeyPair("example",
-            key_pair_name="my-KeyPair",
-            public_key_body="ssh-rsa AAAAxxxxxxxxxxtyuudsfsg")
-        ```
-
         ## Import
 
         Elastic Cloud Phone (ECP) Key Pair can be imported using the id, e.g.
@@ -176,19 +167,6 @@ class KeyPair(pulumi.CustomResource):
         For information about Elastic Cloud Phone (ECP) Key Pair and how to use it, see [What is Key Pair](https://help.aliyun.com/document_detail/257197.html).
 
         > **NOTE:** Available in v1.130.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ecp.KeyPair("example",
-            key_pair_name="my-KeyPair",
-            public_key_body="ssh-rsa AAAAxxxxxxxxxxtyuudsfsg")
-        ```
 
         ## Import
 

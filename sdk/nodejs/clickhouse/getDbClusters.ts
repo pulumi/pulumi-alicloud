@@ -10,31 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Click House DBCluster of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
- *     dbClusterVersion: "20.3.10.75",
- *     category: "Basic",
- *     dbClusterClass: "S8",
- *     dbClusterNetworkType: "vpc",
- *     dbNodeGroupCount: 1,
- *     paymentType: "PayAsYouGo",
- *     dbNodeStorage: "500",
- *     storageType: "cloud_essd",
- *     vswitchId: "your_vswitch_id",
- * });
- * const defaultDbClusters = alicloud.clickhouse.getDbClustersOutput({
- *     ids: [defaultDbCluster.id],
- * });
- * export const dbCluster = defaultDbClusters.apply(defaultDbClusters => defaultDbClusters.ids?.[0]);
- * ```
  */
 export function getDbClusters(args?: GetDbClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetDbClustersResult> {
     args = args || {};
@@ -94,31 +69,6 @@ export interface GetDbClustersResult {
  * This data source provides the Click House DBCluster of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
- *     dbClusterVersion: "20.3.10.75",
- *     category: "Basic",
- *     dbClusterClass: "S8",
- *     dbClusterNetworkType: "vpc",
- *     dbNodeGroupCount: 1,
- *     paymentType: "PayAsYouGo",
- *     dbNodeStorage: "500",
- *     storageType: "cloud_essd",
- *     vswitchId: "your_vswitch_id",
- * });
- * const defaultDbClusters = alicloud.clickhouse.getDbClustersOutput({
- *     ids: [defaultDbCluster.id],
- * });
- * export const dbCluster = defaultDbClusters.apply(defaultDbClusters => defaultDbClusters.ids?.[0]);
- * ```
  */
 export function getDbClustersOutput(args?: GetDbClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbClustersResult> {
     return pulumi.output(args).apply((a: any) => getDbClusters(a, opts))

@@ -14,65 +14,6 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// For information about Vpc Ha Vip and how to use it, see [What is Ha Vip](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createhavip).
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testacc-example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var defaultVpc = new AliCloud.Vpc.Network("defaultVpc", new()
-    ///     {
-    ///         Description = "tf-test-acc-vpc",
-    ///         VpcName = name,
-    ///         CidrBlock = "192.168.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultVswitch = new AliCloud.Vpc.Switch("defaultVswitch", new()
-    ///     {
-    ///         VpcId = defaultVpc.Id,
-    ///         CidrBlock = "192.168.0.0/21",
-    ///         VswitchName = $"{name}1",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         Description = "tf-testacc-vswitch",
-    ///     });
-    /// 
-    ///     var defaultRg = new AliCloud.ResourceManager.ResourceGroup("defaultRg", new()
-    ///     {
-    ///         DisplayName = "tf-testacc-rg819",
-    ///         ResourceGroupName = $"{name}2",
-    ///     });
-    /// 
-    ///     var changeRg = new AliCloud.ResourceManager.ResourceGroup("changeRg", new()
-    ///     {
-    ///         DisplayName = "tf-testacc-changerg670",
-    ///         ResourceGroupName = $"{name}3",
-    ///     });
-    /// 
-    ///     var defaultHaVipv2 = new AliCloud.Vpc.HaVipv2("defaultHaVipv2", new()
-    ///     {
-    ///         Description = "test",
-    ///         VswitchId = defaultVswitch.Id,
-    ///         HaVipName = name,
-    ///         IpAddress = "192.168.1.101",
-    ///         ResourceGroupId = defaultRg.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Vpc Ha Vip can be imported using the id, e.g.

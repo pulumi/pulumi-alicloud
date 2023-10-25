@@ -10,28 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.151.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ros.getTemplateScratches({
- *     ids: ["example_value"],
- * });
- * export const rosTemplateScratchId1 = ids.then(ids => ids.scratches?.[0]?.id);
- * const status = alicloud.ros.getTemplateScratches({
- *     status: "GENERATE_COMPLETE",
- * });
- * export const rosTemplateScratchId2 = status.then(status => status.scratches?.[0]?.id);
- * const templateScratchType = alicloud.ros.getTemplateScratches({
- *     templateScratchType: "ResourceImport",
- * });
- * export const rosTemplateScratchId3 = templateScratchType.then(templateScratchType => templateScratchType.scratches?.[0]?.id);
- * ```
  */
 export function getTemplateScratches(args?: GetTemplateScratchesArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateScratchesResult> {
     args = args || {};
@@ -91,28 +69,6 @@ export interface GetTemplateScratchesResult {
  * This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.151.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ros.getTemplateScratches({
- *     ids: ["example_value"],
- * });
- * export const rosTemplateScratchId1 = ids.then(ids => ids.scratches?.[0]?.id);
- * const status = alicloud.ros.getTemplateScratches({
- *     status: "GENERATE_COMPLETE",
- * });
- * export const rosTemplateScratchId2 = status.then(status => status.scratches?.[0]?.id);
- * const templateScratchType = alicloud.ros.getTemplateScratches({
- *     templateScratchType: "ResourceImport",
- * });
- * export const rosTemplateScratchId3 = templateScratchType.then(templateScratchType => templateScratchType.scratches?.[0]?.id);
- * ```
  */
 export function getTemplateScratchesOutput(args?: GetTemplateScratchesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateScratchesResult> {
     return pulumi.output(args).apply((a: any) => getTemplateScratches(a, opts))

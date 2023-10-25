@@ -61,43 +61,57 @@ class DbInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_instance_category: pulumi.Input[str],
-             db_instance_network_type: pulumi.Input[str],
-             db_instance_storage_type: pulumi.Input[str],
-             db_node_class: pulumi.Input[str],
-             db_node_storage: pulumi.Input[int],
-             db_version: pulumi.Input[str],
-             payment_type: pulumi.Input[str],
+             db_instance_category: Optional[pulumi.Input[str]] = None,
+             db_instance_network_type: Optional[pulumi.Input[str]] = None,
+             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+             db_node_class: Optional[pulumi.Input[str]] = None,
+             db_node_storage: Optional[pulumi.Input[int]] = None,
+             db_version: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
              db_instance_description: Optional[pulumi.Input[str]] = None,
              db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbInstanceCategory' in kwargs:
+        if db_instance_category is None and 'dbInstanceCategory' in kwargs:
             db_instance_category = kwargs['dbInstanceCategory']
-        if 'dbInstanceNetworkType' in kwargs:
+        if db_instance_category is None:
+            raise TypeError("Missing 'db_instance_category' argument")
+        if db_instance_network_type is None and 'dbInstanceNetworkType' in kwargs:
             db_instance_network_type = kwargs['dbInstanceNetworkType']
-        if 'dbInstanceStorageType' in kwargs:
+        if db_instance_network_type is None:
+            raise TypeError("Missing 'db_instance_network_type' argument")
+        if db_instance_storage_type is None and 'dbInstanceStorageType' in kwargs:
             db_instance_storage_type = kwargs['dbInstanceStorageType']
-        if 'dbNodeClass' in kwargs:
+        if db_instance_storage_type is None:
+            raise TypeError("Missing 'db_instance_storage_type' argument")
+        if db_node_class is None and 'dbNodeClass' in kwargs:
             db_node_class = kwargs['dbNodeClass']
-        if 'dbNodeStorage' in kwargs:
+        if db_node_class is None:
+            raise TypeError("Missing 'db_node_class' argument")
+        if db_node_storage is None and 'dbNodeStorage' in kwargs:
             db_node_storage = kwargs['dbNodeStorage']
-        if 'dbVersion' in kwargs:
+        if db_node_storage is None:
+            raise TypeError("Missing 'db_node_storage' argument")
+        if db_version is None and 'dbVersion' in kwargs:
             db_version = kwargs['dbVersion']
-        if 'paymentType' in kwargs:
+        if db_version is None:
+            raise TypeError("Missing 'db_version' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'dbInstanceDescription' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if db_instance_description is None and 'dbInstanceDescription' in kwargs:
             db_instance_description = kwargs['dbInstanceDescription']
-        if 'dbInstanceIpArrays' in kwargs:
+        if db_instance_ip_arrays is None and 'dbInstanceIpArrays' in kwargs:
             db_instance_ip_arrays = kwargs['dbInstanceIpArrays']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("db_instance_category", db_instance_category)
@@ -335,33 +349,33 @@ class _DbInstanceState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'dbInstanceCategory' in kwargs:
+        if db_instance_category is None and 'dbInstanceCategory' in kwargs:
             db_instance_category = kwargs['dbInstanceCategory']
-        if 'dbInstanceDescription' in kwargs:
+        if db_instance_description is None and 'dbInstanceDescription' in kwargs:
             db_instance_description = kwargs['dbInstanceDescription']
-        if 'dbInstanceIpArrays' in kwargs:
+        if db_instance_ip_arrays is None and 'dbInstanceIpArrays' in kwargs:
             db_instance_ip_arrays = kwargs['dbInstanceIpArrays']
-        if 'dbInstanceNetworkType' in kwargs:
+        if db_instance_network_type is None and 'dbInstanceNetworkType' in kwargs:
             db_instance_network_type = kwargs['dbInstanceNetworkType']
-        if 'dbInstanceStorageType' in kwargs:
+        if db_instance_storage_type is None and 'dbInstanceStorageType' in kwargs:
             db_instance_storage_type = kwargs['dbInstanceStorageType']
-        if 'dbNodeClass' in kwargs:
+        if db_node_class is None and 'dbNodeClass' in kwargs:
             db_node_class = kwargs['dbNodeClass']
-        if 'dbNodeStorage' in kwargs:
+        if db_node_storage is None and 'dbNodeStorage' in kwargs:
             db_node_storage = kwargs['dbNodeStorage']
-        if 'dbVersion' in kwargs:
+        if db_version is None and 'dbVersion' in kwargs:
             db_version = kwargs['dbVersion']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if connection_string is not None:
@@ -601,29 +615,6 @@ class DbInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.136.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example = alicloud.graphdatabase.DbInstance("example",
-            db_node_class="gdb.r.2xlarge",
-            db_instance_network_type="vpc",
-            db_version="1.0",
-            db_instance_category="HA",
-            db_instance_storage_type="cloud_ssd",
-            db_node_storage=50,
-            payment_type="PayAsYouGo",
-            db_instance_description=name)
-        ```
-
         ## Import
 
         Graph Database Db Instance can be imported using the id, e.g.
@@ -659,29 +650,6 @@ class DbInstance(pulumi.CustomResource):
         For information about Graph Database Db Instance and how to use it, see [What is Db Instance](https://www.alibabacloud.com/help/en/graph-compute/latest/placeholder).
 
         > **NOTE:** Available since v1.136.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example = alicloud.graphdatabase.DbInstance("example",
-            db_node_class="gdb.r.2xlarge",
-            db_instance_network_type="vpc",
-            db_version="1.0",
-            db_instance_category="HA",
-            db_instance_storage_type="cloud_ssd",
-            db_node_storage=50,
-            payment_type="PayAsYouGo",
-            db_instance_description=name)
-        ```
 
         ## Import
 

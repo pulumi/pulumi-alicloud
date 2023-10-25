@@ -157,17 +157,6 @@ def get_zone_records(ids: Optional[Sequence[str]] = None,
     """
     This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    records_ds = alicloud.pvtz.get_zone_records(keyword=alicloud_pvtz_zone_record["foo"]["value"],
-        zone_id=alicloud_pvtz_zone["basic"]["id"])
-    pulumi.export("firstRecordId", records_ds.records[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Private Zone Record IDs.
     :param str keyword: Keyword for record rr and value.
@@ -223,17 +212,6 @@ def get_zone_records_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneRecordsResult]:
     """
     This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    records_ds = alicloud.pvtz.get_zone_records(keyword=alicloud_pvtz_zone_record["foo"]["value"],
-        zone_id=alicloud_pvtz_zone["basic"]["id"])
-    pulumi.export("firstRecordId", records_ds.records[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Private Zone Record IDs.

@@ -68,11 +68,11 @@ class GatewayBlockVolumeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             gateway_block_volume_name: pulumi.Input[str],
-             gateway_id: pulumi.Input[str],
-             oss_bucket_name: pulumi.Input[str],
-             oss_endpoint: pulumi.Input[str],
-             protocol: pulumi.Input[str],
+             gateway_block_volume_name: Optional[pulumi.Input[str]] = None,
+             gateway_id: Optional[pulumi.Input[str]] = None,
+             oss_bucket_name: Optional[pulumi.Input[str]] = None,
+             oss_endpoint: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
              cache_mode: Optional[pulumi.Input[str]] = None,
              chap_enabled: Optional[pulumi.Input[bool]] = None,
              chap_in_password: Optional[pulumi.Input[str]] = None,
@@ -83,31 +83,41 @@ class GatewayBlockVolumeArgs:
              oss_bucket_ssl: Optional[pulumi.Input[bool]] = None,
              recovery: Optional[pulumi.Input[bool]] = None,
              size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'gatewayBlockVolumeName' in kwargs:
+        if gateway_block_volume_name is None and 'gatewayBlockVolumeName' in kwargs:
             gateway_block_volume_name = kwargs['gatewayBlockVolumeName']
-        if 'gatewayId' in kwargs:
+        if gateway_block_volume_name is None:
+            raise TypeError("Missing 'gateway_block_volume_name' argument")
+        if gateway_id is None and 'gatewayId' in kwargs:
             gateway_id = kwargs['gatewayId']
-        if 'ossBucketName' in kwargs:
+        if gateway_id is None:
+            raise TypeError("Missing 'gateway_id' argument")
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'ossEndpoint' in kwargs:
+        if oss_bucket_name is None:
+            raise TypeError("Missing 'oss_bucket_name' argument")
+        if oss_endpoint is None and 'ossEndpoint' in kwargs:
             oss_endpoint = kwargs['ossEndpoint']
-        if 'cacheMode' in kwargs:
+        if oss_endpoint is None:
+            raise TypeError("Missing 'oss_endpoint' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if cache_mode is None and 'cacheMode' in kwargs:
             cache_mode = kwargs['cacheMode']
-        if 'chapEnabled' in kwargs:
+        if chap_enabled is None and 'chapEnabled' in kwargs:
             chap_enabled = kwargs['chapEnabled']
-        if 'chapInPassword' in kwargs:
+        if chap_in_password is None and 'chapInPassword' in kwargs:
             chap_in_password = kwargs['chapInPassword']
-        if 'chapInUser' in kwargs:
+        if chap_in_user is None and 'chapInUser' in kwargs:
             chap_in_user = kwargs['chapInUser']
-        if 'chunkSize' in kwargs:
+        if chunk_size is None and 'chunkSize' in kwargs:
             chunk_size = kwargs['chunkSize']
-        if 'isSourceDeletion' in kwargs:
+        if is_source_deletion is None and 'isSourceDeletion' in kwargs:
             is_source_deletion = kwargs['isSourceDeletion']
-        if 'localPath' in kwargs:
+        if local_path is None and 'localPath' in kwargs:
             local_path = kwargs['localPath']
-        if 'ossBucketSsl' in kwargs:
+        if oss_bucket_ssl is None and 'ossBucketSsl' in kwargs:
             oss_bucket_ssl = kwargs['ossBucketSsl']
 
         _setter("gateway_block_volume_name", gateway_block_volume_name)
@@ -397,33 +407,33 @@ class _GatewayBlockVolumeState:
              recovery: Optional[pulumi.Input[bool]] = None,
              size: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cacheMode' in kwargs:
+        if cache_mode is None and 'cacheMode' in kwargs:
             cache_mode = kwargs['cacheMode']
-        if 'chapEnabled' in kwargs:
+        if chap_enabled is None and 'chapEnabled' in kwargs:
             chap_enabled = kwargs['chapEnabled']
-        if 'chapInPassword' in kwargs:
+        if chap_in_password is None and 'chapInPassword' in kwargs:
             chap_in_password = kwargs['chapInPassword']
-        if 'chapInUser' in kwargs:
+        if chap_in_user is None and 'chapInUser' in kwargs:
             chap_in_user = kwargs['chapInUser']
-        if 'chunkSize' in kwargs:
+        if chunk_size is None and 'chunkSize' in kwargs:
             chunk_size = kwargs['chunkSize']
-        if 'gatewayBlockVolumeName' in kwargs:
+        if gateway_block_volume_name is None and 'gatewayBlockVolumeName' in kwargs:
             gateway_block_volume_name = kwargs['gatewayBlockVolumeName']
-        if 'gatewayId' in kwargs:
+        if gateway_id is None and 'gatewayId' in kwargs:
             gateway_id = kwargs['gatewayId']
-        if 'indexId' in kwargs:
+        if index_id is None and 'indexId' in kwargs:
             index_id = kwargs['indexId']
-        if 'isSourceDeletion' in kwargs:
+        if is_source_deletion is None and 'isSourceDeletion' in kwargs:
             is_source_deletion = kwargs['isSourceDeletion']
-        if 'localPath' in kwargs:
+        if local_path is None and 'localPath' in kwargs:
             local_path = kwargs['localPath']
-        if 'ossBucketName' in kwargs:
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'ossBucketSsl' in kwargs:
+        if oss_bucket_ssl is None and 'ossBucketSsl' in kwargs:
             oss_bucket_ssl = kwargs['ossBucketSsl']
-        if 'ossEndpoint' in kwargs:
+        if oss_endpoint is None and 'ossEndpoint' in kwargs:
             oss_endpoint = kwargs['ossEndpoint']
 
         if cache_mode is not None:

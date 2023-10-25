@@ -44,28 +44,40 @@ class SecondaryIndexArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             include_base_data: pulumi.Input[bool],
-             index_name: pulumi.Input[str],
-             index_type: pulumi.Input[str],
-             instance_name: pulumi.Input[str],
-             primary_keys: pulumi.Input[Sequence[pulumi.Input[str]]],
-             table_name: pulumi.Input[str],
+             include_base_data: Optional[pulumi.Input[bool]] = None,
+             index_name: Optional[pulumi.Input[str]] = None,
+             index_type: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             table_name: Optional[pulumi.Input[str]] = None,
              defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'includeBaseData' in kwargs:
+        if include_base_data is None and 'includeBaseData' in kwargs:
             include_base_data = kwargs['includeBaseData']
-        if 'indexName' in kwargs:
+        if include_base_data is None:
+            raise TypeError("Missing 'include_base_data' argument")
+        if index_name is None and 'indexName' in kwargs:
             index_name = kwargs['indexName']
-        if 'indexType' in kwargs:
+        if index_name is None:
+            raise TypeError("Missing 'index_name' argument")
+        if index_type is None and 'indexType' in kwargs:
             index_type = kwargs['indexType']
-        if 'instanceName' in kwargs:
+        if index_type is None:
+            raise TypeError("Missing 'index_type' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'primaryKeys' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if primary_keys is None and 'primaryKeys' in kwargs:
             primary_keys = kwargs['primaryKeys']
-        if 'tableName' in kwargs:
+        if primary_keys is None:
+            raise TypeError("Missing 'primary_keys' argument")
+        if table_name is None and 'tableName' in kwargs:
             table_name = kwargs['tableName']
-        if 'definedColumns' in kwargs:
+        if table_name is None:
+            raise TypeError("Missing 'table_name' argument")
+        if defined_columns is None and 'definedColumns' in kwargs:
             defined_columns = kwargs['definedColumns']
 
         _setter("include_base_data", include_base_data)
@@ -202,21 +214,21 @@ class _SecondaryIndexState:
              instance_name: Optional[pulumi.Input[str]] = None,
              primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              table_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'definedColumns' in kwargs:
+        if defined_columns is None and 'definedColumns' in kwargs:
             defined_columns = kwargs['definedColumns']
-        if 'includeBaseData' in kwargs:
+        if include_base_data is None and 'includeBaseData' in kwargs:
             include_base_data = kwargs['includeBaseData']
-        if 'indexName' in kwargs:
+        if index_name is None and 'indexName' in kwargs:
             index_name = kwargs['indexName']
-        if 'indexType' in kwargs:
+        if index_type is None and 'indexType' in kwargs:
             index_type = kwargs['indexType']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'primaryKeys' in kwargs:
+        if primary_keys is None and 'primaryKeys' in kwargs:
             primary_keys = kwargs['primaryKeys']
-        if 'tableName' in kwargs:
+        if table_name is None and 'tableName' in kwargs:
             table_name = kwargs['tableName']
 
         if defined_columns is not None:
@@ -339,76 +351,6 @@ class SecondaryIndex(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.187.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_instance = alicloud.ots.Instance("defaultInstance",
-            description=name,
-            accessed_by="Any",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_table = alicloud.ots.Table("defaultTable",
-            instance_name=default_instance.name,
-            table_name="tf_example",
-            time_to_live=-1,
-            max_version=1,
-            enable_sse=True,
-            sse_key_type="SSE_KMS_SERVICE",
-            primary_keys=[
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk1",
-                    type="Integer",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk2",
-                    type="String",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk3",
-                    type="Binary",
-                ),
-            ],
-            defined_columns=[
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col1",
-                    type="Integer",
-                ),
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col2",
-                    type="String",
-                ),
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col3",
-                    type="Binary",
-                ),
-            ])
-        default_secondary_index = alicloud.ots.SecondaryIndex("defaultSecondaryIndex",
-            instance_name=default_instance.name,
-            table_name=default_table.table_name,
-            index_name="example_index",
-            index_type="Global",
-            include_base_data=True,
-            primary_keys=[
-                "pk1",
-                "pk2",
-                "pk3",
-            ],
-            defined_columns=[
-                "col1",
-                "col2",
-                "col3",
-            ])
-        ```
-
         ## Import
 
         OTS secondary index can be imported using id, e.g.
@@ -439,76 +381,6 @@ class SecondaryIndex(pulumi.CustomResource):
         For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
 
         > **NOTE:** Available since v1.187.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_instance = alicloud.ots.Instance("defaultInstance",
-            description=name,
-            accessed_by="Any",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_table = alicloud.ots.Table("defaultTable",
-            instance_name=default_instance.name,
-            table_name="tf_example",
-            time_to_live=-1,
-            max_version=1,
-            enable_sse=True,
-            sse_key_type="SSE_KMS_SERVICE",
-            primary_keys=[
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk1",
-                    type="Integer",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk2",
-                    type="String",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk3",
-                    type="Binary",
-                ),
-            ],
-            defined_columns=[
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col1",
-                    type="Integer",
-                ),
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col2",
-                    type="String",
-                ),
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col3",
-                    type="Binary",
-                ),
-            ])
-        default_secondary_index = alicloud.ots.SecondaryIndex("defaultSecondaryIndex",
-            instance_name=default_instance.name,
-            table_name=default_table.table_name,
-            index_name="example_index",
-            index_type="Global",
-            include_base_data=True,
-            primary_keys=[
-                "pk1",
-                "pk2",
-                "pk3",
-            ],
-            defined_columns=[
-                "col1",
-                "col2",
-                "col3",
-            ])
-        ```
 
         ## Import
 

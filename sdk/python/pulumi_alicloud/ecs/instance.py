@@ -264,9 +264,9 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image_id: pulumi.Input[str],
-             instance_type: pulumi.Input[str],
-             security_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
+             image_id: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              allocate_public_ip: Optional[pulumi.Input[bool]] = None,
              auto_release_time: Optional[pulumi.Input[str]] = None,
              auto_renew_period: Optional[pulumi.Input[int]] = None,
@@ -330,129 +330,135 @@ class InstanceArgs:
              user_data: Optional[pulumi.Input[str]] = None,
              volume_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceType' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'securityGroups' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'allocatePublicIp' in kwargs:
+        if security_groups is None:
+            raise TypeError("Missing 'security_groups' argument")
+        if allocate_public_ip is None and 'allocatePublicIp' in kwargs:
             allocate_public_ip = kwargs['allocatePublicIp']
-        if 'autoReleaseTime' in kwargs:
+        if auto_release_time is None and 'autoReleaseTime' in kwargs:
             auto_release_time = kwargs['autoReleaseTime']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'creditSpecification' in kwargs:
+        if credit_specification is None and 'creditSpecification' in kwargs:
             credit_specification = kwargs['creditSpecification']
-        if 'dataDisks' in kwargs:
+        if data_disks is None and 'dataDisks' in kwargs:
             data_disks = kwargs['dataDisks']
-        if 'dedicatedHostId' in kwargs:
+        if dedicated_host_id is None and 'dedicatedHostId' in kwargs:
             dedicated_host_id = kwargs['dedicatedHostId']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'deploymentSetId' in kwargs:
+        if deployment_set_id is None and 'deploymentSetId' in kwargs:
             deployment_set_id = kwargs['deploymentSetId']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'forceDelete' in kwargs:
+        if force_delete is None and 'forceDelete' in kwargs:
             force_delete = kwargs['forceDelete']
-        if 'hostName' in kwargs:
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'hpcClusterId' in kwargs:
+        if hpc_cluster_id is None and 'hpcClusterId' in kwargs:
             hpc_cluster_id = kwargs['hpcClusterId']
-        if 'httpEndpoint' in kwargs:
+        if http_endpoint is None and 'httpEndpoint' in kwargs:
             http_endpoint = kwargs['httpEndpoint']
-        if 'httpPutResponseHopLimit' in kwargs:
+        if http_put_response_hop_limit is None and 'httpPutResponseHopLimit' in kwargs:
             http_put_response_hop_limit = kwargs['httpPutResponseHopLimit']
-        if 'httpTokens' in kwargs:
+        if http_tokens is None and 'httpTokens' in kwargs:
             http_tokens = kwargs['httpTokens']
-        if 'includeDataDisks' in kwargs:
+        if include_data_disks is None and 'includeDataDisks' in kwargs:
             include_data_disks = kwargs['includeDataDisks']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'internetMaxBandwidthIn' in kwargs:
+        if internet_max_bandwidth_in is None and 'internetMaxBandwidthIn' in kwargs:
             internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
-        if 'internetMaxBandwidthOut' in kwargs:
+        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
             internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if 'ioOptimized' in kwargs:
+        if io_optimized is None and 'ioOptimized' in kwargs:
             io_optimized = kwargs['ioOptimized']
-        if 'ipv6AddressCount' in kwargs:
+        if ipv6_address_count is None and 'ipv6AddressCount' in kwargs:
             ipv6_address_count = kwargs['ipv6AddressCount']
-        if 'ipv6Addresses' in kwargs:
+        if ipv6_addresses is None and 'ipv6Addresses' in kwargs:
             ipv6_addresses = kwargs['ipv6Addresses']
-        if 'isOutdated' in kwargs:
+        if is_outdated is None and 'isOutdated' in kwargs:
             is_outdated = kwargs['isOutdated']
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'kmsEncryptedPassword' in kwargs:
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
             kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if 'kmsEncryptionContext' in kwargs:
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
             kms_encryption_context = kwargs['kmsEncryptionContext']
-        if 'maintenanceAction' in kwargs:
+        if maintenance_action is None and 'maintenanceAction' in kwargs:
             maintenance_action = kwargs['maintenanceAction']
-        if 'maintenanceNotify' in kwargs:
+        if maintenance_notify is None and 'maintenanceNotify' in kwargs:
             maintenance_notify = kwargs['maintenanceNotify']
-        if 'maintenanceTime' in kwargs:
+        if maintenance_time is None and 'maintenanceTime' in kwargs:
             maintenance_time = kwargs['maintenanceTime']
-        if 'operatorType' in kwargs:
+        if operator_type is None and 'operatorType' in kwargs:
             operator_type = kwargs['operatorType']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'privateIp' in kwargs:
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'roleName' in kwargs:
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
-        if 'secondaryPrivateIpAddressCount' in kwargs:
+        if secondary_private_ip_address_count is None and 'secondaryPrivateIpAddressCount' in kwargs:
             secondary_private_ip_address_count = kwargs['secondaryPrivateIpAddressCount']
-        if 'secondaryPrivateIps' in kwargs:
+        if secondary_private_ips is None and 'secondaryPrivateIps' in kwargs:
             secondary_private_ips = kwargs['secondaryPrivateIps']
-        if 'securityEnhancementStrategy' in kwargs:
+        if security_enhancement_strategy is None and 'securityEnhancementStrategy' in kwargs:
             security_enhancement_strategy = kwargs['securityEnhancementStrategy']
-        if 'spotDuration' in kwargs:
+        if spot_duration is None and 'spotDuration' in kwargs:
             spot_duration = kwargs['spotDuration']
-        if 'spotPriceLimit' in kwargs:
+        if spot_price_limit is None and 'spotPriceLimit' in kwargs:
             spot_price_limit = kwargs['spotPriceLimit']
-        if 'spotStrategy' in kwargs:
+        if spot_strategy is None and 'spotStrategy' in kwargs:
             spot_strategy = kwargs['spotStrategy']
-        if 'stoppedMode' in kwargs:
+        if stopped_mode is None and 'stoppedMode' in kwargs:
             stopped_mode = kwargs['stoppedMode']
-        if 'systemDiskAutoSnapshotPolicyId' in kwargs:
+        if system_disk_auto_snapshot_policy_id is None and 'systemDiskAutoSnapshotPolicyId' in kwargs:
             system_disk_auto_snapshot_policy_id = kwargs['systemDiskAutoSnapshotPolicyId']
-        if 'systemDiskCategory' in kwargs:
+        if system_disk_category is None and 'systemDiskCategory' in kwargs:
             system_disk_category = kwargs['systemDiskCategory']
-        if 'systemDiskDescription' in kwargs:
+        if system_disk_description is None and 'systemDiskDescription' in kwargs:
             system_disk_description = kwargs['systemDiskDescription']
-        if 'systemDiskEncryptAlgorithm' in kwargs:
+        if system_disk_encrypt_algorithm is None and 'systemDiskEncryptAlgorithm' in kwargs:
             system_disk_encrypt_algorithm = kwargs['systemDiskEncryptAlgorithm']
-        if 'systemDiskEncrypted' in kwargs:
+        if system_disk_encrypted is None and 'systemDiskEncrypted' in kwargs:
             system_disk_encrypted = kwargs['systemDiskEncrypted']
-        if 'systemDiskKmsKeyId' in kwargs:
+        if system_disk_kms_key_id is None and 'systemDiskKmsKeyId' in kwargs:
             system_disk_kms_key_id = kwargs['systemDiskKmsKeyId']
-        if 'systemDiskName' in kwargs:
+        if system_disk_name is None and 'systemDiskName' in kwargs:
             system_disk_name = kwargs['systemDiskName']
-        if 'systemDiskPerformanceLevel' in kwargs:
+        if system_disk_performance_level is None and 'systemDiskPerformanceLevel' in kwargs:
             system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
-        if 'systemDiskSize' in kwargs:
+        if system_disk_size is None and 'systemDiskSize' in kwargs:
             system_disk_size = kwargs['systemDiskSize']
-        if 'systemDiskStorageClusterId' in kwargs:
+        if system_disk_storage_cluster_id is None and 'systemDiskStorageClusterId' in kwargs:
             system_disk_storage_cluster_id = kwargs['systemDiskStorageClusterId']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'volumeTags' in kwargs:
+        if volume_tags is None and 'volumeTags' in kwargs:
             volume_tags = kwargs['volumeTags']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         _setter("image_id", image_id)
@@ -1786,143 +1792,143 @@ class _InstanceState:
              user_data: Optional[pulumi.Input[str]] = None,
              volume_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allocatePublicIp' in kwargs:
+        if allocate_public_ip is None and 'allocatePublicIp' in kwargs:
             allocate_public_ip = kwargs['allocatePublicIp']
-        if 'autoReleaseTime' in kwargs:
+        if auto_release_time is None and 'autoReleaseTime' in kwargs:
             auto_release_time = kwargs['autoReleaseTime']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'creditSpecification' in kwargs:
+        if credit_specification is None and 'creditSpecification' in kwargs:
             credit_specification = kwargs['creditSpecification']
-        if 'dataDisks' in kwargs:
+        if data_disks is None and 'dataDisks' in kwargs:
             data_disks = kwargs['dataDisks']
-        if 'dedicatedHostId' in kwargs:
+        if dedicated_host_id is None and 'dedicatedHostId' in kwargs:
             dedicated_host_id = kwargs['dedicatedHostId']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'deploymentSetGroupNo' in kwargs:
+        if deployment_set_group_no is None and 'deploymentSetGroupNo' in kwargs:
             deployment_set_group_no = kwargs['deploymentSetGroupNo']
-        if 'deploymentSetId' in kwargs:
+        if deployment_set_id is None and 'deploymentSetId' in kwargs:
             deployment_set_id = kwargs['deploymentSetId']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'forceDelete' in kwargs:
+        if force_delete is None and 'forceDelete' in kwargs:
             force_delete = kwargs['forceDelete']
-        if 'hostName' in kwargs:
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'hpcClusterId' in kwargs:
+        if hpc_cluster_id is None and 'hpcClusterId' in kwargs:
             hpc_cluster_id = kwargs['hpcClusterId']
-        if 'httpEndpoint' in kwargs:
+        if http_endpoint is None and 'httpEndpoint' in kwargs:
             http_endpoint = kwargs['httpEndpoint']
-        if 'httpPutResponseHopLimit' in kwargs:
+        if http_put_response_hop_limit is None and 'httpPutResponseHopLimit' in kwargs:
             http_put_response_hop_limit = kwargs['httpPutResponseHopLimit']
-        if 'httpTokens' in kwargs:
+        if http_tokens is None and 'httpTokens' in kwargs:
             http_tokens = kwargs['httpTokens']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'includeDataDisks' in kwargs:
+        if include_data_disks is None and 'includeDataDisks' in kwargs:
             include_data_disks = kwargs['includeDataDisks']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'internetMaxBandwidthIn' in kwargs:
+        if internet_max_bandwidth_in is None and 'internetMaxBandwidthIn' in kwargs:
             internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
-        if 'internetMaxBandwidthOut' in kwargs:
+        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
             internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if 'ioOptimized' in kwargs:
+        if io_optimized is None and 'ioOptimized' in kwargs:
             io_optimized = kwargs['ioOptimized']
-        if 'ipv6AddressCount' in kwargs:
+        if ipv6_address_count is None and 'ipv6AddressCount' in kwargs:
             ipv6_address_count = kwargs['ipv6AddressCount']
-        if 'ipv6Addresses' in kwargs:
+        if ipv6_addresses is None and 'ipv6Addresses' in kwargs:
             ipv6_addresses = kwargs['ipv6Addresses']
-        if 'isOutdated' in kwargs:
+        if is_outdated is None and 'isOutdated' in kwargs:
             is_outdated = kwargs['isOutdated']
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'kmsEncryptedPassword' in kwargs:
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
             kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if 'kmsEncryptionContext' in kwargs:
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
             kms_encryption_context = kwargs['kmsEncryptionContext']
-        if 'maintenanceAction' in kwargs:
+        if maintenance_action is None and 'maintenanceAction' in kwargs:
             maintenance_action = kwargs['maintenanceAction']
-        if 'maintenanceNotify' in kwargs:
+        if maintenance_notify is None and 'maintenanceNotify' in kwargs:
             maintenance_notify = kwargs['maintenanceNotify']
-        if 'maintenanceTime' in kwargs:
+        if maintenance_time is None and 'maintenanceTime' in kwargs:
             maintenance_time = kwargs['maintenanceTime']
-        if 'networkInterfaceId' in kwargs:
+        if network_interface_id is None and 'networkInterfaceId' in kwargs:
             network_interface_id = kwargs['networkInterfaceId']
-        if 'operatorType' in kwargs:
+        if operator_type is None and 'operatorType' in kwargs:
             operator_type = kwargs['operatorType']
-        if 'osName' in kwargs:
+        if os_name is None and 'osName' in kwargs:
             os_name = kwargs['osName']
-        if 'osType' in kwargs:
+        if os_type is None and 'osType' in kwargs:
             os_type = kwargs['osType']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'primaryIpAddress' in kwargs:
+        if primary_ip_address is None and 'primaryIpAddress' in kwargs:
             primary_ip_address = kwargs['primaryIpAddress']
-        if 'privateIp' in kwargs:
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
-        if 'publicIp' in kwargs:
+        if public_ip is None and 'publicIp' in kwargs:
             public_ip = kwargs['publicIp']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'roleName' in kwargs:
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
-        if 'secondaryPrivateIpAddressCount' in kwargs:
+        if secondary_private_ip_address_count is None and 'secondaryPrivateIpAddressCount' in kwargs:
             secondary_private_ip_address_count = kwargs['secondaryPrivateIpAddressCount']
-        if 'secondaryPrivateIps' in kwargs:
+        if secondary_private_ips is None and 'secondaryPrivateIps' in kwargs:
             secondary_private_ips = kwargs['secondaryPrivateIps']
-        if 'securityEnhancementStrategy' in kwargs:
+        if security_enhancement_strategy is None and 'securityEnhancementStrategy' in kwargs:
             security_enhancement_strategy = kwargs['securityEnhancementStrategy']
-        if 'securityGroups' in kwargs:
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'spotDuration' in kwargs:
+        if spot_duration is None and 'spotDuration' in kwargs:
             spot_duration = kwargs['spotDuration']
-        if 'spotPriceLimit' in kwargs:
+        if spot_price_limit is None and 'spotPriceLimit' in kwargs:
             spot_price_limit = kwargs['spotPriceLimit']
-        if 'spotStrategy' in kwargs:
+        if spot_strategy is None and 'spotStrategy' in kwargs:
             spot_strategy = kwargs['spotStrategy']
-        if 'stoppedMode' in kwargs:
+        if stopped_mode is None and 'stoppedMode' in kwargs:
             stopped_mode = kwargs['stoppedMode']
-        if 'systemDiskAutoSnapshotPolicyId' in kwargs:
+        if system_disk_auto_snapshot_policy_id is None and 'systemDiskAutoSnapshotPolicyId' in kwargs:
             system_disk_auto_snapshot_policy_id = kwargs['systemDiskAutoSnapshotPolicyId']
-        if 'systemDiskCategory' in kwargs:
+        if system_disk_category is None and 'systemDiskCategory' in kwargs:
             system_disk_category = kwargs['systemDiskCategory']
-        if 'systemDiskDescription' in kwargs:
+        if system_disk_description is None and 'systemDiskDescription' in kwargs:
             system_disk_description = kwargs['systemDiskDescription']
-        if 'systemDiskEncryptAlgorithm' in kwargs:
+        if system_disk_encrypt_algorithm is None and 'systemDiskEncryptAlgorithm' in kwargs:
             system_disk_encrypt_algorithm = kwargs['systemDiskEncryptAlgorithm']
-        if 'systemDiskEncrypted' in kwargs:
+        if system_disk_encrypted is None and 'systemDiskEncrypted' in kwargs:
             system_disk_encrypted = kwargs['systemDiskEncrypted']
-        if 'systemDiskId' in kwargs:
+        if system_disk_id is None and 'systemDiskId' in kwargs:
             system_disk_id = kwargs['systemDiskId']
-        if 'systemDiskKmsKeyId' in kwargs:
+        if system_disk_kms_key_id is None and 'systemDiskKmsKeyId' in kwargs:
             system_disk_kms_key_id = kwargs['systemDiskKmsKeyId']
-        if 'systemDiskName' in kwargs:
+        if system_disk_name is None and 'systemDiskName' in kwargs:
             system_disk_name = kwargs['systemDiskName']
-        if 'systemDiskPerformanceLevel' in kwargs:
+        if system_disk_performance_level is None and 'systemDiskPerformanceLevel' in kwargs:
             system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
-        if 'systemDiskSize' in kwargs:
+        if system_disk_size is None and 'systemDiskSize' in kwargs:
             system_disk_size = kwargs['systemDiskSize']
-        if 'systemDiskStorageClusterId' in kwargs:
+        if system_disk_storage_cluster_id is None and 'systemDiskStorageClusterId' in kwargs:
             system_disk_storage_cluster_id = kwargs['systemDiskStorageClusterId']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'volumeTags' in kwargs:
+        if volume_tags is None and 'volumeTags' in kwargs:
             volume_tags = kwargs['volumeTags']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if allocate_public_ip is not None:
@@ -3109,55 +3115,6 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        # Create a new ECS instance for VPC
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        # Create a new ECS instance for a VPC
-        group = alicloud.ecs.SecurityGroup("group",
-            description="foo",
-            vpc_id=vpc.id)
-        key = alicloud.kms.Key("key",
-            description="Hello KMS",
-            pending_window_in_days=7,
-            status="Enabled")
-        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        vswitch = alicloud.vpc.Switch("vswitch",
-            vpc_id=vpc.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default.zones[0].id,
-            vswitch_name=name)
-        instance = alicloud.ecs.Instance("instance",
-            availability_zone=default.zones[0].id,
-            security_groups=[__item.id for __item in [group]],
-            instance_type="ecs.n4.large",
-            system_disk_category="cloud_efficiency",
-            system_disk_name=name,
-            system_disk_description="test_foo_system_disk_description",
-            image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
-            instance_name=name,
-            vswitch_id=vswitch.id,
-            internet_max_bandwidth_out=10,
-            data_disks=[alicloud.ecs.InstanceDataDiskArgs(
-                name="disk2",
-                size=20,
-                category="cloud_efficiency",
-                description="disk2",
-                encrypted=True,
-                kms_key_id=key.id,
-            )])
-        ```
         ## Module Support
 
         You can use the existing ecs-instance module
@@ -3292,55 +3249,6 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        # Create a new ECS instance for VPC
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        # Create a new ECS instance for a VPC
-        group = alicloud.ecs.SecurityGroup("group",
-            description="foo",
-            vpc_id=vpc.id)
-        key = alicloud.kms.Key("key",
-            description="Hello KMS",
-            pending_window_in_days=7,
-            status="Enabled")
-        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        vswitch = alicloud.vpc.Switch("vswitch",
-            vpc_id=vpc.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default.zones[0].id,
-            vswitch_name=name)
-        instance = alicloud.ecs.Instance("instance",
-            availability_zone=default.zones[0].id,
-            security_groups=[__item.id for __item in [group]],
-            instance_type="ecs.n4.large",
-            system_disk_category="cloud_efficiency",
-            system_disk_name=name,
-            system_disk_description="test_foo_system_disk_description",
-            image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
-            instance_name=name,
-            vswitch_id=vswitch.id,
-            internet_max_bandwidth_out=10,
-            data_disks=[alicloud.ecs.InstanceDataDiskArgs(
-                name="disk2",
-                size=20,
-                category="cloud_efficiency",
-                description="disk2",
-                encrypted=True,
-                kms_key_id=key.id,
-            )])
-        ```
         ## Module Support
 
         You can use the existing ecs-instance module
@@ -3486,11 +3394,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
             __props__.__dict__["maintenance_action"] = maintenance_action
             __props__.__dict__["maintenance_notify"] = maintenance_notify
-            if maintenance_time is not None and not isinstance(maintenance_time, InstanceMaintenanceTimeArgs):
-                maintenance_time = maintenance_time or {}
-                def _setter(key, value):
-                    maintenance_time[key] = value
-                InstanceMaintenanceTimeArgs._configure(_setter, **maintenance_time)
+            maintenance_time = _utilities.configure(maintenance_time, InstanceMaintenanceTimeArgs, True)
             __props__.__dict__["maintenance_time"] = maintenance_time
             __props__.__dict__["operator_type"] = operator_type
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)

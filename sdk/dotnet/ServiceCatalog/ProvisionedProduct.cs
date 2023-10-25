@@ -16,44 +16,6 @@ namespace Pulumi.AliCloud.ServiceCatalog
     /// 
     /// &gt; **NOTE:** Available in v1.196.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testAccServiceCatalogProvisionedProduct";
-    ///     var @default = new AliCloud.ServiceCatalog.ProvisionedProduct("default", new()
-    ///     {
-    ///         ProvisionedProductName = name,
-    ///         StackRegionId = "cn-hangzhou",
-    ///         ProductVersionId = "pv-bp1d7dxy2pcc1g",
-    ///         ProductId = "prod-bp1u3dkc282cwd",
-    ///         PortfolioId = "port-bp119dvn27jccw",
-    ///         Tags = 
-    ///         {
-    ///             { "v1", "tf-test" },
-    ///         },
-    ///         Parameters = new[]
-    ///         {
-    ///             new AliCloud.ServiceCatalog.Inputs.ProvisionedProductParameterArgs
-    ///             {
-    ///                 ParameterKey = "role_name",
-    ///                 ParameterValue = name,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Service Catalog Provisioned Product can be imported using the id, e.g.

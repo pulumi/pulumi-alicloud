@@ -11,40 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.113.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const region = config.get("region") || "cn-hangzhou";
- * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
- *     duration: 1,
- *     autoUseCoupon: true,
- *     spec: "1",
- * });
- * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
- *     bandwidth: 100,
- *     type: "Basic",
- *     bandwidthType: "Basic",
- *     paymentType: "PayAsYouGo",
- *     billingType: "PayBy95",
- *     ratio: 30,
- * });
- * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
- *     acceleratorId: defaultAccelerator.id,
- *     bandwidthPackageId: defaultBandwidthPackage.id,
- * });
- * const example = new alicloud.ga.IpSet("example", {
- *     accelerateRegionId: region,
- *     bandwidth: 5,
- *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
- * });
- * ```
- *
  * ## Import
  *
  * Ga Ip Set can be imported using the id, e.g.

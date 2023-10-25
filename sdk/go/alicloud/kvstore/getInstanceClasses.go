@@ -15,44 +15,6 @@ import (
 // This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
 //
 // > **NOTE:** Available since v1.49.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			resourcesZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("KVStore"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			resourcesInstanceClasses, err := kvstore.GetInstanceClasses(ctx, &kvstore.GetInstanceClassesArgs{
-//				Engine:             pulumi.StringRef("Redis"),
-//				EngineVersion:      pulumi.StringRef("5.0"),
-//				InstanceChargeType: pulumi.StringRef("PrePaid"),
-//				OutputFile:         pulumi.StringRef("./classes.txt"),
-//				ZoneId:             resourcesZones.Zones[0].Id,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstKvstoreInstanceClass", resourcesInstanceClasses.InstanceClasses)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetInstanceClasses(ctx *pulumi.Context, args *GetInstanceClassesArgs, opts ...pulumi.InvokeOption) (*GetInstanceClassesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceClassesResult

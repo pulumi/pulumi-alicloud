@@ -35,15 +35,6 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
         /// 
         /// &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// 
         /// In order to fix the diff, from version 1.160.0,
         /// this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.

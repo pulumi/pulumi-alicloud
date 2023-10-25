@@ -11,28 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.140.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.dfs.getZones({});
- * const defaultFileSystem = new alicloud.dfs.FileSystem("defaultFileSystem", {
- *     storageType: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.options?.[0]?.storageType),
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneId),
- *     protocolType: "HDFS",
- *     description: name,
- *     fileSystemName: name,
- *     throughputMode: "Standard",
- *     spaceCapacity: 1024,
- * });
- * ```
- *
  * ## Import
  *
  * DFS File System can be imported using the id, e.g.

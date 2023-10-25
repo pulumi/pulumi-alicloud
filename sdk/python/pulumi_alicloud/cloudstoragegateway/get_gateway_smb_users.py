@@ -100,37 +100,6 @@ def get_gateway_smb_users(gateway_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.142.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-    default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
-    example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
-    default_gateway = alicloud.cloudstoragegateway.Gateway("defaultGateway",
-        description="tf-acctestDesalone",
-        gateway_class="Standard",
-        type="File",
-        payment_type="PayAsYouGo",
-        vswitch_id=default_switches.ids[0],
-        release_after_expiration=False,
-        public_network_bandwidth=40,
-        storage_bundle_id=example.id,
-        location="Cloud",
-        gateway_name="example_value")
-    default_gateway_smb_user = alicloud.cloudstoragegateway.GatewaySmbUser("defaultGatewaySmbUser",
-        username="your_username",
-        password="password",
-        gateway_id=default_gateway.id)
-    ids = alicloud.cloudstoragegateway.get_gateway_smb_users_output(gateway_id=default_gateway.id,
-        ids=[default_gateway_smb_user.id])
-    pulumi.export("cloudStorageGatewayGatewaySmbUserId1", ids.users[0].id)
-    ```
-
 
     :param str gateway_id: The Gateway ID.
     :param Sequence[str] ids: A list of Gateway SMB User IDs.
@@ -164,37 +133,6 @@ def get_gateway_smb_users_output(gateway_id: Optional[pulumi.Input[str]] = None,
     This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.142.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-    default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
-    example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
-    default_gateway = alicloud.cloudstoragegateway.Gateway("defaultGateway",
-        description="tf-acctestDesalone",
-        gateway_class="Standard",
-        type="File",
-        payment_type="PayAsYouGo",
-        vswitch_id=default_switches.ids[0],
-        release_after_expiration=False,
-        public_network_bandwidth=40,
-        storage_bundle_id=example.id,
-        location="Cloud",
-        gateway_name="example_value")
-    default_gateway_smb_user = alicloud.cloudstoragegateway.GatewaySmbUser("defaultGatewaySmbUser",
-        username="your_username",
-        password="password",
-        gateway_id=default_gateway.id)
-    ids = alicloud.cloudstoragegateway.get_gateway_smb_users_output(gateway_id=default_gateway.id,
-        ids=[default_gateway_smb_user.id])
-    pulumi.export("cloudStorageGatewayGatewaySmbUserId1", ids.users[0].id)
-    ```
 
 
     :param str gateway_id: The Gateway ID.

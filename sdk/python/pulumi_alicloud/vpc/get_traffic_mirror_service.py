@@ -74,17 +74,6 @@ def get_traffic_mirror_service(enable: Optional[str] = None,
 
     > **NOTE:** Available since v1.141.0.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    open = alicloud.vpc.get_traffic_mirror_service(enable="On")
-    ```
-
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
            
@@ -110,17 +99,6 @@ def get_traffic_mirror_service_output(enable: Optional[pulumi.Input[Optional[str
     For information about VPC Traffic Mirror and how to use it, see [What is VPC Traffic Mirror](https://www.alibabacloud.com/help/en/vpc/user-guide/traffic-mirroring-overview).
 
     > **NOTE:** Available since v1.141.0.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    open = alicloud.vpc.get_traffic_mirror_service(enable="On")
-    ```
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.

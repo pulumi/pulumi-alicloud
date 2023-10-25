@@ -10,31 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.128.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.amqp.getExchanges({
- *     instanceId: "amqp-abc12345",
- *     virtualHostName: "my-VirtualHost",
- *     ids: [
- *         "my-Exchange-1",
- *         "my-Exchange-2",
- *     ],
- * });
- * export const amqpExchangeId1 = ids.then(ids => ids.exchanges?.[0]?.id);
- * const nameRegex = alicloud.amqp.getExchanges({
- *     instanceId: "amqp-abc12345",
- *     virtualHostName: "my-VirtualHost",
- *     nameRegex: "^my-Exchange",
- * });
- * export const amqpExchangeId2 = nameRegex.then(nameRegex => nameRegex.exchanges?.[0]?.id);
- * ```
  */
 export function getExchanges(args: GetExchangesArgs, opts?: pulumi.InvokeOptions): Promise<GetExchangesResult> {
 
@@ -94,31 +69,6 @@ export interface GetExchangesResult {
  * This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.128.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.amqp.getExchanges({
- *     instanceId: "amqp-abc12345",
- *     virtualHostName: "my-VirtualHost",
- *     ids: [
- *         "my-Exchange-1",
- *         "my-Exchange-2",
- *     ],
- * });
- * export const amqpExchangeId1 = ids.then(ids => ids.exchanges?.[0]?.id);
- * const nameRegex = alicloud.amqp.getExchanges({
- *     instanceId: "amqp-abc12345",
- *     virtualHostName: "my-VirtualHost",
- *     nameRegex: "^my-Exchange",
- * });
- * export const amqpExchangeId2 = nameRegex.then(nameRegex => nameRegex.exchanges?.[0]?.id);
- * ```
  */
 export function getExchangesOutput(args: GetExchangesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExchangesResult> {
     return pulumi.output(args).apply((a: any) => getExchanges(a, opts))

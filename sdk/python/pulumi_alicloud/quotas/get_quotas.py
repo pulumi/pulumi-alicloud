@@ -179,19 +179,6 @@ def get_quotas(dimensions: Optional[Sequence[pulumi.InputType['GetQuotasDimensio
 
     > **NOTE:** Available in v1.115.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.quotas.get_quotas(product_code="ecs",
-        name_regex="专有宿主机总数量上限")
-    pulumi.export("firstQuotasQuotaId", example.quotas[0].id)
-    ```
-
 
     :param Sequence[pulumi.InputType['GetQuotasDimensionArgs']] dimensions: The dimensions.
     :param str group_code: The group code.
@@ -251,19 +238,6 @@ def get_quotas_output(dimensions: Optional[pulumi.Input[Optional[Sequence[pulumi
     This data source provides the Quotas Quotas of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.115.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.quotas.get_quotas(product_code="ecs",
-        name_regex="专有宿主机总数量上限")
-    pulumi.export("firstQuotasQuotaId", example.quotas[0].id)
-    ```
 
 
     :param Sequence[pulumi.InputType['GetQuotasDimensionArgs']] dimensions: The dimensions.

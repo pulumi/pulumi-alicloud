@@ -43,17 +43,25 @@ class ProtectionModuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             defense_type: pulumi.Input[str],
-             domain: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             mode: pulumi.Input[int],
+             defense_type: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defenseType' in kwargs:
+        if defense_type is None and 'defenseType' in kwargs:
             defense_type = kwargs['defenseType']
-        if 'instanceId' in kwargs:
+        if defense_type is None:
+            raise TypeError("Missing 'defense_type' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
 
         _setter("defense_type", defense_type)
         _setter("domain", domain)
@@ -165,11 +173,11 @@ class _ProtectionModuleState:
              instance_id: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defenseType' in kwargs:
+        if defense_type is None and 'defenseType' in kwargs:
             defense_type = kwargs['defenseType']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
 
         if defense_type is not None:
@@ -267,39 +275,6 @@ class ProtectionModule(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.141.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_instances = alicloud.waf.get_instances()
-        default_domain = alicloud.waf.Domain("defaultDomain",
-            domain_name="you domain",
-            instance_id=default_instances.ids[0],
-            is_access_product="On",
-            source_ips=["1.1.1.1"],
-            cluster_type="PhysicalCluster",
-            http2_ports=["443"],
-            http_ports=["80"],
-            https_ports=["443"],
-            http_to_user_ip="Off",
-            https_redirect="Off",
-            load_balancing="IpHash",
-            log_headers=[alicloud.waf.DomainLogHeaderArgs(
-                key="foo",
-                value="http",
-            )])
-        default_protection_module = alicloud.waf.ProtectionModule("defaultProtectionModule",
-            instance_id=default_instances.ids[0],
-            domain=default_domain.domain_name,
-            defense_type="ac_cc",
-            mode=0,
-            status=0)
-        ```
-
         ## Import
 
         Web Application Firewall(WAF) Protection Module can be imported using the id, e.g.
@@ -333,39 +308,6 @@ class ProtectionModule(pulumi.CustomResource):
         For information about Web Application Firewall(WAF) Protection Module and how to use it, see [What is Protection Module](https://www.alibabacloud.com/help/en/doc-detail/160775.htm).
 
         > **NOTE:** Available in v1.141.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_instances = alicloud.waf.get_instances()
-        default_domain = alicloud.waf.Domain("defaultDomain",
-            domain_name="you domain",
-            instance_id=default_instances.ids[0],
-            is_access_product="On",
-            source_ips=["1.1.1.1"],
-            cluster_type="PhysicalCluster",
-            http2_ports=["443"],
-            http_ports=["80"],
-            https_ports=["443"],
-            http_to_user_ip="Off",
-            https_redirect="Off",
-            load_balancing="IpHash",
-            log_headers=[alicloud.waf.DomainLogHeaderArgs(
-                key="foo",
-                value="http",
-            )])
-        default_protection_module = alicloud.waf.ProtectionModule("defaultProtectionModule",
-            instance_id=default_instances.ids[0],
-            domain=default_domain.domain_name,
-            defense_type="ac_cc",
-            mode=0,
-            status=0)
-        ```
 
         ## Import
 

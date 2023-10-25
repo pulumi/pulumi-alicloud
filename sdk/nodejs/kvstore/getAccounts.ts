@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the KVStore Accounts of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.102.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.kvstore.getAccounts({
- *     instanceId: "example_value",
- * });
- * export const firstKvstoreAccountId = example.then(example => example.accounts?.[0]?.id);
- * ```
  */
 export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountsResult> {
 
@@ -81,20 +67,6 @@ export interface GetAccountsResult {
  * This data source provides the KVStore Accounts of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.102.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.kvstore.getAccounts({
- *     instanceId: "example_value",
- * });
- * export const firstKvstoreAccountId = example.then(example => example.accounts?.[0]?.id);
- * ```
  */
 export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
     return pulumi.output(args).apply((a: any) => getAccounts(a, opts))

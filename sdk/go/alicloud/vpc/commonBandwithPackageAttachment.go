@@ -13,58 +13,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "defaultCommonBandwithPackage", &vpc.CommonBandwithPackageArgs{
-//				Bandwidth:          pulumi.String("3"),
-//				InternetChargeType: pulumi.String("PayByBandwidth"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
-//				Bandwidth:          pulumi.String("3"),
-//				InternetChargeType: pulumi.String("PayByTraffic"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpc.NewCommonBandwithPackageAttachment(ctx, "defaultCommonBandwithPackageAttachment", &vpc.CommonBandwithPackageAttachmentArgs{
-//				BandwidthPackageId:        defaultCommonBandwithPackage.ID(),
-//				InstanceId:                defaultEipAddress.ID(),
-//				BandwidthPackageBandwidth: pulumi.String("2"),
-//				IpType:                    pulumi.String("EIP"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.

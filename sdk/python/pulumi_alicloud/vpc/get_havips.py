@@ -109,19 +109,6 @@ def get_havips(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.120.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.vpc.get_havips(ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstHavipId", example.havips[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Ha Vip IDs.
     :param str name_regex: A regex string to filter results by Ha Vip name.
@@ -156,19 +143,6 @@ def get_havips_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     This data source provides the Havips of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.120.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.vpc.get_havips(ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstHavipId", example.havips[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Ha Vip IDs.

@@ -15,44 +15,6 @@ import (
 // This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.144.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := directmail.GetTags(ctx, &directmail.GetTagsArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("directMailTagId1", ids.Tags[0].Id)
-//			nameRegex, err := directmail.GetTags(ctx, &directmail.GetTagsArgs{
-//				NameRegex: pulumi.StringRef("^my-Tag"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("directMailTagId2", nameRegex.Tags[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetTags(ctx *pulumi.Context, args *GetTagsArgs, opts ...pulumi.InvokeOption) (*GetTagsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTagsResult

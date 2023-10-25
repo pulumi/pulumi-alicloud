@@ -66,40 +66,68 @@ class GetBaseInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             commodity_code: str,
-             cpu: int,
-             create_time: str,
-             disk_size: str,
-             id: str,
-             instance_class: str,
-             instance_id: str,
-             instance_name: str,
-             node_num: str,
-             payment_type: str,
-             resource_group_id: str,
-             series: str,
-             status: str,
-             zones: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             commodity_code: Optional[str] = None,
+             cpu: Optional[int] = None,
+             create_time: Optional[str] = None,
+             disk_size: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_class: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             node_num: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             series: Optional[str] = None,
+             status: Optional[str] = None,
+             zones: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'commodityCode' in kwargs:
+        if commodity_code is None and 'commodityCode' in kwargs:
             commodity_code = kwargs['commodityCode']
-        if 'createTime' in kwargs:
+        if commodity_code is None:
+            raise TypeError("Missing 'commodity_code' argument")
+        if cpu is None:
+            raise TypeError("Missing 'cpu' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'diskSize' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'instanceClass' in kwargs:
+        if disk_size is None:
+            raise TypeError("Missing 'disk_size' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'instanceId' in kwargs:
+        if instance_class is None:
+            raise TypeError("Missing 'instance_class' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'nodeNum' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if node_num is None and 'nodeNum' in kwargs:
             node_num = kwargs['nodeNum']
-        if 'paymentType' in kwargs:
+        if node_num is None:
+            raise TypeError("Missing 'node_num' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if series is None:
+            raise TypeError("Missing 'series' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if zones is None:
+            raise TypeError("Missing 'zones' argument")
 
         _setter("commodity_code", commodity_code)
         _setter("cpu", cpu)

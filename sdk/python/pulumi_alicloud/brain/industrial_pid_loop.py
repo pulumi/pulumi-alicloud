@@ -44,28 +44,40 @@ class IndustrialPidLoopArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pid_loop_configuration: pulumi.Input[str],
-             pid_loop_dcs_type: pulumi.Input[str],
-             pid_loop_is_crucial: pulumi.Input[bool],
-             pid_loop_name: pulumi.Input[str],
-             pid_loop_type: pulumi.Input[str],
-             pid_project_id: pulumi.Input[str],
+             pid_loop_configuration: Optional[pulumi.Input[str]] = None,
+             pid_loop_dcs_type: Optional[pulumi.Input[str]] = None,
+             pid_loop_is_crucial: Optional[pulumi.Input[bool]] = None,
+             pid_loop_name: Optional[pulumi.Input[str]] = None,
+             pid_loop_type: Optional[pulumi.Input[str]] = None,
+             pid_project_id: Optional[pulumi.Input[str]] = None,
              pid_loop_desc: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'pidLoopConfiguration' in kwargs:
+        if pid_loop_configuration is None and 'pidLoopConfiguration' in kwargs:
             pid_loop_configuration = kwargs['pidLoopConfiguration']
-        if 'pidLoopDcsType' in kwargs:
+        if pid_loop_configuration is None:
+            raise TypeError("Missing 'pid_loop_configuration' argument")
+        if pid_loop_dcs_type is None and 'pidLoopDcsType' in kwargs:
             pid_loop_dcs_type = kwargs['pidLoopDcsType']
-        if 'pidLoopIsCrucial' in kwargs:
+        if pid_loop_dcs_type is None:
+            raise TypeError("Missing 'pid_loop_dcs_type' argument")
+        if pid_loop_is_crucial is None and 'pidLoopIsCrucial' in kwargs:
             pid_loop_is_crucial = kwargs['pidLoopIsCrucial']
-        if 'pidLoopName' in kwargs:
+        if pid_loop_is_crucial is None:
+            raise TypeError("Missing 'pid_loop_is_crucial' argument")
+        if pid_loop_name is None and 'pidLoopName' in kwargs:
             pid_loop_name = kwargs['pidLoopName']
-        if 'pidLoopType' in kwargs:
+        if pid_loop_name is None:
+            raise TypeError("Missing 'pid_loop_name' argument")
+        if pid_loop_type is None and 'pidLoopType' in kwargs:
             pid_loop_type = kwargs['pidLoopType']
-        if 'pidProjectId' in kwargs:
+        if pid_loop_type is None:
+            raise TypeError("Missing 'pid_loop_type' argument")
+        if pid_project_id is None and 'pidProjectId' in kwargs:
             pid_project_id = kwargs['pidProjectId']
-        if 'pidLoopDesc' in kwargs:
+        if pid_project_id is None:
+            raise TypeError("Missing 'pid_project_id' argument")
+        if pid_loop_desc is None and 'pidLoopDesc' in kwargs:
             pid_loop_desc = kwargs['pidLoopDesc']
 
         _setter("pid_loop_configuration", pid_loop_configuration)
@@ -206,21 +218,21 @@ class _IndustrialPidLoopState:
              pid_loop_type: Optional[pulumi.Input[str]] = None,
              pid_project_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'pidLoopConfiguration' in kwargs:
+        if pid_loop_configuration is None and 'pidLoopConfiguration' in kwargs:
             pid_loop_configuration = kwargs['pidLoopConfiguration']
-        if 'pidLoopDcsType' in kwargs:
+        if pid_loop_dcs_type is None and 'pidLoopDcsType' in kwargs:
             pid_loop_dcs_type = kwargs['pidLoopDcsType']
-        if 'pidLoopDesc' in kwargs:
+        if pid_loop_desc is None and 'pidLoopDesc' in kwargs:
             pid_loop_desc = kwargs['pidLoopDesc']
-        if 'pidLoopIsCrucial' in kwargs:
+        if pid_loop_is_crucial is None and 'pidLoopIsCrucial' in kwargs:
             pid_loop_is_crucial = kwargs['pidLoopIsCrucial']
-        if 'pidLoopName' in kwargs:
+        if pid_loop_name is None and 'pidLoopName' in kwargs:
             pid_loop_name = kwargs['pidLoopName']
-        if 'pidLoopType' in kwargs:
+        if pid_loop_type is None and 'pidLoopType' in kwargs:
             pid_loop_type = kwargs['pidLoopType']
-        if 'pidProjectId' in kwargs:
+        if pid_project_id is None and 'pidProjectId' in kwargs:
             pid_project_id = kwargs['pidProjectId']
 
         if pid_loop_configuration is not None:
@@ -355,23 +367,6 @@ class IndustrialPidLoop(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.117.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.brain.IndustrialPidLoop("example",
-            pid_loop_configuration="YourLoopConfiguration",
-            pid_loop_dcs_type="standard",
-            pid_loop_is_crucial=True,
-            pid_loop_name="tf-testAcc",
-            pid_loop_type="0",
-            pid_project_id="856c6b8f-ca63-40a4-xxxx-xxxx")
-        ```
-
         ## Import
 
         Brain Industrial Pid Loop can be imported using the id, e.g.
@@ -400,23 +395,6 @@ class IndustrialPidLoop(pulumi.CustomResource):
         Provides a Brain Industrial Pid Loop resource.
 
         > **NOTE:** Available in v1.117.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.brain.IndustrialPidLoop("example",
-            pid_loop_configuration="YourLoopConfiguration",
-            pid_loop_dcs_type="standard",
-            pid_loop_is_crucial=True,
-            pid_loop_name="tf-testAcc",
-            pid_loop_type="0",
-            pid_project_id="856c6b8f-ca63-40a4-xxxx-xxxx")
-        ```
 
         ## Import
 

@@ -15,36 +15,6 @@ import (
 // This data source provides Ebs Dedicated Block Storage Cluster available to the user.
 //
 // > **NOTE:** Available in 1.196.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ebs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := ebs.GetDedicatedBlockStorageClusters(ctx, &ebs.GetDedicatedBlockStorageClustersArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//				NameRegex: pulumi.StringRef(alicloud_ebs_dedicated_block_storage_cluster.Default.Name),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("alicloudEbsDedicatedBlockStorageClusterExampleId", _default.Clusters[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDedicatedBlockStorageClusters(ctx *pulumi.Context, args *GetDedicatedBlockStorageClustersArgs, opts ...pulumi.InvokeOption) (*GetDedicatedBlockStorageClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDedicatedBlockStorageClustersResult

@@ -37,18 +37,24 @@ class CustomLineArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             custom_line_name: pulumi.Input[str],
-             domain_name: pulumi.Input[str],
-             ip_segment_lists: pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]],
+             custom_line_name: Optional[pulumi.Input[str]] = None,
+             domain_name: Optional[pulumi.Input[str]] = None,
+             ip_segment_lists: Optional[pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]]] = None,
              lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'customLineName' in kwargs:
+        if custom_line_name is None and 'customLineName' in kwargs:
             custom_line_name = kwargs['customLineName']
-        if 'domainName' in kwargs:
+        if custom_line_name is None:
+            raise TypeError("Missing 'custom_line_name' argument")
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'ipSegmentLists' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if ip_segment_lists is None and 'ipSegmentLists' in kwargs:
             ip_segment_lists = kwargs['ipSegmentLists']
+        if ip_segment_lists is None:
+            raise TypeError("Missing 'ip_segment_lists' argument")
 
         _setter("custom_line_name", custom_line_name)
         _setter("domain_name", domain_name)
@@ -133,13 +139,13 @@ class _CustomLineState:
              domain_name: Optional[pulumi.Input[str]] = None,
              ip_segment_lists: Optional[pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]]] = None,
              lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'customLineName' in kwargs:
+        if custom_line_name is None and 'customLineName' in kwargs:
             custom_line_name = kwargs['customLineName']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'ipSegmentLists' in kwargs:
+        if ip_segment_lists is None and 'ipSegmentLists' in kwargs:
             ip_segment_lists = kwargs['ipSegmentLists']
 
         if custom_line_name is not None:
@@ -217,23 +223,6 @@ class CustomLine(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.151.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.dns.CustomLine("default",
-            custom_line_name="tf-example",
-            domain_name="alicloud-provider.com",
-            ip_segment_lists=[alicloud.dns.CustomLineIpSegmentListArgs(
-                end_ip="192.0.2.125",
-                start_ip="192.0.2.123",
-            )])
-        ```
-
         ## Import
 
         Alidns Custom Line can be imported using the id, e.g.
@@ -261,23 +250,6 @@ class CustomLine(pulumi.CustomResource):
         For information about Alidns Custom Line and how to use it, see [What is Custom Line](https://www.alibabacloud.com/help/en/doc-detail/145059.html).
 
         > **NOTE:** Available since v1.151.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.dns.CustomLine("default",
-            custom_line_name="tf-example",
-            domain_name="alicloud-provider.com",
-            ip_segment_lists=[alicloud.dns.CustomLineIpSegmentListArgs(
-                end_ip="192.0.2.125",
-                start_ip="192.0.2.123",
-            )])
-        ```
 
         ## Import
 

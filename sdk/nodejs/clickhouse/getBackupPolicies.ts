@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.147.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.clickhouse.getBackupPolicies({
- *     dbClusterId: "example_value",
- * });
- * export const clickHouseBackupPolicyId1 = example.then(example => example.policies?.[0]?.id);
- * ```
  */
 export function getBackupPolicies(args: GetBackupPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupPoliciesResult> {
 
@@ -64,20 +50,6 @@ export interface GetBackupPoliciesResult {
  * This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.147.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.clickhouse.getBackupPolicies({
- *     dbClusterId: "example_value",
- * });
- * export const clickHouseBackupPolicyId1 = example.then(example => example.policies?.[0]?.id);
- * ```
  */
 export function getBackupPoliciesOutput(args: GetBackupPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getBackupPolicies(a, opts))

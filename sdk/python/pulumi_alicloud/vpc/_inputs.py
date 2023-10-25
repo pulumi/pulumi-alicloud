@@ -41,13 +41,15 @@ class DhcpOptionsSetAssociateVpcArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vpc_id: pulumi.Input[str],
+             vpc_id: Optional[pulumi.Input[str]] = None,
              associate_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'associateStatus' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if associate_status is None and 'associateStatus' in kwargs:
             associate_status = kwargs['associateStatus']
 
         _setter("vpc_id", vpc_id)
@@ -96,14 +98,18 @@ class NetworkAclAttachmentResourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_id: pulumi.Input[str],
-             resource_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             resource_id: Optional[pulumi.Input[str]] = None,
+             resource_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceId' in kwargs:
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceType' in kwargs:
+        if resource_id is None:
+            raise TypeError("Missing 'resource_id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
 
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
@@ -175,11 +181,11 @@ class NetworkAclEgressAclEntryArgs:
              policy: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationCidrIp' in kwargs:
+        if destination_cidr_ip is None and 'destinationCidrIp' in kwargs:
             destination_cidr_ip = kwargs['destinationCidrIp']
-        if 'networkAclEntryName' in kwargs:
+        if network_acl_entry_name is None and 'networkAclEntryName' in kwargs:
             network_acl_entry_name = kwargs['networkAclEntryName']
 
         if description is not None:
@@ -314,11 +320,11 @@ class NetworkAclEntriesEgressArgs:
              policy: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationCidrIp' in kwargs:
+        if destination_cidr_ip is None and 'destinationCidrIp' in kwargs:
             destination_cidr_ip = kwargs['destinationCidrIp']
-        if 'entryType' in kwargs:
+        if entry_type is None and 'entryType' in kwargs:
             entry_type = kwargs['entryType']
 
         if description is not None:
@@ -460,11 +466,11 @@ class NetworkAclEntriesIngressArgs:
              port: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              source_cidr_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'entryType' in kwargs:
+        if entry_type is None and 'entryType' in kwargs:
             entry_type = kwargs['entryType']
-        if 'sourceCidrIp' in kwargs:
+        if source_cidr_ip is None and 'sourceCidrIp' in kwargs:
             source_cidr_ip = kwargs['sourceCidrIp']
 
         if description is not None:
@@ -609,11 +615,11 @@ class NetworkAclIngressAclEntryArgs:
              port: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              source_cidr_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'networkAclEntryName' in kwargs:
+        if network_acl_entry_name is None and 'networkAclEntryName' in kwargs:
             network_acl_entry_name = kwargs['networkAclEntryName']
-        if 'sourceCidrIp' in kwargs:
+        if source_cidr_ip is None and 'sourceCidrIp' in kwargs:
             source_cidr_ip = kwargs['sourceCidrIp']
 
         if description is not None:
@@ -729,15 +735,19 @@ class NetworkAclResourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_id: pulumi.Input[str],
-             resource_type: pulumi.Input[str],
+             resource_id: Optional[pulumi.Input[str]] = None,
+             resource_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceId' in kwargs:
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceType' in kwargs:
+        if resource_id is None:
+            raise TypeError("Missing 'resource_id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
 
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
@@ -805,11 +815,11 @@ class NetworkIpv6CidrBlockArgs:
              _setter: Callable[[Any, Any], None],
              ipv6_cidr_block: Optional[pulumi.Input[str]] = None,
              ipv6_isp: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipv6CidrBlock' in kwargs:
+        if ipv6_cidr_block is None and 'ipv6CidrBlock' in kwargs:
             ipv6_cidr_block = kwargs['ipv6CidrBlock']
-        if 'ipv6Isp' in kwargs:
+        if ipv6_isp is None and 'ipv6Isp' in kwargs:
             ipv6_isp = kwargs['ipv6Isp']
 
         if ipv6_cidr_block is not None:
@@ -866,7 +876,7 @@ class PrefixListEntryArgs:
              _setter: Callable[[Any, Any], None],
              cidr: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if cidr is not None:
@@ -942,19 +952,19 @@ class PrefixListPrefixListAssociationArgs:
              resource_type: Optional[pulumi.Input[str]] = None,
              resource_uid: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ownerId' in kwargs:
+        if owner_id is None and 'ownerId' in kwargs:
             owner_id = kwargs['ownerId']
-        if 'prefixListId' in kwargs:
+        if prefix_list_id is None and 'prefixListId' in kwargs:
             prefix_list_id = kwargs['prefixListId']
-        if 'regionId' in kwargs:
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'resourceId' in kwargs:
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceType' in kwargs:
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
-        if 'resourceUid' in kwargs:
+        if resource_uid is None and 'resourceUid' in kwargs:
             resource_uid = kwargs['resourceUid']
 
         if owner_id is not None:
@@ -1113,25 +1123,29 @@ class TrafficMirrorFilterEgressRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             protocol: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
              destination_cidr_block: Optional[pulumi.Input[str]] = None,
              destination_port_range: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              source_cidr_block: Optional[pulumi.Input[str]] = None,
              source_port_range: Optional[pulumi.Input[str]] = None,
              traffic_mirror_filter_rule_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationCidrBlock' in kwargs:
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if destination_cidr_block is None and 'destinationCidrBlock' in kwargs:
             destination_cidr_block = kwargs['destinationCidrBlock']
-        if 'destinationPortRange' in kwargs:
+        if destination_port_range is None and 'destinationPortRange' in kwargs:
             destination_port_range = kwargs['destinationPortRange']
-        if 'sourceCidrBlock' in kwargs:
+        if source_cidr_block is None and 'sourceCidrBlock' in kwargs:
             source_cidr_block = kwargs['sourceCidrBlock']
-        if 'sourcePortRange' in kwargs:
+        if source_port_range is None and 'sourcePortRange' in kwargs:
             source_port_range = kwargs['sourcePortRange']
-        if 'trafficMirrorFilterRuleStatus' in kwargs:
+        if traffic_mirror_filter_rule_status is None and 'trafficMirrorFilterRuleStatus' in kwargs:
             traffic_mirror_filter_rule_status = kwargs['trafficMirrorFilterRuleStatus']
 
         _setter("action", action)
@@ -1293,25 +1307,29 @@ class TrafficMirrorFilterIngressRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             protocol: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
              destination_cidr_block: Optional[pulumi.Input[str]] = None,
              destination_port_range: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              source_cidr_block: Optional[pulumi.Input[str]] = None,
              source_port_range: Optional[pulumi.Input[str]] = None,
              traffic_mirror_filter_rule_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationCidrBlock' in kwargs:
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if destination_cidr_block is None and 'destinationCidrBlock' in kwargs:
             destination_cidr_block = kwargs['destinationCidrBlock']
-        if 'destinationPortRange' in kwargs:
+        if destination_port_range is None and 'destinationPortRange' in kwargs:
             destination_port_range = kwargs['destinationPortRange']
-        if 'sourceCidrBlock' in kwargs:
+        if source_cidr_block is None and 'sourceCidrBlock' in kwargs:
             source_cidr_block = kwargs['sourceCidrBlock']
-        if 'sourcePortRange' in kwargs:
+        if source_port_range is None and 'sourcePortRange' in kwargs:
             source_port_range = kwargs['sourcePortRange']
-        if 'trafficMirrorFilterRuleStatus' in kwargs:
+        if traffic_mirror_filter_rule_status is None and 'trafficMirrorFilterRuleStatus' in kwargs:
             traffic_mirror_filter_rule_status = kwargs['trafficMirrorFilterRuleStatus']
 
         _setter("action", action)

@@ -32,16 +32,20 @@ class IndustrialPidProjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pid_organization_id: pulumi.Input[str],
-             pid_project_name: pulumi.Input[str],
+             pid_organization_id: Optional[pulumi.Input[str]] = None,
+             pid_project_name: Optional[pulumi.Input[str]] = None,
              pid_project_desc: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'pidOrganizationId' in kwargs:
+        if pid_organization_id is None and 'pidOrganizationId' in kwargs:
             pid_organization_id = kwargs['pidOrganizationId']
-        if 'pidProjectName' in kwargs:
+        if pid_organization_id is None:
+            raise TypeError("Missing 'pid_organization_id' argument")
+        if pid_project_name is None and 'pidProjectName' in kwargs:
             pid_project_name = kwargs['pidProjectName']
-        if 'pidProjectDesc' in kwargs:
+        if pid_project_name is None:
+            raise TypeError("Missing 'pid_project_name' argument")
+        if pid_project_desc is None and 'pidProjectDesc' in kwargs:
             pid_project_desc = kwargs['pidProjectDesc']
 
         _setter("pid_organization_id", pid_organization_id)
@@ -110,13 +114,13 @@ class _IndustrialPidProjectState:
              pid_organization_id: Optional[pulumi.Input[str]] = None,
              pid_project_desc: Optional[pulumi.Input[str]] = None,
              pid_project_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'pidOrganizationId' in kwargs:
+        if pid_organization_id is None and 'pidOrganizationId' in kwargs:
             pid_organization_id = kwargs['pidOrganizationId']
-        if 'pidProjectDesc' in kwargs:
+        if pid_project_desc is None and 'pidProjectDesc' in kwargs:
             pid_project_desc = kwargs['pidProjectDesc']
-        if 'pidProjectName' in kwargs:
+        if pid_project_name is None and 'pidProjectName' in kwargs:
             pid_project_name = kwargs['pidProjectName']
 
         if pid_organization_id is not None:
@@ -177,19 +181,6 @@ class IndustrialPidProject(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.113.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.brain.IndustrialPidProject("example",
-            pid_organization_id="3e74e684-cbb5-xxxx",
-            pid_project_name="tf-testAcc")
-        ```
-
         ## Import
 
         Brain Industrial Pid Project can be imported using the id, e.g.
@@ -214,19 +205,6 @@ class IndustrialPidProject(pulumi.CustomResource):
         Provides a Brain Industrial Pid Project resource.
 
         > **NOTE:** Available in v1.113.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.brain.IndustrialPidProject("example",
-            pid_organization_id="3e74e684-cbb5-xxxx",
-            pid_project_name="tf-testAcc")
-        ```
 
         ## Import
 

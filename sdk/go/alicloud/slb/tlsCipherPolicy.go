@@ -19,41 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.135.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := slb.NewTlsCipherPolicy(ctx, "example", &slb.TlsCipherPolicyArgs{
-//				Ciphers: pulumi.StringArray{
-//					pulumi.String("AES256-SHA256"),
-//					pulumi.String("AES128-GCM-SHA256"),
-//				},
-//				TlsCipherPolicyName: pulumi.String("Test-example_value"),
-//				TlsVersions: pulumi.StringArray{
-//					pulumi.String("TLSv1.2"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // SLB Tls Cipher Policy can be imported using the id, e.g.

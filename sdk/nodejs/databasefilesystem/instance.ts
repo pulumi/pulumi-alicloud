@@ -13,25 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.136.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const example = new alicloud.databasefilesystem.Instance("example", {
- *     category: "standard",
- *     zoneId: "cn-hangzhou-i",
- *     performanceLevel: "PL1",
- *     instanceName: name,
- *     size: 100,
- * });
- * ```
- *
  * ## Import
  *
  * DBFS Instance can be imported using the id, e.g.

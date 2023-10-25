@@ -15,38 +15,6 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides the Ecs Disks of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.122.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Ecs.GetEcsDisks.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "d-artgdsvdvxxxx",
-        ///         },
-        ///         NameRegex = "tf-test",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstEcsDiskId"] = example.Apply(getEcsDisksResult =&gt; getEcsDisksResult.Disks[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsDisksResult> InvokeAsync(GetEcsDisksArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsDisksResult>("alicloud:ecs/getEcsDisks:getEcsDisks", args ?? new GetEcsDisksArgs(), options.WithDefaults());
@@ -55,38 +23,6 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides the Ecs Disks of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.122.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Ecs.GetEcsDisks.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "d-artgdsvdvxxxx",
-        ///         },
-        ///         NameRegex = "tf-test",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstEcsDiskId"] = example.Apply(getEcsDisksResult =&gt; getEcsDisksResult.Disks[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsDisksResult> Invoke(GetEcsDisksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsDisksResult>("alicloud:ecs/getEcsDisks:getEcsDisks", args ?? new GetEcsDisksInvokeArgs(), options.WithDefaults());

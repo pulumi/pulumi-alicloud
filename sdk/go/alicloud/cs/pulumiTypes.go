@@ -3805,19 +3805,6 @@ type ManagedKubernetesMaintenanceWindow struct {
 	// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 	//
 	// for example:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	WeeklyPeriod string `pulumi:"weeklyPeriod"`
 }
 
@@ -3842,19 +3829,6 @@ type ManagedKubernetesMaintenanceWindowArgs struct {
 	// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 	//
 	// for example:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	WeeklyPeriod pulumi.StringInput `pulumi:"weeklyPeriod"`
 }
 
@@ -3971,22 +3945,6 @@ func (o ManagedKubernetesMaintenanceWindowOutput) MaintenanceTime() pulumi.Strin
 // Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 //
 // for example:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ManagedKubernetesMaintenanceWindowOutput) WeeklyPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedKubernetesMaintenanceWindow) string { return v.WeeklyPeriod }).(pulumi.StringOutput)
 }
@@ -4054,22 +4012,6 @@ func (o ManagedKubernetesMaintenanceWindowPtrOutput) MaintenanceTime() pulumi.St
 // Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 //
 // for example:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ManagedKubernetesMaintenanceWindowPtrOutput) WeeklyPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetesMaintenanceWindow) *string {
 		if v == nil {
@@ -4481,38 +4423,6 @@ type ManagedKubernetesTaint struct {
 	// The taint effect.
 	//
 	// The following example is the definition of taints block:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := cs.NewManagedKubernetes(ctx, "k8s", &cs.ManagedKubernetesArgs{
-	// 			Taints: cs.ManagedKubernetesTaintArray{
-	// 				&cs.ManagedKubernetesTaintArgs{
-	// 					Effect: pulumi.String("NoSchedule"),
-	// 					Key:    pulumi.String("key-a"),
-	// 					Value:  pulumi.String("value-a"),
-	// 				},
-	// 				&cs.ManagedKubernetesTaintArgs{
-	// 					Effect: pulumi.String("NoSchedule"),
-	// 					Key:    pulumi.String("key-b"),
-	// 					Value:  pulumi.String("value-b"),
-	// 				},
-	// 			},
-	// 		})
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Effect *string `pulumi:"effect"`
 	// The taint key.
 	Key *string `pulumi:"key"`
@@ -4535,38 +4445,6 @@ type ManagedKubernetesTaintArgs struct {
 	// The taint effect.
 	//
 	// The following example is the definition of taints block:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := cs.NewManagedKubernetes(ctx, "k8s", &cs.ManagedKubernetesArgs{
-	// 			Taints: cs.ManagedKubernetesTaintArray{
-	// 				&cs.ManagedKubernetesTaintArgs{
-	// 					Effect: pulumi.String("NoSchedule"),
-	// 					Key:    pulumi.String("key-a"),
-	// 					Value:  pulumi.String("value-a"),
-	// 				},
-	// 				&cs.ManagedKubernetesTaintArgs{
-	// 					Effect: pulumi.String("NoSchedule"),
-	// 					Key:    pulumi.String("key-b"),
-	// 					Value:  pulumi.String("value-b"),
-	// 				},
-	// 			},
-	// 		})
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Effect pulumi.StringPtrInput `pulumi:"effect"`
 	// The taint key.
 	Key pulumi.StringPtrInput `pulumi:"key"`
@@ -4646,41 +4524,6 @@ func (o ManagedKubernetesTaintOutput) ToOutput(ctx context.Context) pulumix.Outp
 // The taint effect.
 //
 // The following example is the definition of taints block:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cs.NewManagedKubernetes(ctx, "k8s", &cs.ManagedKubernetesArgs{
-//				Taints: cs.ManagedKubernetesTaintArray{
-//					&cs.ManagedKubernetesTaintArgs{
-//						Effect: pulumi.String("NoSchedule"),
-//						Key:    pulumi.String("key-a"),
-//						Value:  pulumi.String("value-a"),
-//					},
-//					&cs.ManagedKubernetesTaintArgs{
-//						Effect: pulumi.String("NoSchedule"),
-//						Key:    pulumi.String("key-b"),
-//						Value:  pulumi.String("value-b"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ManagedKubernetesTaintOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }

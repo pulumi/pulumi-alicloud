@@ -109,20 +109,6 @@ def get_instances(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.136.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.databasefilesystem.get_instances(ids=["example_id"])
-    pulumi.export("dbfsInstanceId1", ids.instances[0].id)
-    name_regex = alicloud.databasefilesystem.get_instances(name_regex="^my-Instance")
-    pulumi.export("dbfsInstanceId2", name_regex.instances[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Instance IDs.
     :param str name_regex: A regex string to filter results by Instance name.
@@ -157,20 +143,6 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     This data source provides the DBFS Instances of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.136.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.databasefilesystem.get_instances(ids=["example_id"])
-    pulumi.export("dbfsInstanceId1", ids.instances[0].id)
-    name_regex = alicloud.databasefilesystem.get_instances(name_regex="^my-Instance")
-    pulumi.export("dbfsInstanceId2", name_regex.instances[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Instance IDs.

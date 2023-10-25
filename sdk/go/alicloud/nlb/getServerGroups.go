@@ -15,40 +15,6 @@ import (
 // This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.186.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nlb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := nlb.GetServerGroups(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("nlbServerGroupId1", ids.Groups[0].Id)
-//			nameRegex, err := nlb.GetServerGroups(ctx, &nlb.GetServerGroupsArgs{
-//				NameRegex: pulumi.StringRef("^my-ServerGroup"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("nlbServerGroupId2", nameRegex.Groups[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetServerGroups(ctx *pulumi.Context, args *GetServerGroupsArgs, opts ...pulumi.InvokeOption) (*GetServerGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerGroupsResult

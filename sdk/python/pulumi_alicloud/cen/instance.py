@@ -43,11 +43,11 @@ class InstanceArgs:
              name: Optional[pulumi.Input[str]] = None,
              protection_level: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenInstanceName' in kwargs:
+        if cen_instance_name is None and 'cenInstanceName' in kwargs:
             cen_instance_name = kwargs['cenInstanceName']
-        if 'protectionLevel' in kwargs:
+        if protection_level is None and 'protectionLevel' in kwargs:
             protection_level = kwargs['protectionLevel']
 
         if cen_instance_name is not None:
@@ -164,11 +164,11 @@ class _InstanceState:
              protection_level: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenInstanceName' in kwargs:
+        if cen_instance_name is None and 'cenInstanceName' in kwargs:
             cen_instance_name = kwargs['cenInstanceName']
-        if 'protectionLevel' in kwargs:
+        if protection_level is None and 'protectionLevel' in kwargs:
             protection_level = kwargs['protectionLevel']
 
         if cen_instance_name is not None:
@@ -281,19 +281,6 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.15.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cen.Instance("example",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        ```
-
         ## Import
 
         CEN instance can be imported using the id, e.g.
@@ -322,19 +309,6 @@ class Instance(pulumi.CustomResource):
         For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
 
         > **NOTE:** Available since v1.15.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cen.Instance("example",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        ```
 
         ## Import
 

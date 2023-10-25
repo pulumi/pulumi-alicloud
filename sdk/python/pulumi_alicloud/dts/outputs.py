@@ -51,27 +51,41 @@ class GetConsumerChannelsChannelResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             consumer_group_id: str,
-             consumer_group_name: str,
-             consumer_group_user_name: str,
-             consumption_checkpoint: str,
-             id: str,
-             message_delay: int,
-             unconsumed_data: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             consumer_group_id: Optional[str] = None,
+             consumer_group_name: Optional[str] = None,
+             consumer_group_user_name: Optional[str] = None,
+             consumption_checkpoint: Optional[str] = None,
+             id: Optional[str] = None,
+             message_delay: Optional[int] = None,
+             unconsumed_data: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'consumerGroupId' in kwargs:
+        if consumer_group_id is None and 'consumerGroupId' in kwargs:
             consumer_group_id = kwargs['consumerGroupId']
-        if 'consumerGroupName' in kwargs:
+        if consumer_group_id is None:
+            raise TypeError("Missing 'consumer_group_id' argument")
+        if consumer_group_name is None and 'consumerGroupName' in kwargs:
             consumer_group_name = kwargs['consumerGroupName']
-        if 'consumerGroupUserName' in kwargs:
+        if consumer_group_name is None:
+            raise TypeError("Missing 'consumer_group_name' argument")
+        if consumer_group_user_name is None and 'consumerGroupUserName' in kwargs:
             consumer_group_user_name = kwargs['consumerGroupUserName']
-        if 'consumptionCheckpoint' in kwargs:
+        if consumer_group_user_name is None:
+            raise TypeError("Missing 'consumer_group_user_name' argument")
+        if consumption_checkpoint is None and 'consumptionCheckpoint' in kwargs:
             consumption_checkpoint = kwargs['consumptionCheckpoint']
-        if 'messageDelay' in kwargs:
+        if consumption_checkpoint is None:
+            raise TypeError("Missing 'consumption_checkpoint' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if message_delay is None and 'messageDelay' in kwargs:
             message_delay = kwargs['messageDelay']
-        if 'unconsumedData' in kwargs:
+        if message_delay is None:
+            raise TypeError("Missing 'message_delay' argument")
+        if unconsumed_data is None and 'unconsumedData' in kwargs:
             unconsumed_data = kwargs['unconsumedData']
+        if unconsumed_data is None:
+            raise TypeError("Missing 'unconsumed_data' argument")
 
         _setter("consumer_group_id", consumer_group_id)
         _setter("consumer_group_name", consumer_group_name)
@@ -190,42 +204,68 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             destination_endpoint_engine_name: str,
-             destination_region: str,
-             dts_instance_id: str,
-             id: str,
-             instance_class: str,
-             instance_name: str,
-             payment_type: str,
-             resource_group_id: str,
-             source_endpoint_engine_name: str,
-             source_region: str,
-             status: str,
-             type: str,
+             create_time: Optional[str] = None,
+             destination_endpoint_engine_name: Optional[str] = None,
+             destination_region: Optional[str] = None,
+             dts_instance_id: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_class: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             source_endpoint_engine_name: Optional[str] = None,
+             source_region: Optional[str] = None,
+             status: Optional[str] = None,
+             type: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'destinationEndpointEngineName' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if destination_endpoint_engine_name is None and 'destinationEndpointEngineName' in kwargs:
             destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
-        if 'destinationRegion' in kwargs:
+        if destination_endpoint_engine_name is None:
+            raise TypeError("Missing 'destination_endpoint_engine_name' argument")
+        if destination_region is None and 'destinationRegion' in kwargs:
             destination_region = kwargs['destinationRegion']
-        if 'dtsInstanceId' in kwargs:
+        if destination_region is None:
+            raise TypeError("Missing 'destination_region' argument")
+        if dts_instance_id is None and 'dtsInstanceId' in kwargs:
             dts_instance_id = kwargs['dtsInstanceId']
-        if 'instanceClass' in kwargs:
+        if dts_instance_id is None:
+            raise TypeError("Missing 'dts_instance_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'instanceName' in kwargs:
+        if instance_class is None:
+            raise TypeError("Missing 'instance_class' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'paymentType' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'sourceEndpointEngineName' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
             source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if 'sourceRegion' in kwargs:
+        if source_endpoint_engine_name is None:
+            raise TypeError("Missing 'source_endpoint_engine_name' argument")
+        if source_region is None and 'sourceRegion' in kwargs:
             source_region = kwargs['sourceRegion']
+        if source_region is None:
+            raise TypeError("Missing 'source_region' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("create_time", create_time)
         _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
@@ -454,94 +494,154 @@ class GetMigrationJobsJobResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_initialization: bool,
-             data_synchronization: bool,
-             db_list: str,
-             destination_endpoint_data_base_name: str,
-             destination_endpoint_engine_name: str,
-             destination_endpoint_instance_id: str,
-             destination_endpoint_instance_type: str,
-             destination_endpoint_ip: str,
-             destination_endpoint_oracle_sid: str,
-             destination_endpoint_port: str,
-             destination_endpoint_region: str,
-             destination_endpoint_user_name: str,
-             dts_instance_id: str,
-             dts_job_id: str,
-             dts_job_name: str,
-             id: str,
-             payment_type: str,
-             source_endpoint_database_name: str,
-             source_endpoint_engine_name: str,
-             source_endpoint_instance_id: str,
-             source_endpoint_instance_type: str,
-             source_endpoint_ip: str,
-             source_endpoint_oracle_sid: str,
-             source_endpoint_owner_id: str,
-             source_endpoint_port: str,
-             source_endpoint_region: str,
-             source_endpoint_role: str,
-             source_endpoint_user_name: str,
-             status: str,
-             structure_initialization: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             data_initialization: Optional[bool] = None,
+             data_synchronization: Optional[bool] = None,
+             db_list: Optional[str] = None,
+             destination_endpoint_data_base_name: Optional[str] = None,
+             destination_endpoint_engine_name: Optional[str] = None,
+             destination_endpoint_instance_id: Optional[str] = None,
+             destination_endpoint_instance_type: Optional[str] = None,
+             destination_endpoint_ip: Optional[str] = None,
+             destination_endpoint_oracle_sid: Optional[str] = None,
+             destination_endpoint_port: Optional[str] = None,
+             destination_endpoint_region: Optional[str] = None,
+             destination_endpoint_user_name: Optional[str] = None,
+             dts_instance_id: Optional[str] = None,
+             dts_job_id: Optional[str] = None,
+             dts_job_name: Optional[str] = None,
+             id: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             source_endpoint_database_name: Optional[str] = None,
+             source_endpoint_engine_name: Optional[str] = None,
+             source_endpoint_instance_id: Optional[str] = None,
+             source_endpoint_instance_type: Optional[str] = None,
+             source_endpoint_ip: Optional[str] = None,
+             source_endpoint_oracle_sid: Optional[str] = None,
+             source_endpoint_owner_id: Optional[str] = None,
+             source_endpoint_port: Optional[str] = None,
+             source_endpoint_region: Optional[str] = None,
+             source_endpoint_role: Optional[str] = None,
+             source_endpoint_user_name: Optional[str] = None,
+             status: Optional[str] = None,
+             structure_initialization: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dataInitialization' in kwargs:
+        if data_initialization is None and 'dataInitialization' in kwargs:
             data_initialization = kwargs['dataInitialization']
-        if 'dataSynchronization' in kwargs:
+        if data_initialization is None:
+            raise TypeError("Missing 'data_initialization' argument")
+        if data_synchronization is None and 'dataSynchronization' in kwargs:
             data_synchronization = kwargs['dataSynchronization']
-        if 'dbList' in kwargs:
+        if data_synchronization is None:
+            raise TypeError("Missing 'data_synchronization' argument")
+        if db_list is None and 'dbList' in kwargs:
             db_list = kwargs['dbList']
-        if 'destinationEndpointDataBaseName' in kwargs:
+        if db_list is None:
+            raise TypeError("Missing 'db_list' argument")
+        if destination_endpoint_data_base_name is None and 'destinationEndpointDataBaseName' in kwargs:
             destination_endpoint_data_base_name = kwargs['destinationEndpointDataBaseName']
-        if 'destinationEndpointEngineName' in kwargs:
+        if destination_endpoint_data_base_name is None:
+            raise TypeError("Missing 'destination_endpoint_data_base_name' argument")
+        if destination_endpoint_engine_name is None and 'destinationEndpointEngineName' in kwargs:
             destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
-        if 'destinationEndpointInstanceId' in kwargs:
+        if destination_endpoint_engine_name is None:
+            raise TypeError("Missing 'destination_endpoint_engine_name' argument")
+        if destination_endpoint_instance_id is None and 'destinationEndpointInstanceId' in kwargs:
             destination_endpoint_instance_id = kwargs['destinationEndpointInstanceId']
-        if 'destinationEndpointInstanceType' in kwargs:
+        if destination_endpoint_instance_id is None:
+            raise TypeError("Missing 'destination_endpoint_instance_id' argument")
+        if destination_endpoint_instance_type is None and 'destinationEndpointInstanceType' in kwargs:
             destination_endpoint_instance_type = kwargs['destinationEndpointInstanceType']
-        if 'destinationEndpointIp' in kwargs:
+        if destination_endpoint_instance_type is None:
+            raise TypeError("Missing 'destination_endpoint_instance_type' argument")
+        if destination_endpoint_ip is None and 'destinationEndpointIp' in kwargs:
             destination_endpoint_ip = kwargs['destinationEndpointIp']
-        if 'destinationEndpointOracleSid' in kwargs:
+        if destination_endpoint_ip is None:
+            raise TypeError("Missing 'destination_endpoint_ip' argument")
+        if destination_endpoint_oracle_sid is None and 'destinationEndpointOracleSid' in kwargs:
             destination_endpoint_oracle_sid = kwargs['destinationEndpointOracleSid']
-        if 'destinationEndpointPort' in kwargs:
+        if destination_endpoint_oracle_sid is None:
+            raise TypeError("Missing 'destination_endpoint_oracle_sid' argument")
+        if destination_endpoint_port is None and 'destinationEndpointPort' in kwargs:
             destination_endpoint_port = kwargs['destinationEndpointPort']
-        if 'destinationEndpointRegion' in kwargs:
+        if destination_endpoint_port is None:
+            raise TypeError("Missing 'destination_endpoint_port' argument")
+        if destination_endpoint_region is None and 'destinationEndpointRegion' in kwargs:
             destination_endpoint_region = kwargs['destinationEndpointRegion']
-        if 'destinationEndpointUserName' in kwargs:
+        if destination_endpoint_region is None:
+            raise TypeError("Missing 'destination_endpoint_region' argument")
+        if destination_endpoint_user_name is None and 'destinationEndpointUserName' in kwargs:
             destination_endpoint_user_name = kwargs['destinationEndpointUserName']
-        if 'dtsInstanceId' in kwargs:
+        if destination_endpoint_user_name is None:
+            raise TypeError("Missing 'destination_endpoint_user_name' argument")
+        if dts_instance_id is None and 'dtsInstanceId' in kwargs:
             dts_instance_id = kwargs['dtsInstanceId']
-        if 'dtsJobId' in kwargs:
+        if dts_instance_id is None:
+            raise TypeError("Missing 'dts_instance_id' argument")
+        if dts_job_id is None and 'dtsJobId' in kwargs:
             dts_job_id = kwargs['dtsJobId']
-        if 'dtsJobName' in kwargs:
+        if dts_job_id is None:
+            raise TypeError("Missing 'dts_job_id' argument")
+        if dts_job_name is None and 'dtsJobName' in kwargs:
             dts_job_name = kwargs['dtsJobName']
-        if 'paymentType' in kwargs:
+        if dts_job_name is None:
+            raise TypeError("Missing 'dts_job_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'sourceEndpointDatabaseName' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if source_endpoint_database_name is None and 'sourceEndpointDatabaseName' in kwargs:
             source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
-        if 'sourceEndpointEngineName' in kwargs:
+        if source_endpoint_database_name is None:
+            raise TypeError("Missing 'source_endpoint_database_name' argument")
+        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
             source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if 'sourceEndpointInstanceId' in kwargs:
+        if source_endpoint_engine_name is None:
+            raise TypeError("Missing 'source_endpoint_engine_name' argument")
+        if source_endpoint_instance_id is None and 'sourceEndpointInstanceId' in kwargs:
             source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
-        if 'sourceEndpointInstanceType' in kwargs:
+        if source_endpoint_instance_id is None:
+            raise TypeError("Missing 'source_endpoint_instance_id' argument")
+        if source_endpoint_instance_type is None and 'sourceEndpointInstanceType' in kwargs:
             source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
-        if 'sourceEndpointIp' in kwargs:
+        if source_endpoint_instance_type is None:
+            raise TypeError("Missing 'source_endpoint_instance_type' argument")
+        if source_endpoint_ip is None and 'sourceEndpointIp' in kwargs:
             source_endpoint_ip = kwargs['sourceEndpointIp']
-        if 'sourceEndpointOracleSid' in kwargs:
+        if source_endpoint_ip is None:
+            raise TypeError("Missing 'source_endpoint_ip' argument")
+        if source_endpoint_oracle_sid is None and 'sourceEndpointOracleSid' in kwargs:
             source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
-        if 'sourceEndpointOwnerId' in kwargs:
+        if source_endpoint_oracle_sid is None:
+            raise TypeError("Missing 'source_endpoint_oracle_sid' argument")
+        if source_endpoint_owner_id is None and 'sourceEndpointOwnerId' in kwargs:
             source_endpoint_owner_id = kwargs['sourceEndpointOwnerId']
-        if 'sourceEndpointPort' in kwargs:
+        if source_endpoint_owner_id is None:
+            raise TypeError("Missing 'source_endpoint_owner_id' argument")
+        if source_endpoint_port is None and 'sourceEndpointPort' in kwargs:
             source_endpoint_port = kwargs['sourceEndpointPort']
-        if 'sourceEndpointRegion' in kwargs:
+        if source_endpoint_port is None:
+            raise TypeError("Missing 'source_endpoint_port' argument")
+        if source_endpoint_region is None and 'sourceEndpointRegion' in kwargs:
             source_endpoint_region = kwargs['sourceEndpointRegion']
-        if 'sourceEndpointRole' in kwargs:
+        if source_endpoint_region is None:
+            raise TypeError("Missing 'source_endpoint_region' argument")
+        if source_endpoint_role is None and 'sourceEndpointRole' in kwargs:
             source_endpoint_role = kwargs['sourceEndpointRole']
-        if 'sourceEndpointUserName' in kwargs:
+        if source_endpoint_role is None:
+            raise TypeError("Missing 'source_endpoint_role' argument")
+        if source_endpoint_user_name is None and 'sourceEndpointUserName' in kwargs:
             source_endpoint_user_name = kwargs['sourceEndpointUserName']
-        if 'structureInitialization' in kwargs:
+        if source_endpoint_user_name is None:
+            raise TypeError("Missing 'source_endpoint_user_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if structure_initialization is None and 'structureInitialization' in kwargs:
             structure_initialization = kwargs['structureInitialization']
+        if structure_initialization is None:
+            raise TypeError("Missing 'structure_initialization' argument")
 
         _setter("data_initialization", data_initialization)
         _setter("data_synchronization", data_synchronization)
@@ -910,84 +1010,140 @@ class GetSubscriptionJobsJobResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             checkpoint: str,
-             create_time: str,
-             db_list: str,
-             dts_instance_id: str,
-             dts_job_id: str,
-             dts_job_name: str,
-             expire_time: str,
-             id: str,
-             payment_type: str,
-             source_endpoint_database_name: str,
-             source_endpoint_engine_name: str,
-             source_endpoint_instance_id: str,
-             source_endpoint_instance_type: str,
-             source_endpoint_ip: str,
-             source_endpoint_oracle_sid: str,
-             source_endpoint_owner_id: str,
-             source_endpoint_port: str,
-             source_endpoint_region: str,
-             source_endpoint_role: str,
-             source_endpoint_user_name: str,
-             status: str,
-             subscription_data_type_ddl: bool,
-             subscription_data_type_dml: bool,
-             subscription_hosts: Sequence['outputs.GetSubscriptionJobsJobSubscriptionHostResult'],
-             subscription_instance_network_type: str,
-             subscription_instance_vpc_id: str,
-             subscription_instance_vswitch_id: str,
-             tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             checkpoint: Optional[str] = None,
+             create_time: Optional[str] = None,
+             db_list: Optional[str] = None,
+             dts_instance_id: Optional[str] = None,
+             dts_job_id: Optional[str] = None,
+             dts_job_name: Optional[str] = None,
+             expire_time: Optional[str] = None,
+             id: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             source_endpoint_database_name: Optional[str] = None,
+             source_endpoint_engine_name: Optional[str] = None,
+             source_endpoint_instance_id: Optional[str] = None,
+             source_endpoint_instance_type: Optional[str] = None,
+             source_endpoint_ip: Optional[str] = None,
+             source_endpoint_oracle_sid: Optional[str] = None,
+             source_endpoint_owner_id: Optional[str] = None,
+             source_endpoint_port: Optional[str] = None,
+             source_endpoint_region: Optional[str] = None,
+             source_endpoint_role: Optional[str] = None,
+             source_endpoint_user_name: Optional[str] = None,
+             status: Optional[str] = None,
+             subscription_data_type_ddl: Optional[bool] = None,
+             subscription_data_type_dml: Optional[bool] = None,
+             subscription_hosts: Optional[Sequence['outputs.GetSubscriptionJobsJobSubscriptionHostResult']] = None,
+             subscription_instance_network_type: Optional[str] = None,
+             subscription_instance_vpc_id: Optional[str] = None,
+             subscription_instance_vswitch_id: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if checkpoint is None:
+            raise TypeError("Missing 'checkpoint' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dbList' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if db_list is None and 'dbList' in kwargs:
             db_list = kwargs['dbList']
-        if 'dtsInstanceId' in kwargs:
+        if db_list is None:
+            raise TypeError("Missing 'db_list' argument")
+        if dts_instance_id is None and 'dtsInstanceId' in kwargs:
             dts_instance_id = kwargs['dtsInstanceId']
-        if 'dtsJobId' in kwargs:
+        if dts_instance_id is None:
+            raise TypeError("Missing 'dts_instance_id' argument")
+        if dts_job_id is None and 'dtsJobId' in kwargs:
             dts_job_id = kwargs['dtsJobId']
-        if 'dtsJobName' in kwargs:
+        if dts_job_id is None:
+            raise TypeError("Missing 'dts_job_id' argument")
+        if dts_job_name is None and 'dtsJobName' in kwargs:
             dts_job_name = kwargs['dtsJobName']
-        if 'expireTime' in kwargs:
+        if dts_job_name is None:
+            raise TypeError("Missing 'dts_job_name' argument")
+        if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
-        if 'paymentType' in kwargs:
+        if expire_time is None:
+            raise TypeError("Missing 'expire_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'sourceEndpointDatabaseName' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if source_endpoint_database_name is None and 'sourceEndpointDatabaseName' in kwargs:
             source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
-        if 'sourceEndpointEngineName' in kwargs:
+        if source_endpoint_database_name is None:
+            raise TypeError("Missing 'source_endpoint_database_name' argument")
+        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
             source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if 'sourceEndpointInstanceId' in kwargs:
+        if source_endpoint_engine_name is None:
+            raise TypeError("Missing 'source_endpoint_engine_name' argument")
+        if source_endpoint_instance_id is None and 'sourceEndpointInstanceId' in kwargs:
             source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
-        if 'sourceEndpointInstanceType' in kwargs:
+        if source_endpoint_instance_id is None:
+            raise TypeError("Missing 'source_endpoint_instance_id' argument")
+        if source_endpoint_instance_type is None and 'sourceEndpointInstanceType' in kwargs:
             source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
-        if 'sourceEndpointIp' in kwargs:
+        if source_endpoint_instance_type is None:
+            raise TypeError("Missing 'source_endpoint_instance_type' argument")
+        if source_endpoint_ip is None and 'sourceEndpointIp' in kwargs:
             source_endpoint_ip = kwargs['sourceEndpointIp']
-        if 'sourceEndpointOracleSid' in kwargs:
+        if source_endpoint_ip is None:
+            raise TypeError("Missing 'source_endpoint_ip' argument")
+        if source_endpoint_oracle_sid is None and 'sourceEndpointOracleSid' in kwargs:
             source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
-        if 'sourceEndpointOwnerId' in kwargs:
+        if source_endpoint_oracle_sid is None:
+            raise TypeError("Missing 'source_endpoint_oracle_sid' argument")
+        if source_endpoint_owner_id is None and 'sourceEndpointOwnerId' in kwargs:
             source_endpoint_owner_id = kwargs['sourceEndpointOwnerId']
-        if 'sourceEndpointPort' in kwargs:
+        if source_endpoint_owner_id is None:
+            raise TypeError("Missing 'source_endpoint_owner_id' argument")
+        if source_endpoint_port is None and 'sourceEndpointPort' in kwargs:
             source_endpoint_port = kwargs['sourceEndpointPort']
-        if 'sourceEndpointRegion' in kwargs:
+        if source_endpoint_port is None:
+            raise TypeError("Missing 'source_endpoint_port' argument")
+        if source_endpoint_region is None and 'sourceEndpointRegion' in kwargs:
             source_endpoint_region = kwargs['sourceEndpointRegion']
-        if 'sourceEndpointRole' in kwargs:
+        if source_endpoint_region is None:
+            raise TypeError("Missing 'source_endpoint_region' argument")
+        if source_endpoint_role is None and 'sourceEndpointRole' in kwargs:
             source_endpoint_role = kwargs['sourceEndpointRole']
-        if 'sourceEndpointUserName' in kwargs:
+        if source_endpoint_role is None:
+            raise TypeError("Missing 'source_endpoint_role' argument")
+        if source_endpoint_user_name is None and 'sourceEndpointUserName' in kwargs:
             source_endpoint_user_name = kwargs['sourceEndpointUserName']
-        if 'subscriptionDataTypeDdl' in kwargs:
+        if source_endpoint_user_name is None:
+            raise TypeError("Missing 'source_endpoint_user_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if subscription_data_type_ddl is None and 'subscriptionDataTypeDdl' in kwargs:
             subscription_data_type_ddl = kwargs['subscriptionDataTypeDdl']
-        if 'subscriptionDataTypeDml' in kwargs:
+        if subscription_data_type_ddl is None:
+            raise TypeError("Missing 'subscription_data_type_ddl' argument")
+        if subscription_data_type_dml is None and 'subscriptionDataTypeDml' in kwargs:
             subscription_data_type_dml = kwargs['subscriptionDataTypeDml']
-        if 'subscriptionHosts' in kwargs:
+        if subscription_data_type_dml is None:
+            raise TypeError("Missing 'subscription_data_type_dml' argument")
+        if subscription_hosts is None and 'subscriptionHosts' in kwargs:
             subscription_hosts = kwargs['subscriptionHosts']
-        if 'subscriptionInstanceNetworkType' in kwargs:
+        if subscription_hosts is None:
+            raise TypeError("Missing 'subscription_hosts' argument")
+        if subscription_instance_network_type is None and 'subscriptionInstanceNetworkType' in kwargs:
             subscription_instance_network_type = kwargs['subscriptionInstanceNetworkType']
-        if 'subscriptionInstanceVpcId' in kwargs:
+        if subscription_instance_network_type is None:
+            raise TypeError("Missing 'subscription_instance_network_type' argument")
+        if subscription_instance_vpc_id is None and 'subscriptionInstanceVpcId' in kwargs:
             subscription_instance_vpc_id = kwargs['subscriptionInstanceVpcId']
-        if 'subscriptionInstanceVswitchId' in kwargs:
+        if subscription_instance_vpc_id is None:
+            raise TypeError("Missing 'subscription_instance_vpc_id' argument")
+        if subscription_instance_vswitch_id is None and 'subscriptionInstanceVswitchId' in kwargs:
             subscription_instance_vswitch_id = kwargs['subscriptionInstanceVswitchId']
+        if subscription_instance_vswitch_id is None:
+            raise TypeError("Missing 'subscription_instance_vswitch_id' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
 
         _setter("checkpoint", checkpoint)
         _setter("create_time", create_time)
@@ -1263,17 +1419,23 @@ class GetSubscriptionJobsJobSubscriptionHostResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             private_host: str,
-             public_host: str,
-             vpc_host: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             private_host: Optional[str] = None,
+             public_host: Optional[str] = None,
+             vpc_host: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'privateHost' in kwargs:
+        if private_host is None and 'privateHost' in kwargs:
             private_host = kwargs['privateHost']
-        if 'publicHost' in kwargs:
+        if private_host is None:
+            raise TypeError("Missing 'private_host' argument")
+        if public_host is None and 'publicHost' in kwargs:
             public_host = kwargs['publicHost']
-        if 'vpcHost' in kwargs:
+        if public_host is None:
+            raise TypeError("Missing 'public_host' argument")
+        if vpc_host is None and 'vpcHost' in kwargs:
             vpc_host = kwargs['vpcHost']
+        if vpc_host is None:
+            raise TypeError("Missing 'vpc_host' argument")
 
         _setter("private_host", private_host)
         _setter("public_host", public_host)
@@ -1410,101 +1572,167 @@ class GetSynchronizationJobsJobResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             checkpoint: str,
-             create_time: str,
-             data_initialization: bool,
-             data_synchronization: bool,
-             db_list: str,
-             destination_endpoint_data_base_name: str,
-             destination_endpoint_engine_name: str,
-             destination_endpoint_instance_id: str,
-             destination_endpoint_instance_type: str,
-             destination_endpoint_ip: str,
-             destination_endpoint_oracle_sid: str,
-             destination_endpoint_port: str,
-             destination_endpoint_region: str,
-             destination_endpoint_user_name: str,
-             dts_instance_id: str,
-             dts_job_id: str,
-             dts_job_name: str,
-             expire_time: str,
-             id: str,
-             source_endpoint_database_name: str,
-             source_endpoint_engine_name: str,
-             source_endpoint_instance_id: str,
-             source_endpoint_instance_type: str,
-             source_endpoint_ip: str,
-             source_endpoint_oracle_sid: str,
-             source_endpoint_owner_id: str,
-             source_endpoint_port: str,
-             source_endpoint_region: str,
-             source_endpoint_role: str,
-             source_endpoint_user_name: str,
-             status: str,
-             structure_initialization: bool,
-             synchronization_direction: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             checkpoint: Optional[str] = None,
+             create_time: Optional[str] = None,
+             data_initialization: Optional[bool] = None,
+             data_synchronization: Optional[bool] = None,
+             db_list: Optional[str] = None,
+             destination_endpoint_data_base_name: Optional[str] = None,
+             destination_endpoint_engine_name: Optional[str] = None,
+             destination_endpoint_instance_id: Optional[str] = None,
+             destination_endpoint_instance_type: Optional[str] = None,
+             destination_endpoint_ip: Optional[str] = None,
+             destination_endpoint_oracle_sid: Optional[str] = None,
+             destination_endpoint_port: Optional[str] = None,
+             destination_endpoint_region: Optional[str] = None,
+             destination_endpoint_user_name: Optional[str] = None,
+             dts_instance_id: Optional[str] = None,
+             dts_job_id: Optional[str] = None,
+             dts_job_name: Optional[str] = None,
+             expire_time: Optional[str] = None,
+             id: Optional[str] = None,
+             source_endpoint_database_name: Optional[str] = None,
+             source_endpoint_engine_name: Optional[str] = None,
+             source_endpoint_instance_id: Optional[str] = None,
+             source_endpoint_instance_type: Optional[str] = None,
+             source_endpoint_ip: Optional[str] = None,
+             source_endpoint_oracle_sid: Optional[str] = None,
+             source_endpoint_owner_id: Optional[str] = None,
+             source_endpoint_port: Optional[str] = None,
+             source_endpoint_region: Optional[str] = None,
+             source_endpoint_role: Optional[str] = None,
+             source_endpoint_user_name: Optional[str] = None,
+             status: Optional[str] = None,
+             structure_initialization: Optional[bool] = None,
+             synchronization_direction: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if checkpoint is None:
+            raise TypeError("Missing 'checkpoint' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dataInitialization' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if data_initialization is None and 'dataInitialization' in kwargs:
             data_initialization = kwargs['dataInitialization']
-        if 'dataSynchronization' in kwargs:
+        if data_initialization is None:
+            raise TypeError("Missing 'data_initialization' argument")
+        if data_synchronization is None and 'dataSynchronization' in kwargs:
             data_synchronization = kwargs['dataSynchronization']
-        if 'dbList' in kwargs:
+        if data_synchronization is None:
+            raise TypeError("Missing 'data_synchronization' argument")
+        if db_list is None and 'dbList' in kwargs:
             db_list = kwargs['dbList']
-        if 'destinationEndpointDataBaseName' in kwargs:
+        if db_list is None:
+            raise TypeError("Missing 'db_list' argument")
+        if destination_endpoint_data_base_name is None and 'destinationEndpointDataBaseName' in kwargs:
             destination_endpoint_data_base_name = kwargs['destinationEndpointDataBaseName']
-        if 'destinationEndpointEngineName' in kwargs:
+        if destination_endpoint_data_base_name is None:
+            raise TypeError("Missing 'destination_endpoint_data_base_name' argument")
+        if destination_endpoint_engine_name is None and 'destinationEndpointEngineName' in kwargs:
             destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
-        if 'destinationEndpointInstanceId' in kwargs:
+        if destination_endpoint_engine_name is None:
+            raise TypeError("Missing 'destination_endpoint_engine_name' argument")
+        if destination_endpoint_instance_id is None and 'destinationEndpointInstanceId' in kwargs:
             destination_endpoint_instance_id = kwargs['destinationEndpointInstanceId']
-        if 'destinationEndpointInstanceType' in kwargs:
+        if destination_endpoint_instance_id is None:
+            raise TypeError("Missing 'destination_endpoint_instance_id' argument")
+        if destination_endpoint_instance_type is None and 'destinationEndpointInstanceType' in kwargs:
             destination_endpoint_instance_type = kwargs['destinationEndpointInstanceType']
-        if 'destinationEndpointIp' in kwargs:
+        if destination_endpoint_instance_type is None:
+            raise TypeError("Missing 'destination_endpoint_instance_type' argument")
+        if destination_endpoint_ip is None and 'destinationEndpointIp' in kwargs:
             destination_endpoint_ip = kwargs['destinationEndpointIp']
-        if 'destinationEndpointOracleSid' in kwargs:
+        if destination_endpoint_ip is None:
+            raise TypeError("Missing 'destination_endpoint_ip' argument")
+        if destination_endpoint_oracle_sid is None and 'destinationEndpointOracleSid' in kwargs:
             destination_endpoint_oracle_sid = kwargs['destinationEndpointOracleSid']
-        if 'destinationEndpointPort' in kwargs:
+        if destination_endpoint_oracle_sid is None:
+            raise TypeError("Missing 'destination_endpoint_oracle_sid' argument")
+        if destination_endpoint_port is None and 'destinationEndpointPort' in kwargs:
             destination_endpoint_port = kwargs['destinationEndpointPort']
-        if 'destinationEndpointRegion' in kwargs:
+        if destination_endpoint_port is None:
+            raise TypeError("Missing 'destination_endpoint_port' argument")
+        if destination_endpoint_region is None and 'destinationEndpointRegion' in kwargs:
             destination_endpoint_region = kwargs['destinationEndpointRegion']
-        if 'destinationEndpointUserName' in kwargs:
+        if destination_endpoint_region is None:
+            raise TypeError("Missing 'destination_endpoint_region' argument")
+        if destination_endpoint_user_name is None and 'destinationEndpointUserName' in kwargs:
             destination_endpoint_user_name = kwargs['destinationEndpointUserName']
-        if 'dtsInstanceId' in kwargs:
+        if destination_endpoint_user_name is None:
+            raise TypeError("Missing 'destination_endpoint_user_name' argument")
+        if dts_instance_id is None and 'dtsInstanceId' in kwargs:
             dts_instance_id = kwargs['dtsInstanceId']
-        if 'dtsJobId' in kwargs:
+        if dts_instance_id is None:
+            raise TypeError("Missing 'dts_instance_id' argument")
+        if dts_job_id is None and 'dtsJobId' in kwargs:
             dts_job_id = kwargs['dtsJobId']
-        if 'dtsJobName' in kwargs:
+        if dts_job_id is None:
+            raise TypeError("Missing 'dts_job_id' argument")
+        if dts_job_name is None and 'dtsJobName' in kwargs:
             dts_job_name = kwargs['dtsJobName']
-        if 'expireTime' in kwargs:
+        if dts_job_name is None:
+            raise TypeError("Missing 'dts_job_name' argument")
+        if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
-        if 'sourceEndpointDatabaseName' in kwargs:
+        if expire_time is None:
+            raise TypeError("Missing 'expire_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if source_endpoint_database_name is None and 'sourceEndpointDatabaseName' in kwargs:
             source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
-        if 'sourceEndpointEngineName' in kwargs:
+        if source_endpoint_database_name is None:
+            raise TypeError("Missing 'source_endpoint_database_name' argument")
+        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
             source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if 'sourceEndpointInstanceId' in kwargs:
+        if source_endpoint_engine_name is None:
+            raise TypeError("Missing 'source_endpoint_engine_name' argument")
+        if source_endpoint_instance_id is None and 'sourceEndpointInstanceId' in kwargs:
             source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
-        if 'sourceEndpointInstanceType' in kwargs:
+        if source_endpoint_instance_id is None:
+            raise TypeError("Missing 'source_endpoint_instance_id' argument")
+        if source_endpoint_instance_type is None and 'sourceEndpointInstanceType' in kwargs:
             source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
-        if 'sourceEndpointIp' in kwargs:
+        if source_endpoint_instance_type is None:
+            raise TypeError("Missing 'source_endpoint_instance_type' argument")
+        if source_endpoint_ip is None and 'sourceEndpointIp' in kwargs:
             source_endpoint_ip = kwargs['sourceEndpointIp']
-        if 'sourceEndpointOracleSid' in kwargs:
+        if source_endpoint_ip is None:
+            raise TypeError("Missing 'source_endpoint_ip' argument")
+        if source_endpoint_oracle_sid is None and 'sourceEndpointOracleSid' in kwargs:
             source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
-        if 'sourceEndpointOwnerId' in kwargs:
+        if source_endpoint_oracle_sid is None:
+            raise TypeError("Missing 'source_endpoint_oracle_sid' argument")
+        if source_endpoint_owner_id is None and 'sourceEndpointOwnerId' in kwargs:
             source_endpoint_owner_id = kwargs['sourceEndpointOwnerId']
-        if 'sourceEndpointPort' in kwargs:
+        if source_endpoint_owner_id is None:
+            raise TypeError("Missing 'source_endpoint_owner_id' argument")
+        if source_endpoint_port is None and 'sourceEndpointPort' in kwargs:
             source_endpoint_port = kwargs['sourceEndpointPort']
-        if 'sourceEndpointRegion' in kwargs:
+        if source_endpoint_port is None:
+            raise TypeError("Missing 'source_endpoint_port' argument")
+        if source_endpoint_region is None and 'sourceEndpointRegion' in kwargs:
             source_endpoint_region = kwargs['sourceEndpointRegion']
-        if 'sourceEndpointRole' in kwargs:
+        if source_endpoint_region is None:
+            raise TypeError("Missing 'source_endpoint_region' argument")
+        if source_endpoint_role is None and 'sourceEndpointRole' in kwargs:
             source_endpoint_role = kwargs['sourceEndpointRole']
-        if 'sourceEndpointUserName' in kwargs:
+        if source_endpoint_role is None:
+            raise TypeError("Missing 'source_endpoint_role' argument")
+        if source_endpoint_user_name is None and 'sourceEndpointUserName' in kwargs:
             source_endpoint_user_name = kwargs['sourceEndpointUserName']
-        if 'structureInitialization' in kwargs:
+        if source_endpoint_user_name is None:
+            raise TypeError("Missing 'source_endpoint_user_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if structure_initialization is None and 'structureInitialization' in kwargs:
             structure_initialization = kwargs['structureInitialization']
-        if 'synchronizationDirection' in kwargs:
+        if structure_initialization is None:
+            raise TypeError("Missing 'structure_initialization' argument")
+        if synchronization_direction is None and 'synchronizationDirection' in kwargs:
             synchronization_direction = kwargs['synchronizationDirection']
+        if synchronization_direction is None:
+            raise TypeError("Missing 'synchronization_direction' argument")
 
         _setter("checkpoint", checkpoint)
         _setter("create_time", create_time)

@@ -47,11 +47,11 @@ class EcsDeploymentSetArgs:
              granularity: Optional[pulumi.Input[str]] = None,
              on_unable_to_redeploy_failed_instance: Optional[pulumi.Input[str]] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deploymentSetName' in kwargs:
+        if deployment_set_name is None and 'deploymentSetName' in kwargs:
             deployment_set_name = kwargs['deploymentSetName']
-        if 'onUnableToRedeployFailedInstance' in kwargs:
+        if on_unable_to_redeploy_failed_instance is None and 'onUnableToRedeployFailedInstance' in kwargs:
             on_unable_to_redeploy_failed_instance = kwargs['onUnableToRedeployFailedInstance']
 
         if deployment_set_name is not None:
@@ -176,11 +176,11 @@ class _EcsDeploymentSetState:
              granularity: Optional[pulumi.Input[str]] = None,
              on_unable_to_redeploy_failed_instance: Optional[pulumi.Input[str]] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deploymentSetName' in kwargs:
+        if deployment_set_name is None and 'deploymentSetName' in kwargs:
             deployment_set_name = kwargs['deploymentSetName']
-        if 'onUnableToRedeployFailedInstance' in kwargs:
+        if on_unable_to_redeploy_failed_instance is None and 'onUnableToRedeployFailedInstance' in kwargs:
             on_unable_to_redeploy_failed_instance = kwargs['onUnableToRedeployFailedInstance']
 
         if deployment_set_name is not None:
@@ -288,22 +288,6 @@ class EcsDeploymentSet(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.140.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ecs.EcsDeploymentSet("default",
-            deployment_set_name="example_value",
-            description="example_value",
-            domain="Default",
-            granularity="Host",
-            strategy="Availability")
-        ```
-
         ## Import
 
         ECS Deployment Set can be imported using the id, e.g.
@@ -333,22 +317,6 @@ class EcsDeploymentSet(pulumi.CustomResource):
         For information about ECS Deployment Set and how to use it, see [What is Deployment Set](https://www.alibabacloud.com/help/en/doc-detail/91269.htm).
 
         > **NOTE:** Available in v1.140.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ecs.EcsDeploymentSet("default",
-            deployment_set_name="example_value",
-            description="example_value",
-            domain="Default",
-            granularity="Host",
-            strategy="Availability")
-        ```
 
         ## Import
 

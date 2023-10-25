@@ -53,35 +53,45 @@ class MigrationInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination_endpoint_engine_name: pulumi.Input[str],
-             destination_endpoint_region: pulumi.Input[str],
-             payment_type: pulumi.Input[str],
-             source_endpoint_engine_name: pulumi.Input[str],
-             source_endpoint_region: pulumi.Input[str],
+             destination_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_region: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             source_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
+             source_endpoint_region: Optional[pulumi.Input[str]] = None,
              compute_unit: Optional[pulumi.Input[int]] = None,
              database_count: Optional[pulumi.Input[int]] = None,
              instance_class: Optional[pulumi.Input[str]] = None,
              sync_architecture: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationEndpointEngineName' in kwargs:
+        if destination_endpoint_engine_name is None and 'destinationEndpointEngineName' in kwargs:
             destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
-        if 'destinationEndpointRegion' in kwargs:
+        if destination_endpoint_engine_name is None:
+            raise TypeError("Missing 'destination_endpoint_engine_name' argument")
+        if destination_endpoint_region is None and 'destinationEndpointRegion' in kwargs:
             destination_endpoint_region = kwargs['destinationEndpointRegion']
-        if 'paymentType' in kwargs:
+        if destination_endpoint_region is None:
+            raise TypeError("Missing 'destination_endpoint_region' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'sourceEndpointEngineName' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
             source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if 'sourceEndpointRegion' in kwargs:
+        if source_endpoint_engine_name is None:
+            raise TypeError("Missing 'source_endpoint_engine_name' argument")
+        if source_endpoint_region is None and 'sourceEndpointRegion' in kwargs:
             source_endpoint_region = kwargs['sourceEndpointRegion']
-        if 'computeUnit' in kwargs:
+        if source_endpoint_region is None:
+            raise TypeError("Missing 'source_endpoint_region' argument")
+        if compute_unit is None and 'computeUnit' in kwargs:
             compute_unit = kwargs['computeUnit']
-        if 'databaseCount' in kwargs:
+        if database_count is None and 'databaseCount' in kwargs:
             database_count = kwargs['databaseCount']
-        if 'instanceClass' in kwargs:
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'syncArchitecture' in kwargs:
+        if sync_architecture is None and 'syncArchitecture' in kwargs:
             sync_architecture = kwargs['syncArchitecture']
 
         _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
@@ -281,27 +291,27 @@ class _MigrationInstanceState:
              status: Optional[pulumi.Input[str]] = None,
              sync_architecture: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'computeUnit' in kwargs:
+        if compute_unit is None and 'computeUnit' in kwargs:
             compute_unit = kwargs['computeUnit']
-        if 'databaseCount' in kwargs:
+        if database_count is None and 'databaseCount' in kwargs:
             database_count = kwargs['databaseCount']
-        if 'destinationEndpointEngineName' in kwargs:
+        if destination_endpoint_engine_name is None and 'destinationEndpointEngineName' in kwargs:
             destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
-        if 'destinationEndpointRegion' in kwargs:
+        if destination_endpoint_region is None and 'destinationEndpointRegion' in kwargs:
             destination_endpoint_region = kwargs['destinationEndpointRegion']
-        if 'dtsInstanceId' in kwargs:
+        if dts_instance_id is None and 'dtsInstanceId' in kwargs:
             dts_instance_id = kwargs['dtsInstanceId']
-        if 'instanceClass' in kwargs:
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'sourceEndpointEngineName' in kwargs:
+        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
             source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if 'sourceEndpointRegion' in kwargs:
+        if source_endpoint_region is None and 'sourceEndpointRegion' in kwargs:
             source_endpoint_region = kwargs['sourceEndpointRegion']
-        if 'syncArchitecture' in kwargs:
+        if sync_architecture is None and 'syncArchitecture' in kwargs:
             sync_architecture = kwargs['syncArchitecture']
 
         if compute_unit is not None:
@@ -497,25 +507,6 @@ class MigrationInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.157.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_regions = alicloud.get_regions(current=True)
-        default_migration_instance = alicloud.dts.MigrationInstance("defaultMigrationInstance",
-            payment_type="PayAsYouGo",
-            source_endpoint_engine_name="MySQL",
-            source_endpoint_region=default_regions.regions[0].id,
-            destination_endpoint_engine_name="MySQL",
-            destination_endpoint_region=default_regions.regions[0].id,
-            instance_class="small",
-            sync_architecture="oneway")
-        ```
-
         ## Import
 
         DTS Migration Instance can be imported using the id, e.g.
@@ -549,25 +540,6 @@ class MigrationInstance(pulumi.CustomResource):
         For information about DTS Migration Instance and how to use it, see [What is Synchronization Instance](https://www.alibabacloud.com/help/en/doc-detail/208270.html).
 
         > **NOTE:** Available since v1.157.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_regions = alicloud.get_regions(current=True)
-        default_migration_instance = alicloud.dts.MigrationInstance("defaultMigrationInstance",
-            payment_type="PayAsYouGo",
-            source_endpoint_engine_name="MySQL",
-            source_endpoint_region=default_regions.regions[0].id,
-            destination_endpoint_engine_name="MySQL",
-            destination_endpoint_region=default_regions.regions[0].id,
-            instance_class="small",
-            sync_architecture="oneway")
-        ```
 
         ## Import
 

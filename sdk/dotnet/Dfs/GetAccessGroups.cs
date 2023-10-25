@@ -15,43 +15,6 @@ namespace Pulumi.AliCloud.Dfs
         /// This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.133.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Dfs.GetAccessGroups.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Dfs.GetAccessGroups.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-AccessGroup",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dfsAccessGroupId1"] = ids.Apply(getAccessGroupsResult =&gt; getAccessGroupsResult.Groups[0]?.Id),
-        ///         ["dfsAccessGroupId2"] = nameRegex.Apply(getAccessGroupsResult =&gt; getAccessGroupsResult.Groups[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccessGroupsResult> InvokeAsync(GetAccessGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessGroupsResult>("alicloud:dfs/getAccessGroups:getAccessGroups", args ?? new GetAccessGroupsArgs(), options.WithDefaults());
@@ -60,43 +23,6 @@ namespace Pulumi.AliCloud.Dfs
         /// This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.133.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Dfs.GetAccessGroups.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Dfs.GetAccessGroups.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-AccessGroup",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dfsAccessGroupId1"] = ids.Apply(getAccessGroupsResult =&gt; getAccessGroupsResult.Groups[0]?.Id),
-        ///         ["dfsAccessGroupId2"] = nameRegex.Apply(getAccessGroupsResult =&gt; getAccessGroupsResult.Groups[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccessGroupsResult> Invoke(GetAccessGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessGroupsResult>("alicloud:dfs/getAccessGroups:getAccessGroups", args ?? new GetAccessGroupsInvokeArgs(), options.WithDefaults());

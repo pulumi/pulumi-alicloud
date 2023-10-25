@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-describeweblockconfiglist)
  *
  * > **NOTE:** Available since v1.195.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.threatdetection.getWebLockConfigs({
- *     ids: [alicloud_threat_detection_web_lock_config["default"].id],
- * });
- * export const alicloudThreatDetectionWebLockConfigExampleId = _default.then(_default => _default.configs?.[0]?.id);
- * ```
  */
 export function getWebLockConfigs(args?: GetWebLockConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetWebLockConfigsResult> {
     args = args || {};
@@ -99,18 +87,6 @@ export interface GetWebLockConfigsResult {
  * This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-describeweblockconfiglist)
  *
  * > **NOTE:** Available since v1.195.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.threatdetection.getWebLockConfigs({
- *     ids: [alicloud_threat_detection_web_lock_config["default"].id],
- * });
- * export const alicloudThreatDetectionWebLockConfigExampleId = _default.then(_default => _default.configs?.[0]?.id);
- * ```
  */
 export function getWebLockConfigsOutput(args?: GetWebLockConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebLockConfigsResult> {
     return pulumi.output(args).apply((a: any) => getWebLockConfigs(a, opts))

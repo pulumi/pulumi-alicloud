@@ -16,68 +16,6 @@ namespace Pulumi.AliCloud.BastionHost
     /// 
     /// &gt; **NOTE:** Available since v1.134.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf_example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "10.4.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VswitchName = name,
-    ///         CidrBlock = "10.4.0.0/24",
-    ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     });
-    /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///     });
-    /// 
-    ///     var defaultInstance = new AliCloud.BastionHost.Instance("defaultInstance", new()
-    ///     {
-    ///         Description = name,
-    ///         LicenseCode = "bhah_ent_50_asset",
-    ///         PlanCode = "cloudbastion",
-    ///         Storage = "5",
-    ///         Bandwidth = "5",
-    ///         Period = 1,
-    ///         VswitchId = defaultSwitch.Id,
-    ///         SecurityGroupIds = new[]
-    ///         {
-    ///             defaultSecurityGroup.Id,
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultHostGroup = new AliCloud.BastionHost.HostGroup("defaultHostGroup", new()
-    ///     {
-    ///         HostGroupName = name,
-    ///         InstanceId = defaultInstance.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Bastion Host Host Group can be imported using the id, e.g.

@@ -19,47 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.126.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultInstance, err := amqp.NewInstance(ctx, "defaultInstance", &amqp.InstanceArgs{
-//				InstanceType:  pulumi.String("professional"),
-//				MaxTps:        pulumi.String("1000"),
-//				QueueCapacity: pulumi.String("50"),
-//				SupportEip:    pulumi.Bool(true),
-//				MaxEipTps:     pulumi.String("128"),
-//				PaymentType:   pulumi.String("Subscription"),
-//				Period:        pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = amqp.NewVirtualHost(ctx, "defaultVirtualHost", &amqp.VirtualHostArgs{
-//				InstanceId:      defaultInstance.ID(),
-//				VirtualHostName: pulumi.String("tf-example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // RabbitMQ (AMQP) Virtual Host can be imported using the id, e.g.

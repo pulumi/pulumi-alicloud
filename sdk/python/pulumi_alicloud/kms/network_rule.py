@@ -32,14 +32,16 @@ class NetworkRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source_private_ips: pulumi.Input[Sequence[pulumi.Input[str]]],
+             source_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              network_rule_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sourcePrivateIps' in kwargs:
+        if source_private_ips is None and 'sourcePrivateIps' in kwargs:
             source_private_ips = kwargs['sourcePrivateIps']
-        if 'networkRuleName' in kwargs:
+        if source_private_ips is None:
+            raise TypeError("Missing 'source_private_ips' argument")
+        if network_rule_name is None and 'networkRuleName' in kwargs:
             network_rule_name = kwargs['networkRuleName']
 
         _setter("source_private_ips", source_private_ips)
@@ -109,11 +111,11 @@ class _NetworkRuleState:
              description: Optional[pulumi.Input[str]] = None,
              network_rule_name: Optional[pulumi.Input[str]] = None,
              source_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'networkRuleName' in kwargs:
+        if network_rule_name is None and 'networkRuleName' in kwargs:
             network_rule_name = kwargs['networkRuleName']
-        if 'sourcePrivateIps' in kwargs:
+        if source_private_ips is None and 'sourcePrivateIps' in kwargs:
             source_private_ips = kwargs['sourcePrivateIps']
 
         if description is not None:
@@ -176,28 +178,6 @@ class NetworkRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.210.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.kms.NetworkRule("default",
-            description="example-description",
-            source_private_ips=[
-                "10.10.10.10/24",
-                "192.168.17.13",
-                "100.177.24.254",
-            ],
-            network_rule_name=name)
-        ```
-
         ## Import
 
         KMS Network Rule can be imported using the id, e.g.
@@ -224,28 +204,6 @@ class NetworkRule(pulumi.CustomResource):
         For information about KMS Network Rule and how to use it, see [What is Network Rule](https://www.alibabacloud.com/help/zh/key-management-service/latest/api-createnetworkrule).
 
         > **NOTE:** Available since v1.210.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.kms.NetworkRule("default",
-            description="example-description",
-            source_private_ips=[
-                "10.10.10.10/24",
-                "192.168.17.13",
-                "100.177.24.254",
-            ],
-            network_rule_name=name)
-        ```
 
         ## Import
 

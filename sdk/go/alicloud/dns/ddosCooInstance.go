@@ -21,46 +21,6 @@ import (
 //
 // > **NOTE:** Available since v1.37.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := ddos.NewDdosCooInstance(ctx, "default", &ddos.DdosCooInstanceArgs{
-//				Bandwidth:        pulumi.String("30"),
-//				BaseBandwidth:    pulumi.String("30"),
-//				ServiceBandwidth: pulumi.String("100"),
-//				PortCount:        pulumi.String("50"),
-//				DomainCount:      pulumi.String("50"),
-//				Period:           pulumi.Int(1),
-//				ProductType:      pulumi.String("ddoscoo"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Ddoscoo instance can be imported using the id, e.g.

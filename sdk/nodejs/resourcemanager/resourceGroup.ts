@@ -12,22 +12,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.82.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tfexample";
- * const example = new alicloud.resourcemanager.ResourceGroup("example", {
- *     resourceGroupName: name,
- *     displayName: name,
- * });
- * ```
- *
  * ## Import
  *
  * Resource Manager Resource Group can be imported using the id, e.g.

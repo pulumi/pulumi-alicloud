@@ -15,36 +15,6 @@ import (
 // This data source provides the Mongodb Accounts of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.148.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := mongodb.GetAccounts(ctx, &mongodb.GetAccountsArgs{
-//				InstanceId:  "example_value",
-//				AccountName: pulumi.StringRef("root"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("mongodbAccountId1", example.Accounts[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAccounts(ctx *pulumi.Context, args *GetAccountsArgs, opts ...pulumi.InvokeOption) (*GetAccountsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountsResult

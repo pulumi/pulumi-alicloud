@@ -15,40 +15,6 @@ import (
 // This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.129.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := eventbridge.GetEventBuses(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("eventBridgeEventBusId1", ids.Buses[0].Id)
-//			nameRegex, err := eventbridge.GetEventBuses(ctx, &eventbridge.GetEventBusesArgs{
-//				NameRegex: pulumi.StringRef("^my-EventBus"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("eventBridgeEventBusId2", nameRegex.Buses[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetEventBuses(ctx *pulumi.Context, args *GetEventBusesArgs, opts ...pulumi.InvokeOption) (*GetEventBusesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEventBusesResult

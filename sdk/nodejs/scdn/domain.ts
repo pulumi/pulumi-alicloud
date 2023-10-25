@@ -15,26 +15,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.scdn.Domain("example", {
- *     domainName: "my-Domain",
- *     sources: [{
- *         content: "xxx.aliyuncs.com",
- *         enabled: "online",
- *         port: 80,
- *         priority: "20",
- *         type: "oss",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * SCDN Domain can be imported using the id, e.g.

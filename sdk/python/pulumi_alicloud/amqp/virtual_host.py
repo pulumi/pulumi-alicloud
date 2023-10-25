@@ -29,14 +29,18 @@ class VirtualHostArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
-             virtual_host_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             virtual_host_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'virtualHostName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if virtual_host_name is None and 'virtualHostName' in kwargs:
             virtual_host_name = kwargs['virtualHostName']
+        if virtual_host_name is None:
+            raise TypeError("Missing 'virtual_host_name' argument")
 
         _setter("instance_id", instance_id)
         _setter("virtual_host_name", virtual_host_name)
@@ -86,11 +90,11 @@ class _VirtualHostState:
              _setter: Callable[[Any, Any], None],
              instance_id: Optional[pulumi.Input[str]] = None,
              virtual_host_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'virtualHostName' in kwargs:
+        if virtual_host_name is None and 'virtualHostName' in kwargs:
             virtual_host_name = kwargs['virtualHostName']
 
         if instance_id is not None:
@@ -138,27 +142,6 @@ class VirtualHost(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.126.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_instance = alicloud.amqp.Instance("defaultInstance",
-            instance_type="professional",
-            max_tps="1000",
-            queue_capacity="50",
-            support_eip=True,
-            max_eip_tps="128",
-            payment_type="Subscription",
-            period=1)
-        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
-            instance_id=default_instance.id,
-            virtual_host_name="tf-example")
-        ```
-
         ## Import
 
         RabbitMQ (AMQP) Virtual Host can be imported using the id, e.g.
@@ -184,27 +167,6 @@ class VirtualHost(pulumi.CustomResource):
         For information about RabbitMQ (AMQP) Virtual Host and how to use it, see [What is Virtual Host](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createvirtualhost).
 
         > **NOTE:** Available since v1.126.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_instance = alicloud.amqp.Instance("defaultInstance",
-            instance_type="professional",
-            max_tps="1000",
-            queue_capacity="50",
-            support_eip=True,
-            max_eip_tps="128",
-            payment_type="Subscription",
-            period=1)
-        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
-            instance_id=default_instance.id,
-            virtual_host_name="tf-example")
-        ```
 
         ## Import
 

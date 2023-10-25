@@ -11,20 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.15.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.cen.Instance("example", {
- *     cenInstanceName: "tf_example",
- *     description: "an example for cen",
- * });
- * ```
- *
  * ## Import
  *
  * CEN instance can be imported using the id, e.g.

@@ -49,26 +49,40 @@ class MonitorConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             addr_pool_id: pulumi.Input[str],
-             evaluation_count: pulumi.Input[int],
-             interval: pulumi.Input[int],
-             isp_city_nodes: pulumi.Input[Sequence[pulumi.Input['MonitorConfigIspCityNodeArgs']]],
-             monitor_extend_info: pulumi.Input[str],
-             protocol_type: pulumi.Input[str],
-             timeout: pulumi.Input[int],
+             addr_pool_id: Optional[pulumi.Input[str]] = None,
+             evaluation_count: Optional[pulumi.Input[int]] = None,
+             interval: Optional[pulumi.Input[int]] = None,
+             isp_city_nodes: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorConfigIspCityNodeArgs']]]] = None,
+             monitor_extend_info: Optional[pulumi.Input[str]] = None,
+             protocol_type: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
              lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addrPoolId' in kwargs:
+        if addr_pool_id is None and 'addrPoolId' in kwargs:
             addr_pool_id = kwargs['addrPoolId']
-        if 'evaluationCount' in kwargs:
+        if addr_pool_id is None:
+            raise TypeError("Missing 'addr_pool_id' argument")
+        if evaluation_count is None and 'evaluationCount' in kwargs:
             evaluation_count = kwargs['evaluationCount']
-        if 'ispCityNodes' in kwargs:
+        if evaluation_count is None:
+            raise TypeError("Missing 'evaluation_count' argument")
+        if interval is None:
+            raise TypeError("Missing 'interval' argument")
+        if isp_city_nodes is None and 'ispCityNodes' in kwargs:
             isp_city_nodes = kwargs['ispCityNodes']
-        if 'monitorExtendInfo' in kwargs:
+        if isp_city_nodes is None:
+            raise TypeError("Missing 'isp_city_nodes' argument")
+        if monitor_extend_info is None and 'monitorExtendInfo' in kwargs:
             monitor_extend_info = kwargs['monitorExtendInfo']
-        if 'protocolType' in kwargs:
+        if monitor_extend_info is None:
+            raise TypeError("Missing 'monitor_extend_info' argument")
+        if protocol_type is None and 'protocolType' in kwargs:
             protocol_type = kwargs['protocolType']
+        if protocol_type is None:
+            raise TypeError("Missing 'protocol_type' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
 
         _setter("addr_pool_id", addr_pool_id)
         _setter("evaluation_count", evaluation_count)
@@ -221,17 +235,17 @@ class _MonitorConfigState:
              monitor_extend_info: Optional[pulumi.Input[str]] = None,
              protocol_type: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addrPoolId' in kwargs:
+        if addr_pool_id is None and 'addrPoolId' in kwargs:
             addr_pool_id = kwargs['addrPoolId']
-        if 'evaluationCount' in kwargs:
+        if evaluation_count is None and 'evaluationCount' in kwargs:
             evaluation_count = kwargs['evaluationCount']
-        if 'ispCityNodes' in kwargs:
+        if isp_city_nodes is None and 'ispCityNodes' in kwargs:
             isp_city_nodes = kwargs['ispCityNodes']
-        if 'monitorExtendInfo' in kwargs:
+        if monitor_extend_info is None and 'monitorExtendInfo' in kwargs:
             monitor_extend_info = kwargs['monitorExtendInfo']
-        if 'protocolType' in kwargs:
+        if protocol_type is None and 'protocolType' in kwargs:
             protocol_type = kwargs['protocolType']
 
         if addr_pool_id is not None:
@@ -369,68 +383,6 @@ class MonitorConfig(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.153.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "alicloud-provider.com"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name=name)
-        default_gtm_instance = alicloud.dns.GtmInstance("defaultGtmInstance",
-            instance_name=name,
-            payment_type="Subscription",
-            period=1,
-            renewal_status="ManualRenewal",
-            package_edition="standard",
-            health_check_task_count=100,
-            sms_notification_count=1000,
-            public_cname_mode="SYSTEM_ASSIGN",
-            ttl=60,
-            cname_type="PUBLIC",
-            resource_group_id=default_resource_groups.groups[0].id,
-            alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
-            public_user_domain_name=domain_name,
-            alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
-                sms_notice=True,
-                notice_type="ADDR_ALERT",
-                email_notice=True,
-                dingtalk_notice=True,
-            )])
-        default_address_pool = alicloud.dns.AddressPool("defaultAddressPool",
-            address_pool_name=name,
-            instance_id=default_gtm_instance.id,
-            lba_strategy="RATIO",
-            type="IPV4",
-            addresses=[alicloud.dns.AddressPoolAddressArgs(
-                attribute_info="{\\"lineCodeRectifyType\\":\\"RECTIFIED\\",\\"lineCodes\\":[\\"os_namerica_us\\"]}",
-                remark="address_remark",
-                address="1.1.1.1",
-                mode="SMART",
-                lba_weight=1,
-            )])
-        default_monitor_config = alicloud.dns.MonitorConfig("defaultMonitorConfig",
-            addr_pool_id=default_address_pool.id,
-            evaluation_count=1,
-            interval=60,
-            timeout=5000,
-            protocol_type="TCP",
-            monitor_extend_info="{\\"failureRate\\":50,\\"port\\":80}",
-            isp_city_nodes=[alicloud.dns.MonitorConfigIspCityNodeArgs(
-                city_code="503",
-                isp_code="465",
-            )])
-        ```
-
         ## Import
 
         DNS Monitor Config can be imported using the id, e.g.
@@ -462,68 +414,6 @@ class MonitorConfig(pulumi.CustomResource):
         For information about DNS Monitor Config and how to use it, see [What is Monitor Config](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
 
         > **NOTE:** Available since v1.153.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "alicloud-provider.com"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name=name)
-        default_gtm_instance = alicloud.dns.GtmInstance("defaultGtmInstance",
-            instance_name=name,
-            payment_type="Subscription",
-            period=1,
-            renewal_status="ManualRenewal",
-            package_edition="standard",
-            health_check_task_count=100,
-            sms_notification_count=1000,
-            public_cname_mode="SYSTEM_ASSIGN",
-            ttl=60,
-            cname_type="PUBLIC",
-            resource_group_id=default_resource_groups.groups[0].id,
-            alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
-            public_user_domain_name=domain_name,
-            alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
-                sms_notice=True,
-                notice_type="ADDR_ALERT",
-                email_notice=True,
-                dingtalk_notice=True,
-            )])
-        default_address_pool = alicloud.dns.AddressPool("defaultAddressPool",
-            address_pool_name=name,
-            instance_id=default_gtm_instance.id,
-            lba_strategy="RATIO",
-            type="IPV4",
-            addresses=[alicloud.dns.AddressPoolAddressArgs(
-                attribute_info="{\\"lineCodeRectifyType\\":\\"RECTIFIED\\",\\"lineCodes\\":[\\"os_namerica_us\\"]}",
-                remark="address_remark",
-                address="1.1.1.1",
-                mode="SMART",
-                lba_weight=1,
-            )])
-        default_monitor_config = alicloud.dns.MonitorConfig("defaultMonitorConfig",
-            addr_pool_id=default_address_pool.id,
-            evaluation_count=1,
-            interval=60,
-            timeout=5000,
-            protocol_type="TCP",
-            monitor_extend_info="{\\"failureRate\\":50,\\"port\\":80}",
-            isp_city_nodes=[alicloud.dns.MonitorConfigIspCityNodeArgs(
-                city_code="503",
-                isp_code="465",
-            )])
-        ```
 
         ## Import
 

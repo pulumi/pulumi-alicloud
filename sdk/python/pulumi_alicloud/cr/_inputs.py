@@ -41,7 +41,7 @@ class ChainChainConfigArgs:
              _setter: Callable[[Any, Any], None],
              nodes: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeArgs']]]] = None,
              routers: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if nodes is not None:
@@ -99,11 +99,11 @@ class ChainChainConfigNodeArgs:
              enable: Optional[pulumi.Input[bool]] = None,
              node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigArgs']]]] = None,
              node_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeConfigs' in kwargs:
+        if node_configs is None and 'nodeConfigs' in kwargs:
             node_configs = kwargs['nodeConfigs']
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
 
         if enable is not None:
@@ -165,9 +165,9 @@ class ChainChainConfigNodeNodeConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              deny_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigDenyPolicyArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'denyPolicies' in kwargs:
+        if deny_policies is None and 'denyPolicies' in kwargs:
             deny_policies = kwargs['denyPolicies']
 
         if deny_policies is not None:
@@ -213,11 +213,11 @@ class ChainChainConfigNodeNodeConfigDenyPolicyArgs:
              issue_count: Optional[pulumi.Input[str]] = None,
              issue_level: Optional[pulumi.Input[str]] = None,
              logic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'issueCount' in kwargs:
+        if issue_count is None and 'issueCount' in kwargs:
             issue_count = kwargs['issueCount']
-        if 'issueLevel' in kwargs:
+        if issue_level is None and 'issueLevel' in kwargs:
             issue_level = kwargs['issueLevel']
 
         if action is not None:
@@ -297,7 +297,7 @@ class ChainChainConfigRouterArgs:
              _setter: Callable[[Any, Any], None],
              froms: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterFromArgs']]]] = None,
              tos: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterToArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if froms is not None:
@@ -345,9 +345,9 @@ class ChainChainConfigRouterFromArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              node_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
 
         if node_name is not None:
@@ -381,9 +381,9 @@ class ChainChainConfigRouterToArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              node_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
 
         if node_name is not None:
@@ -425,7 +425,7 @@ class RepoDomainListArgs:
              internal: Optional[pulumi.Input[str]] = None,
              public: Optional[pulumi.Input[str]] = None,
              vpc: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if internal is not None:

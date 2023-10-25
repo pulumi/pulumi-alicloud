@@ -116,16 +116,6 @@ def get_alidns_instances(domain_type: Optional[str] = None,
 
     > **NOTE:**  Available in 1.95.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.dns.get_alidns_instances(ids=["dns-cn-oew1npk****"])
-    pulumi.export("firstInstanceId", example.instances[0].id)
-    ```
-
 
     :param str domain_type: The type of domain.
     :param Sequence[str] ids: A list of instance IDs.
@@ -163,16 +153,6 @@ def get_alidns_instances_output(domain_type: Optional[pulumi.Input[Optional[str]
     This data source provides a list of Alidns instances in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:**  Available in 1.95.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.dns.get_alidns_instances(ids=["dns-cn-oew1npk****"])
-    pulumi.export("firstInstanceId", example.instances[0].id)
-    ```
 
 
     :param str domain_type: The type of domain.

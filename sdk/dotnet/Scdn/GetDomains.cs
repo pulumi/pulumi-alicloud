@@ -15,34 +15,6 @@ namespace Pulumi.AliCloud.Scdn
         /// This data source provides the Scdn Domains of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.131.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var nameRegex = AliCloud.Scdn.GetDomains.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Domain",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["scdnDomainId"] = nameRegex.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:scdn/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
@@ -51,34 +23,6 @@ namespace Pulumi.AliCloud.Scdn
         /// This data source provides the Scdn Domains of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.131.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var nameRegex = AliCloud.Scdn.GetDomains.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Domain",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["scdnDomainId"] = nameRegex.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:scdn/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());

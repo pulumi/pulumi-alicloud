@@ -10,32 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.MarketPlace
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var order = new AliCloud.MarketPlace.Order("order", new()
-    ///     {
-    ///         CouponId = "",
-    ///         Duration = 1,
-    ///         PackageVersion = "yuncode2713600001",
-    ///         PayType = "prepay",
-    ///         PricingCycle = "Month",
-    ///         ProductCode = "cmapi033136",
-    ///         Quantity = 1,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Market order can be imported using the id, e.g.

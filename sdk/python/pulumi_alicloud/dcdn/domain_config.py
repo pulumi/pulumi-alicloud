@@ -34,17 +34,23 @@ class DomainConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain_name: pulumi.Input[str],
-             function_args: pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]],
-             function_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             domain_name: Optional[pulumi.Input[str]] = None,
+             function_args: Optional[pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]]] = None,
+             function_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'functionArgs' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if function_args is None and 'functionArgs' in kwargs:
             function_args = kwargs['functionArgs']
-        if 'functionName' in kwargs:
+        if function_args is None:
+            raise TypeError("Missing 'function_args' argument")
+        if function_name is None and 'functionName' in kwargs:
             function_name = kwargs['functionName']
+        if function_name is None:
+            raise TypeError("Missing 'function_name' argument")
 
         _setter("domain_name", domain_name)
         _setter("function_args", function_args)
@@ -119,15 +125,15 @@ class _DomainConfigState:
              function_args: Optional[pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]]] = None,
              function_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configId' in kwargs:
+        if config_id is None and 'configId' in kwargs:
             config_id = kwargs['configId']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'functionArgs' in kwargs:
+        if function_args is None and 'functionArgs' in kwargs:
             function_args = kwargs['functionArgs']
-        if 'functionName' in kwargs:
+        if function_name is None and 'functionName' in kwargs:
             function_name = kwargs['functionName']
 
         if config_id is not None:
@@ -218,37 +224,6 @@ class DomainConfig(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.131.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "example.com"
-        example_domain = alicloud.dcdn.Domain("exampleDomain",
-            domain_name=domain_name,
-            scope="overseas",
-            sources=[alicloud.dcdn.DomainSourceArgs(
-                content="1.1.1.1",
-                port=80,
-                priority="20",
-                type="ipaddr",
-                weight="10",
-            )])
-        example_domain_config = alicloud.dcdn.DomainConfig("exampleDomainConfig",
-            domain_name=example_domain.domain_name,
-            function_name="ip_allow_list_set",
-            function_args=[alicloud.dcdn.DomainConfigFunctionArgArgs(
-                arg_name="ip_list",
-                arg_value="110.110.110.110",
-            )])
-        ```
-
         ## Import
 
         DCDN domain config can be imported using the id, e.g.
@@ -275,37 +250,6 @@ class DomainConfig(pulumi.CustomResource):
         For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/en/doc-detail/130632.htm)
 
         > **NOTE:** Available since v1.131.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "example.com"
-        example_domain = alicloud.dcdn.Domain("exampleDomain",
-            domain_name=domain_name,
-            scope="overseas",
-            sources=[alicloud.dcdn.DomainSourceArgs(
-                content="1.1.1.1",
-                port=80,
-                priority="20",
-                type="ipaddr",
-                weight="10",
-            )])
-        example_domain_config = alicloud.dcdn.DomainConfig("exampleDomainConfig",
-            domain_name=example_domain.domain_name,
-            function_name="ip_allow_list_set",
-            function_args=[alicloud.dcdn.DomainConfigFunctionArgArgs(
-                arg_name="ip_list",
-                arg_value="110.110.110.110",
-            )])
-        ```
 
         ## Import
 

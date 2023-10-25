@@ -13,24 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.107.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.ros.StackGroup("example", {
- *     stackGroupName: "example_value",
- *     templateBody: `    {
- *     	"ROSTemplateFormatVersion": "2015-09-01"
- *     }
- *     
- * `,
- * });
- * ```
- *
  * ## Import
  *
  * ROS Stack Group can be imported using the id, e.g.

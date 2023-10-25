@@ -7,49 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const exampleGroup = new alicloud.apigateway.Group("exampleGroup", {description: "tf-example"});
- * const exampleApi = new alicloud.apigateway.Api("exampleApi", {
- *     groupId: exampleGroup.id,
- *     description: "tf-example",
- *     authType: "APP",
- *     forceNonceCheck: false,
- *     requestConfig: {
- *         protocol: "HTTP",
- *         method: "GET",
- *         path: "/example/path",
- *         mode: "MAPPING",
- *     },
- *     serviceType: "HTTP",
- *     httpServiceConfig: {
- *         address: "http://apigateway-backend.alicloudapi.com:8080",
- *         method: "GET",
- *         path: "/web/cloudapi",
- *         timeout: 12,
- *         aoneName: "cloudapi-openapi",
- *     },
- *     requestParameters: [{
- *         name: "example",
- *         type: "STRING",
- *         required: "OPTIONAL",
- *         "in": "QUERY",
- *         inService: "QUERY",
- *         nameService: "exampleservice",
- *     }],
- *     stageNames: [
- *         "RELEASE",
- *         "TEST",
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * Api gateway api can be imported using the id.Format to `<API Group Id>:<API Id>` e.g.

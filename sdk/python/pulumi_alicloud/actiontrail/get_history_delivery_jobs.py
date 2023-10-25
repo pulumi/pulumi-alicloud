@@ -100,21 +100,6 @@ def get_history_delivery_jobs(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.139.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.actiontrail.get_history_delivery_jobs(ids=["example_id"])
-    pulumi.export("actiontrailHistoryDeliveryJobId1", ids.jobs[0].id)
-    status = alicloud.actiontrail.get_history_delivery_jobs(ids=["example_id"],
-        status=2)
-    pulumi.export("actiontrailHistoryDeliveryJobId2", status.jobs[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of History Delivery Job IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -147,21 +132,6 @@ def get_history_delivery_jobs_output(enable_details: Optional[pulumi.Input[Optio
     This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.139.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.actiontrail.get_history_delivery_jobs(ids=["example_id"])
-    pulumi.export("actiontrailHistoryDeliveryJobId1", ids.jobs[0].id)
-    status = alicloud.actiontrail.get_history_delivery_jobs(ids=["example_id"],
-        status=2)
-    pulumi.export("actiontrailHistoryDeliveryJobId2", status.jobs[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of History Delivery Job IDs.

@@ -59,11 +59,11 @@ class DomainResourceProxyType(dict):
              _setter: Callable[[Any, Any], None],
              proxy_ports: Optional[Sequence[int]] = None,
              proxy_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'proxyPorts' in kwargs:
+        if proxy_ports is None and 'proxyPorts' in kwargs:
             proxy_ports = kwargs['proxyPorts']
-        if 'proxyType' in kwargs:
+        if proxy_type is None and 'proxyType' in kwargs:
             proxy_type = kwargs['proxyType']
 
         if proxy_ports is not None:
@@ -148,11 +148,11 @@ class SchedulerRuleRule(dict):
              type: Optional[str] = None,
              value: Optional[str] = None,
              value_type: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'regionId' in kwargs:
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'valueType' in kwargs:
+        if value_type is None and 'valueType' in kwargs:
             value_type = kwargs['valueType']
 
         if priority is not None:
@@ -261,25 +261,43 @@ class GetDdosBgpInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: int,
-             base_bandwidth: int,
-             id: str,
-             ip_count: int,
-             ip_type: str,
-             name: str,
-             normal_bandwidth: int,
-             region: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth: Optional[int] = None,
+             base_bandwidth: Optional[int] = None,
+             id: Optional[str] = None,
+             ip_count: Optional[int] = None,
+             ip_type: Optional[str] = None,
+             name: Optional[str] = None,
+             normal_bandwidth: Optional[int] = None,
+             region: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'baseBandwidth' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if base_bandwidth is None and 'baseBandwidth' in kwargs:
             base_bandwidth = kwargs['baseBandwidth']
-        if 'ipCount' in kwargs:
+        if base_bandwidth is None:
+            raise TypeError("Missing 'base_bandwidth' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ip_count is None and 'ipCount' in kwargs:
             ip_count = kwargs['ipCount']
-        if 'ipType' in kwargs:
+        if ip_count is None:
+            raise TypeError("Missing 'ip_count' argument")
+        if ip_type is None and 'ipType' in kwargs:
             ip_type = kwargs['ipType']
-        if 'normalBandwidth' in kwargs:
+        if ip_type is None:
+            raise TypeError("Missing 'ip_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if normal_bandwidth is None and 'normalBandwidth' in kwargs:
             normal_bandwidth = kwargs['normalBandwidth']
+        if normal_bandwidth is None:
+            raise TypeError("Missing 'normal_bandwidth' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("bandwidth", bandwidth)
         _setter("base_bandwidth", base_bandwidth)
@@ -390,15 +408,25 @@ class GetDdosBgpIpsIpResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             instance_id: str,
-             ip: str,
-             product: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             ip: Optional[str] = None,
+             product: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if ip is None:
+            raise TypeError("Missing 'ip' argument")
+        if product is None:
+            raise TypeError("Missing 'product' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("id", id)
         _setter("instance_id", instance_id)
@@ -512,58 +540,94 @@ class GetDdosCooDomainResourcesResourceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             black_lists: Sequence[str],
-             cc_enabled: bool,
-             cc_rule_enabled: bool,
-             cc_template: str,
-             cert_name: str,
-             domain: str,
-             http2_enable: bool,
-             https_ext: str,
-             id: str,
-             instance_ids: Sequence[str],
-             policy_mode: str,
-             proxy_enabled: bool,
-             proxy_types: Sequence['outputs.GetDdosCooDomainResourcesResourceProxyTypeResult'],
-             real_servers: Sequence[str],
-             rs_type: int,
-             ssl_ciphers: str,
-             ssl_protocols: str,
-             white_lists: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             black_lists: Optional[Sequence[str]] = None,
+             cc_enabled: Optional[bool] = None,
+             cc_rule_enabled: Optional[bool] = None,
+             cc_template: Optional[str] = None,
+             cert_name: Optional[str] = None,
+             domain: Optional[str] = None,
+             http2_enable: Optional[bool] = None,
+             https_ext: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_ids: Optional[Sequence[str]] = None,
+             policy_mode: Optional[str] = None,
+             proxy_enabled: Optional[bool] = None,
+             proxy_types: Optional[Sequence['outputs.GetDdosCooDomainResourcesResourceProxyTypeResult']] = None,
+             real_servers: Optional[Sequence[str]] = None,
+             rs_type: Optional[int] = None,
+             ssl_ciphers: Optional[str] = None,
+             ssl_protocols: Optional[str] = None,
+             white_lists: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'blackLists' in kwargs:
+        if black_lists is None and 'blackLists' in kwargs:
             black_lists = kwargs['blackLists']
-        if 'ccEnabled' in kwargs:
+        if black_lists is None:
+            raise TypeError("Missing 'black_lists' argument")
+        if cc_enabled is None and 'ccEnabled' in kwargs:
             cc_enabled = kwargs['ccEnabled']
-        if 'ccRuleEnabled' in kwargs:
+        if cc_enabled is None:
+            raise TypeError("Missing 'cc_enabled' argument")
+        if cc_rule_enabled is None and 'ccRuleEnabled' in kwargs:
             cc_rule_enabled = kwargs['ccRuleEnabled']
-        if 'ccTemplate' in kwargs:
+        if cc_rule_enabled is None:
+            raise TypeError("Missing 'cc_rule_enabled' argument")
+        if cc_template is None and 'ccTemplate' in kwargs:
             cc_template = kwargs['ccTemplate']
-        if 'certName' in kwargs:
+        if cc_template is None:
+            raise TypeError("Missing 'cc_template' argument")
+        if cert_name is None and 'certName' in kwargs:
             cert_name = kwargs['certName']
-        if 'http2Enable' in kwargs:
+        if cert_name is None:
+            raise TypeError("Missing 'cert_name' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if http2_enable is None and 'http2Enable' in kwargs:
             http2_enable = kwargs['http2Enable']
-        if 'httpsExt' in kwargs:
+        if http2_enable is None:
+            raise TypeError("Missing 'http2_enable' argument")
+        if https_ext is None and 'httpsExt' in kwargs:
             https_ext = kwargs['httpsExt']
-        if 'instanceIds' in kwargs:
+        if https_ext is None:
+            raise TypeError("Missing 'https_ext' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
-        if 'policyMode' in kwargs:
+        if instance_ids is None:
+            raise TypeError("Missing 'instance_ids' argument")
+        if policy_mode is None and 'policyMode' in kwargs:
             policy_mode = kwargs['policyMode']
-        if 'proxyEnabled' in kwargs:
+        if policy_mode is None:
+            raise TypeError("Missing 'policy_mode' argument")
+        if proxy_enabled is None and 'proxyEnabled' in kwargs:
             proxy_enabled = kwargs['proxyEnabled']
-        if 'proxyTypes' in kwargs:
+        if proxy_enabled is None:
+            raise TypeError("Missing 'proxy_enabled' argument")
+        if proxy_types is None and 'proxyTypes' in kwargs:
             proxy_types = kwargs['proxyTypes']
-        if 'realServers' in kwargs:
+        if proxy_types is None:
+            raise TypeError("Missing 'proxy_types' argument")
+        if real_servers is None and 'realServers' in kwargs:
             real_servers = kwargs['realServers']
-        if 'rsType' in kwargs:
+        if real_servers is None:
+            raise TypeError("Missing 'real_servers' argument")
+        if rs_type is None and 'rsType' in kwargs:
             rs_type = kwargs['rsType']
-        if 'sslCiphers' in kwargs:
+        if rs_type is None:
+            raise TypeError("Missing 'rs_type' argument")
+        if ssl_ciphers is None and 'sslCiphers' in kwargs:
             ssl_ciphers = kwargs['sslCiphers']
-        if 'sslProtocols' in kwargs:
+        if ssl_ciphers is None:
+            raise TypeError("Missing 'ssl_ciphers' argument")
+        if ssl_protocols is None and 'sslProtocols' in kwargs:
             ssl_protocols = kwargs['sslProtocols']
-        if 'whiteLists' in kwargs:
+        if ssl_protocols is None:
+            raise TypeError("Missing 'ssl_protocols' argument")
+        if white_lists is None and 'whiteLists' in kwargs:
             white_lists = kwargs['whiteLists']
+        if white_lists is None:
+            raise TypeError("Missing 'white_lists' argument")
 
         _setter("black_lists", black_lists)
         _setter("cc_enabled", cc_enabled)
@@ -746,14 +810,18 @@ class GetDdosCooDomainResourcesResourceProxyTypeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             proxy_ports: Sequence[int],
-             proxy_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             proxy_ports: Optional[Sequence[int]] = None,
+             proxy_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'proxyPorts' in kwargs:
+        if proxy_ports is None and 'proxyPorts' in kwargs:
             proxy_ports = kwargs['proxyPorts']
-        if 'proxyType' in kwargs:
+        if proxy_ports is None:
+            raise TypeError("Missing 'proxy_ports' argument")
+        if proxy_type is None and 'proxyType' in kwargs:
             proxy_type = kwargs['proxyType']
+        if proxy_type is None:
+            raise TypeError("Missing 'proxy_type' argument")
 
         _setter("proxy_ports", proxy_ports)
         _setter("proxy_type", proxy_type)
@@ -834,42 +902,74 @@ class GetDdosCooInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: int,
-             base_bandwidth: int,
-             create_time: int,
-             debt_status: int,
-             domain_count: int,
-             edition: int,
-             enabled: int,
-             expire_time: int,
-             id: str,
-             ip_mode: str,
-             ip_version: str,
-             name: str,
-             port_count: int,
-             remark: str,
-             service_bandwidth: int,
-             status: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bandwidth: Optional[int] = None,
+             base_bandwidth: Optional[int] = None,
+             create_time: Optional[int] = None,
+             debt_status: Optional[int] = None,
+             domain_count: Optional[int] = None,
+             edition: Optional[int] = None,
+             enabled: Optional[int] = None,
+             expire_time: Optional[int] = None,
+             id: Optional[str] = None,
+             ip_mode: Optional[str] = None,
+             ip_version: Optional[str] = None,
+             name: Optional[str] = None,
+             port_count: Optional[int] = None,
+             remark: Optional[str] = None,
+             service_bandwidth: Optional[int] = None,
+             status: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'baseBandwidth' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if base_bandwidth is None and 'baseBandwidth' in kwargs:
             base_bandwidth = kwargs['baseBandwidth']
-        if 'createTime' in kwargs:
+        if base_bandwidth is None:
+            raise TypeError("Missing 'base_bandwidth' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'debtStatus' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if debt_status is None and 'debtStatus' in kwargs:
             debt_status = kwargs['debtStatus']
-        if 'domainCount' in kwargs:
+        if debt_status is None:
+            raise TypeError("Missing 'debt_status' argument")
+        if domain_count is None and 'domainCount' in kwargs:
             domain_count = kwargs['domainCount']
-        if 'expireTime' in kwargs:
+        if domain_count is None:
+            raise TypeError("Missing 'domain_count' argument")
+        if edition is None:
+            raise TypeError("Missing 'edition' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
-        if 'ipMode' in kwargs:
+        if expire_time is None:
+            raise TypeError("Missing 'expire_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ip_mode is None and 'ipMode' in kwargs:
             ip_mode = kwargs['ipMode']
-        if 'ipVersion' in kwargs:
+        if ip_mode is None:
+            raise TypeError("Missing 'ip_mode' argument")
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'portCount' in kwargs:
+        if ip_version is None:
+            raise TypeError("Missing 'ip_version' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if port_count is None and 'portCount' in kwargs:
             port_count = kwargs['portCount']
-        if 'serviceBandwidth' in kwargs:
+        if port_count is None:
+            raise TypeError("Missing 'port_count' argument")
+        if remark is None:
+            raise TypeError("Missing 'remark' argument")
+        if service_bandwidth is None and 'serviceBandwidth' in kwargs:
             service_bandwidth = kwargs['serviceBandwidth']
+        if service_bandwidth is None:
+            raise TypeError("Missing 'service_bandwidth' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("bandwidth", bandwidth)
         _setter("base_bandwidth", base_bandwidth)
@@ -1046,24 +1146,36 @@ class GetDdosCooPortsPortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_port: str,
-             frontend_port: str,
-             frontend_protocol: str,
-             id: str,
-             instance_id: str,
-             real_servers: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             backend_port: Optional[str] = None,
+             frontend_port: Optional[str] = None,
+             frontend_protocol: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             real_servers: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backendPort' in kwargs:
+        if backend_port is None and 'backendPort' in kwargs:
             backend_port = kwargs['backendPort']
-        if 'frontendPort' in kwargs:
+        if backend_port is None:
+            raise TypeError("Missing 'backend_port' argument")
+        if frontend_port is None and 'frontendPort' in kwargs:
             frontend_port = kwargs['frontendPort']
-        if 'frontendProtocol' in kwargs:
+        if frontend_port is None:
+            raise TypeError("Missing 'frontend_port' argument")
+        if frontend_protocol is None and 'frontendProtocol' in kwargs:
             frontend_protocol = kwargs['frontendProtocol']
-        if 'instanceId' in kwargs:
+        if frontend_protocol is None:
+            raise TypeError("Missing 'frontend_protocol' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'realServers' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if real_servers is None and 'realServers' in kwargs:
             real_servers = kwargs['realServers']
+        if real_servers is None:
+            raise TypeError("Missing 'real_servers' argument")
 
         _setter("backend_port", backend_port)
         _setter("frontend_port", frontend_port)

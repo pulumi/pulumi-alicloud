@@ -46,24 +46,34 @@ class AScriptArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ascript_name: pulumi.Input[str],
-             enabled: pulumi.Input[bool],
-             listener_id: pulumi.Input[str],
-             position: pulumi.Input[str],
-             script_content: pulumi.Input[str],
+             ascript_name: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             position: Optional[pulumi.Input[str]] = None,
+             script_content: Optional[pulumi.Input[str]] = None,
              ext_attribute_enabled: Optional[pulumi.Input[bool]] = None,
              ext_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ascriptName' in kwargs:
+        if ascript_name is None and 'ascriptName' in kwargs:
             ascript_name = kwargs['ascriptName']
-        if 'listenerId' in kwargs:
+        if ascript_name is None:
+            raise TypeError("Missing 'ascript_name' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'scriptContent' in kwargs:
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if position is None:
+            raise TypeError("Missing 'position' argument")
+        if script_content is None and 'scriptContent' in kwargs:
             script_content = kwargs['scriptContent']
-        if 'extAttributeEnabled' in kwargs:
+        if script_content is None:
+            raise TypeError("Missing 'script_content' argument")
+        if ext_attribute_enabled is None and 'extAttributeEnabled' in kwargs:
             ext_attribute_enabled = kwargs['extAttributeEnabled']
-        if 'extAttributes' in kwargs:
+        if ext_attributes is None and 'extAttributes' in kwargs:
             ext_attributes = kwargs['extAttributes']
 
         _setter("ascript_name", ascript_name)
@@ -209,19 +219,19 @@ class _AScriptState:
              position: Optional[pulumi.Input[str]] = None,
              script_content: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ascriptName' in kwargs:
+        if ascript_name is None and 'ascriptName' in kwargs:
             ascript_name = kwargs['ascriptName']
-        if 'extAttributeEnabled' in kwargs:
+        if ext_attribute_enabled is None and 'extAttributeEnabled' in kwargs:
             ext_attribute_enabled = kwargs['extAttributeEnabled']
-        if 'extAttributes' in kwargs:
+        if ext_attributes is None and 'extAttributes' in kwargs:
             ext_attributes = kwargs['extAttributes']
-        if 'listenerId' in kwargs:
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'loadBalancerId' in kwargs:
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
-        if 'scriptContent' in kwargs:
+        if script_content is None and 'scriptContent' in kwargs:
             script_content = kwargs['scriptContent']
 
         if ascript_name is not None:

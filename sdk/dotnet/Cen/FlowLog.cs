@@ -18,47 +18,6 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// &gt; **NOTE:** Available since v1.73.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a cen flowlog resource and use it to publish a route entry pointing to an ECS.
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance");
-    /// 
-    ///     var defaultProject = new AliCloud.Log.Project("defaultProject", new()
-    ///     {
-    ///         Description = "create by terraform",
-    ///     });
-    /// 
-    ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
-    ///     {
-    ///         Project = defaultProject.Name,
-    ///         RetentionPeriod = 3650,
-    ///         ShardCount = 3,
-    ///         AutoSplit = true,
-    ///         MaxSplitShardCount = 60,
-    ///         AppendMeta = true,
-    ///     });
-    /// 
-    ///     var defaultFlowLog = new AliCloud.Cen.FlowLog("defaultFlowLog", new()
-    ///     {
-    ///         FlowLogName = "my-flowlog",
-    ///         CenId = defaultInstance.Id,
-    ///         ProjectName = defaultProject.Name,
-    ///         LogStoreName = defaultStore.Name,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// CEN flowlog can be imported using the id, e.g.

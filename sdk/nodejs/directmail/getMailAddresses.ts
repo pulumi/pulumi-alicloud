@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.directmail.getMailAddresses({
- *     ids: ["example_id"],
- * });
- * export const directMailMailAddressId1 = ids.then(ids => ids.addresses?.[0]?.id);
- * ```
  */
 export function getMailAddresses(args?: GetMailAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetMailAddressesResult> {
     args = args || {};
@@ -83,20 +69,6 @@ export interface GetMailAddressesResult {
  * This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.directmail.getMailAddresses({
- *     ids: ["example_id"],
- * });
- * export const directMailMailAddressId1 = ids.then(ids => ids.addresses?.[0]?.id);
- * ```
  */
 export function getMailAddressesOutput(args?: GetMailAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMailAddressesResult> {
     return pulumi.output(args).apply((a: any) => getMailAddresses(a, opts))

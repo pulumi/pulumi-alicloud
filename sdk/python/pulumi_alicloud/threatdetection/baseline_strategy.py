@@ -55,31 +55,45 @@ class BaselineStrategyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             baseline_strategy_name: pulumi.Input[str],
-             custom_type: pulumi.Input[str],
-             cycle_days: pulumi.Input[int],
-             end_time: pulumi.Input[str],
-             risk_sub_type_name: pulumi.Input[str],
-             start_time: pulumi.Input[str],
-             target_type: pulumi.Input[str],
+             baseline_strategy_name: Optional[pulumi.Input[str]] = None,
+             custom_type: Optional[pulumi.Input[str]] = None,
+             cycle_days: Optional[pulumi.Input[int]] = None,
+             end_time: Optional[pulumi.Input[str]] = None,
+             risk_sub_type_name: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             target_type: Optional[pulumi.Input[str]] = None,
              cycle_start_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'baselineStrategyName' in kwargs:
+        if baseline_strategy_name is None and 'baselineStrategyName' in kwargs:
             baseline_strategy_name = kwargs['baselineStrategyName']
-        if 'customType' in kwargs:
+        if baseline_strategy_name is None:
+            raise TypeError("Missing 'baseline_strategy_name' argument")
+        if custom_type is None and 'customType' in kwargs:
             custom_type = kwargs['customType']
-        if 'cycleDays' in kwargs:
+        if custom_type is None:
+            raise TypeError("Missing 'custom_type' argument")
+        if cycle_days is None and 'cycleDays' in kwargs:
             cycle_days = kwargs['cycleDays']
-        if 'endTime' in kwargs:
+        if cycle_days is None:
+            raise TypeError("Missing 'cycle_days' argument")
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'riskSubTypeName' in kwargs:
+        if end_time is None:
+            raise TypeError("Missing 'end_time' argument")
+        if risk_sub_type_name is None and 'riskSubTypeName' in kwargs:
             risk_sub_type_name = kwargs['riskSubTypeName']
-        if 'startTime' in kwargs:
+        if risk_sub_type_name is None:
+            raise TypeError("Missing 'risk_sub_type_name' argument")
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'targetType' in kwargs:
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if target_type is None and 'targetType' in kwargs:
             target_type = kwargs['targetType']
-        if 'cycleStartTime' in kwargs:
+        if target_type is None:
+            raise TypeError("Missing 'target_type' argument")
+        if cycle_start_time is None and 'cycleStartTime' in kwargs:
             cycle_start_time = kwargs['cycleStartTime']
 
         _setter("baseline_strategy_name", baseline_strategy_name)
@@ -253,25 +267,25 @@ class _BaselineStrategyState:
              risk_sub_type_name: Optional[pulumi.Input[str]] = None,
              start_time: Optional[pulumi.Input[str]] = None,
              target_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'baselineStrategyId' in kwargs:
+        if baseline_strategy_id is None and 'baselineStrategyId' in kwargs:
             baseline_strategy_id = kwargs['baselineStrategyId']
-        if 'baselineStrategyName' in kwargs:
+        if baseline_strategy_name is None and 'baselineStrategyName' in kwargs:
             baseline_strategy_name = kwargs['baselineStrategyName']
-        if 'customType' in kwargs:
+        if custom_type is None and 'customType' in kwargs:
             custom_type = kwargs['customType']
-        if 'cycleDays' in kwargs:
+        if cycle_days is None and 'cycleDays' in kwargs:
             cycle_days = kwargs['cycleDays']
-        if 'cycleStartTime' in kwargs:
+        if cycle_start_time is None and 'cycleStartTime' in kwargs:
             cycle_start_time = kwargs['cycleStartTime']
-        if 'endTime' in kwargs:
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'riskSubTypeName' in kwargs:
+        if risk_sub_type_name is None and 'riskSubTypeName' in kwargs:
             risk_sub_type_name = kwargs['riskSubTypeName']
-        if 'startTime' in kwargs:
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'targetType' in kwargs:
+        if target_type is None and 'targetType' in kwargs:
             target_type = kwargs['targetType']
 
         if baseline_strategy_id is not None:
@@ -431,24 +445,6 @@ class BaselineStrategy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.threatdetection.BaselineStrategy("default",
-            baseline_strategy_name="apispec",
-            custom_type="custom",
-            cycle_days=3,
-            end_time="08:00:00",
-            risk_sub_type_name="hc_exploit_redis",
-            start_time="05:00:00",
-            target_type="groupId")
-        ```
-
         ## Import
 
         Threat Detection Baseline Strategy can be imported using the id, e.g.
@@ -488,24 +484,6 @@ class BaselineStrategy(pulumi.CustomResource):
         For information about Threat Detection Baseline Strategy and how to use it, see [What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-modifystrategy).
 
         > **NOTE:** Available since v1.195.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.threatdetection.BaselineStrategy("default",
-            baseline_strategy_name="apispec",
-            custom_type="custom",
-            cycle_days=3,
-            end_time="08:00:00",
-            risk_sub_type_name="hc_exploit_redis",
-            start_time="05:00:00",
-            target_type="groupId")
-        ```
 
         ## Import
 

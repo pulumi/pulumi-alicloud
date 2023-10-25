@@ -18,56 +18,6 @@ namespace Pulumi.AliCloud.Lindorm
     /// 
     /// &gt; **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines, or the number of nodes at the same time.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var region = "cn-hangzhou";
-    /// 
-    ///     var zoneId = "cn-hangzhou-h";
-    /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
-    ///     {
-    ///         NameRegex = "^default-NODELETING$",
-    ///     });
-    /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
-    ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = zoneId,
-    ///     });
-    /// 
-    ///     var defaultInstance = new AliCloud.Lindorm.Instance("defaultInstance", new()
-    ///     {
-    ///         DiskCategory = "cloud_efficiency",
-    ///         PaymentType = "PayAsYouGo",
-    ///         ZoneId = zoneId,
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         InstanceName = name,
-    ///         TableEngineSpecification = "lindorm.g.4xlarge",
-    ///         TableEngineNodeCount = 2,
-    ///         InstanceStorage = "1920",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Lindorm Instance can be imported using the id, e.g.

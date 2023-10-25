@@ -11,43 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.174.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.eds.getZones({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
- *     vswitchName: name,
- * });
- * const defaultAdConnectorDirectory = new alicloud.eds.AdConnectorDirectory("defaultAdConnectorDirectory", {
- *     directoryName: name,
- *     desktopAccessType: "INTERNET",
- *     dnsAddresses: ["127.0.0.2"],
- *     domainName: "corp.example.com",
- *     domainPassword: "Example1234",
- *     domainUserName: "sAMAccountName",
- *     enableAdminAccess: false,
- *     mfaEnabled: false,
- *     specification: 1,
- *     subDomainDnsAddresses: ["127.0.0.3"],
- *     subDomainName: "child.example.com",
- *     vswitchIds: [defaultSwitch.id],
- * });
- * ```
- *
  * ## Import
  *
  * ECD Ad Connector Directory can be imported using the id, e.g.

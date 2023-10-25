@@ -10,17 +10,6 @@ import * as utilities from "../utilities";
  * For information about CEN and how to use it, see [What is CEN](https://www.alibabacloud.com/help/en/doc-detail/59870.htm).
  *
  * > **NOTE:** Available in v1.139.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const open = alicloud.cen.getTransitRouterService({
- *     enable: "On",
- * });
- * ```
  */
 export function getTransitRouterService(args?: GetTransitRouterServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterServiceResult> {
     args = args || {};
@@ -63,17 +52,6 @@ export interface GetTransitRouterServiceResult {
  * For information about CEN and how to use it, see [What is CEN](https://www.alibabacloud.com/help/en/doc-detail/59870.htm).
  *
  * > **NOTE:** Available in v1.139.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const open = alicloud.cen.getTransitRouterService({
- *     enable: "On",
- * });
- * ```
  */
 export function getTransitRouterServiceOutput(args?: GetTransitRouterServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterServiceResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterService(a, opts))

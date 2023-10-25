@@ -129,19 +129,6 @@ def get_ecs_network_interface_permissions(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.166.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ecs.get_ecs_network_interface_permissions(ids=["example_value"],
-        network_interface_id="example_value")
-    pulumi.export("ecsNetworkInterfacePermissionId1", ids.permissions[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Network Interface Permission IDs.
     :param str network_interface_id: The ID of the network interface.
@@ -182,19 +169,6 @@ def get_ecs_network_interface_permissions_output(ids: Optional[pulumi.Input[Opti
     This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.166.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ecs.get_ecs_network_interface_permissions(ids=["example_value"],
-        network_interface_id="example_value")
-    pulumi.export("ecsNetworkInterfacePermissionId1", ids.permissions[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Network Interface Permission IDs.

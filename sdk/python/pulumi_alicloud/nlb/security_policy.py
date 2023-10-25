@@ -41,18 +41,22 @@ class SecurityPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ciphers: pulumi.Input[Sequence[pulumi.Input[str]]],
-             tls_versions: pulumi.Input[Sequence[pulumi.Input[str]]],
+             ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              security_policy_name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'tlsVersions' in kwargs:
+        if ciphers is None:
+            raise TypeError("Missing 'ciphers' argument")
+        if tls_versions is None and 'tlsVersions' in kwargs:
             tls_versions = kwargs['tlsVersions']
-        if 'resourceGroupId' in kwargs:
+        if tls_versions is None:
+            raise TypeError("Missing 'tls_versions' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityPolicyName' in kwargs:
+        if security_policy_name is None and 'securityPolicyName' in kwargs:
             security_policy_name = kwargs['securityPolicyName']
 
         _setter("ciphers", ciphers)
@@ -167,13 +171,13 @@ class _SecurityPolicyState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityPolicyName' in kwargs:
+        if security_policy_name is None and 'securityPolicyName' in kwargs:
             security_policy_name = kwargs['securityPolicyName']
-        if 'tlsVersions' in kwargs:
+        if tls_versions is None and 'tlsVersions' in kwargs:
             tls_versions = kwargs['tlsVersions']
 
         if ciphers is not None:
@@ -283,37 +287,6 @@ class SecurityPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.187.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_security_policy = alicloud.nlb.SecurityPolicy("defaultSecurityPolicy",
-            resource_group_id=default_resource_groups.ids[0],
-            security_policy_name=name,
-            ciphers=[
-                "ECDHE-RSA-AES128-SHA",
-                "ECDHE-ECDSA-AES128-SHA",
-            ],
-            tls_versions=[
-                "TLSv1.0",
-                "TLSv1.1",
-                "TLSv1.2",
-            ],
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        ```
-
         ## Import
 
         NLB Security Policy can be imported using the id, e.g.
@@ -345,37 +318,6 @@ class SecurityPolicy(pulumi.CustomResource):
         For information about NLB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createsecuritypolicy-nlb).
 
         > **NOTE:** Available since v1.187.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_security_policy = alicloud.nlb.SecurityPolicy("defaultSecurityPolicy",
-            resource_group_id=default_resource_groups.ids[0],
-            security_policy_name=name,
-            ciphers=[
-                "ECDHE-RSA-AES128-SHA",
-                "ECDHE-ECDSA-AES128-SHA",
-            ],
-            tls_versions=[
-                "TLSv1.0",
-                "TLSv1.1",
-                "TLSv1.2",
-            ],
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        ```
 
         ## Import
 

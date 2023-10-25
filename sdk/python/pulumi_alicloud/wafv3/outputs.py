@@ -149,35 +149,35 @@ class DomainListen(dict):
              tls_version: Optional[str] = None,
              xff_header_mode: Optional[int] = None,
              xff_headers: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certId' in kwargs:
+        if cert_id is None and 'certId' in kwargs:
             cert_id = kwargs['certId']
-        if 'cipherSuite' in kwargs:
+        if cipher_suite is None and 'cipherSuite' in kwargs:
             cipher_suite = kwargs['cipherSuite']
-        if 'customCiphers' in kwargs:
+        if custom_ciphers is None and 'customCiphers' in kwargs:
             custom_ciphers = kwargs['customCiphers']
-        if 'enableTlsv3' in kwargs:
+        if enable_tlsv3 is None and 'enableTlsv3' in kwargs:
             enable_tlsv3 = kwargs['enableTlsv3']
-        if 'exclusiveIp' in kwargs:
+        if exclusive_ip is None and 'exclusiveIp' in kwargs:
             exclusive_ip = kwargs['exclusiveIp']
-        if 'focusHttps' in kwargs:
+        if focus_https is None and 'focusHttps' in kwargs:
             focus_https = kwargs['focusHttps']
-        if 'http2Enabled' in kwargs:
+        if http2_enabled is None and 'http2Enabled' in kwargs:
             http2_enabled = kwargs['http2Enabled']
-        if 'httpPorts' in kwargs:
+        if http_ports is None and 'httpPorts' in kwargs:
             http_ports = kwargs['httpPorts']
-        if 'httpsPorts' in kwargs:
+        if https_ports is None and 'httpsPorts' in kwargs:
             https_ports = kwargs['httpsPorts']
-        if 'ipv6Enabled' in kwargs:
+        if ipv6_enabled is None and 'ipv6Enabled' in kwargs:
             ipv6_enabled = kwargs['ipv6Enabled']
-        if 'protectionResource' in kwargs:
+        if protection_resource is None and 'protectionResource' in kwargs:
             protection_resource = kwargs['protectionResource']
-        if 'tlsVersion' in kwargs:
+        if tls_version is None and 'tlsVersion' in kwargs:
             tls_version = kwargs['tlsVersion']
-        if 'xffHeaderMode' in kwargs:
+        if xff_header_mode is None and 'xffHeaderMode' in kwargs:
             xff_header_mode = kwargs['xffHeaderMode']
-        if 'xffHeaders' in kwargs:
+        if xff_headers is None and 'xffHeaders' in kwargs:
             xff_headers = kwargs['xffHeaders']
 
         if cert_id is not None:
@@ -437,7 +437,7 @@ class DomainRedirect(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             loadbalance: str,
+             loadbalance: Optional[str] = None,
              backends: Optional[Sequence[str]] = None,
              connect_timeout: Optional[int] = None,
              focus_http_backend: Optional[bool] = None,
@@ -450,25 +450,27 @@ class DomainRedirect(dict):
              sni_enabled: Optional[bool] = None,
              sni_host: Optional[str] = None,
              write_timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectTimeout' in kwargs:
+        if loadbalance is None:
+            raise TypeError("Missing 'loadbalance' argument")
+        if connect_timeout is None and 'connectTimeout' in kwargs:
             connect_timeout = kwargs['connectTimeout']
-        if 'focusHttpBackend' in kwargs:
+        if focus_http_backend is None and 'focusHttpBackend' in kwargs:
             focus_http_backend = kwargs['focusHttpBackend']
-        if 'keepaliveRequests' in kwargs:
+        if keepalive_requests is None and 'keepaliveRequests' in kwargs:
             keepalive_requests = kwargs['keepaliveRequests']
-        if 'keepaliveTimeout' in kwargs:
+        if keepalive_timeout is None and 'keepaliveTimeout' in kwargs:
             keepalive_timeout = kwargs['keepaliveTimeout']
-        if 'readTimeout' in kwargs:
+        if read_timeout is None and 'readTimeout' in kwargs:
             read_timeout = kwargs['readTimeout']
-        if 'requestHeaders' in kwargs:
+        if request_headers is None and 'requestHeaders' in kwargs:
             request_headers = kwargs['requestHeaders']
-        if 'sniEnabled' in kwargs:
+        if sni_enabled is None and 'sniEnabled' in kwargs:
             sni_enabled = kwargs['sniEnabled']
-        if 'sniHost' in kwargs:
+        if sni_host is None and 'sniHost' in kwargs:
             sni_host = kwargs['sniHost']
-        if 'writeTimeout' in kwargs:
+        if write_timeout is None and 'writeTimeout' in kwargs:
             write_timeout = kwargs['writeTimeout']
 
         _setter("loadbalance", loadbalance)
@@ -635,7 +637,7 @@ class DomainRedirectRequestHeader(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -689,16 +691,28 @@ class GetDomainsDomainResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: str,
-             id: str,
-             listens: Sequence['outputs.GetDomainsDomainListenResult'],
-             redirects: Sequence['outputs.GetDomainsDomainRedirectResult'],
-             resource_manager_resource_group_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             domain: Optional[str] = None,
+             id: Optional[str] = None,
+             listens: Optional[Sequence['outputs.GetDomainsDomainListenResult']] = None,
+             redirects: Optional[Sequence['outputs.GetDomainsDomainRedirectResult']] = None,
+             resource_manager_resource_group_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceManagerResourceGroupId' in kwargs:
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if listens is None:
+            raise TypeError("Missing 'listens' argument")
+        if redirects is None:
+            raise TypeError("Missing 'redirects' argument")
+        if resource_manager_resource_group_id is None and 'resourceManagerResourceGroupId' in kwargs:
             resource_manager_resource_group_id = kwargs['resourceManagerResourceGroupId']
+        if resource_manager_resource_group_id is None:
+            raise TypeError("Missing 'resource_manager_resource_group_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("domain", domain)
         _setter("id", id)
@@ -809,50 +823,78 @@ class GetDomainsDomainListenResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert_id: str,
-             cipher_suite: int,
-             custom_ciphers: Sequence[str],
-             enable_tlsv3: bool,
-             exclusive_ip: bool,
-             focus_https: bool,
-             http2_enabled: bool,
-             http_ports: Sequence[int],
-             https_ports: Sequence[int],
-             ipv6_enabled: bool,
-             protection_resource: str,
-             tls_version: str,
-             xff_header_mode: int,
-             xff_headers: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cert_id: Optional[str] = None,
+             cipher_suite: Optional[int] = None,
+             custom_ciphers: Optional[Sequence[str]] = None,
+             enable_tlsv3: Optional[bool] = None,
+             exclusive_ip: Optional[bool] = None,
+             focus_https: Optional[bool] = None,
+             http2_enabled: Optional[bool] = None,
+             http_ports: Optional[Sequence[int]] = None,
+             https_ports: Optional[Sequence[int]] = None,
+             ipv6_enabled: Optional[bool] = None,
+             protection_resource: Optional[str] = None,
+             tls_version: Optional[str] = None,
+             xff_header_mode: Optional[int] = None,
+             xff_headers: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certId' in kwargs:
+        if cert_id is None and 'certId' in kwargs:
             cert_id = kwargs['certId']
-        if 'cipherSuite' in kwargs:
+        if cert_id is None:
+            raise TypeError("Missing 'cert_id' argument")
+        if cipher_suite is None and 'cipherSuite' in kwargs:
             cipher_suite = kwargs['cipherSuite']
-        if 'customCiphers' in kwargs:
+        if cipher_suite is None:
+            raise TypeError("Missing 'cipher_suite' argument")
+        if custom_ciphers is None and 'customCiphers' in kwargs:
             custom_ciphers = kwargs['customCiphers']
-        if 'enableTlsv3' in kwargs:
+        if custom_ciphers is None:
+            raise TypeError("Missing 'custom_ciphers' argument")
+        if enable_tlsv3 is None and 'enableTlsv3' in kwargs:
             enable_tlsv3 = kwargs['enableTlsv3']
-        if 'exclusiveIp' in kwargs:
+        if enable_tlsv3 is None:
+            raise TypeError("Missing 'enable_tlsv3' argument")
+        if exclusive_ip is None and 'exclusiveIp' in kwargs:
             exclusive_ip = kwargs['exclusiveIp']
-        if 'focusHttps' in kwargs:
+        if exclusive_ip is None:
+            raise TypeError("Missing 'exclusive_ip' argument")
+        if focus_https is None and 'focusHttps' in kwargs:
             focus_https = kwargs['focusHttps']
-        if 'http2Enabled' in kwargs:
+        if focus_https is None:
+            raise TypeError("Missing 'focus_https' argument")
+        if http2_enabled is None and 'http2Enabled' in kwargs:
             http2_enabled = kwargs['http2Enabled']
-        if 'httpPorts' in kwargs:
+        if http2_enabled is None:
+            raise TypeError("Missing 'http2_enabled' argument")
+        if http_ports is None and 'httpPorts' in kwargs:
             http_ports = kwargs['httpPorts']
-        if 'httpsPorts' in kwargs:
+        if http_ports is None:
+            raise TypeError("Missing 'http_ports' argument")
+        if https_ports is None and 'httpsPorts' in kwargs:
             https_ports = kwargs['httpsPorts']
-        if 'ipv6Enabled' in kwargs:
+        if https_ports is None:
+            raise TypeError("Missing 'https_ports' argument")
+        if ipv6_enabled is None and 'ipv6Enabled' in kwargs:
             ipv6_enabled = kwargs['ipv6Enabled']
-        if 'protectionResource' in kwargs:
+        if ipv6_enabled is None:
+            raise TypeError("Missing 'ipv6_enabled' argument")
+        if protection_resource is None and 'protectionResource' in kwargs:
             protection_resource = kwargs['protectionResource']
-        if 'tlsVersion' in kwargs:
+        if protection_resource is None:
+            raise TypeError("Missing 'protection_resource' argument")
+        if tls_version is None and 'tlsVersion' in kwargs:
             tls_version = kwargs['tlsVersion']
-        if 'xffHeaderMode' in kwargs:
+        if tls_version is None:
+            raise TypeError("Missing 'tls_version' argument")
+        if xff_header_mode is None and 'xffHeaderMode' in kwargs:
             xff_header_mode = kwargs['xffHeaderMode']
-        if 'xffHeaders' in kwargs:
+        if xff_header_mode is None:
+            raise TypeError("Missing 'xff_header_mode' argument")
+        if xff_headers is None and 'xffHeaders' in kwargs:
             xff_headers = kwargs['xffHeaders']
+        if xff_headers is None:
+            raise TypeError("Missing 'xff_headers' argument")
 
         _setter("cert_id", cert_id)
         _setter("cipher_suite", cipher_suite)
@@ -1032,39 +1074,65 @@ class GetDomainsDomainRedirectResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backends: Sequence[str],
-             connect_timeout: int,
-             focus_http_backend: bool,
-             keepalive: bool,
-             keepalive_requests: int,
-             keepalive_timeout: int,
-             loadbalance: str,
-             read_timeout: int,
-             request_headers: Sequence['outputs.GetDomainsDomainRedirectRequestHeaderResult'],
-             retry: bool,
-             sni_enabled: bool,
-             sni_host: str,
-             write_timeout: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             backends: Optional[Sequence[str]] = None,
+             connect_timeout: Optional[int] = None,
+             focus_http_backend: Optional[bool] = None,
+             keepalive: Optional[bool] = None,
+             keepalive_requests: Optional[int] = None,
+             keepalive_timeout: Optional[int] = None,
+             loadbalance: Optional[str] = None,
+             read_timeout: Optional[int] = None,
+             request_headers: Optional[Sequence['outputs.GetDomainsDomainRedirectRequestHeaderResult']] = None,
+             retry: Optional[bool] = None,
+             sni_enabled: Optional[bool] = None,
+             sni_host: Optional[str] = None,
+             write_timeout: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectTimeout' in kwargs:
+        if backends is None:
+            raise TypeError("Missing 'backends' argument")
+        if connect_timeout is None and 'connectTimeout' in kwargs:
             connect_timeout = kwargs['connectTimeout']
-        if 'focusHttpBackend' in kwargs:
+        if connect_timeout is None:
+            raise TypeError("Missing 'connect_timeout' argument")
+        if focus_http_backend is None and 'focusHttpBackend' in kwargs:
             focus_http_backend = kwargs['focusHttpBackend']
-        if 'keepaliveRequests' in kwargs:
+        if focus_http_backend is None:
+            raise TypeError("Missing 'focus_http_backend' argument")
+        if keepalive is None:
+            raise TypeError("Missing 'keepalive' argument")
+        if keepalive_requests is None and 'keepaliveRequests' in kwargs:
             keepalive_requests = kwargs['keepaliveRequests']
-        if 'keepaliveTimeout' in kwargs:
+        if keepalive_requests is None:
+            raise TypeError("Missing 'keepalive_requests' argument")
+        if keepalive_timeout is None and 'keepaliveTimeout' in kwargs:
             keepalive_timeout = kwargs['keepaliveTimeout']
-        if 'readTimeout' in kwargs:
+        if keepalive_timeout is None:
+            raise TypeError("Missing 'keepalive_timeout' argument")
+        if loadbalance is None:
+            raise TypeError("Missing 'loadbalance' argument")
+        if read_timeout is None and 'readTimeout' in kwargs:
             read_timeout = kwargs['readTimeout']
-        if 'requestHeaders' in kwargs:
+        if read_timeout is None:
+            raise TypeError("Missing 'read_timeout' argument")
+        if request_headers is None and 'requestHeaders' in kwargs:
             request_headers = kwargs['requestHeaders']
-        if 'sniEnabled' in kwargs:
+        if request_headers is None:
+            raise TypeError("Missing 'request_headers' argument")
+        if retry is None:
+            raise TypeError("Missing 'retry' argument")
+        if sni_enabled is None and 'sniEnabled' in kwargs:
             sni_enabled = kwargs['sniEnabled']
-        if 'sniHost' in kwargs:
+        if sni_enabled is None:
+            raise TypeError("Missing 'sni_enabled' argument")
+        if sni_host is None and 'sniHost' in kwargs:
             sni_host = kwargs['sniHost']
-        if 'writeTimeout' in kwargs:
+        if sni_host is None:
+            raise TypeError("Missing 'sni_host' argument")
+        if write_timeout is None and 'writeTimeout' in kwargs:
             write_timeout = kwargs['writeTimeout']
+        if write_timeout is None:
+            raise TypeError("Missing 'write_timeout' argument")
 
         _setter("backends", backends)
         _setter("connect_timeout", connect_timeout)
@@ -1202,10 +1270,14 @@ class GetDomainsDomainRedirectRequestHeaderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("value", value)
@@ -1250,16 +1322,24 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             id: str,
-             instance_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'instanceId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("create_time", create_time)
         _setter("id", id)

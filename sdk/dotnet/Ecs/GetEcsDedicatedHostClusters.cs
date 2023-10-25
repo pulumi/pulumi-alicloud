@@ -15,64 +15,6 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.146.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Ecs.GetEcsDedicatedHostClusters.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Ecs.GetEcsDedicatedHostClusters.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-DedicatedHostCluster",
-        ///     });
-        /// 
-        ///     var zoneId = AliCloud.Ecs.GetEcsDedicatedHostClusters.Invoke(new()
-        ///     {
-        ///         ZoneId = "example_value",
-        ///     });
-        /// 
-        ///     var clusterName = AliCloud.Ecs.GetEcsDedicatedHostClusters.Invoke(new()
-        ///     {
-        ///         DedicatedHostClusterName = "example_value",
-        ///     });
-        /// 
-        ///     var clusterIds = AliCloud.Ecs.GetEcsDedicatedHostClusters.Invoke(new()
-        ///     {
-        ///         DedicatedHostClusterIds = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["ecsDedicatedHostClusterId1"] = ids.Apply(getEcsDedicatedHostClustersResult =&gt; getEcsDedicatedHostClustersResult.Clusters[0]?.Id),
-        ///         ["ecsDedicatedHostClusterId2"] = nameRegex.Apply(getEcsDedicatedHostClustersResult =&gt; getEcsDedicatedHostClustersResult.Clusters[0]?.Id),
-        ///         ["ecsDedicatedHostClusterId3"] = zoneId.Apply(getEcsDedicatedHostClustersResult =&gt; getEcsDedicatedHostClustersResult.Clusters[0]?.Id),
-        ///         ["ecsDedicatedHostClusterId4"] = clusterName.Apply(getEcsDedicatedHostClustersResult =&gt; getEcsDedicatedHostClustersResult.Clusters[0]?.Id),
-        ///         ["ecsDedicatedHostClusterId5"] = clusterIds.Apply(getEcsDedicatedHostClustersResult =&gt; getEcsDedicatedHostClustersResult.Clusters[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsDedicatedHostClustersResult> InvokeAsync(GetEcsDedicatedHostClustersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsDedicatedHostClustersResult>("alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters", args ?? new GetEcsDedicatedHostClustersArgs(), options.WithDefaults());
@@ -81,64 +23,6 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.146.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Ecs.GetEcsDedicatedHostClusters.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Ecs.GetEcsDedicatedHostClusters.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-DedicatedHostCluster",
-        ///     });
-        /// 
-        ///     var zoneId = AliCloud.Ecs.GetEcsDedicatedHostClusters.Invoke(new()
-        ///     {
-        ///         ZoneId = "example_value",
-        ///     });
-        /// 
-        ///     var clusterName = AliCloud.Ecs.GetEcsDedicatedHostClusters.Invoke(new()
-        ///     {
-        ///         DedicatedHostClusterName = "example_value",
-        ///     });
-        /// 
-        ///     var clusterIds = AliCloud.Ecs.GetEcsDedicatedHostClusters.Invoke(new()
-        ///     {
-        ///         DedicatedHostClusterIds = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["ecsDedicatedHostClusterId1"] = ids.Apply(getEcsDedicatedHostClustersResult =&gt; getEcsDedicatedHostClustersResult.Clusters[0]?.Id),
-        ///         ["ecsDedicatedHostClusterId2"] = nameRegex.Apply(getEcsDedicatedHostClustersResult =&gt; getEcsDedicatedHostClustersResult.Clusters[0]?.Id),
-        ///         ["ecsDedicatedHostClusterId3"] = zoneId.Apply(getEcsDedicatedHostClustersResult =&gt; getEcsDedicatedHostClustersResult.Clusters[0]?.Id),
-        ///         ["ecsDedicatedHostClusterId4"] = clusterName.Apply(getEcsDedicatedHostClustersResult =&gt; getEcsDedicatedHostClustersResult.Clusters[0]?.Id),
-        ///         ["ecsDedicatedHostClusterId5"] = clusterIds.Apply(getEcsDedicatedHostClustersResult =&gt; getEcsDedicatedHostClustersResult.Clusters[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsDedicatedHostClustersResult> Invoke(GetEcsDedicatedHostClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsDedicatedHostClustersResult>("alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters", args ?? new GetEcsDedicatedHostClustersInvokeArgs(), options.WithDefaults());

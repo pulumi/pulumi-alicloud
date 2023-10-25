@@ -160,9 +160,9 @@ class ListenerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             frontend_port: pulumi.Input[int],
-             load_balancer_id: pulumi.Input[str],
-             protocol: pulumi.Input[str],
+             frontend_port: Optional[pulumi.Input[int]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
              acl_id: Optional[pulumi.Input[str]] = None,
              acl_status: Optional[pulumi.Input[str]] = None,
              acl_type: Optional[pulumi.Input[str]] = None,
@@ -204,83 +204,89 @@ class ListenerArgs:
              tls_cipher_policy: Optional[pulumi.Input[str]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
              x_forwarded_for: Optional[pulumi.Input['ListenerXForwardedForArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'frontendPort' in kwargs:
+        if frontend_port is None and 'frontendPort' in kwargs:
             frontend_port = kwargs['frontendPort']
-        if 'loadBalancerId' in kwargs:
+        if frontend_port is None:
+            raise TypeError("Missing 'frontend_port' argument")
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
-        if 'aclId' in kwargs:
+        if load_balancer_id is None:
+            raise TypeError("Missing 'load_balancer_id' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if acl_id is None and 'aclId' in kwargs:
             acl_id = kwargs['aclId']
-        if 'aclStatus' in kwargs:
+        if acl_status is None and 'aclStatus' in kwargs:
             acl_status = kwargs['aclStatus']
-        if 'aclType' in kwargs:
+        if acl_type is None and 'aclType' in kwargs:
             acl_type = kwargs['aclType']
-        if 'backendPort' in kwargs:
+        if backend_port is None and 'backendPort' in kwargs:
             backend_port = kwargs['backendPort']
-        if 'caCertificateId' in kwargs:
+        if ca_certificate_id is None and 'caCertificateId' in kwargs:
             ca_certificate_id = kwargs['caCertificateId']
-        if 'cookieTimeout' in kwargs:
+        if cookie_timeout is None and 'cookieTimeout' in kwargs:
             cookie_timeout = kwargs['cookieTimeout']
-        if 'deleteProtectionValidation' in kwargs:
+        if delete_protection_validation is None and 'deleteProtectionValidation' in kwargs:
             delete_protection_validation = kwargs['deleteProtectionValidation']
-        if 'enableHttp2' in kwargs:
+        if enable_http2 is None and 'enableHttp2' in kwargs:
             enable_http2 = kwargs['enableHttp2']
-        if 'establishedTimeout' in kwargs:
+        if established_timeout is None and 'establishedTimeout' in kwargs:
             established_timeout = kwargs['establishedTimeout']
-        if 'forwardPort' in kwargs:
+        if forward_port is None and 'forwardPort' in kwargs:
             forward_port = kwargs['forwardPort']
-        if 'healthCheck' in kwargs:
+        if health_check is None and 'healthCheck' in kwargs:
             health_check = kwargs['healthCheck']
-        if 'healthCheckConnectPort' in kwargs:
+        if health_check_connect_port is None and 'healthCheckConnectPort' in kwargs:
             health_check_connect_port = kwargs['healthCheckConnectPort']
-        if 'healthCheckDomain' in kwargs:
+        if health_check_domain is None and 'healthCheckDomain' in kwargs:
             health_check_domain = kwargs['healthCheckDomain']
-        if 'healthCheckHttpCode' in kwargs:
+        if health_check_http_code is None and 'healthCheckHttpCode' in kwargs:
             health_check_http_code = kwargs['healthCheckHttpCode']
-        if 'healthCheckInterval' in kwargs:
+        if health_check_interval is None and 'healthCheckInterval' in kwargs:
             health_check_interval = kwargs['healthCheckInterval']
-        if 'healthCheckMethod' in kwargs:
+        if health_check_method is None and 'healthCheckMethod' in kwargs:
             health_check_method = kwargs['healthCheckMethod']
-        if 'healthCheckTimeout' in kwargs:
+        if health_check_timeout is None and 'healthCheckTimeout' in kwargs:
             health_check_timeout = kwargs['healthCheckTimeout']
-        if 'healthCheckType' in kwargs:
+        if health_check_type is None and 'healthCheckType' in kwargs:
             health_check_type = kwargs['healthCheckType']
-        if 'healthCheckUri' in kwargs:
+        if health_check_uri is None and 'healthCheckUri' in kwargs:
             health_check_uri = kwargs['healthCheckUri']
-        if 'healthyThreshold' in kwargs:
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
             healthy_threshold = kwargs['healthyThreshold']
-        if 'idleTimeout' in kwargs:
+        if idle_timeout is None and 'idleTimeout' in kwargs:
             idle_timeout = kwargs['idleTimeout']
-        if 'lbPort' in kwargs:
+        if lb_port is None and 'lbPort' in kwargs:
             lb_port = kwargs['lbPort']
-        if 'lbProtocol' in kwargs:
+        if lb_protocol is None and 'lbProtocol' in kwargs:
             lb_protocol = kwargs['lbProtocol']
-        if 'listenerForward' in kwargs:
+        if listener_forward is None and 'listenerForward' in kwargs:
             listener_forward = kwargs['listenerForward']
-        if 'masterSlaveServerGroupId' in kwargs:
+        if master_slave_server_group_id is None and 'masterSlaveServerGroupId' in kwargs:
             master_slave_server_group_id = kwargs['masterSlaveServerGroupId']
-        if 'persistenceTimeout' in kwargs:
+        if persistence_timeout is None and 'persistenceTimeout' in kwargs:
             persistence_timeout = kwargs['persistenceTimeout']
-        if 'proxyProtocolV2Enabled' in kwargs:
+        if proxy_protocol_v2_enabled is None and 'proxyProtocolV2Enabled' in kwargs:
             proxy_protocol_v2_enabled = kwargs['proxyProtocolV2Enabled']
-        if 'requestTimeout' in kwargs:
+        if request_timeout is None and 'requestTimeout' in kwargs:
             request_timeout = kwargs['requestTimeout']
-        if 'serverCertificateId' in kwargs:
+        if server_certificate_id is None and 'serverCertificateId' in kwargs:
             server_certificate_id = kwargs['serverCertificateId']
-        if 'serverGroupId' in kwargs:
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
-        if 'sslCertificateId' in kwargs:
+        if ssl_certificate_id is None and 'sslCertificateId' in kwargs:
             ssl_certificate_id = kwargs['sslCertificateId']
-        if 'stickySession' in kwargs:
+        if sticky_session is None and 'stickySession' in kwargs:
             sticky_session = kwargs['stickySession']
-        if 'stickySessionType' in kwargs:
+        if sticky_session_type is None and 'stickySessionType' in kwargs:
             sticky_session_type = kwargs['stickySessionType']
-        if 'tlsCipherPolicy' in kwargs:
+        if tls_cipher_policy is None and 'tlsCipherPolicy' in kwargs:
             tls_cipher_policy = kwargs['tlsCipherPolicy']
-        if 'unhealthyThreshold' in kwargs:
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
             unhealthy_threshold = kwargs['unhealthyThreshold']
-        if 'xForwardedFor' in kwargs:
+        if x_forwarded_for is None and 'xForwardedFor' in kwargs:
             x_forwarded_for = kwargs['xForwardedFor']
 
         _setter("frontend_port", frontend_port)
@@ -1106,83 +1112,83 @@ class _ListenerState:
              tls_cipher_policy: Optional[pulumi.Input[str]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
              x_forwarded_for: Optional[pulumi.Input['ListenerXForwardedForArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclId' in kwargs:
+        if acl_id is None and 'aclId' in kwargs:
             acl_id = kwargs['aclId']
-        if 'aclStatus' in kwargs:
+        if acl_status is None and 'aclStatus' in kwargs:
             acl_status = kwargs['aclStatus']
-        if 'aclType' in kwargs:
+        if acl_type is None and 'aclType' in kwargs:
             acl_type = kwargs['aclType']
-        if 'backendPort' in kwargs:
+        if backend_port is None and 'backendPort' in kwargs:
             backend_port = kwargs['backendPort']
-        if 'caCertificateId' in kwargs:
+        if ca_certificate_id is None and 'caCertificateId' in kwargs:
             ca_certificate_id = kwargs['caCertificateId']
-        if 'cookieTimeout' in kwargs:
+        if cookie_timeout is None and 'cookieTimeout' in kwargs:
             cookie_timeout = kwargs['cookieTimeout']
-        if 'deleteProtectionValidation' in kwargs:
+        if delete_protection_validation is None and 'deleteProtectionValidation' in kwargs:
             delete_protection_validation = kwargs['deleteProtectionValidation']
-        if 'enableHttp2' in kwargs:
+        if enable_http2 is None and 'enableHttp2' in kwargs:
             enable_http2 = kwargs['enableHttp2']
-        if 'establishedTimeout' in kwargs:
+        if established_timeout is None and 'establishedTimeout' in kwargs:
             established_timeout = kwargs['establishedTimeout']
-        if 'forwardPort' in kwargs:
+        if forward_port is None and 'forwardPort' in kwargs:
             forward_port = kwargs['forwardPort']
-        if 'frontendPort' in kwargs:
+        if frontend_port is None and 'frontendPort' in kwargs:
             frontend_port = kwargs['frontendPort']
-        if 'healthCheck' in kwargs:
+        if health_check is None and 'healthCheck' in kwargs:
             health_check = kwargs['healthCheck']
-        if 'healthCheckConnectPort' in kwargs:
+        if health_check_connect_port is None and 'healthCheckConnectPort' in kwargs:
             health_check_connect_port = kwargs['healthCheckConnectPort']
-        if 'healthCheckDomain' in kwargs:
+        if health_check_domain is None and 'healthCheckDomain' in kwargs:
             health_check_domain = kwargs['healthCheckDomain']
-        if 'healthCheckHttpCode' in kwargs:
+        if health_check_http_code is None and 'healthCheckHttpCode' in kwargs:
             health_check_http_code = kwargs['healthCheckHttpCode']
-        if 'healthCheckInterval' in kwargs:
+        if health_check_interval is None and 'healthCheckInterval' in kwargs:
             health_check_interval = kwargs['healthCheckInterval']
-        if 'healthCheckMethod' in kwargs:
+        if health_check_method is None and 'healthCheckMethod' in kwargs:
             health_check_method = kwargs['healthCheckMethod']
-        if 'healthCheckTimeout' in kwargs:
+        if health_check_timeout is None and 'healthCheckTimeout' in kwargs:
             health_check_timeout = kwargs['healthCheckTimeout']
-        if 'healthCheckType' in kwargs:
+        if health_check_type is None and 'healthCheckType' in kwargs:
             health_check_type = kwargs['healthCheckType']
-        if 'healthCheckUri' in kwargs:
+        if health_check_uri is None and 'healthCheckUri' in kwargs:
             health_check_uri = kwargs['healthCheckUri']
-        if 'healthyThreshold' in kwargs:
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
             healthy_threshold = kwargs['healthyThreshold']
-        if 'idleTimeout' in kwargs:
+        if idle_timeout is None and 'idleTimeout' in kwargs:
             idle_timeout = kwargs['idleTimeout']
-        if 'lbPort' in kwargs:
+        if lb_port is None and 'lbPort' in kwargs:
             lb_port = kwargs['lbPort']
-        if 'lbProtocol' in kwargs:
+        if lb_protocol is None and 'lbProtocol' in kwargs:
             lb_protocol = kwargs['lbProtocol']
-        if 'listenerForward' in kwargs:
+        if listener_forward is None and 'listenerForward' in kwargs:
             listener_forward = kwargs['listenerForward']
-        if 'loadBalancerId' in kwargs:
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
-        if 'masterSlaveServerGroupId' in kwargs:
+        if master_slave_server_group_id is None and 'masterSlaveServerGroupId' in kwargs:
             master_slave_server_group_id = kwargs['masterSlaveServerGroupId']
-        if 'persistenceTimeout' in kwargs:
+        if persistence_timeout is None and 'persistenceTimeout' in kwargs:
             persistence_timeout = kwargs['persistenceTimeout']
-        if 'proxyProtocolV2Enabled' in kwargs:
+        if proxy_protocol_v2_enabled is None and 'proxyProtocolV2Enabled' in kwargs:
             proxy_protocol_v2_enabled = kwargs['proxyProtocolV2Enabled']
-        if 'requestTimeout' in kwargs:
+        if request_timeout is None and 'requestTimeout' in kwargs:
             request_timeout = kwargs['requestTimeout']
-        if 'serverCertificateId' in kwargs:
+        if server_certificate_id is None and 'serverCertificateId' in kwargs:
             server_certificate_id = kwargs['serverCertificateId']
-        if 'serverGroupId' in kwargs:
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
-        if 'sslCertificateId' in kwargs:
+        if ssl_certificate_id is None and 'sslCertificateId' in kwargs:
             ssl_certificate_id = kwargs['sslCertificateId']
-        if 'stickySession' in kwargs:
+        if sticky_session is None and 'stickySession' in kwargs:
             sticky_session = kwargs['stickySession']
-        if 'stickySessionType' in kwargs:
+        if sticky_session_type is None and 'stickySessionType' in kwargs:
             sticky_session_type = kwargs['stickySessionType']
-        if 'tlsCipherPolicy' in kwargs:
+        if tls_cipher_policy is None and 'tlsCipherPolicy' in kwargs:
             tls_cipher_policy = kwargs['tlsCipherPolicy']
-        if 'unhealthyThreshold' in kwargs:
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
             unhealthy_threshold = kwargs['unhealthyThreshold']
-        if 'xForwardedFor' in kwargs:
+        if x_forwarded_for is None and 'xForwardedFor' in kwargs:
             x_forwarded_for = kwargs['xForwardedFor']
 
         if acl_id is not None:
@@ -1884,59 +1890,6 @@ class Listener(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        slb_listener_name = config.get("slbListenerName")
-        if slb_listener_name is None:
-            slb_listener_name = "forSlbListener"
-        listener_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("listenerApplicationLoadBalancer",
-            load_balancer_name="tf-exampleSlbListenerHttp",
-            internet_charge_type="PayByTraffic",
-            address_type="internet",
-            instance_charge_type="PayByCLCU")
-        listener_acl = alicloud.slb.Acl("listenerAcl", ip_version="ipv4")
-        listener_listener = alicloud.slb.Listener("listenerListener",
-            load_balancer_id=listener_application_load_balancer.id,
-            backend_port=80,
-            frontend_port=80,
-            protocol="http",
-            bandwidth=10,
-            sticky_session="on",
-            sticky_session_type="insert",
-            cookie_timeout=86400,
-            cookie="tfslblistenercookie",
-            health_check="on",
-            health_check_domain="ali.com",
-            health_check_uri="/cons",
-            health_check_connect_port=20,
-            healthy_threshold=8,
-            unhealthy_threshold=8,
-            health_check_timeout=8,
-            health_check_interval=5,
-            health_check_http_code="http_2xx,http_3xx",
-            x_forwarded_for=alicloud.slb.ListenerXForwardedForArgs(
-                retrive_slb_ip=True,
-                retrive_slb_id=True,
-            ),
-            acl_status="on",
-            acl_type="white",
-            acl_id=listener_acl.id,
-            request_timeout=80,
-            idle_timeout=30)
-        first = alicloud.slb.AclEntryAttachment("first",
-            acl_id=listener_acl.id,
-            entry="10.10.10.0/24",
-            comment="first")
-        second = alicloud.slb.AclEntryAttachment("second",
-            acl_id=listener_acl.id,
-            entry="168.10.10.0/24",
-            comment="second")
-        ```
         ## Listener fields and protocol mapping
 
         load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
@@ -2057,59 +2010,6 @@ class Listener(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        slb_listener_name = config.get("slbListenerName")
-        if slb_listener_name is None:
-            slb_listener_name = "forSlbListener"
-        listener_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("listenerApplicationLoadBalancer",
-            load_balancer_name="tf-exampleSlbListenerHttp",
-            internet_charge_type="PayByTraffic",
-            address_type="internet",
-            instance_charge_type="PayByCLCU")
-        listener_acl = alicloud.slb.Acl("listenerAcl", ip_version="ipv4")
-        listener_listener = alicloud.slb.Listener("listenerListener",
-            load_balancer_id=listener_application_load_balancer.id,
-            backend_port=80,
-            frontend_port=80,
-            protocol="http",
-            bandwidth=10,
-            sticky_session="on",
-            sticky_session_type="insert",
-            cookie_timeout=86400,
-            cookie="tfslblistenercookie",
-            health_check="on",
-            health_check_domain="ali.com",
-            health_check_uri="/cons",
-            health_check_connect_port=20,
-            healthy_threshold=8,
-            unhealthy_threshold=8,
-            health_check_timeout=8,
-            health_check_interval=5,
-            health_check_http_code="http_2xx,http_3xx",
-            x_forwarded_for=alicloud.slb.ListenerXForwardedForArgs(
-                retrive_slb_ip=True,
-                retrive_slb_id=True,
-            ),
-            acl_status="on",
-            acl_type="white",
-            acl_id=listener_acl.id,
-            request_timeout=80,
-            idle_timeout=30)
-        first = alicloud.slb.AclEntryAttachment("first",
-            acl_id=listener_acl.id,
-            entry="10.10.10.0/24",
-            comment="first")
-        second = alicloud.slb.AclEntryAttachment("second",
-            acl_id=listener_acl.id,
-            entry="168.10.10.0/24",
-            comment="second")
-        ```
         ## Listener fields and protocol mapping
 
         load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
@@ -2281,11 +2181,7 @@ class Listener(pulumi.CustomResource):
             __props__.__dict__["sticky_session_type"] = sticky_session_type
             __props__.__dict__["tls_cipher_policy"] = tls_cipher_policy
             __props__.__dict__["unhealthy_threshold"] = unhealthy_threshold
-            if x_forwarded_for is not None and not isinstance(x_forwarded_for, ListenerXForwardedForArgs):
-                x_forwarded_for = x_forwarded_for or {}
-                def _setter(key, value):
-                    x_forwarded_for[key] = value
-                ListenerXForwardedForArgs._configure(_setter, **x_forwarded_for)
+            x_forwarded_for = _utilities.configure(x_forwarded_for, ListenerXForwardedForArgs, True)
             __props__.__dict__["x_forwarded_for"] = x_forwarded_for
         super(Listener, __self__).__init__(
             'alicloud:slb/listener:Listener',

@@ -38,18 +38,24 @@ class EndpointAclPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint_type: pulumi.Input[str],
-             entry: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
+             endpoint_type: Optional[pulumi.Input[str]] = None,
+             entry: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              module_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endpointType' in kwargs:
+        if endpoint_type is None and 'endpointType' in kwargs:
             endpoint_type = kwargs['endpointType']
-        if 'instanceId' in kwargs:
+        if endpoint_type is None:
+            raise TypeError("Missing 'endpoint_type' argument")
+        if entry is None:
+            raise TypeError("Missing 'entry' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'moduleName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if module_name is None and 'moduleName' in kwargs:
             module_name = kwargs['moduleName']
 
         _setter("endpoint_type", endpoint_type)
@@ -153,13 +159,13 @@ class _EndpointAclPolicyState:
              entry: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              module_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endpointType' in kwargs:
+        if endpoint_type is None and 'endpointType' in kwargs:
             endpoint_type = kwargs['endpointType']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'moduleName' in kwargs:
+        if module_name is None and 'moduleName' in kwargs:
             module_name = kwargs['moduleName']
 
         if description is not None:
@@ -252,36 +258,6 @@ class EndpointAclPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.139.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
-            payment_type="Subscription",
-            period=1,
-            renewal_status="ManualRenewal",
-            instance_type="Advanced",
-            instance_name=name)
-        default_endpoint_acl_service = alicloud.cr.get_endpoint_acl_service_output(endpoint_type="internet",
-            enable=True,
-            instance_id=default_registry_enterprise_instance.id,
-            module_name="Registry")
-        default_endpoint_acl_policy = alicloud.cr.EndpointAclPolicy("defaultEndpointAclPolicy",
-            instance_id=default_endpoint_acl_service.instance_id,
-            entry="192.168.1.0/24",
-            description=name,
-            module_name="Registry",
-            endpoint_type="internet")
-        ```
-
         ## Import
 
         CR Endpoint Acl Policy can be imported using the id, e.g.
@@ -310,36 +286,6 @@ class EndpointAclPolicy(pulumi.CustomResource):
         For information about CR Endpoint Acl Policy and how to use it, see [What is Endpoint Acl Policy](https://www.alibabacloud.com/help/doc-detail/145275.htm).
 
         > **NOTE:** Available since v1.139.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
-            payment_type="Subscription",
-            period=1,
-            renewal_status="ManualRenewal",
-            instance_type="Advanced",
-            instance_name=name)
-        default_endpoint_acl_service = alicloud.cr.get_endpoint_acl_service_output(endpoint_type="internet",
-            enable=True,
-            instance_id=default_registry_enterprise_instance.id,
-            module_name="Registry")
-        default_endpoint_acl_policy = alicloud.cr.EndpointAclPolicy("defaultEndpointAclPolicy",
-            instance_id=default_endpoint_acl_service.instance_id,
-            entry="192.168.1.0/24",
-            description=name,
-            module_name="Registry",
-            endpoint_type="internet")
-        ```
 
         ## Import
 

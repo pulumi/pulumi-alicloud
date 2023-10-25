@@ -38,7 +38,7 @@ class InstanceParameter(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -101,23 +101,37 @@ class GetAccountsAccountResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: str,
-             account_privilege: str,
-             account_type: str,
-             description: str,
-             id: str,
-             instance_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_name: Optional[str] = None,
+             account_privilege: Optional[str] = None,
+             account_type: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountPrivilege' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_privilege is None and 'accountPrivilege' in kwargs:
             account_privilege = kwargs['accountPrivilege']
-        if 'accountType' in kwargs:
+        if account_privilege is None:
+            raise TypeError("Missing 'account_privilege' argument")
+        if account_type is None and 'accountType' in kwargs:
             account_type = kwargs['accountType']
-        if 'instanceId' in kwargs:
+        if account_type is None:
+            raise TypeError("Missing 'account_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("account_name", account_name)
         _setter("account_privilege", account_privilege)
@@ -226,35 +240,57 @@ class GetConnectionsConnectionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_string: str,
-             db_instance_net_type: str,
-             expired_time: str,
-             id: str,
-             instance_id: str,
-             ip_address: str,
-             port: str,
-             upgradeable: str,
-             vpc_id: str,
-             vpc_instance_id: str,
-             vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             connection_string: Optional[str] = None,
+             db_instance_net_type: Optional[str] = None,
+             expired_time: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             ip_address: Optional[str] = None,
+             port: Optional[str] = None,
+             upgradeable: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vpc_instance_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'dbInstanceNetType' in kwargs:
+        if connection_string is None:
+            raise TypeError("Missing 'connection_string' argument")
+        if db_instance_net_type is None and 'dbInstanceNetType' in kwargs:
             db_instance_net_type = kwargs['dbInstanceNetType']
-        if 'expiredTime' in kwargs:
+        if db_instance_net_type is None:
+            raise TypeError("Missing 'db_instance_net_type' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'instanceId' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'ipAddress' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
-        if 'vpcId' in kwargs:
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if upgradeable is None:
+            raise TypeError("Missing 'upgradeable' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vpcInstanceId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vpc_instance_id is None and 'vpcInstanceId' in kwargs:
             vpc_instance_id = kwargs['vpcInstanceId']
-        if 'vswitchId' in kwargs:
+        if vpc_instance_id is None:
+            raise TypeError("Missing 'vpc_instance_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("connection_string", connection_string)
         _setter("db_instance_net_type", db_instance_net_type)
@@ -367,12 +403,16 @@ class GetInstanceClassesClassResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_class: str,
-             price: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             instance_class: Optional[str] = None,
+             price: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceClass' in kwargs:
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
+        if instance_class is None:
+            raise TypeError("Missing 'instance_class' argument")
+        if price is None:
+            raise TypeError("Missing 'price' argument")
 
         _setter("instance_class", instance_class)
         _setter("price", price)
@@ -411,15 +451,21 @@ class GetInstanceEnginesInstanceEngineResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             engine: str,
-             engine_version: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             engine: Optional[str] = None,
+             engine_version: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'engineVersion' in kwargs:
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'zoneId' in kwargs:
+        if engine_version is None:
+            raise TypeError("Missing 'engine_version' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("engine", engine)
         _setter("engine_version", engine_version)
@@ -609,147 +655,253 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             architecture_type: str,
-             auto_renew: bool,
-             auto_renew_period: int,
-             availability_zone: str,
-             bandwidth: int,
-             capacity: int,
-             charge_type: str,
-             config: Mapping[str, Any],
-             connection_domain: str,
-             connection_mode: str,
-             connections: int,
-             create_time: str,
-             db_instance_id: str,
-             db_instance_name: str,
-             destroy_time: str,
-             end_time: str,
-             engine_version: str,
-             expire_time: str,
-             has_renew_change_order: bool,
-             id: str,
-             instance_class: str,
-             instance_release_protection: bool,
-             instance_type: str,
-             is_rds: bool,
-             maintain_end_time: str,
-             maintain_start_time: str,
-             max_connections: int,
-             name: str,
-             network_type: str,
-             node_type: str,
-             package_type: str,
-             payment_type: str,
-             port: int,
-             private_ip: str,
-             qps: int,
-             region_id: str,
-             replacate_id: str,
-             resource_group_id: str,
-             search_key: str,
-             secondary_zone_id: str,
-             security_group_id: str,
-             security_ip_group_attribute: str,
-             security_ip_group_name: str,
-             security_ips: Sequence[str],
-             ssl_enable: str,
-             status: str,
-             tags: Mapping[str, Any],
-             user_name: str,
-             vpc_auth_mode: str,
-             vpc_cloud_instance_id: str,
-             vpc_id: str,
-             vswitch_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             architecture_type: Optional[str] = None,
+             auto_renew: Optional[bool] = None,
+             auto_renew_period: Optional[int] = None,
+             availability_zone: Optional[str] = None,
+             bandwidth: Optional[int] = None,
+             capacity: Optional[int] = None,
+             charge_type: Optional[str] = None,
+             config: Optional[Mapping[str, Any]] = None,
+             connection_domain: Optional[str] = None,
+             connection_mode: Optional[str] = None,
+             connections: Optional[int] = None,
+             create_time: Optional[str] = None,
+             db_instance_id: Optional[str] = None,
+             db_instance_name: Optional[str] = None,
+             destroy_time: Optional[str] = None,
+             end_time: Optional[str] = None,
+             engine_version: Optional[str] = None,
+             expire_time: Optional[str] = None,
+             has_renew_change_order: Optional[bool] = None,
+             id: Optional[str] = None,
+             instance_class: Optional[str] = None,
+             instance_release_protection: Optional[bool] = None,
+             instance_type: Optional[str] = None,
+             is_rds: Optional[bool] = None,
+             maintain_end_time: Optional[str] = None,
+             maintain_start_time: Optional[str] = None,
+             max_connections: Optional[int] = None,
+             name: Optional[str] = None,
+             network_type: Optional[str] = None,
+             node_type: Optional[str] = None,
+             package_type: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             port: Optional[int] = None,
+             private_ip: Optional[str] = None,
+             qps: Optional[int] = None,
+             region_id: Optional[str] = None,
+             replacate_id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             search_key: Optional[str] = None,
+             secondary_zone_id: Optional[str] = None,
+             security_group_id: Optional[str] = None,
+             security_ip_group_attribute: Optional[str] = None,
+             security_ip_group_name: Optional[str] = None,
+             security_ips: Optional[Sequence[str]] = None,
+             ssl_enable: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             user_name: Optional[str] = None,
+             vpc_auth_mode: Optional[str] = None,
+             vpc_cloud_instance_id: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'architectureType' in kwargs:
+        if architecture_type is None and 'architectureType' in kwargs:
             architecture_type = kwargs['architectureType']
-        if 'autoRenew' in kwargs:
+        if architecture_type is None:
+            raise TypeError("Missing 'architecture_type' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew is None:
+            raise TypeError("Missing 'auto_renew' argument")
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'availabilityZone' in kwargs:
+        if auto_renew_period is None:
+            raise TypeError("Missing 'auto_renew_period' argument")
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'chargeType' in kwargs:
+        if availability_zone is None:
+            raise TypeError("Missing 'availability_zone' argument")
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if capacity is None:
+            raise TypeError("Missing 'capacity' argument")
+        if charge_type is None and 'chargeType' in kwargs:
             charge_type = kwargs['chargeType']
-        if 'connectionDomain' in kwargs:
+        if charge_type is None:
+            raise TypeError("Missing 'charge_type' argument")
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if connection_domain is None and 'connectionDomain' in kwargs:
             connection_domain = kwargs['connectionDomain']
-        if 'connectionMode' in kwargs:
+        if connection_domain is None:
+            raise TypeError("Missing 'connection_domain' argument")
+        if connection_mode is None and 'connectionMode' in kwargs:
             connection_mode = kwargs['connectionMode']
-        if 'createTime' in kwargs:
+        if connection_mode is None:
+            raise TypeError("Missing 'connection_mode' argument")
+        if connections is None:
+            raise TypeError("Missing 'connections' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dbInstanceId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
-        if 'dbInstanceName' in kwargs:
+        if db_instance_id is None:
+            raise TypeError("Missing 'db_instance_id' argument")
+        if db_instance_name is None and 'dbInstanceName' in kwargs:
             db_instance_name = kwargs['dbInstanceName']
-        if 'destroyTime' in kwargs:
+        if db_instance_name is None:
+            raise TypeError("Missing 'db_instance_name' argument")
+        if destroy_time is None and 'destroyTime' in kwargs:
             destroy_time = kwargs['destroyTime']
-        if 'endTime' in kwargs:
+        if destroy_time is None:
+            raise TypeError("Missing 'destroy_time' argument")
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'engineVersion' in kwargs:
+        if end_time is None:
+            raise TypeError("Missing 'end_time' argument")
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'expireTime' in kwargs:
+        if engine_version is None:
+            raise TypeError("Missing 'engine_version' argument")
+        if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
-        if 'hasRenewChangeOrder' in kwargs:
+        if expire_time is None:
+            raise TypeError("Missing 'expire_time' argument")
+        if has_renew_change_order is None and 'hasRenewChangeOrder' in kwargs:
             has_renew_change_order = kwargs['hasRenewChangeOrder']
-        if 'instanceClass' in kwargs:
+        if has_renew_change_order is None:
+            raise TypeError("Missing 'has_renew_change_order' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'instanceReleaseProtection' in kwargs:
+        if instance_class is None:
+            raise TypeError("Missing 'instance_class' argument")
+        if instance_release_protection is None and 'instanceReleaseProtection' in kwargs:
             instance_release_protection = kwargs['instanceReleaseProtection']
-        if 'instanceType' in kwargs:
+        if instance_release_protection is None:
+            raise TypeError("Missing 'instance_release_protection' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'isRds' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if is_rds is None and 'isRds' in kwargs:
             is_rds = kwargs['isRds']
-        if 'maintainEndTime' in kwargs:
+        if is_rds is None:
+            raise TypeError("Missing 'is_rds' argument")
+        if maintain_end_time is None and 'maintainEndTime' in kwargs:
             maintain_end_time = kwargs['maintainEndTime']
-        if 'maintainStartTime' in kwargs:
+        if maintain_end_time is None:
+            raise TypeError("Missing 'maintain_end_time' argument")
+        if maintain_start_time is None and 'maintainStartTime' in kwargs:
             maintain_start_time = kwargs['maintainStartTime']
-        if 'maxConnections' in kwargs:
+        if maintain_start_time is None:
+            raise TypeError("Missing 'maintain_start_time' argument")
+        if max_connections is None and 'maxConnections' in kwargs:
             max_connections = kwargs['maxConnections']
-        if 'networkType' in kwargs:
+        if max_connections is None:
+            raise TypeError("Missing 'max_connections' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'nodeType' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if node_type is None and 'nodeType' in kwargs:
             node_type = kwargs['nodeType']
-        if 'packageType' in kwargs:
+        if node_type is None:
+            raise TypeError("Missing 'node_type' argument")
+        if package_type is None and 'packageType' in kwargs:
             package_type = kwargs['packageType']
-        if 'paymentType' in kwargs:
+        if package_type is None:
+            raise TypeError("Missing 'package_type' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'privateIp' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
-        if 'regionId' in kwargs:
+        if private_ip is None:
+            raise TypeError("Missing 'private_ip' argument")
+        if qps is None:
+            raise TypeError("Missing 'qps' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'replacateId' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if replacate_id is None and 'replacateId' in kwargs:
             replacate_id = kwargs['replacateId']
-        if 'resourceGroupId' in kwargs:
+        if replacate_id is None:
+            raise TypeError("Missing 'replacate_id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'searchKey' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if search_key is None and 'searchKey' in kwargs:
             search_key = kwargs['searchKey']
-        if 'secondaryZoneId' in kwargs:
+        if search_key is None:
+            raise TypeError("Missing 'search_key' argument")
+        if secondary_zone_id is None and 'secondaryZoneId' in kwargs:
             secondary_zone_id = kwargs['secondaryZoneId']
-        if 'securityGroupId' in kwargs:
+        if secondary_zone_id is None:
+            raise TypeError("Missing 'secondary_zone_id' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'securityIpGroupAttribute' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if security_ip_group_attribute is None and 'securityIpGroupAttribute' in kwargs:
             security_ip_group_attribute = kwargs['securityIpGroupAttribute']
-        if 'securityIpGroupName' in kwargs:
+        if security_ip_group_attribute is None:
+            raise TypeError("Missing 'security_ip_group_attribute' argument")
+        if security_ip_group_name is None and 'securityIpGroupName' in kwargs:
             security_ip_group_name = kwargs['securityIpGroupName']
-        if 'securityIps' in kwargs:
+        if security_ip_group_name is None:
+            raise TypeError("Missing 'security_ip_group_name' argument")
+        if security_ips is None and 'securityIps' in kwargs:
             security_ips = kwargs['securityIps']
-        if 'sslEnable' in kwargs:
+        if security_ips is None:
+            raise TypeError("Missing 'security_ips' argument")
+        if ssl_enable is None and 'sslEnable' in kwargs:
             ssl_enable = kwargs['sslEnable']
-        if 'userName' in kwargs:
+        if ssl_enable is None:
+            raise TypeError("Missing 'ssl_enable' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
-        if 'vpcAuthMode' in kwargs:
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
+        if vpc_auth_mode is None and 'vpcAuthMode' in kwargs:
             vpc_auth_mode = kwargs['vpcAuthMode']
-        if 'vpcCloudInstanceId' in kwargs:
+        if vpc_auth_mode is None:
+            raise TypeError("Missing 'vpc_auth_mode' argument")
+        if vpc_cloud_instance_id is None and 'vpcCloudInstanceId' in kwargs:
             vpc_cloud_instance_id = kwargs['vpcCloudInstanceId']
-        if 'vpcId' in kwargs:
+        if vpc_cloud_instance_id is None:
+            raise TypeError("Missing 'vpc_cloud_instance_id' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("architecture_type", architecture_type)
         _setter("auto_renew", auto_renew)
@@ -1214,12 +1366,16 @@ class GetZonesZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             multi_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             multi_zone_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'multiZoneIds' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if multi_zone_ids is None and 'multiZoneIds' in kwargs:
             multi_zone_ids = kwargs['multiZoneIds']
+        if multi_zone_ids is None:
+            raise TypeError("Missing 'multi_zone_ids' argument")
 
         _setter("id", id)
         _setter("multi_zone_ids", multi_zone_ids)

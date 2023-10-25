@@ -13,34 +13,6 @@ import (
 )
 
 // This data source provides CEN Regional Route Entries available to the user.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			entry, err := cen.GetRegionRouteEntries(ctx, &cen.GetRegionRouteEntriesArgs{
-//				InstanceId: "cen-id1",
-//				RegionId:   "cn-beijing",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.Entries[0].CidrBlock)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetRegionRouteEntries(ctx *pulumi.Context, args *GetRegionRouteEntriesArgs, opts ...pulumi.InvokeOption) (*GetRegionRouteEntriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionRouteEntriesResult

@@ -196,18 +196,6 @@ def get_db_clusters(description: Optional[str] = None,
 
     > **NOTE:** Available since v1.121.0.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.adb.get_db_clusters(description_regex="example")
-    pulumi.export("firstAdbDbClusterId", example.clusters[0].id)
-    ```
-
 
     :param str description: The description of DBCluster.
     :param str description_regex: A regex string to filter results by DBCluster description.
@@ -265,18 +253,6 @@ def get_db_clusters_output(description: Optional[pulumi.Input[Optional[str]]] = 
     This data source provides the Adb DBClusters of the current Alibaba Cloud user.
 
     > **NOTE:** Available since v1.121.0.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.adb.get_db_clusters(description_regex="example")
-    pulumi.export("firstAdbDbClusterId", example.clusters[0].id)
-    ```
 
 
     :param str description: The description of DBCluster.

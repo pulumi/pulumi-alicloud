@@ -35,14 +35,16 @@ class CustomerGatewayArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_address: pulumi.Input[str],
+             ip_address: Optional[pulumi.Input[str]] = None,
              asn: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipAddress' in kwargs:
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
 
         _setter("ip_address", ip_address)
         if asn is not None:
@@ -129,9 +131,9 @@ class _CustomerGatewayState:
              description: Optional[pulumi.Input[str]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipAddress' in kwargs:
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
 
         if asn is not None:
@@ -203,19 +205,6 @@ class CustomerGateway(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo = alicloud.vpn.CustomerGateway("foo",
-            description="vpnCgwDescriptionExample",
-            ip_address="43.104.22.228")
-        ```
-
         ## Import
 
         VPN customer gateway can be imported using the id, e.g.
@@ -238,19 +227,6 @@ class CustomerGateway(pulumi.CustomResource):
                  args: CustomerGatewayArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo = alicloud.vpn.CustomerGateway("foo",
-            description="vpnCgwDescriptionExample",
-            ip_address="43.104.22.228")
-        ```
-
         ## Import
 
         VPN customer gateway can be imported using the id, e.g.

@@ -19,62 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.203.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ocean"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultZones, err := alicloud.GetZones(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ocean.NewBaseInstance(ctx, "defaultBaseInstance", &ocean.BaseInstanceArgs{
-//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Ids[0]),
-//				Zones: pulumi.StringArray{
-//					defaultZones.Ids[len(defaultZones.Ids)-2],
-//					defaultZones.Ids[len(defaultZones.Ids)-3],
-//					defaultZones.Ids[len(defaultZones.Ids)-4],
-//				},
-//				AutoRenew:        pulumi.Bool(false),
-//				DiskSize:         pulumi.Int(100),
-//				PaymentType:      pulumi.String("PayAsYouGo"),
-//				InstanceClass:    pulumi.String("8C32GB"),
-//				BackupRetainMode: pulumi.String("delete_all"),
-//				Series:           pulumi.String("normal"),
-//				InstanceName:     pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Ocean Base Instance can be imported using the id, e.g.

@@ -11,28 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.181.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const displayName = config.get("displayName") || "EAccount";
- * const exampleFolder = new alicloud.resourcemanager.Folder("exampleFolder", {folderName: name});
- * const exampleAccount = new alicloud.resourcemanager.Account("exampleAccount", {
- *     displayName: displayName,
- *     folderId: exampleFolder.id,
- * });
- * const exampleDelegatedAdministrator = new alicloud.resourcemanager.DelegatedAdministrator("exampleDelegatedAdministrator", {
- *     accountId: exampleAccount.id,
- *     servicePrincipal: "cloudfw.aliyuncs.com",
- * });
- * ```
- *
  * ## Import
  *
  * Resource Manager Delegated Administrator can be imported using the id, e.g.

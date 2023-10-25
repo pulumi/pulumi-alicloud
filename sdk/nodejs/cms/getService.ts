@@ -10,17 +10,6 @@ import * as utilities from "../utilities";
  * For information about CMS and how to use it, see [What is CMS](https://help.aliyun.com/product/28572.html).
  *
  * > **NOTE:** Available in v1.111.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const open = alicloud.cms.getService({
- *     enable: "On",
- * });
- * ```
  */
 export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     args = args || {};
@@ -63,17 +52,6 @@ export interface GetServiceResult {
  * For information about CMS and how to use it, see [What is CMS](https://help.aliyun.com/product/28572.html).
  *
  * > **NOTE:** Available in v1.111.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const open = alicloud.cms.getService({
- *     enable: "On",
- * });
- * ```
  */
 export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
     return pulumi.output(args).apply((a: any) => getService(a, opts))

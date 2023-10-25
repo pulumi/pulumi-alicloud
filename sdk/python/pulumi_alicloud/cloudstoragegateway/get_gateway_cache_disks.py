@@ -100,29 +100,6 @@ def get_gateway_cache_disks(gateway_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.144.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cloudstoragegateway.get_gateway_cache_disks(gateway_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("cloudStorageGatewayGatewayCacheDiskId1", ids.disks[0].id)
-    status = alicloud.cloudstoragegateway.get_gateway_cache_disks(gateway_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ],
-        status=0)
-    pulumi.export("cloudStorageGatewayGatewayCacheDiskId2", status.disks[0].id)
-    ```
-
 
     :param str gateway_id: The ID of the gateway.
     :param Sequence[str] ids: A list of Gateway Cache Disk IDs.
@@ -156,29 +133,6 @@ def get_gateway_cache_disks_output(gateway_id: Optional[pulumi.Input[str]] = Non
     This data source provides the Cloud Storage Gateway Gateway Cache Disks of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.144.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cloudstoragegateway.get_gateway_cache_disks(gateway_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("cloudStorageGatewayGatewayCacheDiskId1", ids.disks[0].id)
-    status = alicloud.cloudstoragegateway.get_gateway_cache_disks(gateway_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ],
-        status=0)
-    pulumi.export("cloudStorageGatewayGatewayCacheDiskId2", status.disks[0].id)
-    ```
 
 
     :param str gateway_id: The ID of the gateway.

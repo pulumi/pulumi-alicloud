@@ -18,69 +18,6 @@ namespace Pulumi.AliCloud.ClickHouse
     /// 
     /// &gt; **NOTE:** Only the cloud database ClickHouse cluster version `20.3` supports data backup.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultRegions = AliCloud.ClickHouse.GetRegions.Invoke(new()
-    ///     {
-    ///         Current = true,
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "10.4.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VswitchName = name,
-    ///         CidrBlock = "10.4.0.0/24",
-    ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.ZoneIds[0]?.ZoneId),
-    ///     });
-    /// 
-    ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new()
-    ///     {
-    ///         DbClusterVersion = "22.8.5.29",
-    ///         Status = "Running",
-    ///         Category = "Basic",
-    ///         DbClusterClass = "S8",
-    ///         DbClusterNetworkType = "vpc",
-    ///         DbNodeGroupCount = 1,
-    ///         PaymentType = "PayAsYouGo",
-    ///         DbNodeStorage = "500",
-    ///         StorageType = "cloud_essd",
-    ///         VswitchId = defaultSwitch.Id,
-    ///         VpcId = defaultNetwork.Id,
-    ///     });
-    /// 
-    ///     var defaultBackupPolicy = new AliCloud.ClickHouse.BackupPolicy("defaultBackupPolicy", new()
-    ///     {
-    ///         DbClusterId = defaultDbCluster.Id,
-    ///         PreferredBackupPeriods = new[]
-    ///         {
-    ///             "Monday",
-    ///             "Friday",
-    ///         },
-    ///         PreferredBackupTime = "00:00Z-01:00Z",
-    ///         BackupRetentionPeriod = 7,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Click House Backup Policy can be imported using the id, e.g.

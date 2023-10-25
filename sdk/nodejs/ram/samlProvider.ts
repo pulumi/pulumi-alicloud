@@ -11,21 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.114.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.ram.SamlProvider("example", {
- *     description: "For Terraform Test",
- *     encodedsamlMetadataDocument: "your encodedsaml metadata document",
- *     samlProviderName: "terraform-example",
- * });
- * ```
- *
  * ## Import
  *
  * RAM SAML Provider can be imported using the id, e.g.

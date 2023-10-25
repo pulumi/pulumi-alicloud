@@ -19,59 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.194.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
-//				VpcName:   pulumi.String("terraform-example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleRouteTable, err := vpc.NewRouteTable(ctx, "exampleRouteTable", &vpc.RouteTableArgs{
-//				VpcId:          exampleNetwork.ID(),
-//				RouteTableName: pulumi.String("terraform-example"),
-//				Description:    pulumi.String("terraform-example"),
-//				AssociateType:  pulumi.String("Gateway"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleIpv4Gateway, err := vpc.NewIpv4Gateway(ctx, "exampleIpv4Gateway", &vpc.Ipv4GatewayArgs{
-//				Ipv4GatewayName: pulumi.String("terraform-example"),
-//				VpcId:           exampleNetwork.ID(),
-//				Enabled:         pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpc.NewGatewayRouteTableAttachment(ctx, "exampleGatewayRouteTableAttachment", &vpc.GatewayRouteTableAttachmentArgs{
-//				Ipv4GatewayId: exampleIpv4Gateway.ID(),
-//				RouteTableId:  exampleRouteTable.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // VPC Gateway Route Table Attachment can be imported using the id, e.g.

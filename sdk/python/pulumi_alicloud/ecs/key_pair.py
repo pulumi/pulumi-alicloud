@@ -48,19 +48,19 @@ class KeyPairArgs:
              public_key: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'keyFile' in kwargs:
+        if key_file is None and 'keyFile' in kwargs:
             key_file = kwargs['keyFile']
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'keyNamePrefix' in kwargs:
+        if key_name_prefix is None and 'keyNamePrefix' in kwargs:
             key_name_prefix = kwargs['keyNamePrefix']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'publicKey' in kwargs:
+        if public_key is None and 'publicKey' in kwargs:
             public_key = kwargs['publicKey']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         if key_file is not None:
@@ -200,21 +200,21 @@ class _KeyPairState:
              public_key: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fingerPrint' in kwargs:
+        if finger_print is None and 'fingerPrint' in kwargs:
             finger_print = kwargs['fingerPrint']
-        if 'keyFile' in kwargs:
+        if key_file is None and 'keyFile' in kwargs:
             key_file = kwargs['keyFile']
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'keyNamePrefix' in kwargs:
+        if key_name_prefix is None and 'keyNamePrefix' in kwargs:
             key_name_prefix = kwargs['keyNamePrefix']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'publicKey' in kwargs:
+        if public_key is None and 'publicKey' in kwargs:
             public_key = kwargs['publicKey']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         if finger_print is not None:
@@ -343,23 +343,6 @@ class KeyPair(pulumi.CustomResource):
 
         Provides a key pair resource.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        basic = alicloud.ecs.KeyPair("basic", key_name="terraform-test-key-pair")
-        # Using name prefix to build key pair
-        prefix = alicloud.ecs.KeyPair("prefix", key_name_prefix="terraform-test-key-pair-prefix")
-        # Import an existing public key to build a alicloud key pair
-        publickey = alicloud.ecs.KeyPair("publickey",
-            key_name="my_public_key",
-            public_key="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
-        ```
-
         ## Import
 
         Key pair can be imported using the name, e.g.
@@ -385,23 +368,6 @@ class KeyPair(pulumi.CustomResource):
         > **DEPRECATED:** This resource has been renamed to ecs.EcsKeyPair from version 1.121.0.
 
         Provides a key pair resource.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        basic = alicloud.ecs.KeyPair("basic", key_name="terraform-test-key-pair")
-        # Using name prefix to build key pair
-        prefix = alicloud.ecs.KeyPair("prefix", key_name_prefix="terraform-test-key-pair-prefix")
-        # Import an existing public key to build a alicloud key pair
-        publickey = alicloud.ecs.KeyPair("publickey",
-            key_name="my_public_key",
-            public_key="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
-        ```
 
         ## Import
 

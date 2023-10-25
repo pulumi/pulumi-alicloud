@@ -15,67 +15,6 @@ import (
 // This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.146.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := ecs.GetEcsDedicatedHostClusters(ctx, &ecs.GetEcsDedicatedHostClustersArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ecsDedicatedHostClusterId1", ids.Clusters[0].Id)
-//			nameRegex, err := ecs.GetEcsDedicatedHostClusters(ctx, &ecs.GetEcsDedicatedHostClustersArgs{
-//				NameRegex: pulumi.StringRef("^my-DedicatedHostCluster"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ecsDedicatedHostClusterId2", nameRegex.Clusters[0].Id)
-//			zoneId, err := ecs.GetEcsDedicatedHostClusters(ctx, &ecs.GetEcsDedicatedHostClustersArgs{
-//				ZoneId: pulumi.StringRef("example_value"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ecsDedicatedHostClusterId3", zoneId.Clusters[0].Id)
-//			clusterName, err := ecs.GetEcsDedicatedHostClusters(ctx, &ecs.GetEcsDedicatedHostClustersArgs{
-//				DedicatedHostClusterName: pulumi.StringRef("example_value"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ecsDedicatedHostClusterId4", clusterName.Clusters[0].Id)
-//			clusterIds, err := ecs.GetEcsDedicatedHostClusters(ctx, &ecs.GetEcsDedicatedHostClustersArgs{
-//				DedicatedHostClusterIds: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ecsDedicatedHostClusterId5", clusterIds.Clusters[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetEcsDedicatedHostClusters(ctx *pulumi.Context, args *GetEcsDedicatedHostClustersArgs, opts ...pulumi.InvokeOption) (*GetEcsDedicatedHostClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsDedicatedHostClustersResult

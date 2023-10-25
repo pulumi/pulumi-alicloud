@@ -15,60 +15,6 @@ import (
 // This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.53.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "onsInstanceName"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			topic := "onsTopicDatasourceName"
-//			if param := cfg.Get("topic"); param != "" {
-//				topic = param
-//			}
-//			defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", &rocketmq.InstanceArgs{
-//				InstanceName: pulumi.String(name),
-//				Remark:       pulumi.String("default_ons_instance_remark"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultTopic, err := rocketmq.NewTopic(ctx, "defaultTopic", &rocketmq.TopicArgs{
-//				TopicName:   pulumi.String(topic),
-//				InstanceId:  defaultInstance.ID(),
-//				MessageType: pulumi.Int(0),
-//				Remark:      pulumi.String("dafault_ons_topic_remark"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			topicsDs := rocketmq.GetTopicsOutput(ctx, rocketmq.GetTopicsOutputArgs{
-//				InstanceId: defaultTopic.InstanceId,
-//				NameRegex:  pulumi.String(topic),
-//				OutputFile: pulumi.String("topics.txt"),
-//			}, nil)
-//			ctx.Export("firstTopicName", topicsDs.ApplyT(func(topicsDs rocketmq.GetTopicsResult) (*string, error) {
-//				return &topicsDs.Topics[0].TopicName, nil
-//			}).(pulumi.StringPtrOutput))
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetTopics(ctx *pulumi.Context, args *GetTopicsArgs, opts ...pulumi.InvokeOption) (*GetTopicsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTopicsResult

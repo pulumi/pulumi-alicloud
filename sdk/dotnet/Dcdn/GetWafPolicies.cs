@@ -15,31 +15,6 @@ namespace Pulumi.AliCloud.Dcdn
         /// This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.184.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Dcdn.GetWafPolicies.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dcdnWafPolicyId1"] = ids.Apply(getWafPoliciesResult =&gt; getWafPoliciesResult.Policies[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetWafPoliciesResult> InvokeAsync(GetWafPoliciesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWafPoliciesResult>("alicloud:dcdn/getWafPolicies:getWafPolicies", args ?? new GetWafPoliciesArgs(), options.WithDefaults());
@@ -48,31 +23,6 @@ namespace Pulumi.AliCloud.Dcdn
         /// This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.184.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Dcdn.GetWafPolicies.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dcdnWafPolicyId1"] = ids.Apply(getWafPoliciesResult =&gt; getWafPoliciesResult.Policies[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetWafPoliciesResult> Invoke(GetWafPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWafPoliciesResult>("alicloud:dcdn/getWafPolicies:getWafPolicies", args ?? new GetWafPoliciesInvokeArgs(), options.WithDefaults());

@@ -15,39 +15,6 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
         /// 
         /// &gt; **NOTE:** Available since v1.195.0.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.ThreatDetection.GetHoneyPots.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "xxxx",
-        ///         },
-        ///         HoneypotName = "tf-example",
-        ///         NodeId = "a44e1ab3-6945-444c-889d-5bacee7056e8",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudThreatDetectionHoneyPotExampleId"] = @default.Apply(@default =&gt; @default.Apply(getHoneyPotsResult =&gt; getHoneyPotsResult.Pots[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetHoneyPotsResult> InvokeAsync(GetHoneyPotsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHoneyPotsResult>("alicloud:threatdetection/getHoneyPots:getHoneyPots", args ?? new GetHoneyPotsArgs(), options.WithDefaults());
@@ -56,39 +23,6 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
         /// 
         /// &gt; **NOTE:** Available since v1.195.0.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.ThreatDetection.GetHoneyPots.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "xxxx",
-        ///         },
-        ///         HoneypotName = "tf-example",
-        ///         NodeId = "a44e1ab3-6945-444c-889d-5bacee7056e8",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudThreatDetectionHoneyPotExampleId"] = @default.Apply(@default =&gt; @default.Apply(getHoneyPotsResult =&gt; getHoneyPotsResult.Pots[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetHoneyPotsResult> Invoke(GetHoneyPotsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHoneyPotsResult>("alicloud:threatdetection/getHoneyPots:getHoneyPots", args ?? new GetHoneyPotsInvokeArgs(), options.WithDefaults());

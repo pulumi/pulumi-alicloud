@@ -38,18 +38,20 @@ class EcsDedicatedHostClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             zone_id: pulumi.Input[str],
+             zone_id: Optional[pulumi.Input[str]] = None,
              dedicated_host_cluster_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'dedicatedHostClusterName' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if dedicated_host_cluster_name is None and 'dedicatedHostClusterName' in kwargs:
             dedicated_host_cluster_name = kwargs['dedicatedHostClusterName']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
 
         _setter("zone_id", zone_id)
@@ -155,13 +157,13 @@ class _EcsDedicatedHostClusterState:
              dry_run: Optional[pulumi.Input[bool]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dedicatedHostClusterName' in kwargs:
+        if dedicated_host_cluster_name is None and 'dedicatedHostClusterName' in kwargs:
             dedicated_host_cluster_name = kwargs['dedicatedHostClusterName']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if dedicated_host_cluster_name is not None:
@@ -254,25 +256,6 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.146.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones()
-        example_ecs_dedicated_host_cluster = alicloud.ecs.EcsDedicatedHostCluster("exampleEcsDedicatedHostCluster",
-            dedicated_host_cluster_name="example_value",
-            description="example_value",
-            zone_id=example_zones.zones[0].id,
-            tags={
-                "Create": "TF",
-                "For": "DDH_Cluster_Test",
-            })
-        ```
-
         ## Import
 
         ECS Dedicated Host Cluster can be imported using the id, e.g.
@@ -301,25 +284,6 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
         For information about ECS Dedicated Host Cluster and how to use it, see [What is Dedicated Host Cluster](https://www.alibabacloud.com/help/en/doc-detail/184667.html).
 
         > **NOTE:** Available in v1.146.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones()
-        example_ecs_dedicated_host_cluster = alicloud.ecs.EcsDedicatedHostCluster("exampleEcsDedicatedHostCluster",
-            dedicated_host_cluster_name="example_value",
-            description="example_value",
-            zone_id=example_zones.zones[0].id,
-            tags={
-                "Create": "TF",
-                "For": "DDH_Cluster_Test",
-            })
-        ```
 
         ## Import
 

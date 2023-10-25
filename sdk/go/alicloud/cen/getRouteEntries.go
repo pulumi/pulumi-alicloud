@@ -13,34 +13,6 @@ import (
 )
 
 // This data source provides CEN Route Entries available to the user.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			entry, err := cen.GetRouteEntries(ctx, &cen.GetRouteEntriesArgs{
-//				InstanceId:   "cen-id1",
-//				RouteTableId: "vtb-id1",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstRouteEntriesRouteEntryCidrBlock", entry.Entries[0].CidrBlock)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetRouteEntries(ctx *pulumi.Context, args *GetRouteEntriesArgs, opts ...pulumi.InvokeOption) (*GetRouteEntriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRouteEntriesResult

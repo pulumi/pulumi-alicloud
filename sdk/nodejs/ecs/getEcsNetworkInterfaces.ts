@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.123.1+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ecs.getEcsNetworkInterfaces({
- *     ids: ["eni-abcd1234"],
- *     nameRegex: "tf-testAcc",
- * });
- * export const firstEcsNetworkInterfaceId = example.then(example => example.interfaces?.[0]?.id);
- * ```
  */
 export function getEcsNetworkInterfaces(args?: GetEcsNetworkInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsNetworkInterfacesResult> {
     args = args || {};
@@ -161,21 +146,6 @@ export interface GetEcsNetworkInterfacesResult {
  * This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.123.1+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ecs.getEcsNetworkInterfaces({
- *     ids: ["eni-abcd1234"],
- *     nameRegex: "tf-testAcc",
- * });
- * export const firstEcsNetworkInterfaceId = example.then(example => example.interfaces?.[0]?.id);
- * ```
  */
 export function getEcsNetworkInterfacesOutput(args?: GetEcsNetworkInterfacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsNetworkInterfacesResult> {
     return pulumi.output(args).apply((a: any) => getEcsNetworkInterfaces(a, opts))

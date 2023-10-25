@@ -8,19 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const groupsDs = alicloud.dns.getGroups({
- *     nameRegex: "^y[A-Za-z]+",
- *     outputFile: "groups.txt",
- * });
- * export const firstGroupName = groupsDs.then(groupsDs => groupsDs.groups?.[0]?.groupName);
- * ```
  */
 export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     args = args || {};
@@ -76,19 +63,6 @@ export interface GetGroupsResult {
 }
 /**
  * This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const groupsDs = alicloud.dns.getGroups({
- *     nameRegex: "^y[A-Za-z]+",
- *     outputFile: "groups.txt",
- * });
- * export const firstGroupName = groupsDs.then(groupsDs => groupsDs.groups?.[0]?.groupName);
- * ```
  */
 export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
     return pulumi.output(args).apply((a: any) => getGroups(a, opts))

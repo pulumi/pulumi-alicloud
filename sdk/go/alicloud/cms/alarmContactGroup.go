@@ -19,34 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.101.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cms.NewAlarmContactGroup(ctx, "example", &cms.AlarmContactGroupArgs{
-//				AlarmContactGroupName: pulumi.String("tf-example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // CMS Alarm Contact Group can be imported using the id, e.g.

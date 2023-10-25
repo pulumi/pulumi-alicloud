@@ -14,30 +14,6 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// &gt; **NOTE:** Available in 1.76.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Kms.Secret("default", new()
-    ///     {
-    ///         Description = "from terraform",
-    ///         ForceDeleteWithoutRecovery = true,
-    ///         SecretData = "Secret data.",
-    ///         SecretName = "secret-foo",
-    ///         VersionId = "000000000001",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// KMS secret can be imported using the id, e.g.

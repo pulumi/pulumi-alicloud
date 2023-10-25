@@ -14,20 +14,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.187.0+.
  *
  * > **NOTE:** The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const task = alicloud.resourcemanager.getAccountDeletionCheckTask({
- *     accountId: "your_account_id",
- * });
- * export const abandonAbleChecksIds = task.then(task => task.abandonAbleChecks.map(__item => __item.checkId));
- * ```
  */
 export function getAccountDeletionCheckTask(args: GetAccountDeletionCheckTaskArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountDeletionCheckTaskResult> {
 
@@ -81,20 +67,6 @@ export interface GetAccountDeletionCheckTaskResult {
  * > **NOTE:** Available in v1.187.0+.
  *
  * > **NOTE:** The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const task = alicloud.resourcemanager.getAccountDeletionCheckTask({
- *     accountId: "your_account_id",
- * });
- * export const abandonAbleChecksIds = task.then(task => task.abandonAbleChecks.map(__item => __item.checkId));
- * ```
  */
 export function getAccountDeletionCheckTaskOutput(args: GetAccountDeletionCheckTaskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountDeletionCheckTaskResult> {
     return pulumi.output(args).apply((a: any) => getAccountDeletionCheckTask(a, opts))

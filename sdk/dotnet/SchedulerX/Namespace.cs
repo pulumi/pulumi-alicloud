@@ -16,26 +16,6 @@ namespace Pulumi.AliCloud.SchedulerX
     /// 
     /// &gt; **NOTE:** Available in v1.173.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.SchedulerX.Namespace("example", new()
-    ///     {
-    ///         NamespaceName = "example_value",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Schedulerx Namespace can be imported using the id, e.g.

@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.120.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ecs.getEcsLaunchTemplates({
- *     ids: ["lt-bp1a469uxxxxxx"],
- *     nameRegex: "your_launch_name",
- * });
- * export const firstEcsLaunchTemplateId = example.then(example => example.templates?.[0]?.id);
- * ```
  */
 export function getEcsLaunchTemplates(args?: GetEcsLaunchTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsLaunchTemplatesResult> {
     args = args || {};
@@ -97,21 +82,6 @@ export interface GetEcsLaunchTemplatesResult {
  * This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.120.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ecs.getEcsLaunchTemplates({
- *     ids: ["lt-bp1a469uxxxxxx"],
- *     nameRegex: "your_launch_name",
- * });
- * export const firstEcsLaunchTemplateId = example.then(example => example.templates?.[0]?.id);
- * ```
  */
 export function getEcsLaunchTemplatesOutput(args?: GetEcsLaunchTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsLaunchTemplatesResult> {
     return pulumi.output(args).apply((a: any) => getEcsLaunchTemplates(a, opts))

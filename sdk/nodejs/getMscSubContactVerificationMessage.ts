@@ -6,26 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * > **NOTE:** Available in v1.156.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultMscSubContract = new alicloud.MscSubContract("defaultMscSubContract", {
- *     contactName: "example_value",
- *     position: "CEO",
- *     email: "123@163.com",
- *     mobile: "153xxxxx906",
- * });
- * const defaultMscSubContactVerificationMessage = defaultMscSubContract.id.apply(id => alicloud.getMscSubContactVerificationMessageOutput({
- *     contactId: id,
- *     type: 1,
- * }));
- * ```
  */
 export function getMscSubContactVerificationMessage(args: GetMscSubContactVerificationMessageArgs, opts?: pulumi.InvokeOptions): Promise<GetMscSubContactVerificationMessageResult> {
 
@@ -67,26 +47,6 @@ export interface GetMscSubContactVerificationMessageResult {
 }
 /**
  * > **NOTE:** Available in v1.156.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultMscSubContract = new alicloud.MscSubContract("defaultMscSubContract", {
- *     contactName: "example_value",
- *     position: "CEO",
- *     email: "123@163.com",
- *     mobile: "153xxxxx906",
- * });
- * const defaultMscSubContactVerificationMessage = defaultMscSubContract.id.apply(id => alicloud.getMscSubContactVerificationMessageOutput({
- *     contactId: id,
- *     type: 1,
- * }));
- * ```
  */
 export function getMscSubContactVerificationMessageOutput(args: GetMscSubContactVerificationMessageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubContactVerificationMessageResult> {
     return pulumi.output(args).apply((a: any) => getMscSubContactVerificationMessage(a, opts))

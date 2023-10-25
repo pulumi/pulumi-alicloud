@@ -109,20 +109,6 @@ def get_rules(endpoint_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.143.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.pvtz.get_rules()
-    pulumi.export("pvtzRuleId1", ids.rules[0].id)
-    name_regex = alicloud.pvtz.get_rules(name_regex="^my-Rule")
-    pulumi.export("pvtzRuleId2", name_regex.rules[0].id)
-    ```
-
 
     :param str endpoint_id: The ID of the Endpoint.
     :param Sequence[str] ids: A list of Rule IDs.
@@ -157,20 +143,6 @@ def get_rules_output(endpoint_id: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides the PrivateZone Rules of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.143.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.pvtz.get_rules()
-    pulumi.export("pvtzRuleId1", ids.rules[0].id)
-    name_regex = alicloud.pvtz.get_rules(name_regex="^my-Rule")
-    pulumi.export("pvtzRuleId2", name_regex.rules[0].id)
-    ```
 
 
     :param str endpoint_id: The ID of the Endpoint.

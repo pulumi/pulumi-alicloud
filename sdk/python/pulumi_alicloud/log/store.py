@@ -61,7 +61,7 @@ class StoreArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
              append_meta: Optional[pulumi.Input[bool]] = None,
              auto_split: Optional[pulumi.Input[bool]] = None,
              enable_web_tracking: Optional[pulumi.Input[bool]] = None,
@@ -73,25 +73,27 @@ class StoreArgs:
              retention_period: Optional[pulumi.Input[int]] = None,
              shard_count: Optional[pulumi.Input[int]] = None,
              telemetry_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appendMeta' in kwargs:
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if append_meta is None and 'appendMeta' in kwargs:
             append_meta = kwargs['appendMeta']
-        if 'autoSplit' in kwargs:
+        if auto_split is None and 'autoSplit' in kwargs:
             auto_split = kwargs['autoSplit']
-        if 'enableWebTracking' in kwargs:
+        if enable_web_tracking is None and 'enableWebTracking' in kwargs:
             enable_web_tracking = kwargs['enableWebTracking']
-        if 'encryptConf' in kwargs:
+        if encrypt_conf is None and 'encryptConf' in kwargs:
             encrypt_conf = kwargs['encryptConf']
-        if 'hotTtl' in kwargs:
+        if hot_ttl is None and 'hotTtl' in kwargs:
             hot_ttl = kwargs['hotTtl']
-        if 'maxSplitShardCount' in kwargs:
+        if max_split_shard_count is None and 'maxSplitShardCount' in kwargs:
             max_split_shard_count = kwargs['maxSplitShardCount']
-        if 'retentionPeriod' in kwargs:
+        if retention_period is None and 'retentionPeriod' in kwargs:
             retention_period = kwargs['retentionPeriod']
-        if 'shardCount' in kwargs:
+        if shard_count is None and 'shardCount' in kwargs:
             shard_count = kwargs['shardCount']
-        if 'telemetryType' in kwargs:
+        if telemetry_type is None and 'telemetryType' in kwargs:
             telemetry_type = kwargs['telemetryType']
 
         _setter("project", project)
@@ -327,25 +329,25 @@ class _StoreState:
              shard_count: Optional[pulumi.Input[int]] = None,
              shards: Optional[pulumi.Input[Sequence[pulumi.Input['StoreShardArgs']]]] = None,
              telemetry_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appendMeta' in kwargs:
+        if append_meta is None and 'appendMeta' in kwargs:
             append_meta = kwargs['appendMeta']
-        if 'autoSplit' in kwargs:
+        if auto_split is None and 'autoSplit' in kwargs:
             auto_split = kwargs['autoSplit']
-        if 'enableWebTracking' in kwargs:
+        if enable_web_tracking is None and 'enableWebTracking' in kwargs:
             enable_web_tracking = kwargs['enableWebTracking']
-        if 'encryptConf' in kwargs:
+        if encrypt_conf is None and 'encryptConf' in kwargs:
             encrypt_conf = kwargs['encryptConf']
-        if 'hotTtl' in kwargs:
+        if hot_ttl is None and 'hotTtl' in kwargs:
             hot_ttl = kwargs['hotTtl']
-        if 'maxSplitShardCount' in kwargs:
+        if max_split_shard_count is None and 'maxSplitShardCount' in kwargs:
             max_split_shard_count = kwargs['maxSplitShardCount']
-        if 'retentionPeriod' in kwargs:
+        if retention_period is None and 'retentionPeriod' in kwargs:
             retention_period = kwargs['retentionPeriod']
-        if 'shardCount' in kwargs:
+        if shard_count is None and 'shardCount' in kwargs:
             shard_count = kwargs['shardCount']
-        if 'telemetryType' in kwargs:
+        if telemetry_type is None and 'telemetryType' in kwargs:
             telemetry_type = kwargs['telemetryType']
 
         if append_meta is not None:
@@ -555,62 +557,6 @@ class Store(pulumi.CustomResource):
         and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
 
         > **NOTE:** Available since v1.0.0.
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        ```
-
-        Encrypt Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        example_account = alicloud.get_account()
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_key = alicloud.kms.Key("exampleKey",
-            description="terraform-example",
-            pending_window_in_days=7,
-            status="Enabled")
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            shard_count=1,
-            auto_split=True,
-            max_split_shard_count=60,
-            encrypt_conf=alicloud.log.StoreEncryptConfArgs(
-                enable=True,
-                encrypt_type="default",
-                user_cmk_info=alicloud.log.StoreEncryptConfUserCmkInfoArgs(
-                    cmk_key_id=example_key.id,
-                    arn=f"acs:ram::{example_account.id}:role/aliyunlogdefaultrole",
-                    region_id=region,
-                ),
-            ))
-        ```
         ## Module Support
 
         You can use the existing sls module
@@ -650,62 +596,6 @@ class Store(pulumi.CustomResource):
         and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
 
         > **NOTE:** Available since v1.0.0.
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        ```
-
-        Encrypt Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        example_account = alicloud.get_account()
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_key = alicloud.kms.Key("exampleKey",
-            description="terraform-example",
-            pending_window_in_days=7,
-            status="Enabled")
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            shard_count=1,
-            auto_split=True,
-            max_split_shard_count=60,
-            encrypt_conf=alicloud.log.StoreEncryptConfArgs(
-                enable=True,
-                encrypt_type="default",
-                user_cmk_info=alicloud.log.StoreEncryptConfUserCmkInfoArgs(
-                    cmk_key_id=example_key.id,
-                    arn=f"acs:ram::{example_account.id}:role/aliyunlogdefaultrole",
-                    region_id=region,
-                ),
-            ))
-        ```
         ## Module Support
 
         You can use the existing sls module
@@ -762,11 +652,7 @@ class Store(pulumi.CustomResource):
             __props__.__dict__["append_meta"] = append_meta
             __props__.__dict__["auto_split"] = auto_split
             __props__.__dict__["enable_web_tracking"] = enable_web_tracking
-            if encrypt_conf is not None and not isinstance(encrypt_conf, StoreEncryptConfArgs):
-                encrypt_conf = encrypt_conf or {}
-                def _setter(key, value):
-                    encrypt_conf[key] = value
-                StoreEncryptConfArgs._configure(_setter, **encrypt_conf)
+            encrypt_conf = _utilities.configure(encrypt_conf, StoreEncryptConfArgs, True)
             __props__.__dict__["encrypt_conf"] = encrypt_conf
             __props__.__dict__["hot_ttl"] = hot_ttl
             __props__.__dict__["max_split_shard_count"] = max_split_shard_count

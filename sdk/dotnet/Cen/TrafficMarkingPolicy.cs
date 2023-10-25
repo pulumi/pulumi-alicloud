@@ -16,41 +16,6 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// &gt; **NOTE:** Available since v1.173.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
-    ///     {
-    ///         CenInstanceName = "tf_example",
-    ///         Description = "an example for cen",
-    ///     });
-    /// 
-    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
-    ///     {
-    ///         TransitRouterName = "tf_example",
-    ///         CenId = exampleInstance.Id,
-    ///     });
-    /// 
-    ///     var exampleTrafficMarkingPolicy = new AliCloud.Cen.TrafficMarkingPolicy("exampleTrafficMarkingPolicy", new()
-    ///     {
-    ///         MarkingDscp = 1,
-    ///         Priority = 1,
-    ///         TrafficMarkingPolicyName = "tf_example",
-    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.

@@ -148,21 +148,6 @@ def get_route_maps(cen_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.87.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    this = alicloud.cen.get_route_maps(cen_id="cen-ihdlgo87ai********",
-        ids=["cen-ihdlgo87ai:cenrmap-bnh97kb3mn********"],
-        description_regex="datasource_test",
-        cen_region_id="cn-hangzhou",
-        transmit_direction="RegionIn",
-        status="Active")
-    pulumi.export("firstCenRouteMapId", this.maps[0].route_map_id)
-    ```
-
 
     :param str cen_id: The ID of the CEN instance.
     :param str cen_region_id: The ID of the region to which the CEN instance belongs.
@@ -208,21 +193,6 @@ def get_route_maps_output(cen_id: Optional[pulumi.Input[str]] = None,
     This data source provides CEN Route Maps available to the user.
 
     > **NOTE:** Available in v1.87.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    this = alicloud.cen.get_route_maps(cen_id="cen-ihdlgo87ai********",
-        ids=["cen-ihdlgo87ai:cenrmap-bnh97kb3mn********"],
-        description_regex="datasource_test",
-        cen_region_id="cn-hangzhou",
-        transmit_direction="RegionIn",
-        status="Active")
-    pulumi.export("firstCenRouteMapId", this.maps[0].route_map_id)
-    ```
 
 
     :param str cen_id: The ID of the CEN instance.

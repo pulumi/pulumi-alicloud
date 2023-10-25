@@ -21,7 +21,7 @@ class ServiceLinkedRoleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
         pass
 
@@ -43,7 +43,7 @@ class _ServiceLinkedRoleState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              status: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if status is not None:
@@ -75,17 +75,6 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.142.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        service_linked_role = alicloud.securitycenter.ServiceLinkedRole("serviceLinkedRole")
-        ```
-
         ## Import
 
         SecurityCenter service-linked roles(SLR) can be imported using the id, e.g.
@@ -109,17 +98,6 @@ class ServiceLinkedRole(pulumi.CustomResource):
         For information about Security Center Service Role and how to use it, see [What is Security Center](https://www.alibabacloud.com/help/en/doc-detail/42302.htm).
 
         > **NOTE:** Available in v1.142.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        service_linked_role = alicloud.securitycenter.ServiceLinkedRole("serviceLinkedRole")
-        ```
 
         ## Import
 

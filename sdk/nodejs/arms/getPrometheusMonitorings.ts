@@ -10,26 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Arms Prometheus Monitorings of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.210.0.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.arms.getPrometheusMonitorings({
- *     clusterId: "your_cluster_id",
- *     ids: ["example_id"],
- * });
- * export const armsPrometheusMonitoringsId1 = ids.then(ids => ids.prometheusMonitorings?.[0]?.id);
- * const nameRegex = alicloud.arms.getPrometheusMonitorings({
- *     clusterId: "your_cluster_id",
- *     nameRegex: "tf-example",
- * });
- * export const armsPrometheusMonitoringsId2 = nameRegex.then(nameRegex => nameRegex.prometheusMonitorings?.[0]?.id);
- * ```
  */
 export function getPrometheusMonitorings(args: GetPrometheusMonitoringsArgs, opts?: pulumi.InvokeOptions): Promise<GetPrometheusMonitoringsResult> {
 
@@ -110,26 +90,6 @@ export interface GetPrometheusMonitoringsResult {
  * This data source provides the Arms Prometheus Monitorings of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.210.0.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.arms.getPrometheusMonitorings({
- *     clusterId: "your_cluster_id",
- *     ids: ["example_id"],
- * });
- * export const armsPrometheusMonitoringsId1 = ids.then(ids => ids.prometheusMonitorings?.[0]?.id);
- * const nameRegex = alicloud.arms.getPrometheusMonitorings({
- *     clusterId: "your_cluster_id",
- *     nameRegex: "tf-example",
- * });
- * export const armsPrometheusMonitoringsId2 = nameRegex.then(nameRegex => nameRegex.prometheusMonitorings?.[0]?.id);
- * ```
  */
 export function getPrometheusMonitoringsOutput(args: GetPrometheusMonitoringsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheusMonitoringsResult> {
     return pulumi.output(args).apply((a: any) => getPrometheusMonitorings(a, opts))

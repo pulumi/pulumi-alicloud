@@ -56,30 +56,42 @@ class OssBackupPlanArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_type: pulumi.Input[str],
-             bucket: pulumi.Input[str],
-             oss_backup_plan_name: pulumi.Input[str],
-             retention: pulumi.Input[str],
-             schedule: pulumi.Input[str],
-             vault_id: pulumi.Input[str],
+             backup_type: Optional[pulumi.Input[str]] = None,
+             bucket: Optional[pulumi.Input[str]] = None,
+             oss_backup_plan_name: Optional[pulumi.Input[str]] = None,
+             retention: Optional[pulumi.Input[str]] = None,
+             schedule: Optional[pulumi.Input[str]] = None,
+             vault_id: Optional[pulumi.Input[str]] = None,
              cross_account_role_name: Optional[pulumi.Input[str]] = None,
              cross_account_type: Optional[pulumi.Input[str]] = None,
              cross_account_user_id: Optional[pulumi.Input[int]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'ossBackupPlanName' in kwargs:
+        if backup_type is None:
+            raise TypeError("Missing 'backup_type' argument")
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if oss_backup_plan_name is None and 'ossBackupPlanName' in kwargs:
             oss_backup_plan_name = kwargs['ossBackupPlanName']
-        if 'vaultId' in kwargs:
+        if oss_backup_plan_name is None:
+            raise TypeError("Missing 'oss_backup_plan_name' argument")
+        if retention is None:
+            raise TypeError("Missing 'retention' argument")
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
-        if 'crossAccountRoleName' in kwargs:
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
             cross_account_role_name = kwargs['crossAccountRoleName']
-        if 'crossAccountType' in kwargs:
+        if cross_account_type is None and 'crossAccountType' in kwargs:
             cross_account_type = kwargs['crossAccountType']
-        if 'crossAccountUserId' in kwargs:
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
             cross_account_user_id = kwargs['crossAccountUserId']
 
         _setter("backup_type", backup_type)
@@ -288,19 +300,19 @@ class _OssBackupPlanState:
              retention: Optional[pulumi.Input[str]] = None,
              schedule: Optional[pulumi.Input[str]] = None,
              vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'crossAccountRoleName' in kwargs:
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
             cross_account_role_name = kwargs['crossAccountRoleName']
-        if 'crossAccountType' in kwargs:
+        if cross_account_type is None and 'crossAccountType' in kwargs:
             cross_account_type = kwargs['crossAccountType']
-        if 'crossAccountUserId' in kwargs:
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
             cross_account_user_id = kwargs['crossAccountUserId']
-        if 'ossBackupPlanName' in kwargs:
+        if oss_backup_plan_name is None and 'ossBackupPlanName' in kwargs:
             oss_backup_plan_name = kwargs['ossBackupPlanName']
-        if 'vaultId' in kwargs:
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
 
         if backup_type is not None:
@@ -483,30 +495,6 @@ class OssBackupPlan(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.131.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
-        default_oss_backup_plan = alicloud.hbr.OssBackupPlan("defaultOssBackupPlan",
-            oss_backup_plan_name="terraform-example",
-            prefix="/",
-            bucket=default_bucket.bucket,
-            vault_id=default_vault.id,
-            schedule="I|1602673264|PT2H",
-            backup_type="COMPLETE",
-            retention="2")
-        ```
-
         ## Import
 
         HBR Oss Backup Plan can be imported using the id, e.g.
@@ -541,30 +529,6 @@ class OssBackupPlan(pulumi.CustomResource):
         For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/help/doc-detail/130040.htm).
 
         > **NOTE:** Available in v1.131.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
-        default_oss_backup_plan = alicloud.hbr.OssBackupPlan("defaultOssBackupPlan",
-            oss_backup_plan_name="terraform-example",
-            prefix="/",
-            bucket=default_bucket.bucket,
-            vault_id=default_vault.id,
-            schedule="I|1602673264|PT2H",
-            backup_type="COMPLETE",
-            retention="2")
-        ```
 
         ## Import
 

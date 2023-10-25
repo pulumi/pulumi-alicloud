@@ -41,23 +41,29 @@ class PatchBaselineArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             approval_rules: pulumi.Input[str],
-             operation_system: pulumi.Input[str],
-             patch_baseline_name: pulumi.Input[str],
+             approval_rules: Optional[pulumi.Input[str]] = None,
+             operation_system: Optional[pulumi.Input[str]] = None,
+             patch_baseline_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              rejected_patches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              rejected_patches_action: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'approvalRules' in kwargs:
+        if approval_rules is None and 'approvalRules' in kwargs:
             approval_rules = kwargs['approvalRules']
-        if 'operationSystem' in kwargs:
+        if approval_rules is None:
+            raise TypeError("Missing 'approval_rules' argument")
+        if operation_system is None and 'operationSystem' in kwargs:
             operation_system = kwargs['operationSystem']
-        if 'patchBaselineName' in kwargs:
+        if operation_system is None:
+            raise TypeError("Missing 'operation_system' argument")
+        if patch_baseline_name is None and 'patchBaselineName' in kwargs:
             patch_baseline_name = kwargs['patchBaselineName']
-        if 'rejectedPatches' in kwargs:
+        if patch_baseline_name is None:
+            raise TypeError("Missing 'patch_baseline_name' argument")
+        if rejected_patches is None and 'rejectedPatches' in kwargs:
             rejected_patches = kwargs['rejectedPatches']
-        if 'rejectedPatchesAction' in kwargs:
+        if rejected_patches_action is None and 'rejectedPatchesAction' in kwargs:
             rejected_patches_action = kwargs['rejectedPatchesAction']
 
         _setter("approval_rules", approval_rules)
@@ -183,19 +189,19 @@ class _PatchBaselineState:
              patch_baseline_name: Optional[pulumi.Input[str]] = None,
              rejected_patches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              rejected_patches_action: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'approvalRules' in kwargs:
+        if approval_rules is None and 'approvalRules' in kwargs:
             approval_rules = kwargs['approvalRules']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'operationSystem' in kwargs:
+        if operation_system is None and 'operationSystem' in kwargs:
             operation_system = kwargs['operationSystem']
-        if 'patchBaselineName' in kwargs:
+        if patch_baseline_name is None and 'patchBaselineName' in kwargs:
             patch_baseline_name = kwargs['patchBaselineName']
-        if 'rejectedPatches' in kwargs:
+        if rejected_patches is None and 'rejectedPatches' in kwargs:
             rejected_patches = kwargs['rejectedPatches']
-        if 'rejectedPatchesAction' in kwargs:
+        if rejected_patches_action is None and 'rejectedPatchesAction' in kwargs:
             rejected_patches_action = kwargs['rejectedPatchesAction']
 
         if approval_rules is not None:
@@ -317,24 +323,6 @@ class PatchBaseline(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.146.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.oos.PatchBaseline("default",
-            patch_baseline_name=name,
-            operation_system="Windows",
-            approval_rules="{\\"PatchRules\\":[{\\"EnableNonSecurity\\":true,\\"PatchFilterGroup\\":[{\\"Values\\":[\\"*\\"],\\"Key\\":\\"Product\\"},{\\"Values\\":[\\"Security\\",\\"Bugfix\\"],\\"Key\\":\\"Classification\\"},{\\"Values\\":[\\"Critical\\",\\"Important\\"],\\"Key\\":\\"Severity\\"}],\\"ApproveAfterDays\\":7,\\"ComplianceLevel\\":\\"Unspecified\\"}]}")
-        ```
-
         ## Import
 
         OOS Patch Baseline can be imported using the id, e.g.
@@ -364,24 +352,6 @@ class PatchBaseline(pulumi.CustomResource):
         For information about OOS Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/patch-manager-overview).
 
         > **NOTE:** Available since v1.146.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.oos.PatchBaseline("default",
-            patch_baseline_name=name,
-            operation_system="Windows",
-            approval_rules="{\\"PatchRules\\":[{\\"EnableNonSecurity\\":true,\\"PatchFilterGroup\\":[{\\"Values\\":[\\"*\\"],\\"Key\\":\\"Product\\"},{\\"Values\\":[\\"Security\\",\\"Bugfix\\"],\\"Key\\":\\"Classification\\"},{\\"Values\\":[\\"Critical\\",\\"Important\\"],\\"Key\\":\\"Severity\\"}],\\"ApproveAfterDays\\":7,\\"ComplianceLevel\\":\\"Unspecified\\"}]}")
-        ```
 
         ## Import
 

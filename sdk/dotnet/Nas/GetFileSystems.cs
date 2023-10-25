@@ -15,33 +15,6 @@ namespace Pulumi.AliCloud.Nas
         /// This data source provides FileSystems available to the user.
         /// 
         /// &gt; **NOTE**: Available in 1.35.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var fs = AliCloud.Nas.GetFileSystems.Invoke(new()
-        ///     {
-        ///         DescriptionRegex = alicloud_nas_file_system.Foo.Description,
-        ///         ProtocolType = "NFS",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudNasFileSystemsId"] = fs.Apply(getFileSystemsResult =&gt; getFileSystemsResult.Systems[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFileSystemsResult> InvokeAsync(GetFileSystemsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFileSystemsResult>("alicloud:nas/getFileSystems:getFileSystems", args ?? new GetFileSystemsArgs(), options.WithDefaults());
@@ -50,33 +23,6 @@ namespace Pulumi.AliCloud.Nas
         /// This data source provides FileSystems available to the user.
         /// 
         /// &gt; **NOTE**: Available in 1.35.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var fs = AliCloud.Nas.GetFileSystems.Invoke(new()
-        ///     {
-        ///         DescriptionRegex = alicloud_nas_file_system.Foo.Description,
-        ///         ProtocolType = "NFS",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudNasFileSystemsId"] = fs.Apply(getFileSystemsResult =&gt; getFileSystemsResult.Systems[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetFileSystemsResult> Invoke(GetFileSystemsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFileSystemsResult>("alicloud:nas/getFileSystems:getFileSystems", args ?? new GetFileSystemsInvokeArgs(), options.WithDefaults());

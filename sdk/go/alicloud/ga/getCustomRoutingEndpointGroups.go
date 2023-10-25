@@ -15,46 +15,6 @@ import (
 // This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in 1.197.0+
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := ga.GetCustomRoutingEndpointGroups(ctx, &ga.GetCustomRoutingEndpointGroupsArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//				AcceleratorId: "your_accelerator_id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("gaCustomRoutingEndpointGroupsId1", ids.Groups[0].Id)
-//			nameRegex, err := ga.GetCustomRoutingEndpointGroups(ctx, &ga.GetCustomRoutingEndpointGroupsArgs{
-//				NameRegex:     pulumi.StringRef("tf-example"),
-//				AcceleratorId: "your_accelerator_id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("gaCustomRoutingEndpointGroupsId2", nameRegex.Groups[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetCustomRoutingEndpointGroups(ctx *pulumi.Context, args *GetCustomRoutingEndpointGroupsArgs, opts ...pulumi.InvokeOption) (*GetCustomRoutingEndpointGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCustomRoutingEndpointGroupsResult

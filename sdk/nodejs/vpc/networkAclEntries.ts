@@ -16,56 +16,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Using this resource need to open a whitelist.
  *
  * > **DEPRECATED:**  This resource  has been deprecated from version `1.122.0`. Replace by `ingressAclEntries` and `egressAclEntries` with the resource alicloud_network_acl.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "NetworkAclEntries";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
- * const defaultNetworkAcl = new alicloud.vpc.NetworkAcl("defaultNetworkAcl", {vpcId: defaultNetwork.id});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- * });
- * const defaultNetworkAclAttachment = new alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment", {
- *     networkAclId: defaultNetworkAcl.id,
- *     resources: [{
- *         resourceId: defaultSwitch.id,
- *         resourceType: "VSwitch",
- *     }],
- * });
- * const defaultNetworkAclEntries = new alicloud.vpc.NetworkAclEntries("defaultNetworkAclEntries", {
- *     networkAclId: defaultNetworkAcl.id,
- *     ingresses: [{
- *         protocol: "all",
- *         port: "-1/-1",
- *         sourceCidrIp: "0.0.0.0/32",
- *         name: name,
- *         entryType: "custom",
- *         policy: "accept",
- *         description: name,
- *     }],
- *     egresses: [{
- *         protocol: "all",
- *         port: "-1/-1",
- *         destinationCidrIp: "0.0.0.0/32",
- *         name: name,
- *         entryType: "custom",
- *         policy: "accept",
- *         description: name,
- *     }],
- * });
- * ```
  */
 export class NetworkAclEntries extends pulumi.CustomResource {
     /**

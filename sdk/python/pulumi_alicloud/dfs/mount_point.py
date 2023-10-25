@@ -44,25 +44,35 @@ class MountPointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_group_id: pulumi.Input[str],
-             file_system_id: pulumi.Input[str],
-             network_type: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             access_group_id: Optional[pulumi.Input[str]] = None,
+             file_system_id: Optional[pulumi.Input[str]] = None,
+             network_type: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessGroupId' in kwargs:
+        if access_group_id is None and 'accessGroupId' in kwargs:
             access_group_id = kwargs['accessGroupId']
-        if 'fileSystemId' in kwargs:
+        if access_group_id is None:
+            raise TypeError("Missing 'access_group_id' argument")
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'networkType' in kwargs:
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'vpcId' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("access_group_id", access_group_id)
         _setter("file_system_id", file_system_id)
@@ -203,19 +213,19 @@ class _MountPointState:
              status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessGroupId' in kwargs:
+        if access_group_id is None and 'accessGroupId' in kwargs:
             access_group_id = kwargs['accessGroupId']
-        if 'fileSystemId' in kwargs:
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'mountPointId' in kwargs:
+        if mount_point_id is None and 'mountPointId' in kwargs:
             mount_point_id = kwargs['mountPointId']
-        if 'networkType' in kwargs:
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if access_group_id is not None:
@@ -352,48 +362,6 @@ class MountPoint(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.140.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.dfs.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].zone_id)
-        default_file_system = alicloud.dfs.FileSystem("defaultFileSystem",
-            storage_type=default_zones.zones[0].options[0].storage_type,
-            zone_id=default_zones.zones[0].zone_id,
-            protocol_type="HDFS",
-            description=name,
-            file_system_name=name,
-            throughput_mode="Standard",
-            space_capacity=1024)
-        default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
-            access_group_name=name,
-            description=name,
-            network_type="VPC")
-        default_mount_point = alicloud.dfs.MountPoint("defaultMountPoint",
-            description=name,
-            vpc_id=default_network.id,
-            file_system_id=default_file_system.id,
-            access_group_id=default_access_group.id,
-            network_type="VPC",
-            vswitch_id=default_switch.id)
-        ```
-
         ## Import
 
         DFS Mount Point can be imported using the id, e.g.
@@ -424,48 +392,6 @@ class MountPoint(pulumi.CustomResource):
         For information about DFS Mount Point and how to use it, see [What is Mount Point](https://www.alibabacloud.com/help/doc-detail/207144.htm).
 
         > **NOTE:** Available since v1.140.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.dfs.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].zone_id)
-        default_file_system = alicloud.dfs.FileSystem("defaultFileSystem",
-            storage_type=default_zones.zones[0].options[0].storage_type,
-            zone_id=default_zones.zones[0].zone_id,
-            protocol_type="HDFS",
-            description=name,
-            file_system_name=name,
-            throughput_mode="Standard",
-            space_capacity=1024)
-        default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
-            access_group_name=name,
-            description=name,
-            network_type="VPC")
-        default_mount_point = alicloud.dfs.MountPoint("defaultMountPoint",
-            description=name,
-            vpc_id=default_network.id,
-            file_system_id=default_file_system.id,
-            access_group_id=default_access_group.id,
-            network_type="VPC",
-            vswitch_id=default_switch.id)
-        ```
 
         ## Import
 

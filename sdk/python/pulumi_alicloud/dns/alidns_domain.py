@@ -43,19 +43,21 @@ class AlidnsDomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain_name: pulumi.Input[str],
+             domain_name: Optional[pulumi.Input[str]] = None,
              group_id: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              remark: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'groupId' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("domain_name", domain_name)
@@ -199,21 +201,21 @@ class _AlidnsDomainState:
              remark: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dnsServers' in kwargs:
+        if dns_servers is None and 'dnsServers' in kwargs:
             dns_servers = kwargs['dnsServers']
-        if 'domainId' in kwargs:
+        if domain_id is None and 'domainId' in kwargs:
             domain_id = kwargs['domainId']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'punyCode' in kwargs:
+        if puny_code is None and 'punyCode' in kwargs:
             puny_code = kwargs['punyCode']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         if dns_servers is not None:
@@ -379,22 +381,6 @@ class AlidnsDomain(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.95.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
-        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
-            domain_name="starmove.com",
-            group_id=default_domain_group.id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        ```
-
         ## Import
 
         Alidns domain can be imported using the id or domain name, e.g.
@@ -426,22 +412,6 @@ class AlidnsDomain(pulumi.CustomResource):
         > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
 
         > **NOTE:** Available since v1.95.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
-        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
-            domain_name="starmove.com",
-            group_id=default_domain_group.id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        ```
 
         ## Import
 

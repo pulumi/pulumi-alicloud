@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Arms Integration Exporters of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.203.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.arms.getIntegrationExporters({
- *     ids: ["example_id"],
- *     clusterId: "your_cluster_id",
- *     integrationType: "kafka",
- * });
- * export const armsIntegrationExportersId1 = ids.then(ids => ids.integrationExporters?.[0]?.id);
- * ```
  */
 export function getIntegrationExporters(args: GetIntegrationExportersArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationExportersResult> {
 
@@ -87,22 +71,6 @@ export interface GetIntegrationExportersResult {
  * This data source provides the Arms Integration Exporters of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.203.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.arms.getIntegrationExporters({
- *     ids: ["example_id"],
- *     clusterId: "your_cluster_id",
- *     integrationType: "kafka",
- * });
- * export const armsIntegrationExportersId1 = ids.then(ids => ids.integrationExporters?.[0]?.id);
- * ```
  */
 export function getIntegrationExportersOutput(args: GetIntegrationExportersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationExportersResult> {
     return pulumi.output(args).apply((a: any) => getIntegrationExporters(a, opts))

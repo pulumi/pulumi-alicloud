@@ -101,20 +101,6 @@ def get_endpoint_acl_service(enable: Optional[bool] = None,
 
     > **NOTE:** Available in v1.139.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.cr.get_endpoint_acl_service(enable=True,
-        endpoint_type="internet",
-        instance_id="example_id",
-        module_name="Registry")
-    ```
-
 
     :param bool enable: Whether to enable Acl Service.  Valid values: `true` and `false`.
     :param str endpoint_type: The type of endpoint. Valid values: `internet`.
@@ -154,20 +140,6 @@ def get_endpoint_acl_service_output(enable: Optional[pulumi.Input[bool]] = None,
     For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
 
     > **NOTE:** Available in v1.139.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.cr.get_endpoint_acl_service(enable=True,
-        endpoint_type="internet",
-        instance_id="example_id",
-        module_name="Registry")
-    ```
 
 
     :param bool enable: Whether to enable Acl Service.  Valid values: `true` and `false`.

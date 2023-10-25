@@ -73,13 +73,15 @@ class AggregateCompliancePackConfigRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             managed_rule_identifier: str,
+             managed_rule_identifier: Optional[str] = None,
              config_rule_parameters: Optional[Sequence['outputs.AggregateCompliancePackConfigRuleConfigRuleParameter']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'managedRuleIdentifier' in kwargs:
+        if managed_rule_identifier is None and 'managedRuleIdentifier' in kwargs:
             managed_rule_identifier = kwargs['managedRuleIdentifier']
-        if 'configRuleParameters' in kwargs:
+        if managed_rule_identifier is None:
+            raise TypeError("Missing 'managed_rule_identifier' argument")
+        if config_rule_parameters is None and 'configRuleParameters' in kwargs:
             config_rule_parameters = kwargs['configRuleParameters']
 
         _setter("managed_rule_identifier", managed_rule_identifier)
@@ -141,11 +143,11 @@ class AggregateCompliancePackConfigRuleConfigRuleParameter(dict):
              _setter: Callable[[Any, Any], None],
              parameter_name: Optional[str] = None,
              parameter_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterName' in kwargs:
+        if parameter_name is None and 'parameterName' in kwargs:
             parameter_name = kwargs['parameterName']
-        if 'parameterValue' in kwargs:
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
 
         if parameter_name is not None:
@@ -202,9 +204,9 @@ class AggregateCompliancePackConfigRuleId(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              config_rule_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configRuleId' in kwargs:
+        if config_rule_id is None and 'configRuleId' in kwargs:
             config_rule_id = kwargs['configRuleId']
 
         if config_rule_id is not None:
@@ -260,17 +262,23 @@ class AggregatorAggregatorAccount(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: str,
-             account_name: str,
-             account_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[str] = None,
+             account_name: Optional[str] = None,
+             account_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'accountName' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountType' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_type is None and 'accountType' in kwargs:
             account_type = kwargs['accountType']
+        if account_type is None:
+            raise TypeError("Missing 'account_type' argument")
 
         _setter("account_id", account_id)
         _setter("account_name", account_name)
@@ -337,13 +345,15 @@ class CompliancePackConfigRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             managed_rule_identifier: str,
+             managed_rule_identifier: Optional[str] = None,
              config_rule_parameters: Optional[Sequence['outputs.CompliancePackConfigRuleConfigRuleParameter']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'managedRuleIdentifier' in kwargs:
+        if managed_rule_identifier is None and 'managedRuleIdentifier' in kwargs:
             managed_rule_identifier = kwargs['managedRuleIdentifier']
-        if 'configRuleParameters' in kwargs:
+        if managed_rule_identifier is None:
+            raise TypeError("Missing 'managed_rule_identifier' argument")
+        if config_rule_parameters is None and 'configRuleParameters' in kwargs:
             config_rule_parameters = kwargs['configRuleParameters']
 
         _setter("managed_rule_identifier", managed_rule_identifier)
@@ -405,11 +415,11 @@ class CompliancePackConfigRuleConfigRuleParameter(dict):
              _setter: Callable[[Any, Any], None],
              parameter_name: Optional[str] = None,
              parameter_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterName' in kwargs:
+        if parameter_name is None and 'parameterName' in kwargs:
             parameter_name = kwargs['parameterName']
-        if 'parameterValue' in kwargs:
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
 
         if parameter_name is not None:
@@ -466,9 +476,9 @@ class CompliancePackConfigRuleId(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              config_rule_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configRuleId' in kwargs:
+        if config_rule_id is None and 'configRuleId' in kwargs:
             config_rule_id = kwargs['configRuleId']
 
         if config_rule_id is not None:
@@ -519,9 +529,9 @@ class RuleCompliance(dict):
              _setter: Callable[[Any, Any], None],
              compliance_type: Optional[str] = None,
              count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'complianceType' in kwargs:
+        if compliance_type is None and 'complianceType' in kwargs:
             compliance_type = kwargs['complianceType']
 
         if compliance_type is not None:
@@ -584,29 +594,47 @@ class GetAggregateCompliancePacksPackResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: str,
-             aggregate_compliance_pack_name: str,
-             aggregator_compliance_pack_id: str,
-             compliance_pack_template_id: str,
-             config_rules: Sequence['outputs.GetAggregateCompliancePacksPackConfigRuleResult'],
-             description: str,
-             id: str,
-             risk_level: int,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[str] = None,
+             aggregate_compliance_pack_name: Optional[str] = None,
+             aggregator_compliance_pack_id: Optional[str] = None,
+             compliance_pack_template_id: Optional[str] = None,
+             config_rules: Optional[Sequence['outputs.GetAggregateCompliancePacksPackConfigRuleResult']] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             risk_level: Optional[int] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'aggregateCompliancePackName' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if aggregate_compliance_pack_name is None and 'aggregateCompliancePackName' in kwargs:
             aggregate_compliance_pack_name = kwargs['aggregateCompliancePackName']
-        if 'aggregatorCompliancePackId' in kwargs:
+        if aggregate_compliance_pack_name is None:
+            raise TypeError("Missing 'aggregate_compliance_pack_name' argument")
+        if aggregator_compliance_pack_id is None and 'aggregatorCompliancePackId' in kwargs:
             aggregator_compliance_pack_id = kwargs['aggregatorCompliancePackId']
-        if 'compliancePackTemplateId' in kwargs:
+        if aggregator_compliance_pack_id is None:
+            raise TypeError("Missing 'aggregator_compliance_pack_id' argument")
+        if compliance_pack_template_id is None and 'compliancePackTemplateId' in kwargs:
             compliance_pack_template_id = kwargs['compliancePackTemplateId']
-        if 'configRules' in kwargs:
+        if compliance_pack_template_id is None:
+            raise TypeError("Missing 'compliance_pack_template_id' argument")
+        if config_rules is None and 'configRules' in kwargs:
             config_rules = kwargs['configRules']
-        if 'riskLevel' in kwargs:
+        if config_rules is None:
+            raise TypeError("Missing 'config_rules' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if risk_level is None and 'riskLevel' in kwargs:
             risk_level = kwargs['riskLevel']
+        if risk_level is None:
+            raise TypeError("Missing 'risk_level' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("account_id", account_id)
         _setter("aggregate_compliance_pack_name", aggregate_compliance_pack_name)
@@ -711,17 +739,23 @@ class GetAggregateCompliancePacksPackConfigRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config_rule_id: str,
-             config_rule_parameters: Sequence['outputs.GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterResult'],
-             managed_rule_identifier: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             config_rule_id: Optional[str] = None,
+             config_rule_parameters: Optional[Sequence['outputs.GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterResult']] = None,
+             managed_rule_identifier: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configRuleId' in kwargs:
+        if config_rule_id is None and 'configRuleId' in kwargs:
             config_rule_id = kwargs['configRuleId']
-        if 'configRuleParameters' in kwargs:
+        if config_rule_id is None:
+            raise TypeError("Missing 'config_rule_id' argument")
+        if config_rule_parameters is None and 'configRuleParameters' in kwargs:
             config_rule_parameters = kwargs['configRuleParameters']
-        if 'managedRuleIdentifier' in kwargs:
+        if config_rule_parameters is None:
+            raise TypeError("Missing 'config_rule_parameters' argument")
+        if managed_rule_identifier is None and 'managedRuleIdentifier' in kwargs:
             managed_rule_identifier = kwargs['managedRuleIdentifier']
+        if managed_rule_identifier is None:
+            raise TypeError("Missing 'managed_rule_identifier' argument")
 
         _setter("config_rule_id", config_rule_id)
         _setter("config_rule_parameters", config_rule_parameters)
@@ -772,15 +806,21 @@ class GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parameter_name: str,
-             parameter_value: str,
-             required: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             parameter_name: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             required: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterName' in kwargs:
+        if parameter_name is None and 'parameterName' in kwargs:
             parameter_name = kwargs['parameterName']
-        if 'parameterValue' in kwargs:
+        if parameter_name is None:
+            raise TypeError("Missing 'parameter_name' argument")
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
+        if parameter_value is None:
+            raise TypeError("Missing 'parameter_value' argument")
+        if required is None:
+            raise TypeError("Missing 'required' argument")
 
         _setter("parameter_name", parameter_name)
         _setter("parameter_value", parameter_value)
@@ -893,72 +933,120 @@ class GetAggregateConfigRulesRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: str,
-             aggregate_config_rule_name: str,
-             aggregator_id: str,
-             compliance_pack_id: str,
-             compliances: Sequence['outputs.GetAggregateConfigRulesRuleComplianceResult'],
-             config_rule_arn: str,
-             config_rule_id: str,
-             config_rule_trigger_types: str,
-             description: str,
-             event_source: str,
-             exclude_resource_ids_scope: str,
-             id: str,
-             input_parameters: Mapping[str, Any],
-             maximum_execution_frequency: str,
-             modified_timestamp: str,
-             region_ids_scope: str,
-             resource_group_ids_scope: str,
-             resource_types_scopes: Sequence[str],
-             risk_level: int,
-             source_identifier: str,
-             source_owner: str,
-             status: str,
-             tag_key_scope: str,
-             tag_value_scope: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[str] = None,
+             aggregate_config_rule_name: Optional[str] = None,
+             aggregator_id: Optional[str] = None,
+             compliance_pack_id: Optional[str] = None,
+             compliances: Optional[Sequence['outputs.GetAggregateConfigRulesRuleComplianceResult']] = None,
+             config_rule_arn: Optional[str] = None,
+             config_rule_id: Optional[str] = None,
+             config_rule_trigger_types: Optional[str] = None,
+             description: Optional[str] = None,
+             event_source: Optional[str] = None,
+             exclude_resource_ids_scope: Optional[str] = None,
+             id: Optional[str] = None,
+             input_parameters: Optional[Mapping[str, Any]] = None,
+             maximum_execution_frequency: Optional[str] = None,
+             modified_timestamp: Optional[str] = None,
+             region_ids_scope: Optional[str] = None,
+             resource_group_ids_scope: Optional[str] = None,
+             resource_types_scopes: Optional[Sequence[str]] = None,
+             risk_level: Optional[int] = None,
+             source_identifier: Optional[str] = None,
+             source_owner: Optional[str] = None,
+             status: Optional[str] = None,
+             tag_key_scope: Optional[str] = None,
+             tag_value_scope: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'aggregateConfigRuleName' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if aggregate_config_rule_name is None and 'aggregateConfigRuleName' in kwargs:
             aggregate_config_rule_name = kwargs['aggregateConfigRuleName']
-        if 'aggregatorId' in kwargs:
+        if aggregate_config_rule_name is None:
+            raise TypeError("Missing 'aggregate_config_rule_name' argument")
+        if aggregator_id is None and 'aggregatorId' in kwargs:
             aggregator_id = kwargs['aggregatorId']
-        if 'compliancePackId' in kwargs:
+        if aggregator_id is None:
+            raise TypeError("Missing 'aggregator_id' argument")
+        if compliance_pack_id is None and 'compliancePackId' in kwargs:
             compliance_pack_id = kwargs['compliancePackId']
-        if 'configRuleArn' in kwargs:
+        if compliance_pack_id is None:
+            raise TypeError("Missing 'compliance_pack_id' argument")
+        if compliances is None:
+            raise TypeError("Missing 'compliances' argument")
+        if config_rule_arn is None and 'configRuleArn' in kwargs:
             config_rule_arn = kwargs['configRuleArn']
-        if 'configRuleId' in kwargs:
+        if config_rule_arn is None:
+            raise TypeError("Missing 'config_rule_arn' argument")
+        if config_rule_id is None and 'configRuleId' in kwargs:
             config_rule_id = kwargs['configRuleId']
-        if 'configRuleTriggerTypes' in kwargs:
+        if config_rule_id is None:
+            raise TypeError("Missing 'config_rule_id' argument")
+        if config_rule_trigger_types is None and 'configRuleTriggerTypes' in kwargs:
             config_rule_trigger_types = kwargs['configRuleTriggerTypes']
-        if 'eventSource' in kwargs:
+        if config_rule_trigger_types is None:
+            raise TypeError("Missing 'config_rule_trigger_types' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if event_source is None and 'eventSource' in kwargs:
             event_source = kwargs['eventSource']
-        if 'excludeResourceIdsScope' in kwargs:
+        if event_source is None:
+            raise TypeError("Missing 'event_source' argument")
+        if exclude_resource_ids_scope is None and 'excludeResourceIdsScope' in kwargs:
             exclude_resource_ids_scope = kwargs['excludeResourceIdsScope']
-        if 'inputParameters' in kwargs:
+        if exclude_resource_ids_scope is None:
+            raise TypeError("Missing 'exclude_resource_ids_scope' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if input_parameters is None and 'inputParameters' in kwargs:
             input_parameters = kwargs['inputParameters']
-        if 'maximumExecutionFrequency' in kwargs:
+        if input_parameters is None:
+            raise TypeError("Missing 'input_parameters' argument")
+        if maximum_execution_frequency is None and 'maximumExecutionFrequency' in kwargs:
             maximum_execution_frequency = kwargs['maximumExecutionFrequency']
-        if 'modifiedTimestamp' in kwargs:
+        if maximum_execution_frequency is None:
+            raise TypeError("Missing 'maximum_execution_frequency' argument")
+        if modified_timestamp is None and 'modifiedTimestamp' in kwargs:
             modified_timestamp = kwargs['modifiedTimestamp']
-        if 'regionIdsScope' in kwargs:
+        if modified_timestamp is None:
+            raise TypeError("Missing 'modified_timestamp' argument")
+        if region_ids_scope is None and 'regionIdsScope' in kwargs:
             region_ids_scope = kwargs['regionIdsScope']
-        if 'resourceGroupIdsScope' in kwargs:
+        if region_ids_scope is None:
+            raise TypeError("Missing 'region_ids_scope' argument")
+        if resource_group_ids_scope is None and 'resourceGroupIdsScope' in kwargs:
             resource_group_ids_scope = kwargs['resourceGroupIdsScope']
-        if 'resourceTypesScopes' in kwargs:
+        if resource_group_ids_scope is None:
+            raise TypeError("Missing 'resource_group_ids_scope' argument")
+        if resource_types_scopes is None and 'resourceTypesScopes' in kwargs:
             resource_types_scopes = kwargs['resourceTypesScopes']
-        if 'riskLevel' in kwargs:
+        if resource_types_scopes is None:
+            raise TypeError("Missing 'resource_types_scopes' argument")
+        if risk_level is None and 'riskLevel' in kwargs:
             risk_level = kwargs['riskLevel']
-        if 'sourceIdentifier' in kwargs:
+        if risk_level is None:
+            raise TypeError("Missing 'risk_level' argument")
+        if source_identifier is None and 'sourceIdentifier' in kwargs:
             source_identifier = kwargs['sourceIdentifier']
-        if 'sourceOwner' in kwargs:
+        if source_identifier is None:
+            raise TypeError("Missing 'source_identifier' argument")
+        if source_owner is None and 'sourceOwner' in kwargs:
             source_owner = kwargs['sourceOwner']
-        if 'tagKeyScope' in kwargs:
+        if source_owner is None:
+            raise TypeError("Missing 'source_owner' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tag_key_scope is None and 'tagKeyScope' in kwargs:
             tag_key_scope = kwargs['tagKeyScope']
-        if 'tagValueScope' in kwargs:
+        if tag_key_scope is None:
+            raise TypeError("Missing 'tag_key_scope' argument")
+        if tag_value_scope is None and 'tagValueScope' in kwargs:
             tag_value_scope = kwargs['tagValueScope']
+        if tag_value_scope is None:
+            raise TypeError("Missing 'tag_value_scope' argument")
 
         _setter("account_id", account_id)
         _setter("aggregate_config_rule_name", aggregate_config_rule_name)
@@ -1192,12 +1280,16 @@ class GetAggregateConfigRulesRuleComplianceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compliance_type: str,
-             count: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             compliance_type: Optional[str] = None,
+             count: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'complianceType' in kwargs:
+        if compliance_type is None and 'complianceType' in kwargs:
             compliance_type = kwargs['complianceType']
+        if compliance_type is None:
+            raise TypeError("Missing 'compliance_type' argument")
+        if count is None:
+            raise TypeError("Missing 'count' argument")
 
         _setter("compliance_type", compliance_type)
         _setter("count", count)
@@ -1275,47 +1367,77 @@ class GetAggregateDeliveriesDeliveryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: str,
-             aggregator_id: str,
-             configuration_item_change_notification: bool,
-             configuration_snapshot: bool,
-             delivery_channel_assume_role_arn: str,
-             delivery_channel_condition: str,
-             delivery_channel_id: str,
-             delivery_channel_name: str,
-             delivery_channel_target_arn: str,
-             delivery_channel_type: str,
-             description: str,
-             id: str,
-             non_compliant_notification: bool,
-             oversized_data_oss_target_arn: str,
-             status: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[str] = None,
+             aggregator_id: Optional[str] = None,
+             configuration_item_change_notification: Optional[bool] = None,
+             configuration_snapshot: Optional[bool] = None,
+             delivery_channel_assume_role_arn: Optional[str] = None,
+             delivery_channel_condition: Optional[str] = None,
+             delivery_channel_id: Optional[str] = None,
+             delivery_channel_name: Optional[str] = None,
+             delivery_channel_target_arn: Optional[str] = None,
+             delivery_channel_type: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             non_compliant_notification: Optional[bool] = None,
+             oversized_data_oss_target_arn: Optional[str] = None,
+             status: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'aggregatorId' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if aggregator_id is None and 'aggregatorId' in kwargs:
             aggregator_id = kwargs['aggregatorId']
-        if 'configurationItemChangeNotification' in kwargs:
+        if aggregator_id is None:
+            raise TypeError("Missing 'aggregator_id' argument")
+        if configuration_item_change_notification is None and 'configurationItemChangeNotification' in kwargs:
             configuration_item_change_notification = kwargs['configurationItemChangeNotification']
-        if 'configurationSnapshot' in kwargs:
+        if configuration_item_change_notification is None:
+            raise TypeError("Missing 'configuration_item_change_notification' argument")
+        if configuration_snapshot is None and 'configurationSnapshot' in kwargs:
             configuration_snapshot = kwargs['configurationSnapshot']
-        if 'deliveryChannelAssumeRoleArn' in kwargs:
+        if configuration_snapshot is None:
+            raise TypeError("Missing 'configuration_snapshot' argument")
+        if delivery_channel_assume_role_arn is None and 'deliveryChannelAssumeRoleArn' in kwargs:
             delivery_channel_assume_role_arn = kwargs['deliveryChannelAssumeRoleArn']
-        if 'deliveryChannelCondition' in kwargs:
+        if delivery_channel_assume_role_arn is None:
+            raise TypeError("Missing 'delivery_channel_assume_role_arn' argument")
+        if delivery_channel_condition is None and 'deliveryChannelCondition' in kwargs:
             delivery_channel_condition = kwargs['deliveryChannelCondition']
-        if 'deliveryChannelId' in kwargs:
+        if delivery_channel_condition is None:
+            raise TypeError("Missing 'delivery_channel_condition' argument")
+        if delivery_channel_id is None and 'deliveryChannelId' in kwargs:
             delivery_channel_id = kwargs['deliveryChannelId']
-        if 'deliveryChannelName' in kwargs:
+        if delivery_channel_id is None:
+            raise TypeError("Missing 'delivery_channel_id' argument")
+        if delivery_channel_name is None and 'deliveryChannelName' in kwargs:
             delivery_channel_name = kwargs['deliveryChannelName']
-        if 'deliveryChannelTargetArn' in kwargs:
+        if delivery_channel_name is None:
+            raise TypeError("Missing 'delivery_channel_name' argument")
+        if delivery_channel_target_arn is None and 'deliveryChannelTargetArn' in kwargs:
             delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
-        if 'deliveryChannelType' in kwargs:
+        if delivery_channel_target_arn is None:
+            raise TypeError("Missing 'delivery_channel_target_arn' argument")
+        if delivery_channel_type is None and 'deliveryChannelType' in kwargs:
             delivery_channel_type = kwargs['deliveryChannelType']
-        if 'nonCompliantNotification' in kwargs:
+        if delivery_channel_type is None:
+            raise TypeError("Missing 'delivery_channel_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if non_compliant_notification is None and 'nonCompliantNotification' in kwargs:
             non_compliant_notification = kwargs['nonCompliantNotification']
-        if 'oversizedDataOssTargetArn' in kwargs:
+        if non_compliant_notification is None:
+            raise TypeError("Missing 'non_compliant_notification' argument")
+        if oversized_data_oss_target_arn is None and 'oversizedDataOssTargetArn' in kwargs:
             oversized_data_oss_target_arn = kwargs['oversizedDataOssTargetArn']
+        if oversized_data_oss_target_arn is None:
+            raise TypeError("Missing 'oversized_data_oss_target_arn' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("account_id", account_id)
         _setter("aggregator_id", aggregator_id)
@@ -1489,26 +1611,42 @@ class GetAggregatorsAggregatorResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: str,
-             aggregator_accounts: Sequence['outputs.GetAggregatorsAggregatorAggregatorAccountResult'],
-             aggregator_id: str,
-             aggregator_name: str,
-             aggregator_type: str,
-             description: str,
-             id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[str] = None,
+             aggregator_accounts: Optional[Sequence['outputs.GetAggregatorsAggregatorAggregatorAccountResult']] = None,
+             aggregator_id: Optional[str] = None,
+             aggregator_name: Optional[str] = None,
+             aggregator_type: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'aggregatorAccounts' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if aggregator_accounts is None and 'aggregatorAccounts' in kwargs:
             aggregator_accounts = kwargs['aggregatorAccounts']
-        if 'aggregatorId' in kwargs:
+        if aggregator_accounts is None:
+            raise TypeError("Missing 'aggregator_accounts' argument")
+        if aggregator_id is None and 'aggregatorId' in kwargs:
             aggregator_id = kwargs['aggregatorId']
-        if 'aggregatorName' in kwargs:
+        if aggregator_id is None:
+            raise TypeError("Missing 'aggregator_id' argument")
+        if aggregator_name is None and 'aggregatorName' in kwargs:
             aggregator_name = kwargs['aggregatorName']
-        if 'aggregatorType' in kwargs:
+        if aggregator_name is None:
+            raise TypeError("Missing 'aggregator_name' argument")
+        if aggregator_type is None and 'aggregatorType' in kwargs:
             aggregator_type = kwargs['aggregatorType']
+        if aggregator_type is None:
+            raise TypeError("Missing 'aggregator_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("account_id", account_id)
         _setter("aggregator_accounts", aggregator_accounts)
@@ -1604,17 +1742,23 @@ class GetAggregatorsAggregatorAggregatorAccountResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: str,
-             account_name: str,
-             account_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[str] = None,
+             account_name: Optional[str] = None,
+             account_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'accountName' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountType' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_type is None and 'accountType' in kwargs:
             account_type = kwargs['accountType']
+        if account_type is None:
+            raise TypeError("Missing 'account_type' argument")
 
         _setter("account_id", account_id)
         _setter("account_name", account_name)
@@ -1683,29 +1827,47 @@ class GetCompliancePacksPackResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: str,
-             compliance_pack_id: str,
-             compliance_pack_name: str,
-             compliance_pack_template_id: str,
-             config_rules: Sequence['outputs.GetCompliancePacksPackConfigRuleResult'],
-             description: str,
-             id: str,
-             risk_level: int,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[str] = None,
+             compliance_pack_id: Optional[str] = None,
+             compliance_pack_name: Optional[str] = None,
+             compliance_pack_template_id: Optional[str] = None,
+             config_rules: Optional[Sequence['outputs.GetCompliancePacksPackConfigRuleResult']] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             risk_level: Optional[int] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'compliancePackId' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if compliance_pack_id is None and 'compliancePackId' in kwargs:
             compliance_pack_id = kwargs['compliancePackId']
-        if 'compliancePackName' in kwargs:
+        if compliance_pack_id is None:
+            raise TypeError("Missing 'compliance_pack_id' argument")
+        if compliance_pack_name is None and 'compliancePackName' in kwargs:
             compliance_pack_name = kwargs['compliancePackName']
-        if 'compliancePackTemplateId' in kwargs:
+        if compliance_pack_name is None:
+            raise TypeError("Missing 'compliance_pack_name' argument")
+        if compliance_pack_template_id is None and 'compliancePackTemplateId' in kwargs:
             compliance_pack_template_id = kwargs['compliancePackTemplateId']
-        if 'configRules' in kwargs:
+        if compliance_pack_template_id is None:
+            raise TypeError("Missing 'compliance_pack_template_id' argument")
+        if config_rules is None and 'configRules' in kwargs:
             config_rules = kwargs['configRules']
-        if 'riskLevel' in kwargs:
+        if config_rules is None:
+            raise TypeError("Missing 'config_rules' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if risk_level is None and 'riskLevel' in kwargs:
             risk_level = kwargs['riskLevel']
+        if risk_level is None:
+            raise TypeError("Missing 'risk_level' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("account_id", account_id)
         _setter("compliance_pack_id", compliance_pack_id)
@@ -1810,17 +1972,23 @@ class GetCompliancePacksPackConfigRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config_rule_id: str,
-             config_rule_parameters: Sequence['outputs.GetCompliancePacksPackConfigRuleConfigRuleParameterResult'],
-             managed_rule_identifier: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             config_rule_id: Optional[str] = None,
+             config_rule_parameters: Optional[Sequence['outputs.GetCompliancePacksPackConfigRuleConfigRuleParameterResult']] = None,
+             managed_rule_identifier: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configRuleId' in kwargs:
+        if config_rule_id is None and 'configRuleId' in kwargs:
             config_rule_id = kwargs['configRuleId']
-        if 'configRuleParameters' in kwargs:
+        if config_rule_id is None:
+            raise TypeError("Missing 'config_rule_id' argument")
+        if config_rule_parameters is None and 'configRuleParameters' in kwargs:
             config_rule_parameters = kwargs['configRuleParameters']
-        if 'managedRuleIdentifier' in kwargs:
+        if config_rule_parameters is None:
+            raise TypeError("Missing 'config_rule_parameters' argument")
+        if managed_rule_identifier is None and 'managedRuleIdentifier' in kwargs:
             managed_rule_identifier = kwargs['managedRuleIdentifier']
+        if managed_rule_identifier is None:
+            raise TypeError("Missing 'managed_rule_identifier' argument")
 
         _setter("config_rule_id", config_rule_id)
         _setter("config_rule_parameters", config_rule_parameters)
@@ -1871,15 +2039,21 @@ class GetCompliancePacksPackConfigRuleConfigRuleParameterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parameter_name: str,
-             parameter_value: str,
-             required: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             parameter_name: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             required: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterName' in kwargs:
+        if parameter_name is None and 'parameterName' in kwargs:
             parameter_name = kwargs['parameterName']
-        if 'parameterValue' in kwargs:
+        if parameter_name is None:
+            raise TypeError("Missing 'parameter_name' argument")
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
+        if parameter_value is None:
+            raise TypeError("Missing 'parameter_value' argument")
+        if required is None:
+            raise TypeError("Missing 'required' argument")
 
         _setter("parameter_name", parameter_name)
         _setter("parameter_value", parameter_value)
@@ -1939,22 +2113,34 @@ class GetConfigurationRecordersRecorderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: str,
-             id: str,
-             organization_enable_status: str,
-             organization_master_id: int,
-             resource_types: Sequence[str],
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[str] = None,
+             id: Optional[str] = None,
+             organization_enable_status: Optional[str] = None,
+             organization_master_id: Optional[int] = None,
+             resource_types: Optional[Sequence[str]] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'organizationEnableStatus' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if organization_enable_status is None and 'organizationEnableStatus' in kwargs:
             organization_enable_status = kwargs['organizationEnableStatus']
-        if 'organizationMasterId' in kwargs:
+        if organization_enable_status is None:
+            raise TypeError("Missing 'organization_enable_status' argument")
+        if organization_master_id is None and 'organizationMasterId' in kwargs:
             organization_master_id = kwargs['organizationMasterId']
-        if 'resourceTypes' in kwargs:
+        if organization_master_id is None:
+            raise TypeError("Missing 'organization_master_id' argument")
+        if resource_types is None and 'resourceTypes' in kwargs:
             resource_types = kwargs['resourceTypes']
+        if resource_types is None:
+            raise TypeError("Missing 'resource_types' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("account_id", account_id)
         _setter("id", id)
@@ -2065,44 +2251,72 @@ class GetDeliveriesDeliveryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: str,
-             configuration_item_change_notification: bool,
-             configuration_snapshot: bool,
-             delivery_channel_assume_role_arn: str,
-             delivery_channel_condition: str,
-             delivery_channel_id: str,
-             delivery_channel_name: str,
-             delivery_channel_target_arn: str,
-             delivery_channel_type: str,
-             description: str,
-             id: str,
-             non_compliant_notification: bool,
-             oversized_data_oss_target_arn: str,
-             status: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[str] = None,
+             configuration_item_change_notification: Optional[bool] = None,
+             configuration_snapshot: Optional[bool] = None,
+             delivery_channel_assume_role_arn: Optional[str] = None,
+             delivery_channel_condition: Optional[str] = None,
+             delivery_channel_id: Optional[str] = None,
+             delivery_channel_name: Optional[str] = None,
+             delivery_channel_target_arn: Optional[str] = None,
+             delivery_channel_type: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             non_compliant_notification: Optional[bool] = None,
+             oversized_data_oss_target_arn: Optional[str] = None,
+             status: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'configurationItemChangeNotification' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if configuration_item_change_notification is None and 'configurationItemChangeNotification' in kwargs:
             configuration_item_change_notification = kwargs['configurationItemChangeNotification']
-        if 'configurationSnapshot' in kwargs:
+        if configuration_item_change_notification is None:
+            raise TypeError("Missing 'configuration_item_change_notification' argument")
+        if configuration_snapshot is None and 'configurationSnapshot' in kwargs:
             configuration_snapshot = kwargs['configurationSnapshot']
-        if 'deliveryChannelAssumeRoleArn' in kwargs:
+        if configuration_snapshot is None:
+            raise TypeError("Missing 'configuration_snapshot' argument")
+        if delivery_channel_assume_role_arn is None and 'deliveryChannelAssumeRoleArn' in kwargs:
             delivery_channel_assume_role_arn = kwargs['deliveryChannelAssumeRoleArn']
-        if 'deliveryChannelCondition' in kwargs:
+        if delivery_channel_assume_role_arn is None:
+            raise TypeError("Missing 'delivery_channel_assume_role_arn' argument")
+        if delivery_channel_condition is None and 'deliveryChannelCondition' in kwargs:
             delivery_channel_condition = kwargs['deliveryChannelCondition']
-        if 'deliveryChannelId' in kwargs:
+        if delivery_channel_condition is None:
+            raise TypeError("Missing 'delivery_channel_condition' argument")
+        if delivery_channel_id is None and 'deliveryChannelId' in kwargs:
             delivery_channel_id = kwargs['deliveryChannelId']
-        if 'deliveryChannelName' in kwargs:
+        if delivery_channel_id is None:
+            raise TypeError("Missing 'delivery_channel_id' argument")
+        if delivery_channel_name is None and 'deliveryChannelName' in kwargs:
             delivery_channel_name = kwargs['deliveryChannelName']
-        if 'deliveryChannelTargetArn' in kwargs:
+        if delivery_channel_name is None:
+            raise TypeError("Missing 'delivery_channel_name' argument")
+        if delivery_channel_target_arn is None and 'deliveryChannelTargetArn' in kwargs:
             delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
-        if 'deliveryChannelType' in kwargs:
+        if delivery_channel_target_arn is None:
+            raise TypeError("Missing 'delivery_channel_target_arn' argument")
+        if delivery_channel_type is None and 'deliveryChannelType' in kwargs:
             delivery_channel_type = kwargs['deliveryChannelType']
-        if 'nonCompliantNotification' in kwargs:
+        if delivery_channel_type is None:
+            raise TypeError("Missing 'delivery_channel_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if non_compliant_notification is None and 'nonCompliantNotification' in kwargs:
             non_compliant_notification = kwargs['nonCompliantNotification']
-        if 'oversizedDataOssTargetArn' in kwargs:
+        if non_compliant_notification is None:
+            raise TypeError("Missing 'non_compliant_notification' argument")
+        if oversized_data_oss_target_arn is None and 'oversizedDataOssTargetArn' in kwargs:
             oversized_data_oss_target_arn = kwargs['oversizedDataOssTargetArn']
+        if oversized_data_oss_target_arn is None:
+            raise TypeError("Missing 'oversized_data_oss_target_arn' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("account_id", account_id)
         _setter("configuration_item_change_notification", configuration_item_change_notification)
@@ -2270,29 +2484,47 @@ class GetDeliveryChannelsChannelResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             delivery_channel_assume_role_arn: str,
-             delivery_channel_condition: str,
-             delivery_channel_id: str,
-             delivery_channel_name: str,
-             delivery_channel_target_arn: str,
-             delivery_channel_type: str,
-             description: str,
-             id: str,
-             status: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             delivery_channel_assume_role_arn: Optional[str] = None,
+             delivery_channel_condition: Optional[str] = None,
+             delivery_channel_id: Optional[str] = None,
+             delivery_channel_name: Optional[str] = None,
+             delivery_channel_target_arn: Optional[str] = None,
+             delivery_channel_type: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             status: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deliveryChannelAssumeRoleArn' in kwargs:
+        if delivery_channel_assume_role_arn is None and 'deliveryChannelAssumeRoleArn' in kwargs:
             delivery_channel_assume_role_arn = kwargs['deliveryChannelAssumeRoleArn']
-        if 'deliveryChannelCondition' in kwargs:
+        if delivery_channel_assume_role_arn is None:
+            raise TypeError("Missing 'delivery_channel_assume_role_arn' argument")
+        if delivery_channel_condition is None and 'deliveryChannelCondition' in kwargs:
             delivery_channel_condition = kwargs['deliveryChannelCondition']
-        if 'deliveryChannelId' in kwargs:
+        if delivery_channel_condition is None:
+            raise TypeError("Missing 'delivery_channel_condition' argument")
+        if delivery_channel_id is None and 'deliveryChannelId' in kwargs:
             delivery_channel_id = kwargs['deliveryChannelId']
-        if 'deliveryChannelName' in kwargs:
+        if delivery_channel_id is None:
+            raise TypeError("Missing 'delivery_channel_id' argument")
+        if delivery_channel_name is None and 'deliveryChannelName' in kwargs:
             delivery_channel_name = kwargs['deliveryChannelName']
-        if 'deliveryChannelTargetArn' in kwargs:
+        if delivery_channel_name is None:
+            raise TypeError("Missing 'delivery_channel_name' argument")
+        if delivery_channel_target_arn is None and 'deliveryChannelTargetArn' in kwargs:
             delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
-        if 'deliveryChannelType' in kwargs:
+        if delivery_channel_target_arn is None:
+            raise TypeError("Missing 'delivery_channel_target_arn' argument")
+        if delivery_channel_type is None and 'deliveryChannelType' in kwargs:
             delivery_channel_type = kwargs['deliveryChannelType']
+        if delivery_channel_type is None:
+            raise TypeError("Missing 'delivery_channel_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
         _setter("delivery_channel_condition", delivery_channel_condition)
@@ -2468,81 +2700,135 @@ class GetRulesRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: str,
-             compliance_pack_id: str,
-             compliances: Sequence['outputs.GetRulesRuleComplianceResult'],
-             config_rule_arn: str,
-             config_rule_id: str,
-             config_rule_state: str,
-             config_rule_trigger_types: str,
-             description: str,
-             event_source: str,
-             exclude_resource_ids_scope: str,
-             id: str,
-             input_parameters: Mapping[str, Any],
-             maximum_execution_frequency: str,
-             modified_timestamp: str,
-             region_ids_scope: str,
-             resource_group_ids_scope: str,
-             resource_types_scopes: Sequence[str],
-             risk_level: int,
-             rule_name: str,
-             scope_compliance_resource_types: Sequence[str],
-             source_detail_message_type: str,
-             source_identifier: str,
-             source_maximum_execution_frequency: str,
-             source_owner: str,
-             status: str,
-             tag_key_scope: str,
-             tag_value_scope: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[str] = None,
+             compliance_pack_id: Optional[str] = None,
+             compliances: Optional[Sequence['outputs.GetRulesRuleComplianceResult']] = None,
+             config_rule_arn: Optional[str] = None,
+             config_rule_id: Optional[str] = None,
+             config_rule_state: Optional[str] = None,
+             config_rule_trigger_types: Optional[str] = None,
+             description: Optional[str] = None,
+             event_source: Optional[str] = None,
+             exclude_resource_ids_scope: Optional[str] = None,
+             id: Optional[str] = None,
+             input_parameters: Optional[Mapping[str, Any]] = None,
+             maximum_execution_frequency: Optional[str] = None,
+             modified_timestamp: Optional[str] = None,
+             region_ids_scope: Optional[str] = None,
+             resource_group_ids_scope: Optional[str] = None,
+             resource_types_scopes: Optional[Sequence[str]] = None,
+             risk_level: Optional[int] = None,
+             rule_name: Optional[str] = None,
+             scope_compliance_resource_types: Optional[Sequence[str]] = None,
+             source_detail_message_type: Optional[str] = None,
+             source_identifier: Optional[str] = None,
+             source_maximum_execution_frequency: Optional[str] = None,
+             source_owner: Optional[str] = None,
+             status: Optional[str] = None,
+             tag_key_scope: Optional[str] = None,
+             tag_value_scope: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'compliancePackId' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if compliance_pack_id is None and 'compliancePackId' in kwargs:
             compliance_pack_id = kwargs['compliancePackId']
-        if 'configRuleArn' in kwargs:
+        if compliance_pack_id is None:
+            raise TypeError("Missing 'compliance_pack_id' argument")
+        if compliances is None:
+            raise TypeError("Missing 'compliances' argument")
+        if config_rule_arn is None and 'configRuleArn' in kwargs:
             config_rule_arn = kwargs['configRuleArn']
-        if 'configRuleId' in kwargs:
+        if config_rule_arn is None:
+            raise TypeError("Missing 'config_rule_arn' argument")
+        if config_rule_id is None and 'configRuleId' in kwargs:
             config_rule_id = kwargs['configRuleId']
-        if 'configRuleState' in kwargs:
+        if config_rule_id is None:
+            raise TypeError("Missing 'config_rule_id' argument")
+        if config_rule_state is None and 'configRuleState' in kwargs:
             config_rule_state = kwargs['configRuleState']
-        if 'configRuleTriggerTypes' in kwargs:
+        if config_rule_state is None:
+            raise TypeError("Missing 'config_rule_state' argument")
+        if config_rule_trigger_types is None and 'configRuleTriggerTypes' in kwargs:
             config_rule_trigger_types = kwargs['configRuleTriggerTypes']
-        if 'eventSource' in kwargs:
+        if config_rule_trigger_types is None:
+            raise TypeError("Missing 'config_rule_trigger_types' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if event_source is None and 'eventSource' in kwargs:
             event_source = kwargs['eventSource']
-        if 'excludeResourceIdsScope' in kwargs:
+        if event_source is None:
+            raise TypeError("Missing 'event_source' argument")
+        if exclude_resource_ids_scope is None and 'excludeResourceIdsScope' in kwargs:
             exclude_resource_ids_scope = kwargs['excludeResourceIdsScope']
-        if 'inputParameters' in kwargs:
+        if exclude_resource_ids_scope is None:
+            raise TypeError("Missing 'exclude_resource_ids_scope' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if input_parameters is None and 'inputParameters' in kwargs:
             input_parameters = kwargs['inputParameters']
-        if 'maximumExecutionFrequency' in kwargs:
+        if input_parameters is None:
+            raise TypeError("Missing 'input_parameters' argument")
+        if maximum_execution_frequency is None and 'maximumExecutionFrequency' in kwargs:
             maximum_execution_frequency = kwargs['maximumExecutionFrequency']
-        if 'modifiedTimestamp' in kwargs:
+        if maximum_execution_frequency is None:
+            raise TypeError("Missing 'maximum_execution_frequency' argument")
+        if modified_timestamp is None and 'modifiedTimestamp' in kwargs:
             modified_timestamp = kwargs['modifiedTimestamp']
-        if 'regionIdsScope' in kwargs:
+        if modified_timestamp is None:
+            raise TypeError("Missing 'modified_timestamp' argument")
+        if region_ids_scope is None and 'regionIdsScope' in kwargs:
             region_ids_scope = kwargs['regionIdsScope']
-        if 'resourceGroupIdsScope' in kwargs:
+        if region_ids_scope is None:
+            raise TypeError("Missing 'region_ids_scope' argument")
+        if resource_group_ids_scope is None and 'resourceGroupIdsScope' in kwargs:
             resource_group_ids_scope = kwargs['resourceGroupIdsScope']
-        if 'resourceTypesScopes' in kwargs:
+        if resource_group_ids_scope is None:
+            raise TypeError("Missing 'resource_group_ids_scope' argument")
+        if resource_types_scopes is None and 'resourceTypesScopes' in kwargs:
             resource_types_scopes = kwargs['resourceTypesScopes']
-        if 'riskLevel' in kwargs:
+        if resource_types_scopes is None:
+            raise TypeError("Missing 'resource_types_scopes' argument")
+        if risk_level is None and 'riskLevel' in kwargs:
             risk_level = kwargs['riskLevel']
-        if 'ruleName' in kwargs:
+        if risk_level is None:
+            raise TypeError("Missing 'risk_level' argument")
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
-        if 'scopeComplianceResourceTypes' in kwargs:
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
+        if scope_compliance_resource_types is None and 'scopeComplianceResourceTypes' in kwargs:
             scope_compliance_resource_types = kwargs['scopeComplianceResourceTypes']
-        if 'sourceDetailMessageType' in kwargs:
+        if scope_compliance_resource_types is None:
+            raise TypeError("Missing 'scope_compliance_resource_types' argument")
+        if source_detail_message_type is None and 'sourceDetailMessageType' in kwargs:
             source_detail_message_type = kwargs['sourceDetailMessageType']
-        if 'sourceIdentifier' in kwargs:
+        if source_detail_message_type is None:
+            raise TypeError("Missing 'source_detail_message_type' argument")
+        if source_identifier is None and 'sourceIdentifier' in kwargs:
             source_identifier = kwargs['sourceIdentifier']
-        if 'sourceMaximumExecutionFrequency' in kwargs:
+        if source_identifier is None:
+            raise TypeError("Missing 'source_identifier' argument")
+        if source_maximum_execution_frequency is None and 'sourceMaximumExecutionFrequency' in kwargs:
             source_maximum_execution_frequency = kwargs['sourceMaximumExecutionFrequency']
-        if 'sourceOwner' in kwargs:
+        if source_maximum_execution_frequency is None:
+            raise TypeError("Missing 'source_maximum_execution_frequency' argument")
+        if source_owner is None and 'sourceOwner' in kwargs:
             source_owner = kwargs['sourceOwner']
-        if 'tagKeyScope' in kwargs:
+        if source_owner is None:
+            raise TypeError("Missing 'source_owner' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tag_key_scope is None and 'tagKeyScope' in kwargs:
             tag_key_scope = kwargs['tagKeyScope']
-        if 'tagValueScope' in kwargs:
+        if tag_key_scope is None:
+            raise TypeError("Missing 'tag_key_scope' argument")
+        if tag_value_scope is None and 'tagValueScope' in kwargs:
             tag_value_scope = kwargs['tagValueScope']
+        if tag_value_scope is None:
+            raise TypeError("Missing 'tag_value_scope' argument")
 
         _setter("account_id", account_id)
         _setter("compliance_pack_id", compliance_pack_id)
@@ -2803,12 +3089,16 @@ class GetRulesRuleComplianceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compliance_type: str,
-             count: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             compliance_type: Optional[str] = None,
+             count: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'complianceType' in kwargs:
+        if compliance_type is None and 'complianceType' in kwargs:
             compliance_type = kwargs['complianceType']
+        if compliance_type is None:
+            raise TypeError("Missing 'compliance_type' argument")
+        if count is None:
+            raise TypeError("Missing 'count' argument")
 
         _setter("compliance_type", compliance_type)
         _setter("count", count)

@@ -139,18 +139,6 @@ def get_hana_instances(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.178.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.hbr.get_hana_instances(ids=["example_id"])
-    pulumi.export("hbrHanaInstanceId1", ids.instances[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Hana Instance IDs.
     :param str name_regex: A regex string to filter results by Hana Instance name.
@@ -195,18 +183,6 @@ def get_hana_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     This data source provides the Hbr Hana Instances of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.178.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.hbr.get_hana_instances(ids=["example_id"])
-    pulumi.export("hbrHanaInstanceId1", ids.instances[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Hana Instance IDs.

@@ -38,18 +38,22 @@ class TransitRouterCidrArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr: pulumi.Input[str],
-             transit_router_id: pulumi.Input[str],
+             cidr: Optional[pulumi.Input[str]] = None,
+             transit_router_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              publish_cidr_route: Optional[pulumi.Input[bool]] = None,
              transit_router_cidr_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'transitRouterId' in kwargs:
+        if cidr is None:
+            raise TypeError("Missing 'cidr' argument")
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'publishCidrRoute' in kwargs:
+        if transit_router_id is None:
+            raise TypeError("Missing 'transit_router_id' argument")
+        if publish_cidr_route is None and 'publishCidrRoute' in kwargs:
             publish_cidr_route = kwargs['publishCidrRoute']
-        if 'transitRouterCidrName' in kwargs:
+        if transit_router_cidr_name is None and 'transitRouterCidrName' in kwargs:
             transit_router_cidr_name = kwargs['transitRouterCidrName']
 
         _setter("cidr", cidr)
@@ -158,15 +162,15 @@ class _TransitRouterCidrState:
              transit_router_cidr_id: Optional[pulumi.Input[str]] = None,
              transit_router_cidr_name: Optional[pulumi.Input[str]] = None,
              transit_router_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'publishCidrRoute' in kwargs:
+        if publish_cidr_route is None and 'publishCidrRoute' in kwargs:
             publish_cidr_route = kwargs['publishCidrRoute']
-        if 'transitRouterCidrId' in kwargs:
+        if transit_router_cidr_id is None and 'transitRouterCidrId' in kwargs:
             transit_router_cidr_id = kwargs['transitRouterCidrId']
-        if 'transitRouterCidrName' in kwargs:
+        if transit_router_cidr_name is None and 'transitRouterCidrName' in kwargs:
             transit_router_cidr_name = kwargs['transitRouterCidrName']
-        if 'transitRouterId' in kwargs:
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
 
         if cidr is not None:
@@ -273,28 +277,6 @@ class TransitRouterCidr(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.193.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        example_transit_router_cidr = alicloud.cen.TransitRouterCidr("exampleTransitRouterCidr",
-            transit_router_id=example_transit_router.transit_router_id,
-            cidr="192.168.0.0/16",
-            transit_router_cidr_name="tf_example",
-            description="tf_example",
-            publish_cidr_route=True)
-        ```
-
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router Cidr can be imported using the id, e.g.
@@ -323,28 +305,6 @@ class TransitRouterCidr(pulumi.CustomResource):
         For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitroutercidr).
 
         > **NOTE:** Available since v1.193.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        example_transit_router_cidr = alicloud.cen.TransitRouterCidr("exampleTransitRouterCidr",
-            transit_router_id=example_transit_router.transit_router_id,
-            cidr="192.168.0.0/16",
-            transit_router_cidr_name="tf_example",
-            description="tf_example",
-            publish_cidr_route=True)
-        ```
 
         ## Import
 

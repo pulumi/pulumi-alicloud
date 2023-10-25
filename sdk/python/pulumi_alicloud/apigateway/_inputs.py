@@ -43,14 +43,20 @@ class ApiConstantParameterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             in_: pulumi.Input[str],
-             name: pulumi.Input[str],
-             value: pulumi.Input[str],
+             in_: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'in' in kwargs:
+        if in_ is None and 'in' in kwargs:
             in_ = kwargs['in']
+        if in_ is None:
+            raise TypeError("Missing 'in_' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("in_", in_)
         _setter("name", name)
@@ -133,18 +139,26 @@ class ApiFcServiceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             function_name: pulumi.Input[str],
-             region: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             timeout: pulumi.Input[int],
+             function_name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
              arn_role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'functionName' in kwargs:
+        if function_name is None and 'functionName' in kwargs:
             function_name = kwargs['functionName']
-        if 'serviceName' in kwargs:
+        if function_name is None:
+            raise TypeError("Missing 'function_name' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
-        if 'arnRole' in kwargs:
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if arn_role is None and 'arnRole' in kwargs:
             arn_role = kwargs['arnRole']
 
         _setter("function_name", function_name)
@@ -241,14 +255,22 @@ class ApiHttpServiceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
-             method: pulumi.Input[str],
-             path: pulumi.Input[str],
-             timeout: pulumi.Input[int],
+             address: Optional[pulumi.Input[str]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
              aone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aoneName' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if aone_name is None and 'aoneName' in kwargs:
             aone_name = kwargs['aoneName']
 
         _setter("address", address)
@@ -345,14 +367,22 @@ class ApiHttpVpcServiceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             method: pulumi.Input[str],
-             name: pulumi.Input[str],
-             path: pulumi.Input[str],
-             timeout: pulumi.Input[int],
+             method: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
              aone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aoneName' in kwargs:
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if aone_name is None and 'aoneName' in kwargs:
             aone_name = kwargs['aoneName']
 
         _setter("method", method)
@@ -440,11 +470,13 @@ class ApiMockServiceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             result: pulumi.Input[str],
+             result: Optional[pulumi.Input[str]] = None,
              aone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aoneName' in kwargs:
+        if result is None:
+            raise TypeError("Missing 'result' argument")
+        if aone_name is None and 'aoneName' in kwargs:
             aone_name = kwargs['aoneName']
 
         _setter("result", result)
@@ -502,14 +534,22 @@ class ApiRequestConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             method: pulumi.Input[str],
-             mode: pulumi.Input[str],
-             path: pulumi.Input[str],
-             protocol: pulumi.Input[str],
+             method: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
              body_format: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bodyFormat' in kwargs:
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if body_format is None and 'bodyFormat' in kwargs:
             body_format = kwargs['bodyFormat']
 
         _setter("method", method)
@@ -615,23 +655,35 @@ class ApiRequestParameterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             in_: pulumi.Input[str],
-             in_service: pulumi.Input[str],
-             name: pulumi.Input[str],
-             name_service: pulumi.Input[str],
-             required: pulumi.Input[str],
-             type: pulumi.Input[str],
+             in_: Optional[pulumi.Input[str]] = None,
+             in_service: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             name_service: Optional[pulumi.Input[str]] = None,
+             required: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              default_value: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'in' in kwargs:
+        if in_ is None and 'in' in kwargs:
             in_ = kwargs['in']
-        if 'inService' in kwargs:
+        if in_ is None:
+            raise TypeError("Missing 'in_' argument")
+        if in_service is None and 'inService' in kwargs:
             in_service = kwargs['inService']
-        if 'nameService' in kwargs:
+        if in_service is None:
+            raise TypeError("Missing 'in_service' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if name_service is None and 'nameService' in kwargs:
             name_service = kwargs['nameService']
-        if 'defaultValue' in kwargs:
+        if name_service is None:
+            raise TypeError("Missing 'name_service' argument")
+        if required is None:
+            raise TypeError("Missing 'required' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if default_value is None and 'defaultValue' in kwargs:
             default_value = kwargs['defaultValue']
 
         _setter("in_", in_)
@@ -762,15 +814,21 @@ class ApiSystemParameterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             in_: pulumi.Input[str],
-             name: pulumi.Input[str],
-             name_service: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             in_: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             name_service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'in' in kwargs:
+        if in_ is None and 'in' in kwargs:
             in_ = kwargs['in']
-        if 'nameService' in kwargs:
+        if in_ is None:
+            raise TypeError("Missing 'in_' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if name_service is None and 'nameService' in kwargs:
             name_service = kwargs['nameService']
+        if name_service is None:
+            raise TypeError("Missing 'name_service' argument")
 
         _setter("in_", in_)
         _setter("name", name)

@@ -55,9 +55,9 @@ class IpsecServerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_ip_pool: pulumi.Input[str],
-             local_subnet: pulumi.Input[str],
-             vpn_gateway_id: pulumi.Input[str],
+             client_ip_pool: Optional[pulumi.Input[str]] = None,
+             local_subnet: Optional[pulumi.Input[str]] = None,
+             vpn_gateway_id: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              effect_immediately: Optional[pulumi.Input[bool]] = None,
              ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]]] = None,
@@ -65,25 +65,31 @@ class IpsecServerArgs:
              ipsec_server_name: Optional[pulumi.Input[str]] = None,
              psk: Optional[pulumi.Input[str]] = None,
              psk_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientIpPool' in kwargs:
+        if client_ip_pool is None and 'clientIpPool' in kwargs:
             client_ip_pool = kwargs['clientIpPool']
-        if 'localSubnet' in kwargs:
+        if client_ip_pool is None:
+            raise TypeError("Missing 'client_ip_pool' argument")
+        if local_subnet is None and 'localSubnet' in kwargs:
             local_subnet = kwargs['localSubnet']
-        if 'vpnGatewayId' in kwargs:
+        if local_subnet is None:
+            raise TypeError("Missing 'local_subnet' argument")
+        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
             vpn_gateway_id = kwargs['vpnGatewayId']
-        if 'dryRun' in kwargs:
+        if vpn_gateway_id is None:
+            raise TypeError("Missing 'vpn_gateway_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'effectImmediately' in kwargs:
+        if effect_immediately is None and 'effectImmediately' in kwargs:
             effect_immediately = kwargs['effectImmediately']
-        if 'ikeConfigs' in kwargs:
+        if ike_configs is None and 'ikeConfigs' in kwargs:
             ike_configs = kwargs['ikeConfigs']
-        if 'ipsecConfigs' in kwargs:
+        if ipsec_configs is None and 'ipsecConfigs' in kwargs:
             ipsec_configs = kwargs['ipsecConfigs']
-        if 'ipsecServerName' in kwargs:
+        if ipsec_server_name is None and 'ipsecServerName' in kwargs:
             ipsec_server_name = kwargs['ipsecServerName']
-        if 'pskEnabled' in kwargs:
+        if psk_enabled is None and 'pskEnabled' in kwargs:
             psk_enabled = kwargs['pskEnabled']
 
         _setter("client_ip_pool", client_ip_pool)
@@ -277,25 +283,25 @@ class _IpsecServerState:
              psk: Optional[pulumi.Input[str]] = None,
              psk_enabled: Optional[pulumi.Input[bool]] = None,
              vpn_gateway_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientIpPool' in kwargs:
+        if client_ip_pool is None and 'clientIpPool' in kwargs:
             client_ip_pool = kwargs['clientIpPool']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'effectImmediately' in kwargs:
+        if effect_immediately is None and 'effectImmediately' in kwargs:
             effect_immediately = kwargs['effectImmediately']
-        if 'ikeConfigs' in kwargs:
+        if ike_configs is None and 'ikeConfigs' in kwargs:
             ike_configs = kwargs['ikeConfigs']
-        if 'ipsecConfigs' in kwargs:
+        if ipsec_configs is None and 'ipsecConfigs' in kwargs:
             ipsec_configs = kwargs['ipsecConfigs']
-        if 'ipsecServerName' in kwargs:
+        if ipsec_server_name is None and 'ipsecServerName' in kwargs:
             ipsec_server_name = kwargs['ipsecServerName']
-        if 'localSubnet' in kwargs:
+        if local_subnet is None and 'localSubnet' in kwargs:
             local_subnet = kwargs['localSubnet']
-        if 'pskEnabled' in kwargs:
+        if psk_enabled is None and 'pskEnabled' in kwargs:
             psk_enabled = kwargs['pskEnabled']
-        if 'vpnGatewayId' in kwargs:
+        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
             vpn_gateway_id = kwargs['vpnGatewayId']
 
         if client_ip_pool is not None:
@@ -463,38 +469,6 @@ class IpsecServer(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.161.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/12")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.16.0.0/21",
-            vpc_id=foo_network.id,
-            zone_id=foo_zones.zones[0].id)
-        foo_gateway = alicloud.vpn.Gateway("fooGateway",
-            vpc_id=foo_network.id,
-            bandwidth=10,
-            enable_ssl=True,
-            instance_charge_type="PrePaid",
-            description="terraform-example",
-            vswitch_id=foo_switch.id)
-        foo_ipsec_server = alicloud.vpn.IpsecServer("fooIpsecServer",
-            client_ip_pool="10.0.0.0/24",
-            ipsec_server_name="terraform-example",
-            local_subnet="192.168.0.0/24",
-            vpn_gateway_id=foo_gateway.id,
-            psk_enabled=True)
-        ```
-
         ## Import
 
         VPN Ipsec Server can be imported using the id, e.g.
@@ -528,38 +502,6 @@ class IpsecServer(pulumi.CustomResource):
         For information about VPN Ipsec Server and how to use it, see [What is Ipsec Server](https://www.alibabacloud.com/help/en/doc-detail/205454.html).
 
         > **NOTE:** Available in v1.161.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/12")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.16.0.0/21",
-            vpc_id=foo_network.id,
-            zone_id=foo_zones.zones[0].id)
-        foo_gateway = alicloud.vpn.Gateway("fooGateway",
-            vpc_id=foo_network.id,
-            bandwidth=10,
-            enable_ssl=True,
-            instance_charge_type="PrePaid",
-            description="terraform-example",
-            vswitch_id=foo_switch.id)
-        foo_ipsec_server = alicloud.vpn.IpsecServer("fooIpsecServer",
-            client_ip_pool="10.0.0.0/24",
-            ipsec_server_name="terraform-example",
-            local_subnet="192.168.0.0/24",
-            vpn_gateway_id=foo_gateway.id,
-            psk_enabled=True)
-        ```
 
         ## Import
 

@@ -67,8 +67,8 @@ class FileSystemArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             protocol_type: pulumi.Input[str],
-             storage_type: pulumi.Input[str],
+             protocol_type: Optional[pulumi.Input[str]] = None,
+             storage_type: Optional[pulumi.Input[str]] = None,
              capacity: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              encrypt_type: Optional[pulumi.Input[int]] = None,
@@ -78,23 +78,27 @@ class FileSystemArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'protocolType' in kwargs:
+        if protocol_type is None and 'protocolType' in kwargs:
             protocol_type = kwargs['protocolType']
-        if 'storageType' in kwargs:
+        if protocol_type is None:
+            raise TypeError("Missing 'protocol_type' argument")
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
-        if 'encryptType' in kwargs:
+        if storage_type is None:
+            raise TypeError("Missing 'storage_type' argument")
+        if encrypt_type is None and 'encryptType' in kwargs:
             encrypt_type = kwargs['encryptType']
-        if 'fileSystemType' in kwargs:
+        if file_system_type is None and 'fileSystemType' in kwargs:
             file_system_type = kwargs['fileSystemType']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("protocol_type", protocol_type)
@@ -329,23 +333,23 @@ class _FileSystemState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'encryptType' in kwargs:
+        if encrypt_type is None and 'encryptType' in kwargs:
             encrypt_type = kwargs['encryptType']
-        if 'fileSystemType' in kwargs:
+        if file_system_type is None and 'fileSystemType' in kwargs:
             file_system_type = kwargs['fileSystemType']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'protocolType' in kwargs:
+        if protocol_type is None and 'protocolType' in kwargs:
             protocol_type = kwargs['protocolType']
-        if 'storageType' in kwargs:
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if capacity is not None:
@@ -541,61 +545,6 @@ class FileSystem(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.33.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.nas.get_zones(file_system_type="standard")
-        foo = alicloud.nas.FileSystem("foo",
-            protocol_type="NFS",
-            storage_type="Performance",
-            description="terraform-example",
-            encrypt_type=1,
-            zone_id=example.zones[0].zone_id)
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.nas.get_zones(file_system_type="extreme")
-        foo = alicloud.nas.FileSystem("foo",
-            file_system_type="extreme",
-            protocol_type="NFS",
-            zone_id=example.zones[0].zone_id,
-            storage_type="standard",
-            description="terraform-example",
-            capacity=100)
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.nas.get_zones(file_system_type="cpfs")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[1].zone_id)
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
-            protocol_type="cpfs",
-            storage_type="advance_200",
-            file_system_type="cpfs",
-            capacity=3600,
-            description="terraform-example",
-            zone_id=example_zones.zones[1].zone_id,
-            vpc_id=example_network.id,
-            vswitch_id=example_switch.id)
-        ```
-
         ## Import
 
         Nas File System can be imported using the id, e.g.
@@ -643,61 +592,6 @@ class FileSystem(pulumi.CustomResource):
         For information about NAS file system and how to use it, see [Manage file systems](https://www.alibabacloud.com/help/doc-detail/27530.htm)
 
         > **NOTE:** Available in v1.33.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.nas.get_zones(file_system_type="standard")
-        foo = alicloud.nas.FileSystem("foo",
-            protocol_type="NFS",
-            storage_type="Performance",
-            description="terraform-example",
-            encrypt_type=1,
-            zone_id=example.zones[0].zone_id)
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.nas.get_zones(file_system_type="extreme")
-        foo = alicloud.nas.FileSystem("foo",
-            file_system_type="extreme",
-            protocol_type="NFS",
-            zone_id=example.zones[0].zone_id,
-            storage_type="standard",
-            description="terraform-example",
-            capacity=100)
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.nas.get_zones(file_system_type="cpfs")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[1].zone_id)
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
-            protocol_type="cpfs",
-            storage_type="advance_200",
-            file_system_type="cpfs",
-            capacity=3600,
-            description="terraform-example",
-            zone_id=example_zones.zones[1].zone_id,
-            vpc_id=example_network.id,
-            vswitch_id=example_switch.id)
-        ```
 
         ## Import
 

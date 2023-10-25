@@ -19,65 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.187.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vod"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tfexample"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
-//				Current: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vod.NewEditingProject(ctx, "example", &vod.EditingProjectArgs{
-//				EditingProjectName: pulumi.String(name),
-//				Title:              pulumi.String(name),
-//				Timeline: pulumi.String(`  {
-//	    "VideoTracks":[
-//	      {
-//	        "VideoTrackClips":[
-//	          {
-//	          "MediaId":"0c60e6f02dae71edbfaa472190a90102",
-//	          "In":2811
-//	          }
-//	        ]
-//	      }
-//	    ]
-//	  }
-//
-// `),
-//
-//				CoverUrl: pulumi.String("https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png"),
-//				Division: *pulumi.String(_default.Regions[0].Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // VOD Editing Project can be imported using the id, e.g.

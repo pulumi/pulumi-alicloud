@@ -10,27 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Sddp Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultRule = new alicloud.sddp.Rule("defaultRule", {
- *     category: 0,
- *     content: "content",
- *     ruleName: "rule_name",
- *     riskLevelId: "4",
- *     productCode: "ODPS",
- * });
- * const defaultRules = alicloud.sddp.getRulesOutput({
- *     ids: [defaultRule.id],
- * });
- * export const sddpRuleId = defaultRules.apply(defaultRules => defaultRules.id);
- * ```
  */
 export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
     args = args || {};
@@ -136,27 +115,6 @@ export interface GetRulesResult {
  * This data source provides the Sddp Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultRule = new alicloud.sddp.Rule("defaultRule", {
- *     category: 0,
- *     content: "content",
- *     ruleName: "rule_name",
- *     riskLevelId: "4",
- *     productCode: "ODPS",
- * });
- * const defaultRules = alicloud.sddp.getRulesOutput({
- *     ids: [defaultRule.id],
- * });
- * export const sddpRuleId = defaultRules.apply(defaultRules => defaultRules.id);
- * ```
  */
 export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
     return pulumi.output(args).apply((a: any) => getRules(a, opts))

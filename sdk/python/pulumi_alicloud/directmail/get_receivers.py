@@ -119,19 +119,6 @@ def get_receivers(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.125.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.directmail.get_receivers(ids=["ca73b1e4fb0df7c935a5097a****"],
-        name_regex="the_resource_name")
-    pulumi.export("firstDirectMailReceiversId", example.receiverses[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Receivers IDs.
     :param str key_word: The key word.
@@ -170,19 +157,6 @@ def get_receivers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.125.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.directmail.get_receivers(ids=["ca73b1e4fb0df7c935a5097a****"],
-        name_regex="the_resource_name")
-    pulumi.export("firstDirectMailReceiversId", example.receiverses[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Receivers IDs.

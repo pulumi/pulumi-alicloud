@@ -139,24 +139,6 @@ def get_access_strategies(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.152.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dns.get_access_strategies(instance_id="example_value",
-        strategy_mode="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ],
-        name_regex="the_resource_name")
-    pulumi.export("alidnsAccessStrategyId1", ids.strategies[0].id)
-    ```
-
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Access Strategy IDs.
@@ -203,24 +185,6 @@ def get_access_strategies_output(enable_details: Optional[pulumi.Input[Optional[
     This data source provides the Alidns Access Strategies of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.152.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dns.get_access_strategies(instance_id="example_value",
-        strategy_mode="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ],
-        name_regex="the_resource_name")
-    pulumi.export("alidnsAccessStrategyId1", ids.strategies[0].id)
-    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

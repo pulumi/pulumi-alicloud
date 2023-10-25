@@ -15,34 +15,6 @@ import (
 // This data source provides MountTargets available to the user.
 //
 // > **NOTE**: Available in 1.35.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := nas.GetMountTargets(ctx, &nas.GetMountTargetsArgs{
-//				FileSystemId:    "1a2sc4d",
-//				AccessGroupName: pulumi.StringRef("tf-testAccNasConfig"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("theFirstMountTargetDomain", example.Targets[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetMountTargets(ctx *pulumi.Context, args *GetMountTargetsArgs, opts ...pulumi.InvokeOption) (*GetMountTargetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMountTargetsResult

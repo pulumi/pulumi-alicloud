@@ -15,35 +15,6 @@ namespace Pulumi.AliCloud.Quotas
         /// This data source provides the Quotas Quotas of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.115.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Quotas.GetQuotas.Invoke(new()
-        ///     {
-        ///         ProductCode = "ecs",
-        ///         NameRegex = "专有宿主机总数量上限",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstQuotasQuotaId"] = example.Apply(getQuotasResult =&gt; getQuotasResult.Quotas[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetQuotasResult> InvokeAsync(GetQuotasArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQuotasResult>("alicloud:quotas/getQuotas:getQuotas", args ?? new GetQuotasArgs(), options.WithDefaults());
@@ -52,35 +23,6 @@ namespace Pulumi.AliCloud.Quotas
         /// This data source provides the Quotas Quotas of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.115.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Quotas.GetQuotas.Invoke(new()
-        ///     {
-        ///         ProductCode = "ecs",
-        ///         NameRegex = "专有宿主机总数量上限",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstQuotasQuotaId"] = example.Apply(getQuotasResult =&gt; getQuotasResult.Quotas[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetQuotasResult> Invoke(GetQuotasInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQuotasResult>("alicloud:quotas/getQuotas:getQuotas", args ?? new GetQuotasInvokeArgs(), options.WithDefaults());

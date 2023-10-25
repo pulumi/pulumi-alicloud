@@ -35,19 +35,23 @@ class HoneypotNodeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             available_probe_num: pulumi.Input[int],
-             node_name: pulumi.Input[str],
+             available_probe_num: Optional[pulumi.Input[int]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
              allow_honeypot_access_internet: Optional[pulumi.Input[bool]] = None,
              security_group_probe_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availableProbeNum' in kwargs:
+        if available_probe_num is None and 'availableProbeNum' in kwargs:
             available_probe_num = kwargs['availableProbeNum']
-        if 'nodeName' in kwargs:
+        if available_probe_num is None:
+            raise TypeError("Missing 'available_probe_num' argument")
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'allowHoneypotAccessInternet' in kwargs:
+        if node_name is None:
+            raise TypeError("Missing 'node_name' argument")
+        if allow_honeypot_access_internet is None and 'allowHoneypotAccessInternet' in kwargs:
             allow_honeypot_access_internet = kwargs['allowHoneypotAccessInternet']
-        if 'securityGroupProbeIpLists' in kwargs:
+        if security_group_probe_ip_lists is None and 'securityGroupProbeIpLists' in kwargs:
             security_group_probe_ip_lists = kwargs['securityGroupProbeIpLists']
 
         _setter("available_probe_num", available_probe_num)
@@ -142,17 +146,17 @@ class _HoneypotNodeState:
              node_name: Optional[pulumi.Input[str]] = None,
              security_group_probe_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowHoneypotAccessInternet' in kwargs:
+        if allow_honeypot_access_internet is None and 'allowHoneypotAccessInternet' in kwargs:
             allow_honeypot_access_internet = kwargs['allowHoneypotAccessInternet']
-        if 'availableProbeNum' in kwargs:
+        if available_probe_num is None and 'availableProbeNum' in kwargs:
             available_probe_num = kwargs['availableProbeNum']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'securityGroupProbeIpLists' in kwargs:
+        if security_group_probe_ip_lists is None and 'securityGroupProbeIpLists' in kwargs:
             security_group_probe_ip_lists = kwargs['securityGroupProbeIpLists']
 
         if allow_honeypot_access_internet is not None:
@@ -258,24 +262,6 @@ class HoneypotNode(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default = alicloud.threatdetection.HoneypotNode("default",
-            node_name=name,
-            available_probe_num=20,
-            security_group_probe_ip_lists=["0.0.0.0/0"])
-        ```
-
         ## Import
 
         Threat Detection Honeypot Node can be imported using the id, e.g.
@@ -303,24 +289,6 @@ class HoneypotNode(pulumi.CustomResource):
         For information about Threat Detection Honeypot Node and how to use it, see [What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode).
 
         > **NOTE:** Available since v1.195.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default = alicloud.threatdetection.HoneypotNode("default",
-            node_name=name,
-            available_probe_num=20,
-            security_group_probe_ip_lists=["0.0.0.0/0"])
-        ```
 
         ## Import
 

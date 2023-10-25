@@ -15,67 +15,6 @@ import (
 // This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.145.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := ros.GetStackInstances(ctx, &ros.GetStackInstancesArgs{
-//				StackGroupName: "example_value",
-//				Ids: []string{
-//					"example_value-1",
-//					"example_value-2",
-//				},
-//				EnableDetails: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("rosStackInstanceId1", ids.Instances[0].Id)
-//			status, err := ros.GetStackInstances(ctx, &ros.GetStackInstancesArgs{
-//				StackGroupName: "example_value",
-//				Status:         pulumi.StringRef("CURRENT"),
-//				EnableDetails:  pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("rosStackInstanceId2", status.Instances[0].Id)
-//			regionId, err := ros.GetStackInstances(ctx, &ros.GetStackInstancesArgs{
-//				StackGroupName:        "example_value",
-//				StackInstanceRegionId: pulumi.StringRef("example_value"),
-//				EnableDetails:         pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("rosStackInstanceId3", regionId.Instances[0].Id)
-//			accountId, err := ros.GetStackInstances(ctx, &ros.GetStackInstancesArgs{
-//				StackGroupName:         "example_value",
-//				StackInstanceAccountId: pulumi.StringRef("example_value"),
-//				EnableDetails:          pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("rosStackInstanceId4", accountId.Instances[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetStackInstances(ctx *pulumi.Context, args *GetStackInstancesArgs, opts ...pulumi.InvokeOption) (*GetStackInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetStackInstancesResult

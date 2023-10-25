@@ -65,10 +65,10 @@ class AlarmArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alarm_actions: pulumi.Input[Sequence[pulumi.Input[str]]],
-             metric_name: pulumi.Input[str],
-             scaling_group_id: pulumi.Input[str],
-             threshold: pulumi.Input[str],
+             alarm_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             metric_name: Optional[pulumi.Input[str]] = None,
+             scaling_group_id: Optional[pulumi.Input[str]] = None,
+             threshold: Optional[pulumi.Input[str]] = None,
              cloud_monitor_group_id: Optional[pulumi.Input[int]] = None,
              comparison_operator: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -79,21 +79,29 @@ class AlarmArgs:
              name: Optional[pulumi.Input[str]] = None,
              period: Optional[pulumi.Input[int]] = None,
              statistics: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alarmActions' in kwargs:
+        if alarm_actions is None and 'alarmActions' in kwargs:
             alarm_actions = kwargs['alarmActions']
-        if 'metricName' in kwargs:
+        if alarm_actions is None:
+            raise TypeError("Missing 'alarm_actions' argument")
+        if metric_name is None and 'metricName' in kwargs:
             metric_name = kwargs['metricName']
-        if 'scalingGroupId' in kwargs:
+        if metric_name is None:
+            raise TypeError("Missing 'metric_name' argument")
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
-        if 'cloudMonitorGroupId' in kwargs:
+        if scaling_group_id is None:
+            raise TypeError("Missing 'scaling_group_id' argument")
+        if threshold is None:
+            raise TypeError("Missing 'threshold' argument")
+        if cloud_monitor_group_id is None and 'cloudMonitorGroupId' in kwargs:
             cloud_monitor_group_id = kwargs['cloudMonitorGroupId']
-        if 'comparisonOperator' in kwargs:
+        if comparison_operator is None and 'comparisonOperator' in kwargs:
             comparison_operator = kwargs['comparisonOperator']
-        if 'evaluationCount' in kwargs:
+        if evaluation_count is None and 'evaluationCount' in kwargs:
             evaluation_count = kwargs['evaluationCount']
-        if 'metricType' in kwargs:
+        if metric_type is None and 'metricType' in kwargs:
             metric_type = kwargs['metricType']
 
         _setter("alarm_actions", alarm_actions)
@@ -365,21 +373,21 @@ class _AlarmState:
              state: Optional[pulumi.Input[str]] = None,
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alarmActions' in kwargs:
+        if alarm_actions is None and 'alarmActions' in kwargs:
             alarm_actions = kwargs['alarmActions']
-        if 'cloudMonitorGroupId' in kwargs:
+        if cloud_monitor_group_id is None and 'cloudMonitorGroupId' in kwargs:
             cloud_monitor_group_id = kwargs['cloudMonitorGroupId']
-        if 'comparisonOperator' in kwargs:
+        if comparison_operator is None and 'comparisonOperator' in kwargs:
             comparison_operator = kwargs['comparisonOperator']
-        if 'evaluationCount' in kwargs:
+        if evaluation_count is None and 'evaluationCount' in kwargs:
             evaluation_count = kwargs['evaluationCount']
-        if 'metricName' in kwargs:
+        if metric_name is None and 'metricName' in kwargs:
             metric_name = kwargs['metricName']
-        if 'metricType' in kwargs:
+        if metric_type is None and 'metricType' in kwargs:
             metric_type = kwargs['metricType']
-        if 'scalingGroupId' in kwargs:
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
 
         if alarm_actions is not None:
@@ -624,78 +632,6 @@ class Alarm(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.15.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=2,
-            memory_size=4)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
-            type="ingress",
-            ip_protocol="tcp",
-            nic_type="intranet",
-            policy="accept",
-            port_range="22/22",
-            priority=1,
-            security_group_id=default_security_group.id,
-            cidr_ip="172.16.0.0/24")
-        default2 = alicloud.vpc.Switch("default2",
-            vpc_id=default_network.id,
-            cidr_block="172.16.1.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=f"{name}-bar")
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            min_size=1,
-            max_size=1,
-            scaling_group_name=name,
-            default_cooldown=20,
-            vswitch_ids=[
-                default_switch.id,
-                default2.id,
-            ],
-            removal_policies=[
-                "OldestInstance",
-                "NewestInstance",
-            ])
-        default_scaling_rule = alicloud.ess.ScalingRule("defaultScalingRule",
-            scaling_rule_name=name,
-            scaling_group_id=default_scaling_group.id,
-            adjustment_type="TotalCapacity",
-            adjustment_value=2,
-            cooldown=60)
-        default_alarm = alicloud.ess.Alarm("defaultAlarm",
-            description=name,
-            alarm_actions=[default_scaling_rule.ari],
-            scaling_group_id=default_scaling_group.id,
-            metric_type="system",
-            metric_name="CpuUtilization",
-            period=300,
-            statistics="Average",
-            threshold="200.3",
-            comparison_operator=">=",
-            evaluation_count=2)
-        ```
         ## Module Support
 
         You can use to the existing autoscaling-rule module
@@ -739,78 +675,6 @@ class Alarm(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.15.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=2,
-            memory_size=4)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
-            type="ingress",
-            ip_protocol="tcp",
-            nic_type="intranet",
-            policy="accept",
-            port_range="22/22",
-            priority=1,
-            security_group_id=default_security_group.id,
-            cidr_ip="172.16.0.0/24")
-        default2 = alicloud.vpc.Switch("default2",
-            vpc_id=default_network.id,
-            cidr_block="172.16.1.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=f"{name}-bar")
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            min_size=1,
-            max_size=1,
-            scaling_group_name=name,
-            default_cooldown=20,
-            vswitch_ids=[
-                default_switch.id,
-                default2.id,
-            ],
-            removal_policies=[
-                "OldestInstance",
-                "NewestInstance",
-            ])
-        default_scaling_rule = alicloud.ess.ScalingRule("defaultScalingRule",
-            scaling_rule_name=name,
-            scaling_group_id=default_scaling_group.id,
-            adjustment_type="TotalCapacity",
-            adjustment_value=2,
-            cooldown=60)
-        default_alarm = alicloud.ess.Alarm("defaultAlarm",
-            description=name,
-            alarm_actions=[default_scaling_rule.ari],
-            scaling_group_id=default_scaling_group.id,
-            metric_type="system",
-            metric_name="CpuUtilization",
-            period=300,
-            statistics="Average",
-            threshold="200.3",
-            comparison_operator=">=",
-            evaluation_count=2)
-        ```
         ## Module Support
 
         You can use to the existing autoscaling-rule module

@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ros Change Sets of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.105.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ros.getChangeSets({
- *     stackId: "example_value",
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstRosChangeSetId = example.then(example => example.sets?.[0]?.id);
- * ```
  */
 export function getChangeSets(args: GetChangeSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetChangeSetsResult> {
 
@@ -97,22 +81,6 @@ export interface GetChangeSetsResult {
  * This data source provides the Ros Change Sets of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.105.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.ros.getChangeSets({
- *     stackId: "example_value",
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstRosChangeSetId = example.then(example => example.sets?.[0]?.id);
- * ```
  */
 export function getChangeSetsOutput(args: GetChangeSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChangeSetsResult> {
     return pulumi.output(args).apply((a: any) => getChangeSets(a, opts))

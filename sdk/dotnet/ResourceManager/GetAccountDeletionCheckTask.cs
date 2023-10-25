@@ -19,34 +19,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// &gt; **NOTE:** Available in v1.187.0+.
         /// 
         /// &gt; **NOTE:** The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var task = AliCloud.ResourceManager.GetAccountDeletionCheckTask.Invoke(new()
-        ///     {
-        ///         AccountId = "your_account_id",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["abandonAbleChecksIds"] = task.Apply(getAccountDeletionCheckTaskResult =&gt; getAccountDeletionCheckTaskResult.AbandonAbleChecks).Select(__item =&gt; __item.CheckId).ToList(),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountDeletionCheckTaskResult> InvokeAsync(GetAccountDeletionCheckTaskArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountDeletionCheckTaskResult>("alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask", args ?? new GetAccountDeletionCheckTaskArgs(), options.WithDefaults());
@@ -59,34 +31,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// &gt; **NOTE:** Available in v1.187.0+.
         /// 
         /// &gt; **NOTE:** The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var task = AliCloud.ResourceManager.GetAccountDeletionCheckTask.Invoke(new()
-        ///     {
-        ///         AccountId = "your_account_id",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["abandonAbleChecksIds"] = task.Apply(getAccountDeletionCheckTaskResult =&gt; getAccountDeletionCheckTaskResult.AbandonAbleChecks).Select(__item =&gt; __item.CheckId).ToList(),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountDeletionCheckTaskResult> Invoke(GetAccountDeletionCheckTaskInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountDeletionCheckTaskResult>("alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask", args ?? new GetAccountDeletionCheckTaskInvokeArgs(), options.WithDefaults());

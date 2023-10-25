@@ -12,21 +12,6 @@ import * as utilities from "../utilities";
  * For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
  *
  * > **NOTE:** Available in 1.90.0+ .
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.waf.getInstances({
- *     ids: ["waf-cn-09k********"],
- *     status: 1,
- *     resourceGroupId: "rg-acfmwvv********",
- *     instanceSource: "waf-cloud",
- * });
- * export const theFirstWafInstanceId = _default.then(_default => _default.instances?.[0]?.id);
- * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -97,21 +82,6 @@ export interface GetInstancesResult {
  * For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
  *
  * > **NOTE:** Available in 1.90.0+ .
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.waf.getInstances({
- *     ids: ["waf-cn-09k********"],
- *     status: 1,
- *     resourceGroupId: "rg-acfmwvv********",
- *     instanceSource: "waf-cloud",
- * });
- * export const theFirstWafInstanceId = _default.then(_default => _default.instances?.[0]?.id);
- * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))

@@ -51,27 +51,45 @@ class GetProjectsProjectResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             billing_type: str,
-             compute_unit: int,
-             create_time: str,
-             endpoint: str,
-             id: str,
-             modify_time: str,
-             project: str,
-             service_role: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             billing_type: Optional[str] = None,
+             compute_unit: Optional[int] = None,
+             create_time: Optional[str] = None,
+             endpoint: Optional[str] = None,
+             id: Optional[str] = None,
+             modify_time: Optional[str] = None,
+             project: Optional[str] = None,
+             service_role: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'billingType' in kwargs:
+        if billing_type is None and 'billingType' in kwargs:
             billing_type = kwargs['billingType']
-        if 'computeUnit' in kwargs:
+        if billing_type is None:
+            raise TypeError("Missing 'billing_type' argument")
+        if compute_unit is None and 'computeUnit' in kwargs:
             compute_unit = kwargs['computeUnit']
-        if 'createTime' in kwargs:
+        if compute_unit is None:
+            raise TypeError("Missing 'compute_unit' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'modifyTime' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if modify_time is None and 'modifyTime' in kwargs:
             modify_time = kwargs['modifyTime']
-        if 'serviceRole' in kwargs:
+        if modify_time is None:
+            raise TypeError("Missing 'modify_time' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if service_role is None and 'serviceRole' in kwargs:
             service_role = kwargs['serviceRole']
+        if service_role is None:
+            raise TypeError("Missing 'service_role' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("billing_type", billing_type)
         _setter("compute_unit", compute_unit)

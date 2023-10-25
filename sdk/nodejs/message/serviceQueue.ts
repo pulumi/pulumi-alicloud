@@ -11,27 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.188.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const queue = new alicloud.message.ServiceQueue("queue", {
- *     queueName: name,
- *     delaySeconds: 60478,
- *     maximumMessageSize: 12357,
- *     messageRetentionPeriod: 256000,
- *     visibilityTimeout: 30,
- *     pollingWaitSeconds: 3,
- *     loggingEnabled: true,
- * });
- * ```
- *
  * ## Import
  *
  * Message Notification Service Queue can be imported using the id or queue_name, e.g.

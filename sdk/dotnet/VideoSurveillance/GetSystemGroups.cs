@@ -15,46 +15,6 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.135.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var defaultSystemGroup = new AliCloud.VideoSurveillance.SystemGroup("defaultSystemGroup", new()
-        ///     {
-        ///         GroupName = "groupname",
-        ///         InProtocol = "rtmp",
-        ///         OutProtocol = "flv",
-        ///         PlayDomain = "your_plan_domain",
-        ///         PushDomain = "your_push_domain",
-        ///     });
-        /// 
-        ///     var defaultSystemGroups = AliCloud.VideoSurveillance.GetSystemGroups.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             defaultSystemGroup.Id,
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["vsGroup"] = defaultSystemGroups.Apply(getSystemGroupsResult =&gt; getSystemGroupsResult.Ids[0]),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSystemGroupsResult> InvokeAsync(GetSystemGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSystemGroupsResult>("alicloud:videosurveillance/getSystemGroups:getSystemGroups", args ?? new GetSystemGroupsArgs(), options.WithDefaults());
@@ -63,46 +23,6 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.135.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var defaultSystemGroup = new AliCloud.VideoSurveillance.SystemGroup("defaultSystemGroup", new()
-        ///     {
-        ///         GroupName = "groupname",
-        ///         InProtocol = "rtmp",
-        ///         OutProtocol = "flv",
-        ///         PlayDomain = "your_plan_domain",
-        ///         PushDomain = "your_push_domain",
-        ///     });
-        /// 
-        ///     var defaultSystemGroups = AliCloud.VideoSurveillance.GetSystemGroups.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             defaultSystemGroup.Id,
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["vsGroup"] = defaultSystemGroups.Apply(getSystemGroupsResult =&gt; getSystemGroupsResult.Ids[0]),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetSystemGroupsResult> Invoke(GetSystemGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSystemGroupsResult>("alicloud:videosurveillance/getSystemGroups:getSystemGroups", args ?? new GetSystemGroupsInvokeArgs(), options.WithDefaults());

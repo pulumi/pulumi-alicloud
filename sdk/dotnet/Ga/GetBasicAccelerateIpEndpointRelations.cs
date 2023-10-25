@@ -15,38 +15,6 @@ namespace Pulumi.AliCloud.Ga
         /// This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.194.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Ga.GetBasicAccelerateIpEndpointRelations.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         AcceleratorId = "example_id",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["gaBasicAccelerateIpEndpointRelationsId1"] = ids.Apply(getBasicAccelerateIpEndpointRelationsResult =&gt; getBasicAccelerateIpEndpointRelationsResult.Relations[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBasicAccelerateIpEndpointRelationsResult> InvokeAsync(GetBasicAccelerateIpEndpointRelationsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBasicAccelerateIpEndpointRelationsResult>("alicloud:ga/getBasicAccelerateIpEndpointRelations:getBasicAccelerateIpEndpointRelations", args ?? new GetBasicAccelerateIpEndpointRelationsArgs(), options.WithDefaults());
@@ -55,38 +23,6 @@ namespace Pulumi.AliCloud.Ga
         /// This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.194.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Ga.GetBasicAccelerateIpEndpointRelations.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         AcceleratorId = "example_id",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["gaBasicAccelerateIpEndpointRelationsId1"] = ids.Apply(getBasicAccelerateIpEndpointRelationsResult =&gt; getBasicAccelerateIpEndpointRelationsResult.Relations[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBasicAccelerateIpEndpointRelationsResult> Invoke(GetBasicAccelerateIpEndpointRelationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBasicAccelerateIpEndpointRelationsResult>("alicloud:ga/getBasicAccelerateIpEndpointRelations:getBasicAccelerateIpEndpointRelations", args ?? new GetBasicAccelerateIpEndpointRelationsInvokeArgs(), options.WithDefaults());

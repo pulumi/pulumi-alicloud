@@ -93,9 +93,9 @@ class RuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             frontend_port: pulumi.Input[int],
-             load_balancer_id: pulumi.Input[str],
-             server_group_id: pulumi.Input[str],
+             frontend_port: Optional[pulumi.Input[int]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
+             server_group_id: Optional[pulumi.Input[str]] = None,
              cookie: Optional[pulumi.Input[str]] = None,
              cookie_timeout: Optional[pulumi.Input[int]] = None,
              delete_protection_validation: Optional[pulumi.Input[bool]] = None,
@@ -115,41 +115,47 @@ class RuleArgs:
              sticky_session_type: Optional[pulumi.Input[str]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'frontendPort' in kwargs:
+        if frontend_port is None and 'frontendPort' in kwargs:
             frontend_port = kwargs['frontendPort']
-        if 'loadBalancerId' in kwargs:
+        if frontend_port is None:
+            raise TypeError("Missing 'frontend_port' argument")
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
-        if 'serverGroupId' in kwargs:
+        if load_balancer_id is None:
+            raise TypeError("Missing 'load_balancer_id' argument")
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
-        if 'cookieTimeout' in kwargs:
+        if server_group_id is None:
+            raise TypeError("Missing 'server_group_id' argument")
+        if cookie_timeout is None and 'cookieTimeout' in kwargs:
             cookie_timeout = kwargs['cookieTimeout']
-        if 'deleteProtectionValidation' in kwargs:
+        if delete_protection_validation is None and 'deleteProtectionValidation' in kwargs:
             delete_protection_validation = kwargs['deleteProtectionValidation']
-        if 'healthCheck' in kwargs:
+        if health_check is None and 'healthCheck' in kwargs:
             health_check = kwargs['healthCheck']
-        if 'healthCheckConnectPort' in kwargs:
+        if health_check_connect_port is None and 'healthCheckConnectPort' in kwargs:
             health_check_connect_port = kwargs['healthCheckConnectPort']
-        if 'healthCheckDomain' in kwargs:
+        if health_check_domain is None and 'healthCheckDomain' in kwargs:
             health_check_domain = kwargs['healthCheckDomain']
-        if 'healthCheckHttpCode' in kwargs:
+        if health_check_http_code is None and 'healthCheckHttpCode' in kwargs:
             health_check_http_code = kwargs['healthCheckHttpCode']
-        if 'healthCheckInterval' in kwargs:
+        if health_check_interval is None and 'healthCheckInterval' in kwargs:
             health_check_interval = kwargs['healthCheckInterval']
-        if 'healthCheckTimeout' in kwargs:
+        if health_check_timeout is None and 'healthCheckTimeout' in kwargs:
             health_check_timeout = kwargs['healthCheckTimeout']
-        if 'healthCheckUri' in kwargs:
+        if health_check_uri is None and 'healthCheckUri' in kwargs:
             health_check_uri = kwargs['healthCheckUri']
-        if 'healthyThreshold' in kwargs:
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
             healthy_threshold = kwargs['healthyThreshold']
-        if 'listenerSync' in kwargs:
+        if listener_sync is None and 'listenerSync' in kwargs:
             listener_sync = kwargs['listenerSync']
-        if 'stickySession' in kwargs:
+        if sticky_session is None and 'stickySession' in kwargs:
             sticky_session = kwargs['stickySession']
-        if 'stickySessionType' in kwargs:
+        if sticky_session_type is None and 'stickySessionType' in kwargs:
             sticky_session_type = kwargs['stickySessionType']
-        if 'unhealthyThreshold' in kwargs:
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
             unhealthy_threshold = kwargs['unhealthyThreshold']
 
         _setter("frontend_port", frontend_port)
@@ -567,41 +573,41 @@ class _RuleState:
              sticky_session_type: Optional[pulumi.Input[str]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cookieTimeout' in kwargs:
+        if cookie_timeout is None and 'cookieTimeout' in kwargs:
             cookie_timeout = kwargs['cookieTimeout']
-        if 'deleteProtectionValidation' in kwargs:
+        if delete_protection_validation is None and 'deleteProtectionValidation' in kwargs:
             delete_protection_validation = kwargs['deleteProtectionValidation']
-        if 'frontendPort' in kwargs:
+        if frontend_port is None and 'frontendPort' in kwargs:
             frontend_port = kwargs['frontendPort']
-        if 'healthCheck' in kwargs:
+        if health_check is None and 'healthCheck' in kwargs:
             health_check = kwargs['healthCheck']
-        if 'healthCheckConnectPort' in kwargs:
+        if health_check_connect_port is None and 'healthCheckConnectPort' in kwargs:
             health_check_connect_port = kwargs['healthCheckConnectPort']
-        if 'healthCheckDomain' in kwargs:
+        if health_check_domain is None and 'healthCheckDomain' in kwargs:
             health_check_domain = kwargs['healthCheckDomain']
-        if 'healthCheckHttpCode' in kwargs:
+        if health_check_http_code is None and 'healthCheckHttpCode' in kwargs:
             health_check_http_code = kwargs['healthCheckHttpCode']
-        if 'healthCheckInterval' in kwargs:
+        if health_check_interval is None and 'healthCheckInterval' in kwargs:
             health_check_interval = kwargs['healthCheckInterval']
-        if 'healthCheckTimeout' in kwargs:
+        if health_check_timeout is None and 'healthCheckTimeout' in kwargs:
             health_check_timeout = kwargs['healthCheckTimeout']
-        if 'healthCheckUri' in kwargs:
+        if health_check_uri is None and 'healthCheckUri' in kwargs:
             health_check_uri = kwargs['healthCheckUri']
-        if 'healthyThreshold' in kwargs:
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
             healthy_threshold = kwargs['healthyThreshold']
-        if 'listenerSync' in kwargs:
+        if listener_sync is None and 'listenerSync' in kwargs:
             listener_sync = kwargs['listenerSync']
-        if 'loadBalancerId' in kwargs:
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
-        if 'serverGroupId' in kwargs:
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
-        if 'stickySession' in kwargs:
+        if sticky_session is None and 'stickySession' in kwargs:
             sticky_session = kwargs['stickySession']
-        if 'stickySessionType' in kwargs:
+        if sticky_session_type is None and 'stickySessionType' in kwargs:
             sticky_session_type = kwargs['stickySessionType']
-        if 'unhealthyThreshold' in kwargs:
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
             unhealthy_threshold = kwargs['unhealthyThreshold']
 
         if cookie is not None:
@@ -960,79 +966,6 @@ class Rule(pulumi.CustomResource):
 
         > **NOTE:** Only rule's virtual server group can be modified.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        slb_rule_name = config.get("slbRuleName")
-        if slb_rule_name is None:
-            slb_rule_name = "terraform-example"
-        rule_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        rule_instance_types = alicloud.ecs.get_instance_types(availability_zone=rule_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        rule_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        rule_network = alicloud.vpc.Network("ruleNetwork",
-            vpc_name=slb_rule_name,
-            cidr_block="172.16.0.0/16")
-        rule_switch = alicloud.vpc.Switch("ruleSwitch",
-            vpc_id=rule_network.id,
-            cidr_block="172.16.0.0/16",
-            zone_id=rule_zones.zones[0].id,
-            vswitch_name=slb_rule_name)
-        rule_security_group = alicloud.ecs.SecurityGroup("ruleSecurityGroup", vpc_id=rule_network.id)
-        rule_instance = alicloud.ecs.Instance("ruleInstance",
-            image_id=rule_images.images[0].id,
-            instance_type=rule_instance_types.instance_types[0].id,
-            security_groups=[__item.id for __item in [rule_security_group]],
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=10,
-            availability_zone=rule_zones.zones[0].id,
-            instance_charge_type="PostPaid",
-            system_disk_category="cloud_efficiency",
-            vswitch_id=rule_switch.id,
-            instance_name=slb_rule_name)
-        rule_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("ruleApplicationLoadBalancer",
-            load_balancer_name=slb_rule_name,
-            vswitch_id=rule_switch.id,
-            instance_charge_type="PayByCLCU")
-        rule_listener = alicloud.slb.Listener("ruleListener",
-            load_balancer_id=rule_application_load_balancer.id,
-            backend_port=22,
-            frontend_port=22,
-            protocol="http",
-            bandwidth=5,
-            health_check_connect_port=20)
-        rule_server_group = alicloud.slb.ServerGroup("ruleServerGroup", load_balancer_id=rule_application_load_balancer.id)
-        rule_rule = alicloud.slb.Rule("ruleRule",
-            load_balancer_id=rule_application_load_balancer.id,
-            frontend_port=rule_listener.frontend_port,
-            domain="*.aliyun.com",
-            url="/image",
-            server_group_id=rule_server_group.id,
-            cookie="23ffsa",
-            cookie_timeout=100,
-            health_check_http_code="http_2xx",
-            health_check_interval=10,
-            health_check_uri="/test",
-            health_check_connect_port=80,
-            health_check_timeout=30,
-            healthy_threshold=3,
-            unhealthy_threshold=5,
-            sticky_session="on",
-            sticky_session_type="server",
-            listener_sync="off",
-            scheduler="rr",
-            health_check_domain="test",
-            health_check="on")
-        ```
-
         ## Import
 
         Load balancer forwarding rule can be imported using the id, e.g.
@@ -1089,79 +1022,6 @@ class Rule(pulumi.CustomResource):
         > **NOTE:** Rule only be created in the `HTTP` or `HTTPS` listener.
 
         > **NOTE:** Only rule's virtual server group can be modified.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        slb_rule_name = config.get("slbRuleName")
-        if slb_rule_name is None:
-            slb_rule_name = "terraform-example"
-        rule_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        rule_instance_types = alicloud.ecs.get_instance_types(availability_zone=rule_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        rule_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        rule_network = alicloud.vpc.Network("ruleNetwork",
-            vpc_name=slb_rule_name,
-            cidr_block="172.16.0.0/16")
-        rule_switch = alicloud.vpc.Switch("ruleSwitch",
-            vpc_id=rule_network.id,
-            cidr_block="172.16.0.0/16",
-            zone_id=rule_zones.zones[0].id,
-            vswitch_name=slb_rule_name)
-        rule_security_group = alicloud.ecs.SecurityGroup("ruleSecurityGroup", vpc_id=rule_network.id)
-        rule_instance = alicloud.ecs.Instance("ruleInstance",
-            image_id=rule_images.images[0].id,
-            instance_type=rule_instance_types.instance_types[0].id,
-            security_groups=[__item.id for __item in [rule_security_group]],
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=10,
-            availability_zone=rule_zones.zones[0].id,
-            instance_charge_type="PostPaid",
-            system_disk_category="cloud_efficiency",
-            vswitch_id=rule_switch.id,
-            instance_name=slb_rule_name)
-        rule_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("ruleApplicationLoadBalancer",
-            load_balancer_name=slb_rule_name,
-            vswitch_id=rule_switch.id,
-            instance_charge_type="PayByCLCU")
-        rule_listener = alicloud.slb.Listener("ruleListener",
-            load_balancer_id=rule_application_load_balancer.id,
-            backend_port=22,
-            frontend_port=22,
-            protocol="http",
-            bandwidth=5,
-            health_check_connect_port=20)
-        rule_server_group = alicloud.slb.ServerGroup("ruleServerGroup", load_balancer_id=rule_application_load_balancer.id)
-        rule_rule = alicloud.slb.Rule("ruleRule",
-            load_balancer_id=rule_application_load_balancer.id,
-            frontend_port=rule_listener.frontend_port,
-            domain="*.aliyun.com",
-            url="/image",
-            server_group_id=rule_server_group.id,
-            cookie="23ffsa",
-            cookie_timeout=100,
-            health_check_http_code="http_2xx",
-            health_check_interval=10,
-            health_check_uri="/test",
-            health_check_connect_port=80,
-            health_check_timeout=30,
-            healthy_threshold=3,
-            unhealthy_threshold=5,
-            sticky_session="on",
-            sticky_session_type="server",
-            listener_sync="off",
-            scheduler="rr",
-            health_check_domain="test",
-            health_check="on")
-        ```
 
         ## Import
 

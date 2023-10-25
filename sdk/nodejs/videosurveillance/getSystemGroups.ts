@@ -10,27 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.135.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultSystemGroup = new alicloud.videosurveillance.SystemGroup("defaultSystemGroup", {
- *     groupName: "groupname",
- *     inProtocol: "rtmp",
- *     outProtocol: "flv",
- *     playDomain: "your_plan_domain",
- *     pushDomain: "your_push_domain",
- * });
- * const defaultSystemGroups = alicloud.videosurveillance.getSystemGroupsOutput({
- *     ids: [defaultSystemGroup.id],
- * });
- * export const vsGroup = defaultSystemGroups.apply(defaultSystemGroups => defaultSystemGroups.ids?.[0]);
- * ```
  */
 export function getSystemGroups(args?: GetSystemGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSystemGroupsResult> {
     args = args || {};
@@ -97,27 +76,6 @@ export interface GetSystemGroupsResult {
  * This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.135.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultSystemGroup = new alicloud.videosurveillance.SystemGroup("defaultSystemGroup", {
- *     groupName: "groupname",
- *     inProtocol: "rtmp",
- *     outProtocol: "flv",
- *     playDomain: "your_plan_domain",
- *     pushDomain: "your_push_domain",
- * });
- * const defaultSystemGroups = alicloud.videosurveillance.getSystemGroupsOutput({
- *     ids: [defaultSystemGroup.id],
- * });
- * export const vsGroup = defaultSystemGroups.apply(defaultSystemGroups => defaultSystemGroups.ids?.[0]);
- * ```
  */
 export function getSystemGroupsOutput(args?: GetSystemGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSystemGroupsResult> {
     return pulumi.output(args).apply((a: any) => getSystemGroups(a, opts))

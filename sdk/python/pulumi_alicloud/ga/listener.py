@@ -60,8 +60,8 @@ class ListenerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: pulumi.Input[str],
-             port_ranges: pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]]] = None,
              certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]] = None,
              client_affinity: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -71,21 +71,25 @@ class ListenerArgs:
              protocol: Optional[pulumi.Input[str]] = None,
              proxy_protocol: Optional[pulumi.Input[bool]] = None,
              security_policy_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'portRanges' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if port_ranges is None and 'portRanges' in kwargs:
             port_ranges = kwargs['portRanges']
-        if 'clientAffinity' in kwargs:
+        if port_ranges is None:
+            raise TypeError("Missing 'port_ranges' argument")
+        if client_affinity is None and 'clientAffinity' in kwargs:
             client_affinity = kwargs['clientAffinity']
-        if 'forwardedForConfig' in kwargs:
+        if forwarded_for_config is None and 'forwardedForConfig' in kwargs:
             forwarded_for_config = kwargs['forwardedForConfig']
-        if 'listenerType' in kwargs:
+        if listener_type is None and 'listenerType' in kwargs:
             listener_type = kwargs['listenerType']
-        if 'proxyProtocol' in kwargs:
+        if proxy_protocol is None and 'proxyProtocol' in kwargs:
             proxy_protocol = kwargs['proxyProtocol']
-        if 'securityPolicyId' in kwargs:
+        if security_policy_id is None and 'securityPolicyId' in kwargs:
             security_policy_id = kwargs['securityPolicyId']
 
         _setter("accelerator_id", accelerator_id)
@@ -306,21 +310,21 @@ class _ListenerState:
              proxy_protocol: Optional[pulumi.Input[bool]] = None,
              security_policy_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'clientAffinity' in kwargs:
+        if client_affinity is None and 'clientAffinity' in kwargs:
             client_affinity = kwargs['clientAffinity']
-        if 'forwardedForConfig' in kwargs:
+        if forwarded_for_config is None and 'forwardedForConfig' in kwargs:
             forwarded_for_config = kwargs['forwardedForConfig']
-        if 'listenerType' in kwargs:
+        if listener_type is None and 'listenerType' in kwargs:
             listener_type = kwargs['listenerType']
-        if 'portRanges' in kwargs:
+        if port_ranges is None and 'portRanges' in kwargs:
             port_ranges = kwargs['portRanges']
-        if 'proxyProtocol' in kwargs:
+        if proxy_protocol is None and 'proxyProtocol' in kwargs:
             proxy_protocol = kwargs['proxyProtocol']
-        if 'securityPolicyId' in kwargs:
+        if security_policy_id is None and 'securityPolicyId' in kwargs:
             security_policy_id = kwargs['securityPolicyId']
 
         if accelerator_id is not None:
@@ -519,36 +523,6 @@ class Listener(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.111.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
-            bandwidth=100,
-            type="Basic",
-            bandwidth_type="Basic",
-            payment_type="PayAsYouGo",
-            billing_type="PayBy95",
-            ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
-            bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
-            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=80,
-                to_port=80,
-            )])
-        ```
-
         ## Import
 
         Ga Listener can be imported using the id, e.g.
@@ -585,36 +559,6 @@ class Listener(pulumi.CustomResource):
         For information about Global Accelerator (GA) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createlistener).
 
         > **NOTE:** Available since v1.111.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
-            bandwidth=100,
-            type="Basic",
-            bandwidth_type="Basic",
-            payment_type="PayAsYouGo",
-            billing_type="PayBy95",
-            ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
-            bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
-            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=80,
-                to_port=80,
-            )])
-        ```
 
         ## Import
 
@@ -669,11 +613,7 @@ class Listener(pulumi.CustomResource):
             __props__.__dict__["certificates"] = certificates
             __props__.__dict__["client_affinity"] = client_affinity
             __props__.__dict__["description"] = description
-            if forwarded_for_config is not None and not isinstance(forwarded_for_config, ListenerForwardedForConfigArgs):
-                forwarded_for_config = forwarded_for_config or {}
-                def _setter(key, value):
-                    forwarded_for_config[key] = value
-                ListenerForwardedForConfigArgs._configure(_setter, **forwarded_for_config)
+            forwarded_for_config = _utilities.configure(forwarded_for_config, ListenerForwardedForConfigArgs, True)
             __props__.__dict__["forwarded_for_config"] = forwarded_for_config
             __props__.__dict__["listener_type"] = listener_type
             __props__.__dict__["name"] = name

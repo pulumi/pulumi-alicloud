@@ -44,26 +44,30 @@ class BgpGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             peer_asn: pulumi.Input[int],
-             router_id: pulumi.Input[str],
+             peer_asn: Optional[pulumi.Input[int]] = None,
+             router_id: Optional[pulumi.Input[str]] = None,
              auth_key: Optional[pulumi.Input[str]] = None,
              bgp_group_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              is_fake_asn: Optional[pulumi.Input[bool]] = None,
              local_asn: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'peerAsn' in kwargs:
+        if peer_asn is None and 'peerAsn' in kwargs:
             peer_asn = kwargs['peerAsn']
-        if 'routerId' in kwargs:
+        if peer_asn is None:
+            raise TypeError("Missing 'peer_asn' argument")
+        if router_id is None and 'routerId' in kwargs:
             router_id = kwargs['routerId']
-        if 'authKey' in kwargs:
+        if router_id is None:
+            raise TypeError("Missing 'router_id' argument")
+        if auth_key is None and 'authKey' in kwargs:
             auth_key = kwargs['authKey']
-        if 'bgpGroupName' in kwargs:
+        if bgp_group_name is None and 'bgpGroupName' in kwargs:
             bgp_group_name = kwargs['bgpGroupName']
-        if 'isFakeAsn' in kwargs:
+        if is_fake_asn is None and 'isFakeAsn' in kwargs:
             is_fake_asn = kwargs['isFakeAsn']
-        if 'localAsn' in kwargs:
+        if local_asn is None and 'localAsn' in kwargs:
             local_asn = kwargs['localAsn']
 
         _setter("peer_asn", peer_asn)
@@ -208,19 +212,19 @@ class _BgpGroupState:
              peer_asn: Optional[pulumi.Input[int]] = None,
              router_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authKey' in kwargs:
+        if auth_key is None and 'authKey' in kwargs:
             auth_key = kwargs['authKey']
-        if 'bgpGroupName' in kwargs:
+        if bgp_group_name is None and 'bgpGroupName' in kwargs:
             bgp_group_name = kwargs['bgpGroupName']
-        if 'isFakeAsn' in kwargs:
+        if is_fake_asn is None and 'isFakeAsn' in kwargs:
             is_fake_asn = kwargs['isFakeAsn']
-        if 'localAsn' in kwargs:
+        if local_asn is None and 'localAsn' in kwargs:
             local_asn = kwargs['localAsn']
-        if 'peerAsn' in kwargs:
+        if peer_asn is None and 'peerAsn' in kwargs:
             peer_asn = kwargs['peerAsn']
-        if 'routerId' in kwargs:
+        if router_id is None and 'routerId' in kwargs:
             router_id = kwargs['routerId']
 
         if auth_key is not None:
@@ -357,42 +361,6 @@ class BgpGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.152.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.RandomInteger("vlanId",
-            max=2999,
-            min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
-            local_gateway_ip="10.0.0.1",
-            peer_gateway_ip="10.0.0.2",
-            peering_subnet_mask="255.255.255.252",
-            physical_connection_id=example_physical_connections.connections[0].id,
-            virtual_border_router_name=name,
-            vlan_id=vlan_id.id,
-            min_rx_interval=1000,
-            min_tx_interval=1000,
-            detect_multiplier=10)
-        example_bgp_group = alicloud.vpc.BgpGroup("exampleBgpGroup",
-            auth_key="YourPassword+12345678",
-            bgp_group_name=name,
-            description=name,
-            peer_asn=1111,
-            router_id=example_virtual_border_router.id,
-            is_fake_asn=True)
-        ```
-
         ## Import
 
         VPC Bgp Group can be imported using the id, e.g.
@@ -423,42 +391,6 @@ class BgpGroup(pulumi.CustomResource):
         For information about VPC Bgp Group and how to use it, see [What is Bgp Group](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
 
         > **NOTE:** Available since v1.152.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.RandomInteger("vlanId",
-            max=2999,
-            min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
-            local_gateway_ip="10.0.0.1",
-            peer_gateway_ip="10.0.0.2",
-            peering_subnet_mask="255.255.255.252",
-            physical_connection_id=example_physical_connections.connections[0].id,
-            virtual_border_router_name=name,
-            vlan_id=vlan_id.id,
-            min_rx_interval=1000,
-            min_tx_interval=1000,
-            detect_multiplier=10)
-        example_bgp_group = alicloud.vpc.BgpGroup("exampleBgpGroup",
-            auth_key="YourPassword+12345678",
-            bgp_group_name=name,
-            description=name,
-            peer_asn=1111,
-            router_id=example_virtual_border_router.id,
-            is_fake_asn=True)
-        ```
 
         ## Import
 

@@ -64,9 +64,9 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_name: pulumi.Input[str],
-             size: pulumi.Input[int],
-             zone_id: pulumi.Input[str],
+             instance_name: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              category: Optional[pulumi.Input[str]] = None,
              delete_snapshot: Optional[pulumi.Input[bool]] = None,
              ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]] = None,
@@ -77,25 +77,31 @@ class InstanceArgs:
              raid_stripe_unit_number: Optional[pulumi.Input[str]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'zoneId' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'deleteSnapshot' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if delete_snapshot is None and 'deleteSnapshot' in kwargs:
             delete_snapshot = kwargs['deleteSnapshot']
-        if 'ecsLists' in kwargs:
+        if ecs_lists is None and 'ecsLists' in kwargs:
             ecs_lists = kwargs['ecsLists']
-        if 'enableRaid' in kwargs:
+        if enable_raid is None and 'enableRaid' in kwargs:
             enable_raid = kwargs['enableRaid']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'raidStripeUnitNumber' in kwargs:
+        if raid_stripe_unit_number is None and 'raidStripeUnitNumber' in kwargs:
             raid_stripe_unit_number = kwargs['raidStripeUnitNumber']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         _setter("instance_name", instance_name)
@@ -353,25 +359,25 @@ class _InstanceState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteSnapshot' in kwargs:
+        if delete_snapshot is None and 'deleteSnapshot' in kwargs:
             delete_snapshot = kwargs['deleteSnapshot']
-        if 'ecsLists' in kwargs:
+        if ecs_lists is None and 'ecsLists' in kwargs:
             ecs_lists = kwargs['ecsLists']
-        if 'enableRaid' in kwargs:
+        if enable_raid is None and 'enableRaid' in kwargs:
             enable_raid = kwargs['enableRaid']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'raidStripeUnitNumber' in kwargs:
+        if raid_stripe_unit_number is None and 'raidStripeUnitNumber' in kwargs:
             raid_stripe_unit_number = kwargs['raidStripeUnitNumber']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if category is not None:
@@ -604,26 +610,6 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.136.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example = alicloud.databasefilesystem.Instance("example",
-            category="standard",
-            zone_id="cn-hangzhou-i",
-            performance_level="PL1",
-            instance_name=name,
-            size=100)
-        ```
-
         ## Import
 
         DBFS Instance can be imported using the id, e.g.
@@ -660,26 +646,6 @@ class Instance(pulumi.CustomResource):
         For information about DBFS Instance and how to use it.
 
         > **NOTE:** Available since v1.136.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example = alicloud.databasefilesystem.Instance("example",
-            category="standard",
-            zone_id="cn-hangzhou-i",
-            performance_level="PL1",
-            instance_name=name,
-            size=100)
-        ```
 
         ## Import
 

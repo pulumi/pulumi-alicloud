@@ -52,13 +52,13 @@ class ClusterBootstrapActionArgs:
              execution_target: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'executionFailStrategy' in kwargs:
+        if execution_fail_strategy is None and 'executionFailStrategy' in kwargs:
             execution_fail_strategy = kwargs['executionFailStrategy']
-        if 'executionMoment' in kwargs:
+        if execution_moment is None and 'executionMoment' in kwargs:
             execution_moment = kwargs['executionMoment']
-        if 'executionTarget' in kwargs:
+        if execution_target is None and 'executionTarget' in kwargs:
             execution_target = kwargs['executionTarget']
 
         if arg is not None:
@@ -170,20 +170,28 @@ class ClusterConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config_key: pulumi.Input[str],
-             config_value: pulumi.Input[str],
-             file_name: pulumi.Input[str],
-             service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             config_key: Optional[pulumi.Input[str]] = None,
+             config_value: Optional[pulumi.Input[str]] = None,
+             file_name: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configKey' in kwargs:
+        if config_key is None and 'configKey' in kwargs:
             config_key = kwargs['configKey']
-        if 'configValue' in kwargs:
+        if config_key is None:
+            raise TypeError("Missing 'config_key' argument")
+        if config_value is None and 'configValue' in kwargs:
             config_value = kwargs['configValue']
-        if 'fileName' in kwargs:
+        if config_value is None:
+            raise TypeError("Missing 'config_value' argument")
+        if file_name is None and 'fileName' in kwargs:
             file_name = kwargs['fileName']
-        if 'serviceName' in kwargs:
+        if file_name is None:
+            raise TypeError("Missing 'file_name' argument")
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
 
         _setter("config_key", config_key)
         _setter("config_value", config_value)
@@ -313,37 +321,37 @@ class ClusterHostGroupArgs:
              period: Optional[pulumi.Input[int]] = None,
              sys_disk_capacity: Optional[pulumi.Input[str]] = None,
              sys_disk_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'chargeType' in kwargs:
+        if charge_type is None and 'chargeType' in kwargs:
             charge_type = kwargs['chargeType']
-        if 'decommissionTimeout' in kwargs:
+        if decommission_timeout is None and 'decommissionTimeout' in kwargs:
             decommission_timeout = kwargs['decommissionTimeout']
-        if 'diskCapacity' in kwargs:
+        if disk_capacity is None and 'diskCapacity' in kwargs:
             disk_capacity = kwargs['diskCapacity']
-        if 'diskCount' in kwargs:
+        if disk_count is None and 'diskCount' in kwargs:
             disk_count = kwargs['diskCount']
-        if 'diskType' in kwargs:
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'enableGracefulDecommission' in kwargs:
+        if enable_graceful_decommission is None and 'enableGracefulDecommission' in kwargs:
             enable_graceful_decommission = kwargs['enableGracefulDecommission']
-        if 'gpuDriver' in kwargs:
+        if gpu_driver is None and 'gpuDriver' in kwargs:
             gpu_driver = kwargs['gpuDriver']
-        if 'hostGroupName' in kwargs:
+        if host_group_name is None and 'hostGroupName' in kwargs:
             host_group_name = kwargs['hostGroupName']
-        if 'hostGroupType' in kwargs:
+        if host_group_type is None and 'hostGroupType' in kwargs:
             host_group_type = kwargs['hostGroupType']
-        if 'instanceList' in kwargs:
+        if instance_list is None and 'instanceList' in kwargs:
             instance_list = kwargs['instanceList']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'nodeCount' in kwargs:
+        if node_count is None and 'nodeCount' in kwargs:
             node_count = kwargs['nodeCount']
-        if 'sysDiskCapacity' in kwargs:
+        if sys_disk_capacity is None and 'sysDiskCapacity' in kwargs:
             sys_disk_capacity = kwargs['sysDiskCapacity']
-        if 'sysDiskType' in kwargs:
+        if sys_disk_type is None and 'sysDiskType' in kwargs:
             sys_disk_type = kwargs['sysDiskType']
 
         if auto_renew is not None:
@@ -589,17 +597,23 @@ class ClusterMetaStoreConfArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_password: pulumi.Input[str],
-             db_url: pulumi.Input[str],
-             db_user_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             db_password: Optional[pulumi.Input[str]] = None,
+             db_url: Optional[pulumi.Input[str]] = None,
+             db_user_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbPassword' in kwargs:
+        if db_password is None and 'dbPassword' in kwargs:
             db_password = kwargs['dbPassword']
-        if 'dbUrl' in kwargs:
+        if db_password is None:
+            raise TypeError("Missing 'db_password' argument")
+        if db_url is None and 'dbUrl' in kwargs:
             db_url = kwargs['dbUrl']
-        if 'dbUserName' in kwargs:
+        if db_url is None:
+            raise TypeError("Missing 'db_url' argument")
+        if db_user_name is None and 'dbUserName' in kwargs:
             db_user_name = kwargs['dbUserName']
+        if db_user_name is None:
+            raise TypeError("Missing 'db_user_name' argument")
 
         _setter("db_password", db_password)
         _setter("db_url", db_url)
@@ -680,8 +694,8 @@ class ClusterModifyClusterServiceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config_params: pulumi.Input[str],
-             service_name: pulumi.Input[str],
+             config_params: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
              comment: Optional[pulumi.Input[str]] = None,
              config_type: Optional[pulumi.Input[str]] = None,
              custom_config_params: Optional[pulumi.Input[str]] = None,
@@ -689,23 +703,27 @@ class ClusterModifyClusterServiceConfigArgs:
              group_id: Optional[pulumi.Input[str]] = None,
              host_instance_id: Optional[pulumi.Input[str]] = None,
              refresh_host_config: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configParams' in kwargs:
+        if config_params is None and 'configParams' in kwargs:
             config_params = kwargs['configParams']
-        if 'serviceName' in kwargs:
+        if config_params is None:
+            raise TypeError("Missing 'config_params' argument")
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
-        if 'configType' in kwargs:
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if config_type is None and 'configType' in kwargs:
             config_type = kwargs['configType']
-        if 'customConfigParams' in kwargs:
+        if custom_config_params is None and 'customConfigParams' in kwargs:
             custom_config_params = kwargs['customConfigParams']
-        if 'gatewayClusterIdLists' in kwargs:
+        if gateway_cluster_id_lists is None and 'gatewayClusterIdLists' in kwargs:
             gateway_cluster_id_lists = kwargs['gatewayClusterIdLists']
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'hostInstanceId' in kwargs:
+        if host_instance_id is None and 'hostInstanceId' in kwargs:
             host_instance_id = kwargs['hostInstanceId']
-        if 'refreshHostConfig' in kwargs:
+        if refresh_host_config is None and 'refreshHostConfig' in kwargs:
             refresh_host_config = kwargs['refreshHostConfig']
 
         _setter("config_params", config_params)

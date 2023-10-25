@@ -17,38 +17,6 @@ import (
 // For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
 //
 // > **NOTE:** Available in 1.90.0+ .
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/waf"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := waf.GetInstances(ctx, &waf.GetInstancesArgs{
-//				Ids: []string{
-//					"waf-cn-09k********",
-//				},
-//				Status:          pulumi.IntRef(1),
-//				ResourceGroupId: pulumi.StringRef("rg-acfmwvv********"),
-//				InstanceSource:  pulumi.StringRef("waf-cloud"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("theFirstWafInstanceId", _default.Instances[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult

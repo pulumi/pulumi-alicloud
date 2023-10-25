@@ -47,21 +47,25 @@ class SecretParameterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secret_parameter_name: pulumi.Input[str],
-             value: pulumi.Input[str],
+             secret_parameter_name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              constraints: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              key_id: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'secretParameterName' in kwargs:
+        if secret_parameter_name is None and 'secretParameterName' in kwargs:
             secret_parameter_name = kwargs['secretParameterName']
-        if 'keyId' in kwargs:
+        if secret_parameter_name is None:
+            raise TypeError("Missing 'secret_parameter_name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if key_id is None and 'keyId' in kwargs:
             key_id = kwargs['keyId']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("secret_parameter_name", secret_parameter_name)
@@ -220,13 +224,13 @@ class _SecretParameterState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'keyId' in kwargs:
+        if key_id is None and 'keyId' in kwargs:
             key_id = kwargs['keyId']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'secretParameterName' in kwargs:
+        if secret_parameter_name is None and 'secretParameterName' in kwargs:
             secret_parameter_name = kwargs['secretParameterName']
 
         if constraints is not None:
@@ -364,32 +368,6 @@ class SecretParameter(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.147.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        example_key = alicloud.kms.Key("exampleKey",
-            description="terraform-example",
-            status="Enabled",
-            pending_window_in_days=7)
-        example_secret_parameter = alicloud.oos.SecretParameter("exampleSecretParameter",
-            secret_parameter_name="terraform-example",
-            value="terraform-example",
-            type="Secret",
-            key_id=example_key.id,
-            description="terraform-example",
-            tags={
-                "Created": "TF",
-                "For": "OosSecretParameter",
-            },
-            resource_group_id=example_resource_groups.groups[0].id)
-        ```
-
         ## Import
 
         OOS Secret Parameter can be imported using the id, e.g.
@@ -421,32 +399,6 @@ class SecretParameter(pulumi.CustomResource):
         For information about OOS Secret Parameter and how to use it, see [What is Secret Parameter](https://www.alibabacloud.com/help/en/doc-detail/183418.html).
 
         > **NOTE:** Available since v1.147.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        example_key = alicloud.kms.Key("exampleKey",
-            description="terraform-example",
-            status="Enabled",
-            pending_window_in_days=7)
-        example_secret_parameter = alicloud.oos.SecretParameter("exampleSecretParameter",
-            secret_parameter_name="terraform-example",
-            value="terraform-example",
-            type="Secret",
-            key_id=example_key.id,
-            description="terraform-example",
-            tags={
-                "Created": "TF",
-                "For": "OosSecretParameter",
-            },
-            resource_group_id=example_resource_groups.groups[0].id)
-        ```
 
         ## Import
 

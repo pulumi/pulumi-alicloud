@@ -29,10 +29,14 @@ class MetaTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("key", key)
         _setter("values", values)
@@ -82,7 +86,7 @@ class _MetaTagState:
              _setter: Callable[[Any, Any], None],
              key: Optional[pulumi.Input[str]] = None,
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -133,19 +137,6 @@ class MetaTag(pulumi.CustomResource):
 
         > **NOTE:** Meta Tag Only Support `cn-hangzhou` Region
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.tag.MetaTag("example",
-            key="Name1",
-            values=["Desc2"])
-        ```
-
         ## Import
 
         Tag Meta Tag can be imported using the id, e.g.
@@ -174,19 +165,6 @@ class MetaTag(pulumi.CustomResource):
         > **NOTE:** Available since v1.209.0.
 
         > **NOTE:** Meta Tag Only Support `cn-hangzhou` Region
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.tag.MetaTag("example",
-            key="Name1",
-            values=["Desc2"])
-        ```
 
         ## Import
 

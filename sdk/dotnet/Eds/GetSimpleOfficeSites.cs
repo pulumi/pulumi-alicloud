@@ -15,38 +15,6 @@ namespace Pulumi.AliCloud.Eds
         /// This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.140.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.Eds.GetSimpleOfficeSites.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         Status = "REGISTERED",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["desktopAccessType"] = @default.Apply(@default =&gt; @default.Apply(getSimpleOfficeSitesResult =&gt; getSimpleOfficeSitesResult.Sites[0]?.DesktopAccessType)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSimpleOfficeSitesResult> InvokeAsync(GetSimpleOfficeSitesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSimpleOfficeSitesResult>("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", args ?? new GetSimpleOfficeSitesArgs(), options.WithDefaults());
@@ -55,38 +23,6 @@ namespace Pulumi.AliCloud.Eds
         /// This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.140.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.Eds.GetSimpleOfficeSites.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         Status = "REGISTERED",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["desktopAccessType"] = @default.Apply(@default =&gt; @default.Apply(getSimpleOfficeSitesResult =&gt; getSimpleOfficeSitesResult.Sites[0]?.DesktopAccessType)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetSimpleOfficeSitesResult> Invoke(GetSimpleOfficeSitesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSimpleOfficeSitesResult>("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", args ?? new GetSimpleOfficeSitesInvokeArgs(), options.WithDefaults());

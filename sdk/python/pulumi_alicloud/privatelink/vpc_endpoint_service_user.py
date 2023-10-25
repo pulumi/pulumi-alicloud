@@ -32,16 +32,20 @@ class VpcEndpointServiceUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_id: pulumi.Input[str],
-             user_id: pulumi.Input[str],
+             service_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serviceId' in kwargs:
+        if service_id is None and 'serviceId' in kwargs:
             service_id = kwargs['serviceId']
-        if 'userId' in kwargs:
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
-        if 'dryRun' in kwargs:
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
 
         _setter("service_id", service_id)
@@ -110,13 +114,13 @@ class _VpcEndpointServiceUserState:
              dry_run: Optional[pulumi.Input[bool]] = None,
              service_id: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'serviceId' in kwargs:
+        if service_id is None and 'serviceId' in kwargs:
             service_id = kwargs['serviceId']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
 
         if dry_run is not None:
@@ -179,32 +183,6 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.110.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexampleuser"
-        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
-            service_description=name,
-            connect_bandwidth=103,
-            auto_accept_connection=False)
-        example_user = alicloud.ram.User("exampleUser",
-            display_name="user_display_name",
-            mobile="86-18688888888",
-            email="hello.uuu@aaa.com",
-            comments="yoyoyo")
-        example_vpc_endpoint_service_user = alicloud.privatelink.VpcEndpointServiceUser("exampleVpcEndpointServiceUser",
-            service_id=example_vpc_endpoint_service.id,
-            user_id=example_user.id)
-        ```
-
         ## Import
 
         Private Link Vpc Endpoint Service User can be imported using the id, e.g.
@@ -231,32 +209,6 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
         For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-addusertovpcendpointservice).
 
         > **NOTE:** Available since v1.110.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexampleuser"
-        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
-            service_description=name,
-            connect_bandwidth=103,
-            auto_accept_connection=False)
-        example_user = alicloud.ram.User("exampleUser",
-            display_name="user_display_name",
-            mobile="86-18688888888",
-            email="hello.uuu@aaa.com",
-            comments="yoyoyo")
-        example_vpc_endpoint_service_user = alicloud.privatelink.VpcEndpointServiceUser("exampleVpcEndpointServiceUser",
-            service_id=example_vpc_endpoint_service.id,
-            user_id=example_user.id)
-        ```
 
         ## Import
 

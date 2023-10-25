@@ -41,21 +41,25 @@ class ReadWriteSplittingConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             distribution_type: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
+             distribution_type: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
              connection_prefix: Optional[pulumi.Input[str]] = None,
              max_delay_time: Optional[pulumi.Input[int]] = None,
              port: Optional[pulumi.Input[int]] = None,
              weight: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'distributionType' in kwargs:
+        if distribution_type is None and 'distributionType' in kwargs:
             distribution_type = kwargs['distributionType']
-        if 'instanceId' in kwargs:
+        if distribution_type is None:
+            raise TypeError("Missing 'distribution_type' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'connectionPrefix' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if connection_prefix is None and 'connectionPrefix' in kwargs:
             connection_prefix = kwargs['connectionPrefix']
-        if 'maxDelayTime' in kwargs:
+        if max_delay_time is None and 'maxDelayTime' in kwargs:
             max_delay_time = kwargs['maxDelayTime']
 
         _setter("distribution_type", distribution_type)
@@ -182,17 +186,17 @@ class _ReadWriteSplittingConnectionState:
              max_delay_time: Optional[pulumi.Input[int]] = None,
              port: Optional[pulumi.Input[int]] = None,
              weight: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionPrefix' in kwargs:
+        if connection_prefix is None and 'connectionPrefix' in kwargs:
             connection_prefix = kwargs['connectionPrefix']
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'distributionType' in kwargs:
+        if distribution_type is None and 'distributionType' in kwargs:
             distribution_type = kwargs['distributionType']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'maxDelayTime' in kwargs:
+        if max_delay_time is None and 'maxDelayTime' in kwargs:
             max_delay_time = kwargs['maxDelayTime']
 
         if connection_prefix is not None:
@@ -312,64 +316,6 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.48.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="5.7",
-            category="HighAvailability",
-            db_instance_storage_type="local_ssd")
-        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.ids[0],
-            engine="MySQL",
-            engine_version="5.7",
-            category="HighAvailability",
-            db_instance_storage_type="local_ssd")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vpc_id=example_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=example_zones.zones[0].id,
-            vswitch_name=name)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.rds.Instance("exampleInstance",
-            engine="MySQL",
-            engine_version="5.7",
-            category="HighAvailability",
-            instance_type=example_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
-            instance_charge_type="Postpaid",
-            db_instance_storage_type="local_ssd",
-            instance_name=name,
-            vswitch_id=example_switch.id,
-            security_ips=[
-                "10.168.1.12",
-                "100.69.7.112",
-            ])
-        example_read_only_instance = alicloud.rds.ReadOnlyInstance("exampleReadOnlyInstance",
-            zone_id=example_instance.zone_id,
-            master_db_instance_id=example_instance.id,
-            engine_version=example_instance.engine_version,
-            instance_storage=example_instance.instance_storage,
-            instance_type=example_instance.instance_type,
-            instance_name=f"{name}readonly",
-            vswitch_id=example_switch.id)
-        example_read_write_splitting_connection = alicloud.rds.ReadWriteSplittingConnection("exampleReadWriteSplittingConnection",
-            instance_id=example_read_only_instance.master_db_instance_id,
-            connection_prefix="example-con-123",
-            distribution_type="Standard")
-        ```
-
-        > **NOTE:** Resource `rds.ReadWriteSplittingConnection` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
-
         ## Import
 
         RDS read write splitting connection can be imported using the id, e.g.
@@ -397,64 +343,6 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance, see [What is DB Read Write Splitting Connection](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-allocatereadwritesplittingconnection).
 
         > **NOTE:** Available since v1.48.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="5.7",
-            category="HighAvailability",
-            db_instance_storage_type="local_ssd")
-        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.ids[0],
-            engine="MySQL",
-            engine_version="5.7",
-            category="HighAvailability",
-            db_instance_storage_type="local_ssd")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vpc_id=example_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=example_zones.zones[0].id,
-            vswitch_name=name)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.rds.Instance("exampleInstance",
-            engine="MySQL",
-            engine_version="5.7",
-            category="HighAvailability",
-            instance_type=example_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
-            instance_charge_type="Postpaid",
-            db_instance_storage_type="local_ssd",
-            instance_name=name,
-            vswitch_id=example_switch.id,
-            security_ips=[
-                "10.168.1.12",
-                "100.69.7.112",
-            ])
-        example_read_only_instance = alicloud.rds.ReadOnlyInstance("exampleReadOnlyInstance",
-            zone_id=example_instance.zone_id,
-            master_db_instance_id=example_instance.id,
-            engine_version=example_instance.engine_version,
-            instance_storage=example_instance.instance_storage,
-            instance_type=example_instance.instance_type,
-            instance_name=f"{name}readonly",
-            vswitch_id=example_switch.id)
-        example_read_write_splitting_connection = alicloud.rds.ReadWriteSplittingConnection("exampleReadWriteSplittingConnection",
-            instance_id=example_read_only_instance.master_db_instance_id,
-            connection_prefix="example-con-123",
-            distribution_type="Standard")
-        ```
-
-        > **NOTE:** Resource `rds.ReadWriteSplittingConnection` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
 
         ## Import
 

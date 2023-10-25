@@ -35,19 +35,25 @@ class EngineNamespaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             namespace_id: pulumi.Input[str],
-             namespace_show_name: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             namespace_id: Optional[pulumi.Input[str]] = None,
+             namespace_show_name: Optional[pulumi.Input[str]] = None,
              accept_language: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'namespaceId' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
-        if 'namespaceShowName' in kwargs:
+        if namespace_id is None:
+            raise TypeError("Missing 'namespace_id' argument")
+        if namespace_show_name is None and 'namespaceShowName' in kwargs:
             namespace_show_name = kwargs['namespaceShowName']
-        if 'acceptLanguage' in kwargs:
+        if namespace_show_name is None:
+            raise TypeError("Missing 'namespace_show_name' argument")
+        if accept_language is None and 'acceptLanguage' in kwargs:
             accept_language = kwargs['acceptLanguage']
 
         _setter("cluster_id", cluster_id)
@@ -133,15 +139,15 @@ class _EngineNamespaceState:
              cluster_id: Optional[pulumi.Input[str]] = None,
              namespace_id: Optional[pulumi.Input[str]] = None,
              namespace_show_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceptLanguage' in kwargs:
+        if accept_language is None and 'acceptLanguage' in kwargs:
             accept_language = kwargs['acceptLanguage']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'namespaceId' in kwargs:
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
-        if 'namespaceShowName' in kwargs:
+        if namespace_show_name is None and 'namespaceShowName' in kwargs:
             namespace_show_name = kwargs['namespaceShowName']
 
         if accept_language is not None:
@@ -219,41 +225,6 @@ class EngineNamespace(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.166.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_cluster = alicloud.mse.Cluster("exampleCluster",
-            cluster_specification="MSE_SC_1_2_60_c",
-            cluster_type="Nacos-Ans",
-            cluster_version="NACOS_2_0_0",
-            instance_count=1,
-            net_type="privatenet",
-            pub_network_flow="1",
-            connection_type="slb",
-            cluster_alias_name="terraform-example",
-            mse_version="mse_dev",
-            vswitch_id=example_switch.id,
-            vpc_id=example_network.id)
-        example_engine_namespace = alicloud.mse.EngineNamespace("exampleEngineNamespace",
-            cluster_id=example_cluster.cluster_id,
-            namespace_show_name="terraform-example",
-            namespace_id="terraform-example")
-        ```
-
         ## Import
 
         Microservice Engine (MSE) Engine Namespace can be imported using the id, e.g.
@@ -281,41 +252,6 @@ class EngineNamespace(pulumi.CustomResource):
         For information about Microservice Engine (MSE) Engine Namespace and how to use it, see [What is Engine Namespace](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createenginenamespace).
 
         > **NOTE:** Available in v1.166.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_cluster = alicloud.mse.Cluster("exampleCluster",
-            cluster_specification="MSE_SC_1_2_60_c",
-            cluster_type="Nacos-Ans",
-            cluster_version="NACOS_2_0_0",
-            instance_count=1,
-            net_type="privatenet",
-            pub_network_flow="1",
-            connection_type="slb",
-            cluster_alias_name="terraform-example",
-            mse_version="mse_dev",
-            vswitch_id=example_switch.id,
-            vpc_id=example_network.id)
-        example_engine_namespace = alicloud.mse.EngineNamespace("exampleEngineNamespace",
-            cluster_id=example_cluster.cluster_id,
-            namespace_show_name="terraform-example",
-            namespace_id="terraform-example")
-        ```
 
         ## Import
 

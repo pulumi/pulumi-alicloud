@@ -36,19 +36,25 @@ class DomainSourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source_content: pulumi.Input[str],
-             source_port: pulumi.Input[str],
-             source_type: pulumi.Input[str],
+             source_content: Optional[pulumi.Input[str]] = None,
+             source_port: Optional[pulumi.Input[str]] = None,
+             source_type: Optional[pulumi.Input[str]] = None,
              source_priority: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sourceContent' in kwargs:
+        if source_content is None and 'sourceContent' in kwargs:
             source_content = kwargs['sourceContent']
-        if 'sourcePort' in kwargs:
+        if source_content is None:
+            raise TypeError("Missing 'source_content' argument")
+        if source_port is None and 'sourcePort' in kwargs:
             source_port = kwargs['sourcePort']
-        if 'sourceType' in kwargs:
+        if source_port is None:
+            raise TypeError("Missing 'source_port' argument")
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
-        if 'sourcePriority' in kwargs:
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+        if source_priority is None and 'sourcePriority' in kwargs:
             source_priority = kwargs['sourcePriority']
 
         _setter("source_content", source_content)

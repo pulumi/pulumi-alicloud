@@ -129,20 +129,6 @@ def get_acls(acl_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.150.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ga.get_acls()
-    pulumi.export("gaAclId1", ids.acls[0].id)
-    name_regex = alicloud.ga.get_acls(name_regex="^my-Acl")
-    pulumi.export("gaAclId2", name_regex.acls[0].id)
-    ```
-
 
     :param str acl_name: The name of the acl.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -185,20 +171,6 @@ def get_acls_output(acl_name: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides the Ga Acls of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.150.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ga.get_acls()
-    pulumi.export("gaAclId1", ids.acls[0].id)
-    name_regex = alicloud.ga.get_acls(name_regex="^my-Acl")
-    pulumi.export("gaAclId2", name_regex.acls[0].id)
-    ```
 
 
     :param str acl_name: The name of the acl.

@@ -15,33 +15,6 @@ import (
 // This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
 //
 // > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mns"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			queues, err := mns.GetQueues(ctx, &mns.GetQueuesArgs{
-//				NamePrefix: pulumi.StringRef("tf-"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstQueueId", queues.Queues[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetQueues(ctx *pulumi.Context, args *GetQueuesArgs, opts ...pulumi.InvokeOption) (*GetQueuesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetQueuesResult

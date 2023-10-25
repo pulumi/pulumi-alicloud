@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
  *
  * > **NOTE:** Available since v1.201.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.dcdn.getWafRules({
- *     ids: [alicloud_dcdn_waf_rule["default"].id],
- * });
- * export const alicloudDcdnWafRuleExampleId = _default.then(_default => _default.wafRules?.[0]?.id);
- * ```
  */
 export function getWafRules(args?: GetWafRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetWafRulesResult> {
     args = args || {};
@@ -78,18 +66,6 @@ export interface GetWafRulesResult {
  * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
  *
  * > **NOTE:** Available since v1.201.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.dcdn.getWafRules({
- *     ids: [alicloud_dcdn_waf_rule["default"].id],
- * });
- * export const alicloudDcdnWafRuleExampleId = _default.then(_default => _default.wafRules?.[0]?.id);
- * ```
  */
 export function getWafRulesOutput(args?: GetWafRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWafRulesResult> {
     return pulumi.output(args).apply((a: any) => getWafRules(a, opts))

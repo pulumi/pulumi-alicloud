@@ -11,31 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.193.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
- *     cenInstanceName: "tf_example",
- *     description: "an example for cen",
- * });
- * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
- *     transitRouterName: "tf_example",
- *     cenId: exampleInstance.id,
- * });
- * const exampleTransitRouterCidr = new alicloud.cen.TransitRouterCidr("exampleTransitRouterCidr", {
- *     transitRouterId: exampleTransitRouter.transitRouterId,
- *     cidr: "192.168.0.0/16",
- *     transitRouterCidrName: "tf_example",
- *     description: "tf_example",
- *     publishCidrRoute: true,
- * });
- * ```
- *
  * ## Import
  *
  * Cloud Enterprise Network (CEN) Transit Router Cidr can be imported using the id, e.g.

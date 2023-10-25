@@ -12,54 +12,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.187.0+
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
- *
- * const _default = new random.RandomInteger("default", {
- *     max: 99999,
- *     min: 10000,
- * });
- * const exampleProject = new alicloud.log.Project("exampleProject", {
- *     description: "terraform-example",
- *     tags: {
- *         Created: "TF",
- *         For: "example",
- *     },
- * });
- * const exampleStore = new alicloud.log.Store("exampleStore", {
- *     project: exampleProject.name,
- *     retentionPeriod: 3650,
- *     shardCount: 3,
- *     autoSplit: true,
- *     maxSplitShardCount: 60,
- *     appendMeta: true,
- * });
- * const exampleOssExport = new alicloud.log.OssExport("exampleOssExport", {
- *     projectName: exampleProject.name,
- *     logstoreName: exampleStore.name,
- *     exportName: "terraform-example",
- *     displayName: "terraform-example",
- *     bucket: "example-bucket",
- *     prefix: "root",
- *     suffix: "",
- *     bufferInterval: 300,
- *     bufferSize: 250,
- *     compressType: "none",
- *     pathFormat: "%Y/%m/%d/%H/%M",
- *     contentType: "json",
- *     jsonEnableTag: true,
- *     roleArn: "role_arn_for_oss_write",
- *     logReadRoleArn: "role_arn_for_sls_read",
- *     timeZone: "+0800",
- * });
- * ```
- *
  * ## Import
  *
  * Log oss export can be imported using the id or name, e.g.

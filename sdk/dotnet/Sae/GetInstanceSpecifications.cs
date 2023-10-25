@@ -15,31 +15,6 @@ namespace Pulumi.AliCloud.Sae
         /// This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.139.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Sae.GetInstanceSpecifications.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["saeInstanceSpecificationId1"] = ids.Apply(getInstanceSpecificationsResult =&gt; getInstanceSpecificationsResult.Specifications[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceSpecificationsResult> InvokeAsync(GetInstanceSpecificationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceSpecificationsResult>("alicloud:sae/getInstanceSpecifications:getInstanceSpecifications", args ?? new GetInstanceSpecificationsArgs(), options.WithDefaults());
@@ -48,31 +23,6 @@ namespace Pulumi.AliCloud.Sae
         /// This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.139.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Sae.GetInstanceSpecifications.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["saeInstanceSpecificationId1"] = ids.Apply(getInstanceSpecificationsResult =&gt; getInstanceSpecificationsResult.Specifications[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceSpecificationsResult> Invoke(GetInstanceSpecificationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceSpecificationsResult>("alicloud:sae/getInstanceSpecifications:getInstanceSpecifications", args ?? new GetInstanceSpecificationsInvokeArgs(), options.WithDefaults());

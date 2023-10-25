@@ -15,34 +15,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.120.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.ResourceManager.GetControlPolicyAttachments.Invoke(new()
-        ///     {
-        ///         TargetId = "example_value",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstResourceManagerControlPolicyAttachmentId"] = example.Apply(getControlPolicyAttachmentsResult =&gt; getControlPolicyAttachmentsResult.Attachments[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetControlPolicyAttachmentsResult> InvokeAsync(GetControlPolicyAttachmentsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetControlPolicyAttachmentsResult>("alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments", args ?? new GetControlPolicyAttachmentsArgs(), options.WithDefaults());
@@ -51,34 +23,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.120.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.ResourceManager.GetControlPolicyAttachments.Invoke(new()
-        ///     {
-        ///         TargetId = "example_value",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstResourceManagerControlPolicyAttachmentId"] = example.Apply(getControlPolicyAttachmentsResult =&gt; getControlPolicyAttachmentsResult.Attachments[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetControlPolicyAttachmentsResult> Invoke(GetControlPolicyAttachmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetControlPolicyAttachmentsResult>("alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments", args ?? new GetControlPolicyAttachmentsInvokeArgs(), options.WithDefaults());

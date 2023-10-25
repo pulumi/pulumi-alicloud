@@ -16,51 +16,6 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// &gt; **NOTE:** Available since v1.130.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Eds.EcdPolicyGroup("default", new()
-    ///     {
-    ///         AuthorizeAccessPolicyRules = new[]
-    ///         {
-    ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
-    ///             {
-    ///                 CidrIp = "1.2.3.45/24",
-    ///                 Description = "terraform-example",
-    ///             },
-    ///         },
-    ///         AuthorizeSecurityPolicyRules = new[]
-    ///         {
-    ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
-    ///             {
-    ///                 CidrIp = "1.2.3.4/24",
-    ///                 Description = "terraform-example",
-    ///                 IpProtocol = "TCP",
-    ///                 Policy = "accept",
-    ///                 PortRange = "80/80",
-    ///                 Priority = "1",
-    ///                 Type = "inflow",
-    ///             },
-    ///         },
-    ///         Clipboard = "read",
-    ///         LocalDrive = "read",
-    ///         PolicyGroupName = "terraform-example",
-    ///         UsbRedirect = "off",
-    ///         Watermark = "off",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Elastic Desktop Service (ECD) Policy Group can be imported using the id, e.g.

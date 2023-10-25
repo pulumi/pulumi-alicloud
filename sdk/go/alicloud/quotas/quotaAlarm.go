@@ -19,50 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.116.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/quotas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := quotas.NewQuotaAlarm(ctx, "default", &quotas.QuotaAlarmArgs{
-//				QuotaActionCode: pulumi.String("q_desktop-count"),
-//				QuotaDimensions: quotas.QuotaAlarmQuotaDimensionArray{
-//					&quotas.QuotaAlarmQuotaDimensionArgs{
-//						Key:   pulumi.String("regionId"),
-//						Value: pulumi.String("cn-hangzhou"),
-//					},
-//				},
-//				ThresholdPercent: pulumi.Float64(80),
-//				ProductCode:      pulumi.String("gws"),
-//				QuotaAlarmName:   pulumi.String(name),
-//				ThresholdType:    pulumi.String("used"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Quotas Quota Alarm can be imported using the id, e.g.

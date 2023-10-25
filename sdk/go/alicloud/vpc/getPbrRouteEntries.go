@@ -15,36 +15,6 @@ import (
 // > **NOTE:** Available in v1.162.0+.
 //
 // The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := vpc.GetPbrRouteEntries(ctx, &vpc.GetPbrRouteEntriesArgs{
-//				VpnGatewayId: "example_vpn_gateway_id",
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("vpnIpsecServerId1", ids.Entries[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetPbrRouteEntries(ctx *pulumi.Context, args *GetPbrRouteEntriesArgs, opts ...pulumi.InvokeOption) (*GetPbrRouteEntriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPbrRouteEntriesResult

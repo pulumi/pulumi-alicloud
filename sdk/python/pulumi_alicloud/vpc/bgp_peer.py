@@ -38,22 +38,24 @@ class BgpPeerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bgp_group_id: pulumi.Input[str],
+             bgp_group_id: Optional[pulumi.Input[str]] = None,
              bfd_multi_hop: Optional[pulumi.Input[int]] = None,
              enable_bfd: Optional[pulumi.Input[bool]] = None,
              ip_version: Optional[pulumi.Input[str]] = None,
              peer_ip_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bgpGroupId' in kwargs:
+        if bgp_group_id is None and 'bgpGroupId' in kwargs:
             bgp_group_id = kwargs['bgpGroupId']
-        if 'bfdMultiHop' in kwargs:
+        if bgp_group_id is None:
+            raise TypeError("Missing 'bgp_group_id' argument")
+        if bfd_multi_hop is None and 'bfdMultiHop' in kwargs:
             bfd_multi_hop = kwargs['bfdMultiHop']
-        if 'enableBfd' in kwargs:
+        if enable_bfd is None and 'enableBfd' in kwargs:
             enable_bfd = kwargs['enableBfd']
-        if 'ipVersion' in kwargs:
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'peerIpAddress' in kwargs:
+        if peer_ip_address is None and 'peerIpAddress' in kwargs:
             peer_ip_address = kwargs['peerIpAddress']
 
         _setter("bgp_group_id", bgp_group_id)
@@ -163,17 +165,17 @@ class _BgpPeerState:
              ip_version: Optional[pulumi.Input[str]] = None,
              peer_ip_address: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bfdMultiHop' in kwargs:
+        if bfd_multi_hop is None and 'bfdMultiHop' in kwargs:
             bfd_multi_hop = kwargs['bfdMultiHop']
-        if 'bgpGroupId' in kwargs:
+        if bgp_group_id is None and 'bgpGroupId' in kwargs:
             bgp_group_id = kwargs['bgpGroupId']
-        if 'enableBfd' in kwargs:
+        if enable_bfd is None and 'enableBfd' in kwargs:
             enable_bfd = kwargs['enableBfd']
-        if 'ipVersion' in kwargs:
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'peerIpAddress' in kwargs:
+        if peer_ip_address is None and 'peerIpAddress' in kwargs:
             peer_ip_address = kwargs['peerIpAddress']
 
         if bfd_multi_hop is not None:
@@ -280,48 +282,6 @@ class BgpPeer(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.153.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.RandomInteger("vlanId",
-            max=2999,
-            min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
-            local_gateway_ip="10.0.0.1",
-            peer_gateway_ip="10.0.0.2",
-            peering_subnet_mask="255.255.255.252",
-            physical_connection_id=example_physical_connections.connections[0].id,
-            virtual_border_router_name=name,
-            vlan_id=vlan_id.id,
-            min_rx_interval=1000,
-            min_tx_interval=1000,
-            detect_multiplier=10)
-        example_bgp_group = alicloud.vpc.BgpGroup("exampleBgpGroup",
-            auth_key="YourPassword+12345678",
-            bgp_group_name=name,
-            description=name,
-            peer_asn=1111,
-            router_id=example_virtual_border_router.id,
-            is_fake_asn=True)
-        example_bgp_peer = alicloud.vpc.BgpPeer("exampleBgpPeer",
-            bfd_multi_hop=10,
-            bgp_group_id=example_bgp_group.id,
-            enable_bfd=True,
-            ip_version="IPV4",
-            peer_ip_address="1.1.1.1")
-        ```
-
         ## Import
 
         VPC Bgp Peer can be imported using the id, e.g.
@@ -350,48 +310,6 @@ class BgpPeer(pulumi.CustomResource):
         For information about VPC Bgp Peer and how to use it, see [What is Bgp Peer](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
 
         > **NOTE:** Available since v1.153.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.RandomInteger("vlanId",
-            max=2999,
-            min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
-            local_gateway_ip="10.0.0.1",
-            peer_gateway_ip="10.0.0.2",
-            peering_subnet_mask="255.255.255.252",
-            physical_connection_id=example_physical_connections.connections[0].id,
-            virtual_border_router_name=name,
-            vlan_id=vlan_id.id,
-            min_rx_interval=1000,
-            min_tx_interval=1000,
-            detect_multiplier=10)
-        example_bgp_group = alicloud.vpc.BgpGroup("exampleBgpGroup",
-            auth_key="YourPassword+12345678",
-            bgp_group_name=name,
-            description=name,
-            peer_asn=1111,
-            router_id=example_virtual_border_router.id,
-            is_fake_asn=True)
-        example_bgp_peer = alicloud.vpc.BgpPeer("exampleBgpPeer",
-            bfd_multi_hop=10,
-            bgp_group_id=example_bgp_group.id,
-            enable_bfd=True,
-            ip_version="IPV4",
-            peer_ip_address="1.1.1.1")
-        ```
 
         ## Import
 

@@ -13,33 +13,6 @@ import (
 )
 
 // This data source provides the apis of the current Alibaba Cloud user.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := apigateway.GetApis(ctx, &apigateway.GetApisArgs{
-//				OutputFile: pulumi.StringRef("output_ApiGatawayApis"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstApiId", data.Alicloud_api_gateway_apis.Data_apigatway.Apis[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetApis(ctx *pulumi.Context, args *GetApisArgs, opts ...pulumi.InvokeOption) (*GetApisResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApisResult

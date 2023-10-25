@@ -13,56 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.145.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.eci.getZones({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "10.0.0.0/8",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vswitchName: name,
- *     cidrBlock: "10.1.0.0/16",
- *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneIds?.[0]),
- * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
- *     isp: "BGP",
- *     addressName: name,
- *     netmode: "public",
- *     bandwidth: "1",
- *     securityProtectionTypes: ["AntiDDoS_Enhanced"],
- *     paymentType: "PayAsYouGo",
- * });
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultVirtualNode = new alicloud.eci.VirtualNode("defaultVirtualNode", {
- *     securityGroupId: defaultSecurityGroup.id,
- *     virtualNodeName: name,
- *     vswitchId: defaultSwitch.id,
- *     enablePublicNetwork: false,
- *     eipInstanceId: defaultEipAddress.id,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
- *     kubeConfig: "kube_config",
- *     tags: {
- *         Created: "TF",
- *     },
- *     taints: [{
- *         effect: "NoSchedule",
- *         key: "TF",
- *         value: "example",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * ECI Virtual Node can be imported using the id, e.g.

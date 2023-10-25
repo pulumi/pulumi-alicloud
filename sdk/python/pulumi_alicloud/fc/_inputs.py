@@ -48,9 +48,9 @@ class AliasRoutingConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              additional_version_weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'additionalVersionWeights' in kwargs:
+        if additional_version_weights is None and 'additionalVersionWeights' in kwargs:
             additional_version_weights = kwargs['additionalVersionWeights']
 
         if additional_version_weights is not None:
@@ -89,15 +89,21 @@ class CustomDomainCertConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert_name: pulumi.Input[str],
-             certificate: pulumi.Input[str],
-             private_key: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cert_name: Optional[pulumi.Input[str]] = None,
+             certificate: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certName' in kwargs:
+        if cert_name is None and 'certName' in kwargs:
             cert_name = kwargs['certName']
-        if 'privateKey' in kwargs:
+        if cert_name is None:
+            raise TypeError("Missing 'cert_name' argument")
+        if certificate is None:
+            raise TypeError("Missing 'certificate' argument")
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
+        if private_key is None:
+            raise TypeError("Missing 'private_key' argument")
 
         _setter("cert_name", cert_name)
         _setter("certificate", certificate)
@@ -166,17 +172,23 @@ class CustomDomainRouteConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             function_name: pulumi.Input[str],
-             path: pulumi.Input[str],
-             service_name: pulumi.Input[str],
+             function_name: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
              methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              qualifier: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'functionName' in kwargs:
+        if function_name is None and 'functionName' in kwargs:
             function_name = kwargs['functionName']
-        if 'serviceName' in kwargs:
+        if function_name is None:
+            raise TypeError("Missing 'function_name' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
 
         _setter("function_name", function_name)
         _setter("path", path)
@@ -266,11 +278,11 @@ class FunctionAsyncInvokeConfigDestinationConfigArgs:
              _setter: Callable[[Any, Any], None],
              on_failure: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs']] = None,
              on_success: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'onFailure' in kwargs:
+        if on_failure is None and 'onFailure' in kwargs:
             on_failure = kwargs['onFailure']
-        if 'onSuccess' in kwargs:
+        if on_success is None and 'onSuccess' in kwargs:
             on_success = kwargs['onSuccess']
 
         if on_failure is not None:
@@ -317,9 +329,11 @@ class FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             destination: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
 
         _setter("destination", destination)
 
@@ -350,9 +364,11 @@ class FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             destination: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
 
         _setter("destination", destination)
 
@@ -389,11 +405,13 @@ class FunctionCustomContainerConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image: pulumi.Input[str],
+             image: Optional[pulumi.Input[str]] = None,
              args: Optional[pulumi.Input[str]] = None,
              command: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if image is None:
+            raise TypeError("Missing 'image' argument")
 
         _setter("image", image)
         if args is not None:
@@ -461,15 +479,19 @@ class ServiceLogConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             logstore: pulumi.Input[str],
-             project: pulumi.Input[str],
+             logstore: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              enable_instance_metrics: Optional[pulumi.Input[bool]] = None,
              enable_request_metrics: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'enableInstanceMetrics' in kwargs:
+        if logstore is None:
+            raise TypeError("Missing 'logstore' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if enable_instance_metrics is None and 'enableInstanceMetrics' in kwargs:
             enable_instance_metrics = kwargs['enableInstanceMetrics']
-        if 'enableRequestMetrics' in kwargs:
+        if enable_request_metrics is None and 'enableRequestMetrics' in kwargs:
             enable_request_metrics = kwargs['enableRequestMetrics']
 
         _setter("logstore", logstore)
@@ -548,17 +570,23 @@ class ServiceNasConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_id: pulumi.Input[int],
-             mount_points: pulumi.Input[Sequence[pulumi.Input['ServiceNasConfigMountPointArgs']]],
-             user_id: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             group_id: Optional[pulumi.Input[int]] = None,
+             mount_points: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceNasConfigMountPointArgs']]]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'mountPoints' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if mount_points is None and 'mountPoints' in kwargs:
             mount_points = kwargs['mountPoints']
-        if 'userId' in kwargs:
+        if mount_points is None:
+            raise TypeError("Missing 'mount_points' argument")
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
 
         _setter("group_id", group_id)
         _setter("mount_points", mount_points)
@@ -618,14 +646,18 @@ class ServiceNasConfigMountPointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mount_dir: pulumi.Input[str],
-             server_addr: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             mount_dir: Optional[pulumi.Input[str]] = None,
+             server_addr: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mountDir' in kwargs:
+        if mount_dir is None and 'mountDir' in kwargs:
             mount_dir = kwargs['mountDir']
-        if 'serverAddr' in kwargs:
+        if mount_dir is None:
+            raise TypeError("Missing 'mount_dir' argument")
+        if server_addr is None and 'serverAddr' in kwargs:
             server_addr = kwargs['serverAddr']
+        if server_addr is None:
+            raise TypeError("Missing 'server_addr' argument")
 
         _setter("mount_dir", mount_dir)
         _setter("server_addr", server_addr)
@@ -672,10 +704,14 @@ class ServiceTracingConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             params: pulumi.Input[Mapping[str, Any]],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if params is None:
+            raise TypeError("Missing 'params' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("params", params)
         _setter("type", type)
@@ -725,16 +761,20 @@ class ServiceVpcConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             security_group_id: pulumi.Input[str],
-             vswitch_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vswitchIds' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
-        if 'vpcId' in kwargs:
+        if vswitch_ids is None:
+            raise TypeError("Missing 'vswitch_ids' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         _setter("security_group_id", security_group_id)
@@ -802,13 +842,13 @@ class V2FunctionCodeArgs:
              oss_bucket_name: Optional[pulumi.Input[str]] = None,
              oss_object_name: Optional[pulumi.Input[str]] = None,
              zip_file: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ossBucketName' in kwargs:
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'ossObjectName' in kwargs:
+        if oss_object_name is None and 'ossObjectName' in kwargs:
             oss_object_name = kwargs['ossObjectName']
-        if 'zipFile' in kwargs:
+        if zip_file is None and 'zipFile' in kwargs:
             zip_file = kwargs['zipFile']
 
         if oss_bucket_name is not None:
@@ -886,11 +926,11 @@ class V2FunctionCustomContainerConfigArgs:
              command: Optional[pulumi.Input[str]] = None,
              image: Optional[pulumi.Input[str]] = None,
              web_server_mode: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accelerationType' in kwargs:
+        if acceleration_type is None and 'accelerationType' in kwargs:
             acceleration_type = kwargs['accelerationType']
-        if 'webServerMode' in kwargs:
+        if web_server_mode is None and 'webServerMode' in kwargs:
             web_server_mode = kwargs['webServerMode']
 
         if acceleration_type is not None:
@@ -988,11 +1028,11 @@ class V2FunctionCustomDnsArgs:
              dns_options: Optional[pulumi.Input[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgs']]]] = None,
              name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              searches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dnsOptions' in kwargs:
+        if dns_options is None and 'dnsOptions' in kwargs:
             dns_options = kwargs['dnsOptions']
-        if 'nameServers' in kwargs:
+        if name_servers is None and 'nameServers' in kwargs:
             name_servers = kwargs['nameServers']
 
         if dns_options is not None:
@@ -1058,7 +1098,7 @@ class V2FunctionCustomDnsDnsOptionArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -1126,19 +1166,19 @@ class V2FunctionCustomHealthCheckConfigArgs:
              period_seconds: Optional[pulumi.Input[int]] = None,
              success_threshold: Optional[pulumi.Input[int]] = None,
              timeout_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'failureThreshold' in kwargs:
+        if failure_threshold is None and 'failureThreshold' in kwargs:
             failure_threshold = kwargs['failureThreshold']
-        if 'httpGetUrl' in kwargs:
+        if http_get_url is None and 'httpGetUrl' in kwargs:
             http_get_url = kwargs['httpGetUrl']
-        if 'initialDelaySeconds' in kwargs:
+        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
             initial_delay_seconds = kwargs['initialDelaySeconds']
-        if 'periodSeconds' in kwargs:
+        if period_seconds is None and 'periodSeconds' in kwargs:
             period_seconds = kwargs['periodSeconds']
-        if 'successThreshold' in kwargs:
+        if success_threshold is None and 'successThreshold' in kwargs:
             success_threshold = kwargs['successThreshold']
-        if 'timeoutSeconds' in kwargs:
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
             timeout_seconds = kwargs['timeoutSeconds']
 
         if failure_threshold is not None:
@@ -1246,7 +1286,7 @@ class V2FunctionCustomRuntimeConfigArgs:
              _setter: Callable[[Any, Any], None],
              args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if args is not None:
@@ -1298,11 +1338,11 @@ class V2FunctionInstanceLifecycleConfigArgs:
              _setter: Callable[[Any, Any], None],
              pre_freeze: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreFreezeArgs']] = None,
              pre_stop: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreStopArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'preFreeze' in kwargs:
+        if pre_freeze is None and 'preFreeze' in kwargs:
             pre_freeze = kwargs['preFreeze']
-        if 'preStop' in kwargs:
+        if pre_stop is None and 'preStop' in kwargs:
             pre_stop = kwargs['preStop']
 
         if pre_freeze is not None:
@@ -1354,7 +1394,7 @@ class V2FunctionInstanceLifecycleConfigPreFreezeArgs:
              _setter: Callable[[Any, Any], None],
              handler: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if handler is not None:
@@ -1406,7 +1446,7 @@ class V2FunctionInstanceLifecycleConfigPreStopArgs:
              _setter: Callable[[Any, Any], None],
              handler: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if handler is not None:

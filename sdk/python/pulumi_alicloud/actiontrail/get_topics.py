@@ -160,18 +160,6 @@ def get_topics(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.56.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    topics_ds = alicloud.actiontrail.get_topics(instance_id="xxx",
-        name_regex="alikafkaTopicName",
-        output_file="topics.txt")
-    pulumi.export("firstTopicName", topics_ds.topics[0].topic)
-    ```
-
 
     :param Sequence[str] ids: A list of ALIKAFKA Topics IDs, It is formatted to `<instance_id>:<topic>`.
     :param str instance_id: ID of the instance.
@@ -217,18 +205,6 @@ def get_topics_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in 1.56.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    topics_ds = alicloud.actiontrail.get_topics(instance_id="xxx",
-        name_regex="alikafkaTopicName",
-        output_file="topics.txt")
-    pulumi.export("firstTopicName", topics_ds.topics[0].topic)
-    ```
 
 
     :param Sequence[str] ids: A list of ALIKAFKA Topics IDs, It is formatted to `<instance_id>:<topic>`.

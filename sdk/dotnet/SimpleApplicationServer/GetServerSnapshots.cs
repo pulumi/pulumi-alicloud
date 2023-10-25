@@ -15,63 +15,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.143.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.SimpleApplicationServer.GetServerSnapshots.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.SimpleApplicationServer.GetServerSnapshots.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Snapshot",
-        ///     });
-        /// 
-        ///     var diskIdConf = AliCloud.SimpleApplicationServer.GetServerSnapshots.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         DiskId = "example_value",
-        ///     });
-        /// 
-        ///     var instanceIdConf = AliCloud.SimpleApplicationServer.GetServerSnapshots.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         InstanceId = "example_value",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["simpleApplicationServerSnapshotId1"] = ids.Apply(getServerSnapshotsResult =&gt; getServerSnapshotsResult.Snapshots[0]?.Id),
-        ///         ["simpleApplicationServerSnapshotId2"] = nameRegex.Apply(getServerSnapshotsResult =&gt; getServerSnapshotsResult.Snapshots[0]?.Id),
-        ///         ["simpleApplicationServerSnapshotId3"] = diskIdConf.Apply(getServerSnapshotsResult =&gt; getServerSnapshotsResult.Snapshots[0]?.Id),
-        ///         ["simpleApplicationServerSnapshotId4"] = instanceIdConf.Apply(getServerSnapshotsResult =&gt; getServerSnapshotsResult.Snapshots[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerSnapshotsResult> InvokeAsync(GetServerSnapshotsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerSnapshotsResult>("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", args ?? new GetServerSnapshotsArgs(), options.WithDefaults());
@@ -80,63 +23,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.143.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.SimpleApplicationServer.GetServerSnapshots.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.SimpleApplicationServer.GetServerSnapshots.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Snapshot",
-        ///     });
-        /// 
-        ///     var diskIdConf = AliCloud.SimpleApplicationServer.GetServerSnapshots.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         DiskId = "example_value",
-        ///     });
-        /// 
-        ///     var instanceIdConf = AliCloud.SimpleApplicationServer.GetServerSnapshots.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         InstanceId = "example_value",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["simpleApplicationServerSnapshotId1"] = ids.Apply(getServerSnapshotsResult =&gt; getServerSnapshotsResult.Snapshots[0]?.Id),
-        ///         ["simpleApplicationServerSnapshotId2"] = nameRegex.Apply(getServerSnapshotsResult =&gt; getServerSnapshotsResult.Snapshots[0]?.Id),
-        ///         ["simpleApplicationServerSnapshotId3"] = diskIdConf.Apply(getServerSnapshotsResult =&gt; getServerSnapshotsResult.Snapshots[0]?.Id),
-        ///         ["simpleApplicationServerSnapshotId4"] = instanceIdConf.Apply(getServerSnapshotsResult =&gt; getServerSnapshotsResult.Snapshots[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerSnapshotsResult> Invoke(GetServerSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerSnapshotsResult>("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", args ?? new GetServerSnapshotsInvokeArgs(), options.WithDefaults());

@@ -15,46 +15,6 @@ namespace Pulumi.AliCloud.Sddp
         /// This data source provides the Sddp Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.132.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var defaultRule = new AliCloud.Sddp.Rule("defaultRule", new()
-        ///     {
-        ///         Category = 0,
-        ///         Content = "content",
-        ///         RuleName = "rule_name",
-        ///         RiskLevelId = "4",
-        ///         ProductCode = "ODPS",
-        ///     });
-        /// 
-        ///     var defaultRules = AliCloud.Sddp.GetRules.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             defaultRule.Id,
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["sddpRuleId"] = defaultRules.Apply(getRulesResult =&gt; getRulesResult.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRulesResult> InvokeAsync(GetRulesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:sddp/getRules:getRules", args ?? new GetRulesArgs(), options.WithDefaults());
@@ -63,46 +23,6 @@ namespace Pulumi.AliCloud.Sddp
         /// This data source provides the Sddp Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.132.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var defaultRule = new AliCloud.Sddp.Rule("defaultRule", new()
-        ///     {
-        ///         Category = 0,
-        ///         Content = "content",
-        ///         RuleName = "rule_name",
-        ///         RiskLevelId = "4",
-        ///         ProductCode = "ODPS",
-        ///     });
-        /// 
-        ///     var defaultRules = AliCloud.Sddp.GetRules.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             defaultRule.Id,
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["sddpRuleId"] = defaultRules.Apply(getRulesResult =&gt; getRulesResult.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:sddp/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());

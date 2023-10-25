@@ -15,37 +15,6 @@ namespace Pulumi.AliCloud.Adb
         /// This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.190.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Adb.GetDBClusterLakeVersions.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["adbDbClusterLakeVersionId1"] = ids.Apply(getDBClusterLakeVersionsResult =&gt; getDBClusterLakeVersionsResult.Versions[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDBClusterLakeVersionsResult> InvokeAsync(GetDBClusterLakeVersionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDBClusterLakeVersionsResult>("alicloud:adb/getDBClusterLakeVersions:getDBClusterLakeVersions", args ?? new GetDBClusterLakeVersionsArgs(), options.WithDefaults());
@@ -54,37 +23,6 @@ namespace Pulumi.AliCloud.Adb
         /// This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.190.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Adb.GetDBClusterLakeVersions.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["adbDbClusterLakeVersionId1"] = ids.Apply(getDBClusterLakeVersionsResult =&gt; getDBClusterLakeVersionsResult.Versions[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDBClusterLakeVersionsResult> Invoke(GetDBClusterLakeVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDBClusterLakeVersionsResult>("alicloud:adb/getDBClusterLakeVersions:getDBClusterLakeVersions", args ?? new GetDBClusterLakeVersionsInvokeArgs(), options.WithDefaults());

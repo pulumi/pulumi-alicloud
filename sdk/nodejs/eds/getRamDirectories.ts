@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.174.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.eds.getRamDirectories({
- *     ids: ["example_id"],
- * });
- * export const ecdRamDirectoryId1 = ids.then(ids => ids.directories?.[0]?.id);
- * const nameRegex = alicloud.eds.getRamDirectories({
- *     nameRegex: "^my-RamDirectory",
- * });
- * export const ecdRamDirectoryId2 = nameRegex.then(nameRegex => nameRegex.directories?.[0]?.id);
- * ```
  */
 export function getRamDirectories(args?: GetRamDirectoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRamDirectoriesResult> {
     args = args || {};
@@ -82,24 +64,6 @@ export interface GetRamDirectoriesResult {
  * This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.174.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.eds.getRamDirectories({
- *     ids: ["example_id"],
- * });
- * export const ecdRamDirectoryId1 = ids.then(ids => ids.directories?.[0]?.id);
- * const nameRegex = alicloud.eds.getRamDirectories({
- *     nameRegex: "^my-RamDirectory",
- * });
- * export const ecdRamDirectoryId2 = nameRegex.then(nameRegex => nameRegex.directories?.[0]?.id);
- * ```
  */
 export function getRamDirectoriesOutput(args?: GetRamDirectoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRamDirectoriesResult> {
     return pulumi.output(args).apply((a: any) => getRamDirectories(a, opts))

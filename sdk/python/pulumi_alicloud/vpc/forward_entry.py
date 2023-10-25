@@ -52,32 +52,44 @@ class ForwardEntryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             external_ip: pulumi.Input[str],
-             external_port: pulumi.Input[str],
-             forward_table_id: pulumi.Input[str],
-             internal_ip: pulumi.Input[str],
-             internal_port: pulumi.Input[str],
-             ip_protocol: pulumi.Input[str],
+             external_ip: Optional[pulumi.Input[str]] = None,
+             external_port: Optional[pulumi.Input[str]] = None,
+             forward_table_id: Optional[pulumi.Input[str]] = None,
+             internal_ip: Optional[pulumi.Input[str]] = None,
+             internal_port: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
              forward_entry_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              port_break: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'externalIp' in kwargs:
+        if external_ip is None and 'externalIp' in kwargs:
             external_ip = kwargs['externalIp']
-        if 'externalPort' in kwargs:
+        if external_ip is None:
+            raise TypeError("Missing 'external_ip' argument")
+        if external_port is None and 'externalPort' in kwargs:
             external_port = kwargs['externalPort']
-        if 'forwardTableId' in kwargs:
+        if external_port is None:
+            raise TypeError("Missing 'external_port' argument")
+        if forward_table_id is None and 'forwardTableId' in kwargs:
             forward_table_id = kwargs['forwardTableId']
-        if 'internalIp' in kwargs:
+        if forward_table_id is None:
+            raise TypeError("Missing 'forward_table_id' argument")
+        if internal_ip is None and 'internalIp' in kwargs:
             internal_ip = kwargs['internalIp']
-        if 'internalPort' in kwargs:
+        if internal_ip is None:
+            raise TypeError("Missing 'internal_ip' argument")
+        if internal_port is None and 'internalPort' in kwargs:
             internal_port = kwargs['internalPort']
-        if 'ipProtocol' in kwargs:
+        if internal_port is None:
+            raise TypeError("Missing 'internal_port' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
             ip_protocol = kwargs['ipProtocol']
-        if 'forwardEntryName' in kwargs:
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if forward_entry_name is None and 'forwardEntryName' in kwargs:
             forward_entry_name = kwargs['forwardEntryName']
-        if 'portBreak' in kwargs:
+        if port_break is None and 'portBreak' in kwargs:
             port_break = kwargs['portBreak']
 
         _setter("external_ip", external_ip)
@@ -268,25 +280,25 @@ class _ForwardEntryState:
              name: Optional[pulumi.Input[str]] = None,
              port_break: Optional[pulumi.Input[bool]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'externalIp' in kwargs:
+        if external_ip is None and 'externalIp' in kwargs:
             external_ip = kwargs['externalIp']
-        if 'externalPort' in kwargs:
+        if external_port is None and 'externalPort' in kwargs:
             external_port = kwargs['externalPort']
-        if 'forwardEntryId' in kwargs:
+        if forward_entry_id is None and 'forwardEntryId' in kwargs:
             forward_entry_id = kwargs['forwardEntryId']
-        if 'forwardEntryName' in kwargs:
+        if forward_entry_name is None and 'forwardEntryName' in kwargs:
             forward_entry_name = kwargs['forwardEntryName']
-        if 'forwardTableId' in kwargs:
+        if forward_table_id is None and 'forwardTableId' in kwargs:
             forward_table_id = kwargs['forwardTableId']
-        if 'internalIp' in kwargs:
+        if internal_ip is None and 'internalIp' in kwargs:
             internal_ip = kwargs['internalIp']
-        if 'internalPort' in kwargs:
+        if internal_port is None and 'internalPort' in kwargs:
             internal_port = kwargs['internalPort']
-        if 'ipProtocol' in kwargs:
+        if ip_protocol is None and 'ipProtocol' in kwargs:
             ip_protocol = kwargs['ipProtocol']
-        if 'portBreak' in kwargs:
+        if port_break is None and 'portBreak' in kwargs:
             port_break = kwargs['portBreak']
 
         if external_ip is not None:
@@ -471,46 +483,6 @@ class ForwardEntry(pulumi.CustomResource):
         """
         Provides a forward resource.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "forward-entry-example-name"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_nat_gateway = alicloud.vpc.NatGateway("defaultNatGateway",
-            vpc_id=default_network.id,
-            internet_charge_type="PayByLcu",
-            nat_gateway_name=name,
-            nat_type="Enhanced",
-            vswitch_id=default_switch.id)
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
-        default_eip_association = alicloud.ecs.EipAssociation("defaultEipAssociation",
-            allocation_id=default_eip_address.id,
-            instance_id=default_nat_gateway.id)
-        default_forward_entry = alicloud.vpc.ForwardEntry("defaultForwardEntry",
-            forward_table_id=default_nat_gateway.forward_table_ids,
-            external_ip=default_eip_address.ip_address,
-            external_port="80",
-            ip_protocol="tcp",
-            internal_ip="172.16.0.3",
-            internal_port="8080")
-        ```
-
         ## Import
 
         Forward Entry can be imported using the id, e.g.
@@ -541,46 +513,6 @@ class ForwardEntry(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a forward resource.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "forward-entry-example-name"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_nat_gateway = alicloud.vpc.NatGateway("defaultNatGateway",
-            vpc_id=default_network.id,
-            internet_charge_type="PayByLcu",
-            nat_gateway_name=name,
-            nat_type="Enhanced",
-            vswitch_id=default_switch.id)
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
-        default_eip_association = alicloud.ecs.EipAssociation("defaultEipAssociation",
-            allocation_id=default_eip_address.id,
-            instance_id=default_nat_gateway.id)
-        default_forward_entry = alicloud.vpc.ForwardEntry("defaultForwardEntry",
-            forward_table_id=default_nat_gateway.forward_table_ids,
-            external_ip=default_eip_address.ip_address,
-            external_port="80",
-            ip_protocol="tcp",
-            internal_ip="172.16.0.3",
-            internal_port="8080")
-        ```
 
         ## Import
 

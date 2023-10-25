@@ -56,34 +56,48 @@ class QosPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dest_cidr: pulumi.Input[str],
-             dest_port_range: pulumi.Input[str],
-             ip_protocol: pulumi.Input[str],
-             priority: pulumi.Input[int],
-             qos_id: pulumi.Input[str],
-             source_cidr: pulumi.Input[str],
-             source_port_range: pulumi.Input[str],
+             dest_cidr: Optional[pulumi.Input[str]] = None,
+             dest_port_range: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             qos_id: Optional[pulumi.Input[str]] = None,
+             source_cidr: Optional[pulumi.Input[str]] = None,
+             source_port_range: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              end_time: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              start_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destCidr' in kwargs:
+        if dest_cidr is None and 'destCidr' in kwargs:
             dest_cidr = kwargs['destCidr']
-        if 'destPortRange' in kwargs:
+        if dest_cidr is None:
+            raise TypeError("Missing 'dest_cidr' argument")
+        if dest_port_range is None and 'destPortRange' in kwargs:
             dest_port_range = kwargs['destPortRange']
-        if 'ipProtocol' in kwargs:
+        if dest_port_range is None:
+            raise TypeError("Missing 'dest_port_range' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
             ip_protocol = kwargs['ipProtocol']
-        if 'qosId' in kwargs:
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if qos_id is None and 'qosId' in kwargs:
             qos_id = kwargs['qosId']
-        if 'sourceCidr' in kwargs:
+        if qos_id is None:
+            raise TypeError("Missing 'qos_id' argument")
+        if source_cidr is None and 'sourceCidr' in kwargs:
             source_cidr = kwargs['sourceCidr']
-        if 'sourcePortRange' in kwargs:
+        if source_cidr is None:
+            raise TypeError("Missing 'source_cidr' argument")
+        if source_port_range is None and 'sourcePortRange' in kwargs:
             source_port_range = kwargs['sourcePortRange']
-        if 'endTime' in kwargs:
+        if source_port_range is None:
+            raise TypeError("Missing 'source_port_range' argument")
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'startTime' in kwargs:
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
 
         _setter("dest_cidr", dest_cidr)
@@ -291,23 +305,23 @@ class _QosPolicyState:
              source_cidr: Optional[pulumi.Input[str]] = None,
              source_port_range: Optional[pulumi.Input[str]] = None,
              start_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destCidr' in kwargs:
+        if dest_cidr is None and 'destCidr' in kwargs:
             dest_cidr = kwargs['destCidr']
-        if 'destPortRange' in kwargs:
+        if dest_port_range is None and 'destPortRange' in kwargs:
             dest_port_range = kwargs['destPortRange']
-        if 'endTime' in kwargs:
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'ipProtocol' in kwargs:
+        if ip_protocol is None and 'ipProtocol' in kwargs:
             ip_protocol = kwargs['ipProtocol']
-        if 'qosId' in kwargs:
+        if qos_id is None and 'qosId' in kwargs:
             qos_id = kwargs['qosId']
-        if 'sourceCidr' in kwargs:
+        if source_cidr is None and 'sourceCidr' in kwargs:
             source_cidr = kwargs['sourceCidr']
-        if 'sourcePortRange' in kwargs:
+        if source_port_range is None and 'sourcePortRange' in kwargs:
             source_port_range = kwargs['sourcePortRange']
-        if 'startTime' in kwargs:
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
 
         if description is not None:

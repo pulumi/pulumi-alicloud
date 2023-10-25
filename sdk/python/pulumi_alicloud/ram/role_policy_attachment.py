@@ -32,17 +32,23 @@ class RolePolicyAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_name: pulumi.Input[str],
-             policy_type: pulumi.Input[str],
-             role_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             policy_name: Optional[pulumi.Input[str]] = None,
+             policy_type: Optional[pulumi.Input[str]] = None,
+             role_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'policyName' in kwargs:
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'policyType' in kwargs:
+        if policy_name is None:
+            raise TypeError("Missing 'policy_name' argument")
+        if policy_type is None and 'policyType' in kwargs:
             policy_type = kwargs['policyType']
-        if 'roleName' in kwargs:
+        if policy_type is None:
+            raise TypeError("Missing 'policy_type' argument")
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
+        if role_name is None:
+            raise TypeError("Missing 'role_name' argument")
 
         _setter("policy_name", policy_name)
         _setter("policy_type", policy_type)
@@ -109,13 +115,13 @@ class _RolePolicyAttachmentState:
              policy_name: Optional[pulumi.Input[str]] = None,
              policy_type: Optional[pulumi.Input[str]] = None,
              role_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'policyName' in kwargs:
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'policyType' in kwargs:
+        if policy_type is None and 'policyType' in kwargs:
             policy_type = kwargs['policyType']
-        if 'roleName' in kwargs:
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
 
         if policy_name is not None:
@@ -176,56 +182,6 @@ class RolePolicyAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0+.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a RAM Role Policy attachment.
-        role = alicloud.ram.Role("role",
-            document=\"\"\"    {
-              "Statement": [
-                {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "apigateway.aliyuncs.com", 
-                      "ecs.aliyuncs.com"
-                    ]
-                  }
-                }
-              ],
-              "Version": "1"
-            }
-        \"\"\",
-            description="this is a role test.")
-        policy = alicloud.ram.Policy("policy",
-            document=\"\"\"  {
-            "Statement": [
-              {
-                "Action": [
-                  "oss:ListObjects",
-                  "oss:GetObject"
-                ],
-                "Effect": "Allow",
-                "Resource": [
-                  "acs:oss:*:*:mybucket",
-                  "acs:oss:*:*:mybucket/*"
-                ]
-              }
-            ],
-              "Version": "1"
-          }
-        \"\"\",
-            description="this is a policy test")
-        attach = alicloud.ram.RolePolicyAttachment("attach",
-            policy_name=policy.name,
-            policy_type=policy.type,
-            role_name=role.name)
-        ```
-
         ## Import
 
         RAM Role Policy attachment can be imported using the id, e.g.
@@ -250,56 +206,6 @@ class RolePolicyAttachment(pulumi.CustomResource):
         Provides a RAM Role attachment resource.
 
         > **NOTE:** Available since v1.0.0+.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a RAM Role Policy attachment.
-        role = alicloud.ram.Role("role",
-            document=\"\"\"    {
-              "Statement": [
-                {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "apigateway.aliyuncs.com", 
-                      "ecs.aliyuncs.com"
-                    ]
-                  }
-                }
-              ],
-              "Version": "1"
-            }
-        \"\"\",
-            description="this is a role test.")
-        policy = alicloud.ram.Policy("policy",
-            document=\"\"\"  {
-            "Statement": [
-              {
-                "Action": [
-                  "oss:ListObjects",
-                  "oss:GetObject"
-                ],
-                "Effect": "Allow",
-                "Resource": [
-                  "acs:oss:*:*:mybucket",
-                  "acs:oss:*:*:mybucket/*"
-                ]
-              }
-            ],
-              "Version": "1"
-          }
-        \"\"\",
-            description="this is a policy test")
-        attach = alicloud.ram.RolePolicyAttachment("attach",
-            policy_name=policy.name,
-            policy_type=policy.type,
-            role_name=role.name)
-        ```
 
         ## Import
 

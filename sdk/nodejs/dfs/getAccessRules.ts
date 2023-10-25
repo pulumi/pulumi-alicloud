@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.140.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dfs.getAccessRules({
- *     accessGroupId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const dfsAccessRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
- * ```
  */
 export function getAccessRules(args: GetAccessRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessRulesResult> {
 
@@ -74,24 +56,6 @@ export interface GetAccessRulesResult {
  * This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.140.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dfs.getAccessRules({
- *     accessGroupId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const dfsAccessRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
- * ```
  */
 export function getAccessRulesOutput(args: GetAccessRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessRulesResult> {
     return pulumi.output(args).apply((a: any) => getAccessRules(a, opts))

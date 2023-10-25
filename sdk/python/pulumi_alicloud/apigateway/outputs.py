@@ -67,14 +67,20 @@ class ApiConstantParameter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             in_: str,
-             name: str,
-             value: str,
+             in_: Optional[str] = None,
+             name: Optional[str] = None,
+             value: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'in' in kwargs:
+        if in_ is None and 'in' in kwargs:
             in_ = kwargs['in']
+        if in_ is None:
+            raise TypeError("Missing 'in_' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("in_", in_)
         _setter("name", name)
@@ -162,18 +168,26 @@ class ApiFcServiceConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             function_name: str,
-             region: str,
-             service_name: str,
-             timeout: int,
+             function_name: Optional[str] = None,
+             region: Optional[str] = None,
+             service_name: Optional[str] = None,
+             timeout: Optional[int] = None,
              arn_role: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'functionName' in kwargs:
+        if function_name is None and 'functionName' in kwargs:
             function_name = kwargs['functionName']
-        if 'serviceName' in kwargs:
+        if function_name is None:
+            raise TypeError("Missing 'function_name' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
-        if 'arnRole' in kwargs:
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if arn_role is None and 'arnRole' in kwargs:
             arn_role = kwargs['arnRole']
 
         _setter("function_name", function_name)
@@ -267,14 +281,22 @@ class ApiHttpServiceConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             method: str,
-             path: str,
-             timeout: int,
+             address: Optional[str] = None,
+             method: Optional[str] = None,
+             path: Optional[str] = None,
+             timeout: Optional[int] = None,
              aone_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aoneName' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if aone_name is None and 'aoneName' in kwargs:
             aone_name = kwargs['aoneName']
 
         _setter("address", address)
@@ -368,14 +390,22 @@ class ApiHttpVpcServiceConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             method: str,
-             name: str,
-             path: str,
-             timeout: int,
+             method: Optional[str] = None,
+             name: Optional[str] = None,
+             path: Optional[str] = None,
+             timeout: Optional[int] = None,
              aone_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aoneName' in kwargs:
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if aone_name is None and 'aoneName' in kwargs:
             aone_name = kwargs['aoneName']
 
         _setter("method", method)
@@ -460,11 +490,13 @@ class ApiMockServiceConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             result: str,
+             result: Optional[str] = None,
              aone_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aoneName' in kwargs:
+        if result is None:
+            raise TypeError("Missing 'result' argument")
+        if aone_name is None and 'aoneName' in kwargs:
             aone_name = kwargs['aoneName']
 
         _setter("result", result)
@@ -531,14 +563,22 @@ class ApiRequestConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             method: str,
-             mode: str,
-             path: str,
-             protocol: str,
+             method: Optional[str] = None,
+             mode: Optional[str] = None,
+             path: Optional[str] = None,
+             protocol: Optional[str] = None,
              body_format: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bodyFormat' in kwargs:
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if body_format is None and 'bodyFormat' in kwargs:
             body_format = kwargs['bodyFormat']
 
         _setter("method", method)
@@ -647,23 +687,35 @@ class ApiRequestParameter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             in_: str,
-             in_service: str,
-             name: str,
-             name_service: str,
-             required: str,
-             type: str,
+             in_: Optional[str] = None,
+             in_service: Optional[str] = None,
+             name: Optional[str] = None,
+             name_service: Optional[str] = None,
+             required: Optional[str] = None,
+             type: Optional[str] = None,
              default_value: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'in' in kwargs:
+        if in_ is None and 'in' in kwargs:
             in_ = kwargs['in']
-        if 'inService' in kwargs:
+        if in_ is None:
+            raise TypeError("Missing 'in_' argument")
+        if in_service is None and 'inService' in kwargs:
             in_service = kwargs['inService']
-        if 'nameService' in kwargs:
+        if in_service is None:
+            raise TypeError("Missing 'in_service' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if name_service is None and 'nameService' in kwargs:
             name_service = kwargs['nameService']
-        if 'defaultValue' in kwargs:
+        if name_service is None:
+            raise TypeError("Missing 'name_service' argument")
+        if required is None:
+            raise TypeError("Missing 'required' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if default_value is None and 'defaultValue' in kwargs:
             default_value = kwargs['defaultValue']
 
         _setter("in_", in_)
@@ -781,15 +833,21 @@ class ApiSystemParameter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             in_: str,
-             name: str,
-             name_service: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             in_: Optional[str] = None,
+             name: Optional[str] = None,
+             name_service: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'in' in kwargs:
+        if in_ is None and 'in' in kwargs:
             in_ = kwargs['in']
-        if 'nameService' in kwargs:
+        if in_ is None:
+            raise TypeError("Missing 'in_' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if name_service is None and 'nameService' in kwargs:
             name_service = kwargs['nameService']
+        if name_service is None:
+            raise TypeError("Missing 'name_service' argument")
 
         _setter("in_", in_)
         _setter("name", name)
@@ -849,20 +907,32 @@ class GetApisApiResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             group_id: str,
-             group_name: str,
-             id: str,
-             name: str,
-             region_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             group_id: Optional[str] = None,
+             group_name: Optional[str] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             region_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupId' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'groupName' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'regionId' in kwargs:
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
 
         _setter("description", description)
         _setter("group_id", group_id)
@@ -949,20 +1019,32 @@ class GetAppsAppResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_code: str,
-             created_time: str,
-             description: str,
-             id: int,
-             modified_time: str,
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             app_code: Optional[str] = None,
+             created_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[int] = None,
+             modified_time: Optional[str] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appCode' in kwargs:
+        if app_code is None and 'appCode' in kwargs:
             app_code = kwargs['appCode']
-        if 'createdTime' in kwargs:
+        if app_code is None:
+            raise TypeError("Missing 'app_code' argument")
+        if created_time is None and 'createdTime' in kwargs:
             created_time = kwargs['createdTime']
-        if 'modifiedTime' in kwargs:
+        if created_time is None:
+            raise TypeError("Missing 'created_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if modified_time is None and 'modifiedTime' in kwargs:
             modified_time = kwargs['modifiedTime']
+        if modified_time is None:
+            raise TypeError("Missing 'modified_time' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("app_code", app_code)
         _setter("created_time", created_time)
@@ -1051,25 +1133,39 @@ class GetBackendsBackendResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backend_id: str,
-             backend_name: str,
-             backend_type: str,
-             create_time: str,
-             description: str,
-             id: str,
-             modified_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             backend_id: Optional[str] = None,
+             backend_name: Optional[str] = None,
+             backend_type: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             modified_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backendId' in kwargs:
+        if backend_id is None and 'backendId' in kwargs:
             backend_id = kwargs['backendId']
-        if 'backendName' in kwargs:
+        if backend_id is None:
+            raise TypeError("Missing 'backend_id' argument")
+        if backend_name is None and 'backendName' in kwargs:
             backend_name = kwargs['backendName']
-        if 'backendType' in kwargs:
+        if backend_name is None:
+            raise TypeError("Missing 'backend_name' argument")
+        if backend_type is None and 'backendType' in kwargs:
             backend_type = kwargs['backendType']
-        if 'createTime' in kwargs:
+        if backend_type is None:
+            raise TypeError("Missing 'backend_type' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'modifiedTime' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if modified_time is None and 'modifiedTime' in kwargs:
             modified_time = kwargs['modifiedTime']
+        if modified_time is None:
+            raise TypeError("Missing 'modified_time' argument")
 
         _setter("backend_id", backend_id)
         _setter("backend_name", backend_name)
@@ -1178,32 +1274,52 @@ class GetGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             billing_status: str,
-             created_time: str,
-             description: str,
-             id: str,
-             illegal_status: str,
-             modified_time: str,
-             name: str,
-             region_id: str,
-             sub_domain: str,
-             traffic_limit: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             billing_status: Optional[str] = None,
+             created_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             illegal_status: Optional[str] = None,
+             modified_time: Optional[str] = None,
+             name: Optional[str] = None,
+             region_id: Optional[str] = None,
+             sub_domain: Optional[str] = None,
+             traffic_limit: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'billingStatus' in kwargs:
+        if billing_status is None and 'billingStatus' in kwargs:
             billing_status = kwargs['billingStatus']
-        if 'createdTime' in kwargs:
+        if billing_status is None:
+            raise TypeError("Missing 'billing_status' argument")
+        if created_time is None and 'createdTime' in kwargs:
             created_time = kwargs['createdTime']
-        if 'illegalStatus' in kwargs:
+        if created_time is None:
+            raise TypeError("Missing 'created_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if illegal_status is None and 'illegalStatus' in kwargs:
             illegal_status = kwargs['illegalStatus']
-        if 'modifiedTime' in kwargs:
+        if illegal_status is None:
+            raise TypeError("Missing 'illegal_status' argument")
+        if modified_time is None and 'modifiedTime' in kwargs:
             modified_time = kwargs['modifiedTime']
-        if 'regionId' in kwargs:
+        if modified_time is None:
+            raise TypeError("Missing 'modified_time' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'subDomain' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if sub_domain is None and 'subDomain' in kwargs:
             sub_domain = kwargs['subDomain']
-        if 'trafficLimit' in kwargs:
+        if sub_domain is None:
+            raise TypeError("Missing 'sub_domain' argument")
+        if traffic_limit is None and 'trafficLimit' in kwargs:
             traffic_limit = kwargs['trafficLimit']
+        if traffic_limit is None:
+            raise TypeError("Missing 'traffic_limit' argument")
 
         _setter("billing_status", billing_status)
         _setter("created_time", created_time)
@@ -1327,21 +1443,31 @@ class GetLogConfigsConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             log_type: str,
-             region_id: str,
-             sls_log_store: str,
-             sls_project: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             log_type: Optional[str] = None,
+             region_id: Optional[str] = None,
+             sls_log_store: Optional[str] = None,
+             sls_project: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'logType' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if log_type is None and 'logType' in kwargs:
             log_type = kwargs['logType']
-        if 'regionId' in kwargs:
+        if log_type is None:
+            raise TypeError("Missing 'log_type' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'slsLogStore' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if sls_log_store is None and 'slsLogStore' in kwargs:
             sls_log_store = kwargs['slsLogStore']
-        if 'slsProject' in kwargs:
+        if sls_log_store is None:
+            raise TypeError("Missing 'sls_log_store' argument")
+        if sls_project is None and 'slsProject' in kwargs:
             sls_project = kwargs['slsProject']
+        if sls_project is None:
+            raise TypeError("Missing 'sls_project' argument")
 
         _setter("id", id)
         _setter("log_type", log_type)
@@ -1428,29 +1554,47 @@ class GetModelsModelResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             description: str,
-             group_id: str,
-             id: str,
-             model_id: str,
-             model_name: str,
-             model_ref: str,
-             modified_time: str,
-             schema: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             group_id: Optional[str] = None,
+             id: Optional[str] = None,
+             model_id: Optional[str] = None,
+             model_name: Optional[str] = None,
+             model_ref: Optional[str] = None,
+             modified_time: Optional[str] = None,
+             schema: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'groupId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'modelId' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if model_id is None and 'modelId' in kwargs:
             model_id = kwargs['modelId']
-        if 'modelName' in kwargs:
+        if model_id is None:
+            raise TypeError("Missing 'model_id' argument")
+        if model_name is None and 'modelName' in kwargs:
             model_name = kwargs['modelName']
-        if 'modelRef' in kwargs:
+        if model_name is None:
+            raise TypeError("Missing 'model_name' argument")
+        if model_ref is None and 'modelRef' in kwargs:
             model_ref = kwargs['modelRef']
-        if 'modifiedTime' in kwargs:
+        if model_ref is None:
+            raise TypeError("Missing 'model_ref' argument")
+        if modified_time is None and 'modifiedTime' in kwargs:
             modified_time = kwargs['modifiedTime']
+        if modified_time is None:
+            raise TypeError("Missing 'modified_time' argument")
+        if schema is None:
+            raise TypeError("Missing 'schema' argument")
 
         _setter("create_time", create_time)
         _setter("description", description)
@@ -1573,29 +1717,47 @@ class GetPluginsPluginResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             description: str,
-             id: str,
-             modified_time: str,
-             plugin_data: str,
-             plugin_id: str,
-             plugin_name: str,
-             plugin_type: str,
-             tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             modified_time: Optional[str] = None,
+             plugin_data: Optional[str] = None,
+             plugin_id: Optional[str] = None,
+             plugin_name: Optional[str] = None,
+             plugin_type: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'modifiedTime' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if modified_time is None and 'modifiedTime' in kwargs:
             modified_time = kwargs['modifiedTime']
-        if 'pluginData' in kwargs:
+        if modified_time is None:
+            raise TypeError("Missing 'modified_time' argument")
+        if plugin_data is None and 'pluginData' in kwargs:
             plugin_data = kwargs['pluginData']
-        if 'pluginId' in kwargs:
+        if plugin_data is None:
+            raise TypeError("Missing 'plugin_data' argument")
+        if plugin_id is None and 'pluginId' in kwargs:
             plugin_id = kwargs['pluginId']
-        if 'pluginName' in kwargs:
+        if plugin_id is None:
+            raise TypeError("Missing 'plugin_id' argument")
+        if plugin_name is None and 'pluginName' in kwargs:
             plugin_name = kwargs['pluginName']
-        if 'pluginType' in kwargs:
+        if plugin_name is None:
+            raise TypeError("Missing 'plugin_name' argument")
+        if plugin_type is None and 'pluginType' in kwargs:
             plugin_type = kwargs['pluginType']
+        if plugin_type is None:
+            raise TypeError("Missing 'plugin_type' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
 
         _setter("create_time", create_time)
         _setter("description", description)

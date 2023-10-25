@@ -15,46 +15,6 @@ import (
 // This data source provides the Arms Prometheus Monitorings of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available since v1.210.0.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := arms.GetPrometheusMonitorings(ctx, &arms.GetPrometheusMonitoringsArgs{
-//				ClusterId: "your_cluster_id",
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("armsPrometheusMonitoringsId1", ids.PrometheusMonitorings[0].Id)
-//			nameRegex, err := arms.GetPrometheusMonitorings(ctx, &arms.GetPrometheusMonitoringsArgs{
-//				ClusterId: "your_cluster_id",
-//				NameRegex: pulumi.StringRef("tf-example"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("armsPrometheusMonitoringsId2", nameRegex.PrometheusMonitorings[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetPrometheusMonitorings(ctx *pulumi.Context, args *GetPrometheusMonitoringsArgs, opts ...pulumi.InvokeOption) (*GetPrometheusMonitoringsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrometheusMonitoringsResult

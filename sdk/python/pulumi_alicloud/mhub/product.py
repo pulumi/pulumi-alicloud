@@ -26,11 +26,13 @@ class ProductArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             product_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             product_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'productName' in kwargs:
+        if product_name is None and 'productName' in kwargs:
             product_name = kwargs['productName']
+        if product_name is None:
+            raise TypeError("Missing 'product_name' argument")
 
         _setter("product_name", product_name)
 
@@ -63,9 +65,9 @@ class _ProductState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              product_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'productName' in kwargs:
+        if product_name is None and 'productName' in kwargs:
             product_name = kwargs['productName']
 
         if product_name is not None:
@@ -100,17 +102,6 @@ class Product(pulumi.CustomResource):
 
         > **NOTE:** At present, the resource only supports cn-shanghai region.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.mhub.Product("example", product_name="example_value")
-        ```
-
         ## Import
 
         MHUB Product can be imported using the id, e.g.
@@ -137,17 +128,6 @@ class Product(pulumi.CustomResource):
         > **NOTE:** Available in v1.138.0+.
 
         > **NOTE:** At present, the resource only supports cn-shanghai region.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.mhub.Product("example", product_name="example_value")
-        ```
 
         ## Import
 

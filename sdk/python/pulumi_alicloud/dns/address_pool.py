@@ -40,19 +40,29 @@ class AddressPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address_pool_name: pulumi.Input[str],
-             addresses: pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]],
-             instance_id: pulumi.Input[str],
-             lba_strategy: pulumi.Input[str],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             address_pool_name: Optional[pulumi.Input[str]] = None,
+             addresses: Optional[pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             lba_strategy: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addressPoolName' in kwargs:
+        if address_pool_name is None and 'addressPoolName' in kwargs:
             address_pool_name = kwargs['addressPoolName']
-        if 'instanceId' in kwargs:
+        if address_pool_name is None:
+            raise TypeError("Missing 'address_pool_name' argument")
+        if addresses is None:
+            raise TypeError("Missing 'addresses' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'lbaStrategy' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if lba_strategy is None and 'lbaStrategy' in kwargs:
             lba_strategy = kwargs['lbaStrategy']
+        if lba_strategy is None:
+            raise TypeError("Missing 'lba_strategy' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("address_pool_name", address_pool_name)
         _setter("addresses", addresses)
@@ -153,13 +163,13 @@ class _AddressPoolState:
              instance_id: Optional[pulumi.Input[str]] = None,
              lba_strategy: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addressPoolName' in kwargs:
+        if address_pool_name is None and 'addressPoolName' in kwargs:
             address_pool_name = kwargs['addressPoolName']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'lbaStrategy' in kwargs:
+        if lba_strategy is None and 'lbaStrategy' in kwargs:
             lba_strategy = kwargs['lbaStrategy']
 
         if address_pool_name is not None:
@@ -252,57 +262,6 @@ class AddressPool(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.152.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "alicloud-provider.com"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name=name)
-        default_gtm_instance = alicloud.dns.GtmInstance("defaultGtmInstance",
-            instance_name=name,
-            payment_type="Subscription",
-            period=1,
-            renewal_status="ManualRenewal",
-            package_edition="standard",
-            health_check_task_count=100,
-            sms_notification_count=1000,
-            public_cname_mode="SYSTEM_ASSIGN",
-            ttl=60,
-            cname_type="PUBLIC",
-            resource_group_id=default_resource_groups.groups[0].id,
-            alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
-            public_user_domain_name=domain_name,
-            alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
-                sms_notice=True,
-                notice_type="ADDR_ALERT",
-                email_notice=True,
-                dingtalk_notice=True,
-            )])
-        default_address_pool = alicloud.dns.AddressPool("defaultAddressPool",
-            address_pool_name=name,
-            instance_id=default_gtm_instance.id,
-            lba_strategy="RATIO",
-            type="IPV4",
-            addresses=[alicloud.dns.AddressPoolAddressArgs(
-                attribute_info="{\\"lineCodeRectifyType\\":\\"RECTIFIED\\",\\"lineCodes\\":[\\"os_namerica_us\\"]}",
-                remark="address_remark",
-                address="1.1.1.1",
-                mode="SMART",
-                lba_weight=1,
-            )])
-        ```
-
         ## Import
 
         Alidns Address Pool can be imported using the id, e.g.
@@ -331,57 +290,6 @@ class AddressPool(pulumi.CustomResource):
         For information about Alidns Address Pool and how to use it, see [What is Address Pool](https://www.alibabacloud.com/help/doc-detail/189621.html).
 
         > **NOTE:** Available since v1.152.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "alicloud-provider.com"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name=name)
-        default_gtm_instance = alicloud.dns.GtmInstance("defaultGtmInstance",
-            instance_name=name,
-            payment_type="Subscription",
-            period=1,
-            renewal_status="ManualRenewal",
-            package_edition="standard",
-            health_check_task_count=100,
-            sms_notification_count=1000,
-            public_cname_mode="SYSTEM_ASSIGN",
-            ttl=60,
-            cname_type="PUBLIC",
-            resource_group_id=default_resource_groups.groups[0].id,
-            alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
-            public_user_domain_name=domain_name,
-            alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
-                sms_notice=True,
-                notice_type="ADDR_ALERT",
-                email_notice=True,
-                dingtalk_notice=True,
-            )])
-        default_address_pool = alicloud.dns.AddressPool("defaultAddressPool",
-            address_pool_name=name,
-            instance_id=default_gtm_instance.id,
-            lba_strategy="RATIO",
-            type="IPV4",
-            addresses=[alicloud.dns.AddressPoolAddressArgs(
-                attribute_info="{\\"lineCodeRectifyType\\":\\"RECTIFIED\\",\\"lineCodes\\":[\\"os_namerica_us\\"]}",
-                remark="address_remark",
-                address="1.1.1.1",
-                mode="SMART",
-                lba_weight=1,
-            )])
-        ```
 
         ## Import
 

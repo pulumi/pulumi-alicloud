@@ -10,19 +10,6 @@ import * as utilities from "../utilities";
  * > **DEPRECATED:** This datasource has been renamed to alicloud.slb.getApplicationLoadBalancers from version 1.123.1.
  *
  * This data source provides the server load balancers of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.slb.LoadBalancer("default", {});
- * const slbsDs = alicloud.slb.getLoadBalancers({
- *     nameRegex: "sample_slb",
- * });
- * export const firstSlbId = slbsDs.then(slbsDs => slbsDs.slbs?.[0]?.id);
- * ```
  */
 export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
     args = args || {};
@@ -100,17 +87,6 @@ export interface GetLoadBalancersArgs {
     status?: string;
     /**
      * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as alicloud from "@pulumi/alicloud";
-     *
-     * const taggedInstances = alicloud.slb.getLoadBalancers({
-     *     tags: {
-     *         tagKey1: "tagValue1",
-     *         tagKey2: "tagValue2",
-     *     },
-     * });
-     * ```
      */
     tags?: {[key: string]: any};
     /**
@@ -191,19 +167,6 @@ export interface GetLoadBalancersResult {
  * > **DEPRECATED:** This datasource has been renamed to alicloud.slb.getApplicationLoadBalancers from version 1.123.1.
  *
  * This data source provides the server load balancers of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.slb.LoadBalancer("default", {});
- * const slbsDs = alicloud.slb.getLoadBalancers({
- *     nameRegex: "sample_slb",
- * });
- * export const firstSlbId = slbsDs.then(slbsDs => slbsDs.slbs?.[0]?.id);
- * ```
  */
 export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancersResult> {
     return pulumi.output(args).apply((a: any) => getLoadBalancers(a, opts))
@@ -255,17 +218,6 @@ export interface GetLoadBalancersOutputArgs {
     status?: pulumi.Input<string>;
     /**
      * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as alicloud from "@pulumi/alicloud";
-     *
-     * const taggedInstances = alicloud.slb.getLoadBalancers({
-     *     tags: {
-     *         tagKey1: "tagValue1",
-     *         tagKey2: "tagValue2",
-     *     },
-     * });
-     * ```
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

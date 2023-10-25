@@ -16,36 +16,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// The taint effect.
         /// 
         /// The following example is the definition of taints block:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var k8s = new AliCloud.CS.ManagedKubernetes("k8s", new()
-        ///     {
-        ///         Taints = new[]
-        ///         {
-        ///             new AliCloud.CS.Inputs.ManagedKubernetesTaintArgs
-        ///             {
-        ///                 Effect = "NoSchedule",
-        ///                 Key = "key-a",
-        ///                 Value = "value-a",
-        ///             },
-        ///             new AliCloud.CS.Inputs.ManagedKubernetesTaintArgs
-        ///             {
-        ///                 Effect = "NoSchedule",
-        ///                 Key = "key-b",
-        ///                 Value = "value-b",
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }

@@ -16,30 +16,6 @@ namespace Pulumi.AliCloud.Message
     /// 
     /// &gt; **NOTE:** Available since v1.188.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = new AliCloud.Message.ServiceTopic("default", new()
-    ///     {
-    ///         TopicName = name,
-    ///         MaxMessageSize = 12357,
-    ///         LoggingEnabled = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Message Notification Service Topic can be imported using the id or topic_name, e.g.

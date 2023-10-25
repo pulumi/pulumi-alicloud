@@ -19,44 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.136.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/databasefilesystem"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := databasefilesystem.NewInstance(ctx, "example", &databasefilesystem.InstanceArgs{
-//				Category:         pulumi.String("standard"),
-//				ZoneId:           pulumi.String("cn-hangzhou-i"),
-//				PerformanceLevel: pulumi.String("PL1"),
-//				InstanceName:     pulumi.String(name),
-//				Size:             pulumi.Int(100),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // DBFS Instance can be imported using the id, e.g.

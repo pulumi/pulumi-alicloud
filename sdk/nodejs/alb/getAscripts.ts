@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Alb Ascript available to the user.
  *
  * > **NOTE:** Available in 1.195.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.alb.getAscripts({
- *     ids: [alicloud_alb_ascript["default"].id],
- *     nameRegex: alicloud_alb_ascript["default"].name,
- *     ascriptName: "test",
- *     listenerId: _var.listenerId,
- * });
- * export const alicloudAlbAscriptExampleId = _default.then(_default => _default.ascripts?.[0]?.id);
- * ```
  */
 export function getAscripts(args?: GetAscriptsArgs, opts?: pulumi.InvokeOptions): Promise<GetAscriptsResult> {
     args = args || {};
@@ -103,21 +88,6 @@ export interface GetAscriptsResult {
  * This data source provides Alb Ascript available to the user.
  *
  * > **NOTE:** Available in 1.195.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.alb.getAscripts({
- *     ids: [alicloud_alb_ascript["default"].id],
- *     nameRegex: alicloud_alb_ascript["default"].name,
- *     ascriptName: "test",
- *     listenerId: _var.listenerId,
- * });
- * export const alicloudAlbAscriptExampleId = _default.then(_default => _default.ascripts?.[0]?.id);
- * ```
  */
 export function getAscriptsOutput(args?: GetAscriptsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAscriptsResult> {
     return pulumi.output(args).apply((a: any) => getAscripts(a, opts))

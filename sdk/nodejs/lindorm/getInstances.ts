@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Lindorm Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.lindorm.getInstances({});
- * export const lindormInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
- * const nameRegex = alicloud.lindorm.getInstances({
- *     nameRegex: "^my-Instance",
- * });
- * export const lindormInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
- * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -98,22 +82,6 @@ export interface GetInstancesResult {
  * This data source provides the Lindorm Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.lindorm.getInstances({});
- * export const lindormInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
- * const nameRegex = alicloud.lindorm.getInstances({
- *     nameRegex: "^my-Instance",
- * });
- * export const lindormInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
- * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))

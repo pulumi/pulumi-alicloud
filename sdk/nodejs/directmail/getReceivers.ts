@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.125.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.directmail.getReceivers({
- *     ids: ["ca73b1e4fb0df7c935a5097a****"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstDirectMailReceiversId = example.then(example => example.receiverses?.[0]?.id);
- * ```
  */
 export function getReceivers(args?: GetReceiversArgs, opts?: pulumi.InvokeOptions): Promise<GetReceiversResult> {
     args = args || {};
@@ -85,21 +70,6 @@ export interface GetReceiversResult {
  * This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.125.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.directmail.getReceivers({
- *     ids: ["ca73b1e4fb0df7c935a5097a****"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstDirectMailReceiversId = example.then(example => example.receiverses?.[0]?.id);
- * ```
  */
 export function getReceiversOutput(args?: GetReceiversOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReceiversResult> {
     return pulumi.output(args).apply((a: any) => getReceivers(a, opts))

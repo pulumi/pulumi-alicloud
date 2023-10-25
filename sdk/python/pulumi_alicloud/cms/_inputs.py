@@ -72,9 +72,9 @@ class AlarmEscalationsCriticalArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'comparisonOperator' in kwargs:
+        if comparison_operator is None and 'comparisonOperator' in kwargs:
             comparison_operator = kwargs['comparisonOperator']
 
         if comparison_operator is not None:
@@ -162,9 +162,9 @@ class AlarmEscalationsInfoArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'comparisonOperator' in kwargs:
+        if comparison_operator is None and 'comparisonOperator' in kwargs:
             comparison_operator = kwargs['comparisonOperator']
 
         if comparison_operator is not None:
@@ -252,9 +252,9 @@ class AlarmEscalationsWarnArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'comparisonOperator' in kwargs:
+        if comparison_operator is None and 'comparisonOperator' in kwargs:
             comparison_operator = kwargs['comparisonOperator']
 
         if comparison_operator is not None:
@@ -342,9 +342,9 @@ class AlarmPrometheusArgs:
              level: Optional[pulumi.Input[str]] = None,
              prom_ql: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'promQl' in kwargs:
+        if prom_ql is None and 'promQl' in kwargs:
             prom_ql = kwargs['promQl']
 
         if annotations is not None:
@@ -422,14 +422,18 @@ class DynamicTagGroupMatchExpressArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             tag_value: pulumi.Input[str],
-             tag_value_match_function: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             tag_value: Optional[pulumi.Input[str]] = None,
+             tag_value_match_function: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'tagValue' in kwargs:
+        if tag_value is None and 'tagValue' in kwargs:
             tag_value = kwargs['tagValue']
-        if 'tagValueMatchFunction' in kwargs:
+        if tag_value is None:
+            raise TypeError("Missing 'tag_value' argument")
+        if tag_value_match_function is None and 'tagValueMatchFunction' in kwargs:
             tag_value_match_function = kwargs['tagValueMatchFunction']
+        if tag_value_match_function is None:
+            raise TypeError("Missing 'tag_value_match_function' argument")
 
         _setter("tag_value", tag_value)
         _setter("tag_value_match_function", tag_value_match_function)
@@ -482,11 +486,11 @@ class EventRuleContactParameterArgs:
              contact_group_name: Optional[pulumi.Input[str]] = None,
              contact_parameters_id: Optional[pulumi.Input[str]] = None,
              level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contactGroupName' in kwargs:
+        if contact_group_name is None and 'contactGroupName' in kwargs:
             contact_group_name = kwargs['contactGroupName']
-        if 'contactParametersId' in kwargs:
+        if contact_parameters_id is None and 'contactParametersId' in kwargs:
             contact_parameters_id = kwargs['contactParametersId']
 
         if contact_group_name is not None:
@@ -559,20 +563,22 @@ class EventRuleEventPatternArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             product: pulumi.Input[str],
+             product: Optional[pulumi.Input[str]] = None,
              event_type_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              level_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              sql_filter: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventTypeLists' in kwargs:
+        if product is None:
+            raise TypeError("Missing 'product' argument")
+        if event_type_lists is None and 'eventTypeLists' in kwargs:
             event_type_lists = kwargs['eventTypeLists']
-        if 'levelLists' in kwargs:
+        if level_lists is None and 'levelLists' in kwargs:
             level_lists = kwargs['levelLists']
-        if 'nameLists' in kwargs:
+        if name_lists is None and 'nameLists' in kwargs:
             name_lists = kwargs['nameLists']
-        if 'sqlFilter' in kwargs:
+        if sql_filter is None and 'sqlFilter' in kwargs:
             sql_filter = kwargs['sqlFilter']
 
         _setter("product", product)
@@ -677,13 +683,13 @@ class EventRuleFcParameterArgs:
              function_name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fcParametersId' in kwargs:
+        if fc_parameters_id is None and 'fcParametersId' in kwargs:
             fc_parameters_id = kwargs['fcParametersId']
-        if 'functionName' in kwargs:
+        if function_name is None and 'functionName' in kwargs:
             function_name = kwargs['functionName']
-        if 'serviceName' in kwargs:
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
 
         if arn is not None:
@@ -789,9 +795,9 @@ class EventRuleMnsParameterArgs:
              queue: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mnsParametersId' in kwargs:
+        if mns_parameters_id is None and 'mnsParametersId' in kwargs:
             mns_parameters_id = kwargs['mnsParametersId']
 
         if arn is not None:
@@ -905,9 +911,9 @@ class EventRuleOpenApiParameterArgs:
              region: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'openApiParametersId' in kwargs:
+        if open_api_parameters_id is None and 'openApiParametersId' in kwargs:
             open_api_parameters_id = kwargs['openApiParametersId']
 
         if action is not None:
@@ -1041,11 +1047,11 @@ class EventRuleSlsParameterArgs:
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              sls_parameters_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'logStore' in kwargs:
+        if log_store is None and 'logStore' in kwargs:
             log_store = kwargs['logStore']
-        if 'slsParametersId' in kwargs:
+        if sls_parameters_id is None and 'slsParametersId' in kwargs:
             sls_parameters_id = kwargs['slsParametersId']
 
         if arn is not None:
@@ -1147,9 +1153,9 @@ class EventRuleWebhookParameterArgs:
              protocol: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              webhook_parameters_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'webhookParametersId' in kwargs:
+        if webhook_parameters_id is None and 'webhookParametersId' in kwargs:
             webhook_parameters_id = kwargs['webhookParametersId']
 
         if method is not None:
@@ -1233,7 +1239,7 @@ class GroupMetricRuleEscalationsArgs:
              critical: Optional[pulumi.Input['GroupMetricRuleEscalationsCriticalArgs']] = None,
              info: Optional[pulumi.Input['GroupMetricRuleEscalationsInfoArgs']] = None,
              warn: Optional[pulumi.Input['GroupMetricRuleEscalationsWarnArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if critical is not None:
@@ -1307,9 +1313,9 @@ class GroupMetricRuleEscalationsCriticalArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'comparisonOperator' in kwargs:
+        if comparison_operator is None and 'comparisonOperator' in kwargs:
             comparison_operator = kwargs['comparisonOperator']
 
         if comparison_operator is not None:
@@ -1397,9 +1403,9 @@ class GroupMetricRuleEscalationsInfoArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'comparisonOperator' in kwargs:
+        if comparison_operator is None and 'comparisonOperator' in kwargs:
             comparison_operator = kwargs['comparisonOperator']
 
         if comparison_operator is not None:
@@ -1487,9 +1493,9 @@ class GroupMetricRuleEscalationsWarnArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'comparisonOperator' in kwargs:
+        if comparison_operator is None and 'comparisonOperator' in kwargs:
             comparison_operator = kwargs['comparisonOperator']
 
         if comparison_operator is not None:
@@ -1579,9 +1585,9 @@ class GroupMetricRuleTargetArgs:
              id: Optional[pulumi.Input[str]] = None,
              json_params: Optional[pulumi.Input[str]] = None,
              level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'jsonParams' in kwargs:
+        if json_params is None and 'jsonParams' in kwargs:
             json_params = kwargs['jsonParams']
 
         if arn is not None:
@@ -1663,7 +1669,7 @@ class HybridMonitorSlsTaskAttachLabelArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -1723,9 +1729,9 @@ class HybridMonitorSlsTaskSlsProcessConfigArgs:
              filter: Optional[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterArgs']] = None,
              group_bies: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigGroupByArgs']]]] = None,
              statistics: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigStatisticArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupBies' in kwargs:
+        if group_bies is None and 'groupBies' in kwargs:
             group_bies = kwargs['groupBies']
 
         if expresses is not None:
@@ -1805,7 +1811,7 @@ class HybridMonitorSlsTaskSlsProcessConfigExpressArgs:
              _setter: Callable[[Any, Any], None],
              alias: Optional[pulumi.Input[str]] = None,
              express: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if alias is not None:
@@ -1857,7 +1863,7 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterArgs:
              _setter: Callable[[Any, Any], None],
              filters: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs']]]] = None,
              relation: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if filters is not None:
@@ -1913,9 +1919,9 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs:
              operator: Optional[pulumi.Input[str]] = None,
              sls_key_name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'slsKeyName' in kwargs:
+        if sls_key_name is None and 'slsKeyName' in kwargs:
             sls_key_name = kwargs['slsKeyName']
 
         if operator is not None:
@@ -1981,9 +1987,9 @@ class HybridMonitorSlsTaskSlsProcessConfigGroupByArgs:
              _setter: Callable[[Any, Any], None],
              alias: Optional[pulumi.Input[str]] = None,
              sls_key_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'slsKeyName' in kwargs:
+        if sls_key_name is None and 'slsKeyName' in kwargs:
             sls_key_name = kwargs['slsKeyName']
 
         if alias is not None:
@@ -2049,13 +2055,13 @@ class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs:
              parameter_one: Optional[pulumi.Input[str]] = None,
              parameter_two: Optional[pulumi.Input[str]] = None,
              sls_key_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterOne' in kwargs:
+        if parameter_one is None and 'parameterOne' in kwargs:
             parameter_one = kwargs['parameterOne']
-        if 'parameterTwo' in kwargs:
+        if parameter_two is None and 'parameterTwo' in kwargs:
             parameter_two = kwargs['parameterTwo']
-        if 'slsKeyName' in kwargs:
+        if sls_key_name is None and 'slsKeyName' in kwargs:
             sls_key_name = kwargs['slsKeyName']
 
         if alias is not None:
@@ -2149,12 +2155,14 @@ class MetricRuleBlackListMetricArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metric_name: pulumi.Input[str],
+             metric_name: Optional[pulumi.Input[str]] = None,
              resource: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'metricName' in kwargs:
+        if metric_name is None and 'metricName' in kwargs:
             metric_name = kwargs['metricName']
+        if metric_name is None:
+            raise TypeError("Missing 'metric_name' argument")
 
         _setter("metric_name", metric_name)
         if resource is not None:
@@ -2218,18 +2226,26 @@ class MetricRuleTemplateAlertTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: pulumi.Input[str],
-             metric_name: pulumi.Input[str],
-             namespace: pulumi.Input[str],
-             rule_name: pulumi.Input[str],
+             category: Optional[pulumi.Input[str]] = None,
+             metric_name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
              escalations: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsArgs']] = None,
              webhook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'metricName' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if metric_name is None and 'metricName' in kwargs:
             metric_name = kwargs['metricName']
-        if 'ruleName' in kwargs:
+        if metric_name is None:
+            raise TypeError("Missing 'metric_name' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
 
         _setter("category", category)
         _setter("metric_name", metric_name)
@@ -2340,7 +2356,7 @@ class MetricRuleTemplateAlertTemplateEscalationsArgs:
              critical: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsCriticalArgs']] = None,
              info: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsInfoArgs']] = None,
              warn: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsWarnArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if critical is not None:
@@ -2414,9 +2430,9 @@ class MetricRuleTemplateAlertTemplateEscalationsCriticalArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'comparisonOperator' in kwargs:
+        if comparison_operator is None and 'comparisonOperator' in kwargs:
             comparison_operator = kwargs['comparisonOperator']
 
         if comparison_operator is not None:
@@ -2504,9 +2520,9 @@ class MetricRuleTemplateAlertTemplateEscalationsInfoArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'comparisonOperator' in kwargs:
+        if comparison_operator is None and 'comparisonOperator' in kwargs:
             comparison_operator = kwargs['comparisonOperator']
 
         if comparison_operator is not None:
@@ -2594,9 +2610,9 @@ class MetricRuleTemplateAlertTemplateEscalationsWarnArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'comparisonOperator' in kwargs:
+        if comparison_operator is None and 'comparisonOperator' in kwargs:
             comparison_operator = kwargs['comparisonOperator']
 
         if comparison_operator is not None:
@@ -2680,18 +2696,26 @@ class MonitorGroupInstancesInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             instance_name: pulumi.Input[str],
-             region_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             category: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             region_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'regionId' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
 
         _setter("category", category)
         _setter("instance_id", instance_id)
@@ -2764,10 +2788,14 @@ class SiteMonitorIspCityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             city: pulumi.Input[str],
-             isp: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             city: Optional[pulumi.Input[str]] = None,
+             isp: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if city is None:
+            raise TypeError("Missing 'city' argument")
+        if isp is None:
+            raise TypeError("Missing 'isp' argument")
 
         _setter("city", city)
         _setter("isp", isp)
@@ -2820,19 +2848,25 @@ class SlsGroupSlsGroupConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sls_logstore: pulumi.Input[str],
-             sls_project: pulumi.Input[str],
-             sls_region: pulumi.Input[str],
+             sls_logstore: Optional[pulumi.Input[str]] = None,
+             sls_project: Optional[pulumi.Input[str]] = None,
+             sls_region: Optional[pulumi.Input[str]] = None,
              sls_user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'slsLogstore' in kwargs:
+        if sls_logstore is None and 'slsLogstore' in kwargs:
             sls_logstore = kwargs['slsLogstore']
-        if 'slsProject' in kwargs:
+        if sls_logstore is None:
+            raise TypeError("Missing 'sls_logstore' argument")
+        if sls_project is None and 'slsProject' in kwargs:
             sls_project = kwargs['slsProject']
-        if 'slsRegion' in kwargs:
+        if sls_project is None:
+            raise TypeError("Missing 'sls_project' argument")
+        if sls_region is None and 'slsRegion' in kwargs:
             sls_region = kwargs['slsRegion']
-        if 'slsUserId' in kwargs:
+        if sls_region is None:
+            raise TypeError("Missing 'sls_region' argument")
+        if sls_user_id is None and 'slsUserId' in kwargs:
             sls_user_id = kwargs['slsUserId']
 
         _setter("sls_logstore", sls_logstore)

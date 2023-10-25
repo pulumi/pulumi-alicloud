@@ -384,10 +384,10 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             engine: pulumi.Input[str],
-             engine_version: pulumi.Input[str],
-             instance_storage: pulumi.Input[int],
-             instance_type: pulumi.Input[str],
+             engine: Optional[pulumi.Input[str]] = None,
+             engine_version: Optional[pulumi.Input[str]] = None,
+             instance_storage: Optional[pulumi.Input[int]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
              acl: Optional[pulumi.Input[str]] = None,
              auto_renew: Optional[pulumi.Input[bool]] = None,
              auto_renew_period: Optional[pulumi.Input[int]] = None,
@@ -456,135 +456,143 @@ class InstanceArgs:
              zone_id: Optional[pulumi.Input[str]] = None,
              zone_id_slave_a: Optional[pulumi.Input[str]] = None,
              zone_id_slave_b: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'engineVersion' in kwargs:
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'instanceStorage' in kwargs:
+        if engine_version is None:
+            raise TypeError("Missing 'engine_version' argument")
+        if instance_storage is None and 'instanceStorage' in kwargs:
             instance_storage = kwargs['instanceStorage']
-        if 'instanceType' in kwargs:
+        if instance_storage is None:
+            raise TypeError("Missing 'instance_storage' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'autoRenew' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'autoUpgradeMinorVersion' in kwargs:
+        if auto_upgrade_minor_version is None and 'autoUpgradeMinorVersion' in kwargs:
             auto_upgrade_minor_version = kwargs['autoUpgradeMinorVersion']
-        if 'babelfishConfigs' in kwargs:
+        if babelfish_configs is None and 'babelfishConfigs' in kwargs:
             babelfish_configs = kwargs['babelfishConfigs']
-        if 'babelfishPort' in kwargs:
+        if babelfish_port is None and 'babelfishPort' in kwargs:
             babelfish_port = kwargs['babelfishPort']
-        if 'caType' in kwargs:
+        if ca_type is None and 'caType' in kwargs:
             ca_type = kwargs['caType']
-        if 'clientCaCert' in kwargs:
+        if client_ca_cert is None and 'clientCaCert' in kwargs:
             client_ca_cert = kwargs['clientCaCert']
-        if 'clientCaEnabled' in kwargs:
+        if client_ca_enabled is None and 'clientCaEnabled' in kwargs:
             client_ca_enabled = kwargs['clientCaEnabled']
-        if 'clientCertRevocationList' in kwargs:
+        if client_cert_revocation_list is None and 'clientCertRevocationList' in kwargs:
             client_cert_revocation_list = kwargs['clientCertRevocationList']
-        if 'clientCrlEnabled' in kwargs:
+        if client_crl_enabled is None and 'clientCrlEnabled' in kwargs:
             client_crl_enabled = kwargs['clientCrlEnabled']
-        if 'connectionStringPrefix' in kwargs:
+        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
             connection_string_prefix = kwargs['connectionStringPrefix']
-        if 'dbInstanceIpArrayAttribute' in kwargs:
+        if db_instance_ip_array_attribute is None and 'dbInstanceIpArrayAttribute' in kwargs:
             db_instance_ip_array_attribute = kwargs['dbInstanceIpArrayAttribute']
-        if 'dbInstanceIpArrayName' in kwargs:
+        if db_instance_ip_array_name is None and 'dbInstanceIpArrayName' in kwargs:
             db_instance_ip_array_name = kwargs['dbInstanceIpArrayName']
-        if 'dbInstanceStorageType' in kwargs:
+        if db_instance_storage_type is None and 'dbInstanceStorageType' in kwargs:
             db_instance_storage_type = kwargs['dbInstanceStorageType']
-        if 'dbIsIgnoreCase' in kwargs:
+        if db_is_ignore_case is None and 'dbIsIgnoreCase' in kwargs:
             db_is_ignore_case = kwargs['dbIsIgnoreCase']
-        if 'dbTimeZone' in kwargs:
+        if db_time_zone is None and 'dbTimeZone' in kwargs:
             db_time_zone = kwargs['dbTimeZone']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'effectiveTime' in kwargs:
+        if effective_time is None and 'effectiveTime' in kwargs:
             effective_time = kwargs['effectiveTime']
-        if 'encryptionKey' in kwargs:
+        if encryption_key is None and 'encryptionKey' in kwargs:
             encryption_key = kwargs['encryptionKey']
-        if 'forceRestart' in kwargs:
+        if force_restart is None and 'forceRestart' in kwargs:
             force_restart = kwargs['forceRestart']
-        if 'freshWhiteListReadins' in kwargs:
+        if fresh_white_list_readins is None and 'freshWhiteListReadins' in kwargs:
             fresh_white_list_readins = kwargs['freshWhiteListReadins']
-        if 'haConfig' in kwargs:
+        if ha_config is None and 'haConfig' in kwargs:
             ha_config = kwargs['haConfig']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'maintainTime' in kwargs:
+        if maintain_time is None and 'maintainTime' in kwargs:
             maintain_time = kwargs['maintainTime']
-        if 'manualHaTime' in kwargs:
+        if manual_ha_time is None and 'manualHaTime' in kwargs:
             manual_ha_time = kwargs['manualHaTime']
-        if 'modifyMode' in kwargs:
+        if modify_mode is None and 'modifyMode' in kwargs:
             modify_mode = kwargs['modifyMode']
-        if 'monitoringPeriod' in kwargs:
+        if monitoring_period is None and 'monitoringPeriod' in kwargs:
             monitoring_period = kwargs['monitoringPeriod']
-        if 'pgHbaConfs' in kwargs:
+        if pg_hba_confs is None and 'pgHbaConfs' in kwargs:
             pg_hba_confs = kwargs['pgHbaConfs']
-        if 'privateIpAddress' in kwargs:
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
             private_ip_address = kwargs['privateIpAddress']
-        if 'releasedKeepPolicy' in kwargs:
+        if released_keep_policy is None and 'releasedKeepPolicy' in kwargs:
             released_keep_policy = kwargs['releasedKeepPolicy']
-        if 'replicationAcl' in kwargs:
+        if replication_acl is None and 'replicationAcl' in kwargs:
             replication_acl = kwargs['replicationAcl']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'securityIpMode' in kwargs:
+        if security_ip_mode is None and 'securityIpMode' in kwargs:
             security_ip_mode = kwargs['securityIpMode']
-        if 'securityIpType' in kwargs:
+        if security_ip_type is None and 'securityIpType' in kwargs:
             security_ip_type = kwargs['securityIpType']
-        if 'securityIps' in kwargs:
+        if security_ips is None and 'securityIps' in kwargs:
             security_ips = kwargs['securityIps']
-        if 'serverCert' in kwargs:
+        if server_cert is None and 'serverCert' in kwargs:
             server_cert = kwargs['serverCert']
-        if 'serverKey' in kwargs:
+        if server_key is None and 'serverKey' in kwargs:
             server_key = kwargs['serverKey']
-        if 'serverlessConfigs' in kwargs:
+        if serverless_configs is None and 'serverlessConfigs' in kwargs:
             serverless_configs = kwargs['serverlessConfigs']
-        if 'sqlCollectorConfigValue' in kwargs:
+        if sql_collector_config_value is None and 'sqlCollectorConfigValue' in kwargs:
             sql_collector_config_value = kwargs['sqlCollectorConfigValue']
-        if 'sqlCollectorStatus' in kwargs:
+        if sql_collector_status is None and 'sqlCollectorStatus' in kwargs:
             sql_collector_status = kwargs['sqlCollectorStatus']
-        if 'sslAction' in kwargs:
+        if ssl_action is None and 'sslAction' in kwargs:
             ssl_action = kwargs['sslAction']
-        if 'sslConnectionString' in kwargs:
+        if ssl_connection_string is None and 'sslConnectionString' in kwargs:
             ssl_connection_string = kwargs['sslConnectionString']
-        if 'storageAutoScale' in kwargs:
+        if storage_auto_scale is None and 'storageAutoScale' in kwargs:
             storage_auto_scale = kwargs['storageAutoScale']
-        if 'storageThreshold' in kwargs:
+        if storage_threshold is None and 'storageThreshold' in kwargs:
             storage_threshold = kwargs['storageThreshold']
-        if 'storageUpperBound' in kwargs:
+        if storage_upper_bound is None and 'storageUpperBound' in kwargs:
             storage_upper_bound = kwargs['storageUpperBound']
-        if 'switchTime' in kwargs:
+        if switch_time is None and 'switchTime' in kwargs:
             switch_time = kwargs['switchTime']
-        if 'targetMinorVersion' in kwargs:
+        if target_minor_version is None and 'targetMinorVersion' in kwargs:
             target_minor_version = kwargs['targetMinorVersion']
-        if 'tcpConnectionType' in kwargs:
+        if tcp_connection_type is None and 'tcpConnectionType' in kwargs:
             tcp_connection_type = kwargs['tcpConnectionType']
-        if 'tdeStatus' in kwargs:
+        if tde_status is None and 'tdeStatus' in kwargs:
             tde_status = kwargs['tdeStatus']
-        if 'upgradeDbInstanceKernelVersion' in kwargs:
+        if upgrade_db_instance_kernel_version is None and 'upgradeDbInstanceKernelVersion' in kwargs:
             upgrade_db_instance_kernel_version = kwargs['upgradeDbInstanceKernelVersion']
-        if 'upgradeTime' in kwargs:
+        if upgrade_time is None and 'upgradeTime' in kwargs:
             upgrade_time = kwargs['upgradeTime']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'whitelistNetworkType' in kwargs:
+        if whitelist_network_type is None and 'whitelistNetworkType' in kwargs:
             whitelist_network_type = kwargs['whitelistNetworkType']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'zoneIdSlaveA' in kwargs:
+        if zone_id_slave_a is None and 'zoneIdSlaveA' in kwargs:
             zone_id_slave_a = kwargs['zoneIdSlaveA']
-        if 'zoneIdSlaveB' in kwargs:
+        if zone_id_slave_b is None and 'zoneIdSlaveB' in kwargs:
             zone_id_slave_b = kwargs['zoneIdSlaveB']
 
         _setter("engine", engine)
@@ -2211,143 +2219,143 @@ class _InstanceState:
              zone_id: Optional[pulumi.Input[str]] = None,
              zone_id_slave_a: Optional[pulumi.Input[str]] = None,
              zone_id_slave_b: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'autoUpgradeMinorVersion' in kwargs:
+        if auto_upgrade_minor_version is None and 'autoUpgradeMinorVersion' in kwargs:
             auto_upgrade_minor_version = kwargs['autoUpgradeMinorVersion']
-        if 'babelfishConfigs' in kwargs:
+        if babelfish_configs is None and 'babelfishConfigs' in kwargs:
             babelfish_configs = kwargs['babelfishConfigs']
-        if 'babelfishPort' in kwargs:
+        if babelfish_port is None and 'babelfishPort' in kwargs:
             babelfish_port = kwargs['babelfishPort']
-        if 'caType' in kwargs:
+        if ca_type is None and 'caType' in kwargs:
             ca_type = kwargs['caType']
-        if 'clientCaCert' in kwargs:
+        if client_ca_cert is None and 'clientCaCert' in kwargs:
             client_ca_cert = kwargs['clientCaCert']
-        if 'clientCaEnabled' in kwargs:
+        if client_ca_enabled is None and 'clientCaEnabled' in kwargs:
             client_ca_enabled = kwargs['clientCaEnabled']
-        if 'clientCertRevocationList' in kwargs:
+        if client_cert_revocation_list is None and 'clientCertRevocationList' in kwargs:
             client_cert_revocation_list = kwargs['clientCertRevocationList']
-        if 'clientCrlEnabled' in kwargs:
+        if client_crl_enabled is None and 'clientCrlEnabled' in kwargs:
             client_crl_enabled = kwargs['clientCrlEnabled']
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'connectionStringPrefix' in kwargs:
+        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
             connection_string_prefix = kwargs['connectionStringPrefix']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dbInstanceIpArrayAttribute' in kwargs:
+        if db_instance_ip_array_attribute is None and 'dbInstanceIpArrayAttribute' in kwargs:
             db_instance_ip_array_attribute = kwargs['dbInstanceIpArrayAttribute']
-        if 'dbInstanceIpArrayName' in kwargs:
+        if db_instance_ip_array_name is None and 'dbInstanceIpArrayName' in kwargs:
             db_instance_ip_array_name = kwargs['dbInstanceIpArrayName']
-        if 'dbInstanceStorageType' in kwargs:
+        if db_instance_storage_type is None and 'dbInstanceStorageType' in kwargs:
             db_instance_storage_type = kwargs['dbInstanceStorageType']
-        if 'dbInstanceType' in kwargs:
+        if db_instance_type is None and 'dbInstanceType' in kwargs:
             db_instance_type = kwargs['dbInstanceType']
-        if 'dbIsIgnoreCase' in kwargs:
+        if db_is_ignore_case is None and 'dbIsIgnoreCase' in kwargs:
             db_is_ignore_case = kwargs['dbIsIgnoreCase']
-        if 'dbTimeZone' in kwargs:
+        if db_time_zone is None and 'dbTimeZone' in kwargs:
             db_time_zone = kwargs['dbTimeZone']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'effectiveTime' in kwargs:
+        if effective_time is None and 'effectiveTime' in kwargs:
             effective_time = kwargs['effectiveTime']
-        if 'encryptionKey' in kwargs:
+        if encryption_key is None and 'encryptionKey' in kwargs:
             encryption_key = kwargs['encryptionKey']
-        if 'engineVersion' in kwargs:
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'forceRestart' in kwargs:
+        if force_restart is None and 'forceRestart' in kwargs:
             force_restart = kwargs['forceRestart']
-        if 'freshWhiteListReadins' in kwargs:
+        if fresh_white_list_readins is None and 'freshWhiteListReadins' in kwargs:
             fresh_white_list_readins = kwargs['freshWhiteListReadins']
-        if 'haConfig' in kwargs:
+        if ha_config is None and 'haConfig' in kwargs:
             ha_config = kwargs['haConfig']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceStorage' in kwargs:
+        if instance_storage is None and 'instanceStorage' in kwargs:
             instance_storage = kwargs['instanceStorage']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'maintainTime' in kwargs:
+        if maintain_time is None and 'maintainTime' in kwargs:
             maintain_time = kwargs['maintainTime']
-        if 'manualHaTime' in kwargs:
+        if manual_ha_time is None and 'manualHaTime' in kwargs:
             manual_ha_time = kwargs['manualHaTime']
-        if 'modifyMode' in kwargs:
+        if modify_mode is None and 'modifyMode' in kwargs:
             modify_mode = kwargs['modifyMode']
-        if 'monitoringPeriod' in kwargs:
+        if monitoring_period is None and 'monitoringPeriod' in kwargs:
             monitoring_period = kwargs['monitoringPeriod']
-        if 'pgHbaConfs' in kwargs:
+        if pg_hba_confs is None and 'pgHbaConfs' in kwargs:
             pg_hba_confs = kwargs['pgHbaConfs']
-        if 'privateIpAddress' in kwargs:
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
             private_ip_address = kwargs['privateIpAddress']
-        if 'releasedKeepPolicy' in kwargs:
+        if released_keep_policy is None and 'releasedKeepPolicy' in kwargs:
             released_keep_policy = kwargs['releasedKeepPolicy']
-        if 'replicationAcl' in kwargs:
+        if replication_acl is None and 'replicationAcl' in kwargs:
             replication_acl = kwargs['replicationAcl']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'securityIpMode' in kwargs:
+        if security_ip_mode is None and 'securityIpMode' in kwargs:
             security_ip_mode = kwargs['securityIpMode']
-        if 'securityIpType' in kwargs:
+        if security_ip_type is None and 'securityIpType' in kwargs:
             security_ip_type = kwargs['securityIpType']
-        if 'securityIps' in kwargs:
+        if security_ips is None and 'securityIps' in kwargs:
             security_ips = kwargs['securityIps']
-        if 'serverCert' in kwargs:
+        if server_cert is None and 'serverCert' in kwargs:
             server_cert = kwargs['serverCert']
-        if 'serverKey' in kwargs:
+        if server_key is None and 'serverKey' in kwargs:
             server_key = kwargs['serverKey']
-        if 'serverlessConfigs' in kwargs:
+        if serverless_configs is None and 'serverlessConfigs' in kwargs:
             serverless_configs = kwargs['serverlessConfigs']
-        if 'sqlCollectorConfigValue' in kwargs:
+        if sql_collector_config_value is None and 'sqlCollectorConfigValue' in kwargs:
             sql_collector_config_value = kwargs['sqlCollectorConfigValue']
-        if 'sqlCollectorStatus' in kwargs:
+        if sql_collector_status is None and 'sqlCollectorStatus' in kwargs:
             sql_collector_status = kwargs['sqlCollectorStatus']
-        if 'sslAction' in kwargs:
+        if ssl_action is None and 'sslAction' in kwargs:
             ssl_action = kwargs['sslAction']
-        if 'sslConnectionString' in kwargs:
+        if ssl_connection_string is None and 'sslConnectionString' in kwargs:
             ssl_connection_string = kwargs['sslConnectionString']
-        if 'sslStatus' in kwargs:
+        if ssl_status is None and 'sslStatus' in kwargs:
             ssl_status = kwargs['sslStatus']
-        if 'storageAutoScale' in kwargs:
+        if storage_auto_scale is None and 'storageAutoScale' in kwargs:
             storage_auto_scale = kwargs['storageAutoScale']
-        if 'storageThreshold' in kwargs:
+        if storage_threshold is None and 'storageThreshold' in kwargs:
             storage_threshold = kwargs['storageThreshold']
-        if 'storageUpperBound' in kwargs:
+        if storage_upper_bound is None and 'storageUpperBound' in kwargs:
             storage_upper_bound = kwargs['storageUpperBound']
-        if 'switchTime' in kwargs:
+        if switch_time is None and 'switchTime' in kwargs:
             switch_time = kwargs['switchTime']
-        if 'targetMinorVersion' in kwargs:
+        if target_minor_version is None and 'targetMinorVersion' in kwargs:
             target_minor_version = kwargs['targetMinorVersion']
-        if 'tcpConnectionType' in kwargs:
+        if tcp_connection_type is None and 'tcpConnectionType' in kwargs:
             tcp_connection_type = kwargs['tcpConnectionType']
-        if 'tdeStatus' in kwargs:
+        if tde_status is None and 'tdeStatus' in kwargs:
             tde_status = kwargs['tdeStatus']
-        if 'upgradeDbInstanceKernelVersion' in kwargs:
+        if upgrade_db_instance_kernel_version is None and 'upgradeDbInstanceKernelVersion' in kwargs:
             upgrade_db_instance_kernel_version = kwargs['upgradeDbInstanceKernelVersion']
-        if 'upgradeTime' in kwargs:
+        if upgrade_time is None and 'upgradeTime' in kwargs:
             upgrade_time = kwargs['upgradeTime']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'whitelistNetworkType' in kwargs:
+        if whitelist_network_type is None and 'whitelistNetworkType' in kwargs:
             whitelist_network_type = kwargs['whitelistNetworkType']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'zoneIdSlaveA' in kwargs:
+        if zone_id_slave_a is None and 'zoneIdSlaveA' in kwargs:
             zone_id_slave_a = kwargs['zoneIdSlaveA']
-        if 'zoneIdSlaveB' in kwargs:
+        if zone_id_slave_b is None and 'zoneIdSlaveB' in kwargs:
             zone_id_slave_b = kwargs['zoneIdSlaveB']
 
         if acl is not None:

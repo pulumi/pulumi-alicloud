@@ -70,18 +70,6 @@ def get_instances(output_file: Optional[str] = None,
 
     > **NOTE:** Available in v1.136.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.sddp.get_instances()
-    pulumi.export("sddpInstanceId", default.instances[0])
-    ```
-
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -103,18 +91,6 @@ def get_instances_output(output_file: Optional[pulumi.Input[Optional[str]]] = No
     This data source provides the Sddp Instances of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.136.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.sddp.get_instances()
-    pulumi.export("sddpInstanceId", default.instances[0])
-    ```
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

@@ -18,33 +18,6 @@ namespace Pulumi.AliCloud.Sddp
     /// 
     /// &gt; **NOTE:** The Data Security Center Instance is not support in the international site.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Sddp.Instance("default", new()
-    ///     {
-    ///         Dataphin = "yes",
-    ///         PaymentType = "Subscription",
-    ///         Period = 1,
-    ///         SdCbool = "yes",
-    ///         Sdc = "3",
-    ///         SddpVersion = "version_company",
-    ///         UdCbool = "yes",
-    ///         Udc = "2000",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Data Security Center Instance can be imported using the id, e.g.

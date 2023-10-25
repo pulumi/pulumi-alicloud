@@ -41,21 +41,27 @@ class FlowLogArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cen_id: pulumi.Input[str],
-             log_store_name: pulumi.Input[str],
-             project_name: pulumi.Input[str],
+             cen_id: Optional[pulumi.Input[str]] = None,
+             log_store_name: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              flow_log_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'logStoreName' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if log_store_name is None and 'logStoreName' in kwargs:
             log_store_name = kwargs['logStoreName']
-        if 'projectName' in kwargs:
+        if log_store_name is None:
+            raise TypeError("Missing 'log_store_name' argument")
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'flowLogName' in kwargs:
+        if project_name is None:
+            raise TypeError("Missing 'project_name' argument")
+        if flow_log_name is None and 'flowLogName' in kwargs:
             flow_log_name = kwargs['flowLogName']
 
         _setter("cen_id", cen_id)
@@ -177,15 +183,15 @@ class _FlowLogState:
              log_store_name: Optional[pulumi.Input[str]] = None,
              project_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'flowLogName' in kwargs:
+        if flow_log_name is None and 'flowLogName' in kwargs:
             flow_log_name = kwargs['flowLogName']
-        if 'logStoreName' in kwargs:
+        if log_store_name is None and 'logStoreName' in kwargs:
             log_store_name = kwargs['logStoreName']
-        if 'projectName' in kwargs:
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
 
         if cen_id is not None:
@@ -295,31 +301,6 @@ class FlowLog(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.73.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a cen flowlog resource and use it to publish a route entry pointing to an ECS.
-        default_instance = alicloud.cen.Instance("defaultInstance")
-        default_project = alicloud.log.Project("defaultProject", description="create by terraform")
-        default_store = alicloud.log.Store("defaultStore",
-            project=default_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        default_flow_log = alicloud.cen.FlowLog("defaultFlowLog",
-            flow_log_name="my-flowlog",
-            cen_id=default_instance.id,
-            project_name=default_project.name,
-            log_store_name=default_store.name)
-        ```
-
         ## Import
 
         CEN flowlog can be imported using the id, e.g.
@@ -351,31 +332,6 @@ class FlowLog(pulumi.CustomResource):
         For information about CEN flow log and how to use it, see [Manage CEN flowlog](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createflowlog).
 
         > **NOTE:** Available since v1.73.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a cen flowlog resource and use it to publish a route entry pointing to an ECS.
-        default_instance = alicloud.cen.Instance("defaultInstance")
-        default_project = alicloud.log.Project("defaultProject", description="create by terraform")
-        default_store = alicloud.log.Store("defaultStore",
-            project=default_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        default_flow_log = alicloud.cen.FlowLog("defaultFlowLog",
-            flow_log_name="my-flowlog",
-            cen_id=default_instance.id,
-            project_name=default_project.name,
-            log_store_name=default_store.name)
-        ```
 
         ## Import
 

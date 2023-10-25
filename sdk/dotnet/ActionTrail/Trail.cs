@@ -18,51 +18,6 @@ namespace Pulumi.AliCloud.ActionTrail
     /// - Deliver events to Log Service: A project is created in Log Service.
     /// - Deliver events to OSS: A bucket is created in OSS.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var exampleRegions = AliCloud.GetRegions.Invoke(new()
-    ///     {
-    ///         Current = true,
-    ///     });
-    /// 
-    ///     var exampleAccount = AliCloud.GetAccount.Invoke();
-    /// 
-    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
-    ///     {
-    ///         Description = "tf actiontrail example",
-    ///     });
-    /// 
-    ///     var exampleRoles = AliCloud.Ram.GetRoles.Invoke(new()
-    ///     {
-    ///         NameRegex = "AliyunServiceRoleForActionTrail",
-    ///     });
-    /// 
-    ///     var exampleTrail = new AliCloud.ActionTrail.Trail("exampleTrail", new()
-    ///     {
-    ///         TrailName = name,
-    ///         SlsWriteRoleArn = exampleRoles.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Arn),
-    ///         SlsProjectArn = Output.Tuple(exampleRegions, exampleAccount, exampleProject.Name).Apply(values =&gt;
-    ///         {
-    ///             var exampleRegions = values.Item1;
-    ///             var exampleAccount = values.Item2;
-    ///             var name = values.Item3;
-    ///             return $"acs:log:{exampleRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{exampleAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{name}";
-    ///         }),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Action trail can be imported using the id or trail_name, e.g.

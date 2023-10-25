@@ -81,18 +81,6 @@ def get_collation_time_zones(collation_time_zones: Optional[Sequence[pulumi.Inpu
 
     > **NOTE:** Available in v1.198.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    zones = alicloud.rds.get_collation_time_zones(output_file="./classes.txt")
-    pulumi.export("firstRdsCollationTimeZones", zones.collation_time_zones[0])
-    ```
-
 
     :param Sequence[pulumi.InputType['GetCollationTimeZonesCollationTimeZoneArgs']] collation_time_zones: An array that consists of the character set collations and time zones that are available for
            use in ApsaraDB RDS.
@@ -119,18 +107,6 @@ def get_collation_time_zones_output(collation_time_zones: Optional[pulumi.Input[
     Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
 
     > **NOTE:** Available in v1.198.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    zones = alicloud.rds.get_collation_time_zones(output_file="./classes.txt")
-    pulumi.export("firstRdsCollationTimeZones", zones.collation_time_zones[0])
-    ```
 
 
     :param Sequence[pulumi.InputType['GetCollationTimeZonesCollationTimeZoneArgs']] collation_time_zones: An array that consists of the character set collations and time zones that are available for

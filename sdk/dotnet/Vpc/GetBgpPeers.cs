@@ -15,56 +15,6 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.153.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Vpc.GetBgpPeers.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     var bgpGroupId = AliCloud.Vpc.GetBgpPeers.Invoke(new()
-        ///     {
-        ///         BgpGroupId = "example_value",
-        ///     });
-        /// 
-        ///     var routerId = AliCloud.Vpc.GetBgpPeers.Invoke(new()
-        ///     {
-        ///         RouterId = "example_value",
-        ///     });
-        /// 
-        ///     var status = AliCloud.Vpc.GetBgpPeers.Invoke(new()
-        ///     {
-        ///         Status = "Available",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["vpcBgpPeerId1"] = ids.Apply(getBgpPeersResult =&gt; getBgpPeersResult.Peers[0]?.Id),
-        ///         ["vpcBgpPeerId2"] = bgpGroupId.Apply(getBgpPeersResult =&gt; getBgpPeersResult.Peers[0]?.Id),
-        ///         ["vpcBgpPeerId3"] = routerId.Apply(getBgpPeersResult =&gt; getBgpPeersResult.Peers[0]?.Id),
-        ///         ["vpcBgpPeerId4"] = status.Apply(getBgpPeersResult =&gt; getBgpPeersResult.Peers[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBgpPeersResult> InvokeAsync(GetBgpPeersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBgpPeersResult>("alicloud:vpc/getBgpPeers:getBgpPeers", args ?? new GetBgpPeersArgs(), options.WithDefaults());
@@ -73,56 +23,6 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.153.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Vpc.GetBgpPeers.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     var bgpGroupId = AliCloud.Vpc.GetBgpPeers.Invoke(new()
-        ///     {
-        ///         BgpGroupId = "example_value",
-        ///     });
-        /// 
-        ///     var routerId = AliCloud.Vpc.GetBgpPeers.Invoke(new()
-        ///     {
-        ///         RouterId = "example_value",
-        ///     });
-        /// 
-        ///     var status = AliCloud.Vpc.GetBgpPeers.Invoke(new()
-        ///     {
-        ///         Status = "Available",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["vpcBgpPeerId1"] = ids.Apply(getBgpPeersResult =&gt; getBgpPeersResult.Peers[0]?.Id),
-        ///         ["vpcBgpPeerId2"] = bgpGroupId.Apply(getBgpPeersResult =&gt; getBgpPeersResult.Peers[0]?.Id),
-        ///         ["vpcBgpPeerId3"] = routerId.Apply(getBgpPeersResult =&gt; getBgpPeersResult.Peers[0]?.Id),
-        ///         ["vpcBgpPeerId4"] = status.Apply(getBgpPeersResult =&gt; getBgpPeersResult.Peers[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBgpPeersResult> Invoke(GetBgpPeersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBgpPeersResult>("alicloud:vpc/getBgpPeers:getBgpPeers", args ?? new GetBgpPeersInvokeArgs(), options.WithDefaults());

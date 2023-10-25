@@ -11,52 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.185.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
- *
- * export = async () => {
- *     const defaultLogConfigs = await alicloud.apigateway.getLogConfigs({
- *         logType: "PROVIDER",
- *     });
- *     const count = defaultLogConfigs.configs.length > 0 ? 0 : 1;
- *     const defaultRandomInteger: random.RandomInteger[] = [];
- *     for (const range = {value: 0}; range.value < count; range.value++) {
- *         defaultRandomInteger.push(new random.RandomInteger(`defaultRandomInteger-${range.value}`, {
- *             max: 99999,
- *             min: 10000,
- *         }));
- *     }
- *     const exampleProject: alicloud.log.Project[] = [];
- *     for (const range = {value: 0}; range.value < count; range.value++) {
- *         exampleProject.push(new alicloud.log.Project(`exampleProject-${range.value}`, {description: "terraform-example"}));
- *     }
- *     const exampleStore: alicloud.log.Store[] = [];
- *     for (const range = {value: 0}; range.value < count; range.value++) {
- *         exampleStore.push(new alicloud.log.Store(`exampleStore-${range.value}`, {
- *             project: exampleProject[0].name,
- *             shardCount: 3,
- *             autoSplit: true,
- *             maxSplitShardCount: 60,
- *             appendMeta: true,
- *         }));
- *     }
- *     const exampleLogConfig: alicloud.apigateway.LogConfig[] = [];
- *     for (const range = {value: 0}; range.value < count; range.value++) {
- *         exampleLogConfig.push(new alicloud.apigateway.LogConfig(`exampleLogConfig-${range.value}`, {
- *             slsProject: exampleProject[0].name,
- *             slsLogStore: exampleStore[0].name,
- *             logType: "PROVIDER",
- *         }));
- *     }
- * }
- * ```
- *
  * ## Import
  *
  * Api Gateway Log Config can be imported using the id, e.g.

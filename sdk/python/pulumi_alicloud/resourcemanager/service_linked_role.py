@@ -32,14 +32,16 @@ class ServiceLinkedRoleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_name: pulumi.Input[str],
+             service_name: Optional[pulumi.Input[str]] = None,
              custom_suffix: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serviceName' in kwargs:
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
-        if 'customSuffix' in kwargs:
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if custom_suffix is None and 'customSuffix' in kwargs:
             custom_suffix = kwargs['customSuffix']
 
         _setter("service_name", service_name)
@@ -121,15 +123,15 @@ class _ServiceLinkedRoleState:
              role_id: Optional[pulumi.Input[str]] = None,
              role_name: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'customSuffix' in kwargs:
+        if custom_suffix is None and 'customSuffix' in kwargs:
             custom_suffix = kwargs['customSuffix']
-        if 'roleId' in kwargs:
+        if role_id is None and 'roleId' in kwargs:
             role_id = kwargs['roleId']
-        if 'roleName' in kwargs:
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
-        if 'serviceName' in kwargs:
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
 
         if arn is not None:
@@ -234,17 +236,6 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.157.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.resourcemanager.ServiceLinkedRole("default", service_name="ops.elasticsearch.aliyuncs.com")
-        ```
-
         ## Import
 
         Resource Manager Service Linked Role can be imported using the id, e.g.
@@ -271,17 +262,6 @@ class ServiceLinkedRole(pulumi.CustomResource):
         For information about Resource Manager Service Linked Role and how to use it, see [What is Service Linked Role.](https://www.alibabacloud.com/help/en/doc-detail/171226.htm).
 
         > **NOTE:** Available since v1.157.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.resourcemanager.ServiceLinkedRole("default", service_name="ops.elasticsearch.aliyuncs.com")
-        ```
 
         ## Import
 

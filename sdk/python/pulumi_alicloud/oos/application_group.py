@@ -42,23 +42,29 @@ class ApplicationGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_group_name: pulumi.Input[str],
-             application_name: pulumi.Input[str],
-             deploy_region_id: pulumi.Input[str],
+             application_group_name: Optional[pulumi.Input[str]] = None,
+             application_name: Optional[pulumi.Input[str]] = None,
+             deploy_region_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              import_tag_key: Optional[pulumi.Input[str]] = None,
              import_tag_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationGroupName' in kwargs:
+        if application_group_name is None and 'applicationGroupName' in kwargs:
             application_group_name = kwargs['applicationGroupName']
-        if 'applicationName' in kwargs:
+        if application_group_name is None:
+            raise TypeError("Missing 'application_group_name' argument")
+        if application_name is None and 'applicationName' in kwargs:
             application_name = kwargs['applicationName']
-        if 'deployRegionId' in kwargs:
+        if application_name is None:
+            raise TypeError("Missing 'application_name' argument")
+        if deploy_region_id is None and 'deployRegionId' in kwargs:
             deploy_region_id = kwargs['deployRegionId']
-        if 'importTagKey' in kwargs:
+        if deploy_region_id is None:
+            raise TypeError("Missing 'deploy_region_id' argument")
+        if import_tag_key is None and 'importTagKey' in kwargs:
             import_tag_key = kwargs['importTagKey']
-        if 'importTagValue' in kwargs:
+        if import_tag_value is None and 'importTagValue' in kwargs:
             import_tag_value = kwargs['importTagValue']
 
         _setter("application_group_name", application_group_name)
@@ -182,17 +188,17 @@ class _ApplicationGroupState:
              description: Optional[pulumi.Input[str]] = None,
              import_tag_key: Optional[pulumi.Input[str]] = None,
              import_tag_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationGroupName' in kwargs:
+        if application_group_name is None and 'applicationGroupName' in kwargs:
             application_group_name = kwargs['applicationGroupName']
-        if 'applicationName' in kwargs:
+        if application_name is None and 'applicationName' in kwargs:
             application_name = kwargs['applicationName']
-        if 'deployRegionId' in kwargs:
+        if deploy_region_id is None and 'deployRegionId' in kwargs:
             deploy_region_id = kwargs['deployRegionId']
-        if 'importTagKey' in kwargs:
+        if import_tag_key is None and 'importTagKey' in kwargs:
             import_tag_key = kwargs['importTagKey']
-        if 'importTagValue' in kwargs:
+        if import_tag_value is None and 'importTagValue' in kwargs:
             import_tag_value = kwargs['importTagValue']
 
         if application_group_name is not None:
@@ -301,36 +307,6 @@ class ApplicationGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.146.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_application = alicloud.oos.Application("defaultApplication",
-            resource_group_id=default_resource_groups.groups[0].id,
-            application_name=name,
-            description=name,
-            tags={
-                "Created": "TF",
-            })
-        default_regions = alicloud.get_regions(current=True)
-        default_application_group = alicloud.oos.ApplicationGroup("defaultApplicationGroup",
-            application_group_name=name,
-            application_name=default_application.id,
-            deploy_region_id=default_regions.regions[0].id,
-            description=name,
-            import_tag_key="example_key",
-            import_tag_value="example_value")
-        ```
-
         ## Import
 
         OOS Application Group can be imported using the id, e.g.
@@ -361,36 +337,6 @@ class ApplicationGroup(pulumi.CustomResource):
         For information about OOS Application Group and how to use it, see [What is Application Group](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-oos-2019-06-01-createapplicationgroup).
 
         > **NOTE:** Available since v1.146.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_application = alicloud.oos.Application("defaultApplication",
-            resource_group_id=default_resource_groups.groups[0].id,
-            application_name=name,
-            description=name,
-            tags={
-                "Created": "TF",
-            })
-        default_regions = alicloud.get_regions(current=True)
-        default_application_group = alicloud.oos.ApplicationGroup("defaultApplicationGroup",
-            application_group_name=name,
-            application_name=default_application.id,
-            deploy_region_id=default_regions.regions[0].id,
-            description=name,
-            import_tag_key="example_key",
-            import_tag_value="example_value")
-        ```
 
         ## Import
 

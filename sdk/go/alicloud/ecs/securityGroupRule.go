@@ -18,44 +18,6 @@ import (
 //
 // > **NOTE:**  `nicType` should set to `intranet` when security group type is `vpc` or specifying the `sourceSecurityGroupId`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.NewSecurityGroup(ctx, "default", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ecs.NewSecurityGroupRule(ctx, "allowAllTcp", &ecs.SecurityGroupRuleArgs{
-//				Type:            pulumi.String("ingress"),
-//				IpProtocol:      pulumi.String("tcp"),
-//				NicType:         pulumi.String("internet"),
-//				Policy:          pulumi.String("accept"),
-//				PortRange:       pulumi.String("1/65535"),
-//				Priority:        pulumi.Int(1),
-//				SecurityGroupId: _default.ID(),
-//				CidrIp:          pulumi.String("0.0.0.0/0"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Module Support
 //
 // You can use the existing security-group module

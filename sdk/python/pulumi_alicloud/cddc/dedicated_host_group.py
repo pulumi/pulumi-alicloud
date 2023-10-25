@@ -51,8 +51,8 @@ class DedicatedHostGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             engine: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
+             engine: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
              allocation_policy: Optional[pulumi.Input[str]] = None,
              cpu_allocation_ratio: Optional[pulumi.Input[int]] = None,
              dedicated_host_group_desc: Optional[pulumi.Input[str]] = None,
@@ -60,23 +60,27 @@ class DedicatedHostGroupArgs:
              host_replace_policy: Optional[pulumi.Input[str]] = None,
              mem_allocation_ratio: Optional[pulumi.Input[int]] = None,
              open_permission: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vpcId' in kwargs:
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'allocationPolicy' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if allocation_policy is None and 'allocationPolicy' in kwargs:
             allocation_policy = kwargs['allocationPolicy']
-        if 'cpuAllocationRatio' in kwargs:
+        if cpu_allocation_ratio is None and 'cpuAllocationRatio' in kwargs:
             cpu_allocation_ratio = kwargs['cpuAllocationRatio']
-        if 'dedicatedHostGroupDesc' in kwargs:
+        if dedicated_host_group_desc is None and 'dedicatedHostGroupDesc' in kwargs:
             dedicated_host_group_desc = kwargs['dedicatedHostGroupDesc']
-        if 'diskAllocationRatio' in kwargs:
+        if disk_allocation_ratio is None and 'diskAllocationRatio' in kwargs:
             disk_allocation_ratio = kwargs['diskAllocationRatio']
-        if 'hostReplacePolicy' in kwargs:
+        if host_replace_policy is None and 'hostReplacePolicy' in kwargs:
             host_replace_policy = kwargs['hostReplacePolicy']
-        if 'memAllocationRatio' in kwargs:
+        if mem_allocation_ratio is None and 'memAllocationRatio' in kwargs:
             mem_allocation_ratio = kwargs['memAllocationRatio']
-        if 'openPermission' in kwargs:
+        if open_permission is None and 'openPermission' in kwargs:
             open_permission = kwargs['openPermission']
 
         _setter("engine", engine)
@@ -255,23 +259,23 @@ class _DedicatedHostGroupState:
              mem_allocation_ratio: Optional[pulumi.Input[int]] = None,
              open_permission: Optional[pulumi.Input[bool]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allocationPolicy' in kwargs:
+        if allocation_policy is None and 'allocationPolicy' in kwargs:
             allocation_policy = kwargs['allocationPolicy']
-        if 'cpuAllocationRatio' in kwargs:
+        if cpu_allocation_ratio is None and 'cpuAllocationRatio' in kwargs:
             cpu_allocation_ratio = kwargs['cpuAllocationRatio']
-        if 'dedicatedHostGroupDesc' in kwargs:
+        if dedicated_host_group_desc is None and 'dedicatedHostGroupDesc' in kwargs:
             dedicated_host_group_desc = kwargs['dedicatedHostGroupDesc']
-        if 'diskAllocationRatio' in kwargs:
+        if disk_allocation_ratio is None and 'diskAllocationRatio' in kwargs:
             disk_allocation_ratio = kwargs['diskAllocationRatio']
-        if 'hostReplacePolicy' in kwargs:
+        if host_replace_policy is None and 'hostReplacePolicy' in kwargs:
             host_replace_policy = kwargs['hostReplacePolicy']
-        if 'memAllocationRatio' in kwargs:
+        if mem_allocation_ratio is None and 'memAllocationRatio' in kwargs:
             mem_allocation_ratio = kwargs['memAllocationRatio']
-        if 'openPermission' in kwargs:
+        if open_permission is None and 'openPermission' in kwargs:
             open_permission = kwargs['openPermission']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if allocation_policy is not None:
@@ -425,32 +429,6 @@ class DedicatedHostGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.132.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup",
-            engine="MySQL",
-            vpc_id=default_network.id,
-            cpu_allocation_ratio=101,
-            mem_allocation_ratio=50,
-            disk_allocation_ratio=200,
-            allocation_policy="Evenly",
-            host_replace_policy="Manual",
-            dedicated_host_group_desc=name)
-        ```
-
         ## Import
 
         ApsaraDB for MyBase Dedicated Host Group can be imported using the id, e.g.
@@ -484,32 +462,6 @@ class DedicatedHostGroup(pulumi.CustomResource):
         For information about ApsaraDB for MyBase Dedicated Host Group and how to use it, see [What is Dedicated Host Group](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhostgroup).
 
         > **NOTE:** Available since v1.132.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup",
-            engine="MySQL",
-            vpc_id=default_network.id,
-            cpu_allocation_ratio=101,
-            mem_allocation_ratio=50,
-            disk_allocation_ratio=200,
-            allocation_policy="Evenly",
-            host_replace_policy="Manual",
-            dedicated_host_group_desc=name)
-        ```
 
         ## Import
 

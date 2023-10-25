@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in 1.98.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const fcDomains = alicloud.fc.getCustomDomains({
- *     nameRegex: "sample_fc_custom_domain",
- * });
- * export const firstFcCustomDomainName = data.alicloud_fc_custom_domains.fc_domains_ds.domains[0].domain_name;
- * ```
  */
 export function getCustomDomains(args?: GetCustomDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomDomainsResult> {
     args = args || {};
@@ -79,18 +67,6 @@ export interface GetCustomDomainsResult {
  * This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in 1.98.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const fcDomains = alicloud.fc.getCustomDomains({
- *     nameRegex: "sample_fc_custom_domain",
- * });
- * export const firstFcCustomDomainName = data.alicloud_fc_custom_domains.fc_domains_ds.domains[0].domain_name;
- * ```
  */
 export function getCustomDomainsOutput(args?: GetCustomDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomDomainsResult> {
     return pulumi.output(args).apply((a: any) => getCustomDomains(a, opts))

@@ -44,28 +44,32 @@ class VpcEndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             vpc_id: pulumi.Input[str],
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              endpoint_description: Optional[pulumi.Input[str]] = None,
              service_id: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'vpcId' in kwargs:
+        if security_group_ids is None:
+            raise TypeError("Missing 'security_group_ids' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'dryRun' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'endpointDescription' in kwargs:
+        if endpoint_description is None and 'endpointDescription' in kwargs:
             endpoint_description = kwargs['endpointDescription']
-        if 'serviceId' in kwargs:
+        if service_id is None and 'serviceId' in kwargs:
             service_id = kwargs['serviceId']
-        if 'serviceName' in kwargs:
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
-        if 'vpcEndpointName' in kwargs:
+        if vpc_endpoint_name is None and 'vpcEndpointName' in kwargs:
             vpc_endpoint_name = kwargs['vpcEndpointName']
 
         _setter("security_group_ids", security_group_ids)
@@ -226,27 +230,27 @@ class _VpcEndpointState:
              status: Optional[pulumi.Input[str]] = None,
              vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionStatus' in kwargs:
+        if connection_status is None and 'connectionStatus' in kwargs:
             connection_status = kwargs['connectionStatus']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'endpointBusinessStatus' in kwargs:
+        if endpoint_business_status is None and 'endpointBusinessStatus' in kwargs:
             endpoint_business_status = kwargs['endpointBusinessStatus']
-        if 'endpointDescription' in kwargs:
+        if endpoint_description is None and 'endpointDescription' in kwargs:
             endpoint_description = kwargs['endpointDescription']
-        if 'endpointDomain' in kwargs:
+        if endpoint_domain is None and 'endpointDomain' in kwargs:
             endpoint_domain = kwargs['endpointDomain']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'serviceId' in kwargs:
+        if service_id is None and 'serviceId' in kwargs:
             service_id = kwargs['serviceId']
-        if 'serviceName' in kwargs:
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
-        if 'vpcEndpointName' in kwargs:
+        if vpc_endpoint_name is None and 'vpcEndpointName' in kwargs:
             vpc_endpoint_name = kwargs['vpcEndpointName']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if bandwidth is not None:
@@ -439,33 +443,6 @@ class VpcEndpoint(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.109.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
-            service_description=name,
-            connect_bandwidth=103,
-            auto_accept_connection=False)
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("exampleVpcEndpoint",
-            service_id=example_vpc_endpoint_service.id,
-            security_group_ids=[example_security_group.id],
-            vpc_id=example_network.id,
-            vpc_endpoint_name=name)
-        ```
-
         ## Import
 
         Private Link Vpc Endpoint can be imported using the id, e.g.
@@ -496,33 +473,6 @@ class VpcEndpoint(pulumi.CustomResource):
         For information about Private Link Vpc Endpoint and how to use it, see [What is Vpc Endpoint](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-createvpcendpoint).
 
         > **NOTE:** Available since v1.109.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
-            service_description=name,
-            connect_bandwidth=103,
-            auto_accept_connection=False)
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("exampleVpcEndpoint",
-            service_id=example_vpc_endpoint_service.id,
-            security_group_ids=[example_security_group.id],
-            vpc_id=example_network.id,
-            vpc_endpoint_name=name)
-        ```
 
         ## Import
 

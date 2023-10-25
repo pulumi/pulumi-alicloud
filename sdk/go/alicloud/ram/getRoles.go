@@ -15,36 +15,6 @@ import (
 // This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available since v1.0.0+.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			rolesDs, err := ram.GetRoles(ctx, &ram.GetRolesArgs{
-//				NameRegex:  pulumi.StringRef(".*test.*"),
-//				OutputFile: pulumi.StringRef("roles.txt"),
-//				PolicyName: pulumi.StringRef("AliyunACSDefaultAccess"),
-//				PolicyType: pulumi.StringRef("Custom"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstRoleId", rolesDs.Roles[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetRoles(ctx *pulumi.Context, args *GetRolesArgs, opts ...pulumi.InvokeOption) (*GetRolesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRolesResult

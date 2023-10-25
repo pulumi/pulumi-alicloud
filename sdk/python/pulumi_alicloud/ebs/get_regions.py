@@ -80,18 +80,6 @@ def get_regions(output_file: Optional[str] = None,
 
     > **NOTE:** Available in v1.187.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.ebs.get_regions(region_id="cn-hangzhou")
-    pulumi.export("regions", default.regions)
-    ```
-
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str region_id: The ID of the region.
@@ -117,18 +105,6 @@ def get_regions_output(output_file: Optional[pulumi.Input[Optional[str]]] = None
     This data source provides the Ebs Regions of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.187.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.ebs.get_regions(region_id="cn-hangzhou")
-    pulumi.export("regions", default.regions)
-    ```
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

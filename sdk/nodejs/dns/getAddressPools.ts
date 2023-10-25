@@ -10,29 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Alidns Address Pools of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.152.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dns.getAddressPools({
- *     instanceId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const alidnsAddressPoolId1 = ids.then(ids => ids.pools?.[0]?.id);
- * const nameRegex = alicloud.dns.getAddressPools({
- *     instanceId: "example_value",
- *     nameRegex: "^my-AddressPool",
- * });
- * export const alidnsAddressPoolId2 = nameRegex.then(nameRegex => nameRegex.pools?.[0]?.id);
- * ```
  */
 export function getAddressPools(args: GetAddressPoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressPoolsResult> {
 
@@ -92,29 +69,6 @@ export interface GetAddressPoolsResult {
  * This data source provides the Alidns Address Pools of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.152.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dns.getAddressPools({
- *     instanceId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const alidnsAddressPoolId1 = ids.then(ids => ids.pools?.[0]?.id);
- * const nameRegex = alicloud.dns.getAddressPools({
- *     instanceId: "example_value",
- *     nameRegex: "^my-AddressPool",
- * });
- * export const alidnsAddressPoolId2 = nameRegex.then(nameRegex => nameRegex.pools?.[0]?.id);
- * ```
  */
 export function getAddressPoolsOutput(args: GetAddressPoolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressPoolsResult> {
     return pulumi.output(args).apply((a: any) => getAddressPools(a, opts))

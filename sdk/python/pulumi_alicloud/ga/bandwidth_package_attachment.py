@@ -29,14 +29,18 @@ class BandwidthPackageAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: pulumi.Input[str],
-             bandwidth_package_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             bandwidth_package_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'bandwidthPackageId' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
             bandwidth_package_id = kwargs['bandwidthPackageId']
+        if bandwidth_package_id is None:
+            raise TypeError("Missing 'bandwidth_package_id' argument")
 
         _setter("accelerator_id", accelerator_id)
         _setter("bandwidth_package_id", bandwidth_package_id)
@@ -94,11 +98,11 @@ class _BandwidthPackageAttachmentState:
              accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              bandwidth_package_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'bandwidthPackageId' in kwargs:
+        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
             bandwidth_package_id = kwargs['bandwidthPackageId']
 
         if accelerator_id is not None:
@@ -174,30 +178,6 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.113.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
-        example_bandwidth_package = alicloud.ga.BandwidthPackage("exampleBandwidthPackage",
-            bandwidth=20,
-            type="Basic",
-            bandwidth_type="Basic",
-            duration="1",
-            auto_pay=True,
-            ratio=30)
-        example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            accelerator_id=example_accelerator.id,
-            bandwidth_package_id=example_bandwidth_package.id)
-        ```
-
         ## Import
 
         Ga Bandwidth Package Attachment can be imported using the id. Format to `<accelerator_id>:<bandwidth_package_id>`, e.g.
@@ -223,30 +203,6 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         For information about Global Accelerator (GA) Bandwidth Package Attachment and how to use it, see [What is Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-bandwidthpackageaddaccelerator).
 
         > **NOTE:** Available since v1.113.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
-        example_bandwidth_package = alicloud.ga.BandwidthPackage("exampleBandwidthPackage",
-            bandwidth=20,
-            type="Basic",
-            bandwidth_type="Basic",
-            duration="1",
-            auto_pay=True,
-            ratio=30)
-        example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            accelerator_id=example_accelerator.id,
-            bandwidth_package_id=example_bandwidth_package.id)
-        ```
 
         ## Import
 

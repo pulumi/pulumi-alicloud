@@ -19,56 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.124.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf_example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultAccounts, err := resourcemanager.GetAccounts(ctx, &resourcemanager.GetAccountsArgs{
-//				Status: pulumi.StringRef("CreateSuccess"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cfg.NewAggregator(ctx, "defaultAggregator", &cfg.AggregatorArgs{
-//				AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
-//					&cfg.AggregatorAggregatorAccountArgs{
-//						AccountId:   *pulumi.String(defaultAccounts.Accounts[0].AccountId),
-//						AccountName: *pulumi.String(defaultAccounts.Accounts[0].DisplayName),
-//						AccountType: pulumi.String("ResourceDirectory"),
-//					},
-//				},
-//				AggregatorName: pulumi.String(name),
-//				Description:    pulumi.String(name),
-//				AggregatorType: pulumi.String("CUSTOM"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Cloud Config Aggregator can be imported using the id, e.g.

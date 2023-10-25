@@ -13,26 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.152.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.ecs.EcsPrefixList("default", {
- *     addressFamily: "IPv4",
- *     description: "description",
- *     entries: [{
- *         cidr: "192.168.0.0/24",
- *         description: "description",
- *     }],
- *     maxEntries: 2,
- *     prefixListName: "tftest",
- * });
- * ```
- *
  * ## Import
  *
  * ECS Prefix List can be imported using the id, e.g.

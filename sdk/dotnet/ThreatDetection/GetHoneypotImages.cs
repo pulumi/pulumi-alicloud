@@ -15,36 +15,6 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.ThreatDetection.GetHoneypotImages.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df",
-        ///         },
-        ///         NameRegex = "^meta",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudThreatDetectionHoneypotImageExampleId"] = @default.Apply(@default =&gt; @default.Apply(getHoneypotImagesResult =&gt; getHoneypotImagesResult.Images[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetHoneypotImagesResult> InvokeAsync(GetHoneypotImagesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHoneypotImagesResult>("alicloud:threatdetection/getHoneypotImages:getHoneypotImages", args ?? new GetHoneypotImagesArgs(), options.WithDefaults());
@@ -53,36 +23,6 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.ThreatDetection.GetHoneypotImages.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df",
-        ///         },
-        ///         NameRegex = "^meta",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudThreatDetectionHoneypotImageExampleId"] = @default.Apply(@default =&gt; @default.Apply(getHoneypotImagesResult =&gt; getHoneypotImagesResult.Images[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetHoneypotImagesResult> Invoke(GetHoneypotImagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHoneypotImagesResult>("alicloud:threatdetection/getHoneypotImages:getHoneypotImages", args ?? new GetHoneypotImagesInvokeArgs(), options.WithDefaults());

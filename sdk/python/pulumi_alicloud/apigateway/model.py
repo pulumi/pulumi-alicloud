@@ -35,16 +35,22 @@ class ModelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_id: pulumi.Input[str],
-             model_name: pulumi.Input[str],
-             schema: pulumi.Input[str],
+             group_id: Optional[pulumi.Input[str]] = None,
+             model_name: Optional[pulumi.Input[str]] = None,
+             schema: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'modelName' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if model_name is None and 'modelName' in kwargs:
             model_name = kwargs['modelName']
+        if model_name is None:
+            raise TypeError("Missing 'model_name' argument")
+        if schema is None:
+            raise TypeError("Missing 'schema' argument")
 
         _setter("group_id", group_id)
         _setter("model_name", model_name)
@@ -129,11 +135,11 @@ class _ModelState:
              group_id: Optional[pulumi.Input[str]] = None,
              model_name: Optional[pulumi.Input[str]] = None,
              schema: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'modelName' in kwargs:
+        if model_name is None and 'modelName' in kwargs:
             model_name = kwargs['modelName']
 
         if description is not None:
@@ -211,22 +217,6 @@ class Model(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.187.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_group = alicloud.apigateway.Group("defaultGroup", description="example_value")
-        default_model = alicloud.apigateway.Model("defaultModel",
-            group_id=default_group.id,
-            model_name="example_value",
-            schema="{\\"type\\":\\"object\\",\\"properties\\":{\\"id\\":{\\"format\\":\\"int64\\",\\"maximum\\":100,\\"exclusiveMaximum\\":true,\\"type\\":\\"integer\\"},\\"name\\":{\\"maxLength\\":10,\\"type\\":\\"string\\"}}}",
-            description="example_value")
-        ```
-
         ## Import
 
         Api Gateway Model can be imported using the id, e.g.
@@ -254,22 +244,6 @@ class Model(pulumi.CustomResource):
         For information about Api Gateway Model and how to use it, see [What is Model](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createmodel).
 
         > **NOTE:** Available since v1.187.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_group = alicloud.apigateway.Group("defaultGroup", description="example_value")
-        default_model = alicloud.apigateway.Model("defaultModel",
-            group_id=default_group.id,
-            model_name="example_value",
-            schema="{\\"type\\":\\"object\\",\\"properties\\":{\\"id\\":{\\"format\\":\\"int64\\",\\"maximum\\":100,\\"exclusiveMaximum\\":true,\\"type\\":\\"integer\\"},\\"name\\":{\\"maxLength\\":10,\\"type\\":\\"string\\"}}}",
-            description="example_value")
-        ```
 
         ## Import
 

@@ -15,46 +15,6 @@ import (
 // This data source provides the Sddp Rules of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.132.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sddp"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRule, err := sddp.NewRule(ctx, "defaultRule", &sddp.RuleArgs{
-//				Category:    pulumi.Int(0),
-//				Content:     pulumi.String("content"),
-//				RuleName:    pulumi.String("rule_name"),
-//				RiskLevelId: pulumi.String("4"),
-//				ProductCode: pulumi.String("ODPS"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultRules := sddp.GetRulesOutput(ctx, sddp.GetRulesOutputArgs{
-//				Ids: pulumi.StringArray{
-//					defaultRule.ID(),
-//				},
-//			}, nil)
-//			ctx.Export("sddpRuleId", defaultRules.ApplyT(func(defaultRules sddp.GetRulesResult) (*string, error) {
-//				return &defaultRules.Id, nil
-//			}).(pulumi.StringPtrOutput))
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetRules(ctx *pulumi.Context, args *GetRulesArgs, opts ...pulumi.InvokeOption) (*GetRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRulesResult

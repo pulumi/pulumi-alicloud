@@ -13,25 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.134.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const domain = config.get("domain") || "terraform-example.com";
- * const example = new alicloud.vpc.DhcpOptionsSet("example", {
- *     dhcpOptionsSetName: name,
- *     dhcpOptionsSetDescription: name,
- *     domainName: domain,
- *     domainNameServers: "100.100.2.136",
- * });
- * ```
- *
  * ## Import
  *
  * VPC Dhcp Options Set can be imported using the id, e.g.

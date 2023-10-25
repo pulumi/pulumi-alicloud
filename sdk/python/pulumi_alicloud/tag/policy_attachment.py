@@ -32,17 +32,23 @@ class PolicyAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_id: pulumi.Input[str],
-             target_id: pulumi.Input[str],
-             target_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             policy_id: Optional[pulumi.Input[str]] = None,
+             target_id: Optional[pulumi.Input[str]] = None,
+             target_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'policyId' in kwargs:
+        if policy_id is None and 'policyId' in kwargs:
             policy_id = kwargs['policyId']
-        if 'targetId' in kwargs:
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+        if target_id is None and 'targetId' in kwargs:
             target_id = kwargs['targetId']
-        if 'targetType' in kwargs:
+        if target_id is None:
+            raise TypeError("Missing 'target_id' argument")
+        if target_type is None and 'targetType' in kwargs:
             target_type = kwargs['targetType']
+        if target_type is None:
+            raise TypeError("Missing 'target_type' argument")
 
         _setter("policy_id", policy_id)
         _setter("target_id", target_id)
@@ -109,13 +115,13 @@ class _PolicyAttachmentState:
              policy_id: Optional[pulumi.Input[str]] = None,
              target_id: Optional[pulumi.Input[str]] = None,
              target_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'policyId' in kwargs:
+        if policy_id is None and 'policyId' in kwargs:
             policy_id = kwargs['policyId']
-        if 'targetId' in kwargs:
+        if target_id is None and 'targetId' in kwargs:
             target_id = kwargs['targetId']
-        if 'targetType' in kwargs:
+        if target_type is None and 'targetType' in kwargs:
             target_type = kwargs['targetType']
 
         if policy_id is not None:
@@ -178,30 +184,6 @@ class PolicyAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.204.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.get_account()
-        example_policy = alicloud.tag.Policy("examplePolicy",
-            policy_name=name,
-            policy_desc=name,
-            user_type="USER",
-            policy_content="		{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
-        example_policy_attachment = alicloud.tag.PolicyAttachment("examplePolicyAttachment",
-            policy_id=example_policy.id,
-            target_id=default.id,
-            target_type="USER")
-        ```
-
         ## Import
 
         Tag Policy Attachment can be imported using the id, e.g.
@@ -228,30 +210,6 @@ class PolicyAttachment(pulumi.CustomResource):
         see [What is Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/attach-policy).
 
         > **NOTE:** Available since v1.204.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.get_account()
-        example_policy = alicloud.tag.Policy("examplePolicy",
-            policy_name=name,
-            policy_desc=name,
-            user_type="USER",
-            policy_content="		{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
-        example_policy_attachment = alicloud.tag.PolicyAttachment("examplePolicyAttachment",
-            policy_id=example_policy.id,
-            target_id=default.id,
-            target_type="USER")
-        ```
 
         ## Import
 

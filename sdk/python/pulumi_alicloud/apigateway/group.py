@@ -32,12 +32,14 @@ class GroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
 
         _setter("description", description)
@@ -115,13 +117,13 @@ class _GroupState:
              name: Optional[pulumi.Input[str]] = None,
              sub_domain: Optional[pulumi.Input[str]] = None,
              vpc_domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'subDomain' in kwargs:
+        if sub_domain is None and 'subDomain' in kwargs:
             sub_domain = kwargs['subDomain']
-        if 'vpcDomain' in kwargs:
+        if vpc_domain is None and 'vpcDomain' in kwargs:
             vpc_domain = kwargs['vpcDomain']
 
         if description is not None:
@@ -206,17 +208,6 @@ class Group(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.apigateway.Group("default", description="tf_example")
-        ```
-
         ## Import
 
         Api gateway group can be imported using the id, e.g.
@@ -238,17 +229,6 @@ class Group(pulumi.CustomResource):
                  args: GroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.apigateway.Group("default", description="tf_example")
-        ```
-
         ## Import
 
         Api gateway group can be imported using the id, e.g.

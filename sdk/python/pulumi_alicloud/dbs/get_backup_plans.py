@@ -149,20 +149,6 @@ def get_backup_plans(backup_plan_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.185.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dbs.get_backup_plans()
-    pulumi.export("dbsBackupPlanId1", ids.plans[0].id)
-    name_regex = alicloud.dbs.get_backup_plans(name_regex="^my-BackupPlan")
-    pulumi.export("dbsBackupPlanId2", name_regex.plans[0].id)
-    ```
-
 
     :param str backup_plan_name: The name of the resource.
     :param bool enable_details: Default to `true`. Set it to `false` can hide the `payment_type` to output.
@@ -211,20 +197,6 @@ def get_backup_plans_output(backup_plan_name: Optional[pulumi.Input[Optional[str
     This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.185.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dbs.get_backup_plans()
-    pulumi.export("dbsBackupPlanId1", ids.plans[0].id)
-    name_regex = alicloud.dbs.get_backup_plans(name_regex="^my-BackupPlan")
-    pulumi.export("dbsBackupPlanId2", name_regex.plans[0].id)
-    ```
 
 
     :param str backup_plan_name: The name of the resource.

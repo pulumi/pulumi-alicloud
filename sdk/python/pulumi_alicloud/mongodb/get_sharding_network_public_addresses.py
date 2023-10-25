@@ -100,20 +100,6 @@ def get_sharding_network_public_addresses(db_instance_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.149.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.mongodb.get_sharding_network_public_addresses(db_instance_id="example_value",
-        node_id="example_value",
-        role="Primary")
-    pulumi.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.addresses[0].db_instance_id)
-    ```
-
 
     :param str db_instance_id: The db instance id.
     :param str node_id: The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
@@ -147,20 +133,6 @@ def get_sharding_network_public_addresses_output(db_instance_id: Optional[pulumi
     This data source provides the Mongodb Sharding Network Public Addresses of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.149.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.mongodb.get_sharding_network_public_addresses(db_instance_id="example_value",
-        node_id="example_value",
-        role="Primary")
-    pulumi.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.addresses[0].db_instance_id)
-    ```
 
 
     :param str db_instance_id: The db instance id.

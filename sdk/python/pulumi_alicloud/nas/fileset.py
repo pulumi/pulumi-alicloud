@@ -35,17 +35,21 @@ class FilesetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             file_system_id: pulumi.Input[str],
-             file_system_path: pulumi.Input[str],
+             file_system_id: Optional[pulumi.Input[str]] = None,
+             file_system_path: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fileSystemId' in kwargs:
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'fileSystemPath' in kwargs:
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if file_system_path is None and 'fileSystemPath' in kwargs:
             file_system_path = kwargs['fileSystemPath']
-        if 'dryRun' in kwargs:
+        if file_system_path is None:
+            raise TypeError("Missing 'file_system_path' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
 
         _setter("file_system_id", file_system_id)
@@ -140,15 +144,15 @@ class _FilesetState:
              file_system_path: Optional[pulumi.Input[str]] = None,
              fileset_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'fileSystemId' in kwargs:
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'fileSystemPath' in kwargs:
+        if file_system_path is None and 'fileSystemPath' in kwargs:
             file_system_path = kwargs['fileSystemPath']
-        if 'filesetId' in kwargs:
+        if fileset_id is None and 'filesetId' in kwargs:
             fileset_id = kwargs['filesetId']
 
         if description is not None:
@@ -254,38 +258,6 @@ class Fileset(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.153.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.nas.get_zones(file_system_type="cpfs")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[1].zone_id)
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
-            protocol_type="cpfs",
-            storage_type="advance_200",
-            file_system_type="cpfs",
-            capacity=3600,
-            description="terraform-example",
-            zone_id=example_zones.zones[1].zone_id,
-            vpc_id=example_network.id,
-            vswitch_id=example_switch.id)
-        example_fileset = alicloud.nas.Fileset("exampleFileset",
-            file_system_id=example_file_system.id,
-            description="terraform-example",
-            file_system_path="/example_path/")
-        ```
-
         ## Import
 
         Network Attached Storage (NAS) Fileset can be imported using the id, e.g.
@@ -313,38 +285,6 @@ class Fileset(pulumi.CustomResource):
         For information about Network Attached Storage (NAS) Fileset and how to use it, see [What is Fileset](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
 
         > **NOTE:** Available in v1.153.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.nas.get_zones(file_system_type="cpfs")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[1].zone_id)
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
-            protocol_type="cpfs",
-            storage_type="advance_200",
-            file_system_type="cpfs",
-            capacity=3600,
-            description="terraform-example",
-            zone_id=example_zones.zones[1].zone_id,
-            vpc_id=example_network.id,
-            vswitch_id=example_switch.id)
-        example_fileset = alicloud.nas.Fileset("exampleFileset",
-            file_system_id=example_file_system.id,
-            description="terraform-example",
-            file_system_path="/example_path/")
-        ```
 
         ## Import
 

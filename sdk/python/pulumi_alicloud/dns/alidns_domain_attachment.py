@@ -29,14 +29,18 @@ class AlidnsDomainAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain_names: pulumi.Input[Sequence[pulumi.Input[str]]],
-             instance_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainNames' in kwargs:
+        if domain_names is None and 'domainNames' in kwargs:
             domain_names = kwargs['domainNames']
-        if 'instanceId' in kwargs:
+        if domain_names is None:
+            raise TypeError("Missing 'domain_names' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
 
         _setter("domain_names", domain_names)
         _setter("instance_id", instance_id)
@@ -86,11 +90,11 @@ class _AlidnsDomainAttachmentState:
              _setter: Callable[[Any, Any], None],
              domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainNames' in kwargs:
+        if domain_names is None and 'domainNames' in kwargs:
             domain_names = kwargs['domainNames']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
 
         if domain_names is not None:
@@ -136,31 +140,6 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.99.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
-        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
-            domain_name="starmove.com",
-            group_id=default_domain_group.id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_alidns_instance = alicloud.dns.AlidnsInstance("defaultAlidnsInstance",
-            dns_security="basic",
-            domain_numbers="3",
-            version_code="version_personal",
-            period=1,
-            renewal_status="ManualRenewal")
-        default_alidns_domain_attachment = alicloud.dns.AlidnsDomainAttachment("defaultAlidnsDomainAttachment",
-            instance_id=default_alidns_instance.id,
-            domain_names=[default_alidns_domain.domain_name])
-        ```
-
         ## Import
 
         DNS domain attachment can be imported using the id, e.g.
@@ -184,31 +163,6 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
         Provides bind the domain name to the Alidns instance resource.
 
         > **NOTE:** Available since v1.99.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
-        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
-            domain_name="starmove.com",
-            group_id=default_domain_group.id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_alidns_instance = alicloud.dns.AlidnsInstance("defaultAlidnsInstance",
-            dns_security="basic",
-            domain_numbers="3",
-            version_code="version_personal",
-            period=1,
-            renewal_status="ManualRenewal")
-        default_alidns_domain_attachment = alicloud.dns.AlidnsDomainAttachment("defaultAlidnsDomainAttachment",
-            instance_id=default_alidns_instance.id,
-            domain_names=[default_alidns_domain.domain_name])
-        ```
 
         ## Import
 

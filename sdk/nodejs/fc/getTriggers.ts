@@ -8,20 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the Function Compute triggers of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const fcTriggersDs = alicloud.fc.getTriggers({
- *     functionName: "sample_function",
- *     nameRegex: "sample_fc_trigger",
- *     serviceName: "sample_service",
- * });
- * export const firstFcTriggerName = fcTriggersDs.then(fcTriggersDs => fcTriggersDs.triggers?.[0]?.name);
- * ```
  */
 export function getTriggers(args: GetTriggersArgs, opts?: pulumi.InvokeOptions): Promise<GetTriggersResult> {
 
@@ -88,20 +74,6 @@ export interface GetTriggersResult {
 }
 /**
  * This data source provides the Function Compute triggers of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const fcTriggersDs = alicloud.fc.getTriggers({
- *     functionName: "sample_function",
- *     nameRegex: "sample_fc_trigger",
- *     serviceName: "sample_service",
- * });
- * export const firstFcTriggerName = fcTriggersDs.then(fcTriggersDs => fcTriggersDs.triggers?.[0]?.name);
- * ```
  */
 export function getTriggersOutput(args: GetTriggersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTriggersResult> {
     return pulumi.output(args).apply((a: any) => getTriggers(a, opts))

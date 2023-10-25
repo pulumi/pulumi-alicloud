@@ -38,14 +38,20 @@ class FlowArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             definition: pulumi.Input[str],
-             description: pulumi.Input[str],
-             type: pulumi.Input[str],
+             definition: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              role_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'roleArn' in kwargs:
+        if definition is None:
+            raise TypeError("Missing 'definition' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
 
         _setter("definition", definition)
@@ -157,13 +163,13 @@ class _FlowState:
              name: Optional[pulumi.Input[str]] = None,
              role_arn: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'flowId' in kwargs:
+        if flow_id is None and 'flowId' in kwargs:
             flow_id = kwargs['flowId']
-        if 'lastModifiedTime' in kwargs:
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
             last_modified_time = kwargs['lastModifiedTime']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
 
         if definition is not None:
@@ -284,41 +290,6 @@ class Flow(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.105.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ram.Role("default", document=\"\"\"  {
-            "Statement": [
-              {
-                "Action": "sts:AssumeRole",
-                "Effect": "Allow",
-                "Principal": {
-                  "Service": [
-                    "fnf.aliyuncs.com"
-                  ]
-                }
-              }
-            ],
-            "Version": "1"
-          }
-        \"\"\")
-        example = alicloud.fnf.Flow("example",
-            definition=\"\"\"  version: v1beta1
-          type: flow
-          steps:
-            - type: pass
-              name: helloworld
-        \"\"\",
-            role_arn=default.arn,
-            description="Test for terraform fnf_flow.",
-            type="FDL")
-        ```
-
         ## Import
 
         Serverless Workflow Flow can be imported using the id, e.g.
@@ -347,41 +318,6 @@ class Flow(pulumi.CustomResource):
         For information about Serverless Workflow Flow and how to use it, see [What is Flow](https://www.alibabacloud.com/help/en/doc-detail/123079.htm).
 
         > **NOTE:** Available in v1.105.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ram.Role("default", document=\"\"\"  {
-            "Statement": [
-              {
-                "Action": "sts:AssumeRole",
-                "Effect": "Allow",
-                "Principal": {
-                  "Service": [
-                    "fnf.aliyuncs.com"
-                  ]
-                }
-              }
-            ],
-            "Version": "1"
-          }
-        \"\"\")
-        example = alicloud.fnf.Flow("example",
-            definition=\"\"\"  version: v1beta1
-          type: flow
-          steps:
-            - type: pass
-              name: helloworld
-        \"\"\",
-            role_arn=default.arn,
-            description="Test for terraform fnf_flow.",
-            type="FDL")
-        ```
 
         ## Import
 

@@ -71,9 +71,9 @@ class LoadBalancerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address_type: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
-             zone_mappings: pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]],
+             address_type: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]] = None,
              address_ip_version: Optional[pulumi.Input[str]] = None,
              bandwidth_package_id: Optional[pulumi.Input[str]] = None,
              cross_zone_enabled: Optional[pulumi.Input[bool]] = None,
@@ -85,33 +85,39 @@ class LoadBalancerArgs:
              modification_protection_status: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addressType' in kwargs:
+        if address_type is None and 'addressType' in kwargs:
             address_type = kwargs['addressType']
-        if 'vpcId' in kwargs:
+        if address_type is None:
+            raise TypeError("Missing 'address_type' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'zoneMappings' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if zone_mappings is None and 'zoneMappings' in kwargs:
             zone_mappings = kwargs['zoneMappings']
-        if 'addressIpVersion' in kwargs:
+        if zone_mappings is None:
+            raise TypeError("Missing 'zone_mappings' argument")
+        if address_ip_version is None and 'addressIpVersion' in kwargs:
             address_ip_version = kwargs['addressIpVersion']
-        if 'bandwidthPackageId' in kwargs:
+        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
             bandwidth_package_id = kwargs['bandwidthPackageId']
-        if 'crossZoneEnabled' in kwargs:
+        if cross_zone_enabled is None and 'crossZoneEnabled' in kwargs:
             cross_zone_enabled = kwargs['crossZoneEnabled']
-        if 'deletionProtectionEnabled' in kwargs:
+        if deletion_protection_enabled is None and 'deletionProtectionEnabled' in kwargs:
             deletion_protection_enabled = kwargs['deletionProtectionEnabled']
-        if 'deletionProtectionReason' in kwargs:
+        if deletion_protection_reason is None and 'deletionProtectionReason' in kwargs:
             deletion_protection_reason = kwargs['deletionProtectionReason']
-        if 'loadBalancerName' in kwargs:
+        if load_balancer_name is None and 'loadBalancerName' in kwargs:
             load_balancer_name = kwargs['loadBalancerName']
-        if 'loadBalancerType' in kwargs:
+        if load_balancer_type is None and 'loadBalancerType' in kwargs:
             load_balancer_type = kwargs['loadBalancerType']
-        if 'modificationProtectionReason' in kwargs:
+        if modification_protection_reason is None and 'modificationProtectionReason' in kwargs:
             modification_protection_reason = kwargs['modificationProtectionReason']
-        if 'modificationProtectionStatus' in kwargs:
+        if modification_protection_status is None and 'modificationProtectionStatus' in kwargs:
             modification_protection_status = kwargs['modificationProtectionStatus']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("address_type", address_type)
@@ -405,41 +411,41 @@ class _LoadBalancerState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addressIpVersion' in kwargs:
+        if address_ip_version is None and 'addressIpVersion' in kwargs:
             address_ip_version = kwargs['addressIpVersion']
-        if 'addressType' in kwargs:
+        if address_type is None and 'addressType' in kwargs:
             address_type = kwargs['addressType']
-        if 'bandwidthPackageId' in kwargs:
+        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
             bandwidth_package_id = kwargs['bandwidthPackageId']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'crossZoneEnabled' in kwargs:
+        if cross_zone_enabled is None and 'crossZoneEnabled' in kwargs:
             cross_zone_enabled = kwargs['crossZoneEnabled']
-        if 'deletionProtectionEnabled' in kwargs:
+        if deletion_protection_enabled is None and 'deletionProtectionEnabled' in kwargs:
             deletion_protection_enabled = kwargs['deletionProtectionEnabled']
-        if 'deletionProtectionReason' in kwargs:
+        if deletion_protection_reason is None and 'deletionProtectionReason' in kwargs:
             deletion_protection_reason = kwargs['deletionProtectionReason']
-        if 'dnsName' in kwargs:
+        if dns_name is None and 'dnsName' in kwargs:
             dns_name = kwargs['dnsName']
-        if 'ipv6AddressType' in kwargs:
+        if ipv6_address_type is None and 'ipv6AddressType' in kwargs:
             ipv6_address_type = kwargs['ipv6AddressType']
-        if 'loadBalancerBusinessStatus' in kwargs:
+        if load_balancer_business_status is None and 'loadBalancerBusinessStatus' in kwargs:
             load_balancer_business_status = kwargs['loadBalancerBusinessStatus']
-        if 'loadBalancerName' in kwargs:
+        if load_balancer_name is None and 'loadBalancerName' in kwargs:
             load_balancer_name = kwargs['loadBalancerName']
-        if 'loadBalancerType' in kwargs:
+        if load_balancer_type is None and 'loadBalancerType' in kwargs:
             load_balancer_type = kwargs['loadBalancerType']
-        if 'modificationProtectionReason' in kwargs:
+        if modification_protection_reason is None and 'modificationProtectionReason' in kwargs:
             modification_protection_reason = kwargs['modificationProtectionReason']
-        if 'modificationProtectionStatus' in kwargs:
+        if modification_protection_status is None and 'modificationProtectionStatus' in kwargs:
             modification_protection_status = kwargs['modificationProtectionStatus']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'zoneMappings' in kwargs:
+        if zone_mappings is None and 'zoneMappings' in kwargs:
             zone_mappings = kwargs['zoneMappings']
 
         if address_ip_version is not None:
@@ -741,56 +747,6 @@ class LoadBalancer(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.191.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_zones = alicloud.nlb.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default1 = alicloud.vpc.Switch("default1",
-            vswitch_name=name,
-            cidr_block="10.4.1.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[1].id)
-        default_load_balancer = alicloud.nlb.LoadBalancer("defaultLoadBalancer",
-            load_balancer_name=name,
-            resource_group_id=default_resource_groups.ids[0],
-            load_balancer_type="Network",
-            address_type="Internet",
-            address_ip_version="Ipv4",
-            vpc_id=default_network.id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            },
-            zone_mappings=[
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default_switch.id,
-                    zone_id=default_zones.zones[0].id,
-                ),
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default1.id,
-                    zone_id=default_zones.zones[1].id,
-                ),
-            ])
-        ```
-
         ## Import
 
         NLB Load Balancer can be imported using the id, e.g.
@@ -832,56 +788,6 @@ class LoadBalancer(pulumi.CustomResource):
         For information about NLB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer).
 
         > **NOTE:** Available since v1.191.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_zones = alicloud.nlb.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default1 = alicloud.vpc.Switch("default1",
-            vswitch_name=name,
-            cidr_block="10.4.1.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[1].id)
-        default_load_balancer = alicloud.nlb.LoadBalancer("defaultLoadBalancer",
-            load_balancer_name=name,
-            resource_group_id=default_resource_groups.ids[0],
-            load_balancer_type="Network",
-            address_type="Internet",
-            address_ip_version="Ipv4",
-            vpc_id=default_network.id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            },
-            zone_mappings=[
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default_switch.id,
-                    zone_id=default_zones.zones[0].id,
-                ),
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default1.id,
-                    zone_id=default_zones.zones[1].id,
-                ),
-            ])
-        ```
 
         ## Import
 

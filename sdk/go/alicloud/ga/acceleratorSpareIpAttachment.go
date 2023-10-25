@@ -19,66 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.167.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAccelerator, err := ga.NewAccelerator(ctx, "defaultAccelerator", &ga.AcceleratorArgs{
-//				Duration:        pulumi.Int(1),
-//				Spec:            pulumi.String("1"),
-//				AcceleratorName: pulumi.String("terraform-example"),
-//				AutoUseCoupon:   pulumi.Bool(true),
-//				Description:     pulumi.String("terraform-example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "defaultBandwidthPackage", &ga.BandwidthPackageArgs{
-//				Bandwidth:            pulumi.Int(100),
-//				Type:                 pulumi.String("Basic"),
-//				BandwidthType:        pulumi.String("Basic"),
-//				PaymentType:          pulumi.String("PayAsYouGo"),
-//				BillingType:          pulumi.String("PayBy95"),
-//				Ratio:                pulumi.Int(30),
-//				BandwidthPackageName: pulumi.String("terraform-example"),
-//				AutoPay:              pulumi.Bool(true),
-//				AutoUseCoupon:        pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      defaultAccelerator.ID(),
-//				BandwidthPackageId: defaultBandwidthPackage.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ga.NewAcceleratorSpareIpAttachment(ctx, "defaultAcceleratorSpareIpAttachment", &ga.AcceleratorSpareIpAttachmentArgs{
-//				AcceleratorId: defaultBandwidthPackageAttachment.AcceleratorId,
-//				SpareIp:       pulumi.String("127.0.0.1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Global Accelerator (GA) Accelerator Spare Ip Attachment can be imported using the id, e.g.

@@ -11,34 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.147.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const exampleResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const exampleKey = new alicloud.kms.Key("exampleKey", {
- *     description: "terraform-example",
- *     status: "Enabled",
- *     pendingWindowInDays: 7,
- * });
- * const exampleSecretParameter = new alicloud.oos.SecretParameter("exampleSecretParameter", {
- *     secretParameterName: "terraform-example",
- *     value: "terraform-example",
- *     type: "Secret",
- *     keyId: exampleKey.id,
- *     description: "terraform-example",
- *     tags: {
- *         Created: "TF",
- *         For: "OosSecretParameter",
- *     },
- *     resourceGroupId: exampleResourceGroups.then(exampleResourceGroups => exampleResourceGroups.groups?.[0]?.id),
- * });
- * ```
- *
  * ## Import
  *
  * OOS Secret Parameter can be imported using the id, e.g.

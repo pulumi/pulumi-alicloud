@@ -151,19 +151,6 @@ def get_service_subscriptions(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.188.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.message.get_service_subscriptions(ids=["example_id"],
-        topic_name="tf-example")
-    pulumi.export("subscriptionId1", ids.subscriptions[0].id)
-    name = alicloud.message.get_service_subscriptions(topic_name="tf-example")
-    pulumi.export("subscriptionId2", name.subscriptions[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Subscription IDs.
     :param str name_regex: A regex string to filter results by Subscription name.
@@ -208,19 +195,6 @@ def get_service_subscriptions_output(ids: Optional[pulumi.Input[Optional[Sequenc
     This data source provides the Message Notification Service Subscriptions of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.188.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.message.get_service_subscriptions(ids=["example_id"],
-        topic_name="tf-example")
-    pulumi.export("subscriptionId1", ids.subscriptions[0].id)
-    name = alicloud.message.get_service_subscriptions(topic_name="tf-example")
-    pulumi.export("subscriptionId2", name.subscriptions[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Subscription IDs.

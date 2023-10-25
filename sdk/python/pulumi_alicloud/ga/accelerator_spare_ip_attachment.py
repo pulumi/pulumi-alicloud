@@ -32,16 +32,20 @@ class AcceleratorSpareIpAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: pulumi.Input[str],
-             spare_ip: pulumi.Input[str],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             spare_ip: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'spareIp' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if spare_ip is None and 'spareIp' in kwargs:
             spare_ip = kwargs['spareIp']
-        if 'dryRun' in kwargs:
+        if spare_ip is None:
+            raise TypeError("Missing 'spare_ip' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
 
         _setter("accelerator_id", accelerator_id)
@@ -114,13 +118,13 @@ class _AcceleratorSpareIpAttachmentState:
              dry_run: Optional[pulumi.Input[bool]] = None,
              spare_ip: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'spareIp' in kwargs:
+        if spare_ip is None and 'spareIp' in kwargs:
             spare_ip = kwargs['spareIp']
 
         if accelerator_id is not None:
@@ -197,38 +201,6 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.167.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
-            duration=1,
-            spec="1",
-            accelerator_name="terraform-example",
-            auto_use_coupon=True,
-            description="terraform-example")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
-            bandwidth=100,
-            type="Basic",
-            bandwidth_type="Basic",
-            payment_type="PayAsYouGo",
-            billing_type="PayBy95",
-            ratio=30,
-            bandwidth_package_name="terraform-example",
-            auto_pay=True,
-            auto_use_coupon=True)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
-            bandwidth_package_id=default_bandwidth_package.id)
-        default_accelerator_spare_ip_attachment = alicloud.ga.AcceleratorSpareIpAttachment("defaultAcceleratorSpareIpAttachment",
-            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
-            spare_ip="127.0.0.1")
-        ```
-
         ## Import
 
         Global Accelerator (GA) Accelerator Spare Ip Attachment can be imported using the id, e.g.
@@ -255,38 +227,6 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
         For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createspareips).
 
         > **NOTE:** Available since v1.167.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
-            duration=1,
-            spec="1",
-            accelerator_name="terraform-example",
-            auto_use_coupon=True,
-            description="terraform-example")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
-            bandwidth=100,
-            type="Basic",
-            bandwidth_type="Basic",
-            payment_type="PayAsYouGo",
-            billing_type="PayBy95",
-            ratio=30,
-            bandwidth_package_name="terraform-example",
-            auto_pay=True,
-            auto_use_coupon=True)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
-            bandwidth_package_id=default_bandwidth_package.id)
-        default_accelerator_spare_ip_attachment = alicloud.ga.AcceleratorSpareIpAttachment("defaultAcceleratorSpareIpAttachment",
-            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
-            spare_ip="127.0.0.1")
-        ```
 
         ## Import
 

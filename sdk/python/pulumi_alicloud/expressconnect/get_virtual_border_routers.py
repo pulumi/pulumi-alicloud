@@ -120,34 +120,6 @@ def get_virtual_border_routers(filters: Optional[Sequence[pulumi.InputType['GetV
 
     > **NOTE:** Available in v1.134.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.expressconnect.get_virtual_border_routers()
-    pulumi.export("expressConnectVirtualBorderRouterId1", ids.routers[0].id)
-    name_regex = alicloud.expressconnect.get_virtual_border_routers(name_regex="^my-VirtualBorderRouter")
-    pulumi.export("expressConnectVirtualBorderRouterId2", name_regex.routers[0].id)
-    filter = alicloud.expressconnect.get_virtual_border_routers(filters=[
-        alicloud.expressconnect.GetVirtualBorderRoutersFilterArgs(
-            key="PhysicalConnectionId",
-            values=["pc-xxxx1"],
-        ),
-        alicloud.expressconnect.GetVirtualBorderRoutersFilterArgs(
-            key="VbrId",
-            values=[
-                "vbr-xxxx1",
-                "vbr-xxxx2",
-            ],
-        ),
-    ])
-    pulumi.export("expressConnectVirtualBorderRouterId3", filter.routers[0].id)
-    ```
-
 
     :param Sequence[pulumi.InputType['GetVirtualBorderRoutersFilterArgs']] filters: Custom filter block as described below.
     :param Sequence[str] ids: A list of Virtual Border Router IDs.
@@ -186,34 +158,6 @@ def get_virtual_border_routers_output(filters: Optional[pulumi.Input[Optional[Se
     This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.134.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.expressconnect.get_virtual_border_routers()
-    pulumi.export("expressConnectVirtualBorderRouterId1", ids.routers[0].id)
-    name_regex = alicloud.expressconnect.get_virtual_border_routers(name_regex="^my-VirtualBorderRouter")
-    pulumi.export("expressConnectVirtualBorderRouterId2", name_regex.routers[0].id)
-    filter = alicloud.expressconnect.get_virtual_border_routers(filters=[
-        alicloud.expressconnect.GetVirtualBorderRoutersFilterArgs(
-            key="PhysicalConnectionId",
-            values=["pc-xxxx1"],
-        ),
-        alicloud.expressconnect.GetVirtualBorderRoutersFilterArgs(
-            key="VbrId",
-            values=[
-                "vbr-xxxx1",
-                "vbr-xxxx2",
-            ],
-        ),
-    ])
-    pulumi.export("expressConnectVirtualBorderRouterId3", filter.routers[0].id)
-    ```
 
 
     :param Sequence[pulumi.InputType['GetVirtualBorderRoutersFilterArgs']] filters: Custom filter block as described below.

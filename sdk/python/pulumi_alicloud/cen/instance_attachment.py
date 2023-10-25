@@ -43,25 +43,33 @@ class InstanceAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             child_instance_id: pulumi.Input[str],
-             child_instance_region_id: pulumi.Input[str],
-             child_instance_type: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
+             child_instance_id: Optional[pulumi.Input[str]] = None,
+             child_instance_region_id: Optional[pulumi.Input[str]] = None,
+             child_instance_type: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
              cen_owner_id: Optional[pulumi.Input[int]] = None,
              child_instance_owner_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'childInstanceId' in kwargs:
+        if child_instance_id is None and 'childInstanceId' in kwargs:
             child_instance_id = kwargs['childInstanceId']
-        if 'childInstanceRegionId' in kwargs:
+        if child_instance_id is None:
+            raise TypeError("Missing 'child_instance_id' argument")
+        if child_instance_region_id is None and 'childInstanceRegionId' in kwargs:
             child_instance_region_id = kwargs['childInstanceRegionId']
-        if 'childInstanceType' in kwargs:
+        if child_instance_region_id is None:
+            raise TypeError("Missing 'child_instance_region_id' argument")
+        if child_instance_type is None and 'childInstanceType' in kwargs:
             child_instance_type = kwargs['childInstanceType']
-        if 'instanceId' in kwargs:
+        if child_instance_type is None:
+            raise TypeError("Missing 'child_instance_type' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'cenOwnerId' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if cen_owner_id is None and 'cenOwnerId' in kwargs:
             cen_owner_id = kwargs['cenOwnerId']
-        if 'childInstanceOwnerId' in kwargs:
+        if child_instance_owner_id is None and 'childInstanceOwnerId' in kwargs:
             child_instance_owner_id = kwargs['childInstanceOwnerId']
 
         _setter("child_instance_id", child_instance_id)
@@ -190,19 +198,19 @@ class _InstanceAttachmentState:
              child_instance_type: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenOwnerId' in kwargs:
+        if cen_owner_id is None and 'cenOwnerId' in kwargs:
             cen_owner_id = kwargs['cenOwnerId']
-        if 'childInstanceId' in kwargs:
+        if child_instance_id is None and 'childInstanceId' in kwargs:
             child_instance_id = kwargs['childInstanceId']
-        if 'childInstanceOwnerId' in kwargs:
+        if child_instance_owner_id is None and 'childInstanceOwnerId' in kwargs:
             child_instance_owner_id = kwargs['childInstanceOwnerId']
-        if 'childInstanceRegionId' in kwargs:
+        if child_instance_region_id is None and 'childInstanceRegionId' in kwargs:
             child_instance_region_id = kwargs['childInstanceRegionId']
-        if 'childInstanceType' in kwargs:
+        if child_instance_type is None and 'childInstanceType' in kwargs:
             child_instance_type = kwargs['childInstanceType']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
 
         if cen_owner_id is not None:
@@ -324,28 +332,6 @@ class InstanceAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.42.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.get_regions(current=True)
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="tf_example",
-            cidr_block="172.17.3.0/24")
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
-            instance_id=example_instance.id,
-            child_instance_id=example_network.id,
-            child_instance_type="VPC",
-            child_instance_region_id=default.regions[0].id)
-        ```
-
         ## Import
 
         CEN instance can be imported using the id, e.g.
@@ -375,28 +361,6 @@ class InstanceAttachment(pulumi.CustomResource):
         Provides a CEN child instance attachment resource that associate the network(VPC, CCN, VBR) with the CEN instance.
 
         > **NOTE:** Available since v1.42.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.get_regions(current=True)
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="tf_example",
-            cidr_block="172.17.3.0/24")
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
-            instance_id=example_instance.id,
-            child_instance_id=example_network.id,
-            child_instance_type="VPC",
-            child_instance_region_id=default.regions[0].id)
-        ```
 
         ## Import
 

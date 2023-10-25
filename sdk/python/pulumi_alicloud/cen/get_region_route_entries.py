@@ -91,17 +91,6 @@ def get_region_route_entries(instance_id: Optional[str] = None,
     """
     This data source provides CEN Regional Route Entries available to the user.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    entry = alicloud.cen.get_region_route_entries(instance_id="cen-id1",
-        region_id="cn-beijing")
-    pulumi.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.entries[0].cidr_block)
-    ```
-
 
     :param str instance_id: ID of the CEN instance.
     :param str region_id: ID of the region.
@@ -128,17 +117,6 @@ def get_region_route_entries_output(instance_id: Optional[pulumi.Input[str]] = N
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionRouteEntriesResult]:
     """
     This data source provides CEN Regional Route Entries available to the user.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    entry = alicloud.cen.get_region_route_entries(instance_id="cen-id1",
-        region_id="cn-beijing")
-    pulumi.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.entries[0].cidr_block)
-    ```
 
 
     :param str instance_id: ID of the CEN instance.

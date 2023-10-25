@@ -38,19 +38,23 @@ class ResourceGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_cluster_id: pulumi.Input[str],
-             group_name: pulumi.Input[str],
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
+             group_name: Optional[pulumi.Input[str]] = None,
              group_type: Optional[pulumi.Input[str]] = None,
              node_num: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbClusterId' in kwargs:
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'groupName' in kwargs:
+        if db_cluster_id is None:
+            raise TypeError("Missing 'db_cluster_id' argument")
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'groupType' in kwargs:
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if group_type is None and 'groupType' in kwargs:
             group_type = kwargs['groupType']
-        if 'nodeNum' in kwargs:
+        if node_num is None and 'nodeNum' in kwargs:
             node_num = kwargs['nodeNum']
 
         _setter("db_cluster_id", db_cluster_id)
@@ -155,19 +159,19 @@ class _ResourceGroupState:
              node_num: Optional[pulumi.Input[int]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dbClusterId' in kwargs:
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'groupType' in kwargs:
+        if group_type is None and 'groupType' in kwargs:
             group_type = kwargs['groupType']
-        if 'nodeNum' in kwargs:
+        if node_num is None and 'nodeNum' in kwargs:
             node_num = kwargs['nodeNum']
-        if 'updateTime' in kwargs:
+        if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
         if create_time is not None:
@@ -290,59 +294,6 @@ class ResourceGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.adb.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="10.4.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_db_cluster = alicloud.adb.DBCluster("defaultDBCluster",
-            compute_resource="48Core192GBNEW",
-            db_cluster_category="MixedStorage",
-            db_cluster_version="3.0",
-            db_node_class="E32",
-            db_node_count=1,
-            db_node_storage=100,
-            description=name,
-            elastic_io_resource=1,
-            maintain_time="04:00Z-05:00Z",
-            mode="flexible",
-            payment_type="PayAsYouGo",
-            resource_group_id=default_resource_groups.ids[0],
-            security_ips=[
-                "10.168.1.12",
-                "10.168.1.11",
-            ],
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            zone_id=default_zones.zones[0].id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_resource_group = alicloud.adb.ResourceGroup("defaultResourceGroup",
-            group_name="TF_EXAMPLE",
-            group_type="batch",
-            node_num=1,
-            db_cluster_id=default_db_cluster.id)
-        ```
-
         ## Import
 
         Adb Resource Group can be imported using the id, e.g.
@@ -373,59 +324,6 @@ class ResourceGroup(pulumi.CustomResource):
         For information about Adb Resource Group and how to use it, see [What is Adb Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
 
         > **NOTE:** Available since v1.195.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.adb.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="10.4.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_db_cluster = alicloud.adb.DBCluster("defaultDBCluster",
-            compute_resource="48Core192GBNEW",
-            db_cluster_category="MixedStorage",
-            db_cluster_version="3.0",
-            db_node_class="E32",
-            db_node_count=1,
-            db_node_storage=100,
-            description=name,
-            elastic_io_resource=1,
-            maintain_time="04:00Z-05:00Z",
-            mode="flexible",
-            payment_type="PayAsYouGo",
-            resource_group_id=default_resource_groups.ids[0],
-            security_ips=[
-                "10.168.1.12",
-                "10.168.1.11",
-            ],
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            zone_id=default_zones.zones[0].id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_resource_group = alicloud.adb.ResourceGroup("defaultResourceGroup",
-            group_name="TF_EXAMPLE",
-            group_type="batch",
-            node_num=1,
-            db_cluster_id=default_db_cluster.id)
-        ```
 
         ## Import
 

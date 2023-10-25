@@ -159,19 +159,6 @@ def get_stacks(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.106.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ros.get_stacks(ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstRosStackId", example.stacks[0].id)
-    ```
-
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Stack IDs.
@@ -226,19 +213,6 @@ def get_stacks_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
     This data source provides the Ros Stacks of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.106.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ros.get_stacks(ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstRosStackId", example.stacks[0].id)
-    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

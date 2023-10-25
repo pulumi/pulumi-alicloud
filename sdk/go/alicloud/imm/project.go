@@ -19,66 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.134.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/imm"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tfexample"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
-//				Document: pulumi.String(`  {
-//	    "Statement": [
-//	      {
-//	        "Action": "sts:AssumeRole",
-//	        "Effect": "Allow",
-//	        "Principal": {
-//	          "Service": [
-//	            "imm.aliyuncs.com"
-//	          ]
-//	        }
-//	      }
-//	    ],
-//	    "Version": "1"
-//	  }
-//
-// `),
-//
-//				Description: pulumi.String("this is a role test."),
-//				Force:       pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = imm.NewProject(ctx, "example", &imm.ProjectArgs{
-//				Project:     pulumi.String(name),
-//				ServiceRole: role.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Intelligent Media Management Project can be imported using the id, e.g.

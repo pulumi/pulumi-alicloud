@@ -53,27 +53,39 @@ class BindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             binding_key: pulumi.Input[str],
-             binding_type: pulumi.Input[str],
-             destination_name: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             source_exchange: pulumi.Input[str],
-             virtual_host_name: pulumi.Input[str],
+             binding_key: Optional[pulumi.Input[str]] = None,
+             binding_type: Optional[pulumi.Input[str]] = None,
+             destination_name: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             source_exchange: Optional[pulumi.Input[str]] = None,
+             virtual_host_name: Optional[pulumi.Input[str]] = None,
              argument: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bindingKey' in kwargs:
+        if binding_key is None and 'bindingKey' in kwargs:
             binding_key = kwargs['bindingKey']
-        if 'bindingType' in kwargs:
+        if binding_key is None:
+            raise TypeError("Missing 'binding_key' argument")
+        if binding_type is None and 'bindingType' in kwargs:
             binding_type = kwargs['bindingType']
-        if 'destinationName' in kwargs:
+        if binding_type is None:
+            raise TypeError("Missing 'binding_type' argument")
+        if destination_name is None and 'destinationName' in kwargs:
             destination_name = kwargs['destinationName']
-        if 'instanceId' in kwargs:
+        if destination_name is None:
+            raise TypeError("Missing 'destination_name' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'sourceExchange' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if source_exchange is None and 'sourceExchange' in kwargs:
             source_exchange = kwargs['sourceExchange']
-        if 'virtualHostName' in kwargs:
+        if source_exchange is None:
+            raise TypeError("Missing 'source_exchange' argument")
+        if virtual_host_name is None and 'virtualHostName' in kwargs:
             virtual_host_name = kwargs['virtualHostName']
+        if virtual_host_name is None:
+            raise TypeError("Missing 'virtual_host_name' argument")
 
         _setter("binding_key", binding_key)
         _setter("binding_type", binding_type)
@@ -227,19 +239,19 @@ class _BindingState:
              instance_id: Optional[pulumi.Input[str]] = None,
              source_exchange: Optional[pulumi.Input[str]] = None,
              virtual_host_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bindingKey' in kwargs:
+        if binding_key is None and 'bindingKey' in kwargs:
             binding_key = kwargs['bindingKey']
-        if 'bindingType' in kwargs:
+        if binding_type is None and 'bindingType' in kwargs:
             binding_type = kwargs['bindingType']
-        if 'destinationName' in kwargs:
+        if destination_name is None and 'destinationName' in kwargs:
             destination_name = kwargs['destinationName']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'sourceExchange' in kwargs:
+        if source_exchange is None and 'sourceExchange' in kwargs:
             source_exchange = kwargs['sourceExchange']
-        if 'virtualHostName' in kwargs:
+        if virtual_host_name is None and 'virtualHostName' in kwargs:
             virtual_host_name = kwargs['virtualHostName']
 
         if argument is not None:
@@ -371,47 +383,6 @@ class Binding(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.135.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_instance = alicloud.amqp.Instance("defaultInstance",
-            instance_type="enterprise",
-            max_tps="3000",
-            queue_capacity="200",
-            storage_size="700",
-            support_eip=False,
-            max_eip_tps="128",
-            payment_type="Subscription",
-            period=1)
-        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
-            instance_id=default_instance.id,
-            virtual_host_name="tf-example")
-        default_exchange = alicloud.amqp.Exchange("defaultExchange",
-            auto_delete_state=False,
-            exchange_name="tf-example",
-            exchange_type="DIRECT",
-            instance_id=default_instance.id,
-            internal=False,
-            virtual_host_name=default_virtual_host.virtual_host_name)
-        default_queue = alicloud.amqp.Queue("defaultQueue",
-            instance_id=default_instance.id,
-            queue_name="tf-example",
-            virtual_host_name=default_virtual_host.virtual_host_name)
-        default_binding = alicloud.amqp.Binding("defaultBinding",
-            argument="x-match:all",
-            binding_key=default_queue.queue_name,
-            binding_type="QUEUE",
-            destination_name="tf-example",
-            instance_id=default_instance.id,
-            source_exchange=default_exchange.exchange_name,
-            virtual_host_name=default_virtual_host.virtual_host_name)
-        ```
-
         ## Import
 
         RabbitMQ (AMQP) Binding can be imported using the id, e.g.
@@ -451,47 +422,6 @@ class Binding(pulumi.CustomResource):
         For information about RabbitMQ (AMQP) Binding and how to use it, see [What is Binding](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createbinding).
 
         > **NOTE:** Available since v1.135.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_instance = alicloud.amqp.Instance("defaultInstance",
-            instance_type="enterprise",
-            max_tps="3000",
-            queue_capacity="200",
-            storage_size="700",
-            support_eip=False,
-            max_eip_tps="128",
-            payment_type="Subscription",
-            period=1)
-        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
-            instance_id=default_instance.id,
-            virtual_host_name="tf-example")
-        default_exchange = alicloud.amqp.Exchange("defaultExchange",
-            auto_delete_state=False,
-            exchange_name="tf-example",
-            exchange_type="DIRECT",
-            instance_id=default_instance.id,
-            internal=False,
-            virtual_host_name=default_virtual_host.virtual_host_name)
-        default_queue = alicloud.amqp.Queue("defaultQueue",
-            instance_id=default_instance.id,
-            queue_name="tf-example",
-            virtual_host_name=default_virtual_host.virtual_host_name)
-        default_binding = alicloud.amqp.Binding("defaultBinding",
-            argument="x-match:all",
-            binding_key=default_queue.queue_name,
-            binding_type="QUEUE",
-            destination_name="tf-example",
-            instance_id=default_instance.id,
-            source_exchange=default_exchange.exchange_name,
-            virtual_host_name=default_virtual_host.virtual_host_name)
-        ```
 
         ## Import
 

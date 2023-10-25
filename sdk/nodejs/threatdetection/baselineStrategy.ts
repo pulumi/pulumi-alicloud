@@ -11,25 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.195.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.threatdetection.BaselineStrategy("default", {
- *     baselineStrategyName: "apispec",
- *     customType: "custom",
- *     cycleDays: 3,
- *     endTime: "08:00:00",
- *     riskSubTypeName: "hc_exploit_redis",
- *     startTime: "05:00:00",
- *     targetType: "groupId",
- * });
- * ```
- *
  * ## Import
  *
  * Threat Detection Baseline Strategy can be imported using the id, e.g.

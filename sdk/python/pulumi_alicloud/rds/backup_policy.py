@@ -103,7 +103,7 @@ class BackupPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
              archive_backup_keep_count: Optional[pulumi.Input[int]] = None,
              archive_backup_keep_policy: Optional[pulumi.Input[str]] = None,
              archive_backup_retention_period: Optional[pulumi.Input[int]] = None,
@@ -125,49 +125,51 @@ class BackupPolicyArgs:
              preferred_backup_time: Optional[pulumi.Input[str]] = None,
              released_keep_policy: Optional[pulumi.Input[str]] = None,
              retention_period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'archiveBackupKeepCount' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if archive_backup_keep_count is None and 'archiveBackupKeepCount' in kwargs:
             archive_backup_keep_count = kwargs['archiveBackupKeepCount']
-        if 'archiveBackupKeepPolicy' in kwargs:
+        if archive_backup_keep_policy is None and 'archiveBackupKeepPolicy' in kwargs:
             archive_backup_keep_policy = kwargs['archiveBackupKeepPolicy']
-        if 'archiveBackupRetentionPeriod' in kwargs:
+        if archive_backup_retention_period is None and 'archiveBackupRetentionPeriod' in kwargs:
             archive_backup_retention_period = kwargs['archiveBackupRetentionPeriod']
-        if 'backupInterval' in kwargs:
+        if backup_interval is None and 'backupInterval' in kwargs:
             backup_interval = kwargs['backupInterval']
-        if 'backupPeriods' in kwargs:
+        if backup_periods is None and 'backupPeriods' in kwargs:
             backup_periods = kwargs['backupPeriods']
-        if 'backupRetentionPeriod' in kwargs:
+        if backup_retention_period is None and 'backupRetentionPeriod' in kwargs:
             backup_retention_period = kwargs['backupRetentionPeriod']
-        if 'backupTime' in kwargs:
+        if backup_time is None and 'backupTime' in kwargs:
             backup_time = kwargs['backupTime']
-        if 'compressType' in kwargs:
+        if compress_type is None and 'compressType' in kwargs:
             compress_type = kwargs['compressType']
-        if 'enableBackupLog' in kwargs:
+        if enable_backup_log is None and 'enableBackupLog' in kwargs:
             enable_backup_log = kwargs['enableBackupLog']
-        if 'highSpaceUsageProtection' in kwargs:
+        if high_space_usage_protection is None and 'highSpaceUsageProtection' in kwargs:
             high_space_usage_protection = kwargs['highSpaceUsageProtection']
-        if 'localLogRetentionHours' in kwargs:
+        if local_log_retention_hours is None and 'localLogRetentionHours' in kwargs:
             local_log_retention_hours = kwargs['localLogRetentionHours']
-        if 'localLogRetentionSpace' in kwargs:
+        if local_log_retention_space is None and 'localLogRetentionSpace' in kwargs:
             local_log_retention_space = kwargs['localLogRetentionSpace']
-        if 'logBackup' in kwargs:
+        if log_backup is None and 'logBackup' in kwargs:
             log_backup = kwargs['logBackup']
-        if 'logBackupFrequency' in kwargs:
+        if log_backup_frequency is None and 'logBackupFrequency' in kwargs:
             log_backup_frequency = kwargs['logBackupFrequency']
-        if 'logBackupRetentionPeriod' in kwargs:
+        if log_backup_retention_period is None and 'logBackupRetentionPeriod' in kwargs:
             log_backup_retention_period = kwargs['logBackupRetentionPeriod']
-        if 'logRetentionPeriod' in kwargs:
+        if log_retention_period is None and 'logRetentionPeriod' in kwargs:
             log_retention_period = kwargs['logRetentionPeriod']
-        if 'preferredBackupPeriods' in kwargs:
+        if preferred_backup_periods is None and 'preferredBackupPeriods' in kwargs:
             preferred_backup_periods = kwargs['preferredBackupPeriods']
-        if 'preferredBackupTime' in kwargs:
+        if preferred_backup_time is None and 'preferredBackupTime' in kwargs:
             preferred_backup_time = kwargs['preferredBackupTime']
-        if 'releasedKeepPolicy' in kwargs:
+        if released_keep_policy is None and 'releasedKeepPolicy' in kwargs:
             released_keep_policy = kwargs['releasedKeepPolicy']
-        if 'retentionPeriod' in kwargs:
+        if retention_period is None and 'retentionPeriod' in kwargs:
             retention_period = kwargs['retentionPeriod']
 
         _setter("instance_id", instance_id)
@@ -637,49 +639,49 @@ class _BackupPolicyState:
              preferred_backup_time: Optional[pulumi.Input[str]] = None,
              released_keep_policy: Optional[pulumi.Input[str]] = None,
              retention_period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'archiveBackupKeepCount' in kwargs:
+        if archive_backup_keep_count is None and 'archiveBackupKeepCount' in kwargs:
             archive_backup_keep_count = kwargs['archiveBackupKeepCount']
-        if 'archiveBackupKeepPolicy' in kwargs:
+        if archive_backup_keep_policy is None and 'archiveBackupKeepPolicy' in kwargs:
             archive_backup_keep_policy = kwargs['archiveBackupKeepPolicy']
-        if 'archiveBackupRetentionPeriod' in kwargs:
+        if archive_backup_retention_period is None and 'archiveBackupRetentionPeriod' in kwargs:
             archive_backup_retention_period = kwargs['archiveBackupRetentionPeriod']
-        if 'backupInterval' in kwargs:
+        if backup_interval is None and 'backupInterval' in kwargs:
             backup_interval = kwargs['backupInterval']
-        if 'backupPeriods' in kwargs:
+        if backup_periods is None and 'backupPeriods' in kwargs:
             backup_periods = kwargs['backupPeriods']
-        if 'backupRetentionPeriod' in kwargs:
+        if backup_retention_period is None and 'backupRetentionPeriod' in kwargs:
             backup_retention_period = kwargs['backupRetentionPeriod']
-        if 'backupTime' in kwargs:
+        if backup_time is None and 'backupTime' in kwargs:
             backup_time = kwargs['backupTime']
-        if 'compressType' in kwargs:
+        if compress_type is None and 'compressType' in kwargs:
             compress_type = kwargs['compressType']
-        if 'enableBackupLog' in kwargs:
+        if enable_backup_log is None and 'enableBackupLog' in kwargs:
             enable_backup_log = kwargs['enableBackupLog']
-        if 'highSpaceUsageProtection' in kwargs:
+        if high_space_usage_protection is None and 'highSpaceUsageProtection' in kwargs:
             high_space_usage_protection = kwargs['highSpaceUsageProtection']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'localLogRetentionHours' in kwargs:
+        if local_log_retention_hours is None and 'localLogRetentionHours' in kwargs:
             local_log_retention_hours = kwargs['localLogRetentionHours']
-        if 'localLogRetentionSpace' in kwargs:
+        if local_log_retention_space is None and 'localLogRetentionSpace' in kwargs:
             local_log_retention_space = kwargs['localLogRetentionSpace']
-        if 'logBackup' in kwargs:
+        if log_backup is None and 'logBackup' in kwargs:
             log_backup = kwargs['logBackup']
-        if 'logBackupFrequency' in kwargs:
+        if log_backup_frequency is None and 'logBackupFrequency' in kwargs:
             log_backup_frequency = kwargs['logBackupFrequency']
-        if 'logBackupRetentionPeriod' in kwargs:
+        if log_backup_retention_period is None and 'logBackupRetentionPeriod' in kwargs:
             log_backup_retention_period = kwargs['logBackupRetentionPeriod']
-        if 'logRetentionPeriod' in kwargs:
+        if log_retention_period is None and 'logRetentionPeriod' in kwargs:
             log_retention_period = kwargs['logRetentionPeriod']
-        if 'preferredBackupPeriods' in kwargs:
+        if preferred_backup_periods is None and 'preferredBackupPeriods' in kwargs:
             preferred_backup_periods = kwargs['preferredBackupPeriods']
-        if 'preferredBackupTime' in kwargs:
+        if preferred_backup_time is None and 'preferredBackupTime' in kwargs:
             preferred_backup_time = kwargs['preferredBackupTime']
-        if 'releasedKeepPolicy' in kwargs:
+        if released_keep_policy is None and 'releasedKeepPolicy' in kwargs:
             released_keep_policy = kwargs['releasedKeepPolicy']
-        if 'retentionPeriod' in kwargs:
+        if retention_period is None and 'retentionPeriod' in kwargs:
             retention_period = kwargs['retentionPeriod']
 
         if archive_backup_keep_count is not None:
@@ -1071,36 +1073,6 @@ class BackupPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.5.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="5.6")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        instance = alicloud.rds.Instance("instance",
-            engine="MySQL",
-            engine_version="5.6",
-            instance_type="rds.mysql.s1.small",
-            instance_storage=10,
-            vswitch_id=default_switch.id,
-            instance_name=name)
-        policy = alicloud.rds.BackupPolicy("policy", instance_id=instance.id)
-        ```
-
         ## Import
 
         RDS backup policy can be imported using the id or instance id, e.g.
@@ -1160,36 +1132,6 @@ class BackupPolicy(pulumi.CustomResource):
         > **NOTE:** Each DB instance has a backup policy and it will be set default values when destroying the resource.
 
         > **NOTE:** Available since v1.5.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="5.6")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        instance = alicloud.rds.Instance("instance",
-            engine="MySQL",
-            engine_version="5.6",
-            instance_type="rds.mysql.s1.small",
-            instance_storage=10,
-            vswitch_id=default_switch.id,
-            instance_name=name)
-        policy = alicloud.rds.BackupPolicy("policy", instance_id=instance.id)
-        ```
 
         ## Import
 

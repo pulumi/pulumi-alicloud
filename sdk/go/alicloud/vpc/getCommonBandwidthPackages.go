@@ -16,38 +16,6 @@ import (
 //
 // > **NOTE:** Available in 1.36.0+.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "fooCommonBandwithPackage", &vpc.CommonBandwithPackageArgs{
-//				Bandwidth:   pulumi.String("2"),
-//				Description: pulumi.String("tf-testAcc-CommonBandwidthPackage"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_ = vpc.GetCommonBandwidthPackagesOutput(ctx, vpc.GetCommonBandwidthPackagesOutputArgs{
-//				Ids: pulumi.StringArray{
-//					fooCommonBandwithPackage.ID(),
-//				},
-//				NameRegex: pulumi.String("^tf-testAcc.*"),
-//			}, nil)
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Public ip addresses Block
 //
 //	The public ip addresses mapping supports the following:

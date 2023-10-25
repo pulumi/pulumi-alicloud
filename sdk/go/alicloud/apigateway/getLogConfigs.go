@@ -15,44 +15,6 @@ import (
 // This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.185.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := apigateway.GetLogConfigs(ctx, &apigateway.GetLogConfigsArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("apiGatewayLogConfigId1", ids.Configs[0].Id)
-//			logType, err := apigateway.GetLogConfigs(ctx, &apigateway.GetLogConfigsArgs{
-//				LogType: pulumi.StringRef("PROVIDER"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("apiGatewayLogConfigId2", logType.Configs[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetLogConfigs(ctx *pulumi.Context, args *GetLogConfigsArgs, opts ...pulumi.InvokeOption) (*GetLogConfigsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLogConfigsResult

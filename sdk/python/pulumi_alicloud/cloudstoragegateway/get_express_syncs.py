@@ -99,20 +99,6 @@ def get_express_syncs(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.144.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cloudstoragegateway.get_express_syncs()
-    pulumi.export("cloudStorageGatewayExpressSyncId1", ids.syncs[0].id)
-    name_regex = alicloud.cloudstoragegateway.get_express_syncs(name_regex="^my-ExpressSync")
-    pulumi.export("cloudStorageGatewayExpressSyncId2", name_regex.syncs[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Express Sync IDs.
     :param str name_regex: A regex string to filter results by Express Sync name.
@@ -143,20 +129,6 @@ def get_express_syncs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.144.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cloudstoragegateway.get_express_syncs()
-    pulumi.export("cloudStorageGatewayExpressSyncId1", ids.syncs[0].id)
-    name_regex = alicloud.cloudstoragegateway.get_express_syncs(name_regex="^my-ExpressSync")
-    pulumi.export("cloudStorageGatewayExpressSyncId2", name_regex.syncs[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Express Sync IDs.

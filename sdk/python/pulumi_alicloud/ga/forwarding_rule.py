@@ -43,23 +43,31 @@ class ForwardingRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: pulumi.Input[str],
-             listener_id: pulumi.Input[str],
-             rule_actions: pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]],
-             rule_conditions: pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]] = None,
+             rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]] = None,
              forwarding_rule_name: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'listenerId' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'ruleActions' in kwargs:
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if rule_actions is None and 'ruleActions' in kwargs:
             rule_actions = kwargs['ruleActions']
-        if 'ruleConditions' in kwargs:
+        if rule_actions is None:
+            raise TypeError("Missing 'rule_actions' argument")
+        if rule_conditions is None and 'ruleConditions' in kwargs:
             rule_conditions = kwargs['ruleConditions']
-        if 'forwardingRuleName' in kwargs:
+        if rule_conditions is None:
+            raise TypeError("Missing 'rule_conditions' argument")
+        if forwarding_rule_name is None and 'forwardingRuleName' in kwargs:
             forwarding_rule_name = kwargs['forwardingRuleName']
 
         _setter("accelerator_id", accelerator_id)
@@ -188,21 +196,21 @@ class _ForwardingRuleState:
              priority: Optional[pulumi.Input[int]] = None,
              rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]] = None,
              rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'forwardingRuleId' in kwargs:
+        if forwarding_rule_id is None and 'forwardingRuleId' in kwargs:
             forwarding_rule_id = kwargs['forwardingRuleId']
-        if 'forwardingRuleName' in kwargs:
+        if forwarding_rule_name is None and 'forwardingRuleName' in kwargs:
             forwarding_rule_name = kwargs['forwardingRuleName']
-        if 'forwardingRuleStatus' in kwargs:
+        if forwarding_rule_status is None and 'forwardingRuleStatus' in kwargs:
             forwarding_rule_status = kwargs['forwardingRuleStatus']
-        if 'listenerId' in kwargs:
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'ruleActions' in kwargs:
+        if rule_actions is None and 'ruleActions' in kwargs:
             rule_actions = kwargs['ruleActions']
-        if 'ruleConditions' in kwargs:
+        if rule_conditions is None and 'ruleConditions' in kwargs:
             rule_conditions = kwargs['ruleConditions']
 
         if accelerator_id is not None:
@@ -338,107 +346,6 @@ class ForwardingRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.120.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.get_regions(current=True)
-        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
-            duration=3,
-            spec="2",
-            accelerator_name=name,
-            auto_use_coupon=False,
-            description=name,
-            auto_renew_duration=2,
-            renewal_status="AutoRenewal")
-        example_bandwidth_package = alicloud.ga.BandwidthPackage("exampleBandwidthPackage",
-            type="Basic",
-            bandwidth=20,
-            bandwidth_type="Basic",
-            duration="1",
-            auto_pay=True,
-            payment_type="Subscription",
-            auto_use_coupon=False,
-            bandwidth_package_name=name,
-            description=name)
-        example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            accelerator_id=example_accelerator.id,
-            bandwidth_package_id=example_bandwidth_package.id)
-        example_listener = alicloud.ga.Listener("exampleListener",
-            accelerator_id=example_bandwidth_package_attachment.accelerator_id,
-            client_affinity="SOURCE_IP",
-            description=name,
-            protocol="HTTP",
-            proxy_protocol=True,
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=60,
-                to_port=60,
-            )])
-        example_eip_address = alicloud.ecs.EipAddress("exampleEipAddress",
-            bandwidth="10",
-            internet_charge_type="PayByBandwidth")
-        virtual = alicloud.ga.EndpointGroup("virtual",
-            accelerator_id=example_accelerator.id,
-            endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                endpoint=example_eip_address.ip_address,
-                type="PublicIp",
-                weight=20,
-                enable_clientip_preservation=True,
-            )],
-            endpoint_group_region=default.regions[0].id,
-            listener_id=example_listener.id,
-            description=name,
-            endpoint_group_type="virtual",
-            endpoint_request_protocol="HTTPS",
-            health_check_interval_seconds=4,
-            health_check_path="/path",
-            threshold_count=4,
-            traffic_percentage=20,
-            port_overrides=alicloud.ga.EndpointGroupPortOverridesArgs(
-                endpoint_port=80,
-                listener_port=60,
-            ))
-        example_forwarding_rule = alicloud.ga.ForwardingRule("exampleForwardingRule",
-            accelerator_id=example_accelerator.id,
-            listener_id=example_listener.id,
-            rule_conditions=[
-                alicloud.ga.ForwardingRuleRuleConditionArgs(
-                    rule_condition_type="Path",
-                    path_config=alicloud.ga.ForwardingRuleRuleConditionPathConfigArgs(
-                        values=["/testpathconfig"],
-                    ),
-                ),
-                alicloud.ga.ForwardingRuleRuleConditionArgs(
-                    rule_condition_type="Host",
-                    host_configs=[alicloud.ga.ForwardingRuleRuleConditionHostConfigArgs(
-                        values=["www.test.com"],
-                    )],
-                ),
-            ],
-            rule_actions=[alicloud.ga.ForwardingRuleRuleActionArgs(
-                order=40,
-                rule_action_type="ForwardGroup",
-                forward_group_config=alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigArgs(
-                    server_group_tuples=[alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs(
-                        endpoint_group_id=virtual.id,
-                    )],
-                ),
-            )],
-            priority=2,
-            forwarding_rule_name=name)
-        ```
-
         ## Import
 
         Ga Forwarding Rule can be imported using the id, e.g.
@@ -468,107 +375,6 @@ class ForwardingRule(pulumi.CustomResource):
         For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
 
         > **NOTE:** Available since v1.120.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.get_regions(current=True)
-        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
-            duration=3,
-            spec="2",
-            accelerator_name=name,
-            auto_use_coupon=False,
-            description=name,
-            auto_renew_duration=2,
-            renewal_status="AutoRenewal")
-        example_bandwidth_package = alicloud.ga.BandwidthPackage("exampleBandwidthPackage",
-            type="Basic",
-            bandwidth=20,
-            bandwidth_type="Basic",
-            duration="1",
-            auto_pay=True,
-            payment_type="Subscription",
-            auto_use_coupon=False,
-            bandwidth_package_name=name,
-            description=name)
-        example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            accelerator_id=example_accelerator.id,
-            bandwidth_package_id=example_bandwidth_package.id)
-        example_listener = alicloud.ga.Listener("exampleListener",
-            accelerator_id=example_bandwidth_package_attachment.accelerator_id,
-            client_affinity="SOURCE_IP",
-            description=name,
-            protocol="HTTP",
-            proxy_protocol=True,
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=60,
-                to_port=60,
-            )])
-        example_eip_address = alicloud.ecs.EipAddress("exampleEipAddress",
-            bandwidth="10",
-            internet_charge_type="PayByBandwidth")
-        virtual = alicloud.ga.EndpointGroup("virtual",
-            accelerator_id=example_accelerator.id,
-            endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                endpoint=example_eip_address.ip_address,
-                type="PublicIp",
-                weight=20,
-                enable_clientip_preservation=True,
-            )],
-            endpoint_group_region=default.regions[0].id,
-            listener_id=example_listener.id,
-            description=name,
-            endpoint_group_type="virtual",
-            endpoint_request_protocol="HTTPS",
-            health_check_interval_seconds=4,
-            health_check_path="/path",
-            threshold_count=4,
-            traffic_percentage=20,
-            port_overrides=alicloud.ga.EndpointGroupPortOverridesArgs(
-                endpoint_port=80,
-                listener_port=60,
-            ))
-        example_forwarding_rule = alicloud.ga.ForwardingRule("exampleForwardingRule",
-            accelerator_id=example_accelerator.id,
-            listener_id=example_listener.id,
-            rule_conditions=[
-                alicloud.ga.ForwardingRuleRuleConditionArgs(
-                    rule_condition_type="Path",
-                    path_config=alicloud.ga.ForwardingRuleRuleConditionPathConfigArgs(
-                        values=["/testpathconfig"],
-                    ),
-                ),
-                alicloud.ga.ForwardingRuleRuleConditionArgs(
-                    rule_condition_type="Host",
-                    host_configs=[alicloud.ga.ForwardingRuleRuleConditionHostConfigArgs(
-                        values=["www.test.com"],
-                    )],
-                ),
-            ],
-            rule_actions=[alicloud.ga.ForwardingRuleRuleActionArgs(
-                order=40,
-                rule_action_type="ForwardGroup",
-                forward_group_config=alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigArgs(
-                    server_group_tuples=[alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs(
-                        endpoint_group_id=virtual.id,
-                    )],
-                ),
-            )],
-            priority=2,
-            forwarding_rule_name=name)
-        ```
 
         ## Import
 

@@ -10,29 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Bastionhost User Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.bastionhost.getUserGroups({
- *     instanceId: "bastionhost-cn-xxxx",
- *     ids: [
- *         "1",
- *         "2",
- *     ],
- * });
- * export const bastionhostUserGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
- * const nameRegex = alicloud.bastionhost.getUserGroups({
- *     instanceId: "bastionhost-cn-xxxx",
- *     nameRegex: "^my-UserGroup",
- * });
- * export const bastionhostUserGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
- * ```
  */
 export function getUserGroups(args: GetUserGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetUserGroupsResult> {
 
@@ -92,29 +69,6 @@ export interface GetUserGroupsResult {
  * This data source provides the Bastionhost User Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.bastionhost.getUserGroups({
- *     instanceId: "bastionhost-cn-xxxx",
- *     ids: [
- *         "1",
- *         "2",
- *     ],
- * });
- * export const bastionhostUserGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
- * const nameRegex = alicloud.bastionhost.getUserGroups({
- *     instanceId: "bastionhost-cn-xxxx",
- *     nameRegex: "^my-UserGroup",
- * });
- * export const bastionhostUserGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
- * ```
  */
 export function getUserGroupsOutput(args: GetUserGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserGroupsResult> {
     return pulumi.output(args).apply((a: any) => getUserGroups(a, opts))

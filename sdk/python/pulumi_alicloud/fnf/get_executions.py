@@ -129,22 +129,6 @@ def get_executions(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.149.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.fnf.get_executions(flow_name="example_value",
-        ids=[
-            "my-Execution-1",
-            "my-Execution-2",
-        ])
-    pulumi.export("fnfExecutionId1", data["alicloud_fn_f_executions"]["ids"]["executions"][0]["id"])
-    ```
-
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param str flow_name: The name of the flow.
@@ -187,22 +171,6 @@ def get_executions_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
     This data source provides the FnF Executions of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.149.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.fnf.get_executions(flow_name="example_value",
-        ids=[
-            "my-Execution-1",
-            "my-Execution-2",
-        ])
-    pulumi.export("fnfExecutionId1", data["alicloud_fn_f_executions"]["ids"]["executions"][0]["id"])
-    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

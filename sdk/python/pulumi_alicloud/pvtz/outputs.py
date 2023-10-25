@@ -71,18 +71,24 @@ class EndpointIpConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: str,
-             vswitch_id: str,
-             zone_id: str,
+             cidr_block: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
              ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'vswitchId' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("cidr_block", cidr_block)
         _setter("vswitch_id", vswitch_id)
@@ -159,14 +165,18 @@ class RuleAttachmentVpc(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             region_id: str,
-             vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             region_id: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'regionId' in kwargs:
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'vpcId' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
 
         _setter("region_id", region_id)
         _setter("vpc_id", vpc_id)
@@ -205,10 +215,14 @@ class RuleForwardIp(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip: str,
-             port: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ip: Optional[str] = None,
+             port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if ip is None:
+            raise TypeError("Missing 'ip' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
 
         _setter("ip", ip)
         _setter("port", port)
@@ -266,13 +280,15 @@ class ZoneAttachmentVpc(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vpc_id: str,
+             vpc_id: Optional[str] = None,
              region_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'regionId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
 
         _setter("vpc_id", vpc_id)
@@ -334,11 +350,11 @@ class ZoneUserInfo(dict):
              _setter: Callable[[Any, Any], None],
              region_ids: Optional[Sequence[str]] = None,
              user_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'regionIds' in kwargs:
+        if region_ids is None and 'regionIds' in kwargs:
             region_ids = kwargs['regionIds']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
 
         if region_ids is not None:
@@ -400,31 +416,49 @@ class GetEndpointsEndpointResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             endpoint_name: str,
-             id: str,
-             ip_configs: Sequence['outputs.GetEndpointsEndpointIpConfigResult'],
-             security_group_id: str,
-             status: str,
-             vpc_id: str,
-             vpc_name: str,
-             vpc_region_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             endpoint_name: Optional[str] = None,
+             id: Optional[str] = None,
+             ip_configs: Optional[Sequence['outputs.GetEndpointsEndpointIpConfigResult']] = None,
+             security_group_id: Optional[str] = None,
+             status: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vpc_name: Optional[str] = None,
+             vpc_region_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'endpointName' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if endpoint_name is None and 'endpointName' in kwargs:
             endpoint_name = kwargs['endpointName']
-        if 'ipConfigs' in kwargs:
+        if endpoint_name is None:
+            raise TypeError("Missing 'endpoint_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ip_configs is None and 'ipConfigs' in kwargs:
             ip_configs = kwargs['ipConfigs']
-        if 'securityGroupId' in kwargs:
+        if ip_configs is None:
+            raise TypeError("Missing 'ip_configs' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vpcId' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vpcName' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vpc_name is None and 'vpcName' in kwargs:
             vpc_name = kwargs['vpcName']
-        if 'vpcRegionId' in kwargs:
+        if vpc_name is None:
+            raise TypeError("Missing 'vpc_name' argument")
+        if vpc_region_id is None and 'vpcRegionId' in kwargs:
             vpc_region_id = kwargs['vpcRegionId']
+        if vpc_region_id is None:
+            raise TypeError("Missing 'vpc_region_id' argument")
 
         _setter("create_time", create_time)
         _setter("endpoint_name", endpoint_name)
@@ -529,18 +563,26 @@ class GetEndpointsEndpointIpConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: str,
-             ip: str,
-             vswitch_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cidr_block: Optional[str] = None,
+             ip: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'vswitchId' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if ip is None:
+            raise TypeError("Missing 'ip' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("cidr_block", cidr_block)
         _setter("ip", ip)
@@ -597,12 +639,16 @@ class GetResolverZonesZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             status: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             status: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("status", status)
         _setter("zone_id", zone_id)
@@ -664,34 +710,54 @@ class GetRulesRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bind_vpcs: Sequence['outputs.GetRulesRuleBindVpcResult'],
-             create_time: str,
-             endpoint_id: str,
-             endpoint_name: str,
-             forward_ips: Sequence['outputs.GetRulesRuleForwardIpResult'],
-             id: str,
-             rule_id: str,
-             rule_name: str,
-             type: str,
-             zone_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bind_vpcs: Optional[Sequence['outputs.GetRulesRuleBindVpcResult']] = None,
+             create_time: Optional[str] = None,
+             endpoint_id: Optional[str] = None,
+             endpoint_name: Optional[str] = None,
+             forward_ips: Optional[Sequence['outputs.GetRulesRuleForwardIpResult']] = None,
+             id: Optional[str] = None,
+             rule_id: Optional[str] = None,
+             rule_name: Optional[str] = None,
+             type: Optional[str] = None,
+             zone_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bindVpcs' in kwargs:
+        if bind_vpcs is None and 'bindVpcs' in kwargs:
             bind_vpcs = kwargs['bindVpcs']
-        if 'createTime' in kwargs:
+        if bind_vpcs is None:
+            raise TypeError("Missing 'bind_vpcs' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'endpointId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if endpoint_id is None and 'endpointId' in kwargs:
             endpoint_id = kwargs['endpointId']
-        if 'endpointName' in kwargs:
+        if endpoint_id is None:
+            raise TypeError("Missing 'endpoint_id' argument")
+        if endpoint_name is None and 'endpointName' in kwargs:
             endpoint_name = kwargs['endpointName']
-        if 'forwardIps' in kwargs:
+        if endpoint_name is None:
+            raise TypeError("Missing 'endpoint_name' argument")
+        if forward_ips is None and 'forwardIps' in kwargs:
             forward_ips = kwargs['forwardIps']
-        if 'ruleId' in kwargs:
+        if forward_ips is None:
+            raise TypeError("Missing 'forward_ips' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if rule_id is None and 'ruleId' in kwargs:
             rule_id = kwargs['ruleId']
-        if 'ruleName' in kwargs:
+        if rule_id is None:
+            raise TypeError("Missing 'rule_id' argument")
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
-        if 'zoneName' in kwargs:
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if zone_name is None and 'zoneName' in kwargs:
             zone_name = kwargs['zoneName']
+        if zone_name is None:
+            raise TypeError("Missing 'zone_name' argument")
 
         _setter("bind_vpcs", bind_vpcs)
         _setter("create_time", create_time)
@@ -805,20 +871,28 @@ class GetRulesRuleBindVpcResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             region_id: str,
-             region_name: str,
-             vpc_id: str,
-             vpc_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             region_id: Optional[str] = None,
+             region_name: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vpc_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'regionId' in kwargs:
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'regionName' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if region_name is None and 'regionName' in kwargs:
             region_name = kwargs['regionName']
-        if 'vpcId' in kwargs:
+        if region_name is None:
+            raise TypeError("Missing 'region_name' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vpcName' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vpc_name is None and 'vpcName' in kwargs:
             vpc_name = kwargs['vpcName']
+        if vpc_name is None:
+            raise TypeError("Missing 'vpc_name' argument")
 
         _setter("region_id", region_id)
         _setter("region_name", region_name)
@@ -871,10 +945,14 @@ class GetRulesRuleForwardIpResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip: str,
-             port: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ip: Optional[str] = None,
+             port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if ip is None:
+            raise TypeError("Missing 'ip' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
 
         _setter("ip", ip)
         _setter("port", port)
@@ -933,22 +1011,42 @@ class GetZoneRecordsRecordResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             priority: int,
-             record_id: str,
-             remark: str,
-             resource_record: str,
-             rr: str,
-             status: str,
-             ttl: int,
-             type: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             priority: Optional[int] = None,
+             record_id: Optional[str] = None,
+             remark: Optional[str] = None,
+             resource_record: Optional[str] = None,
+             rr: Optional[str] = None,
+             status: Optional[str] = None,
+             ttl: Optional[int] = None,
+             type: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'recordId' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if record_id is None and 'recordId' in kwargs:
             record_id = kwargs['recordId']
-        if 'resourceRecord' in kwargs:
+        if record_id is None:
+            raise TypeError("Missing 'record_id' argument")
+        if remark is None:
+            raise TypeError("Missing 'remark' argument")
+        if resource_record is None and 'resourceRecord' in kwargs:
             resource_record = kwargs['resourceRecord']
+        if resource_record is None:
+            raise TypeError("Missing 'resource_record' argument")
+        if rr is None:
+            raise TypeError("Missing 'rr' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if ttl is None:
+            raise TypeError("Missing 'ttl' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("id", id)
         _setter("priority", priority)
@@ -1098,47 +1196,77 @@ class GetZonesZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bind_vpcs: Sequence['outputs.GetZonesZoneBindVpcResult'],
-             create_timestamp: int,
-             creation_time: str,
-             id: str,
-             is_ptr: bool,
-             name: str,
-             proxy_pattern: str,
-             record_count: int,
-             remark: str,
-             resource_group_id: str,
-             slave_dns: bool,
-             update_time: str,
-             update_timestamp: int,
-             zone_id: str,
-             zone_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bind_vpcs: Optional[Sequence['outputs.GetZonesZoneBindVpcResult']] = None,
+             create_timestamp: Optional[int] = None,
+             creation_time: Optional[str] = None,
+             id: Optional[str] = None,
+             is_ptr: Optional[bool] = None,
+             name: Optional[str] = None,
+             proxy_pattern: Optional[str] = None,
+             record_count: Optional[int] = None,
+             remark: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             slave_dns: Optional[bool] = None,
+             update_time: Optional[str] = None,
+             update_timestamp: Optional[int] = None,
+             zone_id: Optional[str] = None,
+             zone_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bindVpcs' in kwargs:
+        if bind_vpcs is None and 'bindVpcs' in kwargs:
             bind_vpcs = kwargs['bindVpcs']
-        if 'createTimestamp' in kwargs:
+        if bind_vpcs is None:
+            raise TypeError("Missing 'bind_vpcs' argument")
+        if create_timestamp is None and 'createTimestamp' in kwargs:
             create_timestamp = kwargs['createTimestamp']
-        if 'creationTime' in kwargs:
+        if create_timestamp is None:
+            raise TypeError("Missing 'create_timestamp' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'isPtr' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_ptr is None and 'isPtr' in kwargs:
             is_ptr = kwargs['isPtr']
-        if 'proxyPattern' in kwargs:
+        if is_ptr is None:
+            raise TypeError("Missing 'is_ptr' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if proxy_pattern is None and 'proxyPattern' in kwargs:
             proxy_pattern = kwargs['proxyPattern']
-        if 'recordCount' in kwargs:
+        if proxy_pattern is None:
+            raise TypeError("Missing 'proxy_pattern' argument")
+        if record_count is None and 'recordCount' in kwargs:
             record_count = kwargs['recordCount']
-        if 'resourceGroupId' in kwargs:
+        if record_count is None:
+            raise TypeError("Missing 'record_count' argument")
+        if remark is None:
+            raise TypeError("Missing 'remark' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'slaveDns' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if slave_dns is None and 'slaveDns' in kwargs:
             slave_dns = kwargs['slaveDns']
-        if 'updateTime' in kwargs:
+        if slave_dns is None:
+            raise TypeError("Missing 'slave_dns' argument")
+        if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
-        if 'updateTimestamp' in kwargs:
+        if update_time is None:
+            raise TypeError("Missing 'update_time' argument")
+        if update_timestamp is None and 'updateTimestamp' in kwargs:
             update_timestamp = kwargs['updateTimestamp']
-        if 'zoneId' in kwargs:
+        if update_timestamp is None:
+            raise TypeError("Missing 'update_timestamp' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'zoneName' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if zone_name is None and 'zoneName' in kwargs:
             zone_name = kwargs['zoneName']
+        if zone_name is None:
+            raise TypeError("Missing 'zone_name' argument")
 
         _setter("bind_vpcs", bind_vpcs)
         _setter("create_timestamp", create_timestamp)
@@ -1293,20 +1421,28 @@ class GetZonesZoneBindVpcResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             region_id: str,
-             region_name: str,
-             vpc_id: str,
-             vpc_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             region_id: Optional[str] = None,
+             region_name: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vpc_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'regionId' in kwargs:
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'regionName' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if region_name is None and 'regionName' in kwargs:
             region_name = kwargs['regionName']
-        if 'vpcId' in kwargs:
+        if region_name is None:
+            raise TypeError("Missing 'region_name' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vpcName' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vpc_name is None and 'vpcName' in kwargs:
             vpc_name = kwargs['vpcName']
+        if vpc_name is None:
+            raise TypeError("Missing 'vpc_name' argument")
 
         _setter("region_id", region_id)
         _setter("region_name", region_name)

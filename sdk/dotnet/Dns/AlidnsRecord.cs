@@ -16,45 +16,6 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// &gt; **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultDomainGroup = new AliCloud.Dns.DomainGroup("defaultDomainGroup", new()
-    ///     {
-    ///         DomainGroupName = "tf-example",
-    ///     });
-    /// 
-    ///     var defaultAlidnsDomain = new AliCloud.Dns.AlidnsDomain("defaultAlidnsDomain", new()
-    ///     {
-    ///         DomainName = "starmove.com",
-    ///         GroupId = defaultDomainGroup.Id,
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "TF" },
-    ///             { "For", "example" },
-    ///         },
-    ///     });
-    /// 
-    ///     var record = new AliCloud.Dns.AlidnsRecord("record", new()
-    ///     {
-    ///         DomainName = defaultAlidnsDomain.DomainName,
-    ///         Rr = "alimail",
-    ///         Type = "CNAME",
-    ///         Value = "mail.mxhichin.com",
-    ///         Remark = "tf-example",
-    ///         Status = "ENABLE",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Alidns Domain Record can be imported using the id, e.g.

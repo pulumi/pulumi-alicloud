@@ -8,20 +8,6 @@ import * as utilities from "../utilities";
  * Provides the generation of txt records to realize the retrieval and verification of domain names.
  *
  * > **NOTE:** Available in v1.80.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const this = alicloud.dns.getDomainTxtGuid({
- *     domainName: "test111.abc",
- *     type: "ADD_SUB_DOMAIN",
- * });
- * export const rr = _this.then(_this => _this.rr);
- * export const value = _this.then(_this => _this.value);
- * ```
  */
 export function getDomainTxtGuid(args: GetDomainTxtGuidArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainTxtGuidResult> {
 
@@ -81,20 +67,6 @@ export interface GetDomainTxtGuidResult {
  * Provides the generation of txt records to realize the retrieval and verification of domain names.
  *
  * > **NOTE:** Available in v1.80.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const this = alicloud.dns.getDomainTxtGuid({
- *     domainName: "test111.abc",
- *     type: "ADD_SUB_DOMAIN",
- * });
- * export const rr = _this.then(_this => _this.rr);
- * export const value = _this.then(_this => _this.value);
- * ```
  */
 export function getDomainTxtGuidOutput(args: GetDomainTxtGuidOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainTxtGuidResult> {
     return pulumi.output(args).apply((a: any) => getDomainTxtGuid(a, opts))

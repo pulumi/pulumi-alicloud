@@ -31,16 +31,18 @@ class FolderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             folder_path: pulumi.Input[str],
+             folder_path: Optional[pulumi.Input[str]] = None,
              project_id: Optional[pulumi.Input[str]] = None,
              project_identifier: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'folderPath' in kwargs:
+        if folder_path is None and 'folderPath' in kwargs:
             folder_path = kwargs['folderPath']
-        if 'projectId' in kwargs:
+        if folder_path is None:
+            raise TypeError("Missing 'folder_path' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'projectIdentifier' in kwargs:
+        if project_identifier is None and 'projectIdentifier' in kwargs:
             project_identifier = kwargs['projectIdentifier']
 
         _setter("folder_path", folder_path)
@@ -109,15 +111,15 @@ class _FolderState:
              folder_path: Optional[pulumi.Input[str]] = None,
              project_id: Optional[pulumi.Input[str]] = None,
              project_identifier: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'folderId' in kwargs:
+        if folder_id is None and 'folderId' in kwargs:
             folder_id = kwargs['folderId']
-        if 'folderPath' in kwargs:
+        if folder_path is None and 'folderPath' in kwargs:
             folder_path = kwargs['folderPath']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'projectIdentifier' in kwargs:
+        if project_identifier is None and 'projectIdentifier' in kwargs:
             project_identifier = kwargs['projectIdentifier']
 
         if folder_id is not None:
@@ -188,19 +190,6 @@ class Folder(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.131.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.dataworks.Folder("example",
-            folder_path="Business Flow/tfTestAcc/folderDi/tftest1",
-            project_id="320687")
-        ```
-
         ## Import
 
         Data Works Folder can be imported using the id, e.g.
@@ -226,19 +215,6 @@ class Folder(pulumi.CustomResource):
         For information about Data Works Folder and how to use it, see [What is Folder](https://help.aliyun.com/document_detail/173940.html).
 
         > **NOTE:** Available in v1.131.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.dataworks.Folder("example",
-            folder_path="Business Flow/tfTestAcc/folderDi/tftest1",
-            project_id="320687")
-        ```
 
         ## Import
 

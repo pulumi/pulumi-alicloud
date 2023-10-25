@@ -19,50 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.140.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultZones, err := dfs.GetZones(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dfs.NewFileSystem(ctx, "defaultFileSystem", &dfs.FileSystemArgs{
-//				StorageType:    *pulumi.String(defaultZones.Zones[0].Options[0].StorageType),
-//				ZoneId:         *pulumi.String(defaultZones.Zones[0].ZoneId),
-//				ProtocolType:   pulumi.String("HDFS"),
-//				Description:    pulumi.String(name),
-//				FileSystemName: pulumi.String(name),
-//				ThroughputMode: pulumi.String("Standard"),
-//				SpaceCapacity:  pulumi.Int(1024),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // DFS File System can be imported using the id, e.g.

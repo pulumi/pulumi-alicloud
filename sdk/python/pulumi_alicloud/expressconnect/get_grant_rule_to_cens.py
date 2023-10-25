@@ -113,19 +113,6 @@ def get_grant_rule_to_cens(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.196.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.expressconnect.get_grant_rule_to_cens(ids=["example_id"],
-        instance_id="your_vbr_instance_id")
-    pulumi.export("expressConnectGrantRuleToCenId0", ids.cens[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Grant Rule To Cen IDs.
     :param str instance_id: The ID of the VBR.
@@ -161,19 +148,6 @@ def get_grant_rule_to_cens_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     This data source provides the Express Connect Grant Rule To Cens of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.196.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.expressconnect.get_grant_rule_to_cens(ids=["example_id"],
-        instance_id="your_vbr_instance_id")
-    pulumi.export("expressConnectGrantRuleToCenId0", ids.cens[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Grant Rule To Cen IDs.

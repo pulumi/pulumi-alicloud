@@ -67,12 +67,12 @@ class ClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             applications: pulumi.Input[Sequence[pulumi.Input[str]]],
-             cluster_name: pulumi.Input[str],
-             cluster_type: pulumi.Input[str],
-             node_attributes: pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]],
-             node_groups: pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]],
-             release_version: pulumi.Input[str],
+             applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cluster_name: Optional[pulumi.Input[str]] = None,
+             cluster_type: Optional[pulumi.Input[str]] = None,
+             node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]]] = None,
+             node_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]] = None,
+             release_version: Optional[pulumi.Input[str]] = None,
              application_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]] = None,
              bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]] = None,
              deploy_mode: Optional[pulumi.Input[str]] = None,
@@ -81,31 +81,43 @@ class ClusterArgs:
              security_mode: Optional[pulumi.Input[str]] = None,
              subscription_config: Optional[pulumi.Input['ClusterSubscriptionConfigArgs']] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterName' in kwargs:
+        if applications is None:
+            raise TypeError("Missing 'applications' argument")
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'clusterType' in kwargs:
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'nodeAttributes' in kwargs:
+        if cluster_type is None:
+            raise TypeError("Missing 'cluster_type' argument")
+        if node_attributes is None and 'nodeAttributes' in kwargs:
             node_attributes = kwargs['nodeAttributes']
-        if 'nodeGroups' in kwargs:
+        if node_attributes is None:
+            raise TypeError("Missing 'node_attributes' argument")
+        if node_groups is None and 'nodeGroups' in kwargs:
             node_groups = kwargs['nodeGroups']
-        if 'releaseVersion' in kwargs:
+        if node_groups is None:
+            raise TypeError("Missing 'node_groups' argument")
+        if release_version is None and 'releaseVersion' in kwargs:
             release_version = kwargs['releaseVersion']
-        if 'applicationConfigs' in kwargs:
+        if release_version is None:
+            raise TypeError("Missing 'release_version' argument")
+        if application_configs is None and 'applicationConfigs' in kwargs:
             application_configs = kwargs['applicationConfigs']
-        if 'bootstrapScripts' in kwargs:
+        if bootstrap_scripts is None and 'bootstrapScripts' in kwargs:
             bootstrap_scripts = kwargs['bootstrapScripts']
-        if 'deployMode' in kwargs:
+        if deploy_mode is None and 'deployMode' in kwargs:
             deploy_mode = kwargs['deployMode']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityMode' in kwargs:
+        if security_mode is None and 'securityMode' in kwargs:
             security_mode = kwargs['securityMode']
-        if 'subscriptionConfig' in kwargs:
+        if subscription_config is None and 'subscriptionConfig' in kwargs:
             subscription_config = kwargs['subscriptionConfig']
 
         _setter("applications", applications)
@@ -368,31 +380,31 @@ class _ClusterState:
              security_mode: Optional[pulumi.Input[str]] = None,
              subscription_config: Optional[pulumi.Input['ClusterSubscriptionConfigArgs']] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationConfigs' in kwargs:
+        if application_configs is None and 'applicationConfigs' in kwargs:
             application_configs = kwargs['applicationConfigs']
-        if 'bootstrapScripts' in kwargs:
+        if bootstrap_scripts is None and 'bootstrapScripts' in kwargs:
             bootstrap_scripts = kwargs['bootstrapScripts']
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'clusterType' in kwargs:
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'deployMode' in kwargs:
+        if deploy_mode is None and 'deployMode' in kwargs:
             deploy_mode = kwargs['deployMode']
-        if 'nodeAttributes' in kwargs:
+        if node_attributes is None and 'nodeAttributes' in kwargs:
             node_attributes = kwargs['nodeAttributes']
-        if 'nodeGroups' in kwargs:
+        if node_groups is None and 'nodeGroups' in kwargs:
             node_groups = kwargs['nodeGroups']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'releaseVersion' in kwargs:
+        if release_version is None and 'releaseVersion' in kwargs:
             release_version = kwargs['releaseVersion']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityMode' in kwargs:
+        if security_mode is None and 'securityMode' in kwargs:
             security_mode = kwargs['securityMode']
-        if 'subscriptionConfig' in kwargs:
+        if subscription_config is None and 'subscriptionConfig' in kwargs:
             subscription_config = kwargs['subscriptionConfig']
 
         if application_configs is not None:
@@ -620,133 +632,6 @@ class Cluster(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.199.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_zones = alicloud.get_zones(available_instance_type="ecs.g7.xlarge")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_ecs_key_pair = alicloud.ecs.EcsKeyPair("defaultEcsKeyPair", key_pair_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_role = alicloud.ram.Role("defaultRole",
-            document=\"\"\"    {
-                "Statement": [
-                {
-                    "Action": "sts:AssumeRole",
-                    "Effect": "Allow",
-                    "Principal": {
-                    "Service": [
-                        "emr.aliyuncs.com",
-                        "ecs.aliyuncs.com"
-                    ]
-                    }
-                }
-                ],
-                "Version": "1"
-            }
-        \"\"\",
-            description="this is a role example.",
-            force=True)
-        default_cluster = alicloud.emrv2.Cluster("defaultCluster",
-            payment_type="PayAsYouGo",
-            cluster_type="DATALAKE",
-            release_version="EMR-5.10.0",
-            cluster_name=name,
-            deploy_mode="NORMAL",
-            security_mode="NORMAL",
-            applications=[
-                "HADOOP-COMMON",
-                "HDFS",
-                "YARN",
-                "HIVE",
-                "SPARK3",
-                "TEZ",
-            ],
-            application_configs=[
-                alicloud.emrv2.ClusterApplicationConfigArgs(
-                    application_name="HIVE",
-                    config_file_name="hivemetastore-site.xml",
-                    config_item_key="hive.metastore.type",
-                    config_item_value="DLF",
-                    config_scope="CLUSTER",
-                ),
-                alicloud.emrv2.ClusterApplicationConfigArgs(
-                    application_name="SPARK3",
-                    config_file_name="hive-site.xml",
-                    config_item_key="hive.metastore.type",
-                    config_item_value="DLF",
-                    config_scope="CLUSTER",
-                ),
-            ],
-            node_attributes=[alicloud.emrv2.ClusterNodeAttributeArgs(
-                ram_role=default_role.name,
-                security_group_id=default_security_group.id,
-                vpc_id=default_network.id,
-                zone_id=default_zones.zones[0].id,
-                key_pair_name=default_ecs_key_pair.id,
-            )],
-            tags={
-                "created": "tf",
-            },
-            node_groups=[
-                alicloud.emrv2.ClusterNodeGroupArgs(
-                    node_group_type="MASTER",
-                    node_group_name="emr-master",
-                    payment_type="PayAsYouGo",
-                    vswitch_ids=[default_switch.id],
-                    with_public_ip=False,
-                    instance_types=["ecs.g7.xlarge"],
-                    node_count=1,
-                    system_disk=alicloud.emrv2.ClusterNodeGroupSystemDiskArgs(
-                        category="cloud_essd",
-                        size=80,
-                        count=1,
-                    ),
-                    data_disks=[alicloud.emrv2.ClusterNodeGroupDataDiskArgs(
-                        category="cloud_essd",
-                        size=80,
-                        count=3,
-                    )],
-                ),
-                alicloud.emrv2.ClusterNodeGroupArgs(
-                    node_group_type="CORE",
-                    node_group_name="emr-core",
-                    payment_type="PayAsYouGo",
-                    vswitch_ids=[default_switch.id],
-                    with_public_ip=False,
-                    instance_types=["ecs.g7.xlarge"],
-                    node_count=3,
-                    system_disk=alicloud.emrv2.ClusterNodeGroupSystemDiskArgs(
-                        category="cloud_essd",
-                        size=80,
-                        count=1,
-                    ),
-                    data_disks=[alicloud.emrv2.ClusterNodeGroupDataDiskArgs(
-                        category="cloud_essd",
-                        size=80,
-                        count=3,
-                    )],
-                ),
-            ],
-            resource_group_id=default_resource_groups.ids[0])
-        ```
-
         ## Import
 
         Aliclioud E-MapReduce cluster can be imported using the id e.g.
@@ -784,133 +669,6 @@ class Cluster(pulumi.CustomResource):
         For information about EMR New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/28068.htm).
 
         > **NOTE:** Available since v1.199.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_zones = alicloud.get_zones(available_instance_type="ecs.g7.xlarge")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_ecs_key_pair = alicloud.ecs.EcsKeyPair("defaultEcsKeyPair", key_pair_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_role = alicloud.ram.Role("defaultRole",
-            document=\"\"\"    {
-                "Statement": [
-                {
-                    "Action": "sts:AssumeRole",
-                    "Effect": "Allow",
-                    "Principal": {
-                    "Service": [
-                        "emr.aliyuncs.com",
-                        "ecs.aliyuncs.com"
-                    ]
-                    }
-                }
-                ],
-                "Version": "1"
-            }
-        \"\"\",
-            description="this is a role example.",
-            force=True)
-        default_cluster = alicloud.emrv2.Cluster("defaultCluster",
-            payment_type="PayAsYouGo",
-            cluster_type="DATALAKE",
-            release_version="EMR-5.10.0",
-            cluster_name=name,
-            deploy_mode="NORMAL",
-            security_mode="NORMAL",
-            applications=[
-                "HADOOP-COMMON",
-                "HDFS",
-                "YARN",
-                "HIVE",
-                "SPARK3",
-                "TEZ",
-            ],
-            application_configs=[
-                alicloud.emrv2.ClusterApplicationConfigArgs(
-                    application_name="HIVE",
-                    config_file_name="hivemetastore-site.xml",
-                    config_item_key="hive.metastore.type",
-                    config_item_value="DLF",
-                    config_scope="CLUSTER",
-                ),
-                alicloud.emrv2.ClusterApplicationConfigArgs(
-                    application_name="SPARK3",
-                    config_file_name="hive-site.xml",
-                    config_item_key="hive.metastore.type",
-                    config_item_value="DLF",
-                    config_scope="CLUSTER",
-                ),
-            ],
-            node_attributes=[alicloud.emrv2.ClusterNodeAttributeArgs(
-                ram_role=default_role.name,
-                security_group_id=default_security_group.id,
-                vpc_id=default_network.id,
-                zone_id=default_zones.zones[0].id,
-                key_pair_name=default_ecs_key_pair.id,
-            )],
-            tags={
-                "created": "tf",
-            },
-            node_groups=[
-                alicloud.emrv2.ClusterNodeGroupArgs(
-                    node_group_type="MASTER",
-                    node_group_name="emr-master",
-                    payment_type="PayAsYouGo",
-                    vswitch_ids=[default_switch.id],
-                    with_public_ip=False,
-                    instance_types=["ecs.g7.xlarge"],
-                    node_count=1,
-                    system_disk=alicloud.emrv2.ClusterNodeGroupSystemDiskArgs(
-                        category="cloud_essd",
-                        size=80,
-                        count=1,
-                    ),
-                    data_disks=[alicloud.emrv2.ClusterNodeGroupDataDiskArgs(
-                        category="cloud_essd",
-                        size=80,
-                        count=3,
-                    )],
-                ),
-                alicloud.emrv2.ClusterNodeGroupArgs(
-                    node_group_type="CORE",
-                    node_group_name="emr-core",
-                    payment_type="PayAsYouGo",
-                    vswitch_ids=[default_switch.id],
-                    with_public_ip=False,
-                    instance_types=["ecs.g7.xlarge"],
-                    node_count=3,
-                    system_disk=alicloud.emrv2.ClusterNodeGroupSystemDiskArgs(
-                        category="cloud_essd",
-                        size=80,
-                        count=1,
-                    ),
-                    data_disks=[alicloud.emrv2.ClusterNodeGroupDataDiskArgs(
-                        category="cloud_essd",
-                        size=80,
-                        count=3,
-                    )],
-                ),
-            ],
-            resource_group_id=default_resource_groups.ids[0])
-        ```
 
         ## Import
 
@@ -986,11 +744,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["release_version"] = release_version
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["security_mode"] = security_mode
-            if subscription_config is not None and not isinstance(subscription_config, ClusterSubscriptionConfigArgs):
-                subscription_config = subscription_config or {}
-                def _setter(key, value):
-                    subscription_config[key] = value
-                ClusterSubscriptionConfigArgs._configure(_setter, **subscription_config)
+            subscription_config = _utilities.configure(subscription_config, ClusterSubscriptionConfigArgs, True)
             __props__.__dict__["subscription_config"] = subscription_config
             __props__.__dict__["tags"] = tags
         super(Cluster, __self__).__init__(

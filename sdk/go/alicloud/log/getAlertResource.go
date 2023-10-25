@@ -17,40 +17,6 @@ import (
 // For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
 //
 // > **NOTE:** Available in v1.161.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := log.GetAlertResource(ctx, &log.GetAlertResourceArgs{
-//				Lang: pulumi.StringRef("cn"),
-//				Type: "user",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = log.GetAlertResource(ctx, &log.GetAlertResourceArgs{
-//				Project: pulumi.StringRef("test-alert-tf"),
-//				Type:    "project",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAlertResource(ctx *pulumi.Context, args *GetAlertResourceArgs, opts ...pulumi.InvokeOption) (*GetAlertResourceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAlertResourceResult

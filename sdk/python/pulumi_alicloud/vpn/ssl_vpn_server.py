@@ -50,22 +50,28 @@ class SslVpnServerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_ip_pool: pulumi.Input[str],
-             local_subnet: pulumi.Input[str],
-             vpn_gateway_id: pulumi.Input[str],
+             client_ip_pool: Optional[pulumi.Input[str]] = None,
+             local_subnet: Optional[pulumi.Input[str]] = None,
+             vpn_gateway_id: Optional[pulumi.Input[str]] = None,
              cipher: Optional[pulumi.Input[str]] = None,
              compress: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientIpPool' in kwargs:
+        if client_ip_pool is None and 'clientIpPool' in kwargs:
             client_ip_pool = kwargs['clientIpPool']
-        if 'localSubnet' in kwargs:
+        if client_ip_pool is None:
+            raise TypeError("Missing 'client_ip_pool' argument")
+        if local_subnet is None and 'localSubnet' in kwargs:
             local_subnet = kwargs['localSubnet']
-        if 'vpnGatewayId' in kwargs:
+        if local_subnet is None:
+            raise TypeError("Missing 'local_subnet' argument")
+        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
             vpn_gateway_id = kwargs['vpnGatewayId']
+        if vpn_gateway_id is None:
+            raise TypeError("Missing 'vpn_gateway_id' argument")
 
         _setter("client_ip_pool", client_ip_pool)
         _setter("local_subnet", local_subnet)
@@ -240,17 +246,17 @@ class _SslVpnServerState:
              port: Optional[pulumi.Input[int]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              vpn_gateway_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientIpPool' in kwargs:
+        if client_ip_pool is None and 'clientIpPool' in kwargs:
             client_ip_pool = kwargs['clientIpPool']
-        if 'internetIp' in kwargs:
+        if internet_ip is None and 'internetIp' in kwargs:
             internet_ip = kwargs['internetIp']
-        if 'localSubnet' in kwargs:
+        if local_subnet is None and 'localSubnet' in kwargs:
             local_subnet = kwargs['localSubnet']
-        if 'maxConnections' in kwargs:
+        if max_connections is None and 'maxConnections' in kwargs:
             max_connections = kwargs['maxConnections']
-        if 'vpnGatewayId' in kwargs:
+        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
             vpn_gateway_id = kwargs['vpnGatewayId']
 
         if cipher is not None:

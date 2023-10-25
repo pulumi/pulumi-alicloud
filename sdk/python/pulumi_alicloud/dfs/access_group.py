@@ -32,15 +32,19 @@ class AccessGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_group_name: pulumi.Input[str],
-             network_type: pulumi.Input[str],
+             access_group_name: Optional[pulumi.Input[str]] = None,
+             network_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessGroupName' in kwargs:
+        if access_group_name is None and 'accessGroupName' in kwargs:
             access_group_name = kwargs['accessGroupName']
-        if 'networkType' in kwargs:
+        if access_group_name is None:
+            raise TypeError("Missing 'access_group_name' argument")
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
 
         _setter("access_group_name", access_group_name)
         _setter("network_type", network_type)
@@ -108,11 +112,11 @@ class _AccessGroupState:
              access_group_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              network_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessGroupName' in kwargs:
+        if access_group_name is None and 'accessGroupName' in kwargs:
             access_group_name = kwargs['accessGroupName']
-        if 'networkType' in kwargs:
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
 
         if access_group_name is not None:
@@ -175,23 +179,6 @@ class AccessGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.133.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.dfs.AccessGroup("default",
-            access_group_name=name,
-            network_type="VPC")
-        ```
-
         ## Import
 
         DFS Access Group can be imported using the id, e.g.
@@ -218,23 +205,6 @@ class AccessGroup(pulumi.CustomResource):
         For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/doc-detail/207144.htm).
 
         > **NOTE:** Available since v1.133.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.dfs.AccessGroup("default",
-            access_group_name=name,
-            network_type="VPC")
-        ```
 
         ## Import
 

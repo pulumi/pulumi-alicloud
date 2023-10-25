@@ -40,22 +40,28 @@ class DynamicTagGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             contact_group_lists: pulumi.Input[Sequence[pulumi.Input[str]]],
-             match_expresses: pulumi.Input[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]],
-             tag_key: pulumi.Input[str],
+             contact_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]]] = None,
+             tag_key: Optional[pulumi.Input[str]] = None,
              match_express_filter_relation: Optional[pulumi.Input[str]] = None,
              template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contactGroupLists' in kwargs:
+        if contact_group_lists is None and 'contactGroupLists' in kwargs:
             contact_group_lists = kwargs['contactGroupLists']
-        if 'matchExpresses' in kwargs:
+        if contact_group_lists is None:
+            raise TypeError("Missing 'contact_group_lists' argument")
+        if match_expresses is None and 'matchExpresses' in kwargs:
             match_expresses = kwargs['matchExpresses']
-        if 'tagKey' in kwargs:
+        if match_expresses is None:
+            raise TypeError("Missing 'match_expresses' argument")
+        if tag_key is None and 'tagKey' in kwargs:
             tag_key = kwargs['tagKey']
-        if 'matchExpressFilterRelation' in kwargs:
+        if tag_key is None:
+            raise TypeError("Missing 'tag_key' argument")
+        if match_express_filter_relation is None and 'matchExpressFilterRelation' in kwargs:
             match_express_filter_relation = kwargs['matchExpressFilterRelation']
-        if 'templateIdLists' in kwargs:
+        if template_id_lists is None and 'templateIdLists' in kwargs:
             template_id_lists = kwargs['templateIdLists']
 
         _setter("contact_group_lists", contact_group_lists)
@@ -163,17 +169,17 @@ class _DynamicTagGroupState:
              status: Optional[pulumi.Input[str]] = None,
              tag_key: Optional[pulumi.Input[str]] = None,
              template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contactGroupLists' in kwargs:
+        if contact_group_lists is None and 'contactGroupLists' in kwargs:
             contact_group_lists = kwargs['contactGroupLists']
-        if 'matchExpressFilterRelation' in kwargs:
+        if match_express_filter_relation is None and 'matchExpressFilterRelation' in kwargs:
             match_express_filter_relation = kwargs['matchExpressFilterRelation']
-        if 'matchExpresses' in kwargs:
+        if match_expresses is None and 'matchExpresses' in kwargs:
             match_expresses = kwargs['matchExpresses']
-        if 'tagKey' in kwargs:
+        if tag_key is None and 'tagKey' in kwargs:
             tag_key = kwargs['tagKey']
-        if 'templateIdLists' in kwargs:
+        if template_id_lists is None and 'templateIdLists' in kwargs:
             template_id_lists = kwargs['templateIdLists']
 
         if contact_group_lists is not None:
@@ -280,27 +286,6 @@ class DynamicTagGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.142.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
-            alarm_contact_group_name="example_value",
-            describe="example_value",
-            enable_subscribed=True)
-        default_dynamic_tag_group = alicloud.cms.DynamicTagGroup("defaultDynamicTagGroup",
-            contact_group_lists=[default_alarm_contact_group.id],
-            tag_key="your_tag_key",
-            match_expresses=[alicloud.cms.DynamicTagGroupMatchExpressArgs(
-                tag_value="your_tag_value",
-                tag_value_match_function="all",
-            )])
-        ```
-
         ## Import
 
         Cloud Monitor Service Dynamic Tag Group can be imported using the id, e.g.
@@ -329,27 +314,6 @@ class DynamicTagGroup(pulumi.CustomResource):
         For information about Cloud Monitor Service Dynamic Tag Group and how to use it, see [What is Dynamic Tag Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createdynamictaggroup).
 
         > **NOTE:** Available since v1.142.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
-            alarm_contact_group_name="example_value",
-            describe="example_value",
-            enable_subscribed=True)
-        default_dynamic_tag_group = alicloud.cms.DynamicTagGroup("defaultDynamicTagGroup",
-            contact_group_lists=[default_alarm_contact_group.id],
-            tag_key="your_tag_key",
-            match_expresses=[alicloud.cms.DynamicTagGroupMatchExpressArgs(
-                tag_value="your_tag_value",
-                tag_value_match_function="all",
-            )])
-        ```
 
         ## Import
 

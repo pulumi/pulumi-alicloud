@@ -19,65 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.176.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(name),
-//				ProtectionLevel: pulumi.String("REDUCED"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = eds.NewAdConnectorOfficeSite(ctx, "defaultAdConnectorOfficeSite", &eds.AdConnectorOfficeSiteArgs{
-//				AdConnectorOfficeSiteName: pulumi.String(name),
-//				Bandwidth:                 pulumi.Int(100),
-//				CenId:                     defaultInstance.ID(),
-//				CidrBlock:                 pulumi.String("10.0.0.0/12"),
-//				DesktopAccessType:         pulumi.String("INTERNET"),
-//				DnsAddresses: pulumi.StringArray{
-//					pulumi.String("127.0.0.2"),
-//				},
-//				DomainName:           pulumi.String("corp.example.com"),
-//				DomainPassword:       pulumi.String("Example1234"),
-//				DomainUserName:       pulumi.String("sAMAccountName"),
-//				EnableAdminAccess:    pulumi.Bool(false),
-//				EnableInternetAccess: pulumi.Bool(false),
-//				MfaEnabled:           pulumi.Bool(false),
-//				SubDomainDnsAddresses: pulumi.StringArray{
-//					pulumi.String("127.0.0.3"),
-//				},
-//				SubDomainName: pulumi.String("child.example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ECD Ad Connector Office Site can be imported using the id, e.g.

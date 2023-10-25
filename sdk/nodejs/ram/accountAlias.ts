@@ -9,17 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.0.0.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tfexample";
- * const alias = new alicloud.ram.AccountAlias("alias", {accountAlias: name});
- * ```
- *
  * ## Import
  *
  * RAM account alias can be imported using the id, e.g.

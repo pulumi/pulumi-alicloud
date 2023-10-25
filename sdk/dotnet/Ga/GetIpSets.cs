@@ -15,38 +15,6 @@ namespace Pulumi.AliCloud.Ga
         /// This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.113.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Ga.GetIpSets.Invoke(new()
-        ///     {
-        ///         AcceleratorId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstGaIpSetId"] = example.Apply(getIpSetsResult =&gt; getIpSetsResult.Sets[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpSetsResult> InvokeAsync(GetIpSetsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpSetsResult>("alicloud:ga/getIpSets:getIpSets", args ?? new GetIpSetsArgs(), options.WithDefaults());
@@ -55,38 +23,6 @@ namespace Pulumi.AliCloud.Ga
         /// This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.113.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Ga.GetIpSets.Invoke(new()
-        ///     {
-        ///         AcceleratorId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstGaIpSetId"] = example.Apply(getIpSetsResult =&gt; getIpSetsResult.Sets[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpSetsResult> Invoke(GetIpSetsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpSetsResult>("alicloud:ga/getIpSets:getIpSets", args ?? new GetIpSetsInvokeArgs(), options.WithDefaults());

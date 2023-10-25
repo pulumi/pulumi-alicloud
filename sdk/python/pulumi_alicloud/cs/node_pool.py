@@ -197,9 +197,9 @@ class NodePoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             instance_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-             vswitch_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              auto_renew: Optional[pulumi.Input[bool]] = None,
              auto_renew_period: Optional[pulumi.Input[int]] = None,
              cis_enabled: Optional[pulumi.Input[bool]] = None,
@@ -254,101 +254,107 @@ class NodePoolArgs:
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]]] = None,
              unschedulable: Optional[pulumi.Input[bool]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'instanceTypes' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if instance_types is None and 'instanceTypes' in kwargs:
             instance_types = kwargs['instanceTypes']
-        if 'vswitchIds' in kwargs:
+        if instance_types is None:
+            raise TypeError("Missing 'instance_types' argument")
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
-        if 'autoRenew' in kwargs:
+        if vswitch_ids is None:
+            raise TypeError("Missing 'vswitch_ids' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'cisEnabled' in kwargs:
+        if cis_enabled is None and 'cisEnabled' in kwargs:
             cis_enabled = kwargs['cisEnabled']
-        if 'cpuPolicy' in kwargs:
+        if cpu_policy is None and 'cpuPolicy' in kwargs:
             cpu_policy = kwargs['cpuPolicy']
-        if 'dataDisks' in kwargs:
+        if data_disks is None and 'dataDisks' in kwargs:
             data_disks = kwargs['dataDisks']
-        if 'deploymentSetId' in kwargs:
+        if deployment_set_id is None and 'deploymentSetId' in kwargs:
             deployment_set_id = kwargs['deploymentSetId']
-        if 'desiredSize' in kwargs:
+        if desired_size is None and 'desiredSize' in kwargs:
             desired_size = kwargs['desiredSize']
-        if 'formatDisk' in kwargs:
+        if format_disk is None and 'formatDisk' in kwargs:
             format_disk = kwargs['formatDisk']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'imageType' in kwargs:
+        if image_type is None and 'imageType' in kwargs:
             image_type = kwargs['imageType']
-        if 'installCloudMonitor' in kwargs:
+        if install_cloud_monitor is None and 'installCloudMonitor' in kwargs:
             install_cloud_monitor = kwargs['installCloudMonitor']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'internetMaxBandwidthOut' in kwargs:
+        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
             internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if 'keepInstanceName' in kwargs:
+        if keep_instance_name is None and 'keepInstanceName' in kwargs:
             keep_instance_name = kwargs['keepInstanceName']
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'kmsEncryptedPassword' in kwargs:
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
             kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if 'kmsEncryptionContext' in kwargs:
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
             kms_encryption_context = kwargs['kmsEncryptionContext']
-        if 'kubeletConfiguration' in kwargs:
+        if kubelet_configuration is None and 'kubeletConfiguration' in kwargs:
             kubelet_configuration = kwargs['kubeletConfiguration']
-        if 'nodeCount' in kwargs:
+        if node_count is None and 'nodeCount' in kwargs:
             node_count = kwargs['nodeCount']
-        if 'nodeNameMode' in kwargs:
+        if node_name_mode is None and 'nodeNameMode' in kwargs:
             node_name_mode = kwargs['nodeNameMode']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'polardbIds' in kwargs:
+        if polardb_ids is None and 'polardbIds' in kwargs:
             polardb_ids = kwargs['polardbIds']
-        if 'rdsInstances' in kwargs:
+        if rds_instances is None and 'rdsInstances' in kwargs:
             rds_instances = kwargs['rdsInstances']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'rollingPolicy' in kwargs:
+        if rolling_policy is None and 'rollingPolicy' in kwargs:
             rolling_policy = kwargs['rollingPolicy']
-        if 'rolloutPolicy' in kwargs:
+        if rollout_policy is None and 'rolloutPolicy' in kwargs:
             rollout_policy = kwargs['rolloutPolicy']
-        if 'runtimeName' in kwargs:
+        if runtime_name is None and 'runtimeName' in kwargs:
             runtime_name = kwargs['runtimeName']
-        if 'runtimeVersion' in kwargs:
+        if runtime_version is None and 'runtimeVersion' in kwargs:
             runtime_version = kwargs['runtimeVersion']
-        if 'scalingConfig' in kwargs:
+        if scaling_config is None and 'scalingConfig' in kwargs:
             scaling_config = kwargs['scalingConfig']
-        if 'scalingPolicy' in kwargs:
+        if scaling_policy is None and 'scalingPolicy' in kwargs:
             scaling_policy = kwargs['scalingPolicy']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'socEnabled' in kwargs:
+        if soc_enabled is None and 'socEnabled' in kwargs:
             soc_enabled = kwargs['socEnabled']
-        if 'spotPriceLimits' in kwargs:
+        if spot_price_limits is None and 'spotPriceLimits' in kwargs:
             spot_price_limits = kwargs['spotPriceLimits']
-        if 'spotStrategy' in kwargs:
+        if spot_strategy is None and 'spotStrategy' in kwargs:
             spot_strategy = kwargs['spotStrategy']
-        if 'systemDiskCategory' in kwargs:
+        if system_disk_category is None and 'systemDiskCategory' in kwargs:
             system_disk_category = kwargs['systemDiskCategory']
-        if 'systemDiskEncryptAlgorithm' in kwargs:
+        if system_disk_encrypt_algorithm is None and 'systemDiskEncryptAlgorithm' in kwargs:
             system_disk_encrypt_algorithm = kwargs['systemDiskEncryptAlgorithm']
-        if 'systemDiskEncrypted' in kwargs:
+        if system_disk_encrypted is None and 'systemDiskEncrypted' in kwargs:
             system_disk_encrypted = kwargs['systemDiskEncrypted']
-        if 'systemDiskKmsKey' in kwargs:
+        if system_disk_kms_key is None and 'systemDiskKmsKey' in kwargs:
             system_disk_kms_key = kwargs['systemDiskKmsKey']
-        if 'systemDiskPerformanceLevel' in kwargs:
+        if system_disk_performance_level is None and 'systemDiskPerformanceLevel' in kwargs:
             system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
-        if 'systemDiskSize' in kwargs:
+        if system_disk_size is None and 'systemDiskSize' in kwargs:
             system_disk_size = kwargs['systemDiskSize']
-        if 'systemDiskSnapshotPolicyId' in kwargs:
+        if system_disk_snapshot_policy_id is None and 'systemDiskSnapshotPolicyId' in kwargs:
             system_disk_snapshot_policy_id = kwargs['systemDiskSnapshotPolicyId']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
 
         _setter("cluster_id", cluster_id)
@@ -1422,105 +1428,105 @@ class _NodePoolState:
              user_data: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'cisEnabled' in kwargs:
+        if cis_enabled is None and 'cisEnabled' in kwargs:
             cis_enabled = kwargs['cisEnabled']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'cpuPolicy' in kwargs:
+        if cpu_policy is None and 'cpuPolicy' in kwargs:
             cpu_policy = kwargs['cpuPolicy']
-        if 'dataDisks' in kwargs:
+        if data_disks is None and 'dataDisks' in kwargs:
             data_disks = kwargs['dataDisks']
-        if 'deploymentSetId' in kwargs:
+        if deployment_set_id is None and 'deploymentSetId' in kwargs:
             deployment_set_id = kwargs['deploymentSetId']
-        if 'desiredSize' in kwargs:
+        if desired_size is None and 'desiredSize' in kwargs:
             desired_size = kwargs['desiredSize']
-        if 'formatDisk' in kwargs:
+        if format_disk is None and 'formatDisk' in kwargs:
             format_disk = kwargs['formatDisk']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'imageType' in kwargs:
+        if image_type is None and 'imageType' in kwargs:
             image_type = kwargs['imageType']
-        if 'installCloudMonitor' in kwargs:
+        if install_cloud_monitor is None and 'installCloudMonitor' in kwargs:
             install_cloud_monitor = kwargs['installCloudMonitor']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'instanceTypes' in kwargs:
+        if instance_types is None and 'instanceTypes' in kwargs:
             instance_types = kwargs['instanceTypes']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'internetMaxBandwidthOut' in kwargs:
+        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
             internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if 'keepInstanceName' in kwargs:
+        if keep_instance_name is None and 'keepInstanceName' in kwargs:
             keep_instance_name = kwargs['keepInstanceName']
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'kmsEncryptedPassword' in kwargs:
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
             kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if 'kmsEncryptionContext' in kwargs:
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
             kms_encryption_context = kwargs['kmsEncryptionContext']
-        if 'kubeletConfiguration' in kwargs:
+        if kubelet_configuration is None and 'kubeletConfiguration' in kwargs:
             kubelet_configuration = kwargs['kubeletConfiguration']
-        if 'nodeCount' in kwargs:
+        if node_count is None and 'nodeCount' in kwargs:
             node_count = kwargs['nodeCount']
-        if 'nodeNameMode' in kwargs:
+        if node_name_mode is None and 'nodeNameMode' in kwargs:
             node_name_mode = kwargs['nodeNameMode']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'polardbIds' in kwargs:
+        if polardb_ids is None and 'polardbIds' in kwargs:
             polardb_ids = kwargs['polardbIds']
-        if 'rdsInstances' in kwargs:
+        if rds_instances is None and 'rdsInstances' in kwargs:
             rds_instances = kwargs['rdsInstances']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'rollingPolicy' in kwargs:
+        if rolling_policy is None and 'rollingPolicy' in kwargs:
             rolling_policy = kwargs['rollingPolicy']
-        if 'rolloutPolicy' in kwargs:
+        if rollout_policy is None and 'rolloutPolicy' in kwargs:
             rollout_policy = kwargs['rolloutPolicy']
-        if 'runtimeName' in kwargs:
+        if runtime_name is None and 'runtimeName' in kwargs:
             runtime_name = kwargs['runtimeName']
-        if 'runtimeVersion' in kwargs:
+        if runtime_version is None and 'runtimeVersion' in kwargs:
             runtime_version = kwargs['runtimeVersion']
-        if 'scalingConfig' in kwargs:
+        if scaling_config is None and 'scalingConfig' in kwargs:
             scaling_config = kwargs['scalingConfig']
-        if 'scalingGroupId' in kwargs:
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
-        if 'scalingPolicy' in kwargs:
+        if scaling_policy is None and 'scalingPolicy' in kwargs:
             scaling_policy = kwargs['scalingPolicy']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'socEnabled' in kwargs:
+        if soc_enabled is None and 'socEnabled' in kwargs:
             soc_enabled = kwargs['socEnabled']
-        if 'spotPriceLimits' in kwargs:
+        if spot_price_limits is None and 'spotPriceLimits' in kwargs:
             spot_price_limits = kwargs['spotPriceLimits']
-        if 'spotStrategy' in kwargs:
+        if spot_strategy is None and 'spotStrategy' in kwargs:
             spot_strategy = kwargs['spotStrategy']
-        if 'systemDiskCategory' in kwargs:
+        if system_disk_category is None and 'systemDiskCategory' in kwargs:
             system_disk_category = kwargs['systemDiskCategory']
-        if 'systemDiskEncryptAlgorithm' in kwargs:
+        if system_disk_encrypt_algorithm is None and 'systemDiskEncryptAlgorithm' in kwargs:
             system_disk_encrypt_algorithm = kwargs['systemDiskEncryptAlgorithm']
-        if 'systemDiskEncrypted' in kwargs:
+        if system_disk_encrypted is None and 'systemDiskEncrypted' in kwargs:
             system_disk_encrypted = kwargs['systemDiskEncrypted']
-        if 'systemDiskKmsKey' in kwargs:
+        if system_disk_kms_key is None and 'systemDiskKmsKey' in kwargs:
             system_disk_kms_key = kwargs['systemDiskKmsKey']
-        if 'systemDiskPerformanceLevel' in kwargs:
+        if system_disk_performance_level is None and 'systemDiskPerformanceLevel' in kwargs:
             system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
-        if 'systemDiskSize' in kwargs:
+        if system_disk_size is None and 'systemDiskSize' in kwargs:
             system_disk_size = kwargs['systemDiskSize']
-        if 'systemDiskSnapshotPolicyId' in kwargs:
+        if system_disk_snapshot_policy_id is None and 'systemDiskSnapshotPolicyId' in kwargs:
             system_disk_snapshot_policy_id = kwargs['systemDiskSnapshotPolicyId']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchIds' in kwargs:
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
 
         if auto_renew is not None:
@@ -2634,18 +2640,10 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
-            if kubelet_configuration is not None and not isinstance(kubelet_configuration, NodePoolKubeletConfigurationArgs):
-                kubelet_configuration = kubelet_configuration or {}
-                def _setter(key, value):
-                    kubelet_configuration[key] = value
-                NodePoolKubeletConfigurationArgs._configure(_setter, **kubelet_configuration)
+            kubelet_configuration = _utilities.configure(kubelet_configuration, NodePoolKubeletConfigurationArgs, True)
             __props__.__dict__["kubelet_configuration"] = kubelet_configuration
             __props__.__dict__["labels"] = labels
-            if management is not None and not isinstance(management, NodePoolManagementArgs):
-                management = management or {}
-                def _setter(key, value):
-                    management[key] = value
-                NodePoolManagementArgs._configure(_setter, **management)
+            management = _utilities.configure(management, NodePoolManagementArgs, True)
             __props__.__dict__["management"] = management
             __props__.__dict__["name"] = name
             __props__.__dict__["node_count"] = node_count
@@ -2657,25 +2655,13 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["polardb_ids"] = polardb_ids
             __props__.__dict__["rds_instances"] = rds_instances
             __props__.__dict__["resource_group_id"] = resource_group_id
-            if rolling_policy is not None and not isinstance(rolling_policy, NodePoolRollingPolicyArgs):
-                rolling_policy = rolling_policy or {}
-                def _setter(key, value):
-                    rolling_policy[key] = value
-                NodePoolRollingPolicyArgs._configure(_setter, **rolling_policy)
+            rolling_policy = _utilities.configure(rolling_policy, NodePoolRollingPolicyArgs, True)
             __props__.__dict__["rolling_policy"] = rolling_policy
-            if rollout_policy is not None and not isinstance(rollout_policy, NodePoolRolloutPolicyArgs):
-                rollout_policy = rollout_policy or {}
-                def _setter(key, value):
-                    rollout_policy[key] = value
-                NodePoolRolloutPolicyArgs._configure(_setter, **rollout_policy)
+            rollout_policy = _utilities.configure(rollout_policy, NodePoolRolloutPolicyArgs, True)
             __props__.__dict__["rollout_policy"] = rollout_policy
             __props__.__dict__["runtime_name"] = runtime_name
             __props__.__dict__["runtime_version"] = runtime_version
-            if scaling_config is not None and not isinstance(scaling_config, NodePoolScalingConfigArgs):
-                scaling_config = scaling_config or {}
-                def _setter(key, value):
-                    scaling_config[key] = value
-                NodePoolScalingConfigArgs._configure(_setter, **scaling_config)
+            scaling_config = _utilities.configure(scaling_config, NodePoolScalingConfigArgs, True)
             __props__.__dict__["scaling_config"] = scaling_config
             __props__.__dict__["scaling_policy"] = scaling_policy
             __props__.__dict__["security_group_id"] = security_group_id

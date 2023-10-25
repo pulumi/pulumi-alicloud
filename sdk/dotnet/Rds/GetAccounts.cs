@@ -15,35 +15,6 @@ namespace Pulumi.AliCloud.Rds
         /// This data source provides the Rds Accounts of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.120.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Rds.GetAccounts.Invoke(new()
-        ///     {
-        ///         DbInstanceId = "example_value",
-        ///         NameRegex = "the_resource_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstRdsAccountId"] = example.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountsResult> InvokeAsync(GetAccountsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:rds/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
@@ -52,35 +23,6 @@ namespace Pulumi.AliCloud.Rds
         /// This data source provides the Rds Accounts of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.120.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Rds.GetAccounts.Invoke(new()
-        ///     {
-        ///         DbInstanceId = "example_value",
-        ///         NameRegex = "the_resource_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstRdsAccountId"] = example.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountsResult> Invoke(GetAccountsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:rds/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());

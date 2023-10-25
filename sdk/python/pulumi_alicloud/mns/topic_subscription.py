@@ -44,21 +44,25 @@ class TopicSubscriptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: pulumi.Input[str],
-             topic_name: pulumi.Input[str],
+             endpoint: Optional[pulumi.Input[str]] = None,
+             topic_name: Optional[pulumi.Input[str]] = None,
              filter_tag: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              notify_content_format: Optional[pulumi.Input[str]] = None,
              notify_strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'topicName' in kwargs:
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if topic_name is None and 'topicName' in kwargs:
             topic_name = kwargs['topicName']
-        if 'filterTag' in kwargs:
+        if topic_name is None:
+            raise TypeError("Missing 'topic_name' argument")
+        if filter_tag is None and 'filterTag' in kwargs:
             filter_tag = kwargs['filterTag']
-        if 'notifyContentFormat' in kwargs:
+        if notify_content_format is None and 'notifyContentFormat' in kwargs:
             notify_content_format = kwargs['notifyContentFormat']
-        if 'notifyStrategy' in kwargs:
+        if notify_strategy is None and 'notifyStrategy' in kwargs:
             notify_strategy = kwargs['notifyStrategy']
 
         _setter("endpoint", endpoint)
@@ -187,15 +191,15 @@ class _TopicSubscriptionState:
              notify_content_format: Optional[pulumi.Input[str]] = None,
              notify_strategy: Optional[pulumi.Input[str]] = None,
              topic_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'filterTag' in kwargs:
+        if filter_tag is None and 'filterTag' in kwargs:
             filter_tag = kwargs['filterTag']
-        if 'notifyContentFormat' in kwargs:
+        if notify_content_format is None and 'notifyContentFormat' in kwargs:
             notify_content_format = kwargs['notifyContentFormat']
-        if 'notifyStrategy' in kwargs:
+        if notify_strategy is None and 'notifyStrategy' in kwargs:
             notify_strategy = kwargs['notifyStrategy']
-        if 'topicName' in kwargs:
+        if topic_name is None and 'topicName' in kwargs:
             topic_name = kwargs['topicName']
 
         if endpoint is not None:
@@ -300,25 +304,6 @@ class TopicSubscription(pulumi.CustomResource):
                  topic_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        topic = alicloud.mns.Topic("topic",
-            logging_enabled=False,
-            maximum_message_size=65536)
-        subscription = alicloud.mns.TopicSubscription("subscription",
-            endpoint="http://www.xxx.com/xxx",
-            filter_tag="test",
-            notify_content_format="XML",
-            notify_strategy="BACKOFF_RETRY",
-            topic_name="tf-example-mnstopic")
-        ```
-
         ## Import
 
         MNS Topic subscription can be imported using the id, e.g.
@@ -346,25 +331,6 @@ class TopicSubscription(pulumi.CustomResource):
                  args: TopicSubscriptionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        topic = alicloud.mns.Topic("topic",
-            logging_enabled=False,
-            maximum_message_size=65536)
-        subscription = alicloud.mns.TopicSubscription("subscription",
-            endpoint="http://www.xxx.com/xxx",
-            filter_tag="test",
-            notify_content_format="XML",
-            notify_strategy="BACKOFF_RETRY",
-            topic_name="tf-example-mnstopic")
-        ```
-
         ## Import
 
         MNS Topic subscription can be imported using the id, e.g.

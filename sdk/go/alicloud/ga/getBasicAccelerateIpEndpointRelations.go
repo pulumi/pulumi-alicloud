@@ -15,38 +15,6 @@ import (
 // This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.194.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := ga.GetBasicAccelerateIpEndpointRelations(ctx, &ga.GetBasicAccelerateIpEndpointRelationsArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//				AcceleratorId: "example_id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("gaBasicAccelerateIpEndpointRelationsId1", ids.Relations[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetBasicAccelerateIpEndpointRelations(ctx *pulumi.Context, args *GetBasicAccelerateIpEndpointRelationsArgs, opts ...pulumi.InvokeOption) (*GetBasicAccelerateIpEndpointRelationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBasicAccelerateIpEndpointRelationsResult

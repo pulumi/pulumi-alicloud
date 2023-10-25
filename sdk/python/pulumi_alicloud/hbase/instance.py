@@ -100,9 +100,9 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             core_instance_type: pulumi.Input[str],
-             engine_version: pulumi.Input[str],
-             master_instance_type: pulumi.Input[str],
+             core_instance_type: Optional[pulumi.Input[str]] = None,
+             engine_version: Optional[pulumi.Input[str]] = None,
+             master_instance_type: Optional[pulumi.Input[str]] = None,
              account: Optional[pulumi.Input[str]] = None,
              auto_renew: Optional[pulumi.Input[bool]] = None,
              cold_storage_size: Optional[pulumi.Input[int]] = None,
@@ -124,43 +124,49 @@ class InstanceArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'coreInstanceType' in kwargs:
+        if core_instance_type is None and 'coreInstanceType' in kwargs:
             core_instance_type = kwargs['coreInstanceType']
-        if 'engineVersion' in kwargs:
+        if core_instance_type is None:
+            raise TypeError("Missing 'core_instance_type' argument")
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'masterInstanceType' in kwargs:
+        if engine_version is None:
+            raise TypeError("Missing 'engine_version' argument")
+        if master_instance_type is None and 'masterInstanceType' in kwargs:
             master_instance_type = kwargs['masterInstanceType']
-        if 'autoRenew' in kwargs:
+        if master_instance_type is None:
+            raise TypeError("Missing 'master_instance_type' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'coldStorageSize' in kwargs:
+        if cold_storage_size is None and 'coldStorageSize' in kwargs:
             cold_storage_size = kwargs['coldStorageSize']
-        if 'coreDiskSize' in kwargs:
+        if core_disk_size is None and 'coreDiskSize' in kwargs:
             core_disk_size = kwargs['coreDiskSize']
-        if 'coreDiskType' in kwargs:
+        if core_disk_type is None and 'coreDiskType' in kwargs:
             core_disk_type = kwargs['coreDiskType']
-        if 'coreInstanceQuantity' in kwargs:
+        if core_instance_quantity is None and 'coreInstanceQuantity' in kwargs:
             core_instance_quantity = kwargs['coreInstanceQuantity']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'immediateDeleteFlag' in kwargs:
+        if immediate_delete_flag is None and 'immediateDeleteFlag' in kwargs:
             immediate_delete_flag = kwargs['immediateDeleteFlag']
-        if 'ipWhite' in kwargs:
+        if ip_white is None and 'ipWhite' in kwargs:
             ip_white = kwargs['ipWhite']
-        if 'maintainEndTime' in kwargs:
+        if maintain_end_time is None and 'maintainEndTime' in kwargs:
             maintain_end_time = kwargs['maintainEndTime']
-        if 'maintainStartTime' in kwargs:
+        if maintain_start_time is None and 'maintainStartTime' in kwargs:
             maintain_start_time = kwargs['maintainStartTime']
-        if 'payType' in kwargs:
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
-        if 'securityGroups' in kwargs:
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("core_instance_type", core_instance_type)
@@ -630,51 +636,51 @@ class _InstanceState:
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zk_conn_addrs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZkConnAddrArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'coldStorageSize' in kwargs:
+        if cold_storage_size is None and 'coldStorageSize' in kwargs:
             cold_storage_size = kwargs['coldStorageSize']
-        if 'coreDiskSize' in kwargs:
+        if core_disk_size is None and 'coreDiskSize' in kwargs:
             core_disk_size = kwargs['coreDiskSize']
-        if 'coreDiskType' in kwargs:
+        if core_disk_type is None and 'coreDiskType' in kwargs:
             core_disk_type = kwargs['coreDiskType']
-        if 'coreInstanceQuantity' in kwargs:
+        if core_instance_quantity is None and 'coreInstanceQuantity' in kwargs:
             core_instance_quantity = kwargs['coreInstanceQuantity']
-        if 'coreInstanceType' in kwargs:
+        if core_instance_type is None and 'coreInstanceType' in kwargs:
             core_instance_type = kwargs['coreInstanceType']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'engineVersion' in kwargs:
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'immediateDeleteFlag' in kwargs:
+        if immediate_delete_flag is None and 'immediateDeleteFlag' in kwargs:
             immediate_delete_flag = kwargs['immediateDeleteFlag']
-        if 'ipWhite' in kwargs:
+        if ip_white is None and 'ipWhite' in kwargs:
             ip_white = kwargs['ipWhite']
-        if 'maintainEndTime' in kwargs:
+        if maintain_end_time is None and 'maintainEndTime' in kwargs:
             maintain_end_time = kwargs['maintainEndTime']
-        if 'maintainStartTime' in kwargs:
+        if maintain_start_time is None and 'maintainStartTime' in kwargs:
             maintain_start_time = kwargs['maintainStartTime']
-        if 'masterInstanceQuantity' in kwargs:
+        if master_instance_quantity is None and 'masterInstanceQuantity' in kwargs:
             master_instance_quantity = kwargs['masterInstanceQuantity']
-        if 'masterInstanceType' in kwargs:
+        if master_instance_type is None and 'masterInstanceType' in kwargs:
             master_instance_type = kwargs['masterInstanceType']
-        if 'payType' in kwargs:
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
-        if 'securityGroups' in kwargs:
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'slbConnAddrs' in kwargs:
+        if slb_conn_addrs is None and 'slbConnAddrs' in kwargs:
             slb_conn_addrs = kwargs['slbConnAddrs']
-        if 'uiProxyConnAddrs' in kwargs:
+        if ui_proxy_conn_addrs is None and 'uiProxyConnAddrs' in kwargs:
             ui_proxy_conn_addrs = kwargs['uiProxyConnAddrs']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zkConnAddrs' in kwargs:
+        if zk_conn_addrs is None and 'zkConnAddrs' in kwargs:
             zk_conn_addrs = kwargs['zkConnAddrs']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account is not None:
@@ -1120,37 +1126,6 @@ class Instance(pulumi.CustomResource):
         > **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
 
         ## Example Usage
-        ### Create a hbase instance
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.hbase.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        default_instance = alicloud.hbase.Instance("defaultInstance",
-            zone_id=default_zones.zones[0].id,
-            vswitch_id=default_switches.ids[0],
-            vpc_id=default_networks.ids[0],
-            engine="hbaseue",
-            engine_version="2.0",
-            master_instance_type="hbase.sn2.2xlarge",
-            core_instance_type="hbase.sn2.2xlarge",
-            core_instance_quantity=2,
-            core_disk_type="cloud_efficiency",
-            core_disk_size=400,
-            pay_type="PostPaid",
-            cold_storage_size=0,
-            deletion_protection=False)
-        ```
-
-        this is a example for class netType instance. you can find more detail with the examples/hbase dir.
 
         ## Import
 
@@ -1210,37 +1185,6 @@ class Instance(pulumi.CustomResource):
         > **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
 
         ## Example Usage
-        ### Create a hbase instance
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.hbase.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        default_instance = alicloud.hbase.Instance("defaultInstance",
-            zone_id=default_zones.zones[0].id,
-            vswitch_id=default_switches.ids[0],
-            vpc_id=default_networks.ids[0],
-            engine="hbaseue",
-            engine_version="2.0",
-            master_instance_type="hbase.sn2.2xlarge",
-            core_instance_type="hbase.sn2.2xlarge",
-            core_instance_quantity=2,
-            core_disk_type="cloud_efficiency",
-            core_disk_size=400,
-            pay_type="PostPaid",
-            cold_storage_size=0,
-            deletion_protection=False)
-        ```
-
-        this is a example for class netType instance. you can find more detail with the examples/hbase dir.
 
         ## Import
 

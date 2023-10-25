@@ -11,30 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.210.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const oidcProviderName = config.get("oidcProviderName") || "amp-resource-example-oidc-provider";
- * const _default = new alicloud.ims.OidcProvider("default", {
- *     description: oidcProviderName,
- *     issuerUrl: "https://oauth.aliyun.com",
- *     fingerprints: ["902ef2deeb3c5b13ea4c3d5193629309e231ae55"],
- *     issuanceLimitTime: 12,
- *     oidcProviderName: name,
- *     clientIds: [
- *         "123",
- *         "456",
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * IMS Oidc Provider can be imported using the id, e.g.

@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.129.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.eventbridge.getRules({
- *     eventBusName: "example_value",
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstEventBridgeRuleId = example.then(example => example.rules?.[0]?.id);
- * ```
  */
 export function getRules(args: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
 
@@ -91,22 +75,6 @@ export interface GetRulesResult {
  * This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.129.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.eventbridge.getRules({
- *     eventBusName: "example_value",
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstEventBridgeRuleId = example.then(example => example.rules?.[0]?.id);
- * ```
  */
 export function getRulesOutput(args: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
     return pulumi.output(args).apply((a: any) => getRules(a, opts))

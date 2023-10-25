@@ -16,67 +16,6 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// &gt; **NOTE:** Available in v1.148.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultZones = AliCloud.MongoDB.GetZones.Invoke();
-    /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
-    ///     {
-    ///         NameRegex = "default-NODELETING",
-    ///     });
-    /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
-    ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     });
-    /// 
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
-    /// 
-    ///     var example = new AliCloud.MongoDB.ServerlessInstance("example", new()
-    ///     {
-    ///         AccountPassword = "Abc12345",
-    ///         DbInstanceDescription = "example_value",
-    ///         DbInstanceStorage = 5,
-    ///         StorageEngine = "WiredTiger",
-    ///         CapacityUnit = 100,
-    ///         Engine = "MongoDB",
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
-    ///         EngineVersion = "4.2",
-    ///         Period = 1,
-    ///         PeriodPriceType = "Month",
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "MongodbServerlessInstance" },
-    ///             { "For", "TF" },
-    ///         },
-    ///         SecurityIpGroups = new[]
-    ///         {
-    ///             new AliCloud.MongoDB.Inputs.ServerlessInstanceSecurityIpGroupArgs
-    ///             {
-    ///                 SecurityIpGroupAttribute = "example_value",
-    ///                 SecurityIpGroupName = "example_value",
-    ///                 SecurityIpList = "192.168.0.1",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// MongoDB Serverless Instance can be imported using the id, e.g.

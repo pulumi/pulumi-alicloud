@@ -15,36 +15,6 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
         /// 
         /// &gt; **NOTE:** Available in 1.204.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.ServiceCatalog.GetPortfolios.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             alicloud_service_catalog_portfolio.Default.Id,
-        ///         },
-        ///         NameRegex = alicloud_service_catalog_portfolio.Default.Name,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudServiceCatalogPortfolioExampleId"] = @default.Apply(@default =&gt; @default.Apply(getPortfoliosResult =&gt; getPortfoliosResult.Portfolios[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPortfoliosResult> InvokeAsync(GetPortfoliosArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPortfoliosResult>("alicloud:servicecatalog/getPortfolios:getPortfolios", args ?? new GetPortfoliosArgs(), options.WithDefaults());
@@ -53,36 +23,6 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
         /// 
         /// &gt; **NOTE:** Available in 1.204.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.ServiceCatalog.GetPortfolios.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             alicloud_service_catalog_portfolio.Default.Id,
-        ///         },
-        ///         NameRegex = alicloud_service_catalog_portfolio.Default.Name,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudServiceCatalogPortfolioExampleId"] = @default.Apply(@default =&gt; @default.Apply(getPortfoliosResult =&gt; getPortfoliosResult.Portfolios[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPortfoliosResult> Invoke(GetPortfoliosInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPortfoliosResult>("alicloud:servicecatalog/getPortfolios:getPortfolios", args ?? new GetPortfoliosInvokeArgs(), options.WithDefaults());

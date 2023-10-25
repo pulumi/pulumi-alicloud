@@ -19,46 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.210.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := kms.NewNetworkRule(ctx, "default", &kms.NetworkRuleArgs{
-//				Description: pulumi.String("example-description"),
-//				SourcePrivateIps: pulumi.StringArray{
-//					pulumi.String("10.10.10.10/24"),
-//					pulumi.String("192.168.17.13"),
-//					pulumi.String("100.177.24.254"),
-//				},
-//				NetworkRuleName: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // KMS Network Rule can be imported using the id, e.g.

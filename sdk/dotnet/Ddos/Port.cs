@@ -16,47 +16,6 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// &gt; **NOTE:** Available since v1.123.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultDdosCooInstance = new AliCloud.Ddos.DdosCooInstance("defaultDdosCooInstance", new()
-    ///     {
-    ///         Bandwidth = "30",
-    ///         BaseBandwidth = "30",
-    ///         ServiceBandwidth = "100",
-    ///         PortCount = "50",
-    ///         DomainCount = "50",
-    ///         Period = 1,
-    ///         ProductType = "ddoscoo",
-    ///     });
-    /// 
-    ///     var defaultPort = new AliCloud.Ddos.Port("defaultPort", new()
-    ///     {
-    ///         InstanceId = defaultDdosCooInstance.Id,
-    ///         FrontendPort = "7001",
-    ///         BackendPort = "7002",
-    ///         FrontendProtocol = "tcp",
-    ///         RealServers = new[]
-    ///         {
-    ///             "1.1.1.1",
-    ///             "2.2.2.2",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Anti-DDoS Pro Port can be imported using the id, e.g.

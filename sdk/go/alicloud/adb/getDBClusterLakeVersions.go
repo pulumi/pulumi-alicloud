@@ -15,37 +15,6 @@ import (
 // This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.190.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/adb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := adb.GetDBClusterLakeVersions(ctx, &adb.GetDBClusterLakeVersionsArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("adbDbClusterLakeVersionId1", ids.Versions[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDBClusterLakeVersions(ctx *pulumi.Context, args *GetDBClusterLakeVersionsArgs, opts ...pulumi.InvokeOption) (*GetDBClusterLakeVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDBClusterLakeVersionsResult

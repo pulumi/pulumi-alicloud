@@ -10,69 +10,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.161.0+
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
- *
- * const _default = new random.RandomInteger("default", {
- *     max: 99999,
- *     min: 10000,
- * });
- * const exampleProject = new alicloud.log.Project("exampleProject", {
- *     description: "terraform-example",
- *     tags: {
- *         Created: "TF",
- *         For: "example",
- *     },
- * });
- * const exampleStore = new alicloud.log.Store("exampleStore", {
- *     project: exampleProject.name,
- *     retentionPeriod: 3650,
- *     shardCount: 3,
- *     autoSplit: true,
- *     maxSplitShardCount: 60,
- *     appendMeta: true,
- * });
- * const exampleIngestion = new alicloud.log.Ingestion("exampleIngestion", {
- *     project: exampleProject.name,
- *     logstore: exampleStore.name,
- *     ingestionName: "terraform-example",
- *     displayName: "terraform-example",
- *     description: "terraform-example",
- *     interval: "30m",
- *     runImmediately: true,
- *     timeZone: "+0800",
- *     source: `        {
- *           "bucket": "bucket_name",
- *           "compressionCodec": "none",
- *           "encoding": "UTF-8",
- *           "endpoint": "oss-cn-hangzhou-internal.aliyuncs.com",
- *           "format": {
- *             "escapeChar": "\\\\",
- *             "fieldDelimiter": ",",
- *             "fieldNames": [],
- *             "firstRowAsHeader": true,
- *             "maxLines": 1,
- *             "quoteChar": "\\"",
- *             "skipLeadingRows": 0,
- *             "timeField": "",
- *             "type": "DelimitedText"
- *           },
- *           "pattern": "",
- *           "prefix": "test-prefix/",
- *           "restoreObjectEnabled": false,
- *           "roleARN": "acs:ram::1049446484210612:role/aliyunlogimportossrole",
- *           "type": "AliyunOSS"
- *         }
- * `,
- * });
- * ```
- *
  * ## Import
  *
  * Log ingestion can be imported using the id or name, e.g.

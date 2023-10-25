@@ -64,13 +64,13 @@ class InstanceSlbConnAddr(dict):
              conn_addr: Optional[str] = None,
              conn_addr_port: Optional[str] = None,
              net_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connAddr' in kwargs:
+        if conn_addr is None and 'connAddr' in kwargs:
             conn_addr = kwargs['connAddr']
-        if 'connAddrPort' in kwargs:
+        if conn_addr_port is None and 'connAddrPort' in kwargs:
             conn_addr_port = kwargs['connAddrPort']
-        if 'netType' in kwargs:
+        if net_type is None and 'netType' in kwargs:
             net_type = kwargs['netType']
 
         if conn_addr is not None:
@@ -149,13 +149,13 @@ class InstanceUiProxyConnAddr(dict):
              conn_addr: Optional[str] = None,
              conn_addr_port: Optional[str] = None,
              net_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connAddr' in kwargs:
+        if conn_addr is None and 'connAddr' in kwargs:
             conn_addr = kwargs['connAddr']
-        if 'connAddrPort' in kwargs:
+        if conn_addr_port is None and 'connAddrPort' in kwargs:
             conn_addr_port = kwargs['connAddrPort']
-        if 'netType' in kwargs:
+        if net_type is None and 'netType' in kwargs:
             net_type = kwargs['netType']
 
         if conn_addr is not None:
@@ -234,13 +234,13 @@ class InstanceZkConnAddr(dict):
              conn_addr: Optional[str] = None,
              conn_addr_port: Optional[str] = None,
              net_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connAddr' in kwargs:
+        if conn_addr is None and 'connAddr' in kwargs:
             conn_addr = kwargs['connAddr']
-        if 'connAddrPort' in kwargs:
+        if conn_addr_port is None and 'connAddrPort' in kwargs:
             conn_addr_port = kwargs['connAddrPort']
-        if 'netType' in kwargs:
+        if net_type is None and 'netType' in kwargs:
             net_type = kwargs['netType']
 
         if conn_addr is not None:
@@ -313,27 +313,45 @@ class GetInstanceTypesCoreInstanceTypeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: str,
-             cpu_size: int,
-             engine: str,
-             instance_type: str,
-             max_core_count: int,
-             mem_size: int,
-             storage_type: str,
-             version: str,
-             zone: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             category: Optional[str] = None,
+             cpu_size: Optional[int] = None,
+             engine: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             max_core_count: Optional[int] = None,
+             mem_size: Optional[int] = None,
+             storage_type: Optional[str] = None,
+             version: Optional[str] = None,
+             zone: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cpuSize' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if cpu_size is None and 'cpuSize' in kwargs:
             cpu_size = kwargs['cpuSize']
-        if 'instanceType' in kwargs:
+        if cpu_size is None:
+            raise TypeError("Missing 'cpu_size' argument")
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'maxCoreCount' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if max_core_count is None and 'maxCoreCount' in kwargs:
             max_core_count = kwargs['maxCoreCount']
-        if 'memSize' in kwargs:
+        if max_core_count is None:
+            raise TypeError("Missing 'max_core_count' argument")
+        if mem_size is None and 'memSize' in kwargs:
             mem_size = kwargs['memSize']
-        if 'storageType' in kwargs:
+        if mem_size is None:
+            raise TypeError("Missing 'mem_size' argument")
+        if storage_type is None and 'storageType' in kwargs:
             storage_type = kwargs['storageType']
+        if storage_type is None:
+            raise TypeError("Missing 'storage_type' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if zone is None:
+            raise TypeError("Missing 'zone' argument")
 
         _setter("category", category)
         _setter("cpu_size", cpu_size)
@@ -438,17 +456,23 @@ class GetInstanceTypesMasterInstanceTypeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cpu_size: int,
-             instance_type: str,
-             mem_size: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cpu_size: Optional[int] = None,
+             instance_type: Optional[str] = None,
+             mem_size: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cpuSize' in kwargs:
+        if cpu_size is None and 'cpuSize' in kwargs:
             cpu_size = kwargs['cpuSize']
-        if 'instanceType' in kwargs:
+        if cpu_size is None:
+            raise TypeError("Missing 'cpu_size' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'memSize' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if mem_size is None and 'memSize' in kwargs:
             mem_size = kwargs['memSize']
+        if mem_size is None:
+            raise TypeError("Missing 'mem_size' argument")
 
         _setter("cpu_size", cpu_size)
         _setter("instance_type", instance_type)
@@ -499,15 +523,21 @@ class GetInstanceTypesTypeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cpu_size: int,
-             mem_size: int,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cpu_size: Optional[int] = None,
+             mem_size: Optional[int] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cpuSize' in kwargs:
+        if cpu_size is None and 'cpuSize' in kwargs:
             cpu_size = kwargs['cpuSize']
-        if 'memSize' in kwargs:
+        if cpu_size is None:
+            raise TypeError("Missing 'cpu_size' argument")
+        if mem_size is None and 'memSize' in kwargs:
             mem_size = kwargs['memSize']
+        if mem_size is None:
+            raise TypeError("Missing 'mem_size' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("cpu_size", cpu_size)
         _setter("mem_size", mem_size)
@@ -615,64 +645,106 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_status: str,
-             core_disk_size: int,
-             core_disk_type: str,
-             core_instance_type: str,
-             core_node_count: int,
-             created_time: str,
-             deletion_protection: bool,
-             engine: str,
-             engine_version: str,
-             expire_time: str,
-             id: str,
-             master_instance_type: str,
-             master_node_count: int,
-             name: str,
-             network_type: str,
-             pay_type: str,
-             region_id: str,
-             status: str,
-             vpc_id: str,
-             vswitch_id: str,
-             zone_id: str,
+             backup_status: Optional[str] = None,
+             core_disk_size: Optional[int] = None,
+             core_disk_type: Optional[str] = None,
+             core_instance_type: Optional[str] = None,
+             core_node_count: Optional[int] = None,
+             created_time: Optional[str] = None,
+             deletion_protection: Optional[bool] = None,
+             engine: Optional[str] = None,
+             engine_version: Optional[str] = None,
+             expire_time: Optional[str] = None,
+             id: Optional[str] = None,
+             master_instance_type: Optional[str] = None,
+             master_node_count: Optional[int] = None,
+             name: Optional[str] = None,
+             network_type: Optional[str] = None,
+             pay_type: Optional[str] = None,
+             region_id: Optional[str] = None,
+             status: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupStatus' in kwargs:
+        if backup_status is None and 'backupStatus' in kwargs:
             backup_status = kwargs['backupStatus']
-        if 'coreDiskSize' in kwargs:
+        if backup_status is None:
+            raise TypeError("Missing 'backup_status' argument")
+        if core_disk_size is None and 'coreDiskSize' in kwargs:
             core_disk_size = kwargs['coreDiskSize']
-        if 'coreDiskType' in kwargs:
+        if core_disk_size is None:
+            raise TypeError("Missing 'core_disk_size' argument")
+        if core_disk_type is None and 'coreDiskType' in kwargs:
             core_disk_type = kwargs['coreDiskType']
-        if 'coreInstanceType' in kwargs:
+        if core_disk_type is None:
+            raise TypeError("Missing 'core_disk_type' argument")
+        if core_instance_type is None and 'coreInstanceType' in kwargs:
             core_instance_type = kwargs['coreInstanceType']
-        if 'coreNodeCount' in kwargs:
+        if core_instance_type is None:
+            raise TypeError("Missing 'core_instance_type' argument")
+        if core_node_count is None and 'coreNodeCount' in kwargs:
             core_node_count = kwargs['coreNodeCount']
-        if 'createdTime' in kwargs:
+        if core_node_count is None:
+            raise TypeError("Missing 'core_node_count' argument")
+        if created_time is None and 'createdTime' in kwargs:
             created_time = kwargs['createdTime']
-        if 'deletionProtection' in kwargs:
+        if created_time is None:
+            raise TypeError("Missing 'created_time' argument")
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'engineVersion' in kwargs:
+        if deletion_protection is None:
+            raise TypeError("Missing 'deletion_protection' argument")
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'expireTime' in kwargs:
+        if engine_version is None:
+            raise TypeError("Missing 'engine_version' argument")
+        if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
-        if 'masterInstanceType' in kwargs:
+        if expire_time is None:
+            raise TypeError("Missing 'expire_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if master_instance_type is None and 'masterInstanceType' in kwargs:
             master_instance_type = kwargs['masterInstanceType']
-        if 'masterNodeCount' in kwargs:
+        if master_instance_type is None:
+            raise TypeError("Missing 'master_instance_type' argument")
+        if master_node_count is None and 'masterNodeCount' in kwargs:
             master_node_count = kwargs['masterNodeCount']
-        if 'networkType' in kwargs:
+        if master_node_count is None:
+            raise TypeError("Missing 'master_node_count' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'payType' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
-        if 'regionId' in kwargs:
+        if pay_type is None:
+            raise TypeError("Missing 'pay_type' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'vpcId' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("backup_status", backup_status)
         _setter("core_disk_size", core_disk_size)
@@ -892,12 +964,16 @@ class GetZonesZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             multi_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             multi_zone_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'multiZoneIds' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if multi_zone_ids is None and 'multiZoneIds' in kwargs:
             multi_zone_ids = kwargs['multiZoneIds']
+        if multi_zone_ids is None:
+            raise TypeError("Missing 'multi_zone_ids' argument")
 
         _setter("id", id)
         _setter("multi_zone_ids", multi_zone_ids)

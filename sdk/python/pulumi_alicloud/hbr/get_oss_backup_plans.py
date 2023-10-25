@@ -119,18 +119,6 @@ def get_oss_backup_plans(bucket: Optional[str] = None,
 
     > **NOTE:** Available in v1.131.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.hbr.get_oss_backup_plans(name_regex="^my-OssBackupPlan")
-    pulumi.export("hbrOssBackupPlanId", ids.plans[0].id)
-    ```
-
 
     :param str bucket: The name of OSS bucket.
     :param Sequence[str] ids: A list of OssBackupPlan IDs.
@@ -169,18 +157,6 @@ def get_oss_backup_plans_output(bucket: Optional[pulumi.Input[Optional[str]]] = 
     This data source provides the Hbr OssBackupPlans of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.131.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.hbr.get_oss_backup_plans(name_regex="^my-OssBackupPlan")
-    pulumi.export("hbrOssBackupPlanId", ids.plans[0].id)
-    ```
 
 
     :param str bucket: The name of OSS bucket.

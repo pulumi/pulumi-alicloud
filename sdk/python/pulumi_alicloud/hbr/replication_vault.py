@@ -38,20 +38,26 @@ class ReplicationVaultArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             replication_source_region_id: pulumi.Input[str],
-             replication_source_vault_id: pulumi.Input[str],
-             vault_name: pulumi.Input[str],
+             replication_source_region_id: Optional[pulumi.Input[str]] = None,
+             replication_source_vault_id: Optional[pulumi.Input[str]] = None,
+             vault_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              vault_storage_class: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'replicationSourceRegionId' in kwargs:
+        if replication_source_region_id is None and 'replicationSourceRegionId' in kwargs:
             replication_source_region_id = kwargs['replicationSourceRegionId']
-        if 'replicationSourceVaultId' in kwargs:
+        if replication_source_region_id is None:
+            raise TypeError("Missing 'replication_source_region_id' argument")
+        if replication_source_vault_id is None and 'replicationSourceVaultId' in kwargs:
             replication_source_vault_id = kwargs['replicationSourceVaultId']
-        if 'vaultName' in kwargs:
+        if replication_source_vault_id is None:
+            raise TypeError("Missing 'replication_source_vault_id' argument")
+        if vault_name is None and 'vaultName' in kwargs:
             vault_name = kwargs['vaultName']
-        if 'vaultStorageClass' in kwargs:
+        if vault_name is None:
+            raise TypeError("Missing 'vault_name' argument")
+        if vault_storage_class is None and 'vaultStorageClass' in kwargs:
             vault_storage_class = kwargs['vaultStorageClass']
 
         _setter("replication_source_region_id", replication_source_region_id)
@@ -159,15 +165,15 @@ class _ReplicationVaultState:
              status: Optional[pulumi.Input[str]] = None,
              vault_name: Optional[pulumi.Input[str]] = None,
              vault_storage_class: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'replicationSourceRegionId' in kwargs:
+        if replication_source_region_id is None and 'replicationSourceRegionId' in kwargs:
             replication_source_region_id = kwargs['replicationSourceRegionId']
-        if 'replicationSourceVaultId' in kwargs:
+        if replication_source_vault_id is None and 'replicationSourceVaultId' in kwargs:
             replication_source_vault_id = kwargs['replicationSourceVaultId']
-        if 'vaultName' in kwargs:
+        if vault_name is None and 'vaultName' in kwargs:
             vault_name = kwargs['vaultName']
-        if 'vaultStorageClass' in kwargs:
+        if vault_storage_class is None and 'vaultStorageClass' in kwargs:
             vault_storage_class = kwargs['vaultStorageClass']
 
         if description is not None:
@@ -274,32 +280,6 @@ class ReplicationVault(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.152.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        source_region = config.get("sourceRegion")
-        if source_region is None:
-            source_region = "cn-hangzhou"
-        source = alicloud.Provider("source", region=source_region)
-        default_replication_vault_regions = alicloud.hbr.get_replication_vault_regions()
-        replication = alicloud.Provider("replication", region=default_replication_vault_regions.regions[0].replication_region_id)
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name="terraform-example",
-        opts=pulumi.ResourceOptions(provider=alicloud["source"]))
-        default_replication_vault = alicloud.hbr.ReplicationVault("defaultReplicationVault",
-            replication_source_region_id=source_region,
-            replication_source_vault_id=default_vault.id,
-            vault_name="terraform-example",
-            vault_storage_class="STANDARD",
-            description="terraform-example",
-            opts=pulumi.ResourceOptions(provider=alicloud["replication"]))
-        ```
-
         ## Import
 
         Hybrid Backup Recovery (HBR) Replication Vault can be imported using the id, e.g.
@@ -328,32 +308,6 @@ class ReplicationVault(pulumi.CustomResource):
         For information about Hybrid Backup Recovery (HBR) Replication Vault and how to use it, see [What is Replication Vault](https://www.alibabacloud.com/help/en/doc-detail/345603.html).
 
         > **NOTE:** Available in v1.152.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        source_region = config.get("sourceRegion")
-        if source_region is None:
-            source_region = "cn-hangzhou"
-        source = alicloud.Provider("source", region=source_region)
-        default_replication_vault_regions = alicloud.hbr.get_replication_vault_regions()
-        replication = alicloud.Provider("replication", region=default_replication_vault_regions.regions[0].replication_region_id)
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name="terraform-example",
-        opts=pulumi.ResourceOptions(provider=alicloud["source"]))
-        default_replication_vault = alicloud.hbr.ReplicationVault("defaultReplicationVault",
-            replication_source_region_id=source_region,
-            replication_source_vault_id=default_vault.id,
-            vault_name="terraform-example",
-            vault_storage_class="STANDARD",
-            description="terraform-example",
-            opts=pulumi.ResourceOptions(provider=alicloud["replication"]))
-        ```
 
         ## Import
 

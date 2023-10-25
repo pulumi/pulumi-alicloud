@@ -93,13 +93,13 @@ class EciScalingConfigurationAcrRegistryInfo(dict):
              instance_id: Optional[str] = None,
              instance_name: Optional[str] = None,
              region_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'regionId' in kwargs:
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
 
         if domains is not None:
@@ -352,55 +352,55 @@ class EciScalingConfigurationContainer(dict):
              readiness_probe_timeout_seconds: Optional[int] = None,
              volume_mounts: Optional[Sequence['outputs.EciScalingConfigurationContainerVolumeMount']] = None,
              working_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'environmentVars' in kwargs:
+        if environment_vars is None and 'environmentVars' in kwargs:
             environment_vars = kwargs['environmentVars']
-        if 'imagePullPolicy' in kwargs:
+        if image_pull_policy is None and 'imagePullPolicy' in kwargs:
             image_pull_policy = kwargs['imagePullPolicy']
-        if 'livenessProbeExecCommands' in kwargs:
+        if liveness_probe_exec_commands is None and 'livenessProbeExecCommands' in kwargs:
             liveness_probe_exec_commands = kwargs['livenessProbeExecCommands']
-        if 'livenessProbeFailureThreshold' in kwargs:
+        if liveness_probe_failure_threshold is None and 'livenessProbeFailureThreshold' in kwargs:
             liveness_probe_failure_threshold = kwargs['livenessProbeFailureThreshold']
-        if 'livenessProbeHttpGetPath' in kwargs:
+        if liveness_probe_http_get_path is None and 'livenessProbeHttpGetPath' in kwargs:
             liveness_probe_http_get_path = kwargs['livenessProbeHttpGetPath']
-        if 'livenessProbeHttpGetPort' in kwargs:
+        if liveness_probe_http_get_port is None and 'livenessProbeHttpGetPort' in kwargs:
             liveness_probe_http_get_port = kwargs['livenessProbeHttpGetPort']
-        if 'livenessProbeHttpGetScheme' in kwargs:
+        if liveness_probe_http_get_scheme is None and 'livenessProbeHttpGetScheme' in kwargs:
             liveness_probe_http_get_scheme = kwargs['livenessProbeHttpGetScheme']
-        if 'livenessProbeInitialDelaySeconds' in kwargs:
+        if liveness_probe_initial_delay_seconds is None and 'livenessProbeInitialDelaySeconds' in kwargs:
             liveness_probe_initial_delay_seconds = kwargs['livenessProbeInitialDelaySeconds']
-        if 'livenessProbePeriodSeconds' in kwargs:
+        if liveness_probe_period_seconds is None and 'livenessProbePeriodSeconds' in kwargs:
             liveness_probe_period_seconds = kwargs['livenessProbePeriodSeconds']
-        if 'livenessProbeSuccessThreshold' in kwargs:
+        if liveness_probe_success_threshold is None and 'livenessProbeSuccessThreshold' in kwargs:
             liveness_probe_success_threshold = kwargs['livenessProbeSuccessThreshold']
-        if 'livenessProbeTcpSocketPort' in kwargs:
+        if liveness_probe_tcp_socket_port is None and 'livenessProbeTcpSocketPort' in kwargs:
             liveness_probe_tcp_socket_port = kwargs['livenessProbeTcpSocketPort']
-        if 'livenessProbeTimeoutSeconds' in kwargs:
+        if liveness_probe_timeout_seconds is None and 'livenessProbeTimeoutSeconds' in kwargs:
             liveness_probe_timeout_seconds = kwargs['livenessProbeTimeoutSeconds']
-        if 'readinessProbeExecCommands' in kwargs:
+        if readiness_probe_exec_commands is None and 'readinessProbeExecCommands' in kwargs:
             readiness_probe_exec_commands = kwargs['readinessProbeExecCommands']
-        if 'readinessProbeFailureThreshold' in kwargs:
+        if readiness_probe_failure_threshold is None and 'readinessProbeFailureThreshold' in kwargs:
             readiness_probe_failure_threshold = kwargs['readinessProbeFailureThreshold']
-        if 'readinessProbeHttpGetPath' in kwargs:
+        if readiness_probe_http_get_path is None and 'readinessProbeHttpGetPath' in kwargs:
             readiness_probe_http_get_path = kwargs['readinessProbeHttpGetPath']
-        if 'readinessProbeHttpGetPort' in kwargs:
+        if readiness_probe_http_get_port is None and 'readinessProbeHttpGetPort' in kwargs:
             readiness_probe_http_get_port = kwargs['readinessProbeHttpGetPort']
-        if 'readinessProbeHttpGetScheme' in kwargs:
+        if readiness_probe_http_get_scheme is None and 'readinessProbeHttpGetScheme' in kwargs:
             readiness_probe_http_get_scheme = kwargs['readinessProbeHttpGetScheme']
-        if 'readinessProbeInitialDelaySeconds' in kwargs:
+        if readiness_probe_initial_delay_seconds is None and 'readinessProbeInitialDelaySeconds' in kwargs:
             readiness_probe_initial_delay_seconds = kwargs['readinessProbeInitialDelaySeconds']
-        if 'readinessProbePeriodSeconds' in kwargs:
+        if readiness_probe_period_seconds is None and 'readinessProbePeriodSeconds' in kwargs:
             readiness_probe_period_seconds = kwargs['readinessProbePeriodSeconds']
-        if 'readinessProbeSuccessThreshold' in kwargs:
+        if readiness_probe_success_threshold is None and 'readinessProbeSuccessThreshold' in kwargs:
             readiness_probe_success_threshold = kwargs['readinessProbeSuccessThreshold']
-        if 'readinessProbeTcpSocketPort' in kwargs:
+        if readiness_probe_tcp_socket_port is None and 'readinessProbeTcpSocketPort' in kwargs:
             readiness_probe_tcp_socket_port = kwargs['readinessProbeTcpSocketPort']
-        if 'readinessProbeTimeoutSeconds' in kwargs:
+        if readiness_probe_timeout_seconds is None and 'readinessProbeTimeoutSeconds' in kwargs:
             readiness_probe_timeout_seconds = kwargs['readinessProbeTimeoutSeconds']
-        if 'volumeMounts' in kwargs:
+        if volume_mounts is None and 'volumeMounts' in kwargs:
             volume_mounts = kwargs['volumeMounts']
-        if 'workingDir' in kwargs:
+        if working_dir is None and 'workingDir' in kwargs:
             working_dir = kwargs['workingDir']
 
         if args is not None:
@@ -747,7 +747,7 @@ class EciScalingConfigurationContainerEnvironmentVar(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -792,7 +792,7 @@ class EciScalingConfigurationContainerPort(dict):
              _setter: Callable[[Any, Any], None],
              port: Optional[int] = None,
              protocol: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if port is not None:
@@ -860,11 +860,11 @@ class EciScalingConfigurationContainerVolumeMount(dict):
              mount_path: Optional[str] = None,
              name: Optional[str] = None,
              read_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mountPath' in kwargs:
+        if mount_path is None and 'mountPath' in kwargs:
             mount_path = kwargs['mountPath']
-        if 'readOnly' in kwargs:
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
 
         if mount_path is not None:
@@ -919,7 +919,7 @@ class EciScalingConfigurationHostAlias(dict):
              _setter: Callable[[Any, Any], None],
              hostnames: Optional[Sequence[str]] = None,
              ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if hostnames is not None:
@@ -970,7 +970,7 @@ class EciScalingConfigurationImageRegistryCredential(dict):
              password: Optional[str] = None,
              server: Optional[str] = None,
              username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if password is not None:
@@ -1091,15 +1091,15 @@ class EciScalingConfigurationInitContainer(dict):
              ports: Optional[Sequence['outputs.EciScalingConfigurationInitContainerPort']] = None,
              volume_mounts: Optional[Sequence['outputs.EciScalingConfigurationInitContainerVolumeMount']] = None,
              working_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'environmentVars' in kwargs:
+        if environment_vars is None and 'environmentVars' in kwargs:
             environment_vars = kwargs['environmentVars']
-        if 'imagePullPolicy' in kwargs:
+        if image_pull_policy is None and 'imagePullPolicy' in kwargs:
             image_pull_policy = kwargs['imagePullPolicy']
-        if 'volumeMounts' in kwargs:
+        if volume_mounts is None and 'volumeMounts' in kwargs:
             volume_mounts = kwargs['volumeMounts']
-        if 'workingDir' in kwargs:
+        if working_dir is None and 'workingDir' in kwargs:
             working_dir = kwargs['workingDir']
 
         if args is not None:
@@ -1245,7 +1245,7 @@ class EciScalingConfigurationInitContainerEnvironmentVar(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -1290,7 +1290,7 @@ class EciScalingConfigurationInitContainerPort(dict):
              _setter: Callable[[Any, Any], None],
              port: Optional[int] = None,
              protocol: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if port is not None:
@@ -1358,11 +1358,11 @@ class EciScalingConfigurationInitContainerVolumeMount(dict):
              mount_path: Optional[str] = None,
              name: Optional[str] = None,
              read_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mountPath' in kwargs:
+        if mount_path is None and 'mountPath' in kwargs:
             mount_path = kwargs['mountPath']
-        if 'readOnly' in kwargs:
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
 
         if mount_path is not None:
@@ -1497,27 +1497,27 @@ class EciScalingConfigurationVolume(dict):
              nfs_volume_read_only: Optional[bool] = None,
              nfs_volume_server: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configFileVolumeConfigFileToPaths' in kwargs:
+        if config_file_volume_config_file_to_paths is None and 'configFileVolumeConfigFileToPaths' in kwargs:
             config_file_volume_config_file_to_paths = kwargs['configFileVolumeConfigFileToPaths']
-        if 'diskVolumeDiskId' in kwargs:
+        if disk_volume_disk_id is None and 'diskVolumeDiskId' in kwargs:
             disk_volume_disk_id = kwargs['diskVolumeDiskId']
-        if 'diskVolumeDiskSize' in kwargs:
+        if disk_volume_disk_size is None and 'diskVolumeDiskSize' in kwargs:
             disk_volume_disk_size = kwargs['diskVolumeDiskSize']
-        if 'diskVolumeFsType' in kwargs:
+        if disk_volume_fs_type is None and 'diskVolumeFsType' in kwargs:
             disk_volume_fs_type = kwargs['diskVolumeFsType']
-        if 'flexVolumeDriver' in kwargs:
+        if flex_volume_driver is None and 'flexVolumeDriver' in kwargs:
             flex_volume_driver = kwargs['flexVolumeDriver']
-        if 'flexVolumeFsType' in kwargs:
+        if flex_volume_fs_type is None and 'flexVolumeFsType' in kwargs:
             flex_volume_fs_type = kwargs['flexVolumeFsType']
-        if 'flexVolumeOptions' in kwargs:
+        if flex_volume_options is None and 'flexVolumeOptions' in kwargs:
             flex_volume_options = kwargs['flexVolumeOptions']
-        if 'nfsVolumePath' in kwargs:
+        if nfs_volume_path is None and 'nfsVolumePath' in kwargs:
             nfs_volume_path = kwargs['nfsVolumePath']
-        if 'nfsVolumeReadOnly' in kwargs:
+        if nfs_volume_read_only is None and 'nfsVolumeReadOnly' in kwargs:
             nfs_volume_read_only = kwargs['nfsVolumeReadOnly']
-        if 'nfsVolumeServer' in kwargs:
+        if nfs_volume_server is None and 'nfsVolumeServer' in kwargs:
             nfs_volume_server = kwargs['nfsVolumeServer']
 
         if config_file_volume_config_file_to_paths is not None:
@@ -1666,7 +1666,7 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath(dict):
              _setter: Callable[[Any, Any], None],
              content: Optional[str] = None,
              path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if content is not None:
@@ -1771,17 +1771,17 @@ class ScalingConfigurationDataDisk(dict):
              performance_level: Optional[str] = None,
              size: Optional[int] = None,
              snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoSnapshotPolicyId' in kwargs:
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
             auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if 'deleteWithInstance' in kwargs:
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
-        if 'performanceLevel' in kwargs:
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         if auto_snapshot_policy_id is not None:
@@ -1945,11 +1945,11 @@ class ScalingConfigurationInstancePatternInfo(dict):
              instance_family_level: Optional[str] = None,
              max_price: Optional[float] = None,
              memory: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceFamilyLevel' in kwargs:
+        if instance_family_level is None and 'instanceFamilyLevel' in kwargs:
             instance_family_level = kwargs['instanceFamilyLevel']
-        if 'maxPrice' in kwargs:
+        if max_price is None and 'maxPrice' in kwargs:
             max_price = kwargs['maxPrice']
 
         if cores is not None:
@@ -2032,11 +2032,11 @@ class ScalingConfigurationSpotPriceLimit(dict):
              _setter: Callable[[Any, Any], None],
              instance_type: Optional[str] = None,
              price_limit: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'priceLimit' in kwargs:
+        if price_limit is None and 'priceLimit' in kwargs:
             price_limit = kwargs['priceLimit']
 
         if instance_type is not None:
@@ -2097,14 +2097,18 @@ class ScalingGroupVServerGroupsVserverGroup(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             loadbalancer_id: str,
-             vserver_attributes: Sequence['outputs.ScalingGroupVServerGroupsVserverGroupVserverAttribute'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             loadbalancer_id: Optional[str] = None,
+             vserver_attributes: Optional[Sequence['outputs.ScalingGroupVServerGroupsVserverGroupVserverAttribute']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'loadbalancerId' in kwargs:
+        if loadbalancer_id is None and 'loadbalancerId' in kwargs:
             loadbalancer_id = kwargs['loadbalancerId']
-        if 'vserverAttributes' in kwargs:
+        if loadbalancer_id is None:
+            raise TypeError("Missing 'loadbalancer_id' argument")
+        if vserver_attributes is None and 'vserverAttributes' in kwargs:
             vserver_attributes = kwargs['vserverAttributes']
+        if vserver_attributes is None:
+            raise TypeError("Missing 'vserver_attributes' argument")
 
         _setter("loadbalancer_id", loadbalancer_id)
         _setter("vserver_attributes", vserver_attributes)
@@ -2163,13 +2167,19 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttribute(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port: int,
-             vserver_group_id: str,
-             weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             port: Optional[int] = None,
+             vserver_group_id: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vserverGroupId' in kwargs:
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if vserver_group_id is None and 'vserverGroupId' in kwargs:
             vserver_group_id = kwargs['vserverGroupId']
+        if vserver_group_id is None:
+            raise TypeError("Missing 'vserver_group_id' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
 
         _setter("port", port)
         _setter("vserver_group_id", vserver_group_id)
@@ -2244,13 +2254,13 @@ class ScalingRuleStepAdjustment(dict):
              metric_interval_lower_bound: Optional[str] = None,
              metric_interval_upper_bound: Optional[str] = None,
              scaling_adjustment: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'metricIntervalLowerBound' in kwargs:
+        if metric_interval_lower_bound is None and 'metricIntervalLowerBound' in kwargs:
             metric_interval_lower_bound = kwargs['metricIntervalLowerBound']
-        if 'metricIntervalUpperBound' in kwargs:
+        if metric_interval_upper_bound is None and 'metricIntervalUpperBound' in kwargs:
             metric_interval_upper_bound = kwargs['metricIntervalUpperBound']
-        if 'scalingAdjustment' in kwargs:
+        if scaling_adjustment is None and 'scalingAdjustment' in kwargs:
             scaling_adjustment = kwargs['scalingAdjustment']
 
         if metric_interval_lower_bound is not None:
@@ -2344,38 +2354,70 @@ class GetAlarmsAlarmResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alarm_actions: Sequence[str],
-             cloud_monitor_group_id: int,
-             comparison_operator: str,
-             description: str,
-             dimensions: Mapping[str, Any],
-             enable: bool,
-             evaluation_count: int,
-             id: str,
-             metric_name: str,
-             metric_type: str,
-             name: str,
-             period: int,
-             scaling_group_id: str,
-             state: str,
-             statistics: str,
-             threshold: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             alarm_actions: Optional[Sequence[str]] = None,
+             cloud_monitor_group_id: Optional[int] = None,
+             comparison_operator: Optional[str] = None,
+             description: Optional[str] = None,
+             dimensions: Optional[Mapping[str, Any]] = None,
+             enable: Optional[bool] = None,
+             evaluation_count: Optional[int] = None,
+             id: Optional[str] = None,
+             metric_name: Optional[str] = None,
+             metric_type: Optional[str] = None,
+             name: Optional[str] = None,
+             period: Optional[int] = None,
+             scaling_group_id: Optional[str] = None,
+             state: Optional[str] = None,
+             statistics: Optional[str] = None,
+             threshold: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alarmActions' in kwargs:
+        if alarm_actions is None and 'alarmActions' in kwargs:
             alarm_actions = kwargs['alarmActions']
-        if 'cloudMonitorGroupId' in kwargs:
+        if alarm_actions is None:
+            raise TypeError("Missing 'alarm_actions' argument")
+        if cloud_monitor_group_id is None and 'cloudMonitorGroupId' in kwargs:
             cloud_monitor_group_id = kwargs['cloudMonitorGroupId']
-        if 'comparisonOperator' in kwargs:
+        if cloud_monitor_group_id is None:
+            raise TypeError("Missing 'cloud_monitor_group_id' argument")
+        if comparison_operator is None and 'comparisonOperator' in kwargs:
             comparison_operator = kwargs['comparisonOperator']
-        if 'evaluationCount' in kwargs:
+        if comparison_operator is None:
+            raise TypeError("Missing 'comparison_operator' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if dimensions is None:
+            raise TypeError("Missing 'dimensions' argument")
+        if enable is None:
+            raise TypeError("Missing 'enable' argument")
+        if evaluation_count is None and 'evaluationCount' in kwargs:
             evaluation_count = kwargs['evaluationCount']
-        if 'metricName' in kwargs:
+        if evaluation_count is None:
+            raise TypeError("Missing 'evaluation_count' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if metric_name is None and 'metricName' in kwargs:
             metric_name = kwargs['metricName']
-        if 'metricType' in kwargs:
+        if metric_name is None:
+            raise TypeError("Missing 'metric_name' argument")
+        if metric_type is None and 'metricType' in kwargs:
             metric_type = kwargs['metricType']
-        if 'scalingGroupId' in kwargs:
+        if metric_type is None:
+            raise TypeError("Missing 'metric_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if period is None:
+            raise TypeError("Missing 'period' argument")
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
+        if scaling_group_id is None:
+            raise TypeError("Missing 'scaling_group_id' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if statistics is None:
+            raise TypeError("Missing 'statistics' argument")
+        if threshold is None:
+            raise TypeError("Missing 'threshold' argument")
 
         _setter("alarm_actions", alarm_actions)
         _setter("cloud_monitor_group_id", cloud_monitor_group_id)
@@ -2558,28 +2600,44 @@ class GetLifecycleHooksHookResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default_result: str,
-             heartbeat_timeout: int,
-             id: str,
-             lifecycle_transition: str,
-             name: str,
-             notification_arn: str,
-             notification_metadata: str,
-             scaling_group_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             default_result: Optional[str] = None,
+             heartbeat_timeout: Optional[int] = None,
+             id: Optional[str] = None,
+             lifecycle_transition: Optional[str] = None,
+             name: Optional[str] = None,
+             notification_arn: Optional[str] = None,
+             notification_metadata: Optional[str] = None,
+             scaling_group_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultResult' in kwargs:
+        if default_result is None and 'defaultResult' in kwargs:
             default_result = kwargs['defaultResult']
-        if 'heartbeatTimeout' in kwargs:
+        if default_result is None:
+            raise TypeError("Missing 'default_result' argument")
+        if heartbeat_timeout is None and 'heartbeatTimeout' in kwargs:
             heartbeat_timeout = kwargs['heartbeatTimeout']
-        if 'lifecycleTransition' in kwargs:
+        if heartbeat_timeout is None:
+            raise TypeError("Missing 'heartbeat_timeout' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if lifecycle_transition is None and 'lifecycleTransition' in kwargs:
             lifecycle_transition = kwargs['lifecycleTransition']
-        if 'notificationArn' in kwargs:
+        if lifecycle_transition is None:
+            raise TypeError("Missing 'lifecycle_transition' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if notification_arn is None and 'notificationArn' in kwargs:
             notification_arn = kwargs['notificationArn']
-        if 'notificationMetadata' in kwargs:
+        if notification_arn is None:
+            raise TypeError("Missing 'notification_arn' argument")
+        if notification_metadata is None and 'notificationMetadata' in kwargs:
             notification_metadata = kwargs['notificationMetadata']
-        if 'scalingGroupId' in kwargs:
+        if notification_metadata is None:
+            raise TypeError("Missing 'notification_metadata' argument")
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
+        if scaling_group_id is None:
+            raise TypeError("Missing 'scaling_group_id' argument")
 
         _setter("default_result", default_result)
         _setter("heartbeat_timeout", heartbeat_timeout)
@@ -2678,18 +2736,26 @@ class GetNotificationsNotificationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             notification_arn: str,
-             notification_types: Sequence[str],
-             scaling_group_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             notification_arn: Optional[str] = None,
+             notification_types: Optional[Sequence[str]] = None,
+             scaling_group_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'notificationArn' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if notification_arn is None and 'notificationArn' in kwargs:
             notification_arn = kwargs['notificationArn']
-        if 'notificationTypes' in kwargs:
+        if notification_arn is None:
+            raise TypeError("Missing 'notification_arn' argument")
+        if notification_types is None and 'notificationTypes' in kwargs:
             notification_types = kwargs['notificationTypes']
-        if 'scalingGroupId' in kwargs:
+        if notification_types is None:
+            raise TypeError("Missing 'notification_types' argument")
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
+        if scaling_group_id is None:
+            raise TypeError("Missing 'scaling_group_id' argument")
 
         _setter("id", id)
         _setter("notification_arn", notification_arn)
@@ -2800,64 +2866,104 @@ class GetScalingConfigurationsConfigurationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             creation_time: str,
-             credit_specification: str,
-             data_disks: Sequence['outputs.GetScalingConfigurationsConfigurationDataDiskResult'],
-             host_name: str,
-             id: str,
-             image_id: str,
-             instance_name: str,
-             instance_type: str,
-             internet_charge_type: str,
-             internet_max_bandwidth_in: int,
-             internet_max_bandwidth_out: int,
-             lifecycle_state: str,
-             name: str,
-             scaling_group_id: str,
-             security_group_id: str,
-             spot_price_limits: Sequence['outputs.GetScalingConfigurationsConfigurationSpotPriceLimitResult'],
-             spot_strategy: str,
-             system_disk_category: str,
-             system_disk_performance_level: str,
-             system_disk_size: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             creation_time: Optional[str] = None,
+             credit_specification: Optional[str] = None,
+             data_disks: Optional[Sequence['outputs.GetScalingConfigurationsConfigurationDataDiskResult']] = None,
+             host_name: Optional[str] = None,
+             id: Optional[str] = None,
+             image_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             internet_charge_type: Optional[str] = None,
+             internet_max_bandwidth_in: Optional[int] = None,
+             internet_max_bandwidth_out: Optional[int] = None,
+             lifecycle_state: Optional[str] = None,
+             name: Optional[str] = None,
+             scaling_group_id: Optional[str] = None,
+             security_group_id: Optional[str] = None,
+             spot_price_limits: Optional[Sequence['outputs.GetScalingConfigurationsConfigurationSpotPriceLimitResult']] = None,
+             spot_strategy: Optional[str] = None,
+             system_disk_category: Optional[str] = None,
+             system_disk_performance_level: Optional[str] = None,
+             system_disk_size: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'creationTime' in kwargs:
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'creditSpecification' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if credit_specification is None and 'creditSpecification' in kwargs:
             credit_specification = kwargs['creditSpecification']
-        if 'dataDisks' in kwargs:
+        if credit_specification is None:
+            raise TypeError("Missing 'credit_specification' argument")
+        if data_disks is None and 'dataDisks' in kwargs:
             data_disks = kwargs['dataDisks']
-        if 'hostName' in kwargs:
+        if data_disks is None:
+            raise TypeError("Missing 'data_disks' argument")
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'imageId' in kwargs:
+        if host_name is None:
+            raise TypeError("Missing 'host_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceName' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceType' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetChargeType' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'internetMaxBandwidthIn' in kwargs:
+        if internet_charge_type is None:
+            raise TypeError("Missing 'internet_charge_type' argument")
+        if internet_max_bandwidth_in is None and 'internetMaxBandwidthIn' in kwargs:
             internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
-        if 'internetMaxBandwidthOut' in kwargs:
+        if internet_max_bandwidth_in is None:
+            raise TypeError("Missing 'internet_max_bandwidth_in' argument")
+        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
             internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if 'lifecycleState' in kwargs:
+        if internet_max_bandwidth_out is None:
+            raise TypeError("Missing 'internet_max_bandwidth_out' argument")
+        if lifecycle_state is None and 'lifecycleState' in kwargs:
             lifecycle_state = kwargs['lifecycleState']
-        if 'scalingGroupId' in kwargs:
+        if lifecycle_state is None:
+            raise TypeError("Missing 'lifecycle_state' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
-        if 'securityGroupId' in kwargs:
+        if scaling_group_id is None:
+            raise TypeError("Missing 'scaling_group_id' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'spotPriceLimits' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if spot_price_limits is None and 'spotPriceLimits' in kwargs:
             spot_price_limits = kwargs['spotPriceLimits']
-        if 'spotStrategy' in kwargs:
+        if spot_price_limits is None:
+            raise TypeError("Missing 'spot_price_limits' argument")
+        if spot_strategy is None and 'spotStrategy' in kwargs:
             spot_strategy = kwargs['spotStrategy']
-        if 'systemDiskCategory' in kwargs:
+        if spot_strategy is None:
+            raise TypeError("Missing 'spot_strategy' argument")
+        if system_disk_category is None and 'systemDiskCategory' in kwargs:
             system_disk_category = kwargs['systemDiskCategory']
-        if 'systemDiskPerformanceLevel' in kwargs:
+        if system_disk_category is None:
+            raise TypeError("Missing 'system_disk_category' argument")
+        if system_disk_performance_level is None and 'systemDiskPerformanceLevel' in kwargs:
             system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
-        if 'systemDiskSize' in kwargs:
+        if system_disk_performance_level is None:
+            raise TypeError("Missing 'system_disk_performance_level' argument")
+        if system_disk_size is None and 'systemDiskSize' in kwargs:
             system_disk_size = kwargs['systemDiskSize']
+        if system_disk_size is None:
+            raise TypeError("Missing 'system_disk_size' argument")
 
         _setter("creation_time", creation_time)
         _setter("credit_specification", credit_specification)
@@ -3070,20 +3176,32 @@ class GetScalingConfigurationsConfigurationDataDiskResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category: str,
-             delete_with_instance: bool,
-             device: str,
-             performance_level: str,
-             size: int,
-             snapshot_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             category: Optional[str] = None,
+             delete_with_instance: Optional[bool] = None,
+             device: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             size: Optional[int] = None,
+             snapshot_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteWithInstance' in kwargs:
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'performanceLevel' in kwargs:
+        if delete_with_instance is None:
+            raise TypeError("Missing 'delete_with_instance' argument")
+        if device is None:
+            raise TypeError("Missing 'device' argument")
+        if performance_level is None and 'performanceLevel' in kwargs:
             performance_level = kwargs['performanceLevel']
-        if 'snapshotId' in kwargs:
+        if performance_level is None:
+            raise TypeError("Missing 'performance_level' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
+        if snapshot_id is None:
+            raise TypeError("Missing 'snapshot_id' argument")
 
         _setter("category", category)
         _setter("delete_with_instance", delete_with_instance)
@@ -3158,14 +3276,18 @@ class GetScalingConfigurationsConfigurationSpotPriceLimitResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_type: str,
-             price_limit: float,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             instance_type: Optional[str] = None,
+             price_limit: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'priceLimit' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if price_limit is None and 'priceLimit' in kwargs:
             price_limit = kwargs['priceLimit']
+        if price_limit is None:
+            raise TypeError("Missing 'price_limit' argument")
 
         _setter("instance_type", instance_type)
         _setter("price_limit", price_limit)
@@ -3279,83 +3401,135 @@ class GetScalingGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             active_capacity: int,
-             active_scaling_configuration: str,
-             cooldown_time: int,
-             creation_time: str,
-             db_instance_ids: Sequence[str],
-             group_deletion_protection: bool,
-             health_check_type: str,
-             id: str,
-             launch_template_id: str,
-             launch_template_version: str,
-             lifecycle_state: str,
-             load_balancer_ids: Sequence[str],
-             max_size: int,
-             min_size: int,
-             modification_time: str,
-             name: str,
-             pending_capacity: int,
-             region_id: str,
-             removal_policies: Sequence[str],
-             removing_capacity: int,
-             suspended_processes: Sequence[str],
-             total_capacity: int,
-             total_instance_count: int,
-             vpc_id: str,
-             vswitch_id: str,
-             vswitch_ids: Sequence[str],
+             active_capacity: Optional[int] = None,
+             active_scaling_configuration: Optional[str] = None,
+             cooldown_time: Optional[int] = None,
+             creation_time: Optional[str] = None,
+             db_instance_ids: Optional[Sequence[str]] = None,
+             group_deletion_protection: Optional[bool] = None,
+             health_check_type: Optional[str] = None,
+             id: Optional[str] = None,
+             launch_template_id: Optional[str] = None,
+             launch_template_version: Optional[str] = None,
+             lifecycle_state: Optional[str] = None,
+             load_balancer_ids: Optional[Sequence[str]] = None,
+             max_size: Optional[int] = None,
+             min_size: Optional[int] = None,
+             modification_time: Optional[str] = None,
+             name: Optional[str] = None,
+             pending_capacity: Optional[int] = None,
+             region_id: Optional[str] = None,
+             removal_policies: Optional[Sequence[str]] = None,
+             removing_capacity: Optional[int] = None,
+             suspended_processes: Optional[Sequence[str]] = None,
+             total_capacity: Optional[int] = None,
+             total_instance_count: Optional[int] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             vswitch_ids: Optional[Sequence[str]] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'activeCapacity' in kwargs:
+        if active_capacity is None and 'activeCapacity' in kwargs:
             active_capacity = kwargs['activeCapacity']
-        if 'activeScalingConfiguration' in kwargs:
+        if active_capacity is None:
+            raise TypeError("Missing 'active_capacity' argument")
+        if active_scaling_configuration is None and 'activeScalingConfiguration' in kwargs:
             active_scaling_configuration = kwargs['activeScalingConfiguration']
-        if 'cooldownTime' in kwargs:
+        if active_scaling_configuration is None:
+            raise TypeError("Missing 'active_scaling_configuration' argument")
+        if cooldown_time is None and 'cooldownTime' in kwargs:
             cooldown_time = kwargs['cooldownTime']
-        if 'creationTime' in kwargs:
+        if cooldown_time is None:
+            raise TypeError("Missing 'cooldown_time' argument")
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'dbInstanceIds' in kwargs:
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if db_instance_ids is None and 'dbInstanceIds' in kwargs:
             db_instance_ids = kwargs['dbInstanceIds']
-        if 'groupDeletionProtection' in kwargs:
+        if db_instance_ids is None:
+            raise TypeError("Missing 'db_instance_ids' argument")
+        if group_deletion_protection is None and 'groupDeletionProtection' in kwargs:
             group_deletion_protection = kwargs['groupDeletionProtection']
-        if 'healthCheckType' in kwargs:
+        if group_deletion_protection is None:
+            raise TypeError("Missing 'group_deletion_protection' argument")
+        if health_check_type is None and 'healthCheckType' in kwargs:
             health_check_type = kwargs['healthCheckType']
-        if 'launchTemplateId' in kwargs:
+        if health_check_type is None:
+            raise TypeError("Missing 'health_check_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if launch_template_id is None and 'launchTemplateId' in kwargs:
             launch_template_id = kwargs['launchTemplateId']
-        if 'launchTemplateVersion' in kwargs:
+        if launch_template_id is None:
+            raise TypeError("Missing 'launch_template_id' argument")
+        if launch_template_version is None and 'launchTemplateVersion' in kwargs:
             launch_template_version = kwargs['launchTemplateVersion']
-        if 'lifecycleState' in kwargs:
+        if launch_template_version is None:
+            raise TypeError("Missing 'launch_template_version' argument")
+        if lifecycle_state is None and 'lifecycleState' in kwargs:
             lifecycle_state = kwargs['lifecycleState']
-        if 'loadBalancerIds' in kwargs:
+        if lifecycle_state is None:
+            raise TypeError("Missing 'lifecycle_state' argument")
+        if load_balancer_ids is None and 'loadBalancerIds' in kwargs:
             load_balancer_ids = kwargs['loadBalancerIds']
-        if 'maxSize' in kwargs:
+        if load_balancer_ids is None:
+            raise TypeError("Missing 'load_balancer_ids' argument")
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if max_size is None:
+            raise TypeError("Missing 'max_size' argument")
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'modificationTime' in kwargs:
+        if min_size is None:
+            raise TypeError("Missing 'min_size' argument")
+        if modification_time is None and 'modificationTime' in kwargs:
             modification_time = kwargs['modificationTime']
-        if 'pendingCapacity' in kwargs:
+        if modification_time is None:
+            raise TypeError("Missing 'modification_time' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if pending_capacity is None and 'pendingCapacity' in kwargs:
             pending_capacity = kwargs['pendingCapacity']
-        if 'regionId' in kwargs:
+        if pending_capacity is None:
+            raise TypeError("Missing 'pending_capacity' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'removalPolicies' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if removal_policies is None and 'removalPolicies' in kwargs:
             removal_policies = kwargs['removalPolicies']
-        if 'removingCapacity' in kwargs:
+        if removal_policies is None:
+            raise TypeError("Missing 'removal_policies' argument")
+        if removing_capacity is None and 'removingCapacity' in kwargs:
             removing_capacity = kwargs['removingCapacity']
-        if 'suspendedProcesses' in kwargs:
+        if removing_capacity is None:
+            raise TypeError("Missing 'removing_capacity' argument")
+        if suspended_processes is None and 'suspendedProcesses' in kwargs:
             suspended_processes = kwargs['suspendedProcesses']
-        if 'totalCapacity' in kwargs:
+        if suspended_processes is None:
+            raise TypeError("Missing 'suspended_processes' argument")
+        if total_capacity is None and 'totalCapacity' in kwargs:
             total_capacity = kwargs['totalCapacity']
-        if 'totalInstanceCount' in kwargs:
+        if total_capacity is None:
+            raise TypeError("Missing 'total_capacity' argument")
+        if total_instance_count is None and 'totalInstanceCount' in kwargs:
             total_instance_count = kwargs['totalInstanceCount']
-        if 'vpcId' in kwargs:
+        if total_instance_count is None:
+            raise TypeError("Missing 'total_instance_count' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'vswitchIds' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
+        if vswitch_ids is None:
+            raise TypeError("Missing 'vswitch_ids' argument")
 
         _setter("active_capacity", active_capacity)
         _setter("active_scaling_configuration", active_scaling_configuration)
@@ -3641,27 +3815,45 @@ class GetScalingRulesRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             adjustment_type: str,
-             adjustment_value: int,
-             cooldown: int,
-             id: str,
-             min_adjustment_magnitude: int,
-             name: str,
-             scaling_group_id: str,
-             scaling_rule_ari: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             adjustment_type: Optional[str] = None,
+             adjustment_value: Optional[int] = None,
+             cooldown: Optional[int] = None,
+             id: Optional[str] = None,
+             min_adjustment_magnitude: Optional[int] = None,
+             name: Optional[str] = None,
+             scaling_group_id: Optional[str] = None,
+             scaling_rule_ari: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'adjustmentType' in kwargs:
+        if adjustment_type is None and 'adjustmentType' in kwargs:
             adjustment_type = kwargs['adjustmentType']
-        if 'adjustmentValue' in kwargs:
+        if adjustment_type is None:
+            raise TypeError("Missing 'adjustment_type' argument")
+        if adjustment_value is None and 'adjustmentValue' in kwargs:
             adjustment_value = kwargs['adjustmentValue']
-        if 'minAdjustmentMagnitude' in kwargs:
+        if adjustment_value is None:
+            raise TypeError("Missing 'adjustment_value' argument")
+        if cooldown is None:
+            raise TypeError("Missing 'cooldown' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if min_adjustment_magnitude is None and 'minAdjustmentMagnitude' in kwargs:
             min_adjustment_magnitude = kwargs['minAdjustmentMagnitude']
-        if 'scalingGroupId' in kwargs:
+        if min_adjustment_magnitude is None:
+            raise TypeError("Missing 'min_adjustment_magnitude' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
-        if 'scalingRuleAri' in kwargs:
+        if scaling_group_id is None:
+            raise TypeError("Missing 'scaling_group_id' argument")
+        if scaling_rule_ari is None and 'scalingRuleAri' in kwargs:
             scaling_rule_ari = kwargs['scalingRuleAri']
+        if scaling_rule_ari is None:
+            raise TypeError("Missing 'scaling_rule_ari' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("adjustment_type", adjustment_type)
         _setter("adjustment_value", adjustment_value)
@@ -3790,38 +3982,62 @@ class GetScheduledTasksTaskResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             id: str,
-             launch_expiration_time: int,
-             launch_time: str,
-             max_value: int,
-             min_value: int,
-             name: str,
-             recurrence_end_time: str,
-             recurrence_type: str,
-             recurrence_value: str,
-             scheduled_action: str,
-             task_enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             launch_expiration_time: Optional[int] = None,
+             launch_time: Optional[str] = None,
+             max_value: Optional[int] = None,
+             min_value: Optional[int] = None,
+             name: Optional[str] = None,
+             recurrence_end_time: Optional[str] = None,
+             recurrence_type: Optional[str] = None,
+             recurrence_value: Optional[str] = None,
+             scheduled_action: Optional[str] = None,
+             task_enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'launchExpirationTime' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if launch_expiration_time is None and 'launchExpirationTime' in kwargs:
             launch_expiration_time = kwargs['launchExpirationTime']
-        if 'launchTime' in kwargs:
+        if launch_expiration_time is None:
+            raise TypeError("Missing 'launch_expiration_time' argument")
+        if launch_time is None and 'launchTime' in kwargs:
             launch_time = kwargs['launchTime']
-        if 'maxValue' in kwargs:
+        if launch_time is None:
+            raise TypeError("Missing 'launch_time' argument")
+        if max_value is None and 'maxValue' in kwargs:
             max_value = kwargs['maxValue']
-        if 'minValue' in kwargs:
+        if max_value is None:
+            raise TypeError("Missing 'max_value' argument")
+        if min_value is None and 'minValue' in kwargs:
             min_value = kwargs['minValue']
-        if 'recurrenceEndTime' in kwargs:
+        if min_value is None:
+            raise TypeError("Missing 'min_value' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if recurrence_end_time is None and 'recurrenceEndTime' in kwargs:
             recurrence_end_time = kwargs['recurrenceEndTime']
-        if 'recurrenceType' in kwargs:
+        if recurrence_end_time is None:
+            raise TypeError("Missing 'recurrence_end_time' argument")
+        if recurrence_type is None and 'recurrenceType' in kwargs:
             recurrence_type = kwargs['recurrenceType']
-        if 'recurrenceValue' in kwargs:
+        if recurrence_type is None:
+            raise TypeError("Missing 'recurrence_type' argument")
+        if recurrence_value is None and 'recurrenceValue' in kwargs:
             recurrence_value = kwargs['recurrenceValue']
-        if 'scheduledAction' in kwargs:
+        if recurrence_value is None:
+            raise TypeError("Missing 'recurrence_value' argument")
+        if scheduled_action is None and 'scheduledAction' in kwargs:
             scheduled_action = kwargs['scheduledAction']
-        if 'taskEnabled' in kwargs:
+        if scheduled_action is None:
+            raise TypeError("Missing 'scheduled_action' argument")
+        if task_enabled is None and 'taskEnabled' in kwargs:
             task_enabled = kwargs['taskEnabled']
+        if task_enabled is None:
+            raise TypeError("Missing 'task_enabled' argument")
 
         _setter("description", description)
         _setter("id", id)

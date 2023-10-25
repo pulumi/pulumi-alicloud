@@ -21,57 +21,6 @@ import (
 //
 // > **NOTE:** The `sid` attribute is required when destroying resources.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-//				Status: pulumi.StringRef("OK"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleVault, err := hbr.NewVault(ctx, "exampleVault", &hbr.VaultArgs{
-//				VaultName: pulumi.String("terraform-example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = hbr.NewHanaInstance(ctx, "exampleHanaInstance", &hbr.HanaInstanceArgs{
-//				AlertSetting:        pulumi.String("INHERITED"),
-//				HanaName:            pulumi.String("terraform-example"),
-//				Host:                pulumi.String("1.1.1.1"),
-//				InstanceNumber:      pulumi.Int(1),
-//				Password:            pulumi.String("YouPassword123"),
-//				ResourceGroupId:     *pulumi.String(exampleResourceGroups.Groups[0].Id),
-//				Sid:                 pulumi.String("HXE"),
-//				UseSsl:              pulumi.Bool(false),
-//				UserName:            pulumi.String("admin"),
-//				ValidateCertificate: pulumi.Bool(false),
-//				VaultId:             exampleVault.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Hybrid Backup Recovery (HBR) Hana Instance can be imported using the id, e.g.

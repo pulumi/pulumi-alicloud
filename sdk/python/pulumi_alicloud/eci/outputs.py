@@ -111,13 +111,13 @@ class ContainerGroupAcrRegistryInfo(dict):
              instance_id: Optional[str] = None,
              instance_name: Optional[str] = None,
              region_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'regionId' in kwargs:
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
 
         if domains is not None:
@@ -250,8 +250,8 @@ class ContainerGroupContainer(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image: str,
-             name: str,
+             image: Optional[str] = None,
+             name: Optional[str] = None,
              args: Optional[Sequence[str]] = None,
              commands: Optional[Sequence[str]] = None,
              cpu: Optional[float] = None,
@@ -266,21 +266,25 @@ class ContainerGroupContainer(dict):
              restart_count: Optional[int] = None,
              volume_mounts: Optional[Sequence['outputs.ContainerGroupContainerVolumeMount']] = None,
              working_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'environmentVars' in kwargs:
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if environment_vars is None and 'environmentVars' in kwargs:
             environment_vars = kwargs['environmentVars']
-        if 'imagePullPolicy' in kwargs:
+        if image_pull_policy is None and 'imagePullPolicy' in kwargs:
             image_pull_policy = kwargs['imagePullPolicy']
-        if 'livenessProbes' in kwargs:
+        if liveness_probes is None and 'livenessProbes' in kwargs:
             liveness_probes = kwargs['livenessProbes']
-        if 'readinessProbes' in kwargs:
+        if readiness_probes is None and 'readinessProbes' in kwargs:
             readiness_probes = kwargs['readinessProbes']
-        if 'restartCount' in kwargs:
+        if restart_count is None and 'restartCount' in kwargs:
             restart_count = kwargs['restartCount']
-        if 'volumeMounts' in kwargs:
+        if volume_mounts is None and 'volumeMounts' in kwargs:
             volume_mounts = kwargs['volumeMounts']
-        if 'workingDir' in kwargs:
+        if working_dir is None and 'workingDir' in kwargs:
             working_dir = kwargs['workingDir']
 
         _setter("image", image)
@@ -462,7 +466,7 @@ class ContainerGroupContainerEnvironmentVar(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -559,21 +563,21 @@ class ContainerGroupContainerLivenessProbe(dict):
              success_threshold: Optional[int] = None,
              tcp_sockets: Optional[Sequence['outputs.ContainerGroupContainerLivenessProbeTcpSocket']] = None,
              timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'failureThreshold' in kwargs:
+        if failure_threshold is None and 'failureThreshold' in kwargs:
             failure_threshold = kwargs['failureThreshold']
-        if 'httpGets' in kwargs:
+        if http_gets is None and 'httpGets' in kwargs:
             http_gets = kwargs['httpGets']
-        if 'initialDelaySeconds' in kwargs:
+        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
             initial_delay_seconds = kwargs['initialDelaySeconds']
-        if 'periodSeconds' in kwargs:
+        if period_seconds is None and 'periodSeconds' in kwargs:
             period_seconds = kwargs['periodSeconds']
-        if 'successThreshold' in kwargs:
+        if success_threshold is None and 'successThreshold' in kwargs:
             success_threshold = kwargs['successThreshold']
-        if 'tcpSockets' in kwargs:
+        if tcp_sockets is None and 'tcpSockets' in kwargs:
             tcp_sockets = kwargs['tcpSockets']
-        if 'timeoutSeconds' in kwargs:
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
             timeout_seconds = kwargs['timeoutSeconds']
 
         if execs is not None:
@@ -673,7 +677,7 @@ class ContainerGroupContainerLivenessProbeExec(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if commands is not None:
@@ -711,7 +715,7 @@ class ContainerGroupContainerLivenessProbeHttpGet(dict):
              path: Optional[str] = None,
              port: Optional[int] = None,
              scheme: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if path is not None:
@@ -761,7 +765,7 @@ class ContainerGroupContainerLivenessProbeTcpSocket(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if port is not None:
@@ -795,7 +799,7 @@ class ContainerGroupContainerPort(dict):
              _setter: Callable[[Any, Any], None],
              port: Optional[int] = None,
              protocol: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if port is not None:
@@ -892,21 +896,21 @@ class ContainerGroupContainerReadinessProbe(dict):
              success_threshold: Optional[int] = None,
              tcp_sockets: Optional[Sequence['outputs.ContainerGroupContainerReadinessProbeTcpSocket']] = None,
              timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'failureThreshold' in kwargs:
+        if failure_threshold is None and 'failureThreshold' in kwargs:
             failure_threshold = kwargs['failureThreshold']
-        if 'httpGets' in kwargs:
+        if http_gets is None and 'httpGets' in kwargs:
             http_gets = kwargs['httpGets']
-        if 'initialDelaySeconds' in kwargs:
+        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
             initial_delay_seconds = kwargs['initialDelaySeconds']
-        if 'periodSeconds' in kwargs:
+        if period_seconds is None and 'periodSeconds' in kwargs:
             period_seconds = kwargs['periodSeconds']
-        if 'successThreshold' in kwargs:
+        if success_threshold is None and 'successThreshold' in kwargs:
             success_threshold = kwargs['successThreshold']
-        if 'tcpSockets' in kwargs:
+        if tcp_sockets is None and 'tcpSockets' in kwargs:
             tcp_sockets = kwargs['tcpSockets']
-        if 'timeoutSeconds' in kwargs:
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
             timeout_seconds = kwargs['timeoutSeconds']
 
         if execs is not None:
@@ -1006,7 +1010,7 @@ class ContainerGroupContainerReadinessProbeExec(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if commands is not None:
@@ -1044,7 +1048,7 @@ class ContainerGroupContainerReadinessProbeHttpGet(dict):
              path: Optional[str] = None,
              port: Optional[int] = None,
              scheme: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if path is not None:
@@ -1094,7 +1098,7 @@ class ContainerGroupContainerReadinessProbeTcpSocket(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if port is not None:
@@ -1151,11 +1155,11 @@ class ContainerGroupContainerVolumeMount(dict):
              mount_path: Optional[str] = None,
              name: Optional[str] = None,
              read_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mountPath' in kwargs:
+        if mount_path is None and 'mountPath' in kwargs:
             mount_path = kwargs['mountPath']
-        if 'readOnly' in kwargs:
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
 
         if mount_path is not None:
@@ -1230,9 +1234,9 @@ class ContainerGroupDnsConfig(dict):
              name_servers: Optional[Sequence[str]] = None,
              options: Optional[Sequence['outputs.ContainerGroupDnsConfigOption']] = None,
              searches: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nameServers' in kwargs:
+        if name_servers is None and 'nameServers' in kwargs:
             name_servers = kwargs['nameServers']
 
         if name_servers is not None:
@@ -1286,7 +1290,7 @@ class ContainerGroupDnsConfigOption(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -1326,7 +1330,7 @@ class ContainerGroupEciSecurityContext(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              sysctls: Optional[Sequence['outputs.ContainerGroupEciSecurityContextSysctl']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if sysctls is not None:
@@ -1360,7 +1364,7 @@ class ContainerGroupEciSecurityContextSysctl(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -1404,7 +1408,7 @@ class ContainerGroupHostAlias(dict):
              _setter: Callable[[Any, Any], None],
              hostnames: Optional[Sequence[str]] = None,
              ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if hostnames is not None:
@@ -1466,13 +1470,19 @@ class ContainerGroupImageRegistryCredential(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: str,
-             server: str,
-             user_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             password: Optional[str] = None,
+             server: Optional[str] = None,
+             user_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'userName' in kwargs:
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if server is None:
+            raise TypeError("Missing 'server' argument")
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
 
         _setter("password", password)
         _setter("server", server)
@@ -1595,17 +1605,17 @@ class ContainerGroupInitContainer(dict):
              restart_count: Optional[int] = None,
              volume_mounts: Optional[Sequence['outputs.ContainerGroupInitContainerVolumeMount']] = None,
              working_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'environmentVars' in kwargs:
+        if environment_vars is None and 'environmentVars' in kwargs:
             environment_vars = kwargs['environmentVars']
-        if 'imagePullPolicy' in kwargs:
+        if image_pull_policy is None and 'imagePullPolicy' in kwargs:
             image_pull_policy = kwargs['imagePullPolicy']
-        if 'restartCount' in kwargs:
+        if restart_count is None and 'restartCount' in kwargs:
             restart_count = kwargs['restartCount']
-        if 'volumeMounts' in kwargs:
+        if volume_mounts is None and 'volumeMounts' in kwargs:
             volume_mounts = kwargs['volumeMounts']
-        if 'workingDir' in kwargs:
+        if working_dir is None and 'workingDir' in kwargs:
             working_dir = kwargs['workingDir']
 
         if args is not None:
@@ -1769,7 +1779,7 @@ class ContainerGroupInitContainerEnvironmentVar(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -1813,7 +1823,7 @@ class ContainerGroupInitContainerPort(dict):
              _setter: Callable[[Any, Any], None],
              port: Optional[int] = None,
              protocol: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if port is not None:
@@ -1880,11 +1890,11 @@ class ContainerGroupInitContainerVolumeMount(dict):
              mount_path: Optional[str] = None,
              name: Optional[str] = None,
              read_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mountPath' in kwargs:
+        if mount_path is None and 'mountPath' in kwargs:
             mount_path = kwargs['mountPath']
-        if 'readOnly' in kwargs:
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
 
         if mount_path is not None:
@@ -2008,25 +2018,25 @@ class ContainerGroupVolume(dict):
              nfs_volume_read_only: Optional[bool] = None,
              nfs_volume_server: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configFileVolumeConfigFileToPaths' in kwargs:
+        if config_file_volume_config_file_to_paths is None and 'configFileVolumeConfigFileToPaths' in kwargs:
             config_file_volume_config_file_to_paths = kwargs['configFileVolumeConfigFileToPaths']
-        if 'diskVolumeDiskId' in kwargs:
+        if disk_volume_disk_id is None and 'diskVolumeDiskId' in kwargs:
             disk_volume_disk_id = kwargs['diskVolumeDiskId']
-        if 'diskVolumeFsType' in kwargs:
+        if disk_volume_fs_type is None and 'diskVolumeFsType' in kwargs:
             disk_volume_fs_type = kwargs['diskVolumeFsType']
-        if 'flexVolumeDriver' in kwargs:
+        if flex_volume_driver is None and 'flexVolumeDriver' in kwargs:
             flex_volume_driver = kwargs['flexVolumeDriver']
-        if 'flexVolumeFsType' in kwargs:
+        if flex_volume_fs_type is None and 'flexVolumeFsType' in kwargs:
             flex_volume_fs_type = kwargs['flexVolumeFsType']
-        if 'flexVolumeOptions' in kwargs:
+        if flex_volume_options is None and 'flexVolumeOptions' in kwargs:
             flex_volume_options = kwargs['flexVolumeOptions']
-        if 'nfsVolumePath' in kwargs:
+        if nfs_volume_path is None and 'nfsVolumePath' in kwargs:
             nfs_volume_path = kwargs['nfsVolumePath']
-        if 'nfsVolumeReadOnly' in kwargs:
+        if nfs_volume_read_only is None and 'nfsVolumeReadOnly' in kwargs:
             nfs_volume_read_only = kwargs['nfsVolumeReadOnly']
-        if 'nfsVolumeServer' in kwargs:
+        if nfs_volume_server is None and 'nfsVolumeServer' in kwargs:
             nfs_volume_server = kwargs['nfsVolumeServer']
 
         if config_file_volume_config_file_to_paths is not None:
@@ -2161,7 +2171,7 @@ class ContainerGroupVolumeConfigFileVolumeConfigFileToPath(dict):
              _setter: Callable[[Any, Any], None],
              content: Optional[str] = None,
              path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if content is not None:
@@ -2226,9 +2236,9 @@ class ImageCacheImageRegistryCredential(dict):
              password: Optional[str] = None,
              server: Optional[str] = None,
              user_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
 
         if password is not None:
@@ -2298,9 +2308,9 @@ class OpenApiImageCacheImageRegistryCredential(dict):
              password: Optional[str] = None,
              server: Optional[str] = None,
              user_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
 
         if password is not None:
@@ -2349,7 +2359,7 @@ class VirtualNodeTaint(dict):
              effect: Optional[str] = None,
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if effect is not None:
@@ -2484,80 +2494,140 @@ class GetContainerGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             container_group_id: str,
-             container_group_name: str,
-             containers: Sequence['outputs.GetContainerGroupsGroupContainerResult'],
-             cpu: float,
-             discount: int,
-             dns_configs: Sequence['outputs.GetContainerGroupsGroupDnsConfigResult'],
-             eci_security_contexts: Sequence['outputs.GetContainerGroupsGroupEciSecurityContextResult'],
-             eni_instance_id: str,
-             events: Sequence['outputs.GetContainerGroupsGroupEventResult'],
-             expired_time: str,
-             failed_time: str,
-             host_aliases: Sequence['outputs.GetContainerGroupsGroupHostAliasResult'],
-             id: str,
-             init_containers: Sequence['outputs.GetContainerGroupsGroupInitContainerResult'],
-             instance_type: str,
-             internet_ip: str,
-             intranet_ip: str,
-             ipv6_address: str,
-             memory: float,
-             ram_role_name: str,
-             resource_group_id: str,
-             restart_policy: str,
-             security_group_id: str,
-             status: str,
-             succeeded_time: str,
-             tags: Mapping[str, Any],
-             volumes: Sequence['outputs.GetContainerGroupsGroupVolumeResult'],
-             vpc_id: str,
-             vswitch_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             container_group_id: Optional[str] = None,
+             container_group_name: Optional[str] = None,
+             containers: Optional[Sequence['outputs.GetContainerGroupsGroupContainerResult']] = None,
+             cpu: Optional[float] = None,
+             discount: Optional[int] = None,
+             dns_configs: Optional[Sequence['outputs.GetContainerGroupsGroupDnsConfigResult']] = None,
+             eci_security_contexts: Optional[Sequence['outputs.GetContainerGroupsGroupEciSecurityContextResult']] = None,
+             eni_instance_id: Optional[str] = None,
+             events: Optional[Sequence['outputs.GetContainerGroupsGroupEventResult']] = None,
+             expired_time: Optional[str] = None,
+             failed_time: Optional[str] = None,
+             host_aliases: Optional[Sequence['outputs.GetContainerGroupsGroupHostAliasResult']] = None,
+             id: Optional[str] = None,
+             init_containers: Optional[Sequence['outputs.GetContainerGroupsGroupInitContainerResult']] = None,
+             instance_type: Optional[str] = None,
+             internet_ip: Optional[str] = None,
+             intranet_ip: Optional[str] = None,
+             ipv6_address: Optional[str] = None,
+             memory: Optional[float] = None,
+             ram_role_name: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             restart_policy: Optional[str] = None,
+             security_group_id: Optional[str] = None,
+             status: Optional[str] = None,
+             succeeded_time: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             volumes: Optional[Sequence['outputs.GetContainerGroupsGroupVolumeResult']] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'containerGroupId' in kwargs:
+        if container_group_id is None and 'containerGroupId' in kwargs:
             container_group_id = kwargs['containerGroupId']
-        if 'containerGroupName' in kwargs:
+        if container_group_id is None:
+            raise TypeError("Missing 'container_group_id' argument")
+        if container_group_name is None and 'containerGroupName' in kwargs:
             container_group_name = kwargs['containerGroupName']
-        if 'dnsConfigs' in kwargs:
+        if container_group_name is None:
+            raise TypeError("Missing 'container_group_name' argument")
+        if containers is None:
+            raise TypeError("Missing 'containers' argument")
+        if cpu is None:
+            raise TypeError("Missing 'cpu' argument")
+        if discount is None:
+            raise TypeError("Missing 'discount' argument")
+        if dns_configs is None and 'dnsConfigs' in kwargs:
             dns_configs = kwargs['dnsConfigs']
-        if 'eciSecurityContexts' in kwargs:
+        if dns_configs is None:
+            raise TypeError("Missing 'dns_configs' argument")
+        if eci_security_contexts is None and 'eciSecurityContexts' in kwargs:
             eci_security_contexts = kwargs['eciSecurityContexts']
-        if 'eniInstanceId' in kwargs:
+        if eci_security_contexts is None:
+            raise TypeError("Missing 'eci_security_contexts' argument")
+        if eni_instance_id is None and 'eniInstanceId' in kwargs:
             eni_instance_id = kwargs['eniInstanceId']
-        if 'expiredTime' in kwargs:
+        if eni_instance_id is None:
+            raise TypeError("Missing 'eni_instance_id' argument")
+        if events is None:
+            raise TypeError("Missing 'events' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'failedTime' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if failed_time is None and 'failedTime' in kwargs:
             failed_time = kwargs['failedTime']
-        if 'hostAliases' in kwargs:
+        if failed_time is None:
+            raise TypeError("Missing 'failed_time' argument")
+        if host_aliases is None and 'hostAliases' in kwargs:
             host_aliases = kwargs['hostAliases']
-        if 'initContainers' in kwargs:
+        if host_aliases is None:
+            raise TypeError("Missing 'host_aliases' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if init_containers is None and 'initContainers' in kwargs:
             init_containers = kwargs['initContainers']
-        if 'instanceType' in kwargs:
+        if init_containers is None:
+            raise TypeError("Missing 'init_containers' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetIp' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if internet_ip is None and 'internetIp' in kwargs:
             internet_ip = kwargs['internetIp']
-        if 'intranetIp' in kwargs:
+        if internet_ip is None:
+            raise TypeError("Missing 'internet_ip' argument")
+        if intranet_ip is None and 'intranetIp' in kwargs:
             intranet_ip = kwargs['intranetIp']
-        if 'ipv6Address' in kwargs:
+        if intranet_ip is None:
+            raise TypeError("Missing 'intranet_ip' argument")
+        if ipv6_address is None and 'ipv6Address' in kwargs:
             ipv6_address = kwargs['ipv6Address']
-        if 'ramRoleName' in kwargs:
+        if ipv6_address is None:
+            raise TypeError("Missing 'ipv6_address' argument")
+        if memory is None:
+            raise TypeError("Missing 'memory' argument")
+        if ram_role_name is None and 'ramRoleName' in kwargs:
             ram_role_name = kwargs['ramRoleName']
-        if 'resourceGroupId' in kwargs:
+        if ram_role_name is None:
+            raise TypeError("Missing 'ram_role_name' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'restartPolicy' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if restart_policy is None and 'restartPolicy' in kwargs:
             restart_policy = kwargs['restartPolicy']
-        if 'securityGroupId' in kwargs:
+        if restart_policy is None:
+            raise TypeError("Missing 'restart_policy' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'succeededTime' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if succeeded_time is None and 'succeededTime' in kwargs:
             succeeded_time = kwargs['succeededTime']
-        if 'vpcId' in kwargs:
+        if succeeded_time is None:
+            raise TypeError("Missing 'succeeded_time' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if volumes is None:
+            raise TypeError("Missing 'volumes' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("container_group_id", container_group_id)
         _setter("container_group_name", container_group_name)
@@ -2881,32 +2951,60 @@ class GetContainerGroupsGroupContainerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             args: Sequence[str],
-             commands: Sequence[str],
-             cpu: float,
-             environment_vars: Sequence['outputs.GetContainerGroupsGroupContainerEnvironmentVarResult'],
-             gpu: int,
-             image: str,
-             image_pull_policy: str,
-             memory: float,
-             name: str,
-             ports: Sequence['outputs.GetContainerGroupsGroupContainerPortResult'],
-             ready: bool,
-             restart_count: int,
-             volume_mounts: Sequence['outputs.GetContainerGroupsGroupContainerVolumeMountResult'],
-             working_dir: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             args: Optional[Sequence[str]] = None,
+             commands: Optional[Sequence[str]] = None,
+             cpu: Optional[float] = None,
+             environment_vars: Optional[Sequence['outputs.GetContainerGroupsGroupContainerEnvironmentVarResult']] = None,
+             gpu: Optional[int] = None,
+             image: Optional[str] = None,
+             image_pull_policy: Optional[str] = None,
+             memory: Optional[float] = None,
+             name: Optional[str] = None,
+             ports: Optional[Sequence['outputs.GetContainerGroupsGroupContainerPortResult']] = None,
+             ready: Optional[bool] = None,
+             restart_count: Optional[int] = None,
+             volume_mounts: Optional[Sequence['outputs.GetContainerGroupsGroupContainerVolumeMountResult']] = None,
+             working_dir: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'environmentVars' in kwargs:
+        if args is None:
+            raise TypeError("Missing 'args' argument")
+        if commands is None:
+            raise TypeError("Missing 'commands' argument")
+        if cpu is None:
+            raise TypeError("Missing 'cpu' argument")
+        if environment_vars is None and 'environmentVars' in kwargs:
             environment_vars = kwargs['environmentVars']
-        if 'imagePullPolicy' in kwargs:
+        if environment_vars is None:
+            raise TypeError("Missing 'environment_vars' argument")
+        if gpu is None:
+            raise TypeError("Missing 'gpu' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if image_pull_policy is None and 'imagePullPolicy' in kwargs:
             image_pull_policy = kwargs['imagePullPolicy']
-        if 'restartCount' in kwargs:
+        if image_pull_policy is None:
+            raise TypeError("Missing 'image_pull_policy' argument")
+        if memory is None:
+            raise TypeError("Missing 'memory' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if ports is None:
+            raise TypeError("Missing 'ports' argument")
+        if ready is None:
+            raise TypeError("Missing 'ready' argument")
+        if restart_count is None and 'restartCount' in kwargs:
             restart_count = kwargs['restartCount']
-        if 'volumeMounts' in kwargs:
+        if restart_count is None:
+            raise TypeError("Missing 'restart_count' argument")
+        if volume_mounts is None and 'volumeMounts' in kwargs:
             volume_mounts = kwargs['volumeMounts']
-        if 'workingDir' in kwargs:
+        if volume_mounts is None:
+            raise TypeError("Missing 'volume_mounts' argument")
+        if working_dir is None and 'workingDir' in kwargs:
             working_dir = kwargs['workingDir']
+        if working_dir is None:
+            raise TypeError("Missing 'working_dir' argument")
 
         _setter("args", args)
         _setter("commands", commands)
@@ -3053,10 +3151,14 @@ class GetContainerGroupsGroupContainerEnvironmentVarResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("value", value)
@@ -3095,10 +3197,14 @@ class GetContainerGroupsGroupContainerPortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port: int,
-             protocol: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             port: Optional[int] = None,
+             protocol: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
 
         _setter("port", port)
         _setter("protocol", protocol)
@@ -3140,15 +3246,21 @@ class GetContainerGroupsGroupContainerVolumeMountResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mount_path: str,
-             name: str,
-             read_only: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             mount_path: Optional[str] = None,
+             name: Optional[str] = None,
+             read_only: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mountPath' in kwargs:
+        if mount_path is None and 'mountPath' in kwargs:
             mount_path = kwargs['mountPath']
-        if 'readOnly' in kwargs:
+        if mount_path is None:
+            raise TypeError("Missing 'mount_path' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
+        if read_only is None:
+            raise TypeError("Missing 'read_only' argument")
 
         _setter("mount_path", mount_path)
         _setter("name", name)
@@ -3199,13 +3311,19 @@ class GetContainerGroupsGroupDnsConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name_servers: Sequence[str],
-             options: Sequence['outputs.GetContainerGroupsGroupDnsConfigOptionResult'],
-             searches: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name_servers: Optional[Sequence[str]] = None,
+             options: Optional[Sequence['outputs.GetContainerGroupsGroupDnsConfigOptionResult']] = None,
+             searches: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nameServers' in kwargs:
+        if name_servers is None and 'nameServers' in kwargs:
             name_servers = kwargs['nameServers']
+        if name_servers is None:
+            raise TypeError("Missing 'name_servers' argument")
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if searches is None:
+            raise TypeError("Missing 'searches' argument")
 
         _setter("name_servers", name_servers)
         _setter("options", options)
@@ -3253,10 +3371,14 @@ class GetContainerGroupsGroupDnsConfigOptionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("name", name)
         _setter("value", value)
@@ -3292,9 +3414,11 @@ class GetContainerGroupsGroupEciSecurityContextResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sysctls: Sequence['outputs.GetContainerGroupsGroupEciSecurityContextSysctlResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             sysctls: Optional[Sequence['outputs.GetContainerGroupsGroupEciSecurityContextSysctlResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if sysctls is None:
+            raise TypeError("Missing 'sysctls' argument")
 
         _setter("sysctls", sysctls)
 
@@ -3324,10 +3448,14 @@ class GetContainerGroupsGroupEciSecurityContextSysctlResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("name", name)
         _setter("value", value)
@@ -3381,19 +3509,33 @@ class GetContainerGroupsGroupEventResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: int,
-             first_timestamp: str,
-             last_timestamp: str,
-             message: str,
-             name: str,
-             reason: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             count: Optional[int] = None,
+             first_timestamp: Optional[str] = None,
+             last_timestamp: Optional[str] = None,
+             message: Optional[str] = None,
+             name: Optional[str] = None,
+             reason: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'firstTimestamp' in kwargs:
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if first_timestamp is None and 'firstTimestamp' in kwargs:
             first_timestamp = kwargs['firstTimestamp']
-        if 'lastTimestamp' in kwargs:
+        if first_timestamp is None:
+            raise TypeError("Missing 'first_timestamp' argument")
+        if last_timestamp is None and 'lastTimestamp' in kwargs:
             last_timestamp = kwargs['lastTimestamp']
+        if last_timestamp is None:
+            raise TypeError("Missing 'last_timestamp' argument")
+        if message is None:
+            raise TypeError("Missing 'message' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if reason is None:
+            raise TypeError("Missing 'reason' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("count", count)
         _setter("first_timestamp", first_timestamp)
@@ -3477,10 +3619,14 @@ class GetContainerGroupsGroupHostAliasResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hostnames: Sequence[str],
-             ip: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             hostnames: Optional[Sequence[str]] = None,
+             ip: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if hostnames is None:
+            raise TypeError("Missing 'hostnames' argument")
+        if ip is None:
+            raise TypeError("Missing 'ip' argument")
 
         _setter("hostnames", hostnames)
         _setter("ip", ip)
@@ -3555,32 +3701,60 @@ class GetContainerGroupsGroupInitContainerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             args: Sequence[str],
-             commands: Sequence[str],
-             cpu: float,
-             environment_vars: Sequence['outputs.GetContainerGroupsGroupInitContainerEnvironmentVarResult'],
-             gpu: int,
-             image: str,
-             image_pull_policy: str,
-             memory: float,
-             name: str,
-             ports: Sequence['outputs.GetContainerGroupsGroupInitContainerPortResult'],
-             ready: bool,
-             restart_count: int,
-             volume_mounts: Sequence['outputs.GetContainerGroupsGroupInitContainerVolumeMountResult'],
-             working_dir: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             args: Optional[Sequence[str]] = None,
+             commands: Optional[Sequence[str]] = None,
+             cpu: Optional[float] = None,
+             environment_vars: Optional[Sequence['outputs.GetContainerGroupsGroupInitContainerEnvironmentVarResult']] = None,
+             gpu: Optional[int] = None,
+             image: Optional[str] = None,
+             image_pull_policy: Optional[str] = None,
+             memory: Optional[float] = None,
+             name: Optional[str] = None,
+             ports: Optional[Sequence['outputs.GetContainerGroupsGroupInitContainerPortResult']] = None,
+             ready: Optional[bool] = None,
+             restart_count: Optional[int] = None,
+             volume_mounts: Optional[Sequence['outputs.GetContainerGroupsGroupInitContainerVolumeMountResult']] = None,
+             working_dir: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'environmentVars' in kwargs:
+        if args is None:
+            raise TypeError("Missing 'args' argument")
+        if commands is None:
+            raise TypeError("Missing 'commands' argument")
+        if cpu is None:
+            raise TypeError("Missing 'cpu' argument")
+        if environment_vars is None and 'environmentVars' in kwargs:
             environment_vars = kwargs['environmentVars']
-        if 'imagePullPolicy' in kwargs:
+        if environment_vars is None:
+            raise TypeError("Missing 'environment_vars' argument")
+        if gpu is None:
+            raise TypeError("Missing 'gpu' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if image_pull_policy is None and 'imagePullPolicy' in kwargs:
             image_pull_policy = kwargs['imagePullPolicy']
-        if 'restartCount' in kwargs:
+        if image_pull_policy is None:
+            raise TypeError("Missing 'image_pull_policy' argument")
+        if memory is None:
+            raise TypeError("Missing 'memory' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if ports is None:
+            raise TypeError("Missing 'ports' argument")
+        if ready is None:
+            raise TypeError("Missing 'ready' argument")
+        if restart_count is None and 'restartCount' in kwargs:
             restart_count = kwargs['restartCount']
-        if 'volumeMounts' in kwargs:
+        if restart_count is None:
+            raise TypeError("Missing 'restart_count' argument")
+        if volume_mounts is None and 'volumeMounts' in kwargs:
             volume_mounts = kwargs['volumeMounts']
-        if 'workingDir' in kwargs:
+        if volume_mounts is None:
+            raise TypeError("Missing 'volume_mounts' argument")
+        if working_dir is None and 'workingDir' in kwargs:
             working_dir = kwargs['workingDir']
+        if working_dir is None:
+            raise TypeError("Missing 'working_dir' argument")
 
         _setter("args", args)
         _setter("commands", commands)
@@ -3727,10 +3901,14 @@ class GetContainerGroupsGroupInitContainerEnvironmentVarResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("value", value)
@@ -3769,10 +3947,14 @@ class GetContainerGroupsGroupInitContainerPortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port: int,
-             protocol: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             port: Optional[int] = None,
+             protocol: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
 
         _setter("port", port)
         _setter("protocol", protocol)
@@ -3814,15 +3996,21 @@ class GetContainerGroupsGroupInitContainerVolumeMountResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mount_path: str,
-             name: str,
-             read_only: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             mount_path: Optional[str] = None,
+             name: Optional[str] = None,
+             read_only: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mountPath' in kwargs:
+        if mount_path is None and 'mountPath' in kwargs:
             mount_path = kwargs['mountPath']
-        if 'readOnly' in kwargs:
+        if mount_path is None:
+            raise TypeError("Missing 'mount_path' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
+        if read_only is None:
+            raise TypeError("Missing 'read_only' argument")
 
         _setter("mount_path", mount_path)
         _setter("name", name)
@@ -3897,37 +4085,59 @@ class GetContainerGroupsGroupVolumeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config_file_volume_config_file_to_paths: Sequence['outputs.GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathResult'],
-             disk_volume_disk_id: str,
-             disk_volume_fs_type: str,
-             flex_volume_driver: str,
-             flex_volume_fs_type: str,
-             flex_volume_options: str,
-             name: str,
-             nfs_volume_path: str,
-             nfs_volume_read_only: bool,
-             nfs_volume_server: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             config_file_volume_config_file_to_paths: Optional[Sequence['outputs.GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathResult']] = None,
+             disk_volume_disk_id: Optional[str] = None,
+             disk_volume_fs_type: Optional[str] = None,
+             flex_volume_driver: Optional[str] = None,
+             flex_volume_fs_type: Optional[str] = None,
+             flex_volume_options: Optional[str] = None,
+             name: Optional[str] = None,
+             nfs_volume_path: Optional[str] = None,
+             nfs_volume_read_only: Optional[bool] = None,
+             nfs_volume_server: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configFileVolumeConfigFileToPaths' in kwargs:
+        if config_file_volume_config_file_to_paths is None and 'configFileVolumeConfigFileToPaths' in kwargs:
             config_file_volume_config_file_to_paths = kwargs['configFileVolumeConfigFileToPaths']
-        if 'diskVolumeDiskId' in kwargs:
+        if config_file_volume_config_file_to_paths is None:
+            raise TypeError("Missing 'config_file_volume_config_file_to_paths' argument")
+        if disk_volume_disk_id is None and 'diskVolumeDiskId' in kwargs:
             disk_volume_disk_id = kwargs['diskVolumeDiskId']
-        if 'diskVolumeFsType' in kwargs:
+        if disk_volume_disk_id is None:
+            raise TypeError("Missing 'disk_volume_disk_id' argument")
+        if disk_volume_fs_type is None and 'diskVolumeFsType' in kwargs:
             disk_volume_fs_type = kwargs['diskVolumeFsType']
-        if 'flexVolumeDriver' in kwargs:
+        if disk_volume_fs_type is None:
+            raise TypeError("Missing 'disk_volume_fs_type' argument")
+        if flex_volume_driver is None and 'flexVolumeDriver' in kwargs:
             flex_volume_driver = kwargs['flexVolumeDriver']
-        if 'flexVolumeFsType' in kwargs:
+        if flex_volume_driver is None:
+            raise TypeError("Missing 'flex_volume_driver' argument")
+        if flex_volume_fs_type is None and 'flexVolumeFsType' in kwargs:
             flex_volume_fs_type = kwargs['flexVolumeFsType']
-        if 'flexVolumeOptions' in kwargs:
+        if flex_volume_fs_type is None:
+            raise TypeError("Missing 'flex_volume_fs_type' argument")
+        if flex_volume_options is None and 'flexVolumeOptions' in kwargs:
             flex_volume_options = kwargs['flexVolumeOptions']
-        if 'nfsVolumePath' in kwargs:
+        if flex_volume_options is None:
+            raise TypeError("Missing 'flex_volume_options' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if nfs_volume_path is None and 'nfsVolumePath' in kwargs:
             nfs_volume_path = kwargs['nfsVolumePath']
-        if 'nfsVolumeReadOnly' in kwargs:
+        if nfs_volume_path is None:
+            raise TypeError("Missing 'nfs_volume_path' argument")
+        if nfs_volume_read_only is None and 'nfsVolumeReadOnly' in kwargs:
             nfs_volume_read_only = kwargs['nfsVolumeReadOnly']
-        if 'nfsVolumeServer' in kwargs:
+        if nfs_volume_read_only is None:
+            raise TypeError("Missing 'nfs_volume_read_only' argument")
+        if nfs_volume_server is None and 'nfsVolumeServer' in kwargs:
             nfs_volume_server = kwargs['nfsVolumeServer']
+        if nfs_volume_server is None:
+            raise TypeError("Missing 'nfs_volume_server' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("config_file_volume_config_file_to_paths", config_file_volume_config_file_to_paths)
         _setter("disk_volume_disk_id", disk_volume_disk_id)
@@ -4047,10 +4257,14 @@ class GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: str,
-             path: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             content: Optional[str] = None,
+             path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
 
         _setter("content", content)
         _setter("path", path)
@@ -4113,28 +4327,48 @@ class GetImageCachesCachResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             container_group_id: str,
-             events: Sequence['outputs.GetImageCachesCachEventResult'],
-             expire_date_time: str,
-             id: str,
-             image_cache_id: str,
-             image_cache_name: str,
-             images: Sequence[str],
-             progress: str,
-             snapshot_id: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             container_group_id: Optional[str] = None,
+             events: Optional[Sequence['outputs.GetImageCachesCachEventResult']] = None,
+             expire_date_time: Optional[str] = None,
+             id: Optional[str] = None,
+             image_cache_id: Optional[str] = None,
+             image_cache_name: Optional[str] = None,
+             images: Optional[Sequence[str]] = None,
+             progress: Optional[str] = None,
+             snapshot_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'containerGroupId' in kwargs:
+        if container_group_id is None and 'containerGroupId' in kwargs:
             container_group_id = kwargs['containerGroupId']
-        if 'expireDateTime' in kwargs:
+        if container_group_id is None:
+            raise TypeError("Missing 'container_group_id' argument")
+        if events is None:
+            raise TypeError("Missing 'events' argument")
+        if expire_date_time is None and 'expireDateTime' in kwargs:
             expire_date_time = kwargs['expireDateTime']
-        if 'imageCacheId' in kwargs:
+        if expire_date_time is None:
+            raise TypeError("Missing 'expire_date_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_cache_id is None and 'imageCacheId' in kwargs:
             image_cache_id = kwargs['imageCacheId']
-        if 'imageCacheName' in kwargs:
+        if image_cache_id is None:
+            raise TypeError("Missing 'image_cache_id' argument")
+        if image_cache_name is None and 'imageCacheName' in kwargs:
             image_cache_name = kwargs['imageCacheName']
-        if 'snapshotId' in kwargs:
+        if image_cache_name is None:
+            raise TypeError("Missing 'image_cache_name' argument")
+        if images is None:
+            raise TypeError("Missing 'images' argument")
+        if progress is None:
+            raise TypeError("Missing 'progress' argument")
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
+        if snapshot_id is None:
+            raise TypeError("Missing 'snapshot_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("container_group_id", container_group_id)
         _setter("events", events)
@@ -4256,18 +4490,30 @@ class GetImageCachesCachEventResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: int,
-             first_timestamp: str,
-             last_timestamp: str,
-             message: str,
-             name: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             count: Optional[int] = None,
+             first_timestamp: Optional[str] = None,
+             last_timestamp: Optional[str] = None,
+             message: Optional[str] = None,
+             name: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'firstTimestamp' in kwargs:
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if first_timestamp is None and 'firstTimestamp' in kwargs:
             first_timestamp = kwargs['firstTimestamp']
-        if 'lastTimestamp' in kwargs:
+        if first_timestamp is None:
+            raise TypeError("Missing 'first_timestamp' argument")
+        if last_timestamp is None and 'lastTimestamp' in kwargs:
             last_timestamp = kwargs['lastTimestamp']
+        if last_timestamp is None:
+            raise TypeError("Missing 'last_timestamp' argument")
+        if message is None:
+            raise TypeError("Missing 'message' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("count", count)
         _setter("first_timestamp", first_timestamp)
@@ -4386,50 +4632,86 @@ class GetVirtualNodesNodeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cpu: int,
-             create_time: str,
-             eni_instance_id: str,
-             events: Sequence['outputs.GetVirtualNodesNodeEventResult'],
-             id: str,
-             internet_ip: str,
-             intranet_ip: str,
-             memory: int,
-             ram_role_name: str,
-             resource_group_id: str,
-             security_group_id: str,
-             status: str,
-             tags: Mapping[str, Any],
-             virtual_node_id: str,
-             virtual_node_name: str,
-             vpc_id: str,
-             vswitch_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cpu: Optional[int] = None,
+             create_time: Optional[str] = None,
+             eni_instance_id: Optional[str] = None,
+             events: Optional[Sequence['outputs.GetVirtualNodesNodeEventResult']] = None,
+             id: Optional[str] = None,
+             internet_ip: Optional[str] = None,
+             intranet_ip: Optional[str] = None,
+             memory: Optional[int] = None,
+             ram_role_name: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             security_group_id: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             virtual_node_id: Optional[str] = None,
+             virtual_node_name: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if cpu is None:
+            raise TypeError("Missing 'cpu' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'eniInstanceId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if eni_instance_id is None and 'eniInstanceId' in kwargs:
             eni_instance_id = kwargs['eniInstanceId']
-        if 'internetIp' in kwargs:
+        if eni_instance_id is None:
+            raise TypeError("Missing 'eni_instance_id' argument")
+        if events is None:
+            raise TypeError("Missing 'events' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if internet_ip is None and 'internetIp' in kwargs:
             internet_ip = kwargs['internetIp']
-        if 'intranetIp' in kwargs:
+        if internet_ip is None:
+            raise TypeError("Missing 'internet_ip' argument")
+        if intranet_ip is None and 'intranetIp' in kwargs:
             intranet_ip = kwargs['intranetIp']
-        if 'ramRoleName' in kwargs:
+        if intranet_ip is None:
+            raise TypeError("Missing 'intranet_ip' argument")
+        if memory is None:
+            raise TypeError("Missing 'memory' argument")
+        if ram_role_name is None and 'ramRoleName' in kwargs:
             ram_role_name = kwargs['ramRoleName']
-        if 'resourceGroupId' in kwargs:
+        if ram_role_name is None:
+            raise TypeError("Missing 'ram_role_name' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityGroupId' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'virtualNodeId' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if virtual_node_id is None and 'virtualNodeId' in kwargs:
             virtual_node_id = kwargs['virtualNodeId']
-        if 'virtualNodeName' in kwargs:
+        if virtual_node_id is None:
+            raise TypeError("Missing 'virtual_node_id' argument")
+        if virtual_node_name is None and 'virtualNodeName' in kwargs:
             virtual_node_name = kwargs['virtualNodeName']
-        if 'vpcId' in kwargs:
+        if virtual_node_name is None:
+            raise TypeError("Missing 'virtual_node_name' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("cpu", cpu)
         _setter("create_time", create_time)
@@ -4624,19 +4906,33 @@ class GetVirtualNodesNodeEventResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: int,
-             first_timestamp: str,
-             last_timestamp: str,
-             message: str,
-             name: str,
-             reason: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             count: Optional[int] = None,
+             first_timestamp: Optional[str] = None,
+             last_timestamp: Optional[str] = None,
+             message: Optional[str] = None,
+             name: Optional[str] = None,
+             reason: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'firstTimestamp' in kwargs:
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if first_timestamp is None and 'firstTimestamp' in kwargs:
             first_timestamp = kwargs['firstTimestamp']
-        if 'lastTimestamp' in kwargs:
+        if first_timestamp is None:
+            raise TypeError("Missing 'first_timestamp' argument")
+        if last_timestamp is None and 'lastTimestamp' in kwargs:
             last_timestamp = kwargs['lastTimestamp']
+        if last_timestamp is None:
+            raise TypeError("Missing 'last_timestamp' argument")
+        if message is None:
+            raise TypeError("Missing 'message' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if reason is None:
+            raise TypeError("Missing 'reason' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("count", count)
         _setter("first_timestamp", first_timestamp)
@@ -4720,14 +5016,18 @@ class GetZonesZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             region_endpoint: str,
-             zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             region_endpoint: Optional[str] = None,
+             zone_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'regionEndpoint' in kwargs:
+        if region_endpoint is None and 'regionEndpoint' in kwargs:
             region_endpoint = kwargs['regionEndpoint']
-        if 'zoneIds' in kwargs:
+        if region_endpoint is None:
+            raise TypeError("Missing 'region_endpoint' argument")
+        if zone_ids is None and 'zoneIds' in kwargs:
             zone_ids = kwargs['zoneIds']
+        if zone_ids is None:
+            raise TypeError("Missing 'zone_ids' argument")
 
         _setter("region_endpoint", region_endpoint)
         _setter("zone_ids", zone_ids)

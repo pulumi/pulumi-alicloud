@@ -41,23 +41,33 @@ class AntiBruteForceRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             anti_brute_force_rule_name: pulumi.Input[str],
-             fail_count: pulumi.Input[int],
-             forbidden_time: pulumi.Input[int],
-             span: pulumi.Input[int],
-             uuid_lists: pulumi.Input[Sequence[pulumi.Input[str]]],
+             anti_brute_force_rule_name: Optional[pulumi.Input[str]] = None,
+             fail_count: Optional[pulumi.Input[int]] = None,
+             forbidden_time: Optional[pulumi.Input[int]] = None,
+             span: Optional[pulumi.Input[int]] = None,
+             uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              default_rule: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'antiBruteForceRuleName' in kwargs:
+        if anti_brute_force_rule_name is None and 'antiBruteForceRuleName' in kwargs:
             anti_brute_force_rule_name = kwargs['antiBruteForceRuleName']
-        if 'failCount' in kwargs:
+        if anti_brute_force_rule_name is None:
+            raise TypeError("Missing 'anti_brute_force_rule_name' argument")
+        if fail_count is None and 'failCount' in kwargs:
             fail_count = kwargs['failCount']
-        if 'forbiddenTime' in kwargs:
+        if fail_count is None:
+            raise TypeError("Missing 'fail_count' argument")
+        if forbidden_time is None and 'forbiddenTime' in kwargs:
             forbidden_time = kwargs['forbiddenTime']
-        if 'uuidLists' in kwargs:
+        if forbidden_time is None:
+            raise TypeError("Missing 'forbidden_time' argument")
+        if span is None:
+            raise TypeError("Missing 'span' argument")
+        if uuid_lists is None and 'uuidLists' in kwargs:
             uuid_lists = kwargs['uuidLists']
-        if 'defaultRule' in kwargs:
+        if uuid_lists is None:
+            raise TypeError("Missing 'uuid_lists' argument")
+        if default_rule is None and 'defaultRule' in kwargs:
             default_rule = kwargs['defaultRule']
 
         _setter("anti_brute_force_rule_name", anti_brute_force_rule_name)
@@ -181,19 +191,19 @@ class _AntiBruteForceRuleState:
              forbidden_time: Optional[pulumi.Input[int]] = None,
              span: Optional[pulumi.Input[int]] = None,
              uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'antiBruteForceRuleId' in kwargs:
+        if anti_brute_force_rule_id is None and 'antiBruteForceRuleId' in kwargs:
             anti_brute_force_rule_id = kwargs['antiBruteForceRuleId']
-        if 'antiBruteForceRuleName' in kwargs:
+        if anti_brute_force_rule_name is None and 'antiBruteForceRuleName' in kwargs:
             anti_brute_force_rule_name = kwargs['antiBruteForceRuleName']
-        if 'defaultRule' in kwargs:
+        if default_rule is None and 'defaultRule' in kwargs:
             default_rule = kwargs['defaultRule']
-        if 'failCount' in kwargs:
+        if fail_count is None and 'failCount' in kwargs:
             fail_count = kwargs['failCount']
-        if 'forbiddenTime' in kwargs:
+        if forbidden_time is None and 'forbiddenTime' in kwargs:
             forbidden_time = kwargs['forbiddenTime']
-        if 'uuidLists' in kwargs:
+        if uuid_lists is None and 'uuidLists' in kwargs:
             uuid_lists = kwargs['uuidLists']
 
         if anti_brute_force_rule_id is not None:
@@ -315,22 +325,6 @@ class AntiBruteForceRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.threatdetection.AntiBruteForceRule("default",
-            anti_brute_force_rule_name="apispec_example",
-            fail_count=80,
-            forbidden_time=360,
-            span=10,
-            uuid_lists=["032b618f-b220-4a0d-bd37-fbdc6ef58b6a"])
-        ```
-
         ## Import
 
         Threat Detection Anti Brute Force Rule can be imported using the id, e.g.
@@ -360,22 +354,6 @@ class AntiBruteForceRule(pulumi.CustomResource):
         For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createantibruteforcerule).
 
         > **NOTE:** Available since v1.195.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.threatdetection.AntiBruteForceRule("default",
-            anti_brute_force_rule_name="apispec_example",
-            fail_count=80,
-            forbidden_time=360,
-            span=10,
-            uuid_lists=["032b618f-b220-4a0d-bd37-fbdc6ef58b6a"])
-        ```
 
         ## Import
 

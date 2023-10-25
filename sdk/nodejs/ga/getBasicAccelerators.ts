@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.194.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ga.getBasicAccelerators({
- *     ids: ["example_id"],
- * });
- * export const gaBasicAcceleratorId1 = ids.then(ids => ids.accelerators?.[0]?.id);
- * const nameRegex = alicloud.ga.getBasicAccelerators({
- *     nameRegex: "tf-example",
- * });
- * export const gaBasicAcceleratorId2 = nameRegex.then(nameRegex => nameRegex.accelerators?.[0]?.id);
- * ```
  */
 export function getBasicAccelerators(args?: GetBasicAcceleratorsArgs, opts?: pulumi.InvokeOptions): Promise<GetBasicAcceleratorsResult> {
     args = args || {};
@@ -103,24 +85,6 @@ export interface GetBasicAcceleratorsResult {
  * This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.194.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ga.getBasicAccelerators({
- *     ids: ["example_id"],
- * });
- * export const gaBasicAcceleratorId1 = ids.then(ids => ids.accelerators?.[0]?.id);
- * const nameRegex = alicloud.ga.getBasicAccelerators({
- *     nameRegex: "tf-example",
- * });
- * export const gaBasicAcceleratorId2 = nameRegex.then(nameRegex => nameRegex.accelerators?.[0]?.id);
- * ```
  */
 export function getBasicAcceleratorsOutput(args?: GetBasicAcceleratorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBasicAcceleratorsResult> {
     return pulumi.output(args).apply((a: any) => getBasicAccelerators(a, opts))

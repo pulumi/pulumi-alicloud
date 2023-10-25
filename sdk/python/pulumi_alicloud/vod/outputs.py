@@ -62,19 +62,25 @@ class DomainSource(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source_content: str,
-             source_port: str,
-             source_type: str,
+             source_content: Optional[str] = None,
+             source_port: Optional[str] = None,
+             source_type: Optional[str] = None,
              source_priority: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sourceContent' in kwargs:
+        if source_content is None and 'sourceContent' in kwargs:
             source_content = kwargs['sourceContent']
-        if 'sourcePort' in kwargs:
+        if source_content is None:
+            raise TypeError("Missing 'source_content' argument")
+        if source_port is None and 'sourcePort' in kwargs:
             source_port = kwargs['sourcePort']
-        if 'sourceType' in kwargs:
+        if source_port is None:
+            raise TypeError("Missing 'source_port' argument")
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
-        if 'sourcePriority' in kwargs:
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+        if source_priority is None and 'sourcePriority' in kwargs:
             source_priority = kwargs['sourcePriority']
 
         _setter("source_content", source_content)
@@ -157,28 +163,48 @@ class GetDomainsDomainResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cname: str,
-             description: str,
-             domain_name: str,
-             gmt_created: str,
-             gmt_modified: str,
-             id: str,
-             sand_box: str,
-             sources: Sequence['outputs.GetDomainsDomainSourceResult'],
-             ssl_protocol: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cname: Optional[str] = None,
+             description: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             gmt_created: Optional[str] = None,
+             gmt_modified: Optional[str] = None,
+             id: Optional[str] = None,
+             sand_box: Optional[str] = None,
+             sources: Optional[Sequence['outputs.GetDomainsDomainSourceResult']] = None,
+             ssl_protocol: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainName' in kwargs:
+        if cname is None:
+            raise TypeError("Missing 'cname' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'gmtCreated' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if gmt_created is None and 'gmtCreated' in kwargs:
             gmt_created = kwargs['gmtCreated']
-        if 'gmtModified' in kwargs:
+        if gmt_created is None:
+            raise TypeError("Missing 'gmt_created' argument")
+        if gmt_modified is None and 'gmtModified' in kwargs:
             gmt_modified = kwargs['gmtModified']
-        if 'sandBox' in kwargs:
+        if gmt_modified is None:
+            raise TypeError("Missing 'gmt_modified' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if sand_box is None and 'sandBox' in kwargs:
             sand_box = kwargs['sandBox']
-        if 'sslProtocol' in kwargs:
+        if sand_box is None:
+            raise TypeError("Missing 'sand_box' argument")
+        if sources is None:
+            raise TypeError("Missing 'sources' argument")
+        if ssl_protocol is None and 'sslProtocol' in kwargs:
             ssl_protocol = kwargs['sslProtocol']
+        if ssl_protocol is None:
+            raise TypeError("Missing 'ssl_protocol' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("cname", cname)
         _setter("description", description)
@@ -289,20 +315,28 @@ class GetDomainsDomainSourceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source_content: str,
-             source_port: str,
-             source_priority: str,
-             source_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             source_content: Optional[str] = None,
+             source_port: Optional[str] = None,
+             source_priority: Optional[str] = None,
+             source_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sourceContent' in kwargs:
+        if source_content is None and 'sourceContent' in kwargs:
             source_content = kwargs['sourceContent']
-        if 'sourcePort' in kwargs:
+        if source_content is None:
+            raise TypeError("Missing 'source_content' argument")
+        if source_port is None and 'sourcePort' in kwargs:
             source_port = kwargs['sourcePort']
-        if 'sourcePriority' in kwargs:
+        if source_port is None:
+            raise TypeError("Missing 'source_port' argument")
+        if source_priority is None and 'sourcePriority' in kwargs:
             source_priority = kwargs['sourcePriority']
-        if 'sourceType' in kwargs:
+        if source_priority is None:
+            raise TypeError("Missing 'source_priority' argument")
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
 
         _setter("source_content", source_content)
         _setter("source_port", source_port)

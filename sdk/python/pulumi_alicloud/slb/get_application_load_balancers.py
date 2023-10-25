@@ -361,20 +361,6 @@ def get_application_load_balancers(address: Optional[str] = None,
 
     > **NOTE:** Available in 1.123.1+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.slb.get_application_load_balancers(name_regex="sample_slb",
-        tags={
-            "tagKey1": "tagValue1",
-            "tagKey2": "tagValue2",
-        })
-    pulumi.export("firstSlbId", example.balancers[0].id)
-    ```
-
 
     :param str address: Service address of the SLBs.
     :param str address_ip_version: The address ip version. Valid values `ipv4` and `ipv6`.
@@ -480,20 +466,6 @@ def get_application_load_balancers_output(address: Optional[pulumi.Input[Optiona
     This data source provides the server load balancers of the current Alibaba Cloud user.
 
     > **NOTE:** Available in 1.123.1+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.slb.get_application_load_balancers(name_regex="sample_slb",
-        tags={
-            "tagKey1": "tagValue1",
-            "tagKey2": "tagValue2",
-        })
-    pulumi.export("firstSlbId", example.balancers[0].id)
-    ```
 
 
     :param str address: Service address of the SLBs.

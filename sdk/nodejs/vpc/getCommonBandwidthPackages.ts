@@ -11,21 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.36.0+.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const fooCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("fooCommonBandwithPackage", {
- *     bandwidth: "2",
- *     description: "tf-testAcc-CommonBandwidthPackage",
- * });
- * const fooCommonBandwidthPackages = alicloud.vpc.getCommonBandwidthPackagesOutput({
- *     ids: [fooCommonBandwithPackage.id],
- *     nameRegex: "^tf-testAcc.*",
- * });
- * ```
  * ## Public ip addresses Block
  *
  *   The public ip addresses mapping supports the following:
@@ -130,21 +115,6 @@ export interface GetCommonBandwidthPackagesResult {
  *
  * > **NOTE:** Available in 1.36.0+.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const fooCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("fooCommonBandwithPackage", {
- *     bandwidth: "2",
- *     description: "tf-testAcc-CommonBandwidthPackage",
- * });
- * const fooCommonBandwidthPackages = alicloud.vpc.getCommonBandwidthPackagesOutput({
- *     ids: [fooCommonBandwithPackage.id],
- *     nameRegex: "^tf-testAcc.*",
- * });
- * ```
  * ## Public ip addresses Block
  *
  *   The public ip addresses mapping supports the following:

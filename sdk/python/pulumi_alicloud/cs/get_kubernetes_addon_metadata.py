@@ -92,18 +92,6 @@ def get_kubernetes_addon_metadata(cluster_id: Optional[str] = None,
 
     > **NOTE:** Available in 1.166.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.cs.get_kubernetes_addon_metadata(cluster_id=var["cluster_id"],
-        name="nginx-ingress-controller",
-        version="v1.1.2-aliyun.2")
-    pulumi.export("addonConfigSchema", data["alicloud_cs_kubernetes_addons"]["default"]["config_schema"])
-    ```
-
 
     :param str cluster_id: The id of kubernetes cluster.
     :param str name: The name of the cluster addon. You can get a list of available addons that the cluster can install by using data source `cs_get_kubernetes_addons`.
@@ -133,18 +121,6 @@ def get_kubernetes_addon_metadata_output(cluster_id: Optional[pulumi.Input[str]]
     This data source provides metadata of kubernetes cluster addons.
 
     > **NOTE:** Available in 1.166.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.cs.get_kubernetes_addon_metadata(cluster_id=var["cluster_id"],
-        name="nginx-ingress-controller",
-        version="v1.1.2-aliyun.2")
-    pulumi.export("addonConfigSchema", data["alicloud_cs_kubernetes_addons"]["default"]["config_schema"])
-    ```
 
 
     :param str cluster_id: The id of kubernetes cluster.

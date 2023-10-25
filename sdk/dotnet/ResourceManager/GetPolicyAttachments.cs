@@ -15,29 +15,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// This data source provides the Resource Manager Policy Attachments of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:**  Available in 1.93.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.ResourceManager.GetPolicyAttachments.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstAttachmentId"] = example.Apply(getPolicyAttachmentsResult =&gt; getPolicyAttachmentsResult.Attachments[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPolicyAttachmentsResult> InvokeAsync(GetPolicyAttachmentsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyAttachmentsResult>("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", args ?? new GetPolicyAttachmentsArgs(), options.WithDefaults());
@@ -46,29 +23,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// This data source provides the Resource Manager Policy Attachments of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:**  Available in 1.93.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.ResourceManager.GetPolicyAttachments.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstAttachmentId"] = example.Apply(getPolicyAttachmentsResult =&gt; getPolicyAttachmentsResult.Attachments[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPolicyAttachmentsResult> Invoke(GetPolicyAttachmentsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyAttachmentsResult>("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", args ?? new GetPolicyAttachmentsInvokeArgs(), options.WithDefaults());

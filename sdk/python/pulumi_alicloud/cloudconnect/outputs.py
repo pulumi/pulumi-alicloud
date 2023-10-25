@@ -38,17 +38,27 @@ class GetNetworksNetworkResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: str,
-             description: str,
-             id: str,
-             is_default: bool,
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cidr_block: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             is_default: Optional[bool] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'isDefault' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_default is None and 'isDefault' in kwargs:
             is_default = kwargs['isDefault']
+        if is_default is None:
+            raise TypeError("Missing 'is_default' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("cidr_block", cidr_block)
         _setter("description", description)

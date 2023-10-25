@@ -19,54 +19,6 @@ import (
 //
 // > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultDomainGroup, err := dns.NewDomainGroup(ctx, "defaultDomainGroup", &dns.DomainGroupArgs{
-//				DomainGroupName: pulumi.String("tf-example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultAlidnsDomain, err := dns.NewAlidnsDomain(ctx, "defaultAlidnsDomain", &dns.AlidnsDomainArgs{
-//				DomainName: pulumi.String("starmove.com"),
-//				GroupId:    defaultDomainGroup.ID(),
-//				Tags: pulumi.AnyMap{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dns.NewAlidnsRecord(ctx, "record", &dns.AlidnsRecordArgs{
-//				DomainName: defaultAlidnsDomain.DomainName,
-//				Rr:         pulumi.String("alimail"),
-//				Type:       pulumi.String("CNAME"),
-//				Value:      pulumi.String("mail.mxhichin.com"),
-//				Remark:     pulumi.String("tf-example"),
-//				Status:     pulumi.String("ENABLE"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Alidns Domain Record can be imported using the id, e.g.

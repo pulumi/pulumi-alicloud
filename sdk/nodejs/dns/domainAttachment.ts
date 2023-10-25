@@ -11,21 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **DEPRECATED:**  This resource has been deprecated from version `1.99.0`. Please use new resource alicloud_alidns_domain_attachment.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const dns = new alicloud.dns.DomainAttachment("dns", {
- *     domainNames: [
- *         "test111.abc",
- *         "test222.abc",
- *     ],
- *     instanceId: "dns-cn-mp91lyq9xxxx",
- * });
- * ```
- *
  * ## Import
  *
  * DNS domain attachment can be imported using the id, e.g.

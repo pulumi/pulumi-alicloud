@@ -66,11 +66,11 @@ class DataCenterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             instance_type: pulumi.Input[str],
-             node_count: pulumi.Input[int],
-             pay_type: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             node_count: Optional[pulumi.Input[int]] = None,
+             pay_type: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              auto_renew: Optional[pulumi.Input[bool]] = None,
              auto_renew_period: Optional[pulumi.Input[int]] = None,
              data_center_name: Optional[pulumi.Input[str]] = None,
@@ -80,33 +80,43 @@ class DataCenterArgs:
              period: Optional[pulumi.Input[int]] = None,
              period_unit: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'instanceType' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'nodeCount' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if node_count is None and 'nodeCount' in kwargs:
             node_count = kwargs['nodeCount']
-        if 'payType' in kwargs:
+        if node_count is None:
+            raise TypeError("Missing 'node_count' argument")
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
-        if 'vswitchId' in kwargs:
+        if pay_type is None:
+            raise TypeError("Missing 'pay_type' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'autoRenew' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'dataCenterName' in kwargs:
+        if data_center_name is None and 'dataCenterName' in kwargs:
             data_center_name = kwargs['dataCenterName']
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'diskType' in kwargs:
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'enablePublic' in kwargs:
+        if enable_public is None and 'enablePublic' in kwargs:
             enable_public = kwargs['enablePublic']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("cluster_id", cluster_id)
@@ -375,37 +385,37 @@ class _DataCenterState:
              status: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'dataCenterId' in kwargs:
+        if data_center_id is None and 'dataCenterId' in kwargs:
             data_center_id = kwargs['dataCenterId']
-        if 'dataCenterName' in kwargs:
+        if data_center_name is None and 'dataCenterName' in kwargs:
             data_center_name = kwargs['dataCenterName']
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'diskType' in kwargs:
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'enablePublic' in kwargs:
+        if enable_public is None and 'enablePublic' in kwargs:
             enable_public = kwargs['enablePublic']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'nodeCount' in kwargs:
+        if node_count is None and 'nodeCount' in kwargs:
             node_count = kwargs['nodeCount']
-        if 'payType' in kwargs:
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'publicPoints' in kwargs:
+        if public_points is None and 'publicPoints' in kwargs:
             public_points = kwargs['publicPoints']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if auto_renew is not None:
@@ -669,39 +679,6 @@ class DataCenter(pulumi.CustomResource):
         > **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
 
         ## Example Usage
-        ### Create a cassandra dataCenter
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_cluster = alicloud.cassandra.Cluster("defaultCluster",
-            cluster_name="cassandra-cluster-name-tf",
-            data_center_name="dc-1",
-            auto_renew=False,
-            instance_type="cassandra.c.large",
-            major_version="3.11",
-            node_count=2,
-            pay_type="PayAsYouGo",
-            vswitch_id="vsw-xxxx1",
-            disk_size=160,
-            disk_type="cloud_ssd",
-            maintain_start_time="18:00Z",
-            maintain_end_time="20:00Z",
-            ip_white="127.0.0.1")
-        default_data_center = alicloud.cassandra.DataCenter("defaultDataCenter",
-            cluster_id=default_cluster.id,
-            data_center_name="dc-2",
-            auto_renew=False,
-            instance_type="cassandra.c.large",
-            node_count=2,
-            pay_type="PayAsYouGo",
-            vswitch_id="vsw-xxxx2",
-            disk_size=160,
-            disk_type="cloud_ssd")
-        ```
-
-        This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
 
         ## Import
 
@@ -750,39 +727,6 @@ class DataCenter(pulumi.CustomResource):
         > **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
 
         ## Example Usage
-        ### Create a cassandra dataCenter
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_cluster = alicloud.cassandra.Cluster("defaultCluster",
-            cluster_name="cassandra-cluster-name-tf",
-            data_center_name="dc-1",
-            auto_renew=False,
-            instance_type="cassandra.c.large",
-            major_version="3.11",
-            node_count=2,
-            pay_type="PayAsYouGo",
-            vswitch_id="vsw-xxxx1",
-            disk_size=160,
-            disk_type="cloud_ssd",
-            maintain_start_time="18:00Z",
-            maintain_end_time="20:00Z",
-            ip_white="127.0.0.1")
-        default_data_center = alicloud.cassandra.DataCenter("defaultDataCenter",
-            cluster_id=default_cluster.id,
-            data_center_name="dc-2",
-            auto_renew=False,
-            instance_type="cassandra.c.large",
-            node_count=2,
-            pay_type="PayAsYouGo",
-            vswitch_id="vsw-xxxx2",
-            disk_size=160,
-            disk_type="cloud_ssd")
-        ```
-
-        This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
 
         ## Import
 

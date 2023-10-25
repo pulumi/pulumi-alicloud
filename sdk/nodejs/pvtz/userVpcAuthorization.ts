@@ -9,22 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.138.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const authorizedUserId = config.getNumber("authorizedUserId") || 123456789;
- * const example = new alicloud.pvtz.UserVpcAuthorization("example", {
- *     authorizedUserId: authorizedUserId,
- *     authChannel: "RESOURCE_DIRECTORY",
- * });
- * ```
- *
  * ## Import
  *
  * Private Zone User Vpc Authorization can be imported using the id, e.g.

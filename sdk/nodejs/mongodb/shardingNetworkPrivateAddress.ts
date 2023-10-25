@@ -13,62 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.157.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.mongodb.getZones({});
- * const index = defaultZones.then(defaultZones => defaultZones.zones).length.then(length => length - 1);
- * const zoneId = defaultZones.then(defaultZones => defaultZones.zones[index].id);
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "172.17.3.0/24",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vswitchName: name,
- *     cidrBlock: "172.17.3.0/24",
- *     vpcId: defaultNetwork.id,
- *     zoneId: zoneId,
- * });
- * const defaultShardingInstance = new alicloud.mongodb.ShardingInstance("defaultShardingInstance", {
- *     zoneId: zoneId,
- *     vswitchId: defaultSwitch.id,
- *     engineVersion: "4.2",
- *     shardLists: [
- *         {
- *             nodeClass: "dds.shard.mid",
- *             nodeStorage: 10,
- *         },
- *         {
- *             nodeClass: "dds.shard.standard",
- *             nodeStorage: 20,
- *             readonlyReplicas: 1,
- *         },
- *     ],
- *     mongoLists: [
- *         {
- *             nodeClass: "dds.mongos.mid",
- *         },
- *         {
- *             nodeClass: "dds.mongos.mid",
- *         },
- *     ],
- * });
- * const defaultShardingNetworkPrivateAddress = new alicloud.mongodb.ShardingNetworkPrivateAddress("defaultShardingNetworkPrivateAddress", {
- *     dbInstanceId: defaultShardingInstance.id,
- *     nodeId: defaultShardingInstance.shardLists.apply(shardLists => shardLists[0].nodeId),
- *     zoneId: defaultShardingInstance.zoneId,
- *     accountName: "example",
- *     accountPassword: "Example_123",
- * });
- * ```
- *
  * ## Import
  *
  * MongoDB Sharding Network Private Address can be imported using the id, e.g.

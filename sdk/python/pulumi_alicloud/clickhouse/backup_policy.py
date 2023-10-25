@@ -35,19 +35,25 @@ class BackupPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_cluster_id: pulumi.Input[str],
-             preferred_backup_periods: pulumi.Input[Sequence[pulumi.Input[str]]],
-             preferred_backup_time: pulumi.Input[str],
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
+             preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             preferred_backup_time: Optional[pulumi.Input[str]] = None,
              backup_retention_period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbClusterId' in kwargs:
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'preferredBackupPeriods' in kwargs:
+        if db_cluster_id is None:
+            raise TypeError("Missing 'db_cluster_id' argument")
+        if preferred_backup_periods is None and 'preferredBackupPeriods' in kwargs:
             preferred_backup_periods = kwargs['preferredBackupPeriods']
-        if 'preferredBackupTime' in kwargs:
+        if preferred_backup_periods is None:
+            raise TypeError("Missing 'preferred_backup_periods' argument")
+        if preferred_backup_time is None and 'preferredBackupTime' in kwargs:
             preferred_backup_time = kwargs['preferredBackupTime']
-        if 'backupRetentionPeriod' in kwargs:
+        if preferred_backup_time is None:
+            raise TypeError("Missing 'preferred_backup_time' argument")
+        if backup_retention_period is None and 'backupRetentionPeriod' in kwargs:
             backup_retention_period = kwargs['backupRetentionPeriod']
 
         _setter("db_cluster_id", db_cluster_id)
@@ -137,15 +143,15 @@ class _BackupPolicyState:
              preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              preferred_backup_time: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupRetentionPeriod' in kwargs:
+        if backup_retention_period is None and 'backupRetentionPeriod' in kwargs:
             backup_retention_period = kwargs['backupRetentionPeriod']
-        if 'dbClusterId' in kwargs:
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'preferredBackupPeriods' in kwargs:
+        if preferred_backup_periods is None and 'preferredBackupPeriods' in kwargs:
             preferred_backup_periods = kwargs['preferredBackupPeriods']
-        if 'preferredBackupTime' in kwargs:
+        if preferred_backup_time is None and 'preferredBackupTime' in kwargs:
             preferred_backup_time = kwargs['preferredBackupTime']
 
         if backup_retention_period is not None:
@@ -239,49 +245,6 @@ class BackupPolicy(pulumi.CustomResource):
 
         > **NOTE:** Only the cloud database ClickHouse cluster version `20.3` supports data backup.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.clickhouse.get_regions(current=True)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_regions.regions[0].zone_ids[0].zone_id)
-        default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
-            db_cluster_version="22.8.5.29",
-            status="Running",
-            category="Basic",
-            db_cluster_class="S8",
-            db_cluster_network_type="vpc",
-            db_node_group_count=1,
-            payment_type="PayAsYouGo",
-            db_node_storage="500",
-            storage_type="cloud_essd",
-            vswitch_id=default_switch.id,
-            vpc_id=default_network.id)
-        default_backup_policy = alicloud.clickhouse.BackupPolicy("defaultBackupPolicy",
-            db_cluster_id=default_db_cluster.id,
-            preferred_backup_periods=[
-                "Monday",
-                "Friday",
-            ],
-            preferred_backup_time="00:00Z-01:00Z",
-            backup_retention_period=7)
-        ```
-
         ## Import
 
         Click House Backup Policy can be imported using the id, e.g.
@@ -311,49 +274,6 @@ class BackupPolicy(pulumi.CustomResource):
         > **NOTE:** Available since v1.147.0.
 
         > **NOTE:** Only the cloud database ClickHouse cluster version `20.3` supports data backup.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.clickhouse.get_regions(current=True)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_regions.regions[0].zone_ids[0].zone_id)
-        default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
-            db_cluster_version="22.8.5.29",
-            status="Running",
-            category="Basic",
-            db_cluster_class="S8",
-            db_cluster_network_type="vpc",
-            db_node_group_count=1,
-            payment_type="PayAsYouGo",
-            db_node_storage="500",
-            storage_type="cloud_essd",
-            vswitch_id=default_switch.id,
-            vpc_id=default_network.id)
-        default_backup_policy = alicloud.clickhouse.BackupPolicy("defaultBackupPolicy",
-            db_cluster_id=default_db_cluster.id,
-            preferred_backup_periods=[
-                "Monday",
-                "Friday",
-            ],
-            preferred_backup_time="00:00Z-01:00Z",
-            backup_retention_period=7)
-        ```
 
         ## Import
 

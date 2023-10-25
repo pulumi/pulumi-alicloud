@@ -16,51 +16,6 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// &gt; **NOTE:** Available since v1.174.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultZones = AliCloud.Eds.GetZones.Invoke();
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "172.16.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
-    ///         VswitchName = name,
-    ///     });
-    /// 
-    ///     var defaultRamDirectory = new AliCloud.Eds.RamDirectory("defaultRamDirectory", new()
-    ///     {
-    ///         DesktopAccessType = "INTERNET",
-    ///         EnableAdminAccess = true,
-    ///         EnableInternetAccess = true,
-    ///         RamDirectoryName = name,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             defaultSwitch.Id,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ECD Ram Directory can be imported using the id, e.g.

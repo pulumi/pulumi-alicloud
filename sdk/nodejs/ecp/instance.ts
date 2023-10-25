@@ -12,46 +12,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.158.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.ecp.getZones({});
- * const defaultInstanceTypes = alicloud.ecp.getInstanceTypes({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "10.0.0.0/8",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vswitchName: name,
- *     cidrBlock: "10.1.0.0/16",
- *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneId),
- * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultKeyPair = new alicloud.ecp.KeyPair("defaultKeyPair", {
- *     keyPairName: name,
- *     publicKeyBody: "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
- * });
- * const defaultInstance = new alicloud.ecp.Instance("defaultInstance", {
- *     instanceName: name,
- *     description: name,
- *     keyPairName: defaultKeyPair.keyPairName,
- *     securityGroupId: defaultSecurityGroup.id,
- *     vswitchId: defaultSwitch.id,
- *     imageId: "android_9_0_0_release_2851157_20211201.vhd",
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[1]?.instanceType),
- *     vncPassword: "Ecp123",
- *     paymentType: "PayAsYouGo",
- * });
- * ```
- *
  * ## Import
  *
  * Elastic Cloud Phone (ECP) Instance can be imported using the id, e.g.

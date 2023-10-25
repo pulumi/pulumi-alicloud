@@ -69,7 +69,7 @@ class CommonBandwithPackageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: pulumi.Input[str],
+             bandwidth: Optional[pulumi.Input[str]] = None,
              bandwidth_package_name: Optional[pulumi.Input[str]] = None,
              deletion_protection: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -82,17 +82,19 @@ class CommonBandwithPackageArgs:
              security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bandwidthPackageName' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if bandwidth_package_name is None and 'bandwidthPackageName' in kwargs:
             bandwidth_package_name = kwargs['bandwidthPackageName']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityProtectionTypes' in kwargs:
+        if security_protection_types is None and 'securityProtectionTypes' in kwargs:
             security_protection_types = kwargs['securityProtectionTypes']
 
         _setter("bandwidth", bandwidth)
@@ -374,21 +376,21 @@ class _CommonBandwithPackageState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bandwidthPackageName' in kwargs:
+        if bandwidth_package_name is None and 'bandwidthPackageName' in kwargs:
             bandwidth_package_name = kwargs['bandwidthPackageName']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityProtectionTypes' in kwargs:
+        if security_protection_types is None and 'securityProtectionTypes' in kwargs:
             security_protection_types = kwargs['securityProtectionTypes']
 
         if bandwidth is not None:

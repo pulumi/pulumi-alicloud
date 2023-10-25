@@ -16,23 +16,6 @@ namespace Pulumi.AliCloud.SecurityCenter
     /// 
     /// &gt; **NOTE:** Available in v1.142.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var serviceLinkedRole = new AliCloud.SecurityCenter.ServiceLinkedRole("serviceLinkedRole");
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// SecurityCenter service-linked roles(SLR) can be imported using the id, e.g.

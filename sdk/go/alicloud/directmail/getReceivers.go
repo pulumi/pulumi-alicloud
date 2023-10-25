@@ -15,38 +15,6 @@ import (
 // This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.125.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := directmail.LookupReceivers(ctx, &directmail.LookupReceiversArgs{
-//				Ids: []string{
-//					"ca73b1e4fb0df7c935a5097a****",
-//				},
-//				NameRegex: pulumi.StringRef("the_resource_name"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstDirectMailReceiversId", example.Receiverses[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupReceivers(ctx *pulumi.Context, args *LookupReceiversArgs, opts ...pulumi.InvokeOption) (*LookupReceiversResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupReceiversResult

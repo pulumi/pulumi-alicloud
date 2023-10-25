@@ -82,10 +82,10 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image_id: pulumi.Input[str],
-             instance_type: pulumi.Input[str],
-             security_group_id: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             image_id: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              auto_pay: Optional[pulumi.Input[bool]] = None,
              auto_renew: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -99,31 +99,39 @@ class InstanceArgs:
              resolution: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vnc_password: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceType' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'securityGroupId' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vswitchId' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'autoPay' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if auto_pay is None and 'autoPay' in kwargs:
             auto_pay = kwargs['autoPay']
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'eipBandwidth' in kwargs:
+        if eip_bandwidth is None and 'eipBandwidth' in kwargs:
             eip_bandwidth = kwargs['eipBandwidth']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'vncPassword' in kwargs:
+        if vnc_password is None and 'vncPassword' in kwargs:
             vnc_password = kwargs['vncPassword']
 
         _setter("image_id", image_id)
@@ -458,31 +466,31 @@ class _InstanceState:
              status: Optional[pulumi.Input[str]] = None,
              vnc_password: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoPay' in kwargs:
+        if auto_pay is None and 'autoPay' in kwargs:
             auto_pay = kwargs['autoPay']
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'eipBandwidth' in kwargs:
+        if eip_bandwidth is None and 'eipBandwidth' in kwargs:
             eip_bandwidth = kwargs['eipBandwidth']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vncPassword' in kwargs:
+        if vnc_password is None and 'vncPassword' in kwargs:
             vnc_password = kwargs['vncPassword']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if auto_pay is not None:
@@ -764,44 +772,6 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.158.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.ecp.get_zones()
-        default_instance_types = alicloud.ecp.get_instance_types()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.1.0.0/16",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].zone_id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_key_pair = alicloud.ecp.KeyPair("defaultKeyPair",
-            key_pair_name=name,
-            public_key_body="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
-        default_instance = alicloud.ecp.Instance("defaultInstance",
-            instance_name=name,
-            description=name,
-            key_pair_name=default_key_pair.key_pair_name,
-            security_group_id=default_security_group.id,
-            vswitch_id=default_switch.id,
-            image_id="android_9_0_0_release_2851157_20211201.vhd",
-            instance_type=default_instance_types.instance_types[1].instance_type,
-            vnc_password="Ecp123",
-            payment_type="PayAsYouGo")
-        ```
-
         ## Import
 
         Elastic Cloud Phone (ECP) Instance can be imported using the id, e.g.
@@ -851,44 +821,6 @@ class Instance(pulumi.CustomResource):
         see [What is Instance](https://www.alibabacloud.com/help/en/cloudphone/latest/api-cloudphone-2020-12-30-runinstances).
 
         > **NOTE:** Available since v1.158.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.ecp.get_zones()
-        default_instance_types = alicloud.ecp.get_instance_types()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.1.0.0/16",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].zone_id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_key_pair = alicloud.ecp.KeyPair("defaultKeyPair",
-            key_pair_name=name,
-            public_key_body="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
-        default_instance = alicloud.ecp.Instance("defaultInstance",
-            instance_name=name,
-            description=name,
-            key_pair_name=default_key_pair.key_pair_name,
-            security_group_id=default_security_group.id,
-            vswitch_id=default_switch.id,
-            image_id="android_9_0_0_release_2851157_20211201.vhd",
-            instance_type=default_instance_types.instance_types[1].instance_type,
-            vnc_password="Ecp123",
-            payment_type="PayAsYouGo")
-        ```
 
         ## Import
 

@@ -15,38 +15,6 @@ namespace Pulumi.AliCloud.DirectMail
         /// This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.125.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.DirectMail.GetReceivers.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "ca73b1e4fb0df7c935a5097a****",
-        ///         },
-        ///         NameRegex = "the_resource_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstDirectMailReceiversId"] = example.Apply(getReceiversResult =&gt; getReceiversResult.Receiverses[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetReceiversResult> InvokeAsync(GetReceiversArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReceiversResult>("alicloud:directmail/getReceivers:getReceivers", args ?? new GetReceiversArgs(), options.WithDefaults());
@@ -55,38 +23,6 @@ namespace Pulumi.AliCloud.DirectMail
         /// This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.125.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.DirectMail.GetReceivers.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "ca73b1e4fb0df7c935a5097a****",
-        ///         },
-        ///         NameRegex = "the_resource_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstDirectMailReceiversId"] = example.Apply(getReceiversResult =&gt; getReceiversResult.Receiverses[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetReceiversResult> Invoke(GetReceiversInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReceiversResult>("alicloud:directmail/getReceivers:getReceivers", args ?? new GetReceiversInvokeArgs(), options.WithDefaults());

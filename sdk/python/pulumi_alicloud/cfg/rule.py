@@ -81,10 +81,10 @@ class RuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             risk_level: pulumi.Input[int],
-             rule_name: pulumi.Input[str],
-             source_identifier: pulumi.Input[str],
-             source_owner: pulumi.Input[str],
+             risk_level: Optional[pulumi.Input[int]] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
+             source_identifier: Optional[pulumi.Input[str]] = None,
+             source_owner: Optional[pulumi.Input[str]] = None,
              config_rule_trigger_types: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
@@ -99,39 +99,47 @@ class RuleArgs:
              status: Optional[pulumi.Input[str]] = None,
              tag_key_scope: Optional[pulumi.Input[str]] = None,
              tag_value_scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'riskLevel' in kwargs:
+        if risk_level is None and 'riskLevel' in kwargs:
             risk_level = kwargs['riskLevel']
-        if 'ruleName' in kwargs:
+        if risk_level is None:
+            raise TypeError("Missing 'risk_level' argument")
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
-        if 'sourceIdentifier' in kwargs:
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
+        if source_identifier is None and 'sourceIdentifier' in kwargs:
             source_identifier = kwargs['sourceIdentifier']
-        if 'sourceOwner' in kwargs:
+        if source_identifier is None:
+            raise TypeError("Missing 'source_identifier' argument")
+        if source_owner is None and 'sourceOwner' in kwargs:
             source_owner = kwargs['sourceOwner']
-        if 'configRuleTriggerTypes' in kwargs:
+        if source_owner is None:
+            raise TypeError("Missing 'source_owner' argument")
+        if config_rule_trigger_types is None and 'configRuleTriggerTypes' in kwargs:
             config_rule_trigger_types = kwargs['configRuleTriggerTypes']
-        if 'excludeResourceIdsScope' in kwargs:
+        if exclude_resource_ids_scope is None and 'excludeResourceIdsScope' in kwargs:
             exclude_resource_ids_scope = kwargs['excludeResourceIdsScope']
-        if 'inputParameters' in kwargs:
+        if input_parameters is None and 'inputParameters' in kwargs:
             input_parameters = kwargs['inputParameters']
-        if 'maximumExecutionFrequency' in kwargs:
+        if maximum_execution_frequency is None and 'maximumExecutionFrequency' in kwargs:
             maximum_execution_frequency = kwargs['maximumExecutionFrequency']
-        if 'regionIdsScope' in kwargs:
+        if region_ids_scope is None and 'regionIdsScope' in kwargs:
             region_ids_scope = kwargs['regionIdsScope']
-        if 'resourceGroupIdsScope' in kwargs:
+        if resource_group_ids_scope is None and 'resourceGroupIdsScope' in kwargs:
             resource_group_ids_scope = kwargs['resourceGroupIdsScope']
-        if 'resourceTypesScopes' in kwargs:
+        if resource_types_scopes is None and 'resourceTypesScopes' in kwargs:
             resource_types_scopes = kwargs['resourceTypesScopes']
-        if 'scopeComplianceResourceTypes' in kwargs:
+        if scope_compliance_resource_types is None and 'scopeComplianceResourceTypes' in kwargs:
             scope_compliance_resource_types = kwargs['scopeComplianceResourceTypes']
-        if 'sourceDetailMessageType' in kwargs:
+        if source_detail_message_type is None and 'sourceDetailMessageType' in kwargs:
             source_detail_message_type = kwargs['sourceDetailMessageType']
-        if 'sourceMaximumExecutionFrequency' in kwargs:
+        if source_maximum_execution_frequency is None and 'sourceMaximumExecutionFrequency' in kwargs:
             source_maximum_execution_frequency = kwargs['sourceMaximumExecutionFrequency']
-        if 'tagKeyScope' in kwargs:
+        if tag_key_scope is None and 'tagKeyScope' in kwargs:
             tag_key_scope = kwargs['tagKeyScope']
-        if 'tagValueScope' in kwargs:
+        if tag_value_scope is None and 'tagValueScope' in kwargs:
             tag_value_scope = kwargs['tagValueScope']
 
         _setter("risk_level", risk_level)
@@ -522,53 +530,53 @@ class _RuleState:
              status: Optional[pulumi.Input[str]] = None,
              tag_key_scope: Optional[pulumi.Input[str]] = None,
              tag_value_scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'compliancePackId' in kwargs:
+        if compliance_pack_id is None and 'compliancePackId' in kwargs:
             compliance_pack_id = kwargs['compliancePackId']
-        if 'configRuleArn' in kwargs:
+        if config_rule_arn is None and 'configRuleArn' in kwargs:
             config_rule_arn = kwargs['configRuleArn']
-        if 'configRuleId' in kwargs:
+        if config_rule_id is None and 'configRuleId' in kwargs:
             config_rule_id = kwargs['configRuleId']
-        if 'configRuleTriggerTypes' in kwargs:
+        if config_rule_trigger_types is None and 'configRuleTriggerTypes' in kwargs:
             config_rule_trigger_types = kwargs['configRuleTriggerTypes']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'eventSource' in kwargs:
+        if event_source is None and 'eventSource' in kwargs:
             event_source = kwargs['eventSource']
-        if 'excludeResourceIdsScope' in kwargs:
+        if exclude_resource_ids_scope is None and 'excludeResourceIdsScope' in kwargs:
             exclude_resource_ids_scope = kwargs['excludeResourceIdsScope']
-        if 'inputParameters' in kwargs:
+        if input_parameters is None and 'inputParameters' in kwargs:
             input_parameters = kwargs['inputParameters']
-        if 'maximumExecutionFrequency' in kwargs:
+        if maximum_execution_frequency is None and 'maximumExecutionFrequency' in kwargs:
             maximum_execution_frequency = kwargs['maximumExecutionFrequency']
-        if 'modifiedTimestamp' in kwargs:
+        if modified_timestamp is None and 'modifiedTimestamp' in kwargs:
             modified_timestamp = kwargs['modifiedTimestamp']
-        if 'regionIdsScope' in kwargs:
+        if region_ids_scope is None and 'regionIdsScope' in kwargs:
             region_ids_scope = kwargs['regionIdsScope']
-        if 'resourceGroupIdsScope' in kwargs:
+        if resource_group_ids_scope is None and 'resourceGroupIdsScope' in kwargs:
             resource_group_ids_scope = kwargs['resourceGroupIdsScope']
-        if 'resourceTypesScopes' in kwargs:
+        if resource_types_scopes is None and 'resourceTypesScopes' in kwargs:
             resource_types_scopes = kwargs['resourceTypesScopes']
-        if 'riskLevel' in kwargs:
+        if risk_level is None and 'riskLevel' in kwargs:
             risk_level = kwargs['riskLevel']
-        if 'ruleName' in kwargs:
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
-        if 'scopeComplianceResourceTypes' in kwargs:
+        if scope_compliance_resource_types is None and 'scopeComplianceResourceTypes' in kwargs:
             scope_compliance_resource_types = kwargs['scopeComplianceResourceTypes']
-        if 'sourceDetailMessageType' in kwargs:
+        if source_detail_message_type is None and 'sourceDetailMessageType' in kwargs:
             source_detail_message_type = kwargs['sourceDetailMessageType']
-        if 'sourceIdentifier' in kwargs:
+        if source_identifier is None and 'sourceIdentifier' in kwargs:
             source_identifier = kwargs['sourceIdentifier']
-        if 'sourceMaximumExecutionFrequency' in kwargs:
+        if source_maximum_execution_frequency is None and 'sourceMaximumExecutionFrequency' in kwargs:
             source_maximum_execution_frequency = kwargs['sourceMaximumExecutionFrequency']
-        if 'sourceOwner' in kwargs:
+        if source_owner is None and 'sourceOwner' in kwargs:
             source_owner = kwargs['sourceOwner']
-        if 'tagKeyScope' in kwargs:
+        if tag_key_scope is None and 'tagKeyScope' in kwargs:
             tag_key_scope = kwargs['tagKeyScope']
-        if 'tagValueScope' in kwargs:
+        if tag_value_scope is None and 'tagValueScope' in kwargs:
             tag_value_scope = kwargs['tagValueScope']
 
         if account_id is not None:
@@ -988,34 +996,6 @@ class Rule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.204.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_rule = alicloud.cfg.Rule("defaultRule",
-            description="If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant.",
-            source_owner="ALIYUN",
-            source_identifier="contains-tag",
-            risk_level=1,
-            tag_value_scope="example-value",
-            tag_key_scope="example-key",
-            exclude_resource_ids_scope="example-resource_id",
-            region_ids_scope="cn-hangzhou",
-            config_rule_trigger_types="ConfigurationItemChangeNotification",
-            resource_group_ids_scope=default_resource_groups.ids[0],
-            resource_types_scopes=["ACS::RDS::DBInstance"],
-            rule_name="contains-tag",
-            input_parameters={
-                "key": "example",
-                "value": "example",
-            })
-        ```
-
         ## Import
 
         Config Rule can be imported using the id, e.g.
@@ -1059,34 +1039,6 @@ class Rule(pulumi.CustomResource):
         For information about Config Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createconfigrule).
 
         > **NOTE:** Available since v1.204.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_rule = alicloud.cfg.Rule("defaultRule",
-            description="If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant.",
-            source_owner="ALIYUN",
-            source_identifier="contains-tag",
-            risk_level=1,
-            tag_value_scope="example-value",
-            tag_key_scope="example-key",
-            exclude_resource_ids_scope="example-resource_id",
-            region_ids_scope="cn-hangzhou",
-            config_rule_trigger_types="ConfigurationItemChangeNotification",
-            resource_group_ids_scope=default_resource_groups.ids[0],
-            resource_types_scopes=["ACS::RDS::DBInstance"],
-            rule_name="contains-tag",
-            input_parameters={
-                "key": "example",
-                "value": "example",
-            })
-        ```
 
         ## Import
 

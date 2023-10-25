@@ -26,69 +26,6 @@ import (
 // > **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
 //
 // ## Example Usage
-// ### Create a hbase instance
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbase"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultZones, err := hbase.GetZones(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = hbase.NewInstance(ctx, "defaultInstance", &hbase.InstanceArgs{
-//				ZoneId:               *pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchId:            *pulumi.String(defaultSwitches.Ids[0]),
-//				VpcId:                *pulumi.String(defaultNetworks.Ids[0]),
-//				Engine:               pulumi.String("hbaseue"),
-//				EngineVersion:        pulumi.String("2.0"),
-//				MasterInstanceType:   pulumi.String("hbase.sn2.2xlarge"),
-//				CoreInstanceType:     pulumi.String("hbase.sn2.2xlarge"),
-//				CoreInstanceQuantity: pulumi.Int(2),
-//				CoreDiskType:         pulumi.String("cloud_efficiency"),
-//				CoreDiskSize:         pulumi.Int(400),
-//				PayType:              pulumi.String("PostPaid"),
-//				ColdStorageSize:      pulumi.Int(0),
-//				DeletionProtection:   pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// this is a example for class netType instance. you can find more detail with the examples/hbase dir.
 //
 // ## Import
 //

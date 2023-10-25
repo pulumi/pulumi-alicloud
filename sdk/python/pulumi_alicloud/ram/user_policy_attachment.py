@@ -32,17 +32,23 @@ class UserPolicyAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_name: pulumi.Input[str],
-             policy_type: pulumi.Input[str],
-             user_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             policy_name: Optional[pulumi.Input[str]] = None,
+             policy_type: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'policyName' in kwargs:
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'policyType' in kwargs:
+        if policy_name is None:
+            raise TypeError("Missing 'policy_name' argument")
+        if policy_type is None and 'policyType' in kwargs:
             policy_type = kwargs['policyType']
-        if 'userName' in kwargs:
+        if policy_type is None:
+            raise TypeError("Missing 'policy_type' argument")
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
 
         _setter("policy_name", policy_name)
         _setter("policy_type", policy_type)
@@ -109,13 +115,13 @@ class _UserPolicyAttachmentState:
              policy_name: Optional[pulumi.Input[str]] = None,
              policy_type: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'policyName' in kwargs:
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'policyType' in kwargs:
+        if policy_type is None and 'policyType' in kwargs:
             policy_type = kwargs['policyType']
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
 
         if policy_name is not None:
@@ -176,43 +182,6 @@ class UserPolicyAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a RAM User Policy attachment.
-        user = alicloud.ram.User("user",
-            display_name="user_display_name",
-            mobile="86-18688888888",
-            email="hello.uuu@aaa.com",
-            comments="yoyoyo")
-        policy = alicloud.ram.Policy("policy",
-            document=\"\"\"  {
-            "Statement": [
-              {
-                "Action": [
-                  "oss:ListObjects",
-                  "oss:GetObject"
-                ],
-                "Effect": "Allow",
-                "Resource": [
-                  "acs:oss:*:*:mybucket",
-                  "acs:oss:*:*:mybucket/*"
-                ]
-              }
-            ],
-              "Version": "1"
-          }
-        \"\"\",
-            description="this is a policy test")
-        attach = alicloud.ram.UserPolicyAttachment("attach",
-            policy_name=policy.name,
-            policy_type=policy.type,
-            user_name=user.name)
-        ```
-
         ## Import
 
         RAM User Policy attachment can be imported using the id, e.g.
@@ -237,43 +206,6 @@ class UserPolicyAttachment(pulumi.CustomResource):
         Provides a RAM User Policy attachment resource.
 
         > **NOTE:** Available since v1.0.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a RAM User Policy attachment.
-        user = alicloud.ram.User("user",
-            display_name="user_display_name",
-            mobile="86-18688888888",
-            email="hello.uuu@aaa.com",
-            comments="yoyoyo")
-        policy = alicloud.ram.Policy("policy",
-            document=\"\"\"  {
-            "Statement": [
-              {
-                "Action": [
-                  "oss:ListObjects",
-                  "oss:GetObject"
-                ],
-                "Effect": "Allow",
-                "Resource": [
-                  "acs:oss:*:*:mybucket",
-                  "acs:oss:*:*:mybucket/*"
-                ]
-              }
-            ],
-              "Version": "1"
-          }
-        \"\"\",
-            description="this is a policy test")
-        attach = alicloud.ram.UserPolicyAttachment("attach",
-            policy_name=policy.name,
-            policy_type=policy.type,
-            user_name=user.name)
-        ```
 
         ## Import
 

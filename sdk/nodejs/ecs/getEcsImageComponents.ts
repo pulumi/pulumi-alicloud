@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ecs Image Components of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.159.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ecs.getEcsImageComponents({
- *     ids: ["example_id"],
- * });
- * export const ecsImageComponentId1 = ids.then(ids => ids.components?.[0]?.id);
- * const nameRegex = alicloud.ecs.getEcsImageComponents({
- *     nameRegex: "^my-ImageComponent",
- * });
- * export const ecsImageComponentId2 = nameRegex.then(nameRegex => nameRegex.components?.[0]?.id);
- * ```
  */
 export function getEcsImageComponents(args?: GetEcsImageComponentsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsImageComponentsResult> {
     args = args || {};
@@ -100,24 +82,6 @@ export interface GetEcsImageComponentsResult {
  * This data source provides the Ecs Image Components of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.159.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ecs.getEcsImageComponents({
- *     ids: ["example_id"],
- * });
- * export const ecsImageComponentId1 = ids.then(ids => ids.components?.[0]?.id);
- * const nameRegex = alicloud.ecs.getEcsImageComponents({
- *     nameRegex: "^my-ImageComponent",
- * });
- * export const ecsImageComponentId2 = nameRegex.then(nameRegex => nameRegex.components?.[0]?.id);
- * ```
  */
 export function getEcsImageComponentsOutput(args?: GetEcsImageComponentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsImageComponentsResult> {
     return pulumi.output(args).apply((a: any) => getEcsImageComponents(a, opts))

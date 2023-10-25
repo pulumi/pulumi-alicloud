@@ -67,39 +67,65 @@ class GetMscSubContactsContactResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_uid: str,
-             contact_id: str,
-             contact_name: str,
-             email: str,
-             id: str,
-             is_account: bool,
-             is_obsolete: bool,
-             is_verified_email: bool,
-             is_verified_mobile: bool,
-             last_email_verification_time_stamp: str,
-             last_mobile_verification_time_stamp: str,
-             mobile: str,
-             position: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_uid: Optional[str] = None,
+             contact_id: Optional[str] = None,
+             contact_name: Optional[str] = None,
+             email: Optional[str] = None,
+             id: Optional[str] = None,
+             is_account: Optional[bool] = None,
+             is_obsolete: Optional[bool] = None,
+             is_verified_email: Optional[bool] = None,
+             is_verified_mobile: Optional[bool] = None,
+             last_email_verification_time_stamp: Optional[str] = None,
+             last_mobile_verification_time_stamp: Optional[str] = None,
+             mobile: Optional[str] = None,
+             position: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountUid' in kwargs:
+        if account_uid is None and 'accountUid' in kwargs:
             account_uid = kwargs['accountUid']
-        if 'contactId' in kwargs:
+        if account_uid is None:
+            raise TypeError("Missing 'account_uid' argument")
+        if contact_id is None and 'contactId' in kwargs:
             contact_id = kwargs['contactId']
-        if 'contactName' in kwargs:
+        if contact_id is None:
+            raise TypeError("Missing 'contact_id' argument")
+        if contact_name is None and 'contactName' in kwargs:
             contact_name = kwargs['contactName']
-        if 'isAccount' in kwargs:
+        if contact_name is None:
+            raise TypeError("Missing 'contact_name' argument")
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_account is None and 'isAccount' in kwargs:
             is_account = kwargs['isAccount']
-        if 'isObsolete' in kwargs:
+        if is_account is None:
+            raise TypeError("Missing 'is_account' argument")
+        if is_obsolete is None and 'isObsolete' in kwargs:
             is_obsolete = kwargs['isObsolete']
-        if 'isVerifiedEmail' in kwargs:
+        if is_obsolete is None:
+            raise TypeError("Missing 'is_obsolete' argument")
+        if is_verified_email is None and 'isVerifiedEmail' in kwargs:
             is_verified_email = kwargs['isVerifiedEmail']
-        if 'isVerifiedMobile' in kwargs:
+        if is_verified_email is None:
+            raise TypeError("Missing 'is_verified_email' argument")
+        if is_verified_mobile is None and 'isVerifiedMobile' in kwargs:
             is_verified_mobile = kwargs['isVerifiedMobile']
-        if 'lastEmailVerificationTimeStamp' in kwargs:
+        if is_verified_mobile is None:
+            raise TypeError("Missing 'is_verified_mobile' argument")
+        if last_email_verification_time_stamp is None and 'lastEmailVerificationTimeStamp' in kwargs:
             last_email_verification_time_stamp = kwargs['lastEmailVerificationTimeStamp']
-        if 'lastMobileVerificationTimeStamp' in kwargs:
+        if last_email_verification_time_stamp is None:
+            raise TypeError("Missing 'last_email_verification_time_stamp' argument")
+        if last_mobile_verification_time_stamp is None and 'lastMobileVerificationTimeStamp' in kwargs:
             last_mobile_verification_time_stamp = kwargs['lastMobileVerificationTimeStamp']
+        if last_mobile_verification_time_stamp is None:
+            raise TypeError("Missing 'last_mobile_verification_time_stamp' argument")
+        if mobile is None:
+            raise TypeError("Missing 'mobile' argument")
+        if position is None:
+            raise TypeError("Missing 'position' argument")
 
         _setter("account_uid", account_uid)
         _setter("contact_id", contact_id)
@@ -267,38 +293,62 @@ class GetMscSubSubscriptionsSubscriptionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             channel: str,
-             contact_ids: Sequence[int],
-             description: str,
-             email_status: int,
-             id: str,
-             item_id: str,
-             item_name: str,
-             pmsg_status: int,
-             sms_status: int,
-             tts_status: int,
-             webhook_ids: Sequence[int],
-             webhook_status: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             channel: Optional[str] = None,
+             contact_ids: Optional[Sequence[int]] = None,
+             description: Optional[str] = None,
+             email_status: Optional[int] = None,
+             id: Optional[str] = None,
+             item_id: Optional[str] = None,
+             item_name: Optional[str] = None,
+             pmsg_status: Optional[int] = None,
+             sms_status: Optional[int] = None,
+             tts_status: Optional[int] = None,
+             webhook_ids: Optional[Sequence[int]] = None,
+             webhook_status: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contactIds' in kwargs:
+        if channel is None:
+            raise TypeError("Missing 'channel' argument")
+        if contact_ids is None and 'contactIds' in kwargs:
             contact_ids = kwargs['contactIds']
-        if 'emailStatus' in kwargs:
+        if contact_ids is None:
+            raise TypeError("Missing 'contact_ids' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if email_status is None and 'emailStatus' in kwargs:
             email_status = kwargs['emailStatus']
-        if 'itemId' in kwargs:
+        if email_status is None:
+            raise TypeError("Missing 'email_status' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if item_id is None and 'itemId' in kwargs:
             item_id = kwargs['itemId']
-        if 'itemName' in kwargs:
+        if item_id is None:
+            raise TypeError("Missing 'item_id' argument")
+        if item_name is None and 'itemName' in kwargs:
             item_name = kwargs['itemName']
-        if 'pmsgStatus' in kwargs:
+        if item_name is None:
+            raise TypeError("Missing 'item_name' argument")
+        if pmsg_status is None and 'pmsgStatus' in kwargs:
             pmsg_status = kwargs['pmsgStatus']
-        if 'smsStatus' in kwargs:
+        if pmsg_status is None:
+            raise TypeError("Missing 'pmsg_status' argument")
+        if sms_status is None and 'smsStatus' in kwargs:
             sms_status = kwargs['smsStatus']
-        if 'ttsStatus' in kwargs:
+        if sms_status is None:
+            raise TypeError("Missing 'sms_status' argument")
+        if tts_status is None and 'ttsStatus' in kwargs:
             tts_status = kwargs['ttsStatus']
-        if 'webhookIds' in kwargs:
+        if tts_status is None:
+            raise TypeError("Missing 'tts_status' argument")
+        if webhook_ids is None and 'webhookIds' in kwargs:
             webhook_ids = kwargs['webhookIds']
-        if 'webhookStatus' in kwargs:
+        if webhook_ids is None:
+            raise TypeError("Missing 'webhook_ids' argument")
+        if webhook_status is None and 'webhookStatus' in kwargs:
             webhook_status = kwargs['webhookStatus']
+        if webhook_status is None:
+            raise TypeError("Missing 'webhook_status' argument")
 
         _setter("channel", channel)
         _setter("contact_ids", contact_ids)
@@ -433,18 +483,26 @@ class GetMscSubWebhooksWebhookResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             server_url: str,
-             webhook_id: str,
-             webhook_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             server_url: Optional[str] = None,
+             webhook_id: Optional[str] = None,
+             webhook_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverUrl' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if server_url is None and 'serverUrl' in kwargs:
             server_url = kwargs['serverUrl']
-        if 'webhookId' in kwargs:
+        if server_url is None:
+            raise TypeError("Missing 'server_url' argument")
+        if webhook_id is None and 'webhookId' in kwargs:
             webhook_id = kwargs['webhookId']
-        if 'webhookName' in kwargs:
+        if webhook_id is None:
+            raise TypeError("Missing 'webhook_id' argument")
+        if webhook_name is None and 'webhookName' in kwargs:
             webhook_name = kwargs['webhookName']
+        if webhook_name is None:
+            raise TypeError("Missing 'webhook_name' argument")
 
         _setter("id", id)
         _setter("server_url", server_url)
@@ -503,15 +561,21 @@ class GetRegionsRegionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             local_name: str,
-             region_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             local_name: Optional[str] = None,
+             region_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'localName' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if local_name is None and 'localName' in kwargs:
             local_name = kwargs['localName']
-        if 'regionId' in kwargs:
+        if local_name is None:
+            raise TypeError("Missing 'local_name' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
 
         _setter("id", id)
         _setter("local_name", local_name)
@@ -575,27 +639,41 @@ class GetZonesZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             available_disk_categories: Sequence[str],
-             available_instance_types: Sequence[str],
-             available_resource_creations: Sequence[str],
-             id: str,
-             local_name: str,
-             multi_zone_ids: Sequence[str],
-             slb_slave_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             available_disk_categories: Optional[Sequence[str]] = None,
+             available_instance_types: Optional[Sequence[str]] = None,
+             available_resource_creations: Optional[Sequence[str]] = None,
+             id: Optional[str] = None,
+             local_name: Optional[str] = None,
+             multi_zone_ids: Optional[Sequence[str]] = None,
+             slb_slave_zone_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availableDiskCategories' in kwargs:
+        if available_disk_categories is None and 'availableDiskCategories' in kwargs:
             available_disk_categories = kwargs['availableDiskCategories']
-        if 'availableInstanceTypes' in kwargs:
+        if available_disk_categories is None:
+            raise TypeError("Missing 'available_disk_categories' argument")
+        if available_instance_types is None and 'availableInstanceTypes' in kwargs:
             available_instance_types = kwargs['availableInstanceTypes']
-        if 'availableResourceCreations' in kwargs:
+        if available_instance_types is None:
+            raise TypeError("Missing 'available_instance_types' argument")
+        if available_resource_creations is None and 'availableResourceCreations' in kwargs:
             available_resource_creations = kwargs['availableResourceCreations']
-        if 'localName' in kwargs:
+        if available_resource_creations is None:
+            raise TypeError("Missing 'available_resource_creations' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if local_name is None and 'localName' in kwargs:
             local_name = kwargs['localName']
-        if 'multiZoneIds' in kwargs:
+        if local_name is None:
+            raise TypeError("Missing 'local_name' argument")
+        if multi_zone_ids is None and 'multiZoneIds' in kwargs:
             multi_zone_ids = kwargs['multiZoneIds']
-        if 'slbSlaveZoneIds' in kwargs:
+        if multi_zone_ids is None:
+            raise TypeError("Missing 'multi_zone_ids' argument")
+        if slb_slave_zone_ids is None and 'slbSlaveZoneIds' in kwargs:
             slb_slave_zone_ids = kwargs['slbSlaveZoneIds']
+        if slb_slave_zone_ids is None:
+            raise TypeError("Missing 'slb_slave_zone_ids' argument")
 
         _setter("available_disk_categories", available_disk_categories)
         _setter("available_instance_types", available_instance_types)

@@ -19,47 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.136.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/opensearch"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "name"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := opensearch.NewAppGroup(ctx, "default", &opensearch.AppGroupArgs{
-//				AppGroupName: pulumi.String(name),
-//				PaymentType:  pulumi.String("PayAsYouGo"),
-//				Type:         pulumi.String("standard"),
-//				Quota: &opensearch.AppGroupQuotaArgs{
-//					DocSize:         pulumi.Int(1),
-//					ComputeResource: pulumi.Int(20),
-//					Spec:            pulumi.String("opensearch.share.common"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Open Search App Group can be imported using the id, e.g.

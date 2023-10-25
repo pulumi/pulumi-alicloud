@@ -116,16 +116,6 @@ def get_apps(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the apps of the current Alibaba Cloud user.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    data_apigatway = alicloud.apigateway.get_apps(output_file="outapps")
-    pulumi.export("firstAppId", data_apigatway.apps[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of app IDs.
     :param str name_regex: A regex string to filter apps by name.
@@ -158,16 +148,6 @@ def get_apps_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppsResult]:
     """
     This data source provides the apps of the current Alibaba Cloud user.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    data_apigatway = alicloud.apigateway.get_apps(output_file="outapps")
-    pulumi.export("firstAppId", data_apigatway.apps[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of app IDs.

@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.145.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.eci.getZones({});
- * export const firstEciZonesId = _default.then(_default => _default.zones?.[0]?.zoneIds?.[0]);
- * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
@@ -57,18 +45,6 @@ export interface GetZonesResult {
  * This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.145.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.eci.getZones({});
- * export const firstEciZonesId = _default.then(_default => _default.zones?.[0]?.zoneIds?.[0]);
- * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
     return pulumi.output(args).apply((a: any) => getZones(a, opts))

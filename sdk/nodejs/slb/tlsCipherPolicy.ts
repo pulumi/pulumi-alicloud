@@ -11,24 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.135.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.slb.TlsCipherPolicy("example", {
- *     ciphers: [
- *         "AES256-SHA256",
- *         "AES128-GCM-SHA256",
- *     ],
- *     tlsCipherPolicyName: "Test-example_value",
- *     tlsVersions: ["TLSv1.2"],
- * });
- * ```
- *
  * ## Import
  *
  * SLB Tls Cipher Policy can be imported using the id, e.g.

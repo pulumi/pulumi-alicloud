@@ -13,30 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.206.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const _default = new alicloud.quotas.TemplateQuota("default", {
- *     desireValue: 1001,
- *     dimensions: [{
- *         key: "regionId",
- *         value: "cn-hangzhou",
- *     }],
- *     envLanguage: "zh",
- *     noticeType: 3,
- *     productCode: "gws",
- *     quotaActionCode: "q_desktop-count",
- *     quotaCategory: "CommonQuota",
- * });
- * ```
- *
  * ## Import
  *
  * Quotas Template Quota can be imported using the id, e.g.

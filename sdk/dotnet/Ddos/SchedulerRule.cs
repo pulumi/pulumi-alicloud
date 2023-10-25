@@ -14,48 +14,6 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// &gt; **NOTE:** Available since v1.86.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var example = new AliCloud.Ddos.SchedulerRule("example", new()
-    ///     {
-    ///         RuleName = name,
-    ///         RuleType = 3,
-    ///         Rules = new[]
-    ///         {
-    ///             new AliCloud.Ddos.Inputs.SchedulerRuleRuleArgs
-    ///             {
-    ///                 Priority = 100,
-    ///                 RegionId = "cn-hangzhou",
-    ///                 Type = "A",
-    ///                 Value = "127.0.0.1",
-    ///                 ValueType = 3,
-    ///             },
-    ///             new AliCloud.Ddos.Inputs.SchedulerRuleRuleArgs
-    ///             {
-    ///                 Priority = 50,
-    ///                 RegionId = "cn-hangzhou",
-    ///                 Type = "A",
-    ///                 Value = "127.0.0.0",
-    ///                 ValueType = 1,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// DdosCoo Scheduler Rule can be imported using the id or the rule name, e.g.

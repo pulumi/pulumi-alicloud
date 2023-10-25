@@ -15,58 +15,6 @@ import (
 // This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.160.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := ecs.GetEcsSnapshotGroups(ctx, &ecs.GetEcsSnapshotGroupsArgs{
-//				Ids: []string{
-//					"example-id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ecsSnapshotGroupId1", ids.Groups[0].Id)
-//			nameRegex, err := ecs.GetEcsSnapshotGroups(ctx, &ecs.GetEcsSnapshotGroupsArgs{
-//				NameRegex: pulumi.StringRef("^my-SnapshotGroup"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ecsSnapshotGroupId2", nameRegex.Groups[0].Id)
-//			status, err := ecs.GetEcsSnapshotGroups(ctx, &ecs.GetEcsSnapshotGroupsArgs{
-//				Status: pulumi.StringRef("accomplished"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ecsSnapshotGroupId3", status.Groups[0].Id)
-//			instanceId, err := ecs.GetEcsSnapshotGroups(ctx, &ecs.GetEcsSnapshotGroupsArgs{
-//				InstanceId: pulumi.StringRef("example-instance_id"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ecsSnapshotGroupId4", instanceId.Groups[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetEcsSnapshotGroups(ctx *pulumi.Context, args *GetEcsSnapshotGroupsArgs, opts ...pulumi.InvokeOption) (*GetEcsSnapshotGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsSnapshotGroupsResult

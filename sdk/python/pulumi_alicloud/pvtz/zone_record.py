@@ -57,9 +57,9 @@ class ZoneRecordArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
-             value: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              remark: Optional[pulumi.Input[str]] = None,
@@ -68,13 +68,19 @@ class ZoneRecordArgs:
              status: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
              user_client_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'resourceRecord' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if resource_record is None and 'resourceRecord' in kwargs:
             resource_record = kwargs['resourceRecord']
-        if 'userClientIp' in kwargs:
+        if user_client_ip is None and 'userClientIp' in kwargs:
             user_client_ip = kwargs['userClientIp']
 
         _setter("type", type)
@@ -296,15 +302,15 @@ class _ZoneRecordState:
              user_client_ip: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'recordId' in kwargs:
+        if record_id is None and 'recordId' in kwargs:
             record_id = kwargs['recordId']
-        if 'resourceRecord' in kwargs:
+        if resource_record is None and 'resourceRecord' in kwargs:
             resource_record = kwargs['resourceRecord']
-        if 'userClientIp' in kwargs:
+        if user_client_ip is None and 'userClientIp' in kwargs:
             user_client_ip = kwargs['userClientIp']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if lang is not None:
@@ -500,23 +506,6 @@ class ZoneRecord(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        zone = alicloud.pvtz.Zone("zone")
-        foo = alicloud.pvtz.ZoneRecord("foo",
-            zone_id=zone.id,
-            rr="www",
-            type="CNAME",
-            value="bbb.test.com",
-            ttl=60)
-        ```
-
         ## Import
 
         Private Zone Record can be imported using the id, e.g.
@@ -547,23 +536,6 @@ class ZoneRecord(pulumi.CustomResource):
                  args: ZoneRecordArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        zone = alicloud.pvtz.Zone("zone")
-        foo = alicloud.pvtz.ZoneRecord("foo",
-            zone_id=zone.id,
-            rr="www",
-            type="CNAME",
-            value="bbb.test.com",
-            ttl=60)
-        ```
-
         ## Import
 
         Private Zone Record can be imported using the id, e.g.

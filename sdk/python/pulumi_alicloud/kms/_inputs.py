@@ -40,15 +40,15 @@ class InstanceBindVpcArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vpc_owner_id: Optional[pulumi.Input[int]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'regionId' in kwargs:
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vpcOwnerId' in kwargs:
+        if vpc_owner_id is None and 'vpcOwnerId' in kwargs:
             vpc_owner_id = kwargs['vpcOwnerId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if region_id is not None:

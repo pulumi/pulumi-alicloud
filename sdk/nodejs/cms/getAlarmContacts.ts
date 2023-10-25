@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * Provides a list of alarm contact owned by an Alibaba Cloud account.
  *
  * > **NOTE:** Available in v1.99.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * export = async () => {
- *     const example = await alicloud.cms.getAlarmContacts({
- *         ids: ["tf-testAccCmsAlarmContact"],
- *     });
- *     return {
- *         "first-contact": data.alicloud_cms_alarm_contacts["this"].contacts,
- *     };
- * }
- * ```
  */
 export function getAlarmContacts(args?: GetAlarmContactsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlarmContactsResult> {
     args = args || {};
@@ -99,24 +81,6 @@ export interface GetAlarmContactsResult {
  * Provides a list of alarm contact owned by an Alibaba Cloud account.
  *
  * > **NOTE:** Available in v1.99.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * export = async () => {
- *     const example = await alicloud.cms.getAlarmContacts({
- *         ids: ["tf-testAccCmsAlarmContact"],
- *     });
- *     return {
- *         "first-contact": data.alicloud_cms_alarm_contacts["this"].contacts,
- *     };
- * }
- * ```
  */
 export function getAlarmContactsOutput(args?: GetAlarmContactsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlarmContactsResult> {
     return pulumi.output(args).apply((a: any) => getAlarmContacts(a, opts))

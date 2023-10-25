@@ -15,38 +15,6 @@ import (
 // This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
 //
 // > **NOTE:** Available since v1.196.0.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/servicecatalog"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := servicecatalog.GetProvisionedProducts(ctx, &servicecatalog.GetProvisionedProductsArgs{
-//				Ids: []string{
-//					"IdExample",
-//				},
-//				NameRegex: pulumi.StringRef("NameRegexExample"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("alicloudServiceCatalogProvisionedProductExampleId", _default.ProvisionedProducts[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetProvisionedProducts(ctx *pulumi.Context, args *GetProvisionedProductsArgs, opts ...pulumi.InvokeOption) (*GetProvisionedProductsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProvisionedProductsResult

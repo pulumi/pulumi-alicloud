@@ -13,20 +13,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const displayName = config.get("displayName") || "EAccount";
- * const exampleFolder = new alicloud.resourcemanager.Folder("exampleFolder", {folderName: name});
- * const exampleAccount = new alicloud.resourcemanager.Account("exampleAccount", {
- *     displayName: displayName,
- *     folderId: exampleFolder.id,
- * });
- * ```
  * ### Deleting `alicloud.resourcemanager.Account` or removing it from your configuration
  *
  * Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,

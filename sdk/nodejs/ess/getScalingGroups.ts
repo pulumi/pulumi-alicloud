@@ -8,22 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides available scaling group resources.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const scalinggroupsDs = alicloud.ess.getScalingGroups({
- *     ids: [
- *         "scaling_group_id1",
- *         "scaling_group_id2",
- *     ],
- *     nameRegex: "scaling_group_name",
- * });
- * export const firstScalingGroup = scalinggroupsDs.then(scalinggroupsDs => scalinggroupsDs.groups?.[0]?.id);
- * ```
  */
 export function getScalingGroups(args?: GetScalingGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetScalingGroupsResult> {
     args = args || {};
@@ -79,22 +63,6 @@ export interface GetScalingGroupsResult {
 }
 /**
  * This data source provides available scaling group resources.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const scalinggroupsDs = alicloud.ess.getScalingGroups({
- *     ids: [
- *         "scaling_group_id1",
- *         "scaling_group_id2",
- *     ],
- *     nameRegex: "scaling_group_name",
- * });
- * export const firstScalingGroup = scalinggroupsDs.then(scalinggroupsDs => scalinggroupsDs.groups?.[0]?.id);
- * ```
  */
 export function getScalingGroupsOutput(args?: GetScalingGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScalingGroupsResult> {
     return pulumi.output(args).apply((a: any) => getScalingGroups(a, opts))

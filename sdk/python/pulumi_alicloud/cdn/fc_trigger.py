@@ -44,26 +44,38 @@ class FcTriggerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             event_meta_name: pulumi.Input[str],
-             event_meta_version: pulumi.Input[str],
-             notes: pulumi.Input[str],
-             role_arn: pulumi.Input[str],
-             source_arn: pulumi.Input[str],
-             trigger_arn: pulumi.Input[str],
+             event_meta_name: Optional[pulumi.Input[str]] = None,
+             event_meta_version: Optional[pulumi.Input[str]] = None,
+             notes: Optional[pulumi.Input[str]] = None,
+             role_arn: Optional[pulumi.Input[str]] = None,
+             source_arn: Optional[pulumi.Input[str]] = None,
+             trigger_arn: Optional[pulumi.Input[str]] = None,
              function_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventMetaName' in kwargs:
+        if event_meta_name is None and 'eventMetaName' in kwargs:
             event_meta_name = kwargs['eventMetaName']
-        if 'eventMetaVersion' in kwargs:
+        if event_meta_name is None:
+            raise TypeError("Missing 'event_meta_name' argument")
+        if event_meta_version is None and 'eventMetaVersion' in kwargs:
             event_meta_version = kwargs['eventMetaVersion']
-        if 'roleArn' in kwargs:
+        if event_meta_version is None:
+            raise TypeError("Missing 'event_meta_version' argument")
+        if notes is None:
+            raise TypeError("Missing 'notes' argument")
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'sourceArn' in kwargs:
+        if role_arn is None:
+            raise TypeError("Missing 'role_arn' argument")
+        if source_arn is None and 'sourceArn' in kwargs:
             source_arn = kwargs['sourceArn']
-        if 'triggerArn' in kwargs:
+        if source_arn is None:
+            raise TypeError("Missing 'source_arn' argument")
+        if trigger_arn is None and 'triggerArn' in kwargs:
             trigger_arn = kwargs['triggerArn']
-        if 'functionArn' in kwargs:
+        if trigger_arn is None:
+            raise TypeError("Missing 'trigger_arn' argument")
+        if function_arn is None and 'functionArn' in kwargs:
             function_arn = kwargs['functionArn']
 
         _setter("event_meta_name", event_meta_name)
@@ -200,19 +212,19 @@ class _FcTriggerState:
              role_arn: Optional[pulumi.Input[str]] = None,
              source_arn: Optional[pulumi.Input[str]] = None,
              trigger_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventMetaName' in kwargs:
+        if event_meta_name is None and 'eventMetaName' in kwargs:
             event_meta_name = kwargs['eventMetaName']
-        if 'eventMetaVersion' in kwargs:
+        if event_meta_version is None and 'eventMetaVersion' in kwargs:
             event_meta_version = kwargs['eventMetaVersion']
-        if 'functionArn' in kwargs:
+        if function_arn is None and 'functionArn' in kwargs:
             function_arn = kwargs['functionArn']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'sourceArn' in kwargs:
+        if source_arn is None and 'sourceArn' in kwargs:
             source_arn = kwargs['sourceArn']
-        if 'triggerArn' in kwargs:
+        if trigger_arn is None and 'triggerArn' in kwargs:
             trigger_arn = kwargs['triggerArn']
 
         if event_meta_name is not None:
@@ -335,25 +347,6 @@ class FcTrigger(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.165.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_account = alicloud.get_account()
-        default_regions = alicloud.get_regions(current=True)
-        example = alicloud.cdn.FcTrigger("example",
-            event_meta_name="LogFileCreated",
-            event_meta_version="1.0.0",
-            notes="example_value",
-            role_arn=f"acs:ram::{default_account.id}:role/aliyuncdneventnotificationrole",
-            source_arn=f"acs:cdn:*:{default_account.id}:domain/example.com",
-            trigger_arn=f"acs:fc:{default_regions.regions[0].id}:{default_account.id}:services/FCTestService/functions/printEvent/triggers/testtrigger")
-        ```
-
         ## Import
 
         CDN Fc Trigger can be imported using the id, e.g.
@@ -384,25 +377,6 @@ class FcTrigger(pulumi.CustomResource):
         For information about CDN Fc Trigger and how to use it, see [What is Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger).
 
         > **NOTE:** Available in v1.165.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_account = alicloud.get_account()
-        default_regions = alicloud.get_regions(current=True)
-        example = alicloud.cdn.FcTrigger("example",
-            event_meta_name="LogFileCreated",
-            event_meta_version="1.0.0",
-            notes="example_value",
-            role_arn=f"acs:ram::{default_account.id}:role/aliyuncdneventnotificationrole",
-            source_arn=f"acs:cdn:*:{default_account.id}:domain/example.com",
-            trigger_arn=f"acs:fc:{default_regions.regions[0].id}:{default_account.id}:services/FCTestService/functions/printEvent/triggers/testtrigger")
-        ```
 
         ## Import
 

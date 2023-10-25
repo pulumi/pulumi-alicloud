@@ -19,44 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.207.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := ecs.NewEipSegmentAddress(ctx, "default", &ecs.EipSegmentAddressArgs{
-//				Bandwidth:          pulumi.String("5"),
-//				EipMask:            pulumi.String("28"),
-//				InternetChargeType: pulumi.String("PayByBandwidth"),
-//				Isp:                pulumi.String("BGP"),
-//				Netmode:            pulumi.String("public"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // EIP Segment Address can be imported using the id, e.g.

@@ -29,10 +29,14 @@ class KvNamespaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             namespace: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
 
         _setter("description", description)
         _setter("namespace", namespace)
@@ -86,7 +90,7 @@ class _KvNamespaceState:
              description: Optional[pulumi.Input[str]] = None,
              namespace: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if description is not None:
@@ -148,23 +152,6 @@ class KvNamespace(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.198.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.dcdn.KvNamespace("default",
-            description=name,
-            namespace=name)
-        ```
-
         ## Import
 
         Dcdn Kv Namespace can be imported using the id, e.g.
@@ -190,23 +177,6 @@ class KvNamespace(pulumi.CustomResource):
         For information about Dcdn Kv Namespace and how to use it, see [What is Kv Namespace](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-putdcdnkvnamespace).
 
         > **NOTE:** Available since v1.198.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.dcdn.KvNamespace("default",
-            description=name,
-            namespace=name)
-        ```
 
         ## Import
 

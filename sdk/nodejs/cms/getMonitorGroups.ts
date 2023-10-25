@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.113.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cms.getMonitorGroups({
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstCmsMonitorGroupId = example.then(example => example.groups?.[0]?.id);
- * ```
  */
 export function getMonitorGroups(args?: GetMonitorGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitorGroupsResult> {
     args = args || {};
@@ -115,21 +100,6 @@ export interface GetMonitorGroupsResult {
  * This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.113.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cms.getMonitorGroups({
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
- * });
- * export const firstCmsMonitorGroupId = example.then(example => example.groups?.[0]?.id);
- * ```
  */
 export function getMonitorGroupsOutput(args?: GetMonitorGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMonitorGroupsResult> {
     return pulumi.output(args).apply((a: any) => getMonitorGroups(a, opts))

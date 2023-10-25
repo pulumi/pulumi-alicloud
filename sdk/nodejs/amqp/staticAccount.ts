@@ -11,34 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.195.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const accessKey = config.get("accessKey") || "access_key";
- * const secretKey = config.get("secretKey") || "secret_key";
- * const defaultInstance = new alicloud.amqp.Instance("defaultInstance", {
- *     instanceType: "enterprise",
- *     maxTps: "3000",
- *     queueCapacity: "200",
- *     storageSize: "700",
- *     supportEip: false,
- *     maxEipTps: "128",
- *     paymentType: "Subscription",
- *     period: 1,
- * });
- * const defaultStaticAccount = new alicloud.amqp.StaticAccount("defaultStaticAccount", {
- *     instanceId: defaultInstance.id,
- *     accessKey: accessKey,
- *     secretKey: secretKey,
- * });
- * ```
- *
  * ## Import
  *
  * Amqp Static Account can be imported using the id, e.g.

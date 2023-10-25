@@ -22,34 +22,6 @@ import * as utilities from "../utilities";
  *
  * For information about server group and how to use it, see [Configure a server group](https://www.alibabacloud.com/help/en/doc-detail/35215.html).
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const slbServerGroupName = config.get("slbServerGroupName") || "forSlbServerGroup";
- * const serverGroupZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const serverGroupNetwork = new alicloud.vpc.Network("serverGroupNetwork", {
- *     vpcName: slbServerGroupName,
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const serverGroupSwitch = new alicloud.vpc.Switch("serverGroupSwitch", {
- *     vpcId: serverGroupNetwork.id,
- *     cidrBlock: "172.16.0.0/16",
- *     zoneId: serverGroupZones.then(serverGroupZones => serverGroupZones.zones?.[0]?.id),
- *     vswitchName: slbServerGroupName,
- * });
- * const serverGroupApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("serverGroupApplicationLoadBalancer", {
- *     loadBalancerName: slbServerGroupName,
- *     vswitchId: serverGroupSwitch.id,
- *     instanceChargeType: "PayByCLCU",
- * });
- * const serverGroupServerGroup = new alicloud.slb.ServerGroup("serverGroupServerGroup", {loadBalancerId: serverGroupApplicationLoadBalancer.id});
- * ```
  * ## Block servers
  *
  * The servers mapping supports the following:

@@ -11,21 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.178.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.sms.ShortUrl("example", {
- *     effectiveDays: 30,
- *     shortUrlName: "example_value",
- *     sourceUrl: "example_value",
- * });
- * ```
- *
  * ## Import
  *
  * SMS Short Url can be imported using the id, e.g.

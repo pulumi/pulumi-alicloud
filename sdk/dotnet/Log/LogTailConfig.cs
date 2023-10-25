@@ -14,61 +14,6 @@ namespace Pulumi.AliCloud.Log
     /// You can use Logtail to collect logs from servers such as Alibaba Cloud Elastic
     /// Compute Service (ECS) instances in real time in the Log Service console. [Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm)
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Random.RandomInteger("default", new()
-    ///     {
-    ///         Max = 99999,
-    ///         Min = 10000,
-    ///     });
-    /// 
-    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
-    ///     {
-    ///         Description = "terraform-example",
-    ///     });
-    /// 
-    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
-    ///     {
-    ///         Project = exampleProject.Name,
-    ///         RetentionPeriod = 3650,
-    ///         ShardCount = 3,
-    ///         AutoSplit = true,
-    ///         MaxSplitShardCount = 60,
-    ///         AppendMeta = true,
-    ///     });
-    /// 
-    ///     var exampleLogTailConfig = new AliCloud.Log.LogTailConfig("exampleLogTailConfig", new()
-    ///     {
-    ///         Project = exampleProject.Name,
-    ///         Logstore = exampleStore.Name,
-    ///         InputType = "file",
-    ///         OutputType = "LogService",
-    ///         InputDetail = @"  	{
-    /// 		""logPath"": ""/logPath"",
-    /// 		""filePattern"": ""access.log"",
-    /// 		""logType"": ""json_log"",
-    /// 		""topicFormat"": ""default"",
-    /// 		""discardUnmatch"": false,
-    /// 		""enableRawLog"": true,
-    /// 		""fileEncoding"": ""gbk"",
-    /// 		""maxDepth"": 10
-    /// 	}
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ## Module Support
     /// 
     /// You can use the existing sls-logtail module

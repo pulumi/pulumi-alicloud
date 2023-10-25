@@ -29,14 +29,18 @@ class DomainAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain_names: pulumi.Input[Sequence[pulumi.Input[str]]],
-             instance_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainNames' in kwargs:
+        if domain_names is None and 'domainNames' in kwargs:
             domain_names = kwargs['domainNames']
-        if 'instanceId' in kwargs:
+        if domain_names is None:
+            raise TypeError("Missing 'domain_names' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
 
         _setter("domain_names", domain_names)
         _setter("instance_id", instance_id)
@@ -86,11 +90,11 @@ class _DomainAttachmentState:
              _setter: Callable[[Any, Any], None],
              domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainNames' in kwargs:
+        if domain_names is None and 'domainNames' in kwargs:
             domain_names = kwargs['domainNames']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
 
         if domain_names is not None:
@@ -138,20 +142,6 @@ class DomainAttachment(pulumi.CustomResource):
 
         > **DEPRECATED:**  This resource has been deprecated from version `1.99.0`. Please use new resource alicloud_alidns_domain_attachment.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        dns = alicloud.dns.DomainAttachment("dns",
-            domain_names=[
-                "test111.abc",
-                "test222.abc",
-            ],
-            instance_id="dns-cn-mp91lyq9xxxx")
-        ```
-
         ## Import
 
         DNS domain attachment can be imported using the id, e.g.
@@ -177,20 +167,6 @@ class DomainAttachment(pulumi.CustomResource):
         > **NOTE:** Available in v1.80.0+.
 
         > **DEPRECATED:**  This resource has been deprecated from version `1.99.0`. Please use new resource alicloud_alidns_domain_attachment.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        dns = alicloud.dns.DomainAttachment("dns",
-            domain_names=[
-                "test111.abc",
-                "test222.abc",
-            ],
-            instance_id="dns-cn-mp91lyq9xxxx")
-        ```
 
         ## Import
 

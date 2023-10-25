@@ -44,26 +44,32 @@ class AppArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_name: pulumi.Input[str],
-             product_id: pulumi.Input[str],
-             type: pulumi.Input[str],
+             app_name: Optional[pulumi.Input[str]] = None,
+             product_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              bundle_id: Optional[pulumi.Input[str]] = None,
              encoded_icon: Optional[pulumi.Input[str]] = None,
              industry_id: Optional[pulumi.Input[str]] = None,
              package_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appName' in kwargs:
+        if app_name is None and 'appName' in kwargs:
             app_name = kwargs['appName']
-        if 'productId' in kwargs:
+        if app_name is None:
+            raise TypeError("Missing 'app_name' argument")
+        if product_id is None and 'productId' in kwargs:
             product_id = kwargs['productId']
-        if 'bundleId' in kwargs:
+        if product_id is None:
+            raise TypeError("Missing 'product_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if bundle_id is None and 'bundleId' in kwargs:
             bundle_id = kwargs['bundleId']
-        if 'encodedIcon' in kwargs:
+        if encoded_icon is None and 'encodedIcon' in kwargs:
             encoded_icon = kwargs['encodedIcon']
-        if 'industryId' in kwargs:
+        if industry_id is None and 'industryId' in kwargs:
             industry_id = kwargs['industryId']
-        if 'packageName' in kwargs:
+        if package_name is None and 'packageName' in kwargs:
             package_name = kwargs['packageName']
 
         _setter("app_name", app_name)
@@ -203,19 +209,19 @@ class _AppState:
              package_name: Optional[pulumi.Input[str]] = None,
              product_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appName' in kwargs:
+        if app_name is None and 'appName' in kwargs:
             app_name = kwargs['appName']
-        if 'bundleId' in kwargs:
+        if bundle_id is None and 'bundleId' in kwargs:
             bundle_id = kwargs['bundleId']
-        if 'encodedIcon' in kwargs:
+        if encoded_icon is None and 'encodedIcon' in kwargs:
             encoded_icon = kwargs['encodedIcon']
-        if 'industryId' in kwargs:
+        if industry_id is None and 'industryId' in kwargs:
             industry_id = kwargs['industryId']
-        if 'packageName' in kwargs:
+        if package_name is None and 'packageName' in kwargs:
             package_name = kwargs['packageName']
-        if 'productId' in kwargs:
+        if product_id is None and 'productId' in kwargs:
             product_id = kwargs['productId']
 
         if app_name is not None:
@@ -340,26 +346,6 @@ class App(pulumi.CustomResource):
 
         > **NOTE:** At present, the resource only supports cn-shanghai region.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "example_value"
-        default_product = alicloud.mhub.Product("defaultProduct", product_name=name)
-        default_app = alicloud.mhub.App("defaultApp",
-            app_name=name,
-            product_id=default_product.id,
-            package_name="com.test.android",
-            type="Android")
-        ```
-
         ## Import
 
         MHUB App can be imported using the id, e.g.
@@ -392,26 +378,6 @@ class App(pulumi.CustomResource):
         > **NOTE:** Available in v1.138.0+.
 
         > **NOTE:** At present, the resource only supports cn-shanghai region.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "example_value"
-        default_product = alicloud.mhub.Product("defaultProduct", product_name=name)
-        default_app = alicloud.mhub.App("defaultApp",
-            app_name=name,
-            product_id=default_product.id,
-            package_name="com.test.android",
-            type="Android")
-        ```
 
         ## Import
 

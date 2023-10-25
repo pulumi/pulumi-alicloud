@@ -93,16 +93,6 @@ def get_buckets(name_regex: Optional[str] = None,
     """
     This data source provides the OSS buckets of the current Alibaba Cloud user.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    oss_buckets_ds = alicloud.oss.get_buckets(name_regex="sample_oss_bucket")
-    pulumi.export("firstOssBucketName", oss_buckets_ds.buckets[0].name)
-    ```
-
 
     :param str name_regex: A regex string to filter results by bucket name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -127,16 +117,6 @@ def get_buckets_output(name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketsResult]:
     """
     This data source provides the OSS buckets of the current Alibaba Cloud user.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    oss_buckets_ds = alicloud.oss.get_buckets(name_regex="sample_oss_bucket")
-    pulumi.export("firstOssBucketName", oss_buckets_ds.buckets[0].name)
-    ```
 
 
     :param str name_regex: A regex string to filter results by bucket name.

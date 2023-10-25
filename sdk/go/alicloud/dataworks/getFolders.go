@@ -15,49 +15,6 @@ import (
 // This data source provides the Data Works Folders of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.131.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dataworks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataworks.NewFolder(ctx, "default", &dataworks.FolderArgs{
-//				ProjectId:  pulumi.String("xxxx"),
-//				FolderPath: pulumi.String("Business Flow/tfTestAcc/folderDi"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ids := pulumi.All(_default.FolderId, _default.ProjectId).ApplyT(func(_args []interface{}) (dataworks.GetFoldersResult, error) {
-//				folderId := _args[0].(string)
-//				projectId := _args[1].(*string)
-//				return dataworks.GetFoldersOutput(ctx, dataworks.GetFoldersOutputArgs{
-//					Ids: []string{
-//						folderId,
-//					},
-//					ProjectId:        projectId,
-//					ParentFolderPath: "Business Flow/tfTestAcc/folderDi",
-//				}, nil), nil
-//			}).(dataworks.GetFoldersResultOutput)
-//			ctx.Export("dataWorksFolderId1", ids.ApplyT(func(ids dataworks.GetFoldersResult) (*string, error) {
-//				return &ids.Folders[0].Id, nil
-//			}).(pulumi.StringPtrOutput))
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFolders(ctx *pulumi.Context, args *GetFoldersArgs, opts ...pulumi.InvokeOption) (*GetFoldersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFoldersResult

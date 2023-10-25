@@ -15,67 +15,6 @@ import (
 // This data source provides the Oos Parameters of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.147.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := oos.GetParameters(ctx, &oos.GetParametersArgs{
-//				Ids: []string{
-//					"my-Parameter",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("oosParameterId1", ids.Parameters[0].Id)
-//			nameRegex, err := oos.GetParameters(ctx, &oos.GetParametersArgs{
-//				NameRegex: pulumi.StringRef("^my-Parameter"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("oosParameterId2", nameRegex.Parameters[0].Id)
-//			resourceGroupId, err := oos.GetParameters(ctx, &oos.GetParametersArgs{
-//				Ids: []string{
-//					"my-Parameter",
-//				},
-//				ResourceGroupId: pulumi.StringRef("example_value"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("oosParameterId3", resourceGroupId.Parameters[0].Id)
-//			tags, err := oos.GetParameters(ctx, &oos.GetParametersArgs{
-//				Ids: []string{
-//					"my-Parameter",
-//				},
-//				Tags: map[string]interface{}{
-//					"Created": "TF",
-//					"For":     "OosParameter",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("oosParameterId4", tags.Parameters[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetParameters(ctx *pulumi.Context, args *GetParametersArgs, opts ...pulumi.InvokeOption) (*GetParametersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetParametersResult

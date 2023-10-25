@@ -8,20 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the ots instance attachments of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const attachmentsDs = alicloud.ots.getInstanceAttachments({
- *     instanceName: "sample-instance",
- *     nameRegex: "testvpc",
- *     outputFile: "attachments.txt",
- * });
- * export const firstOtsAttachmentId = attachmentsDs.then(attachmentsDs => attachmentsDs.attachments?.[0]?.id);
- * ```
  */
 export function getInstanceAttachments(args: GetInstanceAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceAttachmentsResult> {
 
@@ -80,20 +66,6 @@ export interface GetInstanceAttachmentsResult {
 }
 /**
  * This data source provides the ots instance attachments of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const attachmentsDs = alicloud.ots.getInstanceAttachments({
- *     instanceName: "sample-instance",
- *     nameRegex: "testvpc",
- *     outputFile: "attachments.txt",
- * });
- * export const firstOtsAttachmentId = attachmentsDs.then(attachmentsDs => attachmentsDs.attachments?.[0]?.id);
- * ```
  */
 export function getInstanceAttachmentsOutput(args: GetInstanceAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getInstanceAttachments(a, opts))

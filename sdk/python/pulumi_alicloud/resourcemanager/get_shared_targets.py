@@ -109,29 +109,6 @@ def get_shared_targets(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available since v1.111.0.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    name = config.get("name")
-    if name is None:
-        name = "tf-example"
-    default_accounts = alicloud.resourcemanager.get_accounts()
-    default_resource_share = alicloud.resourcemanager.ResourceShare("defaultResourceShare", resource_share_name=name)
-    default_shared_target = alicloud.resourcemanager.SharedTarget("defaultSharedTarget",
-        resource_share_id=default_resource_share.id,
-        target_id=default_accounts.ids[0])
-    ids = alicloud.resourcemanager.get_shared_targets_output(ids=[default_shared_target.target_id])
-    pulumi.export("firstResourceManagerSharedTargetId", ids.targets[0].id)
-    resource_share_id = alicloud.resourcemanager.get_shared_targets_output(resource_share_id=default_shared_target.resource_share_id)
-    pulumi.export("secondResourceManagerSharedTargetId", resource_share_id.targets[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Shared Target IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -165,29 +142,6 @@ def get_shared_targets_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
 
     > **NOTE:** Available since v1.111.0.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    name = config.get("name")
-    if name is None:
-        name = "tf-example"
-    default_accounts = alicloud.resourcemanager.get_accounts()
-    default_resource_share = alicloud.resourcemanager.ResourceShare("defaultResourceShare", resource_share_name=name)
-    default_shared_target = alicloud.resourcemanager.SharedTarget("defaultSharedTarget",
-        resource_share_id=default_resource_share.id,
-        target_id=default_accounts.ids[0])
-    ids = alicloud.resourcemanager.get_shared_targets_output(ids=[default_shared_target.target_id])
-    pulumi.export("firstResourceManagerSharedTargetId", ids.targets[0].id)
-    resource_share_id = alicloud.resourcemanager.get_shared_targets_output(resource_share_id=default_shared_target.resource_share_id)
-    pulumi.export("secondResourceManagerSharedTargetId", resource_share_id.targets[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Shared Target IDs.

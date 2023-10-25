@@ -9,67 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.126.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example";
- * const default = alicloud.cen.getTransitRouterAvailableResources({});
- * const masterZone = _default.then(_default => _default.resources?.[0]?.masterZones?.[0]);
- * const slaveZone = _default.then(_default => _default.resources?.[0]?.slaveZones?.[1]);
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
- *     vpcName: name,
- *     cidrBlock: "192.168.0.0/16",
- * });
- * const exampleMaster = new alicloud.vpc.Switch("exampleMaster", {
- *     vswitchName: name,
- *     cidrBlock: "192.168.1.0/24",
- *     vpcId: exampleNetwork.id,
- *     zoneId: masterZone,
- * });
- * const exampleSlave = new alicloud.vpc.Switch("exampleSlave", {
- *     vswitchName: name,
- *     cidrBlock: "192.168.2.0/24",
- *     vpcId: exampleNetwork.id,
- *     zoneId: slaveZone,
- * });
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
- *     cenInstanceName: name,
- *     protectionLevel: "REDUCED",
- * });
- * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
- *     transitRouterName: name,
- *     cenId: exampleInstance.id,
- * });
- * const exampleTransitRouterVpcAttachment = new alicloud.cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", {
- *     cenId: exampleInstance.id,
- *     transitRouterId: exampleTransitRouter.transitRouterId,
- *     vpcId: exampleNetwork.id,
- *     zoneMappings: [
- *         {
- *             zoneId: masterZone,
- *             vswitchId: exampleMaster.id,
- *         },
- *         {
- *             zoneId: slaveZone,
- *             vswitchId: exampleSlave.id,
- *         },
- *     ],
- *     transitRouterAttachmentName: name,
- *     transitRouterAttachmentDescription: name,
- * });
- * const exampleTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", {transitRouterId: exampleTransitRouter.transitRouterId});
- * const exampleTransitRouterRouteTablePropagation = new alicloud.cen.TransitRouterRouteTablePropagation("exampleTransitRouterRouteTablePropagation", {
- *     transitRouterRouteTableId: exampleTransitRouterRouteTable.transitRouterRouteTableId,
- *     transitRouterAttachmentId: exampleTransitRouterVpcAttachment.transitRouterAttachmentId,
- * });
- * ```
- *
  * ## Import
  *
  * CEN transit router route table propagation can be imported using the id, e.g.

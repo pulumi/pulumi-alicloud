@@ -53,9 +53,9 @@ class QosCarArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             limit_type: pulumi.Input[str],
-             priority: pulumi.Input[int],
-             qos_id: pulumi.Input[str],
+             limit_type: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             qos_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              max_bandwidth_abs: Optional[pulumi.Input[int]] = None,
              max_bandwidth_percent: Optional[pulumi.Input[int]] = None,
@@ -63,21 +63,27 @@ class QosCarArgs:
              min_bandwidth_percent: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              percent_source_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'limitType' in kwargs:
+        if limit_type is None and 'limitType' in kwargs:
             limit_type = kwargs['limitType']
-        if 'qosId' in kwargs:
+        if limit_type is None:
+            raise TypeError("Missing 'limit_type' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if qos_id is None and 'qosId' in kwargs:
             qos_id = kwargs['qosId']
-        if 'maxBandwidthAbs' in kwargs:
+        if qos_id is None:
+            raise TypeError("Missing 'qos_id' argument")
+        if max_bandwidth_abs is None and 'maxBandwidthAbs' in kwargs:
             max_bandwidth_abs = kwargs['maxBandwidthAbs']
-        if 'maxBandwidthPercent' in kwargs:
+        if max_bandwidth_percent is None and 'maxBandwidthPercent' in kwargs:
             max_bandwidth_percent = kwargs['maxBandwidthPercent']
-        if 'minBandwidthAbs' in kwargs:
+        if min_bandwidth_abs is None and 'minBandwidthAbs' in kwargs:
             min_bandwidth_abs = kwargs['minBandwidthAbs']
-        if 'minBandwidthPercent' in kwargs:
+        if min_bandwidth_percent is None and 'minBandwidthPercent' in kwargs:
             min_bandwidth_percent = kwargs['minBandwidthPercent']
-        if 'percentSourceType' in kwargs:
+        if percent_source_type is None and 'percentSourceType' in kwargs:
             percent_source_type = kwargs['percentSourceType']
 
         _setter("limit_type", limit_type)
@@ -271,21 +277,21 @@ class _QosCarState:
              percent_source_type: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              qos_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'limitType' in kwargs:
+        if limit_type is None and 'limitType' in kwargs:
             limit_type = kwargs['limitType']
-        if 'maxBandwidthAbs' in kwargs:
+        if max_bandwidth_abs is None and 'maxBandwidthAbs' in kwargs:
             max_bandwidth_abs = kwargs['maxBandwidthAbs']
-        if 'maxBandwidthPercent' in kwargs:
+        if max_bandwidth_percent is None and 'maxBandwidthPercent' in kwargs:
             max_bandwidth_percent = kwargs['maxBandwidthPercent']
-        if 'minBandwidthAbs' in kwargs:
+        if min_bandwidth_abs is None and 'minBandwidthAbs' in kwargs:
             min_bandwidth_abs = kwargs['minBandwidthAbs']
-        if 'minBandwidthPercent' in kwargs:
+        if min_bandwidth_percent is None and 'minBandwidthPercent' in kwargs:
             min_bandwidth_percent = kwargs['minBandwidthPercent']
-        if 'percentSourceType' in kwargs:
+        if percent_source_type is None and 'percentSourceType' in kwargs:
             percent_source_type = kwargs['percentSourceType']
-        if 'qosId' in kwargs:
+        if qos_id is None and 'qosId' in kwargs:
             qos_id = kwargs['qosId']
 
         if description is not None:
@@ -456,31 +462,6 @@ class QosCar(pulumi.CustomResource):
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_qos = alicloud.rocketmq.Qos("defaultQos")
-        default_qos_car = alicloud.rocketmq.QosCar("defaultQosCar",
-            qos_id=default_qos.id,
-            description=name,
-            priority=1,
-            limit_type="Absolute",
-            min_bandwidth_abs=10,
-            max_bandwidth_abs=20,
-            min_bandwidth_percent=10,
-            max_bandwidth_percent=20,
-            percent_source_type="InternetUpBandwidth")
-        ```
-
         ## Import
 
         The Sag Qos Car can be imported using the id, e.g.
@@ -517,31 +498,6 @@ class QosCar(pulumi.CustomResource):
         > **NOTE:** Available since v1.60.0.
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_qos = alicloud.rocketmq.Qos("defaultQos")
-        default_qos_car = alicloud.rocketmq.QosCar("defaultQosCar",
-            qos_id=default_qos.id,
-            description=name,
-            priority=1,
-            limit_type="Absolute",
-            min_bandwidth_abs=10,
-            max_bandwidth_abs=20,
-            min_bandwidth_percent=10,
-            max_bandwidth_percent=20,
-            percent_source_type="InternetUpBandwidth")
-        ```
 
         ## Import
 

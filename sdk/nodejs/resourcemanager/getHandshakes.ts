@@ -10,16 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Resource Manager Handshakes of the current Alibaba Cloud user.
  *
  * > **NOTE:**  Available in 1.86.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.resourcemanager.getHandshakes({});
- * export const firstHandshakeId = example.then(example => example.handshakes?.[0]?.id);
- * ```
  */
 export function getHandshakes(args?: GetHandshakesArgs, opts?: pulumi.InvokeOptions): Promise<GetHandshakesResult> {
     args = args || {};
@@ -82,16 +72,6 @@ export interface GetHandshakesResult {
  * This data source provides the Resource Manager Handshakes of the current Alibaba Cloud user.
  *
  * > **NOTE:**  Available in 1.86.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.resourcemanager.getHandshakes({});
- * export const firstHandshakeId = example.then(example => example.handshakes?.[0]?.id);
- * ```
  */
 export function getHandshakesOutput(args?: GetHandshakesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHandshakesResult> {
     return pulumi.output(args).apply((a: any) => getHandshakes(a, opts))

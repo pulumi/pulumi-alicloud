@@ -19,54 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.113.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
-//				Duration:      pulumi.Int(1),
-//				AutoUseCoupon: pulumi.Bool(true),
-//				Spec:          pulumi.String("1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "exampleBandwidthPackage", &ga.BandwidthPackageArgs{
-//				Bandwidth:     pulumi.Int(20),
-//				Type:          pulumi.String("Basic"),
-//				BandwidthType: pulumi.String("Basic"),
-//				Duration:      pulumi.String("1"),
-//				AutoPay:       pulumi.Bool(true),
-//				Ratio:         pulumi.Int(30),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ga.NewBandwidthPackageAttachment(ctx, "exampleBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      exampleAccelerator.ID(),
-//				BandwidthPackageId: exampleBandwidthPackage.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Ga Bandwidth Package Attachment can be imported using the id. Format to `<accelerator_id>:<bandwidth_package_id>`, e.g.

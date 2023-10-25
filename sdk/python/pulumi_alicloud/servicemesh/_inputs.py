@@ -42,9 +42,9 @@ class ServiceMeshExtraConfigurationArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              cr_aggregation_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'crAggregationEnabled' in kwargs:
+        if cr_aggregation_enabled is None and 'crAggregationEnabled' in kwargs:
             cr_aggregation_enabled = kwargs['crAggregationEnabled']
 
         if cr_aggregation_enabled is not None:
@@ -90,15 +90,15 @@ class ServiceMeshLoadBalancerArgs:
              api_server_public_eip: Optional[pulumi.Input[bool]] = None,
              pilot_public_eip: Optional[pulumi.Input[bool]] = None,
              pilot_public_loadbalancer_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiServerLoadbalancerId' in kwargs:
+        if api_server_loadbalancer_id is None and 'apiServerLoadbalancerId' in kwargs:
             api_server_loadbalancer_id = kwargs['apiServerLoadbalancerId']
-        if 'apiServerPublicEip' in kwargs:
+        if api_server_public_eip is None and 'apiServerPublicEip' in kwargs:
             api_server_public_eip = kwargs['apiServerPublicEip']
-        if 'pilotPublicEip' in kwargs:
+        if pilot_public_eip is None and 'pilotPublicEip' in kwargs:
             pilot_public_eip = kwargs['pilotPublicEip']
-        if 'pilotPublicLoadbalancerId' in kwargs:
+        if pilot_public_loadbalancer_id is None and 'pilotPublicLoadbalancerId' in kwargs:
             pilot_public_loadbalancer_id = kwargs['pilotPublicLoadbalancerId']
 
         if api_server_loadbalancer_id is not None:
@@ -230,21 +230,21 @@ class ServiceMeshMeshConfigArgs:
              sidecar_injector: Optional[pulumi.Input['ServiceMeshMeshConfigSidecarInjectorArgs']] = None,
              telemetry: Optional[pulumi.Input[bool]] = None,
              tracing: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessLog' in kwargs:
+        if access_log is None and 'accessLog' in kwargs:
             access_log = kwargs['accessLog']
-        if 'controlPlaneLog' in kwargs:
+        if control_plane_log is None and 'controlPlaneLog' in kwargs:
             control_plane_log = kwargs['controlPlaneLog']
-        if 'customizedZipkin' in kwargs:
+        if customized_zipkin is None and 'customizedZipkin' in kwargs:
             customized_zipkin = kwargs['customizedZipkin']
-        if 'enableLocalityLb' in kwargs:
+        if enable_locality_lb is None and 'enableLocalityLb' in kwargs:
             enable_locality_lb = kwargs['enableLocalityLb']
-        if 'includeIpRanges' in kwargs:
+        if include_ip_ranges is None and 'includeIpRanges' in kwargs:
             include_ip_ranges = kwargs['includeIpRanges']
-        if 'outboundTrafficPolicy' in kwargs:
+        if outbound_traffic_policy is None and 'outboundTrafficPolicy' in kwargs:
             outbound_traffic_policy = kwargs['outboundTrafficPolicy']
-        if 'sidecarInjector' in kwargs:
+        if sidecar_injector is None and 'sidecarInjector' in kwargs:
             sidecar_injector = kwargs['sidecarInjector']
 
         if access_log is not None:
@@ -478,7 +478,7 @@ class ServiceMeshMeshConfigAccessLogArgs:
              _setter: Callable[[Any, Any], None],
              enabled: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if enabled is not None:
@@ -530,7 +530,7 @@ class ServiceMeshMeshConfigAuditArgs:
              _setter: Callable[[Any, Any], None],
              enabled: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if enabled is not None:
@@ -582,7 +582,7 @@ class ServiceMeshMeshConfigControlPlaneLogArgs:
              _setter: Callable[[Any, Any], None],
              enabled: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if enabled is not None:
@@ -634,7 +634,7 @@ class ServiceMeshMeshConfigKialiArgs:
              _setter: Callable[[Any, Any], None],
              enabled: Optional[pulumi.Input[bool]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if enabled is not None:
@@ -702,17 +702,17 @@ class ServiceMeshMeshConfigOpaArgs:
              log_level: Optional[pulumi.Input[str]] = None,
              request_cpu: Optional[pulumi.Input[str]] = None,
              request_memory: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'limitCpu' in kwargs:
+        if limit_cpu is None and 'limitCpu' in kwargs:
             limit_cpu = kwargs['limitCpu']
-        if 'limitMemory' in kwargs:
+        if limit_memory is None and 'limitMemory' in kwargs:
             limit_memory = kwargs['limitMemory']
-        if 'logLevel' in kwargs:
+        if log_level is None and 'logLevel' in kwargs:
             log_level = kwargs['logLevel']
-        if 'requestCpu' in kwargs:
+        if request_cpu is None and 'requestCpu' in kwargs:
             request_cpu = kwargs['requestCpu']
-        if 'requestMemory' in kwargs:
+        if request_memory is None and 'requestMemory' in kwargs:
             request_memory = kwargs['requestMemory']
 
         if enabled is not None:
@@ -820,11 +820,11 @@ class ServiceMeshMeshConfigPilotArgs:
              _setter: Callable[[Any, Any], None],
              http10_enabled: Optional[pulumi.Input[bool]] = None,
              trace_sampling: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'http10Enabled' in kwargs:
+        if http10_enabled is None and 'http10Enabled' in kwargs:
             http10_enabled = kwargs['http10Enabled']
-        if 'traceSampling' in kwargs:
+        if trace_sampling is None and 'traceSampling' in kwargs:
             trace_sampling = kwargs['traceSampling']
 
         if http10_enabled is not None:
@@ -876,11 +876,11 @@ class ServiceMeshMeshConfigPrometheusArgs:
              _setter: Callable[[Any, Any], None],
              external_url: Optional[pulumi.Input[str]] = None,
              use_external: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'externalUrl' in kwargs:
+        if external_url is None and 'externalUrl' in kwargs:
             external_url = kwargs['externalUrl']
-        if 'useExternal' in kwargs:
+        if use_external is None and 'useExternal' in kwargs:
             use_external = kwargs['useExternal']
 
         if external_url is not None:
@@ -944,17 +944,17 @@ class ServiceMeshMeshConfigProxyArgs:
              limit_memory: Optional[pulumi.Input[str]] = None,
              request_cpu: Optional[pulumi.Input[str]] = None,
              request_memory: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterDomain' in kwargs:
+        if cluster_domain is None and 'clusterDomain' in kwargs:
             cluster_domain = kwargs['clusterDomain']
-        if 'limitCpu' in kwargs:
+        if limit_cpu is None and 'limitCpu' in kwargs:
             limit_cpu = kwargs['limitCpu']
-        if 'limitMemory' in kwargs:
+        if limit_memory is None and 'limitMemory' in kwargs:
             limit_memory = kwargs['limitMemory']
-        if 'requestCpu' in kwargs:
+        if request_cpu is None and 'requestCpu' in kwargs:
             request_cpu = kwargs['requestCpu']
-        if 'requestMemory' in kwargs:
+        if request_memory is None and 'requestMemory' in kwargs:
             request_memory = kwargs['requestMemory']
 
         if cluster_domain is not None:
@@ -1072,23 +1072,23 @@ class ServiceMeshMeshConfigSidecarInjectorArgs:
              request_cpu: Optional[pulumi.Input[str]] = None,
              request_memory: Optional[pulumi.Input[str]] = None,
              sidecar_injector_webhook_as_yaml: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoInjectionPolicyEnabled' in kwargs:
+        if auto_injection_policy_enabled is None and 'autoInjectionPolicyEnabled' in kwargs:
             auto_injection_policy_enabled = kwargs['autoInjectionPolicyEnabled']
-        if 'enableNamespacesByDefault' in kwargs:
+        if enable_namespaces_by_default is None and 'enableNamespacesByDefault' in kwargs:
             enable_namespaces_by_default = kwargs['enableNamespacesByDefault']
-        if 'initCniConfiguration' in kwargs:
+        if init_cni_configuration is None and 'initCniConfiguration' in kwargs:
             init_cni_configuration = kwargs['initCniConfiguration']
-        if 'limitCpu' in kwargs:
+        if limit_cpu is None and 'limitCpu' in kwargs:
             limit_cpu = kwargs['limitCpu']
-        if 'limitMemory' in kwargs:
+        if limit_memory is None and 'limitMemory' in kwargs:
             limit_memory = kwargs['limitMemory']
-        if 'requestCpu' in kwargs:
+        if request_cpu is None and 'requestCpu' in kwargs:
             request_cpu = kwargs['requestCpu']
-        if 'requestMemory' in kwargs:
+        if request_memory is None and 'requestMemory' in kwargs:
             request_memory = kwargs['requestMemory']
-        if 'sidecarInjectorWebhookAsYaml' in kwargs:
+        if sidecar_injector_webhook_as_yaml is None and 'sidecarInjectorWebhookAsYaml' in kwargs:
             sidecar_injector_webhook_as_yaml = kwargs['sidecarInjectorWebhookAsYaml']
 
         if auto_injection_policy_enabled is not None:
@@ -1224,9 +1224,9 @@ class ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs:
              _setter: Callable[[Any, Any], None],
              enabled: Optional[pulumi.Input[bool]] = None,
              exclude_namespaces: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'excludeNamespaces' in kwargs:
+        if exclude_namespaces is None and 'excludeNamespaces' in kwargs:
             exclude_namespaces = kwargs['excludeNamespaces']
 
         if enabled is not None:
@@ -1279,16 +1279,20 @@ class ServiceMeshNetworkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vpc_id: pulumi.Input[str],
-             vswitche_list: pulumi.Input[str],
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitche_list: Optional[pulumi.Input[str]] = None,
              security_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitcheList' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitche_list is None and 'vswitcheList' in kwargs:
             vswitche_list = kwargs['vswitcheList']
-        if 'securityGroupId' in kwargs:
+        if vswitche_list is None:
+            raise TypeError("Missing 'vswitche_list' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
 
         _setter("vpc_id", vpc_id)
@@ -1367,17 +1371,17 @@ class UserPermissionPermissionArgs:
              role_name: Optional[pulumi.Input[str]] = None,
              role_type: Optional[pulumi.Input[str]] = None,
              service_mesh_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'isCustom' in kwargs:
+        if is_custom is None and 'isCustom' in kwargs:
             is_custom = kwargs['isCustom']
-        if 'isRamRole' in kwargs:
+        if is_ram_role is None and 'isRamRole' in kwargs:
             is_ram_role = kwargs['isRamRole']
-        if 'roleName' in kwargs:
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
-        if 'roleType' in kwargs:
+        if role_type is None and 'roleType' in kwargs:
             role_type = kwargs['roleType']
-        if 'serviceMeshId' in kwargs:
+        if service_mesh_id is None and 'serviceMeshId' in kwargs:
             service_mesh_id = kwargs['serviceMeshId']
 
         if is_custom is not None:

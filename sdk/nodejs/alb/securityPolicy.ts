@@ -11,24 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.130.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.alb.SecurityPolicy("default", {
- *     ciphers: [
- *         "ECDHE-ECDSA-AES128-SHA",
- *         "AES256-SHA",
- *     ],
- *     securityPolicyName: "tf_example",
- *     tlsVersions: ["TLSv1.0"],
- * });
- * ```
- *
  * ## Import
  *
  * ALB Security Policy can be imported using the id, e.g.

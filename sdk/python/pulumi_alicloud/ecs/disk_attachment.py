@@ -37,21 +37,25 @@ class DiskAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk_id: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
+             disk_id: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
              bootable: Optional[pulumi.Input[bool]] = None,
              delete_with_instance: Optional[pulumi.Input[bool]] = None,
              key_pair_name: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'diskId' in kwargs:
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
-        if 'instanceId' in kwargs:
+        if disk_id is None:
+            raise TypeError("Missing 'disk_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'deleteWithInstance' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
 
         _setter("disk_id", disk_id)
@@ -161,15 +165,15 @@ class _DiskAttachmentState:
              instance_id: Optional[pulumi.Input[str]] = None,
              key_pair_name: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteWithInstance' in kwargs:
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
             delete_with_instance = kwargs['deleteWithInstance']
-        if 'diskId' in kwargs:
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
 
         if bootable is not None:
@@ -274,37 +278,6 @@ class DiskAttachment(pulumi.CustomResource):
 
         Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
 
-        ## Example Usage
-
-        Basic usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new ECS disk-attachment and use it attach one disk to a new instance.
-        ecs_sg = alicloud.ecs.SecurityGroup("ecsSg", description="New security group")
-        ecs_disk = alicloud.ecs.Disk("ecsDisk",
-            availability_zone="cn-beijing-a",
-            size=50,
-            tags={
-                "Name": "TerraformTest-disk",
-            })
-        ecs_instance = alicloud.ecs.Instance("ecsInstance",
-            image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
-            instance_type="ecs.n4.small",
-            availability_zone="cn-beijing-a",
-            security_groups=[ecs_sg.id],
-            instance_name="Hello",
-            internet_charge_type="PayByBandwidth",
-            tags={
-                "Name": "TerraformTest-instance",
-            })
-        ecs_disk_att = alicloud.ecs.DiskAttachment("ecsDiskAtt",
-            disk_id=ecs_disk.id,
-            instance_id=ecs_instance.id)
-        ```
-
         ## Import
 
         The disk attachment can be imported using the id, e.g.
@@ -328,37 +301,6 @@ class DiskAttachment(pulumi.CustomResource):
         > **DEPRECATED:** This resource has been renamed to ecs.EcsDiskAttachment from version 1.122.0.
 
         Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
-
-        ## Example Usage
-
-        Basic usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new ECS disk-attachment and use it attach one disk to a new instance.
-        ecs_sg = alicloud.ecs.SecurityGroup("ecsSg", description="New security group")
-        ecs_disk = alicloud.ecs.Disk("ecsDisk",
-            availability_zone="cn-beijing-a",
-            size=50,
-            tags={
-                "Name": "TerraformTest-disk",
-            })
-        ecs_instance = alicloud.ecs.Instance("ecsInstance",
-            image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
-            instance_type="ecs.n4.small",
-            availability_zone="cn-beijing-a",
-            security_groups=[ecs_sg.id],
-            instance_name="Hello",
-            internet_charge_type="PayByBandwidth",
-            tags={
-                "Name": "TerraformTest-instance",
-            })
-        ecs_disk_att = alicloud.ecs.DiskAttachment("ecsDiskAtt",
-            disk_id=ecs_disk.id,
-            instance_id=ecs_instance.id)
-        ```
 
         ## Import
 

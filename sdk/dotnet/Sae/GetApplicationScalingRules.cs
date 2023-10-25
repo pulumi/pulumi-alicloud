@@ -15,39 +15,6 @@ namespace Pulumi.AliCloud.Sae
         /// This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.159.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Sae.GetApplicationScalingRules.Invoke(new()
-        ///     {
-        ///         AppId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["saeApplicationScalingRuleId1"] = ids.Apply(getApplicationScalingRulesResult =&gt; getApplicationScalingRulesResult.Rules[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetApplicationScalingRulesResult> InvokeAsync(GetApplicationScalingRulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationScalingRulesResult>("alicloud:sae/getApplicationScalingRules:getApplicationScalingRules", args ?? new GetApplicationScalingRulesArgs(), options.WithDefaults());
@@ -56,39 +23,6 @@ namespace Pulumi.AliCloud.Sae
         /// This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.159.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Sae.GetApplicationScalingRules.Invoke(new()
-        ///     {
-        ///         AppId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["saeApplicationScalingRuleId1"] = ids.Apply(getApplicationScalingRulesResult =&gt; getApplicationScalingRulesResult.Rules[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetApplicationScalingRulesResult> Invoke(GetApplicationScalingRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationScalingRulesResult>("alicloud:sae/getApplicationScalingRules:getApplicationScalingRules", args ?? new GetApplicationScalingRulesInvokeArgs(), options.WithDefaults());

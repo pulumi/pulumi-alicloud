@@ -68,17 +68,23 @@ class K8sSlbAttachmentSlbConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port_mappings: Sequence['outputs.K8sSlbAttachmentSlbConfigPortMapping'],
-             scheduler: str,
-             type: str,
+             port_mappings: Optional[Sequence['outputs.K8sSlbAttachmentSlbConfigPortMapping']] = None,
+             scheduler: Optional[str] = None,
+             type: Optional[str] = None,
              name: Optional[str] = None,
              slb_id: Optional[str] = None,
              specification: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'portMappings' in kwargs:
+        if port_mappings is None and 'portMappings' in kwargs:
             port_mappings = kwargs['portMappings']
-        if 'slbId' in kwargs:
+        if port_mappings is None:
+            raise TypeError("Missing 'port_mappings' argument")
+        if scheduler is None:
+            raise TypeError("Missing 'scheduler' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if slb_id is None and 'slbId' in kwargs:
             slb_id = kwargs['slbId']
 
         _setter("port_mappings", port_mappings)
@@ -181,16 +187,20 @@ class K8sSlbAttachmentSlbConfigPortMapping(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             loadbalancer_protocol: str,
-             service_port: 'outputs.K8sSlbAttachmentSlbConfigPortMappingServicePort',
+             loadbalancer_protocol: Optional[str] = None,
+             service_port: Optional['outputs.K8sSlbAttachmentSlbConfigPortMappingServicePort'] = None,
              cert_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'loadbalancerProtocol' in kwargs:
+        if loadbalancer_protocol is None and 'loadbalancerProtocol' in kwargs:
             loadbalancer_protocol = kwargs['loadbalancerProtocol']
-        if 'servicePort' in kwargs:
+        if loadbalancer_protocol is None:
+            raise TypeError("Missing 'loadbalancer_protocol' argument")
+        if service_port is None and 'servicePort' in kwargs:
             service_port = kwargs['servicePort']
-        if 'certId' in kwargs:
+        if service_port is None:
+            raise TypeError("Missing 'service_port' argument")
+        if cert_id is None and 'certId' in kwargs:
             cert_id = kwargs['certId']
 
         _setter("loadbalancer_protocol", loadbalancer_protocol)
@@ -260,13 +270,19 @@ class K8sSlbAttachmentSlbConfigPortMappingServicePort(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port: int,
-             protocol: str,
-             target_port: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             port: Optional[int] = None,
+             protocol: Optional[str] = None,
+             target_port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'targetPort' in kwargs:
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if target_port is None and 'targetPort' in kwargs:
             target_port = kwargs['targetPort']
+        if target_port is None:
+            raise TypeError("Missing 'target_port' argument")
 
         _setter("port", port)
         _setter("protocol", protocol)
@@ -329,29 +345,43 @@ class GetApplicationsApplicationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_id: str,
-             app_name: str,
-             application_type: str,
-             build_package_id: int,
-             cluster_id: str,
-             cluster_type: int,
-             region_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             app_id: Optional[str] = None,
+             app_name: Optional[str] = None,
+             application_type: Optional[str] = None,
+             build_package_id: Optional[int] = None,
+             cluster_id: Optional[str] = None,
+             cluster_type: Optional[int] = None,
+             region_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appId' in kwargs:
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'appName' in kwargs:
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if app_name is None and 'appName' in kwargs:
             app_name = kwargs['appName']
-        if 'applicationType' in kwargs:
+        if app_name is None:
+            raise TypeError("Missing 'app_name' argument")
+        if application_type is None and 'applicationType' in kwargs:
             application_type = kwargs['applicationType']
-        if 'buildPackageId' in kwargs:
+        if application_type is None:
+            raise TypeError("Missing 'application_type' argument")
+        if build_package_id is None and 'buildPackageId' in kwargs:
             build_package_id = kwargs['buildPackageId']
-        if 'clusterId' in kwargs:
+        if build_package_id is None:
+            raise TypeError("Missing 'build_package_id' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'clusterType' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'regionId' in kwargs:
+        if cluster_type is None:
+            raise TypeError("Missing 'cluster_type' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
 
         _setter("app_id", app_id)
         _setter("app_name", app_name)
@@ -468,43 +498,69 @@ class GetClustersClusterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: str,
-             cluster_name: str,
-             cluster_type: int,
-             cpu: int,
-             cpu_used: int,
-             create_time: int,
-             mem: int,
-             mem_used: int,
-             network_mode: int,
-             node_num: int,
-             region_id: str,
-             update_time: int,
-             vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cluster_id: Optional[str] = None,
+             cluster_name: Optional[str] = None,
+             cluster_type: Optional[int] = None,
+             cpu: Optional[int] = None,
+             cpu_used: Optional[int] = None,
+             create_time: Optional[int] = None,
+             mem: Optional[int] = None,
+             mem_used: Optional[int] = None,
+             network_mode: Optional[int] = None,
+             node_num: Optional[int] = None,
+             region_id: Optional[str] = None,
+             update_time: Optional[int] = None,
+             vpc_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'clusterName' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'clusterType' in kwargs:
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'cpuUsed' in kwargs:
+        if cluster_type is None:
+            raise TypeError("Missing 'cluster_type' argument")
+        if cpu is None:
+            raise TypeError("Missing 'cpu' argument")
+        if cpu_used is None and 'cpuUsed' in kwargs:
             cpu_used = kwargs['cpuUsed']
-        if 'createTime' in kwargs:
+        if cpu_used is None:
+            raise TypeError("Missing 'cpu_used' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'memUsed' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if mem is None:
+            raise TypeError("Missing 'mem' argument")
+        if mem_used is None and 'memUsed' in kwargs:
             mem_used = kwargs['memUsed']
-        if 'networkMode' in kwargs:
+        if mem_used is None:
+            raise TypeError("Missing 'mem_used' argument")
+        if network_mode is None and 'networkMode' in kwargs:
             network_mode = kwargs['networkMode']
-        if 'nodeNum' in kwargs:
+        if network_mode is None:
+            raise TypeError("Missing 'network_mode' argument")
+        if node_num is None and 'nodeNum' in kwargs:
             node_num = kwargs['nodeNum']
-        if 'regionId' in kwargs:
+        if node_num is None:
+            raise TypeError("Missing 'node_num' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'updateTime' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
-        if 'vpcId' in kwargs:
+        if update_time is None:
+            raise TypeError("Missing 'update_time' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
 
         _setter("cluster_id", cluster_id)
         _setter("cluster_name", cluster_name)
@@ -663,35 +719,53 @@ class GetDeployGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_id: str,
-             app_version_id: str,
-             cluster_id: str,
-             create_time: int,
-             group_id: str,
-             group_name: str,
-             group_type: int,
-             package_version_id: str,
-             update_time: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             app_id: Optional[str] = None,
+             app_version_id: Optional[str] = None,
+             cluster_id: Optional[str] = None,
+             create_time: Optional[int] = None,
+             group_id: Optional[str] = None,
+             group_name: Optional[str] = None,
+             group_type: Optional[int] = None,
+             package_version_id: Optional[str] = None,
+             update_time: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appId' in kwargs:
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'appVersionId' in kwargs:
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if app_version_id is None and 'appVersionId' in kwargs:
             app_version_id = kwargs['appVersionId']
-        if 'clusterId' in kwargs:
+        if app_version_id is None:
+            raise TypeError("Missing 'app_version_id' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'createTime' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'groupId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'groupName' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'groupType' in kwargs:
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if group_type is None and 'groupType' in kwargs:
             group_type = kwargs['groupType']
-        if 'packageVersionId' in kwargs:
+        if group_type is None:
+            raise TypeError("Missing 'group_type' argument")
+        if package_version_id is None and 'packageVersionId' in kwargs:
             package_version_id = kwargs['packageVersionId']
-        if 'updateTime' in kwargs:
+        if package_version_id is None:
+            raise TypeError("Missing 'package_version_id' argument")
+        if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
+        if update_time is None:
+            raise TypeError("Missing 'update_time' argument")
 
         _setter("app_id", app_id)
         _setter("app_version_id", app_version_id)
@@ -811,28 +885,44 @@ class GetNamespacesNamespaceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             belong_region: str,
-             debug_enable: bool,
-             description: str,
-             id: str,
-             namespace_id: str,
-             namespace_logical_id: str,
-             namespace_name: str,
-             user_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             belong_region: Optional[str] = None,
+             debug_enable: Optional[bool] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             namespace_id: Optional[str] = None,
+             namespace_logical_id: Optional[str] = None,
+             namespace_name: Optional[str] = None,
+             user_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'belongRegion' in kwargs:
+        if belong_region is None and 'belongRegion' in kwargs:
             belong_region = kwargs['belongRegion']
-        if 'debugEnable' in kwargs:
+        if belong_region is None:
+            raise TypeError("Missing 'belong_region' argument")
+        if debug_enable is None and 'debugEnable' in kwargs:
             debug_enable = kwargs['debugEnable']
-        if 'namespaceId' in kwargs:
+        if debug_enable is None:
+            raise TypeError("Missing 'debug_enable' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
-        if 'namespaceLogicalId' in kwargs:
+        if namespace_id is None:
+            raise TypeError("Missing 'namespace_id' argument")
+        if namespace_logical_id is None and 'namespaceLogicalId' in kwargs:
             namespace_logical_id = kwargs['namespaceLogicalId']
-        if 'namespaceName' in kwargs:
+        if namespace_logical_id is None:
+            raise TypeError("Missing 'namespace_logical_id' argument")
+        if namespace_name is None and 'namespaceName' in kwargs:
             namespace_name = kwargs['namespaceName']
-        if 'userId' in kwargs:
+        if namespace_name is None:
+            raise TypeError("Missing 'namespace_name' argument")
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
 
         _setter("belong_region", belong_region)
         _setter("debug_enable", debug_enable)

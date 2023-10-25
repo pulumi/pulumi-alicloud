@@ -15,39 +15,6 @@ namespace Pulumi.AliCloud.Cfg
         /// This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.124.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Cfg.GetAggregateCompliancePacks.Invoke(new()
-        ///     {
-        ///         AggregatorId = "ca-3a9b626622af001d****",
-        ///         Ids = new[]
-        ///         {
-        ///             "cp-152a626622af00bc****",
-        ///         },
-        ///         NameRegex = "the_resource_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstConfigAggregateCompliancePackId"] = example.Apply(getAggregateCompliancePacksResult =&gt; getAggregateCompliancePacksResult.Packs[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAggregateCompliancePacksResult> InvokeAsync(GetAggregateCompliancePacksArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAggregateCompliancePacksResult>("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", args ?? new GetAggregateCompliancePacksArgs(), options.WithDefaults());
@@ -56,39 +23,6 @@ namespace Pulumi.AliCloud.Cfg
         /// This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.124.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Cfg.GetAggregateCompliancePacks.Invoke(new()
-        ///     {
-        ///         AggregatorId = "ca-3a9b626622af001d****",
-        ///         Ids = new[]
-        ///         {
-        ///             "cp-152a626622af00bc****",
-        ///         },
-        ///         NameRegex = "the_resource_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstConfigAggregateCompliancePackId"] = example.Apply(getAggregateCompliancePacksResult =&gt; getAggregateCompliancePacksResult.Packs[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAggregateCompliancePacksResult> Invoke(GetAggregateCompliancePacksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAggregateCompliancePacksResult>("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", args ?? new GetAggregateCompliancePacksInvokeArgs(), options.WithDefaults());

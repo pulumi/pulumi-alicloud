@@ -28,11 +28,13 @@ class ServiceLinkedRoleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             product_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             product_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'productName' in kwargs:
+        if product_name is None and 'productName' in kwargs:
             product_name = kwargs['productName']
+        if product_name is None:
+            raise TypeError("Missing 'product_name' argument")
 
         _setter("product_name", product_name)
 
@@ -69,9 +71,9 @@ class _ServiceLinkedRoleState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              product_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'productName' in kwargs:
+        if product_name is None and 'productName' in kwargs:
             product_name = kwargs['productName']
 
         if product_name is not None:
@@ -106,15 +108,6 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.129.0+. After the version 1.142.0, the resource is renamed as `eventbridge.ServiceLinkedRole`.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        service_linked_role = alicloud.eventbridge.ServiceLinkedRole("serviceLinkedRole", product_name="AliyunServiceRoleForEventBridgeSendToMNS")
-        ```
-
         ## Import
 
         Event Bridge service-linked roles(SLR) can be imported using the id, e.g.
@@ -141,15 +134,6 @@ class ServiceLinkedRole(pulumi.CustomResource):
         For information about Event Bridge service-linked roles(SLR) and how to use it, see [What is service-linked roles](https://www.alibabacloud.com/help/doc-detail/181425.htm).
 
         > **NOTE:** Available in v1.129.0+. After the version 1.142.0, the resource is renamed as `eventbridge.ServiceLinkedRole`.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        service_linked_role = alicloud.eventbridge.ServiceLinkedRole("serviceLinkedRole", product_name="AliyunServiceRoleForEventBridgeSendToMNS")
-        ```
 
         ## Import
 

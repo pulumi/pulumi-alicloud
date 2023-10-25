@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ecs Invocations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.168.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ecs.getEcsInvocations({
- *     ids: ["example-id"],
- * });
- * export const ecsInvocationId1 = ids.then(ids => ids.invocations?.[0]?.id);
- * ```
  */
 export function getEcsInvocations(args?: GetEcsInvocationsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsInvocationsResult> {
     args = args || {};
@@ -89,20 +75,6 @@ export interface GetEcsInvocationsResult {
  * This data source provides the Ecs Invocations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.168.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ecs.getEcsInvocations({
- *     ids: ["example-id"],
- * });
- * export const ecsInvocationId1 = ids.then(ids => ids.invocations?.[0]?.id);
- * ```
  */
 export function getEcsInvocationsOutput(args?: GetEcsInvocationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsInvocationsResult> {
     return pulumi.output(args).apply((a: any) => getEcsInvocations(a, opts))

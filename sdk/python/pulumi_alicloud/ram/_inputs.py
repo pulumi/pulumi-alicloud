@@ -36,11 +36,17 @@ class PolicyStatementArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             actions: pulumi.Input[Sequence[pulumi.Input[str]]],
-             effect: pulumi.Input[str],
-             resources: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             effect: Optional[pulumi.Input[str]] = None,
+             resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if actions is None:
+            raise TypeError("Missing 'actions' argument")
+        if effect is None:
+            raise TypeError("Missing 'effect' argument")
+        if resources is None:
+            raise TypeError("Missing 'resources' argument")
 
         _setter("actions", actions)
         _setter("effect", effect)
@@ -109,13 +115,15 @@ class GetPolicyDocumentStatementArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             actions: Sequence[str],
+             actions: Optional[Sequence[str]] = None,
              conditions: Optional[Sequence['GetPolicyDocumentStatementConditionArgs']] = None,
              effect: Optional[str] = None,
              principals: Optional[Sequence['GetPolicyDocumentStatementPrincipalArgs']] = None,
              resources: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if actions is None:
+            raise TypeError("Missing 'actions' argument")
 
         _setter("actions", actions)
         if conditions is not None:
@@ -208,11 +216,17 @@ class GetPolicyDocumentStatementConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             operator: str,
-             values: Sequence[str],
-             variable: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             operator: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             variable: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if variable is None:
+            raise TypeError("Missing 'variable' argument")
 
         _setter("operator", operator)
         _setter("values", values)
@@ -272,10 +286,14 @@ class GetPolicyDocumentStatementPrincipalArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity: str,
-             identifiers: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             entity: Optional[str] = None,
+             identifiers: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if entity is None:
+            raise TypeError("Missing 'entity' argument")
+        if identifiers is None:
+            raise TypeError("Missing 'identifiers' argument")
 
         _setter("entity", entity)
         _setter("identifiers", identifiers)

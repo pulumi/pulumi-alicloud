@@ -40,17 +40,23 @@ class ParameterGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_type: pulumi.Input[str],
-             db_version: pulumi.Input[str],
-             parameters: pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]],
+             db_type: Optional[pulumi.Input[str]] = None,
+             db_version: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbType' in kwargs:
+        if db_type is None and 'dbType' in kwargs:
             db_type = kwargs['dbType']
-        if 'dbVersion' in kwargs:
+        if db_type is None:
+            raise TypeError("Missing 'db_type' argument")
+        if db_version is None and 'dbVersion' in kwargs:
             db_version = kwargs['dbVersion']
+        if db_version is None:
+            raise TypeError("Missing 'db_version' argument")
+        if parameters is None:
+            raise TypeError("Missing 'parameters' argument")
 
         _setter("db_type", db_type)
         _setter("db_version", db_version)
@@ -153,11 +159,11 @@ class _ParameterGroupState:
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbType' in kwargs:
+        if db_type is None and 'dbType' in kwargs:
             db_type = kwargs['dbType']
-        if 'dbVersion' in kwargs:
+        if db_version is None and 'dbVersion' in kwargs:
             db_version = kwargs['dbVersion']
 
         if db_type is not None:
@@ -250,24 +256,6 @@ class ParameterGroup(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.183.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.polardb.ParameterGroup("example",
-            db_type="MySQL",
-            db_version="8.0",
-            description="example_value",
-            parameters=[alicloud.polardb.ParameterGroupParameterArgs(
-                param_name="wait_timeout",
-                param_value="86400",
-            )])
-        ```
-
         ## Import
 
         PolarDB Parameter Group can be imported using the id, e.g.
@@ -296,24 +284,6 @@ class ParameterGroup(pulumi.CustomResource):
         For information about PolarDB Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
 
         > **NOTE:** Available in v1.183.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.polardb.ParameterGroup("example",
-            db_type="MySQL",
-            db_version="8.0",
-            description="example_value",
-            parameters=[alicloud.polardb.ParameterGroupParameterArgs(
-                param_name="wait_timeout",
-                param_value="86400",
-            )])
-        ```
 
         ## Import
 

@@ -64,8 +64,8 @@ class NestServiceInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_id: pulumi.Input[str],
-             service_version: pulumi.Input[str],
+             service_id: Optional[pulumi.Input[str]] = None,
+             service_version: Optional[pulumi.Input[str]] = None,
              commodity: Optional[pulumi.Input['NestServiceInstanceCommodityArgs']] = None,
              enable_instance_ops: Optional[pulumi.Input[bool]] = None,
              enable_user_prometheus: Optional[pulumi.Input[bool]] = None,
@@ -77,27 +77,31 @@ class NestServiceInstanceArgs:
              specification_name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              template_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serviceId' in kwargs:
+        if service_id is None and 'serviceId' in kwargs:
             service_id = kwargs['serviceId']
-        if 'serviceVersion' in kwargs:
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+        if service_version is None and 'serviceVersion' in kwargs:
             service_version = kwargs['serviceVersion']
-        if 'enableInstanceOps' in kwargs:
+        if service_version is None:
+            raise TypeError("Missing 'service_version' argument")
+        if enable_instance_ops is None and 'enableInstanceOps' in kwargs:
             enable_instance_ops = kwargs['enableInstanceOps']
-        if 'enableUserPrometheus' in kwargs:
+        if enable_user_prometheus is None and 'enableUserPrometheus' in kwargs:
             enable_user_prometheus = kwargs['enableUserPrometheus']
-        if 'operationMetadata' in kwargs:
+        if operation_metadata is None and 'operationMetadata' in kwargs:
             operation_metadata = kwargs['operationMetadata']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'serviceInstanceName' in kwargs:
+        if service_instance_name is None and 'serviceInstanceName' in kwargs:
             service_instance_name = kwargs['serviceInstanceName']
-        if 'specificationName' in kwargs:
+        if specification_name is None and 'specificationName' in kwargs:
             specification_name = kwargs['specificationName']
-        if 'templateName' in kwargs:
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
 
         _setter("service_id", service_id)
@@ -350,27 +354,27 @@ class _NestServiceInstanceState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              template_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'enableInstanceOps' in kwargs:
+        if enable_instance_ops is None and 'enableInstanceOps' in kwargs:
             enable_instance_ops = kwargs['enableInstanceOps']
-        if 'enableUserPrometheus' in kwargs:
+        if enable_user_prometheus is None and 'enableUserPrometheus' in kwargs:
             enable_user_prometheus = kwargs['enableUserPrometheus']
-        if 'operationMetadata' in kwargs:
+        if operation_metadata is None and 'operationMetadata' in kwargs:
             operation_metadata = kwargs['operationMetadata']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'serviceId' in kwargs:
+        if service_id is None and 'serviceId' in kwargs:
             service_id = kwargs['serviceId']
-        if 'serviceInstanceName' in kwargs:
+        if service_instance_name is None and 'serviceInstanceName' in kwargs:
             service_instance_name = kwargs['serviceInstanceName']
-        if 'serviceVersion' in kwargs:
+        if service_version is None and 'serviceVersion' in kwargs:
             service_version = kwargs['serviceVersion']
-        if 'specificationName' in kwargs:
+        if specification_name is None and 'specificationName' in kwargs:
             specification_name = kwargs['specificationName']
-        if 'templateName' in kwargs:
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
 
         if commodity is not None:
@@ -597,70 +601,6 @@ class NestServiceInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.205.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            instance_type_family="ecs.sn1ne")
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.1.0.0/16",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            security_groups=[__item.id for __item in [default_security_group]],
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=10,
-            availability_zone=default_zones.zones[0].id,
-            instance_charge_type="PostPaid",
-            system_disk_category="cloud_efficiency",
-            vswitch_id=default_switch.id)
-        default_nest_service_instance = alicloud.compute.NestServiceInstance("defaultNestServiceInstance",
-            service_id="service-dd475e6e468348799f0f",
-            service_version="1",
-            service_instance_name=name,
-            resource_group_id=default_resource_groups.groups[0].id,
-            payment_type="Permanent",
-            operation_metadata=alicloud.compute.NestServiceInstanceOperationMetadataArgs(
-                operation_start_time="1681281179000",
-                operation_end_time="1681367579000",
-                resources=default_instance.id.apply(lambda id: f\"\"\"    {{
-              "Type": "ResourceIds",
-              "RegionId": "cn-hangzhou",
-              "ResourceIds": {{
-              "ALIYUN::ECS::INSTANCE": [
-                "{id}"
-                ]
-              }} 
-            }}
-        \"\"\"),
-            ),
-            tags={
-                "Created": "TF",
-                "For": "ServiceInstance",
-            })
-        ```
-
         ## Import
 
         Compute Nest Service Instance can be imported using the id, e.g.
@@ -697,70 +637,6 @@ class NestServiceInstance(pulumi.CustomResource):
         For information about Compute Nest Service Instance and how to use it, see [What is Service Instance](https://www.alibabacloud.com/help/en/compute-nest/developer-reference/api-computenest-2021-06-01-createserviceinstance).
 
         > **NOTE:** Available since v1.205.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            instance_type_family="ecs.sn1ne")
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.1.0.0/16",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            security_groups=[__item.id for __item in [default_security_group]],
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=10,
-            availability_zone=default_zones.zones[0].id,
-            instance_charge_type="PostPaid",
-            system_disk_category="cloud_efficiency",
-            vswitch_id=default_switch.id)
-        default_nest_service_instance = alicloud.compute.NestServiceInstance("defaultNestServiceInstance",
-            service_id="service-dd475e6e468348799f0f",
-            service_version="1",
-            service_instance_name=name,
-            resource_group_id=default_resource_groups.groups[0].id,
-            payment_type="Permanent",
-            operation_metadata=alicloud.compute.NestServiceInstanceOperationMetadataArgs(
-                operation_start_time="1681281179000",
-                operation_end_time="1681367579000",
-                resources=default_instance.id.apply(lambda id: f\"\"\"    {{
-              "Type": "ResourceIds",
-              "RegionId": "cn-hangzhou",
-              "ResourceIds": {{
-              "ALIYUN::ECS::INSTANCE": [
-                "{id}"
-                ]
-              }} 
-            }}
-        \"\"\"),
-            ),
-            tags={
-                "Created": "TF",
-                "For": "ServiceInstance",
-            })
-        ```
 
         ## Import
 
@@ -811,19 +687,11 @@ class NestServiceInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NestServiceInstanceArgs.__new__(NestServiceInstanceArgs)
 
-            if commodity is not None and not isinstance(commodity, NestServiceInstanceCommodityArgs):
-                commodity = commodity or {}
-                def _setter(key, value):
-                    commodity[key] = value
-                NestServiceInstanceCommodityArgs._configure(_setter, **commodity)
+            commodity = _utilities.configure(commodity, NestServiceInstanceCommodityArgs, True)
             __props__.__dict__["commodity"] = commodity
             __props__.__dict__["enable_instance_ops"] = enable_instance_ops
             __props__.__dict__["enable_user_prometheus"] = enable_user_prometheus
-            if operation_metadata is not None and not isinstance(operation_metadata, NestServiceInstanceOperationMetadataArgs):
-                operation_metadata = operation_metadata or {}
-                def _setter(key, value):
-                    operation_metadata[key] = value
-                NestServiceInstanceOperationMetadataArgs._configure(_setter, **operation_metadata)
+            operation_metadata = _utilities.configure(operation_metadata, NestServiceInstanceOperationMetadataArgs, True)
             __props__.__dict__["operation_metadata"] = operation_metadata
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["payment_type"] = payment_type

@@ -139,20 +139,6 @@ def get_smartag_flow_logs(description: Optional[str] = None,
 
     > **NOTE:** Available in v1.168.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.sag.get_smartag_flow_logs(ids=["example_id"])
-    pulumi.export("smartagFlowLogId1", ids.logs[0].id)
-    name_regex = alicloud.sag.get_smartag_flow_logs(name_regex="^my-FlowLog")
-    pulumi.export("smartagFlowLogId2", name_regex.logs[0].id)
-    ```
-
 
     :param str description: The description of the flow log.
     :param Sequence[str] ids: A list of Flow Log IDs.
@@ -197,20 +183,6 @@ def get_smartag_flow_logs_output(description: Optional[pulumi.Input[Optional[str
     This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.168.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.sag.get_smartag_flow_logs(ids=["example_id"])
-    pulumi.export("smartagFlowLogId1", ids.logs[0].id)
-    name_regex = alicloud.sag.get_smartag_flow_logs(name_regex="^my-FlowLog")
-    pulumi.export("smartagFlowLogId2", name_regex.logs[0].id)
-    ```
 
 
     :param str description: The description of the flow log.

@@ -15,39 +15,6 @@ import (
 // This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.180.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := ddos.GetDdosBgpIps(ctx, &ddos.GetDdosBgpIpsArgs{
-//				InstanceId: "example_value",
-//				Ids: []string{
-//					"example_value-1",
-//					"example_value-2",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ddosbgpIpId1", ids.Ips[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDdosBgpIps(ctx *pulumi.Context, args *GetDdosBgpIpsArgs, opts ...pulumi.InvokeOption) (*GetDdosBgpIpsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDdosBgpIpsResult

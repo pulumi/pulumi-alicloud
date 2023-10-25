@@ -61,9 +61,9 @@ class OtsBackupPlanArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_type: pulumi.Input[str],
-             ots_backup_plan_name: pulumi.Input[str],
-             retention: pulumi.Input[str],
+             backup_type: Optional[pulumi.Input[str]] = None,
+             ots_backup_plan_name: Optional[pulumi.Input[str]] = None,
+             retention: Optional[pulumi.Input[str]] = None,
              cross_account_role_name: Optional[pulumi.Input[str]] = None,
              cross_account_type: Optional[pulumi.Input[str]] = None,
              cross_account_user_id: Optional[pulumi.Input[int]] = None,
@@ -73,23 +73,29 @@ class OtsBackupPlanArgs:
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]] = None,
              schedule: Optional[pulumi.Input[str]] = None,
              vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'otsBackupPlanName' in kwargs:
+        if backup_type is None:
+            raise TypeError("Missing 'backup_type' argument")
+        if ots_backup_plan_name is None and 'otsBackupPlanName' in kwargs:
             ots_backup_plan_name = kwargs['otsBackupPlanName']
-        if 'crossAccountRoleName' in kwargs:
+        if ots_backup_plan_name is None:
+            raise TypeError("Missing 'ots_backup_plan_name' argument")
+        if retention is None:
+            raise TypeError("Missing 'retention' argument")
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
             cross_account_role_name = kwargs['crossAccountRoleName']
-        if 'crossAccountType' in kwargs:
+        if cross_account_type is None and 'crossAccountType' in kwargs:
             cross_account_type = kwargs['crossAccountType']
-        if 'crossAccountUserId' in kwargs:
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
             cross_account_user_id = kwargs['crossAccountUserId']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'otsDetails' in kwargs:
+        if ots_details is None and 'otsDetails' in kwargs:
             ots_details = kwargs['otsDetails']
-        if 'vaultId' in kwargs:
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
 
         _setter("backup_type", backup_type)
@@ -325,23 +331,23 @@ class _OtsBackupPlanState:
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]] = None,
              schedule: Optional[pulumi.Input[str]] = None,
              vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'crossAccountRoleName' in kwargs:
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
             cross_account_role_name = kwargs['crossAccountRoleName']
-        if 'crossAccountType' in kwargs:
+        if cross_account_type is None and 'crossAccountType' in kwargs:
             cross_account_type = kwargs['crossAccountType']
-        if 'crossAccountUserId' in kwargs:
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
             cross_account_user_id = kwargs['crossAccountUserId']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'otsBackupPlanName' in kwargs:
+        if ots_backup_plan_name is None and 'otsBackupPlanName' in kwargs:
             ots_backup_plan_name = kwargs['otsBackupPlanName']
-        if 'otsDetails' in kwargs:
+        if ots_details is None and 'otsDetails' in kwargs:
             ots_details = kwargs['otsDetails']
-        if 'vaultId' in kwargs:
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
 
         if backup_type is not None:
@@ -545,77 +551,6 @@ class OtsBackupPlan(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.163.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_vault = alicloud.hbr.Vault("defaultVault",
-            vault_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
-            vault_type="OTS_BACKUP")
-        default_instance = alicloud.ots.Instance("defaultInstance",
-            description="terraform-example",
-            accessed_by="Any",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_table = alicloud.ots.Table("defaultTable",
-            instance_name=default_instance.name,
-            table_name="terraform_example",
-            primary_keys=[alicloud.ots.TablePrimaryKeyArgs(
-                name="pk1",
-                type="Integer",
-            )],
-            time_to_live=-1,
-            max_version=1,
-            deviation_cell_version_in_sec="1")
-        default_role = alicloud.ram.Role("defaultRole",
-            document=\"\"\"		{
-        			"Statement": [
-        			{
-        				"Action": "sts:AssumeRole",
-        				"Effect": "Allow",
-        				"Principal": {
-        					"Service": [
-        						"crossbackup.hbr.aliyuncs.com"
-        					]
-        				}
-        			}
-        			],
-          			"Version": "1"
-        		}
-        \"\"\",
-            force=True)
-        default_account = alicloud.get_account()
-        example = alicloud.hbr.OtsBackupPlan("example",
-            ots_backup_plan_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
-            vault_id=default_vault.id,
-            backup_type="COMPLETE",
-            retention="1",
-            instance_name=default_instance.name,
-            cross_account_type="SELF_ACCOUNT",
-            cross_account_user_id=default_account.id,
-            cross_account_role_name=default_role.id,
-            ots_details=[alicloud.hbr.OtsBackupPlanOtsDetailArgs(
-                table_names=[default_table.table_name],
-            )],
-            rules=[alicloud.hbr.OtsBackupPlanRuleArgs(
-                schedule="I|1602673264|PT2H",
-                retention="1",
-                disabled=False,
-                rule_name="terraform-example",
-                backup_type="COMPLETE",
-            )])
-        ```
-
         ## Import
 
         HBR Ots Backup Plan can be imported using the id, e.g.
@@ -651,77 +586,6 @@ class OtsBackupPlan(pulumi.CustomResource):
         For information about HBR Ots Backup Plan and how to use it, see [What is Ots Backup Plan](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/overview).
 
         > **NOTE:** Available in v1.163.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_vault = alicloud.hbr.Vault("defaultVault",
-            vault_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
-            vault_type="OTS_BACKUP")
-        default_instance = alicloud.ots.Instance("defaultInstance",
-            description="terraform-example",
-            accessed_by="Any",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_table = alicloud.ots.Table("defaultTable",
-            instance_name=default_instance.name,
-            table_name="terraform_example",
-            primary_keys=[alicloud.ots.TablePrimaryKeyArgs(
-                name="pk1",
-                type="Integer",
-            )],
-            time_to_live=-1,
-            max_version=1,
-            deviation_cell_version_in_sec="1")
-        default_role = alicloud.ram.Role("defaultRole",
-            document=\"\"\"		{
-        			"Statement": [
-        			{
-        				"Action": "sts:AssumeRole",
-        				"Effect": "Allow",
-        				"Principal": {
-        					"Service": [
-        						"crossbackup.hbr.aliyuncs.com"
-        					]
-        				}
-        			}
-        			],
-          			"Version": "1"
-        		}
-        \"\"\",
-            force=True)
-        default_account = alicloud.get_account()
-        example = alicloud.hbr.OtsBackupPlan("example",
-            ots_backup_plan_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
-            vault_id=default_vault.id,
-            backup_type="COMPLETE",
-            retention="1",
-            instance_name=default_instance.name,
-            cross_account_type="SELF_ACCOUNT",
-            cross_account_user_id=default_account.id,
-            cross_account_role_name=default_role.id,
-            ots_details=[alicloud.hbr.OtsBackupPlanOtsDetailArgs(
-                table_names=[default_table.table_name],
-            )],
-            rules=[alicloud.hbr.OtsBackupPlanRuleArgs(
-                schedule="I|1602673264|PT2H",
-                retention="1",
-                disabled=False,
-                rule_name="terraform-example",
-                backup_type="COMPLETE",
-            )])
-        ```
 
         ## Import
 

@@ -10,27 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Hbr Server Backup Plans of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.ecs.getInstances({
- *     nameRegex: "no-deleteing-hbr-ecs-server-backup-plan",
- *     status: "Running",
- * });
- * const ids = _default.then(_default => alicloud.hbr.getServerBackupPlans({
- *     filters: [{
- *         key: "instanceId",
- *         values: [_default.instances?.[0]?.id],
- *     }],
- * }));
- * export const hbrServerBackupPlanId1 = ids.then(ids => ids.plans?.[0]?.id);
- * ```
  */
 export function getServerBackupPlans(args?: GetServerBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetServerBackupPlansResult> {
     args = args || {};
@@ -78,27 +57,6 @@ export interface GetServerBackupPlansResult {
  * This data source provides the Hbr Server Backup Plans of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.ecs.getInstances({
- *     nameRegex: "no-deleteing-hbr-ecs-server-backup-plan",
- *     status: "Running",
- * });
- * const ids = _default.then(_default => alicloud.hbr.getServerBackupPlans({
- *     filters: [{
- *         key: "instanceId",
- *         values: [_default.instances?.[0]?.id],
- *     }],
- * }));
- * export const hbrServerBackupPlanId1 = ids.then(ids => ids.plans?.[0]?.id);
- * ```
  */
 export function getServerBackupPlansOutput(args?: GetServerBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerBackupPlansResult> {
     return pulumi.output(args).apply((a: any) => getServerBackupPlans(a, opts))

@@ -51,31 +51,49 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             client_instance_id: str,
-             client_instance_name: str,
-             client_instance_type: str,
-             id: str,
-             instance_id: str,
-             instance_name: str,
-             instance_type: str,
-             status: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             client_instance_id: Optional[str] = None,
+             client_instance_name: Optional[str] = None,
+             client_instance_type: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             status: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientInstanceId' in kwargs:
+        if client_instance_id is None and 'clientInstanceId' in kwargs:
             client_instance_id = kwargs['clientInstanceId']
-        if 'clientInstanceName' in kwargs:
+        if client_instance_id is None:
+            raise TypeError("Missing 'client_instance_id' argument")
+        if client_instance_name is None and 'clientInstanceName' in kwargs:
             client_instance_name = kwargs['clientInstanceName']
-        if 'clientInstanceType' in kwargs:
+        if client_instance_name is None:
+            raise TypeError("Missing 'client_instance_name' argument")
+        if client_instance_type is None and 'clientInstanceType' in kwargs:
             client_instance_type = kwargs['clientInstanceType']
-        if 'instanceId' in kwargs:
+        if client_instance_type is None:
+            raise TypeError("Missing 'client_instance_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceType' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'zoneId' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("client_instance_id", client_instance_id)
         _setter("client_instance_name", client_instance_name)

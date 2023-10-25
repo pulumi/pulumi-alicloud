@@ -284,16 +284,6 @@ def get_eips(address_name: Optional[str] = None,
 
     This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    eips_ds = alicloud.ecs.get_eips()
-    pulumi.export("firstEipId", eips_ds.eips[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of EIP IDs.
     :param str ip_address: Public IP Address of the the EIP.
@@ -375,16 +365,6 @@ def get_eips_output(address_name: Optional[pulumi.Input[Optional[str]]] = None,
     > **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
 
     This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    eips_ds = alicloud.ecs.get_eips()
-    pulumi.export("firstEipId", eips_ds.eips[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of EIP IDs.

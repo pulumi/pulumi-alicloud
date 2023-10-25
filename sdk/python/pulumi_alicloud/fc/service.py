@@ -55,19 +55,19 @@ class ServiceArgs:
              role: Optional[pulumi.Input[str]] = None,
              tracing_config: Optional[pulumi.Input['ServiceTracingConfigArgs']] = None,
              vpc_config: Optional[pulumi.Input['ServiceVpcConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'internetAccess' in kwargs:
+        if internet_access is None and 'internetAccess' in kwargs:
             internet_access = kwargs['internetAccess']
-        if 'logConfig' in kwargs:
+        if log_config is None and 'logConfig' in kwargs:
             log_config = kwargs['logConfig']
-        if 'namePrefix' in kwargs:
+        if name_prefix is None and 'namePrefix' in kwargs:
             name_prefix = kwargs['namePrefix']
-        if 'nasConfig' in kwargs:
+        if nas_config is None and 'nasConfig' in kwargs:
             nas_config = kwargs['nasConfig']
-        if 'tracingConfig' in kwargs:
+        if tracing_config is None and 'tracingConfig' in kwargs:
             tracing_config = kwargs['tracingConfig']
-        if 'vpcConfig' in kwargs:
+        if vpc_config is None and 'vpcConfig' in kwargs:
             vpc_config = kwargs['vpcConfig']
 
         if description is not None:
@@ -233,23 +233,23 @@ class _ServiceState:
              tracing_config: Optional[pulumi.Input['ServiceTracingConfigArgs']] = None,
              version: Optional[pulumi.Input[str]] = None,
              vpc_config: Optional[pulumi.Input['ServiceVpcConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'internetAccess' in kwargs:
+        if internet_access is None and 'internetAccess' in kwargs:
             internet_access = kwargs['internetAccess']
-        if 'lastModified' in kwargs:
+        if last_modified is None and 'lastModified' in kwargs:
             last_modified = kwargs['lastModified']
-        if 'logConfig' in kwargs:
+        if log_config is None and 'logConfig' in kwargs:
             log_config = kwargs['logConfig']
-        if 'namePrefix' in kwargs:
+        if name_prefix is None and 'namePrefix' in kwargs:
             name_prefix = kwargs['namePrefix']
-        if 'nasConfig' in kwargs:
+        if nas_config is None and 'nasConfig' in kwargs:
             nas_config = kwargs['nasConfig']
-        if 'serviceId' in kwargs:
+        if service_id is None and 'serviceId' in kwargs:
             service_id = kwargs['serviceId']
-        if 'tracingConfig' in kwargs:
+        if tracing_config is None and 'tracingConfig' in kwargs:
             tracing_config = kwargs['tracingConfig']
-        if 'vpcConfig' in kwargs:
+        if vpc_config is None and 'vpcConfig' in kwargs:
             vpc_config = kwargs['vpcConfig']
 
         if description is not None:
@@ -466,33 +466,17 @@ class Service(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["internet_access"] = internet_access
-            if log_config is not None and not isinstance(log_config, ServiceLogConfigArgs):
-                log_config = log_config or {}
-                def _setter(key, value):
-                    log_config[key] = value
-                ServiceLogConfigArgs._configure(_setter, **log_config)
+            log_config = _utilities.configure(log_config, ServiceLogConfigArgs, True)
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
             __props__.__dict__["name_prefix"] = name_prefix
-            if nas_config is not None and not isinstance(nas_config, ServiceNasConfigArgs):
-                nas_config = nas_config or {}
-                def _setter(key, value):
-                    nas_config[key] = value
-                ServiceNasConfigArgs._configure(_setter, **nas_config)
+            nas_config = _utilities.configure(nas_config, ServiceNasConfigArgs, True)
             __props__.__dict__["nas_config"] = nas_config
             __props__.__dict__["publish"] = publish
             __props__.__dict__["role"] = role
-            if tracing_config is not None and not isinstance(tracing_config, ServiceTracingConfigArgs):
-                tracing_config = tracing_config or {}
-                def _setter(key, value):
-                    tracing_config[key] = value
-                ServiceTracingConfigArgs._configure(_setter, **tracing_config)
+            tracing_config = _utilities.configure(tracing_config, ServiceTracingConfigArgs, True)
             __props__.__dict__["tracing_config"] = tracing_config
-            if vpc_config is not None and not isinstance(vpc_config, ServiceVpcConfigArgs):
-                vpc_config = vpc_config or {}
-                def _setter(key, value):
-                    vpc_config[key] = value
-                ServiceVpcConfigArgs._configure(_setter, **vpc_config)
+            vpc_config = _utilities.configure(vpc_config, ServiceVpcConfigArgs, True)
             __props__.__dict__["vpc_config"] = vpc_config
             __props__.__dict__["last_modified"] = None
             __props__.__dict__["service_id"] = None

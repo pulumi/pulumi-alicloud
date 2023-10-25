@@ -17,34 +17,6 @@ namespace Pulumi.AliCloud.Ecs
         /// &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
         /// 
         /// &gt; **NOTE:** If one instance type is sold out, it will not be exported.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var typesDs = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
-        ///     {
-        ///         CpuCoreCount = 1,
-        ///         MemorySize = 2,
-        ///     });
-        /// 
-        ///     var instance = new AliCloud.Ecs.Instance("instance", new()
-        ///     {
-        ///         InstanceType = typesDs.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:ecs/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithDefaults());
@@ -55,34 +27,6 @@ namespace Pulumi.AliCloud.Ecs
         /// &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
         /// 
         /// &gt; **NOTE:** If one instance type is sold out, it will not be exported.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var typesDs = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
-        ///     {
-        ///         CpuCoreCount = 1,
-        ///         MemorySize = 2,
-        ///     });
-        /// 
-        ///     var instance = new AliCloud.Ecs.Instance("instance", new()
-        ///     {
-        ///         InstanceType = typesDs.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:ecs/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());

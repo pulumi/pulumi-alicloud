@@ -16,52 +16,6 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available in v1.182.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testacc-example";
-    ///     var defaultRg = new AliCloud.ResourceManager.ResourceGroup("defaultRg", new()
-    ///     {
-    ///         DisplayName = "tf-testacc-chenyi",
-    ///         ResourceGroupName = name,
-    ///     });
-    /// 
-    ///     var changeRg = new AliCloud.ResourceManager.ResourceGroup("changeRg", new()
-    ///     {
-    ///         DisplayName = "tf-testacc-chenyi-change",
-    ///         ResourceGroupName = $"{name}1",
-    ///     });
-    /// 
-    ///     var @default = new AliCloud.Vpc.PrefixList("default", new()
-    ///     {
-    ///         MaxEntries = 50,
-    ///         ResourceGroupId = defaultRg.Id,
-    ///         PrefixListDescription = "test",
-    ///         IpVersion = "IPV4",
-    ///         PrefixListName = name,
-    ///         Entrys = new[]
-    ///         {
-    ///             new AliCloud.Vpc.Inputs.PrefixListEntryArgs
-    ///             {
-    ///                 Cidr = "192.168.0.0/16",
-    ///                 Description = "test",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Vpc Prefix List can be imported using the id, e.g.

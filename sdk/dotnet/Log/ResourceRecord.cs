@@ -16,29 +16,6 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// &gt; **NOTE:** Available in 1.162.0+, log resource region should be set a main region: cn-heyuan
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Log.ResourceRecord("example", new()
-    ///     {
-    ///         RecordId = "user_tf_test_resource_1",
-    ///         ResourceName = "user.tf.test_resource",
-    ///         Tag = "test resource tag",
-    ///         Value = "{\"col1\": \"this is col1 value\", \"col2\": \"col2 value\"}",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Log resource record can be imported using the id, e.g.

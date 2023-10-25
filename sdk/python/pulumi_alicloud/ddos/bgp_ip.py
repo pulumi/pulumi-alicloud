@@ -32,14 +32,18 @@ class BgpIpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
-             ip: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             ip: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'resourceGroupId' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if ip is None:
+            raise TypeError("Missing 'ip' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("instance_id", instance_id)
@@ -112,11 +116,11 @@ class _BgpIpState:
              ip: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         if instance_id is not None:
@@ -193,33 +197,6 @@ class BgpIp(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.180.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        instance = alicloud.ddos.DdosBgpInstance("instance",
-            base_bandwidth=20,
-            bandwidth=-1,
-            ip_count=100,
-            ip_type="IPv4",
-            normal_bandwidth=100,
-            type="Enterprise")
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
-        default_bgp_ip = alicloud.ddos.BgpIp("defaultBgpIp",
-            instance_id=instance.id,
-            ip=default_eip_address.ip_address,
-            resource_group_id=default_resource_groups.groups[0].id)
-        ```
-
         ## Import
 
         Ddos Bgp Ip can be imported using the id, e.g.
@@ -246,33 +223,6 @@ class BgpIp(pulumi.CustomResource):
         For information about Ddos Bgp Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
 
         > **NOTE:** Available since v1.180.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        instance = alicloud.ddos.DdosBgpInstance("instance",
-            base_bandwidth=20,
-            bandwidth=-1,
-            ip_count=100,
-            ip_type="IPv4",
-            normal_bandwidth=100,
-            type="Enterprise")
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
-        default_bgp_ip = alicloud.ddos.BgpIp("defaultBgpIp",
-            instance_id=instance.id,
-            ip=default_eip_address.ip_address,
-            resource_group_id=default_resource_groups.groups[0].id)
-        ```
 
         ## Import
 

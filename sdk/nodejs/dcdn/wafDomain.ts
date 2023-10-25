@@ -11,33 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.185.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const domainName = config.get("domainName") || "example.com";
- * const exampleDomain = new alicloud.dcdn.Domain("exampleDomain", {
- *     domainName: domainName,
- *     scope: "overseas",
- *     sources: [{
- *         content: "1.1.1.1",
- *         port: 80,
- *         priority: "20",
- *         type: "ipaddr",
- *         weight: "10",
- *     }],
- * });
- * const exampleWafDomain = new alicloud.dcdn.WafDomain("exampleWafDomain", {
- *     domainName: exampleDomain.domainName,
- *     clientIpTag: "X-Forwarded-For",
- * });
- * ```
- *
  * ## Import
  *
  * DCDN Waf Domain can be imported using the id, e.g.

@@ -19,58 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.202.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String("tf_example"),
-//				Description:     pulumi.String("an example for cen"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
-//				TransitRouterName: pulumi.String("tf_example"),
-//				CenId:             exampleInstance.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleTransitRouterRouteTable, err := cen.NewTransitRouterRouteTable(ctx, "exampleTransitRouterRouteTable", &cen.TransitRouterRouteTableArgs{
-//				TransitRouterId: exampleTransitRouter.TransitRouterId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cen.NewTransitRouteTableAggregation(ctx, "exampleTransitRouteTableAggregation", &cen.TransitRouteTableAggregationArgs{
-//				TransitRouteTableId:                     exampleTransitRouterRouteTable.TransitRouterRouteTableId,
-//				TransitRouteTableAggregationCidr:        pulumi.String("10.0.0.0/8"),
-//				TransitRouteTableAggregationScope:       pulumi.String("VPC"),
-//				TransitRouteTableAggregationName:        pulumi.String("tf_example"),
-//				TransitRouteTableAggregationDescription: pulumi.String("tf_example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Cloud Enterprise Network (CEN) Transit Route Table Aggregation can be imported using the id, e.g.

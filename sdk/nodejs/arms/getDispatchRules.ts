@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.136.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.arms.getDispatchRules({});
- * export const armsDispatchRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
- * const nameRegex = alicloud.arms.getDispatchRules({
- *     nameRegex: "^my-DispatchRule",
- * });
- * export const armsDispatchRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
- * ```
  */
 export function getDispatchRules(args?: GetDispatchRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetDispatchRulesResult> {
     args = args || {};
@@ -86,22 +70,6 @@ export interface GetDispatchRulesResult {
  * This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.136.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.arms.getDispatchRules({});
- * export const armsDispatchRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
- * const nameRegex = alicloud.arms.getDispatchRules({
- *     nameRegex: "^my-DispatchRule",
- * });
- * export const armsDispatchRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
- * ```
  */
 export function getDispatchRulesOutput(args?: GetDispatchRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDispatchRulesResult> {
     return pulumi.output(args).apply((a: any) => getDispatchRules(a, opts))

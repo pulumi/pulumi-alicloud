@@ -16,43 +16,6 @@ namespace Pulumi.AliCloud.Cdn
     /// 
     /// &gt; **NOTE:** Available in v1.165.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
-    /// 
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
-    ///     {
-    ///         Current = true,
-    ///     });
-    /// 
-    ///     var example = new AliCloud.Cdn.FcTrigger("example", new()
-    ///     {
-    ///         EventMetaName = "LogFileCreated",
-    ///         EventMetaVersion = "1.0.0",
-    ///         Notes = "example_value",
-    ///         RoleArn = $"acs:ram::{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:role/aliyuncdneventnotificationrole",
-    ///         SourceArn = $"acs:cdn:*:{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:domain/example.com",
-    ///         TriggerArn = Output.Tuple(defaultRegions, defaultAccount).Apply(values =&gt;
-    ///         {
-    ///             var defaultRegions = values.Item1;
-    ///             var defaultAccount = values.Item2;
-    ///             return $"acs:fc:{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:services/FCTestService/functions/printEvent/triggers/testtrigger";
-    ///         }),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// CDN Fc Trigger can be imported using the id, e.g.

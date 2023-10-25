@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
  *
  * > **NOTE:** Available in 1.194.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cloudfirewall.getVpcFirewalls({
- *     ids: ["id-example"],
- *     memberUid: "1415189284827022",
- *     status: "closed",
- *     vpcFirewallName: "tf-test",
- * });
- * export const alicloudCfwVpcFirewallExampleId = _default.then(_default => _default.firewalls?.[0]?.id);
- * ```
  */
 export function getVpcFirewalls(args?: GetVpcFirewallsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcFirewallsResult> {
     args = args || {};
@@ -142,21 +127,6 @@ export interface GetVpcFirewallsResult {
  * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
  *
  * > **NOTE:** Available in 1.194.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cloudfirewall.getVpcFirewalls({
- *     ids: ["id-example"],
- *     memberUid: "1415189284827022",
- *     status: "closed",
- *     vpcFirewallName: "tf-test",
- * });
- * export const alicloudCfwVpcFirewallExampleId = _default.then(_default => _default.firewalls?.[0]?.id);
- * ```
  */
 export function getVpcFirewallsOutput(args?: GetVpcFirewallsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcFirewallsResult> {
     return pulumi.output(args).apply((a: any) => getVpcFirewalls(a, opts))

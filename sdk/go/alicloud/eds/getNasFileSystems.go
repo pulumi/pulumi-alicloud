@@ -15,58 +15,6 @@ import (
 // This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.141.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
-//				CidrBlock:            pulumi.String("172.16.0.0/12"),
-//				DesktopAccessType:    pulumi.String("Internet"),
-//				OfficeSiteName:       pulumi.String("your_office_site_name"),
-//				EnableInternetAccess: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultNasFileSystem, err := eds.NewNasFileSystem(ctx, "defaultNasFileSystem", &eds.NasFileSystemArgs{
-//				Description:       pulumi.String("your_description"),
-//				OfficeSiteId:      defaultSimpleOfficeSite.ID(),
-//				NasFileSystemName: pulumi.String("your_nas_file_system_name"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ids, err := eds.GetNasFileSystems(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ecdNasFileSystemId1", ids.Systems[0].Id)
-//			nameRegex := defaultNasFileSystem.NasFileSystemName.ApplyT(func(nasFileSystemName *string) (eds.GetNasFileSystemsResult, error) {
-//				return eds.GetNasFileSystemsOutput(ctx, eds.GetNasFileSystemsOutputArgs{
-//					NameRegex: nasFileSystemName,
-//				}, nil), nil
-//			}).(eds.GetNasFileSystemsResultOutput)
-//			ctx.Export("ecdNasFileSystemId2", nameRegex.ApplyT(func(nameRegex eds.GetNasFileSystemsResult) (*string, error) {
-//				return &nameRegex.Systems[0].Id, nil
-//			}).(pulumi.StringPtrOutput))
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetNasFileSystems(ctx *pulumi.Context, args *GetNasFileSystemsArgs, opts ...pulumi.InvokeOption) (*GetNasFileSystemsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNasFileSystemsResult

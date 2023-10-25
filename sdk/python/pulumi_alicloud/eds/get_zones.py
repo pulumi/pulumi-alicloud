@@ -79,18 +79,6 @@ def get_zones(output_file: Optional[str] = None,
 
     > **NOTE:** Available in v1.174.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.eds.get_zones()
-    pulumi.export("alicloudEcdZones", default.zones[0].zone_id)
-    ```
-
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -113,18 +101,6 @@ def get_zones_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.174.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.eds.get_zones()
-    pulumi.export("alicloudEcdZones", default.zones[0].zone_id)
-    ```
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

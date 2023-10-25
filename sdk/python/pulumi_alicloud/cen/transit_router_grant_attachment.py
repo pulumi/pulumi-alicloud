@@ -38,22 +38,30 @@ class TransitRouterGrantAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cen_id: pulumi.Input[str],
-             cen_owner_id: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             instance_type: pulumi.Input[str],
+             cen_id: Optional[pulumi.Input[str]] = None,
+             cen_owner_id: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
              order_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'cenOwnerId' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if cen_owner_id is None and 'cenOwnerId' in kwargs:
             cen_owner_id = kwargs['cenOwnerId']
-        if 'instanceId' in kwargs:
+        if cen_owner_id is None:
+            raise TypeError("Missing 'cen_owner_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceType' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'orderType' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if order_type is None and 'orderType' in kwargs:
             order_type = kwargs['orderType']
 
         _setter("cen_id", cen_id)
@@ -156,17 +164,17 @@ class _TransitRouterGrantAttachmentState:
              instance_id: Optional[pulumi.Input[str]] = None,
              instance_type: Optional[pulumi.Input[str]] = None,
              order_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'cenOwnerId' in kwargs:
+        if cen_owner_id is None and 'cenOwnerId' in kwargs:
             cen_owner_id = kwargs['cenOwnerId']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'orderType' in kwargs:
+        if order_type is None and 'orderType' in kwargs:
             order_type = kwargs['orderType']
 
         if cen_id is not None:
@@ -259,29 +267,6 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.187.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.get_account()
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="tf_example",
-            cidr_block="172.17.3.0/24")
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_transit_router_grant_attachment = alicloud.cen.TransitRouterGrantAttachment("exampleTransitRouterGrantAttachment",
-            cen_id=example_instance.id,
-            cen_owner_id=default.id,
-            instance_id=example_network.id,
-            instance_type="VPC",
-            order_type="PayByCenOwner")
-        ```
-
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router Grant Attachment can be imported using the id, e.g.
@@ -310,29 +295,6 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
         For information about Cloud Enterprise Network (CEN) Transit Router Grant Attachment and how to use it, see [What is Transit Router Grant Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/grantinstancetotransitrouter).
 
         > **NOTE:** Available since v1.187.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.get_account()
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="tf_example",
-            cidr_block="172.17.3.0/24")
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_transit_router_grant_attachment = alicloud.cen.TransitRouterGrantAttachment("exampleTransitRouterGrantAttachment",
-            cen_id=example_instance.id,
-            cen_owner_id=default.id,
-            instance_id=example_network.id,
-            instance_type="VPC",
-            order_type="PayByCenOwner")
-        ```
 
         ## Import
 

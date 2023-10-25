@@ -130,18 +130,6 @@ def get_ecs_invocations(command_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.168.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ecs.get_ecs_invocations(ids=["example-id"])
-    pulumi.export("ecsInvocationId1", ids.invocations[0].id)
-    ```
-
 
     :param str command_id: The ID of the command.
     :param str content_encoding: The encoding mode of the CommandContent and Output response parameters. Valid values: `PlainText`, `Base64`.
@@ -185,18 +173,6 @@ def get_ecs_invocations_output(command_id: Optional[pulumi.Input[Optional[str]]]
     This data source provides the Ecs Invocations of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.168.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ecs.get_ecs_invocations(ids=["example-id"])
-    pulumi.export("ecsInvocationId1", ids.invocations[0].id)
-    ```
 
 
     :param str command_id: The ID of the command.

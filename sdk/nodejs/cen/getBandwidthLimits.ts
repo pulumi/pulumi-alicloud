@@ -8,18 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides CEN Bandwidth Limits available to the user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const bwl = alicloud.cen.getBandwidthLimits({
- *     instanceIds: ["cen-id1"],
- * });
- * export const firstCenBandwidthLimitsLocalRegionId = bwl.then(bwl => bwl.limits?.[0]?.localRegionId);
- * ```
  */
 export function getBandwidthLimits(args?: GetBandwidthLimitsArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthLimitsResult> {
     args = args || {};
@@ -62,18 +50,6 @@ export interface GetBandwidthLimitsResult {
 }
 /**
  * This data source provides CEN Bandwidth Limits available to the user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const bwl = alicloud.cen.getBandwidthLimits({
- *     instanceIds: ["cen-id1"],
- * });
- * export const firstCenBandwidthLimitsLocalRegionId = bwl.then(bwl => bwl.limits?.[0]?.localRegionId);
- * ```
  */
 export function getBandwidthLimitsOutput(args?: GetBandwidthLimitsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBandwidthLimitsResult> {
     return pulumi.output(args).apply((a: any) => getBandwidthLimits(a, opts))

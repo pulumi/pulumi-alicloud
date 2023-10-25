@@ -11,21 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.35.0+
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * // Create a new action trail.
- * const foo = new alicloud.actiontrail.TrailDeprecated("foo", {
- *     eventRw: "Write-test",
- *     ossBucketName: alicloud_oss_bucket.bucket.id,
- *     roleName: alicloud_ram_role_policy_attachment.attach.role_name,
- *     ossKeyPrefix: "at-product-account-audit-B",
- * });
- * ```
- *
  * ## Import
  *
  * Action trail can be imported using the id, e.g.

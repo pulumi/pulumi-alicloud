@@ -62,11 +62,11 @@ class DiskReplicaPairArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination_disk_id: pulumi.Input[str],
-             destination_region_id: pulumi.Input[str],
-             destination_zone_id: pulumi.Input[str],
-             disk_id: pulumi.Input[str],
-             source_zone_id: pulumi.Input[str],
+             destination_disk_id: Optional[pulumi.Input[str]] = None,
+             destination_region_id: Optional[pulumi.Input[str]] = None,
+             destination_zone_id: Optional[pulumi.Input[str]] = None,
+             disk_id: Optional[pulumi.Input[str]] = None,
+             source_zone_id: Optional[pulumi.Input[str]] = None,
              bandwidth: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              pair_name: Optional[pulumi.Input[str]] = None,
@@ -75,25 +75,35 @@ class DiskReplicaPairArgs:
              period_unit: Optional[pulumi.Input[str]] = None,
              replica_pair_id: Optional[pulumi.Input[str]] = None,
              rpo: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationDiskId' in kwargs:
+        if destination_disk_id is None and 'destinationDiskId' in kwargs:
             destination_disk_id = kwargs['destinationDiskId']
-        if 'destinationRegionId' in kwargs:
+        if destination_disk_id is None:
+            raise TypeError("Missing 'destination_disk_id' argument")
+        if destination_region_id is None and 'destinationRegionId' in kwargs:
             destination_region_id = kwargs['destinationRegionId']
-        if 'destinationZoneId' in kwargs:
+        if destination_region_id is None:
+            raise TypeError("Missing 'destination_region_id' argument")
+        if destination_zone_id is None and 'destinationZoneId' in kwargs:
             destination_zone_id = kwargs['destinationZoneId']
-        if 'diskId' in kwargs:
+        if destination_zone_id is None:
+            raise TypeError("Missing 'destination_zone_id' argument")
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
-        if 'sourceZoneId' in kwargs:
+        if disk_id is None:
+            raise TypeError("Missing 'disk_id' argument")
+        if source_zone_id is None and 'sourceZoneId' in kwargs:
             source_zone_id = kwargs['sourceZoneId']
-        if 'pairName' in kwargs:
+        if source_zone_id is None:
+            raise TypeError("Missing 'source_zone_id' argument")
+        if pair_name is None and 'pairName' in kwargs:
             pair_name = kwargs['pairName']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'replicaPairId' in kwargs:
+        if replica_pair_id is None and 'replicaPairId' in kwargs:
             replica_pair_id = kwargs['replicaPairId']
 
         _setter("destination_disk_id", destination_disk_id)
@@ -351,29 +361,29 @@ class _DiskReplicaPairState:
              rpo: Optional[pulumi.Input[str]] = None,
              source_zone_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'destinationDiskId' in kwargs:
+        if destination_disk_id is None and 'destinationDiskId' in kwargs:
             destination_disk_id = kwargs['destinationDiskId']
-        if 'destinationRegionId' in kwargs:
+        if destination_region_id is None and 'destinationRegionId' in kwargs:
             destination_region_id = kwargs['destinationRegionId']
-        if 'destinationZoneId' in kwargs:
+        if destination_zone_id is None and 'destinationZoneId' in kwargs:
             destination_zone_id = kwargs['destinationZoneId']
-        if 'diskId' in kwargs:
+        if disk_id is None and 'diskId' in kwargs:
             disk_id = kwargs['diskId']
-        if 'pairName' in kwargs:
+        if pair_name is None and 'pairName' in kwargs:
             pair_name = kwargs['pairName']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'replicaPairId' in kwargs:
+        if replica_pair_id is None and 'replicaPairId' in kwargs:
             replica_pair_id = kwargs['replicaPairId']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'sourceZoneId' in kwargs:
+        if source_zone_id is None and 'sourceZoneId' in kwargs:
             source_zone_id = kwargs['sourceZoneId']
 
         if bandwidth is not None:

@@ -17,31 +17,6 @@ namespace Pulumi.AliCloud.Rds
         /// For information on RDS class details and how to use it, please refer to [What is RDS class details](https://www.alibabacloud.com/help/zh/apsaradb-for-rds/latest/api-rds-2014-08-15-describeclassdetails).
         /// 
         /// &gt; **NOTE:** Available since v1.209.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.Rds.GetClassDetails.Invoke(new()
-        ///     {
-        ///         ClassCode = "mysql.n4.medium.2c",
-        ///         CommodityCode = "bards",
-        ///         Engine = "MySQL",
-        ///         EngineVersion = "8.0",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClassDetailsResult> InvokeAsync(GetClassDetailsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClassDetailsResult>("alicloud:rds/getClassDetails:getClassDetails", args ?? new GetClassDetailsArgs(), options.WithDefaults());
@@ -52,31 +27,6 @@ namespace Pulumi.AliCloud.Rds
         /// For information on RDS class details and how to use it, please refer to [What is RDS class details](https://www.alibabacloud.com/help/zh/apsaradb-for-rds/latest/api-rds-2014-08-15-describeclassdetails).
         /// 
         /// &gt; **NOTE:** Available since v1.209.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.Rds.GetClassDetails.Invoke(new()
-        ///     {
-        ///         ClassCode = "mysql.n4.medium.2c",
-        ///         CommodityCode = "bards",
-        ///         Engine = "MySQL",
-        ///         EngineVersion = "8.0",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetClassDetailsResult> Invoke(GetClassDetailsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClassDetailsResult>("alicloud:rds/getClassDetails:getClassDetails", args ?? new GetClassDetailsInvokeArgs(), options.WithDefaults());

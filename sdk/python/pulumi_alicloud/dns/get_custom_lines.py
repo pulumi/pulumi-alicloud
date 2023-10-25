@@ -129,19 +129,6 @@ def get_custom_lines(domain_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.151.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dns.get_custom_lines(enable_details=True,
-        domain_name="your_domain_name")
-    pulumi.export("alidnsCustomLineId1", ids.lines[0].id)
-    ```
-
 
     :param str domain_name: The Domain name.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -184,19 +171,6 @@ def get_custom_lines_output(domain_name: Optional[pulumi.Input[str]] = None,
     This data source provides the Alidns Custom Lines of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.151.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.dns.get_custom_lines(enable_details=True,
-        domain_name="your_domain_name")
-    pulumi.export("alidnsCustomLineId1", ids.lines[0].id)
-    ```
 
 
     :param str domain_name: The Domain name.

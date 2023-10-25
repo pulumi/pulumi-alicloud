@@ -16,39 +16,6 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// &gt; **NOTE:** Available in v1.153.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Nas.AutoSnapshotPolicy("example", new()
-    ///     {
-    ///         AutoSnapshotPolicyName = "example_value",
-    ///         RepeatWeekdays = new[]
-    ///         {
-    ///             "3",
-    ///             "4",
-    ///             "5",
-    ///         },
-    ///         RetentionDays = 30,
-    ///         TimePoints = new[]
-    ///         {
-    ///             "3",
-    ///             "4",
-    ///             "5",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Network Attached Storage (NAS) Auto Snapshot Policy can be imported using the id, e.g.

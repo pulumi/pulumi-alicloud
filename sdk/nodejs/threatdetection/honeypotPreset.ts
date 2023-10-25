@@ -13,35 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.195.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tfexample";
- * const defaultHoneypotImages = alicloud.threatdetection.getHoneypotImages({
- *     nameRegex: "^ruoyi",
- * });
- * const defaultHoneypotNode = new alicloud.threatdetection.HoneypotNode("defaultHoneypotNode", {
- *     nodeName: name,
- *     availableProbeNum: 20,
- *     securityGroupProbeIpLists: ["0.0.0.0/0"],
- * });
- * const defaultHoneypotPreset = new alicloud.threatdetection.HoneypotPreset("defaultHoneypotPreset", {
- *     presetName: name,
- *     nodeId: defaultHoneypotNode.id,
- *     honeypotImageName: defaultHoneypotImages.then(defaultHoneypotImages => defaultHoneypotImages.images?.[0]?.honeypotImageName),
- *     meta: {
- *         portraitOption: true,
- *         burp: "open",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Threat Detection Honeypot Preset can be imported using the id, e.g.

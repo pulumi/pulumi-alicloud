@@ -37,11 +37,11 @@ class AppGroupOrderArgs:
              auto_renew: Optional[pulumi.Input[bool]] = None,
              duration: Optional[pulumi.Input[int]] = None,
              pricing_cycle: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'pricingCycle' in kwargs:
+        if pricing_cycle is None and 'pricingCycle' in kwargs:
             pricing_cycle = kwargs['pricingCycle']
 
         if auto_renew is not None:
@@ -118,16 +118,22 @@ class AppGroupQuotaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compute_resource: pulumi.Input[int],
-             doc_size: pulumi.Input[int],
-             spec: pulumi.Input[str],
+             compute_resource: Optional[pulumi.Input[int]] = None,
+             doc_size: Optional[pulumi.Input[int]] = None,
+             spec: Optional[pulumi.Input[str]] = None,
              qps: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'computeResource' in kwargs:
+        if compute_resource is None and 'computeResource' in kwargs:
             compute_resource = kwargs['computeResource']
-        if 'docSize' in kwargs:
+        if compute_resource is None:
+            raise TypeError("Missing 'compute_resource' argument")
+        if doc_size is None and 'docSize' in kwargs:
             doc_size = kwargs['docSize']
+        if doc_size is None:
+            raise TypeError("Missing 'doc_size' argument")
+        if spec is None:
+            raise TypeError("Missing 'spec' argument")
 
         _setter("compute_resource", compute_resource)
         _setter("doc_size", doc_size)

@@ -16,29 +16,6 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// &gt; **DEPRECATED:**  This resource has been deprecated from version `1.99.0`. Please use new resource alicloud_alidns_domain_attachment.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var dns = new AliCloud.Dns.DomainAttachment("dns", new()
-    ///     {
-    ///         DomainNames = new[]
-    ///         {
-    ///             "test111.abc",
-    ///             "test222.abc",
-    ///         },
-    ///         InstanceId = "dns-cn-mp91lyq9xxxx",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// DNS domain attachment can be imported using the id, e.g.

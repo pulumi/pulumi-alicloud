@@ -80,11 +80,11 @@ class AdConnectorOfficeSiteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ad_connector_office_site_name: pulumi.Input[str],
-             cen_id: pulumi.Input[str],
-             cidr_block: pulumi.Input[str],
-             dns_addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
-             domain_name: pulumi.Input[str],
+             ad_connector_office_site_name: Optional[pulumi.Input[str]] = None,
+             cen_id: Optional[pulumi.Input[str]] = None,
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             domain_name: Optional[pulumi.Input[str]] = None,
              ad_hostname: Optional[pulumi.Input[str]] = None,
              bandwidth: Optional[pulumi.Input[int]] = None,
              cen_owner_id: Optional[pulumi.Input[str]] = None,
@@ -99,41 +99,51 @@ class AdConnectorOfficeSiteArgs:
              sub_domain_dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              sub_domain_name: Optional[pulumi.Input[str]] = None,
              verify_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'adConnectorOfficeSiteName' in kwargs:
+        if ad_connector_office_site_name is None and 'adConnectorOfficeSiteName' in kwargs:
             ad_connector_office_site_name = kwargs['adConnectorOfficeSiteName']
-        if 'cenId' in kwargs:
+        if ad_connector_office_site_name is None:
+            raise TypeError("Missing 'ad_connector_office_site_name' argument")
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'cidrBlock' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'dnsAddresses' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if dns_addresses is None and 'dnsAddresses' in kwargs:
             dns_addresses = kwargs['dnsAddresses']
-        if 'domainName' in kwargs:
+        if dns_addresses is None:
+            raise TypeError("Missing 'dns_addresses' argument")
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'adHostname' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if ad_hostname is None and 'adHostname' in kwargs:
             ad_hostname = kwargs['adHostname']
-        if 'cenOwnerId' in kwargs:
+        if cen_owner_id is None and 'cenOwnerId' in kwargs:
             cen_owner_id = kwargs['cenOwnerId']
-        if 'desktopAccessType' in kwargs:
+        if desktop_access_type is None and 'desktopAccessType' in kwargs:
             desktop_access_type = kwargs['desktopAccessType']
-        if 'domainPassword' in kwargs:
+        if domain_password is None and 'domainPassword' in kwargs:
             domain_password = kwargs['domainPassword']
-        if 'domainUserName' in kwargs:
+        if domain_user_name is None and 'domainUserName' in kwargs:
             domain_user_name = kwargs['domainUserName']
-        if 'enableAdminAccess' in kwargs:
+        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
             enable_admin_access = kwargs['enableAdminAccess']
-        if 'enableInternetAccess' in kwargs:
+        if enable_internet_access is None and 'enableInternetAccess' in kwargs:
             enable_internet_access = kwargs['enableInternetAccess']
-        if 'mfaEnabled' in kwargs:
+        if mfa_enabled is None and 'mfaEnabled' in kwargs:
             mfa_enabled = kwargs['mfaEnabled']
-        if 'protocolType' in kwargs:
+        if protocol_type is None and 'protocolType' in kwargs:
             protocol_type = kwargs['protocolType']
-        if 'subDomainDnsAddresses' in kwargs:
+        if sub_domain_dns_addresses is None and 'subDomainDnsAddresses' in kwargs:
             sub_domain_dns_addresses = kwargs['subDomainDnsAddresses']
-        if 'subDomainName' in kwargs:
+        if sub_domain_name is None and 'subDomainName' in kwargs:
             sub_domain_name = kwargs['subDomainName']
-        if 'verifyCode' in kwargs:
+        if verify_code is None and 'verifyCode' in kwargs:
             verify_code = kwargs['verifyCode']
 
         _setter("ad_connector_office_site_name", ad_connector_office_site_name)
@@ -491,41 +501,41 @@ class _AdConnectorOfficeSiteState:
              sub_domain_dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              sub_domain_name: Optional[pulumi.Input[str]] = None,
              verify_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'adConnectorOfficeSiteName' in kwargs:
+        if ad_connector_office_site_name is None and 'adConnectorOfficeSiteName' in kwargs:
             ad_connector_office_site_name = kwargs['adConnectorOfficeSiteName']
-        if 'adHostname' in kwargs:
+        if ad_hostname is None and 'adHostname' in kwargs:
             ad_hostname = kwargs['adHostname']
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'cenOwnerId' in kwargs:
+        if cen_owner_id is None and 'cenOwnerId' in kwargs:
             cen_owner_id = kwargs['cenOwnerId']
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'desktopAccessType' in kwargs:
+        if desktop_access_type is None and 'desktopAccessType' in kwargs:
             desktop_access_type = kwargs['desktopAccessType']
-        if 'dnsAddresses' in kwargs:
+        if dns_addresses is None and 'dnsAddresses' in kwargs:
             dns_addresses = kwargs['dnsAddresses']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'domainPassword' in kwargs:
+        if domain_password is None and 'domainPassword' in kwargs:
             domain_password = kwargs['domainPassword']
-        if 'domainUserName' in kwargs:
+        if domain_user_name is None and 'domainUserName' in kwargs:
             domain_user_name = kwargs['domainUserName']
-        if 'enableAdminAccess' in kwargs:
+        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
             enable_admin_access = kwargs['enableAdminAccess']
-        if 'enableInternetAccess' in kwargs:
+        if enable_internet_access is None and 'enableInternetAccess' in kwargs:
             enable_internet_access = kwargs['enableInternetAccess']
-        if 'mfaEnabled' in kwargs:
+        if mfa_enabled is None and 'mfaEnabled' in kwargs:
             mfa_enabled = kwargs['mfaEnabled']
-        if 'protocolType' in kwargs:
+        if protocol_type is None and 'protocolType' in kwargs:
             protocol_type = kwargs['protocolType']
-        if 'subDomainDnsAddresses' in kwargs:
+        if sub_domain_dns_addresses is None and 'subDomainDnsAddresses' in kwargs:
             sub_domain_dns_addresses = kwargs['subDomainDnsAddresses']
-        if 'subDomainName' in kwargs:
+        if sub_domain_name is None and 'subDomainName' in kwargs:
             sub_domain_name = kwargs['subDomainName']
-        if 'verifyCode' in kwargs:
+        if verify_code is None and 'verifyCode' in kwargs:
             verify_code = kwargs['verifyCode']
 
         if ad_connector_office_site_name is not None:
@@ -842,38 +852,6 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.176.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_instance = alicloud.cen.Instance("defaultInstance",
-            cen_instance_name=name,
-            protection_level="REDUCED")
-        default_ad_connector_office_site = alicloud.eds.AdConnectorOfficeSite("defaultAdConnectorOfficeSite",
-            ad_connector_office_site_name=name,
-            bandwidth=100,
-            cen_id=default_instance.id,
-            cidr_block="10.0.0.0/12",
-            desktop_access_type="INTERNET",
-            dns_addresses=["127.0.0.2"],
-            domain_name="corp.example.com",
-            domain_password="Example1234",
-            domain_user_name="sAMAccountName",
-            enable_admin_access=False,
-            enable_internet_access=False,
-            mfa_enabled=False,
-            sub_domain_dns_addresses=["127.0.0.3"],
-            sub_domain_name="child.example.com")
-        ```
-
         ## Import
 
         ECD Ad Connector Office Site can be imported using the id, e.g.
@@ -916,38 +894,6 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
         For information about ECD Ad Connector Office Site and how to use it, see [What is Ad Connector Office Site](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createadconnectorofficesite).
 
         > **NOTE:** Available since v1.176.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_instance = alicloud.cen.Instance("defaultInstance",
-            cen_instance_name=name,
-            protection_level="REDUCED")
-        default_ad_connector_office_site = alicloud.eds.AdConnectorOfficeSite("defaultAdConnectorOfficeSite",
-            ad_connector_office_site_name=name,
-            bandwidth=100,
-            cen_id=default_instance.id,
-            cidr_block="10.0.0.0/12",
-            desktop_access_type="INTERNET",
-            dns_addresses=["127.0.0.2"],
-            domain_name="corp.example.com",
-            domain_password="Example1234",
-            domain_user_name="sAMAccountName",
-            enable_admin_access=False,
-            enable_internet_access=False,
-            mfa_enabled=False,
-            sub_domain_dns_addresses=["127.0.0.3"],
-            sub_domain_name="child.example.com")
-        ```
 
         ## Import
 

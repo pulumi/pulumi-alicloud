@@ -41,21 +41,27 @@ class SecurityPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ciphers: pulumi.Input[Sequence[pulumi.Input[str]]],
-             security_policy_name: pulumi.Input[str],
-             tls_versions: pulumi.Input[Sequence[pulumi.Input[str]]],
+             ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             security_policy_name: Optional[pulumi.Input[str]] = None,
+             tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'securityPolicyName' in kwargs:
+        if ciphers is None:
+            raise TypeError("Missing 'ciphers' argument")
+        if security_policy_name is None and 'securityPolicyName' in kwargs:
             security_policy_name = kwargs['securityPolicyName']
-        if 'tlsVersions' in kwargs:
+        if security_policy_name is None:
+            raise TypeError("Missing 'security_policy_name' argument")
+        if tls_versions is None and 'tlsVersions' in kwargs:
             tls_versions = kwargs['tlsVersions']
-        if 'dryRun' in kwargs:
+        if tls_versions is None:
+            raise TypeError("Missing 'tls_versions' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("ciphers", ciphers)
@@ -181,15 +187,15 @@ class _SecurityPolicyState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityPolicyName' in kwargs:
+        if security_policy_name is None and 'securityPolicyName' in kwargs:
             security_policy_name = kwargs['securityPolicyName']
-        if 'tlsVersions' in kwargs:
+        if tls_versions is None and 'tlsVersions' in kwargs:
             tls_versions = kwargs['tlsVersions']
 
         if ciphers is not None:
@@ -311,23 +317,6 @@ class SecurityPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.130.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.alb.SecurityPolicy("default",
-            ciphers=[
-                "ECDHE-ECDSA-AES128-SHA",
-                "AES256-SHA",
-            ],
-            security_policy_name="tf_example",
-            tls_versions=["TLSv1.0"])
-        ```
-
         ## Import
 
         ALB Security Policy can be imported using the id, e.g.
@@ -357,23 +346,6 @@ class SecurityPolicy(pulumi.CustomResource):
         For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createsecuritypolicy).
 
         > **NOTE:** Available since v1.130.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.alb.SecurityPolicy("default",
-            ciphers=[
-                "ECDHE-ECDSA-AES128-SHA",
-                "AES256-SHA",
-            ],
-            security_policy_name="tf_example",
-            tls_versions=["TLSv1.0"])
-        ```
 
         ## Import
 

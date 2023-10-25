@@ -11,30 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.159.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.resourcemanager.getResourceGroups({
- *     nameRegex: "default",
- * });
- * const example = new alicloud.ecs.EcsImageComponent("example", {
- *     componentType: "Build",
- *     content: "RUN yum update -y",
- *     description: "example_value",
- *     imageComponentName: "example_value",
- *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
- *     systemType: "Linux",
- *     tags: {
- *         Created: "TF",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * ECS Image Component can be imported using the id, e.g.

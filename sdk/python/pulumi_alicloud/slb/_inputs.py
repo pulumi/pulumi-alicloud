@@ -32,7 +32,7 @@ class AclEntryListArgs:
              _setter: Callable[[Any, Any], None],
              comment: Optional[pulumi.Input[str]] = None,
              entry: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if comment is not None:
@@ -76,15 +76,19 @@ class BackendServerBackendServerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_id: pulumi.Input[str],
-             weight: pulumi.Input[int],
+             server_id: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
              server_ip: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverId' in kwargs:
+        if server_id is None and 'serverId' in kwargs:
             server_id = kwargs['serverId']
-        if 'serverIp' in kwargs:
+        if server_id is None:
+            raise TypeError("Missing 'server_id' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
+        if server_ip is None and 'serverIp' in kwargs:
             server_ip = kwargs['serverIp']
 
         _setter("server_id", server_id)
@@ -158,15 +162,15 @@ class ListenerXForwardedForArgs:
              retrive_slb_id: Optional[pulumi.Input[bool]] = None,
              retrive_slb_ip: Optional[pulumi.Input[bool]] = None,
              retrive_slb_proto: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'retriveClientIp' in kwargs:
+        if retrive_client_ip is None and 'retriveClientIp' in kwargs:
             retrive_client_ip = kwargs['retriveClientIp']
-        if 'retriveSlbId' in kwargs:
+        if retrive_slb_id is None and 'retriveSlbId' in kwargs:
             retrive_slb_id = kwargs['retriveSlbId']
-        if 'retriveSlbIp' in kwargs:
+        if retrive_slb_ip is None and 'retriveSlbIp' in kwargs:
             retrive_slb_ip = kwargs['retriveSlbIp']
-        if 'retriveSlbProto' in kwargs:
+        if retrive_slb_proto is None and 'retriveSlbProto' in kwargs:
             retrive_slb_proto = kwargs['retriveSlbProto']
 
         if retrive_client_ip is not None:
@@ -248,19 +252,23 @@ class MasterSlaveServerGroupServerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port: pulumi.Input[int],
-             server_id: pulumi.Input[str],
+             port: Optional[pulumi.Input[int]] = None,
+             server_id: Optional[pulumi.Input[str]] = None,
              is_backup: Optional[pulumi.Input[int]] = None,
              server_type: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverId' in kwargs:
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if server_id is None and 'serverId' in kwargs:
             server_id = kwargs['serverId']
-        if 'isBackup' in kwargs:
+        if server_id is None:
+            raise TypeError("Missing 'server_id' argument")
+        if is_backup is None and 'isBackup' in kwargs:
             is_backup = kwargs['isBackup']
-        if 'serverType' in kwargs:
+        if server_type is None and 'serverType' in kwargs:
             server_type = kwargs['serverType']
 
         _setter("port", port)
@@ -346,14 +354,18 @@ class ServerGroupServerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port: pulumi.Input[int],
-             server_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             port: Optional[pulumi.Input[int]] = None,
+             server_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverIds' in kwargs:
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if server_ids is None and 'serverIds' in kwargs:
             server_ids = kwargs['serverIds']
+        if server_ids is None:
+            raise TypeError("Missing 'server_ids' argument")
 
         _setter("port", port)
         _setter("server_ids", server_ids)

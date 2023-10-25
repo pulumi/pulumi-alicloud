@@ -15,44 +15,6 @@ namespace Pulumi.AliCloud.Sddp
         /// This data source provides the Sddp Configs of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.133.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var defaultConfig = new AliCloud.Sddp.Config("defaultConfig", new()
-        ///     {
-        ///         Code = "access_failed_cnt",
-        ///         Value = "10",
-        ///     });
-        /// 
-        ///     var defaultConfigs = AliCloud.Sddp.GetConfigs.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             defaultConfig.Id,
-        ///         },
-        ///         OutputFile = "./t.json",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["sddpConfigId"] = defaultConfigs.Apply(getConfigsResult =&gt; getConfigsResult.Ids),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetConfigsResult> InvokeAsync(GetConfigsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConfigsResult>("alicloud:sddp/getConfigs:getConfigs", args ?? new GetConfigsArgs(), options.WithDefaults());
@@ -61,44 +23,6 @@ namespace Pulumi.AliCloud.Sddp
         /// This data source provides the Sddp Configs of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.133.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var defaultConfig = new AliCloud.Sddp.Config("defaultConfig", new()
-        ///     {
-        ///         Code = "access_failed_cnt",
-        ///         Value = "10",
-        ///     });
-        /// 
-        ///     var defaultConfigs = AliCloud.Sddp.GetConfigs.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             defaultConfig.Id,
-        ///         },
-        ///         OutputFile = "./t.json",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["sddpConfigId"] = defaultConfigs.Apply(getConfigsResult =&gt; getConfigsResult.Ids),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetConfigsResult> Invoke(GetConfigsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConfigsResult>("alicloud:sddp/getConfigs:getConfigs", args ?? new GetConfigsInvokeArgs(), options.WithDefaults());

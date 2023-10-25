@@ -16,47 +16,6 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// &gt; **NOTE:** Available since v1.194.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var region = config.Get("region") ?? "cn-hangzhou";
-    ///     var defaultBasicAccelerator = new AliCloud.Ga.BasicAccelerator("defaultBasicAccelerator", new()
-    ///     {
-    ///         Duration = 1,
-    ///         BasicAcceleratorName = "terraform-example",
-    ///         Description = "terraform-example",
-    ///         BandwidthBillingType = "CDT",
-    ///         AutoUseCoupon = "true",
-    ///         AutoPay = true,
-    ///     });
-    /// 
-    ///     var defaultBasicIpSet = new AliCloud.Ga.BasicIpSet("defaultBasicIpSet", new()
-    ///     {
-    ///         AcceleratorId = defaultBasicAccelerator.Id,
-    ///         AccelerateRegionId = region,
-    ///         IspType = "BGP",
-    ///         Bandwidth = 5,
-    ///     });
-    /// 
-    ///     var defaultBasicAccelerateIp = new AliCloud.Ga.BasicAccelerateIp("defaultBasicAccelerateIp", new()
-    ///     {
-    ///         AcceleratorId = defaultBasicAccelerator.Id,
-    ///         IpSetId = defaultBasicIpSet.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Global Accelerator (GA) Basic Accelerate IP can be imported using the id, e.g.

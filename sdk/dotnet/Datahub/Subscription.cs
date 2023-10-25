@@ -14,44 +14,6 @@ namespace Pulumi.AliCloud.Datahub
     /// 
     /// &gt; **NOTE:** Available since v1.19.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform_example";
-    ///     var exampleProject = new AliCloud.Datahub.Project("exampleProject", new()
-    ///     {
-    ///         Comment = "created by terraform",
-    ///     });
-    /// 
-    ///     var exampleTopic = new AliCloud.Datahub.Topic("exampleTopic", new()
-    ///     {
-    ///         ProjectName = exampleProject.Name,
-    ///         RecordType = "BLOB",
-    ///         ShardCount = 3,
-    ///         LifeCycle = 7,
-    ///         Comment = "created by terraform",
-    ///     });
-    /// 
-    ///     var exampleSubscription = new AliCloud.Datahub.Subscription("exampleSubscription", new()
-    ///     {
-    ///         ProjectName = exampleProject.Name,
-    ///         TopicName = exampleTopic.Name,
-    ///         Comment = "created by terraform",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Datahub subscription can be imported using the ID, e.g.

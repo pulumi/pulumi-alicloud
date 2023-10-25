@@ -44,22 +44,24 @@ class EcsImageComponentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: pulumi.Input[str],
+             content: Optional[pulumi.Input[str]] = None,
              component_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              image_component_name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              system_type: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'componentType' in kwargs:
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if component_type is None and 'componentType' in kwargs:
             component_type = kwargs['componentType']
-        if 'imageComponentName' in kwargs:
+        if image_component_name is None and 'imageComponentName' in kwargs:
             image_component_name = kwargs['imageComponentName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'systemType' in kwargs:
+        if system_type is None and 'systemType' in kwargs:
             system_type = kwargs['systemType']
 
         _setter("content", content)
@@ -201,15 +203,15 @@ class _EcsImageComponentState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              system_type: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'componentType' in kwargs:
+        if component_type is None and 'componentType' in kwargs:
             component_type = kwargs['componentType']
-        if 'imageComponentName' in kwargs:
+        if image_component_name is None and 'imageComponentName' in kwargs:
             image_component_name = kwargs['imageComponentName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'systemType' in kwargs:
+        if system_type is None and 'systemType' in kwargs:
             system_type = kwargs['systemType']
 
         if component_type is not None:
@@ -332,27 +334,6 @@ class EcsImageComponent(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.159.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.resourcemanager.get_resource_groups(name_regex="default")
-        example = alicloud.ecs.EcsImageComponent("example",
-            component_type="Build",
-            content="RUN yum update -y",
-            description="example_value",
-            image_component_name="example_value",
-            resource_group_id=default.groups[0].id,
-            system_type="Linux",
-            tags={
-                "Created": "TF",
-            })
-        ```
-
         ## Import
 
         ECS Image Component can be imported using the id, e.g.
@@ -383,27 +364,6 @@ class EcsImageComponent(pulumi.CustomResource):
         For information about ECS Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
 
         > **NOTE:** Available in v1.159.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.resourcemanager.get_resource_groups(name_regex="default")
-        example = alicloud.ecs.EcsImageComponent("example",
-            component_type="Build",
-            content="RUN yum update -y",
-            description="example_value",
-            image_component_name="example_value",
-            resource_group_id=default.groups[0].id,
-            system_type="Linux",
-            tags={
-                "Created": "TF",
-            })
-        ```
 
         ## Import
 

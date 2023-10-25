@@ -277,9 +277,9 @@ class RdsCloneDbInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_instance_storage_type: pulumi.Input[str],
-             payment_type: pulumi.Input[str],
-             source_db_instance_id: pulumi.Input[str],
+             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             source_db_instance_id: Optional[pulumi.Input[str]] = None,
              acl: Optional[pulumi.Input[str]] = None,
              auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
              backup_id: Optional[pulumi.Input[str]] = None,
@@ -338,111 +338,117 @@ class RdsCloneDbInstanceArgs:
              zone_id: Optional[pulumi.Input[str]] = None,
              zone_id_slave_a: Optional[pulumi.Input[str]] = None,
              zone_id_slave_b: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbInstanceStorageType' in kwargs:
+        if db_instance_storage_type is None and 'dbInstanceStorageType' in kwargs:
             db_instance_storage_type = kwargs['dbInstanceStorageType']
-        if 'paymentType' in kwargs:
+        if db_instance_storage_type is None:
+            raise TypeError("Missing 'db_instance_storage_type' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'sourceDbInstanceId' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if source_db_instance_id is None and 'sourceDbInstanceId' in kwargs:
             source_db_instance_id = kwargs['sourceDbInstanceId']
-        if 'autoUpgradeMinorVersion' in kwargs:
+        if source_db_instance_id is None:
+            raise TypeError("Missing 'source_db_instance_id' argument")
+        if auto_upgrade_minor_version is None and 'autoUpgradeMinorVersion' in kwargs:
             auto_upgrade_minor_version = kwargs['autoUpgradeMinorVersion']
-        if 'backupId' in kwargs:
+        if backup_id is None and 'backupId' in kwargs:
             backup_id = kwargs['backupId']
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'caType' in kwargs:
+        if ca_type is None and 'caType' in kwargs:
             ca_type = kwargs['caType']
-        if 'clientCaCert' in kwargs:
+        if client_ca_cert is None and 'clientCaCert' in kwargs:
             client_ca_cert = kwargs['clientCaCert']
-        if 'clientCaEnabled' in kwargs:
+        if client_ca_enabled is None and 'clientCaEnabled' in kwargs:
             client_ca_enabled = kwargs['clientCaEnabled']
-        if 'clientCertRevocationList' in kwargs:
+        if client_cert_revocation_list is None and 'clientCertRevocationList' in kwargs:
             client_cert_revocation_list = kwargs['clientCertRevocationList']
-        if 'clientCrlEnabled' in kwargs:
+        if client_crl_enabled is None and 'clientCrlEnabled' in kwargs:
             client_crl_enabled = kwargs['clientCrlEnabled']
-        if 'connectionStringPrefix' in kwargs:
+        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
             connection_string_prefix = kwargs['connectionStringPrefix']
-        if 'dbInstanceClass' in kwargs:
+        if db_instance_class is None and 'dbInstanceClass' in kwargs:
             db_instance_class = kwargs['dbInstanceClass']
-        if 'dbInstanceDescription' in kwargs:
+        if db_instance_description is None and 'dbInstanceDescription' in kwargs:
             db_instance_description = kwargs['dbInstanceDescription']
-        if 'dbInstanceStorage' in kwargs:
+        if db_instance_storage is None and 'dbInstanceStorage' in kwargs:
             db_instance_storage = kwargs['dbInstanceStorage']
-        if 'dbName' in kwargs:
+        if db_name is None and 'dbName' in kwargs:
             db_name = kwargs['dbName']
-        if 'dbNames' in kwargs:
+        if db_names is None and 'dbNames' in kwargs:
             db_names = kwargs['dbNames']
-        if 'dedicatedHostGroupId' in kwargs:
+        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
             dedicated_host_group_id = kwargs['dedicatedHostGroupId']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'effectiveTime' in kwargs:
+        if effective_time is None and 'effectiveTime' in kwargs:
             effective_time = kwargs['effectiveTime']
-        if 'encryptionKey' in kwargs:
+        if encryption_key is None and 'encryptionKey' in kwargs:
             encryption_key = kwargs['encryptionKey']
-        if 'engineVersion' in kwargs:
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'forceRestart' in kwargs:
+        if force_restart is None and 'forceRestart' in kwargs:
             force_restart = kwargs['forceRestart']
-        if 'haMode' in kwargs:
+        if ha_mode is None and 'haMode' in kwargs:
             ha_mode = kwargs['haMode']
-        if 'instanceNetworkType' in kwargs:
+        if instance_network_type is None and 'instanceNetworkType' in kwargs:
             instance_network_type = kwargs['instanceNetworkType']
-        if 'maintainTime' in kwargs:
+        if maintain_time is None and 'maintainTime' in kwargs:
             maintain_time = kwargs['maintainTime']
-        if 'pgHbaConfs' in kwargs:
+        if pg_hba_confs is None and 'pgHbaConfs' in kwargs:
             pg_hba_confs = kwargs['pgHbaConfs']
-        if 'privateIpAddress' in kwargs:
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
             private_ip_address = kwargs['privateIpAddress']
-        if 'privateKey' in kwargs:
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
-        if 'releasedKeepPolicy' in kwargs:
+        if released_keep_policy is None and 'releasedKeepPolicy' in kwargs:
             released_keep_policy = kwargs['releasedKeepPolicy']
-        if 'replicationAcl' in kwargs:
+        if replication_acl is None and 'replicationAcl' in kwargs:
             replication_acl = kwargs['replicationAcl']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'restoreTable' in kwargs:
+        if restore_table is None and 'restoreTable' in kwargs:
             restore_table = kwargs['restoreTable']
-        if 'restoreTime' in kwargs:
+        if restore_time is None and 'restoreTime' in kwargs:
             restore_time = kwargs['restoreTime']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'securityIps' in kwargs:
+        if security_ips is None and 'securityIps' in kwargs:
             security_ips = kwargs['securityIps']
-        if 'serverCert' in kwargs:
+        if server_cert is None and 'serverCert' in kwargs:
             server_cert = kwargs['serverCert']
-        if 'serverKey' in kwargs:
+        if server_key is None and 'serverKey' in kwargs:
             server_key = kwargs['serverKey']
-        if 'serverlessConfigs' in kwargs:
+        if serverless_configs is None and 'serverlessConfigs' in kwargs:
             serverless_configs = kwargs['serverlessConfigs']
-        if 'sourceBiz' in kwargs:
+        if source_biz is None and 'sourceBiz' in kwargs:
             source_biz = kwargs['sourceBiz']
-        if 'sslEnabled' in kwargs:
+        if ssl_enabled is None and 'sslEnabled' in kwargs:
             ssl_enabled = kwargs['sslEnabled']
-        if 'switchTime' in kwargs:
+        if switch_time is None and 'switchTime' in kwargs:
             switch_time = kwargs['switchTime']
-        if 'syncMode' in kwargs:
+        if sync_mode is None and 'syncMode' in kwargs:
             sync_mode = kwargs['syncMode']
-        if 'tableMeta' in kwargs:
+        if table_meta is None and 'tableMeta' in kwargs:
             table_meta = kwargs['tableMeta']
-        if 'tcpConnectionType' in kwargs:
+        if tcp_connection_type is None and 'tcpConnectionType' in kwargs:
             tcp_connection_type = kwargs['tcpConnectionType']
-        if 'tdeStatus' in kwargs:
+        if tde_status is None and 'tdeStatus' in kwargs:
             tde_status = kwargs['tdeStatus']
-        if 'usedTime' in kwargs:
+        if used_time is None and 'usedTime' in kwargs:
             used_time = kwargs['usedTime']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'zoneIdSlaveA' in kwargs:
+        if zone_id_slave_a is None and 'zoneIdSlaveA' in kwargs:
             zone_id_slave_a = kwargs['zoneIdSlaveA']
-        if 'zoneIdSlaveB' in kwargs:
+        if zone_id_slave_b is None and 'zoneIdSlaveB' in kwargs:
             zone_id_slave_b = kwargs['zoneIdSlaveB']
 
         _setter("db_instance_storage_type", db_instance_storage_type)
@@ -1696,113 +1702,113 @@ class _RdsCloneDbInstanceState:
              zone_id: Optional[pulumi.Input[str]] = None,
              zone_id_slave_a: Optional[pulumi.Input[str]] = None,
              zone_id_slave_b: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoUpgradeMinorVersion' in kwargs:
+        if auto_upgrade_minor_version is None and 'autoUpgradeMinorVersion' in kwargs:
             auto_upgrade_minor_version = kwargs['autoUpgradeMinorVersion']
-        if 'backupId' in kwargs:
+        if backup_id is None and 'backupId' in kwargs:
             backup_id = kwargs['backupId']
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'caType' in kwargs:
+        if ca_type is None and 'caType' in kwargs:
             ca_type = kwargs['caType']
-        if 'clientCaCert' in kwargs:
+        if client_ca_cert is None and 'clientCaCert' in kwargs:
             client_ca_cert = kwargs['clientCaCert']
-        if 'clientCaEnabled' in kwargs:
+        if client_ca_enabled is None and 'clientCaEnabled' in kwargs:
             client_ca_enabled = kwargs['clientCaEnabled']
-        if 'clientCertRevocationList' in kwargs:
+        if client_cert_revocation_list is None and 'clientCertRevocationList' in kwargs:
             client_cert_revocation_list = kwargs['clientCertRevocationList']
-        if 'clientCrlEnabled' in kwargs:
+        if client_crl_enabled is None and 'clientCrlEnabled' in kwargs:
             client_crl_enabled = kwargs['clientCrlEnabled']
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'connectionStringPrefix' in kwargs:
+        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
             connection_string_prefix = kwargs['connectionStringPrefix']
-        if 'dbInstanceClass' in kwargs:
+        if db_instance_class is None and 'dbInstanceClass' in kwargs:
             db_instance_class = kwargs['dbInstanceClass']
-        if 'dbInstanceDescription' in kwargs:
+        if db_instance_description is None and 'dbInstanceDescription' in kwargs:
             db_instance_description = kwargs['dbInstanceDescription']
-        if 'dbInstanceStorage' in kwargs:
+        if db_instance_storage is None and 'dbInstanceStorage' in kwargs:
             db_instance_storage = kwargs['dbInstanceStorage']
-        if 'dbInstanceStorageType' in kwargs:
+        if db_instance_storage_type is None and 'dbInstanceStorageType' in kwargs:
             db_instance_storage_type = kwargs['dbInstanceStorageType']
-        if 'dbName' in kwargs:
+        if db_name is None and 'dbName' in kwargs:
             db_name = kwargs['dbName']
-        if 'dbNames' in kwargs:
+        if db_names is None and 'dbNames' in kwargs:
             db_names = kwargs['dbNames']
-        if 'dedicatedHostGroupId' in kwargs:
+        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
             dedicated_host_group_id = kwargs['dedicatedHostGroupId']
-        if 'deletionProtection' in kwargs:
+        if deletion_protection is None and 'deletionProtection' in kwargs:
             deletion_protection = kwargs['deletionProtection']
-        if 'effectiveTime' in kwargs:
+        if effective_time is None and 'effectiveTime' in kwargs:
             effective_time = kwargs['effectiveTime']
-        if 'encryptionKey' in kwargs:
+        if encryption_key is None and 'encryptionKey' in kwargs:
             encryption_key = kwargs['encryptionKey']
-        if 'engineVersion' in kwargs:
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'forceRestart' in kwargs:
+        if force_restart is None and 'forceRestart' in kwargs:
             force_restart = kwargs['forceRestart']
-        if 'haMode' in kwargs:
+        if ha_mode is None and 'haMode' in kwargs:
             ha_mode = kwargs['haMode']
-        if 'instanceNetworkType' in kwargs:
+        if instance_network_type is None and 'instanceNetworkType' in kwargs:
             instance_network_type = kwargs['instanceNetworkType']
-        if 'maintainTime' in kwargs:
+        if maintain_time is None and 'maintainTime' in kwargs:
             maintain_time = kwargs['maintainTime']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'pgHbaConfs' in kwargs:
+        if pg_hba_confs is None and 'pgHbaConfs' in kwargs:
             pg_hba_confs = kwargs['pgHbaConfs']
-        if 'privateIpAddress' in kwargs:
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
             private_ip_address = kwargs['privateIpAddress']
-        if 'privateKey' in kwargs:
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
-        if 'releasedKeepPolicy' in kwargs:
+        if released_keep_policy is None and 'releasedKeepPolicy' in kwargs:
             released_keep_policy = kwargs['releasedKeepPolicy']
-        if 'replicationAcl' in kwargs:
+        if replication_acl is None and 'replicationAcl' in kwargs:
             replication_acl = kwargs['replicationAcl']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'restoreTable' in kwargs:
+        if restore_table is None and 'restoreTable' in kwargs:
             restore_table = kwargs['restoreTable']
-        if 'restoreTime' in kwargs:
+        if restore_time is None and 'restoreTime' in kwargs:
             restore_time = kwargs['restoreTime']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'securityIps' in kwargs:
+        if security_ips is None and 'securityIps' in kwargs:
             security_ips = kwargs['securityIps']
-        if 'serverCert' in kwargs:
+        if server_cert is None and 'serverCert' in kwargs:
             server_cert = kwargs['serverCert']
-        if 'serverKey' in kwargs:
+        if server_key is None and 'serverKey' in kwargs:
             server_key = kwargs['serverKey']
-        if 'serverlessConfigs' in kwargs:
+        if serverless_configs is None and 'serverlessConfigs' in kwargs:
             serverless_configs = kwargs['serverlessConfigs']
-        if 'sourceBiz' in kwargs:
+        if source_biz is None and 'sourceBiz' in kwargs:
             source_biz = kwargs['sourceBiz']
-        if 'sourceDbInstanceId' in kwargs:
+        if source_db_instance_id is None and 'sourceDbInstanceId' in kwargs:
             source_db_instance_id = kwargs['sourceDbInstanceId']
-        if 'sslEnabled' in kwargs:
+        if ssl_enabled is None and 'sslEnabled' in kwargs:
             ssl_enabled = kwargs['sslEnabled']
-        if 'switchTime' in kwargs:
+        if switch_time is None and 'switchTime' in kwargs:
             switch_time = kwargs['switchTime']
-        if 'syncMode' in kwargs:
+        if sync_mode is None and 'syncMode' in kwargs:
             sync_mode = kwargs['syncMode']
-        if 'tableMeta' in kwargs:
+        if table_meta is None and 'tableMeta' in kwargs:
             table_meta = kwargs['tableMeta']
-        if 'tcpConnectionType' in kwargs:
+        if tcp_connection_type is None and 'tcpConnectionType' in kwargs:
             tcp_connection_type = kwargs['tcpConnectionType']
-        if 'tdeStatus' in kwargs:
+        if tde_status is None and 'tdeStatus' in kwargs:
             tde_status = kwargs['tdeStatus']
-        if 'usedTime' in kwargs:
+        if used_time is None and 'usedTime' in kwargs:
             used_time = kwargs['usedTime']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'zoneIdSlaveA' in kwargs:
+        if zone_id_slave_a is None and 'zoneIdSlaveA' in kwargs:
             zone_id_slave_a = kwargs['zoneIdSlaveA']
-        if 'zoneIdSlaveB' in kwargs:
+        if zone_id_slave_b is None and 'zoneIdSlaveB' in kwargs:
             zone_id_slave_b = kwargs['zoneIdSlaveB']
 
         if acl is not None:
@@ -2819,49 +2825,6 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         > **NOTE:** Available since v1.149.0+.
 
         ## Example Usage
-        ### Create an RDS MySQL clone instance
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.rds.get_zones(engine="PostgreSQL",
-            engine_version="13.0",
-            instance_charge_type="PostPaid",
-            category="HighAvailability",
-            db_instance_storage_type="cloud_essd")
-        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.zones[0].id,
-            engine="PostgreSQL",
-            engine_version="13.0",
-            category="HighAvailability",
-            db_instance_storage_type="cloud_essd",
-            instance_charge_type="PostPaid")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vpc_id=example_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=example_zones.zones[0].id,
-            vswitch_name="terraform-example")
-        example_instance = alicloud.rds.Instance("exampleInstance",
-            engine="PostgreSQL",
-            engine_version="13.0",
-            instance_type=example_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
-            instance_charge_type="Postpaid",
-            instance_name="terraform-example",
-            vswitch_id=example_switch.id,
-            monitoring_period=60)
-        example_rds_backup = alicloud.rds.RdsBackup("exampleRdsBackup",
-            db_instance_id=example_instance.id,
-            remove_from_state=True)
-        example_rds_clone_db_instance = alicloud.rds.RdsCloneDbInstance("exampleRdsCloneDbInstance",
-            source_db_instance_id=example_instance.id,
-            db_instance_storage_type="cloud_essd",
-            payment_type="PayAsYouGo",
-            backup_id=example_rds_backup.backup_id)
-        ```
 
         ## Import
 
@@ -3018,49 +2981,6 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         > **NOTE:** Available since v1.149.0+.
 
         ## Example Usage
-        ### Create an RDS MySQL clone instance
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.rds.get_zones(engine="PostgreSQL",
-            engine_version="13.0",
-            instance_charge_type="PostPaid",
-            category="HighAvailability",
-            db_instance_storage_type="cloud_essd")
-        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.zones[0].id,
-            engine="PostgreSQL",
-            engine_version="13.0",
-            category="HighAvailability",
-            db_instance_storage_type="cloud_essd",
-            instance_charge_type="PostPaid")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vpc_id=example_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=example_zones.zones[0].id,
-            vswitch_name="terraform-example")
-        example_instance = alicloud.rds.Instance("exampleInstance",
-            engine="PostgreSQL",
-            engine_version="13.0",
-            instance_type=example_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
-            instance_charge_type="Postpaid",
-            instance_name="terraform-example",
-            vswitch_id=example_switch.id,
-            monitoring_period=60)
-        example_rds_backup = alicloud.rds.RdsBackup("exampleRdsBackup",
-            db_instance_id=example_instance.id,
-            remove_from_state=True)
-        example_rds_clone_db_instance = alicloud.rds.RdsCloneDbInstance("exampleRdsCloneDbInstance",
-            source_db_instance_id=example_instance.id,
-            db_instance_storage_type="cloud_essd",
-            payment_type="PayAsYouGo",
-            backup_id=example_rds_backup.backup_id)
-        ```
 
         ## Import
 

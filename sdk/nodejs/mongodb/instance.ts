@@ -19,42 +19,6 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
  *
  * ## Example Usage
- * ### Create a Mongodb instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.mongodb.getZones({});
- * const index = defaultZones.then(defaultZones => defaultZones.zones).length.then(length => length - 1);
- * const zoneId = defaultZones.then(defaultZones => defaultZones.zones[index].id);
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "172.17.3.0/24",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vswitchName: name,
- *     cidrBlock: "172.17.3.0/24",
- *     vpcId: defaultNetwork.id,
- *     zoneId: zoneId,
- * });
- * const defaultInstance = new alicloud.mongodb.Instance("defaultInstance", {
- *     engineVersion: "4.2",
- *     dbInstanceClass: "dds.mongo.mid",
- *     dbInstanceStorage: 10,
- *     vswitchId: defaultSwitch.id,
- *     securityIpLists: [
- *         "10.168.1.12",
- *         "100.69.7.112",
- *     ],
- *     tags: {
- *         Created: "TF",
- *         For: "example",
- *     },
- * });
- * ```
  * ## Module Support
  *
  * You can use to the existing mongodb module

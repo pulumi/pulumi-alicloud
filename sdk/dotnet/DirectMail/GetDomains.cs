@@ -15,54 +15,6 @@ namespace Pulumi.AliCloud.DirectMail
         /// This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.134.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.DirectMail.GetDomains.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.DirectMail.GetDomains.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Domain",
-        ///     });
-        /// 
-        ///     var example = AliCloud.DirectMail.GetDomains.Invoke(new()
-        ///     {
-        ///         Status = "1",
-        ///         KeyWord = "^my-Domain",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["directMailDomainId1"] = ids.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///         ["directMailDomainId2"] = nameRegex.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///         ["directMailDomainId3"] = example.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:directmail/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
@@ -71,54 +23,6 @@ namespace Pulumi.AliCloud.DirectMail
         /// This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.134.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.DirectMail.GetDomains.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.DirectMail.GetDomains.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Domain",
-        ///     });
-        /// 
-        ///     var example = AliCloud.DirectMail.GetDomains.Invoke(new()
-        ///     {
-        ///         Status = "1",
-        ///         KeyWord = "^my-Domain",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["directMailDomainId1"] = ids.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///         ["directMailDomainId2"] = nameRegex.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///         ["directMailDomainId3"] = example.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:directmail/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());

@@ -11,27 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.141.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const exampleTrafficMirrorFilter = new alicloud.vpc.TrafficMirrorFilter("exampleTrafficMirrorFilter", {trafficMirrorFilterName: "example_value"});
- * const exampleTrafficMirrorFilterIngressRule = new alicloud.vpc.TrafficMirrorFilterIngressRule("exampleTrafficMirrorFilterIngressRule", {
- *     trafficMirrorFilterId: exampleTrafficMirrorFilter.id,
- *     priority: 1,
- *     ruleAction: "accept",
- *     protocol: "UDP",
- *     destinationCidrBlock: "10.0.0.0/24",
- *     sourceCidrBlock: "10.0.0.0/24",
- *     destinationPortRange: "1/120",
- *     sourcePortRange: "1/120",
- * });
- * ```
- *
  * ## Import
  *
  * VPC Traffic Mirror Filter Ingress Rule can be imported using the id, e.g.

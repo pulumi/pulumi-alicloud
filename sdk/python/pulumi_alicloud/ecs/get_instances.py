@@ -259,18 +259,6 @@ def get_instances(availability_zone: Optional[str] = None,
     """
     The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    instances_ds = alicloud.ecs.get_instances(name_regex="web_server",
-        status="Running")
-    pulumi.export("firstInstanceId", instances_ds.instances[0].id)
-    pulumi.export("instanceIds", instances_ds.ids)
-    ```
-
 
     :param str availability_zone: Availability zone where instances are located.
     :param bool enable_details: Default to `true`. If false, the attributes `ram_role_name` and `disk_device_mappings` will not be fetched and output.
@@ -283,15 +271,6 @@ def get_instances(availability_zone: Optional[str] = None,
     :param str resource_group_id: The ID of resource group which the instance belongs.
     :param str status: Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
     :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
-           ```python
-           import pulumi
-           import pulumi_alicloud as alicloud
-           
-           tagged_instances = alicloud.ecs.get_instances(tags={
-               "tagKey1": "tagValue1",
-               "tagKey2": "tagValue2",
-           })
-           ```
     :param str vpc_id: ID of the VPC linked to the instances.
     :param str vswitch_id: ID of the VSwitch linked to the instances.
     """
@@ -356,18 +335,6 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     """
     The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    instances_ds = alicloud.ecs.get_instances(name_regex="web_server",
-        status="Running")
-    pulumi.export("firstInstanceId", instances_ds.instances[0].id)
-    pulumi.export("instanceIds", instances_ds.ids)
-    ```
-
 
     :param str availability_zone: Availability zone where instances are located.
     :param bool enable_details: Default to `true`. If false, the attributes `ram_role_name` and `disk_device_mappings` will not be fetched and output.
@@ -380,15 +347,6 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     :param str resource_group_id: The ID of resource group which the instance belongs.
     :param str status: Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
     :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
-           ```python
-           import pulumi
-           import pulumi_alicloud as alicloud
-           
-           tagged_instances = alicloud.ecs.get_instances(tags={
-               "tagKey1": "tagValue1",
-               "tagKey2": "tagValue2",
-           })
-           ```
     :param str vpc_id: ID of the VPC linked to the instances.
     :param str vswitch_id: ID of the VSwitch linked to the instances.
     """

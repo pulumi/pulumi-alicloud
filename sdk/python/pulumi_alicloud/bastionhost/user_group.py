@@ -32,15 +32,19 @@ class UserGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
-             user_group_name: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             user_group_name: Optional[pulumi.Input[str]] = None,
              comment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'userGroupName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if user_group_name is None and 'userGroupName' in kwargs:
             user_group_name = kwargs['userGroupName']
+        if user_group_name is None:
+            raise TypeError("Missing 'user_group_name' argument")
 
         _setter("instance_id", instance_id)
         _setter("user_group_name", user_group_name)
@@ -112,13 +116,13 @@ class _UserGroupState:
              instance_id: Optional[pulumi.Input[str]] = None,
              user_group_id: Optional[pulumi.Input[str]] = None,
              user_group_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'userGroupId' in kwargs:
+        if user_group_id is None and 'userGroupId' in kwargs:
             user_group_id = kwargs['userGroupId']
-        if 'userGroupName' in kwargs:
+        if user_group_name is None and 'userGroupName' in kwargs:
             user_group_name = kwargs['userGroupName']
 
         if comment is not None:
@@ -195,42 +199,6 @@ class UserGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.132.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.bastionhost.Instance("defaultInstance",
-            description=name,
-            license_code="bhah_ent_50_asset",
-            plan_code="cloudbastion",
-            storage="5",
-            bandwidth="5",
-            period=1,
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id])
-        default_user_group = alicloud.bastionhost.UserGroup("defaultUserGroup",
-            instance_id=default_instance.id,
-            user_group_name=name)
-        ```
-
         ## Import
 
         Bastion Host User Group can be imported using the id, e.g.
@@ -257,42 +225,6 @@ class UserGroup(pulumi.CustomResource):
         For information about Bastion Host User Group and how to use it, see [What is User Group](https://www.alibabacloud.com/help/doc-detail/204596.htm).
 
         > **NOTE:** Available since v1.132.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.bastionhost.Instance("defaultInstance",
-            description=name,
-            license_code="bhah_ent_50_asset",
-            plan_code="cloudbastion",
-            storage="5",
-            bandwidth="5",
-            period=1,
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id])
-        default_user_group = alicloud.bastionhost.UserGroup("defaultUserGroup",
-            instance_id=default_instance.id,
-            user_group_name=name)
-        ```
 
         ## Import
 

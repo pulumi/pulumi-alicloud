@@ -90,25 +90,6 @@ def get_network_packages(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.142.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
-        cidr_block="172.16.0.0/12",
-        desktop_access_type="Internet",
-        office_site_name="example_value")
-    default_network_package = alicloud.eds.NetworkPackage("defaultNetworkPackage",
-        bandwidth=10,
-        office_site_id=default_simple_office_site.id)
-    default_network_packages = alicloud.eds.get_network_packages_output(ids=[default_network_package.id])
-    pulumi.export("ecdNetworkPackageId1", default_network_packages.packages[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Network Package IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -138,25 +119,6 @@ def get_network_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.142.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
-        cidr_block="172.16.0.0/12",
-        desktop_access_type="Internet",
-        office_site_name="example_value")
-    default_network_package = alicloud.eds.NetworkPackage("defaultNetworkPackage",
-        bandwidth=10,
-        office_site_id=default_simple_office_site.id)
-    default_network_packages = alicloud.eds.get_network_packages_output(ids=[default_network_package.id])
-    pulumi.export("ecdNetworkPackageId1", default_network_packages.packages[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Network Package IDs.

@@ -16,45 +16,6 @@ namespace Pulumi.AliCloud.EventBridge
     /// 
     /// &gt; **NOTE:** Available since v1.211.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var region = config.Get("region") ?? "cn-chengdu";
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultConnection = new AliCloud.EventBridge.Connection("defaultConnection", new()
-    ///     {
-    ///         ConnectionName = name,
-    ///         NetworkParameters = new AliCloud.EventBridge.Inputs.ConnectionNetworkParametersArgs
-    ///         {
-    ///             NetworkType = "PublicNetwork",
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultApiDestination = new AliCloud.EventBridge.ApiDestination("defaultApiDestination", new()
-    ///     {
-    ///         ConnectionName = defaultConnection.ConnectionName,
-    ///         ApiDestinationName = name,
-    ///         Description = "test-api-destination-connection",
-    ///         HttpApiParameters = new AliCloud.EventBridge.Inputs.ApiDestinationHttpApiParametersArgs
-    ///         {
-    ///             Endpoint = "http://127.0.0.1:8001",
-    ///             Method = "POST",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Event Bridge Api Destination can be imported using the id, e.g.

@@ -67,25 +67,25 @@ class DhcpOptionsSetArgs:
              lease_time: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'associateVpcs' in kwargs:
+        if associate_vpcs is None and 'associateVpcs' in kwargs:
             associate_vpcs = kwargs['associateVpcs']
-        if 'dhcpOptionsSetDescription' in kwargs:
+        if dhcp_options_set_description is None and 'dhcpOptionsSetDescription' in kwargs:
             dhcp_options_set_description = kwargs['dhcpOptionsSetDescription']
-        if 'dhcpOptionsSetName' in kwargs:
+        if dhcp_options_set_name is None and 'dhcpOptionsSetName' in kwargs:
             dhcp_options_set_name = kwargs['dhcpOptionsSetName']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'domainNameServers' in kwargs:
+        if domain_name_servers is None and 'domainNameServers' in kwargs:
             domain_name_servers = kwargs['domainNameServers']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'ipv6LeaseTime' in kwargs:
+        if ipv6_lease_time is None and 'ipv6LeaseTime' in kwargs:
             ipv6_lease_time = kwargs['ipv6LeaseTime']
-        if 'leaseTime' in kwargs:
+        if lease_time is None and 'leaseTime' in kwargs:
             lease_time = kwargs['leaseTime']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         if associate_vpcs is not None:
@@ -300,27 +300,27 @@ class _DhcpOptionsSetState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'associateVpcs' in kwargs:
+        if associate_vpcs is None and 'associateVpcs' in kwargs:
             associate_vpcs = kwargs['associateVpcs']
-        if 'dhcpOptionsSetDescription' in kwargs:
+        if dhcp_options_set_description is None and 'dhcpOptionsSetDescription' in kwargs:
             dhcp_options_set_description = kwargs['dhcpOptionsSetDescription']
-        if 'dhcpOptionsSetName' in kwargs:
+        if dhcp_options_set_name is None and 'dhcpOptionsSetName' in kwargs:
             dhcp_options_set_name = kwargs['dhcpOptionsSetName']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'domainNameServers' in kwargs:
+        if domain_name_servers is None and 'domainNameServers' in kwargs:
             domain_name_servers = kwargs['domainNameServers']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'ipv6LeaseTime' in kwargs:
+        if ipv6_lease_time is None and 'ipv6LeaseTime' in kwargs:
             ipv6_lease_time = kwargs['ipv6LeaseTime']
-        if 'leaseTime' in kwargs:
+        if lease_time is None and 'leaseTime' in kwargs:
             lease_time = kwargs['leaseTime']
-        if 'ownerId' in kwargs:
+        if owner_id is None and 'ownerId' in kwargs:
             owner_id = kwargs['ownerId']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         if associate_vpcs is not None:
@@ -524,28 +524,6 @@ class DhcpOptionsSet(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        domain = config.get("domain")
-        if domain is None:
-            domain = "terraform-example.com"
-        example = alicloud.vpc.DhcpOptionsSet("example",
-            dhcp_options_set_name=name,
-            dhcp_options_set_description=name,
-            domain_name=domain,
-            domain_name_servers="100.100.2.136")
-        ```
-
         ## Import
 
         VPC Dhcp Options Set can be imported using the id, e.g.
@@ -581,28 +559,6 @@ class DhcpOptionsSet(pulumi.CustomResource):
         For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/dhcp-options-sets-overview).
 
         > **NOTE:** Available since v1.134.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        domain = config.get("domain")
-        if domain is None:
-            domain = "terraform-example.com"
-        example = alicloud.vpc.DhcpOptionsSet("example",
-            dhcp_options_set_name=name,
-            dhcp_options_set_description=name,
-            domain_name=domain,
-            domain_name_servers="100.100.2.136")
-        ```
 
         ## Import
 

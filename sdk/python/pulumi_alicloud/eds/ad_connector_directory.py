@@ -59,41 +59,53 @@ class AdConnectorDirectoryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             directory_name: pulumi.Input[str],
-             dns_addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
-             domain_name: pulumi.Input[str],
-             domain_password: pulumi.Input[str],
-             domain_user_name: pulumi.Input[str],
-             vswitch_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             directory_name: Optional[pulumi.Input[str]] = None,
+             dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             domain_name: Optional[pulumi.Input[str]] = None,
+             domain_password: Optional[pulumi.Input[str]] = None,
+             domain_user_name: Optional[pulumi.Input[str]] = None,
+             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              desktop_access_type: Optional[pulumi.Input[str]] = None,
              enable_admin_access: Optional[pulumi.Input[bool]] = None,
              mfa_enabled: Optional[pulumi.Input[bool]] = None,
              specification: Optional[pulumi.Input[int]] = None,
              sub_domain_dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              sub_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'directoryName' in kwargs:
+        if directory_name is None and 'directoryName' in kwargs:
             directory_name = kwargs['directoryName']
-        if 'dnsAddresses' in kwargs:
+        if directory_name is None:
+            raise TypeError("Missing 'directory_name' argument")
+        if dns_addresses is None and 'dnsAddresses' in kwargs:
             dns_addresses = kwargs['dnsAddresses']
-        if 'domainName' in kwargs:
+        if dns_addresses is None:
+            raise TypeError("Missing 'dns_addresses' argument")
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'domainPassword' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if domain_password is None and 'domainPassword' in kwargs:
             domain_password = kwargs['domainPassword']
-        if 'domainUserName' in kwargs:
+        if domain_password is None:
+            raise TypeError("Missing 'domain_password' argument")
+        if domain_user_name is None and 'domainUserName' in kwargs:
             domain_user_name = kwargs['domainUserName']
-        if 'vswitchIds' in kwargs:
+        if domain_user_name is None:
+            raise TypeError("Missing 'domain_user_name' argument")
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
-        if 'desktopAccessType' in kwargs:
+        if vswitch_ids is None:
+            raise TypeError("Missing 'vswitch_ids' argument")
+        if desktop_access_type is None and 'desktopAccessType' in kwargs:
             desktop_access_type = kwargs['desktopAccessType']
-        if 'enableAdminAccess' in kwargs:
+        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
             enable_admin_access = kwargs['enableAdminAccess']
-        if 'mfaEnabled' in kwargs:
+        if mfa_enabled is None and 'mfaEnabled' in kwargs:
             mfa_enabled = kwargs['mfaEnabled']
-        if 'subDomainDnsAddresses' in kwargs:
+        if sub_domain_dns_addresses is None and 'subDomainDnsAddresses' in kwargs:
             sub_domain_dns_addresses = kwargs['subDomainDnsAddresses']
-        if 'subDomainName' in kwargs:
+        if sub_domain_name is None and 'subDomainName' in kwargs:
             sub_domain_name = kwargs['subDomainName']
 
         _setter("directory_name", directory_name)
@@ -324,29 +336,29 @@ class _AdConnectorDirectoryState:
              sub_domain_dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              sub_domain_name: Optional[pulumi.Input[str]] = None,
              vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'desktopAccessType' in kwargs:
+        if desktop_access_type is None and 'desktopAccessType' in kwargs:
             desktop_access_type = kwargs['desktopAccessType']
-        if 'directoryName' in kwargs:
+        if directory_name is None and 'directoryName' in kwargs:
             directory_name = kwargs['directoryName']
-        if 'dnsAddresses' in kwargs:
+        if dns_addresses is None and 'dnsAddresses' in kwargs:
             dns_addresses = kwargs['dnsAddresses']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'domainPassword' in kwargs:
+        if domain_password is None and 'domainPassword' in kwargs:
             domain_password = kwargs['domainPassword']
-        if 'domainUserName' in kwargs:
+        if domain_user_name is None and 'domainUserName' in kwargs:
             domain_user_name = kwargs['domainUserName']
-        if 'enableAdminAccess' in kwargs:
+        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
             enable_admin_access = kwargs['enableAdminAccess']
-        if 'mfaEnabled' in kwargs:
+        if mfa_enabled is None and 'mfaEnabled' in kwargs:
             mfa_enabled = kwargs['mfaEnabled']
-        if 'subDomainDnsAddresses' in kwargs:
+        if sub_domain_dns_addresses is None and 'subDomainDnsAddresses' in kwargs:
             sub_domain_dns_addresses = kwargs['subDomainDnsAddresses']
-        if 'subDomainName' in kwargs:
+        if sub_domain_name is None and 'subDomainName' in kwargs:
             sub_domain_name = kwargs['subDomainName']
-        if 'vswitchIds' in kwargs:
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
 
         if desktop_access_type is not None:
@@ -558,42 +570,6 @@ class AdConnectorDirectory(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.174.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.eds.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.ids[0],
-            vswitch_name=name)
-        default_ad_connector_directory = alicloud.eds.AdConnectorDirectory("defaultAdConnectorDirectory",
-            directory_name=name,
-            desktop_access_type="INTERNET",
-            dns_addresses=["127.0.0.2"],
-            domain_name="corp.example.com",
-            domain_password="Example1234",
-            domain_user_name="sAMAccountName",
-            enable_admin_access=False,
-            mfa_enabled=False,
-            specification=1,
-            sub_domain_dns_addresses=["127.0.0.3"],
-            sub_domain_name="child.example.com",
-            vswitch_ids=[default_switch.id])
-        ```
-
         ## Import
 
         ECD Ad Connector Directory can be imported using the id, e.g.
@@ -629,42 +605,6 @@ class AdConnectorDirectory(pulumi.CustomResource):
         For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createadconnectordirectory).
 
         > **NOTE:** Available since v1.174.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.eds.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.ids[0],
-            vswitch_name=name)
-        default_ad_connector_directory = alicloud.eds.AdConnectorDirectory("defaultAdConnectorDirectory",
-            directory_name=name,
-            desktop_access_type="INTERNET",
-            dns_addresses=["127.0.0.2"],
-            domain_name="corp.example.com",
-            domain_password="Example1234",
-            domain_user_name="sAMAccountName",
-            enable_admin_access=False,
-            mfa_enabled=False,
-            specification=1,
-            sub_domain_dns_addresses=["127.0.0.3"],
-            sub_domain_name="child.example.com",
-            vswitch_ids=[default_switch.id])
-        ```
 
         ## Import
 

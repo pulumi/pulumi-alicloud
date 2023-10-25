@@ -41,21 +41,25 @@ class CertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
+             domain: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
              certificate: Optional[pulumi.Input[str]] = None,
              certificate_id: Optional[pulumi.Input[str]] = None,
              certificate_name: Optional[pulumi.Input[str]] = None,
              private_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceId' in kwargs:
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'certificateId' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if certificate_id is None and 'certificateId' in kwargs:
             certificate_id = kwargs['certificateId']
-        if 'certificateName' in kwargs:
+        if certificate_name is None and 'certificateName' in kwargs:
             certificate_name = kwargs['certificateName']
-        if 'privateKey' in kwargs:
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
 
         _setter("domain", domain)
@@ -178,15 +182,15 @@ class _CertificateState:
              domain: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              private_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certificateId' in kwargs:
+        if certificate_id is None and 'certificateId' in kwargs:
             certificate_id = kwargs['certificateId']
-        if 'certificateName' in kwargs:
+        if certificate_name is None and 'certificateName' in kwargs:
             certificate_name = kwargs['certificateName']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'privateKey' in kwargs:
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
 
         if certificate is not None:
@@ -294,26 +298,6 @@ class Certificate(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.135.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.waf.Certificate("default",
-            certificate="your_certificate",
-            certificate_name="your_certificate_name",
-            domain="your_domain_name",
-            instance_id="your_instance_id",
-            private_key="your_private_key")
-        default2 = alicloud.waf.Certificate("default2",
-            certificate_id="your_certificate_id",
-            domain="your_domain_name",
-            instance_id="your_instance_id")
-        ```
-
         ## Import
 
         WAF Certificate can be imported using the id, e.g.
@@ -343,26 +327,6 @@ class Certificate(pulumi.CustomResource):
         For information about WAF Certificate and how to use it, see [What is Certificate](https://www.alibabacloud.com/help/doc-detail/28517.htm).
 
         > **NOTE:** Available in v1.135.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.waf.Certificate("default",
-            certificate="your_certificate",
-            certificate_name="your_certificate_name",
-            domain="your_domain_name",
-            instance_id="your_instance_id",
-            private_key="your_private_key")
-        default2 = alicloud.waf.Certificate("default2",
-            certificate_id="your_certificate_id",
-            domain="your_domain_name",
-            instance_id="your_instance_id")
-        ```
 
         ## Import
 

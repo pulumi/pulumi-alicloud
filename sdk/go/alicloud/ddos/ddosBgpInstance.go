@@ -19,45 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.183.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := ddos.NewDdosBgpInstance(ctx, "instance", &ddos.DdosBgpInstanceArgs{
-//				BaseBandwidth:   pulumi.Int(20),
-//				Bandwidth:       -1,
-//				IpCount:         pulumi.Int(100),
-//				IpType:          pulumi.String("IPv4"),
-//				NormalBandwidth: pulumi.Int(100),
-//				Type:            pulumi.String("Enterprise"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Ddosbgp instance can be imported using the id, e.g.

@@ -10,16 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides an available area for remote disaster recovery for RDS.
  *
  * > **NOTE:** Available in v1.193.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const crossRegions = alicloud.rds.getCrossRegions({});
- * export const firstRdsCrossRegions = data.alicloud_rds_cross_regions.regions.ids[0];
- * ```
  */
 export function getCrossRegions(args?: GetCrossRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetCrossRegionsResult> {
     args = args || {};
@@ -59,16 +49,6 @@ export interface GetCrossRegionsResult {
  * This data source provides an available area for remote disaster recovery for RDS.
  *
  * > **NOTE:** Available in v1.193.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const crossRegions = alicloud.rds.getCrossRegions({});
- * export const firstRdsCrossRegions = data.alicloud_rds_cross_regions.regions.ids[0];
- * ```
  */
 export function getCrossRegionsOutput(args?: GetCrossRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCrossRegionsResult> {
     return pulumi.output(args).apply((a: any) => getCrossRegions(a, opts))

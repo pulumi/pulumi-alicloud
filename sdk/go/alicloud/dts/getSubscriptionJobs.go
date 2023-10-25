@@ -15,33 +15,6 @@ import (
 // This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.138.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := dts.GetSubscriptionJobs(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dtsSubscriptionJobId1", ids.Jobs[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetSubscriptionJobs(ctx *pulumi.Context, args *GetSubscriptionJobsArgs, opts ...pulumi.InvokeOption) (*GetSubscriptionJobsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSubscriptionJobsResult

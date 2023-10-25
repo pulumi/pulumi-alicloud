@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Cen Inter Region Traffic Qos Queue available to the user.
  *
  * > **NOTE:** Available in 1.195.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cen.getInterRegionTrafficQosQueues({
- *     ids: [alicloud_cen_inter_region_traffic_qos_queue["default"].id],
- *     nameRegex: alicloud_cen_inter_region_traffic_qos_queue["default"].name,
- *     trafficQosPolicyId: "qos-xxxxxxx",
- * });
- * export const alicloudCenInterRegionTrafficQosQueueExampleId = _default.then(_default => _default.queues?.[0]?.id);
- * ```
  */
 export function getInterRegionTrafficQosQueues(args: GetInterRegionTrafficQosQueuesArgs, opts?: pulumi.InvokeOptions): Promise<GetInterRegionTrafficQosQueuesResult> {
 
@@ -89,20 +75,6 @@ export interface GetInterRegionTrafficQosQueuesResult {
  * This data source provides Cen Inter Region Traffic Qos Queue available to the user.
  *
  * > **NOTE:** Available in 1.195.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cen.getInterRegionTrafficQosQueues({
- *     ids: [alicloud_cen_inter_region_traffic_qos_queue["default"].id],
- *     nameRegex: alicloud_cen_inter_region_traffic_qos_queue["default"].name,
- *     trafficQosPolicyId: "qos-xxxxxxx",
- * });
- * export const alicloudCenInterRegionTrafficQosQueueExampleId = _default.then(_default => _default.queues?.[0]?.id);
- * ```
  */
 export function getInterRegionTrafficQosQueuesOutput(args: GetInterRegionTrafficQosQueuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterRegionTrafficQosQueuesResult> {
     return pulumi.output(args).apply((a: any) => getInterRegionTrafficQosQueues(a, opts))

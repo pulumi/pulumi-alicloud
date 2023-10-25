@@ -12,19 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `isOutdated` to true.
  *
  * > **NOTE:** If one instance type is sold out, it will not be exported.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const typesDs = alicloud.ecs.getInstanceTypes({
- *     cpuCoreCount: 1,
- *     memorySize: 2,
- * });
- * const instance = new alicloud.ecs.Instance("instance", {instanceType: typesDs.then(typesDs => typesDs.instanceTypes?.[0]?.id)});
- * ```
  */
 export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
     args = args || {};
@@ -173,19 +160,6 @@ export interface GetInstanceTypesResult {
  * > **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `isOutdated` to true.
  *
  * > **NOTE:** If one instance type is sold out, it will not be exported.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const typesDs = alicloud.ecs.getInstanceTypes({
- *     cpuCoreCount: 1,
- *     memorySize: 2,
- * });
- * const instance = new alicloud.ecs.Instance("instance", {instanceType: typesDs.then(typesDs => typesDs.instanceTypes?.[0]?.id)});
- * ```
  */
 export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypesResult> {
     return pulumi.output(args).apply((a: any) => getInstanceTypes(a, opts))

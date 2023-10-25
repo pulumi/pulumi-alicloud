@@ -68,7 +68,7 @@ class ServiceMeshArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input['ServiceMeshNetworkArgs'],
+             network: Optional[pulumi.Input['ServiceMeshNetworkArgs']] = None,
              cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              cluster_spec: Optional[pulumi.Input[str]] = None,
              customized_prometheus: Optional[pulumi.Input[bool]] = None,
@@ -81,23 +81,25 @@ class ServiceMeshArgs:
              service_mesh_name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterIds' in kwargs:
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if cluster_ids is None and 'clusterIds' in kwargs:
             cluster_ids = kwargs['clusterIds']
-        if 'clusterSpec' in kwargs:
+        if cluster_spec is None and 'clusterSpec' in kwargs:
             cluster_spec = kwargs['clusterSpec']
-        if 'customizedPrometheus' in kwargs:
+        if customized_prometheus is None and 'customizedPrometheus' in kwargs:
             customized_prometheus = kwargs['customizedPrometheus']
-        if 'extraConfiguration' in kwargs:
+        if extra_configuration is None and 'extraConfiguration' in kwargs:
             extra_configuration = kwargs['extraConfiguration']
-        if 'loadBalancer' in kwargs:
+        if load_balancer is None and 'loadBalancer' in kwargs:
             load_balancer = kwargs['loadBalancer']
-        if 'meshConfig' in kwargs:
+        if mesh_config is None and 'meshConfig' in kwargs:
             mesh_config = kwargs['meshConfig']
-        if 'prometheusUrl' in kwargs:
+        if prometheus_url is None and 'prometheusUrl' in kwargs:
             prometheus_url = kwargs['prometheusUrl']
-        if 'serviceMeshName' in kwargs:
+        if service_mesh_name is None and 'serviceMeshName' in kwargs:
             service_mesh_name = kwargs['serviceMeshName']
 
         _setter("network", network)
@@ -363,25 +365,25 @@ class _ServiceMeshState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterIds' in kwargs:
+        if cluster_ids is None and 'clusterIds' in kwargs:
             cluster_ids = kwargs['clusterIds']
-        if 'clusterSpec' in kwargs:
+        if cluster_spec is None and 'clusterSpec' in kwargs:
             cluster_spec = kwargs['clusterSpec']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'customizedPrometheus' in kwargs:
+        if customized_prometheus is None and 'customizedPrometheus' in kwargs:
             customized_prometheus = kwargs['customizedPrometheus']
-        if 'extraConfiguration' in kwargs:
+        if extra_configuration is None and 'extraConfiguration' in kwargs:
             extra_configuration = kwargs['extraConfiguration']
-        if 'loadBalancer' in kwargs:
+        if load_balancer is None and 'loadBalancer' in kwargs:
             load_balancer = kwargs['loadBalancer']
-        if 'meshConfig' in kwargs:
+        if mesh_config is None and 'meshConfig' in kwargs:
             mesh_config = kwargs['meshConfig']
-        if 'prometheusUrl' in kwargs:
+        if prometheus_url is None and 'prometheusUrl' in kwargs:
             prometheus_url = kwargs['prometheusUrl']
-        if 'serviceMeshName' in kwargs:
+        if service_mesh_name is None and 'serviceMeshName' in kwargs:
             service_mesh_name = kwargs['serviceMeshName']
 
         if cluster_ids is not None:
@@ -720,30 +722,14 @@ class ServiceMesh(pulumi.CustomResource):
             __props__.__dict__["cluster_spec"] = cluster_spec
             __props__.__dict__["customized_prometheus"] = customized_prometheus
             __props__.__dict__["edition"] = edition
-            if extra_configuration is not None and not isinstance(extra_configuration, ServiceMeshExtraConfigurationArgs):
-                extra_configuration = extra_configuration or {}
-                def _setter(key, value):
-                    extra_configuration[key] = value
-                ServiceMeshExtraConfigurationArgs._configure(_setter, **extra_configuration)
+            extra_configuration = _utilities.configure(extra_configuration, ServiceMeshExtraConfigurationArgs, True)
             __props__.__dict__["extra_configuration"] = extra_configuration
             __props__.__dict__["force"] = force
-            if load_balancer is not None and not isinstance(load_balancer, ServiceMeshLoadBalancerArgs):
-                load_balancer = load_balancer or {}
-                def _setter(key, value):
-                    load_balancer[key] = value
-                ServiceMeshLoadBalancerArgs._configure(_setter, **load_balancer)
+            load_balancer = _utilities.configure(load_balancer, ServiceMeshLoadBalancerArgs, True)
             __props__.__dict__["load_balancer"] = load_balancer
-            if mesh_config is not None and not isinstance(mesh_config, ServiceMeshMeshConfigArgs):
-                mesh_config = mesh_config or {}
-                def _setter(key, value):
-                    mesh_config[key] = value
-                ServiceMeshMeshConfigArgs._configure(_setter, **mesh_config)
+            mesh_config = _utilities.configure(mesh_config, ServiceMeshMeshConfigArgs, True)
             __props__.__dict__["mesh_config"] = mesh_config
-            if network is not None and not isinstance(network, ServiceMeshNetworkArgs):
-                network = network or {}
-                def _setter(key, value):
-                    network[key] = value
-                ServiceMeshNetworkArgs._configure(_setter, **network)
+            network = _utilities.configure(network, ServiceMeshNetworkArgs, True)
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network

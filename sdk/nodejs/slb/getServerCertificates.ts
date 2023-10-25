@@ -8,16 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the server certificate list.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const sampleDs = alicloud.slb.getServerCertificates({});
- * export const firstSlbServerCertificateId = sampleDs.then(sampleDs => sampleDs.certificates?.[0]?.id);
- * ```
  */
 export function getServerCertificates(args?: GetServerCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetServerCertificatesResult> {
     args = args || {};
@@ -91,16 +81,6 @@ export interface GetServerCertificatesResult {
 }
 /**
  * This data source provides the server certificate list.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const sampleDs = alicloud.slb.getServerCertificates({});
- * export const firstSlbServerCertificateId = sampleDs.then(sampleDs => sampleDs.certificates?.[0]?.id);
- * ```
  */
 export function getServerCertificatesOutput(args?: GetServerCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerCertificatesResult> {
     return pulumi.output(args).apply((a: any) => getServerCertificates(a, opts))

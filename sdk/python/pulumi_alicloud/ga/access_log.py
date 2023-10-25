@@ -41,26 +41,38 @@ class AccessLogArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: pulumi.Input[str],
-             endpoint_group_id: pulumi.Input[str],
-             listener_id: pulumi.Input[str],
-             sls_log_store_name: pulumi.Input[str],
-             sls_project_name: pulumi.Input[str],
-             sls_region_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             endpoint_group_id: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             sls_log_store_name: Optional[pulumi.Input[str]] = None,
+             sls_project_name: Optional[pulumi.Input[str]] = None,
+             sls_region_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'endpointGroupId' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
             endpoint_group_id = kwargs['endpointGroupId']
-        if 'listenerId' in kwargs:
+        if endpoint_group_id is None:
+            raise TypeError("Missing 'endpoint_group_id' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'slsLogStoreName' in kwargs:
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if sls_log_store_name is None and 'slsLogStoreName' in kwargs:
             sls_log_store_name = kwargs['slsLogStoreName']
-        if 'slsProjectName' in kwargs:
+        if sls_log_store_name is None:
+            raise TypeError("Missing 'sls_log_store_name' argument")
+        if sls_project_name is None and 'slsProjectName' in kwargs:
             sls_project_name = kwargs['slsProjectName']
-        if 'slsRegionId' in kwargs:
+        if sls_project_name is None:
+            raise TypeError("Missing 'sls_project_name' argument")
+        if sls_region_id is None and 'slsRegionId' in kwargs:
             sls_region_id = kwargs['slsRegionId']
+        if sls_region_id is None:
+            raise TypeError("Missing 'sls_region_id' argument")
 
         _setter("accelerator_id", accelerator_id)
         _setter("endpoint_group_id", endpoint_group_id)
@@ -182,19 +194,19 @@ class _AccessLogState:
              sls_project_name: Optional[pulumi.Input[str]] = None,
              sls_region_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'endpointGroupId' in kwargs:
+        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
             endpoint_group_id = kwargs['endpointGroupId']
-        if 'listenerId' in kwargs:
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'slsLogStoreName' in kwargs:
+        if sls_log_store_name is None and 'slsLogStoreName' in kwargs:
             sls_log_store_name = kwargs['slsLogStoreName']
-        if 'slsProjectName' in kwargs:
+        if sls_project_name is None and 'slsProjectName' in kwargs:
             sls_project_name = kwargs['slsProjectName']
-        if 'slsRegionId' in kwargs:
+        if sls_region_id is None and 'slsRegionId' in kwargs:
             sls_region_id = kwargs['slsRegionId']
 
         if accelerator_id is not None:
@@ -316,68 +328,6 @@ class AccessLog(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.187.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_project = alicloud.log.Project("defaultProject")
-        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="2")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
-            bandwidth=100,
-            type="Basic",
-            bandwidth_type="Basic",
-            payment_type="PayAsYouGo",
-            billing_type="PayBy95",
-            ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
-            bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
-            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
-            client_affinity="SOURCE_IP",
-            protocol="HTTP",
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=70,
-                to_port=70,
-            )])
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
-            bandwidth="10",
-            internet_charge_type="PayByBandwidth",
-            address_name="terraform-example")
-        default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
-            accelerator_id=default_listener.accelerator_id,
-            endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                endpoint=default_eip_address.ip_address,
-                type="PublicIp",
-                weight=20,
-            )],
-            endpoint_group_region=region,
-            listener_id=default_listener.id)
-        default_access_log = alicloud.ga.AccessLog("defaultAccessLog",
-            accelerator_id=default_accelerator.id,
-            listener_id=default_listener.id,
-            endpoint_group_id=default_endpoint_group.id,
-            sls_project_name=default_project.name,
-            sls_log_store_name=default_store.name,
-            sls_region_id=region)
-        ```
-
         ## Import
 
         Global Accelerator (GA) Access Log can be imported using the id, e.g.
@@ -407,68 +357,6 @@ class AccessLog(pulumi.CustomResource):
         For information about Global Accelerator (GA) Access Log and how to use it, see [What is Access Log](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-attachlogstoretoendpointgroup).
 
         > **NOTE:** Available since v1.187.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_project = alicloud.log.Project("defaultProject")
-        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="2")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
-            bandwidth=100,
-            type="Basic",
-            bandwidth_type="Basic",
-            payment_type="PayAsYouGo",
-            billing_type="PayBy95",
-            ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
-            bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
-            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
-            client_affinity="SOURCE_IP",
-            protocol="HTTP",
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=70,
-                to_port=70,
-            )])
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
-            bandwidth="10",
-            internet_charge_type="PayByBandwidth",
-            address_name="terraform-example")
-        default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
-            accelerator_id=default_listener.accelerator_id,
-            endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                endpoint=default_eip_address.ip_address,
-                type="PublicIp",
-                weight=20,
-            )],
-            endpoint_group_region=region,
-            listener_id=default_listener.id)
-        default_access_log = alicloud.ga.AccessLog("defaultAccessLog",
-            accelerator_id=default_accelerator.id,
-            listener_id=default_listener.id,
-            endpoint_group_id=default_endpoint_group.id,
-            sls_project_name=default_project.name,
-            sls_log_store_name=default_store.name,
-            sls_region_id=region)
-        ```
 
         ## Import
 

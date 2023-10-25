@@ -52,26 +52,34 @@ class AppGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_group_name: pulumi.Input[str],
-             payment_type: pulumi.Input[str],
-             quota: pulumi.Input['AppGroupQuotaArgs'],
-             type: pulumi.Input[str],
+             app_group_name: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             quota: Optional[pulumi.Input['AppGroupQuotaArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
              charge_way: Optional[pulumi.Input[str]] = None,
              current_version: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              order_type: Optional[pulumi.Input[str]] = None,
              orders: Optional[pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appGroupName' in kwargs:
+        if app_group_name is None and 'appGroupName' in kwargs:
             app_group_name = kwargs['appGroupName']
-        if 'paymentType' in kwargs:
+        if app_group_name is None:
+            raise TypeError("Missing 'app_group_name' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'chargeWay' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if quota is None:
+            raise TypeError("Missing 'quota' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if charge_way is None and 'chargeWay' in kwargs:
             charge_way = kwargs['chargeWay']
-        if 'currentVersion' in kwargs:
+        if current_version is None and 'currentVersion' in kwargs:
             current_version = kwargs['currentVersion']
-        if 'orderType' in kwargs:
+        if order_type is None and 'orderType' in kwargs:
             order_type = kwargs['orderType']
 
         _setter("app_group_name", app_group_name)
@@ -254,19 +262,19 @@ class _AppGroupState:
              quota: Optional[pulumi.Input['AppGroupQuotaArgs']] = None,
              status: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appGroupName' in kwargs:
+        if app_group_name is None and 'appGroupName' in kwargs:
             app_group_name = kwargs['appGroupName']
-        if 'chargeWay' in kwargs:
+        if charge_way is None and 'chargeWay' in kwargs:
             charge_way = kwargs['chargeWay']
-        if 'currentVersion' in kwargs:
+        if current_version is None and 'currentVersion' in kwargs:
             current_version = kwargs['currentVersion']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'orderType' in kwargs:
+        if order_type is None and 'orderType' in kwargs:
             order_type = kwargs['orderType']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
 
         if app_group_name is not None:
@@ -447,29 +455,6 @@ class AppGroup(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.136.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "name"
-        default = alicloud.opensearch.AppGroup("default",
-            app_group_name=name,
-            payment_type="PayAsYouGo",
-            type="standard",
-            quota=alicloud.opensearch.AppGroupQuotaArgs(
-                doc_size=1,
-                compute_resource=20,
-                spec="opensearch.share.common",
-            ))
-        ```
-
         ## Import
 
         Open Search App Group can be imported using the id, e.g.
@@ -502,29 +487,6 @@ class AppGroup(pulumi.CustomResource):
         For information about Open Search App Group and how to use it, see [What is App Group](https://www.aliyun.com/product/opensearch).
 
         > **NOTE:** Available in v1.136.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "name"
-        default = alicloud.opensearch.AppGroup("default",
-            app_group_name=name,
-            payment_type="PayAsYouGo",
-            type="standard",
-            quota=alicloud.opensearch.AppGroupQuotaArgs(
-                doc_size=1,
-                compute_resource=20,
-                spec="opensearch.share.common",
-            ))
-        ```
 
         ## Import
 
@@ -582,11 +544,7 @@ class AppGroup(pulumi.CustomResource):
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
-            if quota is not None and not isinstance(quota, AppGroupQuotaArgs):
-                quota = quota or {}
-                def _setter(key, value):
-                    quota[key] = value
-                AppGroupQuotaArgs._configure(_setter, **quota)
+            quota = _utilities.configure(quota, AppGroupQuotaArgs, True)
             if quota is None and not opts.urn:
                 raise TypeError("Missing required property 'quota'")
             __props__.__dict__["quota"] = quota

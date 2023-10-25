@@ -48,9 +48,9 @@ class AnycastEipAddressAttachmentPopLocation(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              pop_location: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'popLocation' in kwargs:
+        if pop_location is None and 'popLocation' in kwargs:
             pop_location = kwargs['popLocation']
 
         if pop_location is not None:
@@ -118,40 +118,68 @@ class GetAnycastEipAddressesAddressResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ali_uid: int,
-             anycast_eip_address_name: str,
-             anycast_eip_bind_info_lists: Sequence['outputs.GetAnycastEipAddressesAddressAnycastEipBindInfoListResult'],
-             anycast_id: str,
-             bandwidth: int,
-             bid: str,
-             business_status: str,
-             description: str,
-             id: str,
-             internet_charge_type: str,
-             ip_address: str,
-             payment_type: str,
-             service_location: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ali_uid: Optional[int] = None,
+             anycast_eip_address_name: Optional[str] = None,
+             anycast_eip_bind_info_lists: Optional[Sequence['outputs.GetAnycastEipAddressesAddressAnycastEipBindInfoListResult']] = None,
+             anycast_id: Optional[str] = None,
+             bandwidth: Optional[int] = None,
+             bid: Optional[str] = None,
+             business_status: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             internet_charge_type: Optional[str] = None,
+             ip_address: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             service_location: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aliUid' in kwargs:
+        if ali_uid is None and 'aliUid' in kwargs:
             ali_uid = kwargs['aliUid']
-        if 'anycastEipAddressName' in kwargs:
+        if ali_uid is None:
+            raise TypeError("Missing 'ali_uid' argument")
+        if anycast_eip_address_name is None and 'anycastEipAddressName' in kwargs:
             anycast_eip_address_name = kwargs['anycastEipAddressName']
-        if 'anycastEipBindInfoLists' in kwargs:
+        if anycast_eip_address_name is None:
+            raise TypeError("Missing 'anycast_eip_address_name' argument")
+        if anycast_eip_bind_info_lists is None and 'anycastEipBindInfoLists' in kwargs:
             anycast_eip_bind_info_lists = kwargs['anycastEipBindInfoLists']
-        if 'anycastId' in kwargs:
+        if anycast_eip_bind_info_lists is None:
+            raise TypeError("Missing 'anycast_eip_bind_info_lists' argument")
+        if anycast_id is None and 'anycastId' in kwargs:
             anycast_id = kwargs['anycastId']
-        if 'businessStatus' in kwargs:
+        if anycast_id is None:
+            raise TypeError("Missing 'anycast_id' argument")
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if bid is None:
+            raise TypeError("Missing 'bid' argument")
+        if business_status is None and 'businessStatus' in kwargs:
             business_status = kwargs['businessStatus']
-        if 'internetChargeType' in kwargs:
+        if business_status is None:
+            raise TypeError("Missing 'business_status' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'ipAddress' in kwargs:
+        if internet_charge_type is None:
+            raise TypeError("Missing 'internet_charge_type' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
-        if 'paymentType' in kwargs:
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'serviceLocation' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if service_location is None and 'serviceLocation' in kwargs:
             service_location = kwargs['serviceLocation']
+        if service_location is None:
+            raise TypeError("Missing 'service_location' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("ali_uid", ali_uid)
         _setter("anycast_eip_address_name", anycast_eip_address_name)
@@ -304,20 +332,28 @@ class GetAnycastEipAddressesAddressAnycastEipBindInfoListResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bind_instance_id: str,
-             bind_instance_region_id: str,
-             bind_instance_type: str,
-             bind_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bind_instance_id: Optional[str] = None,
+             bind_instance_region_id: Optional[str] = None,
+             bind_instance_type: Optional[str] = None,
+             bind_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bindInstanceId' in kwargs:
+        if bind_instance_id is None and 'bindInstanceId' in kwargs:
             bind_instance_id = kwargs['bindInstanceId']
-        if 'bindInstanceRegionId' in kwargs:
+        if bind_instance_id is None:
+            raise TypeError("Missing 'bind_instance_id' argument")
+        if bind_instance_region_id is None and 'bindInstanceRegionId' in kwargs:
             bind_instance_region_id = kwargs['bindInstanceRegionId']
-        if 'bindInstanceType' in kwargs:
+        if bind_instance_region_id is None:
+            raise TypeError("Missing 'bind_instance_region_id' argument")
+        if bind_instance_type is None and 'bindInstanceType' in kwargs:
             bind_instance_type = kwargs['bindInstanceType']
-        if 'bindTime' in kwargs:
+        if bind_instance_type is None:
+            raise TypeError("Missing 'bind_instance_type' argument")
+        if bind_time is None and 'bindTime' in kwargs:
             bind_time = kwargs['bindTime']
+        if bind_time is None:
+            raise TypeError("Missing 'bind_time' argument")
 
         _setter("bind_instance_id", bind_instance_id)
         _setter("bind_instance_region_id", bind_instance_region_id)

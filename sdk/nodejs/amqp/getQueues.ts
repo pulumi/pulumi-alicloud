@@ -10,31 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Amqp Queues of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.127.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.amqp.getQueues({
- *     instanceId: "amqp-abc12345",
- *     virtualHostName: "my-VirtualHost",
- *     ids: [
- *         "my-Queue-1",
- *         "my-Queue-2",
- *     ],
- * });
- * export const amqpQueueId1 = ids.then(ids => ids.queues?.[0]?.id);
- * const nameRegex = alicloud.amqp.getQueues({
- *     instanceId: "amqp-abc12345",
- *     virtualHostName: "my-VirtualHost",
- *     nameRegex: "^my-Queue",
- * });
- * export const amqpQueueId2 = nameRegex.then(nameRegex => nameRegex.queues?.[0]?.id);
- * ```
  */
 export function getQueues(args: GetQueuesArgs, opts?: pulumi.InvokeOptions): Promise<GetQueuesResult> {
 
@@ -94,31 +69,6 @@ export interface GetQueuesResult {
  * This data source provides the Amqp Queues of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.127.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.amqp.getQueues({
- *     instanceId: "amqp-abc12345",
- *     virtualHostName: "my-VirtualHost",
- *     ids: [
- *         "my-Queue-1",
- *         "my-Queue-2",
- *     ],
- * });
- * export const amqpQueueId1 = ids.then(ids => ids.queues?.[0]?.id);
- * const nameRegex = alicloud.amqp.getQueues({
- *     instanceId: "amqp-abc12345",
- *     virtualHostName: "my-VirtualHost",
- *     nameRegex: "^my-Queue",
- * });
- * export const amqpQueueId2 = nameRegex.then(nameRegex => nameRegex.queues?.[0]?.id);
- * ```
  */
 export function getQueuesOutput(args: GetQueuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueuesResult> {
     return pulumi.output(args).apply((a: any) => getQueues(a, opts))

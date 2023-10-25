@@ -40,19 +40,27 @@ class EcsPrefixListArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address_family: pulumi.Input[str],
-             entries: pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]],
-             max_entries: pulumi.Input[int],
-             prefix_list_name: pulumi.Input[str],
+             address_family: Optional[pulumi.Input[str]] = None,
+             entries: Optional[pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]]] = None,
+             max_entries: Optional[pulumi.Input[int]] = None,
+             prefix_list_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addressFamily' in kwargs:
+        if address_family is None and 'addressFamily' in kwargs:
             address_family = kwargs['addressFamily']
-        if 'maxEntries' in kwargs:
+        if address_family is None:
+            raise TypeError("Missing 'address_family' argument")
+        if entries is None:
+            raise TypeError("Missing 'entries' argument")
+        if max_entries is None and 'maxEntries' in kwargs:
             max_entries = kwargs['maxEntries']
-        if 'prefixListName' in kwargs:
+        if max_entries is None:
+            raise TypeError("Missing 'max_entries' argument")
+        if prefix_list_name is None and 'prefixListName' in kwargs:
             prefix_list_name = kwargs['prefixListName']
+        if prefix_list_name is None:
+            raise TypeError("Missing 'prefix_list_name' argument")
 
         _setter("address_family", address_family)
         _setter("entries", entries)
@@ -154,13 +162,13 @@ class _EcsPrefixListState:
              entries: Optional[pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]]] = None,
              max_entries: Optional[pulumi.Input[int]] = None,
              prefix_list_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addressFamily' in kwargs:
+        if address_family is None and 'addressFamily' in kwargs:
             address_family = kwargs['addressFamily']
-        if 'maxEntries' in kwargs:
+        if max_entries is None and 'maxEntries' in kwargs:
             max_entries = kwargs['maxEntries']
-        if 'prefixListName' in kwargs:
+        if prefix_list_name is None and 'prefixListName' in kwargs:
             prefix_list_name = kwargs['prefixListName']
 
         if address_family is not None:
@@ -253,25 +261,6 @@ class EcsPrefixList(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.152.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ecs.EcsPrefixList("default",
-            address_family="IPv4",
-            description="description",
-            entries=[alicloud.ecs.EcsPrefixListEntryArgs(
-                cidr="192.168.0.0/24",
-                description="description",
-            )],
-            max_entries=2,
-            prefix_list_name="tftest")
-        ```
-
         ## Import
 
         ECS Prefix List can be imported using the id, e.g.
@@ -300,25 +289,6 @@ class EcsPrefixList(pulumi.CustomResource):
         For information about ECS Prefix List and how to use it, see [What is Prefix List.](https://www.alibabacloud.com/help/en/doc-detail/207969.html).
 
         > **NOTE:** Available in v1.152.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ecs.EcsPrefixList("default",
-            address_family="IPv4",
-            description="description",
-            entries=[alicloud.ecs.EcsPrefixListEntryArgs(
-                cidr="192.168.0.0/24",
-                description="description",
-            )],
-            max_entries=2,
-            prefix_list_name="tftest")
-        ```
 
         ## Import
 

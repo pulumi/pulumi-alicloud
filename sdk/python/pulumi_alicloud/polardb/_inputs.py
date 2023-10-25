@@ -40,13 +40,13 @@ class ClusterDbClusterIpArrayArgs:
              db_cluster_ip_array_name: Optional[pulumi.Input[str]] = None,
              modify_mode: Optional[pulumi.Input[str]] = None,
              security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbClusterIpArrayName' in kwargs:
+        if db_cluster_ip_array_name is None and 'dbClusterIpArrayName' in kwargs:
             db_cluster_ip_array_name = kwargs['dbClusterIpArrayName']
-        if 'modifyMode' in kwargs:
+        if modify_mode is None and 'modifyMode' in kwargs:
             modify_mode = kwargs['modifyMode']
-        if 'securityIps' in kwargs:
+        if security_ips is None and 'securityIps' in kwargs:
             security_ips = kwargs['securityIps']
 
         if db_cluster_ip_array_name is not None:
@@ -112,10 +112,14 @@ class ClusterParameterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("name", name)
         _setter("value", value)
@@ -162,14 +166,18 @@ class ParameterGroupParameterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             param_name: pulumi.Input[str],
-             param_value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             param_name: Optional[pulumi.Input[str]] = None,
+             param_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'paramName' in kwargs:
+        if param_name is None and 'paramName' in kwargs:
             param_name = kwargs['paramName']
-        if 'paramValue' in kwargs:
+        if param_name is None:
+            raise TypeError("Missing 'param_name' argument")
+        if param_value is None and 'paramValue' in kwargs:
             param_value = kwargs['paramValue']
+        if param_value is None:
+            raise TypeError("Missing 'param_value' argument")
 
         _setter("param_name", param_name)
         _setter("param_value", param_value)

@@ -33,20 +33,22 @@ class ProviderAssumeRoleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             role_arn: pulumi.Input[str],
+             role_arn: Optional[pulumi.Input[str]] = None,
              external_id: Optional[pulumi.Input[str]] = None,
              policy: Optional[pulumi.Input[str]] = None,
              session_expiration: Optional[pulumi.Input[int]] = None,
              session_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'externalId' in kwargs:
+        if role_arn is None:
+            raise TypeError("Missing 'role_arn' argument")
+        if external_id is None and 'externalId' in kwargs:
             external_id = kwargs['externalId']
-        if 'sessionExpiration' in kwargs:
+        if session_expiration is None and 'sessionExpiration' in kwargs:
             session_expiration = kwargs['sessionExpiration']
-        if 'sessionName' in kwargs:
+        if session_name is None and 'sessionName' in kwargs:
             session_name = kwargs['sessionName']
 
         _setter("role_arn", role_arn)
@@ -501,17 +503,17 @@ class ProviderEndpointArgs:
              vs: Optional[pulumi.Input[str]] = None,
              waf: Optional[pulumi.Input[str]] = None,
              waf_openapi: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'brainIndustrial' in kwargs:
+        if brain_industrial is None and 'brainIndustrial' in kwargs:
             brain_industrial = kwargs['brainIndustrial']
-        if 'dmsEnterprise' in kwargs:
+        if dms_enterprise is None and 'dmsEnterprise' in kwargs:
             dms_enterprise = kwargs['dmsEnterprise']
-        if 'hcsSgw' in kwargs:
+        if hcs_sgw is None and 'hcsSgw' in kwargs:
             hcs_sgw = kwargs['hcsSgw']
-        if 'rKvstore' in kwargs:
+        if r_kvstore is None and 'rKvstore' in kwargs:
             r_kvstore = kwargs['rKvstore']
-        if 'wafOpenapi' in kwargs:
+        if waf_openapi is None and 'wafOpenapi' in kwargs:
             waf_openapi = kwargs['wafOpenapi']
 
         if acr is not None:

@@ -32,17 +32,23 @@ class StaticAccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_key: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             secret_key: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_key: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             secret_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessKey' in kwargs:
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'instanceId' in kwargs:
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'secretKey' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
+        if secret_key is None:
+            raise TypeError("Missing 'secret_key' argument")
 
         _setter("access_key", access_key)
         _setter("instance_id", instance_id)
@@ -125,19 +131,19 @@ class _StaticAccountState:
              password: Optional[pulumi.Input[str]] = None,
              secret_key: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessKey' in kwargs:
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'masterUid' in kwargs:
+        if master_uid is None and 'masterUid' in kwargs:
             master_uid = kwargs['masterUid']
-        if 'secretKey' in kwargs:
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
 
         if access_key is not None:
@@ -256,36 +262,6 @@ class StaticAccount(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        access_key = config.get("accessKey")
-        if access_key is None:
-            access_key = "access_key"
-        secret_key = config.get("secretKey")
-        if secret_key is None:
-            secret_key = "secret_key"
-        default_instance = alicloud.amqp.Instance("defaultInstance",
-            instance_type="enterprise",
-            max_tps="3000",
-            queue_capacity="200",
-            storage_size="700",
-            support_eip=False,
-            max_eip_tps="128",
-            payment_type="Subscription",
-            period=1)
-        default_static_account = alicloud.amqp.StaticAccount("defaultStaticAccount",
-            instance_id=default_instance.id,
-            access_key=access_key,
-            secret_key=secret_key)
-        ```
-
         ## Import
 
         Amqp Static Account can be imported using the id, e.g.
@@ -312,36 +288,6 @@ class StaticAccount(pulumi.CustomResource):
         For information about Amqp Static Account and how to use it, see [What is Static Account](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/create-a-pair-of-static-username-and-password).
 
         > **NOTE:** Available since v1.195.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        access_key = config.get("accessKey")
-        if access_key is None:
-            access_key = "access_key"
-        secret_key = config.get("secretKey")
-        if secret_key is None:
-            secret_key = "secret_key"
-        default_instance = alicloud.amqp.Instance("defaultInstance",
-            instance_type="enterprise",
-            max_tps="3000",
-            queue_capacity="200",
-            storage_size="700",
-            support_eip=False,
-            max_eip_tps="128",
-            payment_type="Subscription",
-            period=1)
-        default_static_account = alicloud.amqp.StaticAccount("defaultStaticAccount",
-            instance_id=default_instance.id,
-            access_key=access_key,
-            secret_key=secret_key)
-        ```
 
         ## Import
 

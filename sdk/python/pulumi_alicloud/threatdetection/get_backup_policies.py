@@ -158,20 +158,6 @@ def get_backup_policies(current_page: Optional[int] = None,
 
     > **NOTE:** Available in v1.195.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.threatdetection.get_backup_policies(ids=["example_id"])
-    pulumi.export("threatDetectionBackupPoliciesId1", ids.policies[0].id)
-    name_regex = alicloud.threatdetection.get_backup_policies(name_regex="tf-example")
-    pulumi.export("threatDetectionBackupPoliciesId2", name_regex.policies[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Threat Detection Backup Policies IDs.
     :param str machine_remark: The information that you want to use to identify the servers protected by the anti-ransomware policy. You can enter the IP address or ID of a server.
@@ -220,20 +206,6 @@ def get_backup_policies_output(current_page: Optional[pulumi.Input[Optional[int]
     This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.195.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.threatdetection.get_backup_policies(ids=["example_id"])
-    pulumi.export("threatDetectionBackupPoliciesId1", ids.policies[0].id)
-    name_regex = alicloud.threatdetection.get_backup_policies(name_regex="tf-example")
-    pulumi.export("threatDetectionBackupPoliciesId2", name_regex.policies[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Threat Detection Backup Policies IDs.

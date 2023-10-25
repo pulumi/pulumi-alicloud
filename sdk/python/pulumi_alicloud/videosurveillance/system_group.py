@@ -47,26 +47,36 @@ class SystemGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_name: pulumi.Input[str],
-             in_protocol: pulumi.Input[str],
-             out_protocol: pulumi.Input[str],
-             play_domain: pulumi.Input[str],
-             push_domain: pulumi.Input[str],
+             group_name: Optional[pulumi.Input[str]] = None,
+             in_protocol: Optional[pulumi.Input[str]] = None,
+             out_protocol: Optional[pulumi.Input[str]] = None,
+             play_domain: Optional[pulumi.Input[str]] = None,
+             push_domain: Optional[pulumi.Input[str]] = None,
              callback: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'inProtocol' in kwargs:
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if in_protocol is None and 'inProtocol' in kwargs:
             in_protocol = kwargs['inProtocol']
-        if 'outProtocol' in kwargs:
+        if in_protocol is None:
+            raise TypeError("Missing 'in_protocol' argument")
+        if out_protocol is None and 'outProtocol' in kwargs:
             out_protocol = kwargs['outProtocol']
-        if 'playDomain' in kwargs:
+        if out_protocol is None:
+            raise TypeError("Missing 'out_protocol' argument")
+        if play_domain is None and 'playDomain' in kwargs:
             play_domain = kwargs['playDomain']
-        if 'pushDomain' in kwargs:
+        if play_domain is None:
+            raise TypeError("Missing 'play_domain' argument")
+        if push_domain is None and 'pushDomain' in kwargs:
             push_domain = kwargs['pushDomain']
+        if push_domain is None:
+            raise TypeError("Missing 'push_domain' argument")
 
         _setter("group_name", group_name)
         _setter("in_protocol", in_protocol)
@@ -249,29 +259,29 @@ class _SystemGroupState:
              play_domain: Optional[pulumi.Input[str]] = None,
              push_domain: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'captureImage' in kwargs:
+        if capture_image is None and 'captureImage' in kwargs:
             capture_image = kwargs['captureImage']
-        if 'captureInterval' in kwargs:
+        if capture_interval is None and 'captureInterval' in kwargs:
             capture_interval = kwargs['captureInterval']
-        if 'captureOssBucket' in kwargs:
+        if capture_oss_bucket is None and 'captureOssBucket' in kwargs:
             capture_oss_bucket = kwargs['captureOssBucket']
-        if 'captureOssPath' in kwargs:
+        if capture_oss_path is None and 'captureOssPath' in kwargs:
             capture_oss_path = kwargs['captureOssPath']
-        if 'captureVideo' in kwargs:
+        if capture_video is None and 'captureVideo' in kwargs:
             capture_video = kwargs['captureVideo']
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'inProtocol' in kwargs:
+        if in_protocol is None and 'inProtocol' in kwargs:
             in_protocol = kwargs['inProtocol']
-        if 'lazyPull' in kwargs:
+        if lazy_pull is None and 'lazyPull' in kwargs:
             lazy_pull = kwargs['lazyPull']
-        if 'outProtocol' in kwargs:
+        if out_protocol is None and 'outProtocol' in kwargs:
             out_protocol = kwargs['outProtocol']
-        if 'playDomain' in kwargs:
+        if play_domain is None and 'playDomain' in kwargs:
             play_domain = kwargs['playDomain']
-        if 'pushDomain' in kwargs:
+        if push_domain is None and 'pushDomain' in kwargs:
             push_domain = kwargs['pushDomain']
 
         if callback is not None:
@@ -507,22 +517,6 @@ class SystemGroup(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.135.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.videosurveillance.SystemGroup("default",
-            group_name="your_group_name",
-            in_protocol="rtmp",
-            out_protocol="flv",
-            play_domain="your_plan_domain",
-            push_domain="your_push_domain")
-        ```
-
         ## Import
 
         Video Surveillance System Group can be imported using the id, e.g.
@@ -554,22 +548,6 @@ class SystemGroup(pulumi.CustomResource):
         For information about Video Surveillance System Group and how to use it, see [What is Group](https://help.aliyun.com/product/108765.html).
 
         > **NOTE:** Available in v1.135.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.videosurveillance.SystemGroup("default",
-            group_name="your_group_name",
-            in_protocol="rtmp",
-            out_protocol="flv",
-            play_domain="your_plan_domain",
-            push_domain="your_push_domain")
-        ```
 
         ## Import
 

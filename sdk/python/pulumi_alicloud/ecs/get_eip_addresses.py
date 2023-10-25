@@ -264,19 +264,6 @@ def get_eip_addresses(address_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.126.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ecs.get_eip_addresses(ids=["eip-bp1jvx5ki6c********"],
-        name_regex="the_resource_name")
-    pulumi.export("firstEipAddressId", example.addresses[0].id)
-    ```
-
 
     :param str address_name: The name of the EIP.
     :param str associated_instance_id: The associated instance id.
@@ -367,19 +354,6 @@ def get_eip_addresses_output(address_name: Optional[pulumi.Input[Optional[str]]]
     This data source provides the Eip Addresses of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.126.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ecs.get_eip_addresses(ids=["eip-bp1jvx5ki6c********"],
-        name_regex="the_resource_name")
-    pulumi.export("firstEipAddressId", example.addresses[0].id)
-    ```
 
 
     :param str address_name: The name of the EIP.

@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.176.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.eds.getAdConnectorOfficeSites({});
- * export const ecdAdConnectorOfficeSiteId1 = ids.then(ids => ids.sites?.[0]?.id);
- * const nameRegex = alicloud.eds.getAdConnectorOfficeSites({
- *     nameRegex: "^my-AdConnectorOfficeSite",
- * });
- * export const ecdAdConnectorOfficeSiteId2 = nameRegex.then(nameRegex => nameRegex.sites?.[0]?.id);
- * ```
  */
 export function getAdConnectorOfficeSites(args?: GetAdConnectorOfficeSitesArgs, opts?: pulumi.InvokeOptions): Promise<GetAdConnectorOfficeSitesResult> {
     args = args || {};
@@ -80,22 +64,6 @@ export interface GetAdConnectorOfficeSitesResult {
  * This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.176.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.eds.getAdConnectorOfficeSites({});
- * export const ecdAdConnectorOfficeSiteId1 = ids.then(ids => ids.sites?.[0]?.id);
- * const nameRegex = alicloud.eds.getAdConnectorOfficeSites({
- *     nameRegex: "^my-AdConnectorOfficeSite",
- * });
- * export const ecdAdConnectorOfficeSiteId2 = nameRegex.then(nameRegex => nameRegex.sites?.[0]?.id);
- * ```
  */
 export function getAdConnectorOfficeSitesOutput(args?: GetAdConnectorOfficeSitesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdConnectorOfficeSitesResult> {
     return pulumi.output(args).apply((a: any) => getAdConnectorOfficeSites(a, opts))

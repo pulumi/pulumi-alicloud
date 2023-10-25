@@ -73,11 +73,11 @@ class AScriptExtAttributeArgs:
              _setter: Callable[[Any, Any], None],
              attribute_key: Optional[pulumi.Input[str]] = None,
              attribute_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'attributeKey' in kwargs:
+        if attribute_key is None and 'attributeKey' in kwargs:
             attribute_key = kwargs['attributeKey']
-        if 'attributeValue' in kwargs:
+        if attribute_value is None and 'attributeValue' in kwargs:
             attribute_value = kwargs['attributeValue']
 
         if attribute_key is not None:
@@ -133,7 +133,7 @@ class AclAclEntryArgs:
              description: Optional[pulumi.Input[str]] = None,
              entry: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if description is not None:
@@ -209,13 +209,13 @@ class ListenerAccessLogTracingConfigArgs:
              tracing_enabled: Optional[pulumi.Input[bool]] = None,
              tracing_sample: Optional[pulumi.Input[int]] = None,
              tracing_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'tracingEnabled' in kwargs:
+        if tracing_enabled is None and 'tracingEnabled' in kwargs:
             tracing_enabled = kwargs['tracingEnabled']
-        if 'tracingSample' in kwargs:
+        if tracing_sample is None and 'tracingSample' in kwargs:
             tracing_sample = kwargs['tracingSample']
-        if 'tracingType' in kwargs:
+        if tracing_type is None and 'tracingType' in kwargs:
             tracing_type = kwargs['tracingType']
 
         if tracing_enabled is not None:
@@ -287,11 +287,11 @@ class ListenerAclConfigArgs:
              _setter: Callable[[Any, Any], None],
              acl_relations: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerAclConfigAclRelationArgs']]]] = None,
              acl_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclRelations' in kwargs:
+        if acl_relations is None and 'aclRelations' in kwargs:
             acl_relations = kwargs['aclRelations']
-        if 'aclType' in kwargs:
+        if acl_type is None and 'aclType' in kwargs:
             acl_type = kwargs['aclType']
 
         if acl_relations is not None:
@@ -343,9 +343,9 @@ class ListenerAclConfigAclRelationArgs:
              _setter: Callable[[Any, Any], None],
              acl_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclId' in kwargs:
+        if acl_id is None and 'aclId' in kwargs:
             acl_id = kwargs['aclId']
 
         if acl_id is not None:
@@ -393,9 +393,9 @@ class ListenerCertificatesArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              certificate_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certificateId' in kwargs:
+        if certificate_id is None and 'certificateId' in kwargs:
             certificate_id = kwargs['certificateId']
 
         if certificate_id is not None:
@@ -431,12 +431,16 @@ class ListenerDefaultActionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             forward_group_config: pulumi.Input['ListenerDefaultActionForwardGroupConfigArgs'],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             forward_group_config: Optional[pulumi.Input['ListenerDefaultActionForwardGroupConfigArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'forwardGroupConfig' in kwargs:
+        if forward_group_config is None and 'forwardGroupConfig' in kwargs:
             forward_group_config = kwargs['forwardGroupConfig']
+        if forward_group_config is None:
+            raise TypeError("Missing 'forward_group_config' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("forward_group_config", forward_group_config)
         _setter("type", type)
@@ -480,11 +484,13 @@ class ListenerDefaultActionForwardGroupConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_group_tuples: pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             server_group_tuples: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupTuples' in kwargs:
+        if server_group_tuples is None and 'serverGroupTuples' in kwargs:
             server_group_tuples = kwargs['serverGroupTuples']
+        if server_group_tuples is None:
+            raise TypeError("Missing 'server_group_tuples' argument")
 
         _setter("server_group_tuples", server_group_tuples)
 
@@ -515,11 +521,13 @@ class ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_group_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             server_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupId' in kwargs:
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
+        if server_group_id is None:
+            raise TypeError("Missing 'server_group_id' argument")
 
         _setter("server_group_id", server_group_id)
 
@@ -557,11 +565,11 @@ class ListenerQuicConfigArgs:
              _setter: Callable[[Any, Any], None],
              quic_listener_id: Optional[pulumi.Input[str]] = None,
              quic_upgrade_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'quicListenerId' in kwargs:
+        if quic_listener_id is None and 'quicListenerId' in kwargs:
             quic_listener_id = kwargs['quicListenerId']
-        if 'quicUpgradeEnabled' in kwargs:
+        if quic_upgrade_enabled is None and 'quicUpgradeEnabled' in kwargs:
             quic_upgrade_enabled = kwargs['quicUpgradeEnabled']
 
         if quic_listener_id is not None:
@@ -659,33 +667,33 @@ class ListenerXForwardedForConfigArgs:
              x_forwarded_for_proto_enabled: Optional[pulumi.Input[bool]] = None,
              x_forwarded_for_slb_id_enabled: Optional[pulumi.Input[bool]] = None,
              x_forwarded_for_slb_port_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'xForwardedForClientCertClientVerifyAlias' in kwargs:
+        if x_forwarded_for_client_cert_client_verify_alias is None and 'xForwardedForClientCertClientVerifyAlias' in kwargs:
             x_forwarded_for_client_cert_client_verify_alias = kwargs['xForwardedForClientCertClientVerifyAlias']
-        if 'xForwardedForClientCertClientVerifyEnabled' in kwargs:
+        if x_forwarded_for_client_cert_client_verify_enabled is None and 'xForwardedForClientCertClientVerifyEnabled' in kwargs:
             x_forwarded_for_client_cert_client_verify_enabled = kwargs['xForwardedForClientCertClientVerifyEnabled']
-        if 'xForwardedForClientCertFingerPrintAlias' in kwargs:
+        if x_forwarded_for_client_cert_finger_print_alias is None and 'xForwardedForClientCertFingerPrintAlias' in kwargs:
             x_forwarded_for_client_cert_finger_print_alias = kwargs['xForwardedForClientCertFingerPrintAlias']
-        if 'xForwardedForClientCertFingerPrintEnabled' in kwargs:
+        if x_forwarded_for_client_cert_finger_print_enabled is None and 'xForwardedForClientCertFingerPrintEnabled' in kwargs:
             x_forwarded_for_client_cert_finger_print_enabled = kwargs['xForwardedForClientCertFingerPrintEnabled']
-        if 'xForwardedForClientCertIssuerDnAlias' in kwargs:
+        if x_forwarded_for_client_cert_issuer_dn_alias is None and 'xForwardedForClientCertIssuerDnAlias' in kwargs:
             x_forwarded_for_client_cert_issuer_dn_alias = kwargs['xForwardedForClientCertIssuerDnAlias']
-        if 'xForwardedForClientCertIssuerDnEnabled' in kwargs:
+        if x_forwarded_for_client_cert_issuer_dn_enabled is None and 'xForwardedForClientCertIssuerDnEnabled' in kwargs:
             x_forwarded_for_client_cert_issuer_dn_enabled = kwargs['xForwardedForClientCertIssuerDnEnabled']
-        if 'xForwardedForClientCertSubjectDnAlias' in kwargs:
+        if x_forwarded_for_client_cert_subject_dn_alias is None and 'xForwardedForClientCertSubjectDnAlias' in kwargs:
             x_forwarded_for_client_cert_subject_dn_alias = kwargs['xForwardedForClientCertSubjectDnAlias']
-        if 'xForwardedForClientCertSubjectDnEnabled' in kwargs:
+        if x_forwarded_for_client_cert_subject_dn_enabled is None and 'xForwardedForClientCertSubjectDnEnabled' in kwargs:
             x_forwarded_for_client_cert_subject_dn_enabled = kwargs['xForwardedForClientCertSubjectDnEnabled']
-        if 'xForwardedForClientSrcPortEnabled' in kwargs:
+        if x_forwarded_for_client_src_port_enabled is None and 'xForwardedForClientSrcPortEnabled' in kwargs:
             x_forwarded_for_client_src_port_enabled = kwargs['xForwardedForClientSrcPortEnabled']
-        if 'xForwardedForEnabled' in kwargs:
+        if x_forwarded_for_enabled is None and 'xForwardedForEnabled' in kwargs:
             x_forwarded_for_enabled = kwargs['xForwardedForEnabled']
-        if 'xForwardedForProtoEnabled' in kwargs:
+        if x_forwarded_for_proto_enabled is None and 'xForwardedForProtoEnabled' in kwargs:
             x_forwarded_for_proto_enabled = kwargs['xForwardedForProtoEnabled']
-        if 'xForwardedForSlbIdEnabled' in kwargs:
+        if x_forwarded_for_slb_id_enabled is None and 'xForwardedForSlbIdEnabled' in kwargs:
             x_forwarded_for_slb_id_enabled = kwargs['xForwardedForSlbIdEnabled']
-        if 'xForwardedForSlbPortEnabled' in kwargs:
+        if x_forwarded_for_slb_port_enabled is None and 'xForwardedForSlbPortEnabled' in kwargs:
             x_forwarded_for_slb_port_enabled = kwargs['xForwardedForSlbPortEnabled']
 
         if x_forwarded_for_client_cert_client_verify_alias is not None:
@@ -889,14 +897,18 @@ class LoadBalancerAccessLogConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             log_project: pulumi.Input[str],
-             log_store: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             log_project: Optional[pulumi.Input[str]] = None,
+             log_store: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'logProject' in kwargs:
+        if log_project is None and 'logProject' in kwargs:
             log_project = kwargs['logProject']
-        if 'logStore' in kwargs:
+        if log_project is None:
+            raise TypeError("Missing 'log_project' argument")
+        if log_store is None and 'logStore' in kwargs:
             log_store = kwargs['logStore']
+        if log_store is None:
+            raise TypeError("Missing 'log_store' argument")
 
         _setter("log_project", log_project)
         _setter("log_store", log_store)
@@ -940,11 +952,13 @@ class LoadBalancerLoadBalancerBillingConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pay_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             pay_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'payType' in kwargs:
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
+        if pay_type is None:
+            raise TypeError("Missing 'pay_type' argument")
 
         _setter("pay_type", pay_type)
 
@@ -980,7 +994,7 @@ class LoadBalancerModificationProtectionConfigArgs:
              _setter: Callable[[Any, Any], None],
              reason: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if reason is not None:
@@ -1033,16 +1047,20 @@ class LoadBalancerZoneMappingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vswitch_id: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              load_balancer_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'loadBalancerAddresses' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if load_balancer_addresses is None and 'loadBalancerAddresses' in kwargs:
             load_balancer_addresses = kwargs['loadBalancerAddresses']
 
         _setter("vswitch_id", vswitch_id)
@@ -1114,13 +1132,13 @@ class LoadBalancerZoneMappingLoadBalancerAddressArgs:
              allocation_id: Optional[pulumi.Input[str]] = None,
              eip_type: Optional[pulumi.Input[str]] = None,
              ipv6_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allocationId' in kwargs:
+        if allocation_id is None and 'allocationId' in kwargs:
             allocation_id = kwargs['allocationId']
-        if 'eipType' in kwargs:
+        if eip_type is None and 'eipType' in kwargs:
             eip_type = kwargs['eipType']
-        if 'ipv6Address' in kwargs:
+        if ipv6_address is None and 'ipv6Address' in kwargs:
             ipv6_address = kwargs['ipv6Address']
 
         if address is not None:
@@ -1225,8 +1243,8 @@ class RuleRuleActionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             order: pulumi.Input[int],
-             type: pulumi.Input[str],
+             order: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              cors_config: Optional[pulumi.Input['RuleRuleActionCorsConfigArgs']] = None,
              fixed_response_config: Optional[pulumi.Input['RuleRuleActionFixedResponseConfigArgs']] = None,
              forward_group_config: Optional[pulumi.Input['RuleRuleActionForwardGroupConfigArgs']] = None,
@@ -1235,23 +1253,27 @@ class RuleRuleActionArgs:
              rewrite_config: Optional[pulumi.Input['RuleRuleActionRewriteConfigArgs']] = None,
              traffic_limit_config: Optional[pulumi.Input['RuleRuleActionTrafficLimitConfigArgs']] = None,
              traffic_mirror_config: Optional[pulumi.Input['RuleRuleActionTrafficMirrorConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'corsConfig' in kwargs:
+        if order is None:
+            raise TypeError("Missing 'order' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if cors_config is None and 'corsConfig' in kwargs:
             cors_config = kwargs['corsConfig']
-        if 'fixedResponseConfig' in kwargs:
+        if fixed_response_config is None and 'fixedResponseConfig' in kwargs:
             fixed_response_config = kwargs['fixedResponseConfig']
-        if 'forwardGroupConfig' in kwargs:
+        if forward_group_config is None and 'forwardGroupConfig' in kwargs:
             forward_group_config = kwargs['forwardGroupConfig']
-        if 'insertHeaderConfig' in kwargs:
+        if insert_header_config is None and 'insertHeaderConfig' in kwargs:
             insert_header_config = kwargs['insertHeaderConfig']
-        if 'redirectConfig' in kwargs:
+        if redirect_config is None and 'redirectConfig' in kwargs:
             redirect_config = kwargs['redirectConfig']
-        if 'rewriteConfig' in kwargs:
+        if rewrite_config is None and 'rewriteConfig' in kwargs:
             rewrite_config = kwargs['rewriteConfig']
-        if 'trafficLimitConfig' in kwargs:
+        if traffic_limit_config is None and 'trafficLimitConfig' in kwargs:
             traffic_limit_config = kwargs['trafficLimitConfig']
-        if 'trafficMirrorConfig' in kwargs:
+        if traffic_mirror_config is None and 'trafficMirrorConfig' in kwargs:
             traffic_mirror_config = kwargs['trafficMirrorConfig']
 
         _setter("order", order)
@@ -1432,19 +1454,19 @@ class RuleRuleActionCorsConfigArgs:
              allow_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              max_age: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowCredentials' in kwargs:
+        if allow_credentials is None and 'allowCredentials' in kwargs:
             allow_credentials = kwargs['allowCredentials']
-        if 'allowHeaders' in kwargs:
+        if allow_headers is None and 'allowHeaders' in kwargs:
             allow_headers = kwargs['allowHeaders']
-        if 'allowMethods' in kwargs:
+        if allow_methods is None and 'allowMethods' in kwargs:
             allow_methods = kwargs['allowMethods']
-        if 'allowOrigins' in kwargs:
+        if allow_origins is None and 'allowOrigins' in kwargs:
             allow_origins = kwargs['allowOrigins']
-        if 'exposeHeaders' in kwargs:
+        if expose_headers is None and 'exposeHeaders' in kwargs:
             expose_headers = kwargs['exposeHeaders']
-        if 'maxAge' in kwargs:
+        if max_age is None and 'maxAge' in kwargs:
             max_age = kwargs['maxAge']
 
         if allow_credentials is not None:
@@ -1553,14 +1575,16 @@ class RuleRuleActionFixedResponseConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: pulumi.Input[str],
+             content: Optional[pulumi.Input[str]] = None,
              content_type: Optional[pulumi.Input[str]] = None,
              http_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contentType' in kwargs:
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if content_type is None and 'contentType' in kwargs:
             content_type = kwargs['contentType']
-        if 'httpCode' in kwargs:
+        if http_code is None and 'httpCode' in kwargs:
             http_code = kwargs['httpCode']
 
         _setter("content", content)
@@ -1625,11 +1649,11 @@ class RuleRuleActionForwardGroupConfigArgs:
              _setter: Callable[[Any, Any], None],
              server_group_sticky_session: Optional[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs']] = None,
              server_group_tuples: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupTupleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupStickySession' in kwargs:
+        if server_group_sticky_session is None and 'serverGroupStickySession' in kwargs:
             server_group_sticky_session = kwargs['serverGroupStickySession']
-        if 'serverGroupTuples' in kwargs:
+        if server_group_tuples is None and 'serverGroupTuples' in kwargs:
             server_group_tuples = kwargs['serverGroupTuples']
 
         if server_group_sticky_session is not None:
@@ -1681,7 +1705,7 @@ class RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs:
              _setter: Callable[[Any, Any], None],
              enabled: Optional[pulumi.Input[bool]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if enabled is not None:
@@ -1733,9 +1757,9 @@ class RuleRuleActionForwardGroupConfigServerGroupTupleArgs:
              _setter: Callable[[Any, Any], None],
              server_group_id: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupId' in kwargs:
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
 
         if server_group_id is not None:
@@ -1792,9 +1816,9 @@ class RuleRuleActionInsertHeaderConfigArgs:
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
              value_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'valueType' in kwargs:
+        if value_type is None and 'valueType' in kwargs:
             value_type = kwargs['valueType']
 
         if key is not None:
@@ -1877,9 +1901,9 @@ class RuleRuleActionRedirectConfigArgs:
              port: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              query: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'httpCode' in kwargs:
+        if http_code is None and 'httpCode' in kwargs:
             http_code = kwargs['httpCode']
 
         if host is not None:
@@ -1991,7 +2015,7 @@ class RuleRuleActionRewriteConfigArgs:
              host: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
              query: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if host is not None:
@@ -2053,7 +2077,7 @@ class RuleRuleActionTrafficLimitConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              qps: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if qps is not None:
@@ -2091,11 +2115,11 @@ class RuleRuleActionTrafficMirrorConfigArgs:
              _setter: Callable[[Any, Any], None],
              mirror_group_config: Optional[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs']] = None,
              target_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mirrorGroupConfig' in kwargs:
+        if mirror_group_config is None and 'mirrorGroupConfig' in kwargs:
             mirror_group_config = kwargs['mirrorGroupConfig']
-        if 'targetType' in kwargs:
+        if target_type is None and 'targetType' in kwargs:
             target_type = kwargs['targetType']
 
         if mirror_group_config is not None:
@@ -2143,9 +2167,9 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              server_group_tuples: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupTuples' in kwargs:
+        if server_group_tuples is None and 'serverGroupTuples' in kwargs:
             server_group_tuples = kwargs['serverGroupTuples']
 
         if server_group_tuples is not None:
@@ -2179,9 +2203,9 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              server_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverGroupId' in kwargs:
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
 
         if server_group_id is not None:
@@ -2235,7 +2259,7 @@ class RuleRuleConditionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              cookie_config: Optional[pulumi.Input['RuleRuleConditionCookieConfigArgs']] = None,
              header_config: Optional[pulumi.Input['RuleRuleConditionHeaderConfigArgs']] = None,
              host_config: Optional[pulumi.Input['RuleRuleConditionHostConfigArgs']] = None,
@@ -2243,21 +2267,23 @@ class RuleRuleConditionArgs:
              path_config: Optional[pulumi.Input['RuleRuleConditionPathConfigArgs']] = None,
              query_string_config: Optional[pulumi.Input['RuleRuleConditionQueryStringConfigArgs']] = None,
              source_ip_config: Optional[pulumi.Input['RuleRuleConditionSourceIpConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cookieConfig' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if cookie_config is None and 'cookieConfig' in kwargs:
             cookie_config = kwargs['cookieConfig']
-        if 'headerConfig' in kwargs:
+        if header_config is None and 'headerConfig' in kwargs:
             header_config = kwargs['headerConfig']
-        if 'hostConfig' in kwargs:
+        if host_config is None and 'hostConfig' in kwargs:
             host_config = kwargs['hostConfig']
-        if 'methodConfig' in kwargs:
+        if method_config is None and 'methodConfig' in kwargs:
             method_config = kwargs['methodConfig']
-        if 'pathConfig' in kwargs:
+        if path_config is None and 'pathConfig' in kwargs:
             path_config = kwargs['pathConfig']
-        if 'queryStringConfig' in kwargs:
+        if query_string_config is None and 'queryStringConfig' in kwargs:
             query_string_config = kwargs['queryStringConfig']
-        if 'sourceIpConfig' in kwargs:
+        if source_ip_config is None and 'sourceIpConfig' in kwargs:
             source_ip_config = kwargs['sourceIpConfig']
 
         _setter("type", type)
@@ -2388,7 +2414,7 @@ class RuleRuleConditionCookieConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionCookieConfigValueArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if values is not None:
@@ -2427,7 +2453,7 @@ class RuleRuleConditionCookieConfigValueArgs:
              _setter: Callable[[Any, Any], None],
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -2480,7 +2506,7 @@ class RuleRuleConditionHeaderConfigArgs:
              _setter: Callable[[Any, Any], None],
              key: Optional[pulumi.Input[str]] = None,
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -2528,7 +2554,7 @@ class RuleRuleConditionHostConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if values is not None:
@@ -2562,7 +2588,7 @@ class RuleRuleConditionMethodConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if values is not None:
@@ -2596,7 +2622,7 @@ class RuleRuleConditionPathConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if values is not None:
@@ -2630,7 +2656,7 @@ class RuleRuleConditionQueryStringConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionQueryStringConfigValueArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if values is not None:
@@ -2669,7 +2695,7 @@ class RuleRuleConditionQueryStringConfigValueArgs:
              _setter: Callable[[Any, Any], None],
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -2718,7 +2744,7 @@ class RuleRuleConditionSourceIpConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if values is not None:
@@ -2797,31 +2823,31 @@ class ServerGroupHealthCheckConfigArgs:
              health_check_timeout: Optional[pulumi.Input[int]] = None,
              healthy_threshold: Optional[pulumi.Input[int]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'healthCheckCodes' in kwargs:
+        if health_check_codes is None and 'healthCheckCodes' in kwargs:
             health_check_codes = kwargs['healthCheckCodes']
-        if 'healthCheckConnectPort' in kwargs:
+        if health_check_connect_port is None and 'healthCheckConnectPort' in kwargs:
             health_check_connect_port = kwargs['healthCheckConnectPort']
-        if 'healthCheckEnabled' in kwargs:
+        if health_check_enabled is None and 'healthCheckEnabled' in kwargs:
             health_check_enabled = kwargs['healthCheckEnabled']
-        if 'healthCheckHost' in kwargs:
+        if health_check_host is None and 'healthCheckHost' in kwargs:
             health_check_host = kwargs['healthCheckHost']
-        if 'healthCheckHttpVersion' in kwargs:
+        if health_check_http_version is None and 'healthCheckHttpVersion' in kwargs:
             health_check_http_version = kwargs['healthCheckHttpVersion']
-        if 'healthCheckInterval' in kwargs:
+        if health_check_interval is None and 'healthCheckInterval' in kwargs:
             health_check_interval = kwargs['healthCheckInterval']
-        if 'healthCheckMethod' in kwargs:
+        if health_check_method is None and 'healthCheckMethod' in kwargs:
             health_check_method = kwargs['healthCheckMethod']
-        if 'healthCheckPath' in kwargs:
+        if health_check_path is None and 'healthCheckPath' in kwargs:
             health_check_path = kwargs['healthCheckPath']
-        if 'healthCheckProtocol' in kwargs:
+        if health_check_protocol is None and 'healthCheckProtocol' in kwargs:
             health_check_protocol = kwargs['healthCheckProtocol']
-        if 'healthCheckTimeout' in kwargs:
+        if health_check_timeout is None and 'healthCheckTimeout' in kwargs:
             health_check_timeout = kwargs['healthCheckTimeout']
-        if 'healthyThreshold' in kwargs:
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
             healthy_threshold = kwargs['healthyThreshold']
-        if 'unhealthyThreshold' in kwargs:
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
             unhealthy_threshold = kwargs['unhealthyThreshold']
 
         if health_check_codes is not None:
@@ -3039,23 +3065,27 @@ class ServerGroupServerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_id: pulumi.Input[str],
-             server_type: pulumi.Input[str],
+             server_id: Optional[pulumi.Input[str]] = None,
+             server_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              remote_ip_enabled: Optional[pulumi.Input[bool]] = None,
              server_ip: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serverId' in kwargs:
+        if server_id is None and 'serverId' in kwargs:
             server_id = kwargs['serverId']
-        if 'serverType' in kwargs:
+        if server_id is None:
+            raise TypeError("Missing 'server_id' argument")
+        if server_type is None and 'serverType' in kwargs:
             server_type = kwargs['serverType']
-        if 'remoteIpEnabled' in kwargs:
+        if server_type is None:
+            raise TypeError("Missing 'server_type' argument")
+        if remote_ip_enabled is None and 'remoteIpEnabled' in kwargs:
             remote_ip_enabled = kwargs['remoteIpEnabled']
-        if 'serverIp' in kwargs:
+        if server_ip is None and 'serverIp' in kwargs:
             server_ip = kwargs['serverIp']
 
         _setter("server_id", server_id)
@@ -3209,13 +3239,13 @@ class ServerGroupStickySessionConfigArgs:
              cookie_timeout: Optional[pulumi.Input[int]] = None,
              sticky_session_enabled: Optional[pulumi.Input[bool]] = None,
              sticky_session_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cookieTimeout' in kwargs:
+        if cookie_timeout is None and 'cookieTimeout' in kwargs:
             cookie_timeout = kwargs['cookieTimeout']
-        if 'stickySessionEnabled' in kwargs:
+        if sticky_session_enabled is None and 'stickySessionEnabled' in kwargs:
             sticky_session_enabled = kwargs['stickySessionEnabled']
-        if 'stickySessionType' in kwargs:
+        if sticky_session_type is None and 'stickySessionType' in kwargs:
             sticky_session_type = kwargs['stickySessionType']
 
         if cookie is not None:

@@ -15,34 +15,6 @@ namespace Pulumi.AliCloud.SecurityCenter
         /// This data source provides the Security Center Groups of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.133.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var nameRegex = AliCloud.SecurityCenter.GetGroups.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Group",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["securityCenterGroups"] = nameRegex.Apply(getGroupsResult =&gt; getGroupsResult.Groups[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:securitycenter/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithDefaults());
@@ -51,34 +23,6 @@ namespace Pulumi.AliCloud.SecurityCenter
         /// This data source provides the Security Center Groups of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.133.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var nameRegex = AliCloud.SecurityCenter.GetGroups.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Group",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["securityCenterGroups"] = nameRegex.Apply(getGroupsResult =&gt; getGroupsResult.Groups[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:securitycenter/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());

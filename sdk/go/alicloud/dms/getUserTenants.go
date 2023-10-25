@@ -15,33 +15,6 @@ import (
 // This data source provides a list of DMS User Tenants in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.161.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := dms.GetUserTenants(ctx, &dms.GetUserTenantsArgs{
-//				Status: pulumi.StringRef("ACTIVE"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("tid", _default.Ids[0])
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetUserTenants(ctx *pulumi.Context, args *GetUserTenantsArgs, opts ...pulumi.InvokeOption) (*GetUserTenantsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUserTenantsResult

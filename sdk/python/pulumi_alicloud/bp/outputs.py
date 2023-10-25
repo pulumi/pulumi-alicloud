@@ -56,11 +56,11 @@ class StudioApplicationInstance(dict):
              id: Optional[str] = None,
              node_name: Optional[str] = None,
              node_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodeName' in kwargs:
+        if node_name is None and 'nodeName' in kwargs:
             node_name = kwargs['nodeName']
-        if 'nodeType' in kwargs:
+        if node_type is None and 'nodeType' in kwargs:
             node_type = kwargs['nodeType']
 
         if id is not None:
@@ -130,28 +130,44 @@ class GetStudioApplicationsApplicationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_id: str,
-             application_name: str,
-             create_time: str,
-             id: str,
-             image_url: str,
-             resource_group_id: str,
-             status: str,
-             topo_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             application_id: Optional[str] = None,
+             application_name: Optional[str] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             image_url: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             status: Optional[str] = None,
+             topo_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'applicationName' in kwargs:
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if application_name is None and 'applicationName' in kwargs:
             application_name = kwargs['applicationName']
-        if 'createTime' in kwargs:
+        if application_name is None:
+            raise TypeError("Missing 'application_name' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'imageUrl' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_url is None and 'imageUrl' in kwargs:
             image_url = kwargs['imageUrl']
-        if 'resourceGroupId' in kwargs:
+        if image_url is None:
+            raise TypeError("Missing 'image_url' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'topoUrl' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if topo_url is None and 'topoUrl' in kwargs:
             topo_url = kwargs['topoUrl']
+        if topo_url is None:
+            raise TypeError("Missing 'topo_url' argument")
 
         _setter("application_id", application_id)
         _setter("application_name", application_name)

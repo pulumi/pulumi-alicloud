@@ -44,28 +44,30 @@ class VswitchCidrReservationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vswitch_id: pulumi.Input[str],
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              cidr_reservation_cidr: Optional[pulumi.Input[str]] = None,
              cidr_reservation_description: Optional[pulumi.Input[str]] = None,
              cidr_reservation_mask: Optional[pulumi.Input[str]] = None,
              cidr_reservation_type: Optional[pulumi.Input[str]] = None,
              ip_version: Optional[pulumi.Input[str]] = None,
              vswitch_cidr_reservation_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'cidrReservationCidr' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if cidr_reservation_cidr is None and 'cidrReservationCidr' in kwargs:
             cidr_reservation_cidr = kwargs['cidrReservationCidr']
-        if 'cidrReservationDescription' in kwargs:
+        if cidr_reservation_description is None and 'cidrReservationDescription' in kwargs:
             cidr_reservation_description = kwargs['cidrReservationDescription']
-        if 'cidrReservationMask' in kwargs:
+        if cidr_reservation_mask is None and 'cidrReservationMask' in kwargs:
             cidr_reservation_mask = kwargs['cidrReservationMask']
-        if 'cidrReservationType' in kwargs:
+        if cidr_reservation_type is None and 'cidrReservationType' in kwargs:
             cidr_reservation_type = kwargs['cidrReservationType']
-        if 'ipVersion' in kwargs:
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'vswitchCidrReservationName' in kwargs:
+        if vswitch_cidr_reservation_name is None and 'vswitchCidrReservationName' in kwargs:
             vswitch_cidr_reservation_name = kwargs['vswitchCidrReservationName']
 
         _setter("vswitch_id", vswitch_id)
@@ -223,27 +225,27 @@ class _VswitchCidrReservationState:
              vswitch_cidr_reservation_id: Optional[pulumi.Input[str]] = None,
              vswitch_cidr_reservation_name: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrReservationCidr' in kwargs:
+        if cidr_reservation_cidr is None and 'cidrReservationCidr' in kwargs:
             cidr_reservation_cidr = kwargs['cidrReservationCidr']
-        if 'cidrReservationDescription' in kwargs:
+        if cidr_reservation_description is None and 'cidrReservationDescription' in kwargs:
             cidr_reservation_description = kwargs['cidrReservationDescription']
-        if 'cidrReservationMask' in kwargs:
+        if cidr_reservation_mask is None and 'cidrReservationMask' in kwargs:
             cidr_reservation_mask = kwargs['cidrReservationMask']
-        if 'cidrReservationType' in kwargs:
+        if cidr_reservation_type is None and 'cidrReservationType' in kwargs:
             cidr_reservation_type = kwargs['cidrReservationType']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'ipVersion' in kwargs:
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchCidrReservationId' in kwargs:
+        if vswitch_cidr_reservation_id is None and 'vswitchCidrReservationId' in kwargs:
             vswitch_cidr_reservation_id = kwargs['vswitchCidrReservationId']
-        if 'vswitchCidrReservationName' in kwargs:
+        if vswitch_cidr_reservation_name is None and 'vswitchCidrReservationName' in kwargs:
             vswitch_cidr_reservation_name = kwargs['vswitchCidrReservationName']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if cidr_reservation_cidr is not None:
@@ -422,36 +424,6 @@ class VswitchCidrReservation(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.205.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_vpc = alicloud.vpc.Network("defaultVpc",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        default_v_switch = alicloud.vpc.Switch("defaultVSwitch",
-            vpc_id=default_vpc.id,
-            cidr_block="10.0.0.0/20",
-            vswitch_name=f"{name}1",
-            zone_id=default_zones.zones[0].id)
-        default_vswitch_cidr_reservation = alicloud.vpc.VswitchCidrReservation("defaultVswitchCidrReservation",
-            ip_version="IPv4",
-            vswitch_id=default_v_switch.id,
-            cidr_reservation_description=name,
-            cidr_reservation_cidr="10.0.10.0/24",
-            vswitch_cidr_reservation_name=name,
-            cidr_reservation_type="Prefix")
-        ```
-
         ## Import
 
         Vpc Vswitch Cidr Reservation can be imported using the id, e.g.
@@ -482,36 +454,6 @@ class VswitchCidrReservation(pulumi.CustomResource):
         For information about Vpc Vswitch Cidr Reservation and how to use it, see [What is Vswitch Cidr Reservation](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/610154).
 
         > **NOTE:** Available since v1.205.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_vpc = alicloud.vpc.Network("defaultVpc",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        default_v_switch = alicloud.vpc.Switch("defaultVSwitch",
-            vpc_id=default_vpc.id,
-            cidr_block="10.0.0.0/20",
-            vswitch_name=f"{name}1",
-            zone_id=default_zones.zones[0].id)
-        default_vswitch_cidr_reservation = alicloud.vpc.VswitchCidrReservation("defaultVswitchCidrReservation",
-            ip_version="IPv4",
-            vswitch_id=default_v_switch.id,
-            cidr_reservation_description=name,
-            cidr_reservation_cidr="10.0.10.0/24",
-            vswitch_cidr_reservation_name=name,
-            cidr_reservation_type="Prefix")
-        ```
 
         ## Import
 

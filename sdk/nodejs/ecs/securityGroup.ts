@@ -11,28 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** From version 1.7.2, `alicloud.ecs.SecurityGroup` has supported to segregate different ECS instance in which the same security group.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.ecs.SecurityGroup("default", {description: "New security group"});
- * ```
- * Basic usage for vpc
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     vpcName: "terraform-example",
- *     cidrBlock: "10.1.0.0/21",
- * });
- * const group = new alicloud.ecs.SecurityGroup("group", {vpcId: vpc.id});
- * ```
  * ## Module Support
  *
  * You can use the existing security-group module

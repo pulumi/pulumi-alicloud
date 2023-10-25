@@ -13,42 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.145.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const exampleRegions = alicloud.ros.getRegions({});
- * const exampleStackGroup = new alicloud.ros.StackGroup("exampleStackGroup", {
- *     stackGroupName: _var.name,
- *     templateBody: "{\"ROSTemplateFormatVersion\":\"2015-09-01\", \"Parameters\": {\"VpcName\": {\"Type\": \"String\"},\"InstanceType\": {\"Type\": \"String\"}}}",
- *     description: "test for stack groups",
- *     parameters: [
- *         {
- *             parameterKey: "VpcName",
- *             parameterValue: "VpcName",
- *         },
- *         {
- *             parameterKey: "InstanceType",
- *             parameterValue: "InstanceType",
- *         },
- *     ],
- * });
- * const exampleStackInstance = new alicloud.ros.StackInstance("exampleStackInstance", {
- *     stackGroupName: exampleStackGroup.stackGroupName,
- *     stackInstanceAccountId: "example_value",
- *     stackInstanceRegionId: exampleRegions.then(exampleRegions => exampleRegions.regions?.[0]?.regionId),
- *     operationPreferences: "{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}",
- *     parameterOverrides: [{
- *         parameterValue: "VpcName",
- *         parameterKey: "VpcName",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * ROS Stack Instance can be imported using the id, e.g.

@@ -71,15 +71,15 @@ class ControlPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acl_action: pulumi.Input[str],
-             application_name: pulumi.Input[str],
-             description: pulumi.Input[str],
-             destination: pulumi.Input[str],
-             destination_type: pulumi.Input[str],
-             direction: pulumi.Input[str],
-             proto: pulumi.Input[str],
-             source: pulumi.Input[str],
-             source_type: pulumi.Input[str],
+             acl_action: Optional[pulumi.Input[str]] = None,
+             application_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             destination: Optional[pulumi.Input[str]] = None,
+             destination_type: Optional[pulumi.Input[str]] = None,
+             direction: Optional[pulumi.Input[str]] = None,
+             proto: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             source_type: Optional[pulumi.Input[str]] = None,
              dest_port: Optional[pulumi.Input[str]] = None,
              dest_port_group: Optional[pulumi.Input[str]] = None,
              dest_port_type: Optional[pulumi.Input[str]] = None,
@@ -87,25 +87,43 @@ class ControlPolicyArgs:
              lang: Optional[pulumi.Input[str]] = None,
              release: Optional[pulumi.Input[str]] = None,
              source_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclAction' in kwargs:
+        if acl_action is None and 'aclAction' in kwargs:
             acl_action = kwargs['aclAction']
-        if 'applicationName' in kwargs:
+        if acl_action is None:
+            raise TypeError("Missing 'acl_action' argument")
+        if application_name is None and 'applicationName' in kwargs:
             application_name = kwargs['applicationName']
-        if 'destinationType' in kwargs:
+        if application_name is None:
+            raise TypeError("Missing 'application_name' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+        if destination_type is None and 'destinationType' in kwargs:
             destination_type = kwargs['destinationType']
-        if 'sourceType' in kwargs:
+        if destination_type is None:
+            raise TypeError("Missing 'destination_type' argument")
+        if direction is None:
+            raise TypeError("Missing 'direction' argument")
+        if proto is None:
+            raise TypeError("Missing 'proto' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
-        if 'destPort' in kwargs:
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+        if dest_port is None and 'destPort' in kwargs:
             dest_port = kwargs['destPort']
-        if 'destPortGroup' in kwargs:
+        if dest_port_group is None and 'destPortGroup' in kwargs:
             dest_port_group = kwargs['destPortGroup']
-        if 'destPortType' in kwargs:
+        if dest_port_type is None and 'destPortType' in kwargs:
             dest_port_type = kwargs['destPortType']
-        if 'ipVersion' in kwargs:
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'sourceIp' in kwargs:
+        if source_ip is None and 'sourceIp' in kwargs:
             source_ip = kwargs['sourceIp']
 
         _setter("acl_action", acl_action)
@@ -405,27 +423,27 @@ class _ControlPolicyState:
              source: Optional[pulumi.Input[str]] = None,
              source_ip: Optional[pulumi.Input[str]] = None,
              source_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclAction' in kwargs:
+        if acl_action is None and 'aclAction' in kwargs:
             acl_action = kwargs['aclAction']
-        if 'aclUuid' in kwargs:
+        if acl_uuid is None and 'aclUuid' in kwargs:
             acl_uuid = kwargs['aclUuid']
-        if 'applicationName' in kwargs:
+        if application_name is None and 'applicationName' in kwargs:
             application_name = kwargs['applicationName']
-        if 'destPort' in kwargs:
+        if dest_port is None and 'destPort' in kwargs:
             dest_port = kwargs['destPort']
-        if 'destPortGroup' in kwargs:
+        if dest_port_group is None and 'destPortGroup' in kwargs:
             dest_port_group = kwargs['destPortGroup']
-        if 'destPortType' in kwargs:
+        if dest_port_type is None and 'destPortType' in kwargs:
             dest_port_type = kwargs['destPortType']
-        if 'destinationType' in kwargs:
+        if destination_type is None and 'destinationType' in kwargs:
             destination_type = kwargs['destinationType']
-        if 'ipVersion' in kwargs:
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'sourceIp' in kwargs:
+        if source_ip is None and 'sourceIp' in kwargs:
             source_ip = kwargs['sourceIp']
-        if 'sourceType' in kwargs:
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
 
         if acl_action is not None:
@@ -697,26 +715,6 @@ class ControlPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.129.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cloudfirewall.ControlPolicy("example",
-            acl_action="accept",
-            application_name="ANY",
-            description="example",
-            destination="100.1.1.0/24",
-            destination_type="net",
-            direction="out",
-            proto="ANY",
-            source="1.2.3.0/24",
-            source_type="net")
-        ```
-
         ## Import
 
         Cloud Firewall Control Policy can be imported using the id, e.g.
@@ -756,26 +754,6 @@ class ControlPolicy(pulumi.CustomResource):
         For information about Cloud Firewall Control Policy and how to use it, see [What is Control Policy](https://www.alibabacloud.com/help/doc-detail/138867.htm).
 
         > **NOTE:** Available in v1.129.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cloudfirewall.ControlPolicy("example",
-            acl_action="accept",
-            application_name="ANY",
-            description="example",
-            destination="100.1.1.0/24",
-            destination_type="net",
-            direction="out",
-            proto="ANY",
-            source="1.2.3.0/24",
-            source_type="net")
-        ```
 
         ## Import
 

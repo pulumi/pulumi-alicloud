@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Hybrid Backup Recovery (HBR) Hana Backup Clients of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in 1.198.0+
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.hbr.getHanaBackupClients({
- *     ids: ["example_id"],
- *     vaultId: "your_vault_id",
- * });
- * export const hbrHanaBackupClientsId1 = ids.then(ids => ids.hanaBackupClients?.[0]?.id);
- * ```
  */
 export function getHanaBackupClients(args: GetHanaBackupClientsArgs, opts?: pulumi.InvokeOptions): Promise<GetHanaBackupClientsResult> {
 
@@ -110,21 +95,6 @@ export interface GetHanaBackupClientsResult {
  * This data source provides the Hybrid Backup Recovery (HBR) Hana Backup Clients of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in 1.198.0+
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.hbr.getHanaBackupClients({
- *     ids: ["example_id"],
- *     vaultId: "your_vault_id",
- * });
- * export const hbrHanaBackupClientsId1 = ids.then(ids => ids.hanaBackupClients?.[0]?.id);
- * ```
  */
 export function getHanaBackupClientsOutput(args: GetHanaBackupClientsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHanaBackupClientsResult> {
     return pulumi.output(args).apply((a: any) => getHanaBackupClients(a, opts))

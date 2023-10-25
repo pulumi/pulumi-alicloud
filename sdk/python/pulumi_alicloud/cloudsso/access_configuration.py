@@ -48,26 +48,30 @@ class AccessConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_configuration_name: pulumi.Input[str],
-             directory_id: pulumi.Input[str],
+             access_configuration_name: Optional[pulumi.Input[str]] = None,
+             directory_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              force_remove_permission_policies: Optional[pulumi.Input[bool]] = None,
              permission_policies: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]] = None,
              relay_state: Optional[pulumi.Input[str]] = None,
              session_duration: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessConfigurationName' in kwargs:
+        if access_configuration_name is None and 'accessConfigurationName' in kwargs:
             access_configuration_name = kwargs['accessConfigurationName']
-        if 'directoryId' in kwargs:
+        if access_configuration_name is None:
+            raise TypeError("Missing 'access_configuration_name' argument")
+        if directory_id is None and 'directoryId' in kwargs:
             directory_id = kwargs['directoryId']
-        if 'forceRemovePermissionPolicies' in kwargs:
+        if directory_id is None:
+            raise TypeError("Missing 'directory_id' argument")
+        if force_remove_permission_policies is None and 'forceRemovePermissionPolicies' in kwargs:
             force_remove_permission_policies = kwargs['forceRemovePermissionPolicies']
-        if 'permissionPolicies' in kwargs:
+        if permission_policies is None and 'permissionPolicies' in kwargs:
             permission_policies = kwargs['permissionPolicies']
-        if 'relayState' in kwargs:
+        if relay_state is None and 'relayState' in kwargs:
             relay_state = kwargs['relayState']
-        if 'sessionDuration' in kwargs:
+        if session_duration is None and 'sessionDuration' in kwargs:
             session_duration = kwargs['sessionDuration']
 
         _setter("access_configuration_name", access_configuration_name)
@@ -216,21 +220,21 @@ class _AccessConfigurationState:
              permission_policies: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]] = None,
              relay_state: Optional[pulumi.Input[str]] = None,
              session_duration: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessConfigurationId' in kwargs:
+        if access_configuration_id is None and 'accessConfigurationId' in kwargs:
             access_configuration_id = kwargs['accessConfigurationId']
-        if 'accessConfigurationName' in kwargs:
+        if access_configuration_name is None and 'accessConfigurationName' in kwargs:
             access_configuration_name = kwargs['accessConfigurationName']
-        if 'directoryId' in kwargs:
+        if directory_id is None and 'directoryId' in kwargs:
             directory_id = kwargs['directoryId']
-        if 'forceRemovePermissionPolicies' in kwargs:
+        if force_remove_permission_policies is None and 'forceRemovePermissionPolicies' in kwargs:
             force_remove_permission_policies = kwargs['forceRemovePermissionPolicies']
-        if 'permissionPolicies' in kwargs:
+        if permission_policies is None and 'permissionPolicies' in kwargs:
             permission_policies = kwargs['permissionPolicies']
-        if 'relayState' in kwargs:
+        if relay_state is None and 'relayState' in kwargs:
             relay_state = kwargs['relayState']
-        if 'sessionDuration' in kwargs:
+        if session_duration is None and 'sessionDuration' in kwargs:
             session_duration = kwargs['sessionDuration']
 
         if access_configuration_id is not None:

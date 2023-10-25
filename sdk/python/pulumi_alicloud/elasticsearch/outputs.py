@@ -49,37 +49,63 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created_at: str,
-             data_node_amount: int,
-             data_node_disk_size: int,
-             data_node_disk_type: str,
-             data_node_spec: str,
-             description: str,
-             id: str,
-             instance_charge_type: str,
-             status: str,
-             tags: Mapping[str, Any],
-             updated_at: str,
-             version: str,
-             vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             created_at: Optional[str] = None,
+             data_node_amount: Optional[int] = None,
+             data_node_disk_size: Optional[int] = None,
+             data_node_disk_type: Optional[str] = None,
+             data_node_spec: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_charge_type: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             updated_at: Optional[str] = None,
+             version: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createdAt' in kwargs:
+        if created_at is None and 'createdAt' in kwargs:
             created_at = kwargs['createdAt']
-        if 'dataNodeAmount' in kwargs:
+        if created_at is None:
+            raise TypeError("Missing 'created_at' argument")
+        if data_node_amount is None and 'dataNodeAmount' in kwargs:
             data_node_amount = kwargs['dataNodeAmount']
-        if 'dataNodeDiskSize' in kwargs:
+        if data_node_amount is None:
+            raise TypeError("Missing 'data_node_amount' argument")
+        if data_node_disk_size is None and 'dataNodeDiskSize' in kwargs:
             data_node_disk_size = kwargs['dataNodeDiskSize']
-        if 'dataNodeDiskType' in kwargs:
+        if data_node_disk_size is None:
+            raise TypeError("Missing 'data_node_disk_size' argument")
+        if data_node_disk_type is None and 'dataNodeDiskType' in kwargs:
             data_node_disk_type = kwargs['dataNodeDiskType']
-        if 'dataNodeSpec' in kwargs:
+        if data_node_disk_type is None:
+            raise TypeError("Missing 'data_node_disk_type' argument")
+        if data_node_spec is None and 'dataNodeSpec' in kwargs:
             data_node_spec = kwargs['dataNodeSpec']
-        if 'instanceChargeType' in kwargs:
+        if data_node_spec is None:
+            raise TypeError("Missing 'data_node_spec' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'updatedAt' in kwargs:
+        if instance_charge_type is None:
+            raise TypeError("Missing 'instance_charge_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if updated_at is None and 'updatedAt' in kwargs:
             updated_at = kwargs['updatedAt']
-        if 'vswitchId' in kwargs:
+        if updated_at is None:
+            raise TypeError("Missing 'updated_at' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("created_at", created_at)
         _setter("data_node_amount", data_node_amount)
@@ -178,12 +204,16 @@ class GetZonesZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             multi_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             multi_zone_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'multiZoneIds' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if multi_zone_ids is None and 'multiZoneIds' in kwargs:
             multi_zone_ids = kwargs['multiZoneIds']
+        if multi_zone_ids is None:
+            raise TypeError("Missing 'multi_zone_ids' argument")
 
         _setter("id", id)
         _setter("multi_zone_ids", multi_zone_ids)

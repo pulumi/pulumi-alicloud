@@ -19,58 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.34.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			domain, err := cdn.NewDomainNew(ctx, "domain", &cdn.DomainNewArgs{
-//				DomainName: pulumi.String("mycdndomain.alicloud-provider.cn"),
-//				CdnType:    pulumi.String("web"),
-//				Scope:      pulumi.String("overseas"),
-//				Sources: cdn.DomainNewSourceArray{
-//					&cdn.DomainNewSourceArgs{
-//						Content:  pulumi.String("1.1.1.1"),
-//						Type:     pulumi.String("ipaddr"),
-//						Priority: pulumi.Int(20),
-//						Port:     pulumi.Int(80),
-//						Weight:   pulumi.Int(15),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cdn.NewDomainConfig(ctx, "config", &cdn.DomainConfigArgs{
-//				DomainName:   domain.DomainName,
-//				FunctionName: pulumi.String("ip_allow_list_set"),
-//				FunctionArgs: cdn.DomainConfigFunctionArgArray{
-//					&cdn.DomainConfigFunctionArgArgs{
-//						ArgName:  pulumi.String("ip_list"),
-//						ArgValue: pulumi.String("110.110.110.110"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // CDN domain config can be imported using the id, e.g.

@@ -81,47 +81,81 @@ class GetEnterpriseDatabasesDatabaseResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             catalog_name: str,
-             database_id: str,
-             db_type: str,
-             dba_id: str,
-             dba_name: str,
-             encoding: str,
-             env_type: str,
-             host: str,
-             id: str,
-             instance_id: str,
-             owner_id_lists: Sequence[str],
-             owner_name_lists: Sequence[str],
-             port: int,
-             schema_name: str,
-             search_name: str,
-             sid: str,
-             state: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             catalog_name: Optional[str] = None,
+             database_id: Optional[str] = None,
+             db_type: Optional[str] = None,
+             dba_id: Optional[str] = None,
+             dba_name: Optional[str] = None,
+             encoding: Optional[str] = None,
+             env_type: Optional[str] = None,
+             host: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             owner_id_lists: Optional[Sequence[str]] = None,
+             owner_name_lists: Optional[Sequence[str]] = None,
+             port: Optional[int] = None,
+             schema_name: Optional[str] = None,
+             search_name: Optional[str] = None,
+             sid: Optional[str] = None,
+             state: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'catalogName' in kwargs:
+        if catalog_name is None and 'catalogName' in kwargs:
             catalog_name = kwargs['catalogName']
-        if 'databaseId' in kwargs:
+        if catalog_name is None:
+            raise TypeError("Missing 'catalog_name' argument")
+        if database_id is None and 'databaseId' in kwargs:
             database_id = kwargs['databaseId']
-        if 'dbType' in kwargs:
+        if database_id is None:
+            raise TypeError("Missing 'database_id' argument")
+        if db_type is None and 'dbType' in kwargs:
             db_type = kwargs['dbType']
-        if 'dbaId' in kwargs:
+        if db_type is None:
+            raise TypeError("Missing 'db_type' argument")
+        if dba_id is None and 'dbaId' in kwargs:
             dba_id = kwargs['dbaId']
-        if 'dbaName' in kwargs:
+        if dba_id is None:
+            raise TypeError("Missing 'dba_id' argument")
+        if dba_name is None and 'dbaName' in kwargs:
             dba_name = kwargs['dbaName']
-        if 'envType' in kwargs:
+        if dba_name is None:
+            raise TypeError("Missing 'dba_name' argument")
+        if encoding is None:
+            raise TypeError("Missing 'encoding' argument")
+        if env_type is None and 'envType' in kwargs:
             env_type = kwargs['envType']
-        if 'instanceId' in kwargs:
+        if env_type is None:
+            raise TypeError("Missing 'env_type' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'ownerIdLists' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if owner_id_lists is None and 'ownerIdLists' in kwargs:
             owner_id_lists = kwargs['ownerIdLists']
-        if 'ownerNameLists' in kwargs:
+        if owner_id_lists is None:
+            raise TypeError("Missing 'owner_id_lists' argument")
+        if owner_name_lists is None and 'ownerNameLists' in kwargs:
             owner_name_lists = kwargs['ownerNameLists']
-        if 'schemaName' in kwargs:
+        if owner_name_lists is None:
+            raise TypeError("Missing 'owner_name_lists' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if schema_name is None and 'schemaName' in kwargs:
             schema_name = kwargs['schemaName']
-        if 'searchName' in kwargs:
+        if schema_name is None:
+            raise TypeError("Missing 'schema_name' argument")
+        if search_name is None and 'searchName' in kwargs:
             search_name = kwargs['searchName']
+        if search_name is None:
+            raise TypeError("Missing 'search_name' argument")
+        if sid is None:
+            raise TypeError("Missing 'sid' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
 
         _setter("catalog_name", catalog_name)
         _setter("database_id", database_id)
@@ -359,70 +393,118 @@ class GetEnterpriseInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_link_name: str,
-             database_password: str,
-             database_user: str,
-             dba_id: str,
-             dba_nick_name: str,
-             ddl_online: int,
-             ecs_instance_id: str,
-             ecs_region: str,
-             env_type: str,
-             export_timeout: int,
-             host: str,
-             id: str,
-             instance_alias: str,
-             instance_id: str,
-             instance_name: str,
-             instance_source: str,
-             instance_type: str,
-             port: int,
-             query_timeout: int,
-             safe_rule_id: str,
-             sid: str,
-             status: str,
-             use_dsql: int,
-             vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             data_link_name: Optional[str] = None,
+             database_password: Optional[str] = None,
+             database_user: Optional[str] = None,
+             dba_id: Optional[str] = None,
+             dba_nick_name: Optional[str] = None,
+             ddl_online: Optional[int] = None,
+             ecs_instance_id: Optional[str] = None,
+             ecs_region: Optional[str] = None,
+             env_type: Optional[str] = None,
+             export_timeout: Optional[int] = None,
+             host: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_alias: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             instance_source: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             port: Optional[int] = None,
+             query_timeout: Optional[int] = None,
+             safe_rule_id: Optional[str] = None,
+             sid: Optional[str] = None,
+             status: Optional[str] = None,
+             use_dsql: Optional[int] = None,
+             vpc_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dataLinkName' in kwargs:
+        if data_link_name is None and 'dataLinkName' in kwargs:
             data_link_name = kwargs['dataLinkName']
-        if 'databasePassword' in kwargs:
+        if data_link_name is None:
+            raise TypeError("Missing 'data_link_name' argument")
+        if database_password is None and 'databasePassword' in kwargs:
             database_password = kwargs['databasePassword']
-        if 'databaseUser' in kwargs:
+        if database_password is None:
+            raise TypeError("Missing 'database_password' argument")
+        if database_user is None and 'databaseUser' in kwargs:
             database_user = kwargs['databaseUser']
-        if 'dbaId' in kwargs:
+        if database_user is None:
+            raise TypeError("Missing 'database_user' argument")
+        if dba_id is None and 'dbaId' in kwargs:
             dba_id = kwargs['dbaId']
-        if 'dbaNickName' in kwargs:
+        if dba_id is None:
+            raise TypeError("Missing 'dba_id' argument")
+        if dba_nick_name is None and 'dbaNickName' in kwargs:
             dba_nick_name = kwargs['dbaNickName']
-        if 'ddlOnline' in kwargs:
+        if dba_nick_name is None:
+            raise TypeError("Missing 'dba_nick_name' argument")
+        if ddl_online is None and 'ddlOnline' in kwargs:
             ddl_online = kwargs['ddlOnline']
-        if 'ecsInstanceId' in kwargs:
+        if ddl_online is None:
+            raise TypeError("Missing 'ddl_online' argument")
+        if ecs_instance_id is None and 'ecsInstanceId' in kwargs:
             ecs_instance_id = kwargs['ecsInstanceId']
-        if 'ecsRegion' in kwargs:
+        if ecs_instance_id is None:
+            raise TypeError("Missing 'ecs_instance_id' argument")
+        if ecs_region is None and 'ecsRegion' in kwargs:
             ecs_region = kwargs['ecsRegion']
-        if 'envType' in kwargs:
+        if ecs_region is None:
+            raise TypeError("Missing 'ecs_region' argument")
+        if env_type is None and 'envType' in kwargs:
             env_type = kwargs['envType']
-        if 'exportTimeout' in kwargs:
+        if env_type is None:
+            raise TypeError("Missing 'env_type' argument")
+        if export_timeout is None and 'exportTimeout' in kwargs:
             export_timeout = kwargs['exportTimeout']
-        if 'instanceAlias' in kwargs:
+        if export_timeout is None:
+            raise TypeError("Missing 'export_timeout' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_alias is None and 'instanceAlias' in kwargs:
             instance_alias = kwargs['instanceAlias']
-        if 'instanceId' in kwargs:
+        if instance_alias is None:
+            raise TypeError("Missing 'instance_alias' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceSource' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if instance_source is None and 'instanceSource' in kwargs:
             instance_source = kwargs['instanceSource']
-        if 'instanceType' in kwargs:
+        if instance_source is None:
+            raise TypeError("Missing 'instance_source' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'queryTimeout' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if query_timeout is None and 'queryTimeout' in kwargs:
             query_timeout = kwargs['queryTimeout']
-        if 'safeRuleId' in kwargs:
+        if query_timeout is None:
+            raise TypeError("Missing 'query_timeout' argument")
+        if safe_rule_id is None and 'safeRuleId' in kwargs:
             safe_rule_id = kwargs['safeRuleId']
-        if 'useDsql' in kwargs:
+        if safe_rule_id is None:
+            raise TypeError("Missing 'safe_rule_id' argument")
+        if sid is None:
+            raise TypeError("Missing 'sid' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if use_dsql is None and 'useDsql' in kwargs:
             use_dsql = kwargs['useDsql']
-        if 'vpcId' in kwargs:
+        if use_dsql is None:
+            raise TypeError("Missing 'use_dsql' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
 
         _setter("data_link_name", data_link_name)
         _setter("database_password", database_password)
@@ -680,35 +762,57 @@ class GetEnterpriseLogicDatabasesDatabaseResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alias: str,
-             database_ids: Sequence[str],
-             db_type: str,
-             env_type: str,
-             id: str,
-             logic: bool,
-             logic_database_id: str,
-             owner_id_lists: Sequence[str],
-             owner_name_lists: Sequence[str],
-             schema_name: str,
-             search_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             alias: Optional[str] = None,
+             database_ids: Optional[Sequence[str]] = None,
+             db_type: Optional[str] = None,
+             env_type: Optional[str] = None,
+             id: Optional[str] = None,
+             logic: Optional[bool] = None,
+             logic_database_id: Optional[str] = None,
+             owner_id_lists: Optional[Sequence[str]] = None,
+             owner_name_lists: Optional[Sequence[str]] = None,
+             schema_name: Optional[str] = None,
+             search_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'databaseIds' in kwargs:
+        if alias is None:
+            raise TypeError("Missing 'alias' argument")
+        if database_ids is None and 'databaseIds' in kwargs:
             database_ids = kwargs['databaseIds']
-        if 'dbType' in kwargs:
+        if database_ids is None:
+            raise TypeError("Missing 'database_ids' argument")
+        if db_type is None and 'dbType' in kwargs:
             db_type = kwargs['dbType']
-        if 'envType' in kwargs:
+        if db_type is None:
+            raise TypeError("Missing 'db_type' argument")
+        if env_type is None and 'envType' in kwargs:
             env_type = kwargs['envType']
-        if 'logicDatabaseId' in kwargs:
+        if env_type is None:
+            raise TypeError("Missing 'env_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if logic is None:
+            raise TypeError("Missing 'logic' argument")
+        if logic_database_id is None and 'logicDatabaseId' in kwargs:
             logic_database_id = kwargs['logicDatabaseId']
-        if 'ownerIdLists' in kwargs:
+        if logic_database_id is None:
+            raise TypeError("Missing 'logic_database_id' argument")
+        if owner_id_lists is None and 'ownerIdLists' in kwargs:
             owner_id_lists = kwargs['ownerIdLists']
-        if 'ownerNameLists' in kwargs:
+        if owner_id_lists is None:
+            raise TypeError("Missing 'owner_id_lists' argument")
+        if owner_name_lists is None and 'ownerNameLists' in kwargs:
             owner_name_lists = kwargs['ownerNameLists']
-        if 'schemaName' in kwargs:
+        if owner_name_lists is None:
+            raise TypeError("Missing 'owner_name_lists' argument")
+        if schema_name is None and 'schemaName' in kwargs:
             schema_name = kwargs['schemaName']
-        if 'searchName' in kwargs:
+        if schema_name is None:
+            raise TypeError("Missing 'schema_name' argument")
+        if search_name is None and 'searchName' in kwargs:
             search_name = kwargs['searchName']
+        if search_name is None:
+            raise TypeError("Missing 'search_name' argument")
 
         _setter("alias", alias)
         _setter("database_ids", database_ids)
@@ -858,42 +962,66 @@ class GetEnterpriseProxiesProxyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             creator_id: str,
-             creator_name: str,
-             https_port: int,
-             id: str,
-             instance_id: str,
-             private_enable: bool,
-             private_host: str,
-             protocol_port: int,
-             protocol_type: str,
-             proxy_id: str,
-             public_enable: bool,
-             public_host: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             creator_id: Optional[str] = None,
+             creator_name: Optional[str] = None,
+             https_port: Optional[int] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             private_enable: Optional[bool] = None,
+             private_host: Optional[str] = None,
+             protocol_port: Optional[int] = None,
+             protocol_type: Optional[str] = None,
+             proxy_id: Optional[str] = None,
+             public_enable: Optional[bool] = None,
+             public_host: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'creatorId' in kwargs:
+        if creator_id is None and 'creatorId' in kwargs:
             creator_id = kwargs['creatorId']
-        if 'creatorName' in kwargs:
+        if creator_id is None:
+            raise TypeError("Missing 'creator_id' argument")
+        if creator_name is None and 'creatorName' in kwargs:
             creator_name = kwargs['creatorName']
-        if 'httpsPort' in kwargs:
+        if creator_name is None:
+            raise TypeError("Missing 'creator_name' argument")
+        if https_port is None and 'httpsPort' in kwargs:
             https_port = kwargs['httpsPort']
-        if 'instanceId' in kwargs:
+        if https_port is None:
+            raise TypeError("Missing 'https_port' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'privateEnable' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if private_enable is None and 'privateEnable' in kwargs:
             private_enable = kwargs['privateEnable']
-        if 'privateHost' in kwargs:
+        if private_enable is None:
+            raise TypeError("Missing 'private_enable' argument")
+        if private_host is None and 'privateHost' in kwargs:
             private_host = kwargs['privateHost']
-        if 'protocolPort' in kwargs:
+        if private_host is None:
+            raise TypeError("Missing 'private_host' argument")
+        if protocol_port is None and 'protocolPort' in kwargs:
             protocol_port = kwargs['protocolPort']
-        if 'protocolType' in kwargs:
+        if protocol_port is None:
+            raise TypeError("Missing 'protocol_port' argument")
+        if protocol_type is None and 'protocolType' in kwargs:
             protocol_type = kwargs['protocolType']
-        if 'proxyId' in kwargs:
+        if protocol_type is None:
+            raise TypeError("Missing 'protocol_type' argument")
+        if proxy_id is None and 'proxyId' in kwargs:
             proxy_id = kwargs['proxyId']
-        if 'publicEnable' in kwargs:
+        if proxy_id is None:
+            raise TypeError("Missing 'proxy_id' argument")
+        if public_enable is None and 'publicEnable' in kwargs:
             public_enable = kwargs['publicEnable']
-        if 'publicHost' in kwargs:
+        if public_enable is None:
+            raise TypeError("Missing 'public_enable' argument")
+        if public_host is None and 'publicHost' in kwargs:
             public_host = kwargs['publicHost']
+        if public_host is None:
+            raise TypeError("Missing 'public_host' argument")
 
         _setter("creator_id", creator_id)
         _setter("creator_name", creator_name)
@@ -1051,42 +1179,66 @@ class GetEnterpriseProxyAccessesAccessResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_id: str,
-             access_secret: str,
-             create_time: str,
-             id: str,
-             indep_account: str,
-             instance_id: str,
-             origin_info: str,
-             proxy_access_id: str,
-             proxy_id: str,
-             user_id: str,
-             user_name: str,
-             user_uid: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             access_id: Optional[str] = None,
+             access_secret: Optional[str] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             indep_account: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             origin_info: Optional[str] = None,
+             proxy_access_id: Optional[str] = None,
+             proxy_id: Optional[str] = None,
+             user_id: Optional[str] = None,
+             user_name: Optional[str] = None,
+             user_uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessId' in kwargs:
+        if access_id is None and 'accessId' in kwargs:
             access_id = kwargs['accessId']
-        if 'accessSecret' in kwargs:
+        if access_id is None:
+            raise TypeError("Missing 'access_id' argument")
+        if access_secret is None and 'accessSecret' in kwargs:
             access_secret = kwargs['accessSecret']
-        if 'createTime' in kwargs:
+        if access_secret is None:
+            raise TypeError("Missing 'access_secret' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'indepAccount' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if indep_account is None and 'indepAccount' in kwargs:
             indep_account = kwargs['indepAccount']
-        if 'instanceId' in kwargs:
+        if indep_account is None:
+            raise TypeError("Missing 'indep_account' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'originInfo' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if origin_info is None and 'originInfo' in kwargs:
             origin_info = kwargs['originInfo']
-        if 'proxyAccessId' in kwargs:
+        if origin_info is None:
+            raise TypeError("Missing 'origin_info' argument")
+        if proxy_access_id is None and 'proxyAccessId' in kwargs:
             proxy_access_id = kwargs['proxyAccessId']
-        if 'proxyId' in kwargs:
+        if proxy_access_id is None:
+            raise TypeError("Missing 'proxy_access_id' argument")
+        if proxy_id is None and 'proxyId' in kwargs:
             proxy_id = kwargs['proxyId']
-        if 'userId' in kwargs:
+        if proxy_id is None:
+            raise TypeError("Missing 'proxy_id' argument")
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
-        if 'userName' in kwargs:
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
-        if 'userUid' in kwargs:
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
+        if user_uid is None and 'userUid' in kwargs:
             user_uid = kwargs['userUid']
+        if user_uid is None:
+            raise TypeError("Missing 'user_uid' argument")
 
         _setter("access_id", access_id)
         _setter("access_secret", access_secret)
@@ -1235,30 +1387,50 @@ class GetEnterpriseUsersUserResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             mobile: str,
-             nick_name: str,
-             parent_uid: int,
-             role_ids: Sequence[int],
-             role_names: Sequence[str],
-             status: str,
-             uid: str,
-             user_id: str,
-             user_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             mobile: Optional[str] = None,
+             nick_name: Optional[str] = None,
+             parent_uid: Optional[int] = None,
+             role_ids: Optional[Sequence[int]] = None,
+             role_names: Optional[Sequence[str]] = None,
+             status: Optional[str] = None,
+             uid: Optional[str] = None,
+             user_id: Optional[str] = None,
+             user_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nickName' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if mobile is None:
+            raise TypeError("Missing 'mobile' argument")
+        if nick_name is None and 'nickName' in kwargs:
             nick_name = kwargs['nickName']
-        if 'parentUid' in kwargs:
+        if nick_name is None:
+            raise TypeError("Missing 'nick_name' argument")
+        if parent_uid is None and 'parentUid' in kwargs:
             parent_uid = kwargs['parentUid']
-        if 'roleIds' in kwargs:
+        if parent_uid is None:
+            raise TypeError("Missing 'parent_uid' argument")
+        if role_ids is None and 'roleIds' in kwargs:
             role_ids = kwargs['roleIds']
-        if 'roleNames' in kwargs:
+        if role_ids is None:
+            raise TypeError("Missing 'role_ids' argument")
+        if role_names is None and 'roleNames' in kwargs:
             role_names = kwargs['roleNames']
-        if 'userId' in kwargs:
+        if role_names is None:
+            raise TypeError("Missing 'role_names' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if uid is None:
+            raise TypeError("Missing 'uid' argument")
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
-        if 'userName' in kwargs:
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
 
         _setter("id", id)
         _setter("mobile", mobile)
@@ -1372,14 +1544,22 @@ class GetUserTenantsTenantResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             status: str,
-             tenant_name: str,
-             tid: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             status: Optional[str] = None,
+             tenant_name: Optional[str] = None,
+             tid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'tenantName' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tenant_name is None and 'tenantName' in kwargs:
             tenant_name = kwargs['tenantName']
+        if tenant_name is None:
+            raise TypeError("Missing 'tenant_name' argument")
+        if tid is None:
+            raise TypeError("Missing 'tid' argument")
 
         _setter("id", id)
         _setter("status", status)

@@ -11,36 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.187.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultSecurityPolicy = new alicloud.nlb.SecurityPolicy("defaultSecurityPolicy", {
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
- *     securityPolicyName: name,
- *     ciphers: [
- *         "ECDHE-RSA-AES128-SHA",
- *         "ECDHE-ECDSA-AES128-SHA",
- *     ],
- *     tlsVersions: [
- *         "TLSv1.0",
- *         "TLSv1.1",
- *         "TLSv1.2",
- *     ],
- *     tags: {
- *         Created: "TF",
- *         For: "example",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * NLB Security Policy can be imported using the id, e.g.

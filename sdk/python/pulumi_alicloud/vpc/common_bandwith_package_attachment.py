@@ -38,22 +38,26 @@ class CommonBandwithPackageAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth_package_id: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
+             bandwidth_package_id: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
              bandwidth_package_bandwidth: Optional[pulumi.Input[str]] = None,
              cancel_common_bandwidth_package_ip_bandwidth: Optional[pulumi.Input[bool]] = None,
              ip_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bandwidthPackageId' in kwargs:
+        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
             bandwidth_package_id = kwargs['bandwidthPackageId']
-        if 'instanceId' in kwargs:
+        if bandwidth_package_id is None:
+            raise TypeError("Missing 'bandwidth_package_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'bandwidthPackageBandwidth' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if bandwidth_package_bandwidth is None and 'bandwidthPackageBandwidth' in kwargs:
             bandwidth_package_bandwidth = kwargs['bandwidthPackageBandwidth']
-        if 'cancelCommonBandwidthPackageIpBandwidth' in kwargs:
+        if cancel_common_bandwidth_package_ip_bandwidth is None and 'cancelCommonBandwidthPackageIpBandwidth' in kwargs:
             cancel_common_bandwidth_package_ip_bandwidth = kwargs['cancelCommonBandwidthPackageIpBandwidth']
-        if 'ipType' in kwargs:
+        if ip_type is None and 'ipType' in kwargs:
             ip_type = kwargs['ipType']
 
         _setter("bandwidth_package_id", bandwidth_package_id)
@@ -162,17 +166,17 @@ class _CommonBandwithPackageAttachmentState:
              instance_id: Optional[pulumi.Input[str]] = None,
              ip_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bandwidthPackageBandwidth' in kwargs:
+        if bandwidth_package_bandwidth is None and 'bandwidthPackageBandwidth' in kwargs:
             bandwidth_package_bandwidth = kwargs['bandwidthPackageBandwidth']
-        if 'bandwidthPackageId' in kwargs:
+        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
             bandwidth_package_id = kwargs['bandwidthPackageId']
-        if 'cancelCommonBandwidthPackageIpBandwidth' in kwargs:
+        if cancel_common_bandwidth_package_ip_bandwidth is None and 'cancelCommonBandwidthPackageIpBandwidth' in kwargs:
             cancel_common_bandwidth_package_ip_bandwidth = kwargs['cancelCommonBandwidthPackageIpBandwidth']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'ipType' in kwargs:
+        if ip_type is None and 'ipType' in kwargs:
             ip_type = kwargs['ipType']
 
         if bandwidth_package_bandwidth is not None:
@@ -273,31 +277,6 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
                  ip_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("defaultCommonBandwithPackage",
-            bandwidth="3",
-            internet_charge_type="PayByBandwidth")
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
-            bandwidth="3",
-            internet_charge_type="PayByTraffic")
-        default_common_bandwith_package_attachment = alicloud.vpc.CommonBandwithPackageAttachment("defaultCommonBandwithPackageAttachment",
-            bandwidth_package_id=default_common_bandwith_package.id,
-            instance_id=default_eip_address.id,
-            bandwidth_package_bandwidth="2",
-            ip_type="EIP")
-        ```
-
         ## Import
 
         cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.
@@ -321,31 +300,6 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
                  args: CommonBandwithPackageAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("defaultCommonBandwithPackage",
-            bandwidth="3",
-            internet_charge_type="PayByBandwidth")
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
-            bandwidth="3",
-            internet_charge_type="PayByTraffic")
-        default_common_bandwith_package_attachment = alicloud.vpc.CommonBandwithPackageAttachment("defaultCommonBandwithPackageAttachment",
-            bandwidth_package_id=default_common_bandwith_package.id,
-            instance_id=default_eip_address.id,
-            bandwidth_package_bandwidth="2",
-            ip_type="EIP")
-        ```
-
         ## Import
 
         cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.

@@ -17,37 +17,6 @@ import (
 // For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
 //
 // > **NOTE:** Available in v1.139.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cr.GetEndpointAclService(ctx, &cr.GetEndpointAclServiceArgs{
-//				Enable:       true,
-//				EndpointType: "internet",
-//				InstanceId:   "example_id",
-//				ModuleName:   pulumi.StringRef("Registry"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetEndpointAclService(ctx *pulumi.Context, args *GetEndpointAclServiceArgs, opts ...pulumi.InvokeOption) (*GetEndpointAclServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEndpointAclServiceResult

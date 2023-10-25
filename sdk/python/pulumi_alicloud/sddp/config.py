@@ -39,7 +39,7 @@ class ConfigArgs:
              description: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if code is not None:
@@ -128,7 +128,7 @@ class _ConfigState:
              description: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if code is not None:
@@ -206,19 +206,6 @@ class Config(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.133.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.sddp.Config("default",
-            code="access_failed_cnt",
-            value="10")
-        ```
-
         ## Import
 
         Data Security Center Config can be imported using the id, e.g.
@@ -246,19 +233,6 @@ class Config(pulumi.CustomResource):
         For information about Data Security Center Config and how to use it, see [What is Config](https://www.alibabacloud.com/help/en/data-security-center/latest/api-sddp-2019-01-03-createconfig).
 
         > **NOTE:** Available since v1.133.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.sddp.Config("default",
-            code="access_failed_cnt",
-            value="10")
-        ```
 
         ## Import
 

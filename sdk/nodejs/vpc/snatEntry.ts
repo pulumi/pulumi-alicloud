@@ -9,48 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.119.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/12",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: name,
- * });
- * const defaultNatGateway = new alicloud.vpc.NatGateway("defaultNatGateway", {
- *     vpcId: defaultNetwork.id,
- *     natGatewayName: name,
- *     paymentType: "PayAsYouGo",
- *     vswitchId: defaultSwitch.id,
- *     natType: "Enhanced",
- * });
- * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {addressName: name});
- * const defaultEipAssociation = new alicloud.ecs.EipAssociation("defaultEipAssociation", {
- *     allocationId: defaultEipAddress.id,
- *     instanceId: defaultNatGateway.id,
- * });
- * const defaultSnatEntry = new alicloud.vpc.SnatEntry("defaultSnatEntry", {
- *     snatTableId: defaultNatGateway.snatTableIds,
- *     sourceVswitchId: defaultSwitch.id,
- *     snatIp: defaultEipAddress.ipAddress,
- * });
- * ```
- *
  * ## Import
  *
  * Snat Entry can be imported using the id, e.g.

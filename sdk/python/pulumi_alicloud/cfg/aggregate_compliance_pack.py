@@ -46,26 +46,34 @@ class AggregateCompliancePackArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aggregate_compliance_pack_name: pulumi.Input[str],
-             aggregator_id: pulumi.Input[str],
-             description: pulumi.Input[str],
-             risk_level: pulumi.Input[int],
+             aggregate_compliance_pack_name: Optional[pulumi.Input[str]] = None,
+             aggregator_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             risk_level: Optional[pulumi.Input[int]] = None,
              compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
              config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]]] = None,
              config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aggregateCompliancePackName' in kwargs:
+        if aggregate_compliance_pack_name is None and 'aggregateCompliancePackName' in kwargs:
             aggregate_compliance_pack_name = kwargs['aggregateCompliancePackName']
-        if 'aggregatorId' in kwargs:
+        if aggregate_compliance_pack_name is None:
+            raise TypeError("Missing 'aggregate_compliance_pack_name' argument")
+        if aggregator_id is None and 'aggregatorId' in kwargs:
             aggregator_id = kwargs['aggregatorId']
-        if 'riskLevel' in kwargs:
+        if aggregator_id is None:
+            raise TypeError("Missing 'aggregator_id' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if risk_level is None and 'riskLevel' in kwargs:
             risk_level = kwargs['riskLevel']
-        if 'compliancePackTemplateId' in kwargs:
+        if risk_level is None:
+            raise TypeError("Missing 'risk_level' argument")
+        if compliance_pack_template_id is None and 'compliancePackTemplateId' in kwargs:
             compliance_pack_template_id = kwargs['compliancePackTemplateId']
-        if 'configRuleIds' in kwargs:
+        if config_rule_ids is None and 'configRuleIds' in kwargs:
             config_rule_ids = kwargs['configRuleIds']
-        if 'configRules' in kwargs:
+        if config_rules is None and 'configRules' in kwargs:
             config_rules = kwargs['configRules']
 
         _setter("aggregate_compliance_pack_name", aggregate_compliance_pack_name)
@@ -218,21 +226,21 @@ class _AggregateCompliancePackState:
              description: Optional[pulumi.Input[str]] = None,
              risk_level: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aggregateCompliancePackName' in kwargs:
+        if aggregate_compliance_pack_name is None and 'aggregateCompliancePackName' in kwargs:
             aggregate_compliance_pack_name = kwargs['aggregateCompliancePackName']
-        if 'aggregatorCompliancePackId' in kwargs:
+        if aggregator_compliance_pack_id is None and 'aggregatorCompliancePackId' in kwargs:
             aggregator_compliance_pack_id = kwargs['aggregatorCompliancePackId']
-        if 'aggregatorId' in kwargs:
+        if aggregator_id is None and 'aggregatorId' in kwargs:
             aggregator_id = kwargs['aggregatorId']
-        if 'compliancePackTemplateId' in kwargs:
+        if compliance_pack_template_id is None and 'compliancePackTemplateId' in kwargs:
             compliance_pack_template_id = kwargs['compliancePackTemplateId']
-        if 'configRuleIds' in kwargs:
+        if config_rule_ids is None and 'configRuleIds' in kwargs:
             config_rule_ids = kwargs['configRuleIds']
-        if 'configRules' in kwargs:
+        if config_rules is None and 'configRules' in kwargs:
             config_rules = kwargs['configRules']
-        if 'riskLevel' in kwargs:
+        if risk_level is None and 'riskLevel' in kwargs:
             risk_level = kwargs['riskLevel']
 
         if aggregate_compliance_pack_name is not None:
@@ -389,51 +397,6 @@ class AggregateCompliancePack(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.124.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform_example"
-        default_accounts = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
-        default_aggregator = alicloud.cfg.Aggregator("defaultAggregator",
-            aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
-                account_id=default_accounts.accounts[0].account_id,
-                account_name=default_accounts.accounts[0].display_name,
-                account_type="ResourceDirectory",
-            )],
-            aggregator_name=name,
-            description=name,
-            aggregator_type="CUSTOM")
-        default_aggregate_config_rule = alicloud.cfg.AggregateConfigRule("defaultAggregateConfigRule",
-            aggregate_config_rule_name="contains-tag",
-            aggregator_id=default_aggregator.id,
-            config_rule_trigger_types="ConfigurationItemChangeNotification",
-            source_owner="ALIYUN",
-            source_identifier="contains-tag",
-            description=name,
-            risk_level=1,
-            resource_types_scopes=["ACS::ECS::Instance"],
-            input_parameters={
-                "key": "example",
-                "value": "example",
-            })
-        default_aggregate_compliance_pack = alicloud.cfg.AggregateCompliancePack("defaultAggregateCompliancePack",
-            aggregate_compliance_pack_name=name,
-            aggregator_id=default_aggregator.id,
-            description=name,
-            risk_level=1,
-            config_rule_ids=[alicloud.cfg.AggregateCompliancePackConfigRuleIdArgs(
-                config_rule_id=default_aggregate_config_rule.config_rule_id,
-            )])
-        ```
-
         ## Import
 
         Cloud Config Aggregate Compliance Pack can be imported using the id, e.g.
@@ -464,51 +427,6 @@ class AggregateCompliancePack(pulumi.CustomResource):
         For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregatecompliancepack).
 
         > **NOTE:** Available since v1.124.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform_example"
-        default_accounts = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
-        default_aggregator = alicloud.cfg.Aggregator("defaultAggregator",
-            aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
-                account_id=default_accounts.accounts[0].account_id,
-                account_name=default_accounts.accounts[0].display_name,
-                account_type="ResourceDirectory",
-            )],
-            aggregator_name=name,
-            description=name,
-            aggregator_type="CUSTOM")
-        default_aggregate_config_rule = alicloud.cfg.AggregateConfigRule("defaultAggregateConfigRule",
-            aggregate_config_rule_name="contains-tag",
-            aggregator_id=default_aggregator.id,
-            config_rule_trigger_types="ConfigurationItemChangeNotification",
-            source_owner="ALIYUN",
-            source_identifier="contains-tag",
-            description=name,
-            risk_level=1,
-            resource_types_scopes=["ACS::ECS::Instance"],
-            input_parameters={
-                "key": "example",
-                "value": "example",
-            })
-        default_aggregate_compliance_pack = alicloud.cfg.AggregateCompliancePack("defaultAggregateCompliancePack",
-            aggregate_compliance_pack_name=name,
-            aggregator_id=default_aggregator.id,
-            description=name,
-            risk_level=1,
-            config_rule_ids=[alicloud.cfg.AggregateCompliancePackConfigRuleIdArgs(
-                config_rule_id=default_aggregate_config_rule.config_rule_id,
-            )])
-        ```
 
         ## Import
 

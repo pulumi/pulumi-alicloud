@@ -85,12 +85,12 @@ class GtmInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             health_check_task_count: pulumi.Input[int],
-             instance_name: pulumi.Input[str],
-             package_edition: pulumi.Input[str],
-             payment_type: pulumi.Input[str],
-             period: pulumi.Input[int],
-             sms_notification_count: pulumi.Input[int],
+             health_check_task_count: Optional[pulumi.Input[int]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             package_edition: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             sms_notification_count: Optional[pulumi.Input[int]] = None,
              alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]]] = None,
              alert_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              cname_type: Optional[pulumi.Input[str]] = None,
@@ -105,41 +105,53 @@ class GtmInstanceArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              strategy_mode: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'healthCheckTaskCount' in kwargs:
+        if health_check_task_count is None and 'healthCheckTaskCount' in kwargs:
             health_check_task_count = kwargs['healthCheckTaskCount']
-        if 'instanceName' in kwargs:
+        if health_check_task_count is None:
+            raise TypeError("Missing 'health_check_task_count' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'packageEdition' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if package_edition is None and 'packageEdition' in kwargs:
             package_edition = kwargs['packageEdition']
-        if 'paymentType' in kwargs:
+        if package_edition is None:
+            raise TypeError("Missing 'package_edition' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'smsNotificationCount' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if period is None:
+            raise TypeError("Missing 'period' argument")
+        if sms_notification_count is None and 'smsNotificationCount' in kwargs:
             sms_notification_count = kwargs['smsNotificationCount']
-        if 'alertConfigs' in kwargs:
+        if sms_notification_count is None:
+            raise TypeError("Missing 'sms_notification_count' argument")
+        if alert_configs is None and 'alertConfigs' in kwargs:
             alert_configs = kwargs['alertConfigs']
-        if 'alertGroups' in kwargs:
+        if alert_groups is None and 'alertGroups' in kwargs:
             alert_groups = kwargs['alertGroups']
-        if 'cnameType' in kwargs:
+        if cname_type is None and 'cnameType' in kwargs:
             cname_type = kwargs['cnameType']
-        if 'forceUpdate' in kwargs:
+        if force_update is None and 'forceUpdate' in kwargs:
             force_update = kwargs['forceUpdate']
-        if 'publicCnameMode' in kwargs:
+        if public_cname_mode is None and 'publicCnameMode' in kwargs:
             public_cname_mode = kwargs['publicCnameMode']
-        if 'publicRr' in kwargs:
+        if public_rr is None and 'publicRr' in kwargs:
             public_rr = kwargs['publicRr']
-        if 'publicUserDomainName' in kwargs:
+        if public_user_domain_name is None and 'publicUserDomainName' in kwargs:
             public_user_domain_name = kwargs['publicUserDomainName']
-        if 'publicZoneName' in kwargs:
+        if public_zone_name is None and 'publicZoneName' in kwargs:
             public_zone_name = kwargs['publicZoneName']
-        if 'renewPeriod' in kwargs:
+        if renew_period is None and 'renewPeriod' in kwargs:
             renew_period = kwargs['renewPeriod']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'strategyMode' in kwargs:
+        if strategy_mode is None and 'strategyMode' in kwargs:
             strategy_mode = kwargs['strategyMode']
 
         _setter("health_check_task_count", health_check_task_count)
@@ -510,41 +522,41 @@ class _GtmInstanceState:
              sms_notification_count: Optional[pulumi.Input[int]] = None,
              strategy_mode: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alertConfigs' in kwargs:
+        if alert_configs is None and 'alertConfigs' in kwargs:
             alert_configs = kwargs['alertConfigs']
-        if 'alertGroups' in kwargs:
+        if alert_groups is None and 'alertGroups' in kwargs:
             alert_groups = kwargs['alertGroups']
-        if 'cnameType' in kwargs:
+        if cname_type is None and 'cnameType' in kwargs:
             cname_type = kwargs['cnameType']
-        if 'forceUpdate' in kwargs:
+        if force_update is None and 'forceUpdate' in kwargs:
             force_update = kwargs['forceUpdate']
-        if 'healthCheckTaskCount' in kwargs:
+        if health_check_task_count is None and 'healthCheckTaskCount' in kwargs:
             health_check_task_count = kwargs['healthCheckTaskCount']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'packageEdition' in kwargs:
+        if package_edition is None and 'packageEdition' in kwargs:
             package_edition = kwargs['packageEdition']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'publicCnameMode' in kwargs:
+        if public_cname_mode is None and 'publicCnameMode' in kwargs:
             public_cname_mode = kwargs['publicCnameMode']
-        if 'publicRr' in kwargs:
+        if public_rr is None and 'publicRr' in kwargs:
             public_rr = kwargs['publicRr']
-        if 'publicUserDomainName' in kwargs:
+        if public_user_domain_name is None and 'publicUserDomainName' in kwargs:
             public_user_domain_name = kwargs['publicUserDomainName']
-        if 'publicZoneName' in kwargs:
+        if public_zone_name is None and 'publicZoneName' in kwargs:
             public_zone_name = kwargs['publicZoneName']
-        if 'renewPeriod' in kwargs:
+        if renew_period is None and 'renewPeriod' in kwargs:
             renew_period = kwargs['renewPeriod']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'smsNotificationCount' in kwargs:
+        if sms_notification_count is None and 'smsNotificationCount' in kwargs:
             sms_notification_count = kwargs['smsNotificationCount']
-        if 'strategyMode' in kwargs:
+        if strategy_mode is None and 'strategyMode' in kwargs:
             strategy_mode = kwargs['strategyMode']
 
         if alert_configs is not None:
@@ -862,42 +874,6 @@ class GtmInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.151.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "alicloud-provider.com"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name="tf_example")
-        default_gtm_instance = alicloud.dns.GtmInstance("defaultGtmInstance",
-            instance_name="tf_example",
-            payment_type="Subscription",
-            period=1,
-            renewal_status="ManualRenewal",
-            package_edition="standard",
-            health_check_task_count=100,
-            sms_notification_count=1000,
-            public_cname_mode="SYSTEM_ASSIGN",
-            ttl=60,
-            cname_type="PUBLIC",
-            resource_group_id=default_resource_groups.groups[0].id,
-            alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
-            public_user_domain_name=domain_name,
-            alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
-                sms_notice=True,
-                notice_type="ADDR_ALERT",
-                email_notice=True,
-                dingtalk_notice=True,
-            )])
-        ```
-
         ## Import
 
         Alidns Gtm Instance can be imported using the id, e.g.
@@ -941,42 +917,6 @@ class GtmInstance(pulumi.CustomResource):
         For information about Alidns Gtm Instance and how to use it, see [What is Gtm Instance](https://www.alibabacloud.com/help/en/doc-detail/204852.html).
 
         > **NOTE:** Available since v1.151.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "alicloud-provider.com"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name="tf_example")
-        default_gtm_instance = alicloud.dns.GtmInstance("defaultGtmInstance",
-            instance_name="tf_example",
-            payment_type="Subscription",
-            period=1,
-            renewal_status="ManualRenewal",
-            package_edition="standard",
-            health_check_task_count=100,
-            sms_notification_count=1000,
-            public_cname_mode="SYSTEM_ASSIGN",
-            ttl=60,
-            cname_type="PUBLIC",
-            resource_group_id=default_resource_groups.groups[0].id,
-            alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
-            public_user_domain_name=domain_name,
-            alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
-                sms_notice=True,
-                notice_type="ADDR_ALERT",
-                email_notice=True,
-                dingtalk_notice=True,
-            )])
-        ```
 
         ## Import
 

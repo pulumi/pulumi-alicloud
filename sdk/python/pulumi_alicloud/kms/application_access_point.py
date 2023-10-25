@@ -32,13 +32,17 @@ class ApplicationAccessPointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_access_point_name: pulumi.Input[str],
-             policies: pulumi.Input[Sequence[pulumi.Input[str]]],
+             application_access_point_name: Optional[pulumi.Input[str]] = None,
+             policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationAccessPointName' in kwargs:
+        if application_access_point_name is None and 'applicationAccessPointName' in kwargs:
             application_access_point_name = kwargs['applicationAccessPointName']
+        if application_access_point_name is None:
+            raise TypeError("Missing 'application_access_point_name' argument")
+        if policies is None:
+            raise TypeError("Missing 'policies' argument")
 
         _setter("application_access_point_name", application_access_point_name)
         _setter("policies", policies)
@@ -106,9 +110,9 @@ class _ApplicationAccessPointState:
              application_access_point_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationAccessPointName' in kwargs:
+        if application_access_point_name is None and 'applicationAccessPointName' in kwargs:
             application_access_point_name = kwargs['applicationAccessPointName']
 
         if application_access_point_name is not None:
@@ -171,28 +175,6 @@ class ApplicationAccessPoint(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.210.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.kms.ApplicationAccessPoint("default",
-            description="example aap",
-            application_access_point_name=name,
-            policies=[
-                "abc",
-                "efg",
-                "hfc",
-            ])
-        ```
-
         ## Import
 
         KMS Application Access Point can be imported using the id, e.g.
@@ -219,28 +201,6 @@ class ApplicationAccessPoint(pulumi.CustomResource):
         For information about KMS Application Access Point and how to use it, see [What is Application Access Point](https://www.alibabacloud.com/help/zh/key-management-service/latest/api-createapplicationaccesspoint).
 
         > **NOTE:** Available since v1.210.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.kms.ApplicationAccessPoint("default",
-            description="example aap",
-            application_access_point_name=name,
-            policies=[
-                "abc",
-                "efg",
-                "hfc",
-            ])
-        ```
 
         ## Import
 

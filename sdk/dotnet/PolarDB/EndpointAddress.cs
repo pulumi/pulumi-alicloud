@@ -15,63 +15,6 @@ namespace Pulumi.AliCloud.PolarDB
     /// &gt; **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
     ///  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultNodeClasses = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
-    ///     {
-    ///         DbType = "MySQL",
-    ///         DbVersion = "8.0",
-    ///         PayType = "PostPaid",
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = "terraform-example",
-    ///         CidrBlock = "172.16.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultNodeClasses.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId),
-    ///         VswitchName = "terraform-example",
-    ///     });
-    /// 
-    ///     var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new()
-    ///     {
-    ///         DbType = "MySQL",
-    ///         DbVersion = "8.0",
-    ///         DbNodeClass = defaultNodeClasses.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.SupportedEngines[0]?.AvailableResources[0]?.DbNodeClass),
-    ///         PayType = "PostPaid",
-    ///         VswitchId = defaultSwitch.Id,
-    ///         Description = "terraform-example",
-    ///     });
-    /// 
-    ///     var defaultEndpoints = AliCloud.PolarDB.GetEndpoints.Invoke(new()
-    ///     {
-    ///         DbClusterId = defaultCluster.Id,
-    ///     });
-    /// 
-    ///     var defaultEndpointAddress = new AliCloud.PolarDB.EndpointAddress("defaultEndpointAddress", new()
-    ///     {
-    ///         DbClusterId = defaultCluster.Id,
-    ///         DbEndpointId = defaultEndpoints.Apply(getEndpointsResult =&gt; getEndpointsResult.Endpoints[0]?.DbEndpointId),
-    ///         ConnectionPrefix = "polardbexample",
-    ///         NetType = "Public",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// PolarDB endpoint address can be imported using the id, e.g.

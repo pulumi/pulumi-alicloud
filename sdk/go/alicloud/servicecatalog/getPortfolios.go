@@ -15,34 +15,6 @@ import (
 // This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
 //
 // > **NOTE:** Available in 1.204.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/servicecatalog"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := servicecatalog.GetPortfolios(ctx, &servicecatalog.GetPortfoliosArgs{
-// Ids: interface{}{
-// alicloud_service_catalog_portfolio.Default.Id,
-// },
-// NameRegex: pulumi.StringRef(alicloud_service_catalog_portfolio.Default.Name),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudServiceCatalogPortfolioExampleId", _default.Portfolios[0].Id)
-// return nil
-// })
-// }
-// ```
 func GetPortfolios(ctx *pulumi.Context, args *GetPortfoliosArgs, opts ...pulumi.InvokeOption) (*GetPortfoliosResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPortfoliosResult

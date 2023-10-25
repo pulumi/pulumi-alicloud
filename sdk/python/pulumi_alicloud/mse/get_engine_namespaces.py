@@ -100,19 +100,6 @@ def get_engine_namespaces(accept_language: Optional[str] = None,
 
     > **NOTE:** Available in v1.166.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.mse.get_engine_namespaces(cluster_id="example_value",
-        ids=["example_value"])
-    pulumi.export("mseEngineNamespaceId1", ids.namespaces[0].id)
-    ```
-
 
     :param str accept_language: The language type of the returned information. Valid values: `zh`, `en`.
     :param str cluster_id: The id of the cluster.
@@ -146,19 +133,6 @@ def get_engine_namespaces_output(accept_language: Optional[pulumi.Input[Optional
     This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.166.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.mse.get_engine_namespaces(cluster_id="example_value",
-        ids=["example_value"])
-    pulumi.export("mseEngineNamespaceId1", ids.namespaces[0].id)
-    ```
 
 
     :param str accept_language: The language type of the returned information. Valid values: `zh`, `en`.

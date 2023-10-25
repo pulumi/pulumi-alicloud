@@ -14,54 +14,6 @@ namespace Pulumi.AliCloud.Datahub
     /// 
     /// &gt; **NOTE:** Available since v1.19.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf_example";
-    ///     var example = new AliCloud.Datahub.Project("example", new()
-    ///     {
-    ///         Comment = "created by terraform",
-    ///     });
-    /// 
-    ///     var exampleBlob = new AliCloud.Datahub.Topic("exampleBlob", new()
-    ///     {
-    ///         ProjectName = example.Name,
-    ///         RecordType = "BLOB",
-    ///         ShardCount = 3,
-    ///         LifeCycle = 7,
-    ///         Comment = "created by terraform",
-    ///     });
-    /// 
-    ///     var exampleTuple = new AliCloud.Datahub.Topic("exampleTuple", new()
-    ///     {
-    ///         ProjectName = example.Name,
-    ///         RecordType = "TUPLE",
-    ///         RecordSchema = 
-    ///         {
-    ///             { "bigint_field", "BIGINT" },
-    ///             { "timestamp_field", "TIMESTAMP" },
-    ///             { "string_field", "STRING" },
-    ///             { "double_field", "DOUBLE" },
-    ///             { "boolean_field", "BOOLEAN" },
-    ///         },
-    ///         ShardCount = 3,
-    ///         LifeCycle = 7,
-    ///         Comment = "created by terraform",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Datahub topic can be imported using the ID, e.g.

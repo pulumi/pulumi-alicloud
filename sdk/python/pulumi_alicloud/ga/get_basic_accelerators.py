@@ -148,20 +148,6 @@ def get_basic_accelerators(accelerator_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.194.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ga.get_basic_accelerators(ids=["example_id"])
-    pulumi.export("gaBasicAcceleratorId1", ids.accelerators[0].id)
-    name_regex = alicloud.ga.get_basic_accelerators(name_regex="tf-example")
-    pulumi.export("gaBasicAcceleratorId2", name_regex.accelerators[0].id)
-    ```
-
 
     :param str accelerator_id: The ID of the Global Accelerator Basic Accelerator instance.
     :param Sequence[str] ids: A list of Global Accelerator Basic Accelerator IDs.
@@ -206,20 +192,6 @@ def get_basic_accelerators_output(accelerator_id: Optional[pulumi.Input[Optional
     This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.194.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ga.get_basic_accelerators(ids=["example_id"])
-    pulumi.export("gaBasicAcceleratorId1", ids.accelerators[0].id)
-    name_regex = alicloud.ga.get_basic_accelerators(name_regex="tf-example")
-    pulumi.export("gaBasicAcceleratorId2", name_regex.accelerators[0].id)
-    ```
 
 
     :param str accelerator_id: The ID of the Global Accelerator Basic Accelerator instance.

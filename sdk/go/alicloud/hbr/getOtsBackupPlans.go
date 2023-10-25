@@ -15,35 +15,6 @@ import (
 // This data source provides the Hbr OtsBackupPlans of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.163.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := hbr.GetOtsBackupPlans(ctx, &hbr.GetOtsBackupPlansArgs{
-//				NameRegex: pulumi.StringRef("^my-otsBackupPlan"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("hbrOtsBackupPlanId", data.Alicloud_hbr_ots_backup_plans.Plans[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetOtsBackupPlans(ctx *pulumi.Context, args *GetOtsBackupPlansArgs, opts ...pulumi.InvokeOption) (*GetOtsBackupPlansResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOtsBackupPlansResult

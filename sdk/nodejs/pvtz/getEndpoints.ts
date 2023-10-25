@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Pvtz Endpoints of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.143.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.pvtz.getEndpoints({
- *     ids: ["example_id"],
- * });
- * export const pvtzEndpointId1 = ids.then(ids => ids.endpoints?.[0]?.id);
- * const nameRegex = alicloud.pvtz.getEndpoints({
- *     nameRegex: "^my-Endpoint",
- * });
- * export const pvtzEndpointId2 = nameRegex.then(nameRegex => nameRegex.endpoints?.[0]?.id);
- * ```
  */
 export function getEndpoints(args?: GetEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointsResult> {
     args = args || {};
@@ -82,24 +64,6 @@ export interface GetEndpointsResult {
  * This data source provides the Pvtz Endpoints of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.143.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.pvtz.getEndpoints({
- *     ids: ["example_id"],
- * });
- * export const pvtzEndpointId1 = ids.then(ids => ids.endpoints?.[0]?.id);
- * const nameRegex = alicloud.pvtz.getEndpoints({
- *     nameRegex: "^my-Endpoint",
- * });
- * export const pvtzEndpointId2 = nameRegex.then(nameRegex => nameRegex.endpoints?.[0]?.id);
- * ```
  */
 export function getEndpointsOutput(args?: GetEndpointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointsResult> {
     return pulumi.output(args).apply((a: any) => getEndpoints(a, opts))

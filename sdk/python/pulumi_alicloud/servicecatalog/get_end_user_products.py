@@ -136,16 +136,6 @@ def get_end_user_products(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available since v1.197.0.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.servicecatalog.get_end_user_products(name_regex="ram模板创建")
-    pulumi.export("alicloudServiceCatalogEndUserProductExampleId", default.end_user_products[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of End User Product IDs.
     :param str name_regex: A regex string to filter results by product name.
@@ -189,16 +179,6 @@ def get_end_user_products_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-servicecatalog-2021-09-01-listproductsasenduser)
 
     > **NOTE:** Available since v1.197.0.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.servicecatalog.get_end_user_products(name_regex="ram模板创建")
-    pulumi.export("alicloudServiceCatalogEndUserProductExampleId", default.end_user_products[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of End User Product IDs.

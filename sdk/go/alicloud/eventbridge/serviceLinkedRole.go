@@ -19,32 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.129.0+. After the version 1.142.0, the resource is renamed as `eventbridge.ServiceLinkedRole`.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := eventbridge.NewServiceLinkedRole(ctx, "serviceLinkedRole", &eventbridge.ServiceLinkedRoleArgs{
-//				ProductName: pulumi.String("AliyunServiceRoleForEventBridgeSendToMNS"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Event Bridge service-linked roles(SLR) can be imported using the id, e.g.

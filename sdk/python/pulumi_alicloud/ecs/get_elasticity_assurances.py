@@ -135,16 +135,6 @@ def get_elasticity_assurances(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.196.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.ecs.get_elasticity_assurances(ids=[alicloud_ecs_elasticity_assurance["default"]["id"]])
-    pulumi.export("alicloudEcsElasticityAssuranceExampleId", default.assurances[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Elasticity Assurance IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -186,16 +176,6 @@ def get_elasticity_assurances_output(ids: Optional[pulumi.Input[Optional[Sequenc
     This data source provides Ecs Elasticity Assurance available to the user.
 
     > **NOTE:** Available in 1.196.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.ecs.get_elasticity_assurances(ids=[alicloud_ecs_elasticity_assurance["default"]["id"]])
-    pulumi.export("alicloudEcsElasticityAssuranceExampleId", default.assurances[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Elasticity Assurance IDs.

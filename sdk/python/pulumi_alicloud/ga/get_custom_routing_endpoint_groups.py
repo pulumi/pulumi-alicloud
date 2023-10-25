@@ -177,22 +177,6 @@ def get_custom_routing_endpoint_groups(accelerator_id: Optional[str] = None,
 
     > **NOTE:** Available in 1.197.0+
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ga.get_custom_routing_endpoint_groups(ids=["example_id"],
-        accelerator_id="your_accelerator_id")
-    pulumi.export("gaCustomRoutingEndpointGroupsId1", ids.groups[0].id)
-    name_regex = alicloud.ga.get_custom_routing_endpoint_groups(name_regex="tf-example",
-        accelerator_id="your_accelerator_id")
-    pulumi.export("gaCustomRoutingEndpointGroupsId2", name_regex.groups[0].id)
-    ```
-
 
     :param str accelerator_id: The ID of the GA instance.
     :param str endpoint_group_id: The ID of the endpoint group.
@@ -245,22 +229,6 @@ def get_custom_routing_endpoint_groups_output(accelerator_id: Optional[pulumi.In
     This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in 1.197.0+
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ga.get_custom_routing_endpoint_groups(ids=["example_id"],
-        accelerator_id="your_accelerator_id")
-    pulumi.export("gaCustomRoutingEndpointGroupsId1", ids.groups[0].id)
-    name_regex = alicloud.ga.get_custom_routing_endpoint_groups(name_regex="tf-example",
-        accelerator_id="your_accelerator_id")
-    pulumi.export("gaCustomRoutingEndpointGroupsId2", name_regex.groups[0].id)
-    ```
 
 
     :param str accelerator_id: The ID of the GA instance.

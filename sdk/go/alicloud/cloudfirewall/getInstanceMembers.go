@@ -15,33 +15,6 @@ import (
 // This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
 //
 // > **NOTE:** Available in 1.194.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := cloudfirewall.GetInstanceMembers(ctx, &cloudfirewall.GetInstanceMembersArgs{
-// Ids: interface{}{
-// alicloud_cloud_firewall_instance_member.Default.Id,
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudCloudFirewallInstanceMemberExampleId", _default.Members[0].Id)
-// return nil
-// })
-// }
-// ```
 func GetInstanceMembers(ctx *pulumi.Context, args *GetInstanceMembersArgs, opts ...pulumi.InvokeOption) (*GetInstanceMembersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceMembersResult

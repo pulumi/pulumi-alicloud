@@ -58,38 +58,52 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key_num: pulumi.Input[int],
-             secret_num: pulumi.Input[int],
-             spec: pulumi.Input[int],
-             vpc_id: pulumi.Input[str],
-             vpc_num: pulumi.Input[int],
-             vswitch_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             zone_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             key_num: Optional[pulumi.Input[int]] = None,
+             secret_num: Optional[pulumi.Input[int]] = None,
+             spec: Optional[pulumi.Input[int]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vpc_num: Optional[pulumi.Input[int]] = None,
+             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]]] = None,
              product_version: Optional[pulumi.Input[str]] = None,
              renew_period: Optional[pulumi.Input[int]] = None,
              renew_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'keyNum' in kwargs:
+        if key_num is None and 'keyNum' in kwargs:
             key_num = kwargs['keyNum']
-        if 'secretNum' in kwargs:
+        if key_num is None:
+            raise TypeError("Missing 'key_num' argument")
+        if secret_num is None and 'secretNum' in kwargs:
             secret_num = kwargs['secretNum']
-        if 'vpcId' in kwargs:
+        if secret_num is None:
+            raise TypeError("Missing 'secret_num' argument")
+        if spec is None:
+            raise TypeError("Missing 'spec' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vpcNum' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vpc_num is None and 'vpcNum' in kwargs:
             vpc_num = kwargs['vpcNum']
-        if 'vswitchIds' in kwargs:
+        if vpc_num is None:
+            raise TypeError("Missing 'vpc_num' argument")
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
-        if 'zoneIds' in kwargs:
+        if vswitch_ids is None:
+            raise TypeError("Missing 'vswitch_ids' argument")
+        if zone_ids is None and 'zoneIds' in kwargs:
             zone_ids = kwargs['zoneIds']
-        if 'bindVpcs' in kwargs:
+        if zone_ids is None:
+            raise TypeError("Missing 'zone_ids' argument")
+        if bind_vpcs is None and 'bindVpcs' in kwargs:
             bind_vpcs = kwargs['bindVpcs']
-        if 'productVersion' in kwargs:
+        if product_version is None and 'productVersion' in kwargs:
             product_version = kwargs['productVersion']
-        if 'renewPeriod' in kwargs:
+        if renew_period is None and 'renewPeriod' in kwargs:
             renew_period = kwargs['renewPeriod']
-        if 'renewStatus' in kwargs:
+        if renew_status is None and 'renewStatus' in kwargs:
             renew_status = kwargs['renewStatus']
 
         _setter("key_num", key_num)
@@ -313,33 +327,33 @@ class _InstanceState:
              vpc_num: Optional[pulumi.Input[int]] = None,
              vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bindVpcs' in kwargs:
+        if bind_vpcs is None and 'bindVpcs' in kwargs:
             bind_vpcs = kwargs['bindVpcs']
-        if 'caCertificateChainPem' in kwargs:
+        if ca_certificate_chain_pem is None and 'caCertificateChainPem' in kwargs:
             ca_certificate_chain_pem = kwargs['caCertificateChainPem']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'keyNum' in kwargs:
+        if key_num is None and 'keyNum' in kwargs:
             key_num = kwargs['keyNum']
-        if 'productVersion' in kwargs:
+        if product_version is None and 'productVersion' in kwargs:
             product_version = kwargs['productVersion']
-        if 'renewPeriod' in kwargs:
+        if renew_period is None and 'renewPeriod' in kwargs:
             renew_period = kwargs['renewPeriod']
-        if 'renewStatus' in kwargs:
+        if renew_status is None and 'renewStatus' in kwargs:
             renew_status = kwargs['renewStatus']
-        if 'secretNum' in kwargs:
+        if secret_num is None and 'secretNum' in kwargs:
             secret_num = kwargs['secretNum']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vpcNum' in kwargs:
+        if vpc_num is None and 'vpcNum' in kwargs:
             vpc_num = kwargs['vpcNum']
-        if 'vswitchIds' in kwargs:
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
-        if 'zoneIds' in kwargs:
+        if zone_ids is None and 'zoneIds' in kwargs:
             zone_ids = kwargs['zoneIds']
 
         if bind_vpcs is not None:

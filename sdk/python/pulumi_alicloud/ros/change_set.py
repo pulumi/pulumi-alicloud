@@ -79,7 +79,7 @@ class ChangeSetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             change_set_name: pulumi.Input[str],
+             change_set_name: Optional[pulumi.Input[str]] = None,
              change_set_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disable_rollback: Optional[pulumi.Input[bool]] = None,
@@ -97,39 +97,41 @@ class ChangeSetArgs:
              template_url: Optional[pulumi.Input[str]] = None,
              timeout_in_minutes: Optional[pulumi.Input[int]] = None,
              use_previous_parameters: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'changeSetName' in kwargs:
+        if change_set_name is None and 'changeSetName' in kwargs:
             change_set_name = kwargs['changeSetName']
-        if 'changeSetType' in kwargs:
+        if change_set_name is None:
+            raise TypeError("Missing 'change_set_name' argument")
+        if change_set_type is None and 'changeSetType' in kwargs:
             change_set_type = kwargs['changeSetType']
-        if 'disableRollback' in kwargs:
+        if disable_rollback is None and 'disableRollback' in kwargs:
             disable_rollback = kwargs['disableRollback']
-        if 'notificationUrls' in kwargs:
+        if notification_urls is None and 'notificationUrls' in kwargs:
             notification_urls = kwargs['notificationUrls']
-        if 'ramRoleName' in kwargs:
+        if ram_role_name is None and 'ramRoleName' in kwargs:
             ram_role_name = kwargs['ramRoleName']
-        if 'replacementOption' in kwargs:
+        if replacement_option is None and 'replacementOption' in kwargs:
             replacement_option = kwargs['replacementOption']
-        if 'stackId' in kwargs:
+        if stack_id is None and 'stackId' in kwargs:
             stack_id = kwargs['stackId']
-        if 'stackName' in kwargs:
+        if stack_name is None and 'stackName' in kwargs:
             stack_name = kwargs['stackName']
-        if 'stackPolicyBody' in kwargs:
+        if stack_policy_body is None and 'stackPolicyBody' in kwargs:
             stack_policy_body = kwargs['stackPolicyBody']
-        if 'stackPolicyDuringUpdateBody' in kwargs:
+        if stack_policy_during_update_body is None and 'stackPolicyDuringUpdateBody' in kwargs:
             stack_policy_during_update_body = kwargs['stackPolicyDuringUpdateBody']
-        if 'stackPolicyDuringUpdateUrl' in kwargs:
+        if stack_policy_during_update_url is None and 'stackPolicyDuringUpdateUrl' in kwargs:
             stack_policy_during_update_url = kwargs['stackPolicyDuringUpdateUrl']
-        if 'stackPolicyUrl' in kwargs:
+        if stack_policy_url is None and 'stackPolicyUrl' in kwargs:
             stack_policy_url = kwargs['stackPolicyUrl']
-        if 'templateBody' in kwargs:
+        if template_body is None and 'templateBody' in kwargs:
             template_body = kwargs['templateBody']
-        if 'templateUrl' in kwargs:
+        if template_url is None and 'templateUrl' in kwargs:
             template_url = kwargs['templateUrl']
-        if 'timeoutInMinutes' in kwargs:
+        if timeout_in_minutes is None and 'timeoutInMinutes' in kwargs:
             timeout_in_minutes = kwargs['timeoutInMinutes']
-        if 'usePreviousParameters' in kwargs:
+        if use_previous_parameters is None and 'usePreviousParameters' in kwargs:
             use_previous_parameters = kwargs['usePreviousParameters']
 
         _setter("change_set_name", change_set_name)
@@ -473,39 +475,39 @@ class _ChangeSetState:
              template_url: Optional[pulumi.Input[str]] = None,
              timeout_in_minutes: Optional[pulumi.Input[int]] = None,
              use_previous_parameters: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'changeSetName' in kwargs:
+        if change_set_name is None and 'changeSetName' in kwargs:
             change_set_name = kwargs['changeSetName']
-        if 'changeSetType' in kwargs:
+        if change_set_type is None and 'changeSetType' in kwargs:
             change_set_type = kwargs['changeSetType']
-        if 'disableRollback' in kwargs:
+        if disable_rollback is None and 'disableRollback' in kwargs:
             disable_rollback = kwargs['disableRollback']
-        if 'notificationUrls' in kwargs:
+        if notification_urls is None and 'notificationUrls' in kwargs:
             notification_urls = kwargs['notificationUrls']
-        if 'ramRoleName' in kwargs:
+        if ram_role_name is None and 'ramRoleName' in kwargs:
             ram_role_name = kwargs['ramRoleName']
-        if 'replacementOption' in kwargs:
+        if replacement_option is None and 'replacementOption' in kwargs:
             replacement_option = kwargs['replacementOption']
-        if 'stackId' in kwargs:
+        if stack_id is None and 'stackId' in kwargs:
             stack_id = kwargs['stackId']
-        if 'stackName' in kwargs:
+        if stack_name is None and 'stackName' in kwargs:
             stack_name = kwargs['stackName']
-        if 'stackPolicyBody' in kwargs:
+        if stack_policy_body is None and 'stackPolicyBody' in kwargs:
             stack_policy_body = kwargs['stackPolicyBody']
-        if 'stackPolicyDuringUpdateBody' in kwargs:
+        if stack_policy_during_update_body is None and 'stackPolicyDuringUpdateBody' in kwargs:
             stack_policy_during_update_body = kwargs['stackPolicyDuringUpdateBody']
-        if 'stackPolicyDuringUpdateUrl' in kwargs:
+        if stack_policy_during_update_url is None and 'stackPolicyDuringUpdateUrl' in kwargs:
             stack_policy_during_update_url = kwargs['stackPolicyDuringUpdateUrl']
-        if 'stackPolicyUrl' in kwargs:
+        if stack_policy_url is None and 'stackPolicyUrl' in kwargs:
             stack_policy_url = kwargs['stackPolicyUrl']
-        if 'templateBody' in kwargs:
+        if template_body is None and 'templateBody' in kwargs:
             template_body = kwargs['templateBody']
-        if 'templateUrl' in kwargs:
+        if template_url is None and 'templateUrl' in kwargs:
             template_url = kwargs['templateUrl']
-        if 'timeoutInMinutes' in kwargs:
+        if timeout_in_minutes is None and 'timeoutInMinutes' in kwargs:
             timeout_in_minutes = kwargs['timeoutInMinutes']
-        if 'usePreviousParameters' in kwargs:
+        if use_previous_parameters is None and 'usePreviousParameters' in kwargs:
             use_previous_parameters = kwargs['usePreviousParameters']
 
         if change_set_name is not None:
@@ -807,22 +809,6 @@ class ChangeSet(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.105.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ros.ChangeSet("example",
-            change_set_name="example_value",
-            change_set_type="CREATE",
-            description="Test From Terraform",
-            stack_name="tf-testacc",
-            template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\"}")
-        ```
-
         ## Import
 
         ROS Change Set can be imported using the id, e.g.
@@ -864,22 +850,6 @@ class ChangeSet(pulumi.CustomResource):
         For information about ROS Change Set and how to use it, see [What is Change Set](https://www.alibabacloud.com/help/doc-detail/131051.htm).
 
         > **NOTE:** Available in v1.105.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ros.ChangeSet("example",
-            change_set_name="example_value",
-            change_set_type="CREATE",
-            description="Test From Terraform",
-            stack_name="tf-testacc",
-            template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\"}")
-        ```
 
         ## Import
 

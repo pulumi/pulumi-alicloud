@@ -35,20 +35,28 @@ class AppAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_id: pulumi.Input[str],
-             app_id: pulumi.Input[str],
-             group_id: pulumi.Input[str],
-             stage_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             api_id: Optional[pulumi.Input[str]] = None,
+             app_id: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             stage_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiId' in kwargs:
+        if api_id is None and 'apiId' in kwargs:
             api_id = kwargs['apiId']
-        if 'appId' in kwargs:
+        if api_id is None:
+            raise TypeError("Missing 'api_id' argument")
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'groupId' in kwargs:
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'stageName' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if stage_name is None and 'stageName' in kwargs:
             stage_name = kwargs['stageName']
+        if stage_name is None:
+            raise TypeError("Missing 'stage_name' argument")
 
         _setter("api_id", api_id)
         _setter("app_id", app_id)
@@ -132,15 +140,15 @@ class _AppAttachmentState:
              app_id: Optional[pulumi.Input[str]] = None,
              group_id: Optional[pulumi.Input[str]] = None,
              stage_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiId' in kwargs:
+        if api_id is None and 'apiId' in kwargs:
             api_id = kwargs['apiId']
-        if 'appId' in kwargs:
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'stageName' in kwargs:
+        if stage_name is None and 'stageName' in kwargs:
             stage_name = kwargs['stageName']
 
         if api_id is not None:
@@ -212,58 +220,7 @@ class AppAttachment(pulumi.CustomResource):
                  stage_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform_example"
-        example_group = alicloud.apigateway.Group("exampleGroup", description=name)
-        example_api = alicloud.apigateway.Api("exampleApi",
-            group_id=example_group.id,
-            description=name,
-            auth_type="APP",
-            force_nonce_check=False,
-            request_config=alicloud.apigateway.ApiRequestConfigArgs(
-                protocol="HTTP",
-                method="GET",
-                path="/example/path",
-                mode="MAPPING",
-            ),
-            service_type="HTTP",
-            http_service_config=alicloud.apigateway.ApiHttpServiceConfigArgs(
-                address="http://apigateway-backend.alicloudapi.com:8080",
-                method="GET",
-                path="/web/cloudapi",
-                timeout=12,
-                aone_name="cloudapi-openapi",
-            ),
-            request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
-                name="example",
-                type="STRING",
-                required="OPTIONAL",
-                in_="QUERY",
-                in_service="QUERY",
-                name_service="exampleservice",
-            )],
-            stage_names=[
-                "RELEASE",
-                "TEST",
-            ])
-        example_app = alicloud.apigateway.App("exampleApp", description=name)
-        example_app_attachment = alicloud.apigateway.AppAttachment("exampleAppAttachment",
-            api_id=example_api.api_id,
-            group_id=example_group.id,
-            app_id=example_app.id,
-            stage_name="PRE")
-        ```
-
+        Create a AppAttachment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_id: The api_id that app apply to access.
@@ -278,58 +235,7 @@ class AppAttachment(pulumi.CustomResource):
                  args: AppAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform_example"
-        example_group = alicloud.apigateway.Group("exampleGroup", description=name)
-        example_api = alicloud.apigateway.Api("exampleApi",
-            group_id=example_group.id,
-            description=name,
-            auth_type="APP",
-            force_nonce_check=False,
-            request_config=alicloud.apigateway.ApiRequestConfigArgs(
-                protocol="HTTP",
-                method="GET",
-                path="/example/path",
-                mode="MAPPING",
-            ),
-            service_type="HTTP",
-            http_service_config=alicloud.apigateway.ApiHttpServiceConfigArgs(
-                address="http://apigateway-backend.alicloudapi.com:8080",
-                method="GET",
-                path="/web/cloudapi",
-                timeout=12,
-                aone_name="cloudapi-openapi",
-            ),
-            request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
-                name="example",
-                type="STRING",
-                required="OPTIONAL",
-                in_="QUERY",
-                in_service="QUERY",
-                name_service="exampleservice",
-            )],
-            stage_names=[
-                "RELEASE",
-                "TEST",
-            ])
-        example_app = alicloud.apigateway.App("exampleApp", description=name)
-        example_app_attachment = alicloud.apigateway.AppAttachment("exampleAppAttachment",
-            api_id=example_api.api_id,
-            group_id=example_group.id,
-            app_id=example_app.id,
-            stage_name="PRE")
-        ```
-
+        Create a AppAttachment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AppAttachmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -11,28 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.135.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.waf.Certificate("default", {
- *     certificate: "your_certificate",
- *     certificateName: "your_certificate_name",
- *     domain: "your_domain_name",
- *     instanceId: "your_instance_id",
- *     privateKey: "your_private_key",
- * });
- * const default2 = new alicloud.waf.Certificate("default2", {
- *     certificateId: "your_certificate_id",
- *     domain: "your_domain_name",
- *     instanceId: "your_instance_id",
- * });
- * ```
- *
  * ## Import
  *
  * WAF Certificate can be imported using the id, e.g.

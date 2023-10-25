@@ -125,12 +125,12 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_node_amount: pulumi.Input[int],
-             data_node_disk_size: pulumi.Input[int],
-             data_node_disk_type: pulumi.Input[str],
-             data_node_spec: pulumi.Input[str],
-             version: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             data_node_amount: Optional[pulumi.Input[int]] = None,
+             data_node_disk_size: Optional[pulumi.Input[int]] = None,
+             data_node_disk_type: Optional[pulumi.Input[str]] = None,
+             data_node_spec: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              auto_renew_duration: Optional[pulumi.Input[int]] = None,
              client_node_amount: Optional[pulumi.Input[int]] = None,
              client_node_spec: Optional[pulumi.Input[str]] = None,
@@ -159,63 +159,75 @@ class InstanceArgs:
              setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dataNodeAmount' in kwargs:
+        if data_node_amount is None and 'dataNodeAmount' in kwargs:
             data_node_amount = kwargs['dataNodeAmount']
-        if 'dataNodeDiskSize' in kwargs:
+        if data_node_amount is None:
+            raise TypeError("Missing 'data_node_amount' argument")
+        if data_node_disk_size is None and 'dataNodeDiskSize' in kwargs:
             data_node_disk_size = kwargs['dataNodeDiskSize']
-        if 'dataNodeDiskType' in kwargs:
+        if data_node_disk_size is None:
+            raise TypeError("Missing 'data_node_disk_size' argument")
+        if data_node_disk_type is None and 'dataNodeDiskType' in kwargs:
             data_node_disk_type = kwargs['dataNodeDiskType']
-        if 'dataNodeSpec' in kwargs:
+        if data_node_disk_type is None:
+            raise TypeError("Missing 'data_node_disk_type' argument")
+        if data_node_spec is None and 'dataNodeSpec' in kwargs:
             data_node_spec = kwargs['dataNodeSpec']
-        if 'vswitchId' in kwargs:
+        if data_node_spec is None:
+            raise TypeError("Missing 'data_node_spec' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'autoRenewDuration' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if auto_renew_duration is None and 'autoRenewDuration' in kwargs:
             auto_renew_duration = kwargs['autoRenewDuration']
-        if 'clientNodeAmount' in kwargs:
+        if client_node_amount is None and 'clientNodeAmount' in kwargs:
             client_node_amount = kwargs['clientNodeAmount']
-        if 'clientNodeSpec' in kwargs:
+        if client_node_spec is None and 'clientNodeSpec' in kwargs:
             client_node_spec = kwargs['clientNodeSpec']
-        if 'dataNodeDiskEncrypted' in kwargs:
+        if data_node_disk_encrypted is None and 'dataNodeDiskEncrypted' in kwargs:
             data_node_disk_encrypted = kwargs['dataNodeDiskEncrypted']
-        if 'dataNodeDiskPerformanceLevel' in kwargs:
+        if data_node_disk_performance_level is None and 'dataNodeDiskPerformanceLevel' in kwargs:
             data_node_disk_performance_level = kwargs['dataNodeDiskPerformanceLevel']
-        if 'enableKibanaPrivateNetwork' in kwargs:
+        if enable_kibana_private_network is None and 'enableKibanaPrivateNetwork' in kwargs:
             enable_kibana_private_network = kwargs['enableKibanaPrivateNetwork']
-        if 'enableKibanaPublicNetwork' in kwargs:
+        if enable_kibana_public_network is None and 'enableKibanaPublicNetwork' in kwargs:
             enable_kibana_public_network = kwargs['enableKibanaPublicNetwork']
-        if 'enablePublic' in kwargs:
+        if enable_public is None and 'enablePublic' in kwargs:
             enable_public = kwargs['enablePublic']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'kibanaNodeSpec' in kwargs:
+        if kibana_node_spec is None and 'kibanaNodeSpec' in kwargs:
             kibana_node_spec = kwargs['kibanaNodeSpec']
-        if 'kibanaPrivateWhitelists' in kwargs:
+        if kibana_private_whitelists is None and 'kibanaPrivateWhitelists' in kwargs:
             kibana_private_whitelists = kwargs['kibanaPrivateWhitelists']
-        if 'kibanaWhitelists' in kwargs:
+        if kibana_whitelists is None and 'kibanaWhitelists' in kwargs:
             kibana_whitelists = kwargs['kibanaWhitelists']
-        if 'kmsEncryptedPassword' in kwargs:
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
             kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if 'kmsEncryptionContext' in kwargs:
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
             kms_encryption_context = kwargs['kmsEncryptionContext']
-        if 'masterNodeDiskType' in kwargs:
+        if master_node_disk_type is None and 'masterNodeDiskType' in kwargs:
             master_node_disk_type = kwargs['masterNodeDiskType']
-        if 'masterNodeSpec' in kwargs:
+        if master_node_spec is None and 'masterNodeSpec' in kwargs:
             master_node_spec = kwargs['masterNodeSpec']
-        if 'privateWhitelists' in kwargs:
+        if private_whitelists is None and 'privateWhitelists' in kwargs:
             private_whitelists = kwargs['privateWhitelists']
-        if 'publicWhitelists' in kwargs:
+        if public_whitelists is None and 'publicWhitelists' in kwargs:
             public_whitelists = kwargs['publicWhitelists']
-        if 'renewStatus' in kwargs:
+        if renew_status is None and 'renewStatus' in kwargs:
             renew_status = kwargs['renewStatus']
-        if 'renewalDurationUnit' in kwargs:
+        if renewal_duration_unit is None and 'renewalDurationUnit' in kwargs:
             renewal_duration_unit = kwargs['renewalDurationUnit']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'settingConfig' in kwargs:
+        if setting_config is None and 'settingConfig' in kwargs:
             setting_config = kwargs['settingConfig']
-        if 'zoneCount' in kwargs:
+        if zone_count is None and 'zoneCount' in kwargs:
             zone_count = kwargs['zoneCount']
 
         _setter("data_node_amount", data_node_amount)
@@ -866,71 +878,71 @@ class _InstanceState:
              version: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenewDuration' in kwargs:
+        if auto_renew_duration is None and 'autoRenewDuration' in kwargs:
             auto_renew_duration = kwargs['autoRenewDuration']
-        if 'clientNodeAmount' in kwargs:
+        if client_node_amount is None and 'clientNodeAmount' in kwargs:
             client_node_amount = kwargs['clientNodeAmount']
-        if 'clientNodeSpec' in kwargs:
+        if client_node_spec is None and 'clientNodeSpec' in kwargs:
             client_node_spec = kwargs['clientNodeSpec']
-        if 'dataNodeAmount' in kwargs:
+        if data_node_amount is None and 'dataNodeAmount' in kwargs:
             data_node_amount = kwargs['dataNodeAmount']
-        if 'dataNodeDiskEncrypted' in kwargs:
+        if data_node_disk_encrypted is None and 'dataNodeDiskEncrypted' in kwargs:
             data_node_disk_encrypted = kwargs['dataNodeDiskEncrypted']
-        if 'dataNodeDiskPerformanceLevel' in kwargs:
+        if data_node_disk_performance_level is None and 'dataNodeDiskPerformanceLevel' in kwargs:
             data_node_disk_performance_level = kwargs['dataNodeDiskPerformanceLevel']
-        if 'dataNodeDiskSize' in kwargs:
+        if data_node_disk_size is None and 'dataNodeDiskSize' in kwargs:
             data_node_disk_size = kwargs['dataNodeDiskSize']
-        if 'dataNodeDiskType' in kwargs:
+        if data_node_disk_type is None and 'dataNodeDiskType' in kwargs:
             data_node_disk_type = kwargs['dataNodeDiskType']
-        if 'dataNodeSpec' in kwargs:
+        if data_node_spec is None and 'dataNodeSpec' in kwargs:
             data_node_spec = kwargs['dataNodeSpec']
-        if 'enableKibanaPrivateNetwork' in kwargs:
+        if enable_kibana_private_network is None and 'enableKibanaPrivateNetwork' in kwargs:
             enable_kibana_private_network = kwargs['enableKibanaPrivateNetwork']
-        if 'enableKibanaPublicNetwork' in kwargs:
+        if enable_kibana_public_network is None and 'enableKibanaPublicNetwork' in kwargs:
             enable_kibana_public_network = kwargs['enableKibanaPublicNetwork']
-        if 'enablePublic' in kwargs:
+        if enable_public is None and 'enablePublic' in kwargs:
             enable_public = kwargs['enablePublic']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'kibanaDomain' in kwargs:
+        if kibana_domain is None and 'kibanaDomain' in kwargs:
             kibana_domain = kwargs['kibanaDomain']
-        if 'kibanaNodeSpec' in kwargs:
+        if kibana_node_spec is None and 'kibanaNodeSpec' in kwargs:
             kibana_node_spec = kwargs['kibanaNodeSpec']
-        if 'kibanaPort' in kwargs:
+        if kibana_port is None and 'kibanaPort' in kwargs:
             kibana_port = kwargs['kibanaPort']
-        if 'kibanaPrivateWhitelists' in kwargs:
+        if kibana_private_whitelists is None and 'kibanaPrivateWhitelists' in kwargs:
             kibana_private_whitelists = kwargs['kibanaPrivateWhitelists']
-        if 'kibanaWhitelists' in kwargs:
+        if kibana_whitelists is None and 'kibanaWhitelists' in kwargs:
             kibana_whitelists = kwargs['kibanaWhitelists']
-        if 'kmsEncryptedPassword' in kwargs:
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
             kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if 'kmsEncryptionContext' in kwargs:
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
             kms_encryption_context = kwargs['kmsEncryptionContext']
-        if 'masterNodeDiskType' in kwargs:
+        if master_node_disk_type is None and 'masterNodeDiskType' in kwargs:
             master_node_disk_type = kwargs['masterNodeDiskType']
-        if 'masterNodeSpec' in kwargs:
+        if master_node_spec is None and 'masterNodeSpec' in kwargs:
             master_node_spec = kwargs['masterNodeSpec']
-        if 'privateWhitelists' in kwargs:
+        if private_whitelists is None and 'privateWhitelists' in kwargs:
             private_whitelists = kwargs['privateWhitelists']
-        if 'publicDomain' in kwargs:
+        if public_domain is None and 'publicDomain' in kwargs:
             public_domain = kwargs['publicDomain']
-        if 'publicPort' in kwargs:
+        if public_port is None and 'publicPort' in kwargs:
             public_port = kwargs['publicPort']
-        if 'publicWhitelists' in kwargs:
+        if public_whitelists is None and 'publicWhitelists' in kwargs:
             public_whitelists = kwargs['publicWhitelists']
-        if 'renewStatus' in kwargs:
+        if renew_status is None and 'renewStatus' in kwargs:
             renew_status = kwargs['renewStatus']
-        if 'renewalDurationUnit' in kwargs:
+        if renewal_duration_unit is None and 'renewalDurationUnit' in kwargs:
             renewal_duration_unit = kwargs['renewalDurationUnit']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'settingConfig' in kwargs:
+        if setting_config is None and 'settingConfig' in kwargs:
             setting_config = kwargs['settingConfig']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneCount' in kwargs:
+        if zone_count is None and 'zoneCount' in kwargs:
             zone_count = kwargs['zoneCount']
 
         if auto_renew_duration is not None:

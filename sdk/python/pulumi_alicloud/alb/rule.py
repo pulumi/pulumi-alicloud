@@ -46,24 +46,34 @@ class RuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             listener_id: pulumi.Input[str],
-             priority: pulumi.Input[int],
-             rule_actions: pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]],
-             rule_conditions: pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]],
-             rule_name: pulumi.Input[str],
+             listener_id: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]]] = None,
+             rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]]] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
              direction: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'listenerId' in kwargs:
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'ruleActions' in kwargs:
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if rule_actions is None and 'ruleActions' in kwargs:
             rule_actions = kwargs['ruleActions']
-        if 'ruleConditions' in kwargs:
+        if rule_actions is None:
+            raise TypeError("Missing 'rule_actions' argument")
+        if rule_conditions is None and 'ruleConditions' in kwargs:
             rule_conditions = kwargs['ruleConditions']
-        if 'ruleName' in kwargs:
+        if rule_conditions is None:
+            raise TypeError("Missing 'rule_conditions' argument")
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
-        if 'dryRun' in kwargs:
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
 
         _setter("listener_id", listener_id)
@@ -205,17 +215,17 @@ class _RuleState:
              rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]]] = None,
              rule_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'listenerId' in kwargs:
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'ruleActions' in kwargs:
+        if rule_actions is None and 'ruleActions' in kwargs:
             rule_actions = kwargs['ruleActions']
-        if 'ruleConditions' in kwargs:
+        if rule_conditions is None and 'ruleConditions' in kwargs:
             rule_conditions = kwargs['ruleConditions']
-        if 'ruleName' in kwargs:
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
 
         if direction is not None:

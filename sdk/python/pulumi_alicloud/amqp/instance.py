@@ -65,11 +65,11 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_type: pulumi.Input[str],
-             max_tps: pulumi.Input[str],
-             payment_type: pulumi.Input[str],
-             queue_capacity: pulumi.Input[str],
-             support_eip: pulumi.Input[bool],
+             instance_type: Optional[pulumi.Input[str]] = None,
+             max_tps: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             queue_capacity: Optional[pulumi.Input[str]] = None,
+             support_eip: Optional[pulumi.Input[bool]] = None,
              instance_name: Optional[pulumi.Input[str]] = None,
              logistics: Optional[pulumi.Input[str]] = None,
              max_eip_tps: Optional[pulumi.Input[str]] = None,
@@ -79,31 +79,41 @@ class InstanceArgs:
              renewal_duration_unit: Optional[pulumi.Input[str]] = None,
              renewal_status: Optional[pulumi.Input[str]] = None,
              storage_size: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'maxTps' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if max_tps is None and 'maxTps' in kwargs:
             max_tps = kwargs['maxTps']
-        if 'paymentType' in kwargs:
+        if max_tps is None:
+            raise TypeError("Missing 'max_tps' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'queueCapacity' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if queue_capacity is None and 'queueCapacity' in kwargs:
             queue_capacity = kwargs['queueCapacity']
-        if 'supportEip' in kwargs:
+        if queue_capacity is None:
+            raise TypeError("Missing 'queue_capacity' argument")
+        if support_eip is None and 'supportEip' in kwargs:
             support_eip = kwargs['supportEip']
-        if 'instanceName' in kwargs:
+        if support_eip is None:
+            raise TypeError("Missing 'support_eip' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'maxEipTps' in kwargs:
+        if max_eip_tps is None and 'maxEipTps' in kwargs:
             max_eip_tps = kwargs['maxEipTps']
-        if 'modifyType' in kwargs:
+        if modify_type is None and 'modifyType' in kwargs:
             modify_type = kwargs['modifyType']
-        if 'renewalDuration' in kwargs:
+        if renewal_duration is None and 'renewalDuration' in kwargs:
             renewal_duration = kwargs['renewalDuration']
-        if 'renewalDurationUnit' in kwargs:
+        if renewal_duration_unit is None and 'renewalDurationUnit' in kwargs:
             renewal_duration_unit = kwargs['renewalDurationUnit']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'storageSize' in kwargs:
+        if storage_size is None and 'storageSize' in kwargs:
             storage_size = kwargs['storageSize']
 
         _setter("instance_type", instance_type)
@@ -371,31 +381,31 @@ class _InstanceState:
              status: Optional[pulumi.Input[str]] = None,
              storage_size: Optional[pulumi.Input[str]] = None,
              support_eip: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'maxEipTps' in kwargs:
+        if max_eip_tps is None and 'maxEipTps' in kwargs:
             max_eip_tps = kwargs['maxEipTps']
-        if 'maxTps' in kwargs:
+        if max_tps is None and 'maxTps' in kwargs:
             max_tps = kwargs['maxTps']
-        if 'modifyType' in kwargs:
+        if modify_type is None and 'modifyType' in kwargs:
             modify_type = kwargs['modifyType']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'queueCapacity' in kwargs:
+        if queue_capacity is None and 'queueCapacity' in kwargs:
             queue_capacity = kwargs['queueCapacity']
-        if 'renewalDuration' in kwargs:
+        if renewal_duration is None and 'renewalDuration' in kwargs:
             renewal_duration = kwargs['renewalDuration']
-        if 'renewalDurationUnit' in kwargs:
+        if renewal_duration_unit is None and 'renewalDurationUnit' in kwargs:
             renewal_duration_unit = kwargs['renewalDurationUnit']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
-        if 'storageSize' in kwargs:
+        if storage_size is None and 'storageSize' in kwargs:
             storage_size = kwargs['storageSize']
-        if 'supportEip' in kwargs:
+        if support_eip is None and 'supportEip' in kwargs:
             support_eip = kwargs['supportEip']
 
         if instance_name is not None:

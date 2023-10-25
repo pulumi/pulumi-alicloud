@@ -111,20 +111,6 @@ def get_directories(enable_details: Optional[bool] = None,
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cloudsso.get_directories(ids=["example_id"])
-    pulumi.export("cloudSsoDirectoryId1", ids.directories[0].id)
-    name_regex = alicloud.cloudsso.get_directories(name_regex="^my-Directory")
-    pulumi.export("cloudSsoDirectoryId2", name_regex.directories[0].id)
-    ```
-
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Directory IDs.
@@ -161,20 +147,6 @@ def get_directories_output(enable_details: Optional[pulumi.Input[Optional[bool]]
     > **NOTE:** Available in v1.135.0+.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cloudsso.get_directories(ids=["example_id"])
-    pulumi.export("cloudSsoDirectoryId1", ids.directories[0].id)
-    name_regex = alicloud.cloudsso.get_directories(name_regex="^my-Directory")
-    pulumi.export("cloudSsoDirectoryId2", name_regex.directories[0].id)
-    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

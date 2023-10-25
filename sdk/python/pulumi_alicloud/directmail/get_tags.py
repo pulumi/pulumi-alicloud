@@ -99,20 +99,6 @@ def get_tags(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.144.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.directmail.get_tags(ids=["example_id"])
-    pulumi.export("directMailTagId1", ids.tags[0].id)
-    name_regex = alicloud.directmail.get_tags(name_regex="^my-Tag")
-    pulumi.export("directMailTagId2", name_regex.tags[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Tag IDs.
     :param str name_regex: A regex string to filter results by Tag name.
@@ -143,20 +129,6 @@ def get_tags_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
     This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.144.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.directmail.get_tags(ids=["example_id"])
-    pulumi.export("directMailTagId1", ids.tags[0].id)
-    name_regex = alicloud.directmail.get_tags(name_regex="^my-Tag")
-    pulumi.export("directMailTagId2", name_regex.tags[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Tag IDs.

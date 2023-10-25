@@ -40,16 +40,20 @@ class IpaDomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain_name: pulumi.Input[str],
-             sources: pulumi.Input[Sequence[pulumi.Input['IpaDomainSourceArgs']]],
+             domain_name: Optional[pulumi.Input[str]] = None,
+             sources: Optional[pulumi.Input[Sequence[pulumi.Input['IpaDomainSourceArgs']]]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              scope: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'resourceGroupId' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if sources is None:
+            raise TypeError("Missing 'sources' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("domain_name", domain_name)
@@ -154,11 +158,11 @@ class _IpaDomainState:
              scope: Optional[pulumi.Input[str]] = None,
              sources: Optional[pulumi.Input[Sequence[pulumi.Input['IpaDomainSourceArgs']]]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         if domain_name is not None:
@@ -251,33 +255,6 @@ class IpaDomain(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.158.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "example.com"
-        default = alicloud.resourcemanager.get_resource_groups()
-        example = alicloud.dcdn.IpaDomain("example",
-            domain_name=domain_name,
-            resource_group_id=default.groups[0].id,
-            scope="global",
-            status="online",
-            sources=[alicloud.dcdn.IpaDomainSourceArgs(
-                content="www.alicloud-provider.cn",
-                port=80,
-                priority="20",
-                type="domain",
-                weight=10,
-            )])
-        ```
-
         ## Import
 
         DCDN Ipa Domain can be imported using the id, e.g.
@@ -306,33 +283,6 @@ class IpaDomain(pulumi.CustomResource):
         For information about DCDN Ipa Domain and how to use it, see [What is Ipa Domain](https://www.alibabacloud.com/help/en/doc-detail/130634.html).
 
         > **NOTE:** Available since v1.158.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "example.com"
-        default = alicloud.resourcemanager.get_resource_groups()
-        example = alicloud.dcdn.IpaDomain("example",
-            domain_name=domain_name,
-            resource_group_id=default.groups[0].id,
-            scope="global",
-            status="online",
-            sources=[alicloud.dcdn.IpaDomainSourceArgs(
-                content="www.alicloud-provider.cn",
-                port=80,
-                priority="20",
-                type="domain",
-                weight=10,
-            )])
-        ```
 
         ## Import
 

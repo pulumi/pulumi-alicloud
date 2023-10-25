@@ -95,31 +95,37 @@ class DedicatedPropreHostEcsClassList(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_type: str,
-             sys_disk_capacity: int,
-             sys_disk_type: str,
+             instance_type: Optional[str] = None,
+             sys_disk_capacity: Optional[int] = None,
+             sys_disk_type: Optional[str] = None,
              data_disk_performance_level: Optional[str] = None,
              disk_capacity: Optional[int] = None,
              disk_count: Optional[int] = None,
              disk_type: Optional[str] = None,
              system_disk_performance_level: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'sysDiskCapacity' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if sys_disk_capacity is None and 'sysDiskCapacity' in kwargs:
             sys_disk_capacity = kwargs['sysDiskCapacity']
-        if 'sysDiskType' in kwargs:
+        if sys_disk_capacity is None:
+            raise TypeError("Missing 'sys_disk_capacity' argument")
+        if sys_disk_type is None and 'sysDiskType' in kwargs:
             sys_disk_type = kwargs['sysDiskType']
-        if 'dataDiskPerformanceLevel' in kwargs:
+        if sys_disk_type is None:
+            raise TypeError("Missing 'sys_disk_type' argument")
+        if data_disk_performance_level is None and 'dataDiskPerformanceLevel' in kwargs:
             data_disk_performance_level = kwargs['dataDiskPerformanceLevel']
-        if 'diskCapacity' in kwargs:
+        if disk_capacity is None and 'diskCapacity' in kwargs:
             disk_capacity = kwargs['diskCapacity']
-        if 'diskCount' in kwargs:
+        if disk_count is None and 'diskCount' in kwargs:
             disk_count = kwargs['diskCount']
-        if 'diskType' in kwargs:
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'systemDiskPerformanceLevel' in kwargs:
+        if system_disk_performance_level is None and 'systemDiskPerformanceLevel' in kwargs:
             system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
 
         _setter("instance_type", instance_type)
@@ -229,15 +235,21 @@ class GetDedicatedHostAccountsAccountResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: str,
-             dedicated_host_id: str,
-             id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_name: Optional[str] = None,
+             dedicated_host_id: Optional[str] = None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'dedicatedHostId' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if dedicated_host_id is None and 'dedicatedHostId' in kwargs:
             dedicated_host_id = kwargs['dedicatedHostId']
+        if dedicated_host_id is None:
+            raise TypeError("Missing 'dedicated_host_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
 
         _setter("account_name", account_name)
         _setter("dedicated_host_id", dedicated_host_id)
@@ -363,86 +375,142 @@ class GetDedicatedHostGroupsGroupResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allocation_policy: str,
-             bastion_instance_id: str,
-             cpu_allocate_ration: float,
-             cpu_allocated_amount: float,
-             cpu_allocation_ratio: int,
-             create_time: str,
-             dedicated_host_count_group_by_host_types: Sequence['outputs.GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeResult'],
-             dedicated_host_group_desc: str,
-             dedicated_host_group_id: str,
-             deploy_type: str,
-             disk_allocate_ration: float,
-             disk_allocated_amount: float,
-             disk_allocation_ratio: int,
-             disk_used_amount: float,
-             disk_utility: float,
-             engine: str,
-             host_number: int,
-             host_replace_policy: str,
-             id: str,
-             instance_number: int,
-             mem_allocate_ration: float,
-             mem_allocated_amount: float,
-             mem_allocation_ratio: int,
-             mem_used_amount: float,
-             mem_utility: float,
-             text: str,
-             vpc_id: str,
-             zone_id_lists: Sequence['outputs.GetDedicatedHostGroupsGroupZoneIdListResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             allocation_policy: Optional[str] = None,
+             bastion_instance_id: Optional[str] = None,
+             cpu_allocate_ration: Optional[float] = None,
+             cpu_allocated_amount: Optional[float] = None,
+             cpu_allocation_ratio: Optional[int] = None,
+             create_time: Optional[str] = None,
+             dedicated_host_count_group_by_host_types: Optional[Sequence['outputs.GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeResult']] = None,
+             dedicated_host_group_desc: Optional[str] = None,
+             dedicated_host_group_id: Optional[str] = None,
+             deploy_type: Optional[str] = None,
+             disk_allocate_ration: Optional[float] = None,
+             disk_allocated_amount: Optional[float] = None,
+             disk_allocation_ratio: Optional[int] = None,
+             disk_used_amount: Optional[float] = None,
+             disk_utility: Optional[float] = None,
+             engine: Optional[str] = None,
+             host_number: Optional[int] = None,
+             host_replace_policy: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_number: Optional[int] = None,
+             mem_allocate_ration: Optional[float] = None,
+             mem_allocated_amount: Optional[float] = None,
+             mem_allocation_ratio: Optional[int] = None,
+             mem_used_amount: Optional[float] = None,
+             mem_utility: Optional[float] = None,
+             text: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             zone_id_lists: Optional[Sequence['outputs.GetDedicatedHostGroupsGroupZoneIdListResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allocationPolicy' in kwargs:
+        if allocation_policy is None and 'allocationPolicy' in kwargs:
             allocation_policy = kwargs['allocationPolicy']
-        if 'bastionInstanceId' in kwargs:
+        if allocation_policy is None:
+            raise TypeError("Missing 'allocation_policy' argument")
+        if bastion_instance_id is None and 'bastionInstanceId' in kwargs:
             bastion_instance_id = kwargs['bastionInstanceId']
-        if 'cpuAllocateRation' in kwargs:
+        if bastion_instance_id is None:
+            raise TypeError("Missing 'bastion_instance_id' argument")
+        if cpu_allocate_ration is None and 'cpuAllocateRation' in kwargs:
             cpu_allocate_ration = kwargs['cpuAllocateRation']
-        if 'cpuAllocatedAmount' in kwargs:
+        if cpu_allocate_ration is None:
+            raise TypeError("Missing 'cpu_allocate_ration' argument")
+        if cpu_allocated_amount is None and 'cpuAllocatedAmount' in kwargs:
             cpu_allocated_amount = kwargs['cpuAllocatedAmount']
-        if 'cpuAllocationRatio' in kwargs:
+        if cpu_allocated_amount is None:
+            raise TypeError("Missing 'cpu_allocated_amount' argument")
+        if cpu_allocation_ratio is None and 'cpuAllocationRatio' in kwargs:
             cpu_allocation_ratio = kwargs['cpuAllocationRatio']
-        if 'createTime' in kwargs:
+        if cpu_allocation_ratio is None:
+            raise TypeError("Missing 'cpu_allocation_ratio' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dedicatedHostCountGroupByHostTypes' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if dedicated_host_count_group_by_host_types is None and 'dedicatedHostCountGroupByHostTypes' in kwargs:
             dedicated_host_count_group_by_host_types = kwargs['dedicatedHostCountGroupByHostTypes']
-        if 'dedicatedHostGroupDesc' in kwargs:
+        if dedicated_host_count_group_by_host_types is None:
+            raise TypeError("Missing 'dedicated_host_count_group_by_host_types' argument")
+        if dedicated_host_group_desc is None and 'dedicatedHostGroupDesc' in kwargs:
             dedicated_host_group_desc = kwargs['dedicatedHostGroupDesc']
-        if 'dedicatedHostGroupId' in kwargs:
+        if dedicated_host_group_desc is None:
+            raise TypeError("Missing 'dedicated_host_group_desc' argument")
+        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
             dedicated_host_group_id = kwargs['dedicatedHostGroupId']
-        if 'deployType' in kwargs:
+        if dedicated_host_group_id is None:
+            raise TypeError("Missing 'dedicated_host_group_id' argument")
+        if deploy_type is None and 'deployType' in kwargs:
             deploy_type = kwargs['deployType']
-        if 'diskAllocateRation' in kwargs:
+        if deploy_type is None:
+            raise TypeError("Missing 'deploy_type' argument")
+        if disk_allocate_ration is None and 'diskAllocateRation' in kwargs:
             disk_allocate_ration = kwargs['diskAllocateRation']
-        if 'diskAllocatedAmount' in kwargs:
+        if disk_allocate_ration is None:
+            raise TypeError("Missing 'disk_allocate_ration' argument")
+        if disk_allocated_amount is None and 'diskAllocatedAmount' in kwargs:
             disk_allocated_amount = kwargs['diskAllocatedAmount']
-        if 'diskAllocationRatio' in kwargs:
+        if disk_allocated_amount is None:
+            raise TypeError("Missing 'disk_allocated_amount' argument")
+        if disk_allocation_ratio is None and 'diskAllocationRatio' in kwargs:
             disk_allocation_ratio = kwargs['diskAllocationRatio']
-        if 'diskUsedAmount' in kwargs:
+        if disk_allocation_ratio is None:
+            raise TypeError("Missing 'disk_allocation_ratio' argument")
+        if disk_used_amount is None and 'diskUsedAmount' in kwargs:
             disk_used_amount = kwargs['diskUsedAmount']
-        if 'diskUtility' in kwargs:
+        if disk_used_amount is None:
+            raise TypeError("Missing 'disk_used_amount' argument")
+        if disk_utility is None and 'diskUtility' in kwargs:
             disk_utility = kwargs['diskUtility']
-        if 'hostNumber' in kwargs:
+        if disk_utility is None:
+            raise TypeError("Missing 'disk_utility' argument")
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if host_number is None and 'hostNumber' in kwargs:
             host_number = kwargs['hostNumber']
-        if 'hostReplacePolicy' in kwargs:
+        if host_number is None:
+            raise TypeError("Missing 'host_number' argument")
+        if host_replace_policy is None and 'hostReplacePolicy' in kwargs:
             host_replace_policy = kwargs['hostReplacePolicy']
-        if 'instanceNumber' in kwargs:
+        if host_replace_policy is None:
+            raise TypeError("Missing 'host_replace_policy' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_number is None and 'instanceNumber' in kwargs:
             instance_number = kwargs['instanceNumber']
-        if 'memAllocateRation' in kwargs:
+        if instance_number is None:
+            raise TypeError("Missing 'instance_number' argument")
+        if mem_allocate_ration is None and 'memAllocateRation' in kwargs:
             mem_allocate_ration = kwargs['memAllocateRation']
-        if 'memAllocatedAmount' in kwargs:
+        if mem_allocate_ration is None:
+            raise TypeError("Missing 'mem_allocate_ration' argument")
+        if mem_allocated_amount is None and 'memAllocatedAmount' in kwargs:
             mem_allocated_amount = kwargs['memAllocatedAmount']
-        if 'memAllocationRatio' in kwargs:
+        if mem_allocated_amount is None:
+            raise TypeError("Missing 'mem_allocated_amount' argument")
+        if mem_allocation_ratio is None and 'memAllocationRatio' in kwargs:
             mem_allocation_ratio = kwargs['memAllocationRatio']
-        if 'memUsedAmount' in kwargs:
+        if mem_allocation_ratio is None:
+            raise TypeError("Missing 'mem_allocation_ratio' argument")
+        if mem_used_amount is None and 'memUsedAmount' in kwargs:
             mem_used_amount = kwargs['memUsedAmount']
-        if 'memUtility' in kwargs:
+        if mem_used_amount is None:
+            raise TypeError("Missing 'mem_used_amount' argument")
+        if mem_utility is None and 'memUtility' in kwargs:
             mem_utility = kwargs['memUtility']
-        if 'vpcId' in kwargs:
+        if mem_utility is None:
+            raise TypeError("Missing 'mem_utility' argument")
+        if text is None:
+            raise TypeError("Missing 'text' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'zoneIdLists' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if zone_id_lists is None and 'zoneIdLists' in kwargs:
             zone_id_lists = kwargs['zoneIdLists']
+        if zone_id_lists is None:
+            raise TypeError("Missing 'zone_id_lists' argument")
 
         _setter("allocation_policy", allocation_policy)
         _setter("bastion_instance_id", bastion_instance_id)
@@ -709,11 +777,13 @@ class GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             place_holder: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             place_holder: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'placeHolder' in kwargs:
+        if place_holder is None and 'placeHolder' in kwargs:
             place_holder = kwargs['placeHolder']
+        if place_holder is None:
+            raise TypeError("Missing 'place_holder' argument")
 
         _setter("place_holder", place_holder)
 
@@ -737,11 +807,13 @@ class GetDedicatedHostGroupsGroupZoneIdListResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             zone_id_lists: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             zone_id_lists: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneIdLists' in kwargs:
+        if zone_id_lists is None and 'zoneIdLists' in kwargs:
             zone_id_lists = kwargs['zoneIdLists']
+        if zone_id_lists is None:
+            raise TypeError("Missing 'zone_id_lists' argument")
 
         _setter("zone_id_lists", zone_id_lists)
 
@@ -855,90 +927,150 @@ class GetDedicatedHostsHostResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allocation_status: str,
-             bastion_instance_id: str,
-             cpu_allocation_ratio: str,
-             cpu_used: str,
-             create_time: str,
-             dedicated_host_group_id: str,
-             dedicated_host_id: str,
-             disk_allocation_ratio: str,
-             ecs_class_code: str,
-             end_time: str,
-             engine: str,
-             expired_time: str,
-             host_class: str,
-             host_cpu: str,
-             host_mem: str,
-             host_name: str,
-             host_storage: str,
-             host_type: str,
-             id: str,
-             image_category: str,
-             ip_address: str,
-             mem_allocation_ratio: str,
-             memory_used: str,
-             open_permission: str,
-             status: str,
-             storage_used: str,
-             tags: Mapping[str, Any],
-             vpc_id: str,
-             vswitch_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             allocation_status: Optional[str] = None,
+             bastion_instance_id: Optional[str] = None,
+             cpu_allocation_ratio: Optional[str] = None,
+             cpu_used: Optional[str] = None,
+             create_time: Optional[str] = None,
+             dedicated_host_group_id: Optional[str] = None,
+             dedicated_host_id: Optional[str] = None,
+             disk_allocation_ratio: Optional[str] = None,
+             ecs_class_code: Optional[str] = None,
+             end_time: Optional[str] = None,
+             engine: Optional[str] = None,
+             expired_time: Optional[str] = None,
+             host_class: Optional[str] = None,
+             host_cpu: Optional[str] = None,
+             host_mem: Optional[str] = None,
+             host_name: Optional[str] = None,
+             host_storage: Optional[str] = None,
+             host_type: Optional[str] = None,
+             id: Optional[str] = None,
+             image_category: Optional[str] = None,
+             ip_address: Optional[str] = None,
+             mem_allocation_ratio: Optional[str] = None,
+             memory_used: Optional[str] = None,
+             open_permission: Optional[str] = None,
+             status: Optional[str] = None,
+             storage_used: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allocationStatus' in kwargs:
+        if allocation_status is None and 'allocationStatus' in kwargs:
             allocation_status = kwargs['allocationStatus']
-        if 'bastionInstanceId' in kwargs:
+        if allocation_status is None:
+            raise TypeError("Missing 'allocation_status' argument")
+        if bastion_instance_id is None and 'bastionInstanceId' in kwargs:
             bastion_instance_id = kwargs['bastionInstanceId']
-        if 'cpuAllocationRatio' in kwargs:
+        if bastion_instance_id is None:
+            raise TypeError("Missing 'bastion_instance_id' argument")
+        if cpu_allocation_ratio is None and 'cpuAllocationRatio' in kwargs:
             cpu_allocation_ratio = kwargs['cpuAllocationRatio']
-        if 'cpuUsed' in kwargs:
+        if cpu_allocation_ratio is None:
+            raise TypeError("Missing 'cpu_allocation_ratio' argument")
+        if cpu_used is None and 'cpuUsed' in kwargs:
             cpu_used = kwargs['cpuUsed']
-        if 'createTime' in kwargs:
+        if cpu_used is None:
+            raise TypeError("Missing 'cpu_used' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dedicatedHostGroupId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
             dedicated_host_group_id = kwargs['dedicatedHostGroupId']
-        if 'dedicatedHostId' in kwargs:
+        if dedicated_host_group_id is None:
+            raise TypeError("Missing 'dedicated_host_group_id' argument")
+        if dedicated_host_id is None and 'dedicatedHostId' in kwargs:
             dedicated_host_id = kwargs['dedicatedHostId']
-        if 'diskAllocationRatio' in kwargs:
+        if dedicated_host_id is None:
+            raise TypeError("Missing 'dedicated_host_id' argument")
+        if disk_allocation_ratio is None and 'diskAllocationRatio' in kwargs:
             disk_allocation_ratio = kwargs['diskAllocationRatio']
-        if 'ecsClassCode' in kwargs:
+        if disk_allocation_ratio is None:
+            raise TypeError("Missing 'disk_allocation_ratio' argument")
+        if ecs_class_code is None and 'ecsClassCode' in kwargs:
             ecs_class_code = kwargs['ecsClassCode']
-        if 'endTime' in kwargs:
+        if ecs_class_code is None:
+            raise TypeError("Missing 'ecs_class_code' argument")
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'expiredTime' in kwargs:
+        if end_time is None:
+            raise TypeError("Missing 'end_time' argument")
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'hostClass' in kwargs:
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if host_class is None and 'hostClass' in kwargs:
             host_class = kwargs['hostClass']
-        if 'hostCpu' in kwargs:
+        if host_class is None:
+            raise TypeError("Missing 'host_class' argument")
+        if host_cpu is None and 'hostCpu' in kwargs:
             host_cpu = kwargs['hostCpu']
-        if 'hostMem' in kwargs:
+        if host_cpu is None:
+            raise TypeError("Missing 'host_cpu' argument")
+        if host_mem is None and 'hostMem' in kwargs:
             host_mem = kwargs['hostMem']
-        if 'hostName' in kwargs:
+        if host_mem is None:
+            raise TypeError("Missing 'host_mem' argument")
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'hostStorage' in kwargs:
+        if host_name is None:
+            raise TypeError("Missing 'host_name' argument")
+        if host_storage is None and 'hostStorage' in kwargs:
             host_storage = kwargs['hostStorage']
-        if 'hostType' in kwargs:
+        if host_storage is None:
+            raise TypeError("Missing 'host_storage' argument")
+        if host_type is None and 'hostType' in kwargs:
             host_type = kwargs['hostType']
-        if 'imageCategory' in kwargs:
+        if host_type is None:
+            raise TypeError("Missing 'host_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_category is None and 'imageCategory' in kwargs:
             image_category = kwargs['imageCategory']
-        if 'ipAddress' in kwargs:
+        if image_category is None:
+            raise TypeError("Missing 'image_category' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
-        if 'memAllocationRatio' in kwargs:
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if mem_allocation_ratio is None and 'memAllocationRatio' in kwargs:
             mem_allocation_ratio = kwargs['memAllocationRatio']
-        if 'memoryUsed' in kwargs:
+        if mem_allocation_ratio is None:
+            raise TypeError("Missing 'mem_allocation_ratio' argument")
+        if memory_used is None and 'memoryUsed' in kwargs:
             memory_used = kwargs['memoryUsed']
-        if 'openPermission' in kwargs:
+        if memory_used is None:
+            raise TypeError("Missing 'memory_used' argument")
+        if open_permission is None and 'openPermission' in kwargs:
             open_permission = kwargs['openPermission']
-        if 'storageUsed' in kwargs:
+        if open_permission is None:
+            raise TypeError("Missing 'open_permission' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if storage_used is None and 'storageUsed' in kwargs:
             storage_used = kwargs['storageUsed']
-        if 'vpcId' in kwargs:
+        if storage_used is None:
+            raise TypeError("Missing 'storage_used' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("allocation_status", allocation_status)
         _setter("bastion_instance_id", bastion_instance_id)
@@ -1235,18 +1367,26 @@ class GetHostEcsLevelInfosInfoResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             ecs_class: str,
-             ecs_class_code: str,
-             res_class_code: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             ecs_class: Optional[str] = None,
+             ecs_class_code: Optional[str] = None,
+             res_class_code: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ecsClass' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if ecs_class is None and 'ecsClass' in kwargs:
             ecs_class = kwargs['ecsClass']
-        if 'ecsClassCode' in kwargs:
+        if ecs_class is None:
+            raise TypeError("Missing 'ecs_class' argument")
+        if ecs_class_code is None and 'ecsClassCode' in kwargs:
             ecs_class_code = kwargs['ecsClassCode']
-        if 'resClassCode' in kwargs:
+        if ecs_class_code is None:
+            raise TypeError("Missing 'ecs_class_code' argument")
+        if res_class_code is None and 'resClassCode' in kwargs:
             res_class_code = kwargs['resClassCode']
+        if res_class_code is None:
+            raise TypeError("Missing 'res_class_code' argument")
 
         _setter("description", description)
         _setter("ecs_class", ecs_class)
@@ -1306,15 +1446,21 @@ class GetZonesZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             region_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             region_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'regionId' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'zoneId' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("id", id)
         _setter("region_id", region_id)

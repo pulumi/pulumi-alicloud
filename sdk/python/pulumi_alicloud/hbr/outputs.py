@@ -69,9 +69,9 @@ class OtsBackupPlanOtsDetail(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              table_names: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'tableNames' in kwargs:
+        if table_names is None and 'tableNames' in kwargs:
             table_names = kwargs['tableNames']
 
         if table_names is not None:
@@ -136,11 +136,11 @@ class OtsBackupPlanRule(dict):
              retention: Optional[str] = None,
              rule_name: Optional[str] = None,
              schedule: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'ruleName' in kwargs:
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
 
         if backup_type is not None:
@@ -227,9 +227,9 @@ class RestoreJobOtsDetail(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              overwrite_existing: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'overwriteExisting' in kwargs:
+        if overwrite_existing is None and 'overwriteExisting' in kwargs:
             overwrite_existing = kwargs['overwriteExisting']
 
         if overwrite_existing is not None:
@@ -320,8 +320,8 @@ class ServerBackupPlanDetail(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_consistent: bool,
-             snapshot_group: bool,
+             app_consistent: Optional[bool] = None,
+             snapshot_group: Optional[bool] = None,
              destination_region_id: Optional[str] = None,
              destination_retention: Optional[int] = None,
              disk_id_lists: Optional[Sequence[str]] = None,
@@ -330,27 +330,31 @@ class ServerBackupPlanDetail(dict):
              post_script_path: Optional[str] = None,
              pre_script_path: Optional[str] = None,
              timeout_in_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appConsistent' in kwargs:
+        if app_consistent is None and 'appConsistent' in kwargs:
             app_consistent = kwargs['appConsistent']
-        if 'snapshotGroup' in kwargs:
+        if app_consistent is None:
+            raise TypeError("Missing 'app_consistent' argument")
+        if snapshot_group is None and 'snapshotGroup' in kwargs:
             snapshot_group = kwargs['snapshotGroup']
-        if 'destinationRegionId' in kwargs:
+        if snapshot_group is None:
+            raise TypeError("Missing 'snapshot_group' argument")
+        if destination_region_id is None and 'destinationRegionId' in kwargs:
             destination_region_id = kwargs['destinationRegionId']
-        if 'destinationRetention' in kwargs:
+        if destination_retention is None and 'destinationRetention' in kwargs:
             destination_retention = kwargs['destinationRetention']
-        if 'diskIdLists' in kwargs:
+        if disk_id_lists is None and 'diskIdLists' in kwargs:
             disk_id_lists = kwargs['diskIdLists']
-        if 'doCopy' in kwargs:
+        if do_copy is None and 'doCopy' in kwargs:
             do_copy = kwargs['doCopy']
-        if 'enableFsFreeze' in kwargs:
+        if enable_fs_freeze is None and 'enableFsFreeze' in kwargs:
             enable_fs_freeze = kwargs['enableFsFreeze']
-        if 'postScriptPath' in kwargs:
+        if post_script_path is None and 'postScriptPath' in kwargs:
             post_script_path = kwargs['postScriptPath']
-        if 'preScriptPath' in kwargs:
+        if pre_script_path is None and 'preScriptPath' in kwargs:
             pre_script_path = kwargs['preScriptPath']
-        if 'timeoutInSeconds' in kwargs:
+        if timeout_in_seconds is None and 'timeoutInSeconds' in kwargs:
             timeout_in_seconds = kwargs['timeoutInSeconds']
 
         _setter("app_consistent", app_consistent)
@@ -478,7 +482,7 @@ class GetBackupJobsFilterResult(dict):
              key: Optional[str] = None,
              operator: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -621,88 +625,152 @@ class GetBackupJobsJobResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             actual_bytes: str,
-             actual_items: str,
-             back_job_name: str,
-             backup_job_id: str,
-             backup_type: str,
-             bucket: str,
-             bytes_done: str,
-             bytes_total: str,
-             complete_time: str,
-             create_time: str,
-             cross_account_role_name: str,
-             cross_account_type: str,
-             cross_account_user_id: int,
-             error_message: str,
-             exclude: str,
-             file_system_id: str,
-             id: str,
-             include: str,
-             instance_id: str,
-             items_done: str,
-             items_total: str,
-             nas_create_time: str,
-             ots_details: Sequence['outputs.GetBackupJobsJobOtsDetailResult'],
-             paths: Sequence[str],
-             plan_id: str,
-             prefix: str,
-             progress: str,
-             source_type: str,
-             start_time: str,
-             status: str,
-             updated_time: str,
-             vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             actual_bytes: Optional[str] = None,
+             actual_items: Optional[str] = None,
+             back_job_name: Optional[str] = None,
+             backup_job_id: Optional[str] = None,
+             backup_type: Optional[str] = None,
+             bucket: Optional[str] = None,
+             bytes_done: Optional[str] = None,
+             bytes_total: Optional[str] = None,
+             complete_time: Optional[str] = None,
+             create_time: Optional[str] = None,
+             cross_account_role_name: Optional[str] = None,
+             cross_account_type: Optional[str] = None,
+             cross_account_user_id: Optional[int] = None,
+             error_message: Optional[str] = None,
+             exclude: Optional[str] = None,
+             file_system_id: Optional[str] = None,
+             id: Optional[str] = None,
+             include: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             items_done: Optional[str] = None,
+             items_total: Optional[str] = None,
+             nas_create_time: Optional[str] = None,
+             ots_details: Optional[Sequence['outputs.GetBackupJobsJobOtsDetailResult']] = None,
+             paths: Optional[Sequence[str]] = None,
+             plan_id: Optional[str] = None,
+             prefix: Optional[str] = None,
+             progress: Optional[str] = None,
+             source_type: Optional[str] = None,
+             start_time: Optional[str] = None,
+             status: Optional[str] = None,
+             updated_time: Optional[str] = None,
+             vault_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'actualBytes' in kwargs:
+        if actual_bytes is None and 'actualBytes' in kwargs:
             actual_bytes = kwargs['actualBytes']
-        if 'actualItems' in kwargs:
+        if actual_bytes is None:
+            raise TypeError("Missing 'actual_bytes' argument")
+        if actual_items is None and 'actualItems' in kwargs:
             actual_items = kwargs['actualItems']
-        if 'backJobName' in kwargs:
+        if actual_items is None:
+            raise TypeError("Missing 'actual_items' argument")
+        if back_job_name is None and 'backJobName' in kwargs:
             back_job_name = kwargs['backJobName']
-        if 'backupJobId' in kwargs:
+        if back_job_name is None:
+            raise TypeError("Missing 'back_job_name' argument")
+        if backup_job_id is None and 'backupJobId' in kwargs:
             backup_job_id = kwargs['backupJobId']
-        if 'backupType' in kwargs:
+        if backup_job_id is None:
+            raise TypeError("Missing 'backup_job_id' argument")
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'bytesDone' in kwargs:
+        if backup_type is None:
+            raise TypeError("Missing 'backup_type' argument")
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if bytes_done is None and 'bytesDone' in kwargs:
             bytes_done = kwargs['bytesDone']
-        if 'bytesTotal' in kwargs:
+        if bytes_done is None:
+            raise TypeError("Missing 'bytes_done' argument")
+        if bytes_total is None and 'bytesTotal' in kwargs:
             bytes_total = kwargs['bytesTotal']
-        if 'completeTime' in kwargs:
+        if bytes_total is None:
+            raise TypeError("Missing 'bytes_total' argument")
+        if complete_time is None and 'completeTime' in kwargs:
             complete_time = kwargs['completeTime']
-        if 'createTime' in kwargs:
+        if complete_time is None:
+            raise TypeError("Missing 'complete_time' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'crossAccountRoleName' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
             cross_account_role_name = kwargs['crossAccountRoleName']
-        if 'crossAccountType' in kwargs:
+        if cross_account_role_name is None:
+            raise TypeError("Missing 'cross_account_role_name' argument")
+        if cross_account_type is None and 'crossAccountType' in kwargs:
             cross_account_type = kwargs['crossAccountType']
-        if 'crossAccountUserId' in kwargs:
+        if cross_account_type is None:
+            raise TypeError("Missing 'cross_account_type' argument")
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
             cross_account_user_id = kwargs['crossAccountUserId']
-        if 'errorMessage' in kwargs:
+        if cross_account_user_id is None:
+            raise TypeError("Missing 'cross_account_user_id' argument")
+        if error_message is None and 'errorMessage' in kwargs:
             error_message = kwargs['errorMessage']
-        if 'fileSystemId' in kwargs:
+        if error_message is None:
+            raise TypeError("Missing 'error_message' argument")
+        if exclude is None:
+            raise TypeError("Missing 'exclude' argument")
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'instanceId' in kwargs:
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if include is None:
+            raise TypeError("Missing 'include' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'itemsDone' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if items_done is None and 'itemsDone' in kwargs:
             items_done = kwargs['itemsDone']
-        if 'itemsTotal' in kwargs:
+        if items_done is None:
+            raise TypeError("Missing 'items_done' argument")
+        if items_total is None and 'itemsTotal' in kwargs:
             items_total = kwargs['itemsTotal']
-        if 'nasCreateTime' in kwargs:
+        if items_total is None:
+            raise TypeError("Missing 'items_total' argument")
+        if nas_create_time is None and 'nasCreateTime' in kwargs:
             nas_create_time = kwargs['nasCreateTime']
-        if 'otsDetails' in kwargs:
+        if nas_create_time is None:
+            raise TypeError("Missing 'nas_create_time' argument")
+        if ots_details is None and 'otsDetails' in kwargs:
             ots_details = kwargs['otsDetails']
-        if 'planId' in kwargs:
+        if ots_details is None:
+            raise TypeError("Missing 'ots_details' argument")
+        if paths is None:
+            raise TypeError("Missing 'paths' argument")
+        if plan_id is None and 'planId' in kwargs:
             plan_id = kwargs['planId']
-        if 'sourceType' in kwargs:
+        if plan_id is None:
+            raise TypeError("Missing 'plan_id' argument")
+        if prefix is None:
+            raise TypeError("Missing 'prefix' argument")
+        if progress is None:
+            raise TypeError("Missing 'progress' argument")
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
-        if 'startTime' in kwargs:
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'updatedTime' in kwargs:
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if updated_time is None and 'updatedTime' in kwargs:
             updated_time = kwargs['updatedTime']
-        if 'vaultId' in kwargs:
+        if updated_time is None:
+            raise TypeError("Missing 'updated_time' argument")
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
 
         _setter("actual_bytes", actual_bytes)
         _setter("actual_items", actual_items)
@@ -1002,11 +1070,13 @@ class GetBackupJobsJobOtsDetailResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             table_names: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             table_names: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'tableNames' in kwargs:
+        if table_names is None and 'tableNames' in kwargs:
             table_names = kwargs['tableNames']
+        if table_names is None:
+            raise TypeError("Missing 'table_names' argument")
 
         _setter("table_names", table_names)
 
@@ -1105,80 +1175,132 @@ class GetEcsBackupClientsClientResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             arch_type: str,
-             backup_status: str,
-             client_type: str,
-             client_version: str,
-             create_time: str,
-             data_network_type: str,
-             data_proxy_setting: str,
-             ecs_backup_client_id: str,
-             hostname: str,
-             id: str,
-             instance_id: str,
-             instance_name: str,
-             last_heart_beat_time: str,
-             max_client_version: str,
-             max_cpu_core: str,
-             max_worker: str,
-             os_type: str,
-             private_ipv4: str,
-             proxy_host: str,
-             proxy_password: str,
-             proxy_port: str,
-             proxy_user: str,
-             status: str,
-             updated_time: str,
-             use_https: bool,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             arch_type: Optional[str] = None,
+             backup_status: Optional[str] = None,
+             client_type: Optional[str] = None,
+             client_version: Optional[str] = None,
+             create_time: Optional[str] = None,
+             data_network_type: Optional[str] = None,
+             data_proxy_setting: Optional[str] = None,
+             ecs_backup_client_id: Optional[str] = None,
+             hostname: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             last_heart_beat_time: Optional[str] = None,
+             max_client_version: Optional[str] = None,
+             max_cpu_core: Optional[str] = None,
+             max_worker: Optional[str] = None,
+             os_type: Optional[str] = None,
+             private_ipv4: Optional[str] = None,
+             proxy_host: Optional[str] = None,
+             proxy_password: Optional[str] = None,
+             proxy_port: Optional[str] = None,
+             proxy_user: Optional[str] = None,
+             status: Optional[str] = None,
+             updated_time: Optional[str] = None,
+             use_https: Optional[bool] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'archType' in kwargs:
+        if arch_type is None and 'archType' in kwargs:
             arch_type = kwargs['archType']
-        if 'backupStatus' in kwargs:
+        if arch_type is None:
+            raise TypeError("Missing 'arch_type' argument")
+        if backup_status is None and 'backupStatus' in kwargs:
             backup_status = kwargs['backupStatus']
-        if 'clientType' in kwargs:
+        if backup_status is None:
+            raise TypeError("Missing 'backup_status' argument")
+        if client_type is None and 'clientType' in kwargs:
             client_type = kwargs['clientType']
-        if 'clientVersion' in kwargs:
+        if client_type is None:
+            raise TypeError("Missing 'client_type' argument")
+        if client_version is None and 'clientVersion' in kwargs:
             client_version = kwargs['clientVersion']
-        if 'createTime' in kwargs:
+        if client_version is None:
+            raise TypeError("Missing 'client_version' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'dataNetworkType' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if data_network_type is None and 'dataNetworkType' in kwargs:
             data_network_type = kwargs['dataNetworkType']
-        if 'dataProxySetting' in kwargs:
+        if data_network_type is None:
+            raise TypeError("Missing 'data_network_type' argument")
+        if data_proxy_setting is None and 'dataProxySetting' in kwargs:
             data_proxy_setting = kwargs['dataProxySetting']
-        if 'ecsBackupClientId' in kwargs:
+        if data_proxy_setting is None:
+            raise TypeError("Missing 'data_proxy_setting' argument")
+        if ecs_backup_client_id is None and 'ecsBackupClientId' in kwargs:
             ecs_backup_client_id = kwargs['ecsBackupClientId']
-        if 'instanceId' in kwargs:
+        if ecs_backup_client_id is None:
+            raise TypeError("Missing 'ecs_backup_client_id' argument")
+        if hostname is None:
+            raise TypeError("Missing 'hostname' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'lastHeartBeatTime' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if last_heart_beat_time is None and 'lastHeartBeatTime' in kwargs:
             last_heart_beat_time = kwargs['lastHeartBeatTime']
-        if 'maxClientVersion' in kwargs:
+        if last_heart_beat_time is None:
+            raise TypeError("Missing 'last_heart_beat_time' argument")
+        if max_client_version is None and 'maxClientVersion' in kwargs:
             max_client_version = kwargs['maxClientVersion']
-        if 'maxCpuCore' in kwargs:
+        if max_client_version is None:
+            raise TypeError("Missing 'max_client_version' argument")
+        if max_cpu_core is None and 'maxCpuCore' in kwargs:
             max_cpu_core = kwargs['maxCpuCore']
-        if 'maxWorker' in kwargs:
+        if max_cpu_core is None:
+            raise TypeError("Missing 'max_cpu_core' argument")
+        if max_worker is None and 'maxWorker' in kwargs:
             max_worker = kwargs['maxWorker']
-        if 'osType' in kwargs:
+        if max_worker is None:
+            raise TypeError("Missing 'max_worker' argument")
+        if os_type is None and 'osType' in kwargs:
             os_type = kwargs['osType']
-        if 'privateIpv4' in kwargs:
+        if os_type is None:
+            raise TypeError("Missing 'os_type' argument")
+        if private_ipv4 is None and 'privateIpv4' in kwargs:
             private_ipv4 = kwargs['privateIpv4']
-        if 'proxyHost' in kwargs:
+        if private_ipv4 is None:
+            raise TypeError("Missing 'private_ipv4' argument")
+        if proxy_host is None and 'proxyHost' in kwargs:
             proxy_host = kwargs['proxyHost']
-        if 'proxyPassword' in kwargs:
+        if proxy_host is None:
+            raise TypeError("Missing 'proxy_host' argument")
+        if proxy_password is None and 'proxyPassword' in kwargs:
             proxy_password = kwargs['proxyPassword']
-        if 'proxyPort' in kwargs:
+        if proxy_password is None:
+            raise TypeError("Missing 'proxy_password' argument")
+        if proxy_port is None and 'proxyPort' in kwargs:
             proxy_port = kwargs['proxyPort']
-        if 'proxyUser' in kwargs:
+        if proxy_port is None:
+            raise TypeError("Missing 'proxy_port' argument")
+        if proxy_user is None and 'proxyUser' in kwargs:
             proxy_user = kwargs['proxyUser']
-        if 'updatedTime' in kwargs:
+        if proxy_user is None:
+            raise TypeError("Missing 'proxy_user' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if updated_time is None and 'updatedTime' in kwargs:
             updated_time = kwargs['updatedTime']
-        if 'useHttps' in kwargs:
+        if updated_time is None:
+            raise TypeError("Missing 'updated_time' argument")
+        if use_https is None and 'useHttps' in kwargs:
             use_https = kwargs['useHttps']
-        if 'zoneId' in kwargs:
+        if use_https is None:
+            raise TypeError("Missing 'use_https' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("arch_type", arch_type)
         _setter("backup_status", backup_status)
@@ -1482,47 +1604,85 @@ class GetEcsBackupPlansPlanResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_type: str,
-             create_time: str,
-             created_time: str,
-             detail: str,
-             disabled: bool,
-             ecs_backup_plan_id: str,
-             ecs_backup_plan_name: str,
-             exclude: str,
-             id: str,
-             include: str,
-             instance_id: str,
-             options: str,
-             paths: Sequence[str],
-             retention: str,
-             schedule: str,
-             source_type: str,
-             speed_limit: str,
-             updated_time: str,
-             vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             backup_type: Optional[str] = None,
+             create_time: Optional[str] = None,
+             created_time: Optional[str] = None,
+             detail: Optional[str] = None,
+             disabled: Optional[bool] = None,
+             ecs_backup_plan_id: Optional[str] = None,
+             ecs_backup_plan_name: Optional[str] = None,
+             exclude: Optional[str] = None,
+             id: Optional[str] = None,
+             include: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             options: Optional[str] = None,
+             paths: Optional[Sequence[str]] = None,
+             retention: Optional[str] = None,
+             schedule: Optional[str] = None,
+             source_type: Optional[str] = None,
+             speed_limit: Optional[str] = None,
+             updated_time: Optional[str] = None,
+             vault_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'createTime' in kwargs:
+        if backup_type is None:
+            raise TypeError("Missing 'backup_type' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'createdTime' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if created_time is None and 'createdTime' in kwargs:
             created_time = kwargs['createdTime']
-        if 'ecsBackupPlanId' in kwargs:
+        if created_time is None:
+            raise TypeError("Missing 'created_time' argument")
+        if detail is None:
+            raise TypeError("Missing 'detail' argument")
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+        if ecs_backup_plan_id is None and 'ecsBackupPlanId' in kwargs:
             ecs_backup_plan_id = kwargs['ecsBackupPlanId']
-        if 'ecsBackupPlanName' in kwargs:
+        if ecs_backup_plan_id is None:
+            raise TypeError("Missing 'ecs_backup_plan_id' argument")
+        if ecs_backup_plan_name is None and 'ecsBackupPlanName' in kwargs:
             ecs_backup_plan_name = kwargs['ecsBackupPlanName']
-        if 'instanceId' in kwargs:
+        if ecs_backup_plan_name is None:
+            raise TypeError("Missing 'ecs_backup_plan_name' argument")
+        if exclude is None:
+            raise TypeError("Missing 'exclude' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if include is None:
+            raise TypeError("Missing 'include' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'sourceType' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if paths is None:
+            raise TypeError("Missing 'paths' argument")
+        if retention is None:
+            raise TypeError("Missing 'retention' argument")
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
-        if 'speedLimit' in kwargs:
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+        if speed_limit is None and 'speedLimit' in kwargs:
             speed_limit = kwargs['speedLimit']
-        if 'updatedTime' in kwargs:
+        if speed_limit is None:
+            raise TypeError("Missing 'speed_limit' argument")
+        if updated_time is None and 'updatedTime' in kwargs:
             updated_time = kwargs['updatedTime']
-        if 'vaultId' in kwargs:
+        if updated_time is None:
+            raise TypeError("Missing 'updated_time' argument")
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
 
         _setter("backup_type", backup_type)
         _setter("create_time", create_time)
@@ -1747,49 +1907,79 @@ class GetHanaBackupClientsHanaBackupClientResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alert_setting: str,
-             client_id: str,
-             client_name: str,
-             client_type: str,
-             client_version: str,
-             cluster_id: str,
-             id: str,
-             instance_id: str,
-             instance_name: str,
-             max_version: str,
-             network_type: str,
-             status: str,
-             status_message: str,
-             use_https: bool,
-             vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             alert_setting: Optional[str] = None,
+             client_id: Optional[str] = None,
+             client_name: Optional[str] = None,
+             client_type: Optional[str] = None,
+             client_version: Optional[str] = None,
+             cluster_id: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             max_version: Optional[str] = None,
+             network_type: Optional[str] = None,
+             status: Optional[str] = None,
+             status_message: Optional[str] = None,
+             use_https: Optional[bool] = None,
+             vault_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alertSetting' in kwargs:
+        if alert_setting is None and 'alertSetting' in kwargs:
             alert_setting = kwargs['alertSetting']
-        if 'clientId' in kwargs:
+        if alert_setting is None:
+            raise TypeError("Missing 'alert_setting' argument")
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'clientName' in kwargs:
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if client_name is None and 'clientName' in kwargs:
             client_name = kwargs['clientName']
-        if 'clientType' in kwargs:
+        if client_name is None:
+            raise TypeError("Missing 'client_name' argument")
+        if client_type is None and 'clientType' in kwargs:
             client_type = kwargs['clientType']
-        if 'clientVersion' in kwargs:
+        if client_type is None:
+            raise TypeError("Missing 'client_type' argument")
+        if client_version is None and 'clientVersion' in kwargs:
             client_version = kwargs['clientVersion']
-        if 'clusterId' in kwargs:
+        if client_version is None:
+            raise TypeError("Missing 'client_version' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'instanceId' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'maxVersion' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if max_version is None and 'maxVersion' in kwargs:
             max_version = kwargs['maxVersion']
-        if 'networkType' in kwargs:
+        if max_version is None:
+            raise TypeError("Missing 'max_version' argument")
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'statusMessage' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if status_message is None and 'statusMessage' in kwargs:
             status_message = kwargs['statusMessage']
-        if 'useHttps' in kwargs:
+        if status_message is None:
+            raise TypeError("Missing 'status_message' argument")
+        if use_https is None and 'useHttps' in kwargs:
             use_https = kwargs['useHttps']
-        if 'vaultId' in kwargs:
+        if use_https is None:
+            raise TypeError("Missing 'use_https' argument")
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
 
         _setter("alert_setting", alert_setting)
         _setter("client_id", client_id)
@@ -1971,35 +2161,57 @@ class GetHanaBackupPlansPlanResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_prefix: str,
-             backup_type: str,
-             cluster_id: str,
-             database_name: str,
-             id: str,
-             page_total: str,
-             plan_id: str,
-             plan_name: str,
-             schedule: str,
-             status: str,
-             vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             backup_prefix: Optional[str] = None,
+             backup_type: Optional[str] = None,
+             cluster_id: Optional[str] = None,
+             database_name: Optional[str] = None,
+             id: Optional[str] = None,
+             page_total: Optional[str] = None,
+             plan_id: Optional[str] = None,
+             plan_name: Optional[str] = None,
+             schedule: Optional[str] = None,
+             status: Optional[str] = None,
+             vault_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupPrefix' in kwargs:
+        if backup_prefix is None and 'backupPrefix' in kwargs:
             backup_prefix = kwargs['backupPrefix']
-        if 'backupType' in kwargs:
+        if backup_prefix is None:
+            raise TypeError("Missing 'backup_prefix' argument")
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'clusterId' in kwargs:
+        if backup_type is None:
+            raise TypeError("Missing 'backup_type' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'databaseName' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if database_name is None and 'databaseName' in kwargs:
             database_name = kwargs['databaseName']
-        if 'pageTotal' in kwargs:
+        if database_name is None:
+            raise TypeError("Missing 'database_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if page_total is None and 'pageTotal' in kwargs:
             page_total = kwargs['pageTotal']
-        if 'planId' in kwargs:
+        if page_total is None:
+            raise TypeError("Missing 'page_total' argument")
+        if plan_id is None and 'planId' in kwargs:
             plan_id = kwargs['planId']
-        if 'planName' in kwargs:
+        if plan_id is None:
+            raise TypeError("Missing 'plan_id' argument")
+        if plan_name is None and 'planName' in kwargs:
             plan_name = kwargs['planName']
-        if 'vaultId' in kwargs:
+        if plan_name is None:
+            raise TypeError("Missing 'plan_name' argument")
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
 
         _setter("backup_prefix", backup_prefix)
         _setter("backup_type", backup_type)
@@ -2149,41 +2361,67 @@ class GetHanaInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alert_setting: str,
-             hana_instance_id: str,
-             hana_name: str,
-             host: str,
-             id: str,
-             instance_number: int,
-             resource_group_id: str,
-             status: str,
-             status_message: str,
-             use_ssl: bool,
-             user_name: str,
-             validate_certificate: bool,
-             vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             alert_setting: Optional[str] = None,
+             hana_instance_id: Optional[str] = None,
+             hana_name: Optional[str] = None,
+             host: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_number: Optional[int] = None,
+             resource_group_id: Optional[str] = None,
+             status: Optional[str] = None,
+             status_message: Optional[str] = None,
+             use_ssl: Optional[bool] = None,
+             user_name: Optional[str] = None,
+             validate_certificate: Optional[bool] = None,
+             vault_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alertSetting' in kwargs:
+        if alert_setting is None and 'alertSetting' in kwargs:
             alert_setting = kwargs['alertSetting']
-        if 'hanaInstanceId' in kwargs:
+        if alert_setting is None:
+            raise TypeError("Missing 'alert_setting' argument")
+        if hana_instance_id is None and 'hanaInstanceId' in kwargs:
             hana_instance_id = kwargs['hanaInstanceId']
-        if 'hanaName' in kwargs:
+        if hana_instance_id is None:
+            raise TypeError("Missing 'hana_instance_id' argument")
+        if hana_name is None and 'hanaName' in kwargs:
             hana_name = kwargs['hanaName']
-        if 'instanceNumber' in kwargs:
+        if hana_name is None:
+            raise TypeError("Missing 'hana_name' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_number is None and 'instanceNumber' in kwargs:
             instance_number = kwargs['instanceNumber']
-        if 'resourceGroupId' in kwargs:
+        if instance_number is None:
+            raise TypeError("Missing 'instance_number' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'statusMessage' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if status_message is None and 'statusMessage' in kwargs:
             status_message = kwargs['statusMessage']
-        if 'useSsl' in kwargs:
+        if status_message is None:
+            raise TypeError("Missing 'status_message' argument")
+        if use_ssl is None and 'useSsl' in kwargs:
             use_ssl = kwargs['useSsl']
-        if 'userName' in kwargs:
+        if use_ssl is None:
+            raise TypeError("Missing 'use_ssl' argument")
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
-        if 'validateCertificate' in kwargs:
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
+        if validate_certificate is None and 'validateCertificate' in kwargs:
             validate_certificate = kwargs['validateCertificate']
-        if 'vaultId' in kwargs:
+        if validate_certificate is None:
+            raise TypeError("Missing 'validate_certificate' argument")
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
 
         _setter("alert_setting", alert_setting)
         _setter("hana_instance_id", hana_instance_id)
@@ -2357,38 +2595,66 @@ class GetNasBackupPlansPlanResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_type: str,
-             create_time: str,
-             created_time: str,
-             disabled: bool,
-             file_system_id: str,
-             id: str,
-             nas_backup_plan_id: str,
-             nas_backup_plan_name: str,
-             options: str,
-             paths: Sequence[str],
-             retention: str,
-             schedule: str,
-             updated_time: str,
-             vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             backup_type: Optional[str] = None,
+             create_time: Optional[str] = None,
+             created_time: Optional[str] = None,
+             disabled: Optional[bool] = None,
+             file_system_id: Optional[str] = None,
+             id: Optional[str] = None,
+             nas_backup_plan_id: Optional[str] = None,
+             nas_backup_plan_name: Optional[str] = None,
+             options: Optional[str] = None,
+             paths: Optional[Sequence[str]] = None,
+             retention: Optional[str] = None,
+             schedule: Optional[str] = None,
+             updated_time: Optional[str] = None,
+             vault_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'createTime' in kwargs:
+        if backup_type is None:
+            raise TypeError("Missing 'backup_type' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'createdTime' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if created_time is None and 'createdTime' in kwargs:
             created_time = kwargs['createdTime']
-        if 'fileSystemId' in kwargs:
+        if created_time is None:
+            raise TypeError("Missing 'created_time' argument")
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'nasBackupPlanId' in kwargs:
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if nas_backup_plan_id is None and 'nasBackupPlanId' in kwargs:
             nas_backup_plan_id = kwargs['nasBackupPlanId']
-        if 'nasBackupPlanName' in kwargs:
+        if nas_backup_plan_id is None:
+            raise TypeError("Missing 'nas_backup_plan_id' argument")
+        if nas_backup_plan_name is None and 'nasBackupPlanName' in kwargs:
             nas_backup_plan_name = kwargs['nasBackupPlanName']
-        if 'updatedTime' in kwargs:
+        if nas_backup_plan_name is None:
+            raise TypeError("Missing 'nas_backup_plan_name' argument")
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if paths is None:
+            raise TypeError("Missing 'paths' argument")
+        if retention is None:
+            raise TypeError("Missing 'retention' argument")
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+        if updated_time is None and 'updatedTime' in kwargs:
             updated_time = kwargs['updatedTime']
-        if 'vaultId' in kwargs:
+        if updated_time is None:
+            raise TypeError("Missing 'updated_time' argument")
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
 
         _setter("backup_type", backup_type)
         _setter("create_time", create_time)
@@ -2565,32 +2831,56 @@ class GetOssBackupPlansPlanResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_type: str,
-             bucket: str,
-             created_time: str,
-             disabled: bool,
-             id: str,
-             oss_backup_plan_id: str,
-             oss_backup_plan_name: str,
-             prefix: str,
-             retention: str,
-             schedule: str,
-             updated_time: str,
-             vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             backup_type: Optional[str] = None,
+             bucket: Optional[str] = None,
+             created_time: Optional[str] = None,
+             disabled: Optional[bool] = None,
+             id: Optional[str] = None,
+             oss_backup_plan_id: Optional[str] = None,
+             oss_backup_plan_name: Optional[str] = None,
+             prefix: Optional[str] = None,
+             retention: Optional[str] = None,
+             schedule: Optional[str] = None,
+             updated_time: Optional[str] = None,
+             vault_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'createdTime' in kwargs:
+        if backup_type is None:
+            raise TypeError("Missing 'backup_type' argument")
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if created_time is None and 'createdTime' in kwargs:
             created_time = kwargs['createdTime']
-        if 'ossBackupPlanId' in kwargs:
+        if created_time is None:
+            raise TypeError("Missing 'created_time' argument")
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if oss_backup_plan_id is None and 'ossBackupPlanId' in kwargs:
             oss_backup_plan_id = kwargs['ossBackupPlanId']
-        if 'ossBackupPlanName' in kwargs:
+        if oss_backup_plan_id is None:
+            raise TypeError("Missing 'oss_backup_plan_id' argument")
+        if oss_backup_plan_name is None and 'ossBackupPlanName' in kwargs:
             oss_backup_plan_name = kwargs['ossBackupPlanName']
-        if 'updatedTime' in kwargs:
+        if oss_backup_plan_name is None:
+            raise TypeError("Missing 'oss_backup_plan_name' argument")
+        if prefix is None:
+            raise TypeError("Missing 'prefix' argument")
+        if retention is None:
+            raise TypeError("Missing 'retention' argument")
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+        if updated_time is None and 'updatedTime' in kwargs:
             updated_time = kwargs['updatedTime']
-        if 'vaultId' in kwargs:
+        if updated_time is None:
+            raise TypeError("Missing 'updated_time' argument")
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
 
         _setter("backup_type", backup_type)
         _setter("bucket", bucket)
@@ -2749,36 +3039,60 @@ class GetOtsBackupPlansPlanResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_type: str,
-             created_time: str,
-             disabled: bool,
-             id: str,
-             ots_backup_plan_id: str,
-             ots_backup_plan_name: str,
-             ots_details: Sequence['outputs.GetOtsBackupPlansPlanOtsDetailResult'],
-             retention: str,
-             schedule: str,
-             source_type: str,
-             updated_time: str,
-             vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             backup_type: Optional[str] = None,
+             created_time: Optional[str] = None,
+             disabled: Optional[bool] = None,
+             id: Optional[str] = None,
+             ots_backup_plan_id: Optional[str] = None,
+             ots_backup_plan_name: Optional[str] = None,
+             ots_details: Optional[Sequence['outputs.GetOtsBackupPlansPlanOtsDetailResult']] = None,
+             retention: Optional[str] = None,
+             schedule: Optional[str] = None,
+             source_type: Optional[str] = None,
+             updated_time: Optional[str] = None,
+             vault_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'createdTime' in kwargs:
+        if backup_type is None:
+            raise TypeError("Missing 'backup_type' argument")
+        if created_time is None and 'createdTime' in kwargs:
             created_time = kwargs['createdTime']
-        if 'otsBackupPlanId' in kwargs:
+        if created_time is None:
+            raise TypeError("Missing 'created_time' argument")
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ots_backup_plan_id is None and 'otsBackupPlanId' in kwargs:
             ots_backup_plan_id = kwargs['otsBackupPlanId']
-        if 'otsBackupPlanName' in kwargs:
+        if ots_backup_plan_id is None:
+            raise TypeError("Missing 'ots_backup_plan_id' argument")
+        if ots_backup_plan_name is None and 'otsBackupPlanName' in kwargs:
             ots_backup_plan_name = kwargs['otsBackupPlanName']
-        if 'otsDetails' in kwargs:
+        if ots_backup_plan_name is None:
+            raise TypeError("Missing 'ots_backup_plan_name' argument")
+        if ots_details is None and 'otsDetails' in kwargs:
             ots_details = kwargs['otsDetails']
-        if 'sourceType' in kwargs:
+        if ots_details is None:
+            raise TypeError("Missing 'ots_details' argument")
+        if retention is None:
+            raise TypeError("Missing 'retention' argument")
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
-        if 'updatedTime' in kwargs:
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+        if updated_time is None and 'updatedTime' in kwargs:
             updated_time = kwargs['updatedTime']
-        if 'vaultId' in kwargs:
+        if updated_time is None:
+            raise TypeError("Missing 'updated_time' argument")
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
 
         _setter("backup_type", backup_type)
         _setter("created_time", created_time)
@@ -2899,11 +3213,13 @@ class GetOtsBackupPlansPlanOtsDetailResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             table_names: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             table_names: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'tableNames' in kwargs:
+        if table_names is None and 'tableNames' in kwargs:
             table_names = kwargs['tableNames']
+        if table_names is None:
+            raise TypeError("Missing 'table_names' argument")
 
         _setter("table_names", table_names)
 
@@ -2987,65 +3303,107 @@ class GetOtsSnapshotsSnapshotResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             actual_bytes: str,
-             backup_type: str,
-             bytes_total: str,
-             complete_time: str,
-             create_time: str,
-             created_time: str,
-             id: str,
-             instance_name: str,
-             job_id: str,
-             parent_snapshot_hash: str,
-             range_end: str,
-             range_start: str,
-             retention: str,
-             snapshot_hash: str,
-             snapshot_id: str,
-             source_type: str,
-             start_time: str,
-             status: str,
-             table_name: str,
-             updated_time: str,
-             vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             actual_bytes: Optional[str] = None,
+             backup_type: Optional[str] = None,
+             bytes_total: Optional[str] = None,
+             complete_time: Optional[str] = None,
+             create_time: Optional[str] = None,
+             created_time: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             job_id: Optional[str] = None,
+             parent_snapshot_hash: Optional[str] = None,
+             range_end: Optional[str] = None,
+             range_start: Optional[str] = None,
+             retention: Optional[str] = None,
+             snapshot_hash: Optional[str] = None,
+             snapshot_id: Optional[str] = None,
+             source_type: Optional[str] = None,
+             start_time: Optional[str] = None,
+             status: Optional[str] = None,
+             table_name: Optional[str] = None,
+             updated_time: Optional[str] = None,
+             vault_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'actualBytes' in kwargs:
+        if actual_bytes is None and 'actualBytes' in kwargs:
             actual_bytes = kwargs['actualBytes']
-        if 'backupType' in kwargs:
+        if actual_bytes is None:
+            raise TypeError("Missing 'actual_bytes' argument")
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'bytesTotal' in kwargs:
+        if backup_type is None:
+            raise TypeError("Missing 'backup_type' argument")
+        if bytes_total is None and 'bytesTotal' in kwargs:
             bytes_total = kwargs['bytesTotal']
-        if 'completeTime' in kwargs:
+        if bytes_total is None:
+            raise TypeError("Missing 'bytes_total' argument")
+        if complete_time is None and 'completeTime' in kwargs:
             complete_time = kwargs['completeTime']
-        if 'createTime' in kwargs:
+        if complete_time is None:
+            raise TypeError("Missing 'complete_time' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'createdTime' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if created_time is None and 'createdTime' in kwargs:
             created_time = kwargs['createdTime']
-        if 'instanceName' in kwargs:
+        if created_time is None:
+            raise TypeError("Missing 'created_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'jobId' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if job_id is None and 'jobId' in kwargs:
             job_id = kwargs['jobId']
-        if 'parentSnapshotHash' in kwargs:
+        if job_id is None:
+            raise TypeError("Missing 'job_id' argument")
+        if parent_snapshot_hash is None and 'parentSnapshotHash' in kwargs:
             parent_snapshot_hash = kwargs['parentSnapshotHash']
-        if 'rangeEnd' in kwargs:
+        if parent_snapshot_hash is None:
+            raise TypeError("Missing 'parent_snapshot_hash' argument")
+        if range_end is None and 'rangeEnd' in kwargs:
             range_end = kwargs['rangeEnd']
-        if 'rangeStart' in kwargs:
+        if range_end is None:
+            raise TypeError("Missing 'range_end' argument")
+        if range_start is None and 'rangeStart' in kwargs:
             range_start = kwargs['rangeStart']
-        if 'snapshotHash' in kwargs:
+        if range_start is None:
+            raise TypeError("Missing 'range_start' argument")
+        if retention is None:
+            raise TypeError("Missing 'retention' argument")
+        if snapshot_hash is None and 'snapshotHash' in kwargs:
             snapshot_hash = kwargs['snapshotHash']
-        if 'snapshotId' in kwargs:
+        if snapshot_hash is None:
+            raise TypeError("Missing 'snapshot_hash' argument")
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
-        if 'sourceType' in kwargs:
+        if snapshot_id is None:
+            raise TypeError("Missing 'snapshot_id' argument")
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
-        if 'startTime' in kwargs:
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'tableName' in kwargs:
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if table_name is None and 'tableName' in kwargs:
             table_name = kwargs['tableName']
-        if 'updatedTime' in kwargs:
+        if table_name is None:
+            raise TypeError("Missing 'table_name' argument")
+        if updated_time is None and 'updatedTime' in kwargs:
             updated_time = kwargs['updatedTime']
-        if 'vaultId' in kwargs:
+        if updated_time is None:
+            raise TypeError("Missing 'updated_time' argument")
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
 
         _setter("actual_bytes", actual_bytes)
         _setter("backup_type", backup_type)
@@ -3252,11 +3610,13 @@ class GetReplicationVaultRegionsRegionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             replication_region_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             replication_region_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'replicationRegionId' in kwargs:
+        if replication_region_id is None and 'replicationRegionId' in kwargs:
             replication_region_id = kwargs['replicationRegionId']
+        if replication_region_id is None:
+            raise TypeError("Missing 'replication_region_id' argument")
 
         _setter("replication_region_id", replication_region_id)
 
@@ -3372,96 +3732,160 @@ class GetRestoreJobsJobResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             actual_bytes: str,
-             actual_items: str,
-             bytes_done: str,
-             bytes_total: str,
-             complete_time: str,
-             create_time: str,
-             error_file: str,
-             error_message: str,
-             expire_time: str,
-             id: str,
-             items_done: str,
-             items_total: str,
-             options: str,
-             parent_id: str,
-             progress: int,
-             restore_job_id: str,
-             restore_type: str,
-             snapshot_hash: str,
-             snapshot_id: str,
-             source_type: str,
-             start_time: str,
-             status: str,
-             target_bucket: str,
-             target_client_id: str,
-             target_create_time: str,
-             target_data_source_id: str,
-             target_file_system_id: str,
-             target_instance_id: str,
-             target_path: str,
-             target_prefix: str,
-             updated_time: str,
-             vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             actual_bytes: Optional[str] = None,
+             actual_items: Optional[str] = None,
+             bytes_done: Optional[str] = None,
+             bytes_total: Optional[str] = None,
+             complete_time: Optional[str] = None,
+             create_time: Optional[str] = None,
+             error_file: Optional[str] = None,
+             error_message: Optional[str] = None,
+             expire_time: Optional[str] = None,
+             id: Optional[str] = None,
+             items_done: Optional[str] = None,
+             items_total: Optional[str] = None,
+             options: Optional[str] = None,
+             parent_id: Optional[str] = None,
+             progress: Optional[int] = None,
+             restore_job_id: Optional[str] = None,
+             restore_type: Optional[str] = None,
+             snapshot_hash: Optional[str] = None,
+             snapshot_id: Optional[str] = None,
+             source_type: Optional[str] = None,
+             start_time: Optional[str] = None,
+             status: Optional[str] = None,
+             target_bucket: Optional[str] = None,
+             target_client_id: Optional[str] = None,
+             target_create_time: Optional[str] = None,
+             target_data_source_id: Optional[str] = None,
+             target_file_system_id: Optional[str] = None,
+             target_instance_id: Optional[str] = None,
+             target_path: Optional[str] = None,
+             target_prefix: Optional[str] = None,
+             updated_time: Optional[str] = None,
+             vault_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'actualBytes' in kwargs:
+        if actual_bytes is None and 'actualBytes' in kwargs:
             actual_bytes = kwargs['actualBytes']
-        if 'actualItems' in kwargs:
+        if actual_bytes is None:
+            raise TypeError("Missing 'actual_bytes' argument")
+        if actual_items is None and 'actualItems' in kwargs:
             actual_items = kwargs['actualItems']
-        if 'bytesDone' in kwargs:
+        if actual_items is None:
+            raise TypeError("Missing 'actual_items' argument")
+        if bytes_done is None and 'bytesDone' in kwargs:
             bytes_done = kwargs['bytesDone']
-        if 'bytesTotal' in kwargs:
+        if bytes_done is None:
+            raise TypeError("Missing 'bytes_done' argument")
+        if bytes_total is None and 'bytesTotal' in kwargs:
             bytes_total = kwargs['bytesTotal']
-        if 'completeTime' in kwargs:
+        if bytes_total is None:
+            raise TypeError("Missing 'bytes_total' argument")
+        if complete_time is None and 'completeTime' in kwargs:
             complete_time = kwargs['completeTime']
-        if 'createTime' in kwargs:
+        if complete_time is None:
+            raise TypeError("Missing 'complete_time' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'errorFile' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if error_file is None and 'errorFile' in kwargs:
             error_file = kwargs['errorFile']
-        if 'errorMessage' in kwargs:
+        if error_file is None:
+            raise TypeError("Missing 'error_file' argument")
+        if error_message is None and 'errorMessage' in kwargs:
             error_message = kwargs['errorMessage']
-        if 'expireTime' in kwargs:
+        if error_message is None:
+            raise TypeError("Missing 'error_message' argument")
+        if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
-        if 'itemsDone' in kwargs:
+        if expire_time is None:
+            raise TypeError("Missing 'expire_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if items_done is None and 'itemsDone' in kwargs:
             items_done = kwargs['itemsDone']
-        if 'itemsTotal' in kwargs:
+        if items_done is None:
+            raise TypeError("Missing 'items_done' argument")
+        if items_total is None and 'itemsTotal' in kwargs:
             items_total = kwargs['itemsTotal']
-        if 'parentId' in kwargs:
+        if items_total is None:
+            raise TypeError("Missing 'items_total' argument")
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if parent_id is None and 'parentId' in kwargs:
             parent_id = kwargs['parentId']
-        if 'restoreJobId' in kwargs:
+        if parent_id is None:
+            raise TypeError("Missing 'parent_id' argument")
+        if progress is None:
+            raise TypeError("Missing 'progress' argument")
+        if restore_job_id is None and 'restoreJobId' in kwargs:
             restore_job_id = kwargs['restoreJobId']
-        if 'restoreType' in kwargs:
+        if restore_job_id is None:
+            raise TypeError("Missing 'restore_job_id' argument")
+        if restore_type is None and 'restoreType' in kwargs:
             restore_type = kwargs['restoreType']
-        if 'snapshotHash' in kwargs:
+        if restore_type is None:
+            raise TypeError("Missing 'restore_type' argument")
+        if snapshot_hash is None and 'snapshotHash' in kwargs:
             snapshot_hash = kwargs['snapshotHash']
-        if 'snapshotId' in kwargs:
+        if snapshot_hash is None:
+            raise TypeError("Missing 'snapshot_hash' argument")
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
-        if 'sourceType' in kwargs:
+        if snapshot_id is None:
+            raise TypeError("Missing 'snapshot_id' argument")
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
-        if 'startTime' in kwargs:
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'targetBucket' in kwargs:
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if target_bucket is None and 'targetBucket' in kwargs:
             target_bucket = kwargs['targetBucket']
-        if 'targetClientId' in kwargs:
+        if target_bucket is None:
+            raise TypeError("Missing 'target_bucket' argument")
+        if target_client_id is None and 'targetClientId' in kwargs:
             target_client_id = kwargs['targetClientId']
-        if 'targetCreateTime' in kwargs:
+        if target_client_id is None:
+            raise TypeError("Missing 'target_client_id' argument")
+        if target_create_time is None and 'targetCreateTime' in kwargs:
             target_create_time = kwargs['targetCreateTime']
-        if 'targetDataSourceId' in kwargs:
+        if target_create_time is None:
+            raise TypeError("Missing 'target_create_time' argument")
+        if target_data_source_id is None and 'targetDataSourceId' in kwargs:
             target_data_source_id = kwargs['targetDataSourceId']
-        if 'targetFileSystemId' in kwargs:
+        if target_data_source_id is None:
+            raise TypeError("Missing 'target_data_source_id' argument")
+        if target_file_system_id is None and 'targetFileSystemId' in kwargs:
             target_file_system_id = kwargs['targetFileSystemId']
-        if 'targetInstanceId' in kwargs:
+        if target_file_system_id is None:
+            raise TypeError("Missing 'target_file_system_id' argument")
+        if target_instance_id is None and 'targetInstanceId' in kwargs:
             target_instance_id = kwargs['targetInstanceId']
-        if 'targetPath' in kwargs:
+        if target_instance_id is None:
+            raise TypeError("Missing 'target_instance_id' argument")
+        if target_path is None and 'targetPath' in kwargs:
             target_path = kwargs['targetPath']
-        if 'targetPrefix' in kwargs:
+        if target_path is None:
+            raise TypeError("Missing 'target_path' argument")
+        if target_prefix is None and 'targetPrefix' in kwargs:
             target_prefix = kwargs['targetPrefix']
-        if 'updatedTime' in kwargs:
+        if target_prefix is None:
+            raise TypeError("Missing 'target_prefix' argument")
+        if updated_time is None and 'updatedTime' in kwargs:
             updated_time = kwargs['updatedTime']
-        if 'vaultId' in kwargs:
+        if updated_time is None:
+            raise TypeError("Missing 'updated_time' argument")
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
 
         _setter("actual_bytes", actual_bytes)
         _setter("actual_items", actual_items)
@@ -3760,7 +4184,7 @@ class GetServerBackupPlansFilterResult(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:
@@ -3823,25 +4247,43 @@ class GetServerBackupPlansPlanResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             details: Sequence['outputs.GetServerBackupPlansPlanDetailResult'],
-             disabled: bool,
-             ecs_server_backup_plan_id: str,
-             ecs_server_backup_plan_name: str,
-             id: str,
-             instance_id: str,
-             retention: str,
-             schedule: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             details: Optional[Sequence['outputs.GetServerBackupPlansPlanDetailResult']] = None,
+             disabled: Optional[bool] = None,
+             ecs_server_backup_plan_id: Optional[str] = None,
+             ecs_server_backup_plan_name: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             retention: Optional[str] = None,
+             schedule: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'ecsServerBackupPlanId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if details is None:
+            raise TypeError("Missing 'details' argument")
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+        if ecs_server_backup_plan_id is None and 'ecsServerBackupPlanId' in kwargs:
             ecs_server_backup_plan_id = kwargs['ecsServerBackupPlanId']
-        if 'ecsServerBackupPlanName' in kwargs:
+        if ecs_server_backup_plan_id is None:
+            raise TypeError("Missing 'ecs_server_backup_plan_id' argument")
+        if ecs_server_backup_plan_name is None and 'ecsServerBackupPlanName' in kwargs:
             ecs_server_backup_plan_name = kwargs['ecsServerBackupPlanName']
-        if 'instanceId' in kwargs:
+        if ecs_server_backup_plan_name is None:
+            raise TypeError("Missing 'ecs_server_backup_plan_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if retention is None:
+            raise TypeError("Missing 'retention' argument")
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
 
         _setter("create_time", create_time)
         _setter("details", details)
@@ -3967,38 +4409,58 @@ class GetServerBackupPlansPlanDetailResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_consistent: bool,
-             destination_region_id: str,
-             destination_retention: int,
-             disk_id_lists: Sequence[str],
-             do_copy: bool,
-             enable_fs_freeze: bool,
-             post_script_path: str,
-             pre_script_path: str,
-             snapshot_group: bool,
-             timeout_in_seconds: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             app_consistent: Optional[bool] = None,
+             destination_region_id: Optional[str] = None,
+             destination_retention: Optional[int] = None,
+             disk_id_lists: Optional[Sequence[str]] = None,
+             do_copy: Optional[bool] = None,
+             enable_fs_freeze: Optional[bool] = None,
+             post_script_path: Optional[str] = None,
+             pre_script_path: Optional[str] = None,
+             snapshot_group: Optional[bool] = None,
+             timeout_in_seconds: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appConsistent' in kwargs:
+        if app_consistent is None and 'appConsistent' in kwargs:
             app_consistent = kwargs['appConsistent']
-        if 'destinationRegionId' in kwargs:
+        if app_consistent is None:
+            raise TypeError("Missing 'app_consistent' argument")
+        if destination_region_id is None and 'destinationRegionId' in kwargs:
             destination_region_id = kwargs['destinationRegionId']
-        if 'destinationRetention' in kwargs:
+        if destination_region_id is None:
+            raise TypeError("Missing 'destination_region_id' argument")
+        if destination_retention is None and 'destinationRetention' in kwargs:
             destination_retention = kwargs['destinationRetention']
-        if 'diskIdLists' in kwargs:
+        if destination_retention is None:
+            raise TypeError("Missing 'destination_retention' argument")
+        if disk_id_lists is None and 'diskIdLists' in kwargs:
             disk_id_lists = kwargs['diskIdLists']
-        if 'doCopy' in kwargs:
+        if disk_id_lists is None:
+            raise TypeError("Missing 'disk_id_lists' argument")
+        if do_copy is None and 'doCopy' in kwargs:
             do_copy = kwargs['doCopy']
-        if 'enableFsFreeze' in kwargs:
+        if do_copy is None:
+            raise TypeError("Missing 'do_copy' argument")
+        if enable_fs_freeze is None and 'enableFsFreeze' in kwargs:
             enable_fs_freeze = kwargs['enableFsFreeze']
-        if 'postScriptPath' in kwargs:
+        if enable_fs_freeze is None:
+            raise TypeError("Missing 'enable_fs_freeze' argument")
+        if post_script_path is None and 'postScriptPath' in kwargs:
             post_script_path = kwargs['postScriptPath']
-        if 'preScriptPath' in kwargs:
+        if post_script_path is None:
+            raise TypeError("Missing 'post_script_path' argument")
+        if pre_script_path is None and 'preScriptPath' in kwargs:
             pre_script_path = kwargs['preScriptPath']
-        if 'snapshotGroup' in kwargs:
+        if pre_script_path is None:
+            raise TypeError("Missing 'pre_script_path' argument")
+        if snapshot_group is None and 'snapshotGroup' in kwargs:
             snapshot_group = kwargs['snapshotGroup']
-        if 'timeoutInSeconds' in kwargs:
+        if snapshot_group is None:
+            raise TypeError("Missing 'snapshot_group' argument")
+        if timeout_in_seconds is None and 'timeoutInSeconds' in kwargs:
             timeout_in_seconds = kwargs['timeoutInSeconds']
+        if timeout_in_seconds is None:
+            raise TypeError("Missing 'timeout_in_seconds' argument")
 
         _setter("app_consistent", app_consistent)
         _setter("destination_region_id", destination_region_id)
@@ -4183,77 +4645,131 @@ class GetSnapshotsSnapshotResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             actual_bytes: str,
-             actual_items: str,
-             backup_type: str,
-             bucket: str,
-             bytes_done: str,
-             bytes_total: str,
-             client_id: str,
-             complete_time: str,
-             create_time: str,
-             created_time: str,
-             error_file: str,
-             file_system_id: str,
-             id: str,
-             instance_id: str,
-             items_done: str,
-             items_total: str,
-             job_id: str,
-             parent_snapshot_hash: str,
-             path: str,
-             prefix: str,
-             retention: str,
-             snapshot_hash: str,
-             snapshot_id: str,
-             source_type: str,
-             start_time: str,
-             status: str,
-             updated_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             actual_bytes: Optional[str] = None,
+             actual_items: Optional[str] = None,
+             backup_type: Optional[str] = None,
+             bucket: Optional[str] = None,
+             bytes_done: Optional[str] = None,
+             bytes_total: Optional[str] = None,
+             client_id: Optional[str] = None,
+             complete_time: Optional[str] = None,
+             create_time: Optional[str] = None,
+             created_time: Optional[str] = None,
+             error_file: Optional[str] = None,
+             file_system_id: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             items_done: Optional[str] = None,
+             items_total: Optional[str] = None,
+             job_id: Optional[str] = None,
+             parent_snapshot_hash: Optional[str] = None,
+             path: Optional[str] = None,
+             prefix: Optional[str] = None,
+             retention: Optional[str] = None,
+             snapshot_hash: Optional[str] = None,
+             snapshot_id: Optional[str] = None,
+             source_type: Optional[str] = None,
+             start_time: Optional[str] = None,
+             status: Optional[str] = None,
+             updated_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'actualBytes' in kwargs:
+        if actual_bytes is None and 'actualBytes' in kwargs:
             actual_bytes = kwargs['actualBytes']
-        if 'actualItems' in kwargs:
+        if actual_bytes is None:
+            raise TypeError("Missing 'actual_bytes' argument")
+        if actual_items is None and 'actualItems' in kwargs:
             actual_items = kwargs['actualItems']
-        if 'backupType' in kwargs:
+        if actual_items is None:
+            raise TypeError("Missing 'actual_items' argument")
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'bytesDone' in kwargs:
+        if backup_type is None:
+            raise TypeError("Missing 'backup_type' argument")
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if bytes_done is None and 'bytesDone' in kwargs:
             bytes_done = kwargs['bytesDone']
-        if 'bytesTotal' in kwargs:
+        if bytes_done is None:
+            raise TypeError("Missing 'bytes_done' argument")
+        if bytes_total is None and 'bytesTotal' in kwargs:
             bytes_total = kwargs['bytesTotal']
-        if 'clientId' in kwargs:
+        if bytes_total is None:
+            raise TypeError("Missing 'bytes_total' argument")
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'completeTime' in kwargs:
+        if client_id is None:
+            raise TypeError("Missing 'client_id' argument")
+        if complete_time is None and 'completeTime' in kwargs:
             complete_time = kwargs['completeTime']
-        if 'createTime' in kwargs:
+        if complete_time is None:
+            raise TypeError("Missing 'complete_time' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'createdTime' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if created_time is None and 'createdTime' in kwargs:
             created_time = kwargs['createdTime']
-        if 'errorFile' in kwargs:
+        if created_time is None:
+            raise TypeError("Missing 'created_time' argument")
+        if error_file is None and 'errorFile' in kwargs:
             error_file = kwargs['errorFile']
-        if 'fileSystemId' in kwargs:
+        if error_file is None:
+            raise TypeError("Missing 'error_file' argument")
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'instanceId' in kwargs:
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'itemsDone' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if items_done is None and 'itemsDone' in kwargs:
             items_done = kwargs['itemsDone']
-        if 'itemsTotal' in kwargs:
+        if items_done is None:
+            raise TypeError("Missing 'items_done' argument")
+        if items_total is None and 'itemsTotal' in kwargs:
             items_total = kwargs['itemsTotal']
-        if 'jobId' in kwargs:
+        if items_total is None:
+            raise TypeError("Missing 'items_total' argument")
+        if job_id is None and 'jobId' in kwargs:
             job_id = kwargs['jobId']
-        if 'parentSnapshotHash' in kwargs:
+        if job_id is None:
+            raise TypeError("Missing 'job_id' argument")
+        if parent_snapshot_hash is None and 'parentSnapshotHash' in kwargs:
             parent_snapshot_hash = kwargs['parentSnapshotHash']
-        if 'snapshotHash' in kwargs:
+        if parent_snapshot_hash is None:
+            raise TypeError("Missing 'parent_snapshot_hash' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if prefix is None:
+            raise TypeError("Missing 'prefix' argument")
+        if retention is None:
+            raise TypeError("Missing 'retention' argument")
+        if snapshot_hash is None and 'snapshotHash' in kwargs:
             snapshot_hash = kwargs['snapshotHash']
-        if 'snapshotId' in kwargs:
+        if snapshot_hash is None:
+            raise TypeError("Missing 'snapshot_hash' argument")
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
-        if 'sourceType' in kwargs:
+        if snapshot_id is None:
+            raise TypeError("Missing 'snapshot_id' argument")
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
-        if 'startTime' in kwargs:
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'updatedTime' in kwargs:
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if updated_time is None and 'updatedTime' in kwargs:
             updated_time = kwargs['updatedTime']
+        if updated_time is None:
+            raise TypeError("Missing 'updated_time' argument")
 
         _setter("actual_bytes", actual_bytes)
         _setter("actual_items", actual_items)
@@ -4582,71 +5098,121 @@ class GetVaultsVaultResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: str,
-             bytes_done: str,
-             created_time: str,
-             dedup: bool,
-             description: str,
-             id: str,
-             index_available: bool,
-             index_level: str,
-             index_update_time: str,
-             latest_replication_time: str,
-             payment_type: str,
-             replication: bool,
-             replication_source_region_id: str,
-             replication_source_vault_id: str,
-             retention: str,
-             search_enabled: bool,
-             source_types: Sequence[str],
-             status: str,
-             storage_size: str,
-             updated_time: str,
-             vault_id: str,
-             vault_name: str,
-             vault_status_message: str,
-             vault_storage_class: str,
-             vault_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bucket_name: Optional[str] = None,
+             bytes_done: Optional[str] = None,
+             created_time: Optional[str] = None,
+             dedup: Optional[bool] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             index_available: Optional[bool] = None,
+             index_level: Optional[str] = None,
+             index_update_time: Optional[str] = None,
+             latest_replication_time: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             replication: Optional[bool] = None,
+             replication_source_region_id: Optional[str] = None,
+             replication_source_vault_id: Optional[str] = None,
+             retention: Optional[str] = None,
+             search_enabled: Optional[bool] = None,
+             source_types: Optional[Sequence[str]] = None,
+             status: Optional[str] = None,
+             storage_size: Optional[str] = None,
+             updated_time: Optional[str] = None,
+             vault_id: Optional[str] = None,
+             vault_name: Optional[str] = None,
+             vault_status_message: Optional[str] = None,
+             vault_storage_class: Optional[str] = None,
+             vault_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bucketName' in kwargs:
+        if bucket_name is None and 'bucketName' in kwargs:
             bucket_name = kwargs['bucketName']
-        if 'bytesDone' in kwargs:
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if bytes_done is None and 'bytesDone' in kwargs:
             bytes_done = kwargs['bytesDone']
-        if 'createdTime' in kwargs:
+        if bytes_done is None:
+            raise TypeError("Missing 'bytes_done' argument")
+        if created_time is None and 'createdTime' in kwargs:
             created_time = kwargs['createdTime']
-        if 'indexAvailable' in kwargs:
+        if created_time is None:
+            raise TypeError("Missing 'created_time' argument")
+        if dedup is None:
+            raise TypeError("Missing 'dedup' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if index_available is None and 'indexAvailable' in kwargs:
             index_available = kwargs['indexAvailable']
-        if 'indexLevel' in kwargs:
+        if index_available is None:
+            raise TypeError("Missing 'index_available' argument")
+        if index_level is None and 'indexLevel' in kwargs:
             index_level = kwargs['indexLevel']
-        if 'indexUpdateTime' in kwargs:
+        if index_level is None:
+            raise TypeError("Missing 'index_level' argument")
+        if index_update_time is None and 'indexUpdateTime' in kwargs:
             index_update_time = kwargs['indexUpdateTime']
-        if 'latestReplicationTime' in kwargs:
+        if index_update_time is None:
+            raise TypeError("Missing 'index_update_time' argument")
+        if latest_replication_time is None and 'latestReplicationTime' in kwargs:
             latest_replication_time = kwargs['latestReplicationTime']
-        if 'paymentType' in kwargs:
+        if latest_replication_time is None:
+            raise TypeError("Missing 'latest_replication_time' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'replicationSourceRegionId' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if replication is None:
+            raise TypeError("Missing 'replication' argument")
+        if replication_source_region_id is None and 'replicationSourceRegionId' in kwargs:
             replication_source_region_id = kwargs['replicationSourceRegionId']
-        if 'replicationSourceVaultId' in kwargs:
+        if replication_source_region_id is None:
+            raise TypeError("Missing 'replication_source_region_id' argument")
+        if replication_source_vault_id is None and 'replicationSourceVaultId' in kwargs:
             replication_source_vault_id = kwargs['replicationSourceVaultId']
-        if 'searchEnabled' in kwargs:
+        if replication_source_vault_id is None:
+            raise TypeError("Missing 'replication_source_vault_id' argument")
+        if retention is None:
+            raise TypeError("Missing 'retention' argument")
+        if search_enabled is None and 'searchEnabled' in kwargs:
             search_enabled = kwargs['searchEnabled']
-        if 'sourceTypes' in kwargs:
+        if search_enabled is None:
+            raise TypeError("Missing 'search_enabled' argument")
+        if source_types is None and 'sourceTypes' in kwargs:
             source_types = kwargs['sourceTypes']
-        if 'storageSize' in kwargs:
+        if source_types is None:
+            raise TypeError("Missing 'source_types' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if storage_size is None and 'storageSize' in kwargs:
             storage_size = kwargs['storageSize']
-        if 'updatedTime' in kwargs:
+        if storage_size is None:
+            raise TypeError("Missing 'storage_size' argument")
+        if updated_time is None and 'updatedTime' in kwargs:
             updated_time = kwargs['updatedTime']
-        if 'vaultId' in kwargs:
+        if updated_time is None:
+            raise TypeError("Missing 'updated_time' argument")
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
-        if 'vaultName' in kwargs:
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
+        if vault_name is None and 'vaultName' in kwargs:
             vault_name = kwargs['vaultName']
-        if 'vaultStatusMessage' in kwargs:
+        if vault_name is None:
+            raise TypeError("Missing 'vault_name' argument")
+        if vault_status_message is None and 'vaultStatusMessage' in kwargs:
             vault_status_message = kwargs['vaultStatusMessage']
-        if 'vaultStorageClass' in kwargs:
+        if vault_status_message is None:
+            raise TypeError("Missing 'vault_status_message' argument")
+        if vault_storage_class is None and 'vaultStorageClass' in kwargs:
             vault_storage_class = kwargs['vaultStorageClass']
-        if 'vaultType' in kwargs:
+        if vault_storage_class is None:
+            raise TypeError("Missing 'vault_storage_class' argument")
+        if vault_type is None and 'vaultType' in kwargs:
             vault_type = kwargs['vaultType']
+        if vault_type is None:
+            raise TypeError("Missing 'vault_type' argument")
 
         _setter("bucket_name", bucket_name)
         _setter("bytes_done", bytes_done)

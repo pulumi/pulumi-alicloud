@@ -32,14 +32,18 @@ class HybridMonitorFcTaskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespace: pulumi.Input[str],
-             yarm_config: pulumi.Input[str],
+             namespace: Optional[pulumi.Input[str]] = None,
+             yarm_config: Optional[pulumi.Input[str]] = None,
              target_user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'yarmConfig' in kwargs:
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if yarm_config is None and 'yarmConfig' in kwargs:
             yarm_config = kwargs['yarmConfig']
-        if 'targetUserId' in kwargs:
+        if yarm_config is None:
+            raise TypeError("Missing 'yarm_config' argument")
+        if target_user_id is None and 'targetUserId' in kwargs:
             target_user_id = kwargs['targetUserId']
 
         _setter("namespace", namespace)
@@ -112,13 +116,13 @@ class _HybridMonitorFcTaskState:
              namespace: Optional[pulumi.Input[str]] = None,
              target_user_id: Optional[pulumi.Input[str]] = None,
              yarm_config: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'hybridMonitorFcTaskId' in kwargs:
+        if hybrid_monitor_fc_task_id is None and 'hybridMonitorFcTaskId' in kwargs:
             hybrid_monitor_fc_task_id = kwargs['hybridMonitorFcTaskId']
-        if 'targetUserId' in kwargs:
+        if target_user_id is None and 'targetUserId' in kwargs:
             target_user_id = kwargs['targetUserId']
-        if 'yarmConfig' in kwargs:
+        if yarm_config is None and 'yarmConfig' in kwargs:
             yarm_config = kwargs['yarmConfig']
 
         if hybrid_monitor_fc_task_id is not None:
@@ -195,46 +199,6 @@ class HybridMonitorFcTask(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.179.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_account = alicloud.get_account()
-        default_namespace = alicloud.cms.Namespace("defaultNamespace",
-            description=name,
-            namespace=name,
-            specification="cms.s1.large")
-        default_hybrid_monitor_fc_task = alicloud.cms.HybridMonitorFcTask("defaultHybridMonitorFcTask",
-            namespace=default_namespace.id,
-            yarm_config=\"\"\"products:
-        - namespace: acs_ecs_dashboard
-          metric_info:
-          - metric_list:
-            - cpu_total
-            - cpu_idle
-            - diskusage_utilization
-            - CPUUtilization
-            - DiskReadBPS
-            - InternetOut
-            - IntranetOut
-            - cpu_system
-        - namespace: acs_rds_dashboard
-          metric_info:
-          - metric_list:
-            - MySQL_QPS
-            - MySQL_TPS
-        \"\"\",
-            target_user_id=default_account.id)
-        ```
-
         ## Import
 
         Cloud Monitor Service Hybrid Monitor Fc Task can be imported using the id, e.g.
@@ -261,46 +225,6 @@ class HybridMonitorFcTask(pulumi.CustomResource):
         For information about Cloud Monitor Service Hybrid Monitor Fc Task and how to use it, see [What is Hybrid Monitor Fc Task](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitortask).
 
         > **NOTE:** Available since v1.179.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_account = alicloud.get_account()
-        default_namespace = alicloud.cms.Namespace("defaultNamespace",
-            description=name,
-            namespace=name,
-            specification="cms.s1.large")
-        default_hybrid_monitor_fc_task = alicloud.cms.HybridMonitorFcTask("defaultHybridMonitorFcTask",
-            namespace=default_namespace.id,
-            yarm_config=\"\"\"products:
-        - namespace: acs_ecs_dashboard
-          metric_info:
-          - metric_list:
-            - cpu_total
-            - cpu_idle
-            - diskusage_utilization
-            - CPUUtilization
-            - DiskReadBPS
-            - InternetOut
-            - IntranetOut
-            - cpu_system
-        - namespace: acs_rds_dashboard
-          metric_info:
-          - metric_list:
-            - MySQL_QPS
-            - MySQL_TPS
-        \"\"\",
-            target_user_id=default_account.id)
-        ```
 
         ## Import
 

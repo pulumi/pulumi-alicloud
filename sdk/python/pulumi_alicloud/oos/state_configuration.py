@@ -53,29 +53,37 @@ class StateConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             schedule_expression: pulumi.Input[str],
-             schedule_type: pulumi.Input[str],
-             targets: pulumi.Input[str],
-             template_name: pulumi.Input[str],
+             schedule_expression: Optional[pulumi.Input[str]] = None,
+             schedule_type: Optional[pulumi.Input[str]] = None,
+             targets: Optional[pulumi.Input[str]] = None,
+             template_name: Optional[pulumi.Input[str]] = None,
              configure_mode: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              parameters: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              template_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'scheduleExpression' in kwargs:
+        if schedule_expression is None and 'scheduleExpression' in kwargs:
             schedule_expression = kwargs['scheduleExpression']
-        if 'scheduleType' in kwargs:
+        if schedule_expression is None:
+            raise TypeError("Missing 'schedule_expression' argument")
+        if schedule_type is None and 'scheduleType' in kwargs:
             schedule_type = kwargs['scheduleType']
-        if 'templateName' in kwargs:
+        if schedule_type is None:
+            raise TypeError("Missing 'schedule_type' argument")
+        if targets is None:
+            raise TypeError("Missing 'targets' argument")
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
-        if 'configureMode' in kwargs:
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
+        if configure_mode is None and 'configureMode' in kwargs:
             configure_mode = kwargs['configureMode']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'templateVersion' in kwargs:
+        if template_version is None and 'templateVersion' in kwargs:
             template_version = kwargs['templateVersion']
 
         _setter("schedule_expression", schedule_expression)
@@ -268,19 +276,19 @@ class _StateConfigurationState:
              targets: Optional[pulumi.Input[str]] = None,
              template_name: Optional[pulumi.Input[str]] = None,
              template_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configureMode' in kwargs:
+        if configure_mode is None and 'configureMode' in kwargs:
             configure_mode = kwargs['configureMode']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'scheduleExpression' in kwargs:
+        if schedule_expression is None and 'scheduleExpression' in kwargs:
             schedule_expression = kwargs['scheduleExpression']
-        if 'scheduleType' in kwargs:
+        if schedule_type is None and 'scheduleType' in kwargs:
             schedule_type = kwargs['scheduleType']
-        if 'templateName' in kwargs:
+        if template_name is None and 'templateName' in kwargs:
             template_name = kwargs['templateName']
-        if 'templateVersion' in kwargs:
+        if template_version is None and 'templateVersion' in kwargs:
             template_version = kwargs['templateVersion']
 
         if configure_mode is not None:
@@ -448,30 +456,6 @@ class StateConfiguration(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.147.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_state_configuration = alicloud.oos.StateConfiguration("defaultStateConfiguration",
-            template_name="ACS-ECS-InventoryDataCollection",
-            configure_mode="ApplyOnly",
-            description="terraform-example",
-            schedule_type="rate",
-            schedule_expression="1 hour",
-            resource_group_id=default_resource_groups.ids[0],
-            targets="{\\"Filters\\": [{\\"Type\\": \\"All\\", \\"Parameters\\": {\\"InstanceChargeType\\": \\"PrePaid\\"}}], \\"ResourceType\\": \\"ALIYUN::ECS::Instance\\"}",
-            parameters="{\\"policy\\": {\\"ACS:Application\\": {\\"Collection\\": \\"Enabled\\"}}}",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        ```
-
         ## Import
 
         OOS State Configuration can be imported using the id, e.g.
@@ -505,30 +489,6 @@ class StateConfiguration(pulumi.CustomResource):
         For information about OOS State Configuration and how to use it, see [What is State Configuration](https://www.alibabacloud.com/help/en/doc-detail/208728.html).
 
         > **NOTE:** Available in v1.147.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_state_configuration = alicloud.oos.StateConfiguration("defaultStateConfiguration",
-            template_name="ACS-ECS-InventoryDataCollection",
-            configure_mode="ApplyOnly",
-            description="terraform-example",
-            schedule_type="rate",
-            schedule_expression="1 hour",
-            resource_group_id=default_resource_groups.ids[0],
-            targets="{\\"Filters\\": [{\\"Type\\": \\"All\\", \\"Parameters\\": {\\"InstanceChargeType\\": \\"PrePaid\\"}}], \\"ResourceType\\": \\"ALIYUN::ECS::Instance\\"}",
-            parameters="{\\"policy\\": {\\"ACS:Application\\": {\\"Collection\\": \\"Enabled\\"}}}",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        ```
 
         ## Import
 

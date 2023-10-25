@@ -16,26 +16,6 @@ namespace Pulumi.AliCloud.DatabaseGateway
     /// 
     /// &gt; **NOTE:** Available in v1.135.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.DatabaseGateway.Gateway("example", new()
-    ///     {
-    ///         GatewayName = "example_value",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Database Gateway Gateway can be imported using the id, e.g.

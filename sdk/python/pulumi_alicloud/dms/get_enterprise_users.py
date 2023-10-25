@@ -151,18 +151,6 @@ def get_enterprise_users(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.90.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    dms_enterprise_users_ds = alicloud.dms.get_enterprise_users(ids=["uid"],
-        role="USER",
-        status="NORMAL")
-    pulumi.export("firstUserId", dms_enterprise_users_ds.users[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of DMS Enterprise User IDs (UID).
     :param str name_regex: A regex string to filter the results by the DMS Enterprise User nick_name.
@@ -209,18 +197,6 @@ def get_enterprise_users_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     This data source provides a list of DMS Enterprise Users in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in 1.90.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    dms_enterprise_users_ds = alicloud.dms.get_enterprise_users(ids=["uid"],
-        role="USER",
-        status="NORMAL")
-    pulumi.export("firstUserId", dms_enterprise_users_ds.users[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of DMS Enterprise User IDs (UID).

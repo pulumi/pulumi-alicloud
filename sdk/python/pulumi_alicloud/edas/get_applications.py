@@ -108,17 +108,6 @@ def get_applications(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.82.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    applications = alicloud.edas.get_applications(ids=["xxx"],
-        output_file="application.txt")
-    pulumi.export("firstApplicationName", applications.applications[0].app_name)
-    ```
-
 
     :param Sequence[str] ids: An ids string to filter results by the application id.
     :param str name_regex: A regex string to filter results by the application name.
@@ -149,17 +138,6 @@ def get_applications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     This data source provides a list of EDAS application in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in 1.82.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    applications = alicloud.edas.get_applications(ids=["xxx"],
-        output_file="application.txt")
-    pulumi.export("firstApplicationName", applications.applications[0].app_name)
-    ```
 
 
     :param Sequence[str] ids: An ids string to filter results by the application id.

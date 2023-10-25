@@ -15,44 +15,6 @@ import (
 // This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.195.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := threatdetection.GetBackupPolicies(ctx, &threatdetection.GetBackupPoliciesArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("threatDetectionBackupPoliciesId1", ids.Policies[0].Id)
-//			nameRegex, err := threatdetection.GetBackupPolicies(ctx, &threatdetection.GetBackupPoliciesArgs{
-//				NameRegex: pulumi.StringRef("tf-example"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("threatDetectionBackupPoliciesId2", nameRegex.Policies[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetBackupPolicies(ctx *pulumi.Context, args *GetBackupPoliciesArgs, opts ...pulumi.InvokeOption) (*GetBackupPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBackupPoliciesResult

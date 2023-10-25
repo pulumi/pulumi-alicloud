@@ -139,20 +139,6 @@ def get_industrial_pid_loops(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.117.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.brain.get_industrial_pid_loops(pid_project_id="856c6b8f-ca63-40a4-xxxx-xxxx",
-        ids=["742a3d4e-d8b0-47c8-xxxx-xxxx"],
-        name_regex="tf-testACC")
-    pulumi.export("firstBrainIndustrialPidLoopId", example.loops[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Pid Loop IDs.
     :param str name_regex: A regex string to filter results by Pid Loop name.
@@ -198,20 +184,6 @@ def get_industrial_pid_loops_output(enable_details: Optional[pulumi.Input[Option
     This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.117.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.brain.get_industrial_pid_loops(pid_project_id="856c6b8f-ca63-40a4-xxxx-xxxx",
-        ids=["742a3d4e-d8b0-47c8-xxxx-xxxx"],
-        name_regex="tf-testACC")
-    pulumi.export("firstBrainIndustrialPidLoopId", example.loops[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Pid Loop IDs.

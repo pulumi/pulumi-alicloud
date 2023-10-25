@@ -36,13 +36,13 @@ class DbClusterDbClusterAccessWhiteListArgs:
              db_cluster_ip_array_attribute: Optional[pulumi.Input[str]] = None,
              db_cluster_ip_array_name: Optional[pulumi.Input[str]] = None,
              security_ip_list: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbClusterIpArrayAttribute' in kwargs:
+        if db_cluster_ip_array_attribute is None and 'dbClusterIpArrayAttribute' in kwargs:
             db_cluster_ip_array_attribute = kwargs['dbClusterIpArrayAttribute']
-        if 'dbClusterIpArrayName' in kwargs:
+        if db_cluster_ip_array_name is None and 'dbClusterIpArrayName' in kwargs:
             db_cluster_ip_array_name = kwargs['dbClusterIpArrayName']
-        if 'securityIpList' in kwargs:
+        if security_ip_list is None and 'securityIpList' in kwargs:
             security_ip_list = kwargs['securityIpList']
 
         if db_cluster_ip_array_attribute is not None:

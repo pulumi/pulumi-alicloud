@@ -32,17 +32,23 @@ class InstanceGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cen_id: pulumi.Input[str],
-             cen_owner_id: pulumi.Input[str],
-             child_instance_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cen_id: Optional[pulumi.Input[str]] = None,
+             cen_owner_id: Optional[pulumi.Input[str]] = None,
+             child_instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'cenOwnerId' in kwargs:
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if cen_owner_id is None and 'cenOwnerId' in kwargs:
             cen_owner_id = kwargs['cenOwnerId']
-        if 'childInstanceId' in kwargs:
+        if cen_owner_id is None:
+            raise TypeError("Missing 'cen_owner_id' argument")
+        if child_instance_id is None and 'childInstanceId' in kwargs:
             child_instance_id = kwargs['childInstanceId']
+        if child_instance_id is None:
+            raise TypeError("Missing 'child_instance_id' argument")
 
         _setter("cen_id", cen_id)
         _setter("cen_owner_id", cen_owner_id)
@@ -109,13 +115,13 @@ class _InstanceGrantState:
              cen_id: Optional[pulumi.Input[str]] = None,
              cen_owner_id: Optional[pulumi.Input[str]] = None,
              child_instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'cenOwnerId' in kwargs:
+        if cen_owner_id is None and 'cenOwnerId' in kwargs:
             cen_owner_id = kwargs['cenOwnerId']
-        if 'childInstanceId' in kwargs:
+        if child_instance_id is None and 'childInstanceId' in kwargs:
             child_instance_id = kwargs['childInstanceId']
 
         if cen_id is not None:
@@ -178,57 +184,6 @@ class InstanceGrant(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.37.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        another_uid = config.get("anotherUid")
-        if another_uid is None:
-            another_uid = "xxxx"
-        # Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
-        child_account = alicloud.Provider("childAccount",
-            region="cn-hangzhou",
-            assume_role=alicloud.ProviderAssumeRoleArgs(
-                role_arn=f"acs:ram::{another_uid}:role/terraform-example-assume-role",
-            ))
-        # Method 2: Use the target cen account's access_key, secret_key
-        # provider "alicloud" {
-        #   region     = "cn-hangzhou"
-        #   access_key = "access_key"
-        #   secret_key = "secret_key"
-        #   alias      = "child_account"
-        # }
-        your_account = alicloud.Provider("yourAccount")
-        your_account_account = alicloud.get_account()
-        child_account_account = alicloud.get_account()
-        default = alicloud.get_regions(current=True)
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen",
-            opts=pulumi.ResourceOptions(provider=alicloud["your_account"]))
-        child_account_network = alicloud.vpc.Network("childAccountNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            opts=pulumi.ResourceOptions(provider=alicloud["child_account"]))
-        child_account_instance_grant = alicloud.cen.InstanceGrant("childAccountInstanceGrant",
-            cen_id=example_instance.id,
-            child_instance_id=child_account_network.id,
-            cen_owner_id=your_account_account.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["child_account"]))
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
-            instance_id=example_instance.id,
-            child_instance_id=child_account_instance_grant.child_instance_id,
-            child_instance_type="VPC",
-            child_instance_region_id=default.regions[0].id,
-            child_instance_owner_id=child_account_account.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["your_account"]))
-        ```
-
         ## Import
 
         CEN instance can be imported using the id, e.g.
@@ -255,57 +210,6 @@ class InstanceGrant(pulumi.CustomResource):
         For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-attachcenchildinstance).
 
         > **NOTE:** Available since v1.37.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        another_uid = config.get("anotherUid")
-        if another_uid is None:
-            another_uid = "xxxx"
-        # Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
-        child_account = alicloud.Provider("childAccount",
-            region="cn-hangzhou",
-            assume_role=alicloud.ProviderAssumeRoleArgs(
-                role_arn=f"acs:ram::{another_uid}:role/terraform-example-assume-role",
-            ))
-        # Method 2: Use the target cen account's access_key, secret_key
-        # provider "alicloud" {
-        #   region     = "cn-hangzhou"
-        #   access_key = "access_key"
-        #   secret_key = "secret_key"
-        #   alias      = "child_account"
-        # }
-        your_account = alicloud.Provider("yourAccount")
-        your_account_account = alicloud.get_account()
-        child_account_account = alicloud.get_account()
-        default = alicloud.get_regions(current=True)
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen",
-            opts=pulumi.ResourceOptions(provider=alicloud["your_account"]))
-        child_account_network = alicloud.vpc.Network("childAccountNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            opts=pulumi.ResourceOptions(provider=alicloud["child_account"]))
-        child_account_instance_grant = alicloud.cen.InstanceGrant("childAccountInstanceGrant",
-            cen_id=example_instance.id,
-            child_instance_id=child_account_network.id,
-            cen_owner_id=your_account_account.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["child_account"]))
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
-            instance_id=example_instance.id,
-            child_instance_id=child_account_instance_grant.child_instance_id,
-            child_instance_type="VPC",
-            child_instance_region_id=default.regions[0].id,
-            child_instance_owner_id=child_account_account.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["your_account"]))
-        ```
 
         ## Import
 

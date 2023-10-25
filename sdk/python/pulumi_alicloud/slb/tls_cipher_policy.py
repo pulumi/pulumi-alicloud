@@ -32,15 +32,21 @@ class TlsCipherPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ciphers: pulumi.Input[Sequence[pulumi.Input[str]]],
-             tls_cipher_policy_name: pulumi.Input[str],
-             tls_versions: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tls_cipher_policy_name: Optional[pulumi.Input[str]] = None,
+             tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'tlsCipherPolicyName' in kwargs:
+        if ciphers is None:
+            raise TypeError("Missing 'ciphers' argument")
+        if tls_cipher_policy_name is None and 'tlsCipherPolicyName' in kwargs:
             tls_cipher_policy_name = kwargs['tlsCipherPolicyName']
-        if 'tlsVersions' in kwargs:
+        if tls_cipher_policy_name is None:
+            raise TypeError("Missing 'tls_cipher_policy_name' argument")
+        if tls_versions is None and 'tlsVersions' in kwargs:
             tls_versions = kwargs['tlsVersions']
+        if tls_versions is None:
+            raise TypeError("Missing 'tls_versions' argument")
 
         _setter("ciphers", ciphers)
         _setter("tls_cipher_policy_name", tls_cipher_policy_name)
@@ -111,11 +117,11 @@ class _TlsCipherPolicyState:
              status: Optional[pulumi.Input[str]] = None,
              tls_cipher_policy_name: Optional[pulumi.Input[str]] = None,
              tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'tlsCipherPolicyName' in kwargs:
+        if tls_cipher_policy_name is None and 'tlsCipherPolicyName' in kwargs:
             tls_cipher_policy_name = kwargs['tlsCipherPolicyName']
-        if 'tlsVersions' in kwargs:
+        if tls_versions is None and 'tlsVersions' in kwargs:
             tls_versions = kwargs['tlsVersions']
 
         if ciphers is not None:
@@ -192,23 +198,6 @@ class TlsCipherPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.135.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.slb.TlsCipherPolicy("example",
-            ciphers=[
-                "AES256-SHA256",
-                "AES128-GCM-SHA256",
-            ],
-            tls_cipher_policy_name="Test-example_value",
-            tls_versions=["TLSv1.2"])
-        ```
-
         ## Import
 
         SLB Tls Cipher Policy can be imported using the id, e.g.
@@ -235,23 +224,6 @@ class TlsCipherPolicy(pulumi.CustomResource):
         For information about SLB Tls Cipher Policy and how to use it, see [What is Tls Cipher Policy](https://www.alibabacloud.com/help/doc-detail/196714.htm).
 
         > **NOTE:** Available in v1.135.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.slb.TlsCipherPolicy("example",
-            ciphers=[
-                "AES256-SHA256",
-                "AES128-GCM-SHA256",
-            ],
-            tls_cipher_policy_name="Test-example_value",
-            tls_versions=["TLSv1.2"])
-        ```
 
         ## Import
 

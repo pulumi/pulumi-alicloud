@@ -35,19 +35,23 @@ class DatabaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_cluster_id: pulumi.Input[str],
-             db_name: pulumi.Input[str],
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
+             db_name: Optional[pulumi.Input[str]] = None,
              character_set_name: Optional[pulumi.Input[str]] = None,
              db_description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbClusterId' in kwargs:
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'dbName' in kwargs:
+        if db_cluster_id is None:
+            raise TypeError("Missing 'db_cluster_id' argument")
+        if db_name is None and 'dbName' in kwargs:
             db_name = kwargs['dbName']
-        if 'characterSetName' in kwargs:
+        if db_name is None:
+            raise TypeError("Missing 'db_name' argument")
+        if character_set_name is None and 'characterSetName' in kwargs:
             character_set_name = kwargs['characterSetName']
-        if 'dbDescription' in kwargs:
+        if db_description is None and 'dbDescription' in kwargs:
             db_description = kwargs['dbDescription']
 
         _setter("db_cluster_id", db_cluster_id)
@@ -134,15 +138,15 @@ class _DatabaseState:
              db_cluster_id: Optional[pulumi.Input[str]] = None,
              db_description: Optional[pulumi.Input[str]] = None,
              db_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'characterSetName' in kwargs:
+        if character_set_name is None and 'characterSetName' in kwargs:
             character_set_name = kwargs['characterSetName']
-        if 'dbClusterId' in kwargs:
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'dbDescription' in kwargs:
+        if db_description is None and 'dbDescription' in kwargs:
             db_description = kwargs['dbDescription']
-        if 'dbName' in kwargs:
+        if db_name is None and 'dbName' in kwargs:
             db_name = kwargs['dbName']
 
         if character_set_name is not None:
@@ -218,35 +222,6 @@ class Database(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.66.0+.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
-            db_version="8.0",
-            pay_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_node_classes.classes[0].zone_id,
-            vswitch_name="terraform-example")
-        default_cluster = alicloud.polardb.Cluster("defaultCluster",
-            db_type="MySQL",
-            db_version="8.0",
-            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
-            pay_type="PostPaid",
-            vswitch_id=default_switch.id,
-            description="terraform-example")
-        default_database = alicloud.polardb.Database("defaultDatabase",
-            db_cluster_id=default_cluster.id,
-            db_name="terraform-example")
-        ```
-
         ## Import
 
         PolarDB database can be imported using the id, e.g.
@@ -272,35 +247,6 @@ class Database(pulumi.CustomResource):
         Provides a PolarDB database resource. A database deployed in a PolarDB cluster. A PolarDB cluster can own multiple databases.
 
         > **NOTE:** Available in v1.66.0+.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
-            db_version="8.0",
-            pay_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_node_classes.classes[0].zone_id,
-            vswitch_name="terraform-example")
-        default_cluster = alicloud.polardb.Cluster("defaultCluster",
-            db_type="MySQL",
-            db_version="8.0",
-            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
-            pay_type="PostPaid",
-            vswitch_id=default_switch.id,
-            description="terraform-example")
-        default_database = alicloud.polardb.Database("defaultDatabase",
-            db_cluster_id=default_cluster.id,
-            db_name="terraform-example")
-        ```
 
         ## Import
 

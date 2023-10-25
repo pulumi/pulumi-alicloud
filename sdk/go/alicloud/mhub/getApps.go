@@ -15,55 +15,6 @@ import (
 // This data source provides the Mhub Apps of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.138.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mhub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "example_value"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := mhub.NewApp(ctx, "default", &mhub.AppArgs{
-//				AppName:     pulumi.String(name),
-//				ProductId:   pulumi.Any(alicloud_mhub_product.Default.Id),
-//				PackageName: pulumi.String("com.test.android"),
-//				Type:        pulumi.String("2"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ids, err := mhub.GetApps(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("mhubAppId1", ids.Apps[0].Id)
-//			nameRegex, err := mhub.GetApps(ctx, &mhub.GetAppsArgs{
-//				NameRegex: pulumi.StringRef("^my-App"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("mhubAppId2", nameRegex.Apps[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetApps(ctx *pulumi.Context, args *GetAppsArgs, opts ...pulumi.InvokeOption) (*GetAppsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAppsResult

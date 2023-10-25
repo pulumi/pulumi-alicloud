@@ -35,19 +35,23 @@ class VpcEndpointZoneArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint_id: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             endpoint_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endpointId' in kwargs:
+        if endpoint_id is None and 'endpointId' in kwargs:
             endpoint_id = kwargs['endpointId']
-        if 'vswitchId' in kwargs:
+        if endpoint_id is None:
+            raise TypeError("Missing 'endpoint_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'dryRun' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("endpoint_id", endpoint_id)
@@ -138,15 +142,15 @@ class _VpcEndpointZoneState:
              status: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'endpointId' in kwargs:
+        if endpoint_id is None and 'endpointId' in kwargs:
             endpoint_id = kwargs['endpointId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if dry_run is not None:
@@ -238,52 +242,6 @@ class VpcEndpointZone(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.111.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
-            service_description=name,
-            connect_bandwidth=103,
-            auto_accept_connection=False)
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name=name,
-            cidr_block="10.1.0.0/16",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("exampleApplicationLoadBalancer",
-            load_balancer_name=name,
-            vswitch_id=example_switch.id,
-            load_balancer_spec="slb.s2.small",
-            address_type="intranet")
-        example_vpc_endpoint_service_resource = alicloud.privatelink.VpcEndpointServiceResource("exampleVpcEndpointServiceResource",
-            service_id=example_vpc_endpoint_service.id,
-            resource_id=example_application_load_balancer.id,
-            resource_type="slb")
-        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("exampleVpcEndpoint",
-            service_id=example_vpc_endpoint_service_resource.service_id,
-            security_group_ids=[example_security_group.id],
-            vpc_id=example_network.id,
-            vpc_endpoint_name=name)
-        example_vpc_endpoint_zone = alicloud.privatelink.VpcEndpointZone("exampleVpcEndpointZone",
-            endpoint_id=example_vpc_endpoint.id,
-            vswitch_id=example_switch.id,
-            zone_id=example_zones.zones[0].id)
-        ```
-
         ## Import
 
         Private Link Vpc Endpoint Zone can be imported using the id, e.g.
@@ -311,52 +269,6 @@ class VpcEndpointZone(pulumi.CustomResource):
         For information about Private Link Vpc Endpoint Zone and how to use it, see [What is Vpc Endpoint Zone](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-addzonetovpcendpoint).
 
         > **NOTE:** Available since v1.111.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
-            service_description=name,
-            connect_bandwidth=103,
-            auto_accept_connection=False)
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name=name,
-            cidr_block="10.1.0.0/16",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("exampleApplicationLoadBalancer",
-            load_balancer_name=name,
-            vswitch_id=example_switch.id,
-            load_balancer_spec="slb.s2.small",
-            address_type="intranet")
-        example_vpc_endpoint_service_resource = alicloud.privatelink.VpcEndpointServiceResource("exampleVpcEndpointServiceResource",
-            service_id=example_vpc_endpoint_service.id,
-            resource_id=example_application_load_balancer.id,
-            resource_type="slb")
-        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("exampleVpcEndpoint",
-            service_id=example_vpc_endpoint_service_resource.service_id,
-            security_group_ids=[example_security_group.id],
-            vpc_id=example_network.id,
-            vpc_endpoint_name=name)
-        example_vpc_endpoint_zone = alicloud.privatelink.VpcEndpointZone("exampleVpcEndpointZone",
-            endpoint_id=example_vpc_endpoint.id,
-            vswitch_id=example_switch.id,
-            zone_id=example_zones.zones[0].id)
-        ```
 
         ## Import
 

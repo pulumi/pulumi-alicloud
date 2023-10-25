@@ -16,68 +16,6 @@ namespace Pulumi.AliCloud.Ots
     /// 
     /// &gt; **NOTE:** Available since v1.172.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultInstance = new AliCloud.Ots.Instance("defaultInstance", new()
-    ///     {
-    ///         Description = name,
-    ///         AccessedBy = "Any",
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "TF" },
-    ///             { "For", "example" },
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultTable = new AliCloud.Ots.Table("defaultTable", new()
-    ///     {
-    ///         InstanceName = defaultInstance.Name,
-    ///         TableName = "tf_example",
-    ///         TimeToLive = -1,
-    ///         MaxVersion = 1,
-    ///         EnableSse = true,
-    ///         SseKeyType = "SSE_KMS_SERVICE",
-    ///         PrimaryKeys = new[]
-    ///         {
-    ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
-    ///             {
-    ///                 Name = "pk1",
-    ///                 Type = "Integer",
-    ///             },
-    ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
-    ///             {
-    ///                 Name = "pk2",
-    ///                 Type = "String",
-    ///             },
-    ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
-    ///             {
-    ///                 Name = "pk3",
-    ///                 Type = "Binary",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultTunnel = new AliCloud.Ots.Tunnel("defaultTunnel", new()
-    ///     {
-    ///         InstanceName = defaultInstance.Name,
-    ///         TableName = defaultTable.TableName,
-    ///         TunnelName = "tf_example",
-    ///         TunnelType = "BaseAndStream",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// OTS tunnel can be imported using id, e.g.

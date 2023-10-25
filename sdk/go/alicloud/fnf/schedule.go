@@ -19,54 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.105.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fnf"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleFlow, err := fnf.NewFlow(ctx, "exampleFlow", &fnf.FlowArgs{
-//				Definition: pulumi.String(`  version: v1beta1
-//	  type: flow
-//	  steps:
-//	    - type: pass
-//	      name: helloworld
-//
-// `),
-//
-//				Description: pulumi.String("tf-testaccFnFFlow983041"),
-//				Type:        pulumi.String("FDL"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = fnf.NewSchedule(ctx, "exampleSchedule", &fnf.ScheduleArgs{
-//				CronExpression: pulumi.String("30 9 * * * *"),
-//				Description:    pulumi.String("tf-testaccFnFSchedule983041"),
-//				Enable:         pulumi.Bool(true),
-//				FlowName:       exampleFlow.Name,
-//				Payload:        pulumi.String("{\"tf-test\": \"test success\"}"),
-//				ScheduleName:   pulumi.String("tf-testaccFnFSchedule983041"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Serverless Workflow Schedule can be imported using the id, e.g.

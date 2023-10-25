@@ -64,36 +64,50 @@ class NasBackupPlanArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             backup_type: pulumi.Input[str],
-             file_system_id: pulumi.Input[str],
-             nas_backup_plan_name: pulumi.Input[str],
-             paths: pulumi.Input[Sequence[pulumi.Input[str]]],
-             retention: pulumi.Input[str],
-             schedule: pulumi.Input[str],
-             vault_id: pulumi.Input[str],
+             backup_type: Optional[pulumi.Input[str]] = None,
+             file_system_id: Optional[pulumi.Input[str]] = None,
+             nas_backup_plan_name: Optional[pulumi.Input[str]] = None,
+             paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             retention: Optional[pulumi.Input[str]] = None,
+             schedule: Optional[pulumi.Input[str]] = None,
+             vault_id: Optional[pulumi.Input[str]] = None,
              create_time: Optional[pulumi.Input[str]] = None,
              cross_account_role_name: Optional[pulumi.Input[str]] = None,
              cross_account_type: Optional[pulumi.Input[str]] = None,
              cross_account_user_id: Optional[pulumi.Input[int]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              options: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'fileSystemId' in kwargs:
+        if backup_type is None:
+            raise TypeError("Missing 'backup_type' argument")
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'nasBackupPlanName' in kwargs:
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if nas_backup_plan_name is None and 'nasBackupPlanName' in kwargs:
             nas_backup_plan_name = kwargs['nasBackupPlanName']
-        if 'vaultId' in kwargs:
+        if nas_backup_plan_name is None:
+            raise TypeError("Missing 'nas_backup_plan_name' argument")
+        if paths is None:
+            raise TypeError("Missing 'paths' argument")
+        if retention is None:
+            raise TypeError("Missing 'retention' argument")
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
-        if 'createTime' in kwargs:
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'crossAccountRoleName' in kwargs:
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
             cross_account_role_name = kwargs['crossAccountRoleName']
-        if 'crossAccountType' in kwargs:
+        if cross_account_type is None and 'crossAccountType' in kwargs:
             cross_account_type = kwargs['crossAccountType']
-        if 'crossAccountUserId' in kwargs:
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
             cross_account_user_id = kwargs['crossAccountUserId']
 
         _setter("backup_type", backup_type)
@@ -347,23 +361,23 @@ class _NasBackupPlanState:
              retention: Optional[pulumi.Input[str]] = None,
              schedule: Optional[pulumi.Input[str]] = None,
              vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupType' in kwargs:
+        if backup_type is None and 'backupType' in kwargs:
             backup_type = kwargs['backupType']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'crossAccountRoleName' in kwargs:
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
             cross_account_role_name = kwargs['crossAccountRoleName']
-        if 'crossAccountType' in kwargs:
+        if cross_account_type is None and 'crossAccountType' in kwargs:
             cross_account_type = kwargs['crossAccountType']
-        if 'crossAccountUserId' in kwargs:
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
             cross_account_user_id = kwargs['crossAccountUserId']
-        if 'fileSystemId' in kwargs:
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'nasBackupPlanName' in kwargs:
+        if nas_backup_plan_name is None and 'nasBackupPlanName' in kwargs:
             nas_backup_plan_name = kwargs['nasBackupPlanName']
-        if 'vaultId' in kwargs:
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
 
         if backup_type is not None:
@@ -584,30 +598,6 @@ class NasBackupPlan(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.132.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name="terraform-example2")
-        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
-            protocol_type="NFS",
-            storage_type="Performance",
-            description="terraform-example",
-            encrypt_type=1)
-        default_nas_backup_plan = alicloud.hbr.NasBackupPlan("defaultNasBackupPlan",
-            nas_backup_plan_name="terraform-example",
-            file_system_id=default_file_system.id,
-            schedule="I|1602673264|PT2H",
-            backup_type="COMPLETE",
-            vault_id=default_vault.id,
-            retention="2",
-            paths=["/"])
-        ```
-
         ## Import
 
         HBR Nas Backup Plan can be imported using the id, e.g.
@@ -646,30 +636,6 @@ class NasBackupPlan(pulumi.CustomResource):
         For information about HBR Nas Backup Plan and how to use it, see [What is Nas Backup Plan](https://www.alibabacloud.com/help/doc-detail/132248.htm).
 
         > **NOTE:** Available in v1.132.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name="terraform-example2")
-        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
-            protocol_type="NFS",
-            storage_type="Performance",
-            description="terraform-example",
-            encrypt_type=1)
-        default_nas_backup_plan = alicloud.hbr.NasBackupPlan("defaultNasBackupPlan",
-            nas_backup_plan_name="terraform-example",
-            file_system_id=default_file_system.id,
-            schedule="I|1602673264|PT2H",
-            backup_type="COMPLETE",
-            vault_id=default_vault.id,
-            retention="2",
-            paths=["/"])
-        ```
 
         ## Import
 

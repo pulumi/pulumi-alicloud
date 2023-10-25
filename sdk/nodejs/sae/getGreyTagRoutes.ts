@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.160.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const nameRegex = alicloud.sae.getGreyTagRoutes({
- *     appId: "example_id",
- *     nameRegex: "^my-GreyTagRoute",
- * });
- * export const saeGreyTagRoutesId = nameRegex.then(nameRegex => nameRegex.routes?.[0]?.id);
- * ```
  */
 export function getGreyTagRoutes(args: GetGreyTagRoutesArgs, opts?: pulumi.InvokeOptions): Promise<GetGreyTagRoutesResult> {
 
@@ -78,21 +63,6 @@ export interface GetGreyTagRoutesResult {
  * This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.160.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const nameRegex = alicloud.sae.getGreyTagRoutes({
- *     appId: "example_id",
- *     nameRegex: "^my-GreyTagRoute",
- * });
- * export const saeGreyTagRoutesId = nameRegex.then(nameRegex => nameRegex.routes?.[0]?.id);
- * ```
  */
 export function getGreyTagRoutesOutput(args: GetGreyTagRoutesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGreyTagRoutesResult> {
     return pulumi.output(args).apply((a: any) => getGreyTagRoutes(a, opts))

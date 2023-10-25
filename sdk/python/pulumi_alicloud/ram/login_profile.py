@@ -35,17 +35,21 @@ class LoginProfileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: pulumi.Input[str],
-             user_name: pulumi.Input[str],
+             password: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
              mfa_bind_required: Optional[pulumi.Input[bool]] = None,
              password_reset_required: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'userName' in kwargs:
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
-        if 'mfaBindRequired' in kwargs:
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
+        if mfa_bind_required is None and 'mfaBindRequired' in kwargs:
             mfa_bind_required = kwargs['mfaBindRequired']
-        if 'passwordResetRequired' in kwargs:
+        if password_reset_required is None and 'passwordResetRequired' in kwargs:
             password_reset_required = kwargs['passwordResetRequired']
 
         _setter("password", password)
@@ -132,13 +136,13 @@ class _LoginProfileState:
              password: Optional[pulumi.Input[str]] = None,
              password_reset_required: Optional[pulumi.Input[bool]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mfaBindRequired' in kwargs:
+        if mfa_bind_required is None and 'mfaBindRequired' in kwargs:
             mfa_bind_required = kwargs['mfaBindRequired']
-        if 'passwordResetRequired' in kwargs:
+        if password_reset_required is None and 'passwordResetRequired' in kwargs:
             password_reset_required = kwargs['passwordResetRequired']
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
 
         if mfa_bind_required is not None:
@@ -214,23 +218,6 @@ class LoginProfile(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0+.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        user = alicloud.ram.User("user",
-            display_name="terraform_example",
-            mobile="86-18688888888",
-            email="hello.uuu@aaa.com",
-            comments="terraform_example",
-            force=True)
-        profile = alicloud.ram.LoginProfile("profile",
-            user_name=user.name,
-            password="Example_1234")
-        ```
-
         ## Import
 
         RAM login profile can be imported using the id or user name, e.g.
@@ -256,23 +243,6 @@ class LoginProfile(pulumi.CustomResource):
         Provides a RAM User Login Profile resource.
 
         > **NOTE:** Available since v1.0.0+.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        user = alicloud.ram.User("user",
-            display_name="terraform_example",
-            mobile="86-18688888888",
-            email="hello.uuu@aaa.com",
-            comments="terraform_example",
-            force=True)
-        profile = alicloud.ram.LoginProfile("profile",
-            user_name=user.name,
-            password="Example_1234")
-        ```
 
         ## Import
 

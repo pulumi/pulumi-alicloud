@@ -2292,19 +2292,6 @@ type StoreEncryptConf struct {
 	// Supported encryption type, only supports `default(AES)`,`  m4 `
 	EncryptType *string `pulumi:"encryptType"`
 	// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	UserCmkInfo *StoreEncryptConfUserCmkInfo `pulumi:"userCmkInfo"`
 }
 
@@ -2325,19 +2312,6 @@ type StoreEncryptConfArgs struct {
 	// Supported encryption type, only supports `default(AES)`,`  m4 `
 	EncryptType pulumi.StringPtrInput `pulumi:"encryptType"`
 	// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	UserCmkInfo StoreEncryptConfUserCmkInfoPtrInput `pulumi:"userCmkInfo"`
 }
 
@@ -2447,22 +2421,6 @@ func (o StoreEncryptConfOutput) EncryptType() pulumi.StringPtrOutput {
 }
 
 // User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o StoreEncryptConfOutput) UserCmkInfo() StoreEncryptConfUserCmkInfoPtrOutput {
 	return o.ApplyT(func(v StoreEncryptConf) *StoreEncryptConfUserCmkInfo { return v.UserCmkInfo }).(StoreEncryptConfUserCmkInfoPtrOutput)
 }
@@ -2518,22 +2476,6 @@ func (o StoreEncryptConfPtrOutput) EncryptType() pulumi.StringPtrOutput {
 }
 
 // User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o StoreEncryptConfPtrOutput) UserCmkInfo() StoreEncryptConfUserCmkInfoPtrOutput {
 	return o.ApplyT(func(v *StoreEncryptConf) *StoreEncryptConfUserCmkInfo {
 		if v == nil {

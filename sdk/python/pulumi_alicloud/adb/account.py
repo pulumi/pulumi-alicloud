@@ -41,25 +41,29 @@ class AccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: pulumi.Input[str],
-             db_cluster_id: pulumi.Input[str],
+             account_name: Optional[pulumi.Input[str]] = None,
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
              account_description: Optional[pulumi.Input[str]] = None,
              account_password: Optional[pulumi.Input[str]] = None,
              kms_encrypted_password: Optional[pulumi.Input[str]] = None,
              kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'dbClusterId' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'accountDescription' in kwargs:
+        if db_cluster_id is None:
+            raise TypeError("Missing 'db_cluster_id' argument")
+        if account_description is None and 'accountDescription' in kwargs:
             account_description = kwargs['accountDescription']
-        if 'accountPassword' in kwargs:
+        if account_password is None and 'accountPassword' in kwargs:
             account_password = kwargs['accountPassword']
-        if 'kmsEncryptedPassword' in kwargs:
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
             kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if 'kmsEncryptionContext' in kwargs:
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
             kms_encryption_context = kwargs['kmsEncryptionContext']
 
         _setter("account_name", account_name)
@@ -182,19 +186,19 @@ class _AccountState:
              db_cluster_id: Optional[pulumi.Input[str]] = None,
              kms_encrypted_password: Optional[pulumi.Input[str]] = None,
              kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountDescription' in kwargs:
+        if account_description is None and 'accountDescription' in kwargs:
             account_description = kwargs['accountDescription']
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountPassword' in kwargs:
+        if account_password is None and 'accountPassword' in kwargs:
             account_password = kwargs['accountPassword']
-        if 'dbClusterId' in kwargs:
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'kmsEncryptedPassword' in kwargs:
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
             kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if 'kmsEncryptionContext' in kwargs:
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
             kms_encryption_context = kwargs['kmsEncryptionContext']
 
         if account_description is not None:
@@ -300,53 +304,6 @@ class Account(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.71.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.adb.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="10.4.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_db_cluster = alicloud.adb.DBCluster("defaultDBCluster",
-            db_cluster_category="Cluster",
-            db_node_class="C8",
-            db_node_count=4,
-            db_node_storage=400,
-            mode="reserver",
-            db_cluster_version="3.0",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            description=name,
-            maintain_time="23:00Z-00:00Z",
-            resource_group_id=default_resource_groups.ids[0],
-            security_ips=[
-                "10.168.1.12",
-                "10.168.1.11",
-            ],
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_account = alicloud.adb.Account("defaultAccount",
-            db_cluster_id=default_db_cluster.id,
-            account_name=name,
-            account_password="tf_example123",
-            account_description=name)
-        ```
-
         ## Import
 
         ADB account can be imported using the id, e.g.
@@ -374,53 +331,6 @@ class Account(pulumi.CustomResource):
         Provides a [ADB](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createaccount) account resource and used to manage databases.
 
         > **NOTE:** Available since v1.71.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.adb.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="10.4.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_db_cluster = alicloud.adb.DBCluster("defaultDBCluster",
-            db_cluster_category="Cluster",
-            db_node_class="C8",
-            db_node_count=4,
-            db_node_storage=400,
-            mode="reserver",
-            db_cluster_version="3.0",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            description=name,
-            maintain_time="23:00Z-00:00Z",
-            resource_group_id=default_resource_groups.ids[0],
-            security_ips=[
-                "10.168.1.12",
-                "10.168.1.11",
-            ],
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_account = alicloud.adb.Account("defaultAccount",
-            db_cluster_id=default_db_cluster.id,
-            account_name=name,
-            account_password="tf_example123",
-            account_description=name)
-        ```
 
         ## Import
 

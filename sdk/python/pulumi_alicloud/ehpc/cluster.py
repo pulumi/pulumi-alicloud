@@ -209,13 +209,13 @@ class ClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_name: pulumi.Input[str],
-             compute_count: pulumi.Input[int],
-             compute_instance_type: pulumi.Input[str],
-             login_count: pulumi.Input[int],
-             login_instance_type: pulumi.Input[str],
-             manager_instance_type: pulumi.Input[str],
-             os_tag: pulumi.Input[str],
+             cluster_name: Optional[pulumi.Input[str]] = None,
+             compute_count: Optional[pulumi.Input[int]] = None,
+             compute_instance_type: Optional[pulumi.Input[str]] = None,
+             login_count: Optional[pulumi.Input[int]] = None,
+             login_instance_type: Optional[pulumi.Input[str]] = None,
+             manager_instance_type: Optional[pulumi.Input[str]] = None,
+             os_tag: Optional[pulumi.Input[str]] = None,
              account_type: Optional[pulumi.Input[str]] = None,
              additional_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]]] = None,
              applications: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationArgs']]]] = None,
@@ -267,111 +267,125 @@ class ClusterArgs:
              without_agent: Optional[pulumi.Input[bool]] = None,
              without_elastic_ip: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'computeCount' in kwargs:
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if compute_count is None and 'computeCount' in kwargs:
             compute_count = kwargs['computeCount']
-        if 'computeInstanceType' in kwargs:
+        if compute_count is None:
+            raise TypeError("Missing 'compute_count' argument")
+        if compute_instance_type is None and 'computeInstanceType' in kwargs:
             compute_instance_type = kwargs['computeInstanceType']
-        if 'loginCount' in kwargs:
+        if compute_instance_type is None:
+            raise TypeError("Missing 'compute_instance_type' argument")
+        if login_count is None and 'loginCount' in kwargs:
             login_count = kwargs['loginCount']
-        if 'loginInstanceType' in kwargs:
+        if login_count is None:
+            raise TypeError("Missing 'login_count' argument")
+        if login_instance_type is None and 'loginInstanceType' in kwargs:
             login_instance_type = kwargs['loginInstanceType']
-        if 'managerInstanceType' in kwargs:
+        if login_instance_type is None:
+            raise TypeError("Missing 'login_instance_type' argument")
+        if manager_instance_type is None and 'managerInstanceType' in kwargs:
             manager_instance_type = kwargs['managerInstanceType']
-        if 'osTag' in kwargs:
+        if manager_instance_type is None:
+            raise TypeError("Missing 'manager_instance_type' argument")
+        if os_tag is None and 'osTag' in kwargs:
             os_tag = kwargs['osTag']
-        if 'accountType' in kwargs:
+        if os_tag is None:
+            raise TypeError("Missing 'os_tag' argument")
+        if account_type is None and 'accountType' in kwargs:
             account_type = kwargs['accountType']
-        if 'additionalVolumes' in kwargs:
+        if additional_volumes is None and 'additionalVolumes' in kwargs:
             additional_volumes = kwargs['additionalVolumes']
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'clientVersion' in kwargs:
+        if client_version is None and 'clientVersion' in kwargs:
             client_version = kwargs['clientVersion']
-        if 'clusterVersion' in kwargs:
+        if cluster_version is None and 'clusterVersion' in kwargs:
             cluster_version = kwargs['clusterVersion']
-        if 'computeEnableHt' in kwargs:
+        if compute_enable_ht is None and 'computeEnableHt' in kwargs:
             compute_enable_ht = kwargs['computeEnableHt']
-        if 'computeSpotPriceLimit' in kwargs:
+        if compute_spot_price_limit is None and 'computeSpotPriceLimit' in kwargs:
             compute_spot_price_limit = kwargs['computeSpotPriceLimit']
-        if 'computeSpotStrategy' in kwargs:
+        if compute_spot_strategy is None and 'computeSpotStrategy' in kwargs:
             compute_spot_strategy = kwargs['computeSpotStrategy']
-        if 'deployMode' in kwargs:
+        if deploy_mode is None and 'deployMode' in kwargs:
             deploy_mode = kwargs['deployMode']
-        if 'ecsChargeType' in kwargs:
+        if ecs_charge_type is None and 'ecsChargeType' in kwargs:
             ecs_charge_type = kwargs['ecsChargeType']
-        if 'ehpcVersion' in kwargs:
+        if ehpc_version is None and 'ehpcVersion' in kwargs:
             ehpc_version = kwargs['ehpcVersion']
-        if 'haEnable' in kwargs:
+        if ha_enable is None and 'haEnable' in kwargs:
             ha_enable = kwargs['haEnable']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'imageOwnerAlias' in kwargs:
+        if image_owner_alias is None and 'imageOwnerAlias' in kwargs:
             image_owner_alias = kwargs['imageOwnerAlias']
-        if 'inputFileUrl' in kwargs:
+        if input_file_url is None and 'inputFileUrl' in kwargs:
             input_file_url = kwargs['inputFileUrl']
-        if 'isComputeEss' in kwargs:
+        if is_compute_ess is None and 'isComputeEss' in kwargs:
             is_compute_ess = kwargs['isComputeEss']
-        if 'jobQueue' in kwargs:
+        if job_queue is None and 'jobQueue' in kwargs:
             job_queue = kwargs['jobQueue']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'managerCount' in kwargs:
+        if manager_count is None and 'managerCount' in kwargs:
             manager_count = kwargs['managerCount']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'postInstallScripts' in kwargs:
+        if post_install_scripts is None and 'postInstallScripts' in kwargs:
             post_install_scripts = kwargs['postInstallScripts']
-        if 'ramNodeTypes' in kwargs:
+        if ram_node_types is None and 'ramNodeTypes' in kwargs:
             ram_node_types = kwargs['ramNodeTypes']
-        if 'ramRoleName' in kwargs:
+        if ram_role_name is None and 'ramRoleName' in kwargs:
             ram_role_name = kwargs['ramRoleName']
-        if 'releaseInstance' in kwargs:
+        if release_instance is None and 'releaseInstance' in kwargs:
             release_instance = kwargs['releaseInstance']
-        if 'remoteDirectory' in kwargs:
+        if remote_directory is None and 'remoteDirectory' in kwargs:
             remote_directory = kwargs['remoteDirectory']
-        if 'remoteVisEnable' in kwargs:
+        if remote_vis_enable is None and 'remoteVisEnable' in kwargs:
             remote_vis_enable = kwargs['remoteVisEnable']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'sccClusterId' in kwargs:
+        if scc_cluster_id is None and 'sccClusterId' in kwargs:
             scc_cluster_id = kwargs['sccClusterId']
-        if 'schedulerType' in kwargs:
+        if scheduler_type is None and 'schedulerType' in kwargs:
             scheduler_type = kwargs['schedulerType']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'securityGroupName' in kwargs:
+        if security_group_name is None and 'securityGroupName' in kwargs:
             security_group_name = kwargs['securityGroupName']
-        if 'systemDiskLevel' in kwargs:
+        if system_disk_level is None and 'systemDiskLevel' in kwargs:
             system_disk_level = kwargs['systemDiskLevel']
-        if 'systemDiskSize' in kwargs:
+        if system_disk_size is None and 'systemDiskSize' in kwargs:
             system_disk_size = kwargs['systemDiskSize']
-        if 'systemDiskType' in kwargs:
+        if system_disk_type is None and 'systemDiskType' in kwargs:
             system_disk_type = kwargs['systemDiskType']
-        if 'volumeId' in kwargs:
+        if volume_id is None and 'volumeId' in kwargs:
             volume_id = kwargs['volumeId']
-        if 'volumeMountOption' in kwargs:
+        if volume_mount_option is None and 'volumeMountOption' in kwargs:
             volume_mount_option = kwargs['volumeMountOption']
-        if 'volumeMountpoint' in kwargs:
+        if volume_mountpoint is None and 'volumeMountpoint' in kwargs:
             volume_mountpoint = kwargs['volumeMountpoint']
-        if 'volumeProtocol' in kwargs:
+        if volume_protocol is None and 'volumeProtocol' in kwargs:
             volume_protocol = kwargs['volumeProtocol']
-        if 'volumeType' in kwargs:
+        if volume_type is None and 'volumeType' in kwargs:
             volume_type = kwargs['volumeType']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'withoutAgent' in kwargs:
+        if without_agent is None and 'withoutAgent' in kwargs:
             without_agent = kwargs['withoutAgent']
-        if 'withoutElasticIp' in kwargs:
+        if without_elastic_ip is None and 'withoutElasticIp' in kwargs:
             without_elastic_ip = kwargs['withoutElasticIp']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("cluster_name", cluster_name)
@@ -1449,111 +1463,111 @@ class _ClusterState:
              without_agent: Optional[pulumi.Input[bool]] = None,
              without_elastic_ip: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountType' in kwargs:
+        if account_type is None and 'accountType' in kwargs:
             account_type = kwargs['accountType']
-        if 'additionalVolumes' in kwargs:
+        if additional_volumes is None and 'additionalVolumes' in kwargs:
             additional_volumes = kwargs['additionalVolumes']
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'clientVersion' in kwargs:
+        if client_version is None and 'clientVersion' in kwargs:
             client_version = kwargs['clientVersion']
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'clusterVersion' in kwargs:
+        if cluster_version is None and 'clusterVersion' in kwargs:
             cluster_version = kwargs['clusterVersion']
-        if 'computeCount' in kwargs:
+        if compute_count is None and 'computeCount' in kwargs:
             compute_count = kwargs['computeCount']
-        if 'computeEnableHt' in kwargs:
+        if compute_enable_ht is None and 'computeEnableHt' in kwargs:
             compute_enable_ht = kwargs['computeEnableHt']
-        if 'computeInstanceType' in kwargs:
+        if compute_instance_type is None and 'computeInstanceType' in kwargs:
             compute_instance_type = kwargs['computeInstanceType']
-        if 'computeSpotPriceLimit' in kwargs:
+        if compute_spot_price_limit is None and 'computeSpotPriceLimit' in kwargs:
             compute_spot_price_limit = kwargs['computeSpotPriceLimit']
-        if 'computeSpotStrategy' in kwargs:
+        if compute_spot_strategy is None and 'computeSpotStrategy' in kwargs:
             compute_spot_strategy = kwargs['computeSpotStrategy']
-        if 'deployMode' in kwargs:
+        if deploy_mode is None and 'deployMode' in kwargs:
             deploy_mode = kwargs['deployMode']
-        if 'ecsChargeType' in kwargs:
+        if ecs_charge_type is None and 'ecsChargeType' in kwargs:
             ecs_charge_type = kwargs['ecsChargeType']
-        if 'ehpcVersion' in kwargs:
+        if ehpc_version is None and 'ehpcVersion' in kwargs:
             ehpc_version = kwargs['ehpcVersion']
-        if 'haEnable' in kwargs:
+        if ha_enable is None and 'haEnable' in kwargs:
             ha_enable = kwargs['haEnable']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'imageOwnerAlias' in kwargs:
+        if image_owner_alias is None and 'imageOwnerAlias' in kwargs:
             image_owner_alias = kwargs['imageOwnerAlias']
-        if 'inputFileUrl' in kwargs:
+        if input_file_url is None and 'inputFileUrl' in kwargs:
             input_file_url = kwargs['inputFileUrl']
-        if 'isComputeEss' in kwargs:
+        if is_compute_ess is None and 'isComputeEss' in kwargs:
             is_compute_ess = kwargs['isComputeEss']
-        if 'jobQueue' in kwargs:
+        if job_queue is None and 'jobQueue' in kwargs:
             job_queue = kwargs['jobQueue']
-        if 'keyPairName' in kwargs:
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'loginCount' in kwargs:
+        if login_count is None and 'loginCount' in kwargs:
             login_count = kwargs['loginCount']
-        if 'loginInstanceType' in kwargs:
+        if login_instance_type is None and 'loginInstanceType' in kwargs:
             login_instance_type = kwargs['loginInstanceType']
-        if 'managerCount' in kwargs:
+        if manager_count is None and 'managerCount' in kwargs:
             manager_count = kwargs['managerCount']
-        if 'managerInstanceType' in kwargs:
+        if manager_instance_type is None and 'managerInstanceType' in kwargs:
             manager_instance_type = kwargs['managerInstanceType']
-        if 'osTag' in kwargs:
+        if os_tag is None and 'osTag' in kwargs:
             os_tag = kwargs['osTag']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'postInstallScripts' in kwargs:
+        if post_install_scripts is None and 'postInstallScripts' in kwargs:
             post_install_scripts = kwargs['postInstallScripts']
-        if 'ramNodeTypes' in kwargs:
+        if ram_node_types is None and 'ramNodeTypes' in kwargs:
             ram_node_types = kwargs['ramNodeTypes']
-        if 'ramRoleName' in kwargs:
+        if ram_role_name is None and 'ramRoleName' in kwargs:
             ram_role_name = kwargs['ramRoleName']
-        if 'releaseInstance' in kwargs:
+        if release_instance is None and 'releaseInstance' in kwargs:
             release_instance = kwargs['releaseInstance']
-        if 'remoteDirectory' in kwargs:
+        if remote_directory is None and 'remoteDirectory' in kwargs:
             remote_directory = kwargs['remoteDirectory']
-        if 'remoteVisEnable' in kwargs:
+        if remote_vis_enable is None and 'remoteVisEnable' in kwargs:
             remote_vis_enable = kwargs['remoteVisEnable']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'sccClusterId' in kwargs:
+        if scc_cluster_id is None and 'sccClusterId' in kwargs:
             scc_cluster_id = kwargs['sccClusterId']
-        if 'schedulerType' in kwargs:
+        if scheduler_type is None and 'schedulerType' in kwargs:
             scheduler_type = kwargs['schedulerType']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'securityGroupName' in kwargs:
+        if security_group_name is None and 'securityGroupName' in kwargs:
             security_group_name = kwargs['securityGroupName']
-        if 'systemDiskLevel' in kwargs:
+        if system_disk_level is None and 'systemDiskLevel' in kwargs:
             system_disk_level = kwargs['systemDiskLevel']
-        if 'systemDiskSize' in kwargs:
+        if system_disk_size is None and 'systemDiskSize' in kwargs:
             system_disk_size = kwargs['systemDiskSize']
-        if 'systemDiskType' in kwargs:
+        if system_disk_type is None and 'systemDiskType' in kwargs:
             system_disk_type = kwargs['systemDiskType']
-        if 'volumeId' in kwargs:
+        if volume_id is None and 'volumeId' in kwargs:
             volume_id = kwargs['volumeId']
-        if 'volumeMountOption' in kwargs:
+        if volume_mount_option is None and 'volumeMountOption' in kwargs:
             volume_mount_option = kwargs['volumeMountOption']
-        if 'volumeMountpoint' in kwargs:
+        if volume_mountpoint is None and 'volumeMountpoint' in kwargs:
             volume_mountpoint = kwargs['volumeMountpoint']
-        if 'volumeProtocol' in kwargs:
+        if volume_protocol is None and 'volumeProtocol' in kwargs:
             volume_protocol = kwargs['volumeProtocol']
-        if 'volumeType' in kwargs:
+        if volume_type is None and 'volumeType' in kwargs:
             volume_type = kwargs['volumeType']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'withoutAgent' in kwargs:
+        if without_agent is None and 'withoutAgent' in kwargs:
             without_agent = kwargs['withoutAgent']
-        if 'withoutElasticIp' in kwargs:
+        if without_elastic_ip is None and 'withoutElasticIp' in kwargs:
             without_elastic_ip = kwargs['withoutElasticIp']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_type is not None:
@@ -2465,61 +2479,6 @@ class Cluster(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.173.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_images = alicloud.ecs.get_images(name_regex="^centos_7_6_x64*",
-            owners="system")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.1.0.0/16",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
-            storage_type="Performance",
-            protocol_type="NFS")
-        default_mount_target = alicloud.nas.MountTarget("defaultMountTarget",
-            file_system_id=default_file_system.id,
-            access_group_name="DEFAULT_VPC_GROUP_NAME",
-            vswitch_id=default_switch.id)
-        default_cluster = alicloud.ehpc.Cluster("defaultCluster",
-            cluster_name=name,
-            deploy_mode="Simple",
-            description=name,
-            ha_enable=False,
-            image_id=default_images.images[0].id,
-            image_owner_alias="system",
-            volume_protocol="nfs",
-            volume_id=default_file_system.id,
-            volume_mountpoint=default_mount_target.mount_target_domain,
-            compute_count=1,
-            compute_instance_type=default_instance_types.instance_types[0].id,
-            login_count=1,
-            login_instance_type=default_instance_types.instance_types[0].id,
-            manager_count=1,
-            manager_instance_type=default_instance_types.instance_types[0].id,
-            os_tag="CentOS_7.6_64",
-            scheduler_type="pbs",
-            password="your-password123",
-            vswitch_id=default_switch.id,
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        ```
-
         ## Import
 
         Ehpc Cluster can be imported using the id, e.g.
@@ -2611,61 +2570,6 @@ class Cluster(pulumi.CustomResource):
         For information about Ehpc Cluster and how to use it, see [What is Cluster](https://www.alibabacloud.com/help/en/e-hpc/developer-reference/api-ehpc-2018-04-12-createcluster).
 
         > **NOTE:** Available since v1.173.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_images = alicloud.ecs.get_images(name_regex="^centos_7_6_x64*",
-            owners="system")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.1.0.0/16",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
-            storage_type="Performance",
-            protocol_type="NFS")
-        default_mount_target = alicloud.nas.MountTarget("defaultMountTarget",
-            file_system_id=default_file_system.id,
-            access_group_name="DEFAULT_VPC_GROUP_NAME",
-            vswitch_id=default_switch.id)
-        default_cluster = alicloud.ehpc.Cluster("defaultCluster",
-            cluster_name=name,
-            deploy_mode="Simple",
-            description=name,
-            ha_enable=False,
-            image_id=default_images.images[0].id,
-            image_owner_alias="system",
-            volume_protocol="nfs",
-            volume_id=default_file_system.id,
-            volume_mountpoint=default_mount_target.mount_target_domain,
-            compute_count=1,
-            compute_instance_type=default_instance_types.instance_types[0].id,
-            login_count=1,
-            login_instance_type=default_instance_types.instance_types[0].id,
-            manager_count=1,
-            manager_instance_type=default_instance_types.instance_types[0].id,
-            os_tag="CentOS_7.6_64",
-            scheduler_type="pbs",
-            password="your-password123",
-            vswitch_id=default_switch.id,
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        ```
 
         ## Import
 

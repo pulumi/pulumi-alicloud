@@ -55,25 +55,31 @@ class BackupPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_instance_id: pulumi.Input[str],
-             preferred_backup_period: pulumi.Input[str],
-             preferred_backup_time: pulumi.Input[str],
+             db_instance_id: Optional[pulumi.Input[str]] = None,
+             preferred_backup_period: Optional[pulumi.Input[str]] = None,
+             preferred_backup_time: Optional[pulumi.Input[str]] = None,
              backup_retention_period: Optional[pulumi.Input[int]] = None,
              enable_recovery_point: Optional[pulumi.Input[bool]] = None,
              recovery_point_period: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbInstanceId' in kwargs:
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
-        if 'preferredBackupPeriod' in kwargs:
+        if db_instance_id is None:
+            raise TypeError("Missing 'db_instance_id' argument")
+        if preferred_backup_period is None and 'preferredBackupPeriod' in kwargs:
             preferred_backup_period = kwargs['preferredBackupPeriod']
-        if 'preferredBackupTime' in kwargs:
+        if preferred_backup_period is None:
+            raise TypeError("Missing 'preferred_backup_period' argument")
+        if preferred_backup_time is None and 'preferredBackupTime' in kwargs:
             preferred_backup_time = kwargs['preferredBackupTime']
-        if 'backupRetentionPeriod' in kwargs:
+        if preferred_backup_time is None:
+            raise TypeError("Missing 'preferred_backup_time' argument")
+        if backup_retention_period is None and 'backupRetentionPeriod' in kwargs:
             backup_retention_period = kwargs['backupRetentionPeriod']
-        if 'enableRecoveryPoint' in kwargs:
+        if enable_recovery_point is None and 'enableRecoveryPoint' in kwargs:
             enable_recovery_point = kwargs['enableRecoveryPoint']
-        if 'recoveryPointPeriod' in kwargs:
+        if recovery_point_period is None and 'recoveryPointPeriod' in kwargs:
             recovery_point_period = kwargs['recoveryPointPeriod']
 
         _setter("db_instance_id", db_instance_id)
@@ -223,19 +229,19 @@ class _BackupPolicyState:
              preferred_backup_period: Optional[pulumi.Input[str]] = None,
              preferred_backup_time: Optional[pulumi.Input[str]] = None,
              recovery_point_period: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupRetentionPeriod' in kwargs:
+        if backup_retention_period is None and 'backupRetentionPeriod' in kwargs:
             backup_retention_period = kwargs['backupRetentionPeriod']
-        if 'dbInstanceId' in kwargs:
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
-        if 'enableRecoveryPoint' in kwargs:
+        if enable_recovery_point is None and 'enableRecoveryPoint' in kwargs:
             enable_recovery_point = kwargs['enableRecoveryPoint']
-        if 'preferredBackupPeriod' in kwargs:
+        if preferred_backup_period is None and 'preferredBackupPeriod' in kwargs:
             preferred_backup_period = kwargs['preferredBackupPeriod']
-        if 'preferredBackupTime' in kwargs:
+        if preferred_backup_time is None and 'preferredBackupTime' in kwargs:
             preferred_backup_time = kwargs['preferredBackupTime']
-        if 'recoveryPointPeriod' in kwargs:
+        if recovery_point_period is None and 'recoveryPointPeriod' in kwargs:
             recovery_point_period = kwargs['recoveryPointPeriod']
 
         if backup_retention_period is not None:

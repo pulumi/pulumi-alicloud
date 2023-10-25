@@ -15,35 +15,6 @@ import (
 // This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.170.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := eds.GetDesktopTypes(ctx, &eds.GetDesktopTypesArgs{
-//				InstanceTypeFamily: pulumi.StringRef("eds.hf"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ecdDesktopTypeId1", ids.Types[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDesktopTypes(ctx *pulumi.Context, args *GetDesktopTypesArgs, opts ...pulumi.InvokeOption) (*GetDesktopTypesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDesktopTypesResult

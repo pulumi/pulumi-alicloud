@@ -15,39 +15,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// This data source provides the Simple Application Server Firewall Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.143.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.SimpleApplicationServer.GetServerFirewallRules.Invoke(new()
-        ///     {
-        ///         InstanceId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["simpleApplicationServerFirewallRuleId1"] = ids.Apply(getServerFirewallRulesResult =&gt; getServerFirewallRulesResult.Rules[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerFirewallRulesResult> InvokeAsync(GetServerFirewallRulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerFirewallRulesResult>("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", args ?? new GetServerFirewallRulesArgs(), options.WithDefaults());
@@ -56,39 +23,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// This data source provides the Simple Application Server Firewall Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.143.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.SimpleApplicationServer.GetServerFirewallRules.Invoke(new()
-        ///     {
-        ///         InstanceId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["simpleApplicationServerFirewallRuleId1"] = ids.Apply(getServerFirewallRulesResult =&gt; getServerFirewallRulesResult.Rules[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerFirewallRulesResult> Invoke(GetServerFirewallRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerFirewallRulesResult>("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", args ?? new GetServerFirewallRulesInvokeArgs(), options.WithDefaults());

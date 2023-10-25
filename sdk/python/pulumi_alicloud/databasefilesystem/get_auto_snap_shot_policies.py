@@ -128,16 +128,6 @@ def get_auto_snap_shot_policies(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.202.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.databasefilesystem.get_auto_snap_shot_policies(ids=[alicloud_dbfs_auto_snap_shot_policy["default"]["id"]])
-    pulumi.export("alicloudDbfsAutoSnapShotPolicyExampleId", default.auto_snap_shot_policies[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Auto Snap Shot Policy IDs.
     :param str name_regex: A regex string to filter results by Auto Snap Shot Policy name.
@@ -174,16 +164,6 @@ def get_auto_snap_shot_policies_output(ids: Optional[pulumi.Input[Optional[Seque
     This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
 
     > **NOTE:** Available in 1.202.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.databasefilesystem.get_auto_snap_shot_policies(ids=[alicloud_dbfs_auto_snap_shot_policy["default"]["id"]])
-    pulumi.export("alicloudDbfsAutoSnapShotPolicyExampleId", default.auto_snap_shot_policies[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Auto Snap Shot Policy IDs.

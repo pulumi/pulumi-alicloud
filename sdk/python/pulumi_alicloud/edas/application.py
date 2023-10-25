@@ -56,9 +56,9 @@ class ApplicationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_name: pulumi.Input[str],
-             cluster_id: pulumi.Input[str],
-             package_type: pulumi.Input[str],
+             application_name: Optional[pulumi.Input[str]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             package_type: Optional[pulumi.Input[str]] = None,
              build_pack_id: Optional[pulumi.Input[int]] = None,
              descriotion: Optional[pulumi.Input[str]] = None,
              ecu_infos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -67,27 +67,33 @@ class ApplicationArgs:
              logical_region_id: Optional[pulumi.Input[str]] = None,
              package_version: Optional[pulumi.Input[str]] = None,
              war_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationName' in kwargs:
+        if application_name is None and 'applicationName' in kwargs:
             application_name = kwargs['applicationName']
-        if 'clusterId' in kwargs:
+        if application_name is None:
+            raise TypeError("Missing 'application_name' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'packageType' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if package_type is None and 'packageType' in kwargs:
             package_type = kwargs['packageType']
-        if 'buildPackId' in kwargs:
+        if package_type is None:
+            raise TypeError("Missing 'package_type' argument")
+        if build_pack_id is None and 'buildPackId' in kwargs:
             build_pack_id = kwargs['buildPackId']
-        if 'ecuInfos' in kwargs:
+        if ecu_infos is None and 'ecuInfos' in kwargs:
             ecu_infos = kwargs['ecuInfos']
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'healthCheckUrl' in kwargs:
+        if health_check_url is None and 'healthCheckUrl' in kwargs:
             health_check_url = kwargs['healthCheckUrl']
-        if 'logicalRegionId' in kwargs:
+        if logical_region_id is None and 'logicalRegionId' in kwargs:
             logical_region_id = kwargs['logicalRegionId']
-        if 'packageVersion' in kwargs:
+        if package_version is None and 'packageVersion' in kwargs:
             package_version = kwargs['packageVersion']
-        if 'warUrl' in kwargs:
+        if war_url is None and 'warUrl' in kwargs:
             war_url = kwargs['warUrl']
 
         _setter("application_name", application_name)
@@ -299,27 +305,27 @@ class _ApplicationState:
              package_type: Optional[pulumi.Input[str]] = None,
              package_version: Optional[pulumi.Input[str]] = None,
              war_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationName' in kwargs:
+        if application_name is None and 'applicationName' in kwargs:
             application_name = kwargs['applicationName']
-        if 'buildPackId' in kwargs:
+        if build_pack_id is None and 'buildPackId' in kwargs:
             build_pack_id = kwargs['buildPackId']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'ecuInfos' in kwargs:
+        if ecu_infos is None and 'ecuInfos' in kwargs:
             ecu_infos = kwargs['ecuInfos']
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'healthCheckUrl' in kwargs:
+        if health_check_url is None and 'healthCheckUrl' in kwargs:
             health_check_url = kwargs['healthCheckUrl']
-        if 'logicalRegionId' in kwargs:
+        if logical_region_id is None and 'logicalRegionId' in kwargs:
             logical_region_id = kwargs['logicalRegionId']
-        if 'packageType' in kwargs:
+        if package_type is None and 'packageType' in kwargs:
             package_type = kwargs['packageType']
-        if 'packageVersion' in kwargs:
+        if package_version is None and 'packageVersion' in kwargs:
             package_version = kwargs['packageVersion']
-        if 'warUrl' in kwargs:
+        if war_url is None and 'warUrl' in kwargs:
             war_url = kwargs['warUrl']
 
         if application_name is not None:
@@ -500,34 +506,6 @@ class Application(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.82.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_cluster = alicloud.edas.Cluster("defaultCluster",
-            cluster_name=name,
-            cluster_type=2,
-            network_mode=2,
-            logical_region_id=default_regions.regions[0].id,
-            vpc_id=default_network.id)
-        default_application = alicloud.edas.Application("defaultApplication",
-            application_name=name,
-            cluster_id=default_cluster.id,
-            package_type="JAR")
-        ```
-
         ## Import
 
         EDAS application can be imported using the id, e.g.
@@ -560,34 +538,6 @@ class Application(pulumi.CustomResource):
         Creates an EDAS ecs application on EDAS, see [What is EDAS Application](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertapplication). The application will be deployed when `group_id` and `war_url` are given.
 
         > **NOTE:** Available since v1.82.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_cluster = alicloud.edas.Cluster("defaultCluster",
-            cluster_name=name,
-            cluster_type=2,
-            network_mode=2,
-            logical_region_id=default_regions.regions[0].id,
-            vpc_id=default_network.id)
-        default_application = alicloud.edas.Application("defaultApplication",
-            application_name=name,
-            cluster_id=default_cluster.id,
-            package_type="JAR")
-        ```
 
         ## Import
 

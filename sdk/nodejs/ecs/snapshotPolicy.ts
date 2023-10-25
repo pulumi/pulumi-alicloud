@@ -13,27 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.42.0+.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const sp = new alicloud.ecs.SnapshotPolicy("sp", {
- *     repeatWeekdays: [
- *         "1",
- *         "2",
- *         "3",
- *     ],
- *     retentionDays: -1,
- *     timePoints: [
- *         "1",
- *         "22",
- *         "23",
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * Snapshot can be imported using the id, e.g.

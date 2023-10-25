@@ -35,14 +35,16 @@ class HoneypotPresetMetaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             burp: pulumi.Input[str],
+             burp: Optional[pulumi.Input[str]] = None,
              portrait_option: Optional[pulumi.Input[bool]] = None,
              trojan_git: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'portraitOption' in kwargs:
+        if burp is None:
+            raise TypeError("Missing 'burp' argument")
+        if portrait_option is None and 'portraitOption' in kwargs:
             portrait_option = kwargs['portraitOption']
-        if 'trojanGit' in kwargs:
+        if trojan_git is None and 'trojanGit' in kwargs:
             trojan_git = kwargs['trojanGit']
 
         _setter("burp", burp)
@@ -107,11 +109,11 @@ class HoneypotProbeHoneypotBindListArgs:
              _setter: Callable[[Any, Any], None],
              bind_port_lists: Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]]] = None,
              honeypot_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bindPortLists' in kwargs:
+        if bind_port_lists is None and 'bindPortLists' in kwargs:
             bind_port_lists = kwargs['bindPortLists']
-        if 'honeypotId' in kwargs:
+        if honeypot_id is None and 'honeypotId' in kwargs:
             honeypot_id = kwargs['honeypotId']
 
         if bind_port_lists is not None:
@@ -175,15 +177,15 @@ class HoneypotProbeHoneypotBindListBindPortListArgs:
              fixed: Optional[pulumi.Input[bool]] = None,
              start_port: Optional[pulumi.Input[int]] = None,
              target_port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bindPort' in kwargs:
+        if bind_port is None and 'bindPort' in kwargs:
             bind_port = kwargs['bindPort']
-        if 'endPort' in kwargs:
+        if end_port is None and 'endPort' in kwargs:
             end_port = kwargs['endPort']
-        if 'startPort' in kwargs:
+        if start_port is None and 'startPort' in kwargs:
             start_port = kwargs['startPort']
-        if 'targetPort' in kwargs:
+        if target_port is None and 'targetPort' in kwargs:
             target_port = kwargs['targetPort']
 
         if bind_port is not None:

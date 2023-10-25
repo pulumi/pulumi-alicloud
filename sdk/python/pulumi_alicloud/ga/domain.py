@@ -29,12 +29,16 @@ class DomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerator_id: pulumi.Input[str],
-             domain: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
 
         _setter("accelerator_id", accelerator_id)
         _setter("domain", domain)
@@ -88,9 +92,9 @@ class _DomainState:
              accelerator_id: Optional[pulumi.Input[str]] = None,
              domain: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
 
         if accelerator_id is not None:
@@ -152,23 +156,6 @@ class Domain(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.197.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
-        default_domain = alicloud.ga.Domain("defaultDomain",
-            domain="changes.com.cn",
-            accelerator_id=default_accelerator.id)
-        ```
-
         ## Import
 
         Ga Domain can be imported using the id, e.g.
@@ -194,23 +181,6 @@ class Domain(pulumi.CustomResource):
         For information about Ga Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createdomain).
 
         > **NOTE:** Available since v1.197.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
-        default_domain = alicloud.ga.Domain("defaultDomain",
-            domain="changes.com.cn",
-            accelerator_id=default_accelerator.id)
-        ```
 
         ## Import
 

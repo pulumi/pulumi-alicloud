@@ -10,31 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Bastionhost Host Accounts of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.135.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.bastionhost.getHostAccounts({
- *     hostId: "15",
- *     instanceId: "example_value",
- *     ids: [
- *         "1",
- *         "2",
- *     ],
- * });
- * export const bastionhostHostAccountId1 = ids.then(ids => ids.accounts?.[0]?.id);
- * const nameRegex = alicloud.bastionhost.getHostAccounts({
- *     hostId: "15",
- *     instanceId: "example_value",
- *     nameRegex: "^my-HostAccount",
- * });
- * export const bastionhostHostAccountId2 = nameRegex.then(nameRegex => nameRegex.accounts?.[0]?.id);
- * ```
  */
 export function getHostAccounts(args: GetHostAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetHostAccountsResult> {
 
@@ -106,31 +81,6 @@ export interface GetHostAccountsResult {
  * This data source provides the Bastionhost Host Accounts of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.135.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.bastionhost.getHostAccounts({
- *     hostId: "15",
- *     instanceId: "example_value",
- *     ids: [
- *         "1",
- *         "2",
- *     ],
- * });
- * export const bastionhostHostAccountId1 = ids.then(ids => ids.accounts?.[0]?.id);
- * const nameRegex = alicloud.bastionhost.getHostAccounts({
- *     hostId: "15",
- *     instanceId: "example_value",
- *     nameRegex: "^my-HostAccount",
- * });
- * export const bastionhostHostAccountId2 = nameRegex.then(nameRegex => nameRegex.accounts?.[0]?.id);
- * ```
  */
 export function getHostAccountsOutput(args: GetHostAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostAccountsResult> {
     return pulumi.output(args).apply((a: any) => getHostAccounts(a, opts))

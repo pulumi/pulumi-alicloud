@@ -61,29 +61,35 @@ class SmbAclAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             file_system_id: pulumi.Input[str],
-             keytab: pulumi.Input[str],
-             keytab_md5: pulumi.Input[str],
+             file_system_id: Optional[pulumi.Input[str]] = None,
+             keytab: Optional[pulumi.Input[str]] = None,
+             keytab_md5: Optional[pulumi.Input[str]] = None,
              enable_anonymous_access: Optional[pulumi.Input[bool]] = None,
              encrypt_data: Optional[pulumi.Input[bool]] = None,
              home_dir_path: Optional[pulumi.Input[str]] = None,
              reject_unencrypted_access: Optional[pulumi.Input[bool]] = None,
              super_admin_sid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fileSystemId' in kwargs:
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'keytabMd5' in kwargs:
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if keytab is None:
+            raise TypeError("Missing 'keytab' argument")
+        if keytab_md5 is None and 'keytabMd5' in kwargs:
             keytab_md5 = kwargs['keytabMd5']
-        if 'enableAnonymousAccess' in kwargs:
+        if keytab_md5 is None:
+            raise TypeError("Missing 'keytab_md5' argument")
+        if enable_anonymous_access is None and 'enableAnonymousAccess' in kwargs:
             enable_anonymous_access = kwargs['enableAnonymousAccess']
-        if 'encryptData' in kwargs:
+        if encrypt_data is None and 'encryptData' in kwargs:
             encrypt_data = kwargs['encryptData']
-        if 'homeDirPath' in kwargs:
+        if home_dir_path is None and 'homeDirPath' in kwargs:
             home_dir_path = kwargs['homeDirPath']
-        if 'rejectUnencryptedAccess' in kwargs:
+        if reject_unencrypted_access is None and 'rejectUnencryptedAccess' in kwargs:
             reject_unencrypted_access = kwargs['rejectUnencryptedAccess']
-        if 'superAdminSid' in kwargs:
+        if super_admin_sid is None and 'superAdminSid' in kwargs:
             super_admin_sid = kwargs['superAdminSid']
 
         _setter("file_system_id", file_system_id)
@@ -279,23 +285,23 @@ class _SmbAclAttachmentState:
              keytab_md5: Optional[pulumi.Input[str]] = None,
              reject_unencrypted_access: Optional[pulumi.Input[bool]] = None,
              super_admin_sid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authMethod' in kwargs:
+        if auth_method is None and 'authMethod' in kwargs:
             auth_method = kwargs['authMethod']
-        if 'enableAnonymousAccess' in kwargs:
+        if enable_anonymous_access is None and 'enableAnonymousAccess' in kwargs:
             enable_anonymous_access = kwargs['enableAnonymousAccess']
-        if 'encryptData' in kwargs:
+        if encrypt_data is None and 'encryptData' in kwargs:
             encrypt_data = kwargs['encryptData']
-        if 'fileSystemId' in kwargs:
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'homeDirPath' in kwargs:
+        if home_dir_path is None and 'homeDirPath' in kwargs:
             home_dir_path = kwargs['homeDirPath']
-        if 'keytabMd5' in kwargs:
+        if keytab_md5 is None and 'keytabMd5' in kwargs:
             keytab_md5 = kwargs['keytabMd5']
-        if 'rejectUnencryptedAccess' in kwargs:
+        if reject_unencrypted_access is None and 'rejectUnencryptedAccess' in kwargs:
             reject_unencrypted_access = kwargs['rejectUnencryptedAccess']
-        if 'superAdminSid' in kwargs:
+        if super_admin_sid is None and 'superAdminSid' in kwargs:
             super_admin_sid = kwargs['superAdminSid']
 
         if auth_method is not None:
@@ -476,28 +482,6 @@ class SmbAclAttachment(pulumi.CustomResource):
         Alibaba Cloud SMB protocol file storage service supports user authentication based on AD domain system and permission access control at the file system level. Connecting and accessing the SMB file system as a domain user can implement the requirements for access control at the file and directory level in the SMB protocol file system. The current Alibaba Cloud SMB protocol file storage service does not support multi-user file and directory-level permission access control, and only provides file system-level authentication and access based on the whitelist mechanism that supports cloud accounts and source IP permission groups control.
         > **NOTE:** Available in 1.186.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.nas.get_zones(file_system_type="standard")
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
-            protocol_type="SMB",
-            storage_type="Capacity",
-            description="terraform-example",
-            encrypt_type=0,
-            file_system_type="standard",
-            zone_id=example_zones.zones[0].zone_id)
-        example_smb_acl_attachment = alicloud.nas.SmbAclAttachment("exampleSmbAclAttachment",
-            file_system_id=example_file_system.id,
-            keytab="BQIAAABHAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAAQAIqIx6v7p11oUAAABHAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAAwAIqIx6v7p11oUAAABPAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAFwAQnQZWB3RAPHU7PMIJyBWePAAAAF8AAgANQUxJQURURVNULkNPTQAEY2lmcwAZc21ic2VydmVyMjQuYWxpYWR0ZXN0LmNvbQAAAAEAAAAAAQASACAGJ7F0s+bcBjf6jD5HlvlRLmPSOW+qDZe0Qk0lQcf8WwAAAE8AAgANQUxJQURURVNULkNPTQAEY2lmcwAZc21ic2VydmVyMjQuYWxpYWR0ZXN0LmNvbQAAAAEAAAAAAQARABDdFmanrSIatnDDhoOXYadj",
-            keytab_md5="E3CCF7E2416DF04FA958AA4513EA29E8")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enable_anonymous_access: Specifies whether to allow anonymous access. Valid values:
@@ -534,28 +518,6 @@ class SmbAclAttachment(pulumi.CustomResource):
 
         Alibaba Cloud SMB protocol file storage service supports user authentication based on AD domain system and permission access control at the file system level. Connecting and accessing the SMB file system as a domain user can implement the requirements for access control at the file and directory level in the SMB protocol file system. The current Alibaba Cloud SMB protocol file storage service does not support multi-user file and directory-level permission access control, and only provides file system-level authentication and access based on the whitelist mechanism that supports cloud accounts and source IP permission groups control.
         > **NOTE:** Available in 1.186.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.nas.get_zones(file_system_type="standard")
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
-            protocol_type="SMB",
-            storage_type="Capacity",
-            description="terraform-example",
-            encrypt_type=0,
-            file_system_type="standard",
-            zone_id=example_zones.zones[0].zone_id)
-        example_smb_acl_attachment = alicloud.nas.SmbAclAttachment("exampleSmbAclAttachment",
-            file_system_id=example_file_system.id,
-            keytab="BQIAAABHAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAAQAIqIx6v7p11oUAAABHAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAAwAIqIx6v7p11oUAAABPAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAFwAQnQZWB3RAPHU7PMIJyBWePAAAAF8AAgANQUxJQURURVNULkNPTQAEY2lmcwAZc21ic2VydmVyMjQuYWxpYWR0ZXN0LmNvbQAAAAEAAAAAAQASACAGJ7F0s+bcBjf6jD5HlvlRLmPSOW+qDZe0Qk0lQcf8WwAAAE8AAgANQUxJQURURVNULkNPTQAEY2lmcwAZc21ic2VydmVyMjQuYWxpYWR0ZXN0LmNvbQAAAAEAAAAAAQARABDdFmanrSIatnDDhoOXYadj",
-            keytab_md5="E3CCF7E2416DF04FA958AA4513EA29E8")
-        ```
 
         :param str resource_name: The name of the resource.
         :param SmbAclAttachmentArgs args: The arguments to use to populate this resource's properties.

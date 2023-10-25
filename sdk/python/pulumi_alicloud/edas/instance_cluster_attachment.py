@@ -29,14 +29,18 @@ class InstanceClusterAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'instanceIds' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
+        if instance_ids is None:
+            raise TypeError("Missing 'instance_ids' argument")
 
         _setter("cluster_id", cluster_id)
         _setter("instance_ids", instance_ids)
@@ -98,17 +102,17 @@ class _InstanceClusterAttachmentState:
              ecu_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              status_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'clusterMemberIds' in kwargs:
+        if cluster_member_ids is None and 'clusterMemberIds' in kwargs:
             cluster_member_ids = kwargs['clusterMemberIds']
-        if 'ecuMap' in kwargs:
+        if ecu_map is None and 'ecuMap' in kwargs:
             ecu_map = kwargs['ecuMap']
-        if 'instanceIds' in kwargs:
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
-        if 'statusMap' in kwargs:
+        if status_map is None and 'statusMap' in kwargs:
             status_map = kwargs['statusMap']
 
         if cluster_id is not None:
@@ -196,52 +200,6 @@ class InstanceClusterAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.82.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            availability_zone=default_zones.zones[0].id,
-            instance_name=name,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            security_groups=[default_security_group.id],
-            vswitch_id=default_switch.id)
-        default_cluster = alicloud.edas.Cluster("defaultCluster",
-            cluster_name=name,
-            cluster_type=2,
-            network_mode=2,
-            logical_region_id=default_regions.regions[0].id,
-            vpc_id=default_network.id)
-        default_instance_cluster_attachment = alicloud.edas.InstanceClusterAttachment("defaultInstanceClusterAttachment",
-            cluster_id=default_cluster.id,
-            instance_ids=[default_instance.id])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The ID of the cluster that you want to create the application.
@@ -257,52 +215,6 @@ class InstanceClusterAttachment(pulumi.CustomResource):
         Provides an EDAS instance cluster attachment resource, see [What is EDAS Instance Cluster Attachment](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-installagent).
 
         > **NOTE:** Available since v1.82.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            availability_zone=default_zones.zones[0].id,
-            instance_name=name,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            security_groups=[default_security_group.id],
-            vswitch_id=default_switch.id)
-        default_cluster = alicloud.edas.Cluster("defaultCluster",
-            cluster_name=name,
-            cluster_type=2,
-            network_mode=2,
-            logical_region_id=default_regions.regions[0].id,
-            vpc_id=default_network.id)
-        default_instance_cluster_attachment = alicloud.edas.InstanceClusterAttachment("defaultInstanceClusterAttachment",
-            cluster_id=default_cluster.id,
-            instance_ids=[default_instance.id])
-        ```
 
         :param str resource_name: The name of the resource.
         :param InstanceClusterAttachmentArgs args: The arguments to use to populate this resource's properties.

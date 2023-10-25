@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Mongodb Sharding Network Public Addresses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.149.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.mongodb.getShardingNetworkPublicAddresses({
- *     dbInstanceId: "example_value",
- *     nodeId: "example_value",
- *     role: "Primary",
- * });
- * export const mongodbShardingNetworkPublicAddressDbInstanceId1 = example.then(example => example.addresses?.[0]?.dbInstanceId);
- * ```
  */
 export function getShardingNetworkPublicAddresses(args: GetShardingNetworkPublicAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetShardingNetworkPublicAddressesResult> {
 
@@ -78,22 +62,6 @@ export interface GetShardingNetworkPublicAddressesResult {
  * This data source provides the Mongodb Sharding Network Public Addresses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.149.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.mongodb.getShardingNetworkPublicAddresses({
- *     dbInstanceId: "example_value",
- *     nodeId: "example_value",
- *     role: "Primary",
- * });
- * export const mongodbShardingNetworkPublicAddressDbInstanceId1 = example.then(example => example.addresses?.[0]?.dbInstanceId);
- * ```
  */
 export function getShardingNetworkPublicAddressesOutput(args: GetShardingNetworkPublicAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShardingNetworkPublicAddressesResult> {
     return pulumi.output(args).apply((a: any) => getShardingNetworkPublicAddresses(a, opts))

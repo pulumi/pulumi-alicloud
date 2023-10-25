@@ -169,25 +169,6 @@ def get_users(display_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.133.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.bastionhost.get_users(instance_id="example_value",
-        ids=[
-            "1",
-            "10",
-        ])
-    pulumi.export("bastionhostUserId1", ids.users[0].id)
-    name_regex = alicloud.bastionhost.get_users(instance_id="example_value",
-        name_regex="^my-User")
-    pulumi.export("bastionhostUserId2", name_regex.users[0].id)
-    ```
-
 
     :param str display_name: Specify the New Created the User's Display Name. Supports up to 128 Characters.
     :param Sequence[str] ids: A list of User IDs.
@@ -246,25 +227,6 @@ def get_users_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides the Bastionhost Users of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.133.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.bastionhost.get_users(instance_id="example_value",
-        ids=[
-            "1",
-            "10",
-        ])
-    pulumi.export("bastionhostUserId1", ids.users[0].id)
-    name_regex = alicloud.bastionhost.get_users(instance_id="example_value",
-        name_regex="^my-User")
-    pulumi.export("bastionhostUserId2", name_regex.users[0].id)
-    ```
 
 
     :param str display_name: Specify the New Created the User's Display Name. Supports up to 128 Characters.

@@ -29,12 +29,14 @@ class ScimServerCredentialArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             directory_id: pulumi.Input[str],
+             directory_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'directoryId' in kwargs:
+        if directory_id is None and 'directoryId' in kwargs:
             directory_id = kwargs['directoryId']
+        if directory_id is None:
+            raise TypeError("Missing 'directory_id' argument")
 
         _setter("directory_id", directory_id)
         if status is not None:
@@ -89,11 +91,11 @@ class _ScimServerCredentialState:
              credential_id: Optional[pulumi.Input[str]] = None,
              directory_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'credentialId' in kwargs:
+        if credential_id is None and 'credentialId' in kwargs:
             credential_id = kwargs['credentialId']
-        if 'directoryId' in kwargs:
+        if directory_id is None and 'directoryId' in kwargs:
             directory_id = kwargs['directoryId']
 
         if credential_id is not None:

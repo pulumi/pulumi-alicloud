@@ -15,38 +15,6 @@ import (
 // This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.116.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := ecs.GetHpcClusters(ctx, &ecs.GetHpcClustersArgs{
-//				Ids: []string{
-//					"hpc-bp1i09xxxxxxxx",
-//				},
-//				NameRegex: pulumi.StringRef("tf-testAcc"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstEcsHpcClusterId", example.Clusters[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetHpcClusters(ctx *pulumi.Context, args *GetHpcClustersArgs, opts ...pulumi.InvokeOption) (*GetHpcClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHpcClustersResult

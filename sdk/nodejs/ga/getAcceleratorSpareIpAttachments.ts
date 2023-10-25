@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.167.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ga.getAcceleratorSpareIpAttachments({
- *     acceleratorId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const gaAcceleratorSpareIpAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
- * ```
  */
 export function getAcceleratorSpareIpAttachments(args: GetAcceleratorSpareIpAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetAcceleratorSpareIpAttachmentsResult> {
 
@@ -80,24 +62,6 @@ export interface GetAcceleratorSpareIpAttachmentsResult {
  * This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.167.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ga.getAcceleratorSpareIpAttachments({
- *     acceleratorId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const gaAcceleratorSpareIpAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
- * ```
  */
 export function getAcceleratorSpareIpAttachmentsOutput(args: GetAcceleratorSpareIpAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAcceleratorSpareIpAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getAcceleratorSpareIpAttachments(a, opts))

@@ -19,59 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.123.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultDdosCooInstance, err := ddos.NewDdosCooInstance(ctx, "defaultDdosCooInstance", &ddos.DdosCooInstanceArgs{
-//				Bandwidth:        pulumi.String("30"),
-//				BaseBandwidth:    pulumi.String("30"),
-//				ServiceBandwidth: pulumi.String("100"),
-//				PortCount:        pulumi.String("50"),
-//				DomainCount:      pulumi.String("50"),
-//				Period:           pulumi.Int(1),
-//				ProductType:      pulumi.String("ddoscoo"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ddos.NewPort(ctx, "defaultPort", &ddos.PortArgs{
-//				InstanceId:       defaultDdosCooInstance.ID(),
-//				FrontendPort:     pulumi.String("7001"),
-//				BackendPort:      pulumi.String("7002"),
-//				FrontendProtocol: pulumi.String("tcp"),
-//				RealServers: pulumi.StringArray{
-//					pulumi.String("1.1.1.1"),
-//					pulumi.String("2.2.2.2"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Anti-DDoS Pro Port can be imported using the id, e.g.

@@ -167,7 +167,7 @@ class ScalingConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             scaling_group_id: pulumi.Input[str],
+             scaling_group_id: Optional[pulumi.Input[str]] = None,
              active: Optional[pulumi.Input[bool]] = None,
              credit_specification: Optional[pulumi.Input[str]] = None,
              data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]] = None,
@@ -209,79 +209,81 @@ class ScalingConfigurationArgs:
              system_disk_size: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'scalingGroupId' in kwargs:
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
-        if 'creditSpecification' in kwargs:
+        if scaling_group_id is None:
+            raise TypeError("Missing 'scaling_group_id' argument")
+        if credit_specification is None and 'creditSpecification' in kwargs:
             credit_specification = kwargs['creditSpecification']
-        if 'dataDisks' in kwargs:
+        if data_disks is None and 'dataDisks' in kwargs:
             data_disks = kwargs['dataDisks']
-        if 'forceDelete' in kwargs:
+        if force_delete is None and 'forceDelete' in kwargs:
             force_delete = kwargs['forceDelete']
-        if 'hostName' in kwargs:
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'imageName' in kwargs:
+        if image_name is None and 'imageName' in kwargs:
             image_name = kwargs['imageName']
-        if 'instanceIds' in kwargs:
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instancePatternInfos' in kwargs:
+        if instance_pattern_infos is None and 'instancePatternInfos' in kwargs:
             instance_pattern_infos = kwargs['instancePatternInfos']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'instanceTypes' in kwargs:
+        if instance_types is None and 'instanceTypes' in kwargs:
             instance_types = kwargs['instanceTypes']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'internetMaxBandwidthIn' in kwargs:
+        if internet_max_bandwidth_in is None and 'internetMaxBandwidthIn' in kwargs:
             internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
-        if 'internetMaxBandwidthOut' in kwargs:
+        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
             internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if 'ioOptimized' in kwargs:
+        if io_optimized is None and 'ioOptimized' in kwargs:
             io_optimized = kwargs['ioOptimized']
-        if 'isOutdated' in kwargs:
+        if is_outdated is None and 'isOutdated' in kwargs:
             is_outdated = kwargs['isOutdated']
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'kmsEncryptedPassword' in kwargs:
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
             kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if 'kmsEncryptionContext' in kwargs:
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
             kms_encryption_context = kwargs['kmsEncryptionContext']
-        if 'passwordInherit' in kwargs:
+        if password_inherit is None and 'passwordInherit' in kwargs:
             password_inherit = kwargs['passwordInherit']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'roleName' in kwargs:
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
-        if 'scalingConfigurationName' in kwargs:
+        if scaling_configuration_name is None and 'scalingConfigurationName' in kwargs:
             scaling_configuration_name = kwargs['scalingConfigurationName']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'spotPriceLimits' in kwargs:
+        if spot_price_limits is None and 'spotPriceLimits' in kwargs:
             spot_price_limits = kwargs['spotPriceLimits']
-        if 'spotStrategy' in kwargs:
+        if spot_strategy is None and 'spotStrategy' in kwargs:
             spot_strategy = kwargs['spotStrategy']
-        if 'systemDiskAutoSnapshotPolicyId' in kwargs:
+        if system_disk_auto_snapshot_policy_id is None and 'systemDiskAutoSnapshotPolicyId' in kwargs:
             system_disk_auto_snapshot_policy_id = kwargs['systemDiskAutoSnapshotPolicyId']
-        if 'systemDiskCategory' in kwargs:
+        if system_disk_category is None and 'systemDiskCategory' in kwargs:
             system_disk_category = kwargs['systemDiskCategory']
-        if 'systemDiskDescription' in kwargs:
+        if system_disk_description is None and 'systemDiskDescription' in kwargs:
             system_disk_description = kwargs['systemDiskDescription']
-        if 'systemDiskEncrypted' in kwargs:
+        if system_disk_encrypted is None and 'systemDiskEncrypted' in kwargs:
             system_disk_encrypted = kwargs['systemDiskEncrypted']
-        if 'systemDiskName' in kwargs:
+        if system_disk_name is None and 'systemDiskName' in kwargs:
             system_disk_name = kwargs['systemDiskName']
-        if 'systemDiskPerformanceLevel' in kwargs:
+        if system_disk_performance_level is None and 'systemDiskPerformanceLevel' in kwargs:
             system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
-        if 'systemDiskSize' in kwargs:
+        if system_disk_size is None and 'systemDiskSize' in kwargs:
             system_disk_size = kwargs['systemDiskSize']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
 
         _setter("scaling_group_id", scaling_group_id)
@@ -1097,79 +1099,79 @@ class _ScalingConfigurationState:
              system_disk_size: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'creditSpecification' in kwargs:
+        if credit_specification is None and 'creditSpecification' in kwargs:
             credit_specification = kwargs['creditSpecification']
-        if 'dataDisks' in kwargs:
+        if data_disks is None and 'dataDisks' in kwargs:
             data_disks = kwargs['dataDisks']
-        if 'forceDelete' in kwargs:
+        if force_delete is None and 'forceDelete' in kwargs:
             force_delete = kwargs['forceDelete']
-        if 'hostName' in kwargs:
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'imageName' in kwargs:
+        if image_name is None and 'imageName' in kwargs:
             image_name = kwargs['imageName']
-        if 'instanceIds' in kwargs:
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instancePatternInfos' in kwargs:
+        if instance_pattern_infos is None and 'instancePatternInfos' in kwargs:
             instance_pattern_infos = kwargs['instancePatternInfos']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'instanceTypes' in kwargs:
+        if instance_types is None and 'instanceTypes' in kwargs:
             instance_types = kwargs['instanceTypes']
-        if 'internetChargeType' in kwargs:
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
             internet_charge_type = kwargs['internetChargeType']
-        if 'internetMaxBandwidthIn' in kwargs:
+        if internet_max_bandwidth_in is None and 'internetMaxBandwidthIn' in kwargs:
             internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
-        if 'internetMaxBandwidthOut' in kwargs:
+        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
             internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if 'ioOptimized' in kwargs:
+        if io_optimized is None and 'ioOptimized' in kwargs:
             io_optimized = kwargs['ioOptimized']
-        if 'isOutdated' in kwargs:
+        if is_outdated is None and 'isOutdated' in kwargs:
             is_outdated = kwargs['isOutdated']
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'kmsEncryptedPassword' in kwargs:
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
             kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if 'kmsEncryptionContext' in kwargs:
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
             kms_encryption_context = kwargs['kmsEncryptionContext']
-        if 'passwordInherit' in kwargs:
+        if password_inherit is None and 'passwordInherit' in kwargs:
             password_inherit = kwargs['passwordInherit']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'roleName' in kwargs:
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
-        if 'scalingConfigurationName' in kwargs:
+        if scaling_configuration_name is None and 'scalingConfigurationName' in kwargs:
             scaling_configuration_name = kwargs['scalingConfigurationName']
-        if 'scalingGroupId' in kwargs:
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'spotPriceLimits' in kwargs:
+        if spot_price_limits is None and 'spotPriceLimits' in kwargs:
             spot_price_limits = kwargs['spotPriceLimits']
-        if 'spotStrategy' in kwargs:
+        if spot_strategy is None and 'spotStrategy' in kwargs:
             spot_strategy = kwargs['spotStrategy']
-        if 'systemDiskAutoSnapshotPolicyId' in kwargs:
+        if system_disk_auto_snapshot_policy_id is None and 'systemDiskAutoSnapshotPolicyId' in kwargs:
             system_disk_auto_snapshot_policy_id = kwargs['systemDiskAutoSnapshotPolicyId']
-        if 'systemDiskCategory' in kwargs:
+        if system_disk_category is None and 'systemDiskCategory' in kwargs:
             system_disk_category = kwargs['systemDiskCategory']
-        if 'systemDiskDescription' in kwargs:
+        if system_disk_description is None and 'systemDiskDescription' in kwargs:
             system_disk_description = kwargs['systemDiskDescription']
-        if 'systemDiskEncrypted' in kwargs:
+        if system_disk_encrypted is None and 'systemDiskEncrypted' in kwargs:
             system_disk_encrypted = kwargs['systemDiskEncrypted']
-        if 'systemDiskName' in kwargs:
+        if system_disk_name is None and 'systemDiskName' in kwargs:
             system_disk_name = kwargs['systemDiskName']
-        if 'systemDiskPerformanceLevel' in kwargs:
+        if system_disk_performance_level is None and 'systemDiskPerformanceLevel' in kwargs:
             system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
-        if 'systemDiskSize' in kwargs:
+        if system_disk_size is None and 'systemDiskSize' in kwargs:
             system_disk_size = kwargs['systemDiskSize']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
 
         if active is not None:
@@ -1845,59 +1847,6 @@ class ScalingConfiguration(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.39.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=2,
-            memory_size=4)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
-            type="ingress",
-            ip_protocol="tcp",
-            nic_type="intranet",
-            policy="accept",
-            port_range="22/22",
-            priority=1,
-            security_group_id=default_security_group.id,
-            cidr_ip="172.16.0.0/24")
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            min_size=1,
-            max_size=1,
-            scaling_group_name=name,
-            removal_policies=[
-                "OldestInstance",
-                "NewestInstance",
-            ],
-            vswitch_ids=[default_switch.id])
-        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
-            scaling_group_id=default_scaling_group.id,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            security_group_id=default_security_group.id,
-            force_delete=True,
-            active=True)
-        ```
         ## Module Support
 
         You can use to the existing autoscaling module
@@ -1985,59 +1934,6 @@ class ScalingConfiguration(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.39.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=2,
-            memory_size=4)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
-            type="ingress",
-            ip_protocol="tcp",
-            nic_type="intranet",
-            policy="accept",
-            port_range="22/22",
-            priority=1,
-            security_group_id=default_security_group.id,
-            cidr_ip="172.16.0.0/24")
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            min_size=1,
-            max_size=1,
-            scaling_group_name=name,
-            removal_policies=[
-                "OldestInstance",
-                "NewestInstance",
-            ],
-            vswitch_ids=[default_switch.id])
-        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
-            scaling_group_id=default_scaling_group.id,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            security_group_id=default_security_group.id,
-            force_delete=True,
-            active=True)
-        ```
         ## Module Support
 
         You can use to the existing autoscaling module

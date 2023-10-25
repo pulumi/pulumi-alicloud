@@ -15,36 +15,6 @@ import (
 // This data source provides the Quotas Quotas of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.115.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/quotas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := quotas.GetQuotas(ctx, &quotas.GetQuotasArgs{
-//				ProductCode: "ecs",
-//				NameRegex:   pulumi.StringRef("专有宿主机总数量上限"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstQuotasQuotaId", example.Quotas[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetQuotas(ctx *pulumi.Context, args *GetQuotasArgs, opts ...pulumi.InvokeOption) (*GetQuotasResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetQuotasResult

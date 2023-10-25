@@ -118,17 +118,6 @@ def get_edge_kubernetes_clusters(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.103.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    k8s_clusters = alicloud.cs.get_edge_kubernetes_clusters(name_regex="my-first-k8s",
-        output_file="my-first-k8s-json")
-    pulumi.export("output", k8s_clusters.clusters)
-    ```
-
 
     :param Sequence[str] ids: Cluster IDs to filter.
     :param str name_regex: A regex string to filter results by cluster name.
@@ -162,17 +151,6 @@ def get_edge_kubernetes_clusters_output(enable_details: Optional[pulumi.Input[Op
     This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
 
     > **NOTE:** Available in v1.103.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    k8s_clusters = alicloud.cs.get_edge_kubernetes_clusters(name_regex="my-first-k8s",
-        output_file="my-first-k8s-json")
-    pulumi.export("output", k8s_clusters.clusters)
-    ```
 
 
     :param Sequence[str] ids: Cluster IDs to filter.

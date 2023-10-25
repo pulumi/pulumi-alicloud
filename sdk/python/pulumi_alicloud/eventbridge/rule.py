@@ -43,20 +43,28 @@ class RuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             event_bus_name: pulumi.Input[str],
-             filter_pattern: pulumi.Input[str],
-             rule_name: pulumi.Input[str],
-             targets: pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]],
+             event_bus_name: Optional[pulumi.Input[str]] = None,
+             filter_pattern: Optional[pulumi.Input[str]] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
+             targets: Optional[pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventBusName' in kwargs:
+        if event_bus_name is None and 'eventBusName' in kwargs:
             event_bus_name = kwargs['eventBusName']
-        if 'filterPattern' in kwargs:
+        if event_bus_name is None:
+            raise TypeError("Missing 'event_bus_name' argument")
+        if filter_pattern is None and 'filterPattern' in kwargs:
             filter_pattern = kwargs['filterPattern']
-        if 'ruleName' in kwargs:
+        if filter_pattern is None:
+            raise TypeError("Missing 'filter_pattern' argument")
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
+        if targets is None:
+            raise TypeError("Missing 'targets' argument")
 
         _setter("event_bus_name", event_bus_name)
         _setter("filter_pattern", filter_pattern)
@@ -176,13 +184,13 @@ class _RuleState:
              rule_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              targets: Optional[pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventBusName' in kwargs:
+        if event_bus_name is None and 'eventBusName' in kwargs:
             event_bus_name = kwargs['eventBusName']
-        if 'filterPattern' in kwargs:
+        if filter_pattern is None and 'filterPattern' in kwargs:
             filter_pattern = kwargs['filterPattern']
-        if 'ruleName' in kwargs:
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
 
         if description is not None:
@@ -290,38 +298,6 @@ class Rule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.129.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_event_bus = alicloud.eventbridge.EventBus("exampleEventBus", event_bus_name="example_value")
-        example_rule = alicloud.eventbridge.Rule("exampleRule",
-            event_bus_name=example_event_bus.id,
-            rule_name=var["name"],
-            description="test",
-            filter_pattern="{\\"source\\":[\\"crmabc.newsletter\\"],\\"type\\":[\\"UserSignUp\\", \\"UserLogin\\"]}",
-            targets=[alicloud.eventbridge.RuleTargetArgs(
-                target_id="tf-test",
-                endpoint="acs:mns:cn-hangzhou:118938335****:queues/tf-test",
-                type="acs.mns.queue",
-                param_lists=[
-                    alicloud.eventbridge.RuleTargetParamListArgs(
-                        resource_key="queue",
-                        form="CONSTANT",
-                        value="tf-testaccEbRule",
-                    ),
-                    alicloud.eventbridge.RuleTargetParamListArgs(
-                        resource_key="Body",
-                        form="ORIGINAL",
-                    ),
-                ],
-            )])
-        ```
-
         ## Import
 
         Event Bridge Rule can be imported using the id, e.g.
@@ -351,38 +327,6 @@ class Rule(pulumi.CustomResource):
         For information about Event Bridge Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/eventbridge/latest/createrule-6).
 
         > **NOTE:** Available since v1.129.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_event_bus = alicloud.eventbridge.EventBus("exampleEventBus", event_bus_name="example_value")
-        example_rule = alicloud.eventbridge.Rule("exampleRule",
-            event_bus_name=example_event_bus.id,
-            rule_name=var["name"],
-            description="test",
-            filter_pattern="{\\"source\\":[\\"crmabc.newsletter\\"],\\"type\\":[\\"UserSignUp\\", \\"UserLogin\\"]}",
-            targets=[alicloud.eventbridge.RuleTargetArgs(
-                target_id="tf-test",
-                endpoint="acs:mns:cn-hangzhou:118938335****:queues/tf-test",
-                type="acs.mns.queue",
-                param_lists=[
-                    alicloud.eventbridge.RuleTargetParamListArgs(
-                        resource_key="queue",
-                        form="CONSTANT",
-                        value="tf-testaccEbRule",
-                    ),
-                    alicloud.eventbridge.RuleTargetParamListArgs(
-                        resource_key="Body",
-                        form="ORIGINAL",
-                    ),
-                ],
-            )])
-        ```
 
         ## Import
 

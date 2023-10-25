@@ -19,37 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.168.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sag"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sag.NewSmartagFlowLog(ctx, "example", &sag.SmartagFlowLogArgs{
-//				NetflowServerIp:   pulumi.String("192.168.0.2"),
-//				NetflowServerPort: pulumi.Int(9995),
-//				NetflowVersion:    pulumi.String("V9"),
-//				OutputType:        pulumi.String("netflow"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Smartag Flow Log can be imported using the id, e.g.

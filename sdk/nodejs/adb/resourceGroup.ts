@@ -11,63 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.195.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example";
- * const defaultZones = alicloud.adb.getZones({});
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
- *     status: "OK",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "10.4.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "10.4.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: name,
- * });
- * const defaultDBCluster = new alicloud.adb.DBCluster("defaultDBCluster", {
- *     computeResource: "48Core192GBNEW",
- *     dbClusterCategory: "MixedStorage",
- *     dbClusterVersion: "3.0",
- *     dbNodeClass: "E32",
- *     dbNodeCount: 1,
- *     dbNodeStorage: 100,
- *     description: name,
- *     elasticIoResource: 1,
- *     maintainTime: "04:00Z-05:00Z",
- *     mode: "flexible",
- *     paymentType: "PayAsYouGo",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
- *     securityIps: [
- *         "10.168.1.12",
- *         "10.168.1.11",
- *     ],
- *     vpcId: defaultNetwork.id,
- *     vswitchId: defaultSwitch.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     tags: {
- *         Created: "TF",
- *         For: "example",
- *     },
- * });
- * const defaultResourceGroup = new alicloud.adb.ResourceGroup("defaultResourceGroup", {
- *     groupName: "TF_EXAMPLE",
- *     groupType: "batch",
- *     nodeNum: 1,
- *     dbClusterId: defaultDBCluster.id,
- * });
- * ```
- *
  * ## Import
  *
  * Adb Resource Group can be imported using the id, e.g.

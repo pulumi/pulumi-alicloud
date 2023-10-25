@@ -13,55 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.201.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example";
- * const exampleWafPolicy = new alicloud.dcdn.WafPolicy("exampleWafPolicy", {
- *     defenseScene: "waf_group",
- *     policyName: name,
- *     policyType: "custom",
- *     status: "on",
- * });
- * const exampleWafRule = new alicloud.dcdn.WafRule("exampleWafRule", {
- *     policyId: exampleWafPolicy.id,
- *     ruleName: name,
- *     conditions: [
- *         {
- *             key: "URI",
- *             opValue: "ne",
- *             values: "/login.php",
- *         },
- *         {
- *             key: "Header",
- *             subKey: "a",
- *             opValue: "eq",
- *             values: "b",
- *         },
- *     ],
- *     status: "on",
- *     ccStatus: "on",
- *     action: "monitor",
- *     effect: "rule",
- *     rateLimit: {
- *         target: "IP",
- *         interval: 5,
- *         threshold: 5,
- *         ttl: 1800,
- *         status: {
- *             code: "200",
- *             ratio: 60,
- *         },
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Dcdn Waf Rule can be imported using the id, e.g.

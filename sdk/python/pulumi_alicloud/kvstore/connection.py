@@ -32,15 +32,21 @@ class ConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_string_prefix: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             port: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             connection_string_prefix: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionStringPrefix' in kwargs:
+        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
             connection_string_prefix = kwargs['connectionStringPrefix']
-        if 'instanceId' in kwargs:
+        if connection_string_prefix is None:
+            raise TypeError("Missing 'connection_string_prefix' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
 
         _setter("connection_string_prefix", connection_string_prefix)
         _setter("instance_id", instance_id)
@@ -111,13 +117,13 @@ class _ConnectionState:
              connection_string_prefix: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'connectionStringPrefix' in kwargs:
+        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
             connection_string_prefix = kwargs['connectionStringPrefix']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
 
         if connection_string is not None:
@@ -192,51 +198,6 @@ class Connection(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.101.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.kvstore.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_instance = alicloud.kvstore.Instance("defaultInstance",
-            db_instance_name=name,
-            vswitch_id=default_switch.id,
-            resource_group_id=default_resource_groups.ids[0],
-            zone_id=default_zones.zones[0].id,
-            instance_class="redis.master.large.default",
-            instance_type="Redis",
-            engine_version="5.0",
-            security_ips=["10.23.12.24"],
-            config={
-                "appendonly": "yes",
-                "lazyfree-lazy-eviction": "yes",
-            },
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_connection = alicloud.kvstore.Connection("defaultConnection",
-            connection_string_prefix="exampleconnection",
-            instance_id=default_instance.id,
-            port="6370")
-        ```
-
         ## Import
 
         KVStore connection can be imported using the id, e.g.
@@ -261,51 +222,6 @@ class Connection(pulumi.CustomResource):
         Operate the public network ip of the specified resource. How to use it, see [What is Resource Alicloud KVStore Connection](https://www.alibabacloud.com/help/doc-detail/125795.htm).
 
         > **NOTE:** Available since v1.101.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.kvstore.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_instance = alicloud.kvstore.Instance("defaultInstance",
-            db_instance_name=name,
-            vswitch_id=default_switch.id,
-            resource_group_id=default_resource_groups.ids[0],
-            zone_id=default_zones.zones[0].id,
-            instance_class="redis.master.large.default",
-            instance_type="Redis",
-            engine_version="5.0",
-            security_ips=["10.23.12.24"],
-            config={
-                "appendonly": "yes",
-                "lazyfree-lazy-eviction": "yes",
-            },
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_connection = alicloud.kvstore.Connection("defaultConnection",
-            connection_string_prefix="exampleconnection",
-            instance_id=default_instance.id,
-            port="6370")
-        ```
 
         ## Import
 

@@ -9,19 +9,6 @@ import * as utilities from "../utilities";
 /**
  * This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
  * other public images and the ones available on the image market.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const imagesDs = alicloud.ecs.getImages({
- *     nameRegex: "^centos_6",
- *     owners: "system",
- * });
- * export const firstImageId = imagesDs.then(imagesDs => imagesDs.images?.[0]?.id);
- * ```
  */
 export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
     args = args || {};
@@ -188,19 +175,6 @@ export interface GetImagesResult {
 /**
  * This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
  * other public images and the ones available on the image market.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const imagesDs = alicloud.ecs.getImages({
- *     nameRegex: "^centos_6",
- *     owners: "system",
- * });
- * export const firstImageId = imagesDs.then(imagesDs => imagesDs.images?.[0]?.id);
- * ```
  */
 export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
     return pulumi.output(args).apply((a: any) => getImages(a, opts))

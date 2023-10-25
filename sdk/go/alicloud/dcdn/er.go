@@ -19,55 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.201.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := dcdn.NewEr(ctx, "default", &dcdn.ErArgs{
-//				ErName:      pulumi.String(name),
-//				Description: pulumi.String(name),
-//				EnvConf: &dcdn.ErEnvConfArgs{
-//					Staging: &dcdn.ErEnvConfStagingArgs{
-//						SpecName: pulumi.String("5ms"),
-//						AllowedHosts: pulumi.StringArray{
-//							pulumi.String("example.com"),
-//						},
-//					},
-//					Production: &dcdn.ErEnvConfProductionArgs{
-//						SpecName: pulumi.String("5ms"),
-//						AllowedHosts: pulumi.StringArray{
-//							pulumi.String("example.com"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // DCDN Er can be imported using the id, e.g.

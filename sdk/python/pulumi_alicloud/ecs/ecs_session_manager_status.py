@@ -29,12 +29,16 @@ class EcsSessionManagerStatusArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             session_manager_status_name: pulumi.Input[str],
-             status: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             session_manager_status_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sessionManagerStatusName' in kwargs:
+        if session_manager_status_name is None and 'sessionManagerStatusName' in kwargs:
             session_manager_status_name = kwargs['sessionManagerStatusName']
+        if session_manager_status_name is None:
+            raise TypeError("Missing 'session_manager_status_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("session_manager_status_name", session_manager_status_name)
         _setter("status", status)
@@ -84,9 +88,9 @@ class _EcsSessionManagerStatusState:
              _setter: Callable[[Any, Any], None],
              session_manager_status_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sessionManagerStatusName' in kwargs:
+        if session_manager_status_name is None and 'sessionManagerStatusName' in kwargs:
             session_manager_status_name = kwargs['sessionManagerStatusName']
 
         if session_manager_status_name is not None:
@@ -134,19 +138,6 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.148.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ecs.EcsSessionManagerStatus("default",
-            session_manager_status_name="sessionManagerStatus",
-            status="Disabled")
-        ```
-
         ## Import
 
         ECS Session Manager Status can be imported using the id, e.g.
@@ -172,19 +163,6 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
         For information about ECS Session Manager Status and how to use it, see [What is Session Manager Status](https://www.alibabacloud.com/help/zh/doc-detail/337915.html).
 
         > **NOTE:** Available in v1.148.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ecs.EcsSessionManagerStatus("default",
-            session_manager_status_name="sessionManagerStatus",
-            status="Disabled")
-        ```
 
         ## Import
 

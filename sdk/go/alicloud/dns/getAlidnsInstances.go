@@ -15,35 +15,6 @@ import (
 // This data source provides a list of Alidns instances in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:**  Available in 1.95.0+.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := dns.GetAlidnsInstances(ctx, &dns.GetAlidnsInstancesArgs{
-//				Ids: []string{
-//					"dns-cn-oew1npk****",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstInstanceId", example.Instances[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAlidnsInstances(ctx *pulumi.Context, args *GetAlidnsInstancesArgs, opts ...pulumi.InvokeOption) (*GetAlidnsInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAlidnsInstancesResult

@@ -15,37 +15,6 @@ import (
 // This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.176.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := eds.GetCustomProperties(ctx, &eds.GetCustomPropertiesArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ecdCustomPropertyId1", ids.Properties[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetCustomProperties(ctx *pulumi.Context, args *GetCustomPropertiesArgs, opts ...pulumi.InvokeOption) (*GetCustomPropertiesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCustomPropertiesResult

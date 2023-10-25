@@ -29,14 +29,18 @@ class DeployGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_id: pulumi.Input[str],
-             group_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             app_id: Optional[pulumi.Input[str]] = None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appId' in kwargs:
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'groupName' in kwargs:
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
 
         _setter("app_id", app_id)
         _setter("group_name", group_name)
@@ -90,13 +94,13 @@ class _DeployGroupState:
              app_id: Optional[pulumi.Input[str]] = None,
              group_name: Optional[pulumi.Input[str]] = None,
              group_type: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appId' in kwargs:
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'groupType' in kwargs:
+        if group_type is None and 'groupType' in kwargs:
             group_type = kwargs['groupType']
 
         if app_id is not None:
@@ -156,37 +160,6 @@ class DeployGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.82.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_cluster = alicloud.edas.Cluster("defaultCluster",
-            cluster_name=name,
-            cluster_type=2,
-            network_mode=2,
-            logical_region_id=default_regions.regions[0].id,
-            vpc_id=default_network.id)
-        default_application = alicloud.edas.Application("defaultApplication",
-            application_name=name,
-            cluster_id=default_cluster.id,
-            package_type="JAR")
-        default_deploy_group = alicloud.edas.DeployGroup("defaultDeployGroup",
-            app_id=default_application.id,
-            group_name=name)
-        ```
-
         ## Import
 
         EDAS deploy group can be imported using the id, e.g.
@@ -210,37 +183,6 @@ class DeployGroup(pulumi.CustomResource):
         Provides an EDAS deploy group resource, see [What is EDAS Deploy Group](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertdeploygroup).
 
         > **NOTE:** Available since v1.82.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_cluster = alicloud.edas.Cluster("defaultCluster",
-            cluster_name=name,
-            cluster_type=2,
-            network_mode=2,
-            logical_region_id=default_regions.regions[0].id,
-            vpc_id=default_network.id)
-        default_application = alicloud.edas.Application("defaultApplication",
-            application_name=name,
-            cluster_id=default_cluster.id,
-            package_type="JAR")
-        default_deploy_group = alicloud.edas.DeployGroup("defaultDeployGroup",
-            app_id=default_application.id,
-            group_name=name)
-        ```
 
         ## Import
 

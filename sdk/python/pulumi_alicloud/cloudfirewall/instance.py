@@ -74,12 +74,12 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             band_width: pulumi.Input[int],
-             cfw_log: pulumi.Input[bool],
-             ip_number: pulumi.Input[int],
-             payment_type: pulumi.Input[str],
-             period: pulumi.Input[int],
-             spec: pulumi.Input[str],
+             band_width: Optional[pulumi.Input[int]] = None,
+             cfw_log: Optional[pulumi.Input[bool]] = None,
+             ip_number: Optional[pulumi.Input[int]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             spec: Optional[pulumi.Input[str]] = None,
              account_number: Optional[pulumi.Input[int]] = None,
              cfw_account: Optional[pulumi.Input[bool]] = None,
              cfw_log_storage: Optional[pulumi.Input[int]] = None,
@@ -91,35 +91,47 @@ class InstanceArgs:
              renewal_duration: Optional[pulumi.Input[int]] = None,
              renewal_duration_unit: Optional[pulumi.Input[str]] = None,
              renewal_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bandWidth' in kwargs:
+        if band_width is None and 'bandWidth' in kwargs:
             band_width = kwargs['bandWidth']
-        if 'cfwLog' in kwargs:
+        if band_width is None:
+            raise TypeError("Missing 'band_width' argument")
+        if cfw_log is None and 'cfwLog' in kwargs:
             cfw_log = kwargs['cfwLog']
-        if 'ipNumber' in kwargs:
+        if cfw_log is None:
+            raise TypeError("Missing 'cfw_log' argument")
+        if ip_number is None and 'ipNumber' in kwargs:
             ip_number = kwargs['ipNumber']
-        if 'paymentType' in kwargs:
+        if ip_number is None:
+            raise TypeError("Missing 'ip_number' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'accountNumber' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if period is None:
+            raise TypeError("Missing 'period' argument")
+        if spec is None:
+            raise TypeError("Missing 'spec' argument")
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'cfwAccount' in kwargs:
+        if cfw_account is None and 'cfwAccount' in kwargs:
             cfw_account = kwargs['cfwAccount']
-        if 'cfwLogStorage' in kwargs:
+        if cfw_log_storage is None and 'cfwLogStorage' in kwargs:
             cfw_log_storage = kwargs['cfwLogStorage']
-        if 'fwVpcNumber' in kwargs:
+        if fw_vpc_number is None and 'fwVpcNumber' in kwargs:
             fw_vpc_number = kwargs['fwVpcNumber']
-        if 'instanceCount' in kwargs:
+        if instance_count is None and 'instanceCount' in kwargs:
             instance_count = kwargs['instanceCount']
-        if 'modifyType' in kwargs:
+        if modify_type is None and 'modifyType' in kwargs:
             modify_type = kwargs['modifyType']
-        if 'renewPeriod' in kwargs:
+        if renew_period is None and 'renewPeriod' in kwargs:
             renew_period = kwargs['renewPeriod']
-        if 'renewalDuration' in kwargs:
+        if renewal_duration is None and 'renewalDuration' in kwargs:
             renewal_duration = kwargs['renewalDuration']
-        if 'renewalDurationUnit' in kwargs:
+        if renewal_duration_unit is None and 'renewalDurationUnit' in kwargs:
             renewal_duration_unit = kwargs['renewalDurationUnit']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
 
         _setter("band_width", band_width)
@@ -458,41 +470,41 @@ class _InstanceState:
              renewal_status: Optional[pulumi.Input[str]] = None,
              spec: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountNumber' in kwargs:
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'bandWidth' in kwargs:
+        if band_width is None and 'bandWidth' in kwargs:
             band_width = kwargs['bandWidth']
-        if 'cfwAccount' in kwargs:
+        if cfw_account is None and 'cfwAccount' in kwargs:
             cfw_account = kwargs['cfwAccount']
-        if 'cfwLog' in kwargs:
+        if cfw_log is None and 'cfwLog' in kwargs:
             cfw_log = kwargs['cfwLog']
-        if 'cfwLogStorage' in kwargs:
+        if cfw_log_storage is None and 'cfwLogStorage' in kwargs:
             cfw_log_storage = kwargs['cfwLogStorage']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'endTime' in kwargs:
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'fwVpcNumber' in kwargs:
+        if fw_vpc_number is None and 'fwVpcNumber' in kwargs:
             fw_vpc_number = kwargs['fwVpcNumber']
-        if 'instanceCount' in kwargs:
+        if instance_count is None and 'instanceCount' in kwargs:
             instance_count = kwargs['instanceCount']
-        if 'ipNumber' in kwargs:
+        if ip_number is None and 'ipNumber' in kwargs:
             ip_number = kwargs['ipNumber']
-        if 'modifyType' in kwargs:
+        if modify_type is None and 'modifyType' in kwargs:
             modify_type = kwargs['modifyType']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'releaseTime' in kwargs:
+        if release_time is None and 'releaseTime' in kwargs:
             release_time = kwargs['releaseTime']
-        if 'renewPeriod' in kwargs:
+        if renew_period is None and 'renewPeriod' in kwargs:
             renew_period = kwargs['renewPeriod']
-        if 'renewalDuration' in kwargs:
+        if renewal_duration is None and 'renewalDuration' in kwargs:
             renewal_duration = kwargs['renewalDuration']
-        if 'renewalDurationUnit' in kwargs:
+        if renewal_duration_unit is None and 'renewalDurationUnit' in kwargs:
             renewal_duration_unit = kwargs['renewalDurationUnit']
-        if 'renewalStatus' in kwargs:
+        if renewal_status is None and 'renewalStatus' in kwargs:
             renewal_status = kwargs['renewalStatus']
 
         if account_number is not None:
@@ -827,24 +839,6 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.139.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cloudfirewall.Instance("example",
-            band_width=10,
-            cfw_log=True,
-            cfw_log_storage=1000,
-            ip_number=20,
-            payment_type="Subscription",
-            period=1,
-            spec="premium_version")
-        ```
-
         ## Import
 
         Cloud Firewall Instance can be imported using the id, e.g.
@@ -885,24 +879,6 @@ class Instance(pulumi.CustomResource):
         For information about Cloud Firewall Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/product/90174.htm).
 
         > **NOTE:** Available since v1.139.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cloudfirewall.Instance("example",
-            band_width=10,
-            cfw_log=True,
-            cfw_log_storage=1000,
-            ip_number=20,
-            payment_type="Subscription",
-            period=1,
-            spec="premium_version")
-        ```
 
         ## Import
 

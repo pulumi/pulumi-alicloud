@@ -12,29 +12,6 @@ import * as utilities from "../utilities";
  * For information about CR Chains and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/doc-detail/357821.html).
  *
  * > **NOTE:** Available in v1.161.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cr.getChains({
- *     instanceId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const crChainId1 = ids.then(ids => ids.chains?.[0]?.id);
- * const nameRegex = alicloud.cr.getChains({
- *     instanceId: "example_value",
- *     nameRegex: "^my-Chain",
- * });
- * export const crChainId2 = nameRegex.then(nameRegex => nameRegex.chains?.[0]?.id);
- * ```
  */
 export function getChains(args: GetChainsArgs, opts?: pulumi.InvokeOptions): Promise<GetChainsResult> {
 
@@ -117,29 +94,6 @@ export interface GetChainsResult {
  * For information about CR Chains and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/doc-detail/357821.html).
  *
  * > **NOTE:** Available in v1.161.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cr.getChains({
- *     instanceId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const crChainId1 = ids.then(ids => ids.chains?.[0]?.id);
- * const nameRegex = alicloud.cr.getChains({
- *     instanceId: "example_value",
- *     nameRegex: "^my-Chain",
- * });
- * export const crChainId2 = nameRegex.then(nameRegex => nameRegex.chains?.[0]?.id);
- * ```
  */
 export function getChainsOutput(args: GetChainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChainsResult> {
     return pulumi.output(args).apply((a: any) => getChains(a, opts))

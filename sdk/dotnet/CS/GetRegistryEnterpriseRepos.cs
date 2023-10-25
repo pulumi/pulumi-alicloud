@@ -15,34 +15,6 @@ namespace Pulumi.AliCloud.CS
         /// This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available in v1.87.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myRepos = AliCloud.CS.GetRegistryEnterpriseRepos.Invoke(new()
-        ///     {
-        ///         InstanceId = "cri-xx",
-        ///         NameRegex = "my-repos",
-        ///         OutputFile = "my-repo-json",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["output"] = myRepos.Apply(getRegistryEnterpriseReposResult =&gt; getRegistryEnterpriseReposResult.Repos),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegistryEnterpriseReposResult> InvokeAsync(GetRegistryEnterpriseReposArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegistryEnterpriseReposResult>("alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos", args ?? new GetRegistryEnterpriseReposArgs(), options.WithDefaults());
@@ -51,34 +23,6 @@ namespace Pulumi.AliCloud.CS
         /// This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available in v1.87.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myRepos = AliCloud.CS.GetRegistryEnterpriseRepos.Invoke(new()
-        ///     {
-        ///         InstanceId = "cri-xx",
-        ///         NameRegex = "my-repos",
-        ///         OutputFile = "my-repo-json",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["output"] = myRepos.Apply(getRegistryEnterpriseReposResult =&gt; getRegistryEnterpriseReposResult.Repos),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegistryEnterpriseReposResult> Invoke(GetRegistryEnterpriseReposInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseReposResult>("alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos", args ?? new GetRegistryEnterpriseReposInvokeArgs(), options.WithDefaults());

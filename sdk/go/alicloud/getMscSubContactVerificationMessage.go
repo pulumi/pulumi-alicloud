@@ -13,43 +13,6 @@ import (
 )
 
 // > **NOTE:** Available in v1.156.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultMscSubContract, err := alicloud.NewMscSubContract(ctx, "defaultMscSubContract", &alicloud.MscSubContractArgs{
-//				ContactName: pulumi.String("example_value"),
-//				Position:    pulumi.String("CEO"),
-//				Email:       pulumi.String("123@163.com"),
-//				Mobile:      pulumi.String("153xxxxx906"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_ = defaultMscSubContract.ID().ApplyT(func(id string) (alicloud.GetMscSubContactVerificationMessageResult, error) {
-//				return alicloud.GetMscSubContactVerificationMessageOutput(ctx, alicloud.GetMscSubContactVerificationMessageOutputArgs{
-//					ContactId: id,
-//					Type:      1,
-//				}, nil), nil
-//			}).(alicloud.GetMscSubContactVerificationMessageResultOutput)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetMscSubContactVerificationMessage(ctx *pulumi.Context, args *GetMscSubContactVerificationMessageArgs, opts ...pulumi.InvokeOption) (*GetMscSubContactVerificationMessageResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMscSubContactVerificationMessageResult

@@ -61,7 +61,7 @@ class StackGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             stack_group_name: pulumi.Input[str],
+             stack_group_name: Optional[pulumi.Input[str]] = None,
              account_ids: Optional[pulumi.Input[str]] = None,
              administration_role_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -73,27 +73,29 @@ class StackGroupArgs:
              template_body: Optional[pulumi.Input[str]] = None,
              template_url: Optional[pulumi.Input[str]] = None,
              template_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'stackGroupName' in kwargs:
+        if stack_group_name is None and 'stackGroupName' in kwargs:
             stack_group_name = kwargs['stackGroupName']
-        if 'accountIds' in kwargs:
+        if stack_group_name is None:
+            raise TypeError("Missing 'stack_group_name' argument")
+        if account_ids is None and 'accountIds' in kwargs:
             account_ids = kwargs['accountIds']
-        if 'administrationRoleName' in kwargs:
+        if administration_role_name is None and 'administrationRoleName' in kwargs:
             administration_role_name = kwargs['administrationRoleName']
-        if 'executionRoleName' in kwargs:
+        if execution_role_name is None and 'executionRoleName' in kwargs:
             execution_role_name = kwargs['executionRoleName']
-        if 'operationDescription' in kwargs:
+        if operation_description is None and 'operationDescription' in kwargs:
             operation_description = kwargs['operationDescription']
-        if 'operationPreferences' in kwargs:
+        if operation_preferences is None and 'operationPreferences' in kwargs:
             operation_preferences = kwargs['operationPreferences']
-        if 'regionIds' in kwargs:
+        if region_ids is None and 'regionIds' in kwargs:
             region_ids = kwargs['regionIds']
-        if 'templateBody' in kwargs:
+        if template_body is None and 'templateBody' in kwargs:
             template_body = kwargs['templateBody']
-        if 'templateUrl' in kwargs:
+        if template_url is None and 'templateUrl' in kwargs:
             template_url = kwargs['templateUrl']
-        if 'templateVersion' in kwargs:
+        if template_version is None and 'templateVersion' in kwargs:
             template_version = kwargs['templateVersion']
 
         _setter("stack_group_name", stack_group_name)
@@ -333,29 +335,29 @@ class _StackGroupState:
              template_body: Optional[pulumi.Input[str]] = None,
              template_url: Optional[pulumi.Input[str]] = None,
              template_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountIds' in kwargs:
+        if account_ids is None and 'accountIds' in kwargs:
             account_ids = kwargs['accountIds']
-        if 'administrationRoleName' in kwargs:
+        if administration_role_name is None and 'administrationRoleName' in kwargs:
             administration_role_name = kwargs['administrationRoleName']
-        if 'executionRoleName' in kwargs:
+        if execution_role_name is None and 'executionRoleName' in kwargs:
             execution_role_name = kwargs['executionRoleName']
-        if 'operationDescription' in kwargs:
+        if operation_description is None and 'operationDescription' in kwargs:
             operation_description = kwargs['operationDescription']
-        if 'operationPreferences' in kwargs:
+        if operation_preferences is None and 'operationPreferences' in kwargs:
             operation_preferences = kwargs['operationPreferences']
-        if 'regionIds' in kwargs:
+        if region_ids is None and 'regionIds' in kwargs:
             region_ids = kwargs['regionIds']
-        if 'stackGroupId' in kwargs:
+        if stack_group_id is None and 'stackGroupId' in kwargs:
             stack_group_id = kwargs['stackGroupId']
-        if 'stackGroupName' in kwargs:
+        if stack_group_name is None and 'stackGroupName' in kwargs:
             stack_group_name = kwargs['stackGroupName']
-        if 'templateBody' in kwargs:
+        if template_body is None and 'templateBody' in kwargs:
             template_body = kwargs['templateBody']
-        if 'templateUrl' in kwargs:
+        if template_url is None and 'templateUrl' in kwargs:
             template_url = kwargs['templateUrl']
-        if 'templateVersion' in kwargs:
+        if template_version is None and 'templateVersion' in kwargs:
             template_version = kwargs['templateVersion']
 
         if account_ids is not None:
@@ -581,23 +583,6 @@ class StackGroup(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.107.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ros.StackGroup("example",
-            stack_group_name="example_value",
-            template_body=\"\"\"    {
-            	"ROSTemplateFormatVersion": "2015-09-01"
-            }
-            
-        \"\"\")
-        ```
-
         ## Import
 
         ROS Stack Group can be imported using the id, e.g.
@@ -633,23 +618,6 @@ class StackGroup(pulumi.CustomResource):
         For information about ROS Stack Group and how to use it, see [What is Stack Group](https://www.alibabacloud.com/help/en/doc-detail/151333.htm).
 
         > **NOTE:** Available in v1.107.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ros.StackGroup("example",
-            stack_group_name="example_value",
-            template_body=\"\"\"    {
-            	"ROSTemplateFormatVersion": "2015-09-01"
-            }
-            
-        \"\"\")
-        ```
 
         ## Import
 

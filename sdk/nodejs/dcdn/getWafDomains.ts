@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.185.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dcdn.getWafDomains({});
- * export const dcdnWafDomainId1 = ids.then(ids => ids.domains?.[0]?.id);
- * ```
  */
 export function getWafDomains(args?: GetWafDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetWafDomainsResult> {
     args = args || {};
@@ -75,18 +63,6 @@ export interface GetWafDomainsResult {
  * This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.185.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.dcdn.getWafDomains({});
- * export const dcdnWafDomainId1 = ids.then(ids => ids.domains?.[0]?.id);
- * ```
  */
 export function getWafDomainsOutput(args?: GetWafDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWafDomainsResult> {
     return pulumi.output(args).apply((a: any) => getWafDomains(a, opts))

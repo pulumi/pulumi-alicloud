@@ -50,7 +50,7 @@ class MscSubSubscriptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             item_name: pulumi.Input[str],
+             item_name: Optional[pulumi.Input[str]] = None,
              contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              email_status: Optional[pulumi.Input[int]] = None,
              pmsg_status: Optional[pulumi.Input[int]] = None,
@@ -58,23 +58,25 @@ class MscSubSubscriptionArgs:
              tts_status: Optional[pulumi.Input[int]] = None,
              webhook_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              webhook_status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'itemName' in kwargs:
+        if item_name is None and 'itemName' in kwargs:
             item_name = kwargs['itemName']
-        if 'contactIds' in kwargs:
+        if item_name is None:
+            raise TypeError("Missing 'item_name' argument")
+        if contact_ids is None and 'contactIds' in kwargs:
             contact_ids = kwargs['contactIds']
-        if 'emailStatus' in kwargs:
+        if email_status is None and 'emailStatus' in kwargs:
             email_status = kwargs['emailStatus']
-        if 'pmsgStatus' in kwargs:
+        if pmsg_status is None and 'pmsgStatus' in kwargs:
             pmsg_status = kwargs['pmsgStatus']
-        if 'smsStatus' in kwargs:
+        if sms_status is None and 'smsStatus' in kwargs:
             sms_status = kwargs['smsStatus']
-        if 'ttsStatus' in kwargs:
+        if tts_status is None and 'ttsStatus' in kwargs:
             tts_status = kwargs['ttsStatus']
-        if 'webhookIds' in kwargs:
+        if webhook_ids is None and 'webhookIds' in kwargs:
             webhook_ids = kwargs['webhookIds']
-        if 'webhookStatus' in kwargs:
+        if webhook_status is None and 'webhookStatus' in kwargs:
             webhook_status = kwargs['webhookStatus']
 
         _setter("item_name", item_name)
@@ -248,23 +250,23 @@ class _MscSubSubscriptionState:
              tts_status: Optional[pulumi.Input[int]] = None,
              webhook_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              webhook_status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contactIds' in kwargs:
+        if contact_ids is None and 'contactIds' in kwargs:
             contact_ids = kwargs['contactIds']
-        if 'emailStatus' in kwargs:
+        if email_status is None and 'emailStatus' in kwargs:
             email_status = kwargs['emailStatus']
-        if 'itemName' in kwargs:
+        if item_name is None and 'itemName' in kwargs:
             item_name = kwargs['itemName']
-        if 'pmsgStatus' in kwargs:
+        if pmsg_status is None and 'pmsgStatus' in kwargs:
             pmsg_status = kwargs['pmsgStatus']
-        if 'smsStatus' in kwargs:
+        if sms_status is None and 'smsStatus' in kwargs:
             sms_status = kwargs['smsStatus']
-        if 'ttsStatus' in kwargs:
+        if tts_status is None and 'ttsStatus' in kwargs:
             tts_status = kwargs['ttsStatus']
-        if 'webhookIds' in kwargs:
+        if webhook_ids is None and 'webhookIds' in kwargs:
             webhook_ids = kwargs['webhookIds']
-        if 'webhookStatus' in kwargs:
+        if webhook_status is None and 'webhookStatus' in kwargs:
             webhook_status = kwargs['webhookStatus']
 
         if channel is not None:
@@ -431,23 +433,6 @@ class MscSubSubscription(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.135.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.MscSubSubscription("example",
-            email_status=1,
-            item_name="Notifications of Product Expiration",
-            pmsg_status=1,
-            sms_status=1,
-            tts_status=1,
-            webhook_status=0)
-        ```
-
         ## Import
 
         Msc Sub Subscription can be imported using the id, e.g.
@@ -480,23 +465,6 @@ class MscSubSubscription(pulumi.CustomResource):
         Provides a Msc Sub Subscription resource.
 
         > **NOTE:** Available since v1.135.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.MscSubSubscription("example",
-            email_status=1,
-            item_name="Notifications of Product Expiration",
-            pmsg_status=1,
-            sms_status=1,
-            tts_status=1,
-            webhook_status=0)
-        ```
 
         ## Import
 

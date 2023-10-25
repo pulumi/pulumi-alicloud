@@ -14,31 +14,6 @@ namespace Pulumi.AliCloud
     /// 
     /// &gt; **NOTE:** Available since v1.132.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tfexample";
-    ///     var @default = new AliCloud.MscSubContract("default", new()
-    ///     {
-    ///         ContactName = name,
-    ///         Position = "CEO",
-    ///         Email = "123@163.com",
-    ///         Mobile = "15388888888",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Msc Sub Contact can be imported using the id, e.g.

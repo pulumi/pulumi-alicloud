@@ -19,51 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.142.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
-//				AlarmContactGroupName: pulumi.String("example_value"),
-//				Describe:              pulumi.String("example_value"),
-//				EnableSubscribed:      pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cms.NewDynamicTagGroup(ctx, "defaultDynamicTagGroup", &cms.DynamicTagGroupArgs{
-//				ContactGroupLists: pulumi.StringArray{
-//					defaultAlarmContactGroup.ID(),
-//				},
-//				TagKey: pulumi.String("your_tag_key"),
-//				MatchExpresses: cms.DynamicTagGroupMatchExpressArray{
-//					&cms.DynamicTagGroupMatchExpressArgs{
-//						TagValue:              pulumi.String("your_tag_value"),
-//						TagValueMatchFunction: pulumi.String("all"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Cloud Monitor Service Dynamic Tag Group can be imported using the id, e.g.

@@ -37,17 +37,21 @@ class RdsInstanceCrossBackupPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cross_backup_region: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
+             cross_backup_region: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
              log_backup_enabled: Optional[pulumi.Input[str]] = None,
              retention: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'crossBackupRegion' in kwargs:
+        if cross_backup_region is None and 'crossBackupRegion' in kwargs:
             cross_backup_region = kwargs['crossBackupRegion']
-        if 'instanceId' in kwargs:
+        if cross_backup_region is None:
+            raise TypeError("Missing 'cross_backup_region' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'logBackupEnabled' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if log_backup_enabled is None and 'logBackupEnabled' in kwargs:
             log_backup_enabled = kwargs['logBackupEnabled']
 
         _setter("cross_backup_region", cross_backup_region)
@@ -173,27 +177,27 @@ class _RdsInstanceCrossBackupPolicyState:
              log_backup_enabled_time: Optional[pulumi.Input[str]] = None,
              retent_type: Optional[pulumi.Input[str]] = None,
              retention: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backupEnabled' in kwargs:
+        if backup_enabled is None and 'backupEnabled' in kwargs:
             backup_enabled = kwargs['backupEnabled']
-        if 'backupEnabledTime' in kwargs:
+        if backup_enabled_time is None and 'backupEnabledTime' in kwargs:
             backup_enabled_time = kwargs['backupEnabledTime']
-        if 'crossBackupRegion' in kwargs:
+        if cross_backup_region is None and 'crossBackupRegion' in kwargs:
             cross_backup_region = kwargs['crossBackupRegion']
-        if 'crossBackupType' in kwargs:
+        if cross_backup_type is None and 'crossBackupType' in kwargs:
             cross_backup_type = kwargs['crossBackupType']
-        if 'dbInstanceStatus' in kwargs:
+        if db_instance_status is None and 'dbInstanceStatus' in kwargs:
             db_instance_status = kwargs['dbInstanceStatus']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'lockMode' in kwargs:
+        if lock_mode is None and 'lockMode' in kwargs:
             lock_mode = kwargs['lockMode']
-        if 'logBackupEnabled' in kwargs:
+        if log_backup_enabled is None and 'logBackupEnabled' in kwargs:
             log_backup_enabled = kwargs['logBackupEnabled']
-        if 'logBackupEnabledTime' in kwargs:
+        if log_backup_enabled_time is None and 'logBackupEnabledTime' in kwargs:
             log_backup_enabled_time = kwargs['logBackupEnabledTime']
-        if 'retentType' in kwargs:
+        if retent_type is None and 'retentType' in kwargs:
             retent_type = kwargs['retentType']
 
         if backup_enabled is not None:
@@ -378,49 +382,6 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="8.0",
-            db_instance_storage_type="local_ssd",
-            category="HighAvailability")
-        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.ids[0],
-            engine="MySQL",
-            engine_version="8.0",
-            db_instance_storage_type="local_ssd",
-            category="HighAvailability")
-        regions = alicloud.rds.get_cross_regions()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.ids[0],
-            vswitch_name=name)
-        default_instance = alicloud.rds.Instance("defaultInstance",
-            engine="MySQL",
-            engine_version="8.0",
-            instance_type=default_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
-            instance_charge_type="Postpaid",
-            category="HighAvailability",
-            instance_name=name,
-            vswitch_id=default_switch.id,
-            db_instance_storage_type="local_ssd")
-        default_rds_instance_cross_backup_policy = alicloud.rds.RdsInstanceCrossBackupPolicy("defaultRdsInstanceCrossBackupPolicy",
-            instance_id=default_instance.id,
-            cross_backup_region=regions.ids[0])
-        ```
-
         ## Import
 
         RDS remote disaster recovery policies can be imported using id or instance id, e.g.
@@ -450,49 +411,6 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
         For information about RDS cross region backup settings and how to use them, see [What is cross region backup](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/modify-cross-region-backup-settings).
 
         > **NOTE:** Available since v1.195.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="8.0",
-            db_instance_storage_type="local_ssd",
-            category="HighAvailability")
-        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.ids[0],
-            engine="MySQL",
-            engine_version="8.0",
-            db_instance_storage_type="local_ssd",
-            category="HighAvailability")
-        regions = alicloud.rds.get_cross_regions()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.ids[0],
-            vswitch_name=name)
-        default_instance = alicloud.rds.Instance("defaultInstance",
-            engine="MySQL",
-            engine_version="8.0",
-            instance_type=default_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
-            instance_charge_type="Postpaid",
-            category="HighAvailability",
-            instance_name=name,
-            vswitch_id=default_switch.id,
-            db_instance_storage_type="local_ssd")
-        default_rds_instance_cross_backup_policy = alicloud.rds.RdsInstanceCrossBackupPolicy("defaultRdsInstanceCrossBackupPolicy",
-            instance_id=default_instance.id,
-            cross_backup_region=regions.ids[0])
-        ```
 
         ## Import
 

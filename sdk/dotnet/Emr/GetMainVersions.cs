@@ -16,38 +16,6 @@ namespace Pulumi.AliCloud.Emr
         /// main versions available in Alibaba Cloud account when create a emr cluster.
         /// 
         /// &gt; **NOTE:** Available in 1.59.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.Emr.GetMainVersions.Invoke(new()
-        ///     {
-        ///         ClusterTypes = new[]
-        ///         {
-        ///             "HADOOP",
-        ///             "ZOOKEEPER",
-        ///         },
-        ///         EmrVersion = "EMR-3.22.0",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstMainVersion"] = @default.Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.EmrVersion)),
-        ///         ["thisClusterTypes"] = @default.Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.ClusterTypes)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetMainVersionsResult> InvokeAsync(GetMainVersionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMainVersionsResult>("alicloud:emr/getMainVersions:getMainVersions", args ?? new GetMainVersionsArgs(), options.WithDefaults());
@@ -57,38 +25,6 @@ namespace Pulumi.AliCloud.Emr
         /// main versions available in Alibaba Cloud account when create a emr cluster.
         /// 
         /// &gt; **NOTE:** Available in 1.59.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.Emr.GetMainVersions.Invoke(new()
-        ///     {
-        ///         ClusterTypes = new[]
-        ///         {
-        ///             "HADOOP",
-        ///             "ZOOKEEPER",
-        ///         },
-        ///         EmrVersion = "EMR-3.22.0",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstMainVersion"] = @default.Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.EmrVersion)),
-        ///         ["thisClusterTypes"] = @default.Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.ClusterTypes)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetMainVersionsResult> Invoke(GetMainVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMainVersionsResult>("alicloud:emr/getMainVersions:getMainVersions", args ?? new GetMainVersionsInvokeArgs(), options.WithDefaults());

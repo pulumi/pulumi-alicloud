@@ -70,8 +70,8 @@ class EcsImagePipelineArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             base_image: pulumi.Input[str],
-             base_image_type: pulumi.Input[str],
+             base_image: Optional[pulumi.Input[str]] = None,
+             base_image_type: Optional[pulumi.Input[str]] = None,
              add_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              build_content: Optional[pulumi.Input[str]] = None,
              delete_instance_on_failure: Optional[pulumi.Input[bool]] = None,
@@ -85,31 +85,35 @@ class EcsImagePipelineArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              to_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'baseImage' in kwargs:
+        if base_image is None and 'baseImage' in kwargs:
             base_image = kwargs['baseImage']
-        if 'baseImageType' in kwargs:
+        if base_image is None:
+            raise TypeError("Missing 'base_image' argument")
+        if base_image_type is None and 'baseImageType' in kwargs:
             base_image_type = kwargs['baseImageType']
-        if 'addAccounts' in kwargs:
+        if base_image_type is None:
+            raise TypeError("Missing 'base_image_type' argument")
+        if add_accounts is None and 'addAccounts' in kwargs:
             add_accounts = kwargs['addAccounts']
-        if 'buildContent' in kwargs:
+        if build_content is None and 'buildContent' in kwargs:
             build_content = kwargs['buildContent']
-        if 'deleteInstanceOnFailure' in kwargs:
+        if delete_instance_on_failure is None and 'deleteInstanceOnFailure' in kwargs:
             delete_instance_on_failure = kwargs['deleteInstanceOnFailure']
-        if 'imageName' in kwargs:
+        if image_name is None and 'imageName' in kwargs:
             image_name = kwargs['imageName']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetMaxBandwidthOut' in kwargs:
+        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
             internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'systemDiskSize' in kwargs:
+        if system_disk_size is None and 'systemDiskSize' in kwargs:
             system_disk_size = kwargs['systemDiskSize']
-        if 'toRegionIds' in kwargs:
+        if to_region_ids is None and 'toRegionIds' in kwargs:
             to_region_ids = kwargs['toRegionIds']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         _setter("base_image", base_image)
@@ -398,31 +402,31 @@ class _EcsImagePipelineState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              to_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'addAccounts' in kwargs:
+        if add_accounts is None and 'addAccounts' in kwargs:
             add_accounts = kwargs['addAccounts']
-        if 'baseImage' in kwargs:
+        if base_image is None and 'baseImage' in kwargs:
             base_image = kwargs['baseImage']
-        if 'baseImageType' in kwargs:
+        if base_image_type is None and 'baseImageType' in kwargs:
             base_image_type = kwargs['baseImageType']
-        if 'buildContent' in kwargs:
+        if build_content is None and 'buildContent' in kwargs:
             build_content = kwargs['buildContent']
-        if 'deleteInstanceOnFailure' in kwargs:
+        if delete_instance_on_failure is None and 'deleteInstanceOnFailure' in kwargs:
             delete_instance_on_failure = kwargs['deleteInstanceOnFailure']
-        if 'imageName' in kwargs:
+        if image_name is None and 'imageName' in kwargs:
             image_name = kwargs['imageName']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetMaxBandwidthOut' in kwargs:
+        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
             internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'systemDiskSize' in kwargs:
+        if system_disk_size is None and 'systemDiskSize' in kwargs:
             system_disk_size = kwargs['systemDiskSize']
-        if 'toRegionIds' in kwargs:
+        if to_region_ids is None and 'toRegionIds' in kwargs:
             to_region_ids = kwargs['toRegionIds']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if add_accounts is not None:
@@ -667,52 +671,6 @@ class EcsImagePipeline(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.163.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(name_regex="default")
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            most_recent=True,
-            owners="system")
-        default_instance_types = alicloud.ecs.get_instance_types(image_id=default_images.ids[0])
-        default_account = alicloud.get_account()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_ecs_image_pipeline = alicloud.ecs.EcsImagePipeline("defaultEcsImagePipeline",
-            add_accounts=[default_account.id],
-            base_image=default_images.ids[0],
-            base_image_type="IMAGE",
-            build_content="RUN yum update -y",
-            delete_instance_on_failure=False,
-            image_name="terraform-example",
-            description="terraform-example",
-            instance_type=default_instance_types.ids[0],
-            resource_group_id=default_resource_groups.groups[0].id,
-            internet_max_bandwidth_out=20,
-            system_disk_size=40,
-            to_region_ids=[
-                "cn-qingdao",
-                "cn-zhangjiakou",
-            ],
-            vswitch_id=default_switch.id,
-            tags={
-                "Created": "TF",
-                "For": "Acceptance-test",
-            })
-        ```
-
         ## Import
 
         ECS Image Pipeline can be imported using the id, e.g.
@@ -753,52 +711,6 @@ class EcsImagePipeline(pulumi.CustomResource):
         For information about ECS Image Pipeline and how to use it, see [What is Image Pipeline](https://www.alibabacloud.com/help/en/doc-detail/200427.html).
 
         > **NOTE:** Available in v1.163.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(name_regex="default")
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            most_recent=True,
-            owners="system")
-        default_instance_types = alicloud.ecs.get_instance_types(image_id=default_images.ids[0])
-        default_account = alicloud.get_account()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_ecs_image_pipeline = alicloud.ecs.EcsImagePipeline("defaultEcsImagePipeline",
-            add_accounts=[default_account.id],
-            base_image=default_images.ids[0],
-            base_image_type="IMAGE",
-            build_content="RUN yum update -y",
-            delete_instance_on_failure=False,
-            image_name="terraform-example",
-            description="terraform-example",
-            instance_type=default_instance_types.ids[0],
-            resource_group_id=default_resource_groups.groups[0].id,
-            internet_max_bandwidth_out=20,
-            system_disk_size=40,
-            to_region_ids=[
-                "cn-qingdao",
-                "cn-zhangjiakou",
-            ],
-            vswitch_id=default_switch.id,
-            tags={
-                "Created": "TF",
-                "For": "Acceptance-test",
-            })
-        ```
 
         ## Import
 

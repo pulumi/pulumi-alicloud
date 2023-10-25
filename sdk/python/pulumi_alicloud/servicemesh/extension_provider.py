@@ -35,16 +35,24 @@ class ExtensionProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config: pulumi.Input[str],
-             extension_provider_name: pulumi.Input[str],
-             service_mesh_id: pulumi.Input[str],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             config: Optional[pulumi.Input[str]] = None,
+             extension_provider_name: Optional[pulumi.Input[str]] = None,
+             service_mesh_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'extensionProviderName' in kwargs:
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if extension_provider_name is None and 'extensionProviderName' in kwargs:
             extension_provider_name = kwargs['extensionProviderName']
-        if 'serviceMeshId' in kwargs:
+        if extension_provider_name is None:
+            raise TypeError("Missing 'extension_provider_name' argument")
+        if service_mesh_id is None and 'serviceMeshId' in kwargs:
             service_mesh_id = kwargs['serviceMeshId']
+        if service_mesh_id is None:
+            raise TypeError("Missing 'service_mesh_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("config", config)
         _setter("extension_provider_name", extension_provider_name)
@@ -128,11 +136,11 @@ class _ExtensionProviderState:
              extension_provider_name: Optional[pulumi.Input[str]] = None,
              service_mesh_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'extensionProviderName' in kwargs:
+        if extension_provider_name is None and 'extensionProviderName' in kwargs:
             extension_provider_name = kwargs['extensionProviderName']
-        if 'serviceMeshId' in kwargs:
+        if service_mesh_id is None and 'serviceMeshId' in kwargs:
             service_mesh_id = kwargs['serviceMeshId']
 
         if config is not None:

@@ -129,20 +129,6 @@ def get_rules(event_bus_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.129.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.eventbridge.get_rules(event_bus_name="example_value",
-        ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstEventBridgeRuleId", example.rules[0].id)
-    ```
-
 
     :param str event_bus_name: The name of event bus.
     :param Sequence[str] ids: A list of Rule IDs.
@@ -185,20 +171,6 @@ def get_rules_output(event_bus_name: Optional[pulumi.Input[str]] = None,
     This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.129.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.eventbridge.get_rules(event_bus_name="example_value",
-        ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstEventBridgeRuleId", example.rules[0].id)
-    ```
 
 
     :param str event_bus_name: The name of event bus.

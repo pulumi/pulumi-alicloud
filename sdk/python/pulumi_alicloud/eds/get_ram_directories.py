@@ -109,20 +109,6 @@ def get_ram_directories(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.174.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.eds.get_ram_directories(ids=["example_id"])
-    pulumi.export("ecdRamDirectoryId1", ids.directories[0].id)
-    name_regex = alicloud.eds.get_ram_directories(name_regex="^my-RamDirectory")
-    pulumi.export("ecdRamDirectoryId2", name_regex.directories[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Ram Directory IDs.
     :param str name_regex: A regex string to filter results by Ram Directory name.
@@ -157,20 +143,6 @@ def get_ram_directories_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.174.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.eds.get_ram_directories(ids=["example_id"])
-    pulumi.export("ecdRamDirectoryId1", ids.directories[0].id)
-    name_regex = alicloud.eds.get_ram_directories(name_regex="^my-RamDirectory")
-    pulumi.export("ecdRamDirectoryId2", name_regex.directories[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Ram Directory IDs.

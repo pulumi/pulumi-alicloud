@@ -15,46 +15,6 @@ namespace Pulumi.AliCloud.BastionHost
         /// This data source provides the Bastionhost Users of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.133.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.BastionHost.GetUsers.Invoke(new()
-        ///     {
-        ///         InstanceId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "1",
-        ///             "10",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.BastionHost.GetUsers.Invoke(new()
-        ///     {
-        ///         InstanceId = "example_value",
-        ///         NameRegex = "^my-User",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["bastionhostUserId1"] = ids.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
-        ///         ["bastionhostUserId2"] = nameRegex.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("alicloud:bastionhost/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithDefaults());
@@ -63,46 +23,6 @@ namespace Pulumi.AliCloud.BastionHost
         /// This data source provides the Bastionhost Users of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.133.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.BastionHost.GetUsers.Invoke(new()
-        ///     {
-        ///         InstanceId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "1",
-        ///             "10",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.BastionHost.GetUsers.Invoke(new()
-        ///     {
-        ///         InstanceId = "example_value",
-        ///         NameRegex = "^my-User",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["bastionhostUserId1"] = ids.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
-        ///         ["bastionhostUserId2"] = nameRegex.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("alicloud:bastionhost/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());

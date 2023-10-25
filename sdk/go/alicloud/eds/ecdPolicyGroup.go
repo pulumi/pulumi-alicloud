@@ -18,55 +18,6 @@ import (
 //
 // > **NOTE:** Available since v1.130.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := eds.NewEcdPolicyGroup(ctx, "default", &eds.EcdPolicyGroupArgs{
-//				AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
-//					&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
-//						CidrIp:      pulumi.String("1.2.3.45/24"),
-//						Description: pulumi.String("terraform-example"),
-//					},
-//				},
-//				AuthorizeSecurityPolicyRules: eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{
-//					&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
-//						CidrIp:      pulumi.String("1.2.3.4/24"),
-//						Description: pulumi.String("terraform-example"),
-//						IpProtocol:  pulumi.String("TCP"),
-//						Policy:      pulumi.String("accept"),
-//						PortRange:   pulumi.String("80/80"),
-//						Priority:    pulumi.String("1"),
-//						Type:        pulumi.String("inflow"),
-//					},
-//				},
-//				Clipboard:       pulumi.String("read"),
-//				LocalDrive:      pulumi.String("read"),
-//				PolicyGroupName: pulumi.String("terraform-example"),
-//				UsbRedirect:     pulumi.String("off"),
-//				Watermark:       pulumi.String("off"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Elastic Desktop Service (ECD) Policy Group can be imported using the id, e.g.

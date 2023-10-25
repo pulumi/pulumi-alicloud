@@ -41,20 +41,22 @@ class AclArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acl_name: pulumi.Input[str],
+             acl_name: Optional[pulumi.Input[str]] = None,
              acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclName' in kwargs:
+        if acl_name is None and 'aclName' in kwargs:
             acl_name = kwargs['aclName']
-        if 'aclEntries' in kwargs:
+        if acl_name is None:
+            raise TypeError("Missing 'acl_name' argument")
+        if acl_entries is None and 'aclEntries' in kwargs:
             acl_entries = kwargs['aclEntries']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("acl_name", acl_name)
@@ -172,15 +174,15 @@ class _AclState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclEntries' in kwargs:
+        if acl_entries is None and 'aclEntries' in kwargs:
             acl_entries = kwargs['aclEntries']
-        if 'aclName' in kwargs:
+        if acl_name is None and 'aclName' in kwargs:
             acl_name = kwargs['aclName']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         if acl_entries is not None:
@@ -294,20 +296,6 @@ class Acl(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.133.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_acl = alicloud.alb.Acl("defaultAcl",
-            acl_name="tf_example",
-            resource_group_id=default_resource_groups.groups[0].id)
-        ```
-
         ## Import
 
         ALB Acl can be imported using the id, e.g.
@@ -337,20 +325,6 @@ class Acl(pulumi.CustomResource):
         For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createacl).
 
         > **NOTE:** Available since v1.133.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_acl = alicloud.alb.Acl("defaultAcl",
-            acl_name="tf_example",
-            resource_group_id=default_resource_groups.groups[0].id)
-        ```
 
         ## Import
 

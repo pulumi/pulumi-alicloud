@@ -17,39 +17,6 @@ namespace Pulumi.AliCloud.CloudConnect
         /// &gt; **NOTE:** Available in 1.59.0+
         /// 
         /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var defaultNetworks = AliCloud.CloudConnect.GetNetworks.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             alicloud_cloud_connect_networks.Default.Id,
-        ///         },
-        ///         NameRegex = "^tf-testAcc.*",
-        ///     });
-        /// 
-        ///     var defaultNetwork = new AliCloud.CloudConnect.Network("defaultNetwork", new()
-        ///     {
-        ///         CidrBlock = "192.168.0.0/24",
-        ///         Description = "tf-testAccCloudConnectNetworkDescription",
-        ///         IsDefault = true,
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworksResult> InvokeAsync(GetNetworksArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("alicloud:cloudconnect/getNetworks:getNetworks", args ?? new GetNetworksArgs(), options.WithDefaults());
@@ -60,39 +27,6 @@ namespace Pulumi.AliCloud.CloudConnect
         /// &gt; **NOTE:** Available in 1.59.0+
         /// 
         /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var defaultNetworks = AliCloud.CloudConnect.GetNetworks.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             alicloud_cloud_connect_networks.Default.Id,
-        ///         },
-        ///         NameRegex = "^tf-testAcc.*",
-        ///     });
-        /// 
-        ///     var defaultNetwork = new AliCloud.CloudConnect.Network("defaultNetwork", new()
-        ///     {
-        ///         CidrBlock = "192.168.0.0/24",
-        ///         Description = "tf-testAccCloudConnectNetworkDescription",
-        ///         IsDefault = true,
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworksResult> Invoke(GetNetworksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworksResult>("alicloud:cloudconnect/getNetworks:getNetworks", args ?? new GetNetworksInvokeArgs(), options.WithDefaults());

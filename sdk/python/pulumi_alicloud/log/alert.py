@@ -108,9 +108,9 @@ class AlertArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alert_displayname: pulumi.Input[str],
-             alert_name: pulumi.Input[str],
-             project_name: pulumi.Input[str],
+             alert_displayname: Optional[pulumi.Input[str]] = None,
+             alert_name: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
              alert_description: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertAnnotationArgs']]]] = None,
              auto_annotation: Optional[pulumi.Input[bool]] = None,
@@ -136,45 +136,51 @@ class AlertArgs:
              throttling: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alertDisplayname' in kwargs:
+        if alert_displayname is None and 'alertDisplayname' in kwargs:
             alert_displayname = kwargs['alertDisplayname']
-        if 'alertName' in kwargs:
+        if alert_displayname is None:
+            raise TypeError("Missing 'alert_displayname' argument")
+        if alert_name is None and 'alertName' in kwargs:
             alert_name = kwargs['alertName']
-        if 'projectName' in kwargs:
+        if alert_name is None:
+            raise TypeError("Missing 'alert_name' argument")
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'alertDescription' in kwargs:
+        if project_name is None:
+            raise TypeError("Missing 'project_name' argument")
+        if alert_description is None and 'alertDescription' in kwargs:
             alert_description = kwargs['alertDescription']
-        if 'autoAnnotation' in kwargs:
+        if auto_annotation is None and 'autoAnnotation' in kwargs:
             auto_annotation = kwargs['autoAnnotation']
-        if 'groupConfiguration' in kwargs:
+        if group_configuration is None and 'groupConfiguration' in kwargs:
             group_configuration = kwargs['groupConfiguration']
-        if 'joinConfigurations' in kwargs:
+        if join_configurations is None and 'joinConfigurations' in kwargs:
             join_configurations = kwargs['joinConfigurations']
-        if 'muteUntil' in kwargs:
+        if mute_until is None and 'muteUntil' in kwargs:
             mute_until = kwargs['muteUntil']
-        if 'noDataFire' in kwargs:
+        if no_data_fire is None and 'noDataFire' in kwargs:
             no_data_fire = kwargs['noDataFire']
-        if 'noDataSeverity' in kwargs:
+        if no_data_severity is None and 'noDataSeverity' in kwargs:
             no_data_severity = kwargs['noDataSeverity']
-        if 'notificationLists' in kwargs:
+        if notification_lists is None and 'notificationLists' in kwargs:
             notification_lists = kwargs['notificationLists']
-        if 'notifyThreshold' in kwargs:
+        if notify_threshold is None and 'notifyThreshold' in kwargs:
             notify_threshold = kwargs['notifyThreshold']
-        if 'policyConfiguration' in kwargs:
+        if policy_configuration is None and 'policyConfiguration' in kwargs:
             policy_configuration = kwargs['policyConfiguration']
-        if 'queryLists' in kwargs:
+        if query_lists is None and 'queryLists' in kwargs:
             query_lists = kwargs['queryLists']
-        if 'scheduleInterval' in kwargs:
+        if schedule_interval is None and 'scheduleInterval' in kwargs:
             schedule_interval = kwargs['scheduleInterval']
-        if 'scheduleType' in kwargs:
+        if schedule_type is None and 'scheduleType' in kwargs:
             schedule_type = kwargs['scheduleType']
-        if 'sendResolved' in kwargs:
+        if send_resolved is None and 'sendResolved' in kwargs:
             send_resolved = kwargs['sendResolved']
-        if 'severityConfigurations' in kwargs:
+        if severity_configurations is None and 'severityConfigurations' in kwargs:
             severity_configurations = kwargs['severityConfigurations']
-        if 'templateConfiguration' in kwargs:
+        if template_configuration is None and 'templateConfiguration' in kwargs:
             template_configuration = kwargs['templateConfiguration']
 
         _setter("alert_displayname", alert_displayname)
@@ -730,45 +736,45 @@ class _AlertState:
              throttling: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alertDescription' in kwargs:
+        if alert_description is None and 'alertDescription' in kwargs:
             alert_description = kwargs['alertDescription']
-        if 'alertDisplayname' in kwargs:
+        if alert_displayname is None and 'alertDisplayname' in kwargs:
             alert_displayname = kwargs['alertDisplayname']
-        if 'alertName' in kwargs:
+        if alert_name is None and 'alertName' in kwargs:
             alert_name = kwargs['alertName']
-        if 'autoAnnotation' in kwargs:
+        if auto_annotation is None and 'autoAnnotation' in kwargs:
             auto_annotation = kwargs['autoAnnotation']
-        if 'groupConfiguration' in kwargs:
+        if group_configuration is None and 'groupConfiguration' in kwargs:
             group_configuration = kwargs['groupConfiguration']
-        if 'joinConfigurations' in kwargs:
+        if join_configurations is None and 'joinConfigurations' in kwargs:
             join_configurations = kwargs['joinConfigurations']
-        if 'muteUntil' in kwargs:
+        if mute_until is None and 'muteUntil' in kwargs:
             mute_until = kwargs['muteUntil']
-        if 'noDataFire' in kwargs:
+        if no_data_fire is None and 'noDataFire' in kwargs:
             no_data_fire = kwargs['noDataFire']
-        if 'noDataSeverity' in kwargs:
+        if no_data_severity is None and 'noDataSeverity' in kwargs:
             no_data_severity = kwargs['noDataSeverity']
-        if 'notificationLists' in kwargs:
+        if notification_lists is None and 'notificationLists' in kwargs:
             notification_lists = kwargs['notificationLists']
-        if 'notifyThreshold' in kwargs:
+        if notify_threshold is None and 'notifyThreshold' in kwargs:
             notify_threshold = kwargs['notifyThreshold']
-        if 'policyConfiguration' in kwargs:
+        if policy_configuration is None and 'policyConfiguration' in kwargs:
             policy_configuration = kwargs['policyConfiguration']
-        if 'projectName' in kwargs:
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'queryLists' in kwargs:
+        if query_lists is None and 'queryLists' in kwargs:
             query_lists = kwargs['queryLists']
-        if 'scheduleInterval' in kwargs:
+        if schedule_interval is None and 'scheduleInterval' in kwargs:
             schedule_interval = kwargs['scheduleInterval']
-        if 'scheduleType' in kwargs:
+        if schedule_type is None and 'scheduleType' in kwargs:
             schedule_type = kwargs['scheduleType']
-        if 'sendResolved' in kwargs:
+        if send_resolved is None and 'sendResolved' in kwargs:
             send_resolved = kwargs['sendResolved']
-        if 'severityConfigurations' in kwargs:
+        if severity_configurations is None and 'severityConfigurations' in kwargs:
             severity_configurations = kwargs['severityConfigurations']
-        if 'templateConfiguration' in kwargs:
+        if template_configuration is None and 'templateConfiguration' in kwargs:
             template_configuration = kwargs['templateConfiguration']
 
         if alert_description is not None:
@@ -1246,242 +1252,6 @@ class Alert(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.78.0
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_alert = alicloud.log.Alert("exampleAlert",
-            project_name=example_project.name,
-            alert_name="example-alert",
-            alert_displayname="example-alert",
-            condition="count> 100",
-            dashboard="example-dashboard",
-            schedule=alicloud.log.AlertScheduleArgs(
-                type="FixedRate",
-                interval="5m",
-                hour=0,
-                day_of_week=0,
-                delay=0,
-                run_immediately=False,
-            ),
-            query_lists=[alicloud.log.AlertQueryListArgs(
-                logstore=example_store.name,
-                chart_title="chart_title",
-                start="-60s",
-                end="20s",
-                query="* AND aliyun",
-            )],
-            notification_lists=[
-                alicloud.log.AlertNotificationListArgs(
-                    type="SMS",
-                    mobile_lists=[
-                        "12345678",
-                        "87654321",
-                    ],
-                    content="alert content",
-                ),
-                alicloud.log.AlertNotificationListArgs(
-                    type="Email",
-                    email_lists=[
-                        "aliyun@alibaba-inc.com",
-                        "tf-example@123.com",
-                    ],
-                    content="alert content",
-                ),
-                alicloud.log.AlertNotificationListArgs(
-                    type="DingTalk",
-                    service_uri="www.aliyun.com",
-                    content="alert content",
-                ),
-            ])
-        ```
-
-        Basic Usage for new alert
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_2 = alicloud.log.Alert("example-2",
-            version="2.0",
-            type="default",
-            project_name=example_project.name,
-            alert_name="example-alert",
-            alert_displayname="example-alert",
-            mute_until=1632486684,
-            no_data_fire=False,
-            no_data_severity=8,
-            send_resolved=True,
-            auto_annotation=True,
-            dashboard="example-dashboard",
-            schedule=alicloud.log.AlertScheduleArgs(
-                type="FixedRate",
-                interval="5m",
-                hour=0,
-                day_of_week=0,
-                delay=0,
-                run_immediately=False,
-            ),
-            query_lists=[
-                alicloud.log.AlertQueryListArgs(
-                    store=example_store.name,
-                    store_type="log",
-                    project=example_project.name,
-                    region="cn-heyuan",
-                    chart_title="chart_title",
-                    start="-60s",
-                    end="20s",
-                    query="* AND aliyun | select count(1) as cnt",
-                    power_sql_mode="auto",
-                ),
-                alicloud.log.AlertQueryListArgs(
-                    store=example_store.name,
-                    store_type="log",
-                    project=example_project.name,
-                    region="cn-heyuan",
-                    chart_title="chart_title",
-                    start="-60s",
-                    end="20s",
-                    query="error | select count(1) as error_cnt",
-                    power_sql_mode="enable",
-                ),
-            ],
-            labels=[alicloud.log.AlertLabelArgs(
-                key="env",
-                value="test",
-            )],
-            annotations=[
-                alicloud.log.AlertAnnotationArgs(
-                    key="title",
-                    value="alert title",
-                ),
-                alicloud.log.AlertAnnotationArgs(
-                    key="desc",
-                    value="alert desc",
-                ),
-                alicloud.log.AlertAnnotationArgs(
-                    key="test_key",
-                    value="test value",
-                ),
-            ],
-            group_configuration=alicloud.log.AlertGroupConfigurationArgs(
-                type="custom",
-                fields=["cnt"],
-            ),
-            policy_configuration=alicloud.log.AlertPolicyConfigurationArgs(
-                alert_policy_id="sls.bultin",
-                action_policy_id="sls_test_action",
-                repeat_interval="4h",
-            ),
-            severity_configurations=[
-                alicloud.log.AlertSeverityConfigurationArgs(
-                    severity=8,
-                    eval_condition={
-                        "condition": "cnt > 3",
-                        "count_condition": "__count__ > 3",
-                    },
-                ),
-                alicloud.log.AlertSeverityConfigurationArgs(
-                    severity=6,
-                    eval_condition={
-                        "condition": "",
-                        "count_condition": "__count__ > 0",
-                    },
-                ),
-                alicloud.log.AlertSeverityConfigurationArgs(
-                    severity=2,
-                    eval_condition={
-                        "condition": "",
-                        "count_condition": "",
-                    },
-                ),
-            ],
-            join_configurations=[alicloud.log.AlertJoinConfigurationArgs(
-                type="cross_join",
-                condition="",
-            )])
-        ```
-
-        Basic Usage for alert template
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_3 = alicloud.log.Alert("example-3",
-            version="2.0",
-            type="tpl",
-            project_name=example_project.name,
-            alert_name="example-alert",
-            alert_displayname="example-alert",
-            mute_until=1632486684,
-            schedule=alicloud.log.AlertScheduleArgs(
-                type="FixedRate",
-                interval="5m",
-                hour=0,
-                day_of_week=0,
-                delay=0,
-                run_immediately=False,
-            ),
-            template_configuration=alicloud.log.AlertTemplateConfigurationArgs(
-                id="sls.app.sls_ack.node.down",
-                type="sys",
-                lang="cn",
-                annotations={},
-                tokens={
-                    "interval_minute": "5",
-                    "default.action_policy": "sls.app.ack.builtin",
-                    "default.severity": "6",
-                    "sendResolved": "false",
-                    "default.project": example_project.name,
-                    "default.logstore": "k8s-event",
-                    "default.repeatInterval": "4h",
-                    "trigger_threshold": "1",
-                    "default.clusterId": "example-cluster-id",
-                },
-            ))
-        ```
-
         ## Import
 
         Log alert can be imported using the id, e.g.
@@ -1533,242 +1303,6 @@ class Alert(pulumi.CustomResource):
         For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
 
         > **NOTE:** Available in 1.78.0
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_alert = alicloud.log.Alert("exampleAlert",
-            project_name=example_project.name,
-            alert_name="example-alert",
-            alert_displayname="example-alert",
-            condition="count> 100",
-            dashboard="example-dashboard",
-            schedule=alicloud.log.AlertScheduleArgs(
-                type="FixedRate",
-                interval="5m",
-                hour=0,
-                day_of_week=0,
-                delay=0,
-                run_immediately=False,
-            ),
-            query_lists=[alicloud.log.AlertQueryListArgs(
-                logstore=example_store.name,
-                chart_title="chart_title",
-                start="-60s",
-                end="20s",
-                query="* AND aliyun",
-            )],
-            notification_lists=[
-                alicloud.log.AlertNotificationListArgs(
-                    type="SMS",
-                    mobile_lists=[
-                        "12345678",
-                        "87654321",
-                    ],
-                    content="alert content",
-                ),
-                alicloud.log.AlertNotificationListArgs(
-                    type="Email",
-                    email_lists=[
-                        "aliyun@alibaba-inc.com",
-                        "tf-example@123.com",
-                    ],
-                    content="alert content",
-                ),
-                alicloud.log.AlertNotificationListArgs(
-                    type="DingTalk",
-                    service_uri="www.aliyun.com",
-                    content="alert content",
-                ),
-            ])
-        ```
-
-        Basic Usage for new alert
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_2 = alicloud.log.Alert("example-2",
-            version="2.0",
-            type="default",
-            project_name=example_project.name,
-            alert_name="example-alert",
-            alert_displayname="example-alert",
-            mute_until=1632486684,
-            no_data_fire=False,
-            no_data_severity=8,
-            send_resolved=True,
-            auto_annotation=True,
-            dashboard="example-dashboard",
-            schedule=alicloud.log.AlertScheduleArgs(
-                type="FixedRate",
-                interval="5m",
-                hour=0,
-                day_of_week=0,
-                delay=0,
-                run_immediately=False,
-            ),
-            query_lists=[
-                alicloud.log.AlertQueryListArgs(
-                    store=example_store.name,
-                    store_type="log",
-                    project=example_project.name,
-                    region="cn-heyuan",
-                    chart_title="chart_title",
-                    start="-60s",
-                    end="20s",
-                    query="* AND aliyun | select count(1) as cnt",
-                    power_sql_mode="auto",
-                ),
-                alicloud.log.AlertQueryListArgs(
-                    store=example_store.name,
-                    store_type="log",
-                    project=example_project.name,
-                    region="cn-heyuan",
-                    chart_title="chart_title",
-                    start="-60s",
-                    end="20s",
-                    query="error | select count(1) as error_cnt",
-                    power_sql_mode="enable",
-                ),
-            ],
-            labels=[alicloud.log.AlertLabelArgs(
-                key="env",
-                value="test",
-            )],
-            annotations=[
-                alicloud.log.AlertAnnotationArgs(
-                    key="title",
-                    value="alert title",
-                ),
-                alicloud.log.AlertAnnotationArgs(
-                    key="desc",
-                    value="alert desc",
-                ),
-                alicloud.log.AlertAnnotationArgs(
-                    key="test_key",
-                    value="test value",
-                ),
-            ],
-            group_configuration=alicloud.log.AlertGroupConfigurationArgs(
-                type="custom",
-                fields=["cnt"],
-            ),
-            policy_configuration=alicloud.log.AlertPolicyConfigurationArgs(
-                alert_policy_id="sls.bultin",
-                action_policy_id="sls_test_action",
-                repeat_interval="4h",
-            ),
-            severity_configurations=[
-                alicloud.log.AlertSeverityConfigurationArgs(
-                    severity=8,
-                    eval_condition={
-                        "condition": "cnt > 3",
-                        "count_condition": "__count__ > 3",
-                    },
-                ),
-                alicloud.log.AlertSeverityConfigurationArgs(
-                    severity=6,
-                    eval_condition={
-                        "condition": "",
-                        "count_condition": "__count__ > 0",
-                    },
-                ),
-                alicloud.log.AlertSeverityConfigurationArgs(
-                    severity=2,
-                    eval_condition={
-                        "condition": "",
-                        "count_condition": "",
-                    },
-                ),
-            ],
-            join_configurations=[alicloud.log.AlertJoinConfigurationArgs(
-                type="cross_join",
-                condition="",
-            )])
-        ```
-
-        Basic Usage for alert template
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
-            retention_period=3650,
-            shard_count=3,
-            auto_split=True,
-            max_split_shard_count=60,
-            append_meta=True)
-        example_3 = alicloud.log.Alert("example-3",
-            version="2.0",
-            type="tpl",
-            project_name=example_project.name,
-            alert_name="example-alert",
-            alert_displayname="example-alert",
-            mute_until=1632486684,
-            schedule=alicloud.log.AlertScheduleArgs(
-                type="FixedRate",
-                interval="5m",
-                hour=0,
-                day_of_week=0,
-                delay=0,
-                run_immediately=False,
-            ),
-            template_configuration=alicloud.log.AlertTemplateConfigurationArgs(
-                id="sls.app.sls_ack.node.down",
-                type="sys",
-                lang="cn",
-                annotations={},
-                tokens={
-                    "interval_minute": "5",
-                    "default.action_policy": "sls.app.ack.builtin",
-                    "default.severity": "6",
-                    "sendResolved": "false",
-                    "default.project": example_project.name,
-                    "default.logstore": "k8s-event",
-                    "default.repeatInterval": "4h",
-                    "trigger_threshold": "1",
-                    "default.clusterId": "example-cluster-id",
-                },
-            ))
-        ```
 
         ## Import
 
@@ -1845,11 +1379,7 @@ class Alert(pulumi.CustomResource):
             __props__.__dict__["auto_annotation"] = auto_annotation
             __props__.__dict__["condition"] = condition
             __props__.__dict__["dashboard"] = dashboard
-            if group_configuration is not None and not isinstance(group_configuration, AlertGroupConfigurationArgs):
-                group_configuration = group_configuration or {}
-                def _setter(key, value):
-                    group_configuration[key] = value
-                AlertGroupConfigurationArgs._configure(_setter, **group_configuration)
+            group_configuration = _utilities.configure(group_configuration, AlertGroupConfigurationArgs, True)
             __props__.__dict__["group_configuration"] = group_configuration
             __props__.__dict__["join_configurations"] = join_configurations
             __props__.__dict__["labels"] = labels
@@ -1858,31 +1388,19 @@ class Alert(pulumi.CustomResource):
             __props__.__dict__["no_data_severity"] = no_data_severity
             __props__.__dict__["notification_lists"] = notification_lists
             __props__.__dict__["notify_threshold"] = notify_threshold
-            if policy_configuration is not None and not isinstance(policy_configuration, AlertPolicyConfigurationArgs):
-                policy_configuration = policy_configuration or {}
-                def _setter(key, value):
-                    policy_configuration[key] = value
-                AlertPolicyConfigurationArgs._configure(_setter, **policy_configuration)
+            policy_configuration = _utilities.configure(policy_configuration, AlertPolicyConfigurationArgs, True)
             __props__.__dict__["policy_configuration"] = policy_configuration
             if project_name is None and not opts.urn:
                 raise TypeError("Missing required property 'project_name'")
             __props__.__dict__["project_name"] = project_name
             __props__.__dict__["query_lists"] = query_lists
-            if schedule is not None and not isinstance(schedule, AlertScheduleArgs):
-                schedule = schedule or {}
-                def _setter(key, value):
-                    schedule[key] = value
-                AlertScheduleArgs._configure(_setter, **schedule)
+            schedule = _utilities.configure(schedule, AlertScheduleArgs, True)
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["schedule_interval"] = schedule_interval
             __props__.__dict__["schedule_type"] = schedule_type
             __props__.__dict__["send_resolved"] = send_resolved
             __props__.__dict__["severity_configurations"] = severity_configurations
-            if template_configuration is not None and not isinstance(template_configuration, AlertTemplateConfigurationArgs):
-                template_configuration = template_configuration or {}
-                def _setter(key, value):
-                    template_configuration[key] = value
-                AlertTemplateConfigurationArgs._configure(_setter, **template_configuration)
+            template_configuration = _utilities.configure(template_configuration, AlertTemplateConfigurationArgs, True)
             __props__.__dict__["template_configuration"] = template_configuration
             __props__.__dict__["threshold"] = threshold
             __props__.__dict__["throttling"] = throttling

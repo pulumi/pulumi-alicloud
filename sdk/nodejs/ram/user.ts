@@ -13,23 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.0.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * // Create a new RAM user.
- * const user = new alicloud.ram.User("user", {
- *     comments: "yoyoyo",
- *     displayName: "user_display_name",
- *     email: "hello.uuu@aaa.com",
- *     mobile: "86-18688888888",
- * });
- * ```
- *
  * ## Import
  *
  * RAM User can be imported using the id, e.g.

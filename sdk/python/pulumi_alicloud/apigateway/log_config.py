@@ -32,17 +32,23 @@ class LogConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             log_type: pulumi.Input[str],
-             sls_log_store: pulumi.Input[str],
-             sls_project: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             log_type: Optional[pulumi.Input[str]] = None,
+             sls_log_store: Optional[pulumi.Input[str]] = None,
+             sls_project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'logType' in kwargs:
+        if log_type is None and 'logType' in kwargs:
             log_type = kwargs['logType']
-        if 'slsLogStore' in kwargs:
+        if log_type is None:
+            raise TypeError("Missing 'log_type' argument")
+        if sls_log_store is None and 'slsLogStore' in kwargs:
             sls_log_store = kwargs['slsLogStore']
-        if 'slsProject' in kwargs:
+        if sls_log_store is None:
+            raise TypeError("Missing 'sls_log_store' argument")
+        if sls_project is None and 'slsProject' in kwargs:
             sls_project = kwargs['slsProject']
+        if sls_project is None:
+            raise TypeError("Missing 'sls_project' argument")
 
         _setter("log_type", log_type)
         _setter("sls_log_store", sls_log_store)
@@ -109,13 +115,13 @@ class _LogConfigState:
              log_type: Optional[pulumi.Input[str]] = None,
              sls_log_store: Optional[pulumi.Input[str]] = None,
              sls_project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'logType' in kwargs:
+        if log_type is None and 'logType' in kwargs:
             log_type = kwargs['logType']
-        if 'slsLogStore' in kwargs:
+        if sls_log_store is None and 'slsLogStore' in kwargs:
             sls_log_store = kwargs['slsLogStore']
-        if 'slsProject' in kwargs:
+        if sls_project is None and 'slsProject' in kwargs:
             sls_project = kwargs['slsProject']
 
         if log_type is not None:
@@ -178,41 +184,6 @@ class LogConfig(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.185.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_log_configs = alicloud.apigateway.get_log_configs(log_type="PROVIDER")
-        count = 0 if len(default_log_configs.configs) > 0 else 1
-        default_random_integer = []
-        for range in [{"value": i} for i in range(0, count)]:
-            default_random_integer.append(random.RandomInteger(f"defaultRandomInteger-{range['value']}",
-                max=99999,
-                min=10000))
-        example_project = []
-        for range in [{"value": i} for i in range(0, count)]:
-            example_project.append(alicloud.log.Project(f"exampleProject-{range['value']}", description="terraform-example"))
-        example_store = []
-        for range in [{"value": i} for i in range(0, count)]:
-            example_store.append(alicloud.log.Store(f"exampleStore-{range['value']}",
-                project=example_project[0].name,
-                shard_count=3,
-                auto_split=True,
-                max_split_shard_count=60,
-                append_meta=True))
-        example_log_config = []
-        for range in [{"value": i} for i in range(0, count)]:
-            example_log_config.append(alicloud.apigateway.LogConfig(f"exampleLogConfig-{range['value']}",
-                sls_project=example_project[0].name,
-                sls_log_store=example_store[0].name,
-                log_type="PROVIDER"))
-        ```
-
         ## Import
 
         Api Gateway Log Config can be imported using the id, e.g.
@@ -239,41 +210,6 @@ class LogConfig(pulumi.CustomResource):
         For information about Api Gateway Log Config and how to use it, see [What is Log Config](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createlogconfig).
 
         > **NOTE:** Available since v1.185.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default_log_configs = alicloud.apigateway.get_log_configs(log_type="PROVIDER")
-        count = 0 if len(default_log_configs.configs) > 0 else 1
-        default_random_integer = []
-        for range in [{"value": i} for i in range(0, count)]:
-            default_random_integer.append(random.RandomInteger(f"defaultRandomInteger-{range['value']}",
-                max=99999,
-                min=10000))
-        example_project = []
-        for range in [{"value": i} for i in range(0, count)]:
-            example_project.append(alicloud.log.Project(f"exampleProject-{range['value']}", description="terraform-example"))
-        example_store = []
-        for range in [{"value": i} for i in range(0, count)]:
-            example_store.append(alicloud.log.Store(f"exampleStore-{range['value']}",
-                project=example_project[0].name,
-                shard_count=3,
-                auto_split=True,
-                max_split_shard_count=60,
-                append_meta=True))
-        example_log_config = []
-        for range in [{"value": i} for i in range(0, count)]:
-            example_log_config.append(alicloud.apigateway.LogConfig(f"exampleLogConfig-{range['value']}",
-                sls_project=example_project[0].name,
-                sls_log_store=example_store[0].name,
-                log_type="PROVIDER"))
-        ```
 
         ## Import
 

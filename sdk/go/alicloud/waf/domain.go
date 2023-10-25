@@ -21,56 +21,6 @@ import (
 //
 // > **NOTE:** Available in 1.82.0+ .
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/waf"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := waf.NewDomain(ctx, "domain", &waf.DomainArgs{
-//				ClusterType: pulumi.String("PhysicalCluster"),
-//				DomainName:  pulumi.String("alicloud-provider.cn"),
-//				Http2Ports: pulumi.StringArray{
-//					pulumi.String("443"),
-//				},
-//				HttpPorts: pulumi.StringArray{
-//					pulumi.String("80"),
-//				},
-//				HttpToUserIp: pulumi.String("Off"),
-//				HttpsPorts: pulumi.StringArray{
-//					pulumi.String("443"),
-//				},
-//				HttpsRedirect:   pulumi.String("Off"),
-//				InstanceId:      pulumi.String("waf-123455"),
-//				IsAccessProduct: pulumi.String("On"),
-//				LoadBalancing:   pulumi.String("IpHash"),
-//				LogHeaders: waf.DomainLogHeaderArray{
-//					&waf.DomainLogHeaderArgs{
-//						Key:   pulumi.String("foo"),
-//						Value: pulumi.String("http"),
-//					},
-//				},
-//				SourceIps: pulumi.StringArray{
-//					pulumi.String("1.1.1.1"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // WAF domain can be imported using the id, e.g.

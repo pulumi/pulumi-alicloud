@@ -16,36 +16,6 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// &gt; **NOTE:** Available since v1.198.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultKvNamespace = new AliCloud.Dcdn.KvNamespace("defaultKvNamespace", new()
-    ///     {
-    ///         Description = name,
-    ///         Namespace = name,
-    ///     });
-    /// 
-    ///     var defaultKv = new AliCloud.Dcdn.Kv("defaultKv", new()
-    ///     {
-    ///         Value = "example-value",
-    ///         Key = name,
-    ///         Namespace = defaultKvNamespace.Namespace,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Dcdn Kv can be imported using the id, e.g.

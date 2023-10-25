@@ -11,17 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.116.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.ecs.HpcCluster("example", {description: "For Terraform Test"});
- * ```
- *
  * ## Import
  *
  * ECS Hpc Cluster can be imported using the id, e.g.

@@ -16,48 +16,6 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available in v1.194.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
-    ///     {
-    ///         CidrBlock = "172.16.0.0/12",
-    ///         VpcName = "terraform-example",
-    ///     });
-    /// 
-    ///     var exampleRouteTable = new AliCloud.Vpc.RouteTable("exampleRouteTable", new()
-    ///     {
-    ///         VpcId = exampleNetwork.Id,
-    ///         RouteTableName = "terraform-example",
-    ///         Description = "terraform-example",
-    ///         AssociateType = "Gateway",
-    ///     });
-    /// 
-    ///     var exampleIpv4Gateway = new AliCloud.Vpc.Ipv4Gateway("exampleIpv4Gateway", new()
-    ///     {
-    ///         Ipv4GatewayName = "terraform-example",
-    ///         VpcId = exampleNetwork.Id,
-    ///         Enabled = true,
-    ///     });
-    /// 
-    ///     var exampleGatewayRouteTableAttachment = new AliCloud.Vpc.GatewayRouteTableAttachment("exampleGatewayRouteTableAttachment", new()
-    ///     {
-    ///         Ipv4GatewayId = exampleIpv4Gateway.Id,
-    ///         RouteTableId = exampleRouteTable.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// VPC Gateway Route Table Attachment can be imported using the id, e.g.

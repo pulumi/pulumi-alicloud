@@ -80,9 +80,9 @@ class DesktopArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bundle_id: pulumi.Input[str],
-             office_site_id: pulumi.Input[str],
-             policy_group_id: pulumi.Input[str],
+             bundle_id: Optional[pulumi.Input[str]] = None,
+             office_site_id: Optional[pulumi.Input[str]] = None,
+             policy_group_id: Optional[pulumi.Input[str]] = None,
              amount: Optional[pulumi.Input[int]] = None,
              auto_pay: Optional[pulumi.Input[bool]] = None,
              auto_renew: Optional[pulumi.Input[bool]] = None,
@@ -99,37 +99,43 @@ class DesktopArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              user_assign_mode: Optional[pulumi.Input[str]] = None,
              user_disk_size_gib: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bundleId' in kwargs:
+        if bundle_id is None and 'bundleId' in kwargs:
             bundle_id = kwargs['bundleId']
-        if 'officeSiteId' in kwargs:
+        if bundle_id is None:
+            raise TypeError("Missing 'bundle_id' argument")
+        if office_site_id is None and 'officeSiteId' in kwargs:
             office_site_id = kwargs['officeSiteId']
-        if 'policyGroupId' in kwargs:
+        if office_site_id is None:
+            raise TypeError("Missing 'office_site_id' argument")
+        if policy_group_id is None and 'policyGroupId' in kwargs:
             policy_group_id = kwargs['policyGroupId']
-        if 'autoPay' in kwargs:
+        if policy_group_id is None:
+            raise TypeError("Missing 'policy_group_id' argument")
+        if auto_pay is None and 'autoPay' in kwargs:
             auto_pay = kwargs['autoPay']
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'desktopName' in kwargs:
+        if desktop_name is None and 'desktopName' in kwargs:
             desktop_name = kwargs['desktopName']
-        if 'desktopType' in kwargs:
+        if desktop_type is None and 'desktopType' in kwargs:
             desktop_type = kwargs['desktopType']
-        if 'endUserIds' in kwargs:
+        if end_user_ids is None and 'endUserIds' in kwargs:
             end_user_ids = kwargs['endUserIds']
-        if 'hostName' in kwargs:
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'rootDiskSizeGib' in kwargs:
+        if root_disk_size_gib is None and 'rootDiskSizeGib' in kwargs:
             root_disk_size_gib = kwargs['rootDiskSizeGib']
-        if 'stoppedMode' in kwargs:
+        if stopped_mode is None and 'stoppedMode' in kwargs:
             stopped_mode = kwargs['stoppedMode']
-        if 'userAssignMode' in kwargs:
+        if user_assign_mode is None and 'userAssignMode' in kwargs:
             user_assign_mode = kwargs['userAssignMode']
-        if 'userDiskSizeGib' in kwargs:
+        if user_disk_size_gib is None and 'userDiskSizeGib' in kwargs:
             user_disk_size_gib = kwargs['userDiskSizeGib']
 
         _setter("bundle_id", bundle_id)
@@ -485,37 +491,37 @@ class _DesktopState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              user_assign_mode: Optional[pulumi.Input[str]] = None,
              user_disk_size_gib: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoPay' in kwargs:
+        if auto_pay is None and 'autoPay' in kwargs:
             auto_pay = kwargs['autoPay']
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'bundleId' in kwargs:
+        if bundle_id is None and 'bundleId' in kwargs:
             bundle_id = kwargs['bundleId']
-        if 'desktopName' in kwargs:
+        if desktop_name is None and 'desktopName' in kwargs:
             desktop_name = kwargs['desktopName']
-        if 'desktopType' in kwargs:
+        if desktop_type is None and 'desktopType' in kwargs:
             desktop_type = kwargs['desktopType']
-        if 'endUserIds' in kwargs:
+        if end_user_ids is None and 'endUserIds' in kwargs:
             end_user_ids = kwargs['endUserIds']
-        if 'hostName' in kwargs:
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'officeSiteId' in kwargs:
+        if office_site_id is None and 'officeSiteId' in kwargs:
             office_site_id = kwargs['officeSiteId']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'policyGroupId' in kwargs:
+        if policy_group_id is None and 'policyGroupId' in kwargs:
             policy_group_id = kwargs['policyGroupId']
-        if 'rootDiskSizeGib' in kwargs:
+        if root_disk_size_gib is None and 'rootDiskSizeGib' in kwargs:
             root_disk_size_gib = kwargs['rootDiskSizeGib']
-        if 'stoppedMode' in kwargs:
+        if stopped_mode is None and 'stoppedMode' in kwargs:
             stopped_mode = kwargs['stoppedMode']
-        if 'userAssignMode' in kwargs:
+        if user_assign_mode is None and 'userAssignMode' in kwargs:
             user_assign_mode = kwargs['userAssignMode']
-        if 'userDiskSizeGib' in kwargs:
+        if user_disk_size_gib is None and 'userDiskSizeGib' in kwargs:
             user_disk_size_gib = kwargs['userDiskSizeGib']
 
         if amount is not None:
@@ -818,50 +824,6 @@ class Desktop(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.144.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
-            cidr_block="172.16.0.0/12",
-            enable_admin_access=True,
-            desktop_access_type="Internet",
-            office_site_name=name)
-        default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
-            policy_group_name=name,
-            clipboard="read",
-            local_drive="read",
-            usb_redirect="off",
-            watermark="off",
-            authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-                description=name,
-                cidr_ip="1.2.3.45/24",
-            )],
-            authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-                type="inflow",
-                policy="accept",
-                description=name,
-                port_range="80/80",
-                ip_protocol="TCP",
-                priority="1",
-                cidr_ip="1.2.3.4/24",
-            )])
-        default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
-        default_desktop = alicloud.eds.Desktop("defaultDesktop",
-            office_site_id=default_simple_office_site.id,
-            policy_group_id=default_ecd_policy_group.id,
-            bundle_id=default_bundles.bundles[1].id,
-            desktop_name=name)
-        ```
-
         ## Import
 
         ECD Desktop can be imported using the id, e.g.
@@ -904,50 +866,6 @@ class Desktop(pulumi.CustomResource):
         For information about ECD Desktop and how to use it, see [What is Desktop](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createdesktops)
 
         > **NOTE:** Available since v1.144.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
-            cidr_block="172.16.0.0/12",
-            enable_admin_access=True,
-            desktop_access_type="Internet",
-            office_site_name=name)
-        default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
-            policy_group_name=name,
-            clipboard="read",
-            local_drive="read",
-            usb_redirect="off",
-            watermark="off",
-            authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-                description=name,
-                cidr_ip="1.2.3.45/24",
-            )],
-            authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-                type="inflow",
-                policy="accept",
-                description=name,
-                port_range="80/80",
-                ip_protocol="TCP",
-                priority="1",
-                cidr_ip="1.2.3.4/24",
-            )])
-        default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
-        default_desktop = alicloud.eds.Desktop("defaultDesktop",
-            office_site_id=default_simple_office_site.id,
-            policy_group_id=default_ecd_policy_group.id,
-            bundle_id=default_bundles.bundles[1].id,
-            desktop_name=name)
-        ```
 
         ## Import
 

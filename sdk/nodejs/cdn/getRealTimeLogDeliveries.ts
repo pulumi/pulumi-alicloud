@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cdn.getRealTimeLogDeliveries({
- *     domain: "example_value",
- * });
- * export const cdnRealTimeLogDelivery1 = example.then(example => example.deliveries?.[0]?.id);
- * ```
  */
 export function getRealTimeLogDeliveries(args: GetRealTimeLogDeliveriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRealTimeLogDeliveriesResult> {
 
@@ -70,20 +56,6 @@ export interface GetRealTimeLogDeliveriesResult {
  * This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cdn.getRealTimeLogDeliveries({
- *     domain: "example_value",
- * });
- * export const cdnRealTimeLogDelivery1 = example.then(example => example.deliveries?.[0]?.id);
- * ```
  */
 export function getRealTimeLogDeliveriesOutput(args: GetRealTimeLogDeliveriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRealTimeLogDeliveriesResult> {
     return pulumi.output(args).apply((a: any) => getRealTimeLogDeliveries(a, opts))

@@ -11,33 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.152.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const sourceRegion = config.get("sourceRegion") || "cn-hangzhou";
- * const source = new alicloud.Provider("source", {region: sourceRegion});
- * const defaultReplicationVaultRegions = alicloud.hbr.getReplicationVaultRegions({});
- * const replication = new alicloud.Provider("replication", {region: defaultReplicationVaultRegions.then(defaultReplicationVaultRegions => defaultReplicationVaultRegions.regions?.[0]?.replicationRegionId)});
- * const defaultVault = new alicloud.hbr.Vault("defaultVault", {vaultName: "terraform-example"}, {
- *     provider: alicloud.source,
- * });
- * const defaultReplicationVault = new alicloud.hbr.ReplicationVault("defaultReplicationVault", {
- *     replicationSourceRegionId: sourceRegion,
- *     replicationSourceVaultId: defaultVault.id,
- *     vaultName: "terraform-example",
- *     vaultStorageClass: "STANDARD",
- *     description: "terraform-example",
- * }, {
- *     provider: alicloud.replication,
- * });
- * ```
- *
  * ## Import
  *
  * Hybrid Backup Recovery (HBR) Replication Vault can be imported using the id, e.g.

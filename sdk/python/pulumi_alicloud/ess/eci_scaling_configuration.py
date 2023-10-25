@@ -122,7 +122,7 @@ class EciScalingConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             scaling_group_id: pulumi.Input[str],
+             scaling_group_id: Optional[pulumi.Input[str]] = None,
              acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]]] = None,
              active: Optional[pulumi.Input[bool]] = None,
              auto_create_eip: Optional[pulumi.Input[bool]] = None,
@@ -150,49 +150,51 @@ class EciScalingConfigurationArgs:
              spot_strategy: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'scalingGroupId' in kwargs:
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
-        if 'acrRegistryInfos' in kwargs:
+        if scaling_group_id is None:
+            raise TypeError("Missing 'scaling_group_id' argument")
+        if acr_registry_infos is None and 'acrRegistryInfos' in kwargs:
             acr_registry_infos = kwargs['acrRegistryInfos']
-        if 'autoCreateEip' in kwargs:
+        if auto_create_eip is None and 'autoCreateEip' in kwargs:
             auto_create_eip = kwargs['autoCreateEip']
-        if 'containerGroupName' in kwargs:
+        if container_group_name is None and 'containerGroupName' in kwargs:
             container_group_name = kwargs['containerGroupName']
-        if 'dnsPolicy' in kwargs:
+        if dns_policy is None and 'dnsPolicy' in kwargs:
             dns_policy = kwargs['dnsPolicy']
-        if 'egressBandwidth' in kwargs:
+        if egress_bandwidth is None and 'egressBandwidth' in kwargs:
             egress_bandwidth = kwargs['egressBandwidth']
-        if 'eipBandwidth' in kwargs:
+        if eip_bandwidth is None and 'eipBandwidth' in kwargs:
             eip_bandwidth = kwargs['eipBandwidth']
-        if 'enableSls' in kwargs:
+        if enable_sls is None and 'enableSls' in kwargs:
             enable_sls = kwargs['enableSls']
-        if 'forceDelete' in kwargs:
+        if force_delete is None and 'forceDelete' in kwargs:
             force_delete = kwargs['forceDelete']
-        if 'hostAliases' in kwargs:
+        if host_aliases is None and 'hostAliases' in kwargs:
             host_aliases = kwargs['hostAliases']
-        if 'hostName' in kwargs:
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'imageRegistryCredentials' in kwargs:
+        if image_registry_credentials is None and 'imageRegistryCredentials' in kwargs:
             image_registry_credentials = kwargs['imageRegistryCredentials']
-        if 'ingressBandwidth' in kwargs:
+        if ingress_bandwidth is None and 'ingressBandwidth' in kwargs:
             ingress_bandwidth = kwargs['ingressBandwidth']
-        if 'initContainers' in kwargs:
+        if init_containers is None and 'initContainers' in kwargs:
             init_containers = kwargs['initContainers']
-        if 'ramRoleName' in kwargs:
+        if ram_role_name is None and 'ramRoleName' in kwargs:
             ram_role_name = kwargs['ramRoleName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'restartPolicy' in kwargs:
+        if restart_policy is None and 'restartPolicy' in kwargs:
             restart_policy = kwargs['restartPolicy']
-        if 'scalingConfigurationName' in kwargs:
+        if scaling_configuration_name is None and 'scalingConfigurationName' in kwargs:
             scaling_configuration_name = kwargs['scalingConfigurationName']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'spotPriceLimit' in kwargs:
+        if spot_price_limit is None and 'spotPriceLimit' in kwargs:
             spot_price_limit = kwargs['spotPriceLimit']
-        if 'spotStrategy' in kwargs:
+        if spot_strategy is None and 'spotStrategy' in kwargs:
             spot_strategy = kwargs['spotStrategy']
 
         _setter("scaling_group_id", scaling_group_id)
@@ -738,49 +740,49 @@ class _EciScalingConfigurationState:
              spot_strategy: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acrRegistryInfos' in kwargs:
+        if acr_registry_infos is None and 'acrRegistryInfos' in kwargs:
             acr_registry_infos = kwargs['acrRegistryInfos']
-        if 'autoCreateEip' in kwargs:
+        if auto_create_eip is None and 'autoCreateEip' in kwargs:
             auto_create_eip = kwargs['autoCreateEip']
-        if 'containerGroupName' in kwargs:
+        if container_group_name is None and 'containerGroupName' in kwargs:
             container_group_name = kwargs['containerGroupName']
-        if 'dnsPolicy' in kwargs:
+        if dns_policy is None and 'dnsPolicy' in kwargs:
             dns_policy = kwargs['dnsPolicy']
-        if 'egressBandwidth' in kwargs:
+        if egress_bandwidth is None and 'egressBandwidth' in kwargs:
             egress_bandwidth = kwargs['egressBandwidth']
-        if 'eipBandwidth' in kwargs:
+        if eip_bandwidth is None and 'eipBandwidth' in kwargs:
             eip_bandwidth = kwargs['eipBandwidth']
-        if 'enableSls' in kwargs:
+        if enable_sls is None and 'enableSls' in kwargs:
             enable_sls = kwargs['enableSls']
-        if 'forceDelete' in kwargs:
+        if force_delete is None and 'forceDelete' in kwargs:
             force_delete = kwargs['forceDelete']
-        if 'hostAliases' in kwargs:
+        if host_aliases is None and 'hostAliases' in kwargs:
             host_aliases = kwargs['hostAliases']
-        if 'hostName' in kwargs:
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
-        if 'imageRegistryCredentials' in kwargs:
+        if image_registry_credentials is None and 'imageRegistryCredentials' in kwargs:
             image_registry_credentials = kwargs['imageRegistryCredentials']
-        if 'ingressBandwidth' in kwargs:
+        if ingress_bandwidth is None and 'ingressBandwidth' in kwargs:
             ingress_bandwidth = kwargs['ingressBandwidth']
-        if 'initContainers' in kwargs:
+        if init_containers is None and 'initContainers' in kwargs:
             init_containers = kwargs['initContainers']
-        if 'ramRoleName' in kwargs:
+        if ram_role_name is None and 'ramRoleName' in kwargs:
             ram_role_name = kwargs['ramRoleName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'restartPolicy' in kwargs:
+        if restart_policy is None and 'restartPolicy' in kwargs:
             restart_policy = kwargs['restartPolicy']
-        if 'scalingConfigurationName' in kwargs:
+        if scaling_configuration_name is None and 'scalingConfigurationName' in kwargs:
             scaling_configuration_name = kwargs['scalingConfigurationName']
-        if 'scalingGroupId' in kwargs:
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'spotPriceLimit' in kwargs:
+        if spot_price_limit is None and 'spotPriceLimit' in kwargs:
             spot_price_limit = kwargs['spotPriceLimit']
-        if 'spotStrategy' in kwargs:
+        if spot_strategy is None and 'spotStrategy' in kwargs:
             spot_strategy = kwargs['spotStrategy']
 
         if acr_registry_infos is not None:
@@ -1231,53 +1233,6 @@ class EciScalingConfiguration(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.164.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            min_size=0,
-            max_size=1,
-            scaling_group_name=name,
-            removal_policies=[
-                "OldestInstance",
-                "NewestInstance",
-            ],
-            vswitch_ids=[default_switch.id],
-            group_type="ECI")
-        default_eci_scaling_configuration = alicloud.ess.EciScalingConfiguration("defaultEciScalingConfiguration",
-            scaling_group_id=default_scaling_group.id,
-            cpu=2,
-            memory=4,
-            security_group_id=default_security_group.id,
-            force_delete=True,
-            active=True,
-            container_group_name="container-group-1649839595174",
-            containers=[alicloud.ess.EciScalingConfigurationContainerArgs(
-                name="container-1",
-                image="registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5",
-            )])
-        ```
-
         ## Import
 
         ESS eci scaling configuration can be imported using the id, e.g.
@@ -1342,53 +1297,6 @@ class EciScalingConfiguration(pulumi.CustomResource):
         For information about ess eci scaling configuration, see [CreateEciScalingConfiguration](https://www.alibabacloud.com/help/en/auto-scaling/latest/create-eci-scaling-configuration).
 
         > **NOTE:** Available since v1.164.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            min_size=0,
-            max_size=1,
-            scaling_group_name=name,
-            removal_policies=[
-                "OldestInstance",
-                "NewestInstance",
-            ],
-            vswitch_ids=[default_switch.id],
-            group_type="ECI")
-        default_eci_scaling_configuration = alicloud.ess.EciScalingConfiguration("defaultEciScalingConfiguration",
-            scaling_group_id=default_scaling_group.id,
-            cpu=2,
-            memory=4,
-            security_group_id=default_security_group.id,
-            force_delete=True,
-            active=True,
-            container_group_name="container-group-1649839595174",
-            containers=[alicloud.ess.EciScalingConfigurationContainerArgs(
-                name="container-1",
-                image="registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5",
-            )])
-        ```
 
         ## Import
 

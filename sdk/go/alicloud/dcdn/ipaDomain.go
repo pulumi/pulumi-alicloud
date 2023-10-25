@@ -19,57 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.158.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			domainName := "example.com"
-//			if param := cfg.Get("domainName"); param != "" {
-//				domainName = param
-//			}
-//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dcdn.NewIpaDomain(ctx, "example", &dcdn.IpaDomainArgs{
-//				DomainName:      pulumi.String(domainName),
-//				ResourceGroupId: *pulumi.String(_default.Groups[0].Id),
-//				Scope:           pulumi.String("global"),
-//				Status:          pulumi.String("online"),
-//				Sources: dcdn.IpaDomainSourceArray{
-//					&dcdn.IpaDomainSourceArgs{
-//						Content:  pulumi.String("www.alicloud-provider.cn"),
-//						Port:     pulumi.Int(80),
-//						Priority: pulumi.String("20"),
-//						Type:     pulumi.String("domain"),
-//						Weight:   pulumi.Int(10),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // DCDN Ipa Domain can be imported using the id, e.g.

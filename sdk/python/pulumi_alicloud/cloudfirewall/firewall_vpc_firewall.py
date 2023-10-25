@@ -43,21 +43,29 @@ class FirewallVpcFirewallArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             local_vpc: pulumi.Input['FirewallVpcFirewallLocalVpcArgs'],
-             peer_vpc: pulumi.Input['FirewallVpcFirewallPeerVpcArgs'],
-             status: pulumi.Input[str],
-             vpc_firewall_name: pulumi.Input[str],
+             local_vpc: Optional[pulumi.Input['FirewallVpcFirewallLocalVpcArgs']] = None,
+             peer_vpc: Optional[pulumi.Input['FirewallVpcFirewallPeerVpcArgs']] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vpc_firewall_name: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              member_uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'localVpc' in kwargs:
+        if local_vpc is None and 'localVpc' in kwargs:
             local_vpc = kwargs['localVpc']
-        if 'peerVpc' in kwargs:
+        if local_vpc is None:
+            raise TypeError("Missing 'local_vpc' argument")
+        if peer_vpc is None and 'peerVpc' in kwargs:
             peer_vpc = kwargs['peerVpc']
-        if 'vpcFirewallName' in kwargs:
+        if peer_vpc is None:
+            raise TypeError("Missing 'peer_vpc' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_firewall_name is None and 'vpcFirewallName' in kwargs:
             vpc_firewall_name = kwargs['vpcFirewallName']
-        if 'memberUid' in kwargs:
+        if vpc_firewall_name is None:
+            raise TypeError("Missing 'vpc_firewall_name' argument")
+        if member_uid is None and 'memberUid' in kwargs:
             member_uid = kwargs['memberUid']
 
         _setter("local_vpc", local_vpc)
@@ -194,21 +202,21 @@ class _FirewallVpcFirewallState:
              status: Optional[pulumi.Input[str]] = None,
              vpc_firewall_id: Optional[pulumi.Input[str]] = None,
              vpc_firewall_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectType' in kwargs:
+        if connect_type is None and 'connectType' in kwargs:
             connect_type = kwargs['connectType']
-        if 'localVpc' in kwargs:
+        if local_vpc is None and 'localVpc' in kwargs:
             local_vpc = kwargs['localVpc']
-        if 'memberUid' in kwargs:
+        if member_uid is None and 'memberUid' in kwargs:
             member_uid = kwargs['memberUid']
-        if 'peerVpc' in kwargs:
+        if peer_vpc is None and 'peerVpc' in kwargs:
             peer_vpc = kwargs['peerVpc']
-        if 'regionStatus' in kwargs:
+        if region_status is None and 'regionStatus' in kwargs:
             region_status = kwargs['regionStatus']
-        if 'vpcFirewallId' in kwargs:
+        if vpc_firewall_id is None and 'vpcFirewallId' in kwargs:
             vpc_firewall_id = kwargs['vpcFirewallId']
-        if 'vpcFirewallName' in kwargs:
+        if vpc_firewall_name is None and 'vpcFirewallName' in kwargs:
             vpc_firewall_name = kwargs['vpcFirewallName']
 
         if bandwidth is not None:
@@ -372,43 +380,6 @@ class FirewallVpcFirewall(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        current = alicloud.get_account()
-        default = alicloud.cloudfirewall.FirewallVpcFirewall("default",
-            vpc_firewall_name="tf-example",
-            member_uid=current.id,
-            local_vpc=alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcArgs(
-                vpc_id="vpc-bp1d065m6hzn1xbw8ibfd",
-                region_no="cn-hangzhou",
-                local_vpc_cidr_table_lists=[alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs(
-                    local_route_table_id="vtb-bp1lj0ddg846856chpzrv",
-                    local_route_entry_lists=[alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs(
-                        local_next_hop_instance_id="ri-bp1uobww3aputjlwwkyrh",
-                        local_destination_cidr="10.1.0.0/16",
-                    )],
-                )],
-            ),
-            peer_vpc=alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcArgs(
-                vpc_id="vpc-bp1gcmm64o3caox84v0nz",
-                region_no="cn-hangzhou",
-                peer_vpc_cidr_table_lists=[alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs(
-                    peer_route_table_id="vtb-bp1f516f2hh4sok1ig9b5",
-                    peer_route_entry_lists=[alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs(
-                        peer_destination_cidr="10.0.0.0/16",
-                        peer_next_hop_instance_id="ri-bp1thhtgf6ydr2or52l3n",
-                    )],
-                )],
-            ),
-            status="open")
-        ```
-
         ## Import
 
         Cloud Firewall Vpc Firewall can be imported using the id, e.g.
@@ -438,43 +409,6 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         For information about Cloud Firewall Vpc Firewall and how to use it, see [What is Vpc Firewall](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-createvpcfirewallconfigure).
 
         > **NOTE:** Available since v1.194.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        current = alicloud.get_account()
-        default = alicloud.cloudfirewall.FirewallVpcFirewall("default",
-            vpc_firewall_name="tf-example",
-            member_uid=current.id,
-            local_vpc=alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcArgs(
-                vpc_id="vpc-bp1d065m6hzn1xbw8ibfd",
-                region_no="cn-hangzhou",
-                local_vpc_cidr_table_lists=[alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs(
-                    local_route_table_id="vtb-bp1lj0ddg846856chpzrv",
-                    local_route_entry_lists=[alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs(
-                        local_next_hop_instance_id="ri-bp1uobww3aputjlwwkyrh",
-                        local_destination_cidr="10.1.0.0/16",
-                    )],
-                )],
-            ),
-            peer_vpc=alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcArgs(
-                vpc_id="vpc-bp1gcmm64o3caox84v0nz",
-                region_no="cn-hangzhou",
-                peer_vpc_cidr_table_lists=[alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs(
-                    peer_route_table_id="vtb-bp1f516f2hh4sok1ig9b5",
-                    peer_route_entry_lists=[alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs(
-                        peer_destination_cidr="10.0.0.0/16",
-                        peer_next_hop_instance_id="ri-bp1thhtgf6ydr2or52l3n",
-                    )],
-                )],
-            ),
-            status="open")
-        ```
 
         ## Import
 
@@ -519,20 +453,12 @@ class FirewallVpcFirewall(pulumi.CustomResource):
             __props__ = FirewallVpcFirewallArgs.__new__(FirewallVpcFirewallArgs)
 
             __props__.__dict__["lang"] = lang
-            if local_vpc is not None and not isinstance(local_vpc, FirewallVpcFirewallLocalVpcArgs):
-                local_vpc = local_vpc or {}
-                def _setter(key, value):
-                    local_vpc[key] = value
-                FirewallVpcFirewallLocalVpcArgs._configure(_setter, **local_vpc)
+            local_vpc = _utilities.configure(local_vpc, FirewallVpcFirewallLocalVpcArgs, True)
             if local_vpc is None and not opts.urn:
                 raise TypeError("Missing required property 'local_vpc'")
             __props__.__dict__["local_vpc"] = local_vpc
             __props__.__dict__["member_uid"] = member_uid
-            if peer_vpc is not None and not isinstance(peer_vpc, FirewallVpcFirewallPeerVpcArgs):
-                peer_vpc = peer_vpc or {}
-                def _setter(key, value):
-                    peer_vpc[key] = value
-                FirewallVpcFirewallPeerVpcArgs._configure(_setter, **peer_vpc)
+            peer_vpc = _utilities.configure(peer_vpc, FirewallVpcFirewallPeerVpcArgs, True)
             if peer_vpc is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_vpc'")
             __props__.__dict__["peer_vpc"] = peer_vpc

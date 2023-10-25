@@ -58,7 +58,7 @@ class BandwidthPackageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: pulumi.Input[int],
+             bandwidth: Optional[pulumi.Input[int]] = None,
              cen_bandwidth_package_name: Optional[pulumi.Input[str]] = None,
              charge_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -68,19 +68,21 @@ class BandwidthPackageArgs:
              name: Optional[pulumi.Input[str]] = None,
              payment_type: Optional[pulumi.Input[str]] = None,
              period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenBandwidthPackageName' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if cen_bandwidth_package_name is None and 'cenBandwidthPackageName' in kwargs:
             cen_bandwidth_package_name = kwargs['cenBandwidthPackageName']
-        if 'chargeType' in kwargs:
+        if charge_type is None and 'chargeType' in kwargs:
             charge_type = kwargs['chargeType']
-        if 'geographicRegionAId' in kwargs:
+        if geographic_region_a_id is None and 'geographicRegionAId' in kwargs:
             geographic_region_a_id = kwargs['geographicRegionAId']
-        if 'geographicRegionBId' in kwargs:
+        if geographic_region_b_id is None and 'geographicRegionBId' in kwargs:
             geographic_region_b_id = kwargs['geographicRegionBId']
-        if 'geographicRegionIds' in kwargs:
+        if geographic_region_ids is None and 'geographicRegionIds' in kwargs:
             geographic_region_ids = kwargs['geographicRegionIds']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
 
         _setter("bandwidth", bandwidth)
@@ -312,21 +314,21 @@ class _BandwidthPackageState:
              payment_type: Optional[pulumi.Input[str]] = None,
              period: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenBandwidthPackageName' in kwargs:
+        if cen_bandwidth_package_name is None and 'cenBandwidthPackageName' in kwargs:
             cen_bandwidth_package_name = kwargs['cenBandwidthPackageName']
-        if 'chargeType' in kwargs:
+        if charge_type is None and 'chargeType' in kwargs:
             charge_type = kwargs['chargeType']
-        if 'expiredTime' in kwargs:
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'geographicRegionAId' in kwargs:
+        if geographic_region_a_id is None and 'geographicRegionAId' in kwargs:
             geographic_region_a_id = kwargs['geographicRegionAId']
-        if 'geographicRegionBId' in kwargs:
+        if geographic_region_b_id is None and 'geographicRegionBId' in kwargs:
             geographic_region_b_id = kwargs['geographicRegionBId']
-        if 'geographicRegionIds' in kwargs:
+        if geographic_region_ids is None and 'geographicRegionIds' in kwargs:
             geographic_region_ids = kwargs['geographicRegionIds']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
 
         if bandwidth is not None:

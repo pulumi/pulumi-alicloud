@@ -25,11 +25,13 @@ class SlrArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             product_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             product_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'productName' in kwargs:
+        if product_name is None and 'productName' in kwargs:
             product_name = kwargs['productName']
+        if product_name is None:
+            raise TypeError("Missing 'product_name' argument")
 
         _setter("product_name", product_name)
 
@@ -58,9 +60,9 @@ class _SlrState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              product_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'productName' in kwargs:
+        if product_name is None and 'productName' in kwargs:
             product_name = kwargs['productName']
 
         if product_name is not None:

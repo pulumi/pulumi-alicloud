@@ -35,19 +35,25 @@ class HostShareKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host_share_key_name: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             private_key: pulumi.Input[str],
+             host_share_key_name: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
              pass_phrase: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'hostShareKeyName' in kwargs:
+        if host_share_key_name is None and 'hostShareKeyName' in kwargs:
             host_share_key_name = kwargs['hostShareKeyName']
-        if 'instanceId' in kwargs:
+        if host_share_key_name is None:
+            raise TypeError("Missing 'host_share_key_name' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'privateKey' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
-        if 'passPhrase' in kwargs:
+        if private_key is None:
+            raise TypeError("Missing 'private_key' argument")
+        if pass_phrase is None and 'passPhrase' in kwargs:
             pass_phrase = kwargs['passPhrase']
 
         _setter("host_share_key_name", host_share_key_name)
@@ -141,19 +147,19 @@ class _HostShareKeyState:
              pass_phrase: Optional[pulumi.Input[str]] = None,
              private_key: Optional[pulumi.Input[str]] = None,
              private_key_finger_print: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'hostShareKeyId' in kwargs:
+        if host_share_key_id is None and 'hostShareKeyId' in kwargs:
             host_share_key_id = kwargs['hostShareKeyId']
-        if 'hostShareKeyName' in kwargs:
+        if host_share_key_name is None and 'hostShareKeyName' in kwargs:
             host_share_key_name = kwargs['hostShareKeyName']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'passPhrase' in kwargs:
+        if pass_phrase is None and 'passPhrase' in kwargs:
             pass_phrase = kwargs['passPhrase']
-        if 'privateKey' in kwargs:
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
-        if 'privateKeyFingerPrint' in kwargs:
+        if private_key_finger_print is None and 'privateKeyFingerPrint' in kwargs:
             private_key_finger_print = kwargs['privateKeyFingerPrint']
 
         if host_share_key_id is not None:
@@ -259,47 +265,6 @@ class HostShareKey(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.165.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.bastionhost.Instance("defaultInstance",
-            description=name,
-            license_code="bhah_ent_50_asset",
-            plan_code="cloudbastion",
-            storage="5",
-            bandwidth="5",
-            period=1,
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id])
-        private_key = config.get("privateKey")
-        if private_key is None:
-            private_key = "LS0tLS1CR*******"
-        default_host_share_key = alicloud.bastionhost.HostShareKey("defaultHostShareKey",
-            host_share_key_name=name,
-            instance_id=default_instance.id,
-            pass_phrase="NTIxeGlubXU=",
-            private_key=private_key)
-        ```
-
         ## Import
 
         Bastion Host Share Key can be imported using the id, e.g.
@@ -327,47 +292,6 @@ class HostShareKey(pulumi.CustomResource):
         For information about Bastion Host Host Share Key and how to use it, see [What is Host Share Key](https://www.alibabacloud.com/help/en/bastion-host/latest/createhostsharekey).
 
         > **NOTE:** Available since v1.165.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.bastionhost.Instance("defaultInstance",
-            description=name,
-            license_code="bhah_ent_50_asset",
-            plan_code="cloudbastion",
-            storage="5",
-            bandwidth="5",
-            period=1,
-            vswitch_id=default_switch.id,
-            security_group_ids=[default_security_group.id])
-        private_key = config.get("privateKey")
-        if private_key is None:
-            private_key = "LS0tLS1CR*******"
-        default_host_share_key = alicloud.bastionhost.HostShareKey("defaultHostShareKey",
-            host_share_key_name=name,
-            instance_id=default_instance.id,
-            pass_phrase="NTIxeGlubXU=",
-            private_key=private_key)
-        ```
 
         ## Import
 

@@ -13,27 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.178.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.cloudfirewall.AddressBook("example", {
- *     autoAddTagEcs: 0,
- *     description: "example_value",
- *     ecsTags: [{
- *         tagKey: "created",
- *         tagValue: "tfTestAcc0",
- *     }],
- *     groupName: "example_value",
- *     groupType: "tag",
- *     tagRelation: "and",
- * });
- * ```
- *
  * ## Import
  *
  * Cloud Firewall Address Book can be imported using the id, e.g.

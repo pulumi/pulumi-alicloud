@@ -19,40 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.134.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			domainName := "alicloud-provider.online"
-//			if param := cfg.Get("domainName"); param != "" {
-//				domainName = param
-//			}
-//			_, err := directmail.NewDomain(ctx, "example", &directmail.DomainArgs{
-//				DomainName: pulumi.String(domainName),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Direct Mail Domain can be imported using the id, e.g.

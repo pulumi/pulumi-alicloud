@@ -119,25 +119,6 @@ def get_host_groups(host_group_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.134.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.bastionhost.get_host_groups(instance_id="bastionhost-cn-tl3xxxxxxx",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("bastionhostHostGroupId1", ids.groups[0].id)
-    name_regex = alicloud.bastionhost.get_host_groups(instance_id="bastionhost-cn-tl3xxxxxxx",
-        name_regex="^my-HostGroup")
-    pulumi.export("bastionhostHostGroupId2", name_regex.groups[0].id)
-    ```
-
 
     :param str host_group_name: Specify the New Host Group Name, Supports up to 128 Characters.
     :param Sequence[str] ids: A list of Host Group IDs.
@@ -176,25 +157,6 @@ def get_host_groups_output(host_group_name: Optional[pulumi.Input[Optional[str]]
     This data source provides the Bastionhost Host Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.134.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.bastionhost.get_host_groups(instance_id="bastionhost-cn-tl3xxxxxxx",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("bastionhostHostGroupId1", ids.groups[0].id)
-    name_regex = alicloud.bastionhost.get_host_groups(instance_id="bastionhost-cn-tl3xxxxxxx",
-        name_regex="^my-HostGroup")
-    pulumi.export("bastionhostHostGroupId2", name_regex.groups[0].id)
-    ```
 
 
     :param str host_group_name: Specify the New Host Group Name, Supports up to 128 Characters.

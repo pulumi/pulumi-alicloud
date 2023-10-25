@@ -18,37 +18,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available in 1.69.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @this = new AliCloud.Ecs.ImageImport("this", new()
-    ///     {
-    ///         Architecture = "x86_64",
-    ///         Description = "test import image",
-    ///         DiskDeviceMappings = new[]
-    ///         {
-    ///             new AliCloud.Ecs.Inputs.ImageImportDiskDeviceMappingArgs
-    ///             {
-    ///                 DiskImageSize = 5,
-    ///                 OssBucket = "testimportimage",
-    ///                 OssObject = "root.img",
-    ///             },
-    ///         },
-    ///         ImageName = "test-import-image",
-    ///         LicenseType = "Auto",
-    ///         OsType = "linux",
-    ///         Platform = "Ubuntu",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ## Attributes Reference0
     /// 
     ///  The following attributes are exported:

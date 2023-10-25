@@ -11,25 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.194.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.ga.BasicAccelerator("default", {
- *     autoPay: true,
- *     autoUseCoupon: "true",
- *     bandwidthBillingType: "BandwidthPackage",
- *     basicAcceleratorName: "tf-example-value",
- *     description: "tf-example-value",
- *     duration: 1,
- *     pricingCycle: "Month",
- * });
- * ```
- *
  * ## Import
  *
  * Global Accelerator (GA) Basic Accelerator can be imported using the id, e.g.

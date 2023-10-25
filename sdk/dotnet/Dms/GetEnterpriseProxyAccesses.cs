@@ -15,44 +15,6 @@ namespace Pulumi.AliCloud.Dms
         /// This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess)
         /// 
         /// &gt; **NOTE:** Available since v1.195.0.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var defaultEnterpriseProxyAccess = new AliCloud.Dms.EnterpriseProxyAccess("defaultEnterpriseProxyAccess", new()
-        ///     {
-        ///         IndepPassword = "PASSWORD-DEMO",
-        ///         ProxyId = "1881",
-        ///         IndepAccount = "dmstest",
-        ///         UserId = "104442",
-        ///     });
-        /// 
-        ///     var defaultEnterpriseProxyAccesses = AliCloud.Dms.GetEnterpriseProxyAccesses.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             defaultEnterpriseProxyAccess.Id,
-        ///         },
-        ///         ProxyId = "1881",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudDmsProxyAccesesExampleId"] = defaultEnterpriseProxyAccesses.Apply(getEnterpriseProxyAccessesResult =&gt; getEnterpriseProxyAccessesResult.Accesses[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEnterpriseProxyAccessesResult> InvokeAsync(GetEnterpriseProxyAccessesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnterpriseProxyAccessesResult>("alicloud:dms/getEnterpriseProxyAccesses:getEnterpriseProxyAccesses", args ?? new GetEnterpriseProxyAccessesArgs(), options.WithDefaults());
@@ -61,44 +23,6 @@ namespace Pulumi.AliCloud.Dms
         /// This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess)
         /// 
         /// &gt; **NOTE:** Available since v1.195.0.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var defaultEnterpriseProxyAccess = new AliCloud.Dms.EnterpriseProxyAccess("defaultEnterpriseProxyAccess", new()
-        ///     {
-        ///         IndepPassword = "PASSWORD-DEMO",
-        ///         ProxyId = "1881",
-        ///         IndepAccount = "dmstest",
-        ///         UserId = "104442",
-        ///     });
-        /// 
-        ///     var defaultEnterpriseProxyAccesses = AliCloud.Dms.GetEnterpriseProxyAccesses.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             defaultEnterpriseProxyAccess.Id,
-        ///         },
-        ///         ProxyId = "1881",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudDmsProxyAccesesExampleId"] = defaultEnterpriseProxyAccesses.Apply(getEnterpriseProxyAccessesResult =&gt; getEnterpriseProxyAccessesResult.Accesses[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetEnterpriseProxyAccessesResult> Invoke(GetEnterpriseProxyAccessesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnterpriseProxyAccessesResult>("alicloud:dms/getEnterpriseProxyAccesses:getEnterpriseProxyAccesses", args ?? new GetEnterpriseProxyAccessesInvokeArgs(), options.WithDefaults());

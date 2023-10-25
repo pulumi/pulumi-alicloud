@@ -38,20 +38,22 @@ class TransitRouterRouteTableArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             transit_router_id: pulumi.Input[str],
+             transit_router_id: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              transit_router_route_table_description: Optional[pulumi.Input[str]] = None,
              transit_router_route_table_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'transitRouterId' in kwargs:
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'dryRun' in kwargs:
+        if transit_router_id is None:
+            raise TypeError("Missing 'transit_router_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'transitRouterRouteTableDescription' in kwargs:
+        if transit_router_route_table_description is None and 'transitRouterRouteTableDescription' in kwargs:
             transit_router_route_table_description = kwargs['transitRouterRouteTableDescription']
-        if 'transitRouterRouteTableName' in kwargs:
+        if transit_router_route_table_name is None and 'transitRouterRouteTableName' in kwargs:
             transit_router_route_table_name = kwargs['transitRouterRouteTableName']
 
         _setter("transit_router_id", transit_router_id)
@@ -169,19 +171,19 @@ class _TransitRouterRouteTableState:
              transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
              transit_router_route_table_name: Optional[pulumi.Input[str]] = None,
              transit_router_route_table_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'transitRouterId' in kwargs:
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'transitRouterRouteTableDescription' in kwargs:
+        if transit_router_route_table_description is None and 'transitRouterRouteTableDescription' in kwargs:
             transit_router_route_table_description = kwargs['transitRouterRouteTableDescription']
-        if 'transitRouterRouteTableId' in kwargs:
+        if transit_router_route_table_id is None and 'transitRouterRouteTableId' in kwargs:
             transit_router_route_table_id = kwargs['transitRouterRouteTableId']
-        if 'transitRouterRouteTableName' in kwargs:
+        if transit_router_route_table_name is None and 'transitRouterRouteTableName' in kwargs:
             transit_router_route_table_name = kwargs['transitRouterRouteTableName']
-        if 'transitRouterRouteTableType' in kwargs:
+        if transit_router_route_table_type is None and 'transitRouterRouteTableType' in kwargs:
             transit_router_route_table_type = kwargs['transitRouterRouteTableType']
 
         if dry_run is not None:
@@ -314,23 +316,6 @@ class TransitRouterRouteTable(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.126.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
-        ```
-
         ## Import
 
         CEN transit router route table
@@ -359,23 +344,6 @@ class TransitRouterRouteTable(pulumi.CustomResource):
         Provides a CEN transit router route table resource.[What is Cen Transit Router Route Table](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterroutetable)
 
         > **NOTE:** Available since v1.126.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
-        ```
 
         ## Import
 

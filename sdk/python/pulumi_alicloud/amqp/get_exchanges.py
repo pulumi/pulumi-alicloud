@@ -119,27 +119,6 @@ def get_exchanges(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.128.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.amqp.get_exchanges(instance_id="amqp-abc12345",
-        virtual_host_name="my-VirtualHost",
-        ids=[
-            "my-Exchange-1",
-            "my-Exchange-2",
-        ])
-    pulumi.export("amqpExchangeId1", ids.exchanges[0].id)
-    name_regex = alicloud.amqp.get_exchanges(instance_id="amqp-abc12345",
-        virtual_host_name="my-VirtualHost",
-        name_regex="^my-Exchange")
-    pulumi.export("amqpExchangeId2", name_regex.exchanges[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Exchange IDs. Its element value is same as Exchange Name.
     :param str instance_id: The ID of the instance.
@@ -178,27 +157,6 @@ def get_exchanges_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.128.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.amqp.get_exchanges(instance_id="amqp-abc12345",
-        virtual_host_name="my-VirtualHost",
-        ids=[
-            "my-Exchange-1",
-            "my-Exchange-2",
-        ])
-    pulumi.export("amqpExchangeId1", ids.exchanges[0].id)
-    name_regex = alicloud.amqp.get_exchanges(instance_id="amqp-abc12345",
-        virtual_host_name="my-VirtualHost",
-        name_regex="^my-Exchange")
-    pulumi.export("amqpExchangeId2", name_regex.exchanges[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Exchange IDs. Its element value is same as Exchange Name.

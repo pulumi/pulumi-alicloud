@@ -15,17 +15,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:**  Available in 1.40.0+.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const snapshots = alicloud.ecs.getSnapshots({
- *     ids: ["s-123456890abcdef"],
- *     nameRegex: "tf-testAcc-snapshot",
- * });
- * ```
  * ## Argument Reference
  *
  * The following arguments are supported:
@@ -179,17 +168,6 @@ export interface GetSnapshotsResult {
  *
  * > **NOTE:**  Available in 1.40.0+.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const snapshots = alicloud.ecs.getSnapshots({
- *     ids: ["s-123456890abcdef"],
- *     nameRegex: "tf-testAcc-snapshot",
- * });
- * ```
  * ## Argument Reference
  *
  * The following arguments are supported:

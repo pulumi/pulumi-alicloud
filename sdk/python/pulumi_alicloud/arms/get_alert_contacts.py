@@ -129,20 +129,6 @@ def get_alert_contacts(alert_contact_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.129.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.arms.get_alert_contacts()
-    pulumi.export("armsAlertContactId1", ids.contacts[0].id)
-    name_regex = alicloud.arms.get_alert_contacts(name_regex="^my-AlertContact")
-    pulumi.export("armsAlertContactId2", name_regex.contacts[0].id)
-    ```
-
 
     :param str alert_contact_name: The name of the alert contact.
     :param str email: The email address of the alert contact.
@@ -185,20 +171,6 @@ def get_alert_contacts_output(alert_contact_name: Optional[pulumi.Input[Optional
     This data source provides the Arms Alert Contacts of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.129.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.arms.get_alert_contacts()
-    pulumi.export("armsAlertContactId1", ids.contacts[0].id)
-    name_regex = alicloud.arms.get_alert_contacts(name_regex="^my-AlertContact")
-    pulumi.export("armsAlertContactId2", name_regex.contacts[0].id)
-    ```
 
 
     :param str alert_contact_name: The name of the alert contact.

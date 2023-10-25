@@ -114,11 +114,11 @@ class ApplicationConfigMapMountDescV2(dict):
              config_map_id: Optional[str] = None,
              key: Optional[str] = None,
              mount_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configMapId' in kwargs:
+        if config_map_id is None and 'configMapId' in kwargs:
             config_map_id = kwargs['configMapId']
-        if 'mountPath' in kwargs:
+        if mount_path is None and 'mountPath' in kwargs:
             mount_path = kwargs['mountPath']
 
         if config_map_id is not None:
@@ -189,9 +189,9 @@ class ApplicationCustomHostAliasV2(dict):
              _setter: Callable[[Any, Any], None],
              host_name: Optional[str] = None,
              ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'hostName' in kwargs:
+        if host_name is None and 'hostName' in kwargs:
             host_name = kwargs['hostName']
 
         if host_name is not None:
@@ -260,13 +260,13 @@ class ApplicationKafkaConfigs(dict):
              kafka_configs: Optional[Sequence['outputs.ApplicationKafkaConfigsKafkaConfig']] = None,
              kafka_endpoint: Optional[str] = None,
              kafka_instance_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'kafkaConfigs' in kwargs:
+        if kafka_configs is None and 'kafkaConfigs' in kwargs:
             kafka_configs = kwargs['kafkaConfigs']
-        if 'kafkaEndpoint' in kwargs:
+        if kafka_endpoint is None and 'kafkaEndpoint' in kwargs:
             kafka_endpoint = kwargs['kafkaEndpoint']
-        if 'kafkaInstanceId' in kwargs:
+        if kafka_instance_id is None and 'kafkaInstanceId' in kwargs:
             kafka_instance_id = kwargs['kafkaInstanceId']
 
         if kafka_configs is not None:
@@ -345,13 +345,13 @@ class ApplicationKafkaConfigsKafkaConfig(dict):
              kafka_topic: Optional[str] = None,
              log_dir: Optional[str] = None,
              log_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'kafkaTopic' in kwargs:
+        if kafka_topic is None and 'kafkaTopic' in kwargs:
             kafka_topic = kwargs['kafkaTopic']
-        if 'logDir' in kwargs:
+        if log_dir is None and 'logDir' in kwargs:
             log_dir = kwargs['logDir']
-        if 'logType' in kwargs:
+        if log_type is None and 'logType' in kwargs:
             log_type = kwargs['logType']
 
         if kafka_topic is not None:
@@ -448,19 +448,19 @@ class ApplicationLivenessV2(dict):
              period_seconds: Optional[int] = None,
              tcp_socket: Optional['outputs.ApplicationLivenessV2TcpSocket'] = None,
              timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'exec' in kwargs:
+        if exec_ is None and 'exec' in kwargs:
             exec_ = kwargs['exec']
-        if 'httpGet' in kwargs:
+        if http_get is None and 'httpGet' in kwargs:
             http_get = kwargs['httpGet']
-        if 'initialDelaySeconds' in kwargs:
+        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
             initial_delay_seconds = kwargs['initialDelaySeconds']
-        if 'periodSeconds' in kwargs:
+        if period_seconds is None and 'periodSeconds' in kwargs:
             period_seconds = kwargs['periodSeconds']
-        if 'tcpSocket' in kwargs:
+        if tcp_socket is None and 'tcpSocket' in kwargs:
             tcp_socket = kwargs['tcpSocket']
-        if 'timeoutSeconds' in kwargs:
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
             timeout_seconds = kwargs['timeoutSeconds']
 
         if exec_ is not None:
@@ -540,7 +540,7 @@ class ApplicationLivenessV2Exec(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if commands is not None:
@@ -605,11 +605,11 @@ class ApplicationLivenessV2HttpGet(dict):
              path: Optional[str] = None,
              port: Optional[int] = None,
              scheme: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'isContainKeyWord' in kwargs:
+        if is_contain_key_word is None and 'isContainKeyWord' in kwargs:
             is_contain_key_word = kwargs['isContainKeyWord']
-        if 'keyWord' in kwargs:
+        if key_word is None and 'keyWord' in kwargs:
             key_word = kwargs['keyWord']
 
         if is_contain_key_word is not None:
@@ -679,7 +679,7 @@ class ApplicationLivenessV2TcpSocket(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if port is not None:
@@ -750,17 +750,17 @@ class ApplicationNasConfig(dict):
              nas_id: Optional[str] = None,
              nas_path: Optional[str] = None,
              read_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mountDomain' in kwargs:
+        if mount_domain is None and 'mountDomain' in kwargs:
             mount_domain = kwargs['mountDomain']
-        if 'mountPath' in kwargs:
+        if mount_path is None and 'mountPath' in kwargs:
             mount_path = kwargs['mountPath']
-        if 'nasId' in kwargs:
+        if nas_id is None and 'nasId' in kwargs:
             nas_id = kwargs['nasId']
-        if 'nasPath' in kwargs:
+        if nas_path is None and 'nasPath' in kwargs:
             nas_path = kwargs['nasPath']
-        if 'readOnly' in kwargs:
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
 
         if mount_domain is not None:
@@ -865,15 +865,15 @@ class ApplicationOssMountDescsV2(dict):
              bucket_path: Optional[str] = None,
              mount_path: Optional[str] = None,
              read_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bucketName' in kwargs:
+        if bucket_name is None and 'bucketName' in kwargs:
             bucket_name = kwargs['bucketName']
-        if 'bucketPath' in kwargs:
+        if bucket_path is None and 'bucketPath' in kwargs:
             bucket_path = kwargs['bucketPath']
-        if 'mountPath' in kwargs:
+        if mount_path is None and 'mountPath' in kwargs:
             mount_path = kwargs['mountPath']
-        if 'readOnly' in kwargs:
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
 
         if bucket_name is not None:
@@ -950,9 +950,9 @@ class ApplicationPostStartV2(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              exec_: Optional['outputs.ApplicationPostStartV2Exec'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'exec' in kwargs:
+        if exec_ is None and 'exec' in kwargs:
             exec_ = kwargs['exec']
 
         if exec_ is not None:
@@ -982,7 +982,7 @@ class ApplicationPostStartV2Exec(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if commands is not None:
@@ -1029,9 +1029,9 @@ class ApplicationPreStopV2(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              exec_: Optional['outputs.ApplicationPreStopV2Exec'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'exec' in kwargs:
+        if exec_ is None and 'exec' in kwargs:
             exec_ = kwargs['exec']
 
         if exec_ is not None:
@@ -1061,7 +1061,7 @@ class ApplicationPreStopV2Exec(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if commands is not None:
@@ -1124,13 +1124,13 @@ class ApplicationPvtzDiscoverySvc(dict):
              namespace_id: Optional[str] = None,
              port_protocols: Optional[Sequence['outputs.ApplicationPvtzDiscoverySvcPortProtocol']] = None,
              service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'namespaceId' in kwargs:
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
-        if 'portProtocols' in kwargs:
+        if port_protocols is None and 'portProtocols' in kwargs:
             port_protocols = kwargs['portProtocols']
-        if 'serviceName' in kwargs:
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
 
         if enable is not None:
@@ -1194,7 +1194,7 @@ class ApplicationPvtzDiscoverySvcPortProtocol(dict):
              _setter: Callable[[Any, Any], None],
              port: Optional[int] = None,
              protocol: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if port is not None:
@@ -1281,19 +1281,19 @@ class ApplicationReadinessV2(dict):
              period_seconds: Optional[int] = None,
              tcp_socket: Optional['outputs.ApplicationReadinessV2TcpSocket'] = None,
              timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'exec' in kwargs:
+        if exec_ is None and 'exec' in kwargs:
             exec_ = kwargs['exec']
-        if 'httpGet' in kwargs:
+        if http_get is None and 'httpGet' in kwargs:
             http_get = kwargs['httpGet']
-        if 'initialDelaySeconds' in kwargs:
+        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
             initial_delay_seconds = kwargs['initialDelaySeconds']
-        if 'periodSeconds' in kwargs:
+        if period_seconds is None and 'periodSeconds' in kwargs:
             period_seconds = kwargs['periodSeconds']
-        if 'tcpSocket' in kwargs:
+        if tcp_socket is None and 'tcpSocket' in kwargs:
             tcp_socket = kwargs['tcpSocket']
-        if 'timeoutSeconds' in kwargs:
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
             timeout_seconds = kwargs['timeoutSeconds']
 
         if exec_ is not None:
@@ -1373,7 +1373,7 @@ class ApplicationReadinessV2Exec(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if commands is not None:
@@ -1438,11 +1438,11 @@ class ApplicationReadinessV2HttpGet(dict):
              path: Optional[str] = None,
              port: Optional[int] = None,
              scheme: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'isContainKeyWord' in kwargs:
+        if is_contain_key_word is None and 'isContainKeyWord' in kwargs:
             is_contain_key_word = kwargs['isContainKeyWord']
-        if 'keyWord' in kwargs:
+        if key_word is None and 'keyWord' in kwargs:
             key_word = kwargs['keyWord']
 
         if is_contain_key_word is not None:
@@ -1512,7 +1512,7 @@ class ApplicationReadinessV2TcpSocket(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if port is not None:
@@ -1581,15 +1581,15 @@ class ApplicationScalingRuleScalingRuleMetric(dict):
              min_replicas: Optional[int] = None,
              scale_down_rules: Optional['outputs.ApplicationScalingRuleScalingRuleMetricScaleDownRules'] = None,
              scale_up_rules: Optional['outputs.ApplicationScalingRuleScalingRuleMetricScaleUpRules'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxReplicas' in kwargs:
+        if max_replicas is None and 'maxReplicas' in kwargs:
             max_replicas = kwargs['maxReplicas']
-        if 'minReplicas' in kwargs:
+        if min_replicas is None and 'minReplicas' in kwargs:
             min_replicas = kwargs['minReplicas']
-        if 'scaleDownRules' in kwargs:
+        if scale_down_rules is None and 'scaleDownRules' in kwargs:
             scale_down_rules = kwargs['scaleDownRules']
-        if 'scaleUpRules' in kwargs:
+        if scale_up_rules is None and 'scaleUpRules' in kwargs:
             scale_up_rules = kwargs['scaleUpRules']
 
         if max_replicas is not None:
@@ -1714,17 +1714,17 @@ class ApplicationScalingRuleScalingRuleMetricMetric(dict):
              slb_log_store: Optional[str] = None,
              slb_project: Optional[str] = None,
              vport: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'metricTargetAverageUtilization' in kwargs:
+        if metric_target_average_utilization is None and 'metricTargetAverageUtilization' in kwargs:
             metric_target_average_utilization = kwargs['metricTargetAverageUtilization']
-        if 'metricType' in kwargs:
+        if metric_type is None and 'metricType' in kwargs:
             metric_type = kwargs['metricType']
-        if 'slbId' in kwargs:
+        if slb_id is None and 'slbId' in kwargs:
             slb_id = kwargs['slbId']
-        if 'slbLogStore' in kwargs:
+        if slb_log_store is None and 'slbLogStore' in kwargs:
             slb_log_store = kwargs['slbLogStore']
-        if 'slbProject' in kwargs:
+        if slb_project is None and 'slbProject' in kwargs:
             slb_project = kwargs['slbProject']
 
         if metric_target_average_utilization is not None:
@@ -1839,9 +1839,9 @@ class ApplicationScalingRuleScalingRuleMetricScaleDownRules(dict):
              disabled: Optional[bool] = None,
              stabilization_window_seconds: Optional[int] = None,
              step: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'stabilizationWindowSeconds' in kwargs:
+        if stabilization_window_seconds is None and 'stabilizationWindowSeconds' in kwargs:
             stabilization_window_seconds = kwargs['stabilizationWindowSeconds']
 
         if disabled is not None:
@@ -1916,9 +1916,9 @@ class ApplicationScalingRuleScalingRuleMetricScaleUpRules(dict):
              disabled: Optional[bool] = None,
              stabilization_window_seconds: Optional[int] = None,
              step: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'stabilizationWindowSeconds' in kwargs:
+        if stabilization_window_seconds is None and 'stabilizationWindowSeconds' in kwargs:
             stabilization_window_seconds = kwargs['stabilizationWindowSeconds']
 
         if disabled is not None:
@@ -1999,11 +1999,11 @@ class ApplicationScalingRuleScalingRuleTimer(dict):
              end_date: Optional[str] = None,
              period: Optional[str] = None,
              schedules: Optional[Sequence['outputs.ApplicationScalingRuleScalingRuleTimerSchedule']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'beginDate' in kwargs:
+        if begin_date is None and 'beginDate' in kwargs:
             begin_date = kwargs['beginDate']
-        if 'endDate' in kwargs:
+        if end_date is None and 'endDate' in kwargs:
             end_date = kwargs['endDate']
 
         if begin_date is not None:
@@ -2098,15 +2098,15 @@ class ApplicationScalingRuleScalingRuleTimerSchedule(dict):
              max_replicas: Optional[int] = None,
              min_replicas: Optional[int] = None,
              target_replicas: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'atTime' in kwargs:
+        if at_time is None and 'atTime' in kwargs:
             at_time = kwargs['atTime']
-        if 'maxReplicas' in kwargs:
+        if max_replicas is None and 'maxReplicas' in kwargs:
             max_replicas = kwargs['maxReplicas']
-        if 'minReplicas' in kwargs:
+        if min_replicas is None and 'minReplicas' in kwargs:
             min_replicas = kwargs['minReplicas']
-        if 'targetReplicas' in kwargs:
+        if target_replicas is None and 'targetReplicas' in kwargs:
             target_replicas = kwargs['targetReplicas']
 
         if at_time is not None:
@@ -2205,15 +2205,15 @@ class ApplicationTomcatConfigV2(dict):
              port: Optional[int] = None,
              uri_encoding: Optional[str] = None,
              use_body_encoding_for_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contextPath' in kwargs:
+        if context_path is None and 'contextPath' in kwargs:
             context_path = kwargs['contextPath']
-        if 'maxThreads' in kwargs:
+        if max_threads is None and 'maxThreads' in kwargs:
             max_threads = kwargs['maxThreads']
-        if 'uriEncoding' in kwargs:
+        if uri_encoding is None and 'uriEncoding' in kwargs:
             uri_encoding = kwargs['uriEncoding']
-        if 'useBodyEncodingForUri' in kwargs:
+        if use_body_encoding_for_uri is None and 'useBodyEncodingForUri' in kwargs:
             use_body_encoding_for_uri = kwargs['useBodyEncodingForUri']
 
         if context_path is not None:
@@ -2304,9 +2304,9 @@ class ApplicationUpdateStrategyV2(dict):
              _setter: Callable[[Any, Any], None],
              batch_update: Optional['outputs.ApplicationUpdateStrategyV2BatchUpdate'] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'batchUpdate' in kwargs:
+        if batch_update is None and 'batchUpdate' in kwargs:
             batch_update = kwargs['batchUpdate']
 
         if batch_update is not None:
@@ -2373,11 +2373,11 @@ class ApplicationUpdateStrategyV2BatchUpdate(dict):
              batch: Optional[int] = None,
              batch_wait_time: Optional[int] = None,
              release_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'batchWaitTime' in kwargs:
+        if batch_wait_time is None and 'batchWaitTime' in kwargs:
             batch_wait_time = kwargs['batchWaitTime']
-        if 'releaseType' in kwargs:
+        if release_type is None and 'releaseType' in kwargs:
             release_type = kwargs['releaseType']
 
         if batch is not None:
@@ -2466,11 +2466,11 @@ class GreyTagRouteDubboRule(dict):
              method_name: Optional[str] = None,
              service_name: Optional[str] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'methodName' in kwargs:
+        if method_name is None and 'methodName' in kwargs:
             method_name = kwargs['methodName']
-        if 'serviceName' in kwargs:
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
 
         if condition is not None:
@@ -2566,7 +2566,7 @@ class GreyTagRouteDubboRuleItem(dict):
              index: Optional[int] = None,
              operator: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if cond is not None:
@@ -2644,7 +2644,7 @@ class GreyTagRouteScRule(dict):
              condition: Optional[str] = None,
              items: Optional[Sequence['outputs.GreyTagRouteScRuleItem']] = None,
              path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if condition is not None:
@@ -2710,7 +2710,7 @@ class GreyTagRouteScRuleItem(dict):
              operator: Optional[str] = None,
              type: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if cond is not None:
@@ -2809,13 +2809,13 @@ class IngressDefaultRule(dict):
              app_id: Optional[str] = None,
              app_name: Optional[str] = None,
              container_port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appId' in kwargs:
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'appName' in kwargs:
+        if app_name is None and 'appName' in kwargs:
             app_name = kwargs['appName']
-        if 'containerPort' in kwargs:
+        if container_port is None and 'containerPort' in kwargs:
             container_port = kwargs['containerPort']
 
         if app_id is not None:
@@ -2907,24 +2907,34 @@ class IngressRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_id: str,
-             app_name: str,
-             container_port: int,
-             domain: str,
-             path: str,
+             app_id: Optional[str] = None,
+             app_name: Optional[str] = None,
+             container_port: Optional[int] = None,
+             domain: Optional[str] = None,
+             path: Optional[str] = None,
              backend_protocol: Optional[str] = None,
              rewrite_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appId' in kwargs:
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'appName' in kwargs:
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if app_name is None and 'appName' in kwargs:
             app_name = kwargs['appName']
-        if 'containerPort' in kwargs:
+        if app_name is None:
+            raise TypeError("Missing 'app_name' argument")
+        if container_port is None and 'containerPort' in kwargs:
             container_port = kwargs['containerPort']
-        if 'backendProtocol' in kwargs:
+        if container_port is None:
+            raise TypeError("Missing 'container_port' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if backend_protocol is None and 'backendProtocol' in kwargs:
             backend_protocol = kwargs['backendProtocol']
-        if 'rewritePath' in kwargs:
+        if rewrite_path is None and 'rewritePath' in kwargs:
             rewrite_path = kwargs['rewritePath']
 
         _setter("app_id", app_id)
@@ -3040,11 +3050,11 @@ class LoadBalancerInternetInternet(dict):
              port: Optional[int] = None,
              protocol: Optional[str] = None,
              target_port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'httpsCertId' in kwargs:
+        if https_cert_id is None and 'httpsCertId' in kwargs:
             https_cert_id = kwargs['httpsCertId']
-        if 'targetPort' in kwargs:
+        if target_port is None and 'targetPort' in kwargs:
             target_port = kwargs['targetPort']
 
         if https_cert_id is not None:
@@ -3135,11 +3145,11 @@ class LoadBalancerIntranetIntranet(dict):
              port: Optional[int] = None,
              protocol: Optional[str] = None,
              target_port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'httpsCertId' in kwargs:
+        if https_cert_id is None and 'httpsCertId' in kwargs:
             https_cert_id = kwargs['httpsCertId']
-        if 'targetPort' in kwargs:
+        if target_port is None and 'targetPort' in kwargs:
             target_port = kwargs['targetPort']
 
         if https_cert_id is not None:
@@ -3219,30 +3229,46 @@ class GetApplicationScalingRulesRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_id: str,
-             create_time: str,
-             id: str,
-             scaling_rule_enable: bool,
-             scaling_rule_metrics: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricResult'],
-             scaling_rule_name: str,
-             scaling_rule_timers: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleTimerResult'],
-             scaling_rule_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             app_id: Optional[str] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             scaling_rule_enable: Optional[bool] = None,
+             scaling_rule_metrics: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricResult']] = None,
+             scaling_rule_name: Optional[str] = None,
+             scaling_rule_timers: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleTimerResult']] = None,
+             scaling_rule_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appId' in kwargs:
+        if app_id is None and 'appId' in kwargs:
             app_id = kwargs['appId']
-        if 'createTime' in kwargs:
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'scalingRuleEnable' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if scaling_rule_enable is None and 'scalingRuleEnable' in kwargs:
             scaling_rule_enable = kwargs['scalingRuleEnable']
-        if 'scalingRuleMetrics' in kwargs:
+        if scaling_rule_enable is None:
+            raise TypeError("Missing 'scaling_rule_enable' argument")
+        if scaling_rule_metrics is None and 'scalingRuleMetrics' in kwargs:
             scaling_rule_metrics = kwargs['scalingRuleMetrics']
-        if 'scalingRuleName' in kwargs:
+        if scaling_rule_metrics is None:
+            raise TypeError("Missing 'scaling_rule_metrics' argument")
+        if scaling_rule_name is None and 'scalingRuleName' in kwargs:
             scaling_rule_name = kwargs['scalingRuleName']
-        if 'scalingRuleTimers' in kwargs:
+        if scaling_rule_name is None:
+            raise TypeError("Missing 'scaling_rule_name' argument")
+        if scaling_rule_timers is None and 'scalingRuleTimers' in kwargs:
             scaling_rule_timers = kwargs['scalingRuleTimers']
-        if 'scalingRuleType' in kwargs:
+        if scaling_rule_timers is None:
+            raise TypeError("Missing 'scaling_rule_timers' argument")
+        if scaling_rule_type is None and 'scalingRuleType' in kwargs:
             scaling_rule_type = kwargs['scalingRuleType']
+        if scaling_rule_type is None:
+            raise TypeError("Missing 'scaling_rule_type' argument")
 
         _setter("app_id", app_id)
         _setter("create_time", create_time)
@@ -3347,24 +3373,36 @@ class GetApplicationScalingRulesRuleScalingRuleMetricResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_replicas: int,
-             metrics: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricResult'],
-             metrics_statuses: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusResult'],
-             min_replicas: int,
-             scale_down_rules: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleResult'],
-             scale_up_rules: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             max_replicas: Optional[int] = None,
+             metrics: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricResult']] = None,
+             metrics_statuses: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusResult']] = None,
+             min_replicas: Optional[int] = None,
+             scale_down_rules: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleResult']] = None,
+             scale_up_rules: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxReplicas' in kwargs:
+        if max_replicas is None and 'maxReplicas' in kwargs:
             max_replicas = kwargs['maxReplicas']
-        if 'metricsStatuses' in kwargs:
+        if max_replicas is None:
+            raise TypeError("Missing 'max_replicas' argument")
+        if metrics is None:
+            raise TypeError("Missing 'metrics' argument")
+        if metrics_statuses is None and 'metricsStatuses' in kwargs:
             metrics_statuses = kwargs['metricsStatuses']
-        if 'minReplicas' in kwargs:
+        if metrics_statuses is None:
+            raise TypeError("Missing 'metrics_statuses' argument")
+        if min_replicas is None and 'minReplicas' in kwargs:
             min_replicas = kwargs['minReplicas']
-        if 'scaleDownRules' in kwargs:
+        if min_replicas is None:
+            raise TypeError("Missing 'min_replicas' argument")
+        if scale_down_rules is None and 'scaleDownRules' in kwargs:
             scale_down_rules = kwargs['scaleDownRules']
-        if 'scaleUpRules' in kwargs:
+        if scale_down_rules is None:
+            raise TypeError("Missing 'scale_down_rules' argument")
+        if scale_up_rules is None and 'scaleUpRules' in kwargs:
             scale_up_rules = kwargs['scaleUpRules']
+        if scale_up_rules is None:
+            raise TypeError("Missing 'scale_up_rules' argument")
 
         _setter("max_replicas", max_replicas)
         _setter("metrics", metrics)
@@ -3439,14 +3477,18 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metric_target_average_utilization: int,
-             metric_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             metric_target_average_utilization: Optional[int] = None,
+             metric_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'metricTargetAverageUtilization' in kwargs:
+        if metric_target_average_utilization is None and 'metricTargetAverageUtilization' in kwargs:
             metric_target_average_utilization = kwargs['metricTargetAverageUtilization']
-        if 'metricType' in kwargs:
+        if metric_target_average_utilization is None:
+            raise TypeError("Missing 'metric_target_average_utilization' argument")
+        if metric_type is None and 'metricType' in kwargs:
             metric_type = kwargs['metricType']
+        if metric_type is None:
+            raise TypeError("Missing 'metric_type' argument")
 
         _setter("metric_target_average_utilization", metric_target_average_utilization)
         _setter("metric_type", metric_type)
@@ -3503,32 +3545,48 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             current_metrics: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricResult'],
-             current_replicas: int,
-             desired_replicas: int,
-             last_scale_time: str,
-             max_replicas: int,
-             min_replicas: int,
-             next_scale_metrics: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricResult'],
-             next_scale_time_period: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             current_metrics: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricResult']] = None,
+             current_replicas: Optional[int] = None,
+             desired_replicas: Optional[int] = None,
+             last_scale_time: Optional[str] = None,
+             max_replicas: Optional[int] = None,
+             min_replicas: Optional[int] = None,
+             next_scale_metrics: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricResult']] = None,
+             next_scale_time_period: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'currentMetrics' in kwargs:
+        if current_metrics is None and 'currentMetrics' in kwargs:
             current_metrics = kwargs['currentMetrics']
-        if 'currentReplicas' in kwargs:
+        if current_metrics is None:
+            raise TypeError("Missing 'current_metrics' argument")
+        if current_replicas is None and 'currentReplicas' in kwargs:
             current_replicas = kwargs['currentReplicas']
-        if 'desiredReplicas' in kwargs:
+        if current_replicas is None:
+            raise TypeError("Missing 'current_replicas' argument")
+        if desired_replicas is None and 'desiredReplicas' in kwargs:
             desired_replicas = kwargs['desiredReplicas']
-        if 'lastScaleTime' in kwargs:
+        if desired_replicas is None:
+            raise TypeError("Missing 'desired_replicas' argument")
+        if last_scale_time is None and 'lastScaleTime' in kwargs:
             last_scale_time = kwargs['lastScaleTime']
-        if 'maxReplicas' in kwargs:
+        if last_scale_time is None:
+            raise TypeError("Missing 'last_scale_time' argument")
+        if max_replicas is None and 'maxReplicas' in kwargs:
             max_replicas = kwargs['maxReplicas']
-        if 'minReplicas' in kwargs:
+        if max_replicas is None:
+            raise TypeError("Missing 'max_replicas' argument")
+        if min_replicas is None and 'minReplicas' in kwargs:
             min_replicas = kwargs['minReplicas']
-        if 'nextScaleMetrics' in kwargs:
+        if min_replicas is None:
+            raise TypeError("Missing 'min_replicas' argument")
+        if next_scale_metrics is None and 'nextScaleMetrics' in kwargs:
             next_scale_metrics = kwargs['nextScaleMetrics']
-        if 'nextScaleTimePeriod' in kwargs:
+        if next_scale_metrics is None:
+            raise TypeError("Missing 'next_scale_metrics' argument")
+        if next_scale_time_period is None and 'nextScaleTimePeriod' in kwargs:
             next_scale_time_period = kwargs['nextScaleTimePeriod']
+        if next_scale_time_period is None:
+            raise TypeError("Missing 'next_scale_time_period' argument")
 
         _setter("current_metrics", current_metrics)
         _setter("current_replicas", current_replicas)
@@ -3624,13 +3682,19 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricR
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             current_value: int,
-             name: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             current_value: Optional[int] = None,
+             name: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'currentValue' in kwargs:
+        if current_value is None and 'currentValue' in kwargs:
             current_value = kwargs['currentValue']
+        if current_value is None:
+            raise TypeError("Missing 'current_value' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("current_value", current_value)
         _setter("name", name)
@@ -3681,15 +3745,21 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetri
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             next_scale_in_average_utilization: int,
-             next_scale_out_average_utilization: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[str] = None,
+             next_scale_in_average_utilization: Optional[int] = None,
+             next_scale_out_average_utilization: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nextScaleInAverageUtilization' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if next_scale_in_average_utilization is None and 'nextScaleInAverageUtilization' in kwargs:
             next_scale_in_average_utilization = kwargs['nextScaleInAverageUtilization']
-        if 'nextScaleOutAverageUtilization' in kwargs:
+        if next_scale_in_average_utilization is None:
+            raise TypeError("Missing 'next_scale_in_average_utilization' argument")
+        if next_scale_out_average_utilization is None and 'nextScaleOutAverageUtilization' in kwargs:
             next_scale_out_average_utilization = kwargs['nextScaleOutAverageUtilization']
+        if next_scale_out_average_utilization is None:
+            raise TypeError("Missing 'next_scale_out_average_utilization' argument")
 
         _setter("name", name)
         _setter("next_scale_in_average_utilization", next_scale_in_average_utilization)
@@ -3740,13 +3810,19 @@ class GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disabled: bool,
-             stabilization_window_seconds: int,
-             step: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             disabled: Optional[bool] = None,
+             stabilization_window_seconds: Optional[int] = None,
+             step: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'stabilizationWindowSeconds' in kwargs:
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+        if stabilization_window_seconds is None and 'stabilizationWindowSeconds' in kwargs:
             stabilization_window_seconds = kwargs['stabilizationWindowSeconds']
+        if stabilization_window_seconds is None:
+            raise TypeError("Missing 'stabilization_window_seconds' argument")
+        if step is None:
+            raise TypeError("Missing 'step' argument")
 
         _setter("disabled", disabled)
         _setter("stabilization_window_seconds", stabilization_window_seconds)
@@ -3797,13 +3873,19 @@ class GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disabled: bool,
-             stabilization_window_seconds: int,
-             step: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             disabled: Optional[bool] = None,
+             stabilization_window_seconds: Optional[int] = None,
+             step: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'stabilizationWindowSeconds' in kwargs:
+        if disabled is None:
+            raise TypeError("Missing 'disabled' argument")
+        if stabilization_window_seconds is None and 'stabilizationWindowSeconds' in kwargs:
             stabilization_window_seconds = kwargs['stabilizationWindowSeconds']
+        if stabilization_window_seconds is None:
+            raise TypeError("Missing 'stabilization_window_seconds' argument")
+        if step is None:
+            raise TypeError("Missing 'step' argument")
 
         _setter("disabled", disabled)
         _setter("stabilization_window_seconds", stabilization_window_seconds)
@@ -3857,16 +3939,24 @@ class GetApplicationScalingRulesRuleScalingRuleTimerResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             begin_date: str,
-             end_date: str,
-             period: str,
-             schedules: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleTimerScheduleResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             begin_date: Optional[str] = None,
+             end_date: Optional[str] = None,
+             period: Optional[str] = None,
+             schedules: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleTimerScheduleResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'beginDate' in kwargs:
+        if begin_date is None and 'beginDate' in kwargs:
             begin_date = kwargs['beginDate']
-        if 'endDate' in kwargs:
+        if begin_date is None:
+            raise TypeError("Missing 'begin_date' argument")
+        if end_date is None and 'endDate' in kwargs:
             end_date = kwargs['endDate']
+        if end_date is None:
+            raise TypeError("Missing 'end_date' argument")
+        if period is None:
+            raise TypeError("Missing 'period' argument")
+        if schedules is None:
+            raise TypeError("Missing 'schedules' argument")
 
         _setter("begin_date", begin_date)
         _setter("end_date", end_date)
@@ -3929,20 +4019,28 @@ class GetApplicationScalingRulesRuleScalingRuleTimerScheduleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             at_time: str,
-             max_replicas: int,
-             min_replicas: int,
-             target_replicas: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             at_time: Optional[str] = None,
+             max_replicas: Optional[int] = None,
+             min_replicas: Optional[int] = None,
+             target_replicas: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'atTime' in kwargs:
+        if at_time is None and 'atTime' in kwargs:
             at_time = kwargs['atTime']
-        if 'maxReplicas' in kwargs:
+        if at_time is None:
+            raise TypeError("Missing 'at_time' argument")
+        if max_replicas is None and 'maxReplicas' in kwargs:
             max_replicas = kwargs['maxReplicas']
-        if 'minReplicas' in kwargs:
+        if max_replicas is None:
+            raise TypeError("Missing 'max_replicas' argument")
+        if min_replicas is None and 'minReplicas' in kwargs:
             min_replicas = kwargs['minReplicas']
-        if 'targetReplicas' in kwargs:
+        if min_replicas is None:
+            raise TypeError("Missing 'min_replicas' argument")
+        if target_replicas is None and 'targetReplicas' in kwargs:
             target_replicas = kwargs['targetReplicas']
+        if target_replicas is None:
+            raise TypeError("Missing 'target_replicas' argument")
 
         _setter("at_time", at_time)
         _setter("max_replicas", max_replicas)
@@ -4151,146 +4249,254 @@ class GetApplicationsApplicationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acr_assume_role_arn: str,
-             acr_instance_id: str,
-             app_description: str,
-             app_name: str,
-             application_id: str,
-             command: str,
-             command_args: str,
-             config_map_mount_desc: str,
-             cpu: int,
-             create_time: str,
-             custom_host_alias: str,
-             edas_container_version: str,
-             envs: str,
-             id: str,
-             image_url: str,
-             jar_start_args: str,
-             jar_start_options: str,
-             jdk: str,
-             liveness: str,
-             memory: int,
-             min_ready_instances: int,
-             mount_descs: Sequence['outputs.GetApplicationsApplicationMountDescResult'],
-             mount_host: str,
-             namespace_id: str,
-             nas_id: str,
-             oss_ak_id: str,
-             oss_ak_secret: str,
-             oss_mount_descs: str,
-             oss_mount_details: Sequence['outputs.GetApplicationsApplicationOssMountDetailResult'],
-             package_type: str,
-             package_url: str,
-             package_version: str,
-             php_arms_config_location: str,
-             php_config: str,
-             php_config_location: str,
-             post_start: str,
-             pre_stop: str,
-             readiness: str,
-             region_id: str,
-             replicas: int,
-             repo_name: str,
-             repo_namespace: str,
-             repo_origin_type: str,
-             security_group_id: str,
-             sls_configs: str,
-             status: str,
-             tags: Mapping[str, Any],
-             termination_grace_period_seconds: int,
-             timezone: str,
-             tomcat_config: str,
-             vpc_id: str,
-             vswitch_id: str,
-             war_start_options: str,
-             web_container: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             acr_assume_role_arn: Optional[str] = None,
+             acr_instance_id: Optional[str] = None,
+             app_description: Optional[str] = None,
+             app_name: Optional[str] = None,
+             application_id: Optional[str] = None,
+             command: Optional[str] = None,
+             command_args: Optional[str] = None,
+             config_map_mount_desc: Optional[str] = None,
+             cpu: Optional[int] = None,
+             create_time: Optional[str] = None,
+             custom_host_alias: Optional[str] = None,
+             edas_container_version: Optional[str] = None,
+             envs: Optional[str] = None,
+             id: Optional[str] = None,
+             image_url: Optional[str] = None,
+             jar_start_args: Optional[str] = None,
+             jar_start_options: Optional[str] = None,
+             jdk: Optional[str] = None,
+             liveness: Optional[str] = None,
+             memory: Optional[int] = None,
+             min_ready_instances: Optional[int] = None,
+             mount_descs: Optional[Sequence['outputs.GetApplicationsApplicationMountDescResult']] = None,
+             mount_host: Optional[str] = None,
+             namespace_id: Optional[str] = None,
+             nas_id: Optional[str] = None,
+             oss_ak_id: Optional[str] = None,
+             oss_ak_secret: Optional[str] = None,
+             oss_mount_descs: Optional[str] = None,
+             oss_mount_details: Optional[Sequence['outputs.GetApplicationsApplicationOssMountDetailResult']] = None,
+             package_type: Optional[str] = None,
+             package_url: Optional[str] = None,
+             package_version: Optional[str] = None,
+             php_arms_config_location: Optional[str] = None,
+             php_config: Optional[str] = None,
+             php_config_location: Optional[str] = None,
+             post_start: Optional[str] = None,
+             pre_stop: Optional[str] = None,
+             readiness: Optional[str] = None,
+             region_id: Optional[str] = None,
+             replicas: Optional[int] = None,
+             repo_name: Optional[str] = None,
+             repo_namespace: Optional[str] = None,
+             repo_origin_type: Optional[str] = None,
+             security_group_id: Optional[str] = None,
+             sls_configs: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             termination_grace_period_seconds: Optional[int] = None,
+             timezone: Optional[str] = None,
+             tomcat_config: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             war_start_options: Optional[str] = None,
+             web_container: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acrAssumeRoleArn' in kwargs:
+        if acr_assume_role_arn is None and 'acrAssumeRoleArn' in kwargs:
             acr_assume_role_arn = kwargs['acrAssumeRoleArn']
-        if 'acrInstanceId' in kwargs:
+        if acr_assume_role_arn is None:
+            raise TypeError("Missing 'acr_assume_role_arn' argument")
+        if acr_instance_id is None and 'acrInstanceId' in kwargs:
             acr_instance_id = kwargs['acrInstanceId']
-        if 'appDescription' in kwargs:
+        if acr_instance_id is None:
+            raise TypeError("Missing 'acr_instance_id' argument")
+        if app_description is None and 'appDescription' in kwargs:
             app_description = kwargs['appDescription']
-        if 'appName' in kwargs:
+        if app_description is None:
+            raise TypeError("Missing 'app_description' argument")
+        if app_name is None and 'appName' in kwargs:
             app_name = kwargs['appName']
-        if 'applicationId' in kwargs:
+        if app_name is None:
+            raise TypeError("Missing 'app_name' argument")
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'commandArgs' in kwargs:
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if command is None:
+            raise TypeError("Missing 'command' argument")
+        if command_args is None and 'commandArgs' in kwargs:
             command_args = kwargs['commandArgs']
-        if 'configMapMountDesc' in kwargs:
+        if command_args is None:
+            raise TypeError("Missing 'command_args' argument")
+        if config_map_mount_desc is None and 'configMapMountDesc' in kwargs:
             config_map_mount_desc = kwargs['configMapMountDesc']
-        if 'createTime' in kwargs:
+        if config_map_mount_desc is None:
+            raise TypeError("Missing 'config_map_mount_desc' argument")
+        if cpu is None:
+            raise TypeError("Missing 'cpu' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'customHostAlias' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if custom_host_alias is None and 'customHostAlias' in kwargs:
             custom_host_alias = kwargs['customHostAlias']
-        if 'edasContainerVersion' in kwargs:
+        if custom_host_alias is None:
+            raise TypeError("Missing 'custom_host_alias' argument")
+        if edas_container_version is None and 'edasContainerVersion' in kwargs:
             edas_container_version = kwargs['edasContainerVersion']
-        if 'imageUrl' in kwargs:
+        if edas_container_version is None:
+            raise TypeError("Missing 'edas_container_version' argument")
+        if envs is None:
+            raise TypeError("Missing 'envs' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_url is None and 'imageUrl' in kwargs:
             image_url = kwargs['imageUrl']
-        if 'jarStartArgs' in kwargs:
+        if image_url is None:
+            raise TypeError("Missing 'image_url' argument")
+        if jar_start_args is None and 'jarStartArgs' in kwargs:
             jar_start_args = kwargs['jarStartArgs']
-        if 'jarStartOptions' in kwargs:
+        if jar_start_args is None:
+            raise TypeError("Missing 'jar_start_args' argument")
+        if jar_start_options is None and 'jarStartOptions' in kwargs:
             jar_start_options = kwargs['jarStartOptions']
-        if 'minReadyInstances' in kwargs:
+        if jar_start_options is None:
+            raise TypeError("Missing 'jar_start_options' argument")
+        if jdk is None:
+            raise TypeError("Missing 'jdk' argument")
+        if liveness is None:
+            raise TypeError("Missing 'liveness' argument")
+        if memory is None:
+            raise TypeError("Missing 'memory' argument")
+        if min_ready_instances is None and 'minReadyInstances' in kwargs:
             min_ready_instances = kwargs['minReadyInstances']
-        if 'mountDescs' in kwargs:
+        if min_ready_instances is None:
+            raise TypeError("Missing 'min_ready_instances' argument")
+        if mount_descs is None and 'mountDescs' in kwargs:
             mount_descs = kwargs['mountDescs']
-        if 'mountHost' in kwargs:
+        if mount_descs is None:
+            raise TypeError("Missing 'mount_descs' argument")
+        if mount_host is None and 'mountHost' in kwargs:
             mount_host = kwargs['mountHost']
-        if 'namespaceId' in kwargs:
+        if mount_host is None:
+            raise TypeError("Missing 'mount_host' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
-        if 'nasId' in kwargs:
+        if namespace_id is None:
+            raise TypeError("Missing 'namespace_id' argument")
+        if nas_id is None and 'nasId' in kwargs:
             nas_id = kwargs['nasId']
-        if 'ossAkId' in kwargs:
+        if nas_id is None:
+            raise TypeError("Missing 'nas_id' argument")
+        if oss_ak_id is None and 'ossAkId' in kwargs:
             oss_ak_id = kwargs['ossAkId']
-        if 'ossAkSecret' in kwargs:
+        if oss_ak_id is None:
+            raise TypeError("Missing 'oss_ak_id' argument")
+        if oss_ak_secret is None and 'ossAkSecret' in kwargs:
             oss_ak_secret = kwargs['ossAkSecret']
-        if 'ossMountDescs' in kwargs:
+        if oss_ak_secret is None:
+            raise TypeError("Missing 'oss_ak_secret' argument")
+        if oss_mount_descs is None and 'ossMountDescs' in kwargs:
             oss_mount_descs = kwargs['ossMountDescs']
-        if 'ossMountDetails' in kwargs:
+        if oss_mount_descs is None:
+            raise TypeError("Missing 'oss_mount_descs' argument")
+        if oss_mount_details is None and 'ossMountDetails' in kwargs:
             oss_mount_details = kwargs['ossMountDetails']
-        if 'packageType' in kwargs:
+        if oss_mount_details is None:
+            raise TypeError("Missing 'oss_mount_details' argument")
+        if package_type is None and 'packageType' in kwargs:
             package_type = kwargs['packageType']
-        if 'packageUrl' in kwargs:
+        if package_type is None:
+            raise TypeError("Missing 'package_type' argument")
+        if package_url is None and 'packageUrl' in kwargs:
             package_url = kwargs['packageUrl']
-        if 'packageVersion' in kwargs:
+        if package_url is None:
+            raise TypeError("Missing 'package_url' argument")
+        if package_version is None and 'packageVersion' in kwargs:
             package_version = kwargs['packageVersion']
-        if 'phpArmsConfigLocation' in kwargs:
+        if package_version is None:
+            raise TypeError("Missing 'package_version' argument")
+        if php_arms_config_location is None and 'phpArmsConfigLocation' in kwargs:
             php_arms_config_location = kwargs['phpArmsConfigLocation']
-        if 'phpConfig' in kwargs:
+        if php_arms_config_location is None:
+            raise TypeError("Missing 'php_arms_config_location' argument")
+        if php_config is None and 'phpConfig' in kwargs:
             php_config = kwargs['phpConfig']
-        if 'phpConfigLocation' in kwargs:
+        if php_config is None:
+            raise TypeError("Missing 'php_config' argument")
+        if php_config_location is None and 'phpConfigLocation' in kwargs:
             php_config_location = kwargs['phpConfigLocation']
-        if 'postStart' in kwargs:
+        if php_config_location is None:
+            raise TypeError("Missing 'php_config_location' argument")
+        if post_start is None and 'postStart' in kwargs:
             post_start = kwargs['postStart']
-        if 'preStop' in kwargs:
+        if post_start is None:
+            raise TypeError("Missing 'post_start' argument")
+        if pre_stop is None and 'preStop' in kwargs:
             pre_stop = kwargs['preStop']
-        if 'regionId' in kwargs:
+        if pre_stop is None:
+            raise TypeError("Missing 'pre_stop' argument")
+        if readiness is None:
+            raise TypeError("Missing 'readiness' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
-        if 'repoName' in kwargs:
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if replicas is None:
+            raise TypeError("Missing 'replicas' argument")
+        if repo_name is None and 'repoName' in kwargs:
             repo_name = kwargs['repoName']
-        if 'repoNamespace' in kwargs:
+        if repo_name is None:
+            raise TypeError("Missing 'repo_name' argument")
+        if repo_namespace is None and 'repoNamespace' in kwargs:
             repo_namespace = kwargs['repoNamespace']
-        if 'repoOriginType' in kwargs:
+        if repo_namespace is None:
+            raise TypeError("Missing 'repo_namespace' argument")
+        if repo_origin_type is None and 'repoOriginType' in kwargs:
             repo_origin_type = kwargs['repoOriginType']
-        if 'securityGroupId' in kwargs:
+        if repo_origin_type is None:
+            raise TypeError("Missing 'repo_origin_type' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'slsConfigs' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if sls_configs is None and 'slsConfigs' in kwargs:
             sls_configs = kwargs['slsConfigs']
-        if 'terminationGracePeriodSeconds' in kwargs:
+        if sls_configs is None:
+            raise TypeError("Missing 'sls_configs' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if termination_grace_period_seconds is None and 'terminationGracePeriodSeconds' in kwargs:
             termination_grace_period_seconds = kwargs['terminationGracePeriodSeconds']
-        if 'tomcatConfig' in kwargs:
+        if termination_grace_period_seconds is None:
+            raise TypeError("Missing 'termination_grace_period_seconds' argument")
+        if timezone is None:
+            raise TypeError("Missing 'timezone' argument")
+        if tomcat_config is None and 'tomcatConfig' in kwargs:
             tomcat_config = kwargs['tomcatConfig']
-        if 'vpcId' in kwargs:
+        if tomcat_config is None:
+            raise TypeError("Missing 'tomcat_config' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'warStartOptions' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if war_start_options is None and 'warStartOptions' in kwargs:
             war_start_options = kwargs['warStartOptions']
-        if 'webContainer' in kwargs:
+        if war_start_options is None:
+            raise TypeError("Missing 'war_start_options' argument")
+        if web_container is None and 'webContainer' in kwargs:
             web_container = kwargs['webContainer']
+        if web_container is None:
+            raise TypeError("Missing 'web_container' argument")
 
         _setter("acr_assume_role_arn", acr_assume_role_arn)
         _setter("acr_instance_id", acr_instance_id)
@@ -4785,14 +4991,18 @@ class GetApplicationsApplicationMountDescResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mount_path: str,
-             nas_path: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             mount_path: Optional[str] = None,
+             nas_path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'mountPath' in kwargs:
+        if mount_path is None and 'mountPath' in kwargs:
             mount_path = kwargs['mountPath']
-        if 'nasPath' in kwargs:
+        if mount_path is None:
+            raise TypeError("Missing 'mount_path' argument")
+        if nas_path is None and 'nasPath' in kwargs:
             nas_path = kwargs['nasPath']
+        if nas_path is None:
+            raise TypeError("Missing 'nas_path' argument")
 
         _setter("mount_path", mount_path)
         _setter("nas_path", nas_path)
@@ -4837,20 +5047,28 @@ class GetApplicationsApplicationOssMountDetailResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: str,
-             bucket_path: str,
-             mount_path: str,
-             read_only: bool,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bucket_name: Optional[str] = None,
+             bucket_path: Optional[str] = None,
+             mount_path: Optional[str] = None,
+             read_only: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bucketName' in kwargs:
+        if bucket_name is None and 'bucketName' in kwargs:
             bucket_name = kwargs['bucketName']
-        if 'bucketPath' in kwargs:
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if bucket_path is None and 'bucketPath' in kwargs:
             bucket_path = kwargs['bucketPath']
-        if 'mountPath' in kwargs:
+        if bucket_path is None:
+            raise TypeError("Missing 'bucket_path' argument")
+        if mount_path is None and 'mountPath' in kwargs:
             mount_path = kwargs['mountPath']
-        if 'readOnly' in kwargs:
+        if mount_path is None:
+            raise TypeError("Missing 'mount_path' argument")
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
+        if read_only is None:
+            raise TypeError("Missing 'read_only' argument")
 
         _setter("bucket_name", bucket_name)
         _setter("bucket_path", bucket_path)
@@ -4922,21 +5140,35 @@ class GetConfigMapsMapResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config_map_id: str,
-             create_time: str,
-             data: str,
-             description: str,
-             id: str,
-             name: str,
-             namespace_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             config_map_id: Optional[str] = None,
+             create_time: Optional[str] = None,
+             data: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             namespace_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configMapId' in kwargs:
+        if config_map_id is None and 'configMapId' in kwargs:
             config_map_id = kwargs['configMapId']
-        if 'createTime' in kwargs:
+        if config_map_id is None:
+            raise TypeError("Missing 'config_map_id' argument")
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'namespaceId' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if data is None:
+            raise TypeError("Missing 'data' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
+        if namespace_id is None:
+            raise TypeError("Missing 'namespace_id' argument")
 
         _setter("config_map_id", config_map_id)
         _setter("create_time", create_time)
@@ -5029,19 +5261,29 @@ class GetGreyTagRoutesRouteResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             dubbo_rules: Sequence['outputs.GetGreyTagRoutesRouteDubboRuleResult'],
-             grey_tag_route_name: str,
-             id: str,
-             sc_rules: Sequence['outputs.GetGreyTagRoutesRouteScRuleResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             dubbo_rules: Optional[Sequence['outputs.GetGreyTagRoutesRouteDubboRuleResult']] = None,
+             grey_tag_route_name: Optional[str] = None,
+             id: Optional[str] = None,
+             sc_rules: Optional[Sequence['outputs.GetGreyTagRoutesRouteScRuleResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dubboRules' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if dubbo_rules is None and 'dubboRules' in kwargs:
             dubbo_rules = kwargs['dubboRules']
-        if 'greyTagRouteName' in kwargs:
+        if dubbo_rules is None:
+            raise TypeError("Missing 'dubbo_rules' argument")
+        if grey_tag_route_name is None and 'greyTagRouteName' in kwargs:
             grey_tag_route_name = kwargs['greyTagRouteName']
-        if 'scRules' in kwargs:
+        if grey_tag_route_name is None:
+            raise TypeError("Missing 'grey_tag_route_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if sc_rules is None and 'scRules' in kwargs:
             sc_rules = kwargs['scRules']
+        if sc_rules is None:
+            raise TypeError("Missing 'sc_rules' argument")
 
         _setter("description", description)
         _setter("dubbo_rules", dubbo_rules)
@@ -5119,18 +5361,30 @@ class GetGreyTagRoutesRouteDubboRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             group: str,
-             items: Sequence['outputs.GetGreyTagRoutesRouteDubboRuleItemResult'],
-             method_name: str,
-             service_name: str,
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             condition: Optional[str] = None,
+             group: Optional[str] = None,
+             items: Optional[Sequence['outputs.GetGreyTagRoutesRouteDubboRuleItemResult']] = None,
+             method_name: Optional[str] = None,
+             service_name: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'methodName' in kwargs:
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if items is None:
+            raise TypeError("Missing 'items' argument")
+        if method_name is None and 'methodName' in kwargs:
             method_name = kwargs['methodName']
-        if 'serviceName' in kwargs:
+        if method_name is None:
+            raise TypeError("Missing 'method_name' argument")
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
 
         _setter("condition", condition)
         _setter("group", group)
@@ -5214,13 +5468,23 @@ class GetGreyTagRoutesRouteDubboRuleItemResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cond: str,
-             expr: str,
-             index: int,
-             operator: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cond: Optional[str] = None,
+             expr: Optional[str] = None,
+             index: Optional[int] = None,
+             operator: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if cond is None:
+            raise TypeError("Missing 'cond' argument")
+        if expr is None:
+            raise TypeError("Missing 'expr' argument")
+        if index is None:
+            raise TypeError("Missing 'index' argument")
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("cond", cond)
         _setter("expr", expr)
@@ -5289,11 +5553,17 @@ class GetGreyTagRoutesRouteScRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             items: Sequence['outputs.GetGreyTagRoutesRouteScRuleItemResult'],
-             path: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             condition: Optional[str] = None,
+             items: Optional[Sequence['outputs.GetGreyTagRoutesRouteScRuleItemResult']] = None,
+             path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if items is None:
+            raise TypeError("Missing 'items' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
 
         _setter("condition", condition)
         _setter("items", items)
@@ -5350,13 +5620,23 @@ class GetGreyTagRoutesRouteScRuleItemResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cond: str,
-             name: str,
-             operator: str,
-             type: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cond: Optional[str] = None,
+             name: Optional[str] = None,
+             operator: Optional[str] = None,
+             type: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if cond is None:
+            raise TypeError("Missing 'cond' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("cond", cond)
         _setter("name", name)
@@ -5440,28 +5720,44 @@ class GetIngressesIngressResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert_id: str,
-             default_rule: str,
-             description: str,
-             id: str,
-             ingress_id: str,
-             listener_port: int,
-             namespace_id: str,
-             slb_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cert_id: Optional[str] = None,
+             default_rule: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             ingress_id: Optional[str] = None,
+             listener_port: Optional[int] = None,
+             namespace_id: Optional[str] = None,
+             slb_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certId' in kwargs:
+        if cert_id is None and 'certId' in kwargs:
             cert_id = kwargs['certId']
-        if 'defaultRule' in kwargs:
+        if cert_id is None:
+            raise TypeError("Missing 'cert_id' argument")
+        if default_rule is None and 'defaultRule' in kwargs:
             default_rule = kwargs['defaultRule']
-        if 'ingressId' in kwargs:
+        if default_rule is None:
+            raise TypeError("Missing 'default_rule' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ingress_id is None and 'ingressId' in kwargs:
             ingress_id = kwargs['ingressId']
-        if 'listenerPort' in kwargs:
+        if ingress_id is None:
+            raise TypeError("Missing 'ingress_id' argument")
+        if listener_port is None and 'listenerPort' in kwargs:
             listener_port = kwargs['listenerPort']
-        if 'namespaceId' in kwargs:
+        if listener_port is None:
+            raise TypeError("Missing 'listener_port' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
-        if 'slbId' in kwargs:
+        if namespace_id is None:
+            raise TypeError("Missing 'namespace_id' argument")
+        if slb_id is None and 'slbId' in kwargs:
             slb_id = kwargs['slbId']
+        if slb_id is None:
+            raise TypeError("Missing 'slb_id' argument")
 
         _setter("cert_id", cert_id)
         _setter("default_rule", default_rule)
@@ -5569,19 +5865,33 @@ class GetInstanceSpecificationsSpecificationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cpu: int,
-             enable: bool,
-             id: str,
-             instance_specification_id: str,
-             memory: int,
-             spec_info: str,
-             version: int,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cpu: Optional[int] = None,
+             enable: Optional[bool] = None,
+             id: Optional[str] = None,
+             instance_specification_id: Optional[str] = None,
+             memory: Optional[int] = None,
+             spec_info: Optional[str] = None,
+             version: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceSpecificationId' in kwargs:
+        if cpu is None:
+            raise TypeError("Missing 'cpu' argument")
+        if enable is None:
+            raise TypeError("Missing 'enable' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_specification_id is None and 'instanceSpecificationId' in kwargs:
             instance_specification_id = kwargs['instanceSpecificationId']
-        if 'specInfo' in kwargs:
+        if instance_specification_id is None:
+            raise TypeError("Missing 'instance_specification_id' argument")
+        if memory is None:
+            raise TypeError("Missing 'memory' argument")
+        if spec_info is None and 'specInfo' in kwargs:
             spec_info = kwargs['specInfo']
+        if spec_info is None:
+            raise TypeError("Missing 'spec_info' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
 
         _setter("cpu", cpu)
         _setter("enable", enable)
@@ -5671,18 +5981,26 @@ class GetNamespacesNamespaceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             namespace_description: str,
-             namespace_id: str,
-             namespace_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             namespace_description: Optional[str] = None,
+             namespace_id: Optional[str] = None,
+             namespace_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'namespaceDescription' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if namespace_description is None and 'namespaceDescription' in kwargs:
             namespace_description = kwargs['namespaceDescription']
-        if 'namespaceId' in kwargs:
+        if namespace_description is None:
+            raise TypeError("Missing 'namespace_description' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
-        if 'namespaceName' in kwargs:
+        if namespace_id is None:
+            raise TypeError("Missing 'namespace_id' argument")
+        if namespace_name is None and 'namespaceName' in kwargs:
             namespace_name = kwargs['namespaceName']
+        if namespace_name is None:
+            raise TypeError("Missing 'namespace_name' argument")
 
         _setter("id", id)
         _setter("namespace_description", namespace_description)

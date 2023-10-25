@@ -82,10 +82,10 @@ class ListenerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             listener_port: pulumi.Input[int],
-             listener_protocol: pulumi.Input[str],
-             load_balancer_id: pulumi.Input[str],
-             server_group_id: pulumi.Input[str],
+             listener_port: Optional[pulumi.Input[int]] = None,
+             listener_protocol: Optional[pulumi.Input[str]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
+             server_group_id: Optional[pulumi.Input[str]] = None,
              alpn_enabled: Optional[pulumi.Input[bool]] = None,
              alpn_policy: Optional[pulumi.Input[str]] = None,
              ca_certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -101,39 +101,47 @@ class ListenerArgs:
              security_policy_id: Optional[pulumi.Input[str]] = None,
              start_port: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'listenerPort' in kwargs:
+        if listener_port is None and 'listenerPort' in kwargs:
             listener_port = kwargs['listenerPort']
-        if 'listenerProtocol' in kwargs:
+        if listener_port is None:
+            raise TypeError("Missing 'listener_port' argument")
+        if listener_protocol is None and 'listenerProtocol' in kwargs:
             listener_protocol = kwargs['listenerProtocol']
-        if 'loadBalancerId' in kwargs:
+        if listener_protocol is None:
+            raise TypeError("Missing 'listener_protocol' argument")
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
-        if 'serverGroupId' in kwargs:
+        if load_balancer_id is None:
+            raise TypeError("Missing 'load_balancer_id' argument")
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
-        if 'alpnEnabled' in kwargs:
+        if server_group_id is None:
+            raise TypeError("Missing 'server_group_id' argument")
+        if alpn_enabled is None and 'alpnEnabled' in kwargs:
             alpn_enabled = kwargs['alpnEnabled']
-        if 'alpnPolicy' in kwargs:
+        if alpn_policy is None and 'alpnPolicy' in kwargs:
             alpn_policy = kwargs['alpnPolicy']
-        if 'caCertificateIds' in kwargs:
+        if ca_certificate_ids is None and 'caCertificateIds' in kwargs:
             ca_certificate_ids = kwargs['caCertificateIds']
-        if 'caEnabled' in kwargs:
+        if ca_enabled is None and 'caEnabled' in kwargs:
             ca_enabled = kwargs['caEnabled']
-        if 'certificateIds' in kwargs:
+        if certificate_ids is None and 'certificateIds' in kwargs:
             certificate_ids = kwargs['certificateIds']
-        if 'endPort' in kwargs:
+        if end_port is None and 'endPort' in kwargs:
             end_port = kwargs['endPort']
-        if 'idleTimeout' in kwargs:
+        if idle_timeout is None and 'idleTimeout' in kwargs:
             idle_timeout = kwargs['idleTimeout']
-        if 'listenerDescription' in kwargs:
+        if listener_description is None and 'listenerDescription' in kwargs:
             listener_description = kwargs['listenerDescription']
-        if 'proxyProtocolEnabled' in kwargs:
+        if proxy_protocol_enabled is None and 'proxyProtocolEnabled' in kwargs:
             proxy_protocol_enabled = kwargs['proxyProtocolEnabled']
-        if 'secSensorEnabled' in kwargs:
+        if sec_sensor_enabled is None and 'secSensorEnabled' in kwargs:
             sec_sensor_enabled = kwargs['secSensorEnabled']
-        if 'securityPolicyId' in kwargs:
+        if security_policy_id is None and 'securityPolicyId' in kwargs:
             security_policy_id = kwargs['securityPolicyId']
-        if 'startPort' in kwargs:
+        if start_port is None and 'startPort' in kwargs:
             start_port = kwargs['startPort']
 
         _setter("listener_port", listener_port)
@@ -492,39 +500,39 @@ class _ListenerState:
              server_group_id: Optional[pulumi.Input[str]] = None,
              start_port: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alpnEnabled' in kwargs:
+        if alpn_enabled is None and 'alpnEnabled' in kwargs:
             alpn_enabled = kwargs['alpnEnabled']
-        if 'alpnPolicy' in kwargs:
+        if alpn_policy is None and 'alpnPolicy' in kwargs:
             alpn_policy = kwargs['alpnPolicy']
-        if 'caCertificateIds' in kwargs:
+        if ca_certificate_ids is None and 'caCertificateIds' in kwargs:
             ca_certificate_ids = kwargs['caCertificateIds']
-        if 'caEnabled' in kwargs:
+        if ca_enabled is None and 'caEnabled' in kwargs:
             ca_enabled = kwargs['caEnabled']
-        if 'certificateIds' in kwargs:
+        if certificate_ids is None and 'certificateIds' in kwargs:
             certificate_ids = kwargs['certificateIds']
-        if 'endPort' in kwargs:
+        if end_port is None and 'endPort' in kwargs:
             end_port = kwargs['endPort']
-        if 'idleTimeout' in kwargs:
+        if idle_timeout is None and 'idleTimeout' in kwargs:
             idle_timeout = kwargs['idleTimeout']
-        if 'listenerDescription' in kwargs:
+        if listener_description is None and 'listenerDescription' in kwargs:
             listener_description = kwargs['listenerDescription']
-        if 'listenerPort' in kwargs:
+        if listener_port is None and 'listenerPort' in kwargs:
             listener_port = kwargs['listenerPort']
-        if 'listenerProtocol' in kwargs:
+        if listener_protocol is None and 'listenerProtocol' in kwargs:
             listener_protocol = kwargs['listenerProtocol']
-        if 'loadBalancerId' in kwargs:
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
             load_balancer_id = kwargs['loadBalancerId']
-        if 'proxyProtocolEnabled' in kwargs:
+        if proxy_protocol_enabled is None and 'proxyProtocolEnabled' in kwargs:
             proxy_protocol_enabled = kwargs['proxyProtocolEnabled']
-        if 'secSensorEnabled' in kwargs:
+        if sec_sensor_enabled is None and 'secSensorEnabled' in kwargs:
             sec_sensor_enabled = kwargs['secSensorEnabled']
-        if 'securityPolicyId' in kwargs:
+        if security_policy_id is None and 'securityPolicyId' in kwargs:
             security_policy_id = kwargs['securityPolicyId']
-        if 'serverGroupId' in kwargs:
+        if server_group_id is None and 'serverGroupId' in kwargs:
             server_group_id = kwargs['serverGroupId']
-        if 'startPort' in kwargs:
+        if start_port is None and 'startPort' in kwargs:
             start_port = kwargs['startPort']
 
         if alpn_enabled is not None:
@@ -829,97 +837,6 @@ class Listener(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.191.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_zones = alicloud.nlb.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default1 = alicloud.vpc.Switch("default1",
-            vswitch_name=name,
-            cidr_block="10.4.1.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[1].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_load_balancer = alicloud.nlb.LoadBalancer("defaultLoadBalancer",
-            load_balancer_name=name,
-            resource_group_id=default_resource_groups.ids[0],
-            load_balancer_type="Network",
-            address_type="Internet",
-            address_ip_version="Ipv4",
-            vpc_id=default_network.id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            },
-            zone_mappings=[
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default_switch.id,
-                    zone_id=default_zones.zones[0].id,
-                ),
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default1.id,
-                    zone_id=default_zones.zones[1].id,
-                ),
-            ])
-        default_server_group = alicloud.nlb.ServerGroup("defaultServerGroup",
-            resource_group_id=default_resource_groups.ids[0],
-            server_group_name=name,
-            server_group_type="Instance",
-            vpc_id=default_network.id,
-            scheduler="Wrr",
-            protocol="TCP",
-            connection_drain=True,
-            connection_drain_timeout=60,
-            address_ip_version="Ipv4",
-            health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
-                health_check_enabled=True,
-                health_check_type="TCP",
-                health_check_connect_port=0,
-                healthy_threshold=2,
-                unhealthy_threshold=2,
-                health_check_connect_timeout=5,
-                health_check_interval=10,
-                http_check_method="GET",
-                health_check_http_codes=[
-                    "http_2xx",
-                    "http_3xx",
-                    "http_4xx",
-                ],
-            ),
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_listener = alicloud.nlb.Listener("defaultListener",
-            listener_protocol="TCP",
-            listener_port=80,
-            listener_description=name,
-            load_balancer_id=default_load_balancer.id,
-            server_group_id=default_server_group.id,
-            idle_timeout=900,
-            proxy_protocol_enabled=True,
-            sec_sensor_enabled=True,
-            cps=10000,
-            mss=0)
-        ```
-
         ## Import
 
         NLB Listener can be imported using the id, e.g.
@@ -964,97 +881,6 @@ class Listener(pulumi.CustomResource):
         For information about NLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createlistener-nl).
 
         > **NOTE:** Available since v1.191.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_zones = alicloud.nlb.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default1 = alicloud.vpc.Switch("default1",
-            vswitch_name=name,
-            cidr_block="10.4.1.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[1].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_load_balancer = alicloud.nlb.LoadBalancer("defaultLoadBalancer",
-            load_balancer_name=name,
-            resource_group_id=default_resource_groups.ids[0],
-            load_balancer_type="Network",
-            address_type="Internet",
-            address_ip_version="Ipv4",
-            vpc_id=default_network.id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            },
-            zone_mappings=[
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default_switch.id,
-                    zone_id=default_zones.zones[0].id,
-                ),
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default1.id,
-                    zone_id=default_zones.zones[1].id,
-                ),
-            ])
-        default_server_group = alicloud.nlb.ServerGroup("defaultServerGroup",
-            resource_group_id=default_resource_groups.ids[0],
-            server_group_name=name,
-            server_group_type="Instance",
-            vpc_id=default_network.id,
-            scheduler="Wrr",
-            protocol="TCP",
-            connection_drain=True,
-            connection_drain_timeout=60,
-            address_ip_version="Ipv4",
-            health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
-                health_check_enabled=True,
-                health_check_type="TCP",
-                health_check_connect_port=0,
-                healthy_threshold=2,
-                unhealthy_threshold=2,
-                health_check_connect_timeout=5,
-                health_check_interval=10,
-                http_check_method="GET",
-                health_check_http_codes=[
-                    "http_2xx",
-                    "http_3xx",
-                    "http_4xx",
-                ],
-            ),
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_listener = alicloud.nlb.Listener("defaultListener",
-            listener_protocol="TCP",
-            listener_port=80,
-            listener_description=name,
-            load_balancer_id=default_load_balancer.id,
-            server_group_id=default_server_group.id,
-            idle_timeout=900,
-            proxy_protocol_enabled=True,
-            sec_sensor_enabled=True,
-            cps=10000,
-            mss=0)
-        ```
 
         ## Import
 

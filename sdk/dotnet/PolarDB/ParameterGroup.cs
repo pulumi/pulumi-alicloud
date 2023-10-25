@@ -16,36 +16,6 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// &gt; **NOTE:** Available in v1.183.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.PolarDB.ParameterGroup("example", new()
-    ///     {
-    ///         DbType = "MySQL",
-    ///         DbVersion = "8.0",
-    ///         Description = "example_value",
-    ///         Parameters = new[]
-    ///         {
-    ///             new AliCloud.PolarDB.Inputs.ParameterGroupParameterArgs
-    ///             {
-    ///                 ParamName = "wait_timeout",
-    ///                 ParamValue = "86400",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// PolarDB Parameter Group can be imported using the id, e.g.

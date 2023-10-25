@@ -100,35 +100,35 @@ class DomainListenArgs:
              tls_version: Optional[pulumi.Input[str]] = None,
              xff_header_mode: Optional[pulumi.Input[int]] = None,
              xff_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certId' in kwargs:
+        if cert_id is None and 'certId' in kwargs:
             cert_id = kwargs['certId']
-        if 'cipherSuite' in kwargs:
+        if cipher_suite is None and 'cipherSuite' in kwargs:
             cipher_suite = kwargs['cipherSuite']
-        if 'customCiphers' in kwargs:
+        if custom_ciphers is None and 'customCiphers' in kwargs:
             custom_ciphers = kwargs['customCiphers']
-        if 'enableTlsv3' in kwargs:
+        if enable_tlsv3 is None and 'enableTlsv3' in kwargs:
             enable_tlsv3 = kwargs['enableTlsv3']
-        if 'exclusiveIp' in kwargs:
+        if exclusive_ip is None and 'exclusiveIp' in kwargs:
             exclusive_ip = kwargs['exclusiveIp']
-        if 'focusHttps' in kwargs:
+        if focus_https is None and 'focusHttps' in kwargs:
             focus_https = kwargs['focusHttps']
-        if 'http2Enabled' in kwargs:
+        if http2_enabled is None and 'http2Enabled' in kwargs:
             http2_enabled = kwargs['http2Enabled']
-        if 'httpPorts' in kwargs:
+        if http_ports is None and 'httpPorts' in kwargs:
             http_ports = kwargs['httpPorts']
-        if 'httpsPorts' in kwargs:
+        if https_ports is None and 'httpsPorts' in kwargs:
             https_ports = kwargs['httpsPorts']
-        if 'ipv6Enabled' in kwargs:
+        if ipv6_enabled is None and 'ipv6Enabled' in kwargs:
             ipv6_enabled = kwargs['ipv6Enabled']
-        if 'protectionResource' in kwargs:
+        if protection_resource is None and 'protectionResource' in kwargs:
             protection_resource = kwargs['protectionResource']
-        if 'tlsVersion' in kwargs:
+        if tls_version is None and 'tlsVersion' in kwargs:
             tls_version = kwargs['tlsVersion']
-        if 'xffHeaderMode' in kwargs:
+        if xff_header_mode is None and 'xffHeaderMode' in kwargs:
             xff_header_mode = kwargs['xffHeaderMode']
-        if 'xffHeaders' in kwargs:
+        if xff_headers is None and 'xffHeaders' in kwargs:
             xff_headers = kwargs['xffHeaders']
 
         if cert_id is not None:
@@ -411,7 +411,7 @@ class DomainRedirectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             loadbalance: pulumi.Input[str],
+             loadbalance: Optional[pulumi.Input[str]] = None,
              backends: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              connect_timeout: Optional[pulumi.Input[int]] = None,
              focus_http_backend: Optional[pulumi.Input[bool]] = None,
@@ -424,25 +424,27 @@ class DomainRedirectArgs:
              sni_enabled: Optional[pulumi.Input[bool]] = None,
              sni_host: Optional[pulumi.Input[str]] = None,
              write_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectTimeout' in kwargs:
+        if loadbalance is None:
+            raise TypeError("Missing 'loadbalance' argument")
+        if connect_timeout is None and 'connectTimeout' in kwargs:
             connect_timeout = kwargs['connectTimeout']
-        if 'focusHttpBackend' in kwargs:
+        if focus_http_backend is None and 'focusHttpBackend' in kwargs:
             focus_http_backend = kwargs['focusHttpBackend']
-        if 'keepaliveRequests' in kwargs:
+        if keepalive_requests is None and 'keepaliveRequests' in kwargs:
             keepalive_requests = kwargs['keepaliveRequests']
-        if 'keepaliveTimeout' in kwargs:
+        if keepalive_timeout is None and 'keepaliveTimeout' in kwargs:
             keepalive_timeout = kwargs['keepaliveTimeout']
-        if 'readTimeout' in kwargs:
+        if read_timeout is None and 'readTimeout' in kwargs:
             read_timeout = kwargs['readTimeout']
-        if 'requestHeaders' in kwargs:
+        if request_headers is None and 'requestHeaders' in kwargs:
             request_headers = kwargs['requestHeaders']
-        if 'sniEnabled' in kwargs:
+        if sni_enabled is None and 'sniEnabled' in kwargs:
             sni_enabled = kwargs['sniEnabled']
-        if 'sniHost' in kwargs:
+        if sni_host is None and 'sniHost' in kwargs:
             sni_host = kwargs['sniHost']
-        if 'writeTimeout' in kwargs:
+        if write_timeout is None and 'writeTimeout' in kwargs:
             write_timeout = kwargs['writeTimeout']
 
         _setter("loadbalance", loadbalance)
@@ -661,7 +663,7 @@ class DomainRedirectRequestHeaderArgs:
              _setter: Callable[[Any, Any], None],
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if key is not None:

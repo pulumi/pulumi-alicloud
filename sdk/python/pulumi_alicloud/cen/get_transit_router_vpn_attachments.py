@@ -129,18 +129,6 @@ def get_transit_router_vpn_attachments(cen_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.183.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cen.get_transit_router_vpn_attachments(cen_id="example_value")
-    pulumi.export("cenTransitRouterVpnAttachmentId1", ids.attachments[0].id)
-    ```
-
 
     :param str cen_id: The id of the cen.
     :param Sequence[str] ids: A list of Transit Router Vpn Attachment IDs.
@@ -182,18 +170,6 @@ def get_transit_router_vpn_attachments_output(cen_id: Optional[pulumi.Input[str]
     This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.183.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cen.get_transit_router_vpn_attachments(cen_id="example_value")
-    pulumi.export("cenTransitRouterVpnAttachmentId1", ids.attachments[0].id)
-    ```
 
 
     :param str cen_id: The id of the cen.

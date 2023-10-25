@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.182.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cms.getEventRules({
- *     ids: ["example_id"],
- * });
- * export const cmsEventRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
- * const nameRegex = alicloud.cms.getEventRules({
- *     nameRegex: "^my-EventRule",
- * });
- * export const cmsEventRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
- * ```
  */
 export function getEventRules(args?: GetEventRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetEventRulesResult> {
     args = args || {};
@@ -94,24 +76,6 @@ export interface GetEventRulesResult {
  * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.182.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.cms.getEventRules({
- *     ids: ["example_id"],
- * });
- * export const cmsEventRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
- * const nameRegex = alicloud.cms.getEventRules({
- *     nameRegex: "^my-EventRule",
- * });
- * export const cmsEventRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
- * ```
  */
 export function getEventRulesOutput(args?: GetEventRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventRulesResult> {
     return pulumi.output(args).apply((a: any) => getEventRules(a, opts))

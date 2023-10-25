@@ -94,9 +94,9 @@ class AlarmArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             contact_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
-             metric: pulumi.Input[str],
-             project: pulumi.Input[str],
+             contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             metric: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              effective_interval: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
@@ -116,27 +116,33 @@ class AlarmArgs:
              threshold: Optional[pulumi.Input[str]] = None,
              triggered_count: Optional[pulumi.Input[int]] = None,
              webhook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contactGroups' in kwargs:
+        if contact_groups is None and 'contactGroups' in kwargs:
             contact_groups = kwargs['contactGroups']
-        if 'effectiveInterval' in kwargs:
+        if contact_groups is None:
+            raise TypeError("Missing 'contact_groups' argument")
+        if metric is None:
+            raise TypeError("Missing 'metric' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if effective_interval is None and 'effectiveInterval' in kwargs:
             effective_interval = kwargs['effectiveInterval']
-        if 'endTime' in kwargs:
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'escalationsCritical' in kwargs:
+        if escalations_critical is None and 'escalationsCritical' in kwargs:
             escalations_critical = kwargs['escalationsCritical']
-        if 'escalationsInfo' in kwargs:
+        if escalations_info is None and 'escalationsInfo' in kwargs:
             escalations_info = kwargs['escalationsInfo']
-        if 'escalationsWarn' in kwargs:
+        if escalations_warn is None and 'escalationsWarn' in kwargs:
             escalations_warn = kwargs['escalationsWarn']
-        if 'metricDimensions' in kwargs:
+        if metric_dimensions is None and 'metricDimensions' in kwargs:
             metric_dimensions = kwargs['metricDimensions']
-        if 'silenceTime' in kwargs:
+        if silence_time is None and 'silenceTime' in kwargs:
             silence_time = kwargs['silenceTime']
-        if 'startTime' in kwargs:
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'triggeredCount' in kwargs:
+        if triggered_count is None and 'triggeredCount' in kwargs:
             triggered_count = kwargs['triggeredCount']
 
         _setter("contact_groups", contact_groups)
@@ -598,27 +604,27 @@ class _AlarmState:
              threshold: Optional[pulumi.Input[str]] = None,
              triggered_count: Optional[pulumi.Input[int]] = None,
              webhook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contactGroups' in kwargs:
+        if contact_groups is None and 'contactGroups' in kwargs:
             contact_groups = kwargs['contactGroups']
-        if 'effectiveInterval' in kwargs:
+        if effective_interval is None and 'effectiveInterval' in kwargs:
             effective_interval = kwargs['effectiveInterval']
-        if 'endTime' in kwargs:
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'escalationsCritical' in kwargs:
+        if escalations_critical is None and 'escalationsCritical' in kwargs:
             escalations_critical = kwargs['escalationsCritical']
-        if 'escalationsInfo' in kwargs:
+        if escalations_info is None and 'escalationsInfo' in kwargs:
             escalations_info = kwargs['escalationsInfo']
-        if 'escalationsWarn' in kwargs:
+        if escalations_warn is None and 'escalationsWarn' in kwargs:
             escalations_warn = kwargs['escalationsWarn']
-        if 'metricDimensions' in kwargs:
+        if metric_dimensions is None and 'metricDimensions' in kwargs:
             metric_dimensions = kwargs['metricDimensions']
-        if 'silenceTime' in kwargs:
+        if silence_time is None and 'silenceTime' in kwargs:
             silence_time = kwargs['silenceTime']
-        if 'startTime' in kwargs:
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'triggeredCount' in kwargs:
+        if triggered_count is None and 'triggeredCount' in kwargs:
             triggered_count = kwargs['triggeredCount']
 
         if contact_groups is not None:
@@ -1024,56 +1030,6 @@ class Alarm(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.9.1.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        default_zones = alicloud.get_zones(available_resource_creation="Instance")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            availability_zone=default_zones.zones[0].id,
-            instance_name=name,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            security_groups=[default_security_group.id],
-            vswitch_id=default_switch.id)
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name=name)
-        default_alarm = alicloud.cms.Alarm("defaultAlarm",
-            project="acs_ecs_dashboard",
-            metric="disk_writebytes",
-            metric_dimensions=default_instance.id.apply(lambda id: f"[{{\\"instanceId\\":\\"{id}\\",\\"device\\":\\"/dev/vda1\\"}}]"),
-            escalations_critical=alicloud.cms.AlarmEscalationsCriticalArgs(
-                statistics="Average",
-                comparison_operator="<=",
-                threshold="35",
-                times=2,
-            ),
-            period=900,
-            contact_groups=[default_alarm_contact_group.alarm_contact_group_name],
-            effective_interval="06:00-20:00")
-        ```
-
         ## Import
 
         Alarm rule can be imported using the id, e.g.
@@ -1121,56 +1077,6 @@ class Alarm(pulumi.CustomResource):
         Details for [What is alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
 
         > **NOTE:** Available since v1.9.1.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        default_zones = alicloud.get_zones(available_resource_creation="Instance")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            availability_zone=default_zones.zones[0].id,
-            instance_name=name,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            security_groups=[default_security_group.id],
-            vswitch_id=default_switch.id)
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name=name)
-        default_alarm = alicloud.cms.Alarm("defaultAlarm",
-            project="acs_ecs_dashboard",
-            metric="disk_writebytes",
-            metric_dimensions=default_instance.id.apply(lambda id: f"[{{\\"instanceId\\":\\"{id}\\",\\"device\\":\\"/dev/vda1\\"}}]"),
-            escalations_critical=alicloud.cms.AlarmEscalationsCriticalArgs(
-                statistics="Average",
-                comparison_operator="<=",
-                threshold="35",
-                times=2,
-            ),
-            period=900,
-            contact_groups=[default_alarm_contact_group.alarm_contact_group_name],
-            effective_interval="06:00-20:00")
-        ```
 
         ## Import
 
@@ -1237,23 +1143,11 @@ class Alarm(pulumi.CustomResource):
             __props__.__dict__["effective_interval"] = effective_interval
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["end_time"] = end_time
-            if escalations_critical is not None and not isinstance(escalations_critical, AlarmEscalationsCriticalArgs):
-                escalations_critical = escalations_critical or {}
-                def _setter(key, value):
-                    escalations_critical[key] = value
-                AlarmEscalationsCriticalArgs._configure(_setter, **escalations_critical)
+            escalations_critical = _utilities.configure(escalations_critical, AlarmEscalationsCriticalArgs, True)
             __props__.__dict__["escalations_critical"] = escalations_critical
-            if escalations_info is not None and not isinstance(escalations_info, AlarmEscalationsInfoArgs):
-                escalations_info = escalations_info or {}
-                def _setter(key, value):
-                    escalations_info[key] = value
-                AlarmEscalationsInfoArgs._configure(_setter, **escalations_info)
+            escalations_info = _utilities.configure(escalations_info, AlarmEscalationsInfoArgs, True)
             __props__.__dict__["escalations_info"] = escalations_info
-            if escalations_warn is not None and not isinstance(escalations_warn, AlarmEscalationsWarnArgs):
-                escalations_warn = escalations_warn or {}
-                def _setter(key, value):
-                    escalations_warn[key] = value
-                AlarmEscalationsWarnArgs._configure(_setter, **escalations_warn)
+            escalations_warn = _utilities.configure(escalations_warn, AlarmEscalationsWarnArgs, True)
             __props__.__dict__["escalations_warn"] = escalations_warn
             if metric is None and not opts.urn:
                 raise TypeError("Missing required property 'metric'")

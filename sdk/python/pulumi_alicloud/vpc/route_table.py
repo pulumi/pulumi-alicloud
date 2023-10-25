@@ -45,19 +45,21 @@ class RouteTableArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vpc_id: pulumi.Input[str],
+             vpc_id: Optional[pulumi.Input[str]] = None,
              associate_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              route_table_name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'associateType' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if associate_type is None and 'associateType' in kwargs:
             associate_type = kwargs['associateType']
-        if 'routeTableName' in kwargs:
+        if route_table_name is None and 'routeTableName' in kwargs:
             route_table_name = kwargs['routeTableName']
 
         _setter("vpc_id", vpc_id)
@@ -207,17 +209,17 @@ class _RouteTableState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'associateType' in kwargs:
+        if associate_type is None and 'associateType' in kwargs:
             associate_type = kwargs['associateType']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'routeTableName' in kwargs:
+        if route_table_name is None and 'routeTableName' in kwargs:
             route_table_name = kwargs['routeTableName']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if associate_type is not None:
@@ -375,26 +377,6 @@ class RouteTable(pulumi.CustomResource):
 
         For information about VPC Route Table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_vpc = alicloud.vpc.Network("defaultVpc", vpc_name=name)
-        default = alicloud.vpc.RouteTable("default",
-            description="test-description",
-            vpc_id=default_vpc.id,
-            route_table_name=name,
-            associate_type="VSwitch")
-        ```
-
         ## Import
 
         VPC Route Table can be imported using the id, e.g.
@@ -426,26 +408,6 @@ class RouteTable(pulumi.CustomResource):
         Provides a VPC Route Table resource. Currently, customized route tables are available in most regions apart from China (Beijing), China (Hangzhou), and China (Shenzhen) regions.
 
         For information about VPC Route Table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_vpc = alicloud.vpc.Network("defaultVpc", vpc_name=name)
-        default = alicloud.vpc.RouteTable("default",
-            description="test-description",
-            vpc_id=default_vpc.id,
-            route_table_name=name,
-            associate_type="VSwitch")
-        ```
 
         ## Import
 

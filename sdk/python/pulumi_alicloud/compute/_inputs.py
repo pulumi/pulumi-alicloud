@@ -34,11 +34,11 @@ class NestServiceInstanceCommodityArgs:
              _setter: Callable[[Any, Any], None],
              pay_period: Optional[pulumi.Input[int]] = None,
              pay_period_unit: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'payPeriod' in kwargs:
+        if pay_period is None and 'payPeriod' in kwargs:
             pay_period = kwargs['payPeriod']
-        if 'payPeriodUnit' in kwargs:
+        if pay_period_unit is None and 'payPeriodUnit' in kwargs:
             pay_period_unit = kwargs['payPeriodUnit']
 
         if pay_period is not None:
@@ -98,13 +98,13 @@ class NestServiceInstanceOperationMetadataArgs:
              operation_end_time: Optional[pulumi.Input[str]] = None,
              operation_start_time: Optional[pulumi.Input[str]] = None,
              resources: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'operatedServiceInstanceId' in kwargs:
+        if operated_service_instance_id is None and 'operatedServiceInstanceId' in kwargs:
             operated_service_instance_id = kwargs['operatedServiceInstanceId']
-        if 'operationEndTime' in kwargs:
+        if operation_end_time is None and 'operationEndTime' in kwargs:
             operation_end_time = kwargs['operationEndTime']
-        if 'operationStartTime' in kwargs:
+        if operation_start_time is None and 'operationStartTime' in kwargs:
             operation_start_time = kwargs['operationStartTime']
 
         if operated_service_instance_id is not None:
@@ -184,7 +184,7 @@ class GetNestServiceInstancesFilterArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:

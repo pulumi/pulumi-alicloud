@@ -99,25 +99,6 @@ def get_products(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.138.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    name = config.get("name")
-    if name is None:
-        name = "example_value"
-    default = alicloud.mhub.Product("default", product_name=name)
-    ids = alicloud.mhub.get_products()
-    pulumi.export("mhubProductId1", ids.products[0].id)
-    name_regex = alicloud.mhub.get_products(name_regex="^my-Product")
-    pulumi.export("mhubProductId2", name_regex.products[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Product IDs.
     :param str name_regex: A regex string to filter results by Product name.
@@ -148,25 +129,6 @@ def get_products_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     This data source provides the Mhub Products of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.138.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    name = config.get("name")
-    if name is None:
-        name = "example_value"
-    default = alicloud.mhub.Product("default", product_name=name)
-    ids = alicloud.mhub.get_products()
-    pulumi.export("mhubProductId1", ids.products[0].id)
-    name_regex = alicloud.mhub.get_products(name_regex="^my-Product")
-    pulumi.export("mhubProductId2", name_regex.products[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Product IDs.

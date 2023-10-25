@@ -70,18 +70,6 @@ def get_replication_vault_regions(output_file: Optional[str] = None,
 
     > **NOTE:** Available in v1.152.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.hbr.get_replication_vault_regions()
-    pulumi.export("hbrReplicationVaultRegionRegionId1", default.regions[0].replication_region_id)
-    ```
-
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -103,18 +91,6 @@ def get_replication_vault_regions_output(output_file: Optional[pulumi.Input[Opti
     This data source provides the HBR Replication Vault Regions of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.152.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.hbr.get_replication_vault_regions()
-    pulumi.export("hbrReplicationVaultRegionRegionId1", default.regions[0].replication_region_id)
-    ```
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

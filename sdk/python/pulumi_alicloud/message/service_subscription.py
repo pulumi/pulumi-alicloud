@@ -47,26 +47,34 @@ class ServiceSubscriptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: pulumi.Input[str],
-             push_type: pulumi.Input[str],
-             subscription_name: pulumi.Input[str],
-             topic_name: pulumi.Input[str],
+             endpoint: Optional[pulumi.Input[str]] = None,
+             push_type: Optional[pulumi.Input[str]] = None,
+             subscription_name: Optional[pulumi.Input[str]] = None,
+             topic_name: Optional[pulumi.Input[str]] = None,
              filter_tag: Optional[pulumi.Input[str]] = None,
              notify_content_format: Optional[pulumi.Input[str]] = None,
              notify_strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'pushType' in kwargs:
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if push_type is None and 'pushType' in kwargs:
             push_type = kwargs['pushType']
-        if 'subscriptionName' in kwargs:
+        if push_type is None:
+            raise TypeError("Missing 'push_type' argument")
+        if subscription_name is None and 'subscriptionName' in kwargs:
             subscription_name = kwargs['subscriptionName']
-        if 'topicName' in kwargs:
+        if subscription_name is None:
+            raise TypeError("Missing 'subscription_name' argument")
+        if topic_name is None and 'topicName' in kwargs:
             topic_name = kwargs['topicName']
-        if 'filterTag' in kwargs:
+        if topic_name is None:
+            raise TypeError("Missing 'topic_name' argument")
+        if filter_tag is None and 'filterTag' in kwargs:
             filter_tag = kwargs['filterTag']
-        if 'notifyContentFormat' in kwargs:
+        if notify_content_format is None and 'notifyContentFormat' in kwargs:
             notify_content_format = kwargs['notifyContentFormat']
-        if 'notifyStrategy' in kwargs:
+        if notify_strategy is None and 'notifyStrategy' in kwargs:
             notify_strategy = kwargs['notifyStrategy']
 
         _setter("endpoint", endpoint)
@@ -211,19 +219,19 @@ class _ServiceSubscriptionState:
              push_type: Optional[pulumi.Input[str]] = None,
              subscription_name: Optional[pulumi.Input[str]] = None,
              topic_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'filterTag' in kwargs:
+        if filter_tag is None and 'filterTag' in kwargs:
             filter_tag = kwargs['filterTag']
-        if 'notifyContentFormat' in kwargs:
+        if notify_content_format is None and 'notifyContentFormat' in kwargs:
             notify_content_format = kwargs['notifyContentFormat']
-        if 'notifyStrategy' in kwargs:
+        if notify_strategy is None and 'notifyStrategy' in kwargs:
             notify_strategy = kwargs['notifyStrategy']
-        if 'pushType' in kwargs:
+        if push_type is None and 'pushType' in kwargs:
             push_type = kwargs['pushType']
-        if 'subscriptionName' in kwargs:
+        if subscription_name is None and 'subscriptionName' in kwargs:
             subscription_name = kwargs['subscriptionName']
-        if 'topicName' in kwargs:
+        if topic_name is None and 'topicName' in kwargs:
             topic_name = kwargs['topicName']
 
         if endpoint is not None:
@@ -349,32 +357,6 @@ class ServiceSubscription(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.188.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_service_topic = alicloud.message.ServiceTopic("defaultServiceTopic",
-            topic_name=name,
-            max_message_size=12357,
-            logging_enabled=True)
-        default_service_subscription = alicloud.message.ServiceSubscription("defaultServiceSubscription",
-            topic_name=default_service_topic.topic_name,
-            subscription_name=name,
-            endpoint="http://example.com",
-            push_type="http",
-            filter_tag="tf-example",
-            notify_content_format="XML",
-            notify_strategy="BACKOFF_RETRY")
-        ```
-
         ## Import
 
         Message Notification Service Subscription can be imported using the id, e.g.
@@ -408,32 +390,6 @@ class ServiceSubscription(pulumi.CustomResource):
         For information about Message Notification Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
 
         > **NOTE:** Available since v1.188.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_service_topic = alicloud.message.ServiceTopic("defaultServiceTopic",
-            topic_name=name,
-            max_message_size=12357,
-            logging_enabled=True)
-        default_service_subscription = alicloud.message.ServiceSubscription("defaultServiceSubscription",
-            topic_name=default_service_topic.topic_name,
-            subscription_name=name,
-            endpoint="http://example.com",
-            push_type="http",
-            filter_tag="tf-example",
-            notify_content_format="XML",
-            notify_strategy="BACKOFF_RETRY")
-        ```
 
         ## Import
 

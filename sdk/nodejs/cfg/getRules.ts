@@ -12,19 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Available in 1.99.0+.
  *
  * > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cfg.getRules({
- *     ids: ["cr-ed4bad756057********"],
- *     nameRegex: "tftest",
- * });
- * export const firstConfigRuleId = example.then(example => example.rules?.[0]?.id);
- * ```
  */
 export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
     args = args || {};
@@ -130,19 +117,6 @@ export interface GetRulesResult {
  * > **NOTE:**  Available in 1.99.0+.
  *
  * > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cfg.getRules({
- *     ids: ["cr-ed4bad756057********"],
- *     nameRegex: "tftest",
- * });
- * export const firstConfigRuleId = example.then(example => example.rules?.[0]?.id);
- * ```
  */
 export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
     return pulumi.output(args).apply((a: any) => getRules(a, opts))

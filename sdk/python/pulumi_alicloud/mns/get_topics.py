@@ -95,16 +95,6 @@ def get_topics(name_prefix: Optional[str] = None,
 
     > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    topics = alicloud.mns.get_topics(name_prefix="tf-")
-    pulumi.export("firstTopicId", topics.topics[0].id)
-    ```
-
 
     :param str name_prefix: A string to filter resulting topics by their name prefixs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -131,16 +121,6 @@ def get_topics_output(name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
 
     > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    topics = alicloud.mns.get_topics(name_prefix="tf-")
-    pulumi.export("firstTopicId", topics.topics[0].id)
-    ```
 
 
     :param str name_prefix: A string to filter resulting topics by their name prefixs.

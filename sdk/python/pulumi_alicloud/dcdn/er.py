@@ -34,14 +34,16 @@ class ErArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             er_name: pulumi.Input[str],
+             er_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              env_conf: Optional[pulumi.Input['ErEnvConfArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'erName' in kwargs:
+        if er_name is None and 'erName' in kwargs:
             er_name = kwargs['erName']
-        if 'envConf' in kwargs:
+        if er_name is None:
+            raise TypeError("Missing 'er_name' argument")
+        if env_conf is None and 'envConf' in kwargs:
             env_conf = kwargs['envConf']
 
         _setter("er_name", er_name)
@@ -111,11 +113,11 @@ class _ErState:
              description: Optional[pulumi.Input[str]] = None,
              env_conf: Optional[pulumi.Input['ErEnvConfArgs']] = None,
              er_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'envConf' in kwargs:
+        if env_conf is None and 'envConf' in kwargs:
             env_conf = kwargs['envConf']
-        if 'erName' in kwargs:
+        if er_name is None and 'erName' in kwargs:
             er_name = kwargs['erName']
 
         if description is not None:
@@ -178,33 +180,6 @@ class Er(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.201.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.dcdn.Er("default",
-            er_name=name,
-            description=name,
-            env_conf=alicloud.dcdn.ErEnvConfArgs(
-                staging=alicloud.dcdn.ErEnvConfStagingArgs(
-                    spec_name="5ms",
-                    allowed_hosts=["example.com"],
-                ),
-                production=alicloud.dcdn.ErEnvConfProductionArgs(
-                    spec_name="5ms",
-                    allowed_hosts=["example.com"],
-                ),
-            ))
-        ```
-
         ## Import
 
         DCDN Er can be imported using the id, e.g.
@@ -231,33 +206,6 @@ class Er(pulumi.CustomResource):
         For information about DCDN Er and how to use it, see [What is Er](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-createroutine).
 
         > **NOTE:** Available since v1.201.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.dcdn.Er("default",
-            er_name=name,
-            description=name,
-            env_conf=alicloud.dcdn.ErEnvConfArgs(
-                staging=alicloud.dcdn.ErEnvConfStagingArgs(
-                    spec_name="5ms",
-                    allowed_hosts=["example.com"],
-                ),
-                production=alicloud.dcdn.ErEnvConfProductionArgs(
-                    spec_name="5ms",
-                    allowed_hosts=["example.com"],
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -299,11 +247,7 @@ class Er(pulumi.CustomResource):
             __props__ = ErArgs.__new__(ErArgs)
 
             __props__.__dict__["description"] = description
-            if env_conf is not None and not isinstance(env_conf, ErEnvConfArgs):
-                env_conf = env_conf or {}
-                def _setter(key, value):
-                    env_conf[key] = value
-                ErEnvConfArgs._configure(_setter, **env_conf)
+            env_conf = _utilities.configure(env_conf, ErEnvConfArgs, True)
             __props__.__dict__["env_conf"] = env_conf
             if er_name is None and not opts.urn:
                 raise TypeError("Missing required property 'er_name'")

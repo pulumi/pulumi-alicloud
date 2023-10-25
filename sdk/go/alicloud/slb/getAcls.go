@@ -14,30 +14,6 @@ import (
 
 // This data source provides the acls in the region.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sampleDs, err := slb.GetAcls(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstSlbAclId", sampleDs.Acls[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Entry Block
 //
 // The entry mapping supports the following:

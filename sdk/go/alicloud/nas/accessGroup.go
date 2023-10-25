@@ -19,37 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.33.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := nas.NewAccessGroup(ctx, "foo", &nas.AccessGroupArgs{
-//				AccessGroupName: pulumi.String("terraform-example"),
-//				AccessGroupType: pulumi.String("Vpc"),
-//				Description:     pulumi.String("terraform-example"),
-//				FileSystemType:  pulumi.String("extreme"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // NAS Access Group can be imported using the id, e.g.

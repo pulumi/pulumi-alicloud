@@ -35,19 +35,25 @@ class AccountPrivilegeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: pulumi.Input[str],
-             db_cluster_id: pulumi.Input[str],
-             db_names: pulumi.Input[Sequence[pulumi.Input[str]]],
+             account_name: Optional[pulumi.Input[str]] = None,
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
+             db_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              account_privilege: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'dbClusterId' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'dbNames' in kwargs:
+        if db_cluster_id is None:
+            raise TypeError("Missing 'db_cluster_id' argument")
+        if db_names is None and 'dbNames' in kwargs:
             db_names = kwargs['dbNames']
-        if 'accountPrivilege' in kwargs:
+        if db_names is None:
+            raise TypeError("Missing 'db_names' argument")
+        if account_privilege is None and 'accountPrivilege' in kwargs:
             account_privilege = kwargs['accountPrivilege']
 
         _setter("account_name", account_name)
@@ -133,15 +139,15 @@ class _AccountPrivilegeState:
              account_privilege: Optional[pulumi.Input[str]] = None,
              db_cluster_id: Optional[pulumi.Input[str]] = None,
              db_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountPrivilege' in kwargs:
+        if account_privilege is None and 'accountPrivilege' in kwargs:
             account_privilege = kwargs['accountPrivilege']
-        if 'dbClusterId' in kwargs:
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
             db_cluster_id = kwargs['dbClusterId']
-        if 'dbNames' in kwargs:
+        if db_names is None and 'dbNames' in kwargs:
             db_names = kwargs['dbNames']
 
         if account_name is not None:
@@ -217,45 +223,6 @@ class AccountPrivilege(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.67.0+.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
-            db_version="8.0",
-            pay_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_node_classes.classes[0].zone_id,
-            vswitch_name="terraform-example")
-        default_cluster = alicloud.polardb.Cluster("defaultCluster",
-            db_type="MySQL",
-            db_version="8.0",
-            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
-            pay_type="PostPaid",
-            vswitch_id=default_switch.id,
-            description="terraform-example")
-        default_account = alicloud.polardb.Account("defaultAccount",
-            db_cluster_id=default_cluster.id,
-            account_name="terraform_example",
-            account_password="Example1234",
-            account_description="terraform-example")
-        default_database = alicloud.polardb.Database("defaultDatabase",
-            db_cluster_id=default_cluster.id,
-            db_name="terraform-example")
-        default_account_privilege = alicloud.polardb.AccountPrivilege("defaultAccountPrivilege",
-            db_cluster_id=default_cluster.id,
-            account_name=default_account.account_name,
-            account_privilege="ReadOnly",
-            db_names=[default_database.db_name])
-        ```
-
         ## Import
 
         PolarDB account privilege can be imported using the id, e.g.
@@ -281,45 +248,6 @@ class AccountPrivilege(pulumi.CustomResource):
         Provides a PolarDB account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
 
         > **NOTE:** Available in v1.67.0+.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
-            db_version="8.0",
-            pay_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_node_classes.classes[0].zone_id,
-            vswitch_name="terraform-example")
-        default_cluster = alicloud.polardb.Cluster("defaultCluster",
-            db_type="MySQL",
-            db_version="8.0",
-            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
-            pay_type="PostPaid",
-            vswitch_id=default_switch.id,
-            description="terraform-example")
-        default_account = alicloud.polardb.Account("defaultAccount",
-            db_cluster_id=default_cluster.id,
-            account_name="terraform_example",
-            account_password="Example1234",
-            account_description="terraform-example")
-        default_database = alicloud.polardb.Database("defaultDatabase",
-            db_cluster_id=default_cluster.id,
-            db_name="terraform-example")
-        default_account_privilege = alicloud.polardb.AccountPrivilege("defaultAccountPrivilege",
-            db_cluster_id=default_cluster.id,
-            account_name=default_account.account_name,
-            account_privilege="ReadOnly",
-            db_names=[default_database.db_name])
-        ```
 
         ## Import
 

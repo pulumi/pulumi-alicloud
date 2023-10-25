@@ -11,20 +11,6 @@ import * as utilities from "../utilities";
  *
  * For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/doc-detail/70023.html).
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const attachmentAcl = new alicloud.slb.Acl("attachmentAcl", {ipVersion: "ipv4"});
- * const attachmentAclEntryAttachment = new alicloud.slb.AclEntryAttachment("attachmentAclEntryAttachment", {
- *     aclId: attachmentAcl.id,
- *     entry: "168.10.10.0/24",
- *     comment: "second",
- * });
- * ```
- *
  * ## Import
  *
  * Acl entry attachment can be imported using the id, e.g.

@@ -53,9 +53,9 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image_id: pulumi.Input[str],
-             period: pulumi.Input[int],
-             plan_id: pulumi.Input[str],
+             image_id: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             plan_id: Optional[pulumi.Input[str]] = None,
              auto_renew: Optional[pulumi.Input[bool]] = None,
              auto_renew_period: Optional[pulumi.Input[int]] = None,
              data_disk_size: Optional[pulumi.Input[int]] = None,
@@ -63,21 +63,27 @@ class InstanceArgs:
              password: Optional[pulumi.Input[str]] = None,
              payment_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'planId' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if period is None:
+            raise TypeError("Missing 'period' argument")
+        if plan_id is None and 'planId' in kwargs:
             plan_id = kwargs['planId']
-        if 'autoRenew' in kwargs:
+        if plan_id is None:
+            raise TypeError("Missing 'plan_id' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'dataDiskSize' in kwargs:
+        if data_disk_size is None and 'dataDiskSize' in kwargs:
             data_disk_size = kwargs['dataDiskSize']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
 
         _setter("image_id", image_id)
@@ -271,21 +277,21 @@ class _InstanceState:
              period: Optional[pulumi.Input[int]] = None,
              plan_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'dataDiskSize' in kwargs:
+        if data_disk_size is None and 'dataDiskSize' in kwargs:
             data_disk_size = kwargs['dataDiskSize']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'planId' in kwargs:
+        if plan_id is None and 'planId' in kwargs:
             plan_id = kwargs['planId']
 
         if auto_renew is not None:

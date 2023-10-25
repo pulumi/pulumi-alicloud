@@ -74,38 +74,74 @@ class GetCertificatesCertificateResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             buy_in_aliyun: bool,
-             cert: str,
-             cert_id: str,
-             certificate_name: str,
-             city: str,
-             common: str,
-             country: str,
-             end_date: str,
-             expired: bool,
-             fingerprint: str,
-             id: str,
-             issuer: str,
-             key: str,
-             name: str,
-             org_name: str,
-             province: str,
-             sans: str,
-             start_date: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             buy_in_aliyun: Optional[bool] = None,
+             cert: Optional[str] = None,
+             cert_id: Optional[str] = None,
+             certificate_name: Optional[str] = None,
+             city: Optional[str] = None,
+             common: Optional[str] = None,
+             country: Optional[str] = None,
+             end_date: Optional[str] = None,
+             expired: Optional[bool] = None,
+             fingerprint: Optional[str] = None,
+             id: Optional[str] = None,
+             issuer: Optional[str] = None,
+             key: Optional[str] = None,
+             name: Optional[str] = None,
+             org_name: Optional[str] = None,
+             province: Optional[str] = None,
+             sans: Optional[str] = None,
+             start_date: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'buyInAliyun' in kwargs:
+        if buy_in_aliyun is None and 'buyInAliyun' in kwargs:
             buy_in_aliyun = kwargs['buyInAliyun']
-        if 'certId' in kwargs:
+        if buy_in_aliyun is None:
+            raise TypeError("Missing 'buy_in_aliyun' argument")
+        if cert is None:
+            raise TypeError("Missing 'cert' argument")
+        if cert_id is None and 'certId' in kwargs:
             cert_id = kwargs['certId']
-        if 'certificateName' in kwargs:
+        if cert_id is None:
+            raise TypeError("Missing 'cert_id' argument")
+        if certificate_name is None and 'certificateName' in kwargs:
             certificate_name = kwargs['certificateName']
-        if 'endDate' in kwargs:
+        if certificate_name is None:
+            raise TypeError("Missing 'certificate_name' argument")
+        if city is None:
+            raise TypeError("Missing 'city' argument")
+        if common is None:
+            raise TypeError("Missing 'common' argument")
+        if country is None:
+            raise TypeError("Missing 'country' argument")
+        if end_date is None and 'endDate' in kwargs:
             end_date = kwargs['endDate']
-        if 'orgName' in kwargs:
+        if end_date is None:
+            raise TypeError("Missing 'end_date' argument")
+        if expired is None:
+            raise TypeError("Missing 'expired' argument")
+        if fingerprint is None:
+            raise TypeError("Missing 'fingerprint' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if issuer is None:
+            raise TypeError("Missing 'issuer' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if org_name is None and 'orgName' in kwargs:
             org_name = kwargs['orgName']
-        if 'startDate' in kwargs:
+        if org_name is None:
+            raise TypeError("Missing 'org_name' argument")
+        if province is None:
+            raise TypeError("Missing 'province' argument")
+        if sans is None:
+            raise TypeError("Missing 'sans' argument")
+        if start_date is None and 'startDate' in kwargs:
             start_date = kwargs['startDate']
+        if start_date is None:
+            raise TypeError("Missing 'start_date' argument")
 
         _setter("buy_in_aliyun", buy_in_aliyun)
         _setter("cert", cert)
@@ -323,38 +359,74 @@ class GetServiceCertificatesCertificateResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             buy_in_aliyun: bool,
-             cert: str,
-             cert_id: str,
-             certificate_name: str,
-             city: str,
-             common: str,
-             country: str,
-             end_date: str,
-             expired: bool,
-             fingerprint: str,
-             id: str,
-             issuer: str,
-             key: str,
-             name: str,
-             org_name: str,
-             province: str,
-             sans: str,
-             start_date: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             buy_in_aliyun: Optional[bool] = None,
+             cert: Optional[str] = None,
+             cert_id: Optional[str] = None,
+             certificate_name: Optional[str] = None,
+             city: Optional[str] = None,
+             common: Optional[str] = None,
+             country: Optional[str] = None,
+             end_date: Optional[str] = None,
+             expired: Optional[bool] = None,
+             fingerprint: Optional[str] = None,
+             id: Optional[str] = None,
+             issuer: Optional[str] = None,
+             key: Optional[str] = None,
+             name: Optional[str] = None,
+             org_name: Optional[str] = None,
+             province: Optional[str] = None,
+             sans: Optional[str] = None,
+             start_date: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'buyInAliyun' in kwargs:
+        if buy_in_aliyun is None and 'buyInAliyun' in kwargs:
             buy_in_aliyun = kwargs['buyInAliyun']
-        if 'certId' in kwargs:
+        if buy_in_aliyun is None:
+            raise TypeError("Missing 'buy_in_aliyun' argument")
+        if cert is None:
+            raise TypeError("Missing 'cert' argument")
+        if cert_id is None and 'certId' in kwargs:
             cert_id = kwargs['certId']
-        if 'certificateName' in kwargs:
+        if cert_id is None:
+            raise TypeError("Missing 'cert_id' argument")
+        if certificate_name is None and 'certificateName' in kwargs:
             certificate_name = kwargs['certificateName']
-        if 'endDate' in kwargs:
+        if certificate_name is None:
+            raise TypeError("Missing 'certificate_name' argument")
+        if city is None:
+            raise TypeError("Missing 'city' argument")
+        if common is None:
+            raise TypeError("Missing 'common' argument")
+        if country is None:
+            raise TypeError("Missing 'country' argument")
+        if end_date is None and 'endDate' in kwargs:
             end_date = kwargs['endDate']
-        if 'orgName' in kwargs:
+        if end_date is None:
+            raise TypeError("Missing 'end_date' argument")
+        if expired is None:
+            raise TypeError("Missing 'expired' argument")
+        if fingerprint is None:
+            raise TypeError("Missing 'fingerprint' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if issuer is None:
+            raise TypeError("Missing 'issuer' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if org_name is None and 'orgName' in kwargs:
             org_name = kwargs['orgName']
-        if 'startDate' in kwargs:
+        if org_name is None:
+            raise TypeError("Missing 'org_name' argument")
+        if province is None:
+            raise TypeError("Missing 'province' argument")
+        if sans is None:
+            raise TypeError("Missing 'sans' argument")
+        if start_date is None and 'startDate' in kwargs:
             start_date = kwargs['startDate']
+        if start_date is None:
+            raise TypeError("Missing 'start_date' argument")
 
         _setter("buy_in_aliyun", buy_in_aliyun)
         _setter("cert", cert)

@@ -119,19 +119,6 @@ def get_ecs_prefix_lists(address_family: Optional[str] = None,
 
     > **NOTE:** Available in v1.152.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ecs.get_ecs_prefix_lists(ids=["E2RY53-xxxx"],
-        name_regex="tf-testAcc")
-    pulumi.export("outputId", example.lists[0].id)
-    ```
-
 
     :param str address_family: The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
     :param Sequence[str] ids: A list of Prefix List IDs.
@@ -169,19 +156,6 @@ def get_ecs_prefix_lists_output(address_family: Optional[pulumi.Input[Optional[s
     This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.152.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ecs.get_ecs_prefix_lists(ids=["E2RY53-xxxx"],
-        name_regex="tf-testAcc")
-    pulumi.export("outputId", example.lists[0].id)
-    ```
 
 
     :param str address_family: The address family of the prefix list. Valid values:`IPv4`,`IPv6`.

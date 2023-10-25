@@ -11,16 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * // Add a new Domain.
- * const dns = new alicloud.dns.Domain("dns", {groupId: "85ab8713-4a30-4de4-9d20-155ff830f651"});
- * ```
- *
  * ## Import
  *
  * DNS can be imported using the id or domain name, e.g.

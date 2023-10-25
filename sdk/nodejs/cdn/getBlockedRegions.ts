@@ -10,19 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Cdn blocked regions.
  *
  * > **NOTE:** Available in v1.173.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cdn.getBlockedRegions({
- *     language: "zh",
- * });
- * ```
  */
 export function getBlockedRegions(args: GetBlockedRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetBlockedRegionsResult> {
 
@@ -57,19 +44,6 @@ export interface GetBlockedRegionsResult {
  * This data source provides the Cdn blocked regions.
  *
  * > **NOTE:** Available in v1.173.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.cdn.getBlockedRegions({
- *     language: "zh",
- * });
- * ```
  */
 export function getBlockedRegionsOutput(args: GetBlockedRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBlockedRegionsResult> {
     return pulumi.output(args).apply((a: any) => getBlockedRegions(a, opts))

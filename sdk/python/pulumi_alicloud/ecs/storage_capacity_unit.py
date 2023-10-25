@@ -43,19 +43,21 @@ class StorageCapacityUnitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             capacity: pulumi.Input[int],
+             capacity: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              period: Optional[pulumi.Input[int]] = None,
              period_unit: Optional[pulumi.Input[str]] = None,
              start_time: Optional[pulumi.Input[str]] = None,
              storage_capacity_unit_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'periodUnit' in kwargs:
+        if capacity is None:
+            raise TypeError("Missing 'capacity' argument")
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'startTime' in kwargs:
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'storageCapacityUnitName' in kwargs:
+        if storage_capacity_unit_name is None and 'storageCapacityUnitName' in kwargs:
             storage_capacity_unit_name = kwargs['storageCapacityUnitName']
 
         _setter("capacity", capacity)
@@ -187,13 +189,13 @@ class _StorageCapacityUnitState:
              start_time: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              storage_capacity_unit_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'startTime' in kwargs:
+        if start_time is None and 'startTime' in kwargs:
             start_time = kwargs['startTime']
-        if 'storageCapacityUnitName' in kwargs:
+        if storage_capacity_unit_name is None and 'storageCapacityUnitName' in kwargs:
             storage_capacity_unit_name = kwargs['storageCapacityUnitName']
 
         if capacity is not None:
@@ -317,20 +319,6 @@ class StorageCapacityUnit(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.155.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ecs.StorageCapacityUnit("default",
-            capacity=20,
-            description="tftestdescription",
-            storage_capacity_unit_name="tftestname")
-        ```
-
         ## Import
 
         ECS Storage Capacity Unit can be imported using the id, e.g.
@@ -362,20 +350,6 @@ class StorageCapacityUnit(pulumi.CustomResource):
         For information about ECS Storage Capacity Unit and how to use it, see [What is Storage Capacity Unit](https://www.alibabacloud.com/help/en/doc-detail/161157.html).
 
         > **NOTE:** Available in v1.155.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ecs.StorageCapacityUnit("default",
-            capacity=20,
-            description="tftestdescription",
-            storage_capacity_unit_name="tftestname")
-        ```
 
         ## Import
 

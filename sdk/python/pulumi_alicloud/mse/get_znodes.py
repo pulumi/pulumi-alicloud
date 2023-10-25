@@ -129,27 +129,6 @@ def get_znodes(accept_language: Optional[str] = None,
 
     > **NOTE:** Available in v1.162.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.mse.get_znodes(cluster_id="example_value",
-        path="/",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("mseZnodeId1", ids.znodes[0].id)
-    name_regex = alicloud.mse.get_znodes(path="/",
-        cluster_id="example_value",
-        name_regex="^my-Znode")
-    pulumi.export("mseZnodeId2", name_regex.znodes[0].id)
-    ```
-
 
     :param str accept_language: The language type of the returned information. Valid values: `zh` or `en`.
     :param str cluster_id: The ID of the Cluster.
@@ -192,27 +171,6 @@ def get_znodes_output(accept_language: Optional[pulumi.Input[Optional[str]]] = N
     This data source provides the Mse Znodes of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.162.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.mse.get_znodes(cluster_id="example_value",
-        path="/",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("mseZnodeId1", ids.znodes[0].id)
-    name_regex = alicloud.mse.get_znodes(path="/",
-        cluster_id="example_value",
-        name_regex="^my-Znode")
-    pulumi.export("mseZnodeId2", name_regex.znodes[0].id)
-    ```
 
 
     :param str accept_language: The language type of the returned information. Valid values: `zh` or `en`.

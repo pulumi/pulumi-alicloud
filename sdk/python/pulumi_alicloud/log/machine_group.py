@@ -38,16 +38,20 @@ class MachineGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             identify_lists: pulumi.Input[Sequence[pulumi.Input[str]]],
-             project: pulumi.Input[str],
+             identify_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              identify_type: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'identifyLists' in kwargs:
+        if identify_lists is None and 'identifyLists' in kwargs:
             identify_lists = kwargs['identifyLists']
-        if 'identifyType' in kwargs:
+        if identify_lists is None:
+            raise TypeError("Missing 'identify_lists' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if identify_type is None and 'identifyType' in kwargs:
             identify_type = kwargs['identifyType']
 
         _setter("identify_lists", identify_lists)
@@ -152,11 +156,11 @@ class _MachineGroupState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'identifyLists' in kwargs:
+        if identify_lists is None and 'identifyLists' in kwargs:
             identify_lists = kwargs['identifyLists']
-        if 'identifyType' in kwargs:
+        if identify_type is None and 'identifyType' in kwargs:
             identify_type = kwargs['identifyType']
 
         if identify_lists is not None:
@@ -246,28 +250,6 @@ class MachineGroup(pulumi.CustomResource):
         Log Service manages all the ECS instances whose logs need to be collected by using the Logtail client in the form of machine groups.
          [Refer to details](https://www.alibabacloud.com/help/doc-detail/28966.htm)
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_machine_group = alicloud.log.MachineGroup("exampleMachineGroup",
-            project=example_project.name,
-            identify_type="ip",
-            topic="terraform",
-            identify_lists=[
-                "10.0.0.1",
-                "10.0.0.2",
-            ])
-        ```
         ## Module Support
 
         You can use the existing sls-logtail module
@@ -299,28 +281,6 @@ class MachineGroup(pulumi.CustomResource):
         Log Service manages all the ECS instances whose logs need to be collected by using the Logtail client in the form of machine groups.
          [Refer to details](https://www.alibabacloud.com/help/doc-detail/28966.htm)
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_machine_group = alicloud.log.MachineGroup("exampleMachineGroup",
-            project=example_project.name,
-            identify_type="ip",
-            topic="terraform",
-            identify_lists=[
-                "10.0.0.1",
-                "10.0.0.2",
-            ])
-        ```
         ## Module Support
 
         You can use the existing sls-logtail module

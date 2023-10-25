@@ -13,29 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.142.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {
- *     alarmContactGroupName: "example_value",
- *     describe: "example_value",
- *     enableSubscribed: true,
- * });
- * const defaultDynamicTagGroup = new alicloud.cms.DynamicTagGroup("defaultDynamicTagGroup", {
- *     contactGroupLists: [defaultAlarmContactGroup.id],
- *     tagKey: "your_tag_key",
- *     matchExpresses: [{
- *         tagValue: "your_tag_value",
- *         tagValueMatchFunction: "all",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * Cloud Monitor Service Dynamic Tag Group can be imported using the id, e.g.

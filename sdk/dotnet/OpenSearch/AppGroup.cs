@@ -16,36 +16,6 @@ namespace Pulumi.AliCloud.OpenSearch
     /// 
     /// &gt; **NOTE:** Available in v1.136.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "name";
-    ///     var @default = new AliCloud.OpenSearch.AppGroup("default", new()
-    ///     {
-    ///         AppGroupName = name,
-    ///         PaymentType = "PayAsYouGo",
-    ///         Type = "standard",
-    ///         Quota = new AliCloud.OpenSearch.Inputs.AppGroupQuotaArgs
-    ///         {
-    ///             DocSize = 1,
-    ///             ComputeResource = 20,
-    ///             Spec = "opensearch.share.common",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Open Search App Group can be imported using the id, e.g.

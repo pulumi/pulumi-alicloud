@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.152.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.vpc.getBgpGroups({
- *     ids: ["example_value"],
- * });
- * export const vpcBgpGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
- * const nameRegex = alicloud.vpc.getBgpGroups({
- *     nameRegex: "^my-BgpGroup",
- * });
- * export const vpcBgpGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
- * ```
  */
 export function getBgpGroups(args?: GetBgpGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetBgpGroupsResult> {
     args = args || {};
@@ -88,24 +70,6 @@ export interface GetBgpGroupsResult {
  * This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.152.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.vpc.getBgpGroups({
- *     ids: ["example_value"],
- * });
- * export const vpcBgpGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
- * const nameRegex = alicloud.vpc.getBgpGroups({
- *     nameRegex: "^my-BgpGroup",
- * });
- * export const vpcBgpGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
- * ```
  */
 export function getBgpGroupsOutput(args?: GetBgpGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBgpGroupsResult> {
     return pulumi.output(args).apply((a: any) => getBgpGroups(a, opts))

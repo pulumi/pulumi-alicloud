@@ -139,20 +139,6 @@ def get_event_rules(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.182.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cms.get_event_rules(ids=["example_id"])
-    pulumi.export("cmsEventRuleId1", ids.rules[0].id)
-    name_regex = alicloud.cms.get_event_rules(name_regex="^my-EventRule")
-    pulumi.export("cmsEventRuleId2", name_regex.rules[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Event Rule IDs. Its element value is same as Event Rule Name.
     :param str name_prefix: The name prefix.
@@ -197,20 +183,6 @@ def get_event_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
     This data source provides the Cms Event Rules of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.182.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cms.get_event_rules(ids=["example_id"])
-    pulumi.export("cmsEventRuleId1", ids.rules[0].id)
-    name_regex = alicloud.cms.get_event_rules(name_regex="^my-EventRule")
-    pulumi.export("cmsEventRuleId2", name_regex.rules[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Event Rule IDs. Its element value is same as Event Rule Name.

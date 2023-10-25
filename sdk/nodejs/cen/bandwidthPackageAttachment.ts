@@ -9,30 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.18.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
- *     cenInstanceName: "tf_example",
- *     description: "an example for cen",
- * });
- * const exampleBandwidthPackage = new alicloud.cen.BandwidthPackage("exampleBandwidthPackage", {
- *     bandwidth: 5,
- *     cenBandwidthPackageName: "tf_example",
- *     geographicRegionAId: "China",
- *     geographicRegionBId: "China",
- * });
- * const exampleBandwidthPackageAttachment = new alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", {
- *     instanceId: exampleInstance.id,
- *     bandwidthPackageId: exampleBandwidthPackage.id,
- * });
- * ```
- *
  * ## Import
  *
  * CEN bandwidth package attachment resource can be imported using the id, e.g.

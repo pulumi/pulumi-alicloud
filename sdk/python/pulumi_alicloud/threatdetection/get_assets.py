@@ -156,16 +156,6 @@ def get_assets(criteria: Optional[str] = None,
 
     > **NOTE:** Available since v1.195.0.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.threatdetection.get_assets()
-    pulumi.export("alicloudThreatDetectionAssetExampleId", default.assets[0].id)
-    ```
-
 
     :param str criteria: Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
     :param Sequence[str] ids: A list of Asset IDs.
@@ -224,16 +214,6 @@ def get_assets_output(criteria: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describecloudcenterinstances)
 
     > **NOTE:** Available since v1.195.0.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.threatdetection.get_assets()
-    pulumi.export("alicloudThreatDetectionAssetExampleId", default.assets[0].id)
-    ```
 
 
     :param str criteria: Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.

@@ -171,24 +171,6 @@ def get_gateways(business_status: Optional[str] = None,
     """
     The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    vpn_gateways = alicloud.vpn.get_gateways(business_status="Normal",
-        ids=[
-            "fake-vpn-id1",
-            "fake-vpn-id2",
-        ],
-        include_reservation_data=True,
-        name_regex="testAcc*",
-        output_file="/tmp/vpns",
-        status="Active",
-        vpc_id="fake-vpc-id")
-    ```
-
 
     :param str business_status: Limit search to specific business status - valid value is "Normal", "FinancialLocked".
     :param bool enable_ipsec: Indicates whether the IPsec-VPN feature is enabled.
@@ -237,24 +219,6 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] =
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewaysResult]:
     """
     The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    vpn_gateways = alicloud.vpn.get_gateways(business_status="Normal",
-        ids=[
-            "fake-vpn-id1",
-            "fake-vpn-id2",
-        ],
-        include_reservation_data=True,
-        name_regex="testAcc*",
-        output_file="/tmp/vpns",
-        status="Active",
-        vpc_id="fake-vpc-id")
-    ```
 
 
     :param str business_status: Limit search to specific business status - valid value is "Normal", "FinancialLocked".

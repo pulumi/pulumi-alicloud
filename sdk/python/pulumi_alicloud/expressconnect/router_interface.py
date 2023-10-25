@@ -95,11 +95,11 @@ class RouterInterfaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opposite_region_id: pulumi.Input[str],
-             role: pulumi.Input[str],
-             router_id: pulumi.Input[str],
-             router_type: pulumi.Input[str],
-             spec: pulumi.Input[str],
+             opposite_region_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             router_id: Optional[pulumi.Input[str]] = None,
+             router_type: Optional[pulumi.Input[str]] = None,
+             spec: Optional[pulumi.Input[str]] = None,
              access_point_id: Optional[pulumi.Input[str]] = None,
              auto_pay: Optional[pulumi.Input[bool]] = None,
              delete_health_check_ip: Optional[pulumi.Input[bool]] = None,
@@ -119,45 +119,55 @@ class RouterInterfaceArgs:
              router_interface_id: Optional[pulumi.Input[str]] = None,
              router_interface_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'oppositeRegionId' in kwargs:
+        if opposite_region_id is None and 'oppositeRegionId' in kwargs:
             opposite_region_id = kwargs['oppositeRegionId']
-        if 'routerId' in kwargs:
+        if opposite_region_id is None:
+            raise TypeError("Missing 'opposite_region_id' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if router_id is None and 'routerId' in kwargs:
             router_id = kwargs['routerId']
-        if 'routerType' in kwargs:
+        if router_id is None:
+            raise TypeError("Missing 'router_id' argument")
+        if router_type is None and 'routerType' in kwargs:
             router_type = kwargs['routerType']
-        if 'accessPointId' in kwargs:
+        if router_type is None:
+            raise TypeError("Missing 'router_type' argument")
+        if spec is None:
+            raise TypeError("Missing 'spec' argument")
+        if access_point_id is None and 'accessPointId' in kwargs:
             access_point_id = kwargs['accessPointId']
-        if 'autoPay' in kwargs:
+        if auto_pay is None and 'autoPay' in kwargs:
             auto_pay = kwargs['autoPay']
-        if 'deleteHealthCheckIp' in kwargs:
+        if delete_health_check_ip is None and 'deleteHealthCheckIp' in kwargs:
             delete_health_check_ip = kwargs['deleteHealthCheckIp']
-        if 'hcRate' in kwargs:
+        if hc_rate is None and 'hcRate' in kwargs:
             hc_rate = kwargs['hcRate']
-        if 'hcThreshold' in kwargs:
+        if hc_threshold is None and 'hcThreshold' in kwargs:
             hc_threshold = kwargs['hcThreshold']
-        if 'healthCheckSourceIp' in kwargs:
+        if health_check_source_ip is None and 'healthCheckSourceIp' in kwargs:
             health_check_source_ip = kwargs['healthCheckSourceIp']
-        if 'healthCheckTargetIp' in kwargs:
+        if health_check_target_ip is None and 'healthCheckTargetIp' in kwargs:
             health_check_target_ip = kwargs['healthCheckTargetIp']
-        if 'oppositeAccessPointId' in kwargs:
+        if opposite_access_point_id is None and 'oppositeAccessPointId' in kwargs:
             opposite_access_point_id = kwargs['oppositeAccessPointId']
-        if 'oppositeInterfaceId' in kwargs:
+        if opposite_interface_id is None and 'oppositeInterfaceId' in kwargs:
             opposite_interface_id = kwargs['oppositeInterfaceId']
-        if 'oppositeInterfaceOwnerId' in kwargs:
+        if opposite_interface_owner_id is None and 'oppositeInterfaceOwnerId' in kwargs:
             opposite_interface_owner_id = kwargs['oppositeInterfaceOwnerId']
-        if 'oppositeRouterId' in kwargs:
+        if opposite_router_id is None and 'oppositeRouterId' in kwargs:
             opposite_router_id = kwargs['oppositeRouterId']
-        if 'oppositeRouterType' in kwargs:
+        if opposite_router_type is None and 'oppositeRouterType' in kwargs:
             opposite_router_type = kwargs['oppositeRouterType']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'pricingCycle' in kwargs:
+        if pricing_cycle is None and 'pricingCycle' in kwargs:
             pricing_cycle = kwargs['pricingCycle']
-        if 'routerInterfaceId' in kwargs:
+        if router_interface_id is None and 'routerInterfaceId' in kwargs:
             router_interface_id = kwargs['routerInterfaceId']
-        if 'routerInterfaceName' in kwargs:
+        if router_interface_name is None and 'routerInterfaceName' in kwargs:
             router_interface_name = kwargs['routerInterfaceName']
 
         _setter("opposite_region_id", opposite_region_id)
@@ -669,77 +679,77 @@ class _RouterInterfaceState:
              spec: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vpc_instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessPointId' in kwargs:
+        if access_point_id is None and 'accessPointId' in kwargs:
             access_point_id = kwargs['accessPointId']
-        if 'autoPay' in kwargs:
+        if auto_pay is None and 'autoPay' in kwargs:
             auto_pay = kwargs['autoPay']
-        if 'businessStatus' in kwargs:
+        if business_status is None and 'businessStatus' in kwargs:
             business_status = kwargs['businessStatus']
-        if 'connectedTime' in kwargs:
+        if connected_time is None and 'connectedTime' in kwargs:
             connected_time = kwargs['connectedTime']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'crossBorder' in kwargs:
+        if cross_border is None and 'crossBorder' in kwargs:
             cross_border = kwargs['crossBorder']
-        if 'deleteHealthCheckIp' in kwargs:
+        if delete_health_check_ip is None and 'deleteHealthCheckIp' in kwargs:
             delete_health_check_ip = kwargs['deleteHealthCheckIp']
-        if 'endTime' in kwargs:
+        if end_time is None and 'endTime' in kwargs:
             end_time = kwargs['endTime']
-        if 'hasReservationData' in kwargs:
+        if has_reservation_data is None and 'hasReservationData' in kwargs:
             has_reservation_data = kwargs['hasReservationData']
-        if 'hcRate' in kwargs:
+        if hc_rate is None and 'hcRate' in kwargs:
             hc_rate = kwargs['hcRate']
-        if 'hcThreshold' in kwargs:
+        if hc_threshold is None and 'hcThreshold' in kwargs:
             hc_threshold = kwargs['hcThreshold']
-        if 'healthCheckSourceIp' in kwargs:
+        if health_check_source_ip is None and 'healthCheckSourceIp' in kwargs:
             health_check_source_ip = kwargs['healthCheckSourceIp']
-        if 'healthCheckTargetIp' in kwargs:
+        if health_check_target_ip is None and 'healthCheckTargetIp' in kwargs:
             health_check_target_ip = kwargs['healthCheckTargetIp']
-        if 'oppositeAccessPointId' in kwargs:
+        if opposite_access_point_id is None and 'oppositeAccessPointId' in kwargs:
             opposite_access_point_id = kwargs['oppositeAccessPointId']
-        if 'oppositeBandwidth' in kwargs:
+        if opposite_bandwidth is None and 'oppositeBandwidth' in kwargs:
             opposite_bandwidth = kwargs['oppositeBandwidth']
-        if 'oppositeInterfaceBusinessStatus' in kwargs:
+        if opposite_interface_business_status is None and 'oppositeInterfaceBusinessStatus' in kwargs:
             opposite_interface_business_status = kwargs['oppositeInterfaceBusinessStatus']
-        if 'oppositeInterfaceId' in kwargs:
+        if opposite_interface_id is None and 'oppositeInterfaceId' in kwargs:
             opposite_interface_id = kwargs['oppositeInterfaceId']
-        if 'oppositeInterfaceOwnerId' in kwargs:
+        if opposite_interface_owner_id is None and 'oppositeInterfaceOwnerId' in kwargs:
             opposite_interface_owner_id = kwargs['oppositeInterfaceOwnerId']
-        if 'oppositeInterfaceSpec' in kwargs:
+        if opposite_interface_spec is None and 'oppositeInterfaceSpec' in kwargs:
             opposite_interface_spec = kwargs['oppositeInterfaceSpec']
-        if 'oppositeInterfaceStatus' in kwargs:
+        if opposite_interface_status is None and 'oppositeInterfaceStatus' in kwargs:
             opposite_interface_status = kwargs['oppositeInterfaceStatus']
-        if 'oppositeRegionId' in kwargs:
+        if opposite_region_id is None and 'oppositeRegionId' in kwargs:
             opposite_region_id = kwargs['oppositeRegionId']
-        if 'oppositeRouterId' in kwargs:
+        if opposite_router_id is None and 'oppositeRouterId' in kwargs:
             opposite_router_id = kwargs['oppositeRouterId']
-        if 'oppositeRouterType' in kwargs:
+        if opposite_router_type is None and 'oppositeRouterType' in kwargs:
             opposite_router_type = kwargs['oppositeRouterType']
-        if 'oppositeVpcInstanceId' in kwargs:
+        if opposite_vpc_instance_id is None and 'oppositeVpcInstanceId' in kwargs:
             opposite_vpc_instance_id = kwargs['oppositeVpcInstanceId']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'pricingCycle' in kwargs:
+        if pricing_cycle is None and 'pricingCycle' in kwargs:
             pricing_cycle = kwargs['pricingCycle']
-        if 'reservationActiveTime' in kwargs:
+        if reservation_active_time is None and 'reservationActiveTime' in kwargs:
             reservation_active_time = kwargs['reservationActiveTime']
-        if 'reservationBandwidth' in kwargs:
+        if reservation_bandwidth is None and 'reservationBandwidth' in kwargs:
             reservation_bandwidth = kwargs['reservationBandwidth']
-        if 'reservationInternetChargeType' in kwargs:
+        if reservation_internet_charge_type is None and 'reservationInternetChargeType' in kwargs:
             reservation_internet_charge_type = kwargs['reservationInternetChargeType']
-        if 'reservationOrderType' in kwargs:
+        if reservation_order_type is None and 'reservationOrderType' in kwargs:
             reservation_order_type = kwargs['reservationOrderType']
-        if 'routerId' in kwargs:
+        if router_id is None and 'routerId' in kwargs:
             router_id = kwargs['routerId']
-        if 'routerInterfaceId' in kwargs:
+        if router_interface_id is None and 'routerInterfaceId' in kwargs:
             router_interface_id = kwargs['routerInterfaceId']
-        if 'routerInterfaceName' in kwargs:
+        if router_interface_name is None and 'routerInterfaceName' in kwargs:
             router_interface_name = kwargs['routerInterfaceName']
-        if 'routerType' in kwargs:
+        if router_type is None and 'routerType' in kwargs:
             router_type = kwargs['routerType']
-        if 'vpcInstanceId' in kwargs:
+        if vpc_instance_id is None and 'vpcInstanceId' in kwargs:
             vpc_instance_id = kwargs['vpcInstanceId']
 
         if access_point_id is not None:
@@ -1355,33 +1365,6 @@ class RouterInterface(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.199.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/12")
-        default_regions = alicloud.get_regions(current=True)
-        default_router_interface = alicloud.expressconnect.RouterInterface("defaultRouterInterface",
-            description=name,
-            opposite_region_id=default_regions.regions[0].id,
-            router_id=default_network.router_id,
-            role="InitiatingSide",
-            router_type="VRouter",
-            payment_type="PayAsYouGo",
-            router_interface_name=name,
-            spec="Mini.2")
-        ```
-
         ## Import
 
         Express Connect Router Interface can be imported using the id, e.g.
@@ -1429,33 +1412,6 @@ class RouterInterface(pulumi.CustomResource):
         For information about Express Connect Router Interface and how to use it, see What is Router Interface.
 
         > **NOTE:** Available since v1.199.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/12")
-        default_regions = alicloud.get_regions(current=True)
-        default_router_interface = alicloud.expressconnect.RouterInterface("defaultRouterInterface",
-            description=name,
-            opposite_region_id=default_regions.regions[0].id,
-            router_id=default_network.router_id,
-            role="InitiatingSide",
-            router_type="VRouter",
-            payment_type="PayAsYouGo",
-            router_interface_name=name,
-            spec="Mini.2")
-        ```
 
         ## Import
 

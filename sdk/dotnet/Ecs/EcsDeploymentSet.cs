@@ -16,30 +16,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available in v1.140.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Ecs.EcsDeploymentSet("default", new()
-    ///     {
-    ///         DeploymentSetName = "example_value",
-    ///         Description = "example_value",
-    ///         Domain = "Default",
-    ///         Granularity = "Host",
-    ///         Strategy = "Availability",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ECS Deployment Set can be imported using the id, e.g.

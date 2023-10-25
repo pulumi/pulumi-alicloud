@@ -36,17 +36,19 @@ class SnapshotArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             file_system_id: pulumi.Input[str],
+             file_system_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              retention_days: Optional[pulumi.Input[int]] = None,
              snapshot_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fileSystemId' in kwargs:
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'retentionDays' in kwargs:
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'snapshotName' in kwargs:
+        if snapshot_name is None and 'snapshotName' in kwargs:
             snapshot_name = kwargs['snapshotName']
 
         _setter("file_system_id", file_system_id)
@@ -140,13 +142,13 @@ class _SnapshotState:
              retention_days: Optional[pulumi.Input[int]] = None,
              snapshot_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fileSystemId' in kwargs:
+        if file_system_id is None and 'fileSystemId' in kwargs:
             file_system_id = kwargs['fileSystemId']
-        if 'retentionDays' in kwargs:
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'snapshotName' in kwargs:
+        if snapshot_name is None and 'snapshotName' in kwargs:
             snapshot_name = kwargs['snapshotName']
 
         if description is not None:
@@ -241,33 +243,6 @@ class Snapshot(pulumi.CustomResource):
 
         > **NOTE:** Only Extreme NAS file systems support the snapshot feature.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "testacc"
-        default_zones = alicloud.nas.get_zones(file_system_type="extreme")
-        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
-            file_system_type="extreme",
-            protocol_type="NFS",
-            zone_id=default_zones.zones[0].zone_id,
-            storage_type="standard",
-            description=name,
-            capacity=100)
-        default_snapshot = alicloud.nas.Snapshot("defaultSnapshot",
-            file_system_id=default_file_system.id,
-            description=name,
-            retention_days=20,
-            snapshot_name=name)
-        ```
-
         ## Import
 
         Network Attached Storage (NAS) Snapshot can be imported using the id, e.g.
@@ -298,33 +273,6 @@ class Snapshot(pulumi.CustomResource):
         > **NOTE:** Available in v1.152.0+.
 
         > **NOTE:** Only Extreme NAS file systems support the snapshot feature.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "testacc"
-        default_zones = alicloud.nas.get_zones(file_system_type="extreme")
-        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
-            file_system_type="extreme",
-            protocol_type="NFS",
-            zone_id=default_zones.zones[0].zone_id,
-            storage_type="standard",
-            description=name,
-            capacity=100)
-        default_snapshot = alicloud.nas.Snapshot("defaultSnapshot",
-            file_system_id=default_file_system.id,
-            description=name,
-            retention_days=20,
-            snapshot_name=name)
-        ```
 
         ## Import
 

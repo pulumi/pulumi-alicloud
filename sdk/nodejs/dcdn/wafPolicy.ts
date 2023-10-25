@@ -11,24 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.184.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example";
- * const example = new alicloud.dcdn.WafPolicy("example", {
- *     defenseScene: "waf_group",
- *     policyName: name,
- *     policyType: "custom",
- *     status: "on",
- * });
- * ```
- *
  * ## Import
  *
  * DCDN Waf Policy can be imported using the id, e.g.

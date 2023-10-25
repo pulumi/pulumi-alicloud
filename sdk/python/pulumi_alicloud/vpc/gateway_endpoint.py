@@ -44,26 +44,30 @@ class GatewayEndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_name: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
+             service_name: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
              gateway_endpoint_descrption: Optional[pulumi.Input[str]] = None,
              gateway_endpoint_name: Optional[pulumi.Input[str]] = None,
              policy_document: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serviceName' in kwargs:
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
-        if 'vpcId' in kwargs:
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'gatewayEndpointDescrption' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if gateway_endpoint_descrption is None and 'gatewayEndpointDescrption' in kwargs:
             gateway_endpoint_descrption = kwargs['gatewayEndpointDescrption']
-        if 'gatewayEndpointName' in kwargs:
+        if gateway_endpoint_name is None and 'gatewayEndpointName' in kwargs:
             gateway_endpoint_name = kwargs['gatewayEndpointName']
-        if 'policyDocument' in kwargs:
+        if policy_document is None and 'policyDocument' in kwargs:
             policy_document = kwargs['policyDocument']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("service_name", service_name)
@@ -212,21 +216,21 @@ class _GatewayEndpointState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'gatewayEndpointDescrption' in kwargs:
+        if gateway_endpoint_descrption is None and 'gatewayEndpointDescrption' in kwargs:
             gateway_endpoint_descrption = kwargs['gatewayEndpointDescrption']
-        if 'gatewayEndpointName' in kwargs:
+        if gateway_endpoint_name is None and 'gatewayEndpointName' in kwargs:
             gateway_endpoint_name = kwargs['gatewayEndpointName']
-        if 'policyDocument' in kwargs:
+        if policy_document is None and 'policyDocument' in kwargs:
             policy_document = kwargs['policyDocument']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'serviceName' in kwargs:
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if create_time is not None:
@@ -377,34 +381,6 @@ class GatewayEndpoint(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.208.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        domain = config.get("domain")
-        if domain is None:
-            domain = "com.aliyun.cn-hangzhou.oss"
-        default_vpc = alicloud.vpc.Network("defaultVpc", description="tf-example")
-        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
-            display_name="tf-example-497",
-            resource_group_name=name)
-        default = alicloud.vpc.GatewayEndpoint("default",
-            gateway_endpoint_descrption="test-gateway-endpoint",
-            gateway_endpoint_name=name,
-            vpc_id=default_vpc.id,
-            resource_group_id=default_rg.id,
-            service_name=domain,
-            policy_document="{ \\"Version\\" : \\"1\\", \\"Statement\\" : [ { \\"Effect\\" : \\"Allow\\", \\"Resource\\" : [ \\"*\\" ], \\"Action\\" : [ \\"*\\" ], \\"Principal\\" : [ \\"*\\" ] } ] }")
-        ```
-
         ## Import
 
         VPC Gateway Endpoint can be imported using the id, e.g.
@@ -435,34 +411,6 @@ class GatewayEndpoint(pulumi.CustomResource):
         For information about VPC Gateway Endpoint and how to use it, see [What is Gateway Endpoint](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/gateway-endpoint).
 
         > **NOTE:** Available since v1.208.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        domain = config.get("domain")
-        if domain is None:
-            domain = "com.aliyun.cn-hangzhou.oss"
-        default_vpc = alicloud.vpc.Network("defaultVpc", description="tf-example")
-        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
-            display_name="tf-example-497",
-            resource_group_name=name)
-        default = alicloud.vpc.GatewayEndpoint("default",
-            gateway_endpoint_descrption="test-gateway-endpoint",
-            gateway_endpoint_name=name,
-            vpc_id=default_vpc.id,
-            resource_group_id=default_rg.id,
-            service_name=domain,
-            policy_document="{ \\"Version\\" : \\"1\\", \\"Statement\\" : [ { \\"Effect\\" : \\"Allow\\", \\"Resource\\" : [ \\"*\\" ], \\"Action\\" : [ \\"*\\" ], \\"Principal\\" : [ \\"*\\" ] } ] }")
-        ```
 
         ## Import
 

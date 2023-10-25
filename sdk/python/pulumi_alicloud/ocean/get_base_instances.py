@@ -179,20 +179,6 @@ def get_base_instances(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.203.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ocean.get_base_instances()
-    pulumi.export("oceanBaseInstanceId1", ids.instances[0].id)
-    name_regex = alicloud.ocean.get_base_instances(name_regex="^my-Instance")
-    pulumi.export("oceanBaseInstanceId2", name_regex.instances[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Instance IDs.
     :param str instance_id: OceanBase cluster ID.
@@ -252,20 +238,6 @@ def get_base_instances_output(enable_details: Optional[pulumi.Input[Optional[boo
     This data source provides the Ocean Base Instances of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.203.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ocean.get_base_instances()
-    pulumi.export("oceanBaseInstanceId1", ids.instances[0].id)
-    name_regex = alicloud.ocean.get_base_instances(name_regex="^my-Instance")
-    pulumi.export("oceanBaseInstanceId2", name_regex.instances[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Instance IDs.

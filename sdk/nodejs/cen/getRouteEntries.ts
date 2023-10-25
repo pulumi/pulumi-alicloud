@@ -8,19 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides CEN Route Entries available to the user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const entry = alicloud.cen.getRouteEntries({
- *     instanceId: "cen-id1",
- *     routeTableId: "vtb-id1",
- * });
- * export const firstRouteEntriesRouteEntryCidrBlock = entry.then(entry => entry.entries?.[0]?.cidrBlock);
- * ```
  */
 export function getRouteEntries(args: GetRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteEntriesResult> {
 
@@ -83,19 +70,6 @@ export interface GetRouteEntriesResult {
 }
 /**
  * This data source provides CEN Route Entries available to the user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const entry = alicloud.cen.getRouteEntries({
- *     instanceId: "cen-id1",
- *     routeTableId: "vtb-id1",
- * });
- * export const firstRouteEntriesRouteEntryCidrBlock = entry.then(entry => entry.entries?.[0]?.cidrBlock);
- * ```
  */
 export function getRouteEntriesOutput(args: GetRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteEntriesResult> {
     return pulumi.output(args).apply((a: any) => getRouteEntries(a, opts))

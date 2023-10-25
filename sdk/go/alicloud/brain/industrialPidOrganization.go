@@ -17,34 +17,6 @@ import (
 //
 // > **NOTE:** Available in v1.113.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/brain"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := brain.NewIndustrialPidOrganization(ctx, "example", &brain.IndustrialPidOrganizationArgs{
-//				PidOrganizationName: pulumi.String("tf-testAcc"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Brain Industrial Pid Organization can be imported using the id, e.g.

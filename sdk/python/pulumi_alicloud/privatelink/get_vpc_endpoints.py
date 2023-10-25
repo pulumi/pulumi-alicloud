@@ -159,19 +159,6 @@ def get_vpc_endpoints(connection_status: Optional[str] = None,
 
     > **NOTE:** Available in v1.109.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.privatelink.get_vpc_endpoints(ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstPrivatelinkVpcEndpointId", example.endpoints[0].id)
-    ```
-
 
     :param str connection_status: The status of Connection.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -226,19 +213,6 @@ def get_vpc_endpoints_output(connection_status: Optional[pulumi.Input[Optional[s
     This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.109.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.privatelink.get_vpc_endpoints(ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstPrivatelinkVpcEndpointId", example.endpoints[0].id)
-    ```
 
 
     :param str connection_status: The status of Connection.

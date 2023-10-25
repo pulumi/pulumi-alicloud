@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
  *
  * > **NOTE:** Available in 1.194.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cms.getMetricRuleBlackLists({
- *     ids: [alicloud_cms_metric_rule_black_lists["default"].id],
- *     category: "ecs",
- *     namespace: "acs_ecs_dashboard",
- * });
- * export const alicloudCmsRuleBlackListExampleId = data.alicloud_cms_metric_rule_black_lists.lists[0].id;
- * ```
  */
 export function getMetricRuleBlackLists(args?: GetMetricRuleBlackListsArgs, opts?: pulumi.InvokeOptions): Promise<GetMetricRuleBlackListsResult> {
     args = args || {};
@@ -117,20 +103,6 @@ export interface GetMetricRuleBlackListsResult {
  * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
  *
  * > **NOTE:** Available in 1.194.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cms.getMetricRuleBlackLists({
- *     ids: [alicloud_cms_metric_rule_black_lists["default"].id],
- *     category: "ecs",
- *     namespace: "acs_ecs_dashboard",
- * });
- * export const alicloudCmsRuleBlackListExampleId = data.alicloud_cms_metric_rule_black_lists.lists[0].id;
- * ```
  */
 export function getMetricRuleBlackListsOutput(args?: GetMetricRuleBlackListsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetricRuleBlackListsResult> {
     return pulumi.output(args).apply((a: any) => getMetricRuleBlackLists(a, opts))

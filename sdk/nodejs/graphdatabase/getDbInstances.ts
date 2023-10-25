@@ -10,30 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.136.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.graphdatabase.getDbInstances({
- *     ids: ["example_id"],
- * });
- * export const graphDatabaseDbInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
- * const status = alicloud.graphdatabase.getDbInstances({
- *     ids: ["example_id"],
- *     status: "Running",
- * });
- * export const graphDatabaseDbInstanceId2 = status.then(status => status.instances?.[0]?.id);
- * const description = alicloud.graphdatabase.getDbInstances({
- *     ids: ["example_id"],
- *     dbInstanceDescription: "example_value",
- * });
- * export const graphDatabaseDbInstanceId3 = description.then(description => description.instances?.[0]?.id);
- * ```
  */
 export function getDbInstances(args?: GetDbInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDbInstancesResult> {
     args = args || {};
@@ -93,30 +69,6 @@ export interface GetDbInstancesResult {
  * This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.136.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.graphdatabase.getDbInstances({
- *     ids: ["example_id"],
- * });
- * export const graphDatabaseDbInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
- * const status = alicloud.graphdatabase.getDbInstances({
- *     ids: ["example_id"],
- *     status: "Running",
- * });
- * export const graphDatabaseDbInstanceId2 = status.then(status => status.instances?.[0]?.id);
- * const description = alicloud.graphdatabase.getDbInstances({
- *     ids: ["example_id"],
- *     dbInstanceDescription: "example_value",
- * });
- * export const graphDatabaseDbInstanceId3 = description.then(description => description.instances?.[0]?.id);
- * ```
  */
 export function getDbInstancesOutput(args?: GetDbInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbInstancesResult> {
     return pulumi.output(args).apply((a: any) => getDbInstances(a, opts))

@@ -5338,29 +5338,6 @@ type GetInstancesInstance struct {
 	// Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the instance. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
-	// 			Tags: map[string]interface{}{
-	// 				"tagKey1": "tagValue1",
-	// 				"tagKey2": "tagValue2",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The user id of the instance.
 	UserId string `pulumi:"userId"`
@@ -5399,29 +5376,6 @@ type GetInstancesInstanceArgs struct {
 	// Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the instance. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
-	// 			Tags: map[string]interface{}{
-	// 				"tagKey1": "tagValue1",
-	// 				"tagKey2": "tagValue2",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// The user id of the instance.
 	UserId pulumi.StringInput `pulumi:"userId"`
@@ -5544,32 +5498,6 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the instance. It must be in the format:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
-//				Tags: map[string]interface{}{
-//					"tagKey1": "tagValue1",
-//					"tagKey2": "tagValue2",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }

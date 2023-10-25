@@ -77,19 +77,19 @@ class ImageArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteAutoSnapshot' in kwargs:
+        if delete_auto_snapshot is None and 'deleteAutoSnapshot' in kwargs:
             delete_auto_snapshot = kwargs['deleteAutoSnapshot']
-        if 'diskDeviceMappings' in kwargs:
+        if disk_device_mappings is None and 'diskDeviceMappings' in kwargs:
             disk_device_mappings = kwargs['diskDeviceMappings']
-        if 'imageName' in kwargs:
+        if image_name is None and 'imageName' in kwargs:
             image_name = kwargs['imageName']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         if architecture is not None:
@@ -332,19 +332,19 @@ class _ImageState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteAutoSnapshot' in kwargs:
+        if delete_auto_snapshot is None and 'deleteAutoSnapshot' in kwargs:
             delete_auto_snapshot = kwargs['deleteAutoSnapshot']
-        if 'diskDeviceMappings' in kwargs:
+        if disk_device_mappings is None and 'diskDeviceMappings' in kwargs:
             disk_device_mappings = kwargs['diskDeviceMappings']
-        if 'imageName' in kwargs:
+        if image_name is None and 'imageName' in kwargs:
             image_name = kwargs['imageName']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
 
         if architecture is not None:
@@ -552,46 +552,6 @@ class Image(pulumi.CustomResource):
 
         > **NOTE:**  Available in 1.64.0+
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_zones = alicloud.get_zones(available_resource_creation="Instance")
-        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.sn1ne")
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            availability_zone=default_zones.zones[0].id,
-            instance_name="terraform-example",
-            security_groups=[default_security_group.id],
-            vswitch_id=default_switch.id,
-            instance_type=default_instance_types.ids[0],
-            image_id=default_images.ids[0],
-            internet_max_bandwidth_out=10)
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_image = alicloud.ecs.Image("defaultImage",
-            instance_id=default_instance.id,
-            image_name="terraform-example",
-            description="terraform-example",
-            architecture="x86_64",
-            platform="CentOS",
-            resource_group_id=default_resource_groups.ids[0],
-            tags={
-                "FinanceDept": "FinanceDeptJoshua",
-            })
-        ```
-
         ## Import
 
          image can be imported using the id, e.g.
@@ -635,46 +595,6 @@ class Image(pulumi.CustomResource):
         > **NOTE:**  If you want to combine snapshots of multiple disks into an image template, you can specify DiskDeviceMapping to create a custom image.
 
         > **NOTE:**  Available in 1.64.0+
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_zones = alicloud.get_zones(available_resource_creation="Instance")
-        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.sn1ne")
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            availability_zone=default_zones.zones[0].id,
-            instance_name="terraform-example",
-            security_groups=[default_security_group.id],
-            vswitch_id=default_switch.id,
-            instance_type=default_instance_types.ids[0],
-            image_id=default_images.ids[0],
-            internet_max_bandwidth_out=10)
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_image = alicloud.ecs.Image("defaultImage",
-            instance_id=default_instance.id,
-            image_name="terraform-example",
-            description="terraform-example",
-            architecture="x86_64",
-            platform="CentOS",
-            resource_group_id=default_resource_groups.ids[0],
-            tags={
-                "FinanceDept": "FinanceDeptJoshua",
-            })
-        ```
 
         ## Import
 

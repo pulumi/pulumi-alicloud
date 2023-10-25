@@ -131,22 +131,6 @@ def get_parameter_groups(db_type: Optional[str] = None,
 
     > **NOTE:** Available since v1.183.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.polardb.get_parameter_groups(db_type="MySQL",
-        db_version="8.0")
-    ids = alicloud.polardb.get_parameter_groups(ids=[default.groups[0].id])
-    pulumi.export("polardbParameterGroupId1", ids.groups[0].id)
-    name_regex = alicloud.polardb.get_parameter_groups(name_regex=default.groups[0].parameter_group_name)
-    pulumi.export("polardbParameterGroupId2", name_regex.groups[0].id)
-    ```
-
 
     :param str db_type: The type of the database engine. Only `MySQL` is supported.
     :param str db_version: The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
@@ -185,22 +169,6 @@ def get_parameter_groups_output(db_type: Optional[pulumi.Input[Optional[str]]] =
     This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available since v1.183.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.polardb.get_parameter_groups(db_type="MySQL",
-        db_version="8.0")
-    ids = alicloud.polardb.get_parameter_groups(ids=[default.groups[0].id])
-    pulumi.export("polardbParameterGroupId1", ids.groups[0].id)
-    name_regex = alicloud.polardb.get_parameter_groups(name_regex=default.groups[0].parameter_group_name)
-    pulumi.export("polardbParameterGroupId2", name_regex.groups[0].id)
-    ```
 
 
     :param str db_type: The type of the database engine. Only `MySQL` is supported.

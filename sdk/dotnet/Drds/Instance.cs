@@ -20,29 +20,6 @@ namespace Pulumi.AliCloud.Drds
     /// 
     /// &gt; **NOTE:** Currently, this resource only support `Domestic Site Account`.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Drds.Instance("default", new()
-    ///     {
-    ///         Description = "drds instance",
-    ///         InstanceChargeType = "PostPaid",
-    ///         InstanceSeries = "drds.sn1.4c8g",
-    ///         Specification = "drds.sn1.4c8g.8C16G",
-    ///         VswitchId = "vsw-bp1jlu3swk8rq2yoi40ey",
-    ///         ZoneId = "cn-hangzhou-e",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Distributed Relational Database Service (DRDS) can be imported using the id, e.g.

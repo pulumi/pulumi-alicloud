@@ -35,16 +35,24 @@ class ResourceRecordArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             record_id: pulumi.Input[str],
-             resource_name: pulumi.Input[str],
-             tag: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             record_id: Optional[pulumi.Input[str]] = None,
+             resource_name: Optional[pulumi.Input[str]] = None,
+             tag: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'recordId' in kwargs:
+        if record_id is None and 'recordId' in kwargs:
             record_id = kwargs['recordId']
-        if 'resourceName' in kwargs:
+        if record_id is None:
+            raise TypeError("Missing 'record_id' argument")
+        if resource_name is None and 'resourceName' in kwargs:
             resource_name = kwargs['resourceName']
+        if resource_name is None:
+            raise TypeError("Missing 'resource_name' argument")
+        if tag is None:
+            raise TypeError("Missing 'tag' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("record_id", record_id)
         _setter("resource_name", resource_name)
@@ -128,11 +136,11 @@ class _ResourceRecordState:
              resource_name: Optional[pulumi.Input[str]] = None,
              tag: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'recordId' in kwargs:
+        if record_id is None and 'recordId' in kwargs:
             record_id = kwargs['recordId']
-        if 'resourceName' in kwargs:
+        if resource_name is None and 'resourceName' in kwargs:
             resource_name = kwargs['resourceName']
 
         if record_id is not None:
@@ -210,21 +218,6 @@ class ResourceRecord(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.162.0+, log resource region should be set a main region: cn-heyuan
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.log.ResourceRecord("example",
-            record_id="user_tf_test_resource_1",
-            resource_name_="user.tf.test_resource",
-            tag="test resource tag",
-            value="{\\"col1\\": \\"this is col1 value\\", \\"col2\\": \\"col2 value\\"}")
-        ```
-
         ## Import
 
         Log resource record can be imported using the id, e.g.
@@ -252,21 +245,6 @@ class ResourceRecord(pulumi.CustomResource):
         For information about SLS Resource and how to use it, see [Resource management](https://www.alibabacloud.com/help/en/doc-detail/207732.html)
 
         > **NOTE:** Available in 1.162.0+, log resource region should be set a main region: cn-heyuan
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.log.ResourceRecord("example",
-            record_id="user_tf_test_resource_1",
-            resource_name_="user.tf.test_resource",
-            tag="test resource tag",
-            value="{\\"col1\\": \\"this is col1 value\\", \\"col2\\": \\"col2 value\\"}")
-        ```
 
         ## Import
 

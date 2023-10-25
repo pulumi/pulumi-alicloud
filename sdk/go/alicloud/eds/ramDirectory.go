@@ -19,67 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.174.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultZones, err := eds.GetZones(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("172.16.0.0/16"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
-//				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Ids[0]),
-//				VswitchName: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = eds.NewRamDirectory(ctx, "defaultRamDirectory", &eds.RamDirectoryArgs{
-//				DesktopAccessType:    pulumi.String("INTERNET"),
-//				EnableAdminAccess:    pulumi.Bool(true),
-//				EnableInternetAccess: pulumi.Bool(true),
-//				RamDirectoryName:     pulumi.String(name),
-//				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ECD Ram Directory can be imported using the id, e.g.

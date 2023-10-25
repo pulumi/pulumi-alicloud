@@ -47,23 +47,31 @@ class DdosBgpInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bandwidth: pulumi.Input[int],
-             ip_count: pulumi.Input[int],
-             ip_type: pulumi.Input[str],
-             normal_bandwidth: pulumi.Input[int],
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             ip_count: Optional[pulumi.Input[int]] = None,
+             ip_type: Optional[pulumi.Input[str]] = None,
+             normal_bandwidth: Optional[pulumi.Input[int]] = None,
              base_bandwidth: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              period: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipCount' in kwargs:
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if ip_count is None and 'ipCount' in kwargs:
             ip_count = kwargs['ipCount']
-        if 'ipType' in kwargs:
+        if ip_count is None:
+            raise TypeError("Missing 'ip_count' argument")
+        if ip_type is None and 'ipType' in kwargs:
             ip_type = kwargs['ipType']
-        if 'normalBandwidth' in kwargs:
+        if ip_type is None:
+            raise TypeError("Missing 'ip_type' argument")
+        if normal_bandwidth is None and 'normalBandwidth' in kwargs:
             normal_bandwidth = kwargs['normalBandwidth']
-        if 'baseBandwidth' in kwargs:
+        if normal_bandwidth is None:
+            raise TypeError("Missing 'normal_bandwidth' argument")
+        if base_bandwidth is None and 'baseBandwidth' in kwargs:
             base_bandwidth = kwargs['baseBandwidth']
 
         _setter("bandwidth", bandwidth)
@@ -220,15 +228,15 @@ class _DdosBgpInstanceState:
              normal_bandwidth: Optional[pulumi.Input[int]] = None,
              period: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'baseBandwidth' in kwargs:
+        if base_bandwidth is None and 'baseBandwidth' in kwargs:
             base_bandwidth = kwargs['baseBandwidth']
-        if 'ipCount' in kwargs:
+        if ip_count is None and 'ipCount' in kwargs:
             ip_count = kwargs['ipCount']
-        if 'ipType' in kwargs:
+        if ip_type is None and 'ipType' in kwargs:
             ip_type = kwargs['ipType']
-        if 'normalBandwidth' in kwargs:
+        if normal_bandwidth is None and 'normalBandwidth' in kwargs:
             normal_bandwidth = kwargs['normalBandwidth']
 
         if bandwidth is not None:
@@ -371,27 +379,6 @@ class DdosBgpInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.183.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        instance = alicloud.ddos.DdosBgpInstance("instance",
-            base_bandwidth=20,
-            bandwidth=-1,
-            ip_count=100,
-            ip_type="IPv4",
-            normal_bandwidth=100,
-            type="Enterprise")
-        ```
-
         ## Import
 
         Ddosbgp instance can be imported using the id, e.g.
@@ -423,27 +410,6 @@ class DdosBgpInstance(pulumi.CustomResource):
         > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
 
         > **NOTE:** Available since v1.183.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        instance = alicloud.ddos.DdosBgpInstance("instance",
-            base_bandwidth=20,
-            bandwidth=-1,
-            ip_count=100,
-            ip_type="IPv4",
-            normal_bandwidth=100,
-            type="Enterprise")
-        ```
 
         ## Import
 

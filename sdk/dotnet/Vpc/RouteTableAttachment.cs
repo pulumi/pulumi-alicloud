@@ -16,53 +16,6 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available since v1.194.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
-    ///     {
-    ///         CidrBlock = "172.16.0.0/12",
-    ///     });
-    /// 
-    ///     var @default = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
-    ///     {
-    ///         VpcId = fooNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/21",
-    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
-    ///     });
-    /// 
-    ///     var fooRouteTable = new AliCloud.Vpc.RouteTable("fooRouteTable", new()
-    ///     {
-    ///         VpcId = fooNetwork.Id,
-    ///         RouteTableName = name,
-    ///         Description = "route_table_attachment",
-    ///     });
-    /// 
-    ///     var fooRouteTableAttachment = new AliCloud.Vpc.RouteTableAttachment("fooRouteTableAttachment", new()
-    ///     {
-    ///         VswitchId = fooSwitch.Id,
-    ///         RouteTableId = fooRouteTable.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// VPC Route Table Attachment can be imported using the id, e.g.

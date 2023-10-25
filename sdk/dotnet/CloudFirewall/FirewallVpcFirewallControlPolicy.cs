@@ -16,53 +16,6 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// &gt; **NOTE:** Available since v1.194.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
-    /// 
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
-    ///     {
-    ///         CenInstanceName = @var.Name,
-    ///         Description = "example_value",
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "TF" },
-    ///             { "For", "acceptance test" },
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultFirewallVpcFirewallControlPolicy = new AliCloud.CloudFirewall.FirewallVpcFirewallControlPolicy("defaultFirewallVpcFirewallControlPolicy", new()
-    ///     {
-    ///         Order = 1,
-    ///         Destination = "127.0.0.2/32",
-    ///         ApplicationName = "ANY",
-    ///         Description = "example_value",
-    ///         SourceType = "net",
-    ///         DestPort = "80/88",
-    ///         AclAction = "accept",
-    ///         Lang = "zh",
-    ///         DestinationType = "net",
-    ///         Source = "127.0.0.1/32",
-    ///         DestPortType = "port",
-    ///         Proto = "TCP",
-    ///         Release = true,
-    ///         MemberUid = defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
-    ///         VpcFirewallId = defaultInstance.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Cloud Firewall Vpc Firewall Control Policy can be imported using the id, e.g.

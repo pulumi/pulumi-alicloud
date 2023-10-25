@@ -19,40 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.144.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := directmail.NewTag(ctx, "example", &directmail.TagArgs{
-//				TagName: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Direct Mail Tag can be imported using the id, e.g.

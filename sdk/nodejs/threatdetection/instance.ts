@@ -11,33 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.199.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.threatdetection.Instance("default", {
- *     buyNumber: "30",
- *     containerImageScan: "100",
- *     honeypot: "32",
- *     honeypotSwitch: "1",
- *     paymentType: "Subscription",
- *     period: 12,
- *     renewalStatus: "ManualRenewal",
- *     sasAntiRansomware: "100",
- *     sasSc: true,
- *     sasSdk: "1000",
- *     sasSdkSwitch: "1",
- *     sasSlsStorage: "100",
- *     sasWebguardOrderNum: "100",
- *     vCore: "100",
- *     versionCode: "level2",
- * });
- * ```
- *
  * ## Import
  *
  * Threat Detection Instance do not support import.

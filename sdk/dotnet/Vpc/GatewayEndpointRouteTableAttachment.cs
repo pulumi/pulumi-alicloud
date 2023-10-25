@@ -16,49 +16,6 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available since v1.208.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaulteVpc = new AliCloud.Vpc.Network("defaulteVpc", new()
-    ///     {
-    ///         Description = "test",
-    ///     });
-    /// 
-    ///     var defaultGE = new AliCloud.Vpc.GatewayEndpoint("defaultGE", new()
-    ///     {
-    ///         ServiceName = "com.aliyun.cn-hangzhou.oss",
-    ///         PolicyDocument = "{ \"Version\" : \"1\", \"Statement\" : [ { \"Effect\" : \"Allow\", \"Resource\" : [ \"*\" ], \"Action\" : [ \"*\" ], \"Principal\" : [ \"*\" ] } ] }",
-    ///         VpcId = defaulteVpc.Id,
-    ///         GatewayEndpointDescrption = "test-gateway-endpoint",
-    ///         GatewayEndpointName = $"{name}1",
-    ///     });
-    /// 
-    ///     var defaultRT = new AliCloud.Vpc.RouteTable("defaultRT", new()
-    ///     {
-    ///         VpcId = defaulteVpc.Id,
-    ///         RouteTableName = $"{name}2",
-    ///     });
-    /// 
-    ///     var @default = new AliCloud.Vpc.GatewayEndpointRouteTableAttachment("default", new()
-    ///     {
-    ///         GatewayEndpointId = defaultGE.Id,
-    ///         RouteTableId = defaultRT.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// VPC Gateway Endpoint Route Table Attachment can be imported using the id, e.g.

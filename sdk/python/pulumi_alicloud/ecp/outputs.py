@@ -44,24 +44,36 @@ class GetInstanceTypesInstanceTypeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cpu_core_count: int,
-             default_resolution: str,
-             instance_type: str,
-             instance_type_family: str,
-             name: str,
-             name_en: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cpu_core_count: Optional[int] = None,
+             default_resolution: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             instance_type_family: Optional[str] = None,
+             name: Optional[str] = None,
+             name_en: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cpuCoreCount' in kwargs:
+        if cpu_core_count is None and 'cpuCoreCount' in kwargs:
             cpu_core_count = kwargs['cpuCoreCount']
-        if 'defaultResolution' in kwargs:
+        if cpu_core_count is None:
+            raise TypeError("Missing 'cpu_core_count' argument")
+        if default_resolution is None and 'defaultResolution' in kwargs:
             default_resolution = kwargs['defaultResolution']
-        if 'instanceType' in kwargs:
+        if default_resolution is None:
+            raise TypeError("Missing 'default_resolution' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'instanceTypeFamily' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if instance_type_family is None and 'instanceTypeFamily' in kwargs:
             instance_type_family = kwargs['instanceTypeFamily']
-        if 'nameEn' in kwargs:
+        if instance_type_family is None:
+            raise TypeError("Missing 'instance_type_family' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if name_en is None and 'nameEn' in kwargs:
             name_en = kwargs['nameEn']
+        if name_en is None:
+            raise TypeError("Missing 'name_en' argument")
 
         _setter("cpu_core_count", cpu_core_count)
         _setter("default_resolution", default_resolution)
@@ -168,42 +180,70 @@ class GetInstancesInstanceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             id: str,
-             image_id: str,
-             instance_id: str,
-             instance_name: str,
-             instance_type: str,
-             key_pair_name: str,
-             payment_type: str,
-             resolution: str,
-             security_group_id: str,
-             status: str,
-             vnc_url: str,
-             vswitch_id: str,
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             image_id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             key_pair_name: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             resolution: Optional[str] = None,
+             security_group_id: Optional[str] = None,
+             status: Optional[str] = None,
+             vnc_url: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'imageId' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceId' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceType' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'keyPairName' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
-        if 'paymentType' in kwargs:
+        if key_pair_name is None:
+            raise TypeError("Missing 'key_pair_name' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'securityGroupId' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if resolution is None:
+            raise TypeError("Missing 'resolution' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vncUrl' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vnc_url is None and 'vncUrl' in kwargs:
             vnc_url = kwargs['vncUrl']
-        if 'vswitchId' in kwargs:
+        if vnc_url is None:
+            raise TypeError("Missing 'vnc_url' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("description", description)
         _setter("id", id)
@@ -350,15 +390,21 @@ class GetKeyPairsPairResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             key_pair_finger_print: str,
-             key_pair_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             key_pair_finger_print: Optional[str] = None,
+             key_pair_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'keyPairFingerPrint' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if key_pair_finger_print is None and 'keyPairFingerPrint' in kwargs:
             key_pair_finger_print = kwargs['keyPairFingerPrint']
-        if 'keyPairName' in kwargs:
+        if key_pair_finger_print is None:
+            raise TypeError("Missing 'key_pair_finger_print' argument")
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
+        if key_pair_name is None:
+            raise TypeError("Missing 'key_pair_name' argument")
 
         _setter("id", id)
         _setter("key_pair_finger_print", key_pair_finger_print)
@@ -403,11 +449,13 @@ class GetZonesZoneResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("zone_id", zone_id)
 

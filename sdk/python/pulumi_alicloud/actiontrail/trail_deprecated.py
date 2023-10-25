@@ -71,29 +71,29 @@ class TrailDeprecatedArgs:
              status: Optional[pulumi.Input[str]] = None,
              trail_name: Optional[pulumi.Input[str]] = None,
              trail_region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventRw' in kwargs:
+        if event_rw is None and 'eventRw' in kwargs:
             event_rw = kwargs['eventRw']
-        if 'isOrganizationTrail' in kwargs:
+        if is_organization_trail is None and 'isOrganizationTrail' in kwargs:
             is_organization_trail = kwargs['isOrganizationTrail']
-        if 'mnsTopicArn' in kwargs:
+        if mns_topic_arn is None and 'mnsTopicArn' in kwargs:
             mns_topic_arn = kwargs['mnsTopicArn']
-        if 'ossBucketName' in kwargs:
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'ossKeyPrefix' in kwargs:
+        if oss_key_prefix is None and 'ossKeyPrefix' in kwargs:
             oss_key_prefix = kwargs['ossKeyPrefix']
-        if 'ossWriteRoleArn' in kwargs:
+        if oss_write_role_arn is None and 'ossWriteRoleArn' in kwargs:
             oss_write_role_arn = kwargs['ossWriteRoleArn']
-        if 'roleName' in kwargs:
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
-        if 'slsProjectArn' in kwargs:
+        if sls_project_arn is None and 'slsProjectArn' in kwargs:
             sls_project_arn = kwargs['slsProjectArn']
-        if 'slsWriteRoleArn' in kwargs:
+        if sls_write_role_arn is None and 'slsWriteRoleArn' in kwargs:
             sls_write_role_arn = kwargs['slsWriteRoleArn']
-        if 'trailName' in kwargs:
+        if trail_name is None and 'trailName' in kwargs:
             trail_name = kwargs['trailName']
-        if 'trailRegion' in kwargs:
+        if trail_region is None and 'trailRegion' in kwargs:
             trail_region = kwargs['trailRegion']
 
         if event_rw is not None:
@@ -342,29 +342,29 @@ class _TrailDeprecatedState:
              status: Optional[pulumi.Input[str]] = None,
              trail_name: Optional[pulumi.Input[str]] = None,
              trail_region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventRw' in kwargs:
+        if event_rw is None and 'eventRw' in kwargs:
             event_rw = kwargs['eventRw']
-        if 'isOrganizationTrail' in kwargs:
+        if is_organization_trail is None and 'isOrganizationTrail' in kwargs:
             is_organization_trail = kwargs['isOrganizationTrail']
-        if 'mnsTopicArn' in kwargs:
+        if mns_topic_arn is None and 'mnsTopicArn' in kwargs:
             mns_topic_arn = kwargs['mnsTopicArn']
-        if 'ossBucketName' in kwargs:
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
             oss_bucket_name = kwargs['ossBucketName']
-        if 'ossKeyPrefix' in kwargs:
+        if oss_key_prefix is None and 'ossKeyPrefix' in kwargs:
             oss_key_prefix = kwargs['ossKeyPrefix']
-        if 'ossWriteRoleArn' in kwargs:
+        if oss_write_role_arn is None and 'ossWriteRoleArn' in kwargs:
             oss_write_role_arn = kwargs['ossWriteRoleArn']
-        if 'roleName' in kwargs:
+        if role_name is None and 'roleName' in kwargs:
             role_name = kwargs['roleName']
-        if 'slsProjectArn' in kwargs:
+        if sls_project_arn is None and 'slsProjectArn' in kwargs:
             sls_project_arn = kwargs['slsProjectArn']
-        if 'slsWriteRoleArn' in kwargs:
+        if sls_write_role_arn is None and 'slsWriteRoleArn' in kwargs:
             sls_write_role_arn = kwargs['slsWriteRoleArn']
-        if 'trailName' in kwargs:
+        if trail_name is None and 'trailName' in kwargs:
             trail_name = kwargs['trailName']
-        if 'trailRegion' in kwargs:
+        if trail_region is None and 'trailRegion' in kwargs:
             trail_region = kwargs['trailRegion']
 
         if event_rw is not None:
@@ -584,20 +584,6 @@ class TrailDeprecated(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.35.0+
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new action trail.
-        foo = alicloud.actiontrail.TrailDeprecated("foo",
-            event_rw="Write-test",
-            oss_bucket_name=alicloud_oss_bucket["bucket"]["id"],
-            role_name=alicloud_ram_role_policy_attachment["attach"]["role_name"],
-            oss_key_prefix="at-product-account-audit-B")
-        ```
-
         ## Import
 
         Action trail can be imported using the id, e.g.
@@ -630,20 +616,6 @@ class TrailDeprecated(pulumi.CustomResource):
         Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
 
         > **NOTE:** Available in 1.35.0+
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new action trail.
-        foo = alicloud.actiontrail.TrailDeprecated("foo",
-            event_rw="Write-test",
-            oss_bucket_name=alicloud_oss_bucket["bucket"]["id"],
-            role_name=alicloud_ram_role_policy_attachment["attach"]["role_name"],
-            oss_key_prefix="at-product-account-audit-B")
-        ```
 
         ## Import
 

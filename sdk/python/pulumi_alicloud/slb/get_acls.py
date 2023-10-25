@@ -132,15 +132,6 @@ def get_acls(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the acls in the region.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    sample_ds = alicloud.slb.get_acls()
-    pulumi.export("firstSlbAclId", sample_ds.acls[0].id)
-    ```
     ## Entry Block
 
     The entry mapping supports the following:
@@ -194,15 +185,6 @@ def get_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
     """
     This data source provides the acls in the region.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    sample_ds = alicloud.slb.get_acls()
-    pulumi.export("firstSlbAclId", sample_ds.acls[0].id)
-    ```
     ## Entry Block
 
     The entry mapping supports the following:

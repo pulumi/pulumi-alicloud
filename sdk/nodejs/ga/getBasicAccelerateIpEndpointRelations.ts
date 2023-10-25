@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.194.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ga.getBasicAccelerateIpEndpointRelations({
- *     ids: ["example_id"],
- *     acceleratorId: "example_id",
- * });
- * export const gaBasicAccelerateIpEndpointRelationsId1 = ids.then(ids => ids.relations?.[0]?.id);
- * ```
  */
 export function getBasicAccelerateIpEndpointRelations(args: GetBasicAccelerateIpEndpointRelationsArgs, opts?: pulumi.InvokeOptions): Promise<GetBasicAccelerateIpEndpointRelationsResult> {
 
@@ -104,21 +89,6 @@ export interface GetBasicAccelerateIpEndpointRelationsResult {
  * This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.194.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ga.getBasicAccelerateIpEndpointRelations({
- *     ids: ["example_id"],
- *     acceleratorId: "example_id",
- * });
- * export const gaBasicAccelerateIpEndpointRelationsId1 = ids.then(ids => ids.relations?.[0]?.id);
- * ```
  */
 export function getBasicAccelerateIpEndpointRelationsOutput(args: GetBasicAccelerateIpEndpointRelationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBasicAccelerateIpEndpointRelationsResult> {
     return pulumi.output(args).apply((a: any) => getBasicAccelerateIpEndpointRelations(a, opts))

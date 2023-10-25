@@ -16,39 +16,6 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// &gt; **NOTE:** Available since v1.149.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "example-name";
-    ///     var exampleRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance", new()
-    ///     {
-    ///         PaymentType = "Subscription",
-    ///         Period = 1,
-    ///         RenewPeriod = 0,
-    ///         RenewalStatus = "ManualRenewal",
-    ///         InstanceType = "Advanced",
-    ///         InstanceName = name,
-    ///     });
-    /// 
-    ///     var exampleChartNamespace = new AliCloud.CR.ChartNamespace("exampleChartNamespace", new()
-    ///     {
-    ///         InstanceId = exampleRegistryEnterpriseInstance.Id,
-    ///         NamespaceName = name,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// CR Chart Namespace can be imported using the id, e.g.

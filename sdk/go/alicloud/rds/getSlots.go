@@ -15,35 +15,6 @@ import (
 // This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available since v1.204.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := rds.GetSlots(ctx, &rds.GetSlotsArgs{
-//				DbInstanceId: "example_value",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstRdsSlotsName", example.Slots[0].SlotName)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetSlots(ctx *pulumi.Context, args *GetSlotsArgs, opts ...pulumi.InvokeOption) (*GetSlotsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSlotsResult

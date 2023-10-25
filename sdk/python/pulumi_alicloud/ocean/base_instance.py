@@ -93,11 +93,11 @@ class BaseInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk_size: pulumi.Input[int],
-             instance_class: pulumi.Input[str],
-             payment_type: pulumi.Input[str],
-             series: pulumi.Input[str],
-             zones: pulumi.Input[Sequence[pulumi.Input[str]]],
+             disk_size: Optional[pulumi.Input[int]] = None,
+             instance_class: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             series: Optional[pulumi.Input[str]] = None,
+             zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              auto_renew: Optional[pulumi.Input[bool]] = None,
              auto_renew_period: Optional[pulumi.Input[int]] = None,
              backup_retain_mode: Optional[pulumi.Input[str]] = None,
@@ -108,31 +108,41 @@ class BaseInstanceArgs:
              period: Optional[pulumi.Input[int]] = None,
              period_unit: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'instanceClass' in kwargs:
+        if disk_size is None:
+            raise TypeError("Missing 'disk_size' argument")
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'paymentType' in kwargs:
+        if instance_class is None:
+            raise TypeError("Missing 'instance_class' argument")
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'autoRenew' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if series is None:
+            raise TypeError("Missing 'series' argument")
+        if zones is None:
+            raise TypeError("Missing 'zones' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'backupRetainMode' in kwargs:
+        if backup_retain_mode is None and 'backupRetainMode' in kwargs:
             backup_retain_mode = kwargs['backupRetainMode']
-        if 'diskType' in kwargs:
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'nodeNum' in kwargs:
+        if node_num is None and 'nodeNum' in kwargs:
             node_num = kwargs['nodeNum']
-        if 'obVersion' in kwargs:
+        if ob_version is None and 'obVersion' in kwargs:
             ob_version = kwargs['obVersion']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("disk_size", disk_size)
@@ -480,35 +490,35 @@ class _BaseInstanceState:
              series: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'backupRetainMode' in kwargs:
+        if backup_retain_mode is None and 'backupRetainMode' in kwargs:
             backup_retain_mode = kwargs['backupRetainMode']
-        if 'commodityCode' in kwargs:
+        if commodity_code is None and 'commodityCode' in kwargs:
             commodity_code = kwargs['commodityCode']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'diskType' in kwargs:
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'instanceClass' in kwargs:
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'nodeNum' in kwargs:
+        if node_num is None and 'nodeNum' in kwargs:
             node_num = kwargs['nodeNum']
-        if 'obVersion' in kwargs:
+        if ob_version is None and 'obVersion' in kwargs:
             ob_version = kwargs['obVersion']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         if auto_renew is not None:
@@ -832,36 +842,6 @@ class BaseInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.203.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_base_instance = alicloud.ocean.BaseInstance("defaultBaseInstance",
-            resource_group_id=default_resource_groups.ids[0],
-            zones=[
-                default_zones.ids[len(default_zones.ids) - 2],
-                default_zones.ids[len(default_zones.ids) - 3],
-                default_zones.ids[len(default_zones.ids) - 4],
-            ],
-            auto_renew=False,
-            disk_size=100,
-            payment_type="PayAsYouGo",
-            instance_class="8C32GB",
-            backup_retain_mode="delete_all",
-            series="normal",
-            instance_name=name)
-        ```
-
         ## Import
 
         Ocean Base Instance can be imported using the id, e.g.
@@ -925,36 +905,6 @@ class BaseInstance(pulumi.CustomResource):
         For information about Ocean Base Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/apsaradb-for-oceanbase/latest/what-is-oceanbase-database).
 
         > **NOTE:** Available since v1.203.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_base_instance = alicloud.ocean.BaseInstance("defaultBaseInstance",
-            resource_group_id=default_resource_groups.ids[0],
-            zones=[
-                default_zones.ids[len(default_zones.ids) - 2],
-                default_zones.ids[len(default_zones.ids) - 3],
-                default_zones.ids[len(default_zones.ids) - 4],
-            ],
-            auto_renew=False,
-            disk_size=100,
-            payment_type="PayAsYouGo",
-            instance_class="8C32GB",
-            backup_retain_mode="delete_all",
-            series="normal",
-            instance_name=name)
-        ```
 
         ## Import
 

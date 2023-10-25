@@ -13,23 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const sagId = config.get("sagId") || "sag-9bifk***";
- * const _default = new alicloud.rocketmq.SnatEntry("default", {
- *     sagId: sagId,
- *     cidrBlock: "192.168.7.0/24",
- *     snatIp: "192.0.0.2",
- * });
- * ```
- *
  * ## Import
  *
  * The Sag SnatEntry can be imported using the id, e.g.

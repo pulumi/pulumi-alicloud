@@ -109,37 +109,6 @@ def get_policy_groups(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.130.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.eds.EcdPolicyGroup("default",
-        policy_group_name="my-policy-group",
-        clipboard="read",
-        local_drive="read",
-        usb_redirect="off",
-        watermark="off",
-        authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-            description="my-description1",
-            cidr_ip="1.2.3.45/24",
-        )],
-        authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-            type="inflow",
-            policy="accept",
-            description="my-description",
-            port_range="80/80",
-            ip_protocol="TCP",
-            priority="1",
-            cidr_ip="1.2.3.4/24",
-        )])
-    name_regex = alicloud.eds.get_policy_groups(name_regex="^my-policy")
-    pulumi.export("ecdPolicyGroupId", name_regex.groups[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Policy Group IDs.
     :param str name_regex: A regex string to filter results by Policy Group name.
@@ -174,37 +143,6 @@ def get_policy_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.130.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.eds.EcdPolicyGroup("default",
-        policy_group_name="my-policy-group",
-        clipboard="read",
-        local_drive="read",
-        usb_redirect="off",
-        watermark="off",
-        authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-            description="my-description1",
-            cidr_ip="1.2.3.45/24",
-        )],
-        authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-            type="inflow",
-            policy="accept",
-            description="my-description",
-            port_range="80/80",
-            ip_protocol="TCP",
-            priority="1",
-            cidr_ip="1.2.3.4/24",
-        )])
-    name_regex = alicloud.eds.get_policy_groups(name_regex="^my-policy")
-    pulumi.export("ecdPolicyGroupId", name_regex.groups[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Policy Group IDs.

@@ -50,24 +50,40 @@ class GetExecutionsExecutionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             execution_name: str,
-             flow_name: str,
-             id: str,
-             input: str,
-             output: str,
-             started_time: str,
-             status: str,
-             stopped_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             execution_name: Optional[str] = None,
+             flow_name: Optional[str] = None,
+             id: Optional[str] = None,
+             input: Optional[str] = None,
+             output: Optional[str] = None,
+             started_time: Optional[str] = None,
+             status: Optional[str] = None,
+             stopped_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'executionName' in kwargs:
+        if execution_name is None and 'executionName' in kwargs:
             execution_name = kwargs['executionName']
-        if 'flowName' in kwargs:
+        if execution_name is None:
+            raise TypeError("Missing 'execution_name' argument")
+        if flow_name is None and 'flowName' in kwargs:
             flow_name = kwargs['flowName']
-        if 'startedTime' in kwargs:
+        if flow_name is None:
+            raise TypeError("Missing 'flow_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if input is None:
+            raise TypeError("Missing 'input' argument")
+        if output is None:
+            raise TypeError("Missing 'output' argument")
+        if started_time is None and 'startedTime' in kwargs:
             started_time = kwargs['startedTime']
-        if 'stoppedTime' in kwargs:
+        if started_time is None:
+            raise TypeError("Missing 'started_time' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if stopped_time is None and 'stoppedTime' in kwargs:
             stopped_time = kwargs['stoppedTime']
+        if stopped_time is None:
+            raise TypeError("Missing 'stopped_time' argument")
 
         _setter("execution_name", execution_name)
         _setter("flow_name", flow_name)
@@ -178,22 +194,38 @@ class GetFlowsFlowResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             definition: str,
-             description: str,
-             flow_id: str,
-             id: str,
-             last_modified_time: str,
-             name: str,
-             role_arn: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             definition: Optional[str] = None,
+             description: Optional[str] = None,
+             flow_id: Optional[str] = None,
+             id: Optional[str] = None,
+             last_modified_time: Optional[str] = None,
+             name: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'flowId' in kwargs:
+        if definition is None:
+            raise TypeError("Missing 'definition' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if flow_id is None and 'flowId' in kwargs:
             flow_id = kwargs['flowId']
-        if 'lastModifiedTime' in kwargs:
+        if flow_id is None:
+            raise TypeError("Missing 'flow_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
             last_modified_time = kwargs['lastModifiedTime']
-        if 'roleArn' in kwargs:
+        if last_modified_time is None:
+            raise TypeError("Missing 'last_modified_time' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
+        if role_arn is None:
+            raise TypeError("Missing 'role_arn' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("definition", definition)
         _setter("description", description)
@@ -304,24 +336,40 @@ class GetSchedulesScheduleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cron_expression: str,
-             description: str,
-             enable: bool,
-             id: str,
-             last_modified_time: str,
-             payload: str,
-             schedule_id: str,
-             schedule_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cron_expression: Optional[str] = None,
+             description: Optional[str] = None,
+             enable: Optional[bool] = None,
+             id: Optional[str] = None,
+             last_modified_time: Optional[str] = None,
+             payload: Optional[str] = None,
+             schedule_id: Optional[str] = None,
+             schedule_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cronExpression' in kwargs:
+        if cron_expression is None and 'cronExpression' in kwargs:
             cron_expression = kwargs['cronExpression']
-        if 'lastModifiedTime' in kwargs:
+        if cron_expression is None:
+            raise TypeError("Missing 'cron_expression' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if enable is None:
+            raise TypeError("Missing 'enable' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
             last_modified_time = kwargs['lastModifiedTime']
-        if 'scheduleId' in kwargs:
+        if last_modified_time is None:
+            raise TypeError("Missing 'last_modified_time' argument")
+        if payload is None:
+            raise TypeError("Missing 'payload' argument")
+        if schedule_id is None and 'scheduleId' in kwargs:
             schedule_id = kwargs['scheduleId']
-        if 'scheduleName' in kwargs:
+        if schedule_id is None:
+            raise TypeError("Missing 'schedule_id' argument")
+        if schedule_name is None and 'scheduleName' in kwargs:
             schedule_name = kwargs['scheduleName']
+        if schedule_name is None:
+            raise TypeError("Missing 'schedule_name' argument")
 
         _setter("cron_expression", cron_expression)
         _setter("description", description)

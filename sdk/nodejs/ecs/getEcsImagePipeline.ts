@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.163.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ecs.getEcsImagePipeline({
- *     ids: ["example_value"],
- * });
- * export const ecsImagePipelineId1 = ids.then(ids => ids.pipelines?.[0]?.id);
- * const nameRegex = alicloud.ecs.getEcsImagePipeline({
- *     nameRegex: "^my-ImagePipeline",
- * });
- * export const ecsImagePipelineId2 = nameRegex.then(nameRegex => nameRegex.pipelines?.[0]?.id);
- * ```
  */
 export function getEcsImagePipeline(args?: GetEcsImagePipelineArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsImagePipelineResult> {
     args = args || {};
@@ -94,24 +76,6 @@ export interface GetEcsImagePipelineResult {
  * This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.163.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ecs.getEcsImagePipeline({
- *     ids: ["example_value"],
- * });
- * export const ecsImagePipelineId1 = ids.then(ids => ids.pipelines?.[0]?.id);
- * const nameRegex = alicloud.ecs.getEcsImagePipeline({
- *     nameRegex: "^my-ImagePipeline",
- * });
- * export const ecsImagePipelineId2 = nameRegex.then(nameRegex => nameRegex.pipelines?.[0]?.id);
- * ```
  */
 export function getEcsImagePipelineOutput(args?: GetEcsImagePipelineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsImagePipelineResult> {
     return pulumi.output(args).apply((a: any) => getEcsImagePipeline(a, opts))

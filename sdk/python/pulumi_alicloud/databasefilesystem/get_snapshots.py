@@ -109,22 +109,6 @@ def get_snapshots(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.156.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.databasefilesystem.get_snapshots(ids=["example_id"])
-    pulumi.export("dbfsSnapshotId1", ids.snapshots[0].id)
-    name_regex = alicloud.databasefilesystem.get_snapshots(name_regex="^my-Snapshot")
-    pulumi.export("dbfsSnapshotId2", name_regex.snapshots[0].id)
-    status = alicloud.databasefilesystem.get_snapshots(status="accomplished")
-    pulumi.export("dbfsSnapshotId3", status.snapshots[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str name_regex: A regex string to filter results by Snapshot name.
@@ -159,22 +143,6 @@ def get_snapshots_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.156.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.databasefilesystem.get_snapshots(ids=["example_id"])
-    pulumi.export("dbfsSnapshotId1", ids.snapshots[0].id)
-    name_regex = alicloud.databasefilesystem.get_snapshots(name_regex="^my-Snapshot")
-    pulumi.export("dbfsSnapshotId2", name_regex.snapshots[0].id)
-    status = alicloud.databasefilesystem.get_snapshots(status="accomplished")
-    pulumi.export("dbfsSnapshotId3", status.snapshots[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Snapshot IDs.

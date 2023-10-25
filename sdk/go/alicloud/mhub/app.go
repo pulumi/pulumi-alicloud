@@ -21,49 +21,6 @@ import (
 //
 // > **NOTE:** At present, the resource only supports cn-shanghai region.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mhub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "example_value"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultProduct, err := mhub.NewProduct(ctx, "defaultProduct", &mhub.ProductArgs{
-//				ProductName: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = mhub.NewApp(ctx, "defaultApp", &mhub.AppArgs{
-//				AppName:     pulumi.String(name),
-//				ProductId:   defaultProduct.ID(),
-//				PackageName: pulumi.String("com.test.android"),
-//				Type:        pulumi.String("Android"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // MHUB App can be imported using the id, e.g.

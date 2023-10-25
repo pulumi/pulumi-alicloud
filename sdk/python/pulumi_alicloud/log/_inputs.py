@@ -48,10 +48,14 @@ class AlertAnnotationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("value", value)
@@ -97,10 +101,12 @@ class AlertGroupConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("type", type)
         if fields is not None:
@@ -145,10 +151,14 @@ class AlertJoinConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: pulumi.Input[str],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             condition: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("condition", condition)
         _setter("type", type)
@@ -195,10 +205,14 @@ class AlertLabelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("value", value)
@@ -254,18 +268,22 @@ class AlertNotificationListArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: pulumi.Input[str],
-             type: pulumi.Input[str],
+             content: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              email_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              mobile_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              service_uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'emailLists' in kwargs:
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if email_lists is None and 'emailLists' in kwargs:
             email_lists = kwargs['emailLists']
-        if 'mobileLists' in kwargs:
+        if mobile_lists is None and 'mobileLists' in kwargs:
             mobile_lists = kwargs['mobileLists']
-        if 'serviceUri' in kwargs:
+        if service_uri is None and 'serviceUri' in kwargs:
             service_uri = kwargs['serviceUri']
 
         _setter("content", content)
@@ -358,16 +376,20 @@ class AlertPolicyConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alert_policy_id: pulumi.Input[str],
-             repeat_interval: pulumi.Input[str],
+             alert_policy_id: Optional[pulumi.Input[str]] = None,
+             repeat_interval: Optional[pulumi.Input[str]] = None,
              action_policy_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alertPolicyId' in kwargs:
+        if alert_policy_id is None and 'alertPolicyId' in kwargs:
             alert_policy_id = kwargs['alertPolicyId']
-        if 'repeatInterval' in kwargs:
+        if alert_policy_id is None:
+            raise TypeError("Missing 'alert_policy_id' argument")
+        if repeat_interval is None and 'repeatInterval' in kwargs:
             repeat_interval = kwargs['repeatInterval']
-        if 'actionPolicyId' in kwargs:
+        if repeat_interval is None:
+            raise TypeError("Missing 'repeat_interval' argument")
+        if action_policy_id is None and 'actionPolicyId' in kwargs:
             action_policy_id = kwargs['actionPolicyId']
 
         _setter("alert_policy_id", alert_policy_id)
@@ -462,9 +484,9 @@ class AlertQueryListArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             end: pulumi.Input[str],
-             query: pulumi.Input[str],
-             start: pulumi.Input[str],
+             end: Optional[pulumi.Input[str]] = None,
+             query: Optional[pulumi.Input[str]] = None,
+             start: Optional[pulumi.Input[str]] = None,
              chart_title: Optional[pulumi.Input[str]] = None,
              dashboard_id: Optional[pulumi.Input[str]] = None,
              logstore: Optional[pulumi.Input[str]] = None,
@@ -475,19 +497,25 @@ class AlertQueryListArgs:
              store: Optional[pulumi.Input[str]] = None,
              store_type: Optional[pulumi.Input[str]] = None,
              time_span_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'chartTitle' in kwargs:
+        if end is None:
+            raise TypeError("Missing 'end' argument")
+        if query is None:
+            raise TypeError("Missing 'query' argument")
+        if start is None:
+            raise TypeError("Missing 'start' argument")
+        if chart_title is None and 'chartTitle' in kwargs:
             chart_title = kwargs['chartTitle']
-        if 'dashboardId' in kwargs:
+        if dashboard_id is None and 'dashboardId' in kwargs:
             dashboard_id = kwargs['dashboardId']
-        if 'powerSqlMode' in kwargs:
+        if power_sql_mode is None and 'powerSqlMode' in kwargs:
             power_sql_mode = kwargs['powerSqlMode']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
-        if 'storeType' in kwargs:
+        if store_type is None and 'storeType' in kwargs:
             store_type = kwargs['storeType']
-        if 'timeSpanType' in kwargs:
+        if time_span_type is None and 'timeSpanType' in kwargs:
             time_span_type = kwargs['timeSpanType']
 
         _setter("end", end)
@@ -710,7 +738,7 @@ class AlertScheduleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              cron_expression: Optional[pulumi.Input[str]] = None,
              day_of_week: Optional[pulumi.Input[int]] = None,
              delay: Optional[pulumi.Input[int]] = None,
@@ -718,15 +746,17 @@ class AlertScheduleArgs:
              interval: Optional[pulumi.Input[str]] = None,
              run_immediately: Optional[pulumi.Input[bool]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cronExpression' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if cron_expression is None and 'cronExpression' in kwargs:
             cron_expression = kwargs['cronExpression']
-        if 'dayOfWeek' in kwargs:
+        if day_of_week is None and 'dayOfWeek' in kwargs:
             day_of_week = kwargs['dayOfWeek']
-        if 'runImmediately' in kwargs:
+        if run_immediately is None and 'runImmediately' in kwargs:
             run_immediately = kwargs['runImmediately']
-        if 'timeZone' in kwargs:
+        if time_zone is None and 'timeZone' in kwargs:
             time_zone = kwargs['timeZone']
 
         _setter("type", type)
@@ -853,12 +883,16 @@ class AlertSeverityConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             eval_condition: pulumi.Input[Mapping[str, pulumi.Input[str]]],
-             severity: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             eval_condition: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             severity: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'evalCondition' in kwargs:
+        if eval_condition is None and 'evalCondition' in kwargs:
             eval_condition = kwargs['evalCondition']
+        if eval_condition is None:
+            raise TypeError("Missing 'eval_condition' argument")
+        if severity is None:
+            raise TypeError("Missing 'severity' argument")
 
         _setter("eval_condition", eval_condition)
         _setter("severity", severity)
@@ -914,13 +948,17 @@ class AlertTemplateConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: pulumi.Input[str],
-             type: pulumi.Input[str],
+             id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              tokens: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("id", id)
         _setter("type", type)
@@ -1035,27 +1073,35 @@ class EtlEtlSinkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: pulumi.Input[str],
-             logstore: pulumi.Input[str],
-             name: pulumi.Input[str],
-             project: pulumi.Input[str],
+             endpoint: Optional[pulumi.Input[str]] = None,
+             logstore: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
              access_key_id: Optional[pulumi.Input[str]] = None,
              access_key_secret: Optional[pulumi.Input[str]] = None,
              kms_encrypted_access_key_id: Optional[pulumi.Input[str]] = None,
              kms_encrypted_access_key_secret: Optional[pulumi.Input[str]] = None,
              role_arn: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessKeyId' in kwargs:
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if logstore is None:
+            raise TypeError("Missing 'logstore' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if access_key_id is None and 'accessKeyId' in kwargs:
             access_key_id = kwargs['accessKeyId']
-        if 'accessKeySecret' in kwargs:
+        if access_key_secret is None and 'accessKeySecret' in kwargs:
             access_key_secret = kwargs['accessKeySecret']
-        if 'kmsEncryptedAccessKeyId' in kwargs:
+        if kms_encrypted_access_key_id is None and 'kmsEncryptedAccessKeyId' in kwargs:
             kms_encrypted_access_key_id = kwargs['kmsEncryptedAccessKeyId']
-        if 'kmsEncryptedAccessKeySecret' in kwargs:
+        if kms_encrypted_access_key_secret is None and 'kmsEncryptedAccessKeySecret' in kwargs:
             kms_encrypted_access_key_secret = kwargs['kmsEncryptedAccessKeySecret']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
 
         _setter("endpoint", endpoint)
@@ -1215,10 +1261,14 @@ class OssExportConfigColumnArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("name", name)
         _setter("type", type)
@@ -1261,10 +1311,14 @@ class OssShipperParquetConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("name", name)
         _setter("type", type)
@@ -1298,9 +1352,6 @@ class StoreEncryptConfArgs:
         :param pulumi.Input[bool] enable: enable encryption. Default `false`
         :param pulumi.Input[str] encrypt_type: Supported encryption type, only supports `default(AES)`,` m4`
         :param pulumi.Input['StoreEncryptConfUserCmkInfoArgs'] user_cmk_info: User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
-               ```python
-               import pulumi
-               ```
         """
         StoreEncryptConfArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -1314,11 +1365,11 @@ class StoreEncryptConfArgs:
              enable: Optional[pulumi.Input[bool]] = None,
              encrypt_type: Optional[pulumi.Input[str]] = None,
              user_cmk_info: Optional[pulumi.Input['StoreEncryptConfUserCmkInfoArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'encryptType' in kwargs:
+        if encrypt_type is None and 'encryptType' in kwargs:
             encrypt_type = kwargs['encryptType']
-        if 'userCmkInfo' in kwargs:
+        if user_cmk_info is None and 'userCmkInfo' in kwargs:
             user_cmk_info = kwargs['userCmkInfo']
 
         if enable is not None:
@@ -1357,9 +1408,6 @@ class StoreEncryptConfArgs:
     def user_cmk_info(self) -> Optional[pulumi.Input['StoreEncryptConfUserCmkInfoArgs']]:
         """
         User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "user_cmk_info")
 
@@ -1388,15 +1436,21 @@ class StoreEncryptConfUserCmkInfoArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             arn: pulumi.Input[str],
-             cmk_key_id: pulumi.Input[str],
-             region_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             arn: Optional[pulumi.Input[str]] = None,
+             cmk_key_id: Optional[pulumi.Input[str]] = None,
+             region_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cmkKeyId' in kwargs:
+        if arn is None:
+            raise TypeError("Missing 'arn' argument")
+        if cmk_key_id is None and 'cmkKeyId' in kwargs:
             cmk_key_id = kwargs['cmkKeyId']
-        if 'regionId' in kwargs:
+        if cmk_key_id is None:
+            raise TypeError("Missing 'cmk_key_id' argument")
+        if region_id is None and 'regionId' in kwargs:
             region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
 
         _setter("arn", arn)
         _setter("cmk_key_id", cmk_key_id)
@@ -1474,7 +1528,7 @@ class StoreIndexFieldSearchArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              alias: Optional[pulumi.Input[str]] = None,
              case_sensitive: Optional[pulumi.Input[bool]] = None,
              enable_analytics: Optional[pulumi.Input[bool]] = None,
@@ -1482,15 +1536,17 @@ class StoreIndexFieldSearchArgs:
              json_keys: Optional[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]]] = None,
              token: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'caseSensitive' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if case_sensitive is None and 'caseSensitive' in kwargs:
             case_sensitive = kwargs['caseSensitive']
-        if 'enableAnalytics' in kwargs:
+        if enable_analytics is None and 'enableAnalytics' in kwargs:
             enable_analytics = kwargs['enableAnalytics']
-        if 'includeChinese' in kwargs:
+        if include_chinese is None and 'includeChinese' in kwargs:
             include_chinese = kwargs['includeChinese']
-        if 'jsonKeys' in kwargs:
+        if json_keys is None and 'jsonKeys' in kwargs:
             json_keys = kwargs['jsonKeys']
 
         _setter("name", name)
@@ -1631,13 +1687,15 @@ class StoreIndexFieldSearchJsonKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              alias: Optional[pulumi.Input[str]] = None,
              doc_value: Optional[pulumi.Input[bool]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'docValue' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if doc_value is None and 'docValue' in kwargs:
             doc_value = kwargs['docValue']
 
         _setter("name", name)
@@ -1722,11 +1780,11 @@ class StoreIndexFullTextArgs:
              case_sensitive: Optional[pulumi.Input[bool]] = None,
              include_chinese: Optional[pulumi.Input[bool]] = None,
              token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'caseSensitive' in kwargs:
+        if case_sensitive is None and 'caseSensitive' in kwargs:
             case_sensitive = kwargs['caseSensitive']
-        if 'includeChinese' in kwargs:
+        if include_chinese is None and 'includeChinese' in kwargs:
             include_chinese = kwargs['includeChinese']
 
         if case_sensitive is not None:
@@ -1800,11 +1858,11 @@ class StoreShardArgs:
              end_key: Optional[pulumi.Input[str]] = None,
              id: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'beginKey' in kwargs:
+        if begin_key is None and 'beginKey' in kwargs:
             begin_key = kwargs['beginKey']
-        if 'endKey' in kwargs:
+        if end_key is None and 'endKey' in kwargs:
             end_key = kwargs['endKey']
 
         if begin_key is not None:

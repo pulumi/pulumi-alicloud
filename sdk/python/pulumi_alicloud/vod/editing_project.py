@@ -38,16 +38,18 @@ class EditingProjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             title: pulumi.Input[str],
+             title: Optional[pulumi.Input[str]] = None,
              cover_url: Optional[pulumi.Input[str]] = None,
              division: Optional[pulumi.Input[str]] = None,
              editing_project_name: Optional[pulumi.Input[str]] = None,
              timeline: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'coverUrl' in kwargs:
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+        if cover_url is None and 'coverUrl' in kwargs:
             cover_url = kwargs['coverUrl']
-        if 'editingProjectName' in kwargs:
+        if editing_project_name is None and 'editingProjectName' in kwargs:
             editing_project_name = kwargs['editingProjectName']
 
         _setter("title", title)
@@ -157,11 +159,11 @@ class _EditingProjectState:
              status: Optional[pulumi.Input[str]] = None,
              timeline: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'coverUrl' in kwargs:
+        if cover_url is None and 'coverUrl' in kwargs:
             cover_url = kwargs['coverUrl']
-        if 'editingProjectName' in kwargs:
+        if editing_project_name is None and 'editingProjectName' in kwargs:
             editing_project_name = kwargs['editingProjectName']
 
         if cover_url is not None:
@@ -268,39 +270,6 @@ class EditingProject(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.187.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        default = alicloud.get_regions(current=True)
-        example = alicloud.vod.EditingProject("example",
-            editing_project_name=name,
-            title=name,
-            timeline=\"\"\"  {
-            "VideoTracks":[
-              {
-                "VideoTrackClips":[
-                  {
-                  "MediaId":"0c60e6f02dae71edbfaa472190a90102",
-                  "In":2811
-                  }
-                ]
-              }
-            ]
-          }
-        \"\"\",
-            cover_url="https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png",
-            division=default.regions[0].id)
-        ```
-
         ## Import
 
         VOD Editing Project can be imported using the id, e.g.
@@ -329,39 +298,6 @@ class EditingProject(pulumi.CustomResource):
         For information about VOD Editing Project and how to use it, see [What is Editing Project](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/addeditingproject#doc-api-vod-AddEditingProject).
 
         > **NOTE:** Available since v1.187.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        default = alicloud.get_regions(current=True)
-        example = alicloud.vod.EditingProject("example",
-            editing_project_name=name,
-            title=name,
-            timeline=\"\"\"  {
-            "VideoTracks":[
-              {
-                "VideoTrackClips":[
-                  {
-                  "MediaId":"0c60e6f02dae71edbfaa472190a90102",
-                  "In":2811
-                  }
-                ]
-              }
-            ]
-          }
-        \"\"\",
-            cover_url="https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png",
-            division=default.regions[0].id)
-        ```
 
         ## Import
 

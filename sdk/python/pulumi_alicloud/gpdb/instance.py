@@ -136,10 +136,10 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_instance_mode: pulumi.Input[str],
-             engine: pulumi.Input[str],
-             engine_version: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             db_instance_mode: Optional[pulumi.Input[str]] = None,
+             engine: Optional[pulumi.Input[str]] = None,
+             engine_version: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              availability_zone: Optional[pulumi.Input[str]] = None,
              create_sample_data: Optional[pulumi.Input[bool]] = None,
              db_instance_category: Optional[pulumi.Input[str]] = None,
@@ -169,65 +169,73 @@ class InstanceArgs:
              vector_configuration_status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbInstanceMode' in kwargs:
+        if db_instance_mode is None and 'dbInstanceMode' in kwargs:
             db_instance_mode = kwargs['dbInstanceMode']
-        if 'engineVersion' in kwargs:
+        if db_instance_mode is None:
+            raise TypeError("Missing 'db_instance_mode' argument")
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'vswitchId' in kwargs:
+        if engine_version is None:
+            raise TypeError("Missing 'engine_version' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'availabilityZone' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'createSampleData' in kwargs:
+        if create_sample_data is None and 'createSampleData' in kwargs:
             create_sample_data = kwargs['createSampleData']
-        if 'dbInstanceCategory' in kwargs:
+        if db_instance_category is None and 'dbInstanceCategory' in kwargs:
             db_instance_category = kwargs['dbInstanceCategory']
-        if 'dbInstanceClass' in kwargs:
+        if db_instance_class is None and 'dbInstanceClass' in kwargs:
             db_instance_class = kwargs['dbInstanceClass']
-        if 'encryptionKey' in kwargs:
+        if encryption_key is None and 'encryptionKey' in kwargs:
             encryption_key = kwargs['encryptionKey']
-        if 'encryptionType' in kwargs:
+        if encryption_type is None and 'encryptionType' in kwargs:
             encryption_type = kwargs['encryptionType']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'instanceGroupCount' in kwargs:
+        if instance_group_count is None and 'instanceGroupCount' in kwargs:
             instance_group_count = kwargs['instanceGroupCount']
-        if 'instanceNetworkType' in kwargs:
+        if instance_network_type is None and 'instanceNetworkType' in kwargs:
             instance_network_type = kwargs['instanceNetworkType']
-        if 'instanceSpec' in kwargs:
+        if instance_spec is None and 'instanceSpec' in kwargs:
             instance_spec = kwargs['instanceSpec']
-        if 'ipWhitelists' in kwargs:
+        if ip_whitelists is None and 'ipWhitelists' in kwargs:
             ip_whitelists = kwargs['ipWhitelists']
-        if 'maintainEndTime' in kwargs:
+        if maintain_end_time is None and 'maintainEndTime' in kwargs:
             maintain_end_time = kwargs['maintainEndTime']
-        if 'maintainStartTime' in kwargs:
+        if maintain_start_time is None and 'maintainStartTime' in kwargs:
             maintain_start_time = kwargs['maintainStartTime']
-        if 'masterNodeNum' in kwargs:
+        if master_node_num is None and 'masterNodeNum' in kwargs:
             master_node_num = kwargs['masterNodeNum']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'privateIpAddress' in kwargs:
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
             private_ip_address = kwargs['privateIpAddress']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityIpLists' in kwargs:
+        if security_ip_lists is None and 'securityIpLists' in kwargs:
             security_ip_lists = kwargs['securityIpLists']
-        if 'segNodeNum' in kwargs:
+        if seg_node_num is None and 'segNodeNum' in kwargs:
             seg_node_num = kwargs['segNodeNum']
-        if 'segStorageType' in kwargs:
+        if seg_storage_type is None and 'segStorageType' in kwargs:
             seg_storage_type = kwargs['segStorageType']
-        if 'sslEnabled' in kwargs:
+        if ssl_enabled is None and 'sslEnabled' in kwargs:
             ssl_enabled = kwargs['sslEnabled']
-        if 'storageSize' in kwargs:
+        if storage_size is None and 'storageSize' in kwargs:
             storage_size = kwargs['storageSize']
-        if 'usedTime' in kwargs:
+        if used_time is None and 'usedTime' in kwargs:
             used_time = kwargs['usedTime']
-        if 'vectorConfigurationStatus' in kwargs:
+        if vector_configuration_status is None and 'vectorConfigurationStatus' in kwargs:
             vector_configuration_status = kwargs['vectorConfigurationStatus']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("db_instance_mode", db_instance_mode)
@@ -888,67 +896,67 @@ class _InstanceState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availabilityZone' in kwargs:
+        if availability_zone is None and 'availabilityZone' in kwargs:
             availability_zone = kwargs['availabilityZone']
-        if 'connectionString' in kwargs:
+        if connection_string is None and 'connectionString' in kwargs:
             connection_string = kwargs['connectionString']
-        if 'createSampleData' in kwargs:
+        if create_sample_data is None and 'createSampleData' in kwargs:
             create_sample_data = kwargs['createSampleData']
-        if 'dbInstanceCategory' in kwargs:
+        if db_instance_category is None and 'dbInstanceCategory' in kwargs:
             db_instance_category = kwargs['dbInstanceCategory']
-        if 'dbInstanceClass' in kwargs:
+        if db_instance_class is None and 'dbInstanceClass' in kwargs:
             db_instance_class = kwargs['dbInstanceClass']
-        if 'dbInstanceMode' in kwargs:
+        if db_instance_mode is None and 'dbInstanceMode' in kwargs:
             db_instance_mode = kwargs['dbInstanceMode']
-        if 'encryptionKey' in kwargs:
+        if encryption_key is None and 'encryptionKey' in kwargs:
             encryption_key = kwargs['encryptionKey']
-        if 'encryptionType' in kwargs:
+        if encryption_type is None and 'encryptionType' in kwargs:
             encryption_type = kwargs['encryptionType']
-        if 'engineVersion' in kwargs:
+        if engine_version is None and 'engineVersion' in kwargs:
             engine_version = kwargs['engineVersion']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'instanceGroupCount' in kwargs:
+        if instance_group_count is None and 'instanceGroupCount' in kwargs:
             instance_group_count = kwargs['instanceGroupCount']
-        if 'instanceNetworkType' in kwargs:
+        if instance_network_type is None and 'instanceNetworkType' in kwargs:
             instance_network_type = kwargs['instanceNetworkType']
-        if 'instanceSpec' in kwargs:
+        if instance_spec is None and 'instanceSpec' in kwargs:
             instance_spec = kwargs['instanceSpec']
-        if 'ipWhitelists' in kwargs:
+        if ip_whitelists is None and 'ipWhitelists' in kwargs:
             ip_whitelists = kwargs['ipWhitelists']
-        if 'maintainEndTime' in kwargs:
+        if maintain_end_time is None and 'maintainEndTime' in kwargs:
             maintain_end_time = kwargs['maintainEndTime']
-        if 'maintainStartTime' in kwargs:
+        if maintain_start_time is None and 'maintainStartTime' in kwargs:
             maintain_start_time = kwargs['maintainStartTime']
-        if 'masterNodeNum' in kwargs:
+        if master_node_num is None and 'masterNodeNum' in kwargs:
             master_node_num = kwargs['masterNodeNum']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'privateIpAddress' in kwargs:
+        if private_ip_address is None and 'privateIpAddress' in kwargs:
             private_ip_address = kwargs['privateIpAddress']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'securityIpLists' in kwargs:
+        if security_ip_lists is None and 'securityIpLists' in kwargs:
             security_ip_lists = kwargs['securityIpLists']
-        if 'segNodeNum' in kwargs:
+        if seg_node_num is None and 'segNodeNum' in kwargs:
             seg_node_num = kwargs['segNodeNum']
-        if 'segStorageType' in kwargs:
+        if seg_storage_type is None and 'segStorageType' in kwargs:
             seg_storage_type = kwargs['segStorageType']
-        if 'sslEnabled' in kwargs:
+        if ssl_enabled is None and 'sslEnabled' in kwargs:
             ssl_enabled = kwargs['sslEnabled']
-        if 'storageSize' in kwargs:
+        if storage_size is None and 'storageSize' in kwargs:
             storage_size = kwargs['storageSize']
-        if 'usedTime' in kwargs:
+        if used_time is None and 'usedTime' in kwargs:
             used_time = kwargs['usedTime']
-        if 'vectorConfigurationStatus' in kwargs:
+        if vector_configuration_status is None and 'vectorConfigurationStatus' in kwargs:
             vector_configuration_status = kwargs['vectorConfigurationStatus']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if availability_zone is not None:
@@ -1532,51 +1540,6 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.47.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_zones = alicloud.gpdb.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.ids[0])
-        default_instance = alicloud.gpdb.Instance("defaultInstance",
-            db_instance_category="HighAvailability",
-            db_instance_class="gpdb.group.segsdx1",
-            db_instance_mode="StorageElastic",
-            description=name,
-            engine="gpdb",
-            engine_version="6.0",
-            zone_id=default_zones.ids[0],
-            instance_network_type="VPC",
-            instance_spec="2C16G",
-            master_node_num=1,
-            payment_type="PayAsYouGo",
-            private_ip_address="1.1.1.1",
-            seg_storage_type="cloud_essd",
-            seg_node_num=4,
-            storage_size=50,
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            ip_whitelists=[alicloud.gpdb.InstanceIpWhitelistArgs(
-                security_ip_list="127.0.0.1",
-            )])
-        ```
-
         ## Import
 
         AnalyticDB for PostgreSQL can be imported using the id, e.g.
@@ -1644,51 +1607,6 @@ class Instance(pulumi.CustomResource):
         You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance)
 
         > **NOTE:** Available since v1.47.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_zones = alicloud.gpdb.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.ids[0])
-        default_instance = alicloud.gpdb.Instance("defaultInstance",
-            db_instance_category="HighAvailability",
-            db_instance_class="gpdb.group.segsdx1",
-            db_instance_mode="StorageElastic",
-            description=name,
-            engine="gpdb",
-            engine_version="6.0",
-            zone_id=default_zones.ids[0],
-            instance_network_type="VPC",
-            instance_spec="2C16G",
-            master_node_num=1,
-            payment_type="PayAsYouGo",
-            private_ip_address="1.1.1.1",
-            seg_storage_type="cloud_essd",
-            seg_node_num=4,
-            storage_size=50,
-            vpc_id=default_network.id,
-            vswitch_id=default_switch.id,
-            ip_whitelists=[alicloud.gpdb.InstanceIpWhitelistArgs(
-                security_ip_list="127.0.0.1",
-            )])
-        ```
 
         ## Import
 

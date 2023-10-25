@@ -16,30 +16,6 @@ namespace Pulumi.AliCloud.PrivateLink
     /// 
     /// &gt; **NOTE:** Available since v1.109.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf_example";
-    ///     var example = new AliCloud.PrivateLink.VpcEndpointService("example", new()
-    ///     {
-    ///         ServiceDescription = name,
-    ///         ConnectBandwidth = 103,
-    ///         AutoAcceptConnection = false,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Private Link Vpc Endpoint Service can be imported using the id, e.g.

@@ -26,11 +26,13 @@ class ResourceShareArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_share_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             resource_share_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceShareName' in kwargs:
+        if resource_share_name is None and 'resourceShareName' in kwargs:
             resource_share_name = kwargs['resourceShareName']
+        if resource_share_name is None:
+            raise TypeError("Missing 'resource_share_name' argument")
 
         _setter("resource_share_name", resource_share_name)
 
@@ -71,11 +73,11 @@ class _ResourceShareState:
              resource_share_name: Optional[pulumi.Input[str]] = None,
              resource_share_owner: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceShareName' in kwargs:
+        if resource_share_name is None and 'resourceShareName' in kwargs:
             resource_share_name = kwargs['resourceShareName']
-        if 'resourceShareOwner' in kwargs:
+        if resource_share_owner is None and 'resourceShareOwner' in kwargs:
             resource_share_owner = kwargs['resourceShareOwner']
 
         if resource_share_name is not None:
@@ -136,21 +138,6 @@ class ResourceShare(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.111.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
-        ```
-
         ## Import
 
         Resource Manager Resource Share can be imported using the id, e.g.
@@ -175,21 +162,6 @@ class ResourceShare(pulumi.CustomResource):
         For information about Resource Manager Resource Share and how to use it, see [What is Resource Share](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
 
         > **NOTE:** Available since v1.111.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
-        ```
 
         ## Import
 

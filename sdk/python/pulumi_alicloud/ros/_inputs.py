@@ -37,14 +37,18 @@ class ChangeSetParameterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parameter_key: pulumi.Input[str],
-             parameter_value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             parameter_key: Optional[pulumi.Input[str]] = None,
+             parameter_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterKey' in kwargs:
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
-        if 'parameterValue' in kwargs:
+        if parameter_key is None:
+            raise TypeError("Missing 'parameter_key' argument")
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
+        if parameter_value is None:
+            raise TypeError("Missing 'parameter_value' argument")
 
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
@@ -93,11 +97,11 @@ class StackGroupParameterArgs:
              _setter: Callable[[Any, Any], None],
              parameter_key: Optional[pulumi.Input[str]] = None,
              parameter_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterKey' in kwargs:
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
-        if 'parameterValue' in kwargs:
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
 
         if parameter_key is not None:
@@ -149,11 +153,11 @@ class StackInstanceParameterOverrideArgs:
              _setter: Callable[[Any, Any], None],
              parameter_key: Optional[pulumi.Input[str]] = None,
              parameter_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterKey' in kwargs:
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
-        if 'parameterValue' in kwargs:
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
 
         if parameter_key is not None:
@@ -203,13 +207,15 @@ class StackParameterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parameter_value: pulumi.Input[str],
+             parameter_value: Optional[pulumi.Input[str]] = None,
              parameter_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterValue' in kwargs:
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
-        if 'parameterKey' in kwargs:
+        if parameter_value is None:
+            raise TypeError("Missing 'parameter_value' argument")
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
 
         _setter("parameter_value", parameter_value)
@@ -258,14 +264,18 @@ class TemplateScratchPreferenceParameterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parameter_key: pulumi.Input[str],
-             parameter_value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             parameter_key: Optional[pulumi.Input[str]] = None,
+             parameter_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'parameterKey' in kwargs:
+        if parameter_key is None and 'parameterKey' in kwargs:
             parameter_key = kwargs['parameterKey']
-        if 'parameterValue' in kwargs:
+        if parameter_key is None:
+            raise TypeError("Missing 'parameter_key' argument")
+        if parameter_value is None and 'parameterValue' in kwargs:
             parameter_value = kwargs['parameterValue']
+        if parameter_value is None:
+            raise TypeError("Missing 'parameter_value' argument")
 
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
@@ -312,14 +322,18 @@ class TemplateScratchSourceResourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_id: pulumi.Input[str],
-             resource_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             resource_id: Optional[pulumi.Input[str]] = None,
+             resource_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceId' in kwargs:
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
-        if 'resourceType' in kwargs:
+        if resource_id is None:
+            raise TypeError("Missing 'resource_id' argument")
+        if resource_type is None and 'resourceType' in kwargs:
             resource_type = kwargs['resourceType']
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
 
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
@@ -366,13 +380,15 @@ class TemplateScratchSourceResourceGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_group_id: pulumi.Input[str],
+             resource_group_id: Optional[pulumi.Input[str]] = None,
              resource_type_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'resourceTypeFilters' in kwargs:
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if resource_type_filters is None and 'resourceTypeFilters' in kwargs:
             resource_type_filters = kwargs['resourceTypeFilters']
 
         _setter("resource_group_id", resource_group_id)
@@ -421,13 +437,15 @@ class TemplateScratchSourceTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_tags: pulumi.Input[Mapping[str, Any]],
+             resource_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              resource_type_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceTags' in kwargs:
+        if resource_tags is None and 'resourceTags' in kwargs:
             resource_tags = kwargs['resourceTags']
-        if 'resourceTypeFilters' in kwargs:
+        if resource_tags is None:
+            raise TypeError("Missing 'resource_tags' argument")
+        if resource_type_filters is None and 'resourceTypeFilters' in kwargs:
             resource_type_filters = kwargs['resourceTypeFilters']
 
         _setter("resource_tags", resource_tags)

@@ -375,19 +375,6 @@ def get_ecs_disks(additional_attributes: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.122.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ecs.get_ecs_disks(ids=["d-artgdsvdvxxxx"],
-        name_regex="tf-test")
-    pulumi.export("firstEcsDiskId", example.disks[0].id)
-    ```
-
 
     :param Sequence[str] additional_attributes: Other attribute values. Currently, only the incoming value of IOPS is supported, which means to query the IOPS upper limit of the current disk.
     :param str auto_snapshot_policy_id: Query cloud disks based on the automatic snapshot policy ID.
@@ -520,19 +507,6 @@ def get_ecs_disks_output(additional_attributes: Optional[pulumi.Input[Optional[S
     This data source provides the Ecs Disks of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.122.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ecs.get_ecs_disks(ids=["d-artgdsvdvxxxx"],
-        name_regex="tf-test")
-    pulumi.export("firstEcsDiskId", example.disks[0].id)
-    ```
 
 
     :param Sequence[str] additional_attributes: Other attribute values. Currently, only the incoming value of IOPS is supported, which means to query the IOPS upper limit of the current disk.

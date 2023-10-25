@@ -18,31 +18,6 @@ namespace Pulumi.AliCloud.ResourceManager
     /// &gt; **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
     /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var displayName = config.Get("displayName") ?? "EAccount";
-    ///     var exampleFolder = new AliCloud.ResourceManager.Folder("exampleFolder", new()
-    ///     {
-    ///         FolderName = name,
-    ///     });
-    /// 
-    ///     var exampleAccount = new AliCloud.ResourceManager.Account("exampleAccount", new()
-    ///     {
-    ///         DisplayName = displayName,
-    ///         FolderId = exampleFolder.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Deleting `alicloud.resourcemanager.Account` or removing it from your configuration
     /// 
     /// Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,

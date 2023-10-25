@@ -16,32 +16,6 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// &gt; **NOTE:** Available since v1.194.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Ga.BasicAccelerator("default", new()
-    ///     {
-    ///         AutoPay = true,
-    ///         AutoUseCoupon = "true",
-    ///         BandwidthBillingType = "BandwidthPackage",
-    ///         BasicAcceleratorName = "tf-example-value",
-    ///         Description = "tf-example-value",
-    ///         Duration = 1,
-    ///         PricingCycle = "Month",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Global Accelerator (GA) Basic Accelerator can be imported using the id, e.g.

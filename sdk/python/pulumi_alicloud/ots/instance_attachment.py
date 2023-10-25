@@ -32,17 +32,23 @@ class InstanceAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_name: pulumi.Input[str],
-             vpc_name: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             vpc_name: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'vpcName' in kwargs:
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if vpc_name is None and 'vpcName' in kwargs:
             vpc_name = kwargs['vpcName']
-        if 'vswitchId' in kwargs:
+        if vpc_name is None:
+            raise TypeError("Missing 'vpc_name' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
 
         _setter("instance_name", instance_name)
         _setter("vpc_name", vpc_name)
@@ -113,15 +119,15 @@ class _InstanceAttachmentState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vpc_name: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vpcName' in kwargs:
+        if vpc_name is None and 'vpcName' in kwargs:
             vpc_name = kwargs['vpcName']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
 
         if instance_name is not None:
@@ -196,38 +202,6 @@ class InstanceAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.10.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_instance = alicloud.ots.Instance("defaultInstance",
-            description=name,
-            accessed_by="Vpc",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_instance_attachment = alicloud.ots.InstanceAttachment("defaultInstanceAttachment",
-            instance_name=default_instance.name,
-            vpc_name="examplename",
-            vswitch_id=default_switch.id)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_name: The name of the OTS instance.
@@ -244,38 +218,6 @@ class InstanceAttachment(pulumi.CustomResource):
         This resource will help you to bind a VPC to an OTS instance.
 
         > **NOTE:** Available since v1.10.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_instance = alicloud.ots.Instance("defaultInstance",
-            description=name,
-            accessed_by="Vpc",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_instance_attachment = alicloud.ots.InstanceAttachment("defaultInstanceAttachment",
-            instance_name=default_instance.name,
-            vpc_name="examplename",
-            vswitch_id=default_switch.id)
-        ```
 
         :param str resource_name: The name of the resource.
         :param InstanceAttachmentArgs args: The arguments to use to populate this resource's properties.

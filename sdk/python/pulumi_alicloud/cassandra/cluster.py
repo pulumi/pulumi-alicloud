@@ -86,11 +86,11 @@ class ClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_type: pulumi.Input[str],
-             major_version: pulumi.Input[str],
-             node_count: pulumi.Input[int],
-             pay_type: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             instance_type: Optional[pulumi.Input[str]] = None,
+             major_version: Optional[pulumi.Input[str]] = None,
+             node_count: Optional[pulumi.Input[int]] = None,
+             pay_type: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              auto_renew: Optional[pulumi.Input[bool]] = None,
              auto_renew_period: Optional[pulumi.Input[int]] = None,
              cluster_name: Optional[pulumi.Input[str]] = None,
@@ -107,43 +107,53 @@ class ClusterArgs:
              security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'majorVersion' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if major_version is None and 'majorVersion' in kwargs:
             major_version = kwargs['majorVersion']
-        if 'nodeCount' in kwargs:
+        if major_version is None:
+            raise TypeError("Missing 'major_version' argument")
+        if node_count is None and 'nodeCount' in kwargs:
             node_count = kwargs['nodeCount']
-        if 'payType' in kwargs:
+        if node_count is None:
+            raise TypeError("Missing 'node_count' argument")
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
-        if 'vswitchId' in kwargs:
+        if pay_type is None:
+            raise TypeError("Missing 'pay_type' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'autoRenew' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'dataCenterName' in kwargs:
+        if data_center_name is None and 'dataCenterName' in kwargs:
             data_center_name = kwargs['dataCenterName']
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'diskType' in kwargs:
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'enablePublic' in kwargs:
+        if enable_public is None and 'enablePublic' in kwargs:
             enable_public = kwargs['enablePublic']
-        if 'ipWhite' in kwargs:
+        if ip_white is None and 'ipWhite' in kwargs:
             ip_white = kwargs['ipWhite']
-        if 'maintainEndTime' in kwargs:
+        if maintain_end_time is None and 'maintainEndTime' in kwargs:
             maintain_end_time = kwargs['maintainEndTime']
-        if 'maintainStartTime' in kwargs:
+        if maintain_start_time is None and 'maintainStartTime' in kwargs:
             maintain_start_time = kwargs['maintainStartTime']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'securityGroups' in kwargs:
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("instance_type", instance_type)
@@ -531,45 +541,45 @@ class _ClusterState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoRenew' in kwargs:
+        if auto_renew is None and 'autoRenew' in kwargs:
             auto_renew = kwargs['autoRenew']
-        if 'autoRenewPeriod' in kwargs:
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
             auto_renew_period = kwargs['autoRenewPeriod']
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'dataCenterName' in kwargs:
+        if data_center_name is None and 'dataCenterName' in kwargs:
             data_center_name = kwargs['dataCenterName']
-        if 'diskSize' in kwargs:
+        if disk_size is None and 'diskSize' in kwargs:
             disk_size = kwargs['diskSize']
-        if 'diskType' in kwargs:
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
-        if 'enablePublic' in kwargs:
+        if enable_public is None and 'enablePublic' in kwargs:
             enable_public = kwargs['enablePublic']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'ipWhite' in kwargs:
+        if ip_white is None and 'ipWhite' in kwargs:
             ip_white = kwargs['ipWhite']
-        if 'maintainEndTime' in kwargs:
+        if maintain_end_time is None and 'maintainEndTime' in kwargs:
             maintain_end_time = kwargs['maintainEndTime']
-        if 'maintainStartTime' in kwargs:
+        if maintain_start_time is None and 'maintainStartTime' in kwargs:
             maintain_start_time = kwargs['maintainStartTime']
-        if 'majorVersion' in kwargs:
+        if major_version is None and 'majorVersion' in kwargs:
             major_version = kwargs['majorVersion']
-        if 'nodeCount' in kwargs:
+        if node_count is None and 'nodeCount' in kwargs:
             node_count = kwargs['nodeCount']
-        if 'payType' in kwargs:
+        if pay_type is None and 'payType' in kwargs:
             pay_type = kwargs['payType']
-        if 'periodUnit' in kwargs:
+        if period_unit is None and 'periodUnit' in kwargs:
             period_unit = kwargs['periodUnit']
-        if 'publicPoints' in kwargs:
+        if public_points is None and 'publicPoints' in kwargs:
             public_points = kwargs['publicPoints']
-        if 'securityGroups' in kwargs:
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if auto_renew is not None:
@@ -922,29 +932,6 @@ class Cluster(pulumi.CustomResource):
         > **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
 
         ## Example Usage
-        ### Create a cassandra cluster
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.cassandra.Cluster("default",
-            auto_renew=False,
-            cluster_name="cassandra-cluster-name-tf",
-            data_center_name="dc-1",
-            disk_size=160,
-            disk_type="cloud_ssd",
-            instance_type="cassandra.c.large",
-            ip_white="127.0.0.1",
-            maintain_end_time="20:00Z",
-            maintain_start_time="18:00Z",
-            major_version="3.11",
-            node_count=2,
-            pay_type="PayAsYouGo",
-            vswitch_id="vsw-xxxx")
-        ```
-
-        This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
 
         ## Import
 
@@ -997,29 +984,6 @@ class Cluster(pulumi.CustomResource):
         > **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
 
         ## Example Usage
-        ### Create a cassandra cluster
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.cassandra.Cluster("default",
-            auto_renew=False,
-            cluster_name="cassandra-cluster-name-tf",
-            data_center_name="dc-1",
-            disk_size=160,
-            disk_type="cloud_ssd",
-            instance_type="cassandra.c.large",
-            ip_white="127.0.0.1",
-            maintain_end_time="20:00Z",
-            maintain_start_time="18:00Z",
-            major_version="3.11",
-            node_count=2,
-            pay_type="PayAsYouGo",
-            vswitch_id="vsw-xxxx")
-        ```
-
-        This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
 
         ## Import
 

@@ -55,25 +55,35 @@ class PrometheusAlertRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
-             duration: pulumi.Input[str],
-             expression: pulumi.Input[str],
-             message: pulumi.Input[str],
-             prometheus_alert_rule_name: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             duration: Optional[pulumi.Input[str]] = None,
+             expression: Optional[pulumi.Input[str]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             prometheus_alert_rule_name: Optional[pulumi.Input[str]] = None,
              annotations: Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]]] = None,
              dispatch_rule_id: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]] = None,
              notify_type: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'prometheusAlertRuleName' in kwargs:
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if duration is None:
+            raise TypeError("Missing 'duration' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if message is None:
+            raise TypeError("Missing 'message' argument")
+        if prometheus_alert_rule_name is None and 'prometheusAlertRuleName' in kwargs:
             prometheus_alert_rule_name = kwargs['prometheusAlertRuleName']
-        if 'dispatchRuleId' in kwargs:
+        if prometheus_alert_rule_name is None:
+            raise TypeError("Missing 'prometheus_alert_rule_name' argument")
+        if dispatch_rule_id is None and 'dispatchRuleId' in kwargs:
             dispatch_rule_id = kwargs['dispatchRuleId']
-        if 'notifyType' in kwargs:
+        if notify_type is None and 'notifyType' in kwargs:
             notify_type = kwargs['notifyType']
 
         _setter("cluster_id", cluster_id)
@@ -273,17 +283,17 @@ class _PrometheusAlertRuleState:
              prometheus_alert_rule_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'dispatchRuleId' in kwargs:
+        if dispatch_rule_id is None and 'dispatchRuleId' in kwargs:
             dispatch_rule_id = kwargs['dispatchRuleId']
-        if 'notifyType' in kwargs:
+        if notify_type is None and 'notifyType' in kwargs:
             notify_type = kwargs['notifyType']
-        if 'prometheusAlertRuleId' in kwargs:
+        if prometheus_alert_rule_id is None and 'prometheusAlertRuleId' in kwargs:
             prometheus_alert_rule_id = kwargs['prometheusAlertRuleId']
-        if 'prometheusAlertRuleName' in kwargs:
+        if prometheus_alert_rule_name is None and 'prometheusAlertRuleName' in kwargs:
             prometheus_alert_rule_name = kwargs['prometheusAlertRuleName']
 
         if annotations is not None:

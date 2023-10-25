@@ -10,19 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides available scheduled task resources.
  *
  * > **NOTE:** Available in 1.72.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ds = alicloud.ess.getScheduledTasks({
- *     nameRegex: "scheduled_task_name",
- *     scheduledTaskId: "scheduled_task_id",
- * });
- * export const firstScheduledTask = ds.then(ds => ds.tasks?.[0]?.id);
- * ```
  */
 export function getScheduledTasks(args?: GetScheduledTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduledTasksResult> {
     args = args || {};
@@ -95,19 +82,6 @@ export interface GetScheduledTasksResult {
  * This data source provides available scheduled task resources.
  *
  * > **NOTE:** Available in 1.72.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ds = alicloud.ess.getScheduledTasks({
- *     nameRegex: "scheduled_task_name",
- *     scheduledTaskId: "scheduled_task_id",
- * });
- * export const firstScheduledTask = ds.then(ds => ds.tasks?.[0]?.id);
- * ```
  */
 export function getScheduledTasksOutput(args?: GetScheduledTasksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScheduledTasksResult> {
     return pulumi.output(args).apply((a: any) => getScheduledTasks(a, opts))

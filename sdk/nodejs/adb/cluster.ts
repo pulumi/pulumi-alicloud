@@ -14,39 +14,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.71.0+.
  *
  * ## Example Usage
- * ### Create a ADB MySQL cluster
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "adbClusterconfig";
- * const creation = config.get("creation") || "ADB";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: name,
- * });
- * const defaultCluster = new alicloud.adb.Cluster("defaultCluster", {
- *     dbClusterVersion: "3.0",
- *     dbClusterCategory: "Cluster",
- *     dbNodeClass: "C8",
- *     dbNodeCount: 2,
- *     dbNodeStorage: 200,
- *     payType: "PostPaid",
- *     description: name,
- *     vswitchId: defaultSwitch.id,
- * });
- * ```
  *
  * ## Import
  *

@@ -16,41 +16,6 @@ namespace Pulumi.AliCloud.Emr
         /// instance types available in Alibaba Cloud account when create a emr cluster.
         /// 
         /// &gt; **NOTE:** Available in 1.59.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.Emr.GetInstanceTypes.Invoke(new()
-        ///     {
-        ///         ClusterType = "HADOOP",
-        ///         DestinationResource = "InstanceType",
-        ///         InstanceChargeType = "PostPaid",
-        ///         InstanceType = "ecs.g5.2xlarge",
-        ///         SupportLocalStorage = false,
-        ///         SupportNodeTypes = new[]
-        ///         {
-        ///             "MASTER",
-        ///             "CORE",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstInstanceType"] = @default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:emr/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithDefaults());
@@ -60,41 +25,6 @@ namespace Pulumi.AliCloud.Emr
         /// instance types available in Alibaba Cloud account when create a emr cluster.
         /// 
         /// &gt; **NOTE:** Available in 1.59.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.Emr.GetInstanceTypes.Invoke(new()
-        ///     {
-        ///         ClusterType = "HADOOP",
-        ///         DestinationResource = "InstanceType",
-        ///         InstanceChargeType = "PostPaid",
-        ///         InstanceType = "ecs.g5.2xlarge",
-        ///         SupportLocalStorage = false,
-        ///         SupportNodeTypes = new[]
-        ///         {
-        ///             "MASTER",
-        ///             "CORE",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstInstanceType"] = @default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:emr/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());

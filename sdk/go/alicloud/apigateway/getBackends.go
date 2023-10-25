@@ -15,33 +15,6 @@ import (
 // This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.181.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := apigateway.GetBackends(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("apiGatewayBackendId1", ids.Backends[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetBackends(ctx *pulumi.Context, args *GetBackendsArgs, opts ...pulumi.InvokeOption) (*GetBackendsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBackendsResult

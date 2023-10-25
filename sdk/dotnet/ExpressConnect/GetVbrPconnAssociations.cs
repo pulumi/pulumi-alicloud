@@ -15,36 +15,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// This data source provides Express Connect Vbr Pconn Association available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.ExpressConnect.GetVbrPconnAssociations.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         VbrId = alicloud_express_connect_vbr_pconn_association.Default.Vbr_id,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudExpressConnectVbrPconnAssociationExampleId"] = @default.Apply(@default =&gt; @default.Apply(getVbrPconnAssociationsResult =&gt; getVbrPconnAssociationsResult.Associations[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVbrPconnAssociationsResult> InvokeAsync(GetVbrPconnAssociationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVbrPconnAssociationsResult>("alicloud:expressconnect/getVbrPconnAssociations:getVbrPconnAssociations", args ?? new GetVbrPconnAssociationsArgs(), options.WithDefaults());
@@ -53,36 +23,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// This data source provides Express Connect Vbr Pconn Association available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.ExpressConnect.GetVbrPconnAssociations.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         VbrId = alicloud_express_connect_vbr_pconn_association.Default.Vbr_id,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["alicloudExpressConnectVbrPconnAssociationExampleId"] = @default.Apply(@default =&gt; @default.Apply(getVbrPconnAssociationsResult =&gt; getVbrPconnAssociationsResult.Associations[0]?.Id)),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetVbrPconnAssociationsResult> Invoke(GetVbrPconnAssociationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVbrPconnAssociationsResult>("alicloud:expressconnect/getVbrPconnAssociations:getVbrPconnAssociations", args ?? new GetVbrPconnAssociationsInvokeArgs(), options.WithDefaults());

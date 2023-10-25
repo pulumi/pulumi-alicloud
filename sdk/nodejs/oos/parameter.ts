@@ -11,28 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.147.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.resourcemanager.getResourceGroups({});
- * const example = new alicloud.oos.Parameter("example", {
- *     parameterName: "my-Parameter",
- *     type: "String",
- *     value: "example_value",
- *     description: "example_value",
- *     tags: {
- *         Created: "TF",
- *         For: "OosParameter",
- *     },
- *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
- * });
- * ```
- *
  * ## Import
  *
  * OOS Parameter can be imported using the id, e.g.

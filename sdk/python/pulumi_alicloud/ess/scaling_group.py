@@ -110,8 +110,8 @@ class ScalingGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_size: pulumi.Input[int],
-             min_size: pulumi.Input[int],
+             max_size: Optional[pulumi.Input[int]] = None,
+             min_size: Optional[pulumi.Input[int]] = None,
              db_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              default_cooldown: Optional[pulumi.Input[int]] = None,
              desired_capacity: Optional[pulumi.Input[int]] = None,
@@ -132,49 +132,53 @@ class ScalingGroupArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if max_size is None:
+            raise TypeError("Missing 'max_size' argument")
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'dbInstanceIds' in kwargs:
+        if min_size is None:
+            raise TypeError("Missing 'min_size' argument")
+        if db_instance_ids is None and 'dbInstanceIds' in kwargs:
             db_instance_ids = kwargs['dbInstanceIds']
-        if 'defaultCooldown' in kwargs:
+        if default_cooldown is None and 'defaultCooldown' in kwargs:
             default_cooldown = kwargs['defaultCooldown']
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'groupDeletionProtection' in kwargs:
+        if group_deletion_protection is None and 'groupDeletionProtection' in kwargs:
             group_deletion_protection = kwargs['groupDeletionProtection']
-        if 'groupType' in kwargs:
+        if group_type is None and 'groupType' in kwargs:
             group_type = kwargs['groupType']
-        if 'healthCheckType' in kwargs:
+        if health_check_type is None and 'healthCheckType' in kwargs:
             health_check_type = kwargs['healthCheckType']
-        if 'launchTemplateId' in kwargs:
+        if launch_template_id is None and 'launchTemplateId' in kwargs:
             launch_template_id = kwargs['launchTemplateId']
-        if 'launchTemplateVersion' in kwargs:
+        if launch_template_version is None and 'launchTemplateVersion' in kwargs:
             launch_template_version = kwargs['launchTemplateVersion']
-        if 'loadbalancerIds' in kwargs:
+        if loadbalancer_ids is None and 'loadbalancerIds' in kwargs:
             loadbalancer_ids = kwargs['loadbalancerIds']
-        if 'multiAzPolicy' in kwargs:
+        if multi_az_policy is None and 'multiAzPolicy' in kwargs:
             multi_az_policy = kwargs['multiAzPolicy']
-        if 'onDemandBaseCapacity' in kwargs:
+        if on_demand_base_capacity is None and 'onDemandBaseCapacity' in kwargs:
             on_demand_base_capacity = kwargs['onDemandBaseCapacity']
-        if 'onDemandPercentageAboveBaseCapacity' in kwargs:
+        if on_demand_percentage_above_base_capacity is None and 'onDemandPercentageAboveBaseCapacity' in kwargs:
             on_demand_percentage_above_base_capacity = kwargs['onDemandPercentageAboveBaseCapacity']
-        if 'protectedInstances' in kwargs:
+        if protected_instances is None and 'protectedInstances' in kwargs:
             protected_instances = kwargs['protectedInstances']
-        if 'removalPolicies' in kwargs:
+        if removal_policies is None and 'removalPolicies' in kwargs:
             removal_policies = kwargs['removalPolicies']
-        if 'scalingGroupName' in kwargs:
+        if scaling_group_name is None and 'scalingGroupName' in kwargs:
             scaling_group_name = kwargs['scalingGroupName']
-        if 'spotInstancePools' in kwargs:
+        if spot_instance_pools is None and 'spotInstancePools' in kwargs:
             spot_instance_pools = kwargs['spotInstancePools']
-        if 'spotInstanceRemedy' in kwargs:
+        if spot_instance_remedy is None and 'spotInstanceRemedy' in kwargs:
             spot_instance_remedy = kwargs['spotInstanceRemedy']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'vswitchIds' in kwargs:
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
 
         _setter("max_size", max_size)
@@ -633,49 +637,49 @@ class _ScalingGroupState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbInstanceIds' in kwargs:
+        if db_instance_ids is None and 'dbInstanceIds' in kwargs:
             db_instance_ids = kwargs['dbInstanceIds']
-        if 'defaultCooldown' in kwargs:
+        if default_cooldown is None and 'defaultCooldown' in kwargs:
             default_cooldown = kwargs['defaultCooldown']
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'groupDeletionProtection' in kwargs:
+        if group_deletion_protection is None and 'groupDeletionProtection' in kwargs:
             group_deletion_protection = kwargs['groupDeletionProtection']
-        if 'groupType' in kwargs:
+        if group_type is None and 'groupType' in kwargs:
             group_type = kwargs['groupType']
-        if 'healthCheckType' in kwargs:
+        if health_check_type is None and 'healthCheckType' in kwargs:
             health_check_type = kwargs['healthCheckType']
-        if 'launchTemplateId' in kwargs:
+        if launch_template_id is None and 'launchTemplateId' in kwargs:
             launch_template_id = kwargs['launchTemplateId']
-        if 'launchTemplateVersion' in kwargs:
+        if launch_template_version is None and 'launchTemplateVersion' in kwargs:
             launch_template_version = kwargs['launchTemplateVersion']
-        if 'loadbalancerIds' in kwargs:
+        if loadbalancer_ids is None and 'loadbalancerIds' in kwargs:
             loadbalancer_ids = kwargs['loadbalancerIds']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'multiAzPolicy' in kwargs:
+        if multi_az_policy is None and 'multiAzPolicy' in kwargs:
             multi_az_policy = kwargs['multiAzPolicy']
-        if 'onDemandBaseCapacity' in kwargs:
+        if on_demand_base_capacity is None and 'onDemandBaseCapacity' in kwargs:
             on_demand_base_capacity = kwargs['onDemandBaseCapacity']
-        if 'onDemandPercentageAboveBaseCapacity' in kwargs:
+        if on_demand_percentage_above_base_capacity is None and 'onDemandPercentageAboveBaseCapacity' in kwargs:
             on_demand_percentage_above_base_capacity = kwargs['onDemandPercentageAboveBaseCapacity']
-        if 'protectedInstances' in kwargs:
+        if protected_instances is None and 'protectedInstances' in kwargs:
             protected_instances = kwargs['protectedInstances']
-        if 'removalPolicies' in kwargs:
+        if removal_policies is None and 'removalPolicies' in kwargs:
             removal_policies = kwargs['removalPolicies']
-        if 'scalingGroupName' in kwargs:
+        if scaling_group_name is None and 'scalingGroupName' in kwargs:
             scaling_group_name = kwargs['scalingGroupName']
-        if 'spotInstancePools' in kwargs:
+        if spot_instance_pools is None and 'spotInstancePools' in kwargs:
             spot_instance_pools = kwargs['spotInstancePools']
-        if 'spotInstanceRemedy' in kwargs:
+        if spot_instance_remedy is None and 'spotInstanceRemedy' in kwargs:
             spot_instance_remedy = kwargs['spotInstanceRemedy']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'vswitchIds' in kwargs:
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
             vswitch_ids = kwargs['vswitchIds']
 
         if db_instance_ids is not None:
@@ -1054,61 +1058,6 @@ class ScalingGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.39.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=2,
-            memory_size=4)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
-            type="ingress",
-            ip_protocol="tcp",
-            nic_type="intranet",
-            policy="accept",
-            port_range="22/22",
-            priority=1,
-            security_group_id=default_security_group.id,
-            cidr_ip="172.16.0.0/24")
-        default2 = alicloud.vpc.Switch("default2",
-            vpc_id=default_network.id,
-            cidr_block="172.16.1.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=f"{name}-bar")
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            min_size=1,
-            max_size=1,
-            scaling_group_name=name,
-            default_cooldown=20,
-            vswitch_ids=[
-                default_switch.id,
-                default2.id,
-            ],
-            removal_policies=[
-                "OldestInstance",
-                "NewestInstance",
-            ])
-        ```
         ## Module Support
 
         You can use to the existing autoscaling module
@@ -1185,61 +1134,6 @@ class ScalingGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.39.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=2,
-            memory_size=4)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
-            type="ingress",
-            ip_protocol="tcp",
-            nic_type="intranet",
-            policy="accept",
-            port_range="22/22",
-            priority=1,
-            security_group_id=default_security_group.id,
-            cidr_ip="172.16.0.0/24")
-        default2 = alicloud.vpc.Switch("default2",
-            vpc_id=default_network.id,
-            cidr_block="172.16.1.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=f"{name}-bar")
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            min_size=1,
-            max_size=1,
-            scaling_group_name=name,
-            default_cooldown=20,
-            vswitch_ids=[
-                default_switch.id,
-                default2.id,
-            ],
-            removal_policies=[
-                "OldestInstance",
-                "NewestInstance",
-            ])
-        ```
         ## Module Support
 
         You can use to the existing autoscaling module

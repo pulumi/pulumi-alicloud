@@ -90,20 +90,6 @@ def get_log_configs(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.185.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.apigateway.get_log_configs(ids=["example_id"])
-    pulumi.export("apiGatewayLogConfigId1", ids.configs[0].id)
-    log_type = alicloud.apigateway.get_log_configs(log_type="PROVIDER")
-    pulumi.export("apiGatewayLogConfigId2", log_type.configs[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Log Config IDs.
     :param str log_type: The type the of log.
@@ -133,20 +119,6 @@ def get_log_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
     This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.185.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.apigateway.get_log_configs(ids=["example_id"])
-    pulumi.export("apiGatewayLogConfigId1", ids.configs[0].id)
-    log_type = alicloud.apigateway.get_log_configs(log_type="PROVIDER")
-    pulumi.export("apiGatewayLogConfigId2", log_type.configs[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Log Config IDs.

@@ -59,7 +59,7 @@ class SmartagFlowLogArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             output_type: pulumi.Input[str],
+             output_type: Optional[pulumi.Input[str]] = None,
              active_aging: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              flow_log_name: Optional[pulumi.Input[str]] = None,
@@ -71,27 +71,29 @@ class SmartagFlowLogArgs:
              project_name: Optional[pulumi.Input[str]] = None,
              sls_region_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'outputType' in kwargs:
+        if output_type is None and 'outputType' in kwargs:
             output_type = kwargs['outputType']
-        if 'activeAging' in kwargs:
+        if output_type is None:
+            raise TypeError("Missing 'output_type' argument")
+        if active_aging is None and 'activeAging' in kwargs:
             active_aging = kwargs['activeAging']
-        if 'flowLogName' in kwargs:
+        if flow_log_name is None and 'flowLogName' in kwargs:
             flow_log_name = kwargs['flowLogName']
-        if 'inactiveAging' in kwargs:
+        if inactive_aging is None and 'inactiveAging' in kwargs:
             inactive_aging = kwargs['inactiveAging']
-        if 'logstoreName' in kwargs:
+        if logstore_name is None and 'logstoreName' in kwargs:
             logstore_name = kwargs['logstoreName']
-        if 'netflowServerIp' in kwargs:
+        if netflow_server_ip is None and 'netflowServerIp' in kwargs:
             netflow_server_ip = kwargs['netflowServerIp']
-        if 'netflowServerPort' in kwargs:
+        if netflow_server_port is None and 'netflowServerPort' in kwargs:
             netflow_server_port = kwargs['netflowServerPort']
-        if 'netflowVersion' in kwargs:
+        if netflow_version is None and 'netflowVersion' in kwargs:
             netflow_version = kwargs['netflowVersion']
-        if 'projectName' in kwargs:
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'slsRegionId' in kwargs:
+        if sls_region_id is None and 'slsRegionId' in kwargs:
             sls_region_id = kwargs['slsRegionId']
 
         _setter("output_type", output_type)
@@ -323,27 +325,27 @@ class _SmartagFlowLogState:
              project_name: Optional[pulumi.Input[str]] = None,
              sls_region_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'activeAging' in kwargs:
+        if active_aging is None and 'activeAging' in kwargs:
             active_aging = kwargs['activeAging']
-        if 'flowLogName' in kwargs:
+        if flow_log_name is None and 'flowLogName' in kwargs:
             flow_log_name = kwargs['flowLogName']
-        if 'inactiveAging' in kwargs:
+        if inactive_aging is None and 'inactiveAging' in kwargs:
             inactive_aging = kwargs['inactiveAging']
-        if 'logstoreName' in kwargs:
+        if logstore_name is None and 'logstoreName' in kwargs:
             logstore_name = kwargs['logstoreName']
-        if 'netflowServerIp' in kwargs:
+        if netflow_server_ip is None and 'netflowServerIp' in kwargs:
             netflow_server_ip = kwargs['netflowServerIp']
-        if 'netflowServerPort' in kwargs:
+        if netflow_server_port is None and 'netflowServerPort' in kwargs:
             netflow_server_port = kwargs['netflowServerPort']
-        if 'netflowVersion' in kwargs:
+        if netflow_version is None and 'netflowVersion' in kwargs:
             netflow_version = kwargs['netflowVersion']
-        if 'outputType' in kwargs:
+        if output_type is None and 'outputType' in kwargs:
             output_type = kwargs['outputType']
-        if 'projectName' in kwargs:
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
-        if 'slsRegionId' in kwargs:
+        if sls_region_id is None and 'slsRegionId' in kwargs:
             sls_region_id = kwargs['slsRegionId']
 
         if active_aging is not None:
@@ -541,21 +543,6 @@ class SmartagFlowLog(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.168.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.sag.SmartagFlowLog("example",
-            netflow_server_ip="192.168.0.2",
-            netflow_server_port=9995,
-            netflow_version="V9",
-            output_type="netflow")
-        ```
-
         ## Import
 
         Smartag Flow Log can be imported using the id, e.g.
@@ -591,21 +578,6 @@ class SmartagFlowLog(pulumi.CustomResource):
         For information about Smartag Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createflowlog).
 
         > **NOTE:** Available since v1.168.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.sag.SmartagFlowLog("example",
-            netflow_server_ip="192.168.0.2",
-            netflow_server_port=9995,
-            netflow_version="V9",
-            output_type="netflow")
-        ```
 
         ## Import
 

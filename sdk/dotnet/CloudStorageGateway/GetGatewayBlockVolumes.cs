@@ -15,46 +15,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.144.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.CloudStorageGateway.GetGatewayBlockVolumes.Invoke(new()
-        ///     {
-        ///         GatewayId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.CloudStorageGateway.GetGatewayBlockVolumes.Invoke(new()
-        ///     {
-        ///         GatewayId = "example_value",
-        ///         NameRegex = "^my-GatewayBlockVolume",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cloudStorageGatewayGatewayBlockVolumeId1"] = ids.Apply(getGatewayBlockVolumesResult =&gt; getGatewayBlockVolumesResult.Volumes[0]?.Id),
-        ///         ["cloudStorageGatewayGatewayBlockVolumeId2"] = nameRegex.Apply(getGatewayBlockVolumesResult =&gt; getGatewayBlockVolumesResult.Volumes[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGatewayBlockVolumesResult> InvokeAsync(GetGatewayBlockVolumesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewayBlockVolumesResult>("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", args ?? new GetGatewayBlockVolumesArgs(), options.WithDefaults());
@@ -63,46 +23,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.144.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.CloudStorageGateway.GetGatewayBlockVolumes.Invoke(new()
-        ///     {
-        ///         GatewayId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value-1",
-        ///             "example_value-2",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.CloudStorageGateway.GetGatewayBlockVolumes.Invoke(new()
-        ///     {
-        ///         GatewayId = "example_value",
-        ///         NameRegex = "^my-GatewayBlockVolume",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cloudStorageGatewayGatewayBlockVolumeId1"] = ids.Apply(getGatewayBlockVolumesResult =&gt; getGatewayBlockVolumesResult.Volumes[0]?.Id),
-        ///         ["cloudStorageGatewayGatewayBlockVolumeId2"] = nameRegex.Apply(getGatewayBlockVolumesResult =&gt; getGatewayBlockVolumesResult.Volumes[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGatewayBlockVolumesResult> Invoke(GetGatewayBlockVolumesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayBlockVolumesResult>("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", args ?? new GetGatewayBlockVolumesInvokeArgs(), options.WithDefaults());

@@ -39,20 +39,24 @@ class IpSetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accelerate_region_id: pulumi.Input[str],
-             accelerator_id: pulumi.Input[str],
+             accelerate_region_id: Optional[pulumi.Input[str]] = None,
+             accelerator_id: Optional[pulumi.Input[str]] = None,
              bandwidth: Optional[pulumi.Input[int]] = None,
              ip_version: Optional[pulumi.Input[str]] = None,
              isp_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accelerateRegionId' in kwargs:
+        if accelerate_region_id is None and 'accelerateRegionId' in kwargs:
             accelerate_region_id = kwargs['accelerateRegionId']
-        if 'acceleratorId' in kwargs:
+        if accelerate_region_id is None:
+            raise TypeError("Missing 'accelerate_region_id' argument")
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'ipVersion' in kwargs:
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'ispType' in kwargs:
+        if isp_type is None and 'ispType' in kwargs:
             isp_type = kwargs['ispType']
 
         _setter("accelerate_region_id", accelerate_region_id)
@@ -167,17 +171,17 @@ class _IpSetState:
              ip_version: Optional[pulumi.Input[str]] = None,
              isp_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accelerateRegionId' in kwargs:
+        if accelerate_region_id is None and 'accelerateRegionId' in kwargs:
             accelerate_region_id = kwargs['accelerateRegionId']
-        if 'acceleratorId' in kwargs:
+        if accelerator_id is None and 'acceleratorId' in kwargs:
             accelerator_id = kwargs['acceleratorId']
-        if 'ipAddressLists' in kwargs:
+        if ip_address_lists is None and 'ipAddressLists' in kwargs:
             ip_address_lists = kwargs['ipAddressLists']
-        if 'ipVersion' in kwargs:
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'ispType' in kwargs:
+        if isp_type is None and 'ispType' in kwargs:
             isp_type = kwargs['ispType']
 
         if accelerate_region_id is not None:
@@ -299,38 +303,6 @@ class IpSet(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.113.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
-            bandwidth=100,
-            type="Basic",
-            bandwidth_type="Basic",
-            payment_type="PayAsYouGo",
-            billing_type="PayBy95",
-            ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
-            bandwidth_package_id=default_bandwidth_package.id)
-        example = alicloud.ga.IpSet("example",
-            accelerate_region_id=region,
-            bandwidth=5,
-            accelerator_id=default_bandwidth_package_attachment.accelerator_id)
-        ```
-
         ## Import
 
         Ga Ip Set can be imported using the id, e.g.
@@ -360,38 +332,6 @@ class IpSet(pulumi.CustomResource):
         For information about Global Accelerator (GA) Ip Set and how to use it, see [What is Ip Set](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createipsets).
 
         > **NOTE:** Available since v1.113.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        region = config.get("region")
-        if region is None:
-            region = "cn-hangzhou"
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
-            bandwidth=100,
-            type="Basic",
-            bandwidth_type="Basic",
-            payment_type="PayAsYouGo",
-            billing_type="PayBy95",
-            ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
-            bandwidth_package_id=default_bandwidth_package.id)
-        example = alicloud.ga.IpSet("example",
-            accelerate_region_id=region,
-            bandwidth=5,
-            accelerator_id=default_bandwidth_package_attachment.accelerator_id)
-        ```
 
         ## Import
 

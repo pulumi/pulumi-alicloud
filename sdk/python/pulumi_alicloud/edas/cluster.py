@@ -38,22 +38,28 @@ class ClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_name: pulumi.Input[str],
-             cluster_type: pulumi.Input[int],
-             network_mode: pulumi.Input[int],
+             cluster_name: Optional[pulumi.Input[str]] = None,
+             cluster_type: Optional[pulumi.Input[int]] = None,
+             network_mode: Optional[pulumi.Input[int]] = None,
              logical_region_id: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'clusterType' in kwargs:
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'networkMode' in kwargs:
+        if cluster_type is None:
+            raise TypeError("Missing 'cluster_type' argument")
+        if network_mode is None and 'networkMode' in kwargs:
             network_mode = kwargs['networkMode']
-        if 'logicalRegionId' in kwargs:
+        if network_mode is None:
+            raise TypeError("Missing 'network_mode' argument")
+        if logical_region_id is None and 'logicalRegionId' in kwargs:
             logical_region_id = kwargs['logicalRegionId']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         _setter("cluster_name", cluster_name)
@@ -157,17 +163,17 @@ class _ClusterState:
              logical_region_id: Optional[pulumi.Input[str]] = None,
              network_mode: Optional[pulumi.Input[int]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'clusterType' in kwargs:
+        if cluster_type is None and 'clusterType' in kwargs:
             cluster_type = kwargs['clusterType']
-        if 'logicalRegionId' in kwargs:
+        if logical_region_id is None and 'logicalRegionId' in kwargs:
             logical_region_id = kwargs['logicalRegionId']
-        if 'networkMode' in kwargs:
+        if network_mode is None and 'networkMode' in kwargs:
             network_mode = kwargs['networkMode']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if cluster_name is not None:
@@ -258,30 +264,6 @@ class Cluster(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.82.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_cluster = alicloud.edas.Cluster("defaultCluster",
-            cluster_name=name,
-            cluster_type=2,
-            network_mode=2,
-            logical_region_id=default_regions.regions[0].id,
-            vpc_id=default_network.id)
-        ```
-
         ## Import
 
         EDAS cluster can be imported using the id, e.g.
@@ -308,30 +290,6 @@ class Cluster(pulumi.CustomResource):
         Provides an EDAS cluster resource, see [What is EDAS Cluster](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertcluster).
 
         > **NOTE:** Available since v1.82.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_cluster = alicloud.edas.Cluster("defaultCluster",
-            cluster_name=name,
-            cluster_type=2,
-            network_mode=2,
-            logical_region_id=default_regions.regions[0].id,
-            vpc_id=default_network.id)
-        ```
 
         ## Import
 

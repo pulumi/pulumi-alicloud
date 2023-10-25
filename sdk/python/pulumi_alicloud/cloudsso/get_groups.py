@@ -121,25 +121,6 @@ def get_groups(directory_id: Optional[str] = None,
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cloudsso.get_groups(directory_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("cloudSsoGroupId1", ids.groups[0].id)
-    name_regex = alicloud.cloudsso.get_groups(directory_id="example_value",
-        name_regex="^my-Group")
-    pulumi.export("cloudSsoGroupId2", name_regex.groups[0].id)
-    ```
-
 
     :param str directory_id: The ID of the Directory.
     :param Sequence[str] ids: A list of Group IDs.
@@ -180,25 +161,6 @@ def get_groups_output(directory_id: Optional[pulumi.Input[str]] = None,
     > **NOTE:** Available in v1.138.0+.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cloudsso.get_groups(directory_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("cloudSsoGroupId1", ids.groups[0].id)
-    name_regex = alicloud.cloudsso.get_groups(directory_id="example_value",
-        name_regex="^my-Group")
-    pulumi.export("cloudSsoGroupId2", name_regex.groups[0].id)
-    ```
 
 
     :param str directory_id: The ID of the Directory.

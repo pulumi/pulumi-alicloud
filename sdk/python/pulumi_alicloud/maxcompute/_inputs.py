@@ -37,11 +37,11 @@ class ProjectIpWhiteListArgs:
              _setter: Callable[[Any, Any], None],
              ip_list: Optional[pulumi.Input[str]] = None,
              vpc_ip_list: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipList' in kwargs:
+        if ip_list is None and 'ipList' in kwargs:
             ip_list = kwargs['ipList']
-        if 'vpcIpList' in kwargs:
+        if vpc_ip_list is None and 'vpcIpList' in kwargs:
             vpc_ip_list = kwargs['vpcIpList']
 
         if ip_list is not None:
@@ -117,19 +117,19 @@ class ProjectPropertiesArgs:
              table_lifecycle: Optional[pulumi.Input['ProjectPropertiesTableLifecycleArgs']] = None,
              timezone: Optional[pulumi.Input[str]] = None,
              type_system: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowFullScan' in kwargs:
+        if allow_full_scan is None and 'allowFullScan' in kwargs:
             allow_full_scan = kwargs['allowFullScan']
-        if 'enableDecimal2' in kwargs:
+        if enable_decimal2 is None and 'enableDecimal2' in kwargs:
             enable_decimal2 = kwargs['enableDecimal2']
-        if 'retentionDays' in kwargs:
+        if retention_days is None and 'retentionDays' in kwargs:
             retention_days = kwargs['retentionDays']
-        if 'sqlMeteringMax' in kwargs:
+        if sql_metering_max is None and 'sqlMeteringMax' in kwargs:
             sql_metering_max = kwargs['sqlMeteringMax']
-        if 'tableLifecycle' in kwargs:
+        if table_lifecycle is None and 'tableLifecycle' in kwargs:
             table_lifecycle = kwargs['tableLifecycle']
-        if 'typeSystem' in kwargs:
+        if type_system is None and 'typeSystem' in kwargs:
             type_system = kwargs['typeSystem']
 
         if allow_full_scan is not None:
@@ -269,7 +269,7 @@ class ProjectPropertiesEncryptionArgs:
              algorithm: Optional[pulumi.Input[str]] = None,
              enable: Optional[pulumi.Input[bool]] = None,
              key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if algorithm is not None:
@@ -335,7 +335,7 @@ class ProjectPropertiesTableLifecycleArgs:
              _setter: Callable[[Any, Any], None],
              type: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if type is not None:
@@ -407,21 +407,21 @@ class ProjectSecurityPropertiesArgs:
              project_protection: Optional[pulumi.Input['ProjectSecurityPropertiesProjectProtectionArgs']] = None,
              using_acl: Optional[pulumi.Input[bool]] = None,
              using_policy: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'enableDownloadPrivilege' in kwargs:
+        if enable_download_privilege is None and 'enableDownloadPrivilege' in kwargs:
             enable_download_privilege = kwargs['enableDownloadPrivilege']
-        if 'labelSecurity' in kwargs:
+        if label_security is None and 'labelSecurity' in kwargs:
             label_security = kwargs['labelSecurity']
-        if 'objectCreatorHasAccessPermission' in kwargs:
+        if object_creator_has_access_permission is None and 'objectCreatorHasAccessPermission' in kwargs:
             object_creator_has_access_permission = kwargs['objectCreatorHasAccessPermission']
-        if 'objectCreatorHasGrantPermission' in kwargs:
+        if object_creator_has_grant_permission is None and 'objectCreatorHasGrantPermission' in kwargs:
             object_creator_has_grant_permission = kwargs['objectCreatorHasGrantPermission']
-        if 'projectProtection' in kwargs:
+        if project_protection is None and 'projectProtection' in kwargs:
             project_protection = kwargs['projectProtection']
-        if 'usingAcl' in kwargs:
+        if using_acl is None and 'usingAcl' in kwargs:
             using_acl = kwargs['usingAcl']
-        if 'usingPolicy' in kwargs:
+        if using_policy is None and 'usingPolicy' in kwargs:
             using_policy = kwargs['usingPolicy']
 
         if enable_download_privilege is not None:
@@ -543,9 +543,9 @@ class ProjectSecurityPropertiesProjectProtectionArgs:
              _setter: Callable[[Any, Any], None],
              exception_policy: Optional[pulumi.Input[str]] = None,
              protected: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'exceptionPolicy' in kwargs:
+        if exception_policy is None and 'exceptionPolicy' in kwargs:
             exception_policy = kwargs['exceptionPolicy']
 
         if exception_policy is not None:

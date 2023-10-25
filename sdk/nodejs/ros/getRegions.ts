@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ros Regions of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.145.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const all = alicloud.ros.getRegions({});
- * export const rosRegionRegionId1 = all.then(all => all.regions?.[0]?.regionId);
- * ```
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
@@ -57,18 +45,6 @@ export interface GetRegionsResult {
  * This data source provides the Ros Regions of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.145.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const all = alicloud.ros.getRegions({});
- * export const rosRegionRegionId1 = all.then(all => all.regions?.[0]?.regionId);
- * ```
  */
 export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
     return pulumi.output(args).apply((a: any) => getRegions(a, opts))

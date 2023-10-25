@@ -154,16 +154,6 @@ def get_transit_routers(cen_id: Optional[str] = None,
 
     > **NOTE:** Available in 1.126.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.cen.get_transit_routers(cen_id="cen-id1")
-    pulumi.export("firstTransitRoutersType", default.transit_routers[0].type)
-    ```
-
 
     :param str cen_id: The ID of the CEN instance.
     :param Sequence[str] ids: A list of resource id. The element value is same as <cen_id>:<transit_router_id>`.
@@ -210,16 +200,6 @@ def get_transit_routers_output(cen_id: Optional[pulumi.Input[str]] = None,
     This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
 
     > **NOTE:** Available in 1.126.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.cen.get_transit_routers(cen_id="cen-id1")
-    pulumi.export("firstTransitRoutersType", default.transit_routers[0].type)
-    ```
 
 
     :param str cen_id: The ID of the CEN instance.

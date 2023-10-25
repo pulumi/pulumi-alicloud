@@ -90,22 +90,6 @@ def get_application_scaling_rules(app_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.159.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.sae.get_application_scaling_rules(app_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("saeApplicationScalingRuleId1", ids.rules[0].id)
-    ```
-
 
     :param str app_id: The ID of the Application.
     :param Sequence[str] ids: A list of Application Scaling Rule IDs.
@@ -135,22 +119,6 @@ def get_application_scaling_rules_output(app_id: Optional[pulumi.Input[str]] = N
     This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.159.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.sae.get_application_scaling_rules(app_id="example_value",
-        ids=[
-            "example_value-1",
-            "example_value-2",
-        ])
-    pulumi.export("saeApplicationScalingRuleId1", ids.rules[0].id)
-    ```
 
 
     :param str app_id: The ID of the Application.

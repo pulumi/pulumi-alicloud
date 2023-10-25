@@ -132,16 +132,6 @@ def get_ca_certificates(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the CA certificate list.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    sample_ds = alicloud.slb.get_ca_certificates()
-    pulumi.export("firstSlbCaCertificateId", sample_ds.certificates[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of ca certificates IDs to filter results.
     :param str name_regex: A regex string to filter results by ca certificate name.
@@ -178,16 +168,6 @@ def get_ca_certificates_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCaCertificatesResult]:
     """
     This data source provides the CA certificate list.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    sample_ds = alicloud.slb.get_ca_certificates()
-    pulumi.export("firstSlbCaCertificateId", sample_ds.certificates[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of ca certificates IDs to filter results.

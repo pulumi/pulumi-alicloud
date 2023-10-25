@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.186.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.vpc.getPublicIpAddressPools({
- *     ids: ["example_id"],
- * });
- * export const vpcPublicIpAddressPoolId1 = ids.then(ids => ids.pools?.[0]?.id);
- * const nameRegex = alicloud.vpc.getPublicIpAddressPools({
- *     nameRegex: "example_name",
- * });
- * export const vpcPublicIpAddressPoolId2 = nameRegex.then(nameRegex => nameRegex.pools?.[0]?.id);
- * ```
  */
 export function getPublicIpAddressPools(args?: GetPublicIpAddressPoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetPublicIpAddressPoolsResult> {
     args = args || {};
@@ -100,24 +82,6 @@ export interface GetPublicIpAddressPoolsResult {
  * This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.186.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.vpc.getPublicIpAddressPools({
- *     ids: ["example_id"],
- * });
- * export const vpcPublicIpAddressPoolId1 = ids.then(ids => ids.pools?.[0]?.id);
- * const nameRegex = alicloud.vpc.getPublicIpAddressPools({
- *     nameRegex: "example_name",
- * });
- * export const vpcPublicIpAddressPoolId2 = nameRegex.then(nameRegex => nameRegex.pools?.[0]?.id);
- * ```
  */
 export function getPublicIpAddressPoolsOutput(args?: GetPublicIpAddressPoolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPublicIpAddressPoolsResult> {
     return pulumi.output(args).apply((a: any) => getPublicIpAddressPools(a, opts))

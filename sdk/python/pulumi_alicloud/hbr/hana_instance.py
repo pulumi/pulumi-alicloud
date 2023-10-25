@@ -59,7 +59,7 @@ class HanaInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vault_id: pulumi.Input[str],
+             vault_id: Optional[pulumi.Input[str]] = None,
              alert_setting: Optional[pulumi.Input[str]] = None,
              ecs_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              hana_name: Optional[pulumi.Input[str]] = None,
@@ -71,25 +71,27 @@ class HanaInstanceArgs:
              use_ssl: Optional[pulumi.Input[bool]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
              validate_certificate: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vaultId' in kwargs:
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
-        if 'alertSetting' in kwargs:
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
+        if alert_setting is None and 'alertSetting' in kwargs:
             alert_setting = kwargs['alertSetting']
-        if 'ecsInstanceIds' in kwargs:
+        if ecs_instance_ids is None and 'ecsInstanceIds' in kwargs:
             ecs_instance_ids = kwargs['ecsInstanceIds']
-        if 'hanaName' in kwargs:
+        if hana_name is None and 'hanaName' in kwargs:
             hana_name = kwargs['hanaName']
-        if 'instanceNumber' in kwargs:
+        if instance_number is None and 'instanceNumber' in kwargs:
             instance_number = kwargs['instanceNumber']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'useSsl' in kwargs:
+        if use_ssl is None and 'useSsl' in kwargs:
             use_ssl = kwargs['useSsl']
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
-        if 'validateCertificate' in kwargs:
+        if validate_certificate is None and 'validateCertificate' in kwargs:
             validate_certificate = kwargs['validateCertificate']
 
         _setter("vault_id", vault_id)
@@ -329,27 +331,27 @@ class _HanaInstanceState:
              user_name: Optional[pulumi.Input[str]] = None,
              validate_certificate: Optional[pulumi.Input[bool]] = None,
              vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alertSetting' in kwargs:
+        if alert_setting is None and 'alertSetting' in kwargs:
             alert_setting = kwargs['alertSetting']
-        if 'ecsInstanceIds' in kwargs:
+        if ecs_instance_ids is None and 'ecsInstanceIds' in kwargs:
             ecs_instance_ids = kwargs['ecsInstanceIds']
-        if 'hanaInstanceId' in kwargs:
+        if hana_instance_id is None and 'hanaInstanceId' in kwargs:
             hana_instance_id = kwargs['hanaInstanceId']
-        if 'hanaName' in kwargs:
+        if hana_name is None and 'hanaName' in kwargs:
             hana_name = kwargs['hanaName']
-        if 'instanceNumber' in kwargs:
+        if instance_number is None and 'instanceNumber' in kwargs:
             instance_number = kwargs['instanceNumber']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'useSsl' in kwargs:
+        if use_ssl is None and 'useSsl' in kwargs:
             use_ssl = kwargs['useSsl']
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
-        if 'validateCertificate' in kwargs:
+        if validate_certificate is None and 'validateCertificate' in kwargs:
             validate_certificate = kwargs['validateCertificate']
-        if 'vaultId' in kwargs:
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
 
         if alert_setting is not None:
@@ -577,30 +579,6 @@ class HanaInstance(pulumi.CustomResource):
 
         > **NOTE:** The `sid` attribute is required when destroying resources.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        example_vault = alicloud.hbr.Vault("exampleVault", vault_name="terraform-example")
-        example_hana_instance = alicloud.hbr.HanaInstance("exampleHanaInstance",
-            alert_setting="INHERITED",
-            hana_name="terraform-example",
-            host="1.1.1.1",
-            instance_number=1,
-            password="YouPassword123",
-            resource_group_id=example_resource_groups.groups[0].id,
-            sid="HXE",
-            use_ssl=False,
-            user_name="admin",
-            validate_certificate=False,
-            vault_id=example_vault.id)
-        ```
-
         ## Import
 
         Hybrid Backup Recovery (HBR) Hana Instance can be imported using the id, e.g.
@@ -638,30 +616,6 @@ class HanaInstance(pulumi.CustomResource):
         > **NOTE:** Available in v1.178.0+.
 
         > **NOTE:** The `sid` attribute is required when destroying resources.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        example_vault = alicloud.hbr.Vault("exampleVault", vault_name="terraform-example")
-        example_hana_instance = alicloud.hbr.HanaInstance("exampleHanaInstance",
-            alert_setting="INHERITED",
-            hana_name="terraform-example",
-            host="1.1.1.1",
-            instance_number=1,
-            password="YouPassword123",
-            resource_group_id=example_resource_groups.groups[0].id,
-            sid="HXE",
-            use_ssl=False,
-            user_name="admin",
-            validate_certificate=False,
-            vault_id=example_vault.id)
-        ```
 
         ## Import
 

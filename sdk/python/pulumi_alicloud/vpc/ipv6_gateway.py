@@ -41,19 +41,21 @@ class Ipv6GatewayArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vpc_id: pulumi.Input[str],
+             vpc_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              ipv6_gateway_name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              spec: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'ipv6GatewayName' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if ipv6_gateway_name is None and 'ipv6GatewayName' in kwargs:
             ipv6_gateway_name = kwargs['ipv6GatewayName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("vpc_id", vpc_id)
@@ -207,23 +209,23 @@ class _Ipv6GatewayState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'businessStatus' in kwargs:
+        if business_status is None and 'businessStatus' in kwargs:
             business_status = kwargs['businessStatus']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'expiredTime' in kwargs:
+        if expired_time is None and 'expiredTime' in kwargs:
             expired_time = kwargs['expiredTime']
-        if 'instanceChargeType' in kwargs:
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
             instance_charge_type = kwargs['instanceChargeType']
-        if 'ipv6GatewayId' in kwargs:
+        if ipv6_gateway_id is None and 'ipv6GatewayId' in kwargs:
             ipv6_gateway_id = kwargs['ipv6GatewayId']
-        if 'ipv6GatewayName' in kwargs:
+        if ipv6_gateway_name is None and 'ipv6GatewayName' in kwargs:
             ipv6_gateway_name = kwargs['ipv6GatewayName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if business_status is not None:
@@ -421,34 +423,6 @@ class Ipv6Gateway(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.142.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testacc-example"
-        default_vpc = alicloud.vpc.Network("defaultVpc",
-            description="tf-testacc",
-            enable_ipv6=True)
-        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
-            display_name="tf-testacc-ipv6gateway503",
-            resource_group_name=f"{name}1")
-        change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
-            display_name="tf-testacc-ipv6gateway311",
-            resource_group_name=f"{name}2")
-        default = alicloud.vpc.Ipv6Gateway("default",
-            description="test",
-            ipv6_gateway_name=name,
-            vpc_id=default_vpc.id,
-            resource_group_id=default_rg.id)
-        ```
-
         ## Import
 
         Vpc Ipv6 Gateway can be imported using the id, e.g.
@@ -478,34 +452,6 @@ class Ipv6Gateway(pulumi.CustomResource):
         For information about Vpc Ipv6 Gateway and how to use it, see [What is Ipv6 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv6gateway).
 
         > **NOTE:** Available in v1.142.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testacc-example"
-        default_vpc = alicloud.vpc.Network("defaultVpc",
-            description="tf-testacc",
-            enable_ipv6=True)
-        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
-            display_name="tf-testacc-ipv6gateway503",
-            resource_group_name=f"{name}1")
-        change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
-            display_name="tf-testacc-ipv6gateway311",
-            resource_group_name=f"{name}2")
-        default = alicloud.vpc.Ipv6Gateway("default",
-            description="test",
-            ipv6_gateway_name=name,
-            vpc_id=default_vpc.id,
-            resource_group_id=default_rg.id)
-        ```
 
         ## Import
 

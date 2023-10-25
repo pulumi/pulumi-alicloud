@@ -10,22 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Oos Applications of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.145.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.oos.getApplications({});
- * export const oosApplicationId1 = ids.then(ids => ids.applications?.[0]?.id);
- * const nameRegex = alicloud.oos.getApplications({
- *     nameRegex: "^my-Application",
- * });
- * export const oosApplicationId2 = nameRegex.then(nameRegex => nameRegex.applications?.[0]?.id);
- * ```
  */
 export function getApplications(args?: GetApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationsResult> {
     args = args || {};
@@ -80,22 +64,6 @@ export interface GetApplicationsResult {
  * This data source provides the Oos Applications of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.145.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.oos.getApplications({});
- * export const oosApplicationId1 = ids.then(ids => ids.applications?.[0]?.id);
- * const nameRegex = alicloud.oos.getApplications({
- *     nameRegex: "^my-Application",
- * });
- * export const oosApplicationId2 = nameRegex.then(nameRegex => nameRegex.applications?.[0]?.id);
- * ```
  */
 export function getApplicationsOutput(args?: GetApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationsResult> {
     return pulumi.output(args).apply((a: any) => getApplications(a, opts))

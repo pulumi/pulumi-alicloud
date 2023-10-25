@@ -138,56 +138,6 @@ def get_users(group_name: Optional[str] = None,
 
     > **NOTE:** Available since v1.0.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_group = alicloud.ram.Group("defaultGroup",
-        comments="group comments",
-        force=True)
-    default_user = alicloud.ram.User("defaultUser",
-        display_name="displayname",
-        mobile="86-18888888888",
-        email="hello.uuu@aaa.com",
-        comments="yoyoyo")
-    default_group_membership = alicloud.ram.GroupMembership("defaultGroupMembership",
-        group_name=default_group.name,
-        user_names=[default_user.name])
-    default_policy = alicloud.ram.Policy("defaultPolicy",
-        policy_name="ram-policy-example",
-        policy_document=\"\"\"			{
-    				"Statement": [
-    				 {
-    					"Action": [
-    					"oss:ListObjects",
-    					"oss:ListObjects"
-    			  		],
-    			  		"Effect": "Deny",
-    			  		"Resource": [
-    						"acs:oss:*:*:mybucket",
-    						"acs:oss:*:*:mybucket/*"
-    			  		]
-    				 }
-    		  		],
-    				"Version": "1"
-    			}
-    \"\"\",
-        description="this is a policy example",
-        force=True)
-    default_user_policy_attachment = alicloud.ram.UserPolicyAttachment("defaultUserPolicyAttachment",
-        policy_name=default_policy.policy_name,
-        user_name=default_user.name,
-        policy_type=default_policy.type)
-    users_ds = alicloud.ram.get_users_output(output_file="users.txt",
-        group_name=default_group.name,
-        policy_name=default_policy.policy_name,
-        policy_type="Custom",
-        name_regex=default_user.name)
-    pulumi.export("firstUserId", users_ds.users[0].id)
-    ```
-
 
     :param str group_name: Filter results by a specific group name. Returned users are in the specified group.
     :param Sequence[str] ids: A list of ram user IDs.
@@ -230,56 +180,6 @@ def get_users_output(group_name: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available since v1.0.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default_group = alicloud.ram.Group("defaultGroup",
-        comments="group comments",
-        force=True)
-    default_user = alicloud.ram.User("defaultUser",
-        display_name="displayname",
-        mobile="86-18888888888",
-        email="hello.uuu@aaa.com",
-        comments="yoyoyo")
-    default_group_membership = alicloud.ram.GroupMembership("defaultGroupMembership",
-        group_name=default_group.name,
-        user_names=[default_user.name])
-    default_policy = alicloud.ram.Policy("defaultPolicy",
-        policy_name="ram-policy-example",
-        policy_document=\"\"\"			{
-    				"Statement": [
-    				 {
-    					"Action": [
-    					"oss:ListObjects",
-    					"oss:ListObjects"
-    			  		],
-    			  		"Effect": "Deny",
-    			  		"Resource": [
-    						"acs:oss:*:*:mybucket",
-    						"acs:oss:*:*:mybucket/*"
-    			  		]
-    				 }
-    		  		],
-    				"Version": "1"
-    			}
-    \"\"\",
-        description="this is a policy example",
-        force=True)
-    default_user_policy_attachment = alicloud.ram.UserPolicyAttachment("defaultUserPolicyAttachment",
-        policy_name=default_policy.policy_name,
-        user_name=default_user.name,
-        policy_type=default_policy.type)
-    users_ds = alicloud.ram.get_users_output(output_file="users.txt",
-        group_name=default_group.name,
-        policy_name=default_policy.policy_name,
-        policy_type="Custom",
-        name_regex=default_user.name)
-    pulumi.export("firstUserId", users_ds.users[0].id)
-    ```
 
 
     :param str group_name: Filter results by a specific group name. Returned users are in the specified group.

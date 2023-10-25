@@ -48,10 +48,14 @@ class ApiDestinationHttpApiParameters(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: str,
-             method: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             endpoint: Optional[str] = None,
+             method: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if method is None:
+            raise TypeError("Missing 'method' argument")
 
         _setter("endpoint", endpoint)
         _setter("method", method)
@@ -123,15 +127,15 @@ class ConnectionAuthParameters(dict):
              authorization_type: Optional[str] = None,
              basic_auth_parameters: Optional['outputs.ConnectionAuthParametersBasicAuthParameters'] = None,
              oauth_parameters: Optional['outputs.ConnectionAuthParametersOauthParameters'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiKeyAuthParameters' in kwargs:
+        if api_key_auth_parameters is None and 'apiKeyAuthParameters' in kwargs:
             api_key_auth_parameters = kwargs['apiKeyAuthParameters']
-        if 'authorizationType' in kwargs:
+        if authorization_type is None and 'authorizationType' in kwargs:
             authorization_type = kwargs['authorizationType']
-        if 'basicAuthParameters' in kwargs:
+        if basic_auth_parameters is None and 'basicAuthParameters' in kwargs:
             basic_auth_parameters = kwargs['basicAuthParameters']
-        if 'oauthParameters' in kwargs:
+        if oauth_parameters is None and 'oauthParameters' in kwargs:
             oauth_parameters = kwargs['oauthParameters']
 
         if api_key_auth_parameters is not None:
@@ -214,11 +218,11 @@ class ConnectionAuthParametersApiKeyAuthParameters(dict):
              _setter: Callable[[Any, Any], None],
              api_key_name: Optional[str] = None,
              api_key_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiKeyName' in kwargs:
+        if api_key_name is None and 'apiKeyName' in kwargs:
             api_key_name = kwargs['apiKeyName']
-        if 'apiKeyValue' in kwargs:
+        if api_key_value is None and 'apiKeyValue' in kwargs:
             api_key_value = kwargs['apiKeyValue']
 
         if api_key_name is not None:
@@ -262,7 +266,7 @@ class ConnectionAuthParametersBasicAuthParameters(dict):
              _setter: Callable[[Any, Any], None],
              password: Optional[str] = None,
              username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if password is not None:
@@ -337,15 +341,15 @@ class ConnectionAuthParametersOauthParameters(dict):
              client_parameters: Optional['outputs.ConnectionAuthParametersOauthParametersClientParameters'] = None,
              http_method: Optional[str] = None,
              oauth_http_parameters: Optional['outputs.ConnectionAuthParametersOauthParametersOauthHttpParameters'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authorizationEndpoint' in kwargs:
+        if authorization_endpoint is None and 'authorizationEndpoint' in kwargs:
             authorization_endpoint = kwargs['authorizationEndpoint']
-        if 'clientParameters' in kwargs:
+        if client_parameters is None and 'clientParameters' in kwargs:
             client_parameters = kwargs['clientParameters']
-        if 'httpMethod' in kwargs:
+        if http_method is None and 'httpMethod' in kwargs:
             http_method = kwargs['httpMethod']
-        if 'oauthHttpParameters' in kwargs:
+        if oauth_http_parameters is None and 'oauthHttpParameters' in kwargs:
             oauth_http_parameters = kwargs['oauthHttpParameters']
 
         if authorization_endpoint is not None:
@@ -428,11 +432,11 @@ class ConnectionAuthParametersOauthParametersClientParameters(dict):
              _setter: Callable[[Any, Any], None],
              client_id: Optional[str] = None,
              client_secret: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'clientSecret' in kwargs:
+        if client_secret is None and 'clientSecret' in kwargs:
             client_secret = kwargs['clientSecret']
 
         if client_id is not None:
@@ -501,13 +505,13 @@ class ConnectionAuthParametersOauthParametersOauthHttpParameters(dict):
              body_parameters: Optional[Sequence['outputs.ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter']] = None,
              header_parameters: Optional[Sequence['outputs.ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter']] = None,
              query_string_parameters: Optional[Sequence['outputs.ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bodyParameters' in kwargs:
+        if body_parameters is None and 'bodyParameters' in kwargs:
             body_parameters = kwargs['bodyParameters']
-        if 'headerParameters' in kwargs:
+        if header_parameters is None and 'headerParameters' in kwargs:
             header_parameters = kwargs['headerParameters']
-        if 'queryStringParameters' in kwargs:
+        if query_string_parameters is None and 'queryStringParameters' in kwargs:
             query_string_parameters = kwargs['queryStringParameters']
 
         if body_parameters is not None:
@@ -582,9 +586,9 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter(di
              is_value_secret: Optional[str] = None,
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'isValueSecret' in kwargs:
+        if is_value_secret is None and 'isValueSecret' in kwargs:
             is_value_secret = kwargs['isValueSecret']
 
         if is_value_secret is not None:
@@ -659,9 +663,9 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter(
              is_value_secret: Optional[str] = None,
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'isValueSecret' in kwargs:
+        if is_value_secret is None and 'isValueSecret' in kwargs:
             is_value_secret = kwargs['isValueSecret']
 
         if is_value_secret is not None:
@@ -736,9 +740,9 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParam
              is_value_secret: Optional[str] = None,
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'isValueSecret' in kwargs:
+        if is_value_secret is None and 'isValueSecret' in kwargs:
             is_value_secret = kwargs['isValueSecret']
 
         if is_value_secret is not None:
@@ -819,19 +823,21 @@ class ConnectionNetworkParameters(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_type: str,
+             network_type: Optional[str] = None,
              security_group_id: Optional[str] = None,
              vpc_id: Optional[str] = None,
              vswitche_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'networkType' in kwargs:
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'securityGroupId' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vswitcheId' in kwargs:
+        if vswitche_id is None and 'vswitcheId' in kwargs:
             vswitche_id = kwargs['vswitcheId']
 
         _setter("network_type", network_type)
@@ -928,21 +934,29 @@ class RuleTarget(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: str,
-             param_lists: Sequence['outputs.RuleTargetParamList'],
-             target_id: str,
-             type: str,
+             endpoint: Optional[str] = None,
+             param_lists: Optional[Sequence['outputs.RuleTargetParamList']] = None,
+             target_id: Optional[str] = None,
+             type: Optional[str] = None,
              dead_letter_queue: Optional['outputs.RuleTargetDeadLetterQueue'] = None,
              push_retry_strategy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'paramLists' in kwargs:
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if param_lists is None and 'paramLists' in kwargs:
             param_lists = kwargs['paramLists']
-        if 'targetId' in kwargs:
+        if param_lists is None:
+            raise TypeError("Missing 'param_lists' argument")
+        if target_id is None and 'targetId' in kwargs:
             target_id = kwargs['targetId']
-        if 'deadLetterQueue' in kwargs:
+        if target_id is None:
+            raise TypeError("Missing 'target_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if dead_letter_queue is None and 'deadLetterQueue' in kwargs:
             dead_letter_queue = kwargs['deadLetterQueue']
-        if 'pushRetryStrategy' in kwargs:
+        if push_retry_strategy is None and 'pushRetryStrategy' in kwargs:
             push_retry_strategy = kwargs['pushRetryStrategy']
 
         _setter("endpoint", endpoint)
@@ -1019,7 +1033,7 @@ class RuleTargetDeadLetterQueue(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              arn: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if arn is not None:
@@ -1066,9 +1080,6 @@ class RuleTargetParamList(dict):
                
                > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
                
-               ```python
-               import pulumi
-               ```
                
                In order to fix the diff, from version 1.160.0,
                this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
@@ -1084,14 +1095,18 @@ class RuleTargetParamList(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             form: str,
-             resource_key: str,
+             form: Optional[str] = None,
+             resource_key: Optional[str] = None,
              template: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'resourceKey' in kwargs:
+        if form is None:
+            raise TypeError("Missing 'form' argument")
+        if resource_key is None and 'resourceKey' in kwargs:
             resource_key = kwargs['resourceKey']
+        if resource_key is None:
+            raise TypeError("Missing 'resource_key' argument")
 
         _setter("form", form)
         _setter("resource_key", resource_key)
@@ -1132,9 +1147,6 @@ class RuleTargetParamList(dict):
 
         > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
 
-        ```python
-        import pulumi
-        ```
 
         In order to fix the diff, from version 1.160.0,
         this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
@@ -1166,16 +1178,24 @@ class GetEventBusesBusResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             description: str,
-             event_bus_name: str,
-             id: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             event_bus_name: Optional[str] = None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'eventBusName' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if event_bus_name is None and 'eventBusName' in kwargs:
             event_bus_name = kwargs['eventBusName']
+        if event_bus_name is None:
+            raise TypeError("Missing 'event_bus_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
 
         _setter("create_time", create_time)
         _setter("description", description)
@@ -1246,23 +1266,37 @@ class GetEventSourcesSourceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             event_source_name: str,
-             external_source_config: Mapping[str, Any],
-             external_source_type: str,
-             id: str,
-             linked_external_source: bool,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             event_source_name: Optional[str] = None,
+             external_source_config: Optional[Mapping[str, Any]] = None,
+             external_source_type: Optional[str] = None,
+             id: Optional[str] = None,
+             linked_external_source: Optional[bool] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventSourceName' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if event_source_name is None and 'eventSourceName' in kwargs:
             event_source_name = kwargs['eventSourceName']
-        if 'externalSourceConfig' in kwargs:
+        if event_source_name is None:
+            raise TypeError("Missing 'event_source_name' argument")
+        if external_source_config is None and 'externalSourceConfig' in kwargs:
             external_source_config = kwargs['externalSourceConfig']
-        if 'externalSourceType' in kwargs:
+        if external_source_config is None:
+            raise TypeError("Missing 'external_source_config' argument")
+        if external_source_type is None and 'externalSourceType' in kwargs:
             external_source_type = kwargs['externalSourceType']
-        if 'linkedExternalSource' in kwargs:
+        if external_source_type is None:
+            raise TypeError("Missing 'external_source_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if linked_external_source is None and 'linkedExternalSource' in kwargs:
             linked_external_source = kwargs['linkedExternalSource']
+        if linked_external_source is None:
+            raise TypeError("Missing 'linked_external_source' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("description", description)
         _setter("event_source_name", event_source_name)
@@ -1358,21 +1392,35 @@ class GetRulesRuleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             event_bus_name: str,
-             filter_pattern: str,
-             id: str,
-             rule_name: str,
-             status: str,
-             targets: Sequence['outputs.GetRulesRuleTargetResult'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             description: Optional[str] = None,
+             event_bus_name: Optional[str] = None,
+             filter_pattern: Optional[str] = None,
+             id: Optional[str] = None,
+             rule_name: Optional[str] = None,
+             status: Optional[str] = None,
+             targets: Optional[Sequence['outputs.GetRulesRuleTargetResult']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventBusName' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if event_bus_name is None and 'eventBusName' in kwargs:
             event_bus_name = kwargs['eventBusName']
-        if 'filterPattern' in kwargs:
+        if event_bus_name is None:
+            raise TypeError("Missing 'event_bus_name' argument")
+        if filter_pattern is None and 'filterPattern' in kwargs:
             filter_pattern = kwargs['filterPattern']
-        if 'ruleName' in kwargs:
+        if filter_pattern is None:
+            raise TypeError("Missing 'filter_pattern' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if rule_name is None and 'ruleName' in kwargs:
             rule_name = kwargs['ruleName']
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if targets is None:
+            raise TypeError("Missing 'targets' argument")
 
         _setter("description", description)
         _setter("event_bus_name", event_bus_name)
@@ -1459,13 +1507,19 @@ class GetRulesRuleTargetResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: str,
-             target_id: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             endpoint: Optional[str] = None,
+             target_id: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'targetId' in kwargs:
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if target_id is None and 'targetId' in kwargs:
             target_id = kwargs['targetId']
+        if target_id is None:
+            raise TypeError("Missing 'target_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("endpoint", endpoint)
         _setter("target_id", target_id)

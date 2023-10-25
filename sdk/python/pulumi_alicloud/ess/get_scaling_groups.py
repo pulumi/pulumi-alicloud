@@ -106,20 +106,6 @@ def get_scaling_groups(ids: Optional[Sequence[str]] = None,
     """
     This data source provides available scaling group resources.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    scalinggroups_ds = alicloud.ess.get_scaling_groups(ids=[
-            "scaling_group_id1",
-            "scaling_group_id2",
-        ],
-        name_regex="scaling_group_name")
-    pulumi.export("firstScalingGroup", scalinggroups_ds.groups[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of scaling group IDs.
     :param str name_regex: A regex string to filter resulting scaling groups by name.
@@ -148,20 +134,6 @@ def get_scaling_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetScalingGroupsResult]:
     """
     This data source provides available scaling group resources.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    scalinggroups_ds = alicloud.ess.get_scaling_groups(ids=[
-            "scaling_group_id1",
-            "scaling_group_id2",
-        ],
-        name_regex="scaling_group_name")
-    pulumi.export("firstScalingGroup", scalinggroups_ds.groups[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of scaling group IDs.

@@ -16,40 +16,6 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// 
     /// &gt; **NOTE:** Available in v1.199.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.ThreatDetection.Instance("default", new()
-    ///     {
-    ///         BuyNumber = "30",
-    ///         ContainerImageScan = "100",
-    ///         Honeypot = "32",
-    ///         HoneypotSwitch = "1",
-    ///         PaymentType = "Subscription",
-    ///         Period = 12,
-    ///         RenewalStatus = "ManualRenewal",
-    ///         SasAntiRansomware = "100",
-    ///         SasSc = true,
-    ///         SasSdk = "1000",
-    ///         SasSdkSwitch = "1",
-    ///         SasSlsStorage = "100",
-    ///         SasWebguardOrderNum = "100",
-    ///         VCore = "100",
-    ///         VersionCode = "level2",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Threat Detection Instance do not support import.

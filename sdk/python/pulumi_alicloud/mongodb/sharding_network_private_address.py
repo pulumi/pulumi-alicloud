@@ -45,22 +45,28 @@ class ShardingNetworkPrivateAddressArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             db_instance_id: pulumi.Input[str],
-             node_id: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             db_instance_id: Optional[pulumi.Input[str]] = None,
+             node_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              account_name: Optional[pulumi.Input[str]] = None,
              account_password: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dbInstanceId' in kwargs:
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
-        if 'nodeId' in kwargs:
+        if db_instance_id is None:
+            raise TypeError("Missing 'db_instance_id' argument")
+        if node_id is None and 'nodeId' in kwargs:
             node_id = kwargs['nodeId']
-        if 'zoneId' in kwargs:
+        if node_id is None:
+            raise TypeError("Missing 'node_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'accountName' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountPassword' in kwargs:
+        if account_password is None and 'accountPassword' in kwargs:
             account_password = kwargs['accountPassword']
 
         _setter("db_instance_id", db_instance_id)
@@ -178,19 +184,19 @@ class _ShardingNetworkPrivateAddressState:
              network_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingNetworkPrivateAddressNetworkAddressArgs']]]] = None,
              node_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountPassword' in kwargs:
+        if account_password is None and 'accountPassword' in kwargs:
             account_password = kwargs['accountPassword']
-        if 'dbInstanceId' in kwargs:
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
             db_instance_id = kwargs['dbInstanceId']
-        if 'networkAddresses' in kwargs:
+        if network_addresses is None and 'networkAddresses' in kwargs:
             network_addresses = kwargs['networkAddresses']
-        if 'nodeId' in kwargs:
+        if node_id is None and 'nodeId' in kwargs:
             node_id = kwargs['nodeId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_name is not None:
@@ -302,60 +308,6 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.157.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.mongodb.get_zones()
-        index = len(default_zones.zones) - 1
-        zone_id = default_zones.zones[index].id
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=zone_id)
-        default_sharding_instance = alicloud.mongodb.ShardingInstance("defaultShardingInstance",
-            zone_id=zone_id,
-            vswitch_id=default_switch.id,
-            engine_version="4.2",
-            shard_lists=[
-                alicloud.mongodb.ShardingInstanceShardListArgs(
-                    node_class="dds.shard.mid",
-                    node_storage=10,
-                ),
-                alicloud.mongodb.ShardingInstanceShardListArgs(
-                    node_class="dds.shard.standard",
-                    node_storage=20,
-                    readonly_replicas=1,
-                ),
-            ],
-            mongo_lists=[
-                alicloud.mongodb.ShardingInstanceMongoListArgs(
-                    node_class="dds.mongos.mid",
-                ),
-                alicloud.mongodb.ShardingInstanceMongoListArgs(
-                    node_class="dds.mongos.mid",
-                ),
-            ])
-        default_sharding_network_private_address = alicloud.mongodb.ShardingNetworkPrivateAddress("defaultShardingNetworkPrivateAddress",
-            db_instance_id=default_sharding_instance.id,
-            node_id=default_sharding_instance.shard_lists[0].node_id,
-            zone_id=default_sharding_instance.zone_id,
-            account_name="example",
-            account_password="Example_123")
-        ```
-
         ## Import
 
         MongoDB Sharding Network Private Address can be imported using the id, e.g.
@@ -389,60 +341,6 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
         For information about MongoDB Sharding Network Private Address and how to use it, see [What is Sharding Network Private Address](https://www.alibabacloud.com/help/en/doc-detail/141403.html).
 
         > **NOTE:** Available since v1.157.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.mongodb.get_zones()
-        index = len(default_zones.zones) - 1
-        zone_id = default_zones.zones[index].id
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=zone_id)
-        default_sharding_instance = alicloud.mongodb.ShardingInstance("defaultShardingInstance",
-            zone_id=zone_id,
-            vswitch_id=default_switch.id,
-            engine_version="4.2",
-            shard_lists=[
-                alicloud.mongodb.ShardingInstanceShardListArgs(
-                    node_class="dds.shard.mid",
-                    node_storage=10,
-                ),
-                alicloud.mongodb.ShardingInstanceShardListArgs(
-                    node_class="dds.shard.standard",
-                    node_storage=20,
-                    readonly_replicas=1,
-                ),
-            ],
-            mongo_lists=[
-                alicloud.mongodb.ShardingInstanceMongoListArgs(
-                    node_class="dds.mongos.mid",
-                ),
-                alicloud.mongodb.ShardingInstanceMongoListArgs(
-                    node_class="dds.mongos.mid",
-                ),
-            ])
-        default_sharding_network_private_address = alicloud.mongodb.ShardingNetworkPrivateAddress("defaultShardingNetworkPrivateAddress",
-            db_instance_id=default_sharding_instance.id,
-            node_id=default_sharding_instance.shard_lists[0].node_id,
-            zone_id=default_sharding_instance.zone_id,
-            account_name="example",
-            account_password="Example_123")
-        ```
 
         ## Import
 

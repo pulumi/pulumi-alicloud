@@ -119,31 +119,11 @@ def get_instances(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the ots instances of the current Alibaba Cloud user.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    instances_ds = alicloud.ots.get_instances(name_regex="sample-instance",
-        output_file="instances.txt")
-    pulumi.export("firstInstanceId", instances_ds.instances[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of instance IDs.
     :param str name_regex: A regex string to filter results by instance name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: A map of tags assigned to the instance. It must be in the format:
-           ```python
-           import pulumi
-           import pulumi_alicloud as alicloud
-           
-           instances_ds = alicloud.ots.get_instances(tags={
-               "tagKey1": "tagValue1",
-               "tagKey2": "tagValue2",
-           })
-           ```
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -172,30 +152,10 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     """
     This data source provides the ots instances of the current Alibaba Cloud user.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    instances_ds = alicloud.ots.get_instances(name_regex="sample-instance",
-        output_file="instances.txt")
-    pulumi.export("firstInstanceId", instances_ds.instances[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of instance IDs.
     :param str name_regex: A regex string to filter results by instance name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: A map of tags assigned to the instance. It must be in the format:
-           ```python
-           import pulumi
-           import pulumi_alicloud as alicloud
-           
-           instances_ds = alicloud.ots.get_instances(tags={
-               "tagKey1": "tagValue1",
-               "tagKey2": "tagValue2",
-           })
-           ```
     """
     ...

@@ -14,60 +14,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.9.2.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultInstance = new alicloud.ots.Instance("defaultInstance", {
- *     description: name,
- *     accessedBy: "Any",
- *     tags: {
- *         Created: "TF",
- *         For: "example",
- *     },
- * });
- * const defaultTable = new alicloud.ots.Table("defaultTable", {
- *     instanceName: defaultInstance.name,
- *     tableName: "tf_example",
- *     timeToLive: -1,
- *     maxVersion: 1,
- *     enableSse: true,
- *     sseKeyType: "SSE_KMS_SERVICE",
- *     primaryKeys: [
- *         {
- *             name: "pk1",
- *             type: "Integer",
- *         },
- *         {
- *             name: "pk2",
- *             type: "String",
- *         },
- *         {
- *             name: "pk3",
- *             type: "Binary",
- *         },
- *     ],
- *     definedColumns: [
- *         {
- *             name: "col1",
- *             type: "Integer",
- *         },
- *         {
- *             name: "col2",
- *             type: "String",
- *         },
- *         {
- *             name: "col3",
- *             type: "Binary",
- *         },
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * OTS table can be imported using id, e.g.

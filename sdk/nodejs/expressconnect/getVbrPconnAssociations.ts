@@ -10,19 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides Express Connect Vbr Pconn Association available to the user.
  *
  * > **NOTE:** Available in 1.196.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.expressconnect.getVbrPconnAssociations({
- *     ids: ["example_id"],
- *     vbrId: alicloud_express_connect_vbr_pconn_association["default"].vbr_id,
- * });
- * export const alicloudExpressConnectVbrPconnAssociationExampleId = _default.then(_default => _default.associations?.[0]?.id);
- * ```
  */
 export function getVbrPconnAssociations(args?: GetVbrPconnAssociationsArgs, opts?: pulumi.InvokeOptions): Promise<GetVbrPconnAssociationsResult> {
     args = args || {};
@@ -82,19 +69,6 @@ export interface GetVbrPconnAssociationsResult {
  * This data source provides Express Connect Vbr Pconn Association available to the user.
  *
  * > **NOTE:** Available in 1.196.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.expressconnect.getVbrPconnAssociations({
- *     ids: ["example_id"],
- *     vbrId: alicloud_express_connect_vbr_pconn_association["default"].vbr_id,
- * });
- * export const alicloudExpressConnectVbrPconnAssociationExampleId = _default.then(_default => _default.associations?.[0]?.id);
- * ```
  */
 export function getVbrPconnAssociationsOutput(args?: GetVbrPconnAssociationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVbrPconnAssociationsResult> {
     return pulumi.output(args).apply((a: any) => getVbrPconnAssociations(a, opts))

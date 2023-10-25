@@ -10,21 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.117.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.quotas.getQuotaApplications({
- *     productCode: "ess",
- *     ids: ["4621F886-81E9-xxxx-xxxx"],
- * });
- * export const firstQuotasQuotaApplicationId = example.then(example => example.applications?.[0]?.id);
- * ```
  */
 export function getQuotaApplications(args: GetQuotaApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotaApplicationsResult> {
 
@@ -104,21 +89,6 @@ export interface GetQuotaApplicationsResult {
  * This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.117.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.quotas.getQuotaApplications({
- *     productCode: "ess",
- *     ids: ["4621F886-81E9-xxxx-xxxx"],
- * });
- * export const firstQuotasQuotaApplicationId = example.then(example => example.applications?.[0]?.id);
- * ```
  */
 export function getQuotaApplicationsOutput(args: GetQuotaApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaApplicationsResult> {
     return pulumi.output(args).apply((a: any) => getQuotaApplications(a, opts))

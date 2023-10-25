@@ -21,60 +21,6 @@ namespace Pulumi.AliCloud.Slb
     /// &gt; **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
     /// For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/en/slb/classic-load-balancer/developer-reference/api-createloadbalancer-2#t4182.html).
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraformslbconfig";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "172.16.0.0/12",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/21",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = name,
-    ///     });
-    /// 
-    ///     var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new()
-    ///     {
-    ///         LoadBalancerName = name,
-    ///         LoadBalancerSpec = "slb.s2.small",
-    ///         VswitchId = defaultSwitch.Id,
-    ///         Tags = 
-    ///         {
-    ///             { "tag_a", 1 },
-    ///             { "tag_b", 2 },
-    ///             { "tag_c", 3 },
-    ///             { "tag_d", 4 },
-    ///             { "tag_e", 5 },
-    ///             { "tag_f", 6 },
-    ///             { "tag_g", 7 },
-    ///             { "tag_h", 8 },
-    ///             { "tag_i", 9 },
-    ///             { "tag_j", 10 },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Load balancer can be imported using the id, e.g.

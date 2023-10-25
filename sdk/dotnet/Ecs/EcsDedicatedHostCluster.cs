@@ -16,35 +16,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available in v1.146.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleZones = AliCloud.GetZones.Invoke();
-    /// 
-    ///     var exampleEcsDedicatedHostCluster = new AliCloud.Ecs.EcsDedicatedHostCluster("exampleEcsDedicatedHostCluster", new()
-    ///     {
-    ///         DedicatedHostClusterName = "example_value",
-    ///         Description = "example_value",
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         Tags = 
-    ///         {
-    ///             { "Create", "TF" },
-    ///             { "For", "DDH_Cluster_Test" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ECS Dedicated Host Cluster can be imported using the id, e.g.

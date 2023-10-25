@@ -11,32 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.131.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
- *
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
- *     max: 99999,
- *     min: 10000,
- * });
- * const defaultVault = new alicloud.hbr.Vault("defaultVault", {vaultName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
- * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
- * const defaultOssBackupPlan = new alicloud.hbr.OssBackupPlan("defaultOssBackupPlan", {
- *     ossBackupPlanName: "terraform-example",
- *     prefix: "/",
- *     bucket: defaultBucket.bucket,
- *     vaultId: defaultVault.id,
- *     schedule: "I|1602673264|PT2H",
- *     backupType: "COMPLETE",
- *     retention: "2",
- * });
- * ```
- *
  * ## Import
  *
  * HBR Oss Backup Plan can be imported using the id, e.g.

@@ -145,20 +145,6 @@ def get_honey_pots(honeypot_id: Optional[str] = None,
 
     > **NOTE:** Available since v1.195.0.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.threatdetection.get_honey_pots(ids=["xxxx"],
-        honeypot_name="tf-example",
-        node_id="a44e1ab3-6945-444c-889d-5bacee7056e8")
-    pulumi.export("alicloudThreatDetectionHoneyPotExampleId", default.pots[0].id)
-    ```
-
 
     :param str honeypot_id: Honeypot ID.
     :param str honeypot_name: Honeypot custom name.
@@ -204,20 +190,6 @@ def get_honey_pots_output(honeypot_id: Optional[pulumi.Input[Optional[str]]] = N
     This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
 
     > **NOTE:** Available since v1.195.0.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.threatdetection.get_honey_pots(ids=["xxxx"],
-        honeypot_name="tf-example",
-        node_id="a44e1ab3-6945-444c-889d-5bacee7056e8")
-    pulumi.export("alicloudThreatDetectionHoneyPotExampleId", default.pots[0].id)
-    ```
 
 
     :param str honeypot_id: Honeypot ID.

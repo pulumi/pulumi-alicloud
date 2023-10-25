@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Arms Alert Contact Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.131.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const nameRegex = alicloud.arms.getAlertContactGroups({
- *     nameRegex: "^my-AlertContactGroup",
- * });
- * export const armsAlertContactGroupId = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
- * ```
  */
 export function getAlertContactGroups(args?: GetAlertContactGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertContactGroupsResult> {
     args = args || {};
@@ -90,20 +76,6 @@ export interface GetAlertContactGroupsResult {
  * This data source provides the Arms Alert Contact Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.131.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const nameRegex = alicloud.arms.getAlertContactGroups({
- *     nameRegex: "^my-AlertContactGroup",
- * });
- * export const armsAlertContactGroupId = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
- * ```
  */
 export function getAlertContactGroupsOutput(args?: GetAlertContactGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertContactGroupsResult> {
     return pulumi.output(args).apply((a: any) => getAlertContactGroups(a, opts))

@@ -38,20 +38,26 @@ class CommandArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             command_content: pulumi.Input[str],
-             command_type: pulumi.Input[str],
-             desktop_id: pulumi.Input[str],
+             command_content: Optional[pulumi.Input[str]] = None,
+             command_type: Optional[pulumi.Input[str]] = None,
+             desktop_id: Optional[pulumi.Input[str]] = None,
              content_encoding: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'commandContent' in kwargs:
+        if command_content is None and 'commandContent' in kwargs:
             command_content = kwargs['commandContent']
-        if 'commandType' in kwargs:
+        if command_content is None:
+            raise TypeError("Missing 'command_content' argument")
+        if command_type is None and 'commandType' in kwargs:
             command_type = kwargs['commandType']
-        if 'desktopId' in kwargs:
+        if command_type is None:
+            raise TypeError("Missing 'command_type' argument")
+        if desktop_id is None and 'desktopId' in kwargs:
             desktop_id = kwargs['desktopId']
-        if 'contentEncoding' in kwargs:
+        if desktop_id is None:
+            raise TypeError("Missing 'desktop_id' argument")
+        if content_encoding is None and 'contentEncoding' in kwargs:
             content_encoding = kwargs['contentEncoding']
 
         _setter("command_content", command_content)
@@ -159,15 +165,15 @@ class _CommandState:
              desktop_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'commandContent' in kwargs:
+        if command_content is None and 'commandContent' in kwargs:
             command_content = kwargs['commandContent']
-        if 'commandType' in kwargs:
+        if command_type is None and 'commandType' in kwargs:
             command_type = kwargs['commandType']
-        if 'contentEncoding' in kwargs:
+        if content_encoding is None and 'contentEncoding' in kwargs:
             content_encoding = kwargs['contentEncoding']
-        if 'desktopId' in kwargs:
+        if desktop_id is None and 'desktopId' in kwargs:
             desktop_id = kwargs['desktopId']
 
         if command_content is not None:
@@ -274,54 +280,6 @@ class Command(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.146.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
-            cidr_block="172.16.0.0/12",
-            enable_admin_access=True,
-            desktop_access_type="Internet",
-            office_site_name=name)
-        default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
-            policy_group_name=name,
-            clipboard="read",
-            local_drive="read",
-            usb_redirect="off",
-            watermark="off",
-            authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-                description=name,
-                cidr_ip="1.2.3.45/24",
-            )],
-            authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-                type="inflow",
-                policy="accept",
-                description=name,
-                port_range="80/80",
-                ip_protocol="TCP",
-                priority="1",
-                cidr_ip="1.2.3.4/24",
-            )])
-        default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
-        default_desktop = alicloud.eds.Desktop("defaultDesktop",
-            office_site_id=default_simple_office_site.id,
-            policy_group_id=default_ecd_policy_group.id,
-            bundle_id=default_bundles.bundles[0].id,
-            desktop_name=name)
-        default_command = alicloud.eds.Command("defaultCommand",
-            command_content="ipconfig",
-            command_type="RunPowerShellScript",
-            desktop_id=default_desktop.id)
-        ```
-
         ## Import
 
         ECD Command can be imported using the id, e.g.
@@ -350,54 +308,6 @@ class Command(pulumi.CustomResource):
         For information about ECD Command and how to use it, see [What is Command](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-runcommand).
 
         > **NOTE:** Available since v1.146.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
-            cidr_block="172.16.0.0/12",
-            enable_admin_access=True,
-            desktop_access_type="Internet",
-            office_site_name=name)
-        default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
-            policy_group_name=name,
-            clipboard="read",
-            local_drive="read",
-            usb_redirect="off",
-            watermark="off",
-            authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-                description=name,
-                cidr_ip="1.2.3.45/24",
-            )],
-            authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-                type="inflow",
-                policy="accept",
-                description=name,
-                port_range="80/80",
-                ip_protocol="TCP",
-                priority="1",
-                cidr_ip="1.2.3.4/24",
-            )])
-        default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
-        default_desktop = alicloud.eds.Desktop("defaultDesktop",
-            office_site_id=default_simple_office_site.id,
-            policy_group_id=default_ecd_policy_group.id,
-            bundle_id=default_bundles.bundles[0].id,
-            desktop_name=name)
-        default_command = alicloud.eds.Command("defaultCommand",
-            command_content="ipconfig",
-            command_type="RunPowerShellScript",
-            desktop_id=default_desktop.id)
-        ```
 
         ## Import
 

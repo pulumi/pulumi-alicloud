@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * For information about Container Service (CS) and how to use it, see [What is Container Service (CS)](https://www.alibabacloud.com/help/en/product/85222.htm).
  *
  * > **NOTE:** Available in v1.113.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const open = alicloud.cs.getAckService({
- *     enable: "On",
- *     type: "propayasgo",
- * });
- * ```
  */
 export function getAckService(args: GetAckServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetAckServiceResult> {
 
@@ -69,18 +57,6 @@ export interface GetAckServiceResult {
  * For information about Container Service (CS) and how to use it, see [What is Container Service (CS)](https://www.alibabacloud.com/help/en/product/85222.htm).
  *
  * > **NOTE:** Available in v1.113.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const open = alicloud.cs.getAckService({
- *     enable: "On",
- *     type: "propayasgo",
- * });
- * ```
  */
 export function getAckServiceOutput(args: GetAckServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAckServiceResult> {
     return pulumi.output(args).apply((a: any) => getAckService(a, opts))

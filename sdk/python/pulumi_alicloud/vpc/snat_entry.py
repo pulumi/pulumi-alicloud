@@ -38,22 +38,26 @@ class SnatEntryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             snat_ip: pulumi.Input[str],
-             snat_table_id: pulumi.Input[str],
+             snat_ip: Optional[pulumi.Input[str]] = None,
+             snat_table_id: Optional[pulumi.Input[str]] = None,
              snat_entry_name: Optional[pulumi.Input[str]] = None,
              source_cidr: Optional[pulumi.Input[str]] = None,
              source_vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'snatIp' in kwargs:
+        if snat_ip is None and 'snatIp' in kwargs:
             snat_ip = kwargs['snatIp']
-        if 'snatTableId' in kwargs:
+        if snat_ip is None:
+            raise TypeError("Missing 'snat_ip' argument")
+        if snat_table_id is None and 'snatTableId' in kwargs:
             snat_table_id = kwargs['snatTableId']
-        if 'snatEntryName' in kwargs:
+        if snat_table_id is None:
+            raise TypeError("Missing 'snat_table_id' argument")
+        if snat_entry_name is None and 'snatEntryName' in kwargs:
             snat_entry_name = kwargs['snatEntryName']
-        if 'sourceCidr' in kwargs:
+        if source_cidr is None and 'sourceCidr' in kwargs:
             source_cidr = kwargs['sourceCidr']
-        if 'sourceVswitchId' in kwargs:
+        if source_vswitch_id is None and 'sourceVswitchId' in kwargs:
             source_vswitch_id = kwargs['sourceVswitchId']
 
         _setter("snat_ip", snat_ip)
@@ -166,19 +170,19 @@ class _SnatEntryState:
              source_cidr: Optional[pulumi.Input[str]] = None,
              source_vswitch_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'snatEntryId' in kwargs:
+        if snat_entry_id is None and 'snatEntryId' in kwargs:
             snat_entry_id = kwargs['snatEntryId']
-        if 'snatEntryName' in kwargs:
+        if snat_entry_name is None and 'snatEntryName' in kwargs:
             snat_entry_name = kwargs['snatEntryName']
-        if 'snatIp' in kwargs:
+        if snat_ip is None and 'snatIp' in kwargs:
             snat_ip = kwargs['snatIp']
-        if 'snatTableId' in kwargs:
+        if snat_table_id is None and 'snatTableId' in kwargs:
             snat_table_id = kwargs['snatTableId']
-        if 'sourceCidr' in kwargs:
+        if source_cidr is None and 'sourceCidr' in kwargs:
             source_cidr = kwargs['sourceCidr']
-        if 'sourceVswitchId' in kwargs:
+        if source_vswitch_id is None and 'sourceVswitchId' in kwargs:
             source_vswitch_id = kwargs['sourceVswitchId']
 
         if snat_entry_id is not None:
@@ -297,43 +301,6 @@ class SnatEntry(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.119.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_nat_gateway = alicloud.vpc.NatGateway("defaultNatGateway",
-            vpc_id=default_network.id,
-            nat_gateway_name=name,
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            nat_type="Enhanced")
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
-        default_eip_association = alicloud.ecs.EipAssociation("defaultEipAssociation",
-            allocation_id=default_eip_address.id,
-            instance_id=default_nat_gateway.id)
-        default_snat_entry = alicloud.vpc.SnatEntry("defaultSnatEntry",
-            snat_table_id=default_nat_gateway.snat_table_ids,
-            source_vswitch_id=default_switch.id,
-            snat_ip=default_eip_address.ip_address)
-        ```
-
         ## Import
 
         Snat Entry can be imported using the id, e.g.
@@ -360,43 +327,6 @@ class SnatEntry(pulumi.CustomResource):
         Provides a snat resource.
 
         > **NOTE:** Available since v1.119.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_nat_gateway = alicloud.vpc.NatGateway("defaultNatGateway",
-            vpc_id=default_network.id,
-            nat_gateway_name=name,
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            nat_type="Enhanced")
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
-        default_eip_association = alicloud.ecs.EipAssociation("defaultEipAssociation",
-            allocation_id=default_eip_address.id,
-            instance_id=default_nat_gateway.id)
-        default_snat_entry = alicloud.vpc.SnatEntry("defaultSnatEntry",
-            snat_table_id=default_nat_gateway.snat_table_ids,
-            source_vswitch_id=default_switch.id,
-            snat_ip=default_eip_address.ip_address)
-        ```
 
         ## Import
 

@@ -10,25 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.150.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ga.getAdditionalCertificates({
- *     acceleratorId: "example_value",
- *     listenerId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const gaAdditionalCertificateId1 = ids.then(ids => ids.certificates?.[0]?.id);
- * ```
  */
 export function getAdditionalCertificates(args: GetAdditionalCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetAdditionalCertificatesResult> {
 
@@ -81,25 +62,6 @@ export interface GetAdditionalCertificatesResult {
  * This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.150.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.ga.getAdditionalCertificates({
- *     acceleratorId: "example_value",
- *     listenerId: "example_value",
- *     ids: [
- *         "example_value-1",
- *         "example_value-2",
- *     ],
- * });
- * export const gaAdditionalCertificateId1 = ids.then(ids => ids.certificates?.[0]?.id);
- * ```
  */
 export function getAdditionalCertificatesOutput(args: GetAdditionalCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdditionalCertificatesResult> {
     return pulumi.output(args).apply((a: any) => getAdditionalCertificates(a, opts))

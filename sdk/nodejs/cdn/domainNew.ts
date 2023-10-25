@@ -13,30 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.34.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const domainName = config.get("domainName") || "mycdndomain.alicloud-provider.cn";
- * const _default = new alicloud.cdn.DomainNew("default", {
- *     scope: "overseas",
- *     domainName: domainName,
- *     cdnType: "web",
- *     sources: [{
- *         type: "ipaddr",
- *         content: "1.1.1.1",
- *         priority: 20,
- *         port: 80,
- *         weight: 15,
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * CDN Domain can be imported using the id, e.g.

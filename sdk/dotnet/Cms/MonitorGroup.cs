@@ -16,41 +16,6 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// &gt; **NOTE:** Available since v1.113.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Cms.MonitorGroup("example", new()
-    ///     {
-    ///         MonitorGroupName = "tf-example-accmonitorgroup",
-    ///     });
-    /// 
-    ///     var default2 = new AliCloud.Cms.MonitorGroup("default2", new()
-    ///     {
-    ///         ContactGroups = new[]
-    ///         {
-    ///             "your_contact_groups",
-    ///         },
-    ///         ResourceGroupId = "your_resource_group_id",
-    ///         ResourceGroupName = "resource_group_name",
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "TF" },
-    ///             { "For", "Acceptance-example" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Cloud Monitor Service Monitor Group can be imported using the id, e.g.

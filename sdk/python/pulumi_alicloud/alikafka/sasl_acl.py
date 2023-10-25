@@ -41,24 +41,36 @@ class SaslAclArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acl_operation_type: pulumi.Input[str],
-             acl_resource_name: pulumi.Input[str],
-             acl_resource_pattern_type: pulumi.Input[str],
-             acl_resource_type: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
-             username: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             acl_operation_type: Optional[pulumi.Input[str]] = None,
+             acl_resource_name: Optional[pulumi.Input[str]] = None,
+             acl_resource_pattern_type: Optional[pulumi.Input[str]] = None,
+             acl_resource_type: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclOperationType' in kwargs:
+        if acl_operation_type is None and 'aclOperationType' in kwargs:
             acl_operation_type = kwargs['aclOperationType']
-        if 'aclResourceName' in kwargs:
+        if acl_operation_type is None:
+            raise TypeError("Missing 'acl_operation_type' argument")
+        if acl_resource_name is None and 'aclResourceName' in kwargs:
             acl_resource_name = kwargs['aclResourceName']
-        if 'aclResourcePatternType' in kwargs:
+        if acl_resource_name is None:
+            raise TypeError("Missing 'acl_resource_name' argument")
+        if acl_resource_pattern_type is None and 'aclResourcePatternType' in kwargs:
             acl_resource_pattern_type = kwargs['aclResourcePatternType']
-        if 'aclResourceType' in kwargs:
+        if acl_resource_pattern_type is None:
+            raise TypeError("Missing 'acl_resource_pattern_type' argument")
+        if acl_resource_type is None and 'aclResourceType' in kwargs:
             acl_resource_type = kwargs['aclResourceType']
-        if 'instanceId' in kwargs:
+        if acl_resource_type is None:
+            raise TypeError("Missing 'acl_resource_type' argument")
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
 
         _setter("acl_operation_type", acl_operation_type)
         _setter("acl_resource_name", acl_resource_name)
@@ -180,17 +192,17 @@ class _SaslAclState:
              host: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclOperationType' in kwargs:
+        if acl_operation_type is None and 'aclOperationType' in kwargs:
             acl_operation_type = kwargs['aclOperationType']
-        if 'aclResourceName' in kwargs:
+        if acl_resource_name is None and 'aclResourceName' in kwargs:
             acl_resource_name = kwargs['aclResourceName']
-        if 'aclResourcePatternType' in kwargs:
+        if acl_resource_pattern_type is None and 'aclResourcePatternType' in kwargs:
             acl_resource_pattern_type = kwargs['aclResourcePatternType']
-        if 'aclResourceType' in kwargs:
+        if acl_resource_type is None and 'aclResourceType' in kwargs:
             acl_resource_type = kwargs['aclResourceType']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
 
         if acl_operation_type is not None:
@@ -313,56 +325,6 @@ class SaslAcl(pulumi.CustomResource):
         > **NOTE:**  Only the following regions support create alikafka sasl user.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.alikafka.Instance("defaultInstance",
-            partition_num=50,
-            disk_type=1,
-            disk_size=500,
-            deploy_type=5,
-            io_max=20,
-            spec_type="professional",
-            service_version="2.2.0",
-            config="{\\"enable.acl\\":\\"true\\"}",
-            vswitch_id=default_switch.id,
-            security_group=default_security_group.id)
-        default_topic = alicloud.alikafka.Topic("defaultTopic",
-            instance_id=default_instance.id,
-            topic="example-topic",
-            remark="topic-remark")
-        default_sasl_user = alicloud.alikafka.SaslUser("defaultSaslUser",
-            instance_id=default_instance.id,
-            username=name,
-            password="tf_example123")
-        default_sasl_acl = alicloud.alikafka.SaslAcl("defaultSaslAcl",
-            instance_id=default_instance.id,
-            username=default_sasl_user.username,
-            acl_resource_type="Topic",
-            acl_resource_name=default_topic.topic,
-            acl_resource_pattern_type="LITERAL",
-            acl_operation_type="Write")
-        ```
-
         ## Import
 
         ALIKAFKA GROUP can be imported using the id, e.g.
@@ -393,56 +355,6 @@ class SaslAcl(pulumi.CustomResource):
 
         > **NOTE:**  Only the following regions support create alikafka sasl user.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.alikafka.Instance("defaultInstance",
-            partition_num=50,
-            disk_type=1,
-            disk_size=500,
-            deploy_type=5,
-            io_max=20,
-            spec_type="professional",
-            service_version="2.2.0",
-            config="{\\"enable.acl\\":\\"true\\"}",
-            vswitch_id=default_switch.id,
-            security_group=default_security_group.id)
-        default_topic = alicloud.alikafka.Topic("defaultTopic",
-            instance_id=default_instance.id,
-            topic="example-topic",
-            remark="topic-remark")
-        default_sasl_user = alicloud.alikafka.SaslUser("defaultSaslUser",
-            instance_id=default_instance.id,
-            username=name,
-            password="tf_example123")
-        default_sasl_acl = alicloud.alikafka.SaslAcl("defaultSaslAcl",
-            instance_id=default_instance.id,
-            username=default_sasl_user.username,
-            acl_resource_type="Topic",
-            acl_resource_name=default_topic.topic,
-            acl_resource_pattern_type="LITERAL",
-            acl_operation_type="Write")
-        ```
 
         ## Import
 

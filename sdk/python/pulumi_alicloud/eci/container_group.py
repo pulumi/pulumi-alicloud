@@ -103,10 +103,10 @@ class ContainerGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             container_group_name: pulumi.Input[str],
-             containers: pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]],
-             security_group_id: pulumi.Input[str],
-             vswitch_id: pulumi.Input[str],
+             container_group_name: Optional[pulumi.Input[str]] = None,
+             containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
              acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]]] = None,
              auto_create_eip: Optional[pulumi.Input[bool]] = None,
              auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
@@ -128,47 +128,55 @@ class ContainerGroupArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'containerGroupName' in kwargs:
+        if container_group_name is None and 'containerGroupName' in kwargs:
             container_group_name = kwargs['containerGroupName']
-        if 'securityGroupId' in kwargs:
+        if container_group_name is None:
+            raise TypeError("Missing 'container_group_name' argument")
+        if containers is None:
+            raise TypeError("Missing 'containers' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vswitchId' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'acrRegistryInfos' in kwargs:
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if acr_registry_infos is None and 'acrRegistryInfos' in kwargs:
             acr_registry_infos = kwargs['acrRegistryInfos']
-        if 'autoCreateEip' in kwargs:
+        if auto_create_eip is None and 'autoCreateEip' in kwargs:
             auto_create_eip = kwargs['autoCreateEip']
-        if 'autoMatchImageCache' in kwargs:
+        if auto_match_image_cache is None and 'autoMatchImageCache' in kwargs:
             auto_match_image_cache = kwargs['autoMatchImageCache']
-        if 'dnsConfig' in kwargs:
+        if dns_config is None and 'dnsConfig' in kwargs:
             dns_config = kwargs['dnsConfig']
-        if 'eciSecurityContext' in kwargs:
+        if eci_security_context is None and 'eciSecurityContext' in kwargs:
             eci_security_context = kwargs['eciSecurityContext']
-        if 'eipBandwidth' in kwargs:
+        if eip_bandwidth is None and 'eipBandwidth' in kwargs:
             eip_bandwidth = kwargs['eipBandwidth']
-        if 'eipInstanceId' in kwargs:
+        if eip_instance_id is None and 'eipInstanceId' in kwargs:
             eip_instance_id = kwargs['eipInstanceId']
-        if 'hostAliases' in kwargs:
+        if host_aliases is None and 'hostAliases' in kwargs:
             host_aliases = kwargs['hostAliases']
-        if 'imageRegistryCredentials' in kwargs:
+        if image_registry_credentials is None and 'imageRegistryCredentials' in kwargs:
             image_registry_credentials = kwargs['imageRegistryCredentials']
-        if 'initContainers' in kwargs:
+        if init_containers is None and 'initContainers' in kwargs:
             init_containers = kwargs['initContainers']
-        if 'insecureRegistry' in kwargs:
+        if insecure_registry is None and 'insecureRegistry' in kwargs:
             insecure_registry = kwargs['insecureRegistry']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'plainHttpRegistry' in kwargs:
+        if plain_http_registry is None and 'plainHttpRegistry' in kwargs:
             plain_http_registry = kwargs['plainHttpRegistry']
-        if 'ramRoleName' in kwargs:
+        if ram_role_name is None and 'ramRoleName' in kwargs:
             ram_role_name = kwargs['ramRoleName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'restartPolicy' in kwargs:
+        if restart_policy is None and 'restartPolicy' in kwargs:
             restart_policy = kwargs['restartPolicy']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("container_group_name", container_group_name)
@@ -649,51 +657,51 @@ class _ContainerGroupState:
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'acrRegistryInfos' in kwargs:
+        if acr_registry_infos is None and 'acrRegistryInfos' in kwargs:
             acr_registry_infos = kwargs['acrRegistryInfos']
-        if 'autoCreateEip' in kwargs:
+        if auto_create_eip is None and 'autoCreateEip' in kwargs:
             auto_create_eip = kwargs['autoCreateEip']
-        if 'autoMatchImageCache' in kwargs:
+        if auto_match_image_cache is None and 'autoMatchImageCache' in kwargs:
             auto_match_image_cache = kwargs['autoMatchImageCache']
-        if 'containerGroupName' in kwargs:
+        if container_group_name is None and 'containerGroupName' in kwargs:
             container_group_name = kwargs['containerGroupName']
-        if 'dnsConfig' in kwargs:
+        if dns_config is None and 'dnsConfig' in kwargs:
             dns_config = kwargs['dnsConfig']
-        if 'eciSecurityContext' in kwargs:
+        if eci_security_context is None and 'eciSecurityContext' in kwargs:
             eci_security_context = kwargs['eciSecurityContext']
-        if 'eipBandwidth' in kwargs:
+        if eip_bandwidth is None and 'eipBandwidth' in kwargs:
             eip_bandwidth = kwargs['eipBandwidth']
-        if 'eipInstanceId' in kwargs:
+        if eip_instance_id is None and 'eipInstanceId' in kwargs:
             eip_instance_id = kwargs['eipInstanceId']
-        if 'hostAliases' in kwargs:
+        if host_aliases is None and 'hostAliases' in kwargs:
             host_aliases = kwargs['hostAliases']
-        if 'imageRegistryCredentials' in kwargs:
+        if image_registry_credentials is None and 'imageRegistryCredentials' in kwargs:
             image_registry_credentials = kwargs['imageRegistryCredentials']
-        if 'initContainers' in kwargs:
+        if init_containers is None and 'initContainers' in kwargs:
             init_containers = kwargs['initContainers']
-        if 'insecureRegistry' in kwargs:
+        if insecure_registry is None and 'insecureRegistry' in kwargs:
             insecure_registry = kwargs['insecureRegistry']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'internetIp' in kwargs:
+        if internet_ip is None and 'internetIp' in kwargs:
             internet_ip = kwargs['internetIp']
-        if 'intranetIp' in kwargs:
+        if intranet_ip is None and 'intranetIp' in kwargs:
             intranet_ip = kwargs['intranetIp']
-        if 'plainHttpRegistry' in kwargs:
+        if plain_http_registry is None and 'plainHttpRegistry' in kwargs:
             plain_http_registry = kwargs['plainHttpRegistry']
-        if 'ramRoleName' in kwargs:
+        if ram_role_name is None and 'ramRoleName' in kwargs:
             ram_role_name = kwargs['ramRoleName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'restartPolicy' in kwargs:
+        if restart_policy is None and 'restartPolicy' in kwargs:
             restart_policy = kwargs['restartPolicy']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vswitchId' in kwargs:
+        if vswitch_id is None and 'vswitchId' in kwargs:
             vswitch_id = kwargs['vswitchId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if acr_registry_infos is not None:
@@ -1131,113 +1139,6 @@ class ContainerGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.111.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.eci.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.1.0.0/16",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].zone_ids[0])
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_container_group = alicloud.eci.ContainerGroup("defaultContainerGroup",
-            container_group_name=name,
-            cpu=8,
-            memory=16,
-            restart_policy="OnFailure",
-            security_group_id=default_security_group.id,
-            vswitch_id=default_switch.id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            },
-            containers=[
-                alicloud.eci.ContainerGroupContainerArgs(
-                    image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
-                    name="nginx",
-                    working_dir="/tmp/nginx",
-                    image_pull_policy="IfNotPresent",
-                    commands=[
-                        "/bin/sh",
-                        "-c",
-                        "sleep 9999",
-                    ],
-                    volume_mounts=[alicloud.eci.ContainerGroupContainerVolumeMountArgs(
-                        mount_path="/tmp/example",
-                        read_only=False,
-                        name="empty1",
-                    )],
-                    ports=[alicloud.eci.ContainerGroupContainerPortArgs(
-                        port=80,
-                        protocol="TCP",
-                    )],
-                    environment_vars=[alicloud.eci.ContainerGroupContainerEnvironmentVarArgs(
-                        key="name",
-                        value="nginx",
-                    )],
-                    liveness_probes=[alicloud.eci.ContainerGroupContainerLivenessProbeArgs(
-                        period_seconds=5,
-                        initial_delay_seconds=5,
-                        success_threshold=1,
-                        failure_threshold=3,
-                        timeout_seconds=1,
-                        execs=[alicloud.eci.ContainerGroupContainerLivenessProbeExecArgs(
-                            commands=["cat /tmp/healthy"],
-                        )],
-                    )],
-                    readiness_probes=[alicloud.eci.ContainerGroupContainerReadinessProbeArgs(
-                        period_seconds=5,
-                        initial_delay_seconds=5,
-                        success_threshold=1,
-                        failure_threshold=3,
-                        timeout_seconds=1,
-                        execs=[alicloud.eci.ContainerGroupContainerReadinessProbeExecArgs(
-                            commands=["cat /tmp/healthy"],
-                        )],
-                    )],
-                ),
-                alicloud.eci.ContainerGroupContainerArgs(
-                    image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7",
-                    name="centos",
-                    commands=[
-                        "/bin/sh",
-                        "-c",
-                        "sleep 9999",
-                    ],
-                ),
-            ],
-            init_containers=[alicloud.eci.ContainerGroupInitContainerArgs(
-                name="init-busybox",
-                image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
-                image_pull_policy="IfNotPresent",
-                commands=["echo"],
-                args=["hello initcontainer"],
-            )],
-            volumes=[
-                alicloud.eci.ContainerGroupVolumeArgs(
-                    name="empty1",
-                    type="EmptyDirVolume",
-                ),
-                alicloud.eci.ContainerGroupVolumeArgs(
-                    name="empty2",
-                    type="EmptyDirVolume",
-                ),
-            ])
-        ```
-
         ## Import
 
         ECI Container Group can be imported using the id, e.g.
@@ -1289,113 +1190,6 @@ class ContainerGroup(pulumi.CustomResource):
         For information about ECI Container Group and how to use it, see [What is Container Group](https://www.alibabacloud.com/help/en/elastic-container-instance/latest/api-eci-2018-08-08-createcontainergroup).
 
         > **NOTE:** Available since v1.111.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default_zones = alicloud.eci.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.1.0.0/16",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].zone_ids[0])
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_container_group = alicloud.eci.ContainerGroup("defaultContainerGroup",
-            container_group_name=name,
-            cpu=8,
-            memory=16,
-            restart_policy="OnFailure",
-            security_group_id=default_security_group.id,
-            vswitch_id=default_switch.id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            },
-            containers=[
-                alicloud.eci.ContainerGroupContainerArgs(
-                    image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
-                    name="nginx",
-                    working_dir="/tmp/nginx",
-                    image_pull_policy="IfNotPresent",
-                    commands=[
-                        "/bin/sh",
-                        "-c",
-                        "sleep 9999",
-                    ],
-                    volume_mounts=[alicloud.eci.ContainerGroupContainerVolumeMountArgs(
-                        mount_path="/tmp/example",
-                        read_only=False,
-                        name="empty1",
-                    )],
-                    ports=[alicloud.eci.ContainerGroupContainerPortArgs(
-                        port=80,
-                        protocol="TCP",
-                    )],
-                    environment_vars=[alicloud.eci.ContainerGroupContainerEnvironmentVarArgs(
-                        key="name",
-                        value="nginx",
-                    )],
-                    liveness_probes=[alicloud.eci.ContainerGroupContainerLivenessProbeArgs(
-                        period_seconds=5,
-                        initial_delay_seconds=5,
-                        success_threshold=1,
-                        failure_threshold=3,
-                        timeout_seconds=1,
-                        execs=[alicloud.eci.ContainerGroupContainerLivenessProbeExecArgs(
-                            commands=["cat /tmp/healthy"],
-                        )],
-                    )],
-                    readiness_probes=[alicloud.eci.ContainerGroupContainerReadinessProbeArgs(
-                        period_seconds=5,
-                        initial_delay_seconds=5,
-                        success_threshold=1,
-                        failure_threshold=3,
-                        timeout_seconds=1,
-                        execs=[alicloud.eci.ContainerGroupContainerReadinessProbeExecArgs(
-                            commands=["cat /tmp/healthy"],
-                        )],
-                    )],
-                ),
-                alicloud.eci.ContainerGroupContainerArgs(
-                    image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7",
-                    name="centos",
-                    commands=[
-                        "/bin/sh",
-                        "-c",
-                        "sleep 9999",
-                    ],
-                ),
-            ],
-            init_containers=[alicloud.eci.ContainerGroupInitContainerArgs(
-                name="init-busybox",
-                image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
-                image_pull_policy="IfNotPresent",
-                commands=["echo"],
-                args=["hello initcontainer"],
-            )],
-            volumes=[
-                alicloud.eci.ContainerGroupVolumeArgs(
-                    name="empty1",
-                    type="EmptyDirVolume",
-                ),
-                alicloud.eci.ContainerGroupVolumeArgs(
-                    name="empty2",
-                    type="EmptyDirVolume",
-                ),
-            ])
-        ```
 
         ## Import
 
@@ -1468,17 +1262,9 @@ class ContainerGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'containers'")
             __props__.__dict__["containers"] = containers
             __props__.__dict__["cpu"] = cpu
-            if dns_config is not None and not isinstance(dns_config, ContainerGroupDnsConfigArgs):
-                dns_config = dns_config or {}
-                def _setter(key, value):
-                    dns_config[key] = value
-                ContainerGroupDnsConfigArgs._configure(_setter, **dns_config)
+            dns_config = _utilities.configure(dns_config, ContainerGroupDnsConfigArgs, True)
             __props__.__dict__["dns_config"] = dns_config
-            if eci_security_context is not None and not isinstance(eci_security_context, ContainerGroupEciSecurityContextArgs):
-                eci_security_context = eci_security_context or {}
-                def _setter(key, value):
-                    eci_security_context[key] = value
-                ContainerGroupEciSecurityContextArgs._configure(_setter, **eci_security_context)
+            eci_security_context = _utilities.configure(eci_security_context, ContainerGroupEciSecurityContextArgs, True)
             __props__.__dict__["eci_security_context"] = eci_security_context
             __props__.__dict__["eip_bandwidth"] = eip_bandwidth
             __props__.__dict__["eip_instance_id"] = eip_instance_id

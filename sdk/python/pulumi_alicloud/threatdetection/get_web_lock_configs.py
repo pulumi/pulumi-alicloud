@@ -146,16 +146,6 @@ def get_web_lock_configs(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available since v1.195.0.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.threatdetection.get_web_lock_configs(ids=[alicloud_threat_detection_web_lock_config["default"]["id"]])
-    pulumi.export("alicloudThreatDetectionWebLockConfigExampleId", default.configs[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Web Lock Config IDs.
     :param str lang: The language of the content within the request and the response. Valid values: `zh`, `en`.
@@ -203,16 +193,6 @@ def get_web_lock_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-describeweblockconfiglist)
 
     > **NOTE:** Available since v1.195.0.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.threatdetection.get_web_lock_configs(ids=[alicloud_threat_detection_web_lock_config["default"]["id"]])
-    pulumi.export("alicloudThreatDetectionWebLockConfigExampleId", default.configs[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Web Lock Config IDs.

@@ -11,31 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultDomainGroup = new alicloud.dns.DomainGroup("defaultDomainGroup", {domainGroupName: "tf-example"});
- * const defaultAlidnsDomain = new alicloud.dns.AlidnsDomain("defaultAlidnsDomain", {
- *     domainName: "starmove.com",
- *     groupId: defaultDomainGroup.id,
- *     tags: {
- *         Created: "TF",
- *         For: "example",
- *     },
- * });
- * const record = new alicloud.dns.AlidnsRecord("record", {
- *     domainName: defaultAlidnsDomain.domainName,
- *     rr: "alimail",
- *     type: "CNAME",
- *     value: "mail.mxhichin.com",
- *     remark: "tf-example",
- *     status: "ENABLE",
- * });
- * ```
- *
  * ## Import
  *
  * Alidns Domain Record can be imported using the id, e.g.

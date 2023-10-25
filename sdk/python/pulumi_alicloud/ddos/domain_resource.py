@@ -48,26 +48,36 @@ class DomainResourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: pulumi.Input[str],
-             instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             proxy_types: pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]],
-             real_servers: pulumi.Input[Sequence[pulumi.Input[str]]],
-             rs_type: pulumi.Input[int],
+             domain: Optional[pulumi.Input[str]] = None,
+             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]]] = None,
+             real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             rs_type: Optional[pulumi.Input[int]] = None,
              https_ext: Optional[pulumi.Input[str]] = None,
              ocsp_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceIds' in kwargs:
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
-        if 'proxyTypes' in kwargs:
+        if instance_ids is None:
+            raise TypeError("Missing 'instance_ids' argument")
+        if proxy_types is None and 'proxyTypes' in kwargs:
             proxy_types = kwargs['proxyTypes']
-        if 'realServers' in kwargs:
+        if proxy_types is None:
+            raise TypeError("Missing 'proxy_types' argument")
+        if real_servers is None and 'realServers' in kwargs:
             real_servers = kwargs['realServers']
-        if 'rsType' in kwargs:
+        if real_servers is None:
+            raise TypeError("Missing 'real_servers' argument")
+        if rs_type is None and 'rsType' in kwargs:
             rs_type = kwargs['rsType']
-        if 'httpsExt' in kwargs:
+        if rs_type is None:
+            raise TypeError("Missing 'rs_type' argument")
+        if https_ext is None and 'httpsExt' in kwargs:
             https_ext = kwargs['httpsExt']
-        if 'ocspEnabled' in kwargs:
+        if ocsp_enabled is None and 'ocspEnabled' in kwargs:
             ocsp_enabled = kwargs['ocspEnabled']
 
         _setter("domain", domain)
@@ -213,19 +223,19 @@ class _DomainResourceState:
              proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]]] = None,
              real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              rs_type: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'httpsExt' in kwargs:
+        if https_ext is None and 'httpsExt' in kwargs:
             https_ext = kwargs['httpsExt']
-        if 'instanceIds' in kwargs:
+        if instance_ids is None and 'instanceIds' in kwargs:
             instance_ids = kwargs['instanceIds']
-        if 'ocspEnabled' in kwargs:
+        if ocsp_enabled is None and 'ocspEnabled' in kwargs:
             ocsp_enabled = kwargs['ocspEnabled']
-        if 'proxyTypes' in kwargs:
+        if proxy_types is None and 'proxyTypes' in kwargs:
             proxy_types = kwargs['proxyTypes']
-        if 'realServers' in kwargs:
+        if real_servers is None and 'realServers' in kwargs:
             real_servers = kwargs['realServers']
-        if 'rsType' in kwargs:
+        if rs_type is None and 'rsType' in kwargs:
             rs_type = kwargs['rsType']
 
         if cname is not None:
@@ -364,41 +374,6 @@ class DomainResource(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.123.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        domain = config.get("domain")
-        if domain is None:
-            domain = "tf-example.alibaba.com"
-        default_ddos_coo_instance = alicloud.ddos.DdosCooInstance("defaultDdosCooInstance",
-            bandwidth="30",
-            base_bandwidth="30",
-            service_bandwidth="100",
-            port_count="50",
-            domain_count="50",
-            period=1,
-            product_type="ddoscoo")
-        default_domain_resource = alicloud.ddos.DomainResource("defaultDomainResource",
-            domain=domain,
-            rs_type=0,
-            instance_ids=[default_ddos_coo_instance.id],
-            real_servers=["177.167.32.11"],
-            https_ext="{\\"Http2\\":1,\\"Http2https\\":0,\\"Https2http\\":0}",
-            proxy_types=[alicloud.ddos.DomainResourceProxyTypeArgs(
-                proxy_ports=[443],
-                proxy_type="https",
-            )])
-        ```
-
         ## Import
 
         Anti-DDoS Pro Domain Resource can be imported using the id, e.g.
@@ -431,41 +406,6 @@ class DomainResource(pulumi.CustomResource):
         For information about Anti-DDoS Pro Domain Resource and how to use it, see [What is Domain Resource](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createwebrule).
 
         > **NOTE:** Available since v1.123.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        domain = config.get("domain")
-        if domain is None:
-            domain = "tf-example.alibaba.com"
-        default_ddos_coo_instance = alicloud.ddos.DdosCooInstance("defaultDdosCooInstance",
-            bandwidth="30",
-            base_bandwidth="30",
-            service_bandwidth="100",
-            port_count="50",
-            domain_count="50",
-            period=1,
-            product_type="ddoscoo")
-        default_domain_resource = alicloud.ddos.DomainResource("defaultDomainResource",
-            domain=domain,
-            rs_type=0,
-            instance_ids=[default_ddos_coo_instance.id],
-            real_servers=["177.167.32.11"],
-            https_ext="{\\"Http2\\":1,\\"Http2https\\":0,\\"Https2http\\":0}",
-            proxy_types=[alicloud.ddos.DomainResourceProxyTypeArgs(
-                proxy_ports=[443],
-                proxy_type="https",
-            )])
-        ```
 
         ## Import
 

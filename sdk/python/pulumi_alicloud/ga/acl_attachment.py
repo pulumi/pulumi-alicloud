@@ -35,19 +35,25 @@ class AclAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acl_id: pulumi.Input[str],
-             acl_type: pulumi.Input[str],
-             listener_id: pulumi.Input[str],
+             acl_id: Optional[pulumi.Input[str]] = None,
+             acl_type: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclId' in kwargs:
+        if acl_id is None and 'aclId' in kwargs:
             acl_id = kwargs['aclId']
-        if 'aclType' in kwargs:
+        if acl_id is None:
+            raise TypeError("Missing 'acl_id' argument")
+        if acl_type is None and 'aclType' in kwargs:
             acl_type = kwargs['aclType']
-        if 'listenerId' in kwargs:
+        if acl_type is None:
+            raise TypeError("Missing 'acl_type' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'dryRun' in kwargs:
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
 
         _setter("acl_id", acl_id)
@@ -137,15 +143,15 @@ class _AclAttachmentState:
              dry_run: Optional[pulumi.Input[bool]] = None,
              listener_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclId' in kwargs:
+        if acl_id is None and 'aclId' in kwargs:
             acl_id = kwargs['aclId']
-        if 'aclType' in kwargs:
+        if acl_type is None and 'aclType' in kwargs:
             acl_type = kwargs['aclType']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'listenerId' in kwargs:
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
 
         if acl_id is not None:
@@ -237,47 +243,6 @@ class AclAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.150.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
-            bandwidth=100,
-            type="Basic",
-            bandwidth_type="Basic",
-            payment_type="PayAsYouGo",
-            billing_type="PayBy95",
-            ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
-            bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
-            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=80,
-                to_port=80,
-            )])
-        default_acl = alicloud.ga.Acl("defaultAcl",
-            acl_name="terraform-example",
-            address_ip_version="IPv4")
-        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment",
-            acl_id=default_acl.id,
-            entry="192.168.1.1/32",
-            entry_description="terraform-example")
-        default_acl_attachment = alicloud.ga.AclAttachment("defaultAclAttachment",
-            listener_id=default_listener.id,
-            acl_id=default_acl.id,
-            acl_type="white")
-        ```
-
         ## Import
 
         Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
@@ -305,47 +270,6 @@ class AclAttachment(pulumi.CustomResource):
         For information about Global Accelerator (GA) Acl Attachment and how to use it, see [What is Acl Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-associateaclswithlistener).
 
         > **NOTE:** Available since v1.150.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
-            bandwidth=100,
-            type="Basic",
-            bandwidth_type="Basic",
-            payment_type="PayAsYouGo",
-            billing_type="PayBy95",
-            ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
-            bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
-            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=80,
-                to_port=80,
-            )])
-        default_acl = alicloud.ga.Acl("defaultAcl",
-            acl_name="terraform-example",
-            address_ip_version="IPv4")
-        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment",
-            acl_id=default_acl.id,
-            entry="192.168.1.1/32",
-            entry_description="terraform-example")
-        default_acl_attachment = alicloud.ga.AclAttachment("defaultAclAttachment",
-            listener_id=default_listener.id,
-            acl_id=default_acl.id,
-            acl_type="white")
-        ```
 
         ## Import
 

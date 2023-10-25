@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the HBR Replication Vault Regions of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.152.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.hbr.getReplicationVaultRegions({});
- * export const hbrReplicationVaultRegionRegionId1 = _default.then(_default => _default.regions?.[0]?.replicationRegionId);
- * ```
  */
 export function getReplicationVaultRegions(args?: GetReplicationVaultRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationVaultRegionsResult> {
     args = args || {};
@@ -57,18 +45,6 @@ export interface GetReplicationVaultRegionsResult {
  * This data source provides the HBR Replication Vault Regions of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.152.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.hbr.getReplicationVaultRegions({});
- * export const hbrReplicationVaultRegionRegionId1 = _default.then(_default => _default.regions?.[0]?.replicationRegionId);
- * ```
  */
 export function getReplicationVaultRegionsOutput(args?: GetReplicationVaultRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReplicationVaultRegionsResult> {
     return pulumi.output(args).apply((a: any) => getReplicationVaultRegions(a, opts))

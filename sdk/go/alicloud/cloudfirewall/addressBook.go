@@ -19,44 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.178.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudfirewall.NewAddressBook(ctx, "example", &cloudfirewall.AddressBookArgs{
-//				AutoAddTagEcs: pulumi.Int(0),
-//				Description:   pulumi.String("example_value"),
-//				EcsTags: cloudfirewall.AddressBookEcsTagArray{
-//					&cloudfirewall.AddressBookEcsTagArgs{
-//						TagKey:   pulumi.String("created"),
-//						TagValue: pulumi.String("tfTestAcc0"),
-//					},
-//				},
-//				GroupName:   pulumi.String("example_value"),
-//				GroupType:   pulumi.String("tag"),
-//				TagRelation: pulumi.String("and"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Cloud Firewall Address Book can be imported using the id, e.g.

@@ -38,14 +38,18 @@ class ResourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             schema: pulumi.Input[str],
-             type: pulumi.Input[str],
+             schema: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              ext_info: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'extInfo' in kwargs:
+        if schema is None:
+            raise TypeError("Missing 'schema' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if ext_info is None and 'extInfo' in kwargs:
             ext_info = kwargs['extInfo']
 
         _setter("schema", schema)
@@ -150,9 +154,9 @@ class _ResourceState:
              name: Optional[pulumi.Input[str]] = None,
              schema: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'extInfo' in kwargs:
+        if ext_info is None and 'extInfo' in kwargs:
             ext_info = kwargs['extInfo']
 
         if description is not None:
@@ -245,21 +249,6 @@ class Resource(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.162.0+, log resource region should be set a main region: cn-heyuan
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.log.Resource("example",
-            description="user tf test resource desc",
-            ext_info="{}",
-            schema="{\\"schema\\":[{\\"column\\":\\"col1\\",\\"desc\\":\\"col1 desc\\",\\"ext_info\\":{},\\"required\\":true,\\"type\\":\\"string\\"},{\\"column\\":\\"col2\\",\\"desc\\":\\"col2 desc\\",\\"ext_info\\":\\"optional\\",\\"required\\":true,\\"type\\":\\"string\\"}]}",
-            type="userdefine")
-        ```
-
         ## Import
 
         Log resource can be imported using the id, e.g.
@@ -288,21 +277,6 @@ class Resource(pulumi.CustomResource):
         For information about SLS Resource and how to use it, see [Resource management](https://www.alibabacloud.com/help/en/doc-detail/207732.html)
 
         > **NOTE:** Available in 1.162.0+, log resource region should be set a main region: cn-heyuan
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.log.Resource("example",
-            description="user tf test resource desc",
-            ext_info="{}",
-            schema="{\\"schema\\":[{\\"column\\":\\"col1\\",\\"desc\\":\\"col1 desc\\",\\"ext_info\\":{},\\"required\\":true,\\"type\\":\\"string\\"},{\\"column\\":\\"col2\\",\\"desc\\":\\"col2 desc\\",\\"ext_info\\":\\"optional\\",\\"required\\":true,\\"type\\":\\"string\\"}]}",
-            type="userdefine")
-        ```
 
         ## Import
 

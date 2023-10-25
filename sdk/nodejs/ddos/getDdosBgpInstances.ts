@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.183.0+ .
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const instanceDdosBgpInstances = alicloud.ddos.getDdosBgpInstances({
- *     nameRegex: "^ddosbgp",
- * });
- * export const instance = alicloud_ddosbgp_instances.instance.map(__item => __item.id);
- * ```
  */
 export function getDdosBgpInstances(args?: GetDdosBgpInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosBgpInstancesResult> {
     args = args || {};
@@ -79,18 +67,6 @@ export interface GetDdosBgpInstancesResult {
  * This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.183.0+ .
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const instanceDdosBgpInstances = alicloud.ddos.getDdosBgpInstances({
- *     nameRegex: "^ddosbgp",
- * });
- * export const instance = alicloud_ddosbgp_instances.instance.map(__item => __item.id);
- * ```
  */
 export function getDdosBgpInstancesOutput(args?: GetDdosBgpInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosBgpInstancesResult> {
     return pulumi.output(args).apply((a: any) => getDdosBgpInstances(a, opts))

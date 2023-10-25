@@ -16,34 +16,6 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available since v1.185.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultvpc = new AliCloud.Vpc.Network("defaultvpc", new()
-    ///     {
-    ///         Description = name,
-    ///     });
-    /// 
-    ///     var @default = new AliCloud.Vpc.Ipv4CidrBlock("default", new()
-    ///     {
-    ///         SecondaryCidrBlock = "192.168.0.0/16",
-    ///         VpcId = defaultvpc.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// VPC Ipv4 Cidr Block can be imported using the id, e.g.

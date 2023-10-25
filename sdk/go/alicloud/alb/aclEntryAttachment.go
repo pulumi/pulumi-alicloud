@@ -17,52 +17,6 @@ import (
 //
 // > **NOTE:** Available since v1.166.0.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf_example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultAcl, err := alb.NewAcl(ctx, "defaultAcl", &alb.AclArgs{
-//				AclName:         pulumi.String(name),
-//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alb.NewAclEntryAttachment(ctx, "defaultAclEntryAttachment", &alb.AclEntryAttachmentArgs{
-//				AclId:       defaultAcl.ID(),
-//				Entry:       pulumi.String("168.10.10.0/24"),
-//				Description: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Acl entry attachment can be imported using the id, e.g.

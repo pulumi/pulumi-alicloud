@@ -105,18 +105,6 @@ def get_sasl_users(instance_id: Optional[str] = None,
 
     > **NOTE:** Available in 1.66.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    sasl_users_ds = alicloud.actiontrail.get_sasl_users(instance_id="xxx",
-        name_regex="username",
-        output_file="saslUsers.txt")
-    pulumi.export("firstSaslUsername", sasl_users_ds.users[0].username)
-    ```
-
 
     :param str instance_id: ID of the ALIKAFKA Instance that owns the sasl users.
     :param str name_regex: A regex string to filter results by the username.
@@ -147,18 +135,6 @@ def get_sasl_users_output(instance_id: Optional[pulumi.Input[str]] = None,
     This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in 1.66.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    sasl_users_ds = alicloud.actiontrail.get_sasl_users(instance_id="xxx",
-        name_regex="username",
-        output_file="saslUsers.txt")
-    pulumi.export("firstSaslUsername", sasl_users_ds.users[0].username)
-    ```
 
 
     :param str instance_id: ID of the ALIKAFKA Instance that owns the sasl users.

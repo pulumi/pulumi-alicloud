@@ -14,43 +14,6 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// Alibaba Cloud SMB protocol file storage service supports user authentication based on AD domain system and permission access control at the file system level. Connecting and accessing the SMB file system as a domain user can implement the requirements for access control at the file and directory level in the SMB protocol file system. The current Alibaba Cloud SMB protocol file storage service does not support multi-user file and directory-level permission access control, and only provides file system-level authentication and access based on the whitelist mechanism that supports cloud accounts and source IP permission groups control.
     /// &gt; **NOTE:** Available in 1.186.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleZones = AliCloud.Nas.GetZones.Invoke(new()
-    ///     {
-    ///         FileSystemType = "standard",
-    ///     });
-    /// 
-    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new()
-    ///     {
-    ///         ProtocolType = "SMB",
-    ///         StorageType = "Capacity",
-    ///         Description = "terraform-example",
-    ///         EncryptType = 0,
-    ///         FileSystemType = "standard",
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
-    ///     });
-    /// 
-    ///     var exampleSmbAclAttachment = new AliCloud.Nas.SmbAclAttachment("exampleSmbAclAttachment", new()
-    ///     {
-    ///         FileSystemId = exampleFileSystem.Id,
-    ///         Keytab = "BQIAAABHAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAAQAIqIx6v7p11oUAAABHAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAAwAIqIx6v7p11oUAAABPAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAFwAQnQZWB3RAPHU7PMIJyBWePAAAAF8AAgANQUxJQURURVNULkNPTQAEY2lmcwAZc21ic2VydmVyMjQuYWxpYWR0ZXN0LmNvbQAAAAEAAAAAAQASACAGJ7F0s+bcBjf6jD5HlvlRLmPSOW+qDZe0Qk0lQcf8WwAAAE8AAgANQUxJQURURVNULkNPTQAEY2lmcwAZc21ic2VydmVyMjQuYWxpYWR0ZXN0LmNvbQAAAAEAAAAAAQARABDdFmanrSIatnDDhoOXYadj",
-    ///         KeytabMd5 = "E3CCF7E2416DF04FA958AA4513EA29E8",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nas/smbAclAttachment:SmbAclAttachment")]
     public partial class SmbAclAttachment : global::Pulumi.CustomResource

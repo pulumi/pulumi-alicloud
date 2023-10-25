@@ -8,30 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "vswitchDatasourceName";
- * const defaultZones = alicloud.getZones({});
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     cidrBlock: "172.16.0.0/16",
- *     vpcName: name,
- * });
- * const vswitch = new alicloud.vpc.Switch("vswitch", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     cidrBlock: "172.16.0.0/24",
- *     vpcId: vpc.id,
- *     vswitchName: name,
- * });
- * const defaultSwitches = alicloud.vpc.getSwitchesOutput({
- *     nameRegex: vswitch.vswitchName,
- * });
- * ```
  */
 export function getSwitches(args?: GetSwitchesArgs, opts?: pulumi.InvokeOptions): Promise<GetSwitchesResult> {
     args = args || {};
@@ -180,30 +156,6 @@ export interface GetSwitchesResult {
 }
 /**
  * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "vswitchDatasourceName";
- * const defaultZones = alicloud.getZones({});
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     cidrBlock: "172.16.0.0/16",
- *     vpcName: name,
- * });
- * const vswitch = new alicloud.vpc.Switch("vswitch", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     cidrBlock: "172.16.0.0/24",
- *     vpcId: vpc.id,
- *     vswitchName: name,
- * });
- * const defaultSwitches = alicloud.vpc.getSwitchesOutput({
- *     nameRegex: vswitch.vswitchName,
- * });
- * ```
  */
 export function getSwitchesOutput(args?: GetSwitchesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSwitchesResult> {
     return pulumi.output(args).apply((a: any) => getSwitches(a, opts))

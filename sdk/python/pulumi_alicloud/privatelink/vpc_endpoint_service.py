@@ -45,15 +45,15 @@ class VpcEndpointServiceArgs:
              dry_run: Optional[pulumi.Input[bool]] = None,
              payer: Optional[pulumi.Input[str]] = None,
              service_description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoAcceptConnection' in kwargs:
+        if auto_accept_connection is None and 'autoAcceptConnection' in kwargs:
             auto_accept_connection = kwargs['autoAcceptConnection']
-        if 'connectBandwidth' in kwargs:
+        if connect_bandwidth is None and 'connectBandwidth' in kwargs:
             connect_bandwidth = kwargs['connectBandwidth']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'serviceDescription' in kwargs:
+        if service_description is None and 'serviceDescription' in kwargs:
             service_description = kwargs['serviceDescription']
 
         if auto_accept_connection is not None:
@@ -176,19 +176,19 @@ class _VpcEndpointServiceState:
              service_description: Optional[pulumi.Input[str]] = None,
              service_domain: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoAcceptConnection' in kwargs:
+        if auto_accept_connection is None and 'autoAcceptConnection' in kwargs:
             auto_accept_connection = kwargs['autoAcceptConnection']
-        if 'connectBandwidth' in kwargs:
+        if connect_bandwidth is None and 'connectBandwidth' in kwargs:
             connect_bandwidth = kwargs['connectBandwidth']
-        if 'dryRun' in kwargs:
+        if dry_run is None and 'dryRun' in kwargs:
             dry_run = kwargs['dryRun']
-        if 'serviceBusinessStatus' in kwargs:
+        if service_business_status is None and 'serviceBusinessStatus' in kwargs:
             service_business_status = kwargs['serviceBusinessStatus']
-        if 'serviceDescription' in kwargs:
+        if service_description is None and 'serviceDescription' in kwargs:
             service_description = kwargs['serviceDescription']
-        if 'serviceDomain' in kwargs:
+        if service_domain is None and 'serviceDomain' in kwargs:
             service_domain = kwargs['serviceDomain']
 
         if auto_accept_connection is not None:
@@ -325,24 +325,6 @@ class VpcEndpointService(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.109.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        example = alicloud.privatelink.VpcEndpointService("example",
-            service_description=name,
-            connect_bandwidth=103,
-            auto_accept_connection=False)
-        ```
-
         ## Import
 
         Private Link Vpc Endpoint Service can be imported using the id, e.g.
@@ -373,24 +355,6 @@ class VpcEndpointService(pulumi.CustomResource):
         For information about Private Link Vpc Endpoint Service and how to use it, see [What is Vpc Endpoint Service](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-createvpcendpointservice).
 
         > **NOTE:** Available since v1.109.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf_example"
-        example = alicloud.privatelink.VpcEndpointService("example",
-            service_description=name,
-            connect_bandwidth=103,
-            auto_accept_connection=False)
-        ```
 
         ## Import
 

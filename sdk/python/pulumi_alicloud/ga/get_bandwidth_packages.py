@@ -129,19 +129,6 @@ def get_bandwidth_packages(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.112.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ga.get_bandwidth_packages(ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstGaBandwidthPackageId", example.packages[0].id)
-    ```
-
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Bandwidth Package IDs.
@@ -184,19 +171,6 @@ def get_bandwidth_packages_output(enable_details: Optional[pulumi.Input[Optional
     This data source provides the Global Accelerator (GA) Bandwidth Packages of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.112.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ga.get_bandwidth_packages(ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstGaBandwidthPackageId", example.packages[0].id)
-    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

@@ -38,15 +38,19 @@ class UserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             email: pulumi.Input[str],
-             end_user_id: pulumi.Input[str],
+             email: Optional[pulumi.Input[str]] = None,
+             end_user_id: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              phone: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endUserId' in kwargs:
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if end_user_id is None and 'endUserId' in kwargs:
             end_user_id = kwargs['endUserId']
+        if end_user_id is None:
+            raise TypeError("Missing 'end_user_id' argument")
 
         _setter("email", email)
         _setter("end_user_id", end_user_id)
@@ -150,9 +154,9 @@ class _UserState:
              password: Optional[pulumi.Input[str]] = None,
              phone: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endUserId' in kwargs:
+        if end_user_id is None and 'endUserId' in kwargs:
             end_user_id = kwargs['endUserId']
 
         if email is not None:
@@ -245,21 +249,6 @@ class User(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.142.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.eds.User("default",
-            email="tf.example@abc.com",
-            end_user_id="terraform_example123",
-            password="Example_123",
-            phone="18888888888")
-        ```
-
         ## Import
 
         ECD User can be imported using the id, e.g.
@@ -288,21 +277,6 @@ class User(pulumi.CustomResource):
         For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-eds-user-2021-03-08-createusers-desktop).
 
         > **NOTE:** Available since v1.142.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.eds.User("default",
-            email="tf.example@abc.com",
-            end_user_id="terraform_example123",
-            password="Example_123",
-            phone="18888888888")
-        ```
 
         ## Import
 

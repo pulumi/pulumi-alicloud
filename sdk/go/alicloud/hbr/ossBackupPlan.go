@@ -19,67 +19,6 @@ import (
 //
 // > **NOTE:** Available in v1.131.0+.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
-//				VaultName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("terraform-example-%v", result), nil
-//				}).(pulumi.StringOutput),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
-//				Bucket: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("terraform-example-%v", result), nil
-//				}).(pulumi.StringOutput),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = hbr.NewOssBackupPlan(ctx, "defaultOssBackupPlan", &hbr.OssBackupPlanArgs{
-//				OssBackupPlanName: pulumi.String("terraform-example"),
-//				Prefix:            pulumi.String("/"),
-//				Bucket:            defaultBucket.Bucket,
-//				VaultId:           defaultVault.ID(),
-//				Schedule:          pulumi.String("I|1602673264|PT2H"),
-//				BackupType:        pulumi.String("COMPLETE"),
-//				Retention:         pulumi.String("2"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // HBR Oss Backup Plan can be imported using the id, e.g.

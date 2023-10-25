@@ -129,20 +129,6 @@ def get_ecs_image_pipeline(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.163.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ecs.get_ecs_image_pipeline(ids=["example_value"])
-    pulumi.export("ecsImagePipelineId1", ids.pipelines[0].id)
-    name_regex = alicloud.ecs.get_ecs_image_pipeline(name_regex="^my-ImagePipeline")
-    pulumi.export("ecsImagePipelineId2", name_regex.pipelines[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Image Pipeline ids.
     :param str name: The name of the image template.
@@ -185,20 +171,6 @@ def get_ecs_image_pipeline_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.163.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.ecs.get_ecs_image_pipeline(ids=["example_value"])
-    pulumi.export("ecsImagePipelineId1", ids.pipelines[0].id)
-    name_regex = alicloud.ecs.get_ecs_image_pipeline(name_regex="^my-ImagePipeline")
-    pulumi.export("ecsImagePipelineId2", name_regex.pipelines[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Image Pipeline ids.

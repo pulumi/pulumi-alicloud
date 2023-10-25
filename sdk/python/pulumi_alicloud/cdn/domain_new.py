@@ -53,25 +53,31 @@ class DomainNewArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cdn_type: pulumi.Input[str],
-             domain_name: pulumi.Input[str],
-             sources: pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]],
+             cdn_type: Optional[pulumi.Input[str]] = None,
+             domain_name: Optional[pulumi.Input[str]] = None,
+             sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]]] = None,
              certificate_config: Optional[pulumi.Input['DomainNewCertificateConfigArgs']] = None,
              check_url: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              scope: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cdnType' in kwargs:
+        if cdn_type is None and 'cdnType' in kwargs:
             cdn_type = kwargs['cdnType']
-        if 'domainName' in kwargs:
+        if cdn_type is None:
+            raise TypeError("Missing 'cdn_type' argument")
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'certificateConfig' in kwargs:
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if sources is None:
+            raise TypeError("Missing 'sources' argument")
+        if certificate_config is None and 'certificateConfig' in kwargs:
             certificate_config = kwargs['certificateConfig']
-        if 'checkUrl' in kwargs:
+        if check_url is None and 'checkUrl' in kwargs:
             check_url = kwargs['checkUrl']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         _setter("cdn_type", cdn_type)
@@ -245,17 +251,17 @@ class _DomainNewState:
              sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cdnType' in kwargs:
+        if cdn_type is None and 'cdnType' in kwargs:
             cdn_type = kwargs['cdnType']
-        if 'certificateConfig' in kwargs:
+        if certificate_config is None and 'certificateConfig' in kwargs:
             certificate_config = kwargs['certificateConfig']
-        if 'checkUrl' in kwargs:
+        if check_url is None and 'checkUrl' in kwargs:
             check_url = kwargs['checkUrl']
-        if 'domainName' in kwargs:
+        if domain_name is None and 'domainName' in kwargs:
             domain_name = kwargs['domainName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         if cdn_type is not None:
@@ -425,31 +431,6 @@ class DomainNew(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.34.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "mycdndomain.alicloud-provider.cn"
-        default = alicloud.cdn.DomainNew("default",
-            scope="overseas",
-            domain_name=domain_name,
-            cdn_type="web",
-            sources=[alicloud.cdn.DomainNewSourceArgs(
-                type="ipaddr",
-                content="1.1.1.1",
-                priority=20,
-                port=80,
-                weight=15,
-            )])
-        ```
-
         ## Import
 
         CDN Domain can be imported using the id, e.g.
@@ -485,31 +466,6 @@ class DomainNew(pulumi.CustomResource):
         For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addcdndomain).
 
         > **NOTE:** Available since v1.34.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "mycdndomain.alicloud-provider.cn"
-        default = alicloud.cdn.DomainNew("default",
-            scope="overseas",
-            domain_name=domain_name,
-            cdn_type="web",
-            sources=[alicloud.cdn.DomainNewSourceArgs(
-                type="ipaddr",
-                content="1.1.1.1",
-                priority=20,
-                port=80,
-                weight=15,
-            )])
-        ```
 
         ## Import
 
@@ -558,11 +514,7 @@ class DomainNew(pulumi.CustomResource):
             if cdn_type is None and not opts.urn:
                 raise TypeError("Missing required property 'cdn_type'")
             __props__.__dict__["cdn_type"] = cdn_type
-            if certificate_config is not None and not isinstance(certificate_config, DomainNewCertificateConfigArgs):
-                certificate_config = certificate_config or {}
-                def _setter(key, value):
-                    certificate_config[key] = value
-                DomainNewCertificateConfigArgs._configure(_setter, **certificate_config)
+            certificate_config = _utilities.configure(certificate_config, DomainNewCertificateConfigArgs, True)
             __props__.__dict__["certificate_config"] = certificate_config
             __props__.__dict__["check_url"] = check_url
             if domain_name is None and not opts.urn:

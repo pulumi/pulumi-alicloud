@@ -41,20 +41,30 @@ class PolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_control_rules: pulumi.Input[str],
-             kms_instance_id: pulumi.Input[str],
-             permissions: pulumi.Input[Sequence[pulumi.Input[str]]],
-             policy_name: pulumi.Input[str],
-             resources: pulumi.Input[Sequence[pulumi.Input[str]]],
+             access_control_rules: Optional[pulumi.Input[str]] = None,
+             kms_instance_id: Optional[pulumi.Input[str]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             policy_name: Optional[pulumi.Input[str]] = None,
+             resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessControlRules' in kwargs:
+        if access_control_rules is None and 'accessControlRules' in kwargs:
             access_control_rules = kwargs['accessControlRules']
-        if 'kmsInstanceId' in kwargs:
+        if access_control_rules is None:
+            raise TypeError("Missing 'access_control_rules' argument")
+        if kms_instance_id is None and 'kmsInstanceId' in kwargs:
             kms_instance_id = kwargs['kmsInstanceId']
-        if 'policyName' in kwargs:
+        if kms_instance_id is None:
+            raise TypeError("Missing 'kms_instance_id' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
+        if policy_name is None:
+            raise TypeError("Missing 'policy_name' argument")
+        if resources is None:
+            raise TypeError("Missing 'resources' argument")
 
         _setter("access_control_rules", access_control_rules)
         _setter("kms_instance_id", kms_instance_id)
@@ -173,13 +183,13 @@ class _PolicyState:
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              policy_name: Optional[pulumi.Input[str]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessControlRules' in kwargs:
+        if access_control_rules is None and 'accessControlRules' in kwargs:
             access_control_rules = kwargs['accessControlRules']
-        if 'kmsInstanceId' in kwargs:
+        if kms_instance_id is None and 'kmsInstanceId' in kwargs:
             kms_instance_id = kwargs['kmsInstanceId']
-        if 'policyName' in kwargs:
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
 
         if access_control_rules is not None:

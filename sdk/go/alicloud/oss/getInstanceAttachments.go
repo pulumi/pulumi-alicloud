@@ -14,35 +14,6 @@ import (
 
 // This data source provides the ots instance attachments of the current Alibaba Cloud user.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			attachmentsDs, err := ots.GetInstanceAttachments(ctx, &ots.GetInstanceAttachmentsArgs{
-//				InstanceName: "sample-instance",
-//				NameRegex:    pulumi.StringRef("testvpc"),
-//				OutputFile:   pulumi.StringRef("attachments.txt"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstOtsAttachmentId", attachmentsDs.Attachments[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // Deprecated: alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments
 func GetInstanceAttachments(ctx *pulumi.Context, args *GetInstanceAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetInstanceAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

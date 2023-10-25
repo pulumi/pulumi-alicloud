@@ -53,17 +53,17 @@ class PrefixListArgs:
              prefix_list_name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipVersion' in kwargs:
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'maxEntries' in kwargs:
+        if max_entries is None and 'maxEntries' in kwargs:
             max_entries = kwargs['maxEntries']
-        if 'prefixListDescription' in kwargs:
+        if prefix_list_description is None and 'prefixListDescription' in kwargs:
             prefix_list_description = kwargs['prefixListDescription']
-        if 'prefixListName' in kwargs:
+        if prefix_list_name is None and 'prefixListName' in kwargs:
             prefix_list_name = kwargs['prefixListName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
 
         if entrys is not None:
@@ -226,25 +226,25 @@ class _PrefixListState:
              share_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'ipVersion' in kwargs:
+        if ip_version is None and 'ipVersion' in kwargs:
             ip_version = kwargs['ipVersion']
-        if 'maxEntries' in kwargs:
+        if max_entries is None and 'maxEntries' in kwargs:
             max_entries = kwargs['maxEntries']
-        if 'prefixListAssociations' in kwargs:
+        if prefix_list_associations is None and 'prefixListAssociations' in kwargs:
             prefix_list_associations = kwargs['prefixListAssociations']
-        if 'prefixListDescription' in kwargs:
+        if prefix_list_description is None and 'prefixListDescription' in kwargs:
             prefix_list_description = kwargs['prefixListDescription']
-        if 'prefixListId' in kwargs:
+        if prefix_list_id is None and 'prefixListId' in kwargs:
             prefix_list_id = kwargs['prefixListId']
-        if 'prefixListName' in kwargs:
+        if prefix_list_name is None and 'prefixListName' in kwargs:
             prefix_list_name = kwargs['prefixListName']
-        if 'resourceGroupId' in kwargs:
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
             resource_group_id = kwargs['resourceGroupId']
-        if 'shareType' in kwargs:
+        if share_type is None and 'shareType' in kwargs:
             share_type = kwargs['shareType']
 
         if create_time is not None:
@@ -437,36 +437,6 @@ class PrefixList(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.182.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testacc-example"
-        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
-            display_name="tf-testacc-chenyi",
-            resource_group_name=name)
-        change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
-            display_name="tf-testacc-chenyi-change",
-            resource_group_name=f"{name}1")
-        default = alicloud.vpc.PrefixList("default",
-            max_entries=50,
-            resource_group_id=default_rg.id,
-            prefix_list_description="test",
-            ip_version="IPV4",
-            prefix_list_name=name,
-            entrys=[alicloud.vpc.PrefixListEntryArgs(
-                cidr="192.168.0.0/16",
-                description="test",
-            )])
-        ```
-
         ## Import
 
         Vpc Prefix List can be imported using the id, e.g.
@@ -497,36 +467,6 @@ class PrefixList(pulumi.CustomResource):
         For information about Vpc Prefix List and how to use it, see [What is Prefix List](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/creatvpcprefixlist).
 
         > **NOTE:** Available in v1.182.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testacc-example"
-        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
-            display_name="tf-testacc-chenyi",
-            resource_group_name=name)
-        change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
-            display_name="tf-testacc-chenyi-change",
-            resource_group_name=f"{name}1")
-        default = alicloud.vpc.PrefixList("default",
-            max_entries=50,
-            resource_group_id=default_rg.id,
-            prefix_list_description="test",
-            ip_version="IPV4",
-            prefix_list_name=name,
-            entrys=[alicloud.vpc.PrefixListEntryArgs(
-                cidr="192.168.0.0/16",
-                description="test",
-            )])
-        ```
 
         ## Import
 

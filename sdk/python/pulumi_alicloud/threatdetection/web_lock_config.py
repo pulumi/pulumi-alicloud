@@ -50,28 +50,38 @@ class WebLockConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             defence_mode: pulumi.Input[str],
-             dir: pulumi.Input[str],
-             local_backup_dir: pulumi.Input[str],
-             mode: pulumi.Input[str],
-             uuid: pulumi.Input[str],
+             defence_mode: Optional[pulumi.Input[str]] = None,
+             dir: Optional[pulumi.Input[str]] = None,
+             local_backup_dir: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
              exclusive_dir: Optional[pulumi.Input[str]] = None,
              exclusive_file: Optional[pulumi.Input[str]] = None,
              exclusive_file_type: Optional[pulumi.Input[str]] = None,
              inclusive_file_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defenceMode' in kwargs:
+        if defence_mode is None and 'defenceMode' in kwargs:
             defence_mode = kwargs['defenceMode']
-        if 'localBackupDir' in kwargs:
+        if defence_mode is None:
+            raise TypeError("Missing 'defence_mode' argument")
+        if dir is None:
+            raise TypeError("Missing 'dir' argument")
+        if local_backup_dir is None and 'localBackupDir' in kwargs:
             local_backup_dir = kwargs['localBackupDir']
-        if 'exclusiveDir' in kwargs:
+        if local_backup_dir is None:
+            raise TypeError("Missing 'local_backup_dir' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
+        if exclusive_dir is None and 'exclusiveDir' in kwargs:
             exclusive_dir = kwargs['exclusiveDir']
-        if 'exclusiveFile' in kwargs:
+        if exclusive_file is None and 'exclusiveFile' in kwargs:
             exclusive_file = kwargs['exclusiveFile']
-        if 'exclusiveFileType' in kwargs:
+        if exclusive_file_type is None and 'exclusiveFileType' in kwargs:
             exclusive_file_type = kwargs['exclusiveFileType']
-        if 'inclusiveFileType' in kwargs:
+        if inclusive_file_type is None and 'inclusiveFileType' in kwargs:
             inclusive_file_type = kwargs['inclusiveFileType']
 
         _setter("defence_mode", defence_mode)
@@ -245,19 +255,19 @@ class _WebLockConfigState:
              local_backup_dir: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[str]] = None,
              uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defenceMode' in kwargs:
+        if defence_mode is None and 'defenceMode' in kwargs:
             defence_mode = kwargs['defenceMode']
-        if 'exclusiveDir' in kwargs:
+        if exclusive_dir is None and 'exclusiveDir' in kwargs:
             exclusive_dir = kwargs['exclusiveDir']
-        if 'exclusiveFile' in kwargs:
+        if exclusive_file is None and 'exclusiveFile' in kwargs:
             exclusive_file = kwargs['exclusiveFile']
-        if 'exclusiveFileType' in kwargs:
+        if exclusive_file_type is None and 'exclusiveFileType' in kwargs:
             exclusive_file_type = kwargs['exclusiveFileType']
-        if 'inclusiveFileType' in kwargs:
+        if inclusive_file_type is None and 'inclusiveFileType' in kwargs:
             inclusive_file_type = kwargs['inclusiveFileType']
-        if 'localBackupDir' in kwargs:
+        if local_backup_dir is None and 'localBackupDir' in kwargs:
             local_backup_dir = kwargs['localBackupDir']
 
         if defence_mode is not None:
@@ -410,24 +420,6 @@ class WebLockConfig(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.195.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_assets = alicloud.threatdetection.get_assets(machine_types="ecs")
-        default_web_lock_config = alicloud.threatdetection.WebLockConfig("defaultWebLockConfig",
-            inclusive_file_type="php;jsp;asp;aspx;js;cgi;html;htm;xml;shtml;shtm;jpg",
-            uuid=default_assets.ids[0],
-            mode="whitelist",
-            local_backup_dir="/usr/local/aegis/bak",
-            dir="/tmp/",
-            defence_mode="audit")
-        ```
-
         ## Import
 
         Threat Detection Web Lock Config can be imported using the id, e.g.
@@ -460,24 +452,6 @@ class WebLockConfig(pulumi.CustomResource):
         For information about Threat Detection Web Lock Config and how to use it, see [What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyweblockstart).
 
         > **NOTE:** Available in v1.195.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_assets = alicloud.threatdetection.get_assets(machine_types="ecs")
-        default_web_lock_config = alicloud.threatdetection.WebLockConfig("defaultWebLockConfig",
-            inclusive_file_type="php;jsp;asp;aspx;js;cgi;html;htm;xml;shtml;shtm;jpg",
-            uuid=default_assets.ids[0],
-            mode="whitelist",
-            local_backup_dir="/usr/local/aegis/bak",
-            dir="/tmp/",
-            defence_mode="audit")
-        ```
 
         ## Import
 

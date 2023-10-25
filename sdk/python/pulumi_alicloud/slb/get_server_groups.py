@@ -116,34 +116,6 @@ def get_server_groups(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the VServer groups related to a server load balancer.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    name = config.get("name")
-    if name is None:
-        name = "slbservergroups"
-    default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-        available_resource_creation="VSwitch")
-    default_network = alicloud.vpc.Network("defaultNetwork",
-        vpc_name=name,
-        cidr_block="172.16.0.0/16")
-    default_switch = alicloud.vpc.Switch("defaultSwitch",
-        vpc_id=default_network.id,
-        cidr_block="172.16.0.0/16",
-        zone_id=default_zones.zones[0].id,
-        vswitch_name=name)
-    default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
-        load_balancer_name=name,
-        vswitch_id=default_switch.id)
-    default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_application_load_balancer.id)
-    sample_ds = alicloud.slb.get_server_groups_output(load_balancer_id=default_application_load_balancer.id)
-    pulumi.export("firstSlbServerGroupId", sample_ds.slb_server_groups[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of VServer group IDs to filter results.
     :param str load_balancer_id: ID of the SLB.
@@ -176,34 +148,6 @@ def get_server_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerGroupsResult]:
     """
     This data source provides the VServer groups related to a server load balancer.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    name = config.get("name")
-    if name is None:
-        name = "slbservergroups"
-    default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-        available_resource_creation="VSwitch")
-    default_network = alicloud.vpc.Network("defaultNetwork",
-        vpc_name=name,
-        cidr_block="172.16.0.0/16")
-    default_switch = alicloud.vpc.Switch("defaultSwitch",
-        vpc_id=default_network.id,
-        cidr_block="172.16.0.0/16",
-        zone_id=default_zones.zones[0].id,
-        vswitch_name=name)
-    default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
-        load_balancer_name=name,
-        vswitch_id=default_switch.id)
-    default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_application_load_balancer.id)
-    sample_ds = alicloud.slb.get_server_groups_output(load_balancer_id=default_application_load_balancer.id)
-    pulumi.export("firstSlbServerGroupId", sample_ds.slb_server_groups[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of VServer group IDs to filter results.

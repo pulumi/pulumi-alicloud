@@ -15,37 +15,6 @@ namespace Pulumi.AliCloud.Alb
         /// This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.133.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Alb.GetAcls.Invoke();
-        /// 
-        ///     var nameRegex = AliCloud.Alb.GetAcls.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Acl",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["albAclId1"] = ids.Apply(getAclsResult =&gt; getAclsResult.Acls[0]?.Id),
-        ///         ["albAclId2"] = nameRegex.Apply(getAclsResult =&gt; getAclsResult.Acls[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclsResult> InvokeAsync(GetAclsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:alb/getAcls:getAcls", args ?? new GetAclsArgs(), options.WithDefaults());
@@ -54,37 +23,6 @@ namespace Pulumi.AliCloud.Alb
         /// This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.133.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Alb.GetAcls.Invoke();
-        /// 
-        ///     var nameRegex = AliCloud.Alb.GetAcls.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Acl",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["albAclId1"] = ids.Apply(getAclsResult =&gt; getAclsResult.Acls[0]?.Id),
-        ///         ["albAclId2"] = nameRegex.Apply(getAclsResult =&gt; getAclsResult.Acls[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAclsResult> Invoke(GetAclsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:alb/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithDefaults());

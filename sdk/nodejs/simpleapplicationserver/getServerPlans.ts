@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.135.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.simpleapplicationserver.getServerPlans({
- *     memory: 1,
- *     bandwidth: 3,
- *     diskSize: 40,
- *     flow: 6,
- *     core: 2,
- * });
- * export const simpleApplicationServerPlanId1 = data.alicloud_simple_application_server_plans.ids.plans[0].id;
- * ```
  */
 export function getServerPlans(args?: GetServerPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetServerPlansResult> {
     args = args || {};
@@ -105,24 +87,6 @@ export interface GetServerPlansResult {
  * This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.135.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.simpleapplicationserver.getServerPlans({
- *     memory: 1,
- *     bandwidth: 3,
- *     diskSize: 40,
- *     flow: 6,
- *     core: 2,
- * });
- * export const simpleApplicationServerPlanId1 = data.alicloud_simple_application_server_plans.ids.plans[0].id;
- * ```
  */
 export function getServerPlansOutput(args?: GetServerPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerPlansResult> {
     return pulumi.output(args).apply((a: any) => getServerPlans(a, opts))

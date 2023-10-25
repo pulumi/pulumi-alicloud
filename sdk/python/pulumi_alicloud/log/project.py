@@ -41,7 +41,7 @@ class ProjectArgs:
              name: Optional[pulumi.Input[str]] = None,
              policy: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if description is not None:
@@ -134,7 +134,7 @@ class _ProjectState:
              name: Optional[pulumi.Input[str]] = None,
              policy: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if description is not None:
@@ -213,60 +213,6 @@ class Project(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.9.5.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example = alicloud.log.Project("example",
-            description="terraform-example",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        ```
-
-        Project With Policy Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_policy = alicloud.log.Project("examplePolicy",
-            description="terraform-example",
-            policy=\"\"\"{
-          "Statement": [
-            {
-              "Action": [
-                "log:PostLogStoreLogs"
-              ],
-              "Condition": {
-                "StringNotLike": {
-                  "acs:SourceVpc": [
-                    "vpc-*"
-                  ]
-                }
-              },
-              "Effect": "Deny",
-              "Resource": "acs:log:*:*:project/tf-log/*"
-            }
-          ],
-          "Version": "1"
-        }
-
-        \"\"\")
-        ```
         ## Module Support
 
         You can use the existing sls module
@@ -301,60 +247,6 @@ class Project(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.9.5.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example = alicloud.log.Project("example",
-            description="terraform-example",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        ```
-
-        Project With Policy Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example_policy = alicloud.log.Project("examplePolicy",
-            description="terraform-example",
-            policy=\"\"\"{
-          "Statement": [
-            {
-              "Action": [
-                "log:PostLogStoreLogs"
-              ],
-              "Condition": {
-                "StringNotLike": {
-                  "acs:SourceVpc": [
-                    "vpc-*"
-                  ]
-                }
-              },
-              "Effect": "Deny",
-              "Resource": "acs:log:*:*:project/tf-log/*"
-            }
-          ],
-          "Version": "1"
-        }
-
-        \"\"\")
-        ```
         ## Module Support
 
         You can use the existing sls module

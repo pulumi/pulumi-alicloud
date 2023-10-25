@@ -15,37 +15,6 @@ import (
 // This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.179.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := cms.GetHybridMonitorSlsTasks(ctx, &cms.GetHybridMonitorSlsTasksArgs{
-//				Ids: []string{
-//					"example_value",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("cmsHybridMonitorSlsTaskId1", ids.Tasks[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetHybridMonitorSlsTasks(ctx *pulumi.Context, args *GetHybridMonitorSlsTasksArgs, opts ...pulumi.InvokeOption) (*GetHybridMonitorSlsTasksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHybridMonitorSlsTasksResult

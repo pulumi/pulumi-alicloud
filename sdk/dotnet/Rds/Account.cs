@@ -14,57 +14,6 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.120.0`. Please use new resource alicloud_rds_account.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var creation = config.Get("creation") ?? "Rds";
-    ///     var name = config.Get("name") ?? "dbaccountmysql";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = creation,
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "172.16.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = name,
-    ///     });
-    /// 
-    ///     var instance = new AliCloud.Rds.Instance("instance", new()
-    ///     {
-    ///         Engine = "MySQL",
-    ///         EngineVersion = "5.6",
-    ///         InstanceType = "rds.mysql.s1.small",
-    ///         InstanceStorage = 10,
-    ///         VswitchId = defaultSwitch.Id,
-    ///         InstanceName = name,
-    ///     });
-    /// 
-    ///     var account = new AliCloud.Rds.Account("account", new()
-    ///     {
-    ///         InstanceId = instance.Id,
-    ///         Password = "Test12345",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// RDS account can be imported using the id, e.g.

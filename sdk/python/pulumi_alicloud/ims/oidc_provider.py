@@ -41,21 +41,25 @@ class OidcProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             issuer_url: pulumi.Input[str],
-             oidc_provider_name: pulumi.Input[str],
+             issuer_url: Optional[pulumi.Input[str]] = None,
+             oidc_provider_name: Optional[pulumi.Input[str]] = None,
              client_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              issuance_limit_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'issuerUrl' in kwargs:
+        if issuer_url is None and 'issuerUrl' in kwargs:
             issuer_url = kwargs['issuerUrl']
-        if 'oidcProviderName' in kwargs:
+        if issuer_url is None:
+            raise TypeError("Missing 'issuer_url' argument")
+        if oidc_provider_name is None and 'oidcProviderName' in kwargs:
             oidc_provider_name = kwargs['oidcProviderName']
-        if 'clientIds' in kwargs:
+        if oidc_provider_name is None:
+            raise TypeError("Missing 'oidc_provider_name' argument")
+        if client_ids is None and 'clientIds' in kwargs:
             client_ids = kwargs['clientIds']
-        if 'issuanceLimitTime' in kwargs:
+        if issuance_limit_time is None and 'issuanceLimitTime' in kwargs:
             issuance_limit_time = kwargs['issuanceLimitTime']
 
         _setter("issuer_url", issuer_url)
@@ -182,17 +186,17 @@ class _OidcProviderState:
              issuance_limit_time: Optional[pulumi.Input[int]] = None,
              issuer_url: Optional[pulumi.Input[str]] = None,
              oidc_provider_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientIds' in kwargs:
+        if client_ids is None and 'clientIds' in kwargs:
             client_ids = kwargs['clientIds']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'issuanceLimitTime' in kwargs:
+        if issuance_limit_time is None and 'issuanceLimitTime' in kwargs:
             issuance_limit_time = kwargs['issuanceLimitTime']
-        if 'issuerUrl' in kwargs:
+        if issuer_url is None and 'issuerUrl' in kwargs:
             issuer_url = kwargs['issuerUrl']
-        if 'oidcProviderName' in kwargs:
+        if oidc_provider_name is None and 'oidcProviderName' in kwargs:
             oidc_provider_name = kwargs['oidcProviderName']
 
         if client_ids is not None:
@@ -314,33 +318,6 @@ class OidcProvider(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.210.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        oidc_provider_name = config.get("oidcProviderName")
-        if oidc_provider_name is None:
-            oidc_provider_name = "amp-resource-example-oidc-provider"
-        default = alicloud.ims.OidcProvider("default",
-            description=oidc_provider_name,
-            issuer_url="https://oauth.aliyun.com",
-            fingerprints=["902ef2deeb3c5b13ea4c3d5193629309e231ae55"],
-            issuance_limit_time=12,
-            oidc_provider_name=name,
-            client_ids=[
-                "123",
-                "456",
-            ])
-        ```
-
         ## Import
 
         IMS Oidc Provider can be imported using the id, e.g.
@@ -370,33 +347,6 @@ class OidcProvider(pulumi.CustomResource):
         For information about IMS Oidc Provider and how to use it, see [What is Oidc Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createoidcprovider).
 
         > **NOTE:** Available since v1.210.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        oidc_provider_name = config.get("oidcProviderName")
-        if oidc_provider_name is None:
-            oidc_provider_name = "amp-resource-example-oidc-provider"
-        default = alicloud.ims.OidcProvider("default",
-            description=oidc_provider_name,
-            issuer_url="https://oauth.aliyun.com",
-            fingerprints=["902ef2deeb3c5b13ea4c3d5193629309e231ae55"],
-            issuance_limit_time=12,
-            oidc_provider_name=name,
-            client_ids=[
-                "123",
-                "456",
-            ])
-        ```
 
         ## Import
 

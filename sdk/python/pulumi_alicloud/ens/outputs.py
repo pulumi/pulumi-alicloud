@@ -38,7 +38,7 @@ class InstanceDataDisk(dict):
              _setter: Callable[[Any, Any], None],
              category: Optional[str] = None,
              size: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if category is not None:
@@ -82,7 +82,7 @@ class InstanceSystemDisk(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              size: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if size is not None:
@@ -123,19 +123,29 @@ class GetKeyPairsPairResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             create_time: str,
-             id: str,
-             key_pair_finger_print: str,
-             key_pair_name: str,
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             key_pair_finger_print: Optional[str] = None,
+             key_pair_name: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'keyPairFingerPrint' in kwargs:
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if key_pair_finger_print is None and 'keyPairFingerPrint' in kwargs:
             key_pair_finger_print = kwargs['keyPairFingerPrint']
-        if 'keyPairName' in kwargs:
+        if key_pair_finger_print is None:
+            raise TypeError("Missing 'key_pair_finger_print' argument")
+        if key_pair_name is None and 'keyPairName' in kwargs:
             key_pair_name = kwargs['keyPairName']
+        if key_pair_name is None:
+            raise TypeError("Missing 'key_pair_name' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
 
         _setter("create_time", create_time)
         _setter("id", id)

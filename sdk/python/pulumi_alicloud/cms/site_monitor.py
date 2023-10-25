@@ -46,24 +46,30 @@ class SiteMonitorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
-             task_name: pulumi.Input[str],
-             task_type: pulumi.Input[str],
+             address: Optional[pulumi.Input[str]] = None,
+             task_name: Optional[pulumi.Input[str]] = None,
+             task_type: Optional[pulumi.Input[str]] = None,
              alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              interval: Optional[pulumi.Input[int]] = None,
              isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]] = None,
              options_json: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'taskName' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if task_name is None and 'taskName' in kwargs:
             task_name = kwargs['taskName']
-        if 'taskType' in kwargs:
+        if task_name is None:
+            raise TypeError("Missing 'task_name' argument")
+        if task_type is None and 'taskType' in kwargs:
             task_type = kwargs['taskType']
-        if 'alertIds' in kwargs:
+        if task_type is None:
+            raise TypeError("Missing 'task_type' argument")
+        if alert_ids is None and 'alertIds' in kwargs:
             alert_ids = kwargs['alertIds']
-        if 'ispCities' in kwargs:
+        if isp_cities is None and 'ispCities' in kwargs:
             isp_cities = kwargs['ispCities']
-        if 'optionsJson' in kwargs:
+        if options_json is None and 'optionsJson' in kwargs:
             options_json = kwargs['optionsJson']
 
         _setter("address", address)
@@ -215,23 +221,23 @@ class _SiteMonitorState:
              task_state: Optional[pulumi.Input[str]] = None,
              task_type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alertIds' in kwargs:
+        if alert_ids is None and 'alertIds' in kwargs:
             alert_ids = kwargs['alertIds']
-        if 'createTime' in kwargs:
+        if create_time is None and 'createTime' in kwargs:
             create_time = kwargs['createTime']
-        if 'ispCities' in kwargs:
+        if isp_cities is None and 'ispCities' in kwargs:
             isp_cities = kwargs['ispCities']
-        if 'optionsJson' in kwargs:
+        if options_json is None and 'optionsJson' in kwargs:
             options_json = kwargs['optionsJson']
-        if 'taskName' in kwargs:
+        if task_name is None and 'taskName' in kwargs:
             task_name = kwargs['taskName']
-        if 'taskState' in kwargs:
+        if task_state is None and 'taskState' in kwargs:
             task_state = kwargs['taskState']
-        if 'taskType' in kwargs:
+        if task_type is None and 'taskType' in kwargs:
             task_type = kwargs['taskType']
-        if 'updateTime' in kwargs:
+        if update_time is None and 'updateTime' in kwargs:
             update_time = kwargs['updateTime']
 
         if address is not None:
@@ -395,25 +401,6 @@ class SiteMonitor(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.72.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        basic = alicloud.cms.SiteMonitor("basic",
-            address="http://www.alibabacloud.com",
-            interval=5,
-            isp_cities=[alicloud.cms.SiteMonitorIspCityArgs(
-                city="546",
-                isp="465",
-            )],
-            task_name="tf-example",
-            task_type="HTTP")
-        ```
-
         ## Import
 
         Cloud Monitor Service Site Monitor can be imported using the id, e.g.
@@ -443,25 +430,6 @@ class SiteMonitor(pulumi.CustomResource):
         Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
 
         > **NOTE:** Available since v1.72.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        basic = alicloud.cms.SiteMonitor("basic",
-            address="http://www.alibabacloud.com",
-            interval=5,
-            isp_cities=[alicloud.cms.SiteMonitorIspCityArgs(
-                city="546",
-                isp="465",
-            )],
-            task_name="tf-example",
-            task_type="HTTP")
-        ```
 
         ## Import
 

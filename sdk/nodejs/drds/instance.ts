@@ -15,22 +15,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Currently, this resource only support `Domestic Site Account`.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.drds.Instance("default", {
- *     description: "drds instance",
- *     instanceChargeType: "PostPaid",
- *     instanceSeries: "drds.sn1.4c8g",
- *     specification: "drds.sn1.4c8g.8C16G",
- *     vswitchId: "vsw-bp1jlu3swk8rq2yoi40ey",
- *     zoneId: "cn-hangzhou-e",
- * });
- * ```
- *
  * ## Import
  *
  * Distributed Relational Database Service (DRDS) can be imported using the id, e.g.

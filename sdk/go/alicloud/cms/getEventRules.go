@@ -15,44 +15,6 @@ import (
 // This data source provides the Cms Event Rules of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.182.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := cms.GetEventRules(ctx, &cms.GetEventRulesArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("cmsEventRuleId1", ids.Rules[0].Id)
-//			nameRegex, err := cms.GetEventRules(ctx, &cms.GetEventRulesArgs{
-//				NameRegex: pulumi.StringRef("^my-EventRule"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("cmsEventRuleId2", nameRegex.Rules[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetEventRules(ctx *pulumi.Context, args *GetEventRulesArgs, opts ...pulumi.InvokeOption) (*GetEventRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEventRulesResult

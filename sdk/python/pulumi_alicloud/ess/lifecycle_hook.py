@@ -44,26 +44,30 @@ class LifecycleHookArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lifecycle_transition: pulumi.Input[str],
-             scaling_group_id: pulumi.Input[str],
+             lifecycle_transition: Optional[pulumi.Input[str]] = None,
+             scaling_group_id: Optional[pulumi.Input[str]] = None,
              default_result: Optional[pulumi.Input[str]] = None,
              heartbeat_timeout: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              notification_arn: Optional[pulumi.Input[str]] = None,
              notification_metadata: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'lifecycleTransition' in kwargs:
+        if lifecycle_transition is None and 'lifecycleTransition' in kwargs:
             lifecycle_transition = kwargs['lifecycleTransition']
-        if 'scalingGroupId' in kwargs:
+        if lifecycle_transition is None:
+            raise TypeError("Missing 'lifecycle_transition' argument")
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
-        if 'defaultResult' in kwargs:
+        if scaling_group_id is None:
+            raise TypeError("Missing 'scaling_group_id' argument")
+        if default_result is None and 'defaultResult' in kwargs:
             default_result = kwargs['defaultResult']
-        if 'heartbeatTimeout' in kwargs:
+        if heartbeat_timeout is None and 'heartbeatTimeout' in kwargs:
             heartbeat_timeout = kwargs['heartbeatTimeout']
-        if 'notificationArn' in kwargs:
+        if notification_arn is None and 'notificationArn' in kwargs:
             notification_arn = kwargs['notificationArn']
-        if 'notificationMetadata' in kwargs:
+        if notification_metadata is None and 'notificationMetadata' in kwargs:
             notification_metadata = kwargs['notificationMetadata']
 
         _setter("lifecycle_transition", lifecycle_transition)
@@ -204,19 +208,19 @@ class _LifecycleHookState:
              notification_arn: Optional[pulumi.Input[str]] = None,
              notification_metadata: Optional[pulumi.Input[str]] = None,
              scaling_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultResult' in kwargs:
+        if default_result is None and 'defaultResult' in kwargs:
             default_result = kwargs['defaultResult']
-        if 'heartbeatTimeout' in kwargs:
+        if heartbeat_timeout is None and 'heartbeatTimeout' in kwargs:
             heartbeat_timeout = kwargs['heartbeatTimeout']
-        if 'lifecycleTransition' in kwargs:
+        if lifecycle_transition is None and 'lifecycleTransition' in kwargs:
             lifecycle_transition = kwargs['lifecycleTransition']
-        if 'notificationArn' in kwargs:
+        if notification_arn is None and 'notificationArn' in kwargs:
             notification_arn = kwargs['notificationArn']
-        if 'notificationMetadata' in kwargs:
+        if notification_metadata is None and 'notificationMetadata' in kwargs:
             notification_metadata = kwargs['notificationMetadata']
-        if 'scalingGroupId' in kwargs:
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
 
         if default_result is not None:
@@ -337,51 +341,6 @@ class LifecycleHook(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.13.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default2 = alicloud.vpc.Switch("default2",
-            vpc_id=default_network.id,
-            cidr_block="172.16.1.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=f"{name}-bar")
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            min_size=1,
-            max_size=1,
-            scaling_group_name=name,
-            default_cooldown=200,
-            removal_policies=[
-                "OldestInstance",
-                "NewestInstance",
-            ],
-            vswitch_ids=[
-                default_switch.id,
-                default2.id,
-            ])
-        default_lifecycle_hook = alicloud.ess.LifecycleHook("defaultLifecycleHook",
-            scaling_group_id=default_scaling_group.id,
-            lifecycle_transition="SCALE_OUT",
-            heartbeat_timeout=400,
-            notification_metadata="example")
-        ```
         ## Module Support
 
         You can use to the existing autoscaling module
@@ -416,51 +375,6 @@ class LifecycleHook(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.13.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default2 = alicloud.vpc.Switch("default2",
-            vpc_id=default_network.id,
-            cidr_block="172.16.1.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=f"{name}-bar")
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            min_size=1,
-            max_size=1,
-            scaling_group_name=name,
-            default_cooldown=200,
-            removal_policies=[
-                "OldestInstance",
-                "NewestInstance",
-            ],
-            vswitch_ids=[
-                default_switch.id,
-                default2.id,
-            ])
-        default_lifecycle_hook = alicloud.ess.LifecycleHook("defaultLifecycleHook",
-            scaling_group_id=default_scaling_group.id,
-            lifecycle_transition="SCALE_OUT",
-            heartbeat_timeout=400,
-            notification_metadata="example")
-        ```
         ## Module Support
 
         You can use to the existing autoscaling module

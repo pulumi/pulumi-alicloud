@@ -11,40 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.187.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tfexample";
- * const default = alicloud.getRegions({
- *     current: true,
- * });
- * const example = new alicloud.vod.EditingProject("example", {
- *     editingProjectName: name,
- *     title: name,
- *     timeline: `  {
- *     "VideoTracks":[
- *       {
- *         "VideoTrackClips":[
- *           {
- *           "MediaId":"0c60e6f02dae71edbfaa472190a90102",
- *           "In":2811
- *           }
- *         ]
- *       }
- *     ]
- *   }
- * `,
- *     coverUrl: "https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png",
- *     division: _default.then(_default => _default.regions?.[0]?.id),
- * });
- * ```
- *
  * ## Import
  *
  * VOD Editing Project can be imported using the id, e.g.

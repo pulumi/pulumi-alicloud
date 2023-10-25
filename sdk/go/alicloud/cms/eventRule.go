@@ -19,63 +19,6 @@ import (
 //
 // > **NOTE:** Available since v1.182.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := cms.NewMonitorGroup(ctx, "default", &cms.MonitorGroupArgs{
-//				MonitorGroupName: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cms.NewEventRule(ctx, "example", &cms.EventRuleArgs{
-//				RuleName:    pulumi.String(name),
-//				GroupId:     _default.ID(),
-//				SilenceTime: pulumi.Int(100),
-//				Description: pulumi.String(name),
-//				Status:      pulumi.String("ENABLED"),
-//				EventPattern: &cms.EventRuleEventPatternArgs{
-//					Product:   pulumi.String("ecs"),
-//					SqlFilter: pulumi.String("example_value"),
-//					NameLists: pulumi.StringArray{
-//						pulumi.String("example_value"),
-//					},
-//					LevelLists: pulumi.StringArray{
-//						pulumi.String("CRITICAL"),
-//					},
-//					EventTypeLists: pulumi.StringArray{
-//						pulumi.String("StatusNotification"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Cloud Monitor Service Event Rule can be imported using the id, e.g.

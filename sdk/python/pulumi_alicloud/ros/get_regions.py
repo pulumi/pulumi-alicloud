@@ -70,18 +70,6 @@ def get_regions(output_file: Optional[str] = None,
 
     > **NOTE:** Available in v1.145.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    all = alicloud.ros.get_regions()
-    pulumi.export("rosRegionRegionId1", all.regions[0].region_id)
-    ```
-
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -103,18 +91,6 @@ def get_regions_output(output_file: Optional[pulumi.Input[Optional[str]]] = None
     This data source provides the Ros Regions of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.145.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    all = alicloud.ros.get_regions()
-    pulumi.export("rosRegionRegionId1", all.regions[0].region_id)
-    ```
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

@@ -32,16 +32,20 @@ class PolicyVersionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_document: pulumi.Input[str],
-             policy_name: pulumi.Input[str],
+             policy_document: Optional[pulumi.Input[str]] = None,
+             policy_name: Optional[pulumi.Input[str]] = None,
              is_default_version: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'policyDocument' in kwargs:
+        if policy_document is None and 'policyDocument' in kwargs:
             policy_document = kwargs['policyDocument']
-        if 'policyName' in kwargs:
+        if policy_document is None:
+            raise TypeError("Missing 'policy_document' argument")
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'isDefaultVersion' in kwargs:
+        if policy_name is None:
+            raise TypeError("Missing 'policy_name' argument")
+        if is_default_version is None and 'isDefaultVersion' in kwargs:
             is_default_version = kwargs['isDefaultVersion']
 
         _setter("policy_document", policy_document)
@@ -116,13 +120,13 @@ class _PolicyVersionState:
              is_default_version: Optional[pulumi.Input[bool]] = None,
              policy_document: Optional[pulumi.Input[str]] = None,
              policy_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'isDefaultVersion' in kwargs:
+        if is_default_version is None and 'isDefaultVersion' in kwargs:
             is_default_version = kwargs['isDefaultVersion']
-        if 'policyDocument' in kwargs:
+        if policy_document is None and 'policyDocument' in kwargs:
             policy_document = kwargs['policyDocument']
-        if 'policyName' in kwargs:
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
 
         if is_default_version is not None:
@@ -192,42 +196,6 @@ class PolicyVersion(pulumi.CustomResource):
 
         > **NOTE:** It is not recommended to use this resource management policy version, it is recommended to directly use the policy resource to manage your policy. Please refer to the link for usage resource_manager_policy.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        example_policy = alicloud.resourcemanager.Policy("examplePolicy",
-            policy_name=name,
-            policy_document=\"\"\"		{
-        			"Statement": [{
-        				"Action": ["oss:*"],
-        				"Effect": "Allow",
-        				"Resource": ["acs:oss:*:*:*"]
-        			}],
-        			"Version": "1"
-        		}
-        \"\"\")
-        example_policy_version = alicloud.resourcemanager.PolicyVersion("examplePolicyVersion",
-            policy_name=example_policy.policy_name,
-            policy_document=\"\"\"		{
-        			"Statement": [{
-        				"Action": ["oss:*"],
-        				"Effect": "Allow",
-        				"Resource": ["acs:oss:*:*:myphotos"]
-        			}],
-        			"Version": "1"
-        		}
-        \"\"\")
-        ```
-
         ## Import
 
         Resource Manager Policy Version can be imported using the id, e.g.
@@ -255,42 +223,6 @@ class PolicyVersion(pulumi.CustomResource):
         > **NOTE:** Available since v1.84.0.
 
         > **NOTE:** It is not recommended to use this resource management policy version, it is recommended to directly use the policy resource to manage your policy. Please refer to the link for usage resource_manager_policy.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        example_policy = alicloud.resourcemanager.Policy("examplePolicy",
-            policy_name=name,
-            policy_document=\"\"\"		{
-        			"Statement": [{
-        				"Action": ["oss:*"],
-        				"Effect": "Allow",
-        				"Resource": ["acs:oss:*:*:*"]
-        			}],
-        			"Version": "1"
-        		}
-        \"\"\")
-        example_policy_version = alicloud.resourcemanager.PolicyVersion("examplePolicyVersion",
-            policy_name=example_policy.policy_name,
-            policy_document=\"\"\"		{
-        			"Statement": [{
-        				"Action": ["oss:*"],
-        				"Effect": "Allow",
-        				"Resource": ["acs:oss:*:*:myphotos"]
-        			}],
-        			"Version": "1"
-        		}
-        \"\"\")
-        ```
 
         ## Import
 

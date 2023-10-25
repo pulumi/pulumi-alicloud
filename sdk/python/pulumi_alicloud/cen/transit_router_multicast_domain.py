@@ -35,17 +35,19 @@ class TransitRouterMulticastDomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             transit_router_id: pulumi.Input[str],
+             transit_router_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              transit_router_multicast_domain_description: Optional[pulumi.Input[str]] = None,
              transit_router_multicast_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'transitRouterId' in kwargs:
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'transitRouterMulticastDomainDescription' in kwargs:
+        if transit_router_id is None:
+            raise TypeError("Missing 'transit_router_id' argument")
+        if transit_router_multicast_domain_description is None and 'transitRouterMulticastDomainDescription' in kwargs:
             transit_router_multicast_domain_description = kwargs['transitRouterMulticastDomainDescription']
-        if 'transitRouterMulticastDomainName' in kwargs:
+        if transit_router_multicast_domain_name is None and 'transitRouterMulticastDomainName' in kwargs:
             transit_router_multicast_domain_name = kwargs['transitRouterMulticastDomainName']
 
         _setter("transit_router_id", transit_router_id)
@@ -137,13 +139,13 @@ class _TransitRouterMulticastDomainState:
              transit_router_id: Optional[pulumi.Input[str]] = None,
              transit_router_multicast_domain_description: Optional[pulumi.Input[str]] = None,
              transit_router_multicast_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'transitRouterId' in kwargs:
+        if transit_router_id is None and 'transitRouterId' in kwargs:
             transit_router_id = kwargs['transitRouterId']
-        if 'transitRouterMulticastDomainDescription' in kwargs:
+        if transit_router_multicast_domain_description is None and 'transitRouterMulticastDomainDescription' in kwargs:
             transit_router_multicast_domain_description = kwargs['transitRouterMulticastDomainDescription']
-        if 'transitRouterMulticastDomainName' in kwargs:
+        if transit_router_multicast_domain_name is None and 'transitRouterMulticastDomainName' in kwargs:
             transit_router_multicast_domain_name = kwargs['transitRouterMulticastDomainName']
 
         if status is not None:
@@ -235,27 +237,6 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name="tf_example",
-            cen_id=example_instance.id,
-            support_multicast=True)
-        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain",
-            transit_router_id=example_transit_router.transit_router_id,
-            transit_router_multicast_domain_name="tf_example",
-            transit_router_multicast_domain_description="tf_example")
-        ```
-
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router Multicast Domain can be imported using the id, e.g.
@@ -283,27 +264,6 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
         For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain and how to use it, see [What is Transit Router Multicast Domain](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutermulticastdomain).
 
         > **NOTE:** Available since v1.195.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_instance = alicloud.cen.Instance("exampleInstance",
-            cen_instance_name="tf_example",
-            description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name="tf_example",
-            cen_id=example_instance.id,
-            support_multicast=True)
-        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain",
-            transit_router_id=example_transit_router.transit_router_id,
-            transit_router_multicast_domain_name="tf_example",
-            transit_router_multicast_domain_description="tf_example")
-        ```
 
         ## Import
 

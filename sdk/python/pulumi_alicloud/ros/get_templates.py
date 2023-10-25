@@ -139,19 +139,6 @@ def get_templates(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.108.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ros.get_templates(ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstRosTemplateId", example.templates[0].id)
-    ```
-
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Template IDs.
@@ -198,19 +185,6 @@ def get_templates_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     This data source provides the Ros Templates of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.108.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.ros.get_templates(ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstRosTemplateId", example.templates[0].id)
-    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

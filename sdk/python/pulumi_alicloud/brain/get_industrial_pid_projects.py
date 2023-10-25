@@ -119,19 +119,6 @@ def get_industrial_pid_projects(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.113.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.brain.get_industrial_pid_projects(ids=["3e74e684-cbb5-xxxx"],
-        name_regex="tf-testAcc")
-    pulumi.export("firstBrainIndustrialPidProjectId", example.projects[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Pid Project IDs.
     :param str name_regex: A regex string to filter results by Pid Project name.
@@ -170,19 +157,6 @@ def get_industrial_pid_projects_output(ids: Optional[pulumi.Input[Optional[Seque
     This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.113.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.brain.get_industrial_pid_projects(ids=["3e74e684-cbb5-xxxx"],
-        name_regex="tf-testAcc")
-    pulumi.export("firstBrainIndustrialPidProjectId", example.projects[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Pid Project IDs.

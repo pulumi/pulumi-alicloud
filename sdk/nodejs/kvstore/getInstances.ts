@@ -9,18 +9,6 @@ import * as utilities from "../utilities";
 /**
  * The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
  * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.kvstore.getInstances({
- *     nameRegex: "testname",
- * });
- * export const firstInstanceName = _default.then(_default => _default.instances?.[0]?.name);
- * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -207,18 +195,6 @@ export interface GetInstancesResult {
 /**
  * The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
  * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.kvstore.getInstances({
- *     nameRegex: "testname",
- * });
- * export const firstInstanceName = _default.then(_default => _default.instances?.[0]?.name);
- * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))

@@ -15,37 +15,6 @@ import (
 // This data source provides a list of DMS Enterprise Users in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.90.0+
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dmsEnterpriseUsersDs, err := dms.GetEnterpriseUsers(ctx, &dms.GetEnterpriseUsersArgs{
-//				Ids: []string{
-//					"uid",
-//				},
-//				Role:   pulumi.StringRef("USER"),
-//				Status: pulumi.StringRef("NORMAL"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstUserId", dmsEnterpriseUsersDs.Users[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetEnterpriseUsers(ctx *pulumi.Context, args *GetEnterpriseUsersArgs, opts ...pulumi.InvokeOption) (*GetEnterpriseUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEnterpriseUsersResult

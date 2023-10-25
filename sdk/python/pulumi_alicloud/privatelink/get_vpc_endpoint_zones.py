@@ -99,18 +99,6 @@ def get_vpc_endpoint_zones(endpoint_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.111.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.privatelink.get_vpc_endpoint_zones(endpoint_id="ep-gw8boxxxxx")
-    pulumi.export("firstPrivatelinkVpcEndpointZoneId", example.zones[0].id)
-    ```
-
 
     :param str endpoint_id: The ID of the Vpc Endpoint.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -141,18 +129,6 @@ def get_vpc_endpoint_zones_output(endpoint_id: Optional[pulumi.Input[str]] = Non
     This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.111.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.privatelink.get_vpc_endpoint_zones(endpoint_id="ep-gw8boxxxxx")
-    pulumi.export("firstPrivatelinkVpcEndpointZoneId", example.zones[0].id)
-    ```
 
 
     :param str endpoint_id: The ID of the Vpc Endpoint.

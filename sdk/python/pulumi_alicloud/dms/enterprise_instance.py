@@ -101,18 +101,18 @@ class EnterpriseInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             database_password: pulumi.Input[str],
-             database_user: pulumi.Input[str],
-             dba_uid: pulumi.Input[int],
-             env_type: pulumi.Input[str],
-             export_timeout: pulumi.Input[int],
-             host: pulumi.Input[str],
-             instance_source: pulumi.Input[str],
-             instance_type: pulumi.Input[str],
-             network_type: pulumi.Input[str],
-             port: pulumi.Input[int],
-             query_timeout: pulumi.Input[int],
-             safe_rule: pulumi.Input[str],
+             database_password: Optional[pulumi.Input[str]] = None,
+             database_user: Optional[pulumi.Input[str]] = None,
+             dba_uid: Optional[pulumi.Input[int]] = None,
+             env_type: Optional[pulumi.Input[str]] = None,
+             export_timeout: Optional[pulumi.Input[int]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             instance_source: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             network_type: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             query_timeout: Optional[pulumi.Input[int]] = None,
+             safe_rule: Optional[pulumi.Input[str]] = None,
              data_link_name: Optional[pulumi.Input[str]] = None,
              dba_id: Optional[pulumi.Input[str]] = None,
              ddl_online: Optional[pulumi.Input[int]] = None,
@@ -127,51 +127,75 @@ class EnterpriseInstanceArgs:
              tid: Optional[pulumi.Input[int]] = None,
              use_dsql: Optional[pulumi.Input[int]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'databasePassword' in kwargs:
+        if database_password is None and 'databasePassword' in kwargs:
             database_password = kwargs['databasePassword']
-        if 'databaseUser' in kwargs:
+        if database_password is None:
+            raise TypeError("Missing 'database_password' argument")
+        if database_user is None and 'databaseUser' in kwargs:
             database_user = kwargs['databaseUser']
-        if 'dbaUid' in kwargs:
+        if database_user is None:
+            raise TypeError("Missing 'database_user' argument")
+        if dba_uid is None and 'dbaUid' in kwargs:
             dba_uid = kwargs['dbaUid']
-        if 'envType' in kwargs:
+        if dba_uid is None:
+            raise TypeError("Missing 'dba_uid' argument")
+        if env_type is None and 'envType' in kwargs:
             env_type = kwargs['envType']
-        if 'exportTimeout' in kwargs:
+        if env_type is None:
+            raise TypeError("Missing 'env_type' argument")
+        if export_timeout is None and 'exportTimeout' in kwargs:
             export_timeout = kwargs['exportTimeout']
-        if 'instanceSource' in kwargs:
+        if export_timeout is None:
+            raise TypeError("Missing 'export_timeout' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if instance_source is None and 'instanceSource' in kwargs:
             instance_source = kwargs['instanceSource']
-        if 'instanceType' in kwargs:
+        if instance_source is None:
+            raise TypeError("Missing 'instance_source' argument")
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'networkType' in kwargs:
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'queryTimeout' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if query_timeout is None and 'queryTimeout' in kwargs:
             query_timeout = kwargs['queryTimeout']
-        if 'safeRule' in kwargs:
+        if query_timeout is None:
+            raise TypeError("Missing 'query_timeout' argument")
+        if safe_rule is None and 'safeRule' in kwargs:
             safe_rule = kwargs['safeRule']
-        if 'dataLinkName' in kwargs:
+        if safe_rule is None:
+            raise TypeError("Missing 'safe_rule' argument")
+        if data_link_name is None and 'dataLinkName' in kwargs:
             data_link_name = kwargs['dataLinkName']
-        if 'dbaId' in kwargs:
+        if dba_id is None and 'dbaId' in kwargs:
             dba_id = kwargs['dbaId']
-        if 'ddlOnline' in kwargs:
+        if ddl_online is None and 'ddlOnline' in kwargs:
             ddl_online = kwargs['ddlOnline']
-        if 'ecsInstanceId' in kwargs:
+        if ecs_instance_id is None and 'ecsInstanceId' in kwargs:
             ecs_instance_id = kwargs['ecsInstanceId']
-        if 'ecsRegion' in kwargs:
+        if ecs_region is None and 'ecsRegion' in kwargs:
             ecs_region = kwargs['ecsRegion']
-        if 'instanceAlias' in kwargs:
+        if instance_alias is None and 'instanceAlias' in kwargs:
             instance_alias = kwargs['instanceAlias']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'safeRuleId' in kwargs:
+        if safe_rule_id is None and 'safeRuleId' in kwargs:
             safe_rule_id = kwargs['safeRuleId']
-        if 'skipTest' in kwargs:
+        if skip_test is None and 'skipTest' in kwargs:
             skip_test = kwargs['skipTest']
-        if 'useDsql' in kwargs:
+        if use_dsql is None and 'useDsql' in kwargs:
             use_dsql = kwargs['useDsql']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         _setter("database_password", database_password)
@@ -662,53 +686,53 @@ class _EnterpriseInstanceState:
              tid: Optional[pulumi.Input[int]] = None,
              use_dsql: Optional[pulumi.Input[int]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dataLinkName' in kwargs:
+        if data_link_name is None and 'dataLinkName' in kwargs:
             data_link_name = kwargs['dataLinkName']
-        if 'databasePassword' in kwargs:
+        if database_password is None and 'databasePassword' in kwargs:
             database_password = kwargs['databasePassword']
-        if 'databaseUser' in kwargs:
+        if database_user is None and 'databaseUser' in kwargs:
             database_user = kwargs['databaseUser']
-        if 'dbaId' in kwargs:
+        if dba_id is None and 'dbaId' in kwargs:
             dba_id = kwargs['dbaId']
-        if 'dbaNickName' in kwargs:
+        if dba_nick_name is None and 'dbaNickName' in kwargs:
             dba_nick_name = kwargs['dbaNickName']
-        if 'dbaUid' in kwargs:
+        if dba_uid is None and 'dbaUid' in kwargs:
             dba_uid = kwargs['dbaUid']
-        if 'ddlOnline' in kwargs:
+        if ddl_online is None and 'ddlOnline' in kwargs:
             ddl_online = kwargs['ddlOnline']
-        if 'ecsInstanceId' in kwargs:
+        if ecs_instance_id is None and 'ecsInstanceId' in kwargs:
             ecs_instance_id = kwargs['ecsInstanceId']
-        if 'ecsRegion' in kwargs:
+        if ecs_region is None and 'ecsRegion' in kwargs:
             ecs_region = kwargs['ecsRegion']
-        if 'envType' in kwargs:
+        if env_type is None and 'envType' in kwargs:
             env_type = kwargs['envType']
-        if 'exportTimeout' in kwargs:
+        if export_timeout is None and 'exportTimeout' in kwargs:
             export_timeout = kwargs['exportTimeout']
-        if 'instanceAlias' in kwargs:
+        if instance_alias is None and 'instanceAlias' in kwargs:
             instance_alias = kwargs['instanceAlias']
-        if 'instanceId' in kwargs:
+        if instance_id is None and 'instanceId' in kwargs:
             instance_id = kwargs['instanceId']
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceSource' in kwargs:
+        if instance_source is None and 'instanceSource' in kwargs:
             instance_source = kwargs['instanceSource']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'networkType' in kwargs:
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'queryTimeout' in kwargs:
+        if query_timeout is None and 'queryTimeout' in kwargs:
             query_timeout = kwargs['queryTimeout']
-        if 'safeRule' in kwargs:
+        if safe_rule is None and 'safeRule' in kwargs:
             safe_rule = kwargs['safeRule']
-        if 'safeRuleId' in kwargs:
+        if safe_rule_id is None and 'safeRuleId' in kwargs:
             safe_rule_id = kwargs['safeRuleId']
-        if 'skipTest' in kwargs:
+        if skip_test is None and 'skipTest' in kwargs:
             skip_test = kwargs['skipTest']
-        if 'useDsql' in kwargs:
+        if use_dsql is None and 'useDsql' in kwargs:
             use_dsql = kwargs['useDsql']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if data_link_name is not None:
@@ -1170,78 +1194,6 @@ class EnterpriseInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.81.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        current = alicloud.get_account()
-        default_regions = alicloud.get_regions(current=True)
-        default_user_tenants = alicloud.dms.get_user_tenants(status="ACTIVE")
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="8.0",
-            instance_charge_type="PostPaid",
-            category="HighAvailability",
-            db_instance_storage_type="cloud_essd")
-        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.zones[0].id,
-            engine="MySQL",
-            engine_version="8.0",
-            category="HighAvailability",
-            db_instance_storage_type="cloud_essd",
-            instance_charge_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.rds.Instance("defaultInstance",
-            engine="MySQL",
-            engine_version="8.0",
-            db_instance_storage_type="cloud_essd",
-            instance_type=default_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
-            vswitch_id=default_switch.id,
-            instance_name=name,
-            security_ips=[
-                "100.104.5.0/24",
-                "192.168.0.6",
-            ],
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_account = alicloud.rds.Account("defaultAccount",
-            db_instance_id=default_instance.id,
-            account_name="tfexamplename",
-            account_password="Example12345",
-            account_type="Normal")
-        default_enterprise_instance = alicloud.dms.EnterpriseInstance("defaultEnterpriseInstance",
-            tid=default_user_tenants.ids[0],
-            instance_type="MySQL",
-            instance_source="RDS",
-            network_type="VPC",
-            env_type="dev",
-            host=default_instance.connection_string,
-            port=3306,
-            database_user=default_account.account_name,
-            database_password=default_account.account_password,
-            instance_name=name,
-            dba_uid=current.id,
-            safe_rule="自由操作",
-            query_timeout=60,
-            export_timeout=600,
-            ecs_region=default_regions.regions[0].id)
-        ```
-
         ## Import
 
         DMS Enterprise can be imported using host and port, e.g.
@@ -1291,78 +1243,6 @@ class EnterpriseInstance(pulumi.CustomResource):
         > **NOTE:** API users must first register in DMS.
 
         > **NOTE:** Available since v1.81.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        current = alicloud.get_account()
-        default_regions = alicloud.get_regions(current=True)
-        default_user_tenants = alicloud.dms.get_user_tenants(status="ACTIVE")
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="8.0",
-            instance_charge_type="PostPaid",
-            category="HighAvailability",
-            db_instance_storage_type="cloud_essd")
-        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.zones[0].id,
-            engine="MySQL",
-            engine_version="8.0",
-            category="HighAvailability",
-            db_instance_storage_type="cloud_essd",
-            instance_charge_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.rds.Instance("defaultInstance",
-            engine="MySQL",
-            engine_version="8.0",
-            db_instance_storage_type="cloud_essd",
-            instance_type=default_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
-            vswitch_id=default_switch.id,
-            instance_name=name,
-            security_ips=[
-                "100.104.5.0/24",
-                "192.168.0.6",
-            ],
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_account = alicloud.rds.Account("defaultAccount",
-            db_instance_id=default_instance.id,
-            account_name="tfexamplename",
-            account_password="Example12345",
-            account_type="Normal")
-        default_enterprise_instance = alicloud.dms.EnterpriseInstance("defaultEnterpriseInstance",
-            tid=default_user_tenants.ids[0],
-            instance_type="MySQL",
-            instance_source="RDS",
-            network_type="VPC",
-            env_type="dev",
-            host=default_instance.connection_string,
-            port=3306,
-            database_user=default_account.account_name,
-            database_password=default_account.account_password,
-            instance_name=name,
-            dba_uid=current.id,
-            safe_rule="自由操作",
-            query_timeout=60,
-            export_timeout=600,
-            ecs_region=default_regions.regions[0].id)
-        ```
 
         ## Import
 

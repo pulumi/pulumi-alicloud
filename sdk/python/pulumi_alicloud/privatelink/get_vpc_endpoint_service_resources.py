@@ -89,18 +89,6 @@ def get_vpc_endpoint_service_resources(output_file: Optional[str] = None,
 
     > **NOTE:** Available in v1.110.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.privatelink.get_vpc_endpoint_service_resources(service_id="epsrv-gw8ii1xxxx")
-    pulumi.export("firstPrivatelinkVpcEndpointServiceResourceId", example.resources[0].id)
-    ```
-
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str service_id: The ID of Vpc Endpoint Service.
@@ -127,18 +115,6 @@ def get_vpc_endpoint_service_resources_output(output_file: Optional[pulumi.Input
     This data source provides the Privatelink Vpc Endpoint Service Resources of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.110.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.privatelink.get_vpc_endpoint_service_resources(service_id="epsrv-gw8ii1xxxx")
-    pulumi.export("firstPrivatelinkVpcEndpointServiceResourceId", example.resources[0].id)
-    ```
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

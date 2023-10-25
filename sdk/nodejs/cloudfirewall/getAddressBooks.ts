@@ -10,32 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.178.0.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const _default = new alicloud.cloudfirewall.AddressBook("default", {
- *     groupName: name,
- *     groupType: "ip",
- *     description: "tf-description",
- *     autoAddTagEcs: 0,
- *     addressLists: [
- *         "10.21.0.0/16",
- *         "10.168.0.0/16",
- *     ],
- * });
- * const ids = alicloud.cloudfirewall.getAddressBooksOutput({
- *     ids: [_default.id],
- * });
- * export const cloudFirewallAddressBookId1 = ids.apply(ids => ids.books?.[0]?.id);
- * ```
  */
 export function getAddressBooks(args?: GetAddressBooksArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressBooksResult> {
     args = args || {};
@@ -99,32 +73,6 @@ export interface GetAddressBooksResult {
  * This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.178.0.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const _default = new alicloud.cloudfirewall.AddressBook("default", {
- *     groupName: name,
- *     groupType: "ip",
- *     description: "tf-description",
- *     autoAddTagEcs: 0,
- *     addressLists: [
- *         "10.21.0.0/16",
- *         "10.168.0.0/16",
- *     ],
- * });
- * const ids = alicloud.cloudfirewall.getAddressBooksOutput({
- *     ids: [_default.id],
- * });
- * export const cloudFirewallAddressBookId1 = ids.apply(ids => ids.books?.[0]?.id);
- * ```
  */
 export function getAddressBooksOutput(args?: GetAddressBooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressBooksResult> {
     return pulumi.output(args).apply((a: any) => getAddressBooks(a, opts))

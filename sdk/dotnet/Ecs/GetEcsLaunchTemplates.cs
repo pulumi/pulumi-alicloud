@@ -15,38 +15,6 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.120.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Ecs.GetEcsLaunchTemplates.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "lt-bp1a469uxxxxxx",
-        ///         },
-        ///         NameRegex = "your_launch_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstEcsLaunchTemplateId"] = example.Apply(getEcsLaunchTemplatesResult =&gt; getEcsLaunchTemplatesResult.Templates[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsLaunchTemplatesResult> InvokeAsync(GetEcsLaunchTemplatesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsLaunchTemplatesResult>("alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates", args ?? new GetEcsLaunchTemplatesArgs(), options.WithDefaults());
@@ -55,38 +23,6 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.120.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Ecs.GetEcsLaunchTemplates.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "lt-bp1a469uxxxxxx",
-        ///         },
-        ///         NameRegex = "your_launch_name",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstEcsLaunchTemplateId"] = example.Apply(getEcsLaunchTemplatesResult =&gt; getEcsLaunchTemplatesResult.Templates[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsLaunchTemplatesResult> Invoke(GetEcsLaunchTemplatesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsLaunchTemplatesResult>("alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates", args ?? new GetEcsLaunchTemplatesInvokeArgs(), options.WithDefaults());

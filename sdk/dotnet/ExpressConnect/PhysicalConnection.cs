@@ -16,45 +16,6 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// 
     /// &gt; **NOTE:** Available since v1.132.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var domestic = new AliCloud.ExpressConnect.PhysicalConnection("domestic", new()
-    ///     {
-    ///         AccessPointId = "ap-cn-hangzhou-yh-B",
-    ///         Bandwidth = "100",
-    ///         Description = "my domestic connection",
-    ///         LineOperator = "CT",
-    ///         PeerLocation = "example_value",
-    ///         PhysicalConnectionName = "example_value",
-    ///         PortType = "1000Base-LX",
-    ///         Type = "VPC",
-    ///     });
-    /// 
-    ///     var international = new AliCloud.ExpressConnect.PhysicalConnection("international", new()
-    ///     {
-    ///         AccessPointId = "ap-sg-singpore-A",
-    ///         Bandwidth = "100",
-    ///         Description = "my domestic connection",
-    ///         LineOperator = "Other",
-    ///         PeerLocation = "example_value",
-    ///         PhysicalConnectionName = "example_value",
-    ///         PortType = "1000Base-LX",
-    ///         Type = "VPC",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Express Connect Physical Connection can be imported using the id, e.g.

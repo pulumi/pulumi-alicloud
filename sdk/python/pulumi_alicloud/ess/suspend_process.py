@@ -29,12 +29,16 @@ class SuspendProcessArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             process: pulumi.Input[str],
-             scaling_group_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             process: Optional[pulumi.Input[str]] = None,
+             scaling_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'scalingGroupId' in kwargs:
+        if process is None:
+            raise TypeError("Missing 'process' argument")
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
+        if scaling_group_id is None:
+            raise TypeError("Missing 'scaling_group_id' argument")
 
         _setter("process", process)
         _setter("scaling_group_id", scaling_group_id)
@@ -84,9 +88,9 @@ class _SuspendProcessState:
              _setter: Callable[[Any, Any], None],
              process: Optional[pulumi.Input[str]] = None,
              scaling_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'scalingGroupId' in kwargs:
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
             scaling_group_id = kwargs['scalingGroupId']
 
         if process is not None:
@@ -134,53 +138,6 @@ class SuspendProcess(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.166.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=2,
-            memory_size=4)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            min_size=1,
-            max_size=1,
-            scaling_group_name=name,
-            vswitch_ids=[default_switch.id],
-            removal_policies=["OldestInstance"],
-            default_cooldown=200)
-        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
-            scaling_group_id=default_scaling_group.id,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            security_group_id=default_security_group.id,
-            force_delete=True,
-            active=True,
-            enable=True)
-        default_suspend_process = alicloud.ess.SuspendProcess("defaultSuspendProcess",
-            scaling_group_id=default_scaling_configuration.scaling_group_id,
-            process="ScaleIn")
-        ```
-
         ## Import
 
         ESS suspend process can be imported using the id, e.g.
@@ -206,53 +163,6 @@ class SuspendProcess(pulumi.CustomResource):
         For information about scaling group suspend process, see [SuspendProcesses](https://www.alibabacloud.com/help/en/auto-scaling/latest/suspendprocesses).
 
         > **NOTE:** Available since v1.166.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=2,
-            memory_size=4)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            min_size=1,
-            max_size=1,
-            scaling_group_name=name,
-            vswitch_ids=[default_switch.id],
-            removal_policies=["OldestInstance"],
-            default_cooldown=200)
-        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
-            scaling_group_id=default_scaling_group.id,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            security_group_id=default_security_group.id,
-            force_delete=True,
-            active=True,
-            enable=True)
-        default_suspend_process = alicloud.ess.SuspendProcess("defaultSuspendProcess",
-            scaling_group_id=default_scaling_configuration.scaling_group_id,
-            process="ScaleIn")
-        ```
 
         ## Import
 

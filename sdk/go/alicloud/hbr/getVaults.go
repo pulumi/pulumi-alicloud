@@ -15,35 +15,6 @@ import (
 // This data source provides the Hbr Vaults of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.129.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := hbr.GetVaults(ctx, &hbr.GetVaultsArgs{
-//				NameRegex: pulumi.StringRef("^my-Vault"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("hbrVaultId1", ids.Vaults[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetVaults(ctx *pulumi.Context, args *GetVaultsArgs, opts ...pulumi.InvokeOption) (*GetVaultsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVaultsResult

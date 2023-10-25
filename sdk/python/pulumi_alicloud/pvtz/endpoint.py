@@ -40,23 +40,33 @@ class EndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint_name: pulumi.Input[str],
-             ip_configs: pulumi.Input[Sequence[pulumi.Input['EndpointIpConfigArgs']]],
-             security_group_id: pulumi.Input[str],
-             vpc_id: pulumi.Input[str],
-             vpc_region_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             endpoint_name: Optional[pulumi.Input[str]] = None,
+             ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointIpConfigArgs']]]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vpc_region_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endpointName' in kwargs:
+        if endpoint_name is None and 'endpointName' in kwargs:
             endpoint_name = kwargs['endpointName']
-        if 'ipConfigs' in kwargs:
+        if endpoint_name is None:
+            raise TypeError("Missing 'endpoint_name' argument")
+        if ip_configs is None and 'ipConfigs' in kwargs:
             ip_configs = kwargs['ipConfigs']
-        if 'securityGroupId' in kwargs:
+        if ip_configs is None:
+            raise TypeError("Missing 'ip_configs' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vpcId' in kwargs:
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vpcRegionId' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vpc_region_id is None and 'vpcRegionId' in kwargs:
             vpc_region_id = kwargs['vpcRegionId']
+        if vpc_region_id is None:
+            raise TypeError("Missing 'vpc_region_id' argument")
 
         _setter("endpoint_name", endpoint_name)
         _setter("ip_configs", ip_configs)
@@ -161,17 +171,17 @@ class _EndpointState:
              status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vpc_region_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'endpointName' in kwargs:
+        if endpoint_name is None and 'endpointName' in kwargs:
             endpoint_name = kwargs['endpointName']
-        if 'ipConfigs' in kwargs:
+        if ip_configs is None and 'ipConfigs' in kwargs:
             ip_configs = kwargs['ipConfigs']
-        if 'securityGroupId' in kwargs:
+        if security_group_id is None and 'securityGroupId' in kwargs:
             security_group_id = kwargs['securityGroupId']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'vpcRegionId' in kwargs:
+        if vpc_region_id is None and 'vpcRegionId' in kwargs:
             vpc_region_id = kwargs['vpcRegionId']
 
         if endpoint_name is not None:

@@ -10,17 +10,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.115.0+
  *
  * > **NOTE:** The Brain Industrial service is not support in the international site.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const open = alicloud.brain.getIndustrialSerice({
- *     enable: "On",
- * });
- * ```
  */
 export function getIndustrialSerice(args?: GetIndustrialSericeArgs, opts?: pulumi.InvokeOptions): Promise<GetIndustrialSericeResult> {
     args = args || {};
@@ -63,17 +52,6 @@ export interface GetIndustrialSericeResult {
  * > **NOTE:** Available in v1.115.0+
  *
  * > **NOTE:** The Brain Industrial service is not support in the international site.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const open = alicloud.brain.getIndustrialSerice({
- *     enable: "On",
- * });
- * ```
  */
 export function getIndustrialSericeOutput(args?: GetIndustrialSericeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndustrialSericeResult> {
     return pulumi.output(args).apply((a: any) => getIndustrialSerice(a, opts))

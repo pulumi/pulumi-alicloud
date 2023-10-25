@@ -10,16 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Resource Manager Policy Attachments of the current Alibaba Cloud user.
  *
  * > **NOTE:**  Available in 1.93.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.resourcemanager.getPolicyAttachments({});
- * export const firstAttachmentId = example.then(example => example.attachments?.[0]?.id);
- * ```
  */
 export function getPolicyAttachments(args?: GetPolicyAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyAttachmentsResult> {
     args = args || {};
@@ -113,16 +103,6 @@ export interface GetPolicyAttachmentsResult {
  * This data source provides the Resource Manager Policy Attachments of the current Alibaba Cloud user.
  *
  * > **NOTE:**  Available in 1.93.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.resourcemanager.getPolicyAttachments({});
- * export const firstAttachmentId = example.then(example => example.attachments?.[0]?.id);
- * ```
  */
 export function getPolicyAttachmentsOutput(args?: GetPolicyAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getPolicyAttachments(a, opts))

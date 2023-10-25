@@ -100,11 +100,11 @@ class RestoreJobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             restore_type: pulumi.Input[str],
-             snapshot_hash: pulumi.Input[str],
-             snapshot_id: pulumi.Input[str],
-             source_type: pulumi.Input[str],
-             vault_id: pulumi.Input[str],
+             restore_type: Optional[pulumi.Input[str]] = None,
+             snapshot_hash: Optional[pulumi.Input[str]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             source_type: Optional[pulumi.Input[str]] = None,
+             vault_id: Optional[pulumi.Input[str]] = None,
              cross_account_role_name: Optional[pulumi.Input[str]] = None,
              cross_account_type: Optional[pulumi.Input[str]] = None,
              cross_account_user_id: Optional[pulumi.Input[int]] = None,
@@ -125,51 +125,61 @@ class RestoreJobArgs:
              target_table_name: Optional[pulumi.Input[str]] = None,
              target_time: Optional[pulumi.Input[str]] = None,
              udm_detail: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'restoreType' in kwargs:
+        if restore_type is None and 'restoreType' in kwargs:
             restore_type = kwargs['restoreType']
-        if 'snapshotHash' in kwargs:
+        if restore_type is None:
+            raise TypeError("Missing 'restore_type' argument")
+        if snapshot_hash is None and 'snapshotHash' in kwargs:
             snapshot_hash = kwargs['snapshotHash']
-        if 'snapshotId' in kwargs:
+        if snapshot_hash is None:
+            raise TypeError("Missing 'snapshot_hash' argument")
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
-        if 'sourceType' in kwargs:
+        if snapshot_id is None:
+            raise TypeError("Missing 'snapshot_id' argument")
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
-        if 'vaultId' in kwargs:
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
-        if 'crossAccountRoleName' in kwargs:
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
             cross_account_role_name = kwargs['crossAccountRoleName']
-        if 'crossAccountType' in kwargs:
+        if cross_account_type is None and 'crossAccountType' in kwargs:
             cross_account_type = kwargs['crossAccountType']
-        if 'crossAccountUserId' in kwargs:
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
             cross_account_user_id = kwargs['crossAccountUserId']
-        if 'otsDetail' in kwargs:
+        if ots_detail is None and 'otsDetail' in kwargs:
             ots_detail = kwargs['otsDetail']
-        if 'restoreJobId' in kwargs:
+        if restore_job_id is None and 'restoreJobId' in kwargs:
             restore_job_id = kwargs['restoreJobId']
-        if 'targetBucket' in kwargs:
+        if target_bucket is None and 'targetBucket' in kwargs:
             target_bucket = kwargs['targetBucket']
-        if 'targetClientId' in kwargs:
+        if target_client_id is None and 'targetClientId' in kwargs:
             target_client_id = kwargs['targetClientId']
-        if 'targetCreateTime' in kwargs:
+        if target_create_time is None and 'targetCreateTime' in kwargs:
             target_create_time = kwargs['targetCreateTime']
-        if 'targetDataSourceId' in kwargs:
+        if target_data_source_id is None and 'targetDataSourceId' in kwargs:
             target_data_source_id = kwargs['targetDataSourceId']
-        if 'targetFileSystemId' in kwargs:
+        if target_file_system_id is None and 'targetFileSystemId' in kwargs:
             target_file_system_id = kwargs['targetFileSystemId']
-        if 'targetInstanceId' in kwargs:
+        if target_instance_id is None and 'targetInstanceId' in kwargs:
             target_instance_id = kwargs['targetInstanceId']
-        if 'targetInstanceName' in kwargs:
+        if target_instance_name is None and 'targetInstanceName' in kwargs:
             target_instance_name = kwargs['targetInstanceName']
-        if 'targetPath' in kwargs:
+        if target_path is None and 'targetPath' in kwargs:
             target_path = kwargs['targetPath']
-        if 'targetPrefix' in kwargs:
+        if target_prefix is None and 'targetPrefix' in kwargs:
             target_prefix = kwargs['targetPrefix']
-        if 'targetTableName' in kwargs:
+        if target_table_name is None and 'targetTableName' in kwargs:
             target_table_name = kwargs['targetTableName']
-        if 'targetTime' in kwargs:
+        if target_time is None and 'targetTime' in kwargs:
             target_time = kwargs['targetTime']
-        if 'udmDetail' in kwargs:
+        if udm_detail is None and 'udmDetail' in kwargs:
             udm_detail = kwargs['udmDetail']
 
         _setter("restore_type", restore_type)
@@ -635,51 +645,51 @@ class _RestoreJobState:
              target_time: Optional[pulumi.Input[str]] = None,
              udm_detail: Optional[pulumi.Input[str]] = None,
              vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'crossAccountRoleName' in kwargs:
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
             cross_account_role_name = kwargs['crossAccountRoleName']
-        if 'crossAccountType' in kwargs:
+        if cross_account_type is None and 'crossAccountType' in kwargs:
             cross_account_type = kwargs['crossAccountType']
-        if 'crossAccountUserId' in kwargs:
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
             cross_account_user_id = kwargs['crossAccountUserId']
-        if 'otsDetail' in kwargs:
+        if ots_detail is None and 'otsDetail' in kwargs:
             ots_detail = kwargs['otsDetail']
-        if 'restoreJobId' in kwargs:
+        if restore_job_id is None and 'restoreJobId' in kwargs:
             restore_job_id = kwargs['restoreJobId']
-        if 'restoreType' in kwargs:
+        if restore_type is None and 'restoreType' in kwargs:
             restore_type = kwargs['restoreType']
-        if 'snapshotHash' in kwargs:
+        if snapshot_hash is None and 'snapshotHash' in kwargs:
             snapshot_hash = kwargs['snapshotHash']
-        if 'snapshotId' in kwargs:
+        if snapshot_id is None and 'snapshotId' in kwargs:
             snapshot_id = kwargs['snapshotId']
-        if 'sourceType' in kwargs:
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
-        if 'targetBucket' in kwargs:
+        if target_bucket is None and 'targetBucket' in kwargs:
             target_bucket = kwargs['targetBucket']
-        if 'targetClientId' in kwargs:
+        if target_client_id is None and 'targetClientId' in kwargs:
             target_client_id = kwargs['targetClientId']
-        if 'targetCreateTime' in kwargs:
+        if target_create_time is None and 'targetCreateTime' in kwargs:
             target_create_time = kwargs['targetCreateTime']
-        if 'targetDataSourceId' in kwargs:
+        if target_data_source_id is None and 'targetDataSourceId' in kwargs:
             target_data_source_id = kwargs['targetDataSourceId']
-        if 'targetFileSystemId' in kwargs:
+        if target_file_system_id is None and 'targetFileSystemId' in kwargs:
             target_file_system_id = kwargs['targetFileSystemId']
-        if 'targetInstanceId' in kwargs:
+        if target_instance_id is None and 'targetInstanceId' in kwargs:
             target_instance_id = kwargs['targetInstanceId']
-        if 'targetInstanceName' in kwargs:
+        if target_instance_name is None and 'targetInstanceName' in kwargs:
             target_instance_name = kwargs['targetInstanceName']
-        if 'targetPath' in kwargs:
+        if target_path is None and 'targetPath' in kwargs:
             target_path = kwargs['targetPath']
-        if 'targetPrefix' in kwargs:
+        if target_prefix is None and 'targetPrefix' in kwargs:
             target_prefix = kwargs['targetPrefix']
-        if 'targetTableName' in kwargs:
+        if target_table_name is None and 'targetTableName' in kwargs:
             target_table_name = kwargs['targetTableName']
-        if 'targetTime' in kwargs:
+        if target_time is None and 'targetTime' in kwargs:
             target_time = kwargs['targetTime']
-        if 'udmDetail' in kwargs:
+        if udm_detail is None and 'udmDetail' in kwargs:
             udm_detail = kwargs['udmDetail']
-        if 'vaultId' in kwargs:
+        if vault_id is None and 'vaultId' in kwargs:
             vault_id = kwargs['vaultId']
 
         if cross_account_role_name is not None:
@@ -1086,58 +1096,6 @@ class RestoreJob(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.133.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_ecs_backup_plans = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-tf-used-dont-delete")
-        default_oss_backup_plans = alicloud.hbr.get_oss_backup_plans(name_regex="plan-tf-used-dont-delete")
-        default_nas_backup_plans = alicloud.hbr.get_nas_backup_plans(name_regex="plan-tf-used-dont-delete")
-        ecs_snapshots = alicloud.hbr.get_snapshots(source_type="ECS_FILE",
-            vault_id=default_ecs_backup_plans.plans[0].vault_id,
-            instance_id=default_ecs_backup_plans.plans[0].instance_id)
-        oss_snapshots = alicloud.hbr.get_snapshots(source_type="OSS",
-            vault_id=default_oss_backup_plans.plans[0].vault_id,
-            bucket=default_oss_backup_plans.plans[0].bucket)
-        nas_snapshots = alicloud.hbr.get_snapshots(source_type="NAS",
-            vault_id=default_nas_backup_plans.plans[0].vault_id,
-            file_system_id=default_nas_backup_plans.plans[0].file_system_id,
-            create_time=default_nas_backup_plans.plans[0].create_time)
-        nas_job = alicloud.hbr.RestoreJob("nasJob",
-            snapshot_hash=nas_snapshots.snapshots[0].snapshot_hash,
-            vault_id=default_nas_backup_plans.plans[0].vault_id,
-            source_type="NAS",
-            restore_type="NAS",
-            snapshot_id=nas_snapshots.snapshots[0].snapshot_id,
-            target_file_system_id=default_nas_backup_plans.plans[0].file_system_id,
-            target_create_time=default_nas_backup_plans.plans[0].create_time,
-            target_path="/",
-            options="    {\\"includes\\":[], \\"excludes\\":[]}\\n")
-        oss_job = alicloud.hbr.RestoreJob("ossJob",
-            snapshot_hash=oss_snapshots.snapshots[0].snapshot_hash,
-            vault_id=default_oss_backup_plans.plans[0].vault_id,
-            source_type="OSS",
-            restore_type="OSS",
-            snapshot_id=oss_snapshots.snapshots[0].snapshot_id,
-            target_bucket=default_oss_backup_plans.plans[0].bucket,
-            target_prefix="",
-            options="    {\\"includes\\":[], \\"excludes\\":[]}\\n")
-        ecs_job = alicloud.hbr.RestoreJob("ecsJob",
-            snapshot_hash=ecs_snapshots.snapshots[0].snapshot_hash,
-            vault_id=default_ecs_backup_plans.plans[0].vault_id,
-            source_type="ECS_FILE",
-            restore_type="ECS_FILE",
-            snapshot_id=ecs_snapshots.snapshots[0].snapshot_id,
-            target_instance_id=default_ecs_backup_plans.plans[0].instance_id,
-            target_path="/")
-        ```
-
-        > **NOTE:** This resource can only be created, cannot be modified or deleted. Therefore, any modification of the resource attribute will not affect exist resource.
-
         ## Import
 
         Hybrid Backup Recovery (HBR) Restore Job can be imported using the id. Format to `<restore_job_id>:<restore_type>`, e.g.
@@ -1186,58 +1144,6 @@ class RestoreJob(pulumi.CustomResource):
         For information about Hybrid Backup Recovery (HBR) Restore Job and how to use it, see [What is Restore Job](https://www.alibabacloud.com/help/doc-detail/186575.htm).
 
         > **NOTE:** Available in v1.133.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_ecs_backup_plans = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-tf-used-dont-delete")
-        default_oss_backup_plans = alicloud.hbr.get_oss_backup_plans(name_regex="plan-tf-used-dont-delete")
-        default_nas_backup_plans = alicloud.hbr.get_nas_backup_plans(name_regex="plan-tf-used-dont-delete")
-        ecs_snapshots = alicloud.hbr.get_snapshots(source_type="ECS_FILE",
-            vault_id=default_ecs_backup_plans.plans[0].vault_id,
-            instance_id=default_ecs_backup_plans.plans[0].instance_id)
-        oss_snapshots = alicloud.hbr.get_snapshots(source_type="OSS",
-            vault_id=default_oss_backup_plans.plans[0].vault_id,
-            bucket=default_oss_backup_plans.plans[0].bucket)
-        nas_snapshots = alicloud.hbr.get_snapshots(source_type="NAS",
-            vault_id=default_nas_backup_plans.plans[0].vault_id,
-            file_system_id=default_nas_backup_plans.plans[0].file_system_id,
-            create_time=default_nas_backup_plans.plans[0].create_time)
-        nas_job = alicloud.hbr.RestoreJob("nasJob",
-            snapshot_hash=nas_snapshots.snapshots[0].snapshot_hash,
-            vault_id=default_nas_backup_plans.plans[0].vault_id,
-            source_type="NAS",
-            restore_type="NAS",
-            snapshot_id=nas_snapshots.snapshots[0].snapshot_id,
-            target_file_system_id=default_nas_backup_plans.plans[0].file_system_id,
-            target_create_time=default_nas_backup_plans.plans[0].create_time,
-            target_path="/",
-            options="    {\\"includes\\":[], \\"excludes\\":[]}\\n")
-        oss_job = alicloud.hbr.RestoreJob("ossJob",
-            snapshot_hash=oss_snapshots.snapshots[0].snapshot_hash,
-            vault_id=default_oss_backup_plans.plans[0].vault_id,
-            source_type="OSS",
-            restore_type="OSS",
-            snapshot_id=oss_snapshots.snapshots[0].snapshot_id,
-            target_bucket=default_oss_backup_plans.plans[0].bucket,
-            target_prefix="",
-            options="    {\\"includes\\":[], \\"excludes\\":[]}\\n")
-        ecs_job = alicloud.hbr.RestoreJob("ecsJob",
-            snapshot_hash=ecs_snapshots.snapshots[0].snapshot_hash,
-            vault_id=default_ecs_backup_plans.plans[0].vault_id,
-            source_type="ECS_FILE",
-            restore_type="ECS_FILE",
-            snapshot_id=ecs_snapshots.snapshots[0].snapshot_id,
-            target_instance_id=default_ecs_backup_plans.plans[0].instance_id,
-            target_path="/")
-        ```
-
-        > **NOTE:** This resource can only be created, cannot be modified or deleted. Therefore, any modification of the resource attribute will not affect exist resource.
 
         ## Import
 
@@ -1306,11 +1212,7 @@ class RestoreJob(pulumi.CustomResource):
             __props__.__dict__["exclude"] = exclude
             __props__.__dict__["include"] = include
             __props__.__dict__["options"] = options
-            if ots_detail is not None and not isinstance(ots_detail, RestoreJobOtsDetailArgs):
-                ots_detail = ots_detail or {}
-                def _setter(key, value):
-                    ots_detail[key] = value
-                RestoreJobOtsDetailArgs._configure(_setter, **ots_detail)
+            ots_detail = _utilities.configure(ots_detail, RestoreJobOtsDetailArgs, True)
             __props__.__dict__["ots_detail"] = ots_detail
             __props__.__dict__["restore_job_id"] = restore_job_id
             if restore_type is None and not opts.urn:

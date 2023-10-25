@@ -66,13 +66,13 @@ class DomainAuthConfig(dict):
              master_key: Optional[str] = None,
              slave_key: Optional[str] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authType' in kwargs:
+        if auth_type is None and 'authType' in kwargs:
             auth_type = kwargs['authType']
-        if 'masterKey' in kwargs:
+        if master_key is None and 'masterKey' in kwargs:
             master_key = kwargs['masterKey']
-        if 'slaveKey' in kwargs:
+        if slave_key is None and 'slaveKey' in kwargs:
             slave_key = kwargs['slaveKey']
 
         if auth_type is not None:
@@ -145,18 +145,24 @@ class DomainCacheConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cache_content: str,
-             cache_type: str,
-             ttl: int,
+             cache_content: Optional[str] = None,
+             cache_type: Optional[str] = None,
+             ttl: Optional[int] = None,
              cache_id: Optional[str] = None,
              weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cacheContent' in kwargs:
+        if cache_content is None and 'cacheContent' in kwargs:
             cache_content = kwargs['cacheContent']
-        if 'cacheType' in kwargs:
+        if cache_content is None:
+            raise TypeError("Missing 'cache_content' argument")
+        if cache_type is None and 'cacheType' in kwargs:
             cache_type = kwargs['cacheType']
-        if 'cacheId' in kwargs:
+        if cache_type is None:
+            raise TypeError("Missing 'cache_type' argument")
+        if ttl is None:
+            raise TypeError("Missing 'ttl' argument")
+        if cache_id is None and 'cacheId' in kwargs:
             cache_id = kwargs['cacheId']
 
         _setter("cache_content", cache_content)
@@ -232,13 +238,13 @@ class DomainCertificateConfig(dict):
              private_key: Optional[str] = None,
              server_certificate: Optional[str] = None,
              server_certificate_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'privateKey' in kwargs:
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
-        if 'serverCertificate' in kwargs:
+        if server_certificate is None and 'serverCertificate' in kwargs:
             server_certificate = kwargs['serverCertificate']
-        if 'serverCertificateStatus' in kwargs:
+        if server_certificate_status is None and 'serverCertificateStatus' in kwargs:
             server_certificate_status = kwargs['serverCertificateStatus']
 
         if private_key is not None:
@@ -300,14 +306,18 @@ class DomainConfigFunctionArg(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             arg_name: str,
-             arg_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             arg_name: Optional[str] = None,
+             arg_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'argName' in kwargs:
+        if arg_name is None and 'argName' in kwargs:
             arg_name = kwargs['argName']
-        if 'argValue' in kwargs:
+        if arg_name is None:
+            raise TypeError("Missing 'arg_name' argument")
+        if arg_value is None and 'argValue' in kwargs:
             arg_value = kwargs['argValue']
+        if arg_value is None:
+            raise TypeError("Missing 'arg_value' argument")
 
         _setter("arg_name", arg_name)
         _setter("arg_value", arg_value)
@@ -365,16 +375,20 @@ class DomainHttpHeaderConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header_key: str,
-             header_value: str,
+             header_key: Optional[str] = None,
+             header_value: Optional[str] = None,
              header_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'headerKey' in kwargs:
+        if header_key is None and 'headerKey' in kwargs:
             header_key = kwargs['headerKey']
-        if 'headerValue' in kwargs:
+        if header_key is None:
+            raise TypeError("Missing 'header_key' argument")
+        if header_value is None and 'headerValue' in kwargs:
             header_value = kwargs['headerValue']
-        if 'headerId' in kwargs:
+        if header_value is None:
+            raise TypeError("Missing 'header_value' argument")
+        if header_id is None and 'headerId' in kwargs:
             header_id = kwargs['headerId']
 
         _setter("header_key", header_key)
@@ -478,23 +492,23 @@ class DomainNewCertificateConfig(dict):
              private_key: Optional[str] = None,
              server_certificate: Optional[str] = None,
              server_certificate_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certId' in kwargs:
+        if cert_id is None and 'certId' in kwargs:
             cert_id = kwargs['certId']
-        if 'certName' in kwargs:
+        if cert_name is None and 'certName' in kwargs:
             cert_name = kwargs['certName']
-        if 'certRegion' in kwargs:
+        if cert_region is None and 'certRegion' in kwargs:
             cert_region = kwargs['certRegion']
-        if 'certType' in kwargs:
+        if cert_type is None and 'certType' in kwargs:
             cert_type = kwargs['certType']
-        if 'forceSet' in kwargs:
+        if force_set is None and 'forceSet' in kwargs:
             force_set = kwargs['forceSet']
-        if 'privateKey' in kwargs:
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
-        if 'serverCertificate' in kwargs:
+        if server_certificate is None and 'serverCertificate' in kwargs:
             server_certificate = kwargs['serverCertificate']
-        if 'serverCertificateStatus' in kwargs:
+        if server_certificate_status is None and 'serverCertificateStatus' in kwargs:
             server_certificate_status = kwargs['serverCertificateStatus']
 
         if cert_id is not None:
@@ -616,7 +630,7 @@ class DomainNewSource(dict):
              priority: Optional[int] = None,
              type: Optional[str] = None,
              weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if content is not None:
@@ -710,13 +724,13 @@ class DomainPage404Config(dict):
              custom_page_url: Optional[str] = None,
              error_code: Optional[str] = None,
              page_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'customPageUrl' in kwargs:
+        if custom_page_url is None and 'customPageUrl' in kwargs:
             custom_page_url = kwargs['customPageUrl']
-        if 'errorCode' in kwargs:
+        if error_code is None and 'errorCode' in kwargs:
             error_code = kwargs['errorCode']
-        if 'pageType' in kwargs:
+        if page_type is None and 'pageType' in kwargs:
             page_type = kwargs['pageType']
 
         if custom_page_url is not None:
@@ -774,9 +788,9 @@ class DomainParameterFilterConfig(dict):
              _setter: Callable[[Any, Any], None],
              enable: Optional[str] = None,
              hash_key_args: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'hashKeyArgs' in kwargs:
+        if hash_key_args is None and 'hashKeyArgs' in kwargs:
             hash_key_args = kwargs['hashKeyArgs']
 
         if enable is not None:
@@ -831,16 +845,18 @@ class DomainReferConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             refer_lists: Sequence[str],
+             refer_lists: Optional[Sequence[str]] = None,
              allow_empty: Optional[str] = None,
              refer_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'referLists' in kwargs:
+        if refer_lists is None and 'referLists' in kwargs:
             refer_lists = kwargs['referLists']
-        if 'allowEmpty' in kwargs:
+        if refer_lists is None:
+            raise TypeError("Missing 'refer_lists' argument")
+        if allow_empty is None and 'allowEmpty' in kwargs:
             allow_empty = kwargs['allowEmpty']
-        if 'referType' in kwargs:
+        if refer_type is None and 'referType' in kwargs:
             refer_type = kwargs['referType']
 
         _setter("refer_lists", refer_lists)
@@ -885,15 +901,21 @@ class GetBlockedRegionsRegionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             continent: str,
-             countries_and_regions: str,
-             countries_and_regions_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             continent: Optional[str] = None,
+             countries_and_regions: Optional[str] = None,
+             countries_and_regions_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'countriesAndRegions' in kwargs:
+        if continent is None:
+            raise TypeError("Missing 'continent' argument")
+        if countries_and_regions is None and 'countriesAndRegions' in kwargs:
             countries_and_regions = kwargs['countriesAndRegions']
-        if 'countriesAndRegionsName' in kwargs:
+        if countries_and_regions is None:
+            raise TypeError("Missing 'countries_and_regions' argument")
+        if countries_and_regions_name is None and 'countriesAndRegionsName' in kwargs:
             countries_and_regions_name = kwargs['countriesAndRegionsName']
+        if countries_and_regions_name is None:
+            raise TypeError("Missing 'countries_and_regions_name' argument")
 
         _setter("continent", continent)
         _setter("countries_and_regions", countries_and_regions)
@@ -953,16 +975,28 @@ class GetRealTimeLogDeliveriesDeliveryResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: str,
-             id: str,
-             logstore: str,
-             project: str,
-             sls_region: str,
-             status: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             domain: Optional[str] = None,
+             id: Optional[str] = None,
+             logstore: Optional[str] = None,
+             project: Optional[str] = None,
+             sls_region: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'slsRegion' in kwargs:
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if logstore is None:
+            raise TypeError("Missing 'logstore' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if sls_region is None and 'slsRegion' in kwargs:
             sls_region = kwargs['slsRegion']
+        if sls_region is None:
+            raise TypeError("Missing 'sls_region' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("domain", domain)
         _setter("id", id)

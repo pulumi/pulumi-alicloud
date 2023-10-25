@@ -10,25 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.ecs.getInstances({
- *     nameRegex: "ecs_instance_name",
- *     status: "Running",
- * });
- * const ids = alicloud.hbr.getEcsBackupClients({
- *     ids: [alicloud_hbr_ecs_backup_client["default"].id],
- *     instanceIds: [alicloud_hbr_ecs_backup_client["default"].instance_id],
- * });
- * export const hbrEcsBackupClientId1 = ids.then(ids => ids.clients?.[0]?.id);
- * ```
  */
 export function getEcsBackupClients(args?: GetEcsBackupClientsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsBackupClientsResult> {
     args = args || {};
@@ -82,25 +63,6 @@ export interface GetEcsBackupClientsResult {
  * This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.ecs.getInstances({
- *     nameRegex: "ecs_instance_name",
- *     status: "Running",
- * });
- * const ids = alicloud.hbr.getEcsBackupClients({
- *     ids: [alicloud_hbr_ecs_backup_client["default"].id],
- *     instanceIds: [alicloud_hbr_ecs_backup_client["default"].instance_id],
- * });
- * export const hbrEcsBackupClientId1 = ids.then(ids => ids.clients?.[0]?.id);
- * ```
  */
 export function getEcsBackupClientsOutput(args?: GetEcsBackupClientsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsBackupClientsResult> {
     return pulumi.output(args).apply((a: any) => getEcsBackupClients(a, opts))

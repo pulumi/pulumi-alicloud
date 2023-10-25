@@ -108,16 +108,6 @@ def get_custom_domains(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.98.0+
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    fc_domains = alicloud.fc.get_custom_domains(name_regex="sample_fc_custom_domain")
-    pulumi.export("firstFcCustomDomainName", data["alicloud_fc_custom_domains"]["fc_domains_ds"]["domains"][0]["domain_name"])
-    ```
-
 
     :param Sequence[str] ids: A list of functions ids.
     :param str name_regex: A regex string to filter results by Function Compute custom domain name.
@@ -148,16 +138,6 @@ def get_custom_domains_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
 
     > **NOTE:** Available in 1.98.0+
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    fc_domains = alicloud.fc.get_custom_domains(name_regex="sample_fc_custom_domain")
-    pulumi.export("firstFcCustomDomainName", data["alicloud_fc_custom_domains"]["fc_domains_ds"]["domains"][0]["domain_name"])
-    ```
 
 
     :param Sequence[str] ids: A list of functions ids.

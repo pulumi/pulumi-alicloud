@@ -167,20 +167,6 @@ def get_aggregate_config_rules(aggregate_config_rule_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.124.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.cfg.get_aggregate_config_rules(aggregator_id="ca-3a9b626622af001d****",
-        ids=["cr-5154626622af0034****"],
-        name_regex="the_resource_name")
-    pulumi.export("firstConfigAggregateConfigRuleId", example.rules[0].id)
-    ```
-
 
     :param str aggregate_config_rule_name: The config rule name.
     :param str aggregator_id: The ID of aggregator.
@@ -231,20 +217,6 @@ def get_aggregate_config_rules_output(aggregate_config_rule_name: Optional[pulum
     This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.124.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.cfg.get_aggregate_config_rules(aggregator_id="ca-3a9b626622af001d****",
-        ids=["cr-5154626622af0034****"],
-        name_regex="the_resource_name")
-    pulumi.export("firstConfigAggregateConfigRuleId", example.rules[0].id)
-    ```
 
 
     :param str aggregate_config_rule_name: The config rule name.

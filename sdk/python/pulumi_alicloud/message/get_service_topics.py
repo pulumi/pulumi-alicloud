@@ -138,18 +138,6 @@ def get_service_topics(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.188.0+.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.message.get_service_topics(ids=["example_id"])
-    pulumi.export("topicId1", ids.topics[0].id)
-    name = alicloud.message.get_service_topics(topic_name="tf-example")
-    pulumi.export("topicId2", name.topics[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Topic IDs. Its element value is same as Topic Name.
     :param str name_regex: A regex string to filter results by Topic name.
@@ -190,18 +178,6 @@ def get_service_topics_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     This data source provides the Message Notification Service Topics of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.188.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.message.get_service_topics(ids=["example_id"])
-    pulumi.export("topicId1", ids.topics[0].id)
-    name = alicloud.message.get_service_topics(topic_name="tf-example")
-    pulumi.export("topicId2", name.topics[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Topic IDs. Its element value is same as Topic Name.

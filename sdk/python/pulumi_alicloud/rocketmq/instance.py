@@ -41,9 +41,9 @@ class InstanceArgs:
              name: Optional[pulumi.Input[str]] = None,
              remark: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
 
         if instance_name is not None:
@@ -158,15 +158,15 @@ class _InstanceState:
              remark: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceName' in kwargs:
+        if instance_name is None and 'instanceName' in kwargs:
             instance_name = kwargs['instanceName']
-        if 'instanceStatus' in kwargs:
+        if instance_status is None and 'instanceStatus' in kwargs:
             instance_status = kwargs['instanceStatus']
-        if 'instanceType' in kwargs:
+        if instance_type is None and 'instanceType' in kwargs:
             instance_type = kwargs['instanceType']
-        if 'releaseTime' in kwargs:
+        if release_time is None and 'releaseTime' in kwargs:
             release_time = kwargs['releaseTime']
 
         if instance_name is not None:
@@ -310,19 +310,6 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.51.0+
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.rocketmq.Instance("example",
-            instance_name="tf-example-ons-instance",
-            remark="tf-example-ons-instance-remark")
-        ```
-
         ## Import
 
         ONS INSTANCE can be imported using the id, e.g.
@@ -354,19 +341,6 @@ class Instance(pulumi.CustomResource):
         > **NOTE:** The number of instances in the same region cannot exceed 8. At present, the resource does not support region "mq-internet-access" and "ap-southeast-5".
 
         > **NOTE:** Available in 1.51.0+
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.rocketmq.Instance("example",
-            instance_name="tf-example-ons-instance",
-            remark="tf-example-ons-instance-remark")
-        ```
 
         ## Import
 

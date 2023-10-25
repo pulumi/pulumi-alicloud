@@ -15,44 +15,6 @@ import (
 // This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.186.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := vpc.GetPublicIpAddressPools(ctx, &vpc.GetPublicIpAddressPoolsArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("vpcPublicIpAddressPoolId1", ids.Pools[0].Id)
-//			nameRegex, err := vpc.GetPublicIpAddressPools(ctx, &vpc.GetPublicIpAddressPoolsArgs{
-//				NameRegex: pulumi.StringRef("example_name"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("vpcPublicIpAddressPoolId2", nameRegex.Pools[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetPublicIpAddressPools(ctx *pulumi.Context, args *GetPublicIpAddressPoolsArgs, opts ...pulumi.InvokeOption) (*GetPublicIpAddressPoolsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPublicIpAddressPoolsResult

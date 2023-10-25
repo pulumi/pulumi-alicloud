@@ -32,15 +32,19 @@ class HandshakeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target_entity: pulumi.Input[str],
-             target_type: pulumi.Input[str],
+             target_entity: Optional[pulumi.Input[str]] = None,
+             target_type: Optional[pulumi.Input[str]] = None,
              note: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'targetEntity' in kwargs:
+        if target_entity is None and 'targetEntity' in kwargs:
             target_entity = kwargs['targetEntity']
-        if 'targetType' in kwargs:
+        if target_entity is None:
+            raise TypeError("Missing 'target_entity' argument")
+        if target_type is None and 'targetType' in kwargs:
             target_type = kwargs['targetType']
+        if target_type is None:
+            raise TypeError("Missing 'target_type' argument")
 
         _setter("target_entity", target_entity)
         _setter("target_type", target_type)
@@ -132,21 +136,21 @@ class _HandshakeState:
              status: Optional[pulumi.Input[str]] = None,
              target_entity: Optional[pulumi.Input[str]] = None,
              target_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'expireTime' in kwargs:
+        if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
-        if 'masterAccountId' in kwargs:
+        if master_account_id is None and 'masterAccountId' in kwargs:
             master_account_id = kwargs['masterAccountId']
-        if 'masterAccountName' in kwargs:
+        if master_account_name is None and 'masterAccountName' in kwargs:
             master_account_name = kwargs['masterAccountName']
-        if 'modifyTime' in kwargs:
+        if modify_time is None and 'modifyTime' in kwargs:
             modify_time = kwargs['modifyTime']
-        if 'resourceDirectoryId' in kwargs:
+        if resource_directory_id is None and 'resourceDirectoryId' in kwargs:
             resource_directory_id = kwargs['resourceDirectoryId']
-        if 'targetEntity' in kwargs:
+        if target_entity is None and 'targetEntity' in kwargs:
             target_entity = kwargs['targetEntity']
-        if 'targetType' in kwargs:
+        if target_type is None and 'targetType' in kwargs:
             target_type = kwargs['targetType']
 
         if expire_time is not None:
@@ -292,19 +296,6 @@ class Handshake(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.82.0+.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Add a Resource Manager handshake.
-        example = alicloud.resourcemanager.Handshake("example",
-            note="test resource manager handshake",
-            target_entity="1182775234******",
-            target_type="Account")
-        ```
-
         ## Import
 
         Resource Manager handshake can be imported using the id, e.g.
@@ -330,19 +321,6 @@ class Handshake(pulumi.CustomResource):
         For information about Resource Manager handshake and how to use it, see [What is Resource Manager handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
 
         > **NOTE:** Available in v1.82.0+.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Add a Resource Manager handshake.
-        example = alicloud.resourcemanager.Handshake("example",
-            note="test resource manager handshake",
-            target_entity="1182775234******",
-            target_type="Account")
-        ```
 
         ## Import
 

@@ -10,30 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.directmail.getDomains({
- *     ids: ["example_id"],
- * });
- * export const directMailDomainId1 = ids.then(ids => ids.domains?.[0]?.id);
- * const nameRegex = alicloud.directmail.getDomains({
- *     nameRegex: "^my-Domain",
- * });
- * export const directMailDomainId2 = nameRegex.then(nameRegex => nameRegex.domains?.[0]?.id);
- * const example = alicloud.directmail.getDomains({
- *     status: "1",
- *     keyWord: "^my-Domain",
- *     ids: ["example_id"],
- * });
- * export const directMailDomainId3 = example.then(example => example.domains?.[0]?.id);
- * ```
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
@@ -100,30 +76,6 @@ export interface GetDomainsResult {
  * This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.directmail.getDomains({
- *     ids: ["example_id"],
- * });
- * export const directMailDomainId1 = ids.then(ids => ids.domains?.[0]?.id);
- * const nameRegex = alicloud.directmail.getDomains({
- *     nameRegex: "^my-Domain",
- * });
- * export const directMailDomainId2 = nameRegex.then(nameRegex => nameRegex.domains?.[0]?.id);
- * const example = alicloud.directmail.getDomains({
- *     status: "1",
- *     keyWord: "^my-Domain",
- *     ids: ["example_id"],
- * });
- * export const directMailDomainId3 = example.then(example => example.domains?.[0]?.id);
- * ```
  */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
     return pulumi.output(args).apply((a: any) => getDomains(a, opts))

@@ -118,22 +118,6 @@ def get_remote_writes(cluster_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.204.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.arms.get_remote_writes(ids=["example_id"],
-        cluster_id="your_cluster_id")
-    pulumi.export("armsRemoteWritesId1", ids.remote_writes[0].id)
-    name_regex = alicloud.arms.get_remote_writes(name_regex="tf-example",
-        cluster_id="your_cluster_id")
-    pulumi.export("armsRemoteWritesId2", name_regex.remote_writes[0].id)
-    ```
-
 
     :param str cluster_id: The ID of the Prometheus instance.
     :param Sequence[str] ids: A list of Remote Write IDs.
@@ -168,22 +152,6 @@ def get_remote_writes_output(cluster_id: Optional[pulumi.Input[str]] = None,
     This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.204.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.arms.get_remote_writes(ids=["example_id"],
-        cluster_id="your_cluster_id")
-    pulumi.export("armsRemoteWritesId1", ids.remote_writes[0].id)
-    name_regex = alicloud.arms.get_remote_writes(name_regex="tf-example",
-        cluster_id="your_cluster_id")
-    pulumi.export("armsRemoteWritesId2", name_regex.remote_writes[0].id)
-    ```
 
 
     :param str cluster_id: The ID of the Prometheus instance.

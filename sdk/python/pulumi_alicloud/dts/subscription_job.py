@@ -140,10 +140,10 @@ class SubscriptionJobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             payment_type: pulumi.Input[str],
-             source_endpoint_engine_name: pulumi.Input[str],
-             source_endpoint_instance_type: pulumi.Input[str],
-             source_endpoint_region: pulumi.Input[str],
+             payment_type: Optional[pulumi.Input[str]] = None,
+             source_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
+             source_endpoint_instance_type: Optional[pulumi.Input[str]] = None,
+             source_endpoint_region: Optional[pulumi.Input[str]] = None,
              checkpoint: Optional[pulumi.Input[str]] = None,
              compute_unit: Optional[pulumi.Input[int]] = None,
              database_count: Optional[pulumi.Input[int]] = None,
@@ -179,77 +179,85 @@ class SubscriptionJobArgs:
              sync_architecture: Optional[pulumi.Input[str]] = None,
              synchronization_direction: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'sourceEndpointEngineName' in kwargs:
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
             source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if 'sourceEndpointInstanceType' in kwargs:
+        if source_endpoint_engine_name is None:
+            raise TypeError("Missing 'source_endpoint_engine_name' argument")
+        if source_endpoint_instance_type is None and 'sourceEndpointInstanceType' in kwargs:
             source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
-        if 'sourceEndpointRegion' in kwargs:
+        if source_endpoint_instance_type is None:
+            raise TypeError("Missing 'source_endpoint_instance_type' argument")
+        if source_endpoint_region is None and 'sourceEndpointRegion' in kwargs:
             source_endpoint_region = kwargs['sourceEndpointRegion']
-        if 'computeUnit' in kwargs:
+        if source_endpoint_region is None:
+            raise TypeError("Missing 'source_endpoint_region' argument")
+        if compute_unit is None and 'computeUnit' in kwargs:
             compute_unit = kwargs['computeUnit']
-        if 'databaseCount' in kwargs:
+        if database_count is None and 'databaseCount' in kwargs:
             database_count = kwargs['databaseCount']
-        if 'dbList' in kwargs:
+        if db_list is None and 'dbList' in kwargs:
             db_list = kwargs['dbList']
-        if 'delayNotice' in kwargs:
+        if delay_notice is None and 'delayNotice' in kwargs:
             delay_notice = kwargs['delayNotice']
-        if 'delayPhone' in kwargs:
+        if delay_phone is None and 'delayPhone' in kwargs:
             delay_phone = kwargs['delayPhone']
-        if 'delayRuleTime' in kwargs:
+        if delay_rule_time is None and 'delayRuleTime' in kwargs:
             delay_rule_time = kwargs['delayRuleTime']
-        if 'destinationEndpointEngineName' in kwargs:
+        if destination_endpoint_engine_name is None and 'destinationEndpointEngineName' in kwargs:
             destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
-        if 'destinationRegion' in kwargs:
+        if destination_region is None and 'destinationRegion' in kwargs:
             destination_region = kwargs['destinationRegion']
-        if 'dtsInstanceId' in kwargs:
+        if dts_instance_id is None and 'dtsInstanceId' in kwargs:
             dts_instance_id = kwargs['dtsInstanceId']
-        if 'dtsJobName' in kwargs:
+        if dts_job_name is None and 'dtsJobName' in kwargs:
             dts_job_name = kwargs['dtsJobName']
-        if 'errorNotice' in kwargs:
+        if error_notice is None and 'errorNotice' in kwargs:
             error_notice = kwargs['errorNotice']
-        if 'errorPhone' in kwargs:
+        if error_phone is None and 'errorPhone' in kwargs:
             error_phone = kwargs['errorPhone']
-        if 'instanceClass' in kwargs:
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'paymentDuration' in kwargs:
+        if payment_duration is None and 'paymentDuration' in kwargs:
             payment_duration = kwargs['paymentDuration']
-        if 'paymentDurationUnit' in kwargs:
+        if payment_duration_unit is None and 'paymentDurationUnit' in kwargs:
             payment_duration_unit = kwargs['paymentDurationUnit']
-        if 'sourceEndpointDatabaseName' in kwargs:
+        if source_endpoint_database_name is None and 'sourceEndpointDatabaseName' in kwargs:
             source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
-        if 'sourceEndpointInstanceId' in kwargs:
+        if source_endpoint_instance_id is None and 'sourceEndpointInstanceId' in kwargs:
             source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
-        if 'sourceEndpointIp' in kwargs:
+        if source_endpoint_ip is None and 'sourceEndpointIp' in kwargs:
             source_endpoint_ip = kwargs['sourceEndpointIp']
-        if 'sourceEndpointOracleSid' in kwargs:
+        if source_endpoint_oracle_sid is None and 'sourceEndpointOracleSid' in kwargs:
             source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
-        if 'sourceEndpointOwnerId' in kwargs:
+        if source_endpoint_owner_id is None and 'sourceEndpointOwnerId' in kwargs:
             source_endpoint_owner_id = kwargs['sourceEndpointOwnerId']
-        if 'sourceEndpointPassword' in kwargs:
+        if source_endpoint_password is None and 'sourceEndpointPassword' in kwargs:
             source_endpoint_password = kwargs['sourceEndpointPassword']
-        if 'sourceEndpointPort' in kwargs:
+        if source_endpoint_port is None and 'sourceEndpointPort' in kwargs:
             source_endpoint_port = kwargs['sourceEndpointPort']
-        if 'sourceEndpointRole' in kwargs:
+        if source_endpoint_role is None and 'sourceEndpointRole' in kwargs:
             source_endpoint_role = kwargs['sourceEndpointRole']
-        if 'sourceEndpointUserName' in kwargs:
+        if source_endpoint_user_name is None and 'sourceEndpointUserName' in kwargs:
             source_endpoint_user_name = kwargs['sourceEndpointUserName']
-        if 'subscriptionDataTypeDdl' in kwargs:
+        if subscription_data_type_ddl is None and 'subscriptionDataTypeDdl' in kwargs:
             subscription_data_type_ddl = kwargs['subscriptionDataTypeDdl']
-        if 'subscriptionDataTypeDml' in kwargs:
+        if subscription_data_type_dml is None and 'subscriptionDataTypeDml' in kwargs:
             subscription_data_type_dml = kwargs['subscriptionDataTypeDml']
-        if 'subscriptionInstanceNetworkType' in kwargs:
+        if subscription_instance_network_type is None and 'subscriptionInstanceNetworkType' in kwargs:
             subscription_instance_network_type = kwargs['subscriptionInstanceNetworkType']
-        if 'subscriptionInstanceVpcId' in kwargs:
+        if subscription_instance_vpc_id is None and 'subscriptionInstanceVpcId' in kwargs:
             subscription_instance_vpc_id = kwargs['subscriptionInstanceVpcId']
-        if 'subscriptionInstanceVswitchId' in kwargs:
+        if subscription_instance_vswitch_id is None and 'subscriptionInstanceVswitchId' in kwargs:
             subscription_instance_vswitch_id = kwargs['subscriptionInstanceVswitchId']
-        if 'syncArchitecture' in kwargs:
+        if sync_architecture is None and 'syncArchitecture' in kwargs:
             sync_architecture = kwargs['syncArchitecture']
-        if 'synchronizationDirection' in kwargs:
+        if synchronization_direction is None and 'synchronizationDirection' in kwargs:
             synchronization_direction = kwargs['synchronizationDirection']
 
         _setter("payment_type", payment_type)
@@ -964,77 +972,77 @@ class _SubscriptionJobState:
              sync_architecture: Optional[pulumi.Input[str]] = None,
              synchronization_direction: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'computeUnit' in kwargs:
+        if compute_unit is None and 'computeUnit' in kwargs:
             compute_unit = kwargs['computeUnit']
-        if 'databaseCount' in kwargs:
+        if database_count is None and 'databaseCount' in kwargs:
             database_count = kwargs['databaseCount']
-        if 'dbList' in kwargs:
+        if db_list is None and 'dbList' in kwargs:
             db_list = kwargs['dbList']
-        if 'delayNotice' in kwargs:
+        if delay_notice is None and 'delayNotice' in kwargs:
             delay_notice = kwargs['delayNotice']
-        if 'delayPhone' in kwargs:
+        if delay_phone is None and 'delayPhone' in kwargs:
             delay_phone = kwargs['delayPhone']
-        if 'delayRuleTime' in kwargs:
+        if delay_rule_time is None and 'delayRuleTime' in kwargs:
             delay_rule_time = kwargs['delayRuleTime']
-        if 'destinationEndpointEngineName' in kwargs:
+        if destination_endpoint_engine_name is None and 'destinationEndpointEngineName' in kwargs:
             destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
-        if 'destinationRegion' in kwargs:
+        if destination_region is None and 'destinationRegion' in kwargs:
             destination_region = kwargs['destinationRegion']
-        if 'dtsInstanceId' in kwargs:
+        if dts_instance_id is None and 'dtsInstanceId' in kwargs:
             dts_instance_id = kwargs['dtsInstanceId']
-        if 'dtsJobName' in kwargs:
+        if dts_job_name is None and 'dtsJobName' in kwargs:
             dts_job_name = kwargs['dtsJobName']
-        if 'errorNotice' in kwargs:
+        if error_notice is None and 'errorNotice' in kwargs:
             error_notice = kwargs['errorNotice']
-        if 'errorPhone' in kwargs:
+        if error_phone is None and 'errorPhone' in kwargs:
             error_phone = kwargs['errorPhone']
-        if 'instanceClass' in kwargs:
+        if instance_class is None and 'instanceClass' in kwargs:
             instance_class = kwargs['instanceClass']
-        if 'paymentDuration' in kwargs:
+        if payment_duration is None and 'paymentDuration' in kwargs:
             payment_duration = kwargs['paymentDuration']
-        if 'paymentDurationUnit' in kwargs:
+        if payment_duration_unit is None and 'paymentDurationUnit' in kwargs:
             payment_duration_unit = kwargs['paymentDurationUnit']
-        if 'paymentType' in kwargs:
+        if payment_type is None and 'paymentType' in kwargs:
             payment_type = kwargs['paymentType']
-        if 'sourceEndpointDatabaseName' in kwargs:
+        if source_endpoint_database_name is None and 'sourceEndpointDatabaseName' in kwargs:
             source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
-        if 'sourceEndpointEngineName' in kwargs:
+        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
             source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if 'sourceEndpointInstanceId' in kwargs:
+        if source_endpoint_instance_id is None and 'sourceEndpointInstanceId' in kwargs:
             source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
-        if 'sourceEndpointInstanceType' in kwargs:
+        if source_endpoint_instance_type is None and 'sourceEndpointInstanceType' in kwargs:
             source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
-        if 'sourceEndpointIp' in kwargs:
+        if source_endpoint_ip is None and 'sourceEndpointIp' in kwargs:
             source_endpoint_ip = kwargs['sourceEndpointIp']
-        if 'sourceEndpointOracleSid' in kwargs:
+        if source_endpoint_oracle_sid is None and 'sourceEndpointOracleSid' in kwargs:
             source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
-        if 'sourceEndpointOwnerId' in kwargs:
+        if source_endpoint_owner_id is None and 'sourceEndpointOwnerId' in kwargs:
             source_endpoint_owner_id = kwargs['sourceEndpointOwnerId']
-        if 'sourceEndpointPassword' in kwargs:
+        if source_endpoint_password is None and 'sourceEndpointPassword' in kwargs:
             source_endpoint_password = kwargs['sourceEndpointPassword']
-        if 'sourceEndpointPort' in kwargs:
+        if source_endpoint_port is None and 'sourceEndpointPort' in kwargs:
             source_endpoint_port = kwargs['sourceEndpointPort']
-        if 'sourceEndpointRegion' in kwargs:
+        if source_endpoint_region is None and 'sourceEndpointRegion' in kwargs:
             source_endpoint_region = kwargs['sourceEndpointRegion']
-        if 'sourceEndpointRole' in kwargs:
+        if source_endpoint_role is None and 'sourceEndpointRole' in kwargs:
             source_endpoint_role = kwargs['sourceEndpointRole']
-        if 'sourceEndpointUserName' in kwargs:
+        if source_endpoint_user_name is None and 'sourceEndpointUserName' in kwargs:
             source_endpoint_user_name = kwargs['sourceEndpointUserName']
-        if 'subscriptionDataTypeDdl' in kwargs:
+        if subscription_data_type_ddl is None and 'subscriptionDataTypeDdl' in kwargs:
             subscription_data_type_ddl = kwargs['subscriptionDataTypeDdl']
-        if 'subscriptionDataTypeDml' in kwargs:
+        if subscription_data_type_dml is None and 'subscriptionDataTypeDml' in kwargs:
             subscription_data_type_dml = kwargs['subscriptionDataTypeDml']
-        if 'subscriptionInstanceNetworkType' in kwargs:
+        if subscription_instance_network_type is None and 'subscriptionInstanceNetworkType' in kwargs:
             subscription_instance_network_type = kwargs['subscriptionInstanceNetworkType']
-        if 'subscriptionInstanceVpcId' in kwargs:
+        if subscription_instance_vpc_id is None and 'subscriptionInstanceVpcId' in kwargs:
             subscription_instance_vpc_id = kwargs['subscriptionInstanceVpcId']
-        if 'subscriptionInstanceVswitchId' in kwargs:
+        if subscription_instance_vswitch_id is None and 'subscriptionInstanceVswitchId' in kwargs:
             subscription_instance_vswitch_id = kwargs['subscriptionInstanceVswitchId']
-        if 'syncArchitecture' in kwargs:
+        if sync_architecture is None and 'syncArchitecture' in kwargs:
             sync_architecture = kwargs['syncArchitecture']
-        if 'synchronizationDirection' in kwargs:
+        if synchronization_direction is None and 'synchronizationDirection' in kwargs:
             synchronization_direction = kwargs['synchronizationDirection']
 
         if checkpoint is not None:
@@ -1637,77 +1645,6 @@ class SubscriptionJob(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.138.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        example_regions = alicloud.get_regions(current=True)
-        example_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="8.0",
-            instance_charge_type="PostPaid",
-            category="Basic",
-            db_instance_storage_type="cloud_essd")
-        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.zones[0].id,
-            engine="MySQL",
-            engine_version="8.0",
-            instance_charge_type="PostPaid",
-            category="Basic",
-            db_instance_storage_type="cloud_essd")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vpc_id=example_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=example_zones.zones[0].id,
-            vswitch_name=name)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.rds.Instance("exampleInstance",
-            engine="MySQL",
-            engine_version="8.0",
-            instance_type=example_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
-            instance_charge_type="Postpaid",
-            instance_name=name,
-            vswitch_id=example_switch.id,
-            monitoring_period=60,
-            db_instance_storage_type="cloud_essd",
-            security_group_ids=[example_security_group.id])
-        example_rds_account = alicloud.rds.RdsAccount("exampleRdsAccount",
-            db_instance_id=example_instance.id,
-            account_name="example_name",
-            account_password="example_password")
-        example_database = alicloud.rds.Database("exampleDatabase", instance_id=example_instance.id)
-        example_account_privilege = alicloud.rds.AccountPrivilege("exampleAccountPrivilege",
-            instance_id=example_instance.id,
-            account_name=example_rds_account.name,
-            privilege="ReadWrite",
-            db_names=[example_database.name])
-        example_subscription_job = alicloud.dts.SubscriptionJob("exampleSubscriptionJob",
-            dts_job_name=name,
-            payment_type="PayAsYouGo",
-            source_endpoint_engine_name="MySQL",
-            source_endpoint_region=example_regions.regions[0].id,
-            source_endpoint_instance_type="RDS",
-            source_endpoint_instance_id=example_instance.id,
-            source_endpoint_database_name=example_database.name,
-            source_endpoint_user_name=example_rds_account.account_name,
-            source_endpoint_password=example_rds_account.account_password,
-            db_list=pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: f"{{\\"{example_database_name}\\":{{\\"name\\":\\"{example_database_name1}\\",\\"all\\":true}}}}"),
-            subscription_instance_network_type="vpc",
-            subscription_instance_vpc_id=example_network.id,
-            subscription_instance_vswitch_id=example_switch.id,
-            status="Normal")
-        ```
-
         ## Import
 
         DTS Subscription Job can be imported using the id, e.g.
@@ -1770,77 +1707,6 @@ class SubscriptionJob(pulumi.CustomResource):
         For information about DTS Subscription Job and how to use it, see [What is Subscription Job](https://www.alibabacloud.com/help/en/data-transmission-service/latest/configuresubscription).
 
         > **NOTE:** Available since v1.138.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        example_regions = alicloud.get_regions(current=True)
-        example_zones = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="8.0",
-            instance_charge_type="PostPaid",
-            category="Basic",
-            db_instance_storage_type="cloud_essd")
-        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.zones[0].id,
-            engine="MySQL",
-            engine_version="8.0",
-            instance_charge_type="PostPaid",
-            category="Basic",
-            db_instance_storage_type="cloud_essd")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vpc_id=example_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=example_zones.zones[0].id,
-            vswitch_name=name)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.rds.Instance("exampleInstance",
-            engine="MySQL",
-            engine_version="8.0",
-            instance_type=example_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
-            instance_charge_type="Postpaid",
-            instance_name=name,
-            vswitch_id=example_switch.id,
-            monitoring_period=60,
-            db_instance_storage_type="cloud_essd",
-            security_group_ids=[example_security_group.id])
-        example_rds_account = alicloud.rds.RdsAccount("exampleRdsAccount",
-            db_instance_id=example_instance.id,
-            account_name="example_name",
-            account_password="example_password")
-        example_database = alicloud.rds.Database("exampleDatabase", instance_id=example_instance.id)
-        example_account_privilege = alicloud.rds.AccountPrivilege("exampleAccountPrivilege",
-            instance_id=example_instance.id,
-            account_name=example_rds_account.name,
-            privilege="ReadWrite",
-            db_names=[example_database.name])
-        example_subscription_job = alicloud.dts.SubscriptionJob("exampleSubscriptionJob",
-            dts_job_name=name,
-            payment_type="PayAsYouGo",
-            source_endpoint_engine_name="MySQL",
-            source_endpoint_region=example_regions.regions[0].id,
-            source_endpoint_instance_type="RDS",
-            source_endpoint_instance_id=example_instance.id,
-            source_endpoint_database_name=example_database.name,
-            source_endpoint_user_name=example_rds_account.account_name,
-            source_endpoint_password=example_rds_account.account_password,
-            db_list=pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: f"{{\\"{example_database_name}\\":{{\\"name\\":\\"{example_database_name1}\\",\\"all\\":true}}}}"),
-            subscription_instance_network_type="vpc",
-            subscription_instance_vpc_id=example_network.id,
-            subscription_instance_vswitch_id=example_switch.id,
-            status="Normal")
-        ```
 
         ## Import
 

@@ -110,18 +110,6 @@ def get_hybrid_monitor_fc_tasks(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.179.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cms.get_hybrid_monitor_fc_tasks(ids=["example_value"])
-    pulumi.export("cmsHybridMonitorFcTaskId1", ids.tasks[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Hybrid Monitor Fc Task IDs.
     :param str namespace: The index warehouse where the host belongs.
@@ -157,18 +145,6 @@ def get_hybrid_monitor_fc_tasks_output(ids: Optional[pulumi.Input[Optional[Seque
     This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.179.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cms.get_hybrid_monitor_fc_tasks(ids=["example_value"])
-    pulumi.export("cmsHybridMonitorFcTaskId1", ids.tasks[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Hybrid Monitor Fc Task IDs.

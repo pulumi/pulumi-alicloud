@@ -33,15 +33,21 @@ class GetOrganizationsOrganizationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             organization_id: str,
-             organization_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             id: Optional[str] = None,
+             organization_id: Optional[str] = None,
+             organization_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'organizationId' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if organization_id is None and 'organizationId' in kwargs:
             organization_id = kwargs['organizationId']
-        if 'organizationName' in kwargs:
+        if organization_id is None:
+            raise TypeError("Missing 'organization_id' argument")
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
+        if organization_name is None:
+            raise TypeError("Missing 'organization_name' argument")
 
         _setter("id", id)
         _setter("organization_id", organization_id)

@@ -13,25 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.150.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultAcl = new alicloud.ga.Acl("defaultAcl", {
- *     aclName: "terraform-example",
- *     addressIpVersion: "IPv4",
- * });
- * const defaultAclEntryAttachment = new alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment", {
- *     aclId: defaultAcl.id,
- *     entry: "192.168.1.1/32",
- *     entryDescription: "terraform-example",
- * });
- * ```
- *
  * ## Import
  *
  * Global Accelerator (GA) Acl can be imported using the id, e.g.

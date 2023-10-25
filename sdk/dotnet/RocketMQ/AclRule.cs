@@ -18,39 +18,6 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf_example";
-    ///     var defaultAcl = new AliCloud.RocketMQ.Acl("defaultAcl");
-    /// 
-    ///     var defaultAclRule = new AliCloud.RocketMQ.AclRule("defaultAclRule", new()
-    ///     {
-    ///         AclId = defaultAcl.Id,
-    ///         Description = name,
-    ///         Policy = "accept",
-    ///         IpProtocol = "ALL",
-    ///         Direction = "in",
-    ///         SourceCidr = "10.10.1.0/24",
-    ///         SourcePortRange = "-1/-1",
-    ///         DestCidr = "192.168.1.0/24",
-    ///         DestPortRange = "-1/-1",
-    ///         Priority = 1,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// The Sag Acl Rule can be imported using the id, e.g.

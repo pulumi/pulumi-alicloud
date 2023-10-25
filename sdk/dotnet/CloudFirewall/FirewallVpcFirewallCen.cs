@@ -16,34 +16,6 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// &gt; **NOTE:** Available since v1.194.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.CloudFirewall.FirewallVpcFirewallCen("default", new()
-    ///     {
-    ///         CenId = "cen-cjok7uyb5w2b27573v",
-    ///         LocalVpc = new AliCloud.CloudFirewall.Inputs.FirewallVpcFirewallCenLocalVpcArgs
-    ///         {
-    ///             NetworkInstanceId = "vpc-a2d4wzzfuumzuq6uog5w4",
-    ///         },
-    ///         MemberUid = "1415189284827022",
-    ///         Status = "open",
-    ///         VpcFirewallName = "tf-vpc-firewall-name",
-    ///         VpcRegion = "ap-south-1",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Cloud Firewall Vpc Firewall Cen can be imported using the id, e.g.

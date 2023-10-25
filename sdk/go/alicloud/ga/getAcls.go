@@ -15,40 +15,6 @@ import (
 // This data source provides the Ga Acls of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.150.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := ga.GetAcls(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("gaAclId1", ids.Acls[0].Id)
-//			nameRegex, err := ga.GetAcls(ctx, &ga.GetAclsArgs{
-//				NameRegex: pulumi.StringRef("^my-Acl"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("gaAclId2", nameRegex.Acls[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAcls(ctx *pulumi.Context, args *GetAclsArgs, opts ...pulumi.InvokeOption) (*GetAclsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAclsResult

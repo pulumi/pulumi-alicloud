@@ -37,14 +37,22 @@ class MscSubContractArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             contact_name: pulumi.Input[str],
-             email: pulumi.Input[str],
-             mobile: pulumi.Input[str],
-             position: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             contact_name: Optional[pulumi.Input[str]] = None,
+             email: Optional[pulumi.Input[str]] = None,
+             mobile: Optional[pulumi.Input[str]] = None,
+             position: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contactName' in kwargs:
+        if contact_name is None and 'contactName' in kwargs:
             contact_name = kwargs['contactName']
+        if contact_name is None:
+            raise TypeError("Missing 'contact_name' argument")
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if mobile is None:
+            raise TypeError("Missing 'mobile' argument")
+        if position is None:
+            raise TypeError("Missing 'position' argument")
 
         _setter("contact_name", contact_name)
         _setter("email", email)
@@ -132,9 +140,9 @@ class _MscSubContractState:
              email: Optional[pulumi.Input[str]] = None,
              mobile: Optional[pulumi.Input[str]] = None,
              position: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contactName' in kwargs:
+        if contact_name is None and 'contactName' in kwargs:
             contact_name = kwargs['contactName']
 
         if contact_name is not None:
@@ -212,25 +220,6 @@ class MscSubContract(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.132.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        default = alicloud.MscSubContract("default",
-            contact_name=name,
-            position="CEO",
-            email="123@163.com",
-            mobile="15388888888")
-        ```
-
         ## Import
 
         Msc Sub Contact can be imported using the id, e.g.
@@ -258,25 +247,6 @@ class MscSubContract(pulumi.CustomResource):
         Provides a Msc Sub Contact resource.
 
         > **NOTE:** Available since v1.132.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        default = alicloud.MscSubContract("default",
-            contact_name=name,
-            position="CEO",
-            email="123@163.com",
-            mobile="15388888888")
-        ```
 
         ## Import
 

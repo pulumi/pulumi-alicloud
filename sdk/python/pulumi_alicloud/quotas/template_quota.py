@@ -59,32 +59,38 @@ class TemplateQuotaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             desire_value: pulumi.Input[float],
-             product_code: pulumi.Input[str],
-             quota_action_code: pulumi.Input[str],
+             desire_value: Optional[pulumi.Input[float]] = None,
+             product_code: Optional[pulumi.Input[str]] = None,
+             quota_action_code: Optional[pulumi.Input[str]] = None,
              dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]]] = None,
              effective_time: Optional[pulumi.Input[str]] = None,
              env_language: Optional[pulumi.Input[str]] = None,
              expire_time: Optional[pulumi.Input[str]] = None,
              notice_type: Optional[pulumi.Input[int]] = None,
              quota_category: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'desireValue' in kwargs:
+        if desire_value is None and 'desireValue' in kwargs:
             desire_value = kwargs['desireValue']
-        if 'productCode' in kwargs:
+        if desire_value is None:
+            raise TypeError("Missing 'desire_value' argument")
+        if product_code is None and 'productCode' in kwargs:
             product_code = kwargs['productCode']
-        if 'quotaActionCode' in kwargs:
+        if product_code is None:
+            raise TypeError("Missing 'product_code' argument")
+        if quota_action_code is None and 'quotaActionCode' in kwargs:
             quota_action_code = kwargs['quotaActionCode']
-        if 'effectiveTime' in kwargs:
+        if quota_action_code is None:
+            raise TypeError("Missing 'quota_action_code' argument")
+        if effective_time is None and 'effectiveTime' in kwargs:
             effective_time = kwargs['effectiveTime']
-        if 'envLanguage' in kwargs:
+        if env_language is None and 'envLanguage' in kwargs:
             env_language = kwargs['envLanguage']
-        if 'expireTime' in kwargs:
+        if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
-        if 'noticeType' in kwargs:
+        if notice_type is None and 'noticeType' in kwargs:
             notice_type = kwargs['noticeType']
-        if 'quotaCategory' in kwargs:
+        if quota_category is None and 'quotaCategory' in kwargs:
             quota_category = kwargs['quotaCategory']
 
         _setter("desire_value", desire_value)
@@ -274,23 +280,23 @@ class _TemplateQuotaState:
              product_code: Optional[pulumi.Input[str]] = None,
              quota_action_code: Optional[pulumi.Input[str]] = None,
              quota_category: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'desireValue' in kwargs:
+        if desire_value is None and 'desireValue' in kwargs:
             desire_value = kwargs['desireValue']
-        if 'effectiveTime' in kwargs:
+        if effective_time is None and 'effectiveTime' in kwargs:
             effective_time = kwargs['effectiveTime']
-        if 'envLanguage' in kwargs:
+        if env_language is None and 'envLanguage' in kwargs:
             env_language = kwargs['envLanguage']
-        if 'expireTime' in kwargs:
+        if expire_time is None and 'expireTime' in kwargs:
             expire_time = kwargs['expireTime']
-        if 'noticeType' in kwargs:
+        if notice_type is None and 'noticeType' in kwargs:
             notice_type = kwargs['noticeType']
-        if 'productCode' in kwargs:
+        if product_code is None and 'productCode' in kwargs:
             product_code = kwargs['productCode']
-        if 'quotaActionCode' in kwargs:
+        if quota_action_code is None and 'quotaActionCode' in kwargs:
             quota_action_code = kwargs['quotaActionCode']
-        if 'quotaCategory' in kwargs:
+        if quota_category is None and 'quotaCategory' in kwargs:
             quota_category = kwargs['quotaCategory']
 
         if desire_value is not None:
@@ -450,31 +456,6 @@ class TemplateQuota(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.206.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.quotas.TemplateQuota("default",
-            desire_value=1001,
-            dimensions=[alicloud.quotas.TemplateQuotaDimensionArgs(
-                key="regionId",
-                value="cn-hangzhou",
-            )],
-            env_language="zh",
-            notice_type=3,
-            product_code="gws",
-            quota_action_code="q_desktop-count",
-            quota_category="CommonQuota")
-        ```
-
         ## Import
 
         Quotas Template Quota can be imported using the id, e.g.
@@ -514,31 +495,6 @@ class TemplateQuota(pulumi.CustomResource):
         For information about Quotas Template Quota and how to use it, see [What is Template Quota](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createtemplatequotaitem).
 
         > **NOTE:** Available since v1.206.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.quotas.TemplateQuota("default",
-            desire_value=1001,
-            dimensions=[alicloud.quotas.TemplateQuotaDimensionArgs(
-                key="regionId",
-                value="cn-hangzhou",
-            )],
-            env_language="zh",
-            notice_type=3,
-            product_code="gws",
-            quota_action_code="q_desktop-count",
-            quota_category="CommonQuota")
-        ```
 
         ## Import
 

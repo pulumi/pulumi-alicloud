@@ -151,19 +151,6 @@ def get_quota_applications(dimensions: Optional[Sequence[pulumi.InputType['GetQu
 
     > **NOTE:** Available in v1.117.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.quotas.get_quota_applications(product_code="ess",
-        ids=["4621F886-81E9-xxxx-xxxx"])
-    pulumi.export("firstQuotasQuotaApplicationId", example.applications[0].id)
-    ```
-
 
     :param Sequence[pulumi.InputType['GetQuotaApplicationsDimensionArgs']] dimensions: The quota dimensions.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -216,19 +203,6 @@ def get_quota_applications_output(dimensions: Optional[pulumi.Input[Optional[Seq
     This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.117.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.quotas.get_quota_applications(product_code="ess",
-        ids=["4621F886-81E9-xxxx-xxxx"])
-    pulumi.export("firstQuotasQuotaApplicationId", example.applications[0].id)
-    ```
 
 
     :param Sequence[pulumi.InputType['GetQuotaApplicationsDimensionArgs']] dimensions: The quota dimensions.

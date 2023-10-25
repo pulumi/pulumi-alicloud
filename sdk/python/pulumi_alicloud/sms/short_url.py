@@ -32,17 +32,23 @@ class ShortUrlArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             effective_days: pulumi.Input[int],
-             short_url_name: pulumi.Input[str],
-             source_url: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             effective_days: Optional[pulumi.Input[int]] = None,
+             short_url_name: Optional[pulumi.Input[str]] = None,
+             source_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'effectiveDays' in kwargs:
+        if effective_days is None and 'effectiveDays' in kwargs:
             effective_days = kwargs['effectiveDays']
-        if 'shortUrlName' in kwargs:
+        if effective_days is None:
+            raise TypeError("Missing 'effective_days' argument")
+        if short_url_name is None and 'shortUrlName' in kwargs:
             short_url_name = kwargs['shortUrlName']
-        if 'sourceUrl' in kwargs:
+        if short_url_name is None:
+            raise TypeError("Missing 'short_url_name' argument")
+        if source_url is None and 'sourceUrl' in kwargs:
             source_url = kwargs['sourceUrl']
+        if source_url is None:
+            raise TypeError("Missing 'source_url' argument")
 
         _setter("effective_days", effective_days)
         _setter("short_url_name", short_url_name)
@@ -113,13 +119,13 @@ class _ShortUrlState:
              short_url_name: Optional[pulumi.Input[str]] = None,
              source_url: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'effectiveDays' in kwargs:
+        if effective_days is None and 'effectiveDays' in kwargs:
             effective_days = kwargs['effectiveDays']
-        if 'shortUrlName' in kwargs:
+        if short_url_name is None and 'shortUrlName' in kwargs:
             short_url_name = kwargs['shortUrlName']
-        if 'sourceUrl' in kwargs:
+        if source_url is None and 'sourceUrl' in kwargs:
             source_url = kwargs['sourceUrl']
 
         if effective_days is not None:
@@ -196,20 +202,6 @@ class ShortUrl(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.178.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.sms.ShortUrl("example",
-            effective_days=30,
-            short_url_name="example_value",
-            source_url="example_value")
-        ```
-
         ## Import
 
         SMS Short Url can be imported using the id, e.g.
@@ -236,20 +228,6 @@ class ShortUrl(pulumi.CustomResource):
         For information about SMS Short Url and how to use it, see [What is Short Url](https://next.api.alibabacloud.com/api/Dysmsapi/2017-05-25/AddShortUrl).
 
         > **NOTE:** Available in v1.178.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.sms.ShortUrl("example",
-            effective_days=30,
-            short_url_name="example_value",
-            source_url="example_value")
-        ```
 
         ## Import
 

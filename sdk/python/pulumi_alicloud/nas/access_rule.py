@@ -38,20 +38,24 @@ class AccessRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_group_name: pulumi.Input[str],
-             source_cidr_ip: pulumi.Input[str],
+             access_group_name: Optional[pulumi.Input[str]] = None,
+             source_cidr_ip: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              rw_access_type: Optional[pulumi.Input[str]] = None,
              user_access_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessGroupName' in kwargs:
+        if access_group_name is None and 'accessGroupName' in kwargs:
             access_group_name = kwargs['accessGroupName']
-        if 'sourceCidrIp' in kwargs:
+        if access_group_name is None:
+            raise TypeError("Missing 'access_group_name' argument")
+        if source_cidr_ip is None and 'sourceCidrIp' in kwargs:
             source_cidr_ip = kwargs['sourceCidrIp']
-        if 'rwAccessType' in kwargs:
+        if source_cidr_ip is None:
+            raise TypeError("Missing 'source_cidr_ip' argument")
+        if rw_access_type is None and 'rwAccessType' in kwargs:
             rw_access_type = kwargs['rwAccessType']
-        if 'userAccessType' in kwargs:
+        if user_access_type is None and 'userAccessType' in kwargs:
             user_access_type = kwargs['userAccessType']
 
         _setter("access_group_name", access_group_name)
@@ -160,17 +164,17 @@ class _AccessRuleState:
              rw_access_type: Optional[pulumi.Input[str]] = None,
              source_cidr_ip: Optional[pulumi.Input[str]] = None,
              user_access_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessGroupName' in kwargs:
+        if access_group_name is None and 'accessGroupName' in kwargs:
             access_group_name = kwargs['accessGroupName']
-        if 'accessRuleId' in kwargs:
+        if access_rule_id is None and 'accessRuleId' in kwargs:
             access_rule_id = kwargs['accessRuleId']
-        if 'rwAccessType' in kwargs:
+        if rw_access_type is None and 'rwAccessType' in kwargs:
             rw_access_type = kwargs['rwAccessType']
-        if 'sourceCidrIp' in kwargs:
+        if source_cidr_ip is None and 'sourceCidrIp' in kwargs:
             source_cidr_ip = kwargs['sourceCidrIp']
-        if 'userAccessType' in kwargs:
+        if user_access_type is None and 'userAccessType' in kwargs:
             user_access_type = kwargs['userAccessType']
 
         if access_group_name is not None:
@@ -277,26 +281,6 @@ class AccessRule(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.34.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo_access_group = alicloud.nas.AccessGroup("fooAccessGroup",
-            access_group_name="tf-NasConfigName",
-            access_group_type="Vpc",
-            description="tf-testAccNasConfig")
-        foo_access_rule = alicloud.nas.AccessRule("fooAccessRule",
-            access_group_name=foo_access_group.access_group_name,
-            source_cidr_ip="168.1.1.0/16",
-            rw_access_type="RDWR",
-            user_access_type="no_squash",
-            priority=2)
-        ```
-
         ## Import
 
         Nas Access Rule can be imported using the id, e.g.
@@ -325,26 +309,6 @@ class AccessRule(pulumi.CustomResource):
         When NAS is activated, the Default VPC Permission Group is automatically generated. It allows all IP addresses in a VPC to access the mount point with full permissions. Full permissions include Read/Write permission with no restriction on root users.
 
         > **NOTE:** Available in v1.34.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo_access_group = alicloud.nas.AccessGroup("fooAccessGroup",
-            access_group_name="tf-NasConfigName",
-            access_group_type="Vpc",
-            description="tf-testAccNasConfig")
-        foo_access_rule = alicloud.nas.AccessRule("fooAccessRule",
-            access_group_name=foo_access_group.access_group_name,
-            source_cidr_ip="168.1.1.0/16",
-            rw_access_type="RDWR",
-            user_access_type="no_squash",
-            priority=2)
-        ```
 
         ## Import
 

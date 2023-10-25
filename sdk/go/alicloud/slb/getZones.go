@@ -15,33 +15,6 @@ import (
 // This data source provides availability zones for SLB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 //
 // > **NOTE:** Available in v1.73.0+.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := slb.GetZones(ctx, &slb.GetZonesArgs{
-//				AvailableSlbAddressIpVersion: pulumi.StringRef("ipv4"),
-//				AvailableSlbAddressType:      pulumi.StringRef("vpc"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZonesResult

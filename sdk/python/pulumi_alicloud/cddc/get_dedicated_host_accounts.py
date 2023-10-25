@@ -129,18 +129,6 @@ def get_dedicated_host_accounts(dedicated_host_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.148.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cddc.get_dedicated_host_accounts()
-    pulumi.export("cddcDedicatedHostAccountId1", ids.accounts[0].id)
-    ```
-
 
     :param str dedicated_host_id: The ID of the Dedicated host.
     :param Sequence[str] ids: A list of Dedicated Host Account IDs.
@@ -181,18 +169,6 @@ def get_dedicated_host_accounts_output(dedicated_host_id: Optional[pulumi.Input[
     This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.148.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.cddc.get_dedicated_host_accounts()
-    pulumi.export("cddcDedicatedHostAccountId1", ids.accounts[0].id)
-    ```
 
 
     :param str dedicated_host_id: The ID of the Dedicated host.

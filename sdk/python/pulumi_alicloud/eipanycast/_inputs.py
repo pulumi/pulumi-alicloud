@@ -28,9 +28,9 @@ class AnycastEipAddressAttachmentPopLocationArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              pop_location: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'popLocation' in kwargs:
+        if pop_location is None and 'popLocation' in kwargs:
             pop_location = kwargs['popLocation']
 
         if pop_location is not None:

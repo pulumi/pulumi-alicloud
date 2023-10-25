@@ -15,40 +15,6 @@ import (
 // This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.182.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := vpc.GetPrefixLists(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("vpcPrefixListId1", ids.Lists[0].Id)
-//			nameRegex, err := vpc.GetPrefixLists(ctx, &vpc.GetPrefixListsArgs{
-//				NameRegex: pulumi.StringRef("^my-PrefixList"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("vpcPrefixListId2", nameRegex.Lists[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetPrefixLists(ctx *pulumi.Context, args *GetPrefixListsArgs, opts ...pulumi.InvokeOption) (*GetPrefixListsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrefixListsResult

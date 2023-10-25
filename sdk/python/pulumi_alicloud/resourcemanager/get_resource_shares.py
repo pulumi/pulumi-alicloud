@@ -129,20 +129,6 @@ def get_resource_shares(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.111.0+.
 
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.resourcemanager.get_resource_shares(resource_share_owner="Self",
-        ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstResourceManagerResourceShareId", example.shares[0].id)
-    ```
-
 
     :param Sequence[str] ids: A list of Resource Share IDs.
     :param str name_regex: A regex string to filter results by Resource Share name.
@@ -185,20 +171,6 @@ def get_resource_shares_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.111.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.resourcemanager.get_resource_shares(resource_share_owner="Self",
-        ids=["example_value"],
-        name_regex="the_resource_name")
-    pulumi.export("firstResourceManagerResourceShareId", example.shares[0].id)
-    ```
 
 
     :param Sequence[str] ids: A list of Resource Share IDs.

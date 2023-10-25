@@ -43,15 +43,15 @@ class DirectoryArgs:
              mfa_authentication_status: Optional[pulumi.Input[str]] = None,
              saml_identity_provider_configuration: Optional[pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs']] = None,
              scim_synchronization_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'directoryName' in kwargs:
+        if directory_name is None and 'directoryName' in kwargs:
             directory_name = kwargs['directoryName']
-        if 'mfaAuthenticationStatus' in kwargs:
+        if mfa_authentication_status is None and 'mfaAuthenticationStatus' in kwargs:
             mfa_authentication_status = kwargs['mfaAuthenticationStatus']
-        if 'samlIdentityProviderConfiguration' in kwargs:
+        if saml_identity_provider_configuration is None and 'samlIdentityProviderConfiguration' in kwargs:
             saml_identity_provider_configuration = kwargs['samlIdentityProviderConfiguration']
-        if 'scimSynchronizationStatus' in kwargs:
+        if scim_synchronization_status is None and 'scimSynchronizationStatus' in kwargs:
             scim_synchronization_status = kwargs['scimSynchronizationStatus']
 
         if directory_name is not None:
@@ -144,15 +144,15 @@ class _DirectoryState:
              mfa_authentication_status: Optional[pulumi.Input[str]] = None,
              saml_identity_provider_configuration: Optional[pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs']] = None,
              scim_synchronization_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'directoryName' in kwargs:
+        if directory_name is None and 'directoryName' in kwargs:
             directory_name = kwargs['directoryName']
-        if 'mfaAuthenticationStatus' in kwargs:
+        if mfa_authentication_status is None and 'mfaAuthenticationStatus' in kwargs:
             mfa_authentication_status = kwargs['mfaAuthenticationStatus']
-        if 'samlIdentityProviderConfiguration' in kwargs:
+        if saml_identity_provider_configuration is None and 'samlIdentityProviderConfiguration' in kwargs:
             saml_identity_provider_configuration = kwargs['samlIdentityProviderConfiguration']
-        if 'scimSynchronizationStatus' in kwargs:
+        if scim_synchronization_status is None and 'scimSynchronizationStatus' in kwargs:
             scim_synchronization_status = kwargs['scimSynchronizationStatus']
 
         if directory_name is not None:
@@ -308,11 +308,7 @@ class Directory(pulumi.CustomResource):
 
             __props__.__dict__["directory_name"] = directory_name
             __props__.__dict__["mfa_authentication_status"] = mfa_authentication_status
-            if saml_identity_provider_configuration is not None and not isinstance(saml_identity_provider_configuration, DirectorySamlIdentityProviderConfigurationArgs):
-                saml_identity_provider_configuration = saml_identity_provider_configuration or {}
-                def _setter(key, value):
-                    saml_identity_provider_configuration[key] = value
-                DirectorySamlIdentityProviderConfigurationArgs._configure(_setter, **saml_identity_provider_configuration)
+            saml_identity_provider_configuration = _utilities.configure(saml_identity_provider_configuration, DirectorySamlIdentityProviderConfigurationArgs, True)
             __props__.__dict__["saml_identity_provider_configuration"] = saml_identity_provider_configuration
             __props__.__dict__["scim_synchronization_status"] = scim_synchronization_status
         super(Directory, __self__).__init__(

@@ -15,48 +15,6 @@ import (
 // This data source provides the Service Mesh Extension Providers of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.191.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/servicemesh"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := servicemesh.GetExtensionProviders(ctx, &servicemesh.GetExtensionProvidersArgs{
-//				Ids: []string{
-//					"example_id",
-//				},
-//				ServiceMeshId: "example_service_mesh_id",
-//				Type:          "httpextauth",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("serviceMeshExtensionProvidersId1", ids.Providers[0].Id)
-//			nameRegex, err := servicemesh.GetExtensionProviders(ctx, &servicemesh.GetExtensionProvidersArgs{
-//				NameRegex:     pulumi.StringRef("^my-ServiceMeshExtensionProvider"),
-//				ServiceMeshId: "example_service_mesh_id",
-//				Type:          "httpextauth",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("serviceMeshExtensionProvidersId2", nameRegex.Providers[0].Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetExtensionProviders(ctx *pulumi.Context, args *GetExtensionProvidersArgs, opts ...pulumi.InvokeOption) (*GetExtensionProvidersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetExtensionProvidersResult

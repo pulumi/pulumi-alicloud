@@ -56,7 +56,7 @@ class SimpleOfficeSiteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_block: pulumi.Input[str],
+             cidr_block: Optional[pulumi.Input[str]] = None,
              bandwidth: Optional[pulumi.Input[int]] = None,
              cen_id: Optional[pulumi.Input[str]] = None,
              cen_owner_id: Optional[pulumi.Input[str]] = None,
@@ -67,27 +67,29 @@ class SimpleOfficeSiteArgs:
              mfa_enabled: Optional[pulumi.Input[bool]] = None,
              office_site_name: Optional[pulumi.Input[str]] = None,
              sso_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'cenId' in kwargs:
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'cenOwnerId' in kwargs:
+        if cen_owner_id is None and 'cenOwnerId' in kwargs:
             cen_owner_id = kwargs['cenOwnerId']
-        if 'desktopAccessType' in kwargs:
+        if desktop_access_type is None and 'desktopAccessType' in kwargs:
             desktop_access_type = kwargs['desktopAccessType']
-        if 'enableAdminAccess' in kwargs:
+        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
             enable_admin_access = kwargs['enableAdminAccess']
-        if 'enableCrossDesktopAccess' in kwargs:
+        if enable_cross_desktop_access is None and 'enableCrossDesktopAccess' in kwargs:
             enable_cross_desktop_access = kwargs['enableCrossDesktopAccess']
-        if 'enableInternetAccess' in kwargs:
+        if enable_internet_access is None and 'enableInternetAccess' in kwargs:
             enable_internet_access = kwargs['enableInternetAccess']
-        if 'mfaEnabled' in kwargs:
+        if mfa_enabled is None and 'mfaEnabled' in kwargs:
             mfa_enabled = kwargs['mfaEnabled']
-        if 'officeSiteName' in kwargs:
+        if office_site_name is None and 'officeSiteName' in kwargs:
             office_site_name = kwargs['officeSiteName']
-        if 'ssoEnabled' in kwargs:
+        if sso_enabled is None and 'ssoEnabled' in kwargs:
             sso_enabled = kwargs['ssoEnabled']
 
         _setter("cidr_block", cidr_block)
@@ -317,27 +319,27 @@ class _SimpleOfficeSiteState:
              office_site_name: Optional[pulumi.Input[str]] = None,
              sso_enabled: Optional[pulumi.Input[bool]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cenId' in kwargs:
+        if cen_id is None and 'cenId' in kwargs:
             cen_id = kwargs['cenId']
-        if 'cenOwnerId' in kwargs:
+        if cen_owner_id is None and 'cenOwnerId' in kwargs:
             cen_owner_id = kwargs['cenOwnerId']
-        if 'cidrBlock' in kwargs:
+        if cidr_block is None and 'cidrBlock' in kwargs:
             cidr_block = kwargs['cidrBlock']
-        if 'desktopAccessType' in kwargs:
+        if desktop_access_type is None and 'desktopAccessType' in kwargs:
             desktop_access_type = kwargs['desktopAccessType']
-        if 'enableAdminAccess' in kwargs:
+        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
             enable_admin_access = kwargs['enableAdminAccess']
-        if 'enableCrossDesktopAccess' in kwargs:
+        if enable_cross_desktop_access is None and 'enableCrossDesktopAccess' in kwargs:
             enable_cross_desktop_access = kwargs['enableCrossDesktopAccess']
-        if 'enableInternetAccess' in kwargs:
+        if enable_internet_access is None and 'enableInternetAccess' in kwargs:
             enable_internet_access = kwargs['enableInternetAccess']
-        if 'mfaEnabled' in kwargs:
+        if mfa_enabled is None and 'mfaEnabled' in kwargs:
             mfa_enabled = kwargs['mfaEnabled']
-        if 'officeSiteName' in kwargs:
+        if office_site_name is None and 'officeSiteName' in kwargs:
             office_site_name = kwargs['officeSiteName']
-        if 'ssoEnabled' in kwargs:
+        if sso_enabled is None and 'ssoEnabled' in kwargs:
             sso_enabled = kwargs['ssoEnabled']
 
         if bandwidth is not None:
@@ -546,21 +548,6 @@ class SimpleOfficeSite(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.140.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.eds.SimpleOfficeSite("default",
-            cidr_block="172.16.0.0/12",
-            desktop_access_type="Internet",
-            enable_admin_access=True,
-            office_site_name="terraform-example")
-        ```
-
         ## Import
 
         ECD Simple Office Site can be imported using the id, e.g.
@@ -595,21 +582,6 @@ class SimpleOfficeSite(pulumi.CustomResource):
         For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createsimpleofficesite).
 
         > **NOTE:** Available since v1.140.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.eds.SimpleOfficeSite("default",
-            cidr_block="172.16.0.0/12",
-            desktop_access_type="Internet",
-            enable_admin_access=True,
-            office_site_name="terraform-example")
-        ```
 
         ## Import
 

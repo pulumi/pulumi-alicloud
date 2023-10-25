@@ -16,58 +16,6 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available in v1.136.0+.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
-    ///     {
-    ///         VpcName = "terraform-example",
-    ///         CidrBlock = "172.16.0.0/12",
-    ///     });
-    /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
-    ///     {
-    ///         VpcId = exampleNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/21",
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = "terraform-example",
-    ///     });
-    /// 
-    ///     var exampleNatGateway = new AliCloud.Vpc.NatGateway("exampleNatGateway", new()
-    ///     {
-    ///         VpcId = exampleNetwork.Id,
-    ///         InternetChargeType = "PayByLcu",
-    ///         NatGatewayName = "terraform-example",
-    ///         Description = "terraform-example",
-    ///         NatType = "Enhanced",
-    ///         VswitchId = exampleSwitch.Id,
-    ///         NetworkType = "intranet",
-    ///     });
-    /// 
-    ///     var exampleNatIpCidr = new AliCloud.Vpc.NatIpCidr("exampleNatIpCidr", new()
-    ///     {
-    ///         NatGatewayId = exampleNatGateway.Id,
-    ///         NatIpCidrName = "terraform-example",
-    ///         NatIpCidrBlock = "192.168.0.0/16",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// VPC Nat Ip Cidr can be imported using the id, e.g.
